@@ -37,8 +37,12 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   carry `org.myiadidot.draft` and are reviewed in `drafts-review.pdf`.
   The Vietnamese hook and horn: `scripts/draft_vietnamese_marks.py`; IPA
   diacritics and symbols: `scripts/draft_ipa_marks.py`; arrows, geometric
-  shapes, circled letters: `scripts/draft_symbols.py`; ligatures ct st:
-  `scripts/draft_ligatures.py` (rules in the upstream dlig lookup).
+  shapes, circled letters: `scripts/draft_symbols.py`; ligatures ct st
+  (dlig), f-ligatures fb fh fk ft (liga) and long-s ligatures (own liga
+  lookups): `scripts/draft_ligatures.py`. Hooks: `hook` (f top or ȷ tail
+  scaled to the stem) and `curl` (an elliptical ring with a ball, at the
+  stroke's own weight) in derive.py. Shaping in this shell defaults to
+  German (locale), which has no f-ligatures: pass `--language=en`.
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 

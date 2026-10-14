@@ -69,7 +69,16 @@ GROUPS = [
       "ɫ from l); bars are 64/56 units thick, as in Đ and ħ.")),
     ("parts", "Built from parts",
      "The descender of Ц added to Н Ч К Ж Х; ү from v and the descender of p."),
-    ("other", "From punctuation", "ʔ from the question mark, clicks from | and !."),
+    ("hook", "With a hook",
+     ("A stem's end replaced by the top of f or the descender of ȷ, scaled to the "
+      "stem's width (ɓ ɗ ɲ ʈ); or a hook drawn on at the weight of the stroke it "
+      "leaves, ending in a ball (Ƈ ƈ Ɠ ʋ Ʋ ƴ Ƴ).")),
+    ("super", "Superscript and subscript",
+     "Modifier letters and signs: the letter or sign made smaller and raised (ʰ ⁺) or lowered (₊)."),
+    ("signs", "Currency signs", "Letters with bars or strokes across (₦ ₱ ₲)."),
+    ("other", "From punctuation and other parts",
+     ("ʔ from the question mark, clicks from | and !, doubled marks (ǁ ″), ezh and esh "
+      "(Ʒ ʃ), and signs built from existing glyphs (⋮ ⁂ 「」 ⏑).")),
     ("drawn", "Drawn", "New outlines drafted from a related letter."),
 ]
 
@@ -89,7 +98,11 @@ def draft_groups(ufo):
         else:
             group = {"turn": "turn", "flip": "turn", "mirror": "mirror", "bar": "stroke",
                      "slash": "stroke", "midtilde": "stroke", "tail": "parts",
-                     "descend": "parts", "enlarge": "drawn"}.get(op, "other")
+                     "descend": "parts", "enlarge": "drawn", "stretch": "drawn",
+                     "hook": "hook", "curl": "hook", "graft": "hook", "superior": "super",
+                     "lines": "signs"}.get(op, "other")
+            if op == "attach" and source[0].isalpha() and source not in ("space",):
+                group = "hook" if ch.isalpha() else "other"
         base = source.removesuffix(".sc")
         if len(source) == 1:
             ref = source

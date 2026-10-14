@@ -2034,6 +2034,23 @@
 			<string>uni0183.sc</string>
 			<string>c_t</string>
 			<string>s_t</string>
+			<string>f_b</string>
+			<string>f_h</string>
+			<string>f_k</string>
+			<string>f_t</string>
+			<string>f_f_b</string>
+			<string>f_f_h</string>
+			<string>f_f_k</string>
+			<string>f_f_t</string>
+			<string>longs_b</string>
+			<string>longs_h</string>
+			<string>longs_k</string>
+			<string>longs_t</string>
+			<string>longs_i</string>
+			<string>longs_l</string>
+			<string>longs_longs</string>
+			<string>longs_longs_i</string>
+			<string>longs_longs_l</string>
 		</array>
 		<key>public.openTypeCategories</key>
 		<dict>
@@ -2763,9 +2780,25 @@
 			<string>base</string>
 			<key>f.sc</key>
 			<string>base</string>
+			<key>f_b</key>
+			<string>ligature</string>
+			<key>f_f_b</key>
+			<string>ligature</string>
+			<key>f_f_h</key>
+			<string>ligature</string>
 			<key>f_f_j</key>
 			<string>ligature</string>
+			<key>f_f_k</key>
+			<string>ligature</string>
+			<key>f_f_t</key>
+			<string>ligature</string>
+			<key>f_h</key>
+			<string>ligature</string>
 			<key>f_j</key>
+			<string>ligature</string>
+			<key>f_k</key>
+			<string>ligature</string>
+			<key>f_t</key>
 			<string>ligature</string>
 			<key>ff</key>
 			<string>ligature</string>
@@ -3003,6 +3036,24 @@
 			<string>base</string>
 			<key>longs.sc</key>
 			<string>base</string>
+			<key>longs_b</key>
+			<string>ligature</string>
+			<key>longs_h</key>
+			<string>ligature</string>
+			<key>longs_i</key>
+			<string>ligature</string>
+			<key>longs_k</key>
+			<string>ligature</string>
+			<key>longs_l</key>
+			<string>ligature</string>
+			<key>longs_longs</key>
+			<string>ligature</string>
+			<key>longs_longs_i</key>
+			<string>ligature</string>
+			<key>longs_longs_l</key>
+			<string>ligature</string>
+			<key>longs_t</key>
+			<string>ligature</string>
 			<key>lozenge</key>
 			<string>base</string>
 			<key>lslash</key>

@@ -81,17 +81,29 @@ def outlined(shape, scale_in, cx, cy):
 ARROW_W = 1600
 
 
+X0, X1, HEAD, HALF, NOTCH = 120, 1480, 360, 230, 70
+
+
+def head_right(x1):
+    return poly([(x1, AXIS), (x1 - HEAD, AXIS + HALF), (x1 - HEAD + NOTCH, AXIS),
+                 (x1 - HEAD, AXIS - HALF)])
+
+
+def head_left(x0):
+    return poly([(x0, AXIS), (x0 + HEAD, AXIS - HALF), (x0 + HEAD - NOTCH, AXIS),
+                 (x0 + HEAD, AXIS + HALF)])
+
+
 def arrow_right():
-    x0, x1, head, half = 120, 1480, 360, 230
-    shaft = rect_path(x0, AXIS - LINE / 2, x1 - head + 40, AXIS + LINE / 2)
-    tip = poly([(x1, AXIS), (x1 - head, AXIS + half), (x1 - head + 70, AXIS), (x1 - head, AXIS - half)])
-    return union(shaft, tip)
+    # the shaft runs into the head past its notch, so no gap is left beside it
+    shaft = rect_path(X0, AXIS - LINE / 2, X1 - HEAD + NOTCH + 30, AXIS + LINE / 2)
+    return union(shaft, head_right(X1))
 
 
 def arrow_both():
-    right = arrow_right()
-    left = transformed(right, (-1, 0, 0, 1, ARROW_W, 0))
-    return union(right, left)
+    # one shaft between the two heads: neither end is crossed by a shaft
+    shaft = rect_path(X0 + HEAD - NOTCH - 30, AXIS - LINE / 2, X1 - HEAD + NOTCH + 30, AXIS + LINE / 2)
+    return union(shaft, head_right(X1), head_left(ARROW_W - X1))
 
 
 ARROWS = [  # name, code point, rotation of the right arrow (or 'both'), width

@@ -4421,7 +4421,38 @@ lookup ligaStandardLigaturesforLatin {
     sub \f \l  by \fl;
     sub \f \f \l  by \ffl;
     sub \ff \l  by \ffl;
+    sub \f \f \b  by \f_f_b;
+    sub \ff \b  by \f_f_b;
+    sub \f \f \h  by \f_f_h;
+    sub \ff \h  by \f_f_h;
+    sub \f \f \k  by \f_f_k;
+    sub \ff \k  by \f_f_k;
+    sub \f \f \t  by \f_f_t;
+    sub \ff \t  by \f_f_t;
+    sub \f \b  by \f_b;
+    sub \f \h  by \f_h;
+    sub \f \k  by \f_k;
+    sub \f \t  by \f_t;
 } ligaStandardLigaturesforLatin;
+
+# long s (typed only in historical text): its ligatures in every language
+lookup ligaLongS {
+  lookupflag 0;
+    sub \longs \longs \l  by \longs_longs_l;
+    sub \longs \longs  by \longs_longs;
+    sub \longs \b  by \longs_b;
+    sub \longs \h  by \longs_h;
+    sub \longs \k  by \longs_k;
+    sub \longs \l  by \longs_l;
+    sub \longs \t  by \longs_t;
+} ligaLongS;
+
+lookup ligaLongSexceptTurkish {
+  lookupflag 0;
+    sub \longs \longs \i  by \longs_longs_i;
+    sub \longs_longs \i  by \longs_longs_i;
+    sub \longs \i  by \longs_i;
+} ligaLongSexceptTurkish;
 
 lookup ligaStandardLigaturesforLatinexceptTurkish {
   lookupflag 0;
@@ -4457,6 +4488,18 @@ lookup dligDiscretionaryLigaturesforGerman {
     sub \f \f \j  by \f_f_j;
     sub \ff \j  by \f_f_j;
     sub \f \j  by \f_j;
+    sub \f \f \b  by \f_f_b;
+    sub \ff \b  by \f_f_b;
+    sub \f \f \h  by \f_f_h;
+    sub \ff \h  by \f_f_h;
+    sub \f \f \k  by \f_f_k;
+    sub \ff \k  by \f_f_k;
+    sub \f \f \t  by \f_f_t;
+    sub \ff \t  by \f_f_t;
+    sub \f \b  by \f_b;
+    sub \f \h  by \f_h;
+    sub \f \k  by \f_k;
+    sub \f \t  by \f_t;
 } dligDiscretionaryLigaturesforGerman;
 
 lookup onumOldstyleFigures {
@@ -4870,28 +4913,44 @@ feature liga {
      language dflt ;
       lookup ligaStandardLigaturesforLatin;
       lookup ligaStandardLigaturesforLatinexceptTurkish;
+      lookup ligaLongS;
+      lookup ligaLongSexceptTurkish;
 
  script grek;
      language dflt ;
       lookup ligaStandardLigaturesforLatin;
       lookup ligaStandardLigaturesforLatinexceptTurkish;
+      lookup ligaLongS;
+      lookup ligaLongSexceptTurkish;
 
  script latn;
      language dflt ;
       lookup ligaStandardLigaturesforLatin;
       lookup ligaStandardLigaturesforLatinexceptTurkish;
+      lookup ligaLongS;
+      lookup ligaLongSexceptTurkish;
      language AZE  exclude_dflt;
       lookup ligaStandardLigaturesforLatin;
+      lookup ligaLongS;
      language CRT  exclude_dflt;
       lookup ligaStandardLigaturesforLatin;
+      lookup ligaLongS;
+     language DEU  exclude_dflt;
+      lookup ligaLongS;
+      lookup ligaLongSexceptTurkish;
      language MOL  exclude_dflt;
       lookup ligaStandardLigaturesforLatin;
       lookup ligaStandardLigaturesforLatinexceptTurkish;
+      lookup ligaLongS;
+      lookup ligaLongSexceptTurkish;
      language ROM  exclude_dflt;
       lookup ligaStandardLigaturesforLatin;
       lookup ligaStandardLigaturesforLatinexceptTurkish;
+      lookup ligaLongS;
+      lookup ligaLongSexceptTurkish;
      language TRK  exclude_dflt;
       lookup ligaStandardLigaturesforLatin;
+      lookup ligaLongS;
 } liga;
 
 feature dlig {

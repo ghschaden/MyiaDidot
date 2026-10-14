@@ -40,6 +40,7 @@ from pathlib import Path
 import pathops
 import ufoLib2
 from fontTools.pens.areaPen import AreaPen
+from fontTools.pens.basePen import BasePen
 from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
 from fontTools.pens.reverseContourPen import ReverseContourPen
@@ -203,20 +204,22 @@ RECIPES = [
     ("Ɽ", "hook", "R", ("c", "down-right", "first", 52, 200, 200)),
     # capitals of lowercase-only shapes: enlarged to capital weight
     ("Ɛ", "enlarge", "ɛ", ("o", "O")),
-    ("Ɑ", "enlarge", "ɑ", ("o", "O")),
+    # Ɑ: the bowl of O against the right stem of H, as in Charis
+    ("Ɑ", "attach", "O", ("c", [(1100, -BIG, BIG, BIG), (960, 1434, BIG, BIG), (960, -BIG, BIG, 0)],
+                          [("H", (1098, -BIG, BIG, BIG), (1098, 0), (1, 1, 1060, 0))], 1542)),
     ("Ɩ", "enlarge", "ɩ", ("o", "O")),
-    ("Ꞷ", "enlarge", "ꞷ", ("o", "O")),
+    ("Ꞷ", "stretch", "ꞷ", ("o", "O")),
     ("ɂ", "enlarge", "ʔ", ("O", "o")),
     ("Ʃ", "alias", "Sigma", None),
     # esh, ezh
     ("ʃ", "esh", "f", ("x", "uni0237")),
-    ("Ʒ", "ezh", "Z", ("c", 760, 1.0, 1.0)),
+    ("Ʒ", "ezh", "Z", ("c", 560, 1.05, 1.07)),  # bowl below the baseline, as in Charis
     ("ʒ", "ezh", "z", ("x", 400, 0.9, 1.08)),
     ("ƹ", "mirror", "ʒ", None),
     ("Ƹ", "mirror", "Ʒ", None),
     # script g, upsilon, gamma, turned m with long leg
     ("ɡ", "hook", "q", ("x", "down-left", "last", -100, 200, 200)),
-    ("ɠ", "hook", "ɡ", ("x", "up-right", "last", 900, 300, 200)),
+    ("ɠ", "hook", "ɡ", ("x", "up-right", "last", 800, 0, 200)),
     ("Ʊ", "turn", "Omega", "c"),
     ("ʊ", "enlarge", "Ʊ", ("O", "o")),
     ("Ɣ", "enlarge", "ɣ", ("o", "O", 0, 1462)),
@@ -246,22 +249,31 @@ RECIPES = [
     # hooks placed by hand: (band, cut boxes, pieces, [width]); F_TOP is the
     # top of f from its straight stem (centre 312 at y 1000), J_TAIL the
     # descender of ȷ (stem centre 320 at y 100)
-    ("ʋ", "attach", "u", ("x", [(940, -BIG, BIG, 60), (620, 780, 960, BIG)],
-                          [("f", (-BIG, 1000, 600, BIG), (312, 1000), (-0.5, 0.5, 864, 760))])),
-    ("Ʋ", "attach", "U", ("c", [(1000, 1180, BIG, BIG)],
-                          [("f", F_TOP, (312, 1000), (-0.55, 0.55, 1256, 1170))])),
-    ("ƴ", "attach", "y", ("x", [(660, 700, 1000, BIG)],
-                          [("f", F_TOP, (312, 1000), (0.5, 0.5, 785, 690))], 1080)),
-    ("Ƴ", "attach", "Y", ("c", [(960, 1150, 1460, BIG)],
-                          [("f", F_TOP, (312, 1000), (0.55, 0.55, 1111, 1140))])),
+    # hooks drawn on (band, cuts, curl arguments): part of an elliptical ring
+    # leaving the stroke at its own weight, ending in a ball
+    ("ʋ", "curl", "u", ("x", [(940, -BIG, BIG, 60), (620, 600, BIG, BIG)],
+                        {"at": ("y", 600, "last"), "dir": 90, "turn": "ccw", "r": (190, 262),
+                         "sweep": 150, "ball": 78, "t": (164, 56)})),
+    ("Ʋ", "curl", "U", ("c", [(1000, 1000, BIG, BIG)],
+                        {"at": ("y", 1000, "last"), "dir": 90, "turn": "ccw", "r": (240, 400),
+                         "sweep": 160, "ball": 92, "t": (64, 64)})),
+    ("ƴ", "curl", "y", ("x", [(660, 700, 1000, BIG)],
+                        {"at": ("y", 700, "last"), "dir": 70.7, "turn": "cw", "r": 160,
+                         "sweep": 140, "ball": 70}, 1080)),
+    ("Ƴ", "curl", "Y", ("c", [(960, 1150, 1460, BIG)],
+                        {"at": ("y", 1150, "last"), "dir": 63.4, "turn": "cw", "r": 200,
+                         "sweep": 140, "ball": 85})),
     ("Ɲ", "attach", "N", ("c", [(90, -BIG, 590, 60)],
                           [("uni0237", J_TAIL, (320, 100), (0.6, 0.6, 338, 80))])),
-    ("Ƈ", "attach", "C", ("c", [(1150, 1300, 1400, BIG)],
-                          [("f", F_HOOK, (312, 1100), (0.6, 0.6, 1170, 1360))])),
-    ("Ɠ", "attach", "G", ("c", [(1150, 1300, 1400, BIG)],
-                          [("f", F_HOOK, (312, 1100), (0.6, 0.6, 1170, 1360))])),
-    ("ƈ", "attach", "c", ("x", [(600, 500, 900, BIG)],
-                          [("f", F_HOOK, (312, 1100), (0.5, 0.5, 630, 800))])),
+    ("Ƈ", "curl", "C", ("c", [(1100, 900, BIG, BIG)],
+                        {"at": ("x", 1080), "dir": 70, "turn": "cw", "r": 170,
+                         "sweep": 145, "ball": 85})),
+    ("Ɠ", "curl", "G", ("c", [(1100, 900, BIG, BIG)],
+                        {"at": ("x", 1080), "dir": 70, "turn": "cw", "r": 170,
+                         "sweep": 145, "ball": 85})),
+    ("ƈ", "curl", "c", ("x", [(620, 500, BIG, BIG)],
+                        {"at": ("x", 600), "dir": 70, "turn": "cw", "r": 130,
+                         "sweep": 145, "ball": 70})),
     # spacing modifiers made of existing glyphs
     ("ˮ", "double", "uni02BC", None),
     ("꞉", "alias", "colon", None),
@@ -377,9 +389,9 @@ RECIPES = [
     ("ʈ.sc", "hook", "t.sc", ("s", "down-right", "first", 48, 160, 160)),
     ("ɽ.sc", "hook", "r.sc", ("s", "down-right", "first", 48, 160, 160)),
     ("ɛ.sc", "enlarge", "ɛ", ("o", "o.sc")),
-    ("ɑ.sc", "enlarge", "ɑ", ("o", "o.sc")),
+    ("ɑ.sc", "enlarge", "Ɑ", ("O", "o.sc")),
     ("ɩ.sc", "enlarge", "ɩ", ("o", "o.sc")),
-    ("ꞷ.sc", "enlarge", "ꞷ", ("o", "o.sc")),
+    ("ꞷ.sc", "stretch", "ꞷ", ("o", "o.sc")),
     ("ɂ.sc", "enlarge", "ʔ", ("O", "o.sc")),
     ("ʃ.sc", "alias", "sigma.sc", None),
     ("ʒ.sc", "enlarge", "Ʒ", ("O", "o.sc")),
@@ -681,7 +693,7 @@ def embolden(rec, ax, ay):
     return glyph
 
 
-def enlarge(font, source, src_ref, dst_ref, fit=None):
+def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False):
     """The source scaled so that src_ref's strokes and height become
     dst_ref's (ə -> Ә with o -> O): scaled uniformly, then the stems and
     hairlines brought to dst_ref's weight; sidebearings of dst_ref. With
@@ -694,8 +706,16 @@ def enlarge(font, source, src_ref, dst_ref, fit=None):
         k = (fit[1] - fit[0]) / (sb[3] - sb[1])
         b1 = (b1[0], fit[0], b1[2], fit[1])
     rec = DecomposingRecordingPen(font)
-    font[source].draw(TransformPen(rec, (k, 0, 0, k, 0, 0)))
-    glyph = embolden(rec, s1 - k * s0, h1 - k * h0)
+    if stretch:
+        # stretch: across by the stem ratio, up by the height ratio, so
+        # only the hairlines need bringing to weight (thinning the stems of
+        # a uniform enlargement leaves slivers where thin strokes slant: Ꞷ)
+        kx = s1 / s0
+        font[source].draw(TransformPen(rec, (kx, 0, 0, k, 0, 0)))
+        glyph = embolden(rec, 0, h1 - k * h0)
+    else:
+        font[source].draw(TransformPen(rec, (k, 0, 0, k, 0, 0)))
+        glyph = embolden(rec, s1 - k * s0, h1 - k * h0)
     out = RecordingPen()
     glyph.draw(out)
     bp = BoundsPen(None)
@@ -707,11 +727,36 @@ def enlarge(font, source, src_ref, dst_ref, fit=None):
     return moved, round(lsb + (x1 - x0) + rsb)
 
 
+class CubicPen(BasePen):
+    """Passes outlines on with quadratic segments made cubic."""
+
+    def __init__(self, out):
+        super().__init__(None)
+        self.out = out
+
+    def _moveTo(self, p):
+        self.out.moveTo(p)
+
+    def _lineTo(self, p):
+        self.out.lineTo(p)
+
+    def _curveToOne(self, p1, p2, p3):
+        self.out.curveTo(p1, p2, p3)
+
+    def _closePath(self):
+        self.out.closePath()
+
+    def _endPath(self):
+        self.out.endPath()
+
+
 def draw_path(font, src, dst, out):
     """Draw a merged outline (a pathops Path or a recording) into dst,
     rounded and in the source's contour direction."""
     rec = RecordingPen()
-    out.draw(rec) if hasattr(out, "draw") else out.replay(rec)
+    # pathops can return a quadratic segment; the font is cubic
+    cubic = CubicPen(rec)
+    out.draw(cubic) if hasattr(out, "draw") else out.replay(cubic)
     ref = DecomposingRecordingPen(font)
     src.draw(ref)
     pen = RoundingPen(dst.getPen())
@@ -753,11 +798,17 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
         reach = cut - HOOK_BOTTOM[band]
         s0, s1 = -BIG, hend + reach / k
     piece = path_op(to_path(font, font[hsrc]), rect_path(-BIG, s0, BIG, s1), "INTERSECTION")
-    # stem of the hook source where it meets the letter
+    # the hook's stem where it meets the letter, and the letter's stem at
+    # the cut: the hook is scaled across to that width exactly and put on
+    # its edges, so the stroke runs on without a step
     js = stems_at(font, hsrc, s0 + 2)[0] if up else stems_at(font, hsrc, s1 - 2)[-1]
-    jx = (js[0] + js[1]) / 2
-    sx = -k if mirror else k
-    tx = (ta + tb) / 2 - sx * jx
+    at_cut = stems_at(font, source, cut - 2 if up else cut + 2)
+    ca, cb = min(at_cut, key=lambda s: abs((s[0] + s[1]) / 2 - (ta + tb) / 2))
+    sx = (cb - ca) / (js[1] - js[0])
+    if mirror:
+        sx, tx = -sx, ca + sx * js[1]
+    else:
+        tx = ca - sx * js[0]
     ty = cut - k * (s0 if up else s1)
     rec = RecordingPen()
     piece.draw(TransformPen(rec, (sx, 0, 0, k, tx, ty)))
@@ -833,6 +884,125 @@ def attach(font, source, cuts, pieces):
         out = path_op(out, path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG),
                                    "INTERSECTION"), "UNION")
     return out
+
+
+def _run_at(font, name, y, pick):
+    runs = stems_at(font, name, y)
+    return runs[0] if pick == "first" else runs[-1] if pick == "last" else runs[pick]
+
+
+def _perpendicular(font, name, y, pick, dy=20):
+    """Width of a stroke across its direction, from horizontal runs at y."""
+    a, b = _run_at(font, name, y, pick)
+    a2, b2 = _run_at(font, name, y + dy, pick)
+    slope = ((a2 + b2) - (a + b)) / 2 / dy
+    return (b - a) / math.hypot(1, slope)
+
+
+def graft(font, source, cuts, piece, py, junction, clip=None, mirror=False, pick="first"):
+    """The letter minus cuts, with a hook from another glyph (piece, its ink
+    above py, within clip) scaled so its stroke at py is as thick, across
+    the stroke, as the letter's where they meet. junction is ('y', y, pick):
+    the piece's run at py goes onto the letter's run at y, edge on edge (a
+    stem or arm running on: ʋ ƴ Ƴ), or ('x', x): its middle onto the middle
+    of the letter's topmost ink at x (a hook rising from an arc: Ƈ ƈ Ɠ)."""
+    pp = _perpendicular(font, piece, py, pick)
+    if junction[0] == "y":
+        _, ly, lpick = junction
+        lp = _perpendicular(font, source, ly - 20, lpick)
+    else:
+        jx = junction[1]
+        r0, r1 = vertical_runs(font, source, jx)[-1]
+        q0, q1 = vertical_runs(font, source, jx + 20)[-1]
+        lp = (r1 - r0) / math.hypot(1, ((q0 + q1) - (r0 + r1)) / 40)
+    k = lp / pp
+    box = clip or (-BIG, py, BIG, BIG)
+    part = path_op(to_path(font, font[piece]),
+                   rect_path(box[0], max(box[1], py - 2 / k), box[2], box[3]), "INTERSECTION")
+    pa, pb = _run_at(font, piece, py, pick)
+    sx = -k if mirror else k
+    if junction[0] == "y":
+        la, _ = _run_at(font, source, ly, lpick)
+        tx = la - sx * (pb if mirror else pa)
+        ty = ly - k * py
+    else:
+        tx = jx - sx * (pa + pb) / 2
+        ty = (r0 + r1) / 2 - k * py
+    rec = RecordingPen()
+    part.draw(TransformPen(rec, (sx, 0, 0, k, tx, ty)))
+    part = to_path(None, rec=rec)
+    part = path_op(part, rect_path(-BIG, -BIG, BIG, BIG), "INTERSECTION")  # winding
+    out = to_path(font, font[source])
+    for b in cuts:
+        out = path_op(out, rect_path(*b), "DIFFERENCE")
+    return path_op(out, part, "UNION")
+
+
+def _ellipse(cx, cy, rx, ry):
+    k = 0.5523
+    rec = RecordingPen()
+    rec.moveTo((cx + rx, cy))
+    rec.curveTo((cx + rx, cy + k * ry), (cx + k * rx, cy + ry), (cx, cy + ry))
+    rec.curveTo((cx - k * rx, cy + ry), (cx - rx, cy + k * ry), (cx - rx, cy))
+    rec.curveTo((cx - rx, cy - k * ry), (cx - k * rx, cy - ry), (cx, cy - ry))
+    rec.curveTo((cx + k * rx, cy - ry), (cx + rx, cy - k * ry), (cx + rx, cy))
+    rec.closePath()
+    return to_path(None, rec=rec)
+
+
+def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None):
+    """The letter minus cuts, with a hook drawn as part of an elliptical
+    ring ending in a ball: it leaves the letter's stroke at `at` (('y', y,
+    pick): the run at height y; ('x', x): the topmost ink at x) going in
+    direction dir (degrees; 90 = up), turning cw or ccw through sweep
+    degrees on a centre line of radii r (one number: a circle). The ring is
+    t thick: (across vertical parts, across horizontal parts), by default
+    the stroke's own width where it meets the letter, so the stroke runs on
+    at its weight; the ball (radius) sits inside the end, flush with the
+    outer edge, as on f."""
+    a, b = (r, r) if not isinstance(r, (tuple, list)) else r
+    if at[0] == "y":
+        _, y, pick = at
+        ra, rb_ = _run_at(font, source, y, pick)
+        px, py = (ra + rb_) / 2, y
+        width = _perpendicular(font, source, y - 20, pick)
+    else:
+        x = at[1]
+        r0, r1 = vertical_runs(font, source, x)[-1]
+        q0, q1 = vertical_runs(font, source, x + 20)[-1]
+        px, py = x, (r0 + r1) / 2
+        width = (r1 - r0) / math.hypot(1, ((q0 + q1) - (r0 + r1)) / 40)
+    tv, th = t if t else (width, width)
+    if at[0] == "y" and dir == 90:
+        tv = rb_ - ra if not t else tv  # a vertical stem: its full width
+    sign = -1 if turn == "cw" else 1
+    # the centre lies to the side the curl turns to, across the direction
+    d = math.radians(dir)
+    nx, ny = -math.sin(d) * sign, math.cos(d) * sign
+    start = math.degrees(math.atan2(-ny, -nx))  # from the centre to the start
+    sa = math.radians(start)
+    cx, cy = px - a * math.cos(sa), py - b * math.sin(sa)
+    ring = path_op(_ellipse(cx, cy, a + tv / 2, b + th / 2),
+                   _ellipse(cx, cy, a - tv / 2, b - th / 2), "DIFFERENCE")
+    # the part swept, from just before the start (into the letter's stroke)
+    angles = [start - sign * 3 + sign * sweep * i / 24 for i in range(25)]
+    pts = [(cx, cy)] + [(cx + 4 * (a + tv) * math.cos(math.radians(g)),
+                         cy + 4 * (b + th) * math.sin(math.radians(g))) for g in angles]
+    rec = RecordingPen()
+    rec.moveTo(pts[0])
+    for q in pts[1:]:
+        rec.lineTo(q)
+    rec.closePath()
+    wedge = path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG), "INTERSECTION")
+    hook = path_op(ring, wedge, "INTERSECTION")
+    end = math.radians(start + sign * sweep)
+    bx = cx + (a + tv / 2 - ball) * math.cos(end)
+    by = cy + (b + th / 2 - ball) * math.sin(end)
+    hook = path_op(hook, _ellipse(bx, by, ball, ball), "UNION")
+    out = to_path(font, font[source])
+    for box in cuts:
+        out = path_op(out, rect_path(*box), "DIFFERENCE")
+    return path_op(out, hook, "UNION")
 
 
 def descend(font, source, band, model, pick=None):
@@ -931,9 +1101,14 @@ def build(font, ch, op, source, band, name=None):
         for a in src.anchors:
             if a.name not in ("Bottom", "DotBelow", "Cedilla"):
                 g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
-    elif op == "attach":
+    elif op in ("attach", "graft", "curl"):
         _band, cuts, pieces, *width = band
-        out = attach(font, source, cuts, pieces)
+        if op == "graft":
+            out = graft(font, source, cuts, **pieces)
+        elif op == "curl":
+            out = curl(font, source, cuts, **pieces)
+        else:
+            out = attach(font, source, cuts, pieces)
         if width:
             g.width = width[0]
         else:
@@ -952,9 +1127,10 @@ def build(font, ch, op, source, band, name=None):
     elif op == "superior":
         out, g.width = superior(font, source, *([band] if band else []))
         draw_path(font, src, g, out)
-    elif op == "enlarge":
+    elif op in ("enlarge", "stretch"):
         src_ref, dst_ref, *fit = band
-        out, g.width = enlarge(font, source, src_ref, dst_ref, tuple(fit) or None)
+        out, g.width = enlarge(font, source, src_ref, dst_ref, tuple(fit) or None,
+                               stretch=op == "stretch")
         draw_path(font, src, g, out)
         ref = font[dst_ref]
         for a in ref.anchors:

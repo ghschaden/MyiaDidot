@@ -26,6 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: f and long-s ligatures, review fixes
+
+    * Ligatures fb fh fk ft ffb ffh ffk fft (liga; for German in dlig, like
+      fi fl): fl/ffl with the letter in place of the l; in ft the crossbars
+      join. Long-s ligatures ſb ſh ſk ſt ſl ſſ ſſl and ſi ſſi (not for
+      Turkish languages), in liga for every language including German: the
+      f-ligatures without the f's crossbar. Drafts (draft_ligatures.py).
+    * Review fixes: the hooks of the hook recipes are scaled across to the
+      width of the stem they join (ɠ ɡ ɻ and the others no longer step);
+      Ƈ ƈ Ɠ ʋ Ʋ ƴ Ƴ get hooks drawn as part of an elliptical ring at the
+      weight of the stroke they leave, ending in a ball; Ɑ is the bowl of
+      O on the stem of H; Ꞷ is ω stretched (no slivers); Ʒ (and Ǯ) dips
+      below the baseline, as in Charis and Libertinus; the arrows have no
+      gaps beside the shaft, and ↔ ↕ are pointed at both ends.
+
 2026-10-14 Version 0.100 (development), Phase 1: ct and st ligatures
 
     * Discretionary ligatures ct and st (feature dlig), drafted by
