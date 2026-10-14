@@ -1,0 +1,202 @@
+% Sample documents: running text in many languages, sizes and features, to
+% judge colour, spacing and the drafted glyphs in use.
+%   lualatex --output-directory=build/proofs proofs/samples.tex   (or make proof)
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz]
+\newfontfamily\osf{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz, Numbers=OldStyle]
+\newcommand\smc[1]{{\addfontfeature{Letters=SmallCaps}#1}}
+\newcommand\allsc[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1}}
+\newcommand\lang[2]{{\addfontfeature{Language=#1}#2}}
+\newcommand\head[1]{\par\bigskip{\large\allsc{#1}}\par\smallskip}
+\newcommand\lng[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1.}\enspace}
+\setlength{\parindent}{1.2em}
+\linespread{1.08}
+\pagestyle{empty}
+\begin{document}
+
+% -- 1. a book page ---------------------------------------------------------
+\begin{center}
+{\Huge Pride and Prejudice}\par\medskip
+{\large\smc{by Jane Austen}}\par\bigskip
+{\allsc{Chapter I}}
+\end{center}
+\begingroup\osf
+It is a truth universally acknowledged, that a single man in possession of a
+good fortune, must be in want of a wife.
+
+However little known the feelings or views of such a man may be on his first
+entering a neighbourhood, this truth is so well fixed in the minds of the
+surrounding families, that he is considered the rightful property of some one
+or other of their daughters.
+
+\smc{“My dear Mr.\ Bennet,”} said his lady to him one day, “have you heard that
+Netherfield Park is let at last?”
+
+Mr.\ Bennet replied that he had not. “But it is,” returned she; “for Mrs.\ Long
+has just been here, and she told me all about it.” Mr.\ Bennet made no answer.
+“Do you not want to know who has taken it?” cried his wife impatiently.
+“\emph{You} want to tell me, and I have no objection to hearing it.” This was
+invitation enough.\footnote{First published in 1813 by Thomas Egerton,
+London, in three volumes; the text here follows the first edition, p.~1--2.}
+
+\bigskip
+\begin{center}{\allsc{Du côté de chez Swann}}\par\smallskip{\smc{Marcel Proust, 1913}}\end{center}
+\lang{French}{Longtemps, je me suis couché de bonne heure. Parfois, à peine ma
+bougie éteinte, mes yeux se fermaient si vite que je n’avais pas le temps de me
+dire : « Je m’endors. » Et, une demi-heure après, la pensée qu’il était temps de
+chercher le sommeil m’éveillait ; je voulais poser le volume que je croyais
+avoir encore dans les mains et souffler ma lumière ; je n’avais pas cessé en
+dormant de faire des réflexions sur ce que je venais de lire, mais ces
+réflexions avaient pris un tour un peu particulier ; il me semblait que
+j’étais moi-même ce dont parlait l’ouvrage : une église, un quatuor, la
+rivalité de François~I\textsuperscript{er} et de Charles-Quint.}
+\endgroup
+
+\newpage
+% -- 2. one text, many languages -------------------------------------------
+\begin{center}{\large\allsc{Universal Declaration of Human Rights, Article 1}}\end{center}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+
+\lng{English} All human beings are born free and equal in dignity and
+rights. They are endowed with reason and conscience and should act towards one
+another in a spirit of brotherhood.
+
+\lng{Français} \lang{French}{Tous les êtres humains naissent libres et égaux
+en dignité et en droits. Ils sont doués de raison et de conscience et doivent
+agir les uns envers les autres dans un esprit de fraternité.}
+
+\lng{Deutsch} \lang{German}{Alle Menschen sind frei und gleich an Würde und
+Rechten geboren. Sie sind mit Vernunft und Gewissen begabt und sollen einander
+im Geist der Brüderlichkeit begegnen.}
+
+\lng{Polski} Wszyscy ludzie rodzą się wolni i równi pod względem swej
+godności i swych praw. Są oni obdarzeni rozumem i sumieniem i powinni
+postępować wobec innych w duchu braterstwa.
+
+\lng{Čeština} Všichni lidé rodí se svobodní a sobě rovní co do důstojnosti a
+práv. Jsou nadáni rozumem a svědomím a mají spolu jednat v duchu bratrství.
+
+\lng{Magyar} Minden emberi lény szabadon születik és egyenlő méltósága és
+joga van. Az emberek, ésszel és lelkiismerettel bírván, egymással szemben
+testvéri szellemben kell hogy viseltessenek.
+
+\lng{Română} \lang{Romanian}{Toate ființele umane se nasc libere și egale în
+demnitate și în drepturi. Ele sunt înzestrate cu rațiune și conștiință și
+trebuie să se comporte unele față de altele în spiritul fraternității.}
+
+\lng{Lietuvių} Visi žmonės gimsta laisvi ir lygūs savo orumu ir teisėmis.
+Jiems suteiktas protas ir sąžinė ir jie turi elgtis vienas kito atžvilgiu kaip
+broliai.
+
+\lng{Íslenska} Hver maður er borinn frjáls og jafn öðrum að virðingu og
+réttindum. Menn eru gæddir vitsmunum og samvisku, og ber þeim að breyta
+bróðurlega hverjum við annan.
+
+\lng{Türkçe} \lang{Turkish}{Bütün insanlar hür, haysiyet ve haklar
+bakımından eşit doğarlar. Akıl ve vicdana sahiptirler ve birbirlerine karşı
+kardeşlik zihniyeti ile hareket etmelidirler.}
+
+\lng{Azərbaycanca} \lang{Azeri}{Bütün insanlar ləyaqət və hüquqlarına görə
+azad və bərabər doğulurlar. Onların şüurları və vicdanları var və
+bir-birlərinə münasibətdə qardaşlıq ruhunda davranmalıdırlar.}
+
+\lng{Tiếng Việt} \lang{Vietnamese}{Tất cả mọi người sinh ra đều được tự do và
+bình đẳng về nhân phẩm và quyền. Mọi con người đều được tạo hóa ban cho lý trí
+và lương tâm và cần phải đối xử với nhau trong tình bằng hữu.}
+
+\lng{Ελληνικά} Όλοι οι άνθρωποι γεννιούνται ελεύθεροι και ίσοι στην
+αξιοπρέπεια και τα δικαιώματα. Είναι προικισμένοι με λογική και συνείδηση, και
+οφείλουν να συμπεριφέρονται μεταξύ τους με πνεύμα αδελφοσύνης.
+
+\lng{Русский} Все люди рождаются свободными и равными в своем достоинстве и
+правах. Они наделены разумом и совестью и должны поступать в отношении друг
+друга в духе братства.
+
+\lng{Українська} Всі люди народжуються вільними і рівними у своїй гідності
+та правах. Вони наділені розумом і совістю і повинні діяти у відношенні один
+до одного в дусі братерства.
+
+\lng{Български} Всички хора се раждат свободни и равни по достойнство и
+права. Те са надарени с разум и съвест и следва да се отнасят помежду си в дух
+на братство.
+
+\lng{Српски} Сва људска бића рађају се слободна и једнака у достојанству и
+правима. Она су обдарена разумом и свешћу и треба једни према другима да
+поступају у духу братства.
+
+\newpage
+% -- 3. Vietnamese at length ---------------------------------------------------
+\begin{center}{\large\allsc{Truyện Kiều}}\par\smallskip\smc{Nguyễn Du}\end{center}
+\lang{Vietnamese}{%
+\begin{center}
+Trăm năm trong cõi người ta,\\
+Chữ tài chữ mệnh khéo là ghét nhau.\\
+Trải qua một cuộc bể dâu,\\
+Những điều trông thấy mà đau đớn lòng.
+\end{center}
+\setlength{\parindent}{1.2em}
+{\Large ẤẦẨẪẬ ẮẰẲẴẶ ẾỀỂỄỆ ỐỒỔỖỘ ỚỜỞỠỢ ỨỪỬỮỰ}\par
+{\Large ấầẩẫậ ắằẳẵặ ếềểễệ ốồổỗộ ớờởỡợ ứừửữự ỳýỷỹỵ đ Đ}\par
+\allsc{Tiếng Việt: Người ấy ở Huế, đẹp như tranh vẽ.}}
+
+% -- 4. African orthographies, IPA ----------------------------------------------
+\head{African orthographies}
+\lng{Hausa} ƙasa, ɗaki, ɓera, ƴaƴa — Ƙ Ɗ Ɓ Ƴ\quad
+\lng{Ewe} Eʋegbe, ɖevi, ƒe, ɛ, ɔ — Ʋ Ɖ Ƒ Ɛ Ɔ\quad
+\lng{Yorùbá} ẹ̀kọ́, ọmọ, ṣé — Ẹ Ọ Ṣ\quad
+\lng{Lingála} mbɔ́tɛ\quad
+\lng{Fulfulde} ɓe, ɗum, ŋ, ƴ — Ɓ Ɗ Ŋ Ƴ\quad
+\lng{Kabiyè and others} Ɖ ɖ Ɛ ɛ Ɣ ɣ Ɩ ɩ Ŋ ŋ Ɔ ɔ Ʊ ʊ Ʒ ʒ Ɑ ɑ Ʋ ʋ
+
+\head{The North Wind and the Sun, in IPA}
+ðə ˈnɔɹθ ˌwɪnd ən ðə ˈsʌn wɚ dɪˈspjutɪŋ ˈwɪtʃ wəz ðə ˈstɹɔŋɡɚ, wɛn ə
+ˈtɹævlɚ ˌkeɪm əˈlɑŋ ˈɹæpt ɪn ə ˈwɔɹm ˈkloʊk. ðeɪ əˈɡɹiːd ðət ðə ˈwʌn hu
+ˈfɚst səkˈsidəd ɪn ˈmeɪkɪŋ ðə ˈtɹævlɚ ˈteɪk hɪz ˈkloʊk ˌɔf ʃʊd bi
+kənˈsɪdɚd ˈstɹɔŋɡɚ ðən ðə ˈʌðɚ.
+
+\smallskip
+ɓ ɗ ʄ ɠ ʛ · ɖ ɭ ɳ ɽ ʈ ʂ ʐ ɻ · ʋ ɹ ɰ ɥ ɯ · ʃ ʒ ɕ ʑ ɧ · ɸ β θ ð χ ʁ ħ ʕ ʔ ʡ ʢ ·
+ɚ ɝ ɞ ɘ ɵ ɤ ɶ ʉ ɨ · ǀ ǁ ǂ ǃ ʘ · tʰ tʲ tʷ nˠ aː aˑ ə̃ n̩ t̪ d̥ e̞ o̝ ɑ̟ ʊ̈ ˥˦˧˨˩
+
+% -- 5. Greek -----------------------------------------------------------------
+\head{Greek}
+Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.
+Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον, ὃς μάλα πολλὰ πλάγχθη, ἐπεὶ Τροίης ἱερὸν
+πτολίεθρον ἔπερσεν· πολλῶν δ’ ἀνθρώπων ἴδεν ἄστεα καὶ νόον ἔγνω.\par
+\allsc{Ἡ Ὀδύσσεια τοῦ Ὁμήρου} · ᾌ ᾨ Ῥ ᾳ ῃ ῳ ϝ ϛ ϟ ϡ
+
+\newpage
+% -- 6. features --------------------------------------------------------------
+\head{Small capitals}
+The \smc{unesco} report of 1954 and the \allsc{NATO} archives; \smc{Firmin
+Didot} cut his types in Paris, \smc{Johann Friedrich Unger} in Berlin.
+\allsc{ÉCOLE ÉLÉMENTAIRE · ZWÖLF BOXKÄMPFER · ŁÓDŹ · ÞINGVELLIR · ЖИЗНЬ}
+
+\head{Ligatures}
+Standard: fi fl ff ffi ffl fb fh fk ft — often, after, offhand, Hofburg, fifth.\par
+Discretionary: {\addfontfeature{Ligatures=Rare}act, respect, Christ, histoire, aspect}.\par
+\lang{German}{Historical German, with long s: Ach Gott! die Kunſt iſt lang; und
+kurz iſt unſer Leben. Meſſe, ſtatt, Geſchichte, Weißſilber, Kaufhaus.}
+
+\head{Figures and symbols}
+Lining 0123456789, {\osf old-style 0123456789}, fractions ½ ⅓ ¾ ⅛ ⅝,
+H₂O and E = mc², x¹ x² x³, 25~°C, 12~\% and 7~‰, §~4, ¶~2, №~7, ® © ™.\par
+Currencies: 1 € · £ 2 · \$ 3 · ¥ 4 · ₹ 50 · ₺ 20 · ₴ 100 · ₼ 5 · ₾ 10 · ₪ 30 · ₦ 15 · ₩ 1000 · ₿ 0.1\par
+Arrows and shapes: ← → ↑ ↓ ↔ ↕ ↖ ↗ ↘ ↙ · ■ □ ▲ △ ◆ ◇ ○ ● · ⁂ ⋮ ∅\par
+Mathematics: let 𝔐 be a manifold, 𝔓(X) the power set of X, 𝔖(n) the symmetric
+group and 𝔭 a prime ideal; ℵ₀, ℶ₁, ℓ and 𝑙; ∑ ∏ ∫ √ ∞ ≤ ≥ ≠ ± × ÷.\par
+Metrics: ⏑ ⏒ ⏓ ⏔ ⏕ ⏖ ⏗ ⏘ ⏙
+
+% -- 7. waterfall --------------------------------------------------------------
+\head{Sizes}
+\def\sample{Harmonious typography: Ångström, Œuvre, Ĳ, ẞ — quixotic jumbled wizards}
+{\fontsize{7}{9}\selectfont 7 pt \sample}\par
+{\fontsize{9}{11}\selectfont 9 pt \sample}\par
+{\fontsize{11}{14}\selectfont 11 pt \sample}\par
+{\fontsize{14}{17}\selectfont 14 pt \sample}\par
+{\fontsize{20}{24}\selectfont 20 pt Typography: Ångström, Œuvre}\par
+{\fontsize{30}{34}\selectfont 30 pt Didot: Ἄνθρωπος}\par
+{\fontsize{48}{52}\selectfont Ẫ Ợ ẞ Ж Ω \& Ǯ}
+\end{document}

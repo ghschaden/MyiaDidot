@@ -26,6 +26,16 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: sample documents
+
+    * U+2010 HYPHEN and U+2011 NON-BREAKING HYPHEN added (the hyphen's
+      shape): babel hyphenates with U+2010 in several languages, and the
+      hyphens dropped out.
+    * New proofs: proofs/samples.tex (book pages, the UDHR's first article
+      in 17 languages, Vietnamese, African orthographies and IPA, Greek,
+      features, sizes; in `make proof`) and `make udhr`, one quarto page per
+      language for 43 languages (scripts/udhr_book.py).
+
 2026-10-14 Version 0.100 (development), Phase 1: Vietnamese tone marks beside the circumflex
 
     * As habitual in Vietnamese typesetting (Trương, Vietnamese

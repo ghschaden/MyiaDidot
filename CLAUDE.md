@@ -74,7 +74,8 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 |---|---|
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
-| `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
+| `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
+| `make udhr` | `build/proofs/udhr-quarto.pdf`: one quarto page per language (the UDHR; `scripts/udhr_book.py`, texts fetched once into `build/udhr/`) |
 | `make qa` | full fontbakery reports in `build/qa/` |
 | `python scripts/coverage.py fonts/otf/MyiaDidot-Regular.otf --list` | what is missing |
 | `python scripts/status.py --long` | coverage per glyph set + last test run |

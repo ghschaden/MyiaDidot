@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa proof normalize winmetrics reimport clean
+.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa proof udhr normalize winmetrics reimport clean
 
 all: fonts
 
@@ -86,9 +86,16 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 	    --drafts build/proofs/drafts-review.tex
 	cd build/proofs && for t in charset smallcaps-review drafts-review; do \
 	    lualatex -interaction=nonstopmode $$t.tex >/dev/null; done
-	cd proofs && for t in proof smallcaps; do \
+	cd proofs && for t in proof smallcaps samples; do \
 	    lualatex -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
-	@echo "proofs: build/proofs/{charset,proof,smallcaps,smallcaps-review,drafts-review}.pdf"
+	@echo "proofs: build/proofs/{charset,proof,samples,smallcaps,smallcaps-review,drafts-review}.pdf"
+
+# One quarto page per language, the UDHR (texts fetched once into build/udhr)
+udhr: $(OTF)
+	@mkdir -p build/proofs
+	$(PY) scripts/udhr_book.py fonts/otf build/proofs/udhr-quarto.tex --cache build/udhr
+	cd build/proofs && lualatex -interaction=nonstopmode udhr-quarto.tex >/dev/null
+	@echo "proof: build/proofs/udhr-quarto.pdf"
 
 # --- QA ------------------------------------------------------------------
 

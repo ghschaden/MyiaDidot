@@ -348,6 +348,10 @@ RECIPES = [
     # spacing modifiers made of existing glyphs
     ("ˮ", "double", "uni02BC", None),
     ("꞉", "alias", "colon", None),
+    # the Unicode hyphen and non-breaking hyphen: the hyphen-minus's shape
+    # (babel hyphenates with U+2010 in several languages)
+    ("‐", "alias", "hyphen", None),
+    ("‑", "alias", "hyphen", None),
     ("ʹ", "alias", "uni0374", None),  # U+0374 decomposes to U+02B9: same glyph
     ("″", "double", "uni2032", None),
     # currency signs: letters with strokes (band, thickness, strokes)
