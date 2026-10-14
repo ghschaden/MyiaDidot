@@ -63,6 +63,9 @@ GROUPS = [
      "Rotated by 180° (ɐ from a); the serifs end up on the wrong side, to be redrawn."),
     ("mirror", "Mirrored",
      "Mirrored left to right (ɔ from c)."),
+    ("stroke", "With a bar, slash or tilde",
+     ("A bar, slash or middle tilde merged into an existing letter (Ɨ from I, ȼ from c, "
+      "ɫ from l); bars are 64/56 units thick, as in Đ and ħ.")),
     ("other", "From punctuation", "ʔ from the question mark, clicks from | and !."),
     ("drawn", "Drawn", "New outlines drafted from a related letter."),
 ]
@@ -81,7 +84,8 @@ def draft_groups(ufo):
         if op == "alias":
             group = "sc" if source.endswith(".sc") else "same"
         else:
-            group = {"turn": "turn", "flip": "turn", "mirror": "mirror"}.get(op, "other")
+            group = {"turn": "turn", "flip": "turn", "mirror": "mirror", "bar": "stroke",
+                     "slash": "stroke", "midtilde": "stroke"}.get(op, "other")
         base = source.removesuffix(".sc")
         if len(source) == 1:
             ref = source

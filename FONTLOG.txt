@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: barred letters
+
+    * 47 letters with a bar, slash or middle tilde, drafted by
+      scripts/derive.py (new operations bar, slash, midtilde: the stroke is
+      merged into the letter's outline) and marked as drafts:
+      - bar: Ɨ ɨ Ʉ ʉ Ƚ ƚ Ɉ ɉ ɟ Ɍ ɍ Ᵽ ᵽ Ǥ ǥ Ғ ғ Ұ Ө ө Ɵ ɵ Ꟈ ꟈ ʡ ʢ, and the
+        IPA small capitals ᵻ ᵾ; bars 64 units thick on capitals, 56 on
+        lowercase, as in Đ Ŧ and ħ ŧ;
+      - slash, like the one of Ø: Ⱥ ⱥ Ȼ ȼ Ⱦ ⱦ; ƛ with a short stroke like ł;
+      - middle tilde: ɫ Ɫ ᵬ ᵭ ᵮ ᵯ ᵰ ᵱ ᵲ ᵴ ᵵ ᵶ.
+    * Small caps for the new case pairs, made the same way from the small
+      caps (ɨ ʉ ƚ ɉ ɍ ᵽ ǥ ғ ө ɵ ꟈ ⱥ ȼ ⱦ ɫ).
+
 2026-10-14 Version 0.100 (development), Phase 1: derived letters
 
     * 48 characters drafted from existing glyphs by scripts/derive.py, all
