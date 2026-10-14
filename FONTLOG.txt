@@ -37,6 +37,12 @@ ChangeLog
       draft for review.
     * ß and ẞ take a small ẞ in small caps; ss02 ("Small caps: SS for ß and
       ẞ") gives the traditional SS.
+    * Cedillas joined to their letters (Ç Ş Ţ Ȩ and lowercase, small caps):
+      upstream left a gap of 56-68 units; the tip now runs 30 units into the
+      bottom stroke (combining cedilla anchors lowered by 110/122; the
+      spacing ¸ is unchanged). Comma accents stay detached, as is usual.
+    * Small-cap ŀ: dot placed as in Ŀ (it had drifted past the foot); typed
+      l·l in small caps is kerned to look like ŀl.
 
 2026-10-14 Version 0.100 (development), Phase 1: small caps
 
