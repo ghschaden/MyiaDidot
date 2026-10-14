@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all fonts otf ttf webfonts compare qa normalize reimport clean
+.PHONY: all fonts otf ttf webfonts compare regress qa proof normalize reimport clean
 
 all: fonts
 
@@ -49,6 +49,27 @@ build/compare/%.otf: sources/%.ufo $(UFO_FILES)
 
 compare: build/reference/TheanoDidot-Regular.otf build/compare/$(FAMILY)-Regular.otf
 	$(PY) scripts/compare_shaping.py $^ --renames sources/glyph-renames.json
+
+# --- regression check against a git revision (default: HEAD) ------------
+
+REF ?= HEAD
+
+regress: build/compare/$(FAMILY)-Regular.otf
+	rm -rf build/baseline && mkdir -p build/baseline
+	git archive $(REF) sources | tar -x -C build/baseline
+	$(FONTMAKE) -u build/baseline/sources/$(FAMILY)-Regular.ufo -o otf \
+	    --no-production-names --output-path build/baseline/$(FAMILY)-Regular.otf
+	$(PY) scripts/compare_shaping.py build/baseline/$(FAMILY)-Regular.otf $<
+
+# --- proofs ----------------------------------------------------------------
+
+proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
+	@mkdir -p build/proofs
+	$(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-Regular.otf build/proofs/charset.tex \
+	    --baseline build/baseline/$(FAMILY)-Regular.otf
+	cd build/proofs && lualatex -interaction=nonstopmode charset.tex >/dev/null
+	cd proofs && lualatex -interaction=nonstopmode --output-directory=../build/proofs proof.tex >/dev/null
+	@echo "proofs: build/proofs/charset.pdf build/proofs/proof.pdf"
 
 # --- QA ------------------------------------------------------------------
 

@@ -26,7 +26,22 @@ License requires.
 ChangeLog
 ---------
 
-2026-10-14 Version 0.100 (development)
+2026-10-14 Version 0.100 (development), Phase 1
+
+    * Added 186 precomposed Latin and Cyrillic letters built from components
+      (Vietnamese without hook/horn, letters with dot/macron/circumflex/tilde
+      below, double grave, inverted breve, caron series, Ӣ ӣ Ӯ ӯ, ...), using
+      scripts/composites.py, which follows upstream's accent conventions and
+      reproduces upstream's own composites.
+    * Anchors completed: Acute/Grave/Dotaccent wherever only Top existed,
+      Cedilla anchors recovered from upstream's cedilla composites, and the
+      Top anchors of C, G, g, y, К, у moved by 2-20 units to match the hand-
+      tuned upstream composites (decomposed text now matches precomposed).
+    * Stacked top marks: TopMark/_TopMark anchors recomputed from each mark's
+      ink, with a 90 unit gap (60 on capital accents), so a Latin acute sits
+      clearly above a diaeresis or tilde. Polytonic Greek is not affected.
+
+2026-10-14 Version 0.100 (development), Phase 0
 
     * Imported TheanoDidot-Regular.sfd from akryukov/theano at commit
       ff01bf7506ca672ca121792fc472ed527503a907 (2022-01-31, Theano 2.0);
