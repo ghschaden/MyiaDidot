@@ -79,7 +79,7 @@ RECIPES = [
     ("ʌ", "turn", "v", "x"),
     ("ʍ", "turn", "w", "x"),
     ("ʎ", "turn", "y", "x"),
-    ("ɒ", "turn", "alpha", "x"),
+    ("ɒ", "mirror", "alpha", None),
     ("Ʌ", "turn", "V", "c"),
     ("Ɐ", "turn", "A", "c"),
     ("Ɯ", "turn", "M", "c"),
