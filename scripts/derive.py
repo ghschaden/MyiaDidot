@@ -102,11 +102,17 @@ RECIPES = [
     ("ɯ", "twin", "u", 600),
     # r's stem turned to the right: its own top serif and foot, the arm
     # and ball turned below
+    # ɹ: r's stem turned to the right, its top serif and the right half of its
+    # foot; the arm drawn as a Didot terminal: a hairline leaving the stem low,
+    # turning down to the left, upright and thick into a ball on the baseline
+    # (r's own ear turned upside down hangs as a hairline)
     ("ɹ", "attach", "space", ("x", [],
                               [("rect", (494, 30, 658, 860), (0, 0), (1, 1, 0, 0)),
                                ("r", (-BIG, 700, 390, BIG), (0, 0), (1, 1, 268, 0)),
                                ("r", (226, -BIG, BIG, 60), (0, 0), (1, 1, 268, 0)),
-                               ("r", (380, 600, BIG, BIG), (0, 0), (-1, -1, 884, 884))], 884)),
+                               ("curl", {"at": ("pt", 540, 330, 56), "dir": 180, "turn": "ccw",
+                                         "r": (230, 250), "sweep": 100, "ball": 80,
+                                         "t": (160, 56)}, (0, 0), (1, 1, 0, 0))], 884)),
     ("ʌ", "turn", "v", "x"),
     ("ʍ", "turn", "w", "x"),
     ("ʎ", "turn", "y", "x"),
@@ -220,8 +226,11 @@ RECIPES = [
     # capitals of lowercase-only shapes: enlarged to capital weight
     ("Ɛ", "enlarge", "ɛ", ("o", "O")),
     # Ɑ: the bowl of O against the right stem of H, as in Charis
-    ("Ɑ", "attach", "O", ("c", [(1100, -BIG, BIG, BIG), (960, 1434, BIG, BIG), (960, -BIG, BIG, 0)],
-                          [("H", (1098, -BIG, BIG, BIG), (1098, 0), (1, 1, 1060, 0))], 1542)),
+    # Ɑ: the bowl of O, a little lower than the cap height so its hairlines
+    # run into the side of H's right stem below the serifs, as in Charis
+    ("Ɑ", "attach", "space", ("c", [],
+                              [("O", (-BIG, -BIG, 1110, BIG), (0, -28), (1, 0.93, 0, 10)),
+                               ("H", (1098, -BIG, BIG, BIG), (1098, 0), (1, 1, 1060, 0))], 1542)),
     ("Ɩ", "enlarge", "ɩ", ("o", "O")),
     ("Ꞷ", "stretch", "ꞷ", ("o", "O")),
     ("ɂ", "enlarge", "ʔ", ("O", "o")),
@@ -296,9 +305,12 @@ RECIPES = [
     ("ʐ", "curl", "z", ("x", [(700, -BIG, BIG, 500)],
                         {"at": ("xb", 720), "dir": 270, "turn": "ccw", "r": (130, 210),
                          "sweep": 160, "ball": 62})),
-    ("ʑ", "curl", "z", ("x", [(700, -BIG, BIG, 500)],
-                        {"at": ("xb", 690), "dir": 0, "turn": "ccw", "r": 110,
-                         "sweep": 270, "ball": 55})),
+    # ʑ: the bar turns up into a small loop and comes down through itself
+    # into an upright tail below the baseline, as in Charis
+    ("ʑ", "attach", "z", ("x", [(700, -BIG, BIG, 500)],
+                          [("curl", {"at": ("pt", 640, 29, 57), "dir": 0, "turn": "ccw", "r": (120, 150),
+                                     "sweep": 270, "ball": 40, "t": (110, 56)}, (0, 0), (1, 1, 0, 0)),
+                           ("line", ((520, 200), (520, -330), 110), (0, 0), (1, 1, 0, 0))], 1000)),
     ("ɕ", "curl", "c", ("x", [(730, -BIG, BIG, 400)],
                         {"at": ("xb", 700), "dir": 15, "turn": "ccw", "r": 85,
                          "sweep": 300, "ball": 48})),
@@ -317,9 +329,11 @@ RECIPES = [
     ("Ƙ", "curl", "K", ("c", [(900, 1250, BIG, BIG), (800, 1360, BIG, BIG)],
                         {"at": ("y", 1250, "last"), "dir": 50.8, "turn": "cw", "r": 170,
                          "sweep": 150, "ball": 80})),
-    ("Ϗ", "curl", "K", ("c", [(1000, -BIG, BIG, 100)],
-                        {"at": ("y", 100, "last"), "dir": 305.6, "turn": "cw", "r": (170, 150),
-                         "sweep": 150, "ball": 72, "t": (190, 60)})),
+    # Ϗ: the leg (and its foot serif) cut above the baseline, run on in its
+    # own direction and weight below it, turning back left into a ball
+    ("Ϗ", "curl", "K", ("c", [(850, -BIG, BIG, 200)],
+                        {"at": ("y", 200, "last"), "dir": 305.6, "turn": "cw", "r": (200, 180),
+                         "sweep": 160, "ball": 78, "t": (216, 60)})),
     ("ʝ", "attach", "j", ("x", [], [("line", ((-40, -520), (560, -170), 50), (0, 0), (1, 1, 0, 0))])),
     # Ʝ: the stem of J run down into the tail of ȷ (widened to the stem), crossed the same way
     ("Ʝ", "attach", "J", ("c", [(-BIG, -BIG, BIG, 250), (-BIG, -BIG, 440, 460)],
@@ -1018,6 +1032,8 @@ def attach(font, source, cuts, pieces):
             rec = RecordingPen()
             stroke(rec, clip[0], clip[1], clip[2])
             part = to_path(None, rec=rec)
+        elif name == "curl":  # a drawn hook ending in a ball: curl's arguments
+            part = curl(font, "space", [], **clip)
         else:
             part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
         rec = RecordingPen()

@@ -47,6 +47,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   scaled to the stem) and `curl` (an elliptical ring with a ball, at the
   stroke's own weight) in derive.py. Shaping in this shell defaults to
   German (locale), which has no f-ligatures: pass `--language=en`.
+- Inherited accents resized at the same weight (the Latin breve):
+  `scripts/adjust_accents.py` (idempotent; then `composites.py
+  --stack-anchors --rebuild-stacked`).
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 

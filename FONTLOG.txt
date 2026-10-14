@@ -26,6 +26,23 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: review fixes (turned r, Ɑ, Ϗ, ʑ, breve)
+
+    * ɹ (and ɺ ɻ built on it): the arm is no longer r's ear turned upside
+      down (a hanging hairline) but a Didot terminal, a hairline leaving the
+      stem low, turning down to the left, thick when upright, into a ball
+      on the baseline (attach takes "curl" pieces); ɻ's hook continues the
+      stem.
+    * Ɑ: the bowl of O set a little inside the cap height, so its hairlines
+      run cleanly into the stem. Ϗ: K's leg and its foot serif cut higher,
+      the tail continuing the leg's direction and weight.
+    * ʑ: the bar turns up into a loop and comes down through it into an
+      upright tail below the baseline, as in Charis.
+    * The Latin breve (Theano's, as wide as the circumflex) is a fifth
+      narrower and a little shallower at the same weight (new
+      scripts/adjust_accents.py); ă ğ Ắ ... follow, and the tallest
+      stacks are lower (win ascent 2278 -> 2235).
+
 2026-10-14 Version 0.100 (development), Phase 1: sample documents
 
     * U+2010 HYPHEN and U+2011 NON-BREAKING HYPHEN added (the hyphen's
