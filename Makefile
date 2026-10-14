@@ -83,8 +83,9 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 	$(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-Regular.otf build/proofs/charset.tex \
 	    --baseline build/baseline/$(FAMILY)-Regular.otf
 	cd build/proofs && lualatex -interaction=nonstopmode charset.tex >/dev/null
-	cd proofs && lualatex -interaction=nonstopmode --output-directory=../build/proofs proof.tex >/dev/null
-	@echo "proofs: build/proofs/charset.pdf build/proofs/proof.pdf"
+	cd proofs && for t in proof smallcaps; do \
+	    lualatex -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
+	@echo "proofs: build/proofs/charset.pdf build/proofs/proof.pdf build/proofs/smallcaps.pdf"
 
 # --- QA ------------------------------------------------------------------
 

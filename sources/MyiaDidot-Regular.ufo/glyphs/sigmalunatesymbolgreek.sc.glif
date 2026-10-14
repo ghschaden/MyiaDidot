@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="sigmalunatesymbolgreek.sc" format="2">
+	<advance width="931"/>
+	<outline>
+		<contour>
+			<point x="98" y="476" type="curve" smooth="yes"/>
+			<point x="98" y="791"/>
+			<point x="337" y="983"/>
+			<point x="581" y="983" type="curve" smooth="yes"/>
+			<point x="722" y="983"/>
+			<point x="808" y="949"/>
+			<point x="889" y="807" type="curve"/>
+			<point x="853" y="785" type="line"/>
+			<point x="801" y="879"/>
+			<point x="731" y="936"/>
+			<point x="596" y="936" type="curve" smooth="yes"/>
+			<point x="405" y="936"/>
+			<point x="292" y="781"/>
+			<point x="292" y="476" type="curve" smooth="yes"/>
+			<point x="292" y="171"/>
+			<point x="405" y="23"/>
+			<point x="596" y="23" type="curve" smooth="yes"/>
+			<point x="731" y="23"/>
+			<point x="801" y="80"/>
+			<point x="853" y="174" type="curve"/>
+			<point x="889" y="152" type="line"/>
+			<point x="808" y="10"/>
+			<point x="722" y="-24"/>
+			<point x="581" y="-24" type="curve" smooth="yes"/>
+			<point x="337" y="-24"/>
+			<point x="98" y="161"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="581" y="1076"/>
+	<anchor name="Acute" x="581" y="1056"/>
+	<anchor name="Grave" x="581" y="1056"/>
+	<anchor name="Dotaccent" x="581" y="1096"/>
+	<anchor name="TopCap" x="581" y="1106"/>
+	<anchor name="Bottom" x="581" y="0"/>
+	<anchor name="DotBelow" x="581" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

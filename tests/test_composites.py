@@ -114,3 +114,52 @@ def test_nfc_and_nfd_render_the_same(ttfont, shaper, decomposing_shaper):
                      + "\n".join(f"  {k} {v}" for k, v in new.items()))
     assert not stale, f"NFD exceptions no longer needed, remove them: {stale}"
 
+
+
+def smallcap_mismatches(ttfont, shaper, decomposing_shaper):
+    """Characters whose small cap differs between NFC and NFD input."""
+    gs = ttfont.getGlyphSet()
+    cmap = ttfont.getBestCmap()
+    bad = {}
+    for cp in sorted(cmap):
+        ch = chr(cp)
+        if unicodedata.category(ch) not in ("Ll", "Lu", "Lt"):
+            continue
+        nfd = unicodedata.normalize("NFD", ch)
+        if len(nfd) < 2 or not all(ord(c) in cmap for c in nfd):
+            continue
+        feats = {"smcp": True, "c2sc": True}
+        a = ink(gs, shaper.shape(ch, feats))
+        b = ink(gs, decomposing_shaper.shape(nfd, feats))
+        if a != b:
+            bad[f"U+{cp:04X}"] = f"{ch} small cap {'advance' if a[0] == b[0] else 'ink'} differs"
+    return bad
+
+
+def test_smallcaps_nfc_and_nfd_render_the_same(ttfont, shaper, decomposing_shaper):
+    allowed = read_list("smallcap-nfd-exceptions.txt")
+    bad = smallcap_mismatches(ttfont, shaper, decomposing_shaper)
+    new = {k: v for k, v in bad.items() if k not in allowed}
+    stale = sorted(set(allowed) - set(bad))
+    assert not new, ("small caps differ between precomposed and decomposed input:\n"
+                     + "\n".join(f"  {k} {v}" for k, v in new.items()))
+    assert not stale, f"small-cap NFD exceptions no longer needed, remove them: {stale}"
+
+
+def test_every_small_cap_is_reachable(ufo, ttfont):
+    """Each .sc glyph is the target of smcp or c2sc, or a component of one."""
+    gsub = ttfont["GSUB"].table
+    reached = set()
+    for rec in gsub.FeatureList.FeatureRecord:
+        if rec.FeatureTag not in ("smcp", "c2sc"):
+            continue
+        for i in rec.Feature.LookupListIndex:
+            for st in gsub.LookupList.Lookup[i].SubTable:
+                for v in (getattr(st, "mapping", None) or {}).values():
+                    reached.update(v if isinstance(v, list) else [v])
+                for ligs in (getattr(st, "ligatures", None) or {}).values():
+                    reached.update(lig.LigGlyph for lig in ligs)
+    used_as_component = {c.baseGlyph for g in ufo for c in g.components}
+    unreached = sorted(g.name for g in ufo if g.name.endswith(".sc")
+                       and g.name not in reached and g.name not in used_as_component)
+    assert not unreached, f"small caps no feature produces: {unreached}"

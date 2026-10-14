@@ -26,7 +26,7 @@ sys.path[:0] = [str(TESTS), str(ROOT / "scripts")]
 
 from conftest import Shaper
 from shaping import full_digest, shape_golden
-from test_composites import composite_mismatches, nfd_mismatches, read_list
+from test_composites import composite_mismatches, nfd_mismatches, read_list, smallcap_mismatches
 from test_fontbakery import fontbakery_failures
 
 
@@ -101,6 +101,11 @@ def main():
                 "nfd-exceptions.txt", sorted(nfd.items()), args.reason,
                 "# Precomposed characters allowed to render differently from their\n"
                 "# decomposition (base + positioned marks). Remove a line once fixed.\n")
+            sc = smallcap_mismatches(tt, shaper, Shaper(decp))
+            append_exceptions(
+                "smallcap-nfd-exceptions.txt", sorted(sc.items()), args.reason,
+                "# Small caps (smcp/c2sc) allowed to differ between precomposed and\n"
+                "# decomposed input. Remove a line once fixed.\n")
             comp = composite_mismatches(ufo)
             append_exceptions(
                 "composite-exceptions.txt", sorted(comp.items()), args.reason,

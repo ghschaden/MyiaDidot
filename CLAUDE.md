@@ -22,6 +22,12 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   Dotaccent (Acute/Grave = Top−20, Dotaccent = Top+20), Bottom/DotBelow,
   Cedilla; capitals carry TopCap and take `.cap` accents; stacking via
   TopMark/_TopMark, computed from ink (`--stack-anchors`).
+- Small caps: `scripts/smallcaps.py UFO` rebuilds aliases, accented small
+  caps, specials, scaled kerning and the generated smcp/c2sc block in
+  features.fea (between BEGIN/END markers; never hand-edit it). It never
+  overwrites outlines. Drafts from `smallcaps_draft.py` carry lib key
+  `org.myiadidot.smallcapDraft`; clear it once a glyph is reviewed. Small
+  caps take the `.cap` accents at TopCap = 1106.
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 

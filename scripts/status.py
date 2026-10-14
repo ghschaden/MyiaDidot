@@ -64,8 +64,10 @@ def main():
             wanted = sets[gs] - seen
             seen |= wanted
             per_set.append((gs, len(wanted), len(wanted - cmap)))
+        drafts = sum(1 for g in ufo if g.lib.get("org.myiadidot.smallcapDraft"))
         fonts.append({
             "name": path.stem,
+            "drafts": drafts,
             "glyphs": len(ufo),
             "chars": len(cmap),
             "missing": len(seen - cmap),
@@ -84,7 +86,10 @@ def main():
     parts = []
     for f in fonts:
         style = f["name"].split("-", 1)[-1]
-        parts.append(f"{style}: {f['glyphs']} glyphs, {f['missing']} to go")
+        part = f"{style}: {f['glyphs']} glyphs, {f['missing']} to go"
+        if f["drafts"]:
+            part += f", {f['drafts']} sc drafts to review"
+        parts.append(part)
     line = "Myia Didot · " + " · ".join(parts)
     if tests:
         mark = "✓" if tests["failed"] == 0 else f"✗ {tests['failed']} failing"

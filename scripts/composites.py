@@ -92,16 +92,21 @@ class Builder:
 
     def script(self, glyph):
         u = self.font[glyph].unicode
+        if u is None and "." in glyph:
+            # an unencoded variant (a.sc, ...) takes its base letter's script
+            stem = glyph.split(".", 1)[0]
+            if stem in self.font:
+                u = self.font[stem].unicode
         if u is None:
             return None
         n = unicodedata.name(chr(u), "")
         return "cyrl" if "CYRILLIC" in n else "grek" if "GREEK" in n else "latn"
 
-    def mark_variant(self, mark, base, stacked):
+    def mark_variant(self, mark, base, stacked, upper=None):
         """Pick the contextual form of a combining mark for this base."""
         candidates = []
         sc = self.script(base)
-        if self.is_upper(base):
+        if upper if upper is not None else self.is_upper(base):
             if sc == "cyrl":
                 candidates.append(mark + ".cyrcap")
             candidates.append(mark + ".cap")
@@ -138,6 +143,7 @@ class Builder:
     # -- recipe ------------------------------------------------------------
 
     def recipe(self, cp):
+        """The composite for code point cp, from its canonical decomposition."""
         nfd = unicodedata.normalize("NFD", chr(cp))
         if len(nfd) < 2:
             raise ValueError(f"U+{cp:04X} has no decomposition")
@@ -149,26 +155,34 @@ class Builder:
             if ord(m) not in self.cmap:
                 raise ValueError(f"U+{cp:04X}: mark U+{ord(m):04X} missing")
             marks.append(self.cmap[ord(m)])
+        return self.compose(f"uni{cp:04X}", cp, base, marks, label=f"U+{cp:04X}")
 
+    def compose(self, name, cp, base, marks, label=None, upper=None):
+        """A composite of base glyph + combining mark glyphs (any base, encoded or not).
+
+        upper forces the capital (True) or lowercase (False) accent forms;
+        by default they follow the base's case.
+        """
+        cp_label = label or name
         sides = [self.mark_side(m) for m in marks]
         if None in sides:
-            raise ValueError(f"U+{cp:04X}: mark without attachment anchors in {marks}")
+            raise ValueError(f"{cp_label}: mark without attachment anchors in {marks}")
         if "top" in sides and base in SOFT_DOTTED:
             base = SOFT_DOTTED[base]
 
-        r = Recipe(f"uni{cp:04X}", cp, base, self.font[base].width)
+        r = Recipe(name, cp, base, self.font[base].width)
         r.components.append(Placed(base, 0, 0))
         last = {"top": None, "bottom": None}  # (mark glyph, dx, dy) of the stack top
         for m, side in zip(marks, sides, strict=True):
             prev = last.get(side)
-            mv = self.mark_variant(m, base, stacked=prev is not None)
+            mv = self.mark_variant(m, base, stacked=prev is not None, upper=upper)
             manchors = self.anchors(mv)
             if prev is not None:
                 pg, pdx, pdy = prev
                 pa = self.anchors(pg).get("TopMark" if side == "top" else "BottomMark")
                 ma = manchors.get("_TopMark" if side == "top" else "_BottomMark")
                 if pa is None or ma is None:
-                    raise ValueError(f"U+{cp:04X}: cannot stack {mv} on {pg}")
+                    raise ValueError(f"{cp_label}: cannot stack {mv} on {pg}")
                 dx, dy = pa[0] + pdx - ma[0], pa[1] + pdy - ma[1]
             else:
                 order = {
@@ -183,7 +197,7 @@ class Builder:
                     if ba is not None:
                         break
                 else:
-                    raise ValueError(f"U+{cp:04X}: {base} has no anchor for {mv}")
+                    raise ValueError(f"{cp_label}: {base} has no anchor for {mv}")
                 ma = manchors[an]
                 dx, dy = ba[0] - ma[0], ba[1] - ma[1]
             sg, sdx, sdy = self.spacing_form(mv)
@@ -205,17 +219,18 @@ class Builder:
     def write(self, r, overwrite=False):
         if r.name in self.font and not overwrite:
             raise ValueError(f"{r.name} exists")
-        if r.unicode in self.cmap and self.cmap[r.unicode] != r.name:
+        if r.unicode is not None and r.unicode in self.cmap and self.cmap[r.unicode] != r.name:
             raise ValueError(f"U+{r.unicode:04X} already encoded as {self.cmap[r.unicode]}")
         g = self.font.newGlyph(r.name)
-        g.unicodes = [r.unicode]
+        g.unicodes = [r.unicode] if r.unicode is not None else []
         g.width = r.width
         pen = g.getPointPen()
         for c in r.components:
             pen.addComponent(c.glyph, (1, 0, 0, 1, c.dx, c.dy))
         for name, x, y in r.anchors:
             g.appendAnchor({"name": name, "x": x, "y": y})
-        self.cmap[r.unicode] = r.name
+        if r.unicode is not None:
+            self.cmap[r.unicode] = r.name
         if r.name not in self.font.glyphOrder:
             self.font.glyphOrder = [*self.font.glyphOrder, r.name]
         cats = self.font.lib.setdefault("public.openTypeCategories", {})

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni0463.sc" format="2">
+	<advance width="1200"/>
+	<outline>
+		<contour>
+			<point x="62" y="601" type="line"/>
+			<point x="84" y="854" type="line"/>
+			<point x="410" y="854" type="line"/>
+			<point x="410" y="917" type="line"/>
+			<point x="281" y="917" type="line"/>
+			<point x="281" y="960" type="line"/>
+			<point x="710" y="960" type="line"/>
+			<point x="710" y="917" type="line"/>
+			<point x="582" y="917" type="line"/>
+			<point x="582" y="854" type="line"/>
+			<point x="931" y="854" type="line"/>
+			<point x="954" y="601" type="line"/>
+			<point x="911" y="601" type="line"/>
+			<point x="903" y="646"/>
+			<point x="882" y="704"/>
+			<point x="848" y="743" type="curve" smooth="yes"/>
+			<point x="801" y="796"/>
+			<point x="739" y="811"/>
+			<point x="668" y="811" type="curve" smooth="yes"/>
+			<point x="582" y="811" type="line"/>
+			<point x="582" y="493" type="line"/>
+			<point x="586" y="489" type="line"/>
+			<point x="647" y="513"/>
+			<point x="732" y="539"/>
+			<point x="832" y="539" type="curve" smooth="yes"/>
+			<point x="986" y="539"/>
+			<point x="1159" y="493"/>
+			<point x="1159" y="283" type="curve" smooth="yes"/>
+			<point x="1159" y="116"/>
+			<point x="1003" y="0"/>
+			<point x="774" y="0" type="curve" smooth="yes"/>
+			<point x="281" y="0" type="line"/>
+			<point x="281" y="43" type="line"/>
+			<point x="410" y="43" type="line"/>
+			<point x="410" y="811" type="line"/>
+			<point x="347" y="811" type="line" smooth="yes"/>
+			<point x="276" y="811"/>
+			<point x="214" y="796"/>
+			<point x="167" y="743" type="curve" smooth="yes"/>
+			<point x="133" y="704"/>
+			<point x="113" y="646"/>
+			<point x="105" y="601" type="curve"/>
+		</contour>
+		<contour>
+			<point x="582" y="43" type="line"/>
+			<point x="753" y="43" type="line" smooth="yes"/>
+			<point x="883" y="43"/>
+			<point x="965" y="122"/>
+			<point x="965" y="280" type="curve" smooth="yes"/>
+			<point x="965" y="458"/>
+			<point x="885" y="496"/>
+			<point x="790" y="496" type="curve" smooth="yes"/>
+			<point x="726" y="496"/>
+			<point x="670" y="486"/>
+			<point x="582" y="454" type="curve"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="508" y="1076"/>
+	<anchor name="Acute" x="508" y="1056"/>
+	<anchor name="Grave" x="508" y="1056"/>
+	<anchor name="Dotaccent" x="508" y="1096"/>
+	<anchor name="TopCap" x="508" y="1106"/>
+	<anchor name="Bottom" x="555" y="0"/>
+	<anchor name="DotBelow" x="555" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

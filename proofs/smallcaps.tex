@@ -1,0 +1,19 @@
+% Small caps proof: lualatex --output-directory=build/proofs proofs/smallcaps.tex
+\documentclass{article}
+\usepackage[paperwidth=32cm,paperheight=24cm,margin=0.6cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz]
+\pagestyle{empty}\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\newcommand\smc[1]{{\addfontfeature{Letters=SmallCaps}#1}}
+\newcommand\cpsc[1]{{\addfontfeature{Letters=UppercaseSmallCaps}#1}}
+\begin{document}\fontsize{40}{50}\selectfont
+Hxn\smc{hamburgefonstiv}xH Hamburg\\
+\smc{abcdefghijklmnopqrstuvwxyz} \smc{æœøþðßĳ}\\
+\cpsc{ABCDEFGHIJKLMNOPQRSTUVWXYZ}\\
+\smc{áàâäãåāăąçćčďđéèêëěęğģíîïıķĺľłńňñóôöőøŕřśšşșťţùúûüůűýÿźżž}\\
+\smc{ấầẫậặệốồộỹǘ} \cpsc{ẤẦẪẬẶỆỐỒỘỸǗ}\\
+\smc{αβγδεζηθικλμνξοπρσςτυφχψω ἄνθρωπος ϊ ΐ}\\
+\smc{абвгдежзийклмнопрстуфхцчшщъыьэюя ёїўђћ}\\[4pt]
+\fontsize{14}{18}\selectfont
+Zwölf \smc{Boxkämpfer} jagen Viktor quer über den großen Sylter Deich. In \smc{unesco} and \cpsc{NATO} reports, \smc{Myia Didot} sets small capitals at 960 units against an x-height of 884. Ἄνδρα μοι ἔννεπε, \smc{Μοῦσα}, πολύτροπον. Съешь же \smc{ещё этих мягких} французских булок.
+\end{document}
