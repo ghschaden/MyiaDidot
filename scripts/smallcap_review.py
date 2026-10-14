@@ -22,6 +22,7 @@ from smallcaps import CAP_HEIGHT, DEFAULT_HEIGHT, DRAFT_KEY, HEIGHT_KEY, X_HEIGH
 
 UPM = 2048
 SIZE = 44  # pt, the large specimen
+TURKISH_LOWER = {"İ": "i"}
 
 PREAMBLE = r"""\documentclass[10pt]{article}
 \usepackage[a4paper,margin=1.2cm]{geometry}
@@ -35,11 +36,11 @@ PREAMBLE = r"""\documentclass[10pt]{article}
 \newcommand\guides[1]{\leavevmode\setlength\guidew{#1}%%
 %(guides)s
 }
-%% \cell{label}{status}{color}{capital}{lowercase}
-\newcommand\cell[5]{%%
-  {\fontsize{%(size)d}{%(lead)d}\selectfont\guides{4.2cm}#4\,{\smallcapfont #5}\,#5}\newline
+%% \cell{label}{status}{color}{capital}{lowercase}[small-cap source, default the lowercase]
+\NewDocumentCommand\cell{mmmmmO{#5}}{%%
+  {\fontsize{%(size)d}{%(lead)d}\selectfont\guides{4.2cm}#4\,{\smallcapfont #6}\,#5}\newline
   {\labelfont #1 \textcolor{#3}{#2}}\newline
-  {\fontsize{13}{15}\selectfont n{\smallcapfont #5}n H{\smallcapfont #5}H}}
+  {\fontsize{13}{15}\selectfont n{\smallcapfont #6}n H{\smallcapfont #6}H}}
 %% four cells per row; each row its own table so pages break between rows
 \newenvironment{cells}{\noindent\begin{tabular}{@{}*{4}{p{4.4cm}}@{}}}{\end{tabular}\par\medskip}
 \begin{document}
@@ -124,7 +125,15 @@ def main():
         status, color = ("DRAFT", "red") if is_draft else ("built", "black!45")
         label = g.name.replace("_", r"\_")
         cap = tex(up) if up else r"\textcolor{black!30}{—}"
-        row.append(r"\cell{%s}{%s}{%s}{%s}{%s}" % (label, status, color, cap, tex(lo)))
+        cell = r"\cell{%s}{%s}{%s}{%s}{%s}" % (label, status, color, cap, tex(lo))
+        if lo == up and lo.lower() != lo:
+            # İ: no lowercase of its own outside Turkish, where it is i; the
+            # small cap is shown from the capital (c2sc)
+            lo = TURKISH_LOWER.get(up)
+            if lo:
+                cell = r"\cell{%s (Turkish %s)}{%s}{%s}{%s}{%s}[%s]" % (
+                    label, lo, status, color, cap, tex(lo), tex(up))
+        row.append(cell)
         if len(row) == 4:
             flush()
     flush()
