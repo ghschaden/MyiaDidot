@@ -285,6 +285,58 @@ RECIPES = [
     ("₨", "attach", "R", ("c", [], [("s", (-BIG, -BIG, BIG, BIG), (0, 0), (1, 1, 1490, 0))],
                           1490 + 840)),
     ("∅", "slash", "zero", ("c", "box", -0.08, -140, 1.08, 1580)),
+    # more hooks, turned and barred letters
+    ("Ƥ", "hook", "P", ("c", "up-left", "first", 1100, 300, -208)),
+    ("ƥ", "hook", "p", ("x", "up-right", "first", 900, 300, 0)),
+    ("Ɦ", "hook", "H", ("c", "up-right", "first", 1100, 300, 200)),
+    ("Ɥ", "alias", "uni0427", None),  # a turned h at cap height is Ч, serifs and all
+    ("ʄ", "hook", "ɟ", ("x", "up-right", "first", 830, 300, 0)),
+    ("ʛ", "alias", "ɠ.sc", None),
+    ("Ƃ", "alias", "uni0411", None),  # B with topbar is Б
+    ("ƃ", "lines", "b", ("x", 56, [(222, 1440, 720, 1496)])),
+    ("ǂ", "lines", "bar", ("x", 64, [(56, 560, 456, 624), (56, 820, 456, 884)])),
+    ("ʘ", "attach", "O", ("c", [], [("period", (-BIG, -BIG, BIG, BIG), (264, 104), (1, 1, 834, 613))])),
+    ("ɮ", "attach", "l", ("x", [(384, -BIG, BIG, 48)],
+                          [("uni0292", (-BIG, -BIG, BIG, BIG), (78, 884), (1, 1, 330, 884))], 330 - 78 + 966)),
+    ("ɺ", "attach", "uni0279", ("x", [(330, 820, 820, BIG)],
+                                [("rect", (494, 800, 658, 1496), (0, 0), (1, 1, 0, 0))])),
+    ("ɻ", "hook", "uni0279", ("x", "down-right", "last", 60, 0, 160)),
+    ("ɾ", "attach", "r", ("x", [(-BIG, -BIG, 226, 60), (390, -BIG, BIG, 60), (-BIG, 780, 226, BIG)], [])),
+    ("ᵳ", "midtilde", "ɾ", ("x",)),
+    # raised arrows, superscript and subscript signs
+    ("ꜛ", "superior", "uni2191", None),
+    ("ꜜ", "superior", "uni2193", None),
+    ("⁺", "superior", "plus", None),
+    ("⁻", "superior", "minus", None),
+    ("⁼", "superior", "equal", None),
+    ("₊", "superior", "plus", "zeroinferior"),
+    ("₋", "superior", "minus", "zeroinferior"),
+    ("₌", "superior", "equal", "zeroinferior"),
+    # punctuation and signs from existing glyphs
+    ("⋮", "attach", "period", ("x", [], [("period", (-BIG, -BIG, BIG, BIG), (264, 104), (1, 1, 264, 504)),
+                                         ("period", (-BIG, -BIG, BIG, BIG), (264, 104), (1, 1, 264, 904))])),
+    ("⁂", "attach", "space", ("x", [], [("asterisk", (-BIG, -BIG, BIG, BIG), (552, 1067), (0.55, 0.55, 552, 1180)),
+                                        ("asterisk", (-BIG, -BIG, BIG, BIG), (552, 1067), (0.55, 0.55, 302, 720)),
+                                        ("asterisk", (-BIG, -BIG, BIG, BIG), (552, 1067), (0.55, 0.55, 802, 720))],
+                              1104)),
+    ("⫽", "attach", "slash", ("x", [], [("slash", (-BIG, -BIG, BIG, BIG), (0, 0), (1, 1, 300, 0))], 1022)),
+    ("⊗", "attach", "uni25CB", ("x", [], [("multiply", (-BIG, -BIG, BIG, BIG), (576, 513), (0.79, 0.79, 614, 514))])),
+    ("「", "attach", "space", ("x", [], [("rect", (300, 1362, 760, 1434), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (300, 560, 372, 1434), (0, 0), (1, 1, 0, 0))], 1000)),
+    ("」", "attach", "space", ("x", [], [("rect", (240, -100, 700, -28), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (628, -100, 700, 774), (0, 0), (1, 1, 0, 0))], 1000)),
+    # metrical symbols: the breve below and a macron-weight bar
+    ("⏑", "attach", "space", ("x", [], [("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (1.3, 1.3, 550, 120))], 1100)),
+    ("⏒", "attach", "space", ("x", [], [("rect", (200, 760, 900, 848), (0, 0), (1, 1, 0, 0)),
+                                        ("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (1.1, 1.1, 550, 100))], 1100)),
+    ("⏓", "attach", "space", ("x", [], [("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (1.1, 1.1, 550, 480)),
+                                        ("rect", (200, 100, 900, 188), (0, 0), (1, 1, 0, 0))], 1100)),
+    ("⏔", "attach", "space", ("x", [], [("rect", (200, 760, 1100, 848), (0, 0), (1, 1, 0, 0)),
+                                        ("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 420, 120)),
+                                        ("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 880, 120))], 1300)),
+    ("⏕", "attach", "space", ("x", [], [("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 420, 500)),
+                                        ("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 880, 500)),
+                                        ("rect", (200, 100, 1100, 188), (0, 0), (1, 1, 0, 0))], 1300)),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
@@ -339,6 +391,10 @@ RECIPES = [
     ("ƴ.sc", "enlarge", "Ƴ", ("O", "o.sc")),
     ("ƈ.sc", "enlarge", "Ƈ", ("O", "o.sc")),
     ("ɠ.sc", "enlarge", "Ɠ", ("O", "o.sc")),
+    ("ƥ.sc", "enlarge", "Ƥ", ("O", "o.sc")),
+    ("ɦ.sc", "enlarge", "Ɦ", ("O", "o.sc")),
+    ("ɥ.sc", "alias", "uni0447.sc", None),
+    ("ƃ.sc", "alias", "uni0431.sc", None),
     # the IPA small capitals with a stroke are those small caps
     ("ᵻ", "alias", "ɨ.sc", None),
     ("ᵾ", "alias", "ʉ.sc", None),
@@ -691,7 +747,8 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
         # start the hook where f's stem is still straight (below 1000)
         cut = min(cut, HOOK_TOP[band] - (hend - 1000) * k)
         reach = HOOK_TOP[band] - cut
-        s0, s1 = hend - reach / k, BIG
+        # never below 900: f's crossbar ends at 884 (the hook is then shorter)
+        s0, s1 = max(hend - reach / k, 900), BIG
     else:
         reach = cut - HOOK_BOTTOM[band]
         s0, s1 = -BIG, hend + reach / k
@@ -742,11 +799,11 @@ def esh(font, source, band, bottom_model):
     return shifted(out, 40 - out.bounds[0])
 
 
-def superior(font, source):
+def superior(font, source, ref="zerosuperior"):
     """A modifier letter (ʰ ⁿ ᵃ): the letter at the size and weight of the
     superior figures (0 -> ⁰ gives the scale and the stroke changes), on
-    their baseline."""
-    (b0, s0, h0), (b1, s1, h1) = strokes(font, "zero"), strokes(font, "zerosuperior")
+    their baseline; with ref "zeroinferior" a subscript (₊)."""
+    (b0, s0, h0), (b1, s1, h1) = strokes(font, "zero"), strokes(font, ref)
     k = ((b1[3] - b1[1]) - h1) / ((b0[3] - b0[1]) - h0)
     ax, ay = s1 - k * s0, h1 - k * h0
     rec = DecomposingRecordingPen(font)
@@ -767,7 +824,10 @@ def attach(font, source, cuts, pieces):
     for box in cuts:
         out = path_op(out, rect_path(*box), "DIFFERENCE")
     for name, clip, (px, py), (sx, sy, x, y) in pieces:
-        part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
+        if name == "rect":  # a plain box
+            part = rect_path(*clip)
+        else:
+            part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
         rec = RecordingPen()
         part.draw(TransformPen(rec, (sx, 0, 0, sy, x - sx * px, y - sy * py)))
         out = path_op(out, path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG),
@@ -874,8 +934,10 @@ def build(font, ch, op, source, band, name=None):
     elif op == "attach":
         _band, cuts, pieces, *width = band
         out = attach(font, source, cuts, pieces)
-        rsb = w - ink_bounds(font, source)[2]
-        g.width = width[0] if width else max(w, round(out.bounds[2] + rsb))
+        if width:
+            g.width = width[0]
+        else:
+            g.width = max(w, round(out.bounds[2] + w - ink_bounds(font, source)[2]))
         draw_path(font, src, g, out)
         for a in src.anchors:
             g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
@@ -888,7 +950,7 @@ def build(font, ch, op, source, band, name=None):
             if op == "ezh" and a.name not in ("Bottom", "DotBelow", "Cedilla"):
                 g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
     elif op == "superior":
-        out, g.width = superior(font, source)
+        out, g.width = superior(font, source, *([band] if band else []))
         draw_path(font, src, g, out)
     elif op == "enlarge":
         src_ref, dst_ref, *fit = band

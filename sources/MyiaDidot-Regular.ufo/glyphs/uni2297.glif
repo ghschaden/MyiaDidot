@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni2297" format="2">
+	<unicode hex="2297"/>
+	<advance width="1228"/>
+	<outline>
+		<contour>
+			<point x="1128" y="514" type="curve" smooth="yes"/>
+			<point x="1128" y="230"/>
+			<point x="898" y="0"/>
+			<point x="614" y="0" type="curve" smooth="yes"/>
+			<point x="330" y="0"/>
+			<point x="100" y="230"/>
+			<point x="100" y="514" type="curve" smooth="yes"/>
+			<point x="100" y="798"/>
+			<point x="330" y="1028"/>
+			<point x="614" y="1028" type="curve" smooth="yes"/>
+			<point x="898" y="1028"/>
+			<point x="1128" y="798"/>
+		</contour>
+		<contour>
+			<point x="1056" y="514" type="curve" smooth="yes"/>
+			<point x="1056" y="758"/>
+			<point x="858" y="956"/>
+			<point x="614" y="956" type="curve" smooth="yes"/>
+			<point x="370" y="956"/>
+			<point x="172" y="758"/>
+			<point x="172" y="514" type="curve" smooth="yes"/>
+			<point x="172" y="270"/>
+			<point x="370" y="72"/>
+			<point x="614" y="72" type="curve" smooth="yes"/>
+			<point x="858" y="72"/>
+			<point x="1056" y="270"/>
+		</contour>
+		<contour>
+			<point x="300" y="253" type="line"/>
+			<point x="560" y="514" type="line"/>
+			<point x="300" y="775" type="line"/>
+			<point x="353" y="828" type="line"/>
+			<point x="614" y="568" type="line"/>
+			<point x="875" y="828" type="line"/>
+			<point x="928" y="775" type="line"/>
+			<point x="668" y="514" type="line"/>
+			<point x="928" y="253" type="line"/>
+			<point x="875" y="200" type="line"/>
+			<point x="614" y="460" type="line"/>
+			<point x="353" y="200" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>
