@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: hand-placed hooks
+
+    * ʋ Ʋ ƴ Ƴ Ɲ Ƈ ƈ Ɠ, drafted by scripts/derive.py (new operation attach:
+      cut parts of the letter away and merge in a part of another glyph,
+      placed by hand; the hooks are the top of f and the descender of ȷ),
+      with small caps (the capitals at small-cap size). The new capitals
+      take capital accents in decomposed text.
+
 2026-10-14 Version 0.100 (development), Phase 1: esh, ezh, modifier letters
 
     * ʃ (the top of f, its stem run down into the descender of ȷ); Ʒ ʒ

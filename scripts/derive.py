@@ -53,6 +53,12 @@ from smallcaps import DRAFT_KEY as SMALLCAP_DRAFT_KEY
 DRAFT_KEY = "org.myiadidot.draft"
 DERIVED_KEY = "org.myiadidot.derived"
 
+BIG = 10000
+# parts of f and ȷ used as hooks by "attach"
+F_TOP = (-BIG, 1000, BIG, BIG)
+F_HOOK = (-BIG, 1100, BIG, BIG)
+J_TAIL = (-BIG, -BIG, BIG, 100)
+
 # (character, operation, source, band) -- band only for turn/flip
 RECIPES = [
     # same shape as an existing letter
@@ -237,6 +243,25 @@ RECIPES = [
     ("ᵓ", "superior", "ɔ", None),
     ("ᶤ", "superior", "ɨ", None),
     ("ᶶ", "superior", "ʉ", None),
+    # hooks placed by hand: (band, cut boxes, pieces, [width]); F_TOP is the
+    # top of f from its straight stem (centre 312 at y 1000), J_TAIL the
+    # descender of ȷ (stem centre 320 at y 100)
+    ("ʋ", "attach", "u", ("x", [(940, -BIG, BIG, 60), (620, 780, 960, BIG)],
+                          [("f", (-BIG, 1000, 600, BIG), (312, 1000), (-0.5, 0.5, 864, 760))])),
+    ("Ʋ", "attach", "U", ("c", [(1000, 1180, BIG, BIG)],
+                          [("f", F_TOP, (312, 1000), (-0.55, 0.55, 1256, 1170))])),
+    ("ƴ", "attach", "y", ("x", [(660, 700, 1000, BIG)],
+                          [("f", F_TOP, (312, 1000), (0.5, 0.5, 785, 690))], 1080)),
+    ("Ƴ", "attach", "Y", ("c", [(960, 1150, 1460, BIG)],
+                          [("f", F_TOP, (312, 1000), (0.55, 0.55, 1111, 1140))])),
+    ("Ɲ", "attach", "N", ("c", [(90, -BIG, 590, 60)],
+                          [("uni0237", J_TAIL, (320, 100), (0.6, 0.6, 338, 80))])),
+    ("Ƈ", "attach", "C", ("c", [(1150, 1300, 1400, BIG)],
+                          [("f", F_HOOK, (312, 1100), (0.6, 0.6, 1170, 1360))])),
+    ("Ɠ", "attach", "G", ("c", [(1150, 1300, 1400, BIG)],
+                          [("f", F_HOOK, (312, 1100), (0.6, 0.6, 1170, 1360))])),
+    ("ƈ", "attach", "c", ("x", [(600, 500, 900, BIG)],
+                          [("f", F_HOOK, (312, 1100), (0.5, 0.5, 630, 800))])),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
@@ -286,6 +311,11 @@ RECIPES = [
     ("ƹ.sc", "mirror", "ʒ.sc", None),
     ("ʊ.sc", "enlarge", "Ʊ", ("O", "o.sc")),
     ("ɣ.sc", "enlarge", "ɣ", ("o", "o.sc", 0, 1062)),
+    # small caps of hand-placed hooks: the capital at small-cap size
+    ("ʋ.sc", "enlarge", "Ʋ", ("O", "o.sc")),
+    ("ƴ.sc", "enlarge", "Ƴ", ("O", "o.sc")),
+    ("ƈ.sc", "enlarge", "Ƈ", ("O", "o.sc")),
+    ("ɠ.sc", "enlarge", "Ɠ", ("O", "o.sc")),
     # the IPA small capitals with a stroke are those small caps
     ("ᵻ", "alias", "ɨ.sc", None),
     ("ᵾ", "alias", "ʉ.sc", None),
@@ -457,7 +487,6 @@ def draw_merged(font, src, dst, extra):
 
 SHAPES = {"bar": bar_shape, "slash": slash_shape, "midtilde": midtilde_shape}
 
-BIG = 10000
 # the descender of Ц ц (and the small cap) is the model for Қ Ң Җ Ҳ Ҷ
 TAIL = {"c": "uni0426", "x": "uni0446", "s": "uni0446.sc"}
 TAIL_Y = 300  # straight stem in all three
@@ -692,6 +721,23 @@ def superior(font, source):
     return moved, round(k * font[source].width + ax)
 
 
+def attach(font, source, cuts, pieces):
+    """The letter minus the boxes in cuts, merged with pieces: each a part
+    of a glyph (name, clip box) whose point (px, py) goes to (x, y),
+    scaled (sx, sy); a negative sx mirrors. For hooks that need placing by
+    hand (ʋ Ƴ Ɲ Ƈ)."""
+    out = to_path(font, font[source])
+    for box in cuts:
+        out = path_op(out, rect_path(*box), "DIFFERENCE")
+    for name, clip, (px, py), (sx, sy, x, y) in pieces:
+        part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
+        rec = RecordingPen()
+        part.draw(TransformPen(rec, (sx, 0, 0, sy, x - sx * px, y - sy * py)))
+        out = path_op(out, path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG),
+                                   "INTERSECTION"), "UNION")
+    return out
+
+
 def descend(font, source, band, model, pick=None):
     """A v with a stem down to the descender (ү): the stem and foot serif
     of the model's descender (p) under the vertex; with pick (first/last)
@@ -788,6 +834,14 @@ def build(font, ch, op, source, band, name=None):
         for a in src.anchors:
             if a.name not in ("Bottom", "DotBelow", "Cedilla"):
                 g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "attach":
+        _band, cuts, pieces, *width = band
+        out = attach(font, source, cuts, pieces)
+        rsb = w - ink_bounds(font, source)[2]
+        g.width = width[0] if width else max(w, round(out.bounds[2] + rsb))
+        draw_path(font, src, g, out)
+        for a in src.anchors:
+            g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
     elif op in ("ezh", "esh"):
         out = (ezh(font, source, *band) if op == "ezh" else esh(font, source, *band))
         rsb = w - ink_bounds(font, source)[2]
