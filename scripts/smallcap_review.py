@@ -118,10 +118,13 @@ def main():
             skipped.append(g.name)
             continue
         lo = lo or up
-        up = up or lo.upper()
+        if up is None:
+            # ĸ, ȷ: lowercase-only letters; ch.upper() would return the letter itself
+            up = lo.upper() if lo.upper() != lo else None
         status, color = ("DRAFT", "red") if is_draft else ("built", "black!45")
         label = g.name.replace("_", r"\_")
-        row.append(r"\cell{%s}{%s}{%s}{%s}{%s}" % (label, status, color, tex(up), tex(lo)))
+        cap = tex(up) if up else r"\textcolor{black!30}{—}"
+        row.append(r"\cell{%s}{%s}{%s}{%s}{%s}" % (label, status, color, cap, tex(lo)))
         if len(row) == 4:
             flush()
     flush()
