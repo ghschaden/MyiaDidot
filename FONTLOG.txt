@@ -26,9 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: small caps at 1040, ẞ
+
+    * Small caps raised from 960 to 1040 units (73% of cap height, 156 above
+      the x-height), redrafted with 176-unit stems; the height is stored in
+      the UFO lib (org.myiadidot.smallcapHeight) and every tool reads it.
+      Comparison of 960/1000/1040: scripts/smallcap_heights.sh.
+    * Added ẞ (U+1E9E), drafted from ß: scaled to cap height, vertical stems
+      thickened to the capital weight with the hairlines kept; marked as a
+      draft for review.
+    * ß and ẞ take a small ẞ in small caps; ss02 ("Small caps: SS for ß and
+      ẞ") gives the traditional SS.
+
 2026-10-14 Version 0.100 (development), Phase 1: small caps
 
-    * Small capitals (smcp, c2sc) at 960 units for Latin, Greek and Cyrillic:
+    * Small capitals (smcp, c2sc), first at 960 units for Latin, Greek and Cyrillic:
       88 outlines drafted with FontForge's stem-compensating generator
       (stems 172 against 164 lowercase / 208 capital) and marked for review,
       29 aliases (Α, А -> A ...), about 180 accented small caps built from

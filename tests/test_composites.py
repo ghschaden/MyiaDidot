@@ -147,11 +147,11 @@ def test_smallcaps_nfc_and_nfd_render_the_same(ttfont, shaper, decomposing_shape
 
 
 def test_every_small_cap_is_reachable(ufo, ttfont):
-    """Each .sc glyph is the target of smcp or c2sc, or a component of one."""
+    """Each .sc glyph is the target of smcp, c2sc or a stylistic set, or a component of one."""
     gsub = ttfont["GSUB"].table
     reached = set()
     for rec in gsub.FeatureList.FeatureRecord:
-        if rec.FeatureTag not in ("smcp", "c2sc"):
+        if rec.FeatureTag not in ("smcp", "c2sc") and not rec.FeatureTag.startswith("ss"):
             continue
         for i in rec.Feature.LookupListIndex:
             for st in gsub.LookupList.Lookup[i].SubTable:

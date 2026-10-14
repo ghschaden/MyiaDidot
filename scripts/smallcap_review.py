@@ -17,11 +17,11 @@ from pathlib import Path
 import ufoLib2
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from smallcaps import CAP_HEIGHT, DRAFT_KEY, SC_HEIGHT, X_HEIGHT, smcp_map
+import smallcaps
+from smallcaps import CAP_HEIGHT, DEFAULT_HEIGHT, DRAFT_KEY, HEIGHT_KEY, X_HEIGHT, smcp_map
 
 UPM = 2048
 SIZE = 44  # pt, the large specimen
-GUIDES = [(0, "black!35"), (X_HEIGHT, "blue!45"), (SC_HEIGHT, "red!60"), (CAP_HEIGHT, "black!35")]
 
 PREAMBLE = r"""\documentclass[10pt]{article}
 \usepackage[a4paper,margin=1.2cm]{geometry}
@@ -58,6 +58,9 @@ def main():
     args = ap.parse_args()
 
     ufo = ufoLib2.Font.open(args.ufo)
+    sc_height = ufo.lib.get(HEIGHT_KEY, DEFAULT_HEIGHT)
+    smallcaps.configure(sc_height)
+    guide_lines = [(0, "black!35"), (X_HEIGHT, "blue!45"), (sc_height, "red!60"), (CAP_HEIGHT, "black!35")]
     smcp, c2sc, _, _ = smcp_map(ufo)
     # one representative lowercase/capital character per small cap
     rep_lo, rep_up = {}, {}
@@ -73,20 +76,29 @@ def main():
 
     guides = "\n".join(
         r"\rlap{\textcolor{%s}{\rule[%.4fpt]{\guidew}{0.25pt}}}%%" % (color, units / UPM * SIZE)
-        for units, color in GUIDES
+        for units, color in guide_lines
     )
     path = os.path.relpath(Path(args.font).resolve().parent, Path(args.out).resolve().parent)
     out = [PREAMBLE % {"font": Path(args.font).name, "path": path, "guides": guides,
                        "size": SIZE, "lead": int(SIZE * 1.15)}]
     out.append(r"{\Large Myia Didot small caps — review}\par\smallskip")
+    others = [g for g in ufo if g.lib.get("org.myiadidot.draft") and g.unicode]
     out.append(r"{\labelfont %d small caps, \textcolor{red}{%d drafts} to review. "
                r"Guides: baseline, \textcolor{blue!60}{x-height %d}, "
                r"\textcolor{red!70}{small-cap height %d}, cap height %d. "
                r"Each cell: capital, small cap, lowercase; then in context.}\par\bigskip"
-               % (len(scs), n_drafts, X_HEIGHT, SC_HEIGHT, CAP_HEIGHT))
+               % (len(scs), n_drafts, X_HEIGHT, sc_height, CAP_HEIGHT))
     skipped = []
     section = None
     row = []
+    if others:
+        out.append(r"{\large\bfseries Other drafts}\par\medskip")
+        cells = []
+        for g in others:
+            ch = chr(g.unicode)
+            lo = ch.lower() if len(ch.lower()) == 1 else ch
+            cells.append(r"\cell{%s}{%s}{%s}{%s}{%s}" % (g.name, "DRAFT", "red", tex(ch), tex(lo)))
+        out.append(r"\begin{cells}" + " & ".join(cells) + r"\end{cells}")
 
     def flush():
         if row:

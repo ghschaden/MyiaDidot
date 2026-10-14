@@ -26,8 +26,12 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   caps, specials, scaled kerning and the generated smcp/c2sc block in
   features.fea (between BEGIN/END markers; never hand-edit it). It never
   overwrites outlines. Drafts from `smallcaps_draft.py` carry lib key
-  `org.myiadidot.smallcapDraft`; clear it once a glyph is reviewed. Small
-  caps take the `.cap` accents at TopCap = 1106.
+  `org.myiadidot.smallcapDraft`; clear it once a glyph is reviewed. Other
+  drafted glyphs (ẞ) carry `org.myiadidot.draft`. Small-cap height is
+  1040 (lib `org.myiadidot.smallcapHeight`, chosen by the person after
+  comparing 960/1000/1040); small caps take the `.cap` accents at TopCap =
+  height + 146. To redraft: `smallcaps_draft.py` then `smallcaps.py
+  --drafts ... --redraft` (replaces only unreviewed drafts).
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 

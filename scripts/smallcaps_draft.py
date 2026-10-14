@@ -1,7 +1,10 @@
 """Draft small capitals with FontForge's stem-compensating generator.
 
     fontforge -quiet -lang=py -script scripts/smallcaps_draft.py SRC.ufo OUT.ufo \
-        SCHEIGHT LCSTEM [GLYPH ...]
+        SCHEIGHT STEM [GLYPH ...]
+
+STEM is the small caps' vertical stem (scripts/smallcaps.py's stem_for()
+interpolates it between the lowercase and capital stems by height).
 
 Opens SRC.ufo, runs addSmallCaps on the given capitals (default: every
 encoded uppercase letter without components) and writes the whole font to
@@ -38,9 +41,13 @@ def main(src, out, scheight, lcstem, *names):
         ucstem=UC_STEM,
         symbols=False,
     )
+    # addSmallCaps replaces existing small caps of the selected capitals too,
+    # so report every one it wrote, not only the new names.
     created = sorted({g.glyphname for g in font.glyphs()} - before)
+    drafted = sorted(g.glyphname for g in font.glyphs() if g.glyphname.endswith(".sc"))
     # FontForge's -quiet swallows stdout.
-    sys.stderr.write(f"{len(names)} capitals selected, {len(created)} drafts: {' '.join(created)}\n")
+    sys.stderr.write(f"{len(names)} capitals selected, {len(drafted)} small caps drafted "
+                     f"({len(created)} new: {' '.join(created)})\n")
     font.generate(out)
     font.close()
 

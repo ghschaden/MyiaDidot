@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>org.myiadidot.smallcapHeight</key>
+		<integer>1040</integer>
 		<key>public.glyphOrder</key>
 		<array>
 			<string>.notdef</string>
@@ -164,6 +166,7 @@
 			<string>Yacute</string>
 			<string>Thorn</string>
 			<string>germandbls</string>
+			<string>uni1E9E</string>
 			<string>agrave</string>
 			<string>aacute</string>
 			<string>acircumflex</string>
@@ -1585,6 +1588,7 @@
 			<string>uni01F0.sc</string>
 			<string>uni1E96.sc</string>
 			<string>ldot.sc</string>
+			<string>s_s.sc</string>
 		</array>
 		<key>public.openTypeCategories</key>
 		<dict>
@@ -2830,6 +2834,8 @@
 			<string>base</string>
 			<key>s.sc</key>
 			<string>base</string>
+			<key>s_s.sc</key>
+			<string>base</string>
 			<key>sacute</key>
 			<string>base</string>
 			<key>sacute.sc</key>
@@ -3917,6 +3923,8 @@
 			<key>uni1E96</key>
 			<string>base</string>
 			<key>uni1E96.sc</key>
+			<string>base</string>
+			<key>uni1E9E</key>
 			<string>base</string>
 			<key>uni1EA0</key>
 			<string>base</string>
