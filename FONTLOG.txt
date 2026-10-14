@@ -42,6 +42,31 @@ ChangeLog
       narrower and a little shallower at the same weight (new
       scripts/adjust_accents.py); ă ğ Ắ ... follow, and the tallest
       stacks are lower (win ascent 2278 -> 2235).
+    * ƥ: the hook rises from the top of p's stem (cut below the top serif);
+      the hook op had measured the bowl's overshoot above the x-height as
+      the stem and set a thin hook on it, too far right. It now measures
+      only ink over the stem.
+    * ɡ: the tail sweeps down and round as wide as the bowl into a ball
+      under its left side (drawn with curl), not ȷ's narrow descender; ɠ ᵍ
+      follow.
+    * Ϗ: the tail is ȷ's descender scaled to the leg's width and turned to
+      its angle, so the leg flows into it (attach pieces can be turned).
+    * ɞ: ɜ without its terminals, closed by a drawn C at the weight of its
+      strokes, meeting its middle point.
+    * ℓ and 𝑙 rest on the baseline (their hooks ended 120 units above it).
+    * Ʒ ʒ (and Ƹ ƹ Ǯ ǯ, small caps): the bowl as wide as the bar and longer,
+      at the figure 3's weight (ezh takes the bowl's bottom and right edge).
+    * ɻ keeps ɹ's whole arm (the cut for its hook had taken the ball).
+    * ʂ: s's bottom stroke turns down at the left into an upright stem below
+      the baseline that hooks to the right, at ʈ's scale (it was a small
+      curl hanging from the terminal).
+    * ɕ: like ʑ, the bottom stroke runs on into a loop and comes down
+      through itself into an upright tail below the baseline, as in Charis.
+    * ʐ and ɻ: like ʂ, the stroke turns down into an upright stem below the
+      baseline (ɻ's at ɹ's full stem width) that hooks to the right, so the
+      retroflex letters ʂ ʐ ʈ ɻ ... match. ɟ (and ʄ) have their crossbar on
+      both sides (the bar op stopped at the ink, which for ȷ ends at the
+      stem). ɡ's tail is narrower (ɠ ᵍ ʛ follow).
 
 2026-10-14 Version 0.100 (development), Phase 1: sample documents
 

@@ -39,6 +39,7 @@ from pathlib import Path
 
 import pathops
 import ufoLib2
+from fontTools.misc.transform import Transform
 from fontTools.pens.areaPen import AreaPen
 from fontTools.pens.basePen import BasePen
 from fontTools.pens.boundsPen import BoundsPen
@@ -145,7 +146,8 @@ RECIPES = [
     ("ƚ", "bar", "l", ("x",)),
     ("Ɉ", "bar", "J", ("c",)),
     ("ɉ", "bar", "j", ("x",)),
-    ("ɟ", "bar", "uni0237", ("x",)),
+    # (the bar op stops at the ink, which for ȷ ends at the stem: drawn across)
+    ("ɟ", "lines", "uni0237", ("x", 56, [(70, 414, 570, 470)])),
     ("Ɍ", "bar", "R", ("c", 360, "first")),
     ("ɍ", "bar", "r", ("x", None, "first")),
     ("Ᵽ", "bar", "P", ("c", 360)),
@@ -237,12 +239,18 @@ RECIPES = [
     ("Ʃ", "alias", "Sigma", None),
     # esh, ezh
     ("ʃ", "esh", "f", ("x", "uni0237")),
-    ("Ʒ", "ezh", "Z", ("c", 560, 1.05, 1.07)),  # bowl below the baseline, as in Charis
-    ("ʒ", "ezh", "z", ("x", 400, 0.9, 1.08)),
+    # (band, end of the diagonal, bottom of the bowl, its right edge): the
+    # bowl below the baseline and as wide as the bar, as in Charis
+    ("Ʒ", "ezh", "Z", ("c", 680, -270, 1290)),
+    ("ʒ", "ezh", "z", ("x", 450, -438, 860)),
     ("ƹ", "mirror", "ʒ", None),
     ("Ƹ", "mirror", "Ʒ", None),
     # script g, upsilon, gamma, turned m with long leg
-    ("ɡ", "hook", "q", ("x", "down-left", "last", -100, 200, 200)),
+    # ɡ: q's descender (and its foot) replaced by a tail sweeping down and
+    # round to the left as wide as the bowl, into a ball under its left side
+    ("ɡ", "curl", "q", ("x", [(500, -BIG, BIG, -90)],
+                        {"at": ("y", -100, "last"), "dir": 270, "turn": "cw", "r": (290, 440),
+                         "sweep": 165, "ball": 80, "t": (164, 52)})),
     ("ɠ", "hook", "ɡ", ("x", "up-right", "last", 800, 0, 200)),
     ("Ʊ", "turn", "Omega", "c"),
     ("ʊ", "enlarge", "Ʊ", ("O", "o")),
@@ -299,21 +307,39 @@ RECIPES = [
                         {"at": ("x", 600), "dir": 70, "turn": "cw", "r": 130,
                          "sweep": 145, "ball": 70})),
     # more hooks, curls and loops drawn on
-    ("ʂ", "curl", "s", ("x", [(-BIG, -BIG, 300, 400)],
-                        {"at": ("xb", 330), "dir": 215, "turn": "ccw", "r": 110,
-                         "sweep": 170, "ball": 60})),
-    ("ʐ", "curl", "z", ("x", [(700, -BIG, BIG, 500)],
-                        {"at": ("xb", 720), "dir": 270, "turn": "ccw", "r": (130, 210),
-                         "sweep": 160, "ball": 62})),
+    # ʂ: s's bottom stroke turns down at the left into an upright stem below
+    # the baseline, which hooks to the right, as ʈ's (and Charis's ʂ)
+    ("ʂ", "attach", "s", ("x", [(-BIG, -BIG, 300, 360)],
+                          [("curl", {"at": ("pt", 320, 38, 76), "dir": 180, "turn": "ccw",
+                                     "r": (100, 100), "sweep": 90, "ball": 40, "t": (140, 76)},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((220, -50), (220, -300), 140), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 220, -300, 140), "dir": 270, "turn": "ccw",
+                                     "r": (140, 120), "sweep": 150, "ball": 68, "t": (140, 52)},
+                            (0, 0), (1, 1, 0, 0))])),
+    # ʐ: the bar's right end turns down into an upright stem below the
+    # baseline that hooks to the right, as ʂ (and Charis's ʐ)
+    ("ʐ", "attach", "z", ("x", [(700, -BIG, BIG, 500)],
+                          [("curl", {"at": ("pt", 690, 29, 57), "dir": 0, "turn": "cw",
+                                     "r": (100, 100), "sweep": 90, "ball": 40, "t": (140, 57)},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((790, -60), (790, -330), 140), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 790, -330, 140), "dir": 270, "turn": "ccw",
+                                     "r": (150, 120), "sweep": 150, "ball": 68, "t": (140, 52)},
+                            (0, 0), (1, 1, 0, 0))])),
     # ʑ: the bar turns up into a small loop and comes down through itself
     # into an upright tail below the baseline, as in Charis
     ("ʑ", "attach", "z", ("x", [(700, -BIG, BIG, 500)],
                           [("curl", {"at": ("pt", 640, 29, 57), "dir": 0, "turn": "ccw", "r": (120, 150),
                                      "sweep": 270, "ball": 40, "t": (110, 56)}, (0, 0), (1, 1, 0, 0)),
                            ("line", ((520, 200), (520, -330), 110), (0, 0), (1, 1, 0, 0))], 1000)),
-    ("ɕ", "curl", "c", ("x", [(730, -BIG, BIG, 400)],
-                        {"at": ("xb", 700), "dir": 15, "turn": "ccw", "r": 85,
-                         "sweep": 300, "ball": 48})),
+    # ɕ: like ʑ, the bottom stroke runs on into a loop and comes down
+    # through itself into an upright tail below the baseline, as in Charis
+    ("ɕ", "attach", "c", ("x", [(620, -BIG, BIG, 400)],
+                          [("curl", {"at": ("pt", 600, 18, 56), "dir": 0, "turn": "ccw",
+                                     "r": (120, 150), "sweep": 270, "ball": 40, "t": (110, 56)},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((480, 200), (480, -330), 110), (0, 0), (1, 1, 0, 0))])),
     ("Ƭ", "curl", "T", ("c", [(-BIG, 600, 420, BIG)],
                         {"at": ("x", 440), "dir": 180, "turn": "ccw", "r": 150,
                          "sweep": 150, "ball": 80})),
@@ -331,9 +357,11 @@ RECIPES = [
                          "sweep": 150, "ball": 80})),
     # Ϗ: the leg (and its foot serif) cut above the baseline, run on in its
     # own direction and weight below it, turning back left into a ball
-    ("Ϗ", "curl", "K", ("c", [(850, -BIG, BIG, 200)],
-                        {"at": ("y", 200, "last"), "dir": 305.6, "turn": "cw", "r": (200, 180),
-                         "sweep": 160, "ball": 78, "t": (216, 60)})),
+    # (the tail is ȷ's descender, its stem scaled to the leg's width and
+    # turned to the leg's angle: its straight part overlaps the leg exactly)
+    ("Ϗ", "attach", "K", ("c", [(850, -BIG, BIG, 200)],
+                          [("uni0237", (-BIG, -BIG, BIG, 300), (320, -150),
+                            (216 / 164, 216 / 164, 1159.5, 200, 35.6))], 1598)),
     ("ʝ", "attach", "j", ("x", [], [("line", ((-40, -520), (560, -170), 50), (0, 0), (1, 1, 0, 0))])),
     # Ʝ: the stem of J run down into the tail of ȷ (widened to the stem), crossed the same way
     ("Ʝ", "attach", "J", ("c", [(-BIG, -BIG, BIG, 250), (-BIG, -BIG, 440, 460)],
@@ -353,9 +381,13 @@ RECIPES = [
     ("ɬ", "attach", "l", ("x", [], [("degree", (-BIG, -BIG, BIG, BIG), (576, 1118),
                                       (0.45, 0.45, 220, 760)),
                                      ("rect", (220, 590, 564, 646), (0, 0), (1, 1, 0, 0))], 640)),
-    # ɞ: ɜ closed on the left by the left half of o (its terminals merge in)
-    ("ɞ", "attach", "ɜ", ("x", [],
-                          [("o", (-BIG, -BIG, 520, BIG), (96, 0), (0.75, 1, 84, 0))])),
+    # ɞ: ɜ without its terminals, closed on the left by a drawn C at the
+    # weight of ɜ's strokes, from its top stroke round to its bottom one,
+    # its inside meeting ɜ's middle point
+    ("ɞ", "attach", "ɜ", ("x", [(-BIG, 600, 400, BIG), (-BIG, -BIG, 400, 300)],
+                          [("curl", {"at": ("pt", 400, 824.5, 145), "dir": 180, "turn": "ccw",
+                                     "r": (226, 378.75), "sweep": 180, "ball": 70,
+                                     "t": (180, 145)}, (0, 0), (1, 1, 0, 0))])),
     ("Ꞵ", "descend", "B", ("c", "p", "first")),
     ("ɤ", "enlarge", "gamma", ("o", "o", -16, 900)),
     ("Ɤ", "enlarge", "ɤ", ("o", "O")),
@@ -388,7 +420,7 @@ RECIPES = [
     ("∅", "slash", "zero", ("c", "box", -0.08, -140, 1.08, 1580)),
     # more hooks, turned and barred letters
     ("Ƥ", "hook", "P", ("c", "up-left", "first", 1100, 300, -208)),
-    ("ƥ", "hook", "p", ("x", "up-right", "first", 900, 300, 0)),
+    ("ƥ", "hook", "p", ("x", "up-right", "first", 800, 300, 0)),  # below p's top serif
     ("Ɦ", "hook", "H", ("c", "up-right", "first", 1100, 300, 200)),
     ("Ɥ", "alias", "uni0427", None),  # a turned h at cap height is Ч, serifs and all
     ("ʄ", "hook", "ɟ", ("x", "up-right", "first", 830, 300, 0)),
@@ -404,7 +436,13 @@ RECIPES = [
     ("ɺ", "attach", "uni0279", ("x", [(330, 700, 820, BIG)],
                                 [("rect", (494, 650, 658, 1400), (0, 0), (1, 1, 0, 0)),
                                  ("r", (-BIG, 700, 390, BIG), (0, 0), (1, 1, 268, 628))])),
-    ("ɻ", "hook", "uni0279", ("x", "down-right", "last", 60, 150, 160)),
+    # ɻ: ɹ's stem runs on below the baseline at its full width and hooks to
+    # the right (the arm stays)
+    ("ɻ", "attach", "uni0279", ("x", [(494, -BIG, BIG, 60)],
+                                [("line", ((576, 80), (576, -250), 164), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 576, -250, 164), "dir": 270, "turn": "ccw",
+                                           "r": (140, 120), "sweep": 150, "ball": 66,
+                                           "t": (164, 52)}, (0, 0), (1, 1, 0, 0))])),
     ("ɾ", "attach", "r", ("x", [(-BIG, -BIG, 226, 60), (390, -BIG, BIG, 60), (-BIG, 780, 226, BIG)], [])),
     ("ᵳ", "midtilde", "ɾ", ("x",)),
     # raised arrows, superscript and subscript signs
@@ -953,8 +991,11 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
     # the cut: the hook is scaled across to that width exactly and put on
     # its edges, so the stroke runs on without a step
     js = stems_at(font, hsrc, s0 + 2)[0] if up else stems_at(font, hsrc, s1 - 2)[-1]
-    at_cut = stems_at(font, source, cut - 2 if up else cut + 2)
-    ca, cb = min(at_cut, key=lambda s: abs((s[0] + s[1]) / 2 - (ta + tb) / 2))
+    # only ink over the stem counts (above a letter's x-height the cut may
+    # meet nothing but a bowl's overshoot: ƥ); none there, the stem itself
+    at_cut = [s for s in stems_at(font, source, cut - 2 if up else cut + 2) if s[1] > ta and s[0] < tb]
+    ca, cb = (min(at_cut, key=lambda s: abs((s[0] + s[1]) / 2 - (ta + tb) / 2)) if at_cut
+              else (ta, tb))
     sx = (cb - ca) / (js[1] - js[0])
     if mirror:
         sx, tx = -sx, ca + sx * js[1]
@@ -972,20 +1013,28 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
     return path_op(letter, piece, "UNION"), piece.bounds
 
 
-def ezh(font, source, band, ym, kx, ky):
+def ezh(font, source, band, ym, bottom, right):
     """Ʒ ʒ: the top bar and diagonal of Z/z down to ym, and the lower bowl
-    of the figure 3 from its middle tongue, scaled (kx, ky) and hung on the
-    end of the diagonal."""
+    of the figure 3 from its middle tongue hung on the end of the diagonal,
+    scaled to reach down to bottom and across to right (as wide as the bar,
+    as in Charis), its strokes brought back to the figure's weight."""
     top = path_op(to_path(font, font[source]), rect_path(-BIG, ym, BIG, BIG), "INTERSECTION")
     tongue_y = 760
     tx0 = stems_at(font, "three", tongue_y)[0][0]
     bowl = path_op(to_path(font, font["three"]), rect_path(-BIG, -BIG, BIG, tongue_y + 30),
                    "INTERSECTION")
+    b = ink_bounds(font, "three")
     dx = stems_at(font, source, ym)[-1][0]
+    kx = (right - dx) / (b[2] - tx0)
+    ky = (ym - bottom) / (tongue_y - b[1])
+    stem = max(e - a for a, e in stems_at(font, "three", 350))  # its upright side
+    hair = vertical_runs(font, "three", 530)[0]
+    hair = hair[1] - hair[0]  # its foot
     rec = RecordingPen()
     bowl.draw(TransformPen(rec, (kx, 0, 0, ky, dx - kx * tx0, ym - ky * tongue_y)))
-    out = path_op(top, to_path(None, rec=rec), "UNION")
-    return out
+    out = RecordingPen()
+    embolden(rec, stem * (1 - kx), hair * (1 - ky)).draw(out)
+    return path_op(top, to_path(None, rec=out), "UNION")
 
 
 def esh(font, source, band, bottom_model):
@@ -1020,12 +1069,13 @@ def superior(font, source, ref="zerosuperior"):
 def attach(font, source, cuts, pieces):
     """The letter minus the boxes in cuts, merged with pieces: each a part
     of a glyph (name, clip box) whose point (px, py) goes to (x, y),
-    scaled (sx, sy); a negative sx mirrors. For hooks that need placing by
-    hand (Ɲ, ₪); "rect" pieces are boxes, "line" pieces straight strokes."""
+    scaled (sx, sy) and optionally turned (degrees, a fifth value); a negative
+    sx mirrors. For hooks that need placing by hand (Ɲ, ₪, Ϗ); "rect" pieces
+    are boxes, "line" pieces straight strokes, "curl" pieces drawn hooks."""
     out = to_path(font, font[source])
     for box in cuts:
         out = path_op(out, rect_path(*box), "DIFFERENCE")
-    for name, clip, (px, py), (sx, sy, x, y) in pieces:
+    for name, clip, (px, py), (sx, sy, x, y, *turn) in pieces:
         if name == "rect":  # a plain box
             part = rect_path(*clip)
         elif name == "line":  # a straight stroke: ((x0, y0), (x1, y1), thickness)
@@ -1037,7 +1087,9 @@ def attach(font, source, cuts, pieces):
         else:
             part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
         rec = RecordingPen()
-        part.draw(TransformPen(rec, (sx, 0, 0, sy, x - sx * px, y - sy * py)))
+        # scaled, then turned by turn[0] degrees (counter-clockwise) about (px, py)
+        t = Transform().translate(x, y).rotate(math.radians(turn[0] if turn else 0))
+        part.draw(TransformPen(rec, t.scale(sx, sy).translate(-px, -py)))
         out = path_op(out, path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG),
                                    "INTERSECTION"), "UNION")
     return out
@@ -1107,7 +1159,7 @@ def _ellipse(cx, cy, rx, ry):
     return to_path(None, rec=rec)
 
 
-def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None):
+def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
     """The letter minus cuts, with a hook drawn as part of an elliptical
     ring ending in a ball: it leaves the letter's stroke at `at` (('y', y,
     pick): the run at height y; ('x', x) / ('xb', x): the topmost /
@@ -1146,7 +1198,9 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None):
     ring = path_op(_ellipse(cx, cy, a + tv / 2, b + th / 2),
                    _ellipse(cx, cy, a - tv / 2, b - th / 2), "DIFFERENCE")
     # the part swept, from just before the start (into the letter's stroke)
-    angles = [start - sign * 3 + sign * sweep * i / 24 for i in range(25)]
+    # lead: degrees the ring starts back inside the letter's stroke, so a
+    # stroke cut across at an angle to the ring still flows into it (Ϗ)
+    angles = [start - sign * lead + sign * (sweep + lead) * i / 24 for i in range(25)]
     pts = [(cx, cy)] + [(cx + 4 * (a + tv) * math.cos(math.radians(g)),
                          cy + 4 * (b + th) * math.sin(math.radians(g))) for g in angles]
     rec = RecordingPen()

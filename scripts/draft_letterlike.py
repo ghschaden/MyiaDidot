@@ -73,8 +73,8 @@ def script_l(font):
     outer = _ellipse(cx, cy, rx, ry)
     inner = _ellipse(cx + (thick - thin) / 2, cy, rx - (thick + thin) / 2, ry - thin)
     loop = path_op(outer, inner, "DIFFERENCE")
-    stem = rect_path(cx - rx, 250, cx - rx + thick, cy)
-    hook = curl(font, "space", [], at=("pt", cx - rx + thick / 2, 260, thick), dir=270, turn="ccw",
+    stem = rect_path(cx - rx, 140, cx - rx + thick, cy)
+    hook = curl(font, "space", [], at=("pt", cx - rx + thick / 2, 150, thick), dir=270, turn="ccw",
                 r=(150, 130), sweep=150, ball=50, t=(thick, 45))
     out = union(loop, stem, hook)
     return transformed(out, (1, 0, SLANT, 1, 0, 0)), 900
@@ -82,8 +82,8 @@ def script_l(font):
 
 def italic_l(font):
     a, b = 220, 384  # the stem of l
-    top = path_op(to_path(font, font["l"]), rect_path(-BIG, 250, BIG, BIG), "INTERSECTION")
-    hook = curl(font, "space", [], at=("pt", (a + b) / 2, 260, b - a), dir=270, turn="ccw",
+    top = path_op(to_path(font, font["l"]), rect_path(-BIG, 150, BIG, BIG), "INTERSECTION")
+    hook = curl(font, "space", [], at=("pt", (a + b) / 2, 160, b - a), dir=270, turn="ccw",
                 r=(170, 140), sweep=150, ball=52, t=(b - a, 48))
     # the ball of the hook overhangs the advance, as italic letters do
     return transformed(union(top, hook), (1, 0, SLANT, 1, 0, 0)), 620
