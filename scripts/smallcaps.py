@@ -327,30 +327,29 @@ def build_specials(font, log, failed):
         dx = comma.transformation[4] - cap_bottom[0] + bottom[0]
         new_glyph(font, sc_name(b, cap), font[base_sc].width,
                   [(base_sc, 0, 0), ("commaaccent", round(dx), 0)])
-    if "Ldot" in font and need("l.sc"):
-        # The dot keeps its size, so place its centre, not its origin: at the
-        # same height fraction, and at the same fraction of the way from the
-        # stem to the end of the foot as in Ŀ.
-        dot = next(c for c in font["Ldot"].components if c.baseGlyph != "L")
-        dx0, dy0, dx1, dy1 = ink_bounds(font, dot.baseGlyph)
-        cx = dot.transformation[4] + (dx0 + dx1) / 2
-        cy = dot.transformation[5] + (dy0 + dy1) / 2
+    def beside_l(cap, dy=None):
+        """Small cap of Ŀ/Ľ: l.sc plus the capital's mark, which keeps its
+        size. Its centre goes at the same fraction of the way from the stem
+        to the end of the foot as in the capital; vertically at the same
+        height fraction, or shifted by dy."""
+        mark = next(c for c in font[cap].components if c.baseGlyph != "L")
+        mx0, my0, mx1, my1 = ink_bounds(font, mark.baseGlyph)
+        cx = mark.transformation[4] + (mx0 + mx1) / 2
+        cy = mark.transformation[5] + (my0 + my1) / 2
         stem = max(x for x in ink_slice(font, "L", cy) if x < cx)
         foot = ink_bounds(font, "L")[2]
         t = (cx - stem) / (foot - stem)
-        sc_cy = cy * SCALE
+        sc_cy = cy * SCALE if dy is None else cy + dy
         sc_stem = max(x for x in ink_slice(font, "l.sc", sc_cy) if x < font["l.sc"].width / 2)
-        sc_foot = ink_bounds(font, "l.sc")[2]
-        sc_cx = sc_stem + t * (sc_foot - sc_stem)
-        new_glyph(font, "ldot.sc", font["l.sc"].width,
-                  [("l.sc", 0, 0), (dot.baseGlyph, round(sc_cx - (dx0 + dx1) / 2),
-                                    round(sc_cy - (dy0 + dy1) / 2))])
+        sc_cx = sc_stem + t * (ink_bounds(font, "l.sc")[2] - sc_stem)
+        return mark.baseGlyph, round(sc_cx - (mx0 + mx1) / 2), round(sc_cy - (my0 + my1) / 2)
+
+    if "Ldot" in font and need("l.sc"):
+        new_glyph(font, "ldot.sc", font["l.sc"].width, [("l.sc", 0, 0), beside_l("Ldot")])
     if "Lcaron" in font and need("l.sc"):
-        apo = next(c for c in font["Lcaron"].components if c.baseGlyph != "L")
-        sx = font["l.sc"].width / font["L"].width
-        dy = -(CAP_HEIGHT - SC_HEIGHT)
+        # the apostrophe keeps its height above the letter
         new_glyph(font, "lcaron.sc", font["l.sc"].width,
-                  [("l.sc", 0, 0), (apo.baseGlyph, round(apo.transformation[4] * sx), dy)])
+                  [("l.sc", 0, 0), beside_l("Lcaron", dy=-(CAP_HEIGHT - SC_HEIGHT))])
     # Greek: small caps keep the dialytika only.
     for lo in ("iotadieresis", "upsilondieresis"):
         if lo in font:

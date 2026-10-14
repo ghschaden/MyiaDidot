@@ -43,6 +43,8 @@ ChangeLog
       spacing ¸ is unchanged). Comma accents stay detached, as is usual.
     * Small-cap ŀ: dot placed as in Ŀ (it had drifted past the foot); typed
       l·l in small caps is kerned to look like ŀl.
+    * Small-cap ľ: apostrophe placed like in Ľ by the same rule (it ran past
+      the advance width into the next letter).
     * Capital dot accent (Ż İ Ė Ġ Ċ and the dotted small caps) enlarged
       from 192 to 224 units, scaled about its bottom so the gap is kept; the
       lowercase dot (248) made it look undersized. Chosen after comparing
