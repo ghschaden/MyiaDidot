@@ -122,6 +122,8 @@ RECIPES = [
     ("Ᵽ", "bar", "P", ("c", 360)),
     ("ᵽ", "bar", "p", ("x", -290)),
     ("Ǥ", "bar", "G", ("c", 260, "last")),
+    # ǥ: bar across the right of the lower loop; easy to miss, to revisit
+    # (the person kept it for now)
     ("ǥ", "bar", "g", ("x", -300, "last")),
     ("Ғ", "bar", "uni0413", ("c", None, "first")),
     ("ғ", "bar", "uni0433", ("x", None, "first")),
