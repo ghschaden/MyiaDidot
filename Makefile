@@ -13,9 +13,24 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all fonts otf ttf webfonts compare regress qa proof normalize reimport clean
+.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa proof normalize winmetrics reimport clean
 
 all: fonts
+
+setup:
+	uv sync
+	git config core.hooksPath tools/git-hooks
+	@echo "pre-commit hook installed (tools/git-hooks/pre-commit)"
+
+test:
+	.venv/bin/pytest
+
+# Accept the current behaviour as the new baseline (review git diff tests/data!).
+test-data:
+	$(PY) scripts/update_test_data.py --golden --digest --cmap
+
+winmetrics:
+	$(PY) scripts/set_win_metrics.py $(UFOS)
 
 fonts: otf ttf webfonts
 otf: $(OTF)

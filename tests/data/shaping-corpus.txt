@@ -1,0 +1,47 @@
+# Golden shaping corpus: one case per line, "text | features | language".
+# features: comma-separated tags (prefix - to switch off); language: BCP 47.
+# The expected output lives in shaping-golden.json; regenerate it on purpose
+# with `python scripts/update_test_data.py --golden` and review the diff.
+
+# --- Latin ---------------------------------------------------------------
+Gallia est omnis divisa in partes tres
+Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich
+Ce cœur déçu mais l’âme plutôt naïve, Louÿs rêva de crapaüter en canoë
+Příliš žluťoučký kůň úpěl ďábelské ódy
+Zażółć gęślą jaźń
+Árvíztűrő tükörfúrógép
+Şişli’de şoför Ţuţu
+Şişli’de şoför Ţuţu | | ro
+fi fl ff ffi ffl fj | |
+fi fl ff ffi ffl | | tr
+ct st | dlig |
+Tiếng Việt có dấu: Ấ ầ Ẫ ặ Ệ ố ồ ộ ỹ
+AVAWAY To Ta Ty LT P. F. Y. «Ah» „Ja“ ‘s’
+0123456789 | onum |
+H0123456789 | sups |
+H0123456789 | subs |
+1/2 3/4 12/345 | frac |
+
+# --- decomposed input ----------------------------------------------------
+Ç ç Ş ş Ţ ţ
+Ǵ Ḱ Ḿ Ǹ Ṕ Ẃ Ź
+x̂ q̇ ẍ́ ǘ̃ Ġ̈
+
+# --- Greek ---------------------------------------------------------------
+Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον, ὃς μάλα πολλὰ
+ὁ λόγος ἐστὶν θεός· ἐν ἀρχῇ ἦν ὁ λόγος
+ᾼ ᾳ ᾈ ᾠ ᾯ ᾷ ῷ ῇ
+Ἀ Ἁ Ἄ Ἅ Ἂ Ἃ Ἆ Ἇ Ὤ Ὦ Ἱ Ὁ Ὑ Ῥ
+ἌΝΘΡΩΠΟΣ | case |
+βίβλος θεός | salt |
+βθφπκρ | ss11 |
+σοφός σοφίας | |
+Ἀ Ἄ Ἆ Ὦ ᾌ
+
+# --- Cyrillic ------------------------------------------------------------
+Съешь же ещё этих мягких французских булок
+Й й Ў ў Ї ї Ё ё
+й́ и̂ ӣ ӯ
+
+# --- marks without precomposed forms -------------------------------------
+a̋ e̋ ŏ̈ ṏ ɐ̃

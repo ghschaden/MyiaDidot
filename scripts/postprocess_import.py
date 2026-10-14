@@ -78,6 +78,12 @@ def split_fea(text):
     gpos_start = text.index("# GPOS")
     header = text[:gsub_start]
     gsub = text[gsub_start:gpos_start]
+    # FontForge exports the Cyrillic breve context (nested lookup applied at
+    # position 1) as a substitution of the whole sequence, deleting the base.
+    gsub = gsub.replace(
+        "sub @cc2_match_1' @cc2_match_2'  by [\\brevecmb.cyrl ] ;",
+        "sub @cc2_match_1 @cc2_match_2' by \\brevecmb.cyrl;",
+    )
     # The feature file spec forbids script/language statements in aalt.
     gsub = re.sub(
         r"feature aalt \{.*?\} aalt;",

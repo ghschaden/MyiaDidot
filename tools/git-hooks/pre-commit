@@ -1,0 +1,35 @@
+#!/bin/sh
+# Myia Didot pre-commit hook: the test suite must pass before a commit.
+# Installed by `make setup` (git config core.hooksPath tools/git-hooks).
+# Tests run on the working tree. Skip once with `git commit --no-verify`.
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+if git diff --cached --name-only | grep -q '^tools/claude-plugin/'; then
+    if command -v claude >/dev/null 2>&1; then
+        echo "pre-commit: testing the Claude Code plugin..." >&2
+        claude plugin validate tools/claude-plugin/myia-didot >/dev/null &&
+            claude plugin test tools/claude-plugin/myia-didot >&2 || {
+            echo "pre-commit: plugin validation or tests failed; commit aborted." >&2
+            exit 1
+        }
+    fi
+fi
+
+if ! git diff --cached --name-only | grep -qE '^(sources|tests|scripts|Makefile|pyproject.toml|uv.lock)'; then
+    exit 0  # nothing that affects the fonts
+fi
+
+if [ ! -x .venv/bin/pytest ]; then
+    echo "pre-commit: .venv missing, run 'make setup'" >&2
+    exit 1
+fi
+
+echo "pre-commit: running the test suite..." >&2
+if ! .venv/bin/pytest -q -x -p no:cacheprovider >&2; then
+    echo >&2
+    echo "pre-commit: tests failed; commit aborted." >&2
+    echo "  Fix the cause, or if the change is intended, update the baselines:" >&2
+    echo "  .venv/bin/python scripts/update_test_data.py --help" >&2
+    exit 1
+fi

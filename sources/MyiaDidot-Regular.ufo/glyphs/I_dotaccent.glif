@@ -3,7 +3,9 @@
 	<unicode hex="0130"/>
 	<advance width="796"/>
 	<outline>
-		<component base="Dotaccent" xOffset="-26"/>
 		<component base="I"/>
+		<component base="Dotaccent" xOffset="-22"/>
 	</outline>
+	<anchor name="DotBelow" x="418" y="-20"/>
+	<anchor name="Bottom" x="418" y="0"/>
 </glyph>

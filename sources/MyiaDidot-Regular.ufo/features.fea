@@ -79,7 +79,7 @@ lookup ccmpCyrillicAccents {
   lookupflag 0;
     @cc2_match_1 = [\uni0418 \uni0423 \uni0438 \uni0443 ];
     @cc2_match_2 = [\brevecmb ];
-    sub @cc2_match_1' @cc2_match_2'  by [\brevecmb.cyrl ] ;
+    sub @cc2_match_1 @cc2_match_2' by \brevecmb.cyrl;
 } ccmpCyrillicAccents;
 
 lookup CapitalAccents {

@@ -9,8 +9,7 @@ Goals:
 - Regular, Italic, Bold and Bold Italic;
 - true small capitals (`smcp`, `c2sc`) in every style.
 
-Status: **Phase 0**. The upstream Regular has been converted to a UFO source
-with a fontmake build, and shapes the same as the original.
+Status: **Phase 1** (coverage of the Regular). See FONTLOG.txt.
 
 ## Layout
 
@@ -29,15 +28,47 @@ Requirements: [uv](https://docs.astral.sh/uv/), FontForge (only for the
 upstream reference/import), ttfautohint, and LuaLaTeX for proofs.
 
 ```sh
-uv sync               # Python toolchain in .venv
+make setup            # Python toolchain in .venv + git pre-commit hook
 make                  # fonts/otf, fonts/ttf (hinted), fonts/webfonts
-make compare          # shaping diff against the FontForge-built upstream
-make qa               # fontbakery reports in build/qa/
-lualatex --output-directory=build/proofs proofs/proof.tex
+make test             # the regression test suite (also run on every commit)
+make regress          # shaping diff against the last commit (REF=...)
+make proof            # PDF proofs in build/proofs/
+make qa               # full fontbakery reports in build/qa/
 ```
 
 `make reimport FORCE=1` regenerates the UFO from the upstream SFD and
 **overwrites all edits**. It was only needed for the initial import.
+
+## Tests
+
+`make test` runs in about 12 seconds, before every commit (pre-commit hook)
+and on GitHub Actions. It checks the UFO's integrity, that composites follow
+the anchor rules, that precomposed and decomposed text render identically,
+that no character is ever lost, a golden shaping corpus, a digest over
+~1.2 million shaped strings, and fontbakery's universal profile.
+
+Known exceptions are listed in `tests/data/*.txt` with a reason; those lists
+only shrink. When a change is intended, regenerate the baselines with
+`scripts/update_test_data.py` and review `git diff tests/data`.
+
+## Claude Code plugin
+
+`tools/claude-plugin/myia-didot` adds a status line (glyphs, characters
+still missing, last test run), guards for the pinned upstream sources and
+the test baselines, and the commands `/font-status`, `/font-test` and
+`/font-proof`. Install it from a local checkout (edits to the folder take
+effect with `/reload-plugins`):
+
+```sh
+claude plugin marketplace add /path/to/MyiaDidot
+claude plugin install myia-didot@myia-didot
+```
+
+or from GitHub, in a Claude Code session:
+
+```
+/plugin install myia-didot --marketplace ghschaden/MyiaDidot
+```
 
 ## License
 

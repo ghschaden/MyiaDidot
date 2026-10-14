@@ -1,0 +1,12 @@
+{
+  "name": "myia-didot",
+  "owner": { "name": "Gerhard Schaden" },
+  "description": "Claude Code tooling for the Myia Didot font project",
+  "plugins": [
+    {
+      "name": "myia-didot",
+      "source": "./tools/claude-plugin/myia-didot",
+      "description": "Status line, guards and /font-* commands for the Myia Didot font project"
+    }
+  ]
+}

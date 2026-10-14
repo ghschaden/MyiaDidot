@@ -40,6 +40,15 @@ ChangeLog
     * Stacked top marks: TopMark/_TopMark anchors recomputed from each mark's
       ink, with a 90 unit gap (60 on capital accents), so a Latin acute sits
       clearly above a diaeresis or tilde. Polytonic Greek is not affected.
+    * Fixed an import error: FontForge's feature export had turned the
+      Cyrillic breve context (И/У + breve) into a rule that deleted the base
+      letter; it only showed where text is not recomposed (й + stress mark).
+    * Win ascent/descent now cover the bounding box (2280/630); the new
+      stacked capitals were clipped on Windows before.
+    * Added Ȯ and Ẉ (case partners of the new ȯ and ẉ); Ĭ İ Ī follow the
+      anchor (4 units).
+    * Regression test suite (tests/), pre-commit hook and CI; Claude Code
+      plugin with status line, guards and commands (tools/claude-plugin).
 
 2026-10-14 Version 0.100 (development), Phase 0
 
