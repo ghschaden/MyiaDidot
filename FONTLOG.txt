@@ -26,6 +26,63 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: the last small caps
+
+    * Small caps for Ƙƙ Ɲɲ Ϗϗ Ʝʝ (from the capitals, as the others) and the
+      saltillo Ꞌꞌ (the straight quote at small-cap height). ǭ.sc is built
+      in smallcaps.py's specials from ǫ.sc and the capital macron on its
+      TopCap anchor, as ō.sc: Ǭ ǭ are upstream specials without anchors,
+      so the accent builder could not make it. Two small-cap NFD
+      exceptions (U+01EC, U+01ED) are gone with it.
+
+2026-10-14 Version 0.100 (development), Phase 1: the last letters and letterlike symbols
+
+    * Ƙ (the hook on the arm, as on Ƴ), Ϗ (the leg run on below the
+      baseline and turned back), ʝ Ʝ (the tail crossed by a hairline; Ʝ
+      on the tail of ȷ), ℓ 𝑙 ℮ ℵ ℶ (scripts/draft_letterlike.py). Drafts.
+    * Review fixes: ɸ is no longer the open Greek φ but o with a stem
+      through it (as in Charis); ɰ is u joined to ɥ (the descender on the
+      stem); ɹ (and ɺ ɻ) keep only the right half of the foot serif, which
+      closed a small counter under the arm.
+    * 𝔐 𝔓 𝔖 𝔭 are Libertinus Math's Fraktur (SIL OFL 1.1, The Libertinus
+      Project Authors), adapted: scaled to Myia's cap height and x-height,
+      the vertical strokes brought to Myia's stems, the hairlines made a
+      little finer, and the hairline ends given Myia's ball in place of the
+      pen's tip (draft_letterlike.py; chosen by the person over drafts
+      after Unger's classicist Fraktur).
+      Credited in OFL.txt and the copyright notice. With these the Phase 1
+      coverage target of Regular is complete.
+
+2026-10-14 Version 0.100 (development), Phase 1: currency and metrical signs
+
+    * ₴ (S mirrored, two bars), ₺ (a stem with the foot of O, two rising
+      bars), ₼ (the top of O on legs, a stem through), ₾ (O open at the
+      top right, two uprights, a bar beneath), ₹ (two bars, the bowl of P,
+      a diagonal leg), ₪ (two interlocked arches cut from O); metrical ⏖
+      (two shorts joined) and ⏗ ⏘ ⏙ (a bar with uprights). Drafts.
+    * Ʒ stays below the baseline (the person's choice).
+
+2026-10-14 Version 0.100 (development), Phase 1: 16 more IPA and Latin letters
+
+    * ʂ ʐ ʑ ɕ Ƭ Ⱳ ⱳ (hooks, curls and loops drawn with the curl op), ɧ, ˞
+      and ɚ ɝ with it, ɬ (l with the degree ring as belt), ɞ (ɜ closed by
+      half an o), Ꞵ (B with the descender of p), ɤ Ɤ (γ brought onto the
+      baseline); small caps for Ƭ Ⱳ Ɤ Ꞵ. Drafts.
+    * derive.py took "ɔ.sc" arguments apart into single characters, so
+      small caps asked for by name were never redrafted; fixed, and the
+      small caps of the reworked letters (ɓ ɗ ʈ ɽ ɑ ꞷ ʒ ʋ ƴ ƈ ɠ ƥ ɦ ɯ, ʛ)
+      redrafted from them. --redraft also replaces unreviewed derived
+      small caps.
+
+2026-10-14 Version 0.100 (development), Phase 1: turned letters rebuilt
+
+    * ɯ Ɯ ɥ ɹ are no longer turned m M h r (serifs on the wrong side): ɯ
+      and Ɯ are u and U doubled (new op twin), ɥ is u with the descender
+      and foot serif of q, ɹ is put together from r's stem top, foot serif
+      and turned arm; ɺ ɻ ɰ follow. ʌ ʍ ʎ Ɐ ⅄ stay turned: a half turn keeps
+      thick and thin on the right diagonals and their serifs are symmetric
+      (as in Charis). Drafts.
+
 2026-10-14 Version 0.100 (development), Phase 1: f and long-s ligatures, review fixes
 
     * Ligatures fb fh fk ft ffb ffh ffk fft (liga; for German in dlig, like
@@ -266,6 +323,10 @@ Acknowledgements
 N: Alexey Kryukov
 W: https://github.com/akryukov
 D: Original design of Theano Didot (2007-2011)
+
+N: The Libertinus Project Authors
+W: https://github.com/alerque/libertinus
+D: The mathematical Fraktur letters 𝔐 𝔓 𝔖 𝔭, from Libertinus Math
 
 N: Gerhard Schaden
 D: Myia Didot extensions

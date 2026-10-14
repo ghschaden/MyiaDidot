@@ -68,14 +68,17 @@ GROUPS = [
      ("A bar, slash or middle tilde merged into an existing letter (Ɨ from I, ȼ from c, "
       "ɫ from l); bars are 64/56 units thick, as in Đ and ħ.")),
     ("parts", "Built from parts",
-     "The descender of Ц added to Н Ч К Ж Х; ү from v and the descender of p."),
+     ("The descender of Ц added to Н Ч К Ж Х; ү from v and the descender of p; ɯ Ɯ "
+      "from u U doubled, ɥ from u and the descender of q, ɹ from the parts of r.")),
     ("hook", "With a hook",
      ("A stem's end replaced by the top of f or the descender of ȷ, scaled to the "
       "stem's width (ɓ ɗ ɲ ʈ); or a hook drawn on at the weight of the stroke it "
       "leaves, ending in a ball (Ƈ ƈ Ɠ ʋ Ʋ ƴ Ƴ).")),
     ("super", "Superscript and subscript",
      "Modifier letters and signs: the letter or sign made smaller and raised (ʰ ⁺) or lowered (₊)."),
-    ("signs", "Currency signs", "Letters with bars or strokes across (₦ ₱ ₲)."),
+    ("signs", "Currency signs",
+     ("Letters with bars or strokes across (₦ ₱ ₲), or put together from parts of "
+      "letters (₴ from S mirrored, ₪ from two arches of O, ₹ from the bowl of P).")),
     ("other", "From punctuation and other parts",
      ("ʔ from the question mark, clicks from | and !, doubled marks (ǁ ″), ezh and esh "
       "(Ʒ ʃ), and signs built from existing glyphs (⋮ ⁂ 「」 ⏑).")),
@@ -89,7 +92,7 @@ def draft_groups(ufo):
 
     cmap = {u: g.name for g in ufo for u in g.unicodes}
     out = {"uni1E9E": ("drawn", "ß"), "hookcomb": ("drawn", "?"), "horncomb": ("drawn", ",")}
-    for ch, op, source, _band in derive.RECIPES:
+    for ch, op, source, band in derive.RECIPES:
         if ch.endswith(".sc"):
             continue
         name = cmap.get(ord(ch), derive.glyph_name(ch))
@@ -100,9 +103,13 @@ def draft_groups(ufo):
                      "slash": "stroke", "midtilde": "stroke", "tail": "parts",
                      "descend": "parts", "enlarge": "drawn", "stretch": "drawn",
                      "hook": "hook", "curl": "hook", "graft": "hook", "superior": "super",
-                     "lines": "signs"}.get(op, "other")
-            if op == "attach" and source[0].isalpha() and source not in ("space",):
-                group = "hook" if ch.isalpha() else "other"
+                     "lines": "signs", "twin": "parts"}.get(op, "other")
+            if op == "attach":
+                # a hook when a piece is the top of f or the tail of ȷ
+                hooked = any(piece[0] in ("f", "uni0237") for piece in band[2])
+                group = "hook" if hooked else "parts" if ch.isalpha() else "other"
+            if unicodedata.category(ch) == "Sc":
+                group = "signs"
         base = source.removesuffix(".sc")
         if len(source) == 1:
             ref = source

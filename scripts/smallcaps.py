@@ -13,7 +13,7 @@ for İ, whose lowercase is two characters). They come in four kinds:
   А -> A) gives a small cap that is a component of the other's small cap.
 * accented: from the capital's decomposition, on the small-cap base, with
   lowercase accents raised to the small-cap height (scripts/composites.py).
-* specials: ß, ı, ĳ, ſ, ĸ, Latvian comma accents, Ľ.
+* specials: ß, ı, ĳ, ſ, ĸ, Latvian comma accents, Ľ, ǭ.
 
 Anchors of drafts are derived from the capital's, scaled horizontally;
 kerning between capitals is copied to their small caps, scaled. The OpenType
@@ -237,8 +237,8 @@ def build_accented(font, log, failed):
             failed.append(f"{name}: no small cap for base {nfd[0]}")
             continue
         base_sc = sc_name(b, base_cap)
-        if cap in SPECIAL:
-            continue  # handled in build_specials
+        if cap in SPECIAL or cap == "uni01EC":
+            continue  # handled in build_specials (Ǭ: ogonek and macron, no anchors)
         try:
             r = b.compose(name, None, base_sc, lowercase_marks(b, nfd[1:]), upper=True)
         except ValueError as e:
@@ -352,6 +352,12 @@ def build_specials(font, log, failed):
         # the apostrophe keeps its height above the letter
         new_glyph(font, "lcaron.sc", font["l.sc"].width,
                   [("l.sc", 0, 0), beside_l("Lcaron", dy=-(CAP_HEIGHT - SC_HEIGHT))])
+    # Ǭ ǭ are upstream specials (SPECIAL in composites.py): ǫ's small cap
+    # with the capital macron on its TopCap anchor, as ō.sc has it
+    if "uni01EC" in font and need("oogonek.sc"):
+        top = {a.name: (a.x, a.y) for a in font["oogonek.sc"].anchors}["TopCap"]
+        new_glyph(font, sc_name(b, "uni01EC"), font["oogonek.sc"].width,
+                  [("oogonek.sc", 0, 0), ("Macron", round(top[0] - 440), round(top[1] - 1580))])
     # Greek: small caps keep the dialytika only.
     for lo in ("iotadieresis", "upsilondieresis"):
         if lo in font:

@@ -66,7 +66,11 @@ RECIPES = [
     ("ɑ", "alias", "alpha", None),
     ("ɛ", "alias", "epsilon", None),
     ("ɣ", "alias", "gamma", None),
-    ("ɸ", "alias", "phi", None),
+    # ɸ: not the open Greek φ of this font, but o with a stem through it
+    # (as in Charis): the top serif of l, the foot of q's descender
+    ("ɸ", "attach", "o", ("x", [], [("rect", (438, -560, 602, 1400), (0, 0), (1, 1, 0, 0)),
+                                     ("l", (-BIG, 1300, BIG, BIG), (0, 0), (1, 1, 218, 0)),
+                                     ("q", (-BIG, -BIG, BIG, -540), (0, 0), (1, 1, -328, 0))])),
     ("ɩ", "alias", "iota", None),
     ("ꞵ", "alias", "beta", None),
     ("ꭓ", "alias", "chi", None),
@@ -91,16 +95,25 @@ RECIPES = [
     ("ǝ", "turn", "e", "x"),
     ("ə", "alias", "ǝ", None),
     ("ә", "alias", "ǝ", None),
-    ("ɥ", "turn", "h", "x"),
-    ("ɯ", "turn", "m", "x"),
-    ("ɹ", "turn", "r", "x"),
+    # u with q's descender (and its foot serif) under the last stem
+    ("ɥ", "attach", "u", ("x", [(946, -BIG, BIG, 60)],
+                          [("q", (-BIG, -BIG, BIG, -100), (0, 0), (1, 1, 16, 0)),
+                           ("rect", (782, -120, 946, 100), (0, 0), (1, 1, 0, 0))])),
+    ("ɯ", "twin", "u", 600),
+    # r's stem turned to the right: its own top serif and foot, the arm
+    # and ball turned below
+    ("ɹ", "attach", "space", ("x", [],
+                              [("rect", (494, 30, 658, 860), (0, 0), (1, 1, 0, 0)),
+                               ("r", (-BIG, 700, 390, BIG), (0, 0), (1, 1, 268, 0)),
+                               ("r", (226, -BIG, BIG, 60), (0, 0), (1, 1, 268, 0)),
+                               ("r", (380, 600, BIG, BIG), (0, 0), (-1, -1, 884, 884))], 884)),
     ("ʌ", "turn", "v", "x"),
     ("ʍ", "turn", "w", "x"),
     ("ʎ", "turn", "y", "x"),
     ("ɒ", "mirror", "alpha", None),
     ("Ʌ", "turn", "V", "c"),
     ("Ɐ", "turn", "A", "c"),
-    ("Ɯ", "turn", "M", "c"),
+    ("Ɯ", "twin", "U", 1000),
     ("⅄", "turn", "Y", "c"),
     # mirrored
     ("ɔ", "mirror", "c", None),
@@ -223,7 +236,7 @@ RECIPES = [
     ("Ʊ", "turn", "Omega", "c"),
     ("ʊ", "enlarge", "Ʊ", ("O", "o")),
     ("Ɣ", "enlarge", "ɣ", ("o", "O", 0, 1462)),
-    ("ɰ", "descend", "ɯ", ("x", "p", "last")),
+    ("ɰ", "twin", "u", (600, "uni0265")),  # u and ɥ: the last stem descends
     # modifier letters: the letters at the size of the superior figures
     ("ʰ", "superior", "h", None),
     ("ʲ", "superior", "j", None),
@@ -274,6 +287,60 @@ RECIPES = [
     ("ƈ", "curl", "c", ("x", [(620, 500, BIG, BIG)],
                         {"at": ("x", 600), "dir": 70, "turn": "cw", "r": 130,
                          "sweep": 145, "ball": 70})),
+    # more hooks, curls and loops drawn on
+    ("ʂ", "curl", "s", ("x", [(-BIG, -BIG, 300, 400)],
+                        {"at": ("xb", 330), "dir": 215, "turn": "ccw", "r": 110,
+                         "sweep": 170, "ball": 60})),
+    ("ʐ", "curl", "z", ("x", [(700, -BIG, BIG, 500)],
+                        {"at": ("xb", 720), "dir": 290, "turn": "ccw", "r": 120,
+                         "sweep": 140, "ball": 62})),
+    ("ʑ", "curl", "z", ("x", [(700, -BIG, BIG, 500)],
+                        {"at": ("xb", 690), "dir": 0, "turn": "ccw", "r": 110,
+                         "sweep": 270, "ball": 55})),
+    ("ɕ", "curl", "c", ("x", [(730, -BIG, BIG, 400)],
+                        {"at": ("xb", 700), "dir": 15, "turn": "ccw", "r": 85,
+                         "sweep": 300, "ball": 48})),
+    ("Ƭ", "curl", "T", ("c", [(-BIG, 600, 420, BIG)],
+                        {"at": ("x", 440), "dir": 180, "turn": "ccw", "r": 150,
+                         "sweep": 150, "ball": 80})),
+    ("ⱳ", "curl", "w", ("x", [(1150, 700, BIG, BIG)],
+                        {"at": ("y", 700, "last"), "dir": 71, "turn": "cw", "r": 160,
+                         "sweep": 140, "ball": 70})),
+    ("Ⱳ", "curl", "W", ("c", [(1800, 1120, BIG, BIG), (1600, 1300, BIG, BIG)],
+                        {"at": ("y", 1120, "last"), "dir": 73.8, "turn": "cw", "r": 200,
+                         "sweep": 140, "ball": 85})),
+    ("ɧ", "hook", "ɦ", ("x", "down-left", "last", 48, 160, 160)),
+    # Ƙ: the hook on the thin arm, as on Ƴ; Ϗ: the leg run on below the
+    # baseline and turned back; ʝ Ʝ: the stem's tail looped back across it
+    ("Ƙ", "curl", "K", ("c", [(900, 1250, BIG, BIG), (800, 1360, BIG, BIG)],
+                        {"at": ("y", 1250, "last"), "dir": 50.8, "turn": "cw", "r": 170,
+                         "sweep": 150, "ball": 80})),
+    ("Ϗ", "curl", "K", ("c", [(1000, -BIG, BIG, 100)],
+                        {"at": ("y", 100, "last"), "dir": 305.6, "turn": "cw", "r": (170, 150),
+                         "sweep": 150, "ball": 72, "t": (190, 60)})),
+    ("ʝ", "attach", "j", ("x", [], [("line", ((-40, -520), (560, -170), 50), (0, 0), (1, 1, 0, 0))])),
+    # Ʝ: the stem of J run down into the tail of ȷ (widened to the stem), crossed the same way
+    ("Ʝ", "attach", "J", ("c", [(-BIG, -BIG, BIG, 250), (-BIG, -BIG, 440, 460)],
+                          [("rect", (458, -110, 666, 260), (0, 0), (1, 1, 0, 0)),
+                           ("uni0237", (-BIG, -BIG, BIG, -100), (238, -100), (1.27, 1, 458, -100)),
+                           ("line", ((60, -540), (900, -170), 60), (0, 0), (1, 1, 0, 0))])),
+    # the rhotic hook, and ɚ ɝ with it
+    ("˞", "curl", "space", ("x", [], {"at": ("pt", 80, 500, 50), "dir": 0, "turn": "ccw",
+                                      "r": 90, "sweep": 170, "ball": 45}, 330)),
+    ("ɚ", "attach", "ə", ("x", [], [("uni02DE", (-BIG, -BIG, BIG, BIG), (60, 500),
+                                      (1, 1, 840, 520))], 962 + 230)),
+    ("ɝ", "attach", "ɜ", ("x", [], [("uni02DE", (-BIG, -BIG, BIG, BIG), (60, 500),
+                                      (1, 1, 630, 600))], 812 + 230)),
+    # ɬ: l with a belt, a small ring (the degree sign) and its tail across
+    ("ɬ", "attach", "l", ("x", [], [("degree", (-BIG, -BIG, BIG, BIG), (576, 1118),
+                                      (0.45, 0.45, 220, 760)),
+                                     ("rect", (220, 590, 564, 646), (0, 0), (1, 1, 0, 0))], 640)),
+    # ɞ: ɜ closed on the left by the left half of o (its terminals merge in)
+    ("ɞ", "attach", "ɜ", ("x", [],
+                          [("o", (-BIG, -BIG, 520, BIG), (96, 0), (0.75, 1, 84, 0))])),
+    ("Ꞵ", "descend", "B", ("c", "p", "first")),
+    ("ɤ", "enlarge", "gamma", ("o", "o", -16, 900)),
+    ("Ɤ", "enlarge", "ɤ", ("o", "O")),
     # spacing modifiers made of existing glyphs
     ("ˮ", "double", "uni02BC", None),
     ("꞉", "alias", "colon", None),
@@ -310,9 +377,10 @@ RECIPES = [
     ("ʘ", "attach", "O", ("c", [], [("period", (-BIG, -BIG, BIG, BIG), (264, 104), (1, 1, 834, 613))])),
     ("ɮ", "attach", "l", ("x", [(384, -BIG, BIG, 48)],
                           [("uni0292", (-BIG, -BIG, BIG, BIG), (78, 884), (1, 1, 330, 884))], 330 - 78 + 966)),
-    ("ɺ", "attach", "uni0279", ("x", [(330, 820, 820, BIG)],
-                                [("rect", (494, 800, 658, 1496), (0, 0), (1, 1, 0, 0))])),
-    ("ɻ", "hook", "uni0279", ("x", "down-right", "last", 60, 0, 160)),
+    ("ɺ", "attach", "uni0279", ("x", [(330, 700, 820, BIG)],
+                                [("rect", (494, 650, 658, 1400), (0, 0), (1, 1, 0, 0)),
+                                 ("r", (-BIG, 700, 390, BIG), (0, 0), (1, 1, 268, 628))])),
+    ("ɻ", "hook", "uni0279", ("x", "down-right", "last", 60, 150, 160)),
     ("ɾ", "attach", "r", ("x", [(-BIG, -BIG, 226, 60), (390, -BIG, BIG, 60), (-BIG, 780, 226, BIG)], [])),
     ("ᵳ", "midtilde", "ɾ", ("x",)),
     # raised arrows, superscript and subscript signs
@@ -349,12 +417,56 @@ RECIPES = [
     ("⏕", "attach", "space", ("x", [], [("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 420, 500)),
                                         ("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 880, 500)),
                                         ("rect", (200, 100, 1100, 188), (0, 0), (1, 1, 0, 0))], 1300)),
+    ("⏖", "attach", "space", ("x", [], [("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 425, 120)),
+                                        ("uni032E", (-BIG, -BIG, BIG, BIG), (-440, -434), (0.8, 1.0, 875, 120))], 1300)),
+    # triseme, tetraseme, pentaseme: a bar with an upright at the end(s), in the middle
+    ("⏗", "attach", "space", ("x", [], [("rect", (200, 100, 1100, 188), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (1012, 100, 1100, 848), (0, 0), (1, 1, 0, 0))], 1300)),
+    ("⏘", "attach", "space", ("x", [], [("rect", (200, 100, 1100, 188), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (200, 100, 288, 848), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (1012, 100, 1100, 848), (0, 0), (1, 1, 0, 0))], 1300)),
+    ("⏙", "attach", "space", ("x", [], [("rect", (200, 100, 1100, 188), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (200, 100, 288, 848), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (606, 100, 694, 848), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (1012, 100, 1100, 848), (0, 0), (1, 1, 0, 0))], 1300)),
+    # currency signs from parts of letters, with bars (64) across
+    ("₴", "attach", "space", ("c", [], [("S", (-BIG, -BIG, BIG, BIG), (0, 0), (-1, 1, 1272, 0)),
+                                        ("rect", (150, 528, 1120, 592), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (150, 860, 1120, 924), (0, 0), (1, 1, 0, 0))], 1272)),
+    # ₺: a stem, the lower right quarter of O as its foot, two rising bars
+    ("₺", "attach", "space", ("c", [], [("rect", (300, -28, 508, 1434), (0, 0), (1, 1, 0, 0)),
+                                        ("O", (834, -BIG, BIG, 717), (834, 0), (1, 1, 508, 0)),
+                                        ("line", ((140, 560), (720, 780), 64), (0, 0), (1, 1, 0, 0)),
+                                        ("line", ((140, 840), (720, 1060), 64), (0, 0), (1, 1, 0, 0))], 1300)),
+    # ₼: the top half of O on straight legs, a stem through the middle
+    ("₼", "attach", "space", ("c", [], [("O", (-BIG, 717, BIG, BIG), (146, 717), (0.8, 1, 100, 717)),
+                                        ("rect", (100, 0, 287, 720), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (1014, 0, 1201, 720), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (590, 0, 710, 1600), (0, 0), (1, 1, 0, 0))], 1300)),
+    # ₾: O open at the upper right, two uprights in the top, a bar beneath
+    ("₾", "attach", "space", ("c", [], [("O", (-BIG, -BIG, 834, BIG), (834, -28), (0.85, 0.85, 760, 120)),
+                                        ("O", (834, -BIG, BIG, 717), (834, -28), (0.85, 0.85, 760, 120)),
+                                        ("rect", (640, 760, 704, 1560), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (816, 760, 880, 1560), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (80, 0, 1440, 64), (0, 0), (1, 1, 0, 0))], 1520)),
+    # ₹: two bars, the bowl of P, and the leg as a thick diagonal
+    ("₹", "attach", "space", ("c", [], [("P", (522, 560, BIG, BIG), (522, 0), (1, 1, 350, 0)),
+                                        ("rect", (150, 1382, 400, 1434), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (150, 980, 1180, 1044), (0, 0), (1, 1, 0, 0)),
+                                        ("line", ((380, 650), (1000, 0), 160), (0, 0), (1, 1, 0, 0))], 1250)),
+    # ₪: two arches cut from O (top half, scaled), one turned, interlocked
+    ("₪", "attach", "space", ("c", [], [("O", (-BIG, 717, BIG, BIG), (146, 717), (0.55, 0.75, 100, 891)),
+                                        ("rect", (100, 0, 229, 895), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (728, 350, 857, 895), (0, 0), (1, 1, 0, 0)),
+                                        ("O", (-BIG, 717, BIG, BIG), (146, 717), (-0.55, -0.75, 1200, 543)),
+                                        ("rect", (1071, 539, 1200, 1434), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (443, 539, 572, 1084), (0, 0), (1, 1, 0, 0))], 1300)),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
     ("ɐ.sc", "turn", "a.sc", "s"),
     ("ʌ.sc", "turn", "v.sc", "s"),
-    ("ɯ.sc", "turn", "m.sc", "s"),
+    ("ɯ.sc", "twin", "u.sc", 500),
     ("ɪ.sc", "alias", "i.sc", None),
     ("ɨ.sc", "bar", "i.sc", ("s",)),
     ("ʉ.sc", "bar", "u.sc", ("s",)),
@@ -400,6 +512,18 @@ RECIPES = [
     ("ɣ.sc", "enlarge", "ɣ", ("o", "o.sc", 0, 1062)),
     # small caps of hand-placed hooks: the capital at small-cap size
     ("ʋ.sc", "enlarge", "Ʋ", ("O", "o.sc")),
+    ("ⱳ.sc", "enlarge", "Ⱳ", ("O", "o.sc")),
+    ("ɤ.sc", "enlarge", "Ɤ", ("O", "o.sc")),
+    ("ꞵ.sc", "enlarge", "Ꞵ", ("O", "o.sc")),
+    ("ƭ.sc", "enlarge", "Ƭ", ("O", "o.sc")),
+    ("ƙ.sc", "enlarge", "Ƙ", ("O", "o.sc")),
+    ("ɲ.sc", "enlarge", "Ɲ", ("O", "o.sc")),
+    ("ʝ.sc", "enlarge", "Ʝ", ("O", "o.sc")),
+    ("ϗ.sc", "enlarge", "Ϗ", ("O", "o.sc")),
+    # saltillo: the straight quote with its top at the small-cap height, as
+    # ꞌ has it at the x-height and Ꞌ at the cap height
+    ("ꞌ.sc", "attach", "space", ("s", [], [("quotesingle", (-BIG, -BIG, BIG, BIG), (0, 0),
+                                              (1, 1, 0, 1040 - 1518))], 528)),
     ("ƴ.sc", "enlarge", "Ƴ", ("O", "o.sc")),
     ("ƈ.sc", "enlarge", "Ƈ", ("O", "o.sc")),
     ("ɠ.sc", "enlarge", "Ɠ", ("O", "o.sc")),
@@ -870,13 +994,17 @@ def attach(font, source, cuts, pieces):
     """The letter minus the boxes in cuts, merged with pieces: each a part
     of a glyph (name, clip box) whose point (px, py) goes to (x, y),
     scaled (sx, sy); a negative sx mirrors. For hooks that need placing by
-    hand (ʋ Ƴ Ɲ Ƈ)."""
+    hand (Ɲ, ₪); "rect" pieces are boxes, "line" pieces straight strokes."""
     out = to_path(font, font[source])
     for box in cuts:
         out = path_op(out, rect_path(*box), "DIFFERENCE")
     for name, clip, (px, py), (sx, sy, x, y) in pieces:
         if name == "rect":  # a plain box
             part = rect_path(*clip)
+        elif name == "line":  # a straight stroke: ((x0, y0), (x1, y1), thickness)
+            rec = RecordingPen()
+            stroke(rec, clip[0], clip[1], clip[2])
+            part = to_path(None, rec=rec)
         else:
             part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
         rec = RecordingPen()
@@ -953,7 +1081,8 @@ def _ellipse(cx, cy, rx, ry):
 def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None):
     """The letter minus cuts, with a hook drawn as part of an elliptical
     ring ending in a ball: it leaves the letter's stroke at `at` (('y', y,
-    pick): the run at height y; ('x', x): the topmost ink at x) going in
+    pick): the run at height y; ('x', x) / ('xb', x): the topmost /
+    bottommost ink at x; ('pt', x, y, width)) going in
     direction dir (degrees; 90 = up), turning cw or ccw through sweep
     degrees on a centre line of radii r (one number: a circle). The ring is
     t thick: (across vertical parts, across horizontal parts), by default
@@ -966,10 +1095,13 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None):
         ra, rb_ = _run_at(font, source, y, pick)
         px, py = (ra + rb_) / 2, y
         width = _perpendicular(font, source, y - 20, pick)
-    else:
+    elif at[0] == "pt":  # a given point and stroke width (˞)
+        _, px, py, width = at
+    else:  # 'x': the topmost ink at x, 'xb': the bottommost
         x = at[1]
-        r0, r1 = vertical_runs(font, source, x)[-1]
-        q0, q1 = vertical_runs(font, source, x + 20)[-1]
+        i = 0 if at[0] == "xb" else -1
+        r0, r1 = vertical_runs(font, source, x)[i]
+        q0, q1 = vertical_runs(font, source, x + 20)[i]
         px, py = x, (r0 + r1) / 2
         width = (r1 - r0) / math.hypot(1, ((q0 + q1) - (r0 + r1)) / 40)
     tv, th = t if t else (width, width)
@@ -1068,6 +1200,20 @@ def build(font, ch, op, source, band, name=None):
                 if pt.y == foot:
                     pt.y = 0
             c.drawPoints(g.getPointPen())
+    elif op == "twin":
+        # ɯ Ɯ from u U: a second copy whose first stem lies on the first's
+        # last stem; the first loses what is right of that stem (its foot
+        # spur, the right half of its serif), the copy brings its own
+        # band: the height to find the stems at, or (height, glyph of the
+        # copy): ɰ is u and ɥ
+        y, other = band if isinstance(band, tuple) else (band, source)
+        stems = stems_at(font, source, y)
+        dx = stems[-1][1] - stems[0][1]
+        first = path_op(to_path(font, src), rect_path(stems[-1][1], -BIG, BIG, BIG), "DIFFERENCE")
+        out = path_op(first, shifted(to_path(font, font[other]), dx), "UNION")
+        w = font[other].width
+        g.width = round(w + dx)
+        draw_path(font, src, g, out)
     elif op == "double":
         g.width = 2 * w
         pen = g.getPen()
@@ -1155,7 +1301,13 @@ def main():
     ap.add_argument("chars", nargs="*")
     ap.add_argument("--redraft", action="store_true")
     args = ap.parse_args()
-    only = set("".join(args.chars))
+    # characters, and small caps given whole ("ɔ.sc")
+    only = set()
+    for arg in args.chars:
+        if arg.endswith(".sc") and len(arg) == 4:
+            only.add(arg)
+        else:
+            only.update(arg)
 
     font = ufoLib2.Font.open(args.ufo)
     cmap = {u: g.name for g in font for u in g.unicodes}
@@ -1177,7 +1329,10 @@ def main():
             sys.exit(f"{ch}: source {source} missing")
         name = resolve(ch)
         if name in font:
-            if not (args.redraft and font[name].lib.get(DRAFT_KEY)):
+            lib = font[name].lib
+            # unreviewed: a draft, or a derived small cap still marked a draft
+            draft = lib.get(DRAFT_KEY) or (lib.get(DERIVED_KEY) and lib.get(SMALLCAP_DRAFT_KEY))
+            if not (args.redraft and draft):
                 kept.append(ch)
                 continue
             del font[name]
