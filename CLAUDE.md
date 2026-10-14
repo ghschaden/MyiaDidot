@@ -35,7 +35,8 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 - New letters derived from existing ones (same shape, turned, mirrored, with a bar, slash or middle tilde merged in, the Ц tail added, enlarged to capital weight):
   recipes in `scripts/derive.py` (also their small caps, "ɔ.sc"); drafts
   carry `org.myiadidot.draft` and are reviewed in `drafts-review.pdf`.
-  The Vietnamese hook and horn: `scripts/draft_vietnamese_marks.py`.
+  The Vietnamese hook and horn: `scripts/draft_vietnamese_marks.py`; IPA
+  diacritics and symbols: `scripts/draft_ipa_marks.py`.
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 

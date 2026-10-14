@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: IPA diacritics and symbols
+
+    * 46 IPA diacritics and symbols drafted by scripts/draft_ipa_marks.py,
+      geometric strokes of accent weight or parts of existing accents:
+      marks below (̩ ͈ ̘ ̙ ̝ ̞ ̟ ̠ ̪ ̺ ̻ ̼ ̜ ̹ ̲), above (̍ ̽ ̚ ̕), overlays
+      (̴ ̵), contour tones (᷄ ᷅ ᷆ ᷇ ᷈ ᷉), double marks (͜ ͟ ͡, straddling two
+      letters), stress and length marks (ˈ ˌ ː ˑ), tone bars (˥ ˦ ˧ ˨ ˩),
+      ˗ ꞊ ′ Ꞌ ꞌ ˳ ‿; ″ ˮ ꞉ from existing glyphs.
+    * ʹ (U+02B9) is the Greek numeral sign ʹ (U+0374), which decomposes to
+      it: HarfBuzz now shows U+0374 with the U+02B9 glyph, the same outline.
+
 2026-10-14 Version 0.100 (development), Phase 1: hand-placed hooks
 
     * ʋ Ʋ ƴ Ƴ Ɲ Ƈ ƈ Ɠ, drafted by scripts/derive.py (new operation attach:

@@ -262,6 +262,11 @@ RECIPES = [
                           [("f", F_HOOK, (312, 1100), (0.6, 0.6, 1170, 1360))])),
     ("ƈ", "attach", "c", ("x", [(600, 500, 900, BIG)],
                           [("f", F_HOOK, (312, 1100), (0.5, 0.5, 630, 800))])),
+    # spacing modifiers made of existing glyphs
+    ("ˮ", "double", "uni02BC", None),
+    ("꞉", "alias", "colon", None),
+    ("ʹ", "alias", "uni0374", None),  # U+0374 decomposes to U+02B9: same glyph
+    ("″", "double", "uni2032", None),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
