@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: derived letters
+
+    * 48 characters drafted from existing glyphs by scripts/derive.py, all
+      marked as drafts for review:
+      - same shape: ɑ ɛ ɣ ɸ ɩ ꞵ ꭓ ꞷ (Greek), һ (h), Ү (Y), Ɪ (I), ǀ ǁ ǃ;
+      - IPA small capitals from the small caps: ɢ ɪ ʟ ɴ ʀ ʏ ʙ ʜ ᴅ ɶ, ʁ;
+      - turned: ɐ ǝ/ə/ә ɥ ɯ ɹ ʌ ʍ ʎ ɒ Ʌ Ɐ Ɯ ⅄;
+      - mirrored: ɔ Ɔ Ǝ ɘ ɜ;
+      - glottal stops ʔ Ɂ ʕ from the question mark.
+    * Review sheet: other drafts are shown next to the letter they come from.
+
 2026-10-14 Version 0.100 (development), Phase 1: small caps at 1040, ẞ
 
     * Small caps raised from 960 to 1040 units (73% of cap height, 156 above

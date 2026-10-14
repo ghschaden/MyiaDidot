@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni018E" format="2">
+	<unicode hex="018E"/>
+	<advance width="1426"/>
+	<outline>
+		<contour>
+			<point x="1304" y="0" type="line"/>
+			<point x="98" y="0" type="line"/>
+			<point x="92" y="447" type="line"/>
+			<point x="144" y="447" type="line"/>
+			<point x="162" y="350"/>
+			<point x="176" y="283"/>
+			<point x="246" y="187" type="curve" smooth="yes"/>
+			<point x="318" y="88"/>
+			<point x="439" y="52"/>
+			<point x="567" y="52" type="curve" smooth="yes"/>
+			<point x="904" y="52" type="line"/>
+			<point x="904" y="724" type="line"/>
+			<point x="718" y="724" type="line" smooth="yes"/>
+			<point x="640" y="724"/>
+			<point x="585" y="674"/>
+			<point x="548" y="618" type="curve" smooth="yes"/>
+			<point x="515" y="568"/>
+			<point x="494" y="463"/>
+			<point x="494" y="434" type="curve"/>
+			<point x="446" y="434" type="line"/>
+			<point x="446" y="1068" type="line"/>
+			<point x="494" y="1068" type="line"/>
+			<point x="494" y="1039"/>
+			<point x="515" y="934"/>
+			<point x="548" y="884" type="curve" smooth="yes"/>
+			<point x="585" y="828"/>
+			<point x="640" y="776"/>
+			<point x="718" y="776" type="curve" smooth="yes"/>
+			<point x="904" y="776" type="line"/>
+			<point x="904" y="1382" type="line"/>
+			<point x="544" y="1382" type="line" smooth="yes"/>
+			<point x="449" y="1382"/>
+			<point x="368" y="1351"/>
+			<point x="316" y="1278" type="curve" smooth="yes"/>
+			<point x="254" y="1191"/>
+			<point x="238" y="1115"/>
+			<point x="226" y="1058" type="curve"/>
+			<point x="174" y="1058" type="line"/>
+			<point x="184" y="1434" type="line"/>
+			<point x="1304" y="1434" type="line"/>
+			<point x="1304" y="1382" type="line"/>
+			<point x="1112" y="1382" type="line"/>
+			<point x="1112" y="52" type="line"/>
+			<point x="1304" y="52" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="DotBelow" x="692" y="-20"/>
+	<anchor name="Bottom" x="692" y="0"/>
+	<anchor name="TopCap" x="692" y="1580"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

@@ -41,10 +41,38 @@ PREAMBLE = r"""\documentclass[10pt]{article}
   {\fontsize{%(size)d}{%(lead)d}\selectfont\guides{4.2cm}#4\,{\smallcapfont #6}\,#5}\newline
   {\labelfont #1 \textcolor{#3}{#2}}\newline
   {\fontsize{13}{15}\selectfont n{\smallcapfont #6}n H{\smallcapfont #6}H}}
+%% \odraft{label}{reference}{character}: a drafted letter next to its source
+\newcommand\odraft[3]{%%
+  {\fontsize{%(size)d}{%(lead)d}\selectfont\guides{4.2cm}#2\quad#3}\newline
+  {\labelfont #1 \textcolor{red}{DRAFT}}\newline
+  {\fontsize{13}{15}\selectfont x#3x H#3H}}
 %% four cells per row; each row its own table so pages break between rows
 \newenvironment{cells}{\noindent\begin{tabular}{@{}*{4}{p{4.4cm}}@{}}}{\end{tabular}\par\medskip}
 \begin{document}
 """
+
+
+def draft_sources(ufo):
+    """Glyph name -> the character a draft was made from (derive.py), for
+    showing the two side by side."""
+    import derive
+
+    cmap = {u: g.name for g in ufo for u in g.unicodes}
+    by_name = {}
+    for ch, _op, source, _band in derive.RECIPES:
+        name = cmap.get(ord(ch), derive.glyph_name(ch))
+        base = source.removesuffix(".sc")
+        if len(source) == 1:
+            ref = source
+        elif base in ufo and ufo[base].unicode:
+            ref = chr(ufo[base].unicode)
+            if source.endswith(".sc"):
+                ref = ref.upper()
+        else:
+            ref = ""
+        by_name[name] = ref
+    by_name["uni1E9E"] = "ß"
+    return by_name
 
 
 def tex(ch):
@@ -94,12 +122,14 @@ def main():
     row = []
     if others:
         out.append(r"{\large\bfseries Other drafts}\par\medskip")
+        sources = draft_sources(ufo)
         cells = []
         for g in others:
             ch = chr(g.unicode)
-            lo = ch.lower() if len(ch.lower()) == 1 else ch
-            cells.append(r"\cell{%s}{%s}{%s}{%s}{%s}" % (g.name, "DRAFT", "red", tex(ch), tex(lo)))
-        out.append(r"\begin{cells}" + " & ".join(cells) + r"\end{cells}")
+            ref = sources.get(g.name, "")
+            cells.append(r"\odraft{%s %s}{%s}{%s}" % (g.name, ch, tex(ref), tex(ch)))
+        for i in range(0, len(cells), 4):
+            out.append(r"\begin{cells}" + " & ".join(cells[i:i + 4]) + r"\end{cells}")
 
     def flush():
         if row:
