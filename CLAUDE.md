@@ -32,7 +32,7 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   comparing 960/1000/1040); small caps take the `.cap` accents at TopCap =
   height + 146. To redraft: `smallcaps_draft.py` then `smallcaps.py
   --drafts ... --redraft` (replaces only unreviewed drafts).
-- New letters derived from existing ones (same shape, turned, mirrored, with a bar, slash or middle tilde merged in):
+- New letters derived from existing ones (same shape, turned, mirrored, with a bar, slash or middle tilde merged in, the Ц tail added, enlarged to capital weight):
   recipes in `scripts/derive.py` (also their small caps, "ɔ.sc"); drafts
   carry `org.myiadidot.draft` and are reviewed in `drafts-review.pdf`.
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or

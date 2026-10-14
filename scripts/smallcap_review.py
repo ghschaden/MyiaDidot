@@ -66,6 +66,8 @@ GROUPS = [
     ("stroke", "With a bar, slash or tilde",
      ("A bar, slash or middle tilde merged into an existing letter (Ɨ from I, ȼ from c, "
       "ɫ from l); bars are 64/56 units thick, as in Đ and ħ.")),
+    ("parts", "Built from parts",
+     "The descender of Ц added to Н Ч К Ж Х; ү from v and the descender of p."),
     ("other", "From punctuation", "ʔ from the question mark, clicks from | and !."),
     ("drawn", "Drawn", "New outlines drafted from a related letter."),
 ]
@@ -85,7 +87,8 @@ def draft_groups(ufo):
             group = "sc" if source.endswith(".sc") else "same"
         else:
             group = {"turn": "turn", "flip": "turn", "mirror": "mirror", "bar": "stroke",
-                     "slash": "stroke", "midtilde": "stroke"}.get(op, "other")
+                     "slash": "stroke", "midtilde": "stroke", "tail": "parts",
+                     "descend": "parts", "enlarge": "drawn"}.get(op, "other")
         base = source.removesuffix(".sc")
         if len(source) == 1:
             ref = source

@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: Cyrillic descenders, schwa
+
+    * Cyrillic letters with a descender, the curled tail of Ц added under
+      the right stem (Ң ң Ҷ ҷ) or the right foot (Қ қ Җ җ Ҳ ҳ); Һ is a
+      turned Ч; ү is v with the descender of p, ұ and Ұ barred; drafts.
+      This completes GF_Cyrillic_Core.
+    * Capital schwa Ә (and Latin Ə, the same glyph): the turned e scaled to
+      capital size and brought to the stem and hairline of O. Small caps
+      for ə/ә the same way at small-cap size.
+    * Small caps for all these case pairs, built the same way from the
+      small caps.
+
 2026-10-14 Version 0.100 (development), Phase 1: barred letters
 
     * 47 letters with a bar, slash or middle tilde, drafted by

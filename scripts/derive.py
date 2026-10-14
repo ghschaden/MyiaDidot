@@ -40,6 +40,7 @@ from pathlib import Path
 import pathops
 import ufoLib2
 from fontTools.pens.areaPen import AreaPen
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
 from fontTools.pens.reverseContourPen import ReverseContourPen
 from fontTools.pens.roundingPen import RoundingPen
@@ -157,10 +158,26 @@ RECIPES = [
     ("ᵴ", "midtilde", "s", ("x",)),
     ("ᵵ", "midtilde", "t", ("x",)),
     ("ᵶ", "midtilde", "z", ("x",)),
+    # Cyrillic with a descender: the tail of Ц under the right stem
+    ("Ң", "tail", "uni041D", ("c", "stem")),
+    ("ң", "tail", "uni043D", ("x", "stem")),
+    ("Ҷ", "tail", "uni0427", ("c", "stem")),
+    ("ҷ", "tail", "uni0447", ("x", "stem")),
+    ("Қ", "tail", "uni041A", ("c", "foot")),
+    ("қ", "tail", "uni043A", ("x", "foot")),
+    ("Җ", "tail", "uni0416", ("c", "foot")),
+    ("җ", "tail", "uni0436", ("x", "foot")),
+    ("Ҳ", "tail", "uni0425", ("c", "foot")),
+    ("ҳ", "tail", "uni0445", ("x", "foot")),
+    ("Һ", "turn", "uni0427", "c"),
+    ("ү", "descend", "v", ("x", "p")),
+    ("ұ", "bar", "ү", ("x", -200)),
+    # capital schwa: the turned e at capital size and weight
+    ("Ә", "enlarge", "ǝ", ("o", "O")),
+    ("Ə", "alias", "Ә", None),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
-    # ə/ә: no small cap until the capital Ə is drawn (a turned E.sc would be Ǝ)
     ("ɐ.sc", "turn", "a.sc", "s"),
     ("ʌ.sc", "turn", "v.sc", "s"),
     ("ɯ.sc", "turn", "m.sc", "s"),
@@ -180,6 +197,16 @@ RECIPES = [
     ("ȼ.sc", "slash", "c.sc", ("s", "box", 0.25, -90, 0.8, 1130)),
     ("ⱦ.sc", "slash", "t.sc", ("s", "box", 0.25, -60, 0.75, 1040)),
     ("ɫ.sc", "midtilde", "l.sc", ("s", None, "first")),
+    ("ң.sc", "tail", "h.sc", ("s", "stem")),
+    ("ҷ.sc", "tail", "uni0447.sc", ("s", "stem")),
+    ("қ.sc", "tail", "k.sc", ("s", "foot")),
+    ("җ.sc", "tail", "uni0436.sc", ("s", "foot")),
+    ("ҳ.sc", "tail", "uni0445.sc", ("s", "foot")),
+    ("һ.sc", "turn", "uni0447.sc", "s"),
+    ("ү.sc", "alias", "y.sc", None),
+    ("ұ.sc", "bar", "y.sc", ("s", 260)),
+    ("ә.sc", "enlarge", "ǝ", ("o", "o.sc")),
+    ("ə.sc", "alias", "ә.sc", None),
     # the IPA small capitals with a stroke are those small caps
     ("ᵻ", "alias", "ɨ.sc", None),
     ("ᵾ", "alias", "ʉ.sc", None),
@@ -351,6 +378,151 @@ def draw_merged(font, src, dst, extra):
 
 SHAPES = {"bar": bar_shape, "slash": slash_shape, "midtilde": midtilde_shape}
 
+BIG = 10000
+# the descender of Ц ц (and the small cap) is the model for Қ Ң Җ Ҳ Ҷ
+TAIL = {"c": "uni0426", "x": "uni0446", "s": "uni0446.sc"}
+TAIL_Y = 300  # straight stem in all three
+
+
+def to_path(font, glyph=None, rec=None):
+    path = pathops.Path()
+    if glyph is not None:
+        rec = DecomposingRecordingPen(font)
+        glyph.draw(rec)
+    rec.replay(path.getPen())
+    return path
+
+
+def rect_path(x0, y0, x1, y1):
+    rec = RecordingPen()
+    rect(rec, x0, y0, x1, y1)
+    return to_path(None, rec=rec)
+
+
+def path_op(a, b, op):
+    return pathops.op(a, b, getattr(pathops.PathOp, op))
+
+
+def shifted(path, dx, dy=0):
+    rec = RecordingPen()
+    path.draw(TransformPen(rec, (1, 0, 0, 1, dx, dy)))
+    return to_path(None, rec=rec)
+
+
+def foot_top(font, name, stem):
+    """Height of the foot serif under a stem (x0, x1): the lowest y where the
+    ink there is no wider than the stem."""
+    for y in range(2, 200, 2):
+        s = [iv for iv in stems_at(font, name, y) if iv[0] <= stem[1] and iv[1] >= stem[0]]
+        if s and s[0][1] - s[0][0] <= stem[1] - stem[0] + 2:
+            return y - 2
+    return 0
+
+
+def tail_path(font, source, band, mode):
+    """The letter with the descender of Ц: 'stem' replaces the foot of the
+    right stem (Ң Ҷ); 'foot' hangs it under the right foot serif (Қ Җ Ҳ)."""
+    tsrc = TAIL[band]
+    sa, sb = stems_at(font, tsrc, TAIL_Y)[-1]
+    letter = to_path(font, font[source])
+    if mode == "stem":
+        ta, tb = stems_at(font, source, TAIL_Y)[-1]
+        letter = path_op(letter, rect_path(ta, -BIG, BIG, foot_top(font, source, (ta, tb))), "DIFFERENCE")
+        keep = rect_path(sa, -BIG, BIG, TAIL_Y)
+        dx = ta - sa
+    else:
+        fb = stems_at(font, source, 10)[-1][1]
+        keep = rect_path(sa, -BIG, BIG, 30)
+        dx = fb - sb - (sb - sa) / 2
+    keep = path_op(keep, rect_path(-BIG, -BIG, BIG, 0), "UNION")
+    piece = shifted(path_op(to_path(font, font[tsrc]), keep, "INTERSECTION"), dx)
+    out = path_op(letter, piece, "UNION")
+    rsb = font[tsrc].width - ink_bounds(font, tsrc)[2]
+    return out, piece.bounds[2] + rsb
+
+
+def vertical_runs(font, name, x):
+    """(y0, y1) of the ink crossed by a vertical line at x, bottom to top."""
+    cut = path_op(to_path(font, font[name]), rect_path(x - 0.5, -BIG, x + 0.5, BIG), "INTERSECTION")
+    runs = []
+    for contour in cut.contours:
+        b = contour.bounds
+        runs.append((b[1], b[3]))
+    return sorted(runs)
+
+
+def strokes(font, name):
+    """(ink box, round stem at mid height, top hairline) of an o-like glyph."""
+    b = ink_bounds(font, name)
+    s = stems_at(font, name, (b[1] + b[3]) / 2)[0]
+    top = vertical_runs(font, name, (b[0] + b[2]) / 2)[-1]
+    return b, s[1] - s[0], top[1] - top[0]
+
+
+def embolden(rec, ax, ay):
+    """Thicken vertical strokes by ax and horizontal ones by ay (negative:
+    thinner), moving each point along its outline's normal."""
+    glyph = ufoLib2.objects.Glyph()
+    rec.replay(glyph.getPen())
+    for contour in glyph.contours:
+        pts = [(p.x, p.y) for p in contour.points]
+        area = sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
+        sign = 1 if area > 0 else -1
+        n = len(pts)
+        moved = []
+        for i in range(n):
+            (x0, y0), (x1, y1) = pts[i - 1], pts[(i + 1) % n]
+            length = math.hypot(x1 - x0, y1 - y0) or 1.0
+            nx, ny = (y1 - y0) / length, -(x1 - x0) / length
+            moved.append((pts[i][0] + sign * nx * ax / 2, pts[i][1] + sign * ny * ay / 2))
+        for p, (x, y) in zip(contour.points, moved, strict=True):
+            p.x, p.y = x, y
+    return glyph
+
+
+def enlarge(font, source, src_ref, dst_ref):
+    """The source scaled so that src_ref's strokes and height become
+    dst_ref's (ə -> Ә with o -> O): scaled uniformly, then the stems and
+    hairlines brought to dst_ref's weight; sidebearings of dst_ref."""
+    (b0, s0, h0), (b1, s1, h1) = strokes(font, src_ref), strokes(font, dst_ref)
+    k = ((b1[3] - b1[1]) - h1) / ((b0[3] - b0[1]) - h0)
+    rec = DecomposingRecordingPen(font)
+    font[source].draw(TransformPen(rec, (k, 0, 0, k, 0, 0)))
+    glyph = embolden(rec, s1 - k * s0, h1 - k * h0)
+    out = RecordingPen()
+    glyph.draw(out)
+    bp = BoundsPen(None)
+    out.replay(bp)
+    x0, y0, x1, _ = bp.bounds
+    lsb, rsb = b1[0], font[dst_ref].width - b1[2]
+    moved = RecordingPen()
+    out.replay(TransformPen(moved, (1, 0, 0, 1, lsb - x0, b1[1] - y0)))
+    return moved, round(lsb + (x1 - x0) + rsb)
+
+
+def draw_path(font, src, dst, out):
+    """Draw a merged outline (a pathops Path or a recording) into dst,
+    rounded and in the source's contour direction."""
+    rec = RecordingPen()
+    out.draw(rec) if hasattr(out, "draw") else out.replay(rec)
+    ref = DecomposingRecordingPen(font)
+    src.draw(ref)
+    pen = RoundingPen(dst.getPen())
+    if orientation(rec) != orientation(ref):
+        pen = ReverseContourPen(pen)
+    rec.replay(pen)
+
+
+def descend(font, source, band, model):
+    """A v with a stem down to the descender (ү): the stem and foot serif
+    of the model's descender (p) under the vertex."""
+    vx = sum(stems_at(font, source, 26)[0]) / 2
+    ma, mb = stems_at(font, model, -200)[0]
+    piece = path_op(to_path(font, font[model]), rect_path(-BIG, -BIG, BIG, -60), "INTERSECTION")
+    stem = rect_path(ma, -80, mb, 120)
+    piece = shifted(path_op(piece, stem, "UNION"), vx - (ma + mb) / 2)
+    return path_op(to_path(font, font[source]), piece, "UNION")
+
 
 def mirrored_anchors(src, dst, width):
     for a in src.anchors:
@@ -410,6 +582,27 @@ def build(font, ch, op, source, band):
         draw_merged(font, src, g, SHAPES[op](font, source, sband, tuple(rest)))
         for a in src.anchors:
             g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "tail":
+        sband, mode = band
+        out, right = tail_path(font, source, sband, mode)
+        g.width = max(w, round(right))
+        draw_path(font, src, g, out)
+        for a in src.anchors:
+            g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "descend":
+        sband, model = band
+        g.width = w
+        draw_path(font, src, g, descend(font, source, sband, model))
+        for a in src.anchors:
+            if a.name not in ("Bottom", "DotBelow", "Cedilla"):
+                g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "enlarge":
+        src_ref, dst_ref = band
+        out, g.width = enlarge(font, source, src_ref, dst_ref)
+        draw_path(font, src, g, out)
+        ref = font[dst_ref]
+        for a in ref.anchors:
+            g.appendAnchor({"name": a.name, "x": round(a.x * g.width / ref.width), "y": a.y})
     else:
         raise ValueError(op)
     if small_cap:
