@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: hooked letters
+
+    * Letters with a hook, drafted by scripts/derive.py (new operation hook:
+      a stem's end replaced by a hook taken from the font, the top of f or
+      the descender of ȷ, mirrored as needed and scaled by the stem ratio):
+      ɓ ɗ ƙ ɦ ƭ, Ɓ Ɗ (the stem kept, the hook curling left), ɲ ɱ Ƒ, and the
+      retroflex hooks ʈ Ʈ ɖ ɭ ɳ ɽ Ɽ. Ɖ is Đ.
+    * Capitals of lowercase-only shapes, enlarged to capital weight: Ɛ Ɑ Ɩ
+      Ꞷ; ɂ is ʔ at lowercase size; Ʃ is Σ.
+    * Small caps for the new case pairs (ɓ ɗ ƒ ʈ ɖ ɽ ɛ ɑ ɩ ꞷ ɂ).
+    * Not yet: Ƙ (the hook runs into K's arm) and Ɲ (N's left stem is a
+      hairline); to be drawn.
+
 2026-10-14 Version 0.100 (development), Phase 1: Vietnamese complete
 
     * Hook above (U+0309) and horn (U+031B) drafted by

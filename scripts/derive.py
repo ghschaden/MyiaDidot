@@ -175,6 +175,33 @@ RECIPES = [
     # capital schwa: the turned e at capital size and weight
     ("Ә", "enlarge", "ǝ", ("o", "O")),
     ("Ə", "alias", "Ә", None),
+    # hooks from the font: (band, kind, stem, cut, removed left/right of it)
+    ("ɓ", "hook", "b", ("x", "up-right", "first", 1000, 300, 0)),
+    ("ɗ", "hook", "d", ("x", "up-right", "last", 1000, 300, 0)),
+    ("ƙ", "hook", "k", ("x", "up-right", "first", 1000, 300, 0)),
+    ("ɦ", "hook", "h", ("x", "up-right", "first", 1000, 300, 0)),
+    ("ƭ", "hook", "t", ("x", "up-right", "first", 900, 300, 0)),
+    # Ɓ Ɗ keep their stem (the top bar meets it); only the serif goes
+    ("Ɓ", "hook", "B", ("c", "up-left", "first", 1100, 300, -208)),
+    ("Ɗ", "hook", "D", ("c", "up-left", "first", 1100, 300, -208)),
+    ("ɲ", "hook", "n", ("x", "down-left", "first", 48, 160, 160)),
+    ("ɱ", "hook", "m", ("x", "down-left", "last", 48, 160, 160)),
+    ("Ƒ", "hook", "F", ("c", "down-left", "first", 52, 200, 200)),
+    ("ʈ", "hook", "t", ("x", "down-right", "first", 290, 20, 400)),
+    ("Ʈ", "hook", "T", ("c", "down-right", "first", 52, 200, 200)),
+    ("ɖ", "hook", "d", ("x", "down-right", "last", 48, 0, 200)),
+    ("Ɖ", "alias", "Eth", None),
+    ("ɭ", "hook", "l", ("x", "down-right", "first", 48, 160, 160)),
+    ("ɳ", "hook", "n", ("x", "down-right", "last", 48, 160, 160)),
+    ("ɽ", "hook", "r", ("x", "down-right", "first", 48, 160, 160)),
+    ("Ɽ", "hook", "R", ("c", "down-right", "first", 52, 200, 200)),
+    # capitals of lowercase-only shapes: enlarged to capital weight
+    ("Ɛ", "enlarge", "ɛ", ("o", "O")),
+    ("Ɑ", "enlarge", "ɑ", ("o", "O")),
+    ("Ɩ", "enlarge", "ɩ", ("o", "O")),
+    ("Ꞷ", "enlarge", "ꞷ", ("o", "O")),
+    ("ɂ", "enlarge", "ʔ", ("O", "o")),
+    ("Ʃ", "alias", "Sigma", None),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
@@ -207,6 +234,18 @@ RECIPES = [
     ("ұ.sc", "bar", "y.sc", ("s", 260)),
     ("ә.sc", "enlarge", "ǝ", ("o", "o.sc")),
     ("ə.sc", "alias", "ә.sc", None),
+    ("ɓ.sc", "hook", "b.sc", ("s", "up-left", "first", 760, 260, -176)),
+    ("ɗ.sc", "hook", "d.sc", ("s", "up-left", "first", 760, 260, -176)),
+    ("ɖ.sc", "alias", "dcroat.sc", None),
+    # ɲ.sc: no small cap until Ɲ is drawn (the thin left stem of N needs its own hook)
+    ("ƒ.sc", "hook", "f.sc", ("s", "down-left", "first", 48, 160, 160)),
+    ("ʈ.sc", "hook", "t.sc", ("s", "down-right", "first", 48, 160, 160)),
+    ("ɽ.sc", "hook", "r.sc", ("s", "down-right", "first", 48, 160, 160)),
+    ("ɛ.sc", "enlarge", "ɛ", ("o", "o.sc")),
+    ("ɑ.sc", "enlarge", "ɑ", ("o", "o.sc")),
+    ("ɩ.sc", "enlarge", "ɩ", ("o", "o.sc")),
+    ("ꞷ.sc", "enlarge", "ꞷ", ("o", "o.sc")),
+    ("ɂ.sc", "enlarge", "ʔ", ("O", "o.sc")),
     # the IPA small capitals with a stroke are those small caps
     ("ᵻ", "alias", "ɨ.sc", None),
     ("ᵾ", "alias", "ʉ.sc", None),
@@ -513,6 +552,55 @@ def draw_path(font, src, dst, out):
     rec.replay(pen)
 
 
+# hooks are taken from the font: the top of f (up), the descender of ȷ (down)
+HOOK_SRC = {"up": ("f", 1512), "down": ("uni0237", -628)}
+# top or bottom the hook reaches, per band (up) and for descenders (down)
+HOOK_TOP = {"x": 1512, "c": 1462, "s": 1062}
+HOOK_BOTTOM = {"x": -628, "c": -628, "s": -500}
+
+
+def hook_path(font, source, band, kind, pick, cut, left, right):
+    """The letter with a stem's end replaced by a hook from the font: kind
+    'up-right' (ɓ: the top of f), 'up-left' (Ɓ: f mirrored), 'down-left'
+    (ɲ: the descender of ȷ) or 'down-right' (ʈ: ȷ mirrored). The stem
+    (first/last at mid height) loses its ink beyond cut, from left of it to
+    right of it; the hook is scaled by the stem ratio to reach the band's
+    top (or the descender)."""
+    up = kind.startswith("up")
+    mirror = kind in ("up-left", "down-right")  # f hooks right, ȷ left
+    hsrc, hend = HOOK_SRC["up" if up else "down"]
+    probe = 300 if not up else max(cut - 150, 400)
+    stems = stems_at(font, source, probe)
+    ta, tb = stems[0] if pick == "first" else stems[-1]
+    # f: stem first, ball to the right; ȷ: stem last, ball to the left
+    hs = stems_at(font, hsrc, 900)[0] if up else stems_at(font, hsrc, -200)[-1]
+    k = (tb - ta) / (hs[1] - hs[0])
+    if up:
+        # start the hook where f's stem is still straight (below 1000)
+        cut = min(cut, HOOK_TOP[band] - (hend - 1000) * k)
+        reach = HOOK_TOP[band] - cut
+        s0, s1 = hend - reach / k, BIG
+    else:
+        reach = cut - HOOK_BOTTOM[band]
+        s0, s1 = -BIG, hend + reach / k
+    piece = path_op(to_path(font, font[hsrc]), rect_path(-BIG, s0, BIG, s1), "INTERSECTION")
+    # stem of the hook source where it meets the letter
+    js = stems_at(font, hsrc, s0 + 2)[0] if up else stems_at(font, hsrc, s1 - 2)[-1]
+    jx = (js[0] + js[1]) / 2
+    sx = -k if mirror else k
+    tx = (ta + tb) / 2 - sx * jx
+    ty = cut - k * (s0 if up else s1)
+    rec = RecordingPen()
+    piece.draw(TransformPen(rec, (sx, 0, 0, k, tx, ty)))
+    piece = to_path(None, rec=rec)
+    if mirror:
+        piece = path_op(piece, piece, "UNION")  # fix the reversed winding
+    cut_box = (rect_path(ta - left, cut, tb + right, BIG) if up
+               else rect_path(ta - left, -BIG, tb + right, cut))
+    letter = path_op(to_path(font, font[source]), cut_box, "DIFFERENCE")
+    return path_op(letter, piece, "UNION"), piece.bounds
+
+
 def descend(font, source, band, model):
     """A v with a stem down to the descender (ү): the stem and foot serif
     of the model's descender (p) under the vertex."""
@@ -530,10 +618,10 @@ def mirrored_anchors(src, dst, width):
             dst.appendAnchor({"name": a.name, "x": width - a.x, "y": a.y})
 
 
-def build(font, ch, op, source, band):
+def build(font, ch, op, source, band, name=None):
     src = font[source]
     small_cap = ch.endswith(".sc")
-    g = font.newGlyph(glyph_name(ch))
+    g = font.newGlyph(name or glyph_name(ch))
     if not small_cap:
         g.unicodes = [ord(ch)]
     w = src.width
@@ -589,6 +677,14 @@ def build(font, ch, op, source, band):
         draw_path(font, src, g, out)
         for a in src.anchors:
             g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "hook":
+        sband, kind, pick, cut, left, right = band
+        out, (_, _, x1, _) = hook_path(font, source, sband, kind, pick, cut, left, right)
+        rsb = w - ink_bounds(font, source)[2]
+        g.width = max(w, round(x1 + rsb))
+        draw_path(font, src, g, out)
+        for a in src.anchors:
+            g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
     elif op == "descend":
         sband, model = band
         g.width = w
@@ -628,22 +724,31 @@ def main():
     font = ufoLib2.Font.open(args.ufo)
     cmap = {u: g.name for g in font for u in g.unicodes}
     made, kept = [], []
+
+    def resolve(c):
+        """Glyph name of a character, or of its small cap ("ƒ.sc" -> florin.sc)."""
+        if c.endswith(".sc") and len(c) == 4:
+            return cmap.get(ord(c[0]), glyph_name(c[0])) + ".sc"
+        return cmap.get(ord(c), glyph_name(c))
+
     for ch, op, source, band in RECIPES:
         if only and ch not in only:
             continue
-        if len(source) == 1:  # an earlier recipe's character
-            source = cmap.get(ord(source), glyph_name(source))
-        elif source.endswith(".sc") and len(source) == 4 and not source[0].isascii():
-            source = glyph_name(source)
+        if len(source) == 1 or (source.endswith(".sc") and len(source) == 4
+                                and not source[0].isascii()):
+            source = resolve(source)  # an earlier recipe's character
         if source not in font:
             sys.exit(f"{ch}: source {source} missing")
-        name = glyph_name(ch) if ch.endswith(".sc") else cmap.get(ord(ch), glyph_name(ch))
+        name = resolve(ch)
         if name in font:
             if not (args.redraft and font[name].lib.get(DRAFT_KEY)):
                 kept.append(ch)
                 continue
             del font[name]
-        g = build(font, ch, op, source, band)
+        try:
+            g = build(font, ch, op, source, band, name)
+        except (IndexError, KeyError, ValueError) as e:
+            sys.exit(f"{ch}: {e!r}")
         if not ch.endswith(".sc"):
             cmap[ord(ch)] = g.name
         made.append(ch)
