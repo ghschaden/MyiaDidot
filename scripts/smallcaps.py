@@ -404,6 +404,17 @@ def scale_kerning(font, log):
             font.kerning[(l2, r2)] = round(value * SCALE)
             n += 1
     log.append(f"kerning: {len(new_groups)} groups, {n} pairs scaled by {SCALE:.3f}")
+    # Typed Catalan l·l: kern the middle dot over the foot of l.sc, where
+    # ŀ (ldot.sc) has it, and keep the total advance of ŀl.
+    if all(n in font for n in ("ldot.sc", "l.sc", "periodcentered")):
+        dot = next(c for c in font["ldot.sc"].components if c.baseGlyph != "l.sc")
+        target = dot.transformation[4] + ink_bounds(font, dot.baseGlyph)[0]
+        left = font["l.sc"].width + ink_bounds(font, "periodcentered")[0]
+        k1 = round(target - left)
+        k2 = font["ldot.sc"].width - font["l.sc"].width - k1 - font["periodcentered"].width
+        font.kerning[("l.sc", "periodcentered")] = k1
+        font.kerning[("periodcentered", "l.sc")] = k2
+        log.append(f"kerning: l.sc·l.sc {k1}/{k2}")
 
 
 def smcp_map(font):
