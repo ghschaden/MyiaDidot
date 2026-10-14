@@ -131,8 +131,12 @@ export const register: Register = on => {
     if (made.exitCode !== 0) {
       return { text: `make proof failed:\n${(made.stdout + made.stderr).trimEnd().split('\n').slice(-30).join('\n')}` }
     }
-    const pdf = `${dir}/build/proofs/charset.pdf`
-    await run($, dir, ['xdg-open', pdf]).catch(() => undefined)
-    return { text: `Proofs built: ${pdf} (opened), ${dir}/build/proofs/proof.pdf` }
+    const proofs = `${dir}/build/proofs`
+    for (const name of ['charset', 'smallcaps-review']) {
+      await run($, dir, ['xdg-open', `${proofs}/${name}.pdf`]).catch(() => undefined)
+    }
+    return {
+      text: `Proofs built in ${proofs}: charset.pdf and smallcaps-review.pdf (opened), proof.pdf, smallcaps.pdf`,
+    }
   })
 }
