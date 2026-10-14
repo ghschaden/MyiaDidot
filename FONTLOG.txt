@@ -26,6 +26,15 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: arrows, shapes, currency
+
+    * Arrows ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙, geometric shapes ■ □ ▪ ▫ ▲ △ ▴ ▵ ▶ ▷ ▸ ▹
+      ▼ ▽ ▾ ▿ ◀ ◁ ◂ ◃ ◆ ◇ ○ ● ◦ and circled letters Ⓐ Ⓓ ⓐ, drafted by
+      scripts/draft_symbols.py on the math axis (514), 72-unit strokes.
+    * Currency signs made of letters with strokes (derive.py, operation
+      lines): ₦ ₩ ₭ ₱ ₽ ₮ ₸ ₲ ₵ ฿ ₿ ₡ ₫ ₨; ∅ is a slashed zero. Drafts.
+    * Still to draw: ₪ ₴ ₹ ₺ ₼ ₾ ℓ ℮.
+
 2026-10-14 Version 0.100 (development), Phase 1: IPA diacritics and symbols
 
     * 46 IPA diacritics and symbols drafted by scripts/draft_ipa_marks.py,

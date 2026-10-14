@@ -267,6 +267,24 @@ RECIPES = [
     ("꞉", "alias", "colon", None),
     ("ʹ", "alias", "uni0374", None),  # U+0374 decomposes to U+02B9: same glyph
     ("″", "double", "uni2032", None),
+    # currency signs: letters with strokes (band, thickness, strokes)
+    ("₦", "lines", "N", ("c", 64, [(40, 528, 1540, 592), (40, 842, 1540, 906)])),
+    ("₩", "lines", "W", ("c", 64, [(20, 528, 2140, 592), (20, 842, 2140, 906)])),
+    ("₭", "lines", "K", ("c", 64, [(40, 685, 1100, 749)])),
+    ("₱", "lines", "P", ("c", 64, [(30, 1046, 1350, 1110), (30, 1220, 1350, 1284)])),
+    ("₽", "lines", "P", ("c", 64, [(30, 300, 960, 364)])),
+    ("₮", "lines", "T", ("c", 64, [((560, 380), (1060, 620)), ((560, 700), (1060, 940))])),
+    ("₸", "lines", "T", ("c", 64, [(134, 1120, 1490, 1184)])),
+    ("₲", "lines", "G", ("c", 64, [(806, -180, 870, 1640)])),
+    ("₵", "lines", "C", ("c", 64, [(806, -180, 870, 1640)])),
+    ("฿", "lines", "B", ("c", 64, [(668, -200, 732, 1634)])),
+    ("₿", "lines", "B", ("c", 64, [(538, 1300, 602, 1634), (778, 1300, 842, 1634),
+                                    (538, -200, 602, 120), (778, -200, 842, 120)])),
+    ("₡", "lines", "C", ("c", 64, [((540, -150), (880, 1610)), ((840, -150), (1180, 1610))])),
+    ("₫", "lines", "dcroat", ("x", 64, [(96, -330, 1098, -266)])),
+    ("₨", "attach", "R", ("c", [], [("s", (-BIG, -BIG, BIG, BIG), (0, 0), (1, 1, 1490, 0))],
+                          1490 + 840)),
+    ("∅", "slash", "zero", ("c", "box", -0.08, -140, 1.08, 1580)),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
@@ -490,7 +508,21 @@ def draw_merged(font, src, dst, extra):
     out.replay(pen)
 
 
-SHAPES = {"bar": bar_shape, "slash": slash_shape, "midtilde": midtilde_shape}
+def lines_shape(font, source, band, arg):
+    """Straight strokes given by hand, arg (t, items): ((x0, y0), (x1, y1))
+    segments of thickness t, or (x0, y0, x1, y1) boxes (₦ ₩ ₱ ₲ ₡ ...)."""
+    t, items = arg
+    rec = RecordingPen()
+    for it in items:
+        if len(it) == 4:
+            rect(rec, *it)
+        else:
+            stroke(rec, it[0], it[1], t)
+    return rec
+
+
+SHAPES = {"bar": bar_shape, "slash": slash_shape, "midtilde": midtilde_shape,
+          "lines": lines_shape}
 
 # the descender of Ц ц (and the small cap) is the model for Қ Ң Җ Ҳ Ҷ
 TAIL = {"c": "uni0426", "x": "uni0446", "s": "uni0446.sc"}

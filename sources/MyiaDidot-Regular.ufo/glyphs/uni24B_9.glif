@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni24B9" format="2">
+	<unicode hex="24B9"/>
+	<advance width="1800"/>
+	<outline>
+		<contour>
+			<point x="1720" y="640" type="curve" smooth="yes"/>
+			<point x="1720" y="187"/>
+			<point x="1353" y="-180"/>
+			<point x="900" y="-180" type="curve" smooth="yes"/>
+			<point x="447" y="-180"/>
+			<point x="80" y="187"/>
+			<point x="80" y="640" type="curve" smooth="yes"/>
+			<point x="80" y="1093"/>
+			<point x="447" y="1460"/>
+			<point x="900" y="1460" type="curve" smooth="yes"/>
+			<point x="1353" y="1460"/>
+			<point x="1720" y="1093"/>
+		</contour>
+		<contour>
+			<point x="1664" y="640" type="curve" smooth="yes"/>
+			<point x="1664" y="1062"/>
+			<point x="1322" y="1404"/>
+			<point x="900" y="1404" type="curve" smooth="yes"/>
+			<point x="478" y="1404"/>
+			<point x="136" y="1062"/>
+			<point x="136" y="640" type="curve" smooth="yes"/>
+			<point x="136" y="218"/>
+			<point x="478" y="-124"/>
+			<point x="900" y="-124" type="curve" smooth="yes"/>
+			<point x="1322" y="-124"/>
+			<point x="1664" y="218"/>
+		</contour>
+		<contour>
+			<point x="495" y="210" type="line"/>
+			<point x="495" y="241" type="line"/>
+			<point x="610" y="241" type="line"/>
+			<point x="610" y="1039" type="line"/>
+			<point x="495" y="1039" type="line"/>
+			<point x="495" y="1070" type="line"/>
+			<point x="926" y="1070" type="line" smooth="yes"/>
+			<point x="1104" y="1070"/>
+			<point x="1305" y="925"/>
+			<point x="1305" y="637" type="curve" smooth="yes"/>
+			<point x="1305" y="349"/>
+			<point x="1104" y="210"/>
+			<point x="926" y="210" type="curve" smooth="yes"/>
+		</contour>
+		<contour>
+			<point x="735" y="241" type="line"/>
+			<point x="899" y="241" type="line" smooth="yes"/>
+			<point x="1105" y="241"/>
+			<point x="1165" y="428"/>
+			<point x="1165" y="637" type="curve" smooth="yes"/>
+			<point x="1165" y="846"/>
+			<point x="1105" y="1039"/>
+			<point x="899" y="1039" type="curve" smooth="yes"/>
+			<point x="735" y="1039" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

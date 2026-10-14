@@ -1941,6 +1941,59 @@
 			<string>uniA789</string>
 			<string>uni02B9</string>
 			<string>uni2033</string>
+			<string>uni20A6</string>
+			<string>uni20A9</string>
+			<string>uni20AD</string>
+			<string>uni20B1</string>
+			<string>uni20BD</string>
+			<string>uni20AE</string>
+			<string>uni20B8</string>
+			<string>uni20B2</string>
+			<string>uni20B5</string>
+			<string>uni0E3F</string>
+			<string>uni20BF</string>
+			<string>uni20A1</string>
+			<string>uni20AB</string>
+			<string>uni20A8</string>
+			<string>uni2205</string>
+			<string>uni2190</string>
+			<string>uni2191</string>
+			<string>uni2192</string>
+			<string>uni2193</string>
+			<string>uni2194</string>
+			<string>uni2195</string>
+			<string>uni2196</string>
+			<string>uni2197</string>
+			<string>uni2198</string>
+			<string>uni2199</string>
+			<string>uni25A0</string>
+			<string>uni25A1</string>
+			<string>uni25AA</string>
+			<string>uni25AB</string>
+			<string>uni25B2</string>
+			<string>uni25B3</string>
+			<string>uni25B4</string>
+			<string>uni25B5</string>
+			<string>uni25B6</string>
+			<string>uni25B7</string>
+			<string>uni25B8</string>
+			<string>uni25B9</string>
+			<string>uni25BC</string>
+			<string>uni25BD</string>
+			<string>uni25BE</string>
+			<string>uni25BF</string>
+			<string>uni25C0</string>
+			<string>uni25C1</string>
+			<string>uni25C2</string>
+			<string>uni25C3</string>
+			<string>uni25C6</string>
+			<string>uni25C7</string>
+			<string>uni25CB</string>
+			<string>uni25CF</string>
+			<string>uni25E6</string>
+			<string>uni24B6</string>
+			<string>uni24B9</string>
+			<string>uni24D0</string>
 		</array>
 		<key>public.openTypeCategories</key>
 		<dict>
@@ -4438,6 +4491,8 @@
 			<string>base</string>
 			<key>uni04EF.sc</key>
 			<string>base</string>
+			<key>uni0E3F</key>
+			<string>base</string>
 			<key>uni1D05</key>
 			<string>base</string>
 			<key>uni1D43</key>
@@ -5574,6 +5629,32 @@
 			<string>base</string>
 			<key>uni207F</key>
 			<string>base</string>
+			<key>uni20A1</key>
+			<string>base</string>
+			<key>uni20A6</key>
+			<string>base</string>
+			<key>uni20A8</key>
+			<string>base</string>
+			<key>uni20A9</key>
+			<string>base</string>
+			<key>uni20AB</key>
+			<string>base</string>
+			<key>uni20AD</key>
+			<string>base</string>
+			<key>uni20AE</key>
+			<string>base</string>
+			<key>uni20B1</key>
+			<string>base</string>
+			<key>uni20B2</key>
+			<string>base</string>
+			<key>uni20B5</key>
+			<string>base</string>
+			<key>uni20B8</key>
+			<string>base</string>
+			<key>uni20BD</key>
+			<string>base</string>
+			<key>uni20BF</key>
+			<string>base</string>
 			<key>uni2116</key>
 			<string>base</string>
 			<key>uni2144</key>
@@ -5598,7 +5679,85 @@
 			<string>base</string>
 			<key>uni215F</key>
 			<string>base</string>
+			<key>uni2190</key>
+			<string>base</string>
+			<key>uni2191</key>
+			<string>base</string>
+			<key>uni2192</key>
+			<string>base</string>
+			<key>uni2193</key>
+			<string>base</string>
+			<key>uni2194</key>
+			<string>base</string>
+			<key>uni2195</key>
+			<string>base</string>
+			<key>uni2196</key>
+			<string>base</string>
+			<key>uni2197</key>
+			<string>base</string>
+			<key>uni2198</key>
+			<string>base</string>
+			<key>uni2199</key>
+			<string>base</string>
+			<key>uni2205</key>
+			<string>base</string>
+			<key>uni24B6</key>
+			<string>base</string>
+			<key>uni24B9</key>
+			<string>base</string>
+			<key>uni24D0</key>
+			<string>base</string>
+			<key>uni25A0</key>
+			<string>base</string>
+			<key>uni25A1</key>
+			<string>base</string>
+			<key>uni25AA</key>
+			<string>base</string>
+			<key>uni25AB</key>
+			<string>base</string>
+			<key>uni25B2</key>
+			<string>base</string>
+			<key>uni25B3</key>
+			<string>base</string>
+			<key>uni25B4</key>
+			<string>base</string>
+			<key>uni25B5</key>
+			<string>base</string>
+			<key>uni25B6</key>
+			<string>base</string>
+			<key>uni25B7</key>
+			<string>base</string>
+			<key>uni25B8</key>
+			<string>base</string>
+			<key>uni25B9</key>
+			<string>base</string>
+			<key>uni25BC</key>
+			<string>base</string>
+			<key>uni25BD</key>
+			<string>base</string>
+			<key>uni25BE</key>
+			<string>base</string>
+			<key>uni25BF</key>
+			<string>base</string>
+			<key>uni25C0</key>
+			<string>base</string>
+			<key>uni25C1</key>
+			<string>base</string>
+			<key>uni25C2</key>
+			<string>base</string>
+			<key>uni25C3</key>
+			<string>base</string>
+			<key>uni25C6</key>
+			<string>base</string>
+			<key>uni25C7</key>
+			<string>base</string>
+			<key>uni25CB</key>
+			<string>base</string>
 			<key>uni25CC</key>
+			<string>base</string>
+			<key>uni25CF</key>
+			<string>base</string>
+			<key>uni25E6</key>
 			<string>base</string>
 			<key>uni27E6</key>
 			<string>base</string>
