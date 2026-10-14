@@ -26,6 +26,8 @@ import unicodedata
 from pathlib import Path
 
 import ufoLib2
+from fontTools.pens.basePen import BasePen
+from fontTools.pens.boundsPen import BoundsPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from composites import SPECIAL, Builder
@@ -105,6 +107,51 @@ def set_anchors(glyph, anchors):
         glyph.anchors.remove(an)
     for n, x, y in anchors:
         glyph.appendAnchor({"name": n, "x": x, "y": y})
+
+
+def ink_bounds(font, name):
+    pen = BoundsPen(font)
+    font[name].draw(pen)
+    return pen.bounds
+
+
+class _SlicePen(BasePen):
+    """Collects the x where the outline crosses a horizontal line at y."""
+
+    def __init__(self, glyphset, y):
+        super().__init__(glyphset)
+        self.y, self.xs = y, []
+
+    def _cross(self, p0, p1):
+        (x0, y0), (x1, y1) = p0, p1
+        if (y0 - self.y) * (y1 - self.y) < 0:
+            self.xs.append(x0 + (self.y - y0) * (x1 - x0) / (y1 - y0))
+
+    def _moveTo(self, p):
+        self.cur = self.start = p
+
+    def _lineTo(self, p):
+        self._cross(self.cur, p)
+        self.cur = p
+
+    def _curveToOne(self, a, b, c):
+        p0 = self.cur
+        for i in range(1, 33):
+            t = i / 32
+            m = 1 - t
+            q = tuple(m**3 * p0[k] + 3 * m * m * t * a[k] + 3 * m * t * t * b[k] + t**3 * c[k]
+                      for k in (0, 1))
+            self._cross(self.cur, q)
+            self.cur = q
+
+    def _closePath(self):
+        self._lineTo(self.start)
+
+
+def ink_slice(font, name, y):
+    pen = _SlicePen(font, y)
+    font[name].draw(pen)
+    return sorted(pen.xs)
 
 
 def new_glyph(font, name, width, components=(), anchors=()):
@@ -281,11 +328,23 @@ def build_specials(font, log, failed):
         new_glyph(font, sc_name(b, cap), font[base_sc].width,
                   [(base_sc, 0, 0), ("commaaccent", round(dx), 0)])
     if "Ldot" in font and need("l.sc"):
+        # The dot keeps its size, so place its centre, not its origin: at the
+        # same height fraction, and at the same fraction of the way from the
+        # stem to the end of the foot as in Ŀ.
         dot = next(c for c in font["Ldot"].components if c.baseGlyph != "L")
-        sx = font["l.sc"].width / font["L"].width
+        dx0, dy0, dx1, dy1 = ink_bounds(font, dot.baseGlyph)
+        cx = dot.transformation[4] + (dx0 + dx1) / 2
+        cy = dot.transformation[5] + (dy0 + dy1) / 2
+        stem = max(x for x in ink_slice(font, "L", cy) if x < cx)
+        foot = ink_bounds(font, "L")[2]
+        t = (cx - stem) / (foot - stem)
+        sc_cy = cy * SCALE
+        sc_stem = max(x for x in ink_slice(font, "l.sc", sc_cy) if x < font["l.sc"].width / 2)
+        sc_foot = ink_bounds(font, "l.sc")[2]
+        sc_cx = sc_stem + t * (sc_foot - sc_stem)
         new_glyph(font, "ldot.sc", font["l.sc"].width,
-                  [("l.sc", 0, 0), (dot.baseGlyph, round(dot.transformation[4] * sx),
-                                    round(dot.transformation[5] * SCALE))])
+                  [("l.sc", 0, 0), (dot.baseGlyph, round(sc_cx - (dx0 + dx1) / 2),
+                                    round(sc_cy - (dy0 + dy1) / 2))])
     if "Lcaron" in font and need("l.sc"):
         apo = next(c for c in font["Lcaron"].components if c.baseGlyph != "L")
         sx = font["l.sc"].width / font["L"].width
