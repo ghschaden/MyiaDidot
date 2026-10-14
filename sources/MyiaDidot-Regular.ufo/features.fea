@@ -114,7 +114,14 @@ lookup ccmpCapitalAccents {
 	\uni041F \uni0420 \uni0421 \uni0422 \uni0423 \uni0424 
 	\uni0425 \uni0426 \uni0427 \uni0428 \uni0429 \uni042A 
 	\uni042B \uni042C \uni042D \uni042E \uni042F \uni0462 
-	\uni046A \uni0472 \uni0474 \uni0490 ];
+	\uni046A \uni0472 \uni0474 \uni0490
+	\uni0181 \uni0186 \uni018A \uni018E \uni0190 \uni0191 
+	\uni0194 \uni0196 \uni0197 \uni019C \uni01AE \uni01B7 
+	\uni01B8 \uni01E4 \uni023A \uni023B \uni023D \uni023E 
+	\uni0244 \uni0245 \uni0248 \uni024C \uni0492 \uni0496 
+	\uni049A \uni04A2 \uni04B0 \uni04D8 \uni04E8 \uni2C62 
+	\uni2C63 \uni2C64 \uni2C6D \uni2C6F \uniA7B6 \uniA7C7
+	\uni0189 \uni018F \uni019F \uni04AE \uniA7AE ];
     @cc3_match_2 = [\gravecomb \acutecomb \circumflexcmb \tildecomb \uni0308 \uni030B \uni030A 
 	\uni030C \uni0307 \macroncmb \brevecmb \uni030F \uni0311 
 	\brevecmb.cyrl \hookcomb \horncomb ];
@@ -465,6 +472,7 @@ lookup SmallCapsLower {
     sub \uni019A by \uni019A.sc;
     sub \uni01A1 by \uni01A1.sc;
     sub \uni01B0 by \uni01B0.sc;
+    sub \uni01B9 by \uni01B9.sc;
     sub \uni01CE by \uni01CE.sc;
     sub \uni01D0 by \uni01D0.sc;
     sub \uni01D2 by \uni01D2.sc;
@@ -475,6 +483,7 @@ lookup SmallCapsLower {
     sub \uni01E5 by \uni01E5.sc;
     sub \uni01E7 by \uni01E7.sc;
     sub \uni01E9 by \uni01E9.sc;
+    sub \uni01EF by \uni01EF.sc;
     sub \uni01F0 by \uni01F0.sc;
     sub \uni01F9 by \uni01F9.sc;
     sub \uni0201 by \uni0201.sc;
@@ -501,6 +510,7 @@ lookup SmallCapsLower {
     sub \uni0257 by \uni0257.sc;
     sub \uni0259 by \uni0259.sc;
     sub \uni025B by \uni025B.sc;
+    sub \uni0263 by \uni0263.sc;
     sub \uni0268 by \uni0268.sc;
     sub \uni0269 by \uni0269.sc;
     sub \uni026A by \uni026A.sc;
@@ -508,9 +518,12 @@ lookup SmallCapsLower {
     sub \uni026F by \uni026F.sc;
     sub \uni0275 by \uni0275.sc;
     sub \uni027D by \uni027D.sc;
+    sub \uni0283 by \uni0283.sc;
     sub \uni0288 by \uni0288.sc;
     sub \uni0289 by \uni0289.sc;
+    sub \uni028A by \uni028A.sc;
     sub \uni028C by \uni028C.sc;
+    sub \uni0292 by \uni0292.sc;
     sub \uni03D9 by \uni03D9.sc;
     sub \uni03DB by \uni03DB.sc;
     sub \uni03DD by \uni03DD.sc;
@@ -949,14 +962,18 @@ lookup SmallCapsUpper {
     sub \uni018F by \uni0259.sc;
     sub \uni0190 by \uni025B.sc;
     sub \uni0191 by \florin.sc;
+    sub \uni0194 by \uni0263.sc;
     sub \uni0196 by \uni0269.sc;
     sub \uni0197 by \uni0268.sc;
     sub \uni019C by \uni026F.sc;
     sub \uni019F by \uni0275.sc;
     sub \uni01A0 by \uni01A1.sc;
-    sub \uni01A9 by \uni01a9.sc;
+    sub \uni01A9 by \uni0283.sc;
     sub \uni01AE by \uni0288.sc;
     sub \uni01AF by \uni01B0.sc;
+    sub \uni01B1 by \uni028A.sc;
+    sub \uni01B7 by \uni0292.sc;
+    sub \uni01B8 by \uni01B9.sc;
     sub \uni01CD by \uni01CE.sc;
     sub \uni01CF by \uni01D0.sc;
     sub \uni01D1 by \uni01D2.sc;
@@ -966,6 +983,7 @@ lookup SmallCapsUpper {
     sub \uni01E4 by \uni01E5.sc;
     sub \uni01E6 by \uni01E7.sc;
     sub \uni01E8 by \uni01E9.sc;
+    sub \uni01EE by \uni01EF.sc;
     sub \uni01F8 by \uni01F9.sc;
     sub \uni0200 by \uni0201.sc;
     sub \uni0204 by \uni0205.sc;
@@ -4122,7 +4140,7 @@ lookup SmallCapsGreekIota {
     sub [\alpha.sc \beta.sc \chi.sc \delta.sc \epsilon.sc \eta.sc \gamma.sc \iota.sc \iotadieresis.sc \kappa.sc \lambda.sc \mugreek.sc \nu.sc \omega.sc \omicron.sc \phi.sc \pi.sc \psi.sc \rho.sc \sigma.sc \sigmalunatesymbolgreek.sc \tau.sc \theta.sc \uni03D9.sc \uni03DB.sc \uni03DD.sc \uni03DF.sc \uni03E1.sc \upsilon.sc \upsilondieresis.sc \xi.sc \zeta.sc] \uni0345' by \iota.sc;
 } SmallCapsGreekIota;
 
-@SmallCaps = [\a.sc \aacute.sc \abreve.sc \acircumflex.sc \adieresis.sc \ae.sc \aeacute.sc \agrave.sc \alpha.sc \amacron.sc \aogonek.sc \aring.sc \aringacute.sc \atilde.sc \b.sc \beta.sc \c.sc \cacute.sc \ccaron.sc \ccedilla.sc \ccircumflex.sc \cdotaccent.sc \chi.sc \d.sc \dcaron.sc \dcroat.sc \delta.sc \dotlessi.sc \e.sc \eacute.sc \ebreve.sc \ecaron.sc \ecircumflex.sc \edieresis.sc \edotaccent.sc \egrave.sc \emacron.sc \eng.sc \eogonek.sc \epsilon.sc \eta.sc \eth.sc \f.sc \florin.sc \g.sc \gamma.sc \gbreve.sc \gcircumflex.sc \gcommaaccent.sc \gdotaccent.sc \germandbls.sc \h.sc \hbar.sc \hcircumflex.sc \i.sc \iacute.sc \ibreve.sc \icircumflex.sc \idieresis.sc \idotaccent.sc \igrave.sc \ij.sc \imacron.sc \iogonek.sc \iota.sc \iotadieresis.sc \itilde.sc \j.sc \jcircumflex.sc \k.sc \kappa.sc \kcommaaccent.sc \kgreenlandic.sc \l.sc \lacute.sc \lambda.sc \lcaron.sc \lcommaaccent.sc \ldot.sc \longs.sc \lslash.sc \m.sc \mugreek.sc \n.sc \nacute.sc \ncaron.sc \ncommaaccent.sc \ntilde.sc \nu.sc \o.sc \oacute.sc \obreve.sc \ocircumflex.sc \odieresis.sc \oe.sc \ograve.sc \ohungarumlaut.sc \omacron.sc \omega.sc \omicron.sc \oogonek.sc \oslash.sc \oslashacute.sc \otilde.sc \p.sc \phi.sc \pi.sc \psi.sc \q.sc \r.sc \racute.sc \rcaron.sc \rcommaaccent.sc \rho.sc \s.sc \sacute.sc \scaron.sc \scedilla.sc \scircumflex.sc \scommaaccent.sc \sigma.sc \sigmalunatesymbolgreek.sc \t.sc \tau.sc \tbar.sc \tcaron.sc \tcommaaccent.sc \theta.sc \thorn.sc \u.sc \uacute.sc \ubreve.sc \ucircumflex.sc \udieresis.sc \ugrave.sc \uhungarumlaut.sc \umacron.sc \uni019A.sc \uni01A1.sc \uni01B0.sc \uni01CE.sc \uni01D0.sc \uni01D2.sc \uni01D4.sc \uni01D8.sc \uni01DD.sc \uni01E3.sc \uni01E5.sc \uni01E7.sc \uni01E9.sc \uni01F0.sc \uni01F9.sc \uni01a9.sc \uni0201.sc \uni0205.sc \uni0209.sc \uni020D.sc \uni0213.sc \uni0215.sc \uni021B.sc \uni0227.sc \uni0229.sc \uni022F.sc \uni0233.sc \uni0237.sc \uni023C.sc \uni0242.sc \uni0249.sc \uni024D.sc \uni0250.sc \uni0251.sc \uni0253.sc \uni0254.sc \uni0256.sc \uni0257.sc \uni0259.sc \uni025B.sc \uni0268.sc \uni0269.sc \uni026A.sc \uni026B.sc \uni026F.sc \uni0275.sc \uni027D.sc \uni0288.sc \uni0289.sc \uni028C.sc \uni03D9.sc \uni03DB.sc \uni03DD.sc \uni03DF.sc \uni03E1.sc \uni0430.sc \uni0431.sc \uni0432.sc \uni0433.sc \uni0434.sc \uni0435.sc \uni0436.sc \uni0437.sc \uni0438.sc \uni0439.sc \uni043A.sc \uni043B.sc \uni043C.sc \uni043D.sc \uni043E.sc \uni043F.sc \uni0440.sc \uni0441.sc \uni0442.sc \uni0443.sc \uni0444.sc \uni0445.sc \uni0446.sc \uni0447.sc \uni0448.sc \uni0449.sc \uni044A.sc \uni044B.sc \uni044C.sc \uni044D.sc \uni044E.sc \uni044F.sc \uni0450.sc \uni0451.sc \uni0452.sc \uni0453.sc \uni0454.sc \uni0455.sc \uni0456.sc \uni0457.sc \uni0458.sc \uni0459.sc \uni045A.sc \uni045B.sc \uni045C.sc \uni045D.sc \uni045E.sc \uni045F.sc \uni0463.sc \uni046B.sc \uni0473.sc \uni0475.sc \uni0491.sc \uni0493.sc \uni0497.sc \uni049B.sc \uni04A3.sc \uni04AF.sc \uni04B1.sc \uni04B3.sc \uni04B7.sc \uni04BB.sc \uni04D9.sc \uni04E3.sc \uni04E9.sc \uni04EF.sc \uni1D7D.sc \uni1E05.sc \uni1E07.sc \uni1E0B.sc \uni1E0D.sc \uni1E0F.sc \uni1E13.sc \uni1E15.sc \uni1E17.sc \uni1E1B.sc \uni1E21.sc \uni1E23.sc \uni1E25.sc \uni1E2D.sc \uni1E2F.sc \uni1E31.sc \uni1E33.sc \uni1E35.sc \uni1E37.sc \uni1E3D.sc \uni1E3F.sc \uni1E43.sc \uni1E45.sc \uni1E47.sc \uni1E49.sc \uni1E4B.sc \uni1E4D.sc \uni1E51.sc \uni1E53.sc \uni1E55.sc \uni1E5B.sc \uni1E61.sc \uni1E63.sc \uni1E6B.sc \uni1E6D.sc \uni1E6F.sc \uni1E71.sc \uni1E73.sc \uni1E75.sc \uni1E79.sc \uni1E7D.sc \uni1E7F.sc \uni1E81.sc \uni1E83.sc \uni1E85.sc \uni1E89.sc \uni1E8B.sc \uni1E91.sc \uni1E93.sc \uni1E95.sc \uni1E96.sc \uni1EA1.sc \uni1EA3.sc \uni1EA5.sc \uni1EA7.sc \uni1EA9.sc \uni1EAB.sc \uni1EAD.sc \uni1EAF.sc \uni1EB1.sc \uni1EB3.sc \uni1EB5.sc \uni1EB7.sc \uni1EB9.sc \uni1EBB.sc \uni1EBD.sc \uni1EBF.sc \uni1EC1.sc \uni1EC3.sc \uni1EC5.sc \uni1EC7.sc \uni1EC9.sc \uni1ECB.sc \uni1ECD.sc \uni1ECF.sc \uni1ED1.sc \uni1ED3.sc \uni1ED5.sc \uni1ED7.sc \uni1ED9.sc \uni1EDB.sc \uni1EDD.sc \uni1EDF.sc \uni1EE1.sc \uni1EE3.sc \uni1EE5.sc \uni1EE7.sc \uni1EE9.sc \uni1EEB.sc \uni1EED.sc \uni1EEF.sc \uni1EF1.sc \uni1EF3.sc \uni1EF5.sc \uni1EF7.sc \uni1EF9.sc \uni2C65.sc \uni2C66.sc \uniA7B7.sc \uniA7C8.sc \uogonek.sc \upsilon.sc \upsilondieresis.sc \uring.sc \utilde.sc \v.sc \w.sc \wcircumflex.sc \x.sc \xi.sc \y.sc \yacute.sc \ycircumflex.sc \ydieresis.sc \z.sc \zacute.sc \zcaron.sc \zdotaccent.sc \zeta.sc];
+@SmallCaps = [\a.sc \aacute.sc \abreve.sc \acircumflex.sc \adieresis.sc \ae.sc \aeacute.sc \agrave.sc \alpha.sc \amacron.sc \aogonek.sc \aring.sc \aringacute.sc \atilde.sc \b.sc \beta.sc \c.sc \cacute.sc \ccaron.sc \ccedilla.sc \ccircumflex.sc \cdotaccent.sc \chi.sc \d.sc \dcaron.sc \dcroat.sc \delta.sc \dotlessi.sc \e.sc \eacute.sc \ebreve.sc \ecaron.sc \ecircumflex.sc \edieresis.sc \edotaccent.sc \egrave.sc \emacron.sc \eng.sc \eogonek.sc \epsilon.sc \eta.sc \eth.sc \f.sc \florin.sc \g.sc \gamma.sc \gbreve.sc \gcircumflex.sc \gcommaaccent.sc \gdotaccent.sc \germandbls.sc \h.sc \hbar.sc \hcircumflex.sc \i.sc \iacute.sc \ibreve.sc \icircumflex.sc \idieresis.sc \idotaccent.sc \igrave.sc \ij.sc \imacron.sc \iogonek.sc \iota.sc \iotadieresis.sc \itilde.sc \j.sc \jcircumflex.sc \k.sc \kappa.sc \kcommaaccent.sc \kgreenlandic.sc \l.sc \lacute.sc \lambda.sc \lcaron.sc \lcommaaccent.sc \ldot.sc \longs.sc \lslash.sc \m.sc \mugreek.sc \n.sc \nacute.sc \ncaron.sc \ncommaaccent.sc \ntilde.sc \nu.sc \o.sc \oacute.sc \obreve.sc \ocircumflex.sc \odieresis.sc \oe.sc \ograve.sc \ohungarumlaut.sc \omacron.sc \omega.sc \omicron.sc \oogonek.sc \oslash.sc \oslashacute.sc \otilde.sc \p.sc \phi.sc \pi.sc \psi.sc \q.sc \r.sc \racute.sc \rcaron.sc \rcommaaccent.sc \rho.sc \s.sc \sacute.sc \scaron.sc \scedilla.sc \scircumflex.sc \scommaaccent.sc \sigma.sc \sigmalunatesymbolgreek.sc \t.sc \tau.sc \tbar.sc \tcaron.sc \tcommaaccent.sc \theta.sc \thorn.sc \u.sc \uacute.sc \ubreve.sc \ucircumflex.sc \udieresis.sc \ugrave.sc \uhungarumlaut.sc \umacron.sc \uni019A.sc \uni01A1.sc \uni01B0.sc \uni01B9.sc \uni01CE.sc \uni01D0.sc \uni01D2.sc \uni01D4.sc \uni01D8.sc \uni01DD.sc \uni01E3.sc \uni01E5.sc \uni01E7.sc \uni01E9.sc \uni01EF.sc \uni01F0.sc \uni01F9.sc \uni0201.sc \uni0205.sc \uni0209.sc \uni020D.sc \uni0213.sc \uni0215.sc \uni021B.sc \uni0227.sc \uni0229.sc \uni022F.sc \uni0233.sc \uni0237.sc \uni023C.sc \uni0242.sc \uni0249.sc \uni024D.sc \uni0250.sc \uni0251.sc \uni0253.sc \uni0254.sc \uni0256.sc \uni0257.sc \uni0259.sc \uni025B.sc \uni0263.sc \uni0268.sc \uni0269.sc \uni026A.sc \uni026B.sc \uni026F.sc \uni0275.sc \uni027D.sc \uni0283.sc \uni0288.sc \uni0289.sc \uni028A.sc \uni028C.sc \uni0292.sc \uni03D9.sc \uni03DB.sc \uni03DD.sc \uni03DF.sc \uni03E1.sc \uni0430.sc \uni0431.sc \uni0432.sc \uni0433.sc \uni0434.sc \uni0435.sc \uni0436.sc \uni0437.sc \uni0438.sc \uni0439.sc \uni043A.sc \uni043B.sc \uni043C.sc \uni043D.sc \uni043E.sc \uni043F.sc \uni0440.sc \uni0441.sc \uni0442.sc \uni0443.sc \uni0444.sc \uni0445.sc \uni0446.sc \uni0447.sc \uni0448.sc \uni0449.sc \uni044A.sc \uni044B.sc \uni044C.sc \uni044D.sc \uni044E.sc \uni044F.sc \uni0450.sc \uni0451.sc \uni0452.sc \uni0453.sc \uni0454.sc \uni0455.sc \uni0456.sc \uni0457.sc \uni0458.sc \uni0459.sc \uni045A.sc \uni045B.sc \uni045C.sc \uni045D.sc \uni045E.sc \uni045F.sc \uni0463.sc \uni046B.sc \uni0473.sc \uni0475.sc \uni0491.sc \uni0493.sc \uni0497.sc \uni049B.sc \uni04A3.sc \uni04AF.sc \uni04B1.sc \uni04B3.sc \uni04B7.sc \uni04BB.sc \uni04D9.sc \uni04E3.sc \uni04E9.sc \uni04EF.sc \uni1D7D.sc \uni1E05.sc \uni1E07.sc \uni1E0B.sc \uni1E0D.sc \uni1E0F.sc \uni1E13.sc \uni1E15.sc \uni1E17.sc \uni1E1B.sc \uni1E21.sc \uni1E23.sc \uni1E25.sc \uni1E2D.sc \uni1E2F.sc \uni1E31.sc \uni1E33.sc \uni1E35.sc \uni1E37.sc \uni1E3D.sc \uni1E3F.sc \uni1E43.sc \uni1E45.sc \uni1E47.sc \uni1E49.sc \uni1E4B.sc \uni1E4D.sc \uni1E51.sc \uni1E53.sc \uni1E55.sc \uni1E5B.sc \uni1E61.sc \uni1E63.sc \uni1E6B.sc \uni1E6D.sc \uni1E6F.sc \uni1E71.sc \uni1E73.sc \uni1E75.sc \uni1E79.sc \uni1E7D.sc \uni1E7F.sc \uni1E81.sc \uni1E83.sc \uni1E85.sc \uni1E89.sc \uni1E8B.sc \uni1E91.sc \uni1E93.sc \uni1E95.sc \uni1E96.sc \uni1EA1.sc \uni1EA3.sc \uni1EA5.sc \uni1EA7.sc \uni1EA9.sc \uni1EAB.sc \uni1EAD.sc \uni1EAF.sc \uni1EB1.sc \uni1EB3.sc \uni1EB5.sc \uni1EB7.sc \uni1EB9.sc \uni1EBB.sc \uni1EBD.sc \uni1EBF.sc \uni1EC1.sc \uni1EC3.sc \uni1EC5.sc \uni1EC7.sc \uni1EC9.sc \uni1ECB.sc \uni1ECD.sc \uni1ECF.sc \uni1ED1.sc \uni1ED3.sc \uni1ED5.sc \uni1ED7.sc \uni1ED9.sc \uni1EDB.sc \uni1EDD.sc \uni1EDF.sc \uni1EE1.sc \uni1EE3.sc \uni1EE5.sc \uni1EE7.sc \uni1EE9.sc \uni1EEB.sc \uni1EED.sc \uni1EEF.sc \uni1EF1.sc \uni1EF3.sc \uni1EF5.sc \uni1EF7.sc \uni1EF9.sc \uni2C65.sc \uni2C66.sc \uniA7B7.sc \uniA7C8.sc \uogonek.sc \upsilon.sc \upsilondieresis.sc \uring.sc \utilde.sc \v.sc \w.sc \wcircumflex.sc \x.sc \xi.sc \y.sc \yacute.sc \ycircumflex.sc \ydieresis.sc \z.sc \zacute.sc \zcaron.sc \zdotaccent.sc \zeta.sc];
 
 lookup SmallCapSharpSAsSS {
     sub \germandbls.sc by \s_s.sc;

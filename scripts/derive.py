@@ -202,6 +202,41 @@ RECIPES = [
     ("Ꞷ", "enlarge", "ꞷ", ("o", "O")),
     ("ɂ", "enlarge", "ʔ", ("O", "o")),
     ("Ʃ", "alias", "Sigma", None),
+    # esh, ezh
+    ("ʃ", "esh", "f", ("x", "uni0237")),
+    ("Ʒ", "ezh", "Z", ("c", 760, 1.0, 1.0)),
+    ("ʒ", "ezh", "z", ("x", 400, 0.9, 1.08)),
+    ("ƹ", "mirror", "ʒ", None),
+    ("Ƹ", "mirror", "Ʒ", None),
+    # script g, upsilon, gamma, turned m with long leg
+    ("ɡ", "hook", "q", ("x", "down-left", "last", -100, 200, 200)),
+    ("ɠ", "hook", "ɡ", ("x", "up-right", "last", 900, 300, 200)),
+    ("Ʊ", "turn", "Omega", "c"),
+    ("ʊ", "enlarge", "Ʊ", ("O", "o")),
+    ("Ɣ", "enlarge", "ɣ", ("o", "O", 0, 1462)),
+    ("ɰ", "descend", "ɯ", ("x", "p", "last")),
+    # modifier letters: the letters at the size of the superior figures
+    ("ʰ", "superior", "h", None),
+    ("ʲ", "superior", "j", None),
+    ("ʷ", "superior", "w", None),
+    ("ʸ", "superior", "y", None),
+    ("ˡ", "superior", "l", None),
+    ("ˠ", "superior", "gamma", None),
+    ("ᵃ", "superior", "a", None),
+    ("ᵉ", "superior", "e", None),
+    ("ᵒ", "superior", "o", None),
+    ("ᵘ", "superior", "u", None),
+    ("ⁱ", "superior", "i", None),
+    ("ⁿ", "superior", "n", None),
+    ("ᵍ", "superior", "ɡ", None),
+    ("ᶻ", "superior", "z", None),
+    ("ᶿ", "superior", "theta", None),
+    ("ˀ", "superior", "ɂ", None),
+    ("ˁ", "superior", "ʕ", None),
+    ("ᵋ", "superior", "ɛ", None),
+    ("ᵓ", "superior", "ɔ", None),
+    ("ᶤ", "superior", "ɨ", None),
+    ("ᶶ", "superior", "ʉ", None),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
@@ -246,6 +281,11 @@ RECIPES = [
     ("ɩ.sc", "enlarge", "ɩ", ("o", "o.sc")),
     ("ꞷ.sc", "enlarge", "ꞷ", ("o", "o.sc")),
     ("ɂ.sc", "enlarge", "ʔ", ("O", "o.sc")),
+    ("ʃ.sc", "alias", "sigma.sc", None),
+    ("ʒ.sc", "enlarge", "Ʒ", ("O", "o.sc")),
+    ("ƹ.sc", "mirror", "ʒ.sc", None),
+    ("ʊ.sc", "enlarge", "Ʊ", ("O", "o.sc")),
+    ("ɣ.sc", "enlarge", "ɣ", ("o", "o.sc", 0, 1062)),
     # the IPA small capitals with a stroke are those small caps
     ("ᵻ", "alias", "ɨ.sc", None),
     ("ᵾ", "alias", "ʉ.sc", None),
@@ -519,12 +559,18 @@ def embolden(rec, ax, ay):
     return glyph
 
 
-def enlarge(font, source, src_ref, dst_ref):
+def enlarge(font, source, src_ref, dst_ref, fit=None):
     """The source scaled so that src_ref's strokes and height become
     dst_ref's (ə -> Ә with o -> O): scaled uniformly, then the stems and
-    hairlines brought to dst_ref's weight; sidebearings of dst_ref."""
+    hairlines brought to dst_ref's weight; sidebearings of dst_ref. With
+    fit (y0, y1) the source's ink is scaled into that band instead (γ with
+    its loop on the baseline for Ɣ)."""
     (b0, s0, h0), (b1, s1, h1) = strokes(font, src_ref), strokes(font, dst_ref)
     k = ((b1[3] - b1[1]) - h1) / ((b0[3] - b0[1]) - h0)
+    if fit:
+        sb = ink_bounds(font, source)
+        k = (fit[1] - fit[0]) / (sb[3] - sb[1])
+        b1 = (b1[0], fit[0], b1[2], fit[1])
     rec = DecomposingRecordingPen(font)
     font[source].draw(TransformPen(rec, (k, 0, 0, k, 0, 0)))
     glyph = embolden(rec, s1 - k * s0, h1 - k * h0)
@@ -601,10 +647,60 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
     return path_op(letter, piece, "UNION"), piece.bounds
 
 
-def descend(font, source, band, model):
+def ezh(font, source, band, ym, kx, ky):
+    """Ʒ ʒ: the top bar and diagonal of Z/z down to ym, and the lower bowl
+    of the figure 3 from its middle tongue, scaled (kx, ky) and hung on the
+    end of the diagonal."""
+    top = path_op(to_path(font, font[source]), rect_path(-BIG, ym, BIG, BIG), "INTERSECTION")
+    tongue_y = 760
+    tx0 = stems_at(font, "three", tongue_y)[0][0]
+    bowl = path_op(to_path(font, font["three"]), rect_path(-BIG, -BIG, BIG, tongue_y + 30),
+                   "INTERSECTION")
+    dx = stems_at(font, source, ym)[-1][0]
+    rec = RecordingPen()
+    bowl.draw(TransformPen(rec, (kx, 0, 0, ky, dx - kx * tx0, ym - ky * tongue_y)))
+    out = path_op(top, to_path(None, rec=rec), "UNION")
+    return out
+
+
+def esh(font, source, band, bottom_model):
+    """ʃ: the top of f (no crossbar), its stem run down, and the descender
+    of ȷ at the bottom."""
+    top = path_op(to_path(font, font[source]), rect_path(-BIG, 900, BIG, BIG), "INTERSECTION")
+    fa, fb = stems_at(font, source, 920)[0]
+    ja, _ = stems_at(font, bottom_model, -100)[-1]
+    tail = path_op(to_path(font, font[bottom_model]), rect_path(-BIG, -BIG, BIG, -80), "INTERSECTION")
+    tail = shifted(tail, fa - ja)
+    stem = rect_path(fa, -100, fb, 920)
+    out = path_op(path_op(top, stem, "UNION"), tail, "UNION")
+    return shifted(out, 40 - out.bounds[0])
+
+
+def superior(font, source):
+    """A modifier letter (ʰ ⁿ ᵃ): the letter at the size and weight of the
+    superior figures (0 -> ⁰ gives the scale and the stroke changes), on
+    their baseline."""
+    (b0, s0, h0), (b1, s1, h1) = strokes(font, "zero"), strokes(font, "zerosuperior")
+    k = ((b1[3] - b1[1]) - h1) / ((b0[3] - b0[1]) - h0)
+    ax, ay = s1 - k * s0, h1 - k * h0
+    rec = DecomposingRecordingPen(font)
+    font[source].draw(TransformPen(rec, (k, 0, 0, k, 0, 0)))
+    out = RecordingPen()
+    embolden(rec, ax, ay).draw(out)
+    moved = RecordingPen()
+    out.replay(TransformPen(moved, (1, 0, 0, 1, ax / 2, b1[1] - (k * b0[1] - ay / 2))))
+    return moved, round(k * font[source].width + ax)
+
+
+def descend(font, source, band, model, pick=None):
     """A v with a stem down to the descender (ү): the stem and foot serif
-    of the model's descender (p) under the vertex."""
-    vx = sum(stems_at(font, source, 26)[0]) / 2
+    of the model's descender (p) under the vertex; with pick (first/last)
+    under that stem instead (ɰ)."""
+    if pick:
+        stems = stems_at(font, source, 300)
+        vx = sum(stems[0] if pick == "first" else stems[-1]) / 2
+    else:
+        vx = sum(stems_at(font, source, 26)[0]) / 2
     ma, mb = stems_at(font, model, -200)[0]
     piece = path_op(to_path(font, font[model]), rect_path(-BIG, -BIG, BIG, -60), "INTERSECTION")
     stem = rect_path(ma, -80, mb, 120)
@@ -686,15 +782,26 @@ def build(font, ch, op, source, band, name=None):
         for a in src.anchors:
             g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
     elif op == "descend":
-        sband, model = band
+        sband, model, *pick = band
         g.width = w
-        draw_path(font, src, g, descend(font, source, sband, model))
+        draw_path(font, src, g, descend(font, source, sband, model, *pick))
         for a in src.anchors:
             if a.name not in ("Bottom", "DotBelow", "Cedilla"):
                 g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op in ("ezh", "esh"):
+        out = (ezh(font, source, *band) if op == "ezh" else esh(font, source, *band))
+        rsb = w - ink_bounds(font, source)[2]
+        g.width = max(w, round(out.bounds[2] + rsb)) if op == "ezh" else round(out.bounds[2] + 40)
+        draw_path(font, src, g, out)
+        for a in src.anchors:
+            if op == "ezh" and a.name not in ("Bottom", "DotBelow", "Cedilla"):
+                g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "superior":
+        out, g.width = superior(font, source)
+        draw_path(font, src, g, out)
     elif op == "enlarge":
-        src_ref, dst_ref = band
-        out, g.width = enlarge(font, source, src_ref, dst_ref)
+        src_ref, dst_ref, *fit = band
+        out, g.width = enlarge(font, source, src_ref, dst_ref, tuple(fit) or None)
         draw_path(font, src, g, out)
         ref = font[dst_ref]
         for a in ref.anchors:

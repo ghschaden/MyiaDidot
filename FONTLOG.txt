@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: esh, ezh, modifier letters
+
+    * ʃ (the top of f, its stem run down into the descender of ȷ); Ʒ ʒ
+      (the top bar and diagonal of Z z with the lower bowl of 3), Ƹ ƹ
+      mirrored, Ǯ ǯ with caron; ɡ (q with the descender of ȷ) and ɠ; Ʊ (a
+      turned Ω) and ʊ; Ɣ (γ with its loop on the baseline, at capital
+      weight); ɰ (ɯ with the descender of p). Drafts, with small caps for
+      the case pairs (ʃ is the small-cap Σ).
+    * 21 modifier letters (ʰ ʲ ʷ ʸ ˡ ˠ ᵃ ᵉ ᵒ ᵘ ⁱ ⁿ ᵍ ᶻ ᶿ ˀ ˁ ᵋ ᵓ ᶤ ᶶ): the
+      letters at the size, weight and baseline of the superior figures.
+    * Decomposed text: the new capitals (Ɓ Ɔ Ɛ Ʒ Ә Ғ ...) join the list of
+      capitals whose accents take the capital form.
+
 2026-10-14 Version 0.100 (development), Phase 1: hooked letters
 
     * Letters with a hook, drafted by scripts/derive.py (new operation hook:
