@@ -33,8 +33,8 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   height + 146. To redraft: `smallcaps_draft.py` then `smallcaps.py
   --drafts ... --redraft` (replaces only unreviewed drafts).
 - New letters derived from existing ones (same shape, turned, mirrored):
-  recipes in `scripts/derive.py`; drafts carry `org.myiadidot.draft` and
-  show under "Other drafts" in the review sheet.
+  recipes in `scripts/derive.py` (also their small caps, "ɔ.sc"); drafts
+  carry `org.myiadidot.draft` and are reviewed in `drafts-review.pdf`.
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 
@@ -62,7 +62,7 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 |---|---|
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
-| `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first) |
+| `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
 | `make qa` | full fontbakery reports in `build/qa/` |
 | `python scripts/coverage.py fonts/otf/MyiaDidot-Regular.otf --list` | what is missing |
 | `python scripts/status.py --long` | coverage per glyph set + last test run |

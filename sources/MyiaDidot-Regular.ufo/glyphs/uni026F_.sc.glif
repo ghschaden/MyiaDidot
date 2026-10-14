@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni026F.sc" format="2">
+	<advance width="1402"/>
+	<outline>
+		<contour>
+			<point x="1328" y="1040" type="line"/>
+			<point x="1328" y="996" type="line"/>
+			<point x="1180" y="996" type="line"/>
+			<point x="1180" y="44" type="line"/>
+			<point x="1328" y="44" type="line"/>
+			<point x="1328" y="0" type="line"/>
+			<point x="951" y="0" type="line"/>
+			<point x="676" y="794" type="line"/>
+			<point x="412" y="0" type="line"/>
+			<point x="97" y="0" type="line"/>
+			<point x="97" y="44" type="line"/>
+			<point x="198" y="44" type="line"/>
+			<point x="198" y="996" type="line"/>
+			<point x="59" y="996" type="line"/>
+			<point x="59" y="1040" type="line"/>
+			<point x="524" y="1040" type="line"/>
+			<point x="524" y="996" type="line"/>
+			<point x="374" y="996" type="line"/>
+			<point x="374" y="80" type="line"/>
+			<point x="377" y="80" type="line"/>
+			<point x="731" y="1060" type="line"/>
+			<point x="783" y="1060" type="line"/>
+			<point x="1118" y="92" type="line" smooth="yes"/>
+			<point x="1122" y="81"/>
+			<point x="1126" y="55"/>
+			<point x="1126" y="44" type="curve"/>
+			<point x="1126" y="44" type="line"/>
+			<point x="1126" y="996" type="line"/>
+			<point x="967" y="996" type="line"/>
+			<point x="967" y="1040" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="679" y="1156"/>
+	<anchor name="Acute" x="679" y="1136"/>
+	<anchor name="Grave" x="679" y="1136"/>
+	<anchor name="Dotaccent" x="679" y="1176"/>
+	<anchor name="TopCap" x="679" y="1186"/>
+	<anchor name="Bottom" x="725" y="0"/>
+	<anchor name="DotBelow" x="725" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.derived</key>
+			<true/>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

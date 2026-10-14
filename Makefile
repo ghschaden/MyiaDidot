@@ -82,12 +82,13 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 	@mkdir -p build/proofs
 	$(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-Regular.otf build/proofs/charset.tex \
 	    --baseline build/baseline/$(FAMILY)-Regular.otf
-	$(PY) scripts/smallcap_review.py $(UFOS) fonts/otf/$(FAMILY)-Regular.otf build/proofs/smallcaps-review.tex
-	cd build/proofs && for t in charset smallcaps-review; do \
+	$(PY) scripts/smallcap_review.py $(UFOS) fonts/otf/$(FAMILY)-Regular.otf build/proofs/smallcaps-review.tex \
+	    --drafts build/proofs/drafts-review.tex
+	cd build/proofs && for t in charset smallcaps-review drafts-review; do \
 	    lualatex -interaction=nonstopmode $$t.tex >/dev/null; done
 	cd proofs && for t in proof smallcaps; do \
 	    lualatex -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
-	@echo "proofs: build/proofs/{charset,proof,smallcaps,smallcaps-review}.pdf"
+	@echo "proofs: build/proofs/{charset,proof,smallcaps,smallcaps-review,drafts-review}.pdf"
 
 # --- QA ------------------------------------------------------------------
 

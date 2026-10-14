@@ -177,6 +177,8 @@ def import_drafts(font, drafts, log, redraft=False):
         name = sc_name(b, cap)
         if name not in drafts:
             continue
+        if name in font and font[name].lib.get("org.myiadidot.derived"):
+            continue  # derived by derive.py (ɔ.sc = mirrored c.sc), not by FontForge
         if name in font and not (redraft and font[name].lib.get(DRAFT_KEY)):
             continue  # never replace edited outlines or a small cap built from components
         d = drafts[name]

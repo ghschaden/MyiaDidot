@@ -15,6 +15,10 @@ or an earlier recipe's character):
               the baseline (? -> ʔ)
     double    two copies side by side (| -> ǁ)
 
+A recipe for "ɔ.sc" makes the small cap uni0254.sc (unencoded, reached
+through smcp/c2sc once smallcaps.py has run); it is marked as a small-cap
+draft and reviewed with the other small caps.
+
 Transformed glyphs get plain outlines, not components, since they are
 meant to be redrawn (a turned serif sits on the wrong side). Every glyph
 is marked as a draft (lib DRAFT_KEY) and appears under "Other drafts" in
@@ -33,8 +37,10 @@ from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from smallcaps import DEFAULT_HEIGHT, HEIGHT_KEY
+from smallcaps import DRAFT_KEY as SMALLCAP_DRAFT_KEY
 
 DRAFT_KEY = "org.myiadidot.draft"
+DERIVED_KEY = "org.myiadidot.derived"
 
 # (character, operation, source, band) -- band only for turn/flip
 RECIPES = [
@@ -91,6 +97,14 @@ RECIPES = [
     ("ǀ", "alias", "bar", None),
     ("ǁ", "double", "bar", None),
     ("ǃ", "alias", "exclam", None),
+    # small caps for the new case pairs, derived like their capitals
+    ("ɔ.sc", "mirror", "c.sc", None),
+    ("ǝ.sc", "mirror", "e.sc", None),
+    # ə/ә: no small cap until the capital Ə is drawn (a turned E.sc would be Ǝ)
+    ("ɐ.sc", "turn", "a.sc", "s"),
+    ("ʌ.sc", "turn", "v.sc", "s"),
+    ("ɯ.sc", "turn", "m.sc", "s"),
+    ("ɪ.sc", "alias", "i.sc", None),
 ]
 
 # anchors that keep their meaning when the shape is mirrored left-right
@@ -99,6 +113,8 @@ KEEP_ANCHORS = ("Top", "Acute", "Grave", "Dotaccent", "TopCap", "Bottom", "DotBe
 
 
 def glyph_name(ch):
+    if ch.endswith(".sc") and len(ch) == 4:
+        return glyph_name(ch[0]) + ".sc"
     return f"uni{ord(ch):04X}" if ord(ch) <= 0xFFFF else f"u{ord(ch):05X}"
 
 
@@ -127,8 +143,10 @@ def mirrored_anchors(src, dst, width):
 
 def build(font, ch, op, source, band):
     src = font[source]
+    small_cap = ch.endswith(".sc")
     g = font.newGlyph(glyph_name(ch))
-    g.unicodes = [ord(ch)]
+    if not small_cap:
+        g.unicodes = [ord(ch)]
     w = src.width
     if op == "alias":
         g.width = w
@@ -171,7 +189,12 @@ def build(font, ch, op, source, band):
         pen.addComponent(source, (1, 0, 0, 1, w, 0))
     else:
         raise ValueError(op)
-    g.lib[DRAFT_KEY] = True
+    if small_cap:
+        # reviewed with the small caps; smallcaps.py never redrafts it
+        g.lib[SMALLCAP_DRAFT_KEY] = True
+        g.lib[DERIVED_KEY] = True
+    else:
+        g.lib[DRAFT_KEY] = True
     font.lib.setdefault("public.openTypeCategories", {})[g.name] = "base"
     if g.name not in font.glyphOrder:
         font.glyphOrder = [*font.glyphOrder, g.name]
@@ -194,16 +217,19 @@ def main():
             continue
         if len(source) == 1:  # an earlier recipe's character
             source = cmap.get(ord(source), glyph_name(source))
+        elif source.endswith(".sc") and len(source) == 4 and not source[0].isascii():
+            source = glyph_name(source)
         if source not in font:
             sys.exit(f"{ch}: source {source} missing")
-        name = cmap.get(ord(ch), glyph_name(ch))
+        name = glyph_name(ch) if ch.endswith(".sc") else cmap.get(ord(ch), glyph_name(ch))
         if name in font:
             if not (args.redraft and font[name].lib.get(DRAFT_KEY)):
                 kept.append(ch)
                 continue
             del font[name]
         g = build(font, ch, op, source, band)
-        cmap[ord(ch)] = g.name
+        if not ch.endswith(".sc"):
+            cmap[ord(ch)] = g.name
         made.append(ch)
     font.save()
     print(f"drafted {len(made)}: {''.join(made)}")
