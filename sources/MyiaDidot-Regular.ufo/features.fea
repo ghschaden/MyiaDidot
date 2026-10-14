@@ -4441,6 +4441,8 @@ lookup dligDiscretionaryLigaturesforLatin {
     sub \O \E  by \OE;
     sub \O \e  by \OE;
     sub \o \e  by \oe;
+    sub \c \t  by \c_t;
+    sub \s \t  by \s_t;
 } dligDiscretionaryLigaturesforLatin;
 
 lookup dligDiscretionaryLigaturesforGerman {
