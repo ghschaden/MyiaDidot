@@ -1,0 +1,66 @@
+FONTLOG for Myia Didot
+======================
+
+This file provides detailed information on the Myia Didot font software.
+This information should be distributed along with the Myia Didot fonts and
+any derivative works.
+
+
+Basic Font Information
+----------------------
+
+Myia Didot is a derivative of Theano Didot by Alexey Kryukov, part of the
+Theano Classical Fonts (https://github.com/akryukov/theano). Theano Didot
+is a Didot-style face for Greek (with the full polytonic set), Latin and a
+basic set of Cyrillic.
+
+Myia Didot aims to extend it to complete coverage of Latin-script
+alphabets, Greek and basic Cyrillic, and to add Italic, Bold and Bold Italic
+styles as well as true small capitals.
+
+Because the Theano fonts carry "Theano" as a Reserved Font Name, this
+derivative is published under a different name, as the SIL Open Font
+License requires.
+
+
+ChangeLog
+---------
+
+2026-10-14 Version 0.100 (development)
+
+    * Imported TheanoDidot-Regular.sfd from akryukov/theano at commit
+      ff01bf7506ca672ca121792fc472ed527503a907 (2022-01-31, Theano 2.0);
+      the pinned source is kept in sources/upstream/.
+    * Renamed the family to Myia Didot.
+    * Converted the source to UFO 3 (cubic "Fore" layer) and moved the build
+      to fontmake. The hand-made quadratic "TTF" layer of the SFD is not
+      used; TrueType outlines are now converted from the cubic outlines and
+      hinted with ttfautohint.
+    * Renamed the 106 legacy afii* glyph names to uniXXXX names
+      (sources/glyph-renames.json).
+    * Class kerning, GDEF classes and ligature carets now live in the UFO
+      (kerning.plist, groups.plist, public.openTypeCategories, caret
+      anchors); kern, mark, mkmk and GDEF are generated at build time. The
+      Greek "accent before capital" positioning, which upstream kept in a
+      FontForge-specific required feature, is now part of kern.
+    * Verified against a FontForge build of the unchanged upstream source:
+      852,414 test strings shape identically except 11 degenerate sequences
+      with U+0344, where the diaeresis and the acute are now stacked instead of
+      overlapping.
+    * The Graphite (.gdl) source of upstream is not carried over.
+    * Vertical metrics unified: OS/2 typo, hhea and win ascender/descender
+      are all 1962/-630 with zero line gap (USE_TYPO_METRICS set). Upstream
+      had typo 1580/-468 + 560 gap but hhea 1962/-630 + 560 gap, which
+      spaced lines differently on Windows and macOS. The new line height
+      (2592 units) is within 1% of upstream's Windows line height.
+
+
+Acknowledgements
+----------------
+
+N: Alexey Kryukov
+W: https://github.com/akryukov
+D: Original design of Theano Didot (2007-2011)
+
+N: Gerhard Schaden
+D: Myia Didot extensions

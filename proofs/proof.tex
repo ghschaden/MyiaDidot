@@ -1,0 +1,37 @@
+% Quick visual proof of the built fonts: lualatex --output-directory=build/proofs proofs/proof.tex
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz]
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\pagestyle{empty}
+\begin{document}
+
+{\Huge Myia Didot Regular}
+
+{\Large ABCDEFGHIJKLMNOPQRSTUVWXYZ\\
+abcdefghijklmnopqrstuvwxyz ß ﬁ ﬂ ff ffi\\
+0123456789 {\addfontfeature{Numbers=OldStyle}0123456789} ½ ¾ H\textsuperscript{2}O}
+
+{\Large ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ αβγδεζηθικλμνξοπρσςτυφχψω\\
+Ἀ Ἄ Ἆ ᾌ Ὦ Ῥ ἄνθρωπος ᾠδή ὁ λόγος ἦν πρὸς τὸν θεόν}
+
+{\Large АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ\\
+абвгдеёжзийклмнопрстуфхцчшщъыьэюя ґ є і ї ў ђ ј љ њ ћ џ}
+
+{\Large Ąą Čč Ďď Ęę Ěě Łł Ňň Őő Řř Śś Šš Ţţ Ș ș Ůů Űű Žž Ŀŀ Ĳĳ}
+
+\textbf{Latin.} Gallia est omnis divisa in partes tres, quarum unam incolunt
+Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli
+appellantur. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich.
+Ce cœur déçu mais l’âme plutôt naïve, Louÿs rêva de crapaüter en canoë.
+
+\textbf{Ἑλληνικά.} Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον, ὃς μάλα πολλὰ
+πλάγχθη, ἐπεὶ Τροίης ἱερὸν πτολίεθρον ἔπερσεν· πολλῶν δ’ ἀνθρώπων ἴδεν
+ἄστεα καὶ νόον ἔγνω.
+
+\textbf{Русский.} Съешь же ещё этих мягких французских булок, да выпей чаю.
+В чащах юга жил бы цитрус? Да, но фальшивый экземпляр!
+
+\end{document}
