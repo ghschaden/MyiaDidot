@@ -1730,6 +1730,80 @@
 			<string>uni04B1.sc</string>
 			<string>uni04D9.sc</string>
 			<string>uni0259.sc</string>
+			<string>hook</string>
+			<string>hookcomb</string>
+			<string>Hook</string>
+			<string>hookcomb.cap</string>
+			<string>horn</string>
+			<string>horncomb</string>
+			<string>Horn</string>
+			<string>horncomb.cap</string>
+			<string>uni01A0</string>
+			<string>uni01A1</string>
+			<string>uni01AF</string>
+			<string>uni01B0</string>
+			<string>uni1EA2</string>
+			<string>uni1EA3</string>
+			<string>uni1EA8</string>
+			<string>uni1EA9</string>
+			<string>uni1EB2</string>
+			<string>uni1EB3</string>
+			<string>uni1EBA</string>
+			<string>uni1EBB</string>
+			<string>uni1EC2</string>
+			<string>uni1EC3</string>
+			<string>uni1EC8</string>
+			<string>uni1EC9</string>
+			<string>uni1ECE</string>
+			<string>uni1ECF</string>
+			<string>uni1ED4</string>
+			<string>uni1ED5</string>
+			<string>uni1EDA</string>
+			<string>uni1EDB</string>
+			<string>uni1EDC</string>
+			<string>uni1EDD</string>
+			<string>uni1EDE</string>
+			<string>uni1EDF</string>
+			<string>uni1EE0</string>
+			<string>uni1EE1</string>
+			<string>uni1EE2</string>
+			<string>uni1EE3</string>
+			<string>uni1EE6</string>
+			<string>uni1EE7</string>
+			<string>uni1EE8</string>
+			<string>uni1EE9</string>
+			<string>uni1EEA</string>
+			<string>uni1EEB</string>
+			<string>uni1EEC</string>
+			<string>uni1EED</string>
+			<string>uni1EEE</string>
+			<string>uni1EEF</string>
+			<string>uni1EF0</string>
+			<string>uni1EF1</string>
+			<string>uni1EF6</string>
+			<string>uni1EF7</string>
+			<string>uni01A1.sc</string>
+			<string>uni01B0.sc</string>
+			<string>uni1EA3.sc</string>
+			<string>uni1EA9.sc</string>
+			<string>uni1EB3.sc</string>
+			<string>uni1EBB.sc</string>
+			<string>uni1EC3.sc</string>
+			<string>uni1EC9.sc</string>
+			<string>uni1ECF.sc</string>
+			<string>uni1ED5.sc</string>
+			<string>uni1EDB.sc</string>
+			<string>uni1EDD.sc</string>
+			<string>uni1EDF.sc</string>
+			<string>uni1EE1.sc</string>
+			<string>uni1EE3.sc</string>
+			<string>uni1EE7.sc</string>
+			<string>uni1EE9.sc</string>
+			<string>uni1EEB.sc</string>
+			<string>uni1EED.sc</string>
+			<string>uni1EEF.sc</string>
+			<string>uni1EF1.sc</string>
+			<string>uni1EF7.sc</string>
 		</array>
 		<key>public.openTypeCategories</key>
 		<dict>
@@ -1868,6 +1942,10 @@
 			<key>Hbar</key>
 			<string>base</string>
 			<key>Hcircumflex</key>
+			<string>base</string>
+			<key>Hook</key>
+			<string>base</string>
+			<key>Horn</key>
 			<string>base</string>
 			<key>Hungarumlaut</key>
 			<string>base</string>
@@ -2555,6 +2633,18 @@
 			<string>base</string>
 			<key>hcircumflex.sc</key>
 			<string>base</string>
+			<key>hook</key>
+			<string>base</string>
+			<key>hookcomb</key>
+			<string>mark</string>
+			<key>hookcomb.cap</key>
+			<string>mark</string>
+			<key>horn</key>
+			<string>base</string>
+			<key>horncomb</key>
+			<string>mark</string>
+			<key>horncomb.cap</key>
+			<string>mark</string>
 			<key>hungarumlaut</key>
 			<string>base</string>
 			<key>hyphen</key>
@@ -3164,6 +3254,18 @@
 			<key>uni019C</key>
 			<string>base</string>
 			<key>uni019F</key>
+			<string>base</string>
+			<key>uni01A0</key>
+			<string>base</string>
+			<key>uni01A1</key>
+			<string>base</string>
+			<key>uni01A1.sc</key>
+			<string>base</string>
+			<key>uni01AF</key>
+			<string>base</string>
+			<key>uni01B0</key>
+			<string>base</string>
+			<key>uni01B0.sc</key>
 			<string>base</string>
 			<key>uni01C0</key>
 			<string>base</string>
@@ -4325,6 +4427,12 @@
 			<string>base</string>
 			<key>uni1EA1.sc</key>
 			<string>base</string>
+			<key>uni1EA2</key>
+			<string>base</string>
+			<key>uni1EA3</key>
+			<string>base</string>
+			<key>uni1EA3.sc</key>
+			<string>base</string>
 			<key>uni1EA4</key>
 			<string>base</string>
 			<key>uni1EA5</key>
@@ -4336,6 +4444,12 @@
 			<key>uni1EA7</key>
 			<string>base</string>
 			<key>uni1EA7.sc</key>
+			<string>base</string>
+			<key>uni1EA8</key>
+			<string>base</string>
+			<key>uni1EA9</key>
+			<string>base</string>
+			<key>uni1EA9.sc</key>
 			<string>base</string>
 			<key>uni1EAA</key>
 			<string>base</string>
@@ -4361,6 +4475,12 @@
 			<string>base</string>
 			<key>uni1EB1.sc</key>
 			<string>base</string>
+			<key>uni1EB2</key>
+			<string>base</string>
+			<key>uni1EB3</key>
+			<string>base</string>
+			<key>uni1EB3.sc</key>
+			<string>base</string>
 			<key>uni1EB4</key>
 			<string>base</string>
 			<key>uni1EB5</key>
@@ -4378,6 +4498,12 @@
 			<key>uni1EB9</key>
 			<string>base</string>
 			<key>uni1EB9.sc</key>
+			<string>base</string>
+			<key>uni1EBA</key>
+			<string>base</string>
+			<key>uni1EBB</key>
+			<string>base</string>
+			<key>uni1EBB.sc</key>
 			<string>base</string>
 			<key>uni1EBC</key>
 			<string>base</string>
@@ -4397,6 +4523,12 @@
 			<string>base</string>
 			<key>uni1EC1.sc</key>
 			<string>base</string>
+			<key>uni1EC2</key>
+			<string>base</string>
+			<key>uni1EC3</key>
+			<string>base</string>
+			<key>uni1EC3.sc</key>
+			<string>base</string>
 			<key>uni1EC4</key>
 			<string>base</string>
 			<key>uni1EC5</key>
@@ -4408,6 +4540,12 @@
 			<key>uni1EC7</key>
 			<string>base</string>
 			<key>uni1EC7.sc</key>
+			<string>base</string>
+			<key>uni1EC8</key>
+			<string>base</string>
+			<key>uni1EC9</key>
+			<string>base</string>
+			<key>uni1EC9.sc</key>
 			<string>base</string>
 			<key>uni1ECA</key>
 			<string>base</string>
@@ -4421,6 +4559,12 @@
 			<string>base</string>
 			<key>uni1ECD.sc</key>
 			<string>base</string>
+			<key>uni1ECE</key>
+			<string>base</string>
+			<key>uni1ECF</key>
+			<string>base</string>
+			<key>uni1ECF.sc</key>
+			<string>base</string>
 			<key>uni1ED0</key>
 			<string>base</string>
 			<key>uni1ED1</key>
@@ -4432,6 +4576,12 @@
 			<key>uni1ED3</key>
 			<string>base</string>
 			<key>uni1ED3.sc</key>
+			<string>base</string>
+			<key>uni1ED4</key>
+			<string>base</string>
+			<key>uni1ED5</key>
+			<string>base</string>
+			<key>uni1ED5.sc</key>
 			<string>base</string>
 			<key>uni1ED6</key>
 			<string>base</string>
@@ -4445,11 +4595,77 @@
 			<string>base</string>
 			<key>uni1ED9.sc</key>
 			<string>base</string>
+			<key>uni1EDA</key>
+			<string>base</string>
+			<key>uni1EDB</key>
+			<string>base</string>
+			<key>uni1EDB.sc</key>
+			<string>base</string>
+			<key>uni1EDC</key>
+			<string>base</string>
+			<key>uni1EDD</key>
+			<string>base</string>
+			<key>uni1EDD.sc</key>
+			<string>base</string>
+			<key>uni1EDE</key>
+			<string>base</string>
+			<key>uni1EDF</key>
+			<string>base</string>
+			<key>uni1EDF.sc</key>
+			<string>base</string>
+			<key>uni1EE0</key>
+			<string>base</string>
+			<key>uni1EE1</key>
+			<string>base</string>
+			<key>uni1EE1.sc</key>
+			<string>base</string>
+			<key>uni1EE2</key>
+			<string>base</string>
+			<key>uni1EE3</key>
+			<string>base</string>
+			<key>uni1EE3.sc</key>
+			<string>base</string>
 			<key>uni1EE4</key>
 			<string>base</string>
 			<key>uni1EE5</key>
 			<string>base</string>
 			<key>uni1EE5.sc</key>
+			<string>base</string>
+			<key>uni1EE6</key>
+			<string>base</string>
+			<key>uni1EE7</key>
+			<string>base</string>
+			<key>uni1EE7.sc</key>
+			<string>base</string>
+			<key>uni1EE8</key>
+			<string>base</string>
+			<key>uni1EE9</key>
+			<string>base</string>
+			<key>uni1EE9.sc</key>
+			<string>base</string>
+			<key>uni1EEA</key>
+			<string>base</string>
+			<key>uni1EEB</key>
+			<string>base</string>
+			<key>uni1EEB.sc</key>
+			<string>base</string>
+			<key>uni1EEC</key>
+			<string>base</string>
+			<key>uni1EED</key>
+			<string>base</string>
+			<key>uni1EED.sc</key>
+			<string>base</string>
+			<key>uni1EEE</key>
+			<string>base</string>
+			<key>uni1EEF</key>
+			<string>base</string>
+			<key>uni1EEF.sc</key>
+			<string>base</string>
+			<key>uni1EF0</key>
+			<string>base</string>
+			<key>uni1EF1</key>
+			<string>base</string>
+			<key>uni1EF1.sc</key>
 			<string>base</string>
 			<key>uni1EF2</key>
 			<string>base</string>
@@ -4462,6 +4678,12 @@
 			<key>uni1EF5</key>
 			<string>base</string>
 			<key>uni1EF5.sc</key>
+			<string>base</string>
+			<key>uni1EF6</key>
+			<string>base</string>
+			<key>uni1EF7</key>
+			<string>base</string>
+			<key>uni1EF7.sc</key>
 			<string>base</string>
 			<key>uni1EF8</key>
 			<string>base</string>

@@ -26,6 +26,20 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: Vietnamese complete
+
+    * Hook above (U+0309) and horn (U+031B) drafted by
+      scripts/draft_vietnamese_marks.py: the hook is the curve of the
+      question mark at accent size and weight, the horn a small comma whose
+      tail runs into the shoulder (Horn anchors on O U o u and their small
+      caps); capital forms for both. 44 composites built from them
+      (Ả Ẩ Ẳ ... Ơ Ư Ở Ự ...), plus their small caps; GF_Latin_Vietnamese
+      is complete.
+    * Decomposed text: a second accent on a capital now takes its capital
+      form too (new ccmp lookup), so decomposed Ấ Ở Ǘ Ṍ ... render like the
+      precomposed letters; 20 NFD exceptions are gone. The hook and horn
+      join the capital and dotless-i rules.
+
 2026-10-14 Version 0.100 (development), Phase 1: Cyrillic descenders, schwa
 
     * Cyrillic letters with a descender, the curled tail of Ц added under

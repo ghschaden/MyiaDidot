@@ -12,6 +12,7 @@ caps are reached through smcp/c2sc, since they have no code points.
 import argparse
 import os
 import sys
+import unicodedata
 from pathlib import Path
 
 import ufoLib2
@@ -78,7 +79,7 @@ def draft_groups(ufo):
     import derive
 
     cmap = {u: g.name for g in ufo for u in g.unicodes}
-    out = {"uni1E9E": ("drawn", "ß")}
+    out = {"uni1E9E": ("drawn", "ß"), "hookcomb": ("drawn", "?"), "horncomb": ("drawn", ",")}
     for ch, op, source, _band in derive.RECIPES:
         if ch.endswith(".sc"):
             continue
@@ -123,8 +124,14 @@ def drafts_sheet(ufo, preamble):
             if partner != ch and ord(partner) in cmap:
                 up, lo = sorted((ch, partner), key=str.islower)
                 pair = r"%s%s {\smallcapfont %s%s}" % (tex(up), tex(lo), tex(up), tex(lo))
+            shown = tex(ch)
+            if unicodedata.category(ch) == "Mn":
+                # a combining mark: shown on o, in context on O u U (decomposed)
+                shown = "o" + ch
+                pair = " ".join(b + ch for b in "OuU")
+                ch = "◌" + ch
             cells.append(r"\odraft{%s %s}{%s}{%s}{%s}"
-                         % (g.name, ch, groups.get(g.name, ("", ""))[1], tex(ch), pair))
+                         % (g.name, ch, groups.get(g.name, ("", ""))[1], shown, pair))
         for i in range(0, len(cells), 4):
             out.append(r"\begin{cells}" + " & ".join(cells[i:i + 4]) + r"\end{cells}")
     out.append(r"\end{document}")
