@@ -140,6 +140,21 @@ class Builder:
                 return c.baseGlyph, t[4], t[5]
         return mark, 0, 0
 
+    def vietnamese_tones(self, marks):
+        """Circumflex + acute/grave/hook above as one mark, the tone beside
+        the circumflex (Vietnamese habit; ccmpVietnameseToneMarks in the
+        features does the same for decomposed text)."""
+        out, i = [], 0
+        while i < len(marks):
+            pair = f"{marks[i]}_{marks[i + 1]}" if i + 1 < len(marks) else None
+            if marks[i] == "circumflexcmb" and pair in self.font:
+                out.append(pair)
+                i += 2
+            else:
+                out.append(marks[i])
+                i += 1
+        return out
+
     # -- recipe ------------------------------------------------------------
 
     def recipe(self, cp):
@@ -164,6 +179,7 @@ class Builder:
         by default they follow the base's case.
         """
         cp_label = label or name
+        marks = self.vietnamese_tones(marks)
         sides = [self.mark_side(m) for m in marks]
         if None in sides:
             raise ValueError(f"{cp_label}: mark without attachment anchors in {marks}")

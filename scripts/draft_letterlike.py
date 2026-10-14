@@ -85,7 +85,8 @@ def italic_l(font):
     top = path_op(to_path(font, font["l"]), rect_path(-BIG, 250, BIG, BIG), "INTERSECTION")
     hook = curl(font, "space", [], at=("pt", (a + b) / 2, 260, b - a), dir=270, turn="ccw",
                 r=(170, 140), sweep=150, ball=52, t=(b - a, 48))
-    return transformed(union(top, hook), (1, 0, SLANT, 1, 0, 0)), 780
+    # the ball of the hook overhangs the advance, as italic letters do
+    return transformed(union(top, hook), (1, 0, SLANT, 1, 0, 0)), 620
 
 
 def estimated(font):

@@ -154,6 +154,19 @@ lookup ccmpStackedCapitalAccents {
     sub @CapMarks [\uni0328]' by \uni0328.cap;
 } ccmpStackedCapitalAccents;
 
+# Vietnamese: a tone mark after the circumflex becomes one mark with the
+# tone beside the circumflex, as the precomposed letters have it (after the
+# capital forms have been chosen)
+lookup ccmpVietnameseToneMarks {
+  lookupflag 0;
+    sub \circumflexcmb \acutecomb  by \circumflexcmb_acutecomb;
+    sub \circumflexcmb \gravecomb  by \circumflexcmb_gravecomb;
+    sub \circumflexcmb \hookcomb  by \circumflexcmb_hookcomb;
+    sub \circumflexcmb.cap \acutecomb.cap  by \circumflexcmb_acutecomb.cap;
+    sub \circumflexcmb.cap \gravecomb.cap  by \circumflexcmb_gravecomb.cap;
+    sub \circumflexcmb.cap \hookcomb.cap  by \circumflexcmb_hookcomb.cap;
+} ccmpVietnameseToneMarks;
+
 lookup GreekCompositeAccents {
   lookupflag 0;
     sub \uni0308 \acutecomb  by \uni0344;
@@ -4280,6 +4293,9 @@ lookup SmallCapMarkForms {
     sub @SmallCaps [\brevecmb.cyrl]' by \brevecmb.cyrcap;
     sub @SmallCaps [\circumflexcmb]' by \circumflexcmb.cap;
     sub @SmallCaps [\circumflexcmb.i]' by \circumflexcmb.cap;
+    sub @SmallCaps [\circumflexcmb_acutecomb]' by \circumflexcmb_acutecomb.cap;
+    sub @SmallCaps [\circumflexcmb_gravecomb]' by \circumflexcmb_gravecomb.cap;
+    sub @SmallCaps [\circumflexcmb_hookcomb]' by \circumflexcmb_hookcomb.cap;
     sub @SmallCaps [\gravecomb]' by \gravecomb.cap;
     sub @SmallCaps [\hookcomb]' by \hookcomb.cap;
     sub @SmallCaps [\horncomb]' by \horncomb.cap;
@@ -4298,51 +4314,57 @@ lookup SmallCapMarkForms {
     sub @SmallCaps [\uni0327]' by \uni0327.cap;
     sub @SmallCaps [\uni0328]' by \uni0328.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\acutecomb]' by \acutecomb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\acutecomb]' by \acutecomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\acutecomb]' by \acutecomb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\brevecmb]' by \brevecmb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\brevecmb]' by \brevecmb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\brevecmb]' by \brevecmb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\brevecmb.i]' by \brevecmb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\brevecmb.i]' by \brevecmb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\brevecmb.i]' by \brevecmb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\brevecmb.cyrl]' by \brevecmb.cyrcap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\brevecmb.cyrl]' by \brevecmb.cyrcap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\brevecmb.cyrl]' by \brevecmb.cyrcap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\circumflexcmb]' by \circumflexcmb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\circumflexcmb]' by \circumflexcmb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\circumflexcmb]' by \circumflexcmb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\circumflexcmb.i]' by \circumflexcmb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\circumflexcmb.i]' by \circumflexcmb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\circumflexcmb.i]' by \circumflexcmb.cap;
+    sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\circumflexcmb_acutecomb]' by \circumflexcmb_acutecomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\circumflexcmb_acutecomb]' by \circumflexcmb_acutecomb.cap;
+    sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\circumflexcmb_gravecomb]' by \circumflexcmb_gravecomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\circumflexcmb_gravecomb]' by \circumflexcmb_gravecomb.cap;
+    sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\circumflexcmb_hookcomb]' by \circumflexcmb_hookcomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\circumflexcmb_hookcomb]' by \circumflexcmb_hookcomb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\gravecomb]' by \gravecomb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\gravecomb]' by \gravecomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\gravecomb]' by \gravecomb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\hookcomb]' by \hookcomb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\hookcomb]' by \hookcomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\hookcomb]' by \hookcomb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\horncomb]' by \horncomb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\horncomb]' by \horncomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\horncomb]' by \horncomb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\macroncmb]' by \macroncmb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\macroncmb]' by \macroncmb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\macroncmb]' by \macroncmb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\macroncmb.i]' by \macroncmb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\macroncmb.i]' by \macroncmb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\macroncmb.i]' by \macroncmb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\tildecomb]' by \tildecomb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\tildecomb]' by \tildecomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\tildecomb]' by \tildecomb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\tildecomb.i]' by \tildecomb.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\tildecomb.i]' by \tildecomb.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\tildecomb.i]' by \tildecomb.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni0307]' by \uni0307.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0307]' by \uni0307.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0307]' by \uni0307.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni0308]' by \uni0308.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0308]' by \uni0308.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0308]' by \uni0308.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni0308.i]' by \uni0308.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0308.i]' by \uni0308.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0308.i]' by \uni0308.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni030A]' by \uni030A.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030A]' by \uni030A.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030A]' by \uni030A.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni030B]' by \uni030B.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030B]' by \uni030B.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030B]' by \uni030B.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni030C]' by \uni030C.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030C]' by \uni030C.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030C]' by \uni030C.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni030F]' by \uni030F.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030F]' by \uni030F.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni030F]' by \uni030F.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni0311]' by \uni0311.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0311]' by \uni0311.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0311]' by \uni0311.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni0327]' by \uni0327.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0327]' by \uni0327.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0327]' by \uni0327.cap;
     sub @SmallCaps [\dotbelowcomb \uni0316 \uni0317 \uni0318 \uni0319 \uni031C \uni031D \uni031E \uni031F \uni0320 \uni0324 \uni0325 \uni0326 \uni0329 \uni032A \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0332 \uni0339 \uni033A \uni033B \uni033C \uni0348 \uni0359] [\uni0328]' by \uni0328.cap;
-    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0328]' by \uni0328.cap;
+    sub [\acutecomb.cap \brevecmb.cap \brevecmb.cyrcap \circumflexcmb.cap \circumflexcmb_acutecomb.cap \circumflexcmb_gravecomb.cap \circumflexcmb_hookcomb.cap \gravecomb.cap \hookcomb.cap \horncomb.cap \macroncmb.cap \tildecomb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap] [\uni0328]' by \uni0328.cap;
 } SmallCapMarkForms;
 
 feature smcp {
@@ -4770,6 +4792,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
 
  script grek;
@@ -4779,6 +4802,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
 
  script latn;
@@ -4788,6 +4812,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
      language AZE  exclude_dflt;
       lookup ccmpSimpleGlyphComposition;
@@ -4795,6 +4820,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
      language CRT  exclude_dflt;
       lookup ccmpSimpleGlyphComposition;
@@ -4802,6 +4828,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
      language DEU  exclude_dflt;
       lookup ccmpSimpleGlyphComposition;
@@ -4809,6 +4836,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
      language MOL  exclude_dflt;
       lookup ccmpSimpleGlyphComposition;
@@ -4816,6 +4844,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
      language ROM  exclude_dflt;
       lookup ccmpSimpleGlyphComposition;
@@ -4823,6 +4852,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
      language TRK  exclude_dflt;
       lookup ccmpSimpleGlyphComposition;
@@ -4830,6 +4860,7 @@ feature ccmp {
       lookup ccmpCyrillicAccents;
       lookup ccmpCapitalAccents;
       lookup ccmpStackedCapitalAccents;
+      lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
 } ccmp;
 

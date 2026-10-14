@@ -91,8 +91,9 @@ TICK = (1402, 1076, 717, 358, 32)  # tone bar levels, extra-high to extra-low
 # (glyph name, code point, width, category, anchors, shapes)
 GLYPHS = [
     # vertical lines
-    ("uni030D", 0x030D, 0, "mark", [TOP], [rects((C - 32, ALO, C + 32, AHI))]),
-    ("uni0329", 0x0329, 0, "mark", [BOTTOM], [rects((C - 32, LO, C + 32, HI))]),
+    # vertical strokes are the heavy ones in a Didot: stem-like, not hairlines
+    ("uni030D", 0x030D, 0, "mark", [TOP], [rects((C - 50, ALO, C + 50, AHI))]),
+    ("uni0329", 0x0329, 0, "mark", [BOTTOM], [rects((C - 50, LO, C + 50, HI))]),
     ("uni0348", 0x0348, 0, "mark", [BOTTOM],
      [rects((C - 132, LO, C - 68, HI), (C + 68, LO, C + 132, HI))]),
     # tacks, plus, minus
@@ -118,8 +119,8 @@ GLYPHS = [
      [hollow(square, rects((C - 94, LO + 56, C + 94, HI - 56)))]),
     # seagull: two breves below side by side
     ("uni033C", 0x033C, 0, "mark", [BOTTOM],
-     [part("uni032E", (0.5, 0, 0, 0.8, C - 150 + 0.5 * 440, -60)),
-      part("uni032E", (0.5, 0, 0, 0.8, C + 150 + 0.5 * 440, -60))]),
+     [part("uni032E", (0.5, 0, 0, 0.8, C - 136 + 0.5 * 440, -60)),   # the two touching
+      part("uni032E", (0.5, 0, 0, 0.8, C + 136 + 0.5 * 440, -60))]),
     # half rings below: halves of the ring below
     ("uni031C", 0x031C, 0, "mark", [BOTTOM],
      [part("uni0325", (1, 0, 0, 1, 0, 0), (-BIG, -BIG, C, BIG))]),
@@ -156,8 +157,8 @@ GLYPHS = [
      [strokes(((C - 240, 1100), (C - 80, 1400)), ((C - 80, 1400), (C + 80, 1100)),
               ((C + 80, 1100), (C + 240, 1400)), t=56)]),
     # spacing: stress, length, minus, short equals, prime, saltillo
-    ("uni02C8", 0x02C8, 300, "base", [], [rects((118, 1000, 182, 1434))]),
-    ("uni02CC", 0x02CC, 300, "base", [], [rects((118, -434, 182, 0))]),
+    ("uni02C8", 0x02C8, 300, "base", [], [rects((100, 1000, 200, 1434))]),
+    ("uni02CC", 0x02CC, 300, "base", [], [rects((100, -434, 200, 0))]),
     ("uni02D0", 0x02D0, 400, "base", [],
      [polygon((100, 884), (300, 884), (200, 664)), polygon((100, 0), (200, 220), (300, 0))]),
     ("uni02D1", 0x02D1, 400, "base", [], [polygon((100, 884), (300, 884), (200, 664))]),

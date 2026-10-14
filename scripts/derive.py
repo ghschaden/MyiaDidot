@@ -125,8 +125,10 @@ RECIPES = [
     ("ʔ", "nodot", "question", None),
     ("Ɂ", "alias", "ʔ", None),
     ("ʕ", "mirror", "ʔ", None),
-    ("ǀ", "alias", "bar", None),
-    ("ǁ", "double", "bar", None),
+    # the clicks stand on the baseline (| itself descends); ǁ's bars closer than two |
+    ("ǀ", "attach", "bar", ("x", [(-BIG, -BIG, BIG, 0)], [])),
+    ("ǁ", "attach", "bar", ("x", [(-BIG, -BIG, BIG, 0)],
+                            [("bar", (-BIG, 0, BIG, BIG), (0, 0), (1, 1, 230, 0))])),
     ("ǃ", "alias", "exclam", None),
     # with a bar (band, y or None for the band's bar height, which stems)
     ("Ɨ", "bar", "I", ("c",)),
@@ -235,7 +237,7 @@ RECIPES = [
     ("ɠ", "hook", "ɡ", ("x", "up-right", "last", 800, 0, 200)),
     ("Ʊ", "turn", "Omega", "c"),
     ("ʊ", "enlarge", "Ʊ", ("O", "o")),
-    ("Ɣ", "enlarge", "ɣ", ("o", "O", 0, 1462)),
+    ("Ɣ", "enlarge", "ɣ", ("o", "O", -500, 1434)),  # the loop below the baseline, as in Charis
     ("ɰ", "twin", "u", (600, "uni0265")),  # u and ɥ: the last stem descends
     # modifier letters: the letters at the size of the superior figures
     ("ʰ", "superior", "h", None),
@@ -271,7 +273,7 @@ RECIPES = [
                         {"at": ("y", 1000, "last"), "dir": 90, "turn": "ccw", "r": (240, 400),
                          "sweep": 160, "ball": 92, "t": (64, 64)})),
     ("ƴ", "curl", "y", ("x", [(660, 700, 1000, BIG)],
-                        {"at": ("y", 700, "last"), "dir": 70.7, "turn": "cw", "r": 160,
+                        {"at": ("y", 700, "last"), "dir": 70.7, "turn": "cw", "r": 200,
                          "sweep": 140, "ball": 70}, 1080)),
     ("Ƴ", "curl", "Y", ("c", [(960, 1150, 1460, BIG)],
                         {"at": ("y", 1150, "last"), "dir": 63.4, "turn": "cw", "r": 200,
@@ -292,8 +294,8 @@ RECIPES = [
                         {"at": ("xb", 330), "dir": 215, "turn": "ccw", "r": 110,
                          "sweep": 170, "ball": 60})),
     ("ʐ", "curl", "z", ("x", [(700, -BIG, BIG, 500)],
-                        {"at": ("xb", 720), "dir": 290, "turn": "ccw", "r": 120,
-                         "sweep": 140, "ball": 62})),
+                        {"at": ("xb", 720), "dir": 270, "turn": "ccw", "r": (130, 210),
+                         "sweep": 160, "ball": 62})),
     ("ʑ", "curl", "z", ("x", [(700, -BIG, BIG, 500)],
                         {"at": ("xb", 690), "dir": 0, "turn": "ccw", "r": 110,
                          "sweep": 270, "ball": 55})),
@@ -325,12 +327,14 @@ RECIPES = [
                            ("uni0237", (-BIG, -BIG, BIG, -100), (238, -100), (1.27, 1, 458, -100)),
                            ("line", ((60, -540), (900, -170), 60), (0, 0), (1, 1, 0, 0))])),
     # the rhotic hook, and ɚ ɝ with it
-    ("˞", "curl", "space", ("x", [], {"at": ("pt", 80, 500, 50), "dir": 0, "turn": "ccw",
-                                      "r": 90, "sweep": 170, "ball": 45}, 330)),
-    ("ɚ", "attach", "ə", ("x", [], [("uni02DE", (-BIG, -BIG, BIG, BIG), (60, 500),
-                                      (1, 1, 840, 520))], 962 + 230)),
-    ("ɝ", "attach", "ɜ", ("x", [], [("uni02DE", (-BIG, -BIG, BIG, BIG), (60, 500),
-                                      (1, 1, 630, 600))], 812 + 230)),
+    # ˞ rises from the letter and curls over to the right, like the ear of r
+    ("˞", "curl", "space", ("x", [], {"at": ("pt", 60, 560, 56), "dir": 75, "turn": "cw",
+                                      "r": (120, 140), "sweep": 170, "ball": 50}, 360)),
+    # the hook joins the letter where its right side is upright
+    ("ɚ", "attach", "ə", ("x", [], [("uni02DE", (-BIG, -BIG, BIG, BIG), (60, 560),
+                                      (1, 1, 840, 600))], 962 + 300)),
+    ("ɝ", "attach", "ɜ", ("x", [], [("uni02DE", (-BIG, -BIG, BIG, BIG), (60, 560),
+                                      (1, 1, 660, 640))], 812 + 300)),
     # ɬ: l with a belt, a small ring (the degree sign) and its tail across
     ("ɬ", "attach", "l", ("x", [], [("degree", (-BIG, -BIG, BIG, BIG), (576, 1118),
                                       (0.45, 0.45, 220, 760)),
@@ -373,7 +377,9 @@ RECIPES = [
     ("ʛ", "alias", "ɠ.sc", None),
     ("Ƃ", "alias", "uni0411", None),  # B with topbar is Б
     ("ƃ", "lines", "b", ("x", 56, [(222, 1440, 720, 1496)])),
-    ("ǂ", "lines", "bar", ("x", 64, [(56, 560, 456, 624), (56, 820, 456, 884)])),
+    ("ǂ", "attach", "bar", ("x", [(-BIG, -BIG, BIG, 0)],
+                            [("rect", (56, 560, 456, 624), (0, 0), (1, 1, 0, 0)),
+                             ("rect", (56, 820, 456, 884), (0, 0), (1, 1, 0, 0))], 512)),
     ("ʘ", "attach", "O", ("c", [], [("period", (-BIG, -BIG, BIG, BIG), (264, 104), (1, 1, 834, 613))])),
     ("ɮ", "attach", "l", ("x", [(384, -BIG, BIG, 48)],
                           [("uni0292", (-BIG, -BIG, BIG, BIG), (78, 884), (1, 1, 330, 884))], 330 - 78 + 966)),
@@ -894,6 +900,9 @@ HOOK_SRC = {"up": ("f", 1512), "down": ("uni0237", -628)}
 # top or bottom the hook reaches, per band (up) and for descenders (down)
 HOOK_TOP = {"x": 1512, "c": 1462, "s": 1062}
 HOOK_BOTTOM = {"x": -628, "c": -628, "s": -500}
+# retroflex hooks (turning right: ɖ ɭ ɳ ɽ ɻ ʈ) stop short of the descender,
+# as in Charis and Libertinus; the left-turning ones (ɲ ɱ ɡ) go all the way
+HOOK_BOTTOM_RETROFLEX = {"x": -420, "c": -420, "s": -360}
 
 
 def hook_path(font, source, band, kind, pick, cut, left, right):
@@ -919,7 +928,7 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
         # never below 900: f's crossbar ends at 884 (the hook is then shorter)
         s0, s1 = max(hend - reach / k, 900), BIG
     else:
-        reach = cut - HOOK_BOTTOM[band]
+        reach = cut - (HOOK_BOTTOM_RETROFLEX if kind == "down-right" else HOOK_BOTTOM)[band]
         s0, s1 = -BIG, hend + reach / k
     piece = path_op(to_path(font, font[hsrc]), rect_path(-BIG, s0, BIG, s1), "INTERSECTION")
     # the hook's stem where it meets the letter, and the letter's stem at

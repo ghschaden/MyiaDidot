@@ -12,6 +12,13 @@ horn: the comma scaled down, its tail on the base's Horn anchor so the ball
     `horncomb.cap` with a `_Horn` anchor at the tail.
 Horn anchors: on the bowl's outline at 50 degrees (O o), on the right end
     of the top right serif or stem (U u), 24 units inside the ink.
+circumflex with a tone mark: as habitual in Vietnamese typesetting
+    (Trương, Vietnamese Typography), the acute, grave and hook above sit
+    to the right of the circumflex, from halfway up its right arm, not on
+    top of it: spacing `circumflex_acute` ... `Circumflex_Hook`, combining
+    `circumflexcmb_acutecomb` ... `.cap`, formed from the separate marks by
+    the ccmp lookup ccmpVietnameseToneMarks and used by composites.py for
+    the precomposed letters. The tilde stays above the circumflex.
 
 Glyphs are marked as drafts (lib org.myiadidot.draft). Existing glyphs are
 kept unless they are unreviewed drafts and --redraft is given. Afterwards:
@@ -38,6 +45,9 @@ HOOKS = {"hook": (340, 1062, 44, 14), "Hook": (300, 1570, 50, 16)}
 # (spacing name, scale of the comma)
 HORNS = {"horn": 0.56, "Horn": 0.66}
 INSIDE = 24
+# circumflex + tone mark: (spacing circumflex, tone, combining tone, overlap):
+# the tone's ink starts overlap units left of the circumflex's right end
+TONES = [("acute", "acutecomb", 70), ("grave", "gravecomb", 70), ("hook", "hookcomb", 40)]
 
 
 def can_write(font, name, redraft):
@@ -142,6 +152,29 @@ def main():
             g.getPen().addComponent(name, (1, 0, 0, 1, -880, 0))
             g.appendAnchor({"name": "_Horn", "x": -440, "y": 0})
             made.append(comb)
+
+    for cap in (False, True):
+        circ = "Circumflex" if cap else "circumflex"
+        c0, c1 = ink_bounds(font, circ)[0::2], ink_bounds(font, circ)[1::2]
+        for tone, comb_tone, overlap in TONES:
+            spacing_tone = tone.capitalize() if cap else tone
+            spacing = f"{circ}_{spacing_tone}"
+            comb = f"circumflexcmb_{comb_tone}" + (".cap" if cap else "")
+            if can_write(font, spacing, args.redraft):
+                t = ink_bounds(font, spacing_tone)
+                dx = c0[1] - overlap - t[0]                 # just right of the circumflex
+                dy = c1[0] + (c1[1] - c1[0]) / 2 - t[1]     # from halfway up its arm
+                g = new(font, spacing, 880)
+                pen = g.getPen()
+                pen.addComponent(circ, (1, 0, 0, 1, 0, 0))
+                pen.addComponent(spacing_tone, (1, 0, 0, 1, round(dx), round(dy)))
+                made.append(spacing)
+            if can_write(font, comb, args.redraft):
+                g = new(font, comb, 0, None, "mark")
+                g.getPen().addComponent(spacing, (1, 0, 0, 1, -880, 0))
+                anchor = ("_TopCap", 1580) if cap else ("_Top", 1000)
+                g.appendAnchor({"name": anchor[0], "x": -440, "y": anchor[1]})
+                made.append(comb)
 
     for base in ("O", "U", "o", "u", "o.sc", "u.sc"):
         g = font[base]

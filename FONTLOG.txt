@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-14 Version 0.100 (development), Phase 1: Vietnamese tone marks beside the circumflex
+
+    * As habitual in Vietnamese typesetting (Trương, Vietnamese
+      Typography): the acute, grave and hook above go to the right of the
+      circumflex, from halfway up its right arm, instead of on top of it;
+      the tilde stays above, breve combinations stay stacked. New combined
+      marks circumflexcmb_acutecomb/_gravecomb/_hookcomb (and .cap, on the
+      spacing circumflex_acute ... Circumflex_Hook), used by composites.py
+      for Ấ Ầ Ẩ Ế Ề Ể Ố Ồ Ổ and their lowercase and small caps, and formed
+      from decomposed text by the new ccmp lookup ccmpVietnameseToneMarks,
+      so both render alike. These letters are about a fifth lower.
+
+2026-10-14 Version 0.100 (development), Phase 1: checked against Libertinus
+
+    * Every character was compared with Libertinus Serif (Math for the
+      rest) on vertical extent, width, counters and ink. Fixed: Ƹ dips
+      below the baseline like Ʒ; the clicks ǀ ǁ ǂ stand on the baseline
+      (they were | and descended), ǁ's bars closer; the retroflex hooks
+      (ɖ ɭ ɳ ɽ ɻ ʈ Ʈ Ɽ) stop at -420 instead of the full descender, as in
+      Charis and Libertinus; ˞ redrawn as an ear rising to the right, so
+      ɚ ɝ carry it visibly and joined; ʐ's tail deeper; Ɣ's loop below
+      the baseline; ꜛ ꜜ rebuilt from the mended arrows (no gap); the
+      seagull ̼ joined; ˈ ˌ ̍ ̩ at stem weight; ƴ's hook higher; 𝑙 spaced
+      on its ink. Differences inherited from Theano Didot (У and Ф with
+      tails, the iota subscript under capitals, its accent sizes) are kept.
+
 2026-10-14 Version 0.100 (development), Phase 1: the last small caps
 
     * Small caps for Ƙƙ Ɲɲ Ϗϗ Ʝʝ (from the capitals, as the others) and the
