@@ -1,0 +1,11 @@
+# Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
+M notch 1                        # design: acute crotch where the diagonal meets the stem (374,1364 41 px)
+Mu notch 1                       # design: acute crotch where the diagonal meets the stem (374,1364 41 px)
+germandbls.sc notch 1            # reviewed 2026-10-15, leave: join (340,121 46 px)
+trademark notch 1                # design: acute crotch where the diagonal meets the stem (1212,1401 72 px)
+uni041C notch 1                  # design: acute crotch where the diagonal meets the stem (374,1364 41 px)
+uni043C notch 1                  # design: acute crotch where the diagonal meets the stem (280,789 72 px)
+uni1E3E notch 1                  # design: acute crotch where the diagonal meets the stem (374,1364 41 px)
+uni1E42 notch 1                  # design: acute crotch where the diagonal meets the stem (374,1364 41 px)
+uni1EE1.sc notch 1               # reviewed 2026-10-15, leave: join (970,1328 42 px)
+uni2116 notch 1                  # design: acute crotch where the diagonal meets the stem (557,1337 57 px)

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni0258" format="2">
+	<unicode hex="0258"/>
+	<advance width="1090"/>
+	<outline>
+		<contour>
+			<point x="990.64" y="430" type="curve" smooth="yes"/>
+			<point x="986.9942329467" y="162.4228109583"/>
+			<point x="771.08267082" y="-19.7106935263"/>
+			<point x="498.44" y="-20" type="curve"/>
+			<point x="239.2172153831" y="-19.5822201226"/>
+			<point x="113.9091905121" y="152.6527701849"/>
+			<point x="103.9446782411" y="299.1863311044" type="curve"/>
+			<point x="240.9247560556" y="299.8454109466" type="line"/>
+			<point x="260.8945919769" y="159.6138976069"/>
+			<point x="329.5149977872" y="51.6552949109"/>
+			<point x="467.24" y="52" type="curve" smooth="yes"/>
+			<point x="659.2750248376" y="51.3675165559"/>
+			<point x="709.8711204575" y="232.6462131608"/>
+			<point x="735.402303532" y="476.3689867267" type="curve"/>
+			<point x="217.64" y="476" type="line"/>
+			<point x="138.7570315304" y="476.2104189627"/>
+			<point x="96.2177643911" y="505.3834569996"/>
+			<point x="95.68" y="560" type="curve" smooth="yes"/>
+			<point x="98.311547027" y="711.3478152569"/>
+			<point x="241.1087949184" y="903.525860758"/>
+			<point x="495.32" y="904" type="curve" smooth="yes"/>
+			<point x="791.8695832542" y="903.6313464663"/>
+			<point x="987.8805191076" y="693.3791779137"/>
+		</contour>
+		<contour>
+			<point x="735.7969840594" y="531.6872726793" type="line"/>
+			<point x="701.7985817093" y="677.2313853563"/>
+			<point x="662.5601401085" y="848.8161022002"/>
+			<point x="517.16" y="848" type="curve"/>
+			<point x="394.6317490081" y="848.5657419179"/>
+			<point x="363.4238306866" y="733.1068353614"/>
+			<point x="364.56" y="625" type="curve" smooth="yes"/>
+			<point x="364.4337963752" y="565.2993642498"/>
+			<point x="347.9442000888" y="531.5328304197"/>
+			<point x="389.24" y="532" type="curve" smooth="yes"/>
+		</contour>
+	</outline>
+	<anchor name="DotBelow" x="505" y="-20"/>
+	<anchor name="Bottom" x="505" y="0"/>
+	<anchor name="Dotaccent" x="523" y="1020"/>
+	<anchor name="Grave" x="523" y="980"/>
+	<anchor name="Acute" x="523" y="980"/>
+	<anchor name="Top" x="523" y="1000"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

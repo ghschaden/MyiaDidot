@@ -9,7 +9,7 @@ Goals:
 - Regular, Italic, Bold and Bold Italic;
 - true small capitals (`smcp`, `c2sc`) in every style.
 
-Status: **Phase 1** (coverage of the Regular). See FONTLOG.txt.
+Status: **Phase 2** (Bold derived, Italic from Old Standard; Bold Italic next). See FONTLOG.txt.
 
 ## Layout
 

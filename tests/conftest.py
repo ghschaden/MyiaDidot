@@ -25,6 +25,18 @@ UFO_PATHS = sorted(p for p in SOURCES.glob("*.ufo") if p.is_dir())
 sys.path.insert(0, str(ROOT / "scripts"))
 
 
+def style_data(name, ufo_path):
+    """A per-style baseline: the Regular's under its plain name (as before
+    there were other styles), other styles' with the style added
+    (shaping-golden.json -> shaping-golden-Bold.json). Coverage and the
+    exception lists are shared: every style must do what the Regular does."""
+    style = Path(ufo_path).stem.split("-", 1)[-1]
+    if style == "Regular":
+        return DATA / name
+    stem, _, ext = name.partition(".")
+    return DATA / f"{stem}-{style}.{ext}"
+
+
 def pytest_generate_tests(metafunc):
     if "ufo_path" in metafunc.fixturenames:
         metafunc.parametrize("ufo_path", UFO_PATHS, ids=[p.stem for p in UFO_PATHS], scope="session")

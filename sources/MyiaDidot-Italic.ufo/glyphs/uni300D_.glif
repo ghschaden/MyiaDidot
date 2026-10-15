@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni300D" format="2">
+	<unicode hex="300D"/>
+	<advance width="1000"/>
+	<outline>
+		<contour>
+			<point x="240" y="-100" type="line"/>
+			<point x="240" y="-28" type="line"/>
+			<point x="628" y="-28" type="line"/>
+			<point x="628" y="774" type="line"/>
+			<point x="700" y="774" type="line"/>
+			<point x="700" y="-100" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>roman</string>
+		</dict>
+	</lib>
+</glyph>

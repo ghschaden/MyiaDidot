@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="oneoldstyle" format="2">
+	<unicode hex="F731"/>
+	<advance width="1148"/>
+	<outline>
+		<contour>
+			<point x="221.6739432479" y="0" type="line"/>
+			<point x="663.03091105" y="0.0011148958" type="line"/>
+			<point x="680.5994161669" y="53.8594015703" type="line"/>
+			<point x="550.4847954317" y="54.0240014535" type="line"/>
+			<point x="529.0683505463" y="53.7376790342"/>
+			<point x="526.7715256301" y="59.9027570957"/>
+			<point x="533.6952065075" y="81.3908798641" type="curve"/>
+			<point x="754.8579469964" y="910.3105533988" type="line"/>
+			<point x="692.5900129277" y="911.4901006601" type="line"/>
+			<point x="622.1500816424" y="780.5548771391"/>
+			<point x="496.502387336" y="734.6914242192"/>
+			<point x="406.1316778189" y="705.5307666948" type="curve"/>
+			<point x="417.8316890735" y="665.4136266416" type="line"/>
+			<point x="478.9950979165" y="686.9993805074"/>
+			<point x="544.5191727248" y="704.0264209862"/>
+			<point x="569.6299315576" y="737.0744897833" type="curve"/>
+			<point x="391.4978826021" y="79.6333031505" type="line" smooth="yes"/>
+			<point x="386.7891287294" y="58.4414542732"/>
+			<point x="382.2389347242" y="53.8067607067"/>
+			<point x="359.2834464091" y="54.0240012503" type="curve"/>
+			<point x="235.1600087215" y="53.8006617974" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>figure draft</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni24B6" format="2">
+	<unicode hex="24B6"/>
+	<advance width="1800"/>
+	<outline>
+		<contour>
+			<point x="1720" y="640" type="curve" smooth="yes"/>
+			<point x="1720" y="187"/>
+			<point x="1353" y="-180"/>
+			<point x="900" y="-180" type="curve" smooth="yes"/>
+			<point x="447" y="-180"/>
+			<point x="80" y="187"/>
+			<point x="80" y="640" type="curve" smooth="yes"/>
+			<point x="80" y="1093"/>
+			<point x="447" y="1460"/>
+			<point x="900" y="1460" type="curve" smooth="yes"/>
+			<point x="1353" y="1460"/>
+			<point x="1720" y="1093"/>
+		</contour>
+		<contour>
+			<point x="1664" y="640" type="curve" smooth="yes"/>
+			<point x="1664" y="1062"/>
+			<point x="1322" y="1404"/>
+			<point x="900" y="1404" type="curve" smooth="yes"/>
+			<point x="478" y="1404"/>
+			<point x="136" y="1062"/>
+			<point x="136" y="640" type="curve" smooth="yes"/>
+			<point x="136" y="218"/>
+			<point x="478" y="-124"/>
+			<point x="900" y="-124" type="curve" smooth="yes"/>
+			<point x="1322" y="-124"/>
+			<point x="1664" y="218"/>
+		</contour>
+		<contour>
+			<point x="466" y="201" type="line"/>
+			<point x="466" y="233" type="line"/>
+			<point x="597" y="233" type="line"/>
+			<point x="874" y="1079" type="line"/>
+			<point x="910" y="1079" type="line"/>
+			<point x="1225" y="233" type="line"/>
+			<point x="1334" y="233" type="line"/>
+			<point x="1334" y="201" type="line"/>
+			<point x="931" y="201" type="line"/>
+			<point x="931" y="233" type="line"/>
+			<point x="1081" y="233" type="line"/>
+			<point x="979" y="509" type="line"/>
+			<point x="728" y="509" type="line"/>
+			<point x="638" y="233" type="line"/>
+			<point x="764" y="233" type="line"/>
+			<point x="764" y="201" type="line"/>
+		</contour>
+		<contour>
+			<point x="737" y="540" type="line"/>
+			<point x="967" y="540" type="line"/>
+			<point x="845" y="867" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>roman</string>
+		</dict>
+	</lib>
+</glyph>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Hbar" format="2">
+	<unicode hex="0126"/>
+	<advance width="1616"/>
+	<outline>
+		<contour>
+			<point x="-3.0948031845" y="4.9706731526" type="line"/>
+			<point x="14.6757504277" y="57.3503477174" type="line"/>
+			<point x="162.36" y="57.0350877193" type="line" smooth="yes"/>
+			<point x="202.3058419265" y="57.2510624082"/>
+			<point x="226.7379256174" y="77.0149112523"/>
+			<point x="237.3947292055" y="113.0538813685" type="curve" smooth="yes"/>
+			<point x="479.24" y="995.71875" type="line"/>
+			<point x="232.2937243346" y="1000.444363597" type="line"/>
+			<point x="249.7860284767" y="1068.2709843129" type="line"/>
+			<point x="493.9728278644" y="1069.1163724295" type="line"/>
+			<point x="556.2138165582" y="1306.0113454385" type="line" smooth="yes"/>
+			<point x="566.3553437305" y="1346.0846298329"/>
+			<point x="549.4951567547" y="1369.8812807752"/>
+			<point x="510.84" y="1370.25" type="curve" smooth="yes"/>
+			<point x="363.9981190163" y="1369.7030576759" type="line"/>
+			<point x="377.1078401667" y="1429.0322986078" type="line"/>
+			<point x="961.322428114" y="1429.0359473429" type="line"/>
+			<point x="943.3839211357" y="1369.8707912428" type="line"/>
+			<point x="795.96" y="1370.25" type="line" smooth="yes"/>
+			<point x="755.7869055564" y="1369.9885432873"/>
+			<point x="731.4190893995" y="1348.1927538922"/>
+			<point x="720.8861834418" y="1308.4730295615" type="curve" smooth="yes"/>
+			<point x="666.1176387832" y="1068.4590510369" type="line"/>
+			<point x="1283.6953100861" y="1068.3415716638" type="line"/>
+			<point x="1348.2138165582" y="1306.0113454385" type="line" smooth="yes"/>
+			<point x="1358.36" y="1345.9140625"/>
+			<point x="1343.4751567547" y="1369.8812807752"/>
+			<point x="1302.84" y="1370.25" type="curve" smooth="yes"/>
+			<point x="1155.9981190163" y="1369.7030576759" type="line"/>
+			<point x="1169.1078401667" y="1429.0322986078" type="line"/>
+			<point x="1753.322428114" y="1429.0359473429" type="line"/>
+			<point x="1735.3839211357" y="1369.8707912428" type="line"/>
+			<point x="1587.96" y="1370.25" type="line" smooth="yes"/>
+			<point x="1547.7869055564" y="1369.9885432873"/>
+			<point x="1523.4190893995" y="1348.1927538922"/>
+			<point x="1512.8861834418" y="1308.4730295615" type="curve" smooth="yes"/>
+			<point x="1454.8995547879" y="1070.0135020529" type="line"/>
+			<point x="1698.1854597268" y="1068.3414038304" type="line"/>
+			<point x="1680.6978378184" y="1000.5072473378" type="line"/>
+			<point x="1436.3982031696" y="998.1145772052" type="line"/>
+			<point x="1194.1452707945" y="115.7005045964" type="line" smooth="yes"/>
+			<point x="1183.9657177111" y="79.29345105"/>
+			<point x="1201.0827077055" y="57.3414526008"/>
+			<point x="1239.48" y="57.0350877193" type="curve" smooth="yes"/>
+			<point x="1386.6122711045" y="57.4939256622" type="line"/>
+			<point x="1373.2998481152" y="4.9736552393" type="line"/>
+			<point x="788.9051968155" y="4.9706731526" type="line"/>
+			<point x="806.6757504277" y="57.3503477174" type="line"/>
+			<point x="954.36" y="57.0350877193" type="line" smooth="yes"/>
+			<point x="992.314977567" y="57.2490044243"/>
+			<point x="1018.7804639532" y="76.851807653"/>
+			<point x="1029.3859679948" y="113.0340888843" type="curve" smooth="yes"/>
+			<point x="1186.3322466726" y="685.5052979956" type="line"/>
+			<point x="563.511817032" y="686.4100505277" type="line"/>
+			<point x="402.1540320052" y="115.7202970806" type="line" smooth="yes"/>
+			<point x="392.1221377111" y="79.2517712255"/>
+			<point x="409.0805072929" y="57.3419577669"/>
+			<point x="447.48" y="57.0350877193" type="curve" smooth="yes"/>
+			<point x="594.6122711045" y="57.4939256622" type="line"/>
+			<point x="581.2998481152" y="4.9736552393" type="line"/>
+		</contour>
+		<contour>
+			<point x="580.7576674163" y="739.8783381304" type="line"/>
+			<point x="1198.7033617852" y="739.7334319176" type="line"/>
+			<point x="1264.6023325837" y="1000.2614645012" type="line"/>
+			<point x="646.6566382148" y="1000.406370714" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="DotBelow" x="725" y="-20"/>
+	<anchor name="Bottom" x="731" y="0"/>
+	<anchor name="TopCap" x="1160" y="1580"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
+</glyph>

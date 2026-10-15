@@ -356,8 +356,11 @@ def build_specials(font, log, failed):
     # with the capital macron on its TopCap anchor, as ō.sc has it
     if "uni01EC" in font and need("oogonek.sc"):
         top = {a.name: (a.x, a.y) for a in font["oogonek.sc"].anchors}["TopCap"]
+        # where the capital macron attaches: the combining one's anchor, 880
+        # to the right (in a sloped italic it moved with the slope)
+        mark = {a.name: (a.x, a.y) for a in font["macroncmb.cap"].anchors}.get("_TopCap", (-440, 1580))
         new_glyph(font, sc_name(b, "uni01EC"), font["oogonek.sc"].width,
-                  [("oogonek.sc", 0, 0), ("Macron", round(top[0] - 440), round(top[1] - 1580))])
+                  [("oogonek.sc", 0, 0), ("Macron", round(top[0] - mark[0] - 880), round(top[1] - mark[1]))])
     # Greek: small caps keep the dialytika only.
     for lo in ("iotadieresis", "upsilondieresis"):
         if lo in font:

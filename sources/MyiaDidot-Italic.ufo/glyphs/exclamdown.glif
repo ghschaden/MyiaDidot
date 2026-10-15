@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="exclamdown" format="2">
+	<unicode hex="00A1"/>
+	<advance width="554"/>
+	<outline>
+		<contour>
+			<point x="289.16" y="767.6842105263" type="curve" smooth="yes"/>
+			<point x="288.5178157934" y="835.510890965"/>
+			<point x="335.7001483288" y="883.6771359226"/>
+			<point x="403.92" y="883.296875" type="curve" smooth="yes"/>
+			<point x="472.1398516712" y="883.6771359226"/>
+			<point x="519.3221842066" y="835.510890965"/>
+			<point x="518.68" y="767.6842105263" type="curve" smooth="yes"/>
+			<point x="519.3261470404" y="699.8633228123"/>
+			<point x="472.1614630072" y="652.1165360389"/>
+			<point x="403.92" y="652.4912280702" type="curve" smooth="yes"/>
+			<point x="335.6785369928" y="652.1165360389"/>
+			<point x="288.5138529596" y="699.8633228123"/>
+		</contour>
+		<contour>
+			<point x="0.08" y="-345.0701754386" type="curve" smooth="yes"/>
+			<point x="-0.2170335882" y="-276.6305148865"/>
+			<point x="54.8368986186" y="-149.3549928664"/>
+			<point x="114.2223189215" y="-17.5509194638" type="curve" smooth="yes"/>
+			<point x="145.9180131701" y="54.1992151678"/>
+			<point x="177.7006558363" y="126.0792699812"/>
+			<point x="201.5250617796" y="192.0947737116" type="curve" smooth="yes"/>
+			<point x="339.7647254316" y="556.0417608758" type="line"/>
+			<point x="372.1745412115" y="558.6171198168" type="line"/>
+			<point x="301.0092126018" y="165.6757195904" type="line" smooth="yes"/>
+			<point x="285.1463900304" y="80.2951776602"/>
+			<point x="271.2444118401" y="-14.875563163"/>
+			<point x="263.3074747466" y="-90.5701263126" type="curve" smooth="yes"/>
+			<point x="253.4229894689" y="-177.7246709106"/>
+			<point x="241.5883383724" y="-262.8290435532"/>
+			<point x="225.7923781246" y="-344.0989425517" type="curve" smooth="yes"/>
+			<point x="205.0389202914" y="-451.0190436898"/>
+			<point x="148.6696064677" y="-475.9016406239"/>
+			<point x="95.04" y="-475.7719298246" type="curve" smooth="yes"/>
+			<point x="29.3653989976" y="-476.3148216451"/>
+			<point x="-0.1552994935" y="-427.2260826669"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
+</glyph>

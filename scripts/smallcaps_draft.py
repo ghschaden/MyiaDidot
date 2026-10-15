@@ -4,7 +4,8 @@
         SCHEIGHT STEM [GLYPH ...]
 
 STEM is the small caps' vertical stem (scripts/smallcaps.py's stem_for()
-interpolates it between the lowercase and capital stems by height).
+interpolates it between the lowercase and capital stems by height); as
+"STEM/UCSTEM" it also gives the capitals' stem (the Italic's are lighter).
 
 Opens SRC.ufo, runs addSmallCaps on the given capitals (default: every
 encoded uppercase letter without components) and writes the whole font to
@@ -23,6 +24,7 @@ UC_STEM = 208
 
 
 def main(src, out, scheight, lcstem, *names):
+    lcstem, _, ucstem = lcstem.partition("/")
     font = fontforge.open(src)
     if not names:
         names = [
@@ -38,7 +40,7 @@ def main(src, out, scheight, lcstem, *names):
         scheight=float(scheight),
         capheight=CAP_HEIGHT,
         lcstem=float(lcstem),
-        ucstem=UC_STEM,
+        ucstem=float(ucstem or UC_STEM),
         symbols=False,
     )
     # addSmallCaps replaces existing small caps of the selected capitals too,

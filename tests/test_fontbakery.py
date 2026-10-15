@@ -2,6 +2,7 @@
 
 data/fontbakery-allow.txt lists "check-id  # reason" for known failures; a
 listed check that passes again must be removed, so the list only shrinks.
+A style can add its own (data/fontbakery-allow-Italic.txt), under the same rule.
 """
 
 import json
@@ -10,7 +11,7 @@ import subprocess
 import pytest
 import ufo2ft
 import ufoLib2
-from conftest import ROOT
+from conftest import ROOT, style_data
 from test_composites import read_list
 
 BAD = {"FAIL", "ERROR", "FATAL"}
@@ -40,8 +41,11 @@ def fontbakery_failures(font_path, tmp_path):
     return failed
 
 
-def test_fontbakery_universal(release_otf, tmp_path):
+def test_fontbakery_universal(release_otf, tmp_path, ufo_path):
     allowed = read_list("fontbakery-allow.txt")
+    extra = style_data("fontbakery-allow.txt", ufo_path)  # a style's own additions
+    if extra.name != "fontbakery-allow.txt" and extra.exists():
+        allowed = {**allowed, **read_list(extra.name)}
     failed = fontbakery_failures(release_otf, tmp_path)
     new = {k: v for k, v in failed.items() if k not in allowed}
     stale = sorted(set(allowed) - set(failed))

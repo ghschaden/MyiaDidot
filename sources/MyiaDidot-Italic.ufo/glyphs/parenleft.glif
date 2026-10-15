@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="parenleft" format="2">
+	<unicode hex="0028"/>
+	<advance width="733"/>
+	<outline>
+		<contour>
+			<point x="174.32" y="178.350877193" type="curve" smooth="yes"/>
+			<point x="173.9477981621" y="671.1856183456"/>
+			<point x="487.2163648854" y="1170.7867922725"/>
+			<point x="855.4722813724" y="1468.3681464011" type="curve"/>
+			<point x="893.0979215102" y="1424.5385354555" type="line"/>
+			<point x="306.0665547897" y="903.8480068819"/>
+			<point x="241.5105573845" y="388.1558974959"/>
+			<point x="241.48" y="178.350877193" type="curve" smooth="yes"/>
+			<point x="241.6051652004" y="-12.5125799936"/>
+			<point x="309.7818606141" y="-200.1368518351"/>
+			<point x="419.9286958795" y="-338.5527976511" type="curve"/>
+			<point x="367.6716950634" y="-379.3020861535" type="line"/>
+			<point x="262.3588567578" y="-255.3449017478"/>
+			<point x="174.1581407785" y="-37.771236874"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
+</glyph>

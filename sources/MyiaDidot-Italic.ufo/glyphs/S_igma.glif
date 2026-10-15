@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="Sigma" format="2">
+	<unicode hex="03A3"/>
+	<advance width="1505"/>
+	<outline>
+		<contour>
+			<point x="20" y="5" type="line"/>
+			<point x="41" y="70" type="line"/>
+			<point x="909" y="747" type="line"/>
+			<point x="394" y="1368" type="line"/>
+			<point x="389" y="1429" type="line"/>
+			<point x="1569" y="1429" type="line"/>
+			<point x="1473" y="946" type="line"/>
+			<point x="1434" y="949" type="line"/>
+			<point x="1441" y="953"/>
+			<point x="1445" y="995"/>
+			<point x="1445" y="1047" type="curve" smooth="yes"/>
+			<point x="1445" y="1302"/>
+			<point x="1357" y="1370"/>
+			<point x="1224" y="1370" type="curve"/>
+			<point x="610" y="1367" type="line"/>
+			<point x="1063" y="819" type="line"/>
+			<point x="1064" y="787" type="line"/>
+			<point x="290" y="180" type="line"/>
+			<point x="295" y="158" type="line"/>
+			<point x="1051" y="158" type="line" smooth="yes"/>
+			<point x="1169" y="158"/>
+			<point x="1220" y="222"/>
+			<point x="1278" y="301" type="curve" smooth="yes"/>
+			<point x="1335" y="380"/>
+			<point x="1380" y="513"/>
+			<point x="1374" y="515" type="curve"/>
+			<point x="1414" y="521" type="line"/>
+			<point x="1253" y="5" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="TopCap" x="1075" y="1580"/>
+	<anchor name="DotBelow" x="668" y="-20"/>
+	<anchor name="Bottom" x="673" y="0"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
+</glyph>

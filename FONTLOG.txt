@@ -26,6 +26,95 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-15 Version 0.100 (development), Phase 2: outline checks, sides
+
+    * scripts/glyph_lint.py finds outlines gone wrong (specks, twists,
+      pinholes, slivers, notches, steps); tests hold each style to its known
+      findings. The scripts that make glyphs clean specks, twists,
+      pinholes and steps (jogs of a few units, now shrunk to a point) from
+      what they make; Ɛ Ʒ Ƹ lost crumbs of ink, and every style its steps
+      (the hook above, the small 8, ℓ, ™ ...). ǯ in small caps takes its
+      caron above its own top (it stands on the baseline, taller than the
+      other small caps).
+    * Italic review: ƃ's bar runs on from the stem (the flag serif gone);
+      ƈ's hairline rises into a hook to the right; ʄ's bar is centred on
+      the stem; Ɽ has its tail on the stem, not the leg; Ʈ's and Ɽ's balls
+      sit flush with the curl; ɖ ɧ ɱ ɳ take ȷ's descender, thinning as
+      the italic stems do, as ɲ has it; ç's cedilla no longer pokes into
+      the counter.
+    * Ʈ in Regular and Bold: the stem thins below the baseline into a
+      light hook (ȷ's tail scaled to the capital stem was heavy).
+    * Every glyph compared with Charis SIL and Libertinus Serif for a hook
+      or element on the other side; where both agree against Myia, Myia
+      follows: ɔ (and ᵓ) is the turned c, its ball low, not the mirrored
+      one; the wave of Ѳ ѳ rises on the left; the seagull below (U+033C) is
+      two arches, not two cups; the Italic Ɠ (and ʛ, ɠ in small caps) has
+      its stem rising above the capital and hooking to the right, not
+      curling back over the bowl.
+
+2026-10-15 Version 0.100 (development), Phase 2: Italic
+
+    * New master sources/MyiaDidot-Italic.ufo, made by scripts/make_italic.py
+      from Old Standard Italic (Alexey Kryukov, SIL OFL 1.1; its source
+      pinned in sources/oldstand), the cursive companion by Theano's own
+      designer: scaled in zones so its x-height and capital height land on
+      Myia's (884, 1434), stems and hairlines brought to Myia's weight.
+      Myia's glyph set, features, accents and marks, sloped 15.2 degrees;
+      accented letters rebuilt from the anchors, so precomposed and
+      decomposed text render alike. 403 glyphs come from Old Standard.
+    * What Old Standard lacks is made from what it has, in an upright frame
+      (the font unslanted, the glyph made, slanted back): 242 letters by
+      derive.py's recipes (IPA, African, Cyrillic extras, currency); hooks
+      and curls placed by the Regular's coordinates, and hooks on capitals,
+      transplanted from the Regular onto the same stroke of the italic
+      letter, scaled about the join to the italic's lighter weight, curls
+      starting where the italic stroke ends (ɡ is Old Standard's own g,
+      ɥ its h turned, ɯ its m turned and ɰ that with ɥ's descender,
+      ɾ its r without the entry stroke on a foot serif, ɺ ɹ's stem
+      raised, ɸ o with a stem as heavy as its l; the clicks ǀ ǁ ǂ
+      sloped, since the italic | stays upright; ɞ is ɜ closed by o's
+      left half; ү's stem sits under v's round bottom; ʔ (and ʕ ʡ ʢ)
+      the italic ? turned down into a stem before its curl; Ɓ Ɗ Ƥ the
+      stem curling over to the left (Ɦ too), Ƙ Ʋ Ƴ ƴ ƥ ʄ ʋ Ⱳ their arm or stem
+      curling over, Ƭ the bar's left end curling down, their serifs cut
+      away; Ɲ Ʈ ɖ ɭ ɳ ɽ ɻ ʈ Ɽ the stem running straight down into the
+      hook, in place of the foot serif or the exit stroke, and so the
+      last stem or leg of ɱ ɧ җ қ ң ҳ ҷ into a hook curling left, Ƒ's
+      stem tapering into it, Ʝ's J too, crossed; Ꞵ B's stem running
+      down to a serif of its own; ɮ l on a straight
+      stem with Old Standard's ʒ; ɕ ʑ ʂ ʝ ɚ ɝ drawn on the italic c z s
+      j ə ɜ, ʑ's loop the z's own rising end); 91 small caps drafted from its
+      capitals with FontForge (as for the Regular); the old-style figures
+      fitted from its lining ones into the Regular's bands. The Italic
+      has only Old Standard's ligatures (fi fl ff ffi ffl fj ffj), as
+      historical italics did: its f clears b h k t, so fb fh fk ft, the
+      long-s ligatures and ct st (dlig) are left out, with their rules.
+      Arrows, geometric shapes and circled letters stay upright; the
+      mathematical and letterlike letters (𝔐 𝑙 ℓ ℵ, Old Standard's too)
+      are slanted. All are drafts,
+      reviewed in drafts-review-Italic.pdf and smallcaps-review-Italic.pdf;
+      a rerun of make_italic.py keeps reviewed and hand-drawn glyphs.
+    * The fontbakery test takes a style's own allowlist additions
+      (fontbakery-allow-Italic.txt: tested alone, the Italic has no Roman
+      beside it).
+
+2026-10-15 Version 0.100 (development), Phase 2: Bold
+
+    * New master sources/MyiaDidot-Bold.ufo, derived from the Regular by
+      scripts/make_bold.py: stems +90 (164 -> 254, capitals 208 -> 298),
+      hairlines +8, outlines 4% wider so the counters stay open, accents
+      a little heavier; anchors, component offsets, kerning and the
+      hand-set positioning in the features follow; composites the anchor
+      rules make are rebuilt from the Bold's anchors, and letters drawn
+      with their accent in one outline (Ť) are made from base and mark, so
+      precomposed and decomposed text render alike in the Bold too.
+    * The emboldening helper had enlarged counters instead of shrinking
+      them (letters with counters barely got bolder); fixed. Phase 1
+      drafts made with it (enlarge, stretch) may want redrafting.
+    * Both styles share the win metrics (the larger of the two); `make`,
+      `make normalize` and the tests take every master; the tests keep
+      per-style baselines (shaping-golden-Bold.json, shaping-digest-Bold.txt).
+
 2026-10-14 Version 0.100 (development), Phase 1: review fixes (turned r, Ɑ, Ϗ, ʑ, breve)
 
     * ɹ (and ɺ ɻ built on it): the arm is no longer r's ear turned upside
@@ -400,7 +489,8 @@ Acknowledgements
 
 N: Alexey Kryukov
 W: https://github.com/akryukov
-D: Original design of Theano Didot (2007-2011)
+D: Original design of Theano Didot (2007-2011), and of Old Standard
+   Italic (2006-2008), the source of Myia Didot Italic's letters
 
 N: The Libertinus Project Authors
 W: https://github.com/alerque/libertinus

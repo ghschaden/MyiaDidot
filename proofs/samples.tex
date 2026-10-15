@@ -4,8 +4,10 @@
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=2.4cm]{geometry}
 \usepackage{fontspec}
-\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz]
-\newfontfamily\osf{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz, Numbers=OldStyle]
+\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz,
+  BoldFont=MyiaDidot-Bold.otf, ItalicFont=MyiaDidot-Italic.otf]
+\newfontfamily\osf{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz, Numbers=OldStyle,
+  BoldFont=MyiaDidot-Bold.otf, ItalicFont=MyiaDidot-Italic.otf]
 \newcommand\smc[1]{{\addfontfeature{Letters=SmallCaps}#1}}
 \newcommand\allsc[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1}}
 \newcommand\lang[2]{{\addfontfeature{Language=#1}#2}}
@@ -190,6 +192,23 @@ group and 𝔭 a prime ideal; ℵ₀, ℶ₁, ℓ and 𝑙; ∑ ∏ ∫ √ ∞ 
 Metrics: ⏑ ⏒ ⏓ ⏔ ⏕ ⏖ ⏗ ⏘ ⏙
 
 % -- 7. waterfall --------------------------------------------------------------
+\newpage
+% -- 7. the Bold ---------------------------------------------------------------
+\head{Regular, Italic and Bold}
+\def\both#1{#1\par{\itshape #1}\par{\bfseries #1}\par\medskip}
+\both{It is a truth universally acknowledged, that a single man in possession
+of a good fortune, must be in want of a wife.}
+\both{{\Large Hamburgefonstiv HAMBURG Ærøskøbing Œuvre ẞß fi fl ff \& 1234567890}}
+\both{{\Large ÁÉÍÓÚ ãẽĩõũ ǯ Ğğ Ắắ Ấấ Ǻǻ ŁłŃń Ţţ Șș}}
+\both{{\Large Ἄνθρωπος ᾠδή Ῥόδος Ἤ ᾄ — Съешь же ещё мягких булок}}
+\both{{\Large ɓɗƙɦʈ ʂʐɕʑ ŋəɛɔ ɹɻɺ ɡɠ Ʒʒ ʋƴ}}
+\both{\allsc{Small Caps: Ærøskøbing, Đuro, Łódź} 123 {\osf 456}}
+Bold in running text: the \textbf{Universal Declaration} of \textbf{1948} sets out
+\textbf{rights} that apply to \textbf{every human being}, \textbf{без исключения},
+\textbf{χωρίς διάκριση}, \textbf{không phân biệt}.
+Italic in running text: \emph{Pride and Prejudice} (\emph{1813}), \emph{Война и мир},
+\emph{Ἰλιάς}, \emph{Truyện Kiều}, \emph{Ærøskøbing}, \emph{Łódź}, \emph{Şişli}.
+
 \head{Sizes}
 \def\sample{Harmonious typography: Ångström, Œuvre, Ĳ, ẞ — quixotic jumbled wizards}
 {\fontsize{7}{9}\selectfont 7 pt \sample}\par

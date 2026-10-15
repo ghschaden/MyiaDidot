@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="aogonek.sc" format="2">
+	<advance width="1117"/>
+	<outline>
+		<contour>
+			<point x="389.5020766105" y="396" type="line"/>
+			<point x="660.6869946504" y="393" type="line"/>
+			<point x="649.8098352219" y="802" type="line"/>
+		</contour>
+		<contour>
+			<point x="-97.4472120671" y="-5" type="line"/>
+			<point x="-79.7757367839" y="49" type="line"/>
+			<point x="-27.0474307706" y="48" type="line" smooth="yes"/>
+			<point x="64.9525692294" y="48"/>
+			<point x="131.8957384994" y="103"/>
+			<point x="162.9370498623" y="151" type="curve" smooth="yes"/>
+			<point x="769.1031679833" y="1046" type="line"/>
+			<point x="815.6465559568" y="1048" type="line"/>
+			<point x="839.5259024198" y="109" type="line"/>
+			<point x="845.4845910569" y="61"/>
+			<point x="874.9525692294" y="48"/>
+			<point x="914.9525692294" y="48" type="curve" smooth="yes"/>
+			<point x="992.2242632161" y="49" type="line"/>
+			<point x="978.5527879329" y="-5" type="line"/>
+			<point x="771.5527879329" y="-5" type="line"/>
+			<point x="672.2397825832" y="-54"/>
+			<point x="582.4061215521" y="-127"/>
+			<point x="591.3875424812" y="-197" type="curve"/>
+			<point x="592.8782529457" y="-232"/>
+			<point x="622.3462311183" y="-245"/>
+			<point x="648.3462311183" y="-245" type="curve" smooth="yes"/>
+			<point x="670.3462311183" y="-245"/>
+			<point x="687.2480890254" y="-238"/>
+			<point x="699.4216409192" y="-230" type="curve"/>
+			<point x="719.4970507201" y="-215"/>
+			<point x="725.583826667" y="-211"/>
+			<point x="745.583826667" y="-211" type="curve" smooth="yes"/>
+			<point x="766.583826667" y="-211"/>
+			<point x="776.9650288927" y="-228"/>
+			<point x="775.629291251" y="-255" type="curve"/>
+			<point x="777.674755835" y="-299"/>
+			<point x="728.8297286579" y="-361"/>
+			<point x="635.8297286579" y="-361" type="curve" smooth="yes"/>
+			<point x="581.8297286579" y="-361"/>
+			<point x="512.4371602863" y="-333"/>
+			<point x="513.4443732112" y="-252" type="curve"/>
+			<point x="503.6137718839" y="-152"/>
+			<point x="619.436066769" y="-68"/>
+			<point x="700.2924600921" y="-17" type="curve"/>
+			<point x="695.5527879329" y="-5" type="line"/>
+			<point x="510.5527879329" y="-5" type="line"/>
+			<point x="527.2242632161" y="49" type="line"/>
+			<point x="605.9525692294" y="48" type="line" smooth="yes"/>
+			<point x="636.9525692294" y="48"/>
+			<point x="674.39781511" y="57"/>
+			<point x="667.6126783667" y="113" type="curve"/>
+			<point x="661.2004374069" y="336" type="line"/>
+			<point x="356.4721313936" y="337" type="line"/>
+			<point x="255.0651371722" y="203" type="line" smooth="yes"/>
+			<point x="234.7293995305" y="176"/>
+			<point x="202.2314761411" y="130"/>
+			<point x="206.2655745791" y="97" type="curve"/>
+			<point x="207.4732249109" y="72"/>
+			<point x="223.9525692294" y="48"/>
+			<point x="272.9525692294" y="48" type="curve" smooth="yes"/>
+			<point x="353.2242632161" y="49" type="line"/>
+			<point x="339.5527879329" y="-5" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="751" y="1156"/>
+	<anchor name="Acute" x="746" y="1136"/>
+	<anchor name="Grave" x="746" y="1136"/>
+	<anchor name="Dotaccent" x="756" y="1176"/>
+	<anchor name="TopCap" x="759" y="1186"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>small cap draft</string>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

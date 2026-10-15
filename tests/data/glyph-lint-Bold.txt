@@ -1,0 +1,13 @@
+# Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
+.notdef notch 1                  # design: acute crotch (293,1035 37 px)
+dcaron notch 1                   # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (1059,1413 43 px)
+ij.sc notch 1                    # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (998,171 30 px)
+uni023E notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (768,295 40 px)
+uni0279 notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (513,208 35 px)
+uni027A notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (513,208 35 px)
+uni027B notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (507,176 51 px)
+uni043B.sc notch 1               # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (363,155 47 px)
+uni1D74 notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (209,340 84 px)
+uni20A9 notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (1742,389 32 px)
+uni2116 notch 1                  # design: acute crotch (1491,643 110 px)
+uni2C66.sc notch 1               # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (786,836 63 px)

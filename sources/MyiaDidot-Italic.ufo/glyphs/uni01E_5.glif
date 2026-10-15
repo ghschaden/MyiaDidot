@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni01E5" format="2">
+	<unicode hex="01E5"/>
+	<advance width="950"/>
+	<outline>
+		<contour>
+			<point x="-26.1516922712" y="-291" type="curve" smooth="yes"/>
+			<point x="-26.5029492799" y="-215"/>
+			<point x="24.2780342423" y="-179"/>
+			<point x="73.2780342423" y="-179" type="curve" smooth="yes"/>
+			<point x="125.2780342423" y="-179"/>
+			<point x="144.4102747732" y="-219"/>
+			<point x="144.4443732112" y="-252" type="curve" smooth="yes"/>
+			<point x="144.2067776625" y="-286"/>
+			<point x="128.4144279943" y="-311"/>
+			<point x="109.3390181934" y="-326" type="curve" smooth="yes"/>
+			<point x="95.0786903526" y="-338"/>
+			<point x="89.3617504854" y="-348"/>
+			<point x="88.8410948039" y="-372" type="curve" smooth="yes"/>
+			<point x="89.788417295" y="-409"/>
+			<point x="116.6375976932" y="-439"/>
+			<point x="182.6375976932" y="-439" type="curve" smooth="yes"/>
+			<point x="268.6375976932" y="-439"/>
+			<point x="335.1582533746" y="-415"/>
+			<point x="403.7956302199" y="-328" type="curve"/>
+			<point x="247.7956302199" y="-328" type="line"/>
+			<point x="263.0104934766" y="-272" type="line"/>
+			<point x="442.0104934766" y="-272" type="line"/>
+			<point x="491.2894003883" y="-190"/>
+			<point x="518.9267772336" y="-103"/>
+			<point x="538.2170502912" y="-32" type="curve"/>
+			<point x="538.2170502912" y="-32"/>
+			<point x="607.3368311589" y="204"/>
+			<point x="611.5857928536" y="227" type="curve"/>
+			<point x="591.215956774" y="233" type="line"/>
+			<point x="551.6653558756" y="150"/>
+			<point x="438.7490721187" y="-19"/>
+			<point x="305.0207661054" y="-18" type="curve"/>
+			<point x="165.7490721187" y="-19"/>
+			<point x="90.5486347118" y="87"/>
+			<point x="90.6612026545" y="242" type="curve" smooth="yes"/>
+			<point x="91.2076503318" y="417"/>
+			<point x="182.9390160489" y="589"/>
+			<point x="230.77267708" y="662" type="curve" smooth="yes"/>
+			<point x="318.5381412351" y="801"/>
+			<point x="443.7302721999" y="879"/>
+			<point x="560.7302721999" y="879" type="curve" smooth="yes"/>
+			<point x="632.7302721999" y="879"/>
+			<point x="702.0587969166" y="825"/>
+			<point x="722.3573764164" y="712" type="curve"/>
+			<point x="746.2706004695" y="708" type="line"/>
+			<point x="787.7530044919" y="857" type="line"/>
+			<point x="904.8397804388" y="861" type="line"/>
+			<point x="661.6509300258" y="-12" type="line" smooth="yes"/>
+			<point x="640.5455750079" y="-86"/>
+			<point x="598.3761763352" y="-186"/>
+			<point x="539.0104934766" y="-272" type="curve"/>
+			<point x="597.0104934766" y="-272" type="line"/>
+			<point x="581.7956302199" y="-328" type="line"/>
+			<point x="495.7956302199" y="-328" type="line"/>
+			<point x="482.720220419" y="-343"/>
+			<point x="469.1881985915" y="-356"/>
+			<point x="455.6561767641" y="-369" type="curve" smooth="yes"/>
+			<point x="367.9206578259" y="-449"/>
+			<point x="269.5849201843" y="-476"/>
+			<point x="197.5849201843" y="-476" type="curve" smooth="yes"/>
+			<point x="61.5849201843" y="-476"/>
+			<point x="-26.211582705" y="-409"/>
+		</contour>
+		<contour>
+			<point x="217.7407656765" y="165" type="curve" smooth="yes"/>
+			<point x="218.0806565392" y="100"/>
+			<point x="240.0734436143" y="19"/>
+			<point x="316.8017496276" y="18" type="curve" smooth="yes"/>
+			<point x="422.0734436143" y="19"/>
+			<point x="518.0465581012" y="133"/>
+			<point x="589.4308200307" y="289" type="curve" smooth="yes"/>
+			<point x="641.1322405309" y="402"/>
+			<point x="689.4183603675" y="565"/>
+			<point x="688.9575951198" y="659" type="curve" smooth="yes"/>
+			<point x="689.0174855537" y="777"/>
+			<point x="632.677594691" y="842"/>
+			<point x="548.677594691" y="842" type="curve"/>
+			<point x="452.4059007042" y="841"/>
+			<point x="371.3573764164" y="712"/>
+			<point x="328.9049176109" y="622" type="curve" smooth="yes"/>
+			<point x="263.3243714956" y="480"/>
+			<point x="217.7779238183" y="305"/>
+		</contour>
+	</outline>
+	<anchor name="Grave" x="633" y="980"/>
+	<anchor name="Acute" x="633" y="980"/>
+	<anchor name="Dotaccent" x="644" y="1020"/>
+	<anchor name="Top" x="639" y="1000"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>derived</string>
+		</dict>
+	</lib>
+</glyph>

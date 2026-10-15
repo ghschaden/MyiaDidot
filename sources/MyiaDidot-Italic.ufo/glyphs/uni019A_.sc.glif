@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni019A.sc" format="2">
+	<advance width="1030"/>
+	<outline>
+		<contour>
+			<point x="-32.0887421335" y="0" type="line"/>
+			<point x="-20.1342067175" y="44" type="line"/>
+			<point x="118.8657932825" y="44" type="line"/>
+			<point x="240.0413113629" y="490" type="line"/>
+			<point x="101.0413113629" y="490" type="line"/>
+			<point x="117.3429505666" y="550" type="line"/>
+			<point x="256.3429505666" y="550" type="line"/>
+			<point x="377.518468647" y="996" type="line"/>
+			<point x="238.518468647" y="996" type="line"/>
+			<point x="250.473004063" y="1040" type="line"/>
+			<point x="705.473004063" y="1040" type="line"/>
+			<point x="693.518468647" y="996" type="line"/>
+			<point x="553.518468647" y="996" type="line"/>
+			<point x="432.3429505666" y="550" type="line"/>
+			<point x="622.3429505666" y="550" type="line"/>
+			<point x="606.0413113629" y="490" type="line"/>
+			<point x="416.0413113629" y="490" type="line"/>
+			<point x="294.8657932825" y="44" type="line"/>
+			<point x="511.8657932825" y="44" type="line" smooth="yes"/>
+			<point x="604.8657932825" y="44"/>
+			<point x="682.8430609905" y="66"/>
+			<point x="758.7634979685" y="143" type="curve" smooth="yes"/>
+			<point x="841.3140988669" y="226"/>
+			<point x="879.2345358449" y="303"/>
+			<point x="913.6869946504" y="393" type="curve"/>
+			<point x="964.6869946504" y="393" type="line"/>
+			<point x="839.9112578665" y="0" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="574" y="1156"/>
+	<anchor name="Acute" x="569" y="1136"/>
+	<anchor name="Grave" x="569" y="1136"/>
+	<anchor name="Dotaccent" x="579" y="1176"/>
+	<anchor name="TopCap" x="582" y="1186"/>
+	<anchor name="Bottom" x="444" y="0"/>
+	<anchor name="DotBelow" x="438" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.derived</key>
+			<true/>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>derived</string>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

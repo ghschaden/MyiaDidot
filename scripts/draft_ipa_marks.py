@@ -117,10 +117,10 @@ GLYPHS = [
             (C + 124, LO + 40, C + 180, HI))]),
     ("uni033B", 0x033B, 0, "mark", [BOTTOM],
      [hollow(square, rects((C - 94, LO + 56, C + 94, HI - 56)))]),
-    # seagull: two breves below side by side
+    # seagull: two inverted breves below side by side (arches, as Charis and Libertinus)
     ("uni033C", 0x033C, 0, "mark", [BOTTOM],
-     [part("uni032E", (0.5, 0, 0, 0.8, C - 136 + 0.5 * 440, -60)),   # the two touching
-      part("uni032E", (0.5, 0, 0, 0.8, C + 136 + 0.5 * 440, -60))]),
+     [part("uni032F", (0.5, 0, 0, 0.8, C - 136 + 0.5 * 440, -60)),   # the two touching
+      part("uni032F", (0.5, 0, 0, 0.8, C + 136 + 0.5 * 440, -60))]),
     # half rings below: halves of the ring below
     ("uni031C", 0x031C, 0, "mark", [BOTTOM],
      [part("uni0325", (1, 0, 0, 1, 0, 0), (-BIG, -BIG, C, BIG))]),

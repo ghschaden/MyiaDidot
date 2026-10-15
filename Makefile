@@ -2,7 +2,7 @@ PY       := .venv/bin/python -I
 FONTMAKE := .venv/bin/fontmake
 FAMILY   := MyiaDidot
 UPSTREAM := sources/upstream/TheanoDidot-Regular.sfd
-UFOS     := sources/$(FAMILY)-Regular.ufo
+UFOS     := sources/$(FAMILY)-Regular.ufo sources/$(FAMILY)-Bold.ufo sources/$(FAMILY)-Italic.ufo
 
 OTF   := $(patsubst sources/%.ufo,fonts/otf/%.otf,$(UFOS))
 TTF   := $(patsubst sources/%.ufo,fonts/ttf/%.ttf,$(UFOS))
@@ -82,13 +82,15 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 	@mkdir -p build/proofs
 	$(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-Regular.otf build/proofs/charset.tex \
 	    --baseline build/baseline/$(FAMILY)-Regular.otf
-	$(PY) scripts/smallcap_review.py $(UFOS) fonts/otf/$(FAMILY)-Regular.otf build/proofs/smallcaps-review.tex \
+	$(PY) scripts/smallcap_review.py sources/$(FAMILY)-Regular.ufo fonts/otf/$(FAMILY)-Regular.otf build/proofs/smallcaps-review.tex \
 	    --drafts build/proofs/drafts-review.tex
-	cd build/proofs && for t in charset smallcaps-review drafts-review; do \
+	$(PY) scripts/smallcap_review.py sources/$(FAMILY)-Italic.ufo fonts/otf/$(FAMILY)-Italic.otf build/proofs/smallcaps-review-Italic.tex \
+	    --drafts build/proofs/drafts-review-Italic.tex
+	cd build/proofs && for t in charset smallcaps-review drafts-review smallcaps-review-Italic drafts-review-Italic; do \
 	    lualatex -interaction=nonstopmode $$t.tex >/dev/null; done
 	cd proofs && for t in proof smallcaps samples; do \
 	    lualatex -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
-	@echo "proofs: build/proofs/{charset,proof,samples,smallcaps,smallcaps-review,drafts-review}.pdf"
+	@echo "proofs: build/proofs/{charset,proof,samples,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-Italic.pdf"
 
 # One quarto page per language, the UDHR (texts fetched once into build/udhr)
 udhr: $(OTF)
@@ -108,7 +110,7 @@ qa: $(OTF) $(TTF)
 	@echo "reports: build/qa/fontbakery-{otf,ttf}.html"
 
 normalize:
-	.venv/bin/ufonormalizer -m $(UFOS)
+	for u in $(UFOS); do .venv/bin/ufonormalizer -m $$u || exit 1; done
 
 # --- one-off import (overwrites the source UFO!) -------------------------
 

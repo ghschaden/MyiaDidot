@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="sigmalunatesymbolgreek.sc" format="2">
+	<advance width="976"/>
+	<outline>
+		<contour>
+			<point x="117.5475411945" y="352" type="curve"/>
+			<point x="83.1084147217" y="689"/>
+			<point x="395.7105996117" y="1074"/>
+			<point x="671.438905625" y="1073" type="curve" smooth="yes"/>
+			<point x="840.7105996117" y="1074"/>
+			<point x="912.0205452575" y="950"/>
+			<point x="924.4100539253" y="749" type="curve"/>
+			<point x="864.2365020315" y="741" type="line"/>
+			<point x="867.1042615006" y="781"/>
+			<point x="853.2509278813" y="903"/>
+			<point x="802.563933231" y="952" type="curve" smooth="yes"/>
+			<point x="750.8769385806" y="1001"/>
+			<point x="710.1372664213" y="1013"/>
+			<point x="652.1372664213" y="1013" type="curve" smooth="yes"/>
+			<point x="543.1372664213" y="1013"/>
+			<point x="450.1073212044" y="954"/>
+			<point x="355.2137697395" y="763" type="curve"/>
+			<point x="286.1538793057" y="645"/>
+			<point x="224.977267708" y="464"/>
+			<point x="245.4421861767" y="278" type="curve"/>
+			<point x="248.6808752427" y="47"/>
+			<point x="363.1602195612" y="23"/>
+			<point x="450.1602195612" y="23" type="curve" smooth="yes"/>
+			<point x="547.1602195612" y="23"/>
+			<point x="681.1901647781" y="82"/>
+			<point x="776.215956774" y="233" type="curve"/>
+			<point x="813.7820770394" y="213" type="line"/>
+			<point x="728.5486347118" y="87"/>
+			<point x="634.7604382647" y="-30"/>
+			<point x="413.7604382647" y="-30" type="curve" smooth="yes"/>
+			<point x="277.7604382647" y="-30"/>
+			<point x="115.375082818" y="79"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="803" y="1156"/>
+	<anchor name="Acute" x="798" y="1136"/>
+	<anchor name="Grave" x="798" y="1136"/>
+	<anchor name="Dotaccent" x="808" y="1176"/>
+	<anchor name="TopCap" x="811" y="1186"/>
+	<anchor name="Bottom" x="489" y="0"/>
+	<anchor name="DotBelow" x="483" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>small cap draft</string>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

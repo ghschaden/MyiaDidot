@@ -1,9 +1,11 @@
 """Ratchets and snapshots: what the font did before, it must still do.
 
 * Coverage only grows: every code point in data/cmap.txt stays encoded.
-* The golden corpus shapes exactly as recorded in data/shaping-golden.json.
+* The golden corpus shapes exactly as recorded in data/shaping-golden.json
+  (the Regular; other styles: shaping-golden-<Style>.json).
 * The full corpus (every character, every letter/punctuation pair, base +
-  mark sequences, NFD forms) hashes to the digest in data/shaping-digest.txt.
+  mark sequences, NFD forms) hashes to the digest in data/shaping-digest.txt
+  (other styles: shaping-digest-<Style>.txt).
 
 When a change is intended, regenerate with scripts/update_test_data.py and
 review the diff of tests/data/ in the commit.
@@ -11,7 +13,7 @@ review the diff of tests/data/ in the commit.
 
 import json
 
-from conftest import DATA
+from conftest import DATA, style_data
 from shaping import full_digest, shape_golden
 
 UPDATE = "python scripts/update_test_data.py"
@@ -24,8 +26,8 @@ def test_coverage_never_shrinks(ttfont):
     assert not lost, "code points no longer encoded: " + " ".join(f"U+{u:04X}" for u in lost)
 
 
-def test_golden_shaping(shaper):
-    expected = json.loads((DATA / "shaping-golden.json").read_text(encoding="utf-8"))
+def test_golden_shaping(shaper, ufo_path):
+    expected = json.loads(style_data("shaping-golden.json", ufo_path).read_text(encoding="utf-8"))
     got = shape_golden(shaper)
     changed = [k for k in got if k in expected and got[k] != expected[k]]
     new = [k for k in got if k not in expected]
@@ -37,8 +39,8 @@ def test_golden_shaping(shaper):
     assert not new, f"corpus cases without a golden entry, run {UPDATE} --golden: {new}"
 
 
-def test_full_corpus_digest(shaper, ttfont):
-    expected = (DATA / "shaping-digest.txt").read_text().split()
+def test_full_corpus_digest(shaper, ttfont, ufo_path):
+    expected = style_data("shaping-digest.txt", ufo_path).read_text().split()
     digest, n = full_digest(shaper, ttfont.getBestCmap())
     assert [digest, str(n)] == expected, (
         f"shaping of the full corpus changed ({n} strings). Inspect with `make regress`; "

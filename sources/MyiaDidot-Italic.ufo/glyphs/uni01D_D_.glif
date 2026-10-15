@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni01DD" format="2">
+	<unicode hex="01DD"/>
+	<advance width="812"/>
+	<outline>
+		<contour>
+			<point x="97.1" y="139.5789473684" type="curve" smooth="yes"/>
+			<point x="96.4447938783" y="246.1585978963"/>
+			<point x="174.7277979086" y="323.4668110778"/>
+			<point x="292.4152750133" y="377.3587684833" type="curve" smooth="yes"/>
+			<point x="392.1299381896" y="423.6000925921"/>
+			<point x="499.6460534719" y="433.1412264673"/>
+			<point x="574.5014627988" y="439.70702178" type="curve"/>
+			<point x="589.9784524568" y="489.5285118871"/>
+			<point x="605.9293010044" y="588.8957255333"/>
+			<point x="605.96" y="670.7543859649" type="curve" smooth="yes"/>
+			<point x="605.3472299706" y="796.7437117446"/>
+			<point x="531.108510973" y="842.2337391117"/>
+			<point x="465.3" y="842.4736842105" type="curve" smooth="yes"/>
+			<point x="266.2606441489" y="841.3771302579"/>
+			<point x="164.8690769229" y="604.8170967047"/>
+			<point x="152.8056518081" y="564.7149986237" type="curve"/>
+			<point x="122.8012058123" y="573.3327527143" type="line"/>
+			<point x="181.0027324499" y="737.8727285531"/>
+			<point x="314.3022430332" y="879.4865235258"/>
+			<point x="475.2" y="879" type="curve" smooth="yes"/>
+			<point x="635.5406551663" y="879.6696365941"/>
+			<point x="732.8710103244" y="729.3860610593"/>
+			<point x="732.52" y="554.4385964912" type="curve" smooth="yes"/>
+			<point x="732.6448059017" y="406.0464122608"/>
+			<point x="678.267427179" y="246.8843494445"/>
+			<point x="560.5493424988" y="125.620376007" type="curve" smooth="yes"/>
+			<point x="476.2150898396" y="38.8349769557"/>
+			<point x="378.0422557589" y="-18.4415285941"/>
+			<point x="269.28" y="-18.2631578947" type="curve" smooth="yes"/>
+			<point x="175.9229523106" y="-18.3750476579"/>
+			<point x="96.1894819717" y="17.8254274337"/>
+		</contour>
+		<contour>
+			<point x="176.14" y="127.9473684211" type="curve" smooth="yes"/>
+			<point x="176.6574676641" y="46.6958520339"/>
+			<point x="221.4197929045" y="18.4780638912"/>
+			<point x="267.3" y="18.2631578947" type="curve" smooth="yes"/>
+			<point x="388.2900927827" y="18.9961731672"/>
+			<point x="490.0293303741" y="152.56739924"/>
+			<point x="526.2968320099" y="252.2795362618" type="curve" smooth="yes"/>
+			<point x="536.3490508368" y="281.6546301937"/>
+			<point x="562.1347155092" y="376.7493907733"/>
+			<point x="560.3282814008" y="400.3199887114" type="curve"/>
+			<point x="500.3152963441" y="396.5812235954"/>
+			<point x="407.8767204708" y="388.686020676"/>
+			<point x="323.4671566156" y="351.5823340182" type="curve" smooth="yes"/>
+			<point x="242.4936586322" y="316.0139823083"/>
+			<point x="176.5751730397" y="234.2581878938"/>
+		</contour>
+	</outline>
+	<anchor name="DotBelow" x="247" y="-20"/>
+	<anchor name="Bottom" x="253" y="0"/>
+	<anchor name="Dotaccent" x="545" y="1020"/>
+	<anchor name="Grave" x="534" y="980"/>
+	<anchor name="Acute" x="534" y="980"/>
+	<anchor name="Top" x="540" y="1000"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
+</glyph>

@@ -122,8 +122,8 @@ RECIPES = [
     ("Ɐ", "turn", "A", "c"),
     ("Ɯ", "twin", "U", 1000),
     ("⅄", "turn", "Y", "c"),
+    ("ɔ", "turn", "c", "x"),  # not mirrored: the ball low, as Charis and Libertinus
     # mirrored
-    ("ɔ", "mirror", "c", None),
     ("Ɔ", "mirror", "C", None),
     ("Ǝ", "mirror", "E", None),
     ("ɘ", "mirror", "e", None),
@@ -218,7 +218,14 @@ RECIPES = [
     ("ɱ", "hook", "m", ("x", "down-left", "last", 48, 160, 160)),
     ("Ƒ", "hook", "F", ("c", "down-left", "first", 52, 200, 200)),
     ("ʈ", "hook", "t", ("x", "down-right", "first", 290, 20, 400)),
-    ("Ʈ", "hook", "T", ("c", "down-right", "first", 52, 200, 200)),
+    # Ʈ: the stem thinning below the baseline into a light hook to the right
+    # (as Charis and Libertinus; ȷ's tail scaled to the capital stem is heavy)
+    ("Ʈ", "attach", "T", ("c", [(-BIG, -BIG, BIG, 400)],
+                          [("poly", [(708, 401), (916, 401), ((916, 213), (890, 26), (838, -162)),
+                                     (708, -162)], (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 773, -150, 130), "dir": 270, "turn": "ccw",
+                                     "r": (170, 140), "sweep": 170, "ball": 65, "t": (130, 44)},
+                            (0, 0), (1, 1, 0, 0))])),
     ("ɖ", "hook", "d", ("x", "down-right", "last", 48, 0, 200)),
     ("Ɖ", "alias", "Eth", None),
     ("ɭ", "hook", "l", ("x", "down-right", "first", 48, 160, 160)),
@@ -863,10 +870,21 @@ def embolden(rec, ax, ay):
     thinner), moving each point along its outline's normal."""
     glyph = ufoLib2.objects.Glyph()
     rec.replay(glyph.getPen())
-    for contour in glyph.contours:
+
+    def area(contour):
         pts = [(p.x, p.y) for p in contour.points]
-        area = sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
-        sign = 1 if area > 0 else -1
+        return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
+
+    # outlines wind like the largest contour, counters the other way: an
+    # outline grows outward, a counter shrinks (its boundary moves into it),
+    # so the ink around a counter thickens too
+    areas = [area(c) for c in glyph.contours]
+    outer = max(areas, key=abs, default=1) > 0
+    for contour, a in zip(glyph.contours, areas, strict=True):
+        pts = [(p.x, p.y) for p in contour.points]
+        sign = 1 if a > 0 else -1
+        if (a > 0) != outer:
+            sign = -sign
         n = len(pts)
         moved = []
         for i in range(n):
@@ -939,6 +957,10 @@ class CubicPen(BasePen):
 def draw_path(font, src, dst, out):
     """Draw a merged outline (a pathops Path or a recording) into dst,
     rounded and in the source's contour direction."""
+    from glyph_lint import clean
+
+    if isinstance(out, pathops.Path):  # no crumbs of the cuts and merges (glyph_lint)
+        out = clean(out)
     rec = RecordingPen()
     # pathops can return a quadratic segment; the font is cubic
     cubic = CubicPen(rec)
@@ -973,6 +995,8 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
     hsrc, hend = HOOK_SRC["up" if up else "down"]
     probe = 300 if not up else max(cut - 150, 400)
     stems = stems_at(font, source, probe)
+    # not the end of a stroke the probe grazes (an italic's exit stroke)
+    stems = [s for s in stems if s[1] - s[0] >= 0.5 * max(t[1] - t[0] for t in stems)]
     ta, tb = stems[0] if pick == "first" else stems[-1]
     # f: stem first, ball to the right; ȷ: stem last, ball to the left
     hs = stems_at(font, hsrc, 900)[0] if up else stems_at(font, hsrc, -200)[-1]
@@ -1071,7 +1095,9 @@ def attach(font, source, cuts, pieces):
     of a glyph (name, clip box) whose point (px, py) goes to (x, y),
     scaled (sx, sy) and optionally turned (degrees, a fifth value); a negative
     sx mirrors. For hooks that need placing by hand (Ɲ, ₪, Ϗ); "rect" pieces
-    are boxes, "line" pieces straight strokes, "curl" pieces drawn hooks."""
+    are boxes, "line" pieces straight strokes, "poly" pieces polygons (with
+    curves), "curl"
+    pieces drawn hooks."""
     out = to_path(font, font[source])
     for box in cuts:
         out = path_op(out, rect_path(*box), "DIFFERENCE")
@@ -1082,8 +1108,22 @@ def attach(font, source, cuts, pieces):
             rec = RecordingPen()
             stroke(rec, clip[0], clip[1], clip[2])
             part = to_path(None, rec=rec)
-        elif name == "curl":  # a drawn hook ending in a ball: curl's arguments
-            part = curl(font, "space", [], **clip)
+        elif name == "poly":  # a filled polygon: its points (a stroke tapering);
+            # a triple of points is a curve to the last (two handles)
+            rec = RecordingPen()
+            rec.moveTo(clip[0])
+            for pt in clip[1:]:
+                rec.curveTo(*pt) if isinstance(pt[0], (tuple, list)) else rec.lineTo(pt)
+            rec.closePath()
+            part = to_path(None, rec=rec)
+        elif name == "curl":  # a drawn hook ending in a ball: curl's arguments,
+            # and optionally "cuts", boxes taken from it (so the ring's lead
+            # does not stand out past the stroke it leaves)
+            args = dict(clip)
+            boxes = args.pop("cuts", ())
+            part = curl(font, "space", [], **args)
+            for box in boxes:
+                part = path_op(part, rect_path(*box), "DIFFERENCE")
         else:
             part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
         rec = RecordingPen()
@@ -1228,10 +1268,16 @@ def descend(font, source, band, model, pick=None):
         stems = stems_at(font, source, 300)
         vx = sum(stems[0] if pick == "first" else stems[-1]) / 2
     else:
-        vx = sum(stems_at(font, source, 26)[0]) / 2
+        runs = stems_at(font, source, 26)  # a rounded bottom (the Italic's v) is cut twice
+        vx = (runs[0][0] + runs[-1][1]) / 2
     ma, mb = stems_at(font, model, -200)[0]
     piece = path_op(to_path(font, font[model]), rect_path(-BIG, -BIG, BIG, -60), "INTERSECTION")
-    stem = rect_path(ma, -80, mb, 120)
+    # up into the vertex, not into the counter above a rounded bottom; with
+    # pick, up to where the stem was measured
+    top = 300 if pick else 120
+    while not pick and top > 0 and len(stems_at(font, source, top)) > 1:
+        top -= 10
+    stem = rect_path(ma, -80, mb, top)
     piece = shifted(path_op(piece, stem, "UNION"), vx - (ma + mb) / 2)
     return path_op(to_path(font, font[source]), piece, "UNION")
 
@@ -1362,8 +1408,13 @@ def build(font, ch, op, source, band, name=None):
                                stretch=op == "stretch")
         draw_path(font, src, g, out)
         ref = font[dst_ref]
+        # a letter taller than dst_ref (ʒ.sc on the baseline, from Ʒ with its
+        # tail below) takes its accents as far above its own top
+        rise = ink_bounds(font, g.name)[3] - ink_bounds(font, dst_ref)[3]
+        rise = rise if rise > 40 else 0
         for a in ref.anchors:
-            g.appendAnchor({"name": a.name, "x": round(a.x * g.width / ref.width), "y": a.y})
+            g.appendAnchor({"name": a.name, "x": round(a.x * g.width / ref.width),
+                            "y": a.y + (rise if a.y > 0 else 0)})
     else:
         raise ValueError(op)
     if small_cap:

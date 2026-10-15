@@ -2,12 +2,16 @@
 
     python scripts/update_test_data.py --golden --digest --cmap
     python scripts/update_test_data.py --exceptions   # only adds, with a reason
+    python scripts/update_test_data.py --lint --ufo UFO --reason "..."
 
 Every run accepts the font's current behaviour as correct, so run it only
 for an intended change, and review `git diff tests/data` before committing.
 --cmap only ever adds code points (the coverage ratchet). --exceptions adds
 the current NFD/composite/fontbakery failures that are not listed yet, under
-the reason given with --reason, and leaves existing entries alone.
+the reason given with --reason, and leaves existing entries alone. --lint
+rewrites the style's list of known glyph_lint.py findings (glyph-lint.txt,
+glyph-lint-Italic.txt ...): those still found keep their reasons, new ones
+get --reason, fixed ones go.
 """
 
 import argparse
@@ -24,10 +28,11 @@ TESTS = ROOT / "tests"
 DATA = TESTS / "data"
 sys.path[:0] = [str(TESTS), str(ROOT / "scripts")]
 
-from conftest import Shaper
+from conftest import Shaper, style_data
 from shaping import full_digest, shape_golden
 from test_composites import composite_mismatches, nfd_mismatches, read_list, smallcap_mismatches
 from test_fontbakery import fontbakery_failures
+from test_glyph_lint import lint_keys
 
 
 def build(ufo_path, tmp):
@@ -68,8 +73,22 @@ def main():
     ap.add_argument("--digest", action="store_true")
     ap.add_argument("--cmap", action="store_true")
     ap.add_argument("--exceptions", action="store_true")
+    ap.add_argument("--lint", action="store_true")
     ap.add_argument("--reason", default="baseline")
     args = ap.parse_args()
+    if args.lint:
+        path = style_data("glyph-lint.txt", args.ufo)
+        listed = read_list(path.name)
+        found = lint_keys(ufoLib2.Font.open(args.ufo))
+        lines = ["# Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.\n"]
+        for k in sorted(found):
+            why = listed.get(k) or f"{args.reason}: {found[k]}"[:200]
+            lines.append(f"{k:32} # {why}\n")
+        path.write_text("".join(lines), encoding="utf-8")
+        print(f"{path.name}: {len(found)} findings, {len(set(found) - set(listed))} new, "
+              f"{len(set(listed) - set(found))} gone")
+        if not any((args.golden, args.digest, args.cmap, args.exceptions)):
+            return
     if not any((args.golden, args.digest, args.cmap, args.exceptions)):
         ap.error("say what to update")
 
@@ -82,13 +101,14 @@ def main():
 
         if args.golden:
             golden = shape_golden(shaper)
-            (DATA / "shaping-golden.json").write_text(
-                json.dumps(golden, ensure_ascii=False, indent=0) + "\n", encoding="utf-8")
-            print(f"shaping-golden.json: {len(golden)} cases")
+            path = style_data("shaping-golden.json", args.ufo)
+            path.write_text(json.dumps(golden, ensure_ascii=False, indent=0) + "\n", encoding="utf-8")
+            print(f"{path.name}: {len(golden)} cases")
         if args.digest:
             digest, n = full_digest(shaper, tt.getBestCmap())
-            (DATA / "shaping-digest.txt").write_text(f"{digest} {n}\n")
-            print(f"shaping-digest.txt: {n} strings")
+            path = style_data("shaping-digest.txt", args.ufo)
+            path.write_text(f"{digest} {n}\n")
+            print(f"{path.name}: {n} strings")
         if args.cmap:
             path = DATA / "cmap.txt"
             old = {int(x, 16) for x in path.read_text().split()} if path.exists() else set()

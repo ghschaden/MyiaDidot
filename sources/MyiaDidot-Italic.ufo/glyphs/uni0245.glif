@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni0245" format="2">
+	<unicode hex="0245"/>
+	<advance width="1489"/>
+	<outline>
+		<contour>
+			<point x="1356.7891713962" y="64.5918000596" type="line"/>
+			<point x="1344.5068420094" y="4.9693214787" type="line"/>
+			<point x="744.4037403659" y="4.9659499637" type="line"/>
+			<point x="762.565146737" y="64.1821505321" type="line"/>
+			<point x="897.9116927001" y="63.75" type="line" smooth="yes"/>
+			<point x="967.2190267113" y="64.4081496581"/>
+			<point x="981.1135183206" y="111.2308764301"/>
+			<point x="981.1516927001" y="169.7265625" type="curve" smooth="yes"/>
+			<point x="976.1535690427" y="1169.1697372149" type="line"/>
+			<point x="451.6443804681" y="380.8501693342" type="line" smooth="yes"/>
+			<point x="401.8507340128" y="298.9039063223"/>
+			<point x="367.4211383722" y="228.9232698122"/>
+			<point x="367.1916927001" y="158.984375" type="curve" smooth="yes"/>
+			<point x="367.5927274412" y="105.8586592896"/>
+			<point x="401.6459582044" y="64.1800058302"/>
+			<point x="462.3116927001" y="63.75" type="curve" smooth="yes"/>
+			<point x="543.8779503853" y="65.1511749801" type="line"/>
+			<point x="532.6838525334" y="4.9677013922" type="line"/>
+			<point x="-51.5307354139" y="4.9640526571" type="line"/>
+			<point x="-31.8946759271" y="64.7284278586" type="line"/>
+			<point x="40.5716927001" y="63.75" type="line" smooth="yes"/>
+			<point x="150.5675122409" y="64.1343280659"/>
+			<point x="242.7377831343" y="147.1899431651"/>
+			<point x="284.8693076461" y="222.8514675706" type="curve"/>
+			<point x="1104.4482626249" y="1466.0298503628" type="line"/>
+			<point x="1139.3974361554" y="1468.7053068811" type="line"/>
+			<point x="1139.3918238845" y="163.2526161785" type="line"/>
+			<point x="1147.9887798456" y="83.9243646844"/>
+			<point x="1187.4232559783" y="63.8445524654"/>
+			<point x="1242.4316927001" y="63.75" type="curve" smooth="yes"/>
+		</contour>
+	</outline>
+	<anchor name="DotBelow" x="692" y="-20"/>
+	<anchor name="Bottom" x="699" y="0"/>
+	<anchor name="TopCap" x="1114" y="1580"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>derived</string>
+		</dict>
+	</lib>
+</glyph>

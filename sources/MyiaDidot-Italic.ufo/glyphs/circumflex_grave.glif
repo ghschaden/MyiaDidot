@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="circumflex_grave" format="2">
+	<advance width="880"/>
+	<outline>
+		<component base="circumflex"/>
+		<component base="grave" xOffset="470" yOffset="193"/>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

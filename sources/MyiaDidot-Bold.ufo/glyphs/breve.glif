@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="breve" format="2">
+	<unicode hex="02D8"/>
+	<advance width="880"/>
+	<outline>
+		<contour>
+			<point x="181.1930034039" y="1349.906278429" type="curve"/>
+			<point x="260.6380396362" y="1353.6737401976" type="line"/>
+			<point x="283.1136767296" y="1240.2027162499"/>
+			<point x="324.4991153317" y="1180.1059417051"/>
+			<point x="440" y="1180.8" type="curve" smooth="yes"/>
+			<point x="555.5008846683" y="1180.1059417051"/>
+			<point x="596.8863232704" y="1240.2027162499"/>
+			<point x="619.3619603638" y="1353.6737401976" type="curve"/>
+			<point x="698.8069965961" y="1349.906278429" type="line"/>
+			<point x="681.4873413281" y="1180.6176292091"/>
+			<point x="578.6750257508" y="1077.752801793"/>
+			<point x="440" y="1076.8" type="curve"/>
+			<point x="301.3249742492" y="1077.752801793"/>
+			<point x="198.5126586719" y="1180.6176292091"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.adjusted</key>
+			<array>
+				<real>0.8</real>
+				<real>0.85</real>
+			</array>
+		</dict>
+	</lib>
+</glyph>

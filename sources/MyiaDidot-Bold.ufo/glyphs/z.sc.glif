@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="z.sc" format="2">
+	<advance width="1159"/>
+	<outline>
+		<contour>
+			<point x="120.6511307597" y="665.911038053" type="line"/>
+			<point x="184.1990788296" y="1043.6308807932" type="line"/>
+			<point x="976.9151542352" y="1043.9954100186" type="line"/>
+			<point x="1013.3403443366" y="1000.9410043808" type="line"/>
+			<point x="419.6738161343" y="42.7962055553" type="line"/>
+			<point x="672.12" y="48" type="line" smooth="yes"/>
+			<point x="753.9940133907" y="47.8855830421"/>
+			<point x="827.8820067659" y="92.1086863684"/>
+			<point x="866.0996931749" y="158.2894150096" type="curve"/>
+			<point x="921.3863792405" y="240.0240584455"/>
+			<point x="928.0078506308" y="273.9787289976"/>
+			<point x="957.3014548249" y="376.2483440623" type="curve"/>
+			<point x="1085.1716533906" y="374.2774053448" type="line"/>
+			<point x="1038.4283511818" y="-3.6696052418" type="line"/>
+			<point x="175.9324185143" y="-3.9952707719" type="line"/>
+			<point x="139.6286247168" y="43.0721104481" type="line"/>
+			<point x="738.884056983" y="997.3309333667" type="line"/>
+			<point x="515.08" y="992" type="line"/>
+			<point x="430.2695955008" y="992.0597612209"/>
+			<point x="383.9332600859" y="964.9423892304"/>
+			<point x="340.6385276289" y="893.6825972632" type="curve" smooth="yes"/>
+			<point x="295.57199475" y="827.0759300128"/>
+			<point x="277.676381946" y="767.9416844168"/>
+			<point x="248.8467372351" y="663.7817958629" type="curve"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="615" y="1156"/>
+	<anchor name="Acute" x="615" y="1136"/>
+	<anchor name="Grave" x="615" y="1136"/>
+	<anchor name="Dotaccent" x="615" y="1176"/>
+	<anchor name="TopCap" x="615" y="1186"/>
+	<anchor name="Bottom" x="615" y="0"/>
+	<anchor name="DotBelow" x="615" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>
