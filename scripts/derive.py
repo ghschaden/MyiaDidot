@@ -983,13 +983,14 @@ HOOK_BOTTOM = {"x": -628, "c": -628, "s": -500}
 HOOK_BOTTOM_RETROFLEX = {"x": -420, "c": -420, "s": -360}
 
 
-def hook_path(font, source, band, kind, pick, cut, left, right):
+def hook_path(font, source, band, kind, pick, cut, left, right, cuts=()):
     """The letter with a stem's end replaced by a hook from the font: kind
     'up-right' (ɓ: the top of f), 'up-left' (Ɓ: f mirrored), 'down-left'
     (ɲ: the descender of ȷ) or 'down-right' (ʈ: ȷ mirrored). The stem
     (first/last at mid height) loses its ink beyond cut, from left of it to
     right of it; the hook is scaled by the stem ratio to reach the band's
-    top (or the descender)."""
+    top (or the descender). cuts: boxes also taken from the letter (an
+    italic's exit stroke above the cut)."""
     up = kind.startswith("up")
     mirror = kind in ("up-left", "down-right")  # f hooks right, ȷ left
     hsrc, hend = HOOK_SRC["up" if up else "down"]
@@ -1034,6 +1035,8 @@ def hook_path(font, source, band, kind, pick, cut, left, right):
     cut_box = (rect_path(ta - left, cut, tb + right, BIG) if up
                else rect_path(ta - left, -BIG, tb + right, cut))
     letter = path_op(to_path(font, font[source]), cut_box, "DIFFERENCE")
+    for box in cuts:
+        letter = path_op(letter, rect_path(*box), "DIFFERENCE")
     return path_op(letter, piece, "UNION"), piece.bounds
 
 
@@ -1362,8 +1365,8 @@ def build(font, ch, op, source, band, name=None):
         for a in src.anchors:
             g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
     elif op == "hook":
-        sband, kind, pick, cut, left, right = band
-        out, (_, _, x1, _) = hook_path(font, source, sband, kind, pick, cut, left, right)
+        sband, kind, pick, cut, left, right, *cuts = band
+        out, (_, _, x1, _) = hook_path(font, source, sband, kind, pick, cut, left, right, *cuts)
         rsb = w - ink_bounds(font, source)[2]
         g.width = max(w, round(x1 + rsb))
         draw_path(font, src, g, out)

@@ -175,10 +175,12 @@ def put(font, up, name, source):
 # romans): transplanted from the Regular instead
 TRANSPLANT_OPS = ("attach", "curl", "graft")
 LETTERS = {"₨": "Rs"}  # signs that are letters side by side
+# ... closer by this much, joined: R's leg runs out into the ball of s
+LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ"}  # its own recipe fits the Italic better
-TRANSPLANT = {"ƛ"}  # other recipes better transplanted (the bar of ƛ)
+                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ"}  # its own recipe fits the Italic better
+TRANSPLANT = set()  # other recipes better transplanted
 # the Italic's own letters already have the shape: Old Standard's g is ɡ,
 # its h turned is ɥ (the Regular's is u and a descender, its h's serifs
 # would turn)
@@ -303,6 +305,9 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # the right
                   "ƃ": ("attach", "b", ("x", [(-BIG, 1300, 173, BIG)],
                                         [("rect", (173, 1379, 720, 1435), (0, 0), (1, 1, 0, 0))])),
+                  # λ whole, a bar drawn across its upper stroke (the Regular's,
+                  # transplanted, cut the arch off the long stroke)
+                  "ƛ": ("attach", "lambda", ("x", [], [("line", ((130, 1010), (610, 1285), 46), (0, 0), (1, 1, 0, 0))])),
                   # G's spur rising above the cap height into a hook to the right
                   # (as Charis and Libertinus), not curling back over the bowl
                   "Ɠ": ("attach", "G", ("c", [(1080, 1330, BIG, BIG)],
@@ -321,15 +326,16 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                         retroflex(667.5, 667.5, 200, 165, (150, 125), 82, 50))),
                   # the stem going on below the baseline into ȷ's descender,
                   # mirrored (as ɳ's): it thins as the italic stems do
-                  "ɖ": ("hook", "d", ("x", "down-right", "last", 300, 160, 400)),
+                  "ɖ": ("hook", "d", ("x", "down-right", "last", 200, 0, 400, [(820, -BIG, BIG, 450)])),
                   "ɭ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
                                         retroflex(234, 234, 350, 116, (110, 100), 45, 40))),
                   # the tail on the stem (its foot serif cut away), as ɽ's
                   "Ɽ": ("attach", "R", ("c", [(-BIG, -BIG, 800, 120)],
                                         retroflex(393, 393, 160, 166, (150, 125), 82, 50))),
                   # ȷ's descender (mirrored for ɳ) on the last stem, as ɲ has it
-                  # on the first: it thins as the italic stems do
-                  "ɳ": ("hook", "n", ("x", "down-right", "last", 300, 160, 400)),
+                  # on the first: it thins as the italic stems do (cut where
+                  # the stem is as wide as ɲ's, below its swell)
+                  "ɳ": ("hook", "n", ("x", "down-right", "last", 200, 160, 400, [(900, -BIG, BIG, 450)])),
                   "ɽ": ("attach", "r", ("x", [], retroflex(354.5, 354.5, 100, 119, (110, 100), 55, 40))),
                   "ɻ": ("attach", "uni0279", ("x", [(494, -BIG, BIG, 60)],  # ɹ's foot serif too
                                               retroflex(576, 576, 80, 164, (140, 120), 80, 52))),
@@ -345,8 +351,8 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                               descender(1087.7, 210, 1167.5, 0, 100, 290.8, (100, 90), 40))),
                   "ҳ": ("attach", "uni0445", ("x", [(560, -BIG, BIG, 150), (900, -BIG, BIG, 350)],
                                               descender(612, 155, 725.5, -20, 58, 303, (90, 80), 34))),
-                  "ɧ": ("hook", "uni0266", ("x", "down-left", "last", 300, 160, 400)),
-                  "ɱ": ("hook", "m", ("x", "down-left", "last", 300, 160, 400)),
+                  "ɧ": ("hook", "uni0266", ("x", "down-left", "last", 200, 160, 400, [(780, -BIG, BIG, 450)])),
+                  "ɱ": ("hook", "m", ("x", "down-left", "last", 200, 160, 400, [(1360, -BIG, BIG, 450)])),
                   # F's stem (its foot serif cut away) tapering into the hook
                   "Ƒ": ("attach", "F", ("c", [(-BIG, -BIG, BIG, 150)],
                                         [("poly", [(310, 150), (477, 150), (477, -150), (357, -150)], (0, 0), (1, 1, 0, 0)),
@@ -624,7 +630,8 @@ def derive_stage(font, regular):
                 g.clearContours()
                 g.clearComponents()
                 x = 0
-                for c in LETTERS[ch]:
+                for k, c in enumerate(LETTERS[ch]):
+                    x -= LETTER_JOIN.get(ch, 0) if k else 0
                     g.getPen().addComponent(cmap[ord(c)], (1, 0, 0, 1, x, 0))
                     x += up[cmap[ord(c)]].width
                 g.width = x
