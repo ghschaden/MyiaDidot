@@ -1,0 +1,436 @@
+# Known scripts/quality/checks.py findings (glyph kind count); fixing one = deleting its line.
+Alphatonos accent 1              # 2026-10-16 known at the start (quality checks added): above tonos gap -475, usually -447
+Aringacute kink 2                # 2026-10-16 known at the start (quality checks added): 808,1916 2.9 degrees; 921,1835 3.0 degrees
+Cedilla smooth 1                 # 2026-10-16 known at the start (quality checks added): 339,-433 3.0 degrees
+Epsilon_uni0313_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -476, usually -504
+Epsilon_uni0314_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
+Hook kink 1                      # 2026-10-16 known at the start (quality checks added): 291,1791 7.9 degrees
+J smooth 1                       # 2026-10-16 known at the start (quality checks added): 350,147 2.3 degrees
+J zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+Omicrontonos accent 1            # 2026-10-16 known at the start (quality checks added): above tonos gap -475, usually -447
+Psi kink 2                       # 2026-10-16 known at the start (quality checks added): 1903,1310 3.6 degrees; 1615,1266 4.1 degrees
+R zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+Upsilon extreme 1                # 2026-10-16 known at the start (quality checks added): 1280,1156 10 units past
+a extreme 1                      # 2026-10-16 known at the start (quality checks added): 910,50 5 units past
+anoteleia width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+aogonek extreme 1                # 2026-10-16 known at the start (quality checks added): 910,50 5 units past
+aringacute.sc kink 2             # 2026-10-16 known at the start (quality checks added): 588,1390 5.4 degrees; 685,1330 2.8 degrees
+asterisk extreme 4               # 2026-10-16 known at the start (quality checks added): 502,1043 6 units past; 501,1063 6 units past; 736,1083 6 units past; 737,1063 6 units past
+asterisk kink 5                  # 2026-10-16 known at the start (quality checks added): 518,1323 3.7 degrees; 720,1323 3.7 degrees; 720,803 4.3 degrees; 619,610 1.5 degrees; 518,803 4.3 degrees
+asterisk smooth 4                # 2026-10-16 known at the start (quality checks added): 751,1419 2.1 degrees; 791,881 2.2 degrees; 751,709 2.1 degrees; 447,881 2.2 degrees
+bar width 1                      # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+brokenbar width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+c_t extreme 1                    # 2026-10-16 known at the start (quality checks added): 561,900 12 units past
+c_t kink 1                       # 2026-10-16 known at the start (quality checks added): 907,1332 1.1 degrees
+c_t smooth 1                     # 2026-10-16 known at the start (quality checks added): 1388,192 2.1 degrees
+caroncommaaccent kink 2          # 2026-10-16 known at the start (quality checks added): 252,1288 4.1 degrees; 71,1407 7.5 degrees
+caroncommaaccent width 1         # 2026-10-16 known at the start (quality checks added): 1.32 of the Regular's, usually 1.09
+chi smooth 1                     # 2026-10-16 known at the start (quality checks added): 284,730 3.2 degrees
+comma width 1                    # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+dagger smooth 4                  # 2026-10-16 known at the start (quality checks added): 482,923 2.4 degrees; 831,923 2.4 degrees; 831,794 2.4 degrees; 482,794 2.4 degrees
+daggerdbl smooth 4               # 2026-10-16 known at the start (quality checks added): 482,987 2.4 degrees; 831,987 2.4 degrees; 831,-73 2.4 degrees; 482,-73 2.4 degrees
+dollar smooth 1                  # 2026-10-16 known at the start (quality checks added): 936,1189 2.8 degrees
+eight kink 1                     # 2026-10-16 known at the start (quality checks added): 602,624 3.7 degrees
+eight smooth 1                   # 2026-10-16 known at the start (quality checks added): 569,871 2.7 degrees
+eightoldstyle kink 1             # 2026-10-16 known at the start (quality checks added): 502,890 3.6 degrees
+eightoldstyle smooth 1           # 2026-10-16 known at the start (quality checks added): 640,615 2.1 degrees
+eightsuperior kink 1             # 2026-10-16 known at the start (quality checks added): 365,1146 6.6 degrees
+eng.sc smooth 1                  # 2026-10-16 known at the start (quality checks added): 791,-251 2.1 degrees
+estimated extreme 1              # 2026-10-16 known at the start (quality checks added): 912,32 5 units past
+estimated smooth 2               # 2026-10-16 known at the start (quality checks added): 152,743 2.3 degrees; 1673,743 2.3 degrees
+exclam width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+exclamdown width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+f smooth 1                       # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
+f_b kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+f_f_b extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+f_f_b kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
+f_f_h extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+f_f_h kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
+f_f_k extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+f_f_k kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
+f_f_t extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+f_f_t kink 3                     # 2026-10-16 known at the start (quality checks added): 739,1298 6.5 degrees; 460,1074 5.4 degrees; 1389,1168 4.4 degrees
+f_f_t smooth 2                   # 2026-10-16 known at the start (quality checks added): 1648,192 2.1 degrees; 1389,198 2.4 degrees
+f_h kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+f_k kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+ff smooth 1                      # 2026-10-16 known at the start (quality checks added): 702,1312 3.0 degrees
+ffl extreme 1                    # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+ffl kink 3                       # 2026-10-16 known at the start (quality checks added): 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
+florin extreme 1                 # 2026-10-16 known at the start (quality checks added): 1009,1396 6 units past
+florin zone 1                    # 2026-10-16 known at the start (quality checks added): top -8 from 1496
+fraction width 1                 # 2026-10-16 known at the start (quality checks added): 1.45 of the Regular's, usually 1.09
+germandbls kink 1                # 2026-10-16 known at the start (quality checks added): 476,172 4.8 degrees
+germandbls smooth 1              # 2026-10-16 known at the start (quality checks added): 1012,1228 2.7 degrees
+germandbls.sc kink 1             # 2026-10-16 known at the start (quality checks added): 741,173 6.9 degrees
+germandbls.sc smooth 2           # 2026-10-16 known at the start (quality checks added): 987,853 2.0 degrees; 426,122 2.2 degrees
+germandbls.sc zone 2             # 2026-10-16 known at the start (quality checks added): bottom -14 from 0; top +11 from 1040
+hook kink 2                      # 2026-10-16 known at the start (quality checks added): 278,1313 5.2 degrees; 348,1270 1.7 degrees
+horn smooth 1                    # 2026-10-16 known at the start (quality checks added): 524,170 3.9 degrees
+i accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
+integral smooth 1                # 2026-10-16 known at the start (quality checks added): 994,1366 2.9 degrees
+j accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
+j.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 278,66 7 units past
+j.sc kink 1                      # 2026-10-16 known at the start (quality checks added): 33,142 7.7 degrees
+j.sc smooth 1                    # 2026-10-16 known at the start (quality checks added): 280,36 4.6 degrees
+j.sc zone 2                      # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+kappa zone 1                     # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+lambda smooth 1                  # 2026-10-16 known at the start (quality checks added): 248,1297 3.4 degrees
+longs smooth 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
+longs_b kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+longs_h kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+longs_k kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+longs_longs smooth 1             # 2026-10-16 known at the start (quality checks added): 702,1312 3.0 degrees
+longs_longs_l extreme 1          # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+longs_longs_l kink 1             # 2026-10-16 known at the start (quality checks added): 739,1298 6.5 degrees
+ninesuperior smooth 1            # 2026-10-16 known at the start (quality checks added): 271,757 2.4 degrees
+nu zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+ordfeminine extreme 2            # 2026-10-16 known at the start (quality checks added): 671,954 8 units past; 770,913 6 units past
+oslash zone 2                    # 2026-10-16 known at the start (quality checks added): bottom -26 from 0; top +26 from 884
+period width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+phi zone 1                       # 2026-10-16 known at the start (quality checks added): top +24 from 884
+psi smooth 1                     # 2026-10-16 known at the start (quality checks added): 1089,756 2.8 degrees
+psi.sc kink 1                    # 2026-10-16 known at the start (quality checks added): 1479,946 5.5 degrees
+q.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 1160,-299 5 units past
+q.sc smooth 1                    # 2026-10-16 known at the start (quality checks added): 1084,-278 3.0 degrees
+questiondown smooth 1            # 2026-10-16 known at the start (quality checks added): 567,-512 2.9 degrees
+quoteleft smooth 1               # 2026-10-16 known at the start (quality checks added): 293,1127 2.2 degrees
+quoteleft width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+quotereversed smooth 1           # 2026-10-16 known at the start (quality checks added): 293,1238 2.2 degrees
+quotereversed width 1            # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+quoteright smooth 1              # 2026-10-16 known at the start (quality checks added): 346,1238 2.2 degrees
+quoteright width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+quotesingle width 1              # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+r.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
+r.sc zone 1                      # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
+registered extreme 1             # 2026-10-16 known at the start (quality checks added): 1350,348 7 units past
+rhosymbolgreek extreme 1         # 2026-10-16 known at the start (quality checks added): 720,-503 8 units past
+rhosymbolgreek smooth 1          # 2026-10-16 known at the start (quality checks added): 649,-491 2.7 degrees
+s_t extreme 1                    # 2026-10-16 known at the start (quality checks added): 560,869 15 units past
+s_t kink 4                       # 2026-10-16 known at the start (quality checks added): 622,184 5.4 degrees; 93,662 3.6 degrees; 853,1332 1.5 degrees; 291,727 6.2 degrees
+section smooth 1                 # 2026-10-16 known at the start (quality checks added): 748,1215 2.5 degrees
+sigma.sc smooth 1                # 2026-10-16 known at the start (quality checks added): 812,221 2.1 degrees
+sigma1 smooth 2                  # 2026-10-16 known at the start (quality checks added): 476,176 2.3 degrees; 586,-149 2.2 degrees
+sixsuperior smooth 1             # 2026-10-16 known at the start (quality checks added): 505,1340 2.9 degrees
+thetasymbolgreek smooth 1        # 2026-10-16 known at the start (quality checks added): 240,127 2.7 degrees
+thorn.sc zone 1                  # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+trademark smooth 1               # 2026-10-16 known at the start (quality checks added): 280,1346 2.5 degrees
+two kink 1                       # 2026-10-16 known at the start (quality checks added): 443,195 3.0 degrees
+u.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+u1D459 kink 1                    # 2026-10-16 known at the start (quality checks added): 217,153 5.8 degrees
+u1D459 zone 1                    # 2026-10-16 known at the start (quality checks added): bottom -4 from 0
+u1D510 kink 2                    # 2026-10-16 known at the start (quality checks added): 437,1395 1.6 degrees; 250,505 1.9 degrees
+u1D510 smooth 2                  # 2026-10-16 known at the start (quality checks added): 71,1123 2.1 degrees; 1981,264 2.2 degrees
+u1D510 zone 1                    # 2026-10-16 known at the start (quality checks added): top +20 from 1434
+u1D513 kink 4                    # 2026-10-16 known at the start (quality checks added): 422,1391 1.2 degrees; 320,1234 4.1 degrees; 224,505 2.0 degrees; 1039,1352 7.2 degrees
+u1D513 smooth 3                  # 2026-10-16 known at the start (quality checks added): 1422,1244 2.1 degrees; 1118,731 2.2 degrees; 1091,1284 2.6 degrees
+u1D513 zone 1                    # 2026-10-16 known at the start (quality checks added): top +18 from 1434
+u1D516 kink 1                    # 2026-10-16 known at the start (quality checks added): 739,382 1.1 degrees
+u1D52D smooth 3                  # 2026-10-16 known at the start (quality checks added): 1085,759 2.2 degrees; 1085,360 2.8 degrees; 848,98 2.5 degrees
+uni0187 extreme 1                # 2026-10-16 known at the start (quality checks added): 1290,1430 16 units past
+uni0187 kink 1                   # 2026-10-16 known at the start (quality checks added): 1199,1362 3.5 degrees
+uni0188 extreme 1                # 2026-10-16 known at the start (quality checks added): 726,907 7 units past
+uni0188.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 881,14 2.1 degrees
+uni0190 smooth 1                 # 2026-10-16 known at the start (quality checks added): 249,498 2.3 degrees
+uni0190 zone 1                   # 2026-10-16 known at the start (quality checks added): top +18 from 1434
+uni0191 smooth 1                 # 2026-10-16 known at the start (quality checks added): 128,-356 2.0 degrees
+uni0193 extreme 1                # 2026-10-16 known at the start (quality checks added): 1290,1430 16 units past
+uni0193 kink 1                   # 2026-10-16 known at the start (quality checks added): 1199,1362 3.5 degrees
+uni0194 smooth 2                 # 2026-10-16 known at the start (quality checks added): 1298,1425 2.4 degrees; 1322,1131 2.2 degrees
+uni0194 zone 1                   # 2026-10-16 known at the start (quality checks added): top -9 from 1434
+uni0196 kink 2                   # 2026-10-16 known at the start (quality checks added): 332,172 4.7 degrees; 704,244 4.1 degrees
+uni0196 smooth 2                 # 2026-10-16 known at the start (quality checks added): 514,1299 2.5 degrees; 249,275 2.6 degrees
+uni0196 zone 1                   # 2026-10-16 known at the start (quality checks added): top +21 from 1434
+uni0198 kink 1                   # 2026-10-16 known at the start (quality checks added): 626,804 3.6 degrees
+uni0199 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
+uni0199.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 915,880 16 units past
+uni0199.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 868,878 2.4 degrees
+uni019B smooth 1                 # 2026-10-16 known at the start (quality checks added): 233,1297 2.2 degrees
+uni019D kink 2                   # 2026-10-16 known at the start (quality checks added): 272,83 1.2 degrees; 429,63 2.3 degrees
+uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 423,-71 2.6 degrees
+uni01A5.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 348,891 2.7 degrees
+uni01AC kink 4                   # 2026-10-16 known at the start (quality checks added): 442,1433 5.1 degrees; 1091,1374 2.6 degrees; 608,1374 2.6 degrees; 219,1238 4.0 degrees
+uni01AD.sc kink 5                # 2026-10-16 known at the start (quality checks added): 257,1039 5.0 degrees; 730,987 6.2 degrees; 380,987 6.2 degrees; 163,774 5.3 degrees; 70,893 6.7 degrees
+uni01AE kink 1                   # 2026-10-16 known at the start (quality checks added): 697,-158 6.5 degrees
+uni01B4 smooth 2                 # 2026-10-16 known at the start (quality checks added): 223,-470 2.4 degrees; 1273,724 2.3 degrees
+uni01B4.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1031,851 18 units past
+uni01B4.sc kink 1                # 2026-10-16 known at the start (quality checks added): 841,832 3.2 degrees
+uni01B7 extreme 1                # 2026-10-16 known at the start (quality checks added): 515,671 22 units past
+uni01B7 kink 1                   # 2026-10-16 known at the start (quality checks added): 420,-38 7.3 degrees
+uni01B7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 597,203 2.2 degrees
+uni01B8 extreme 1                # 2026-10-16 known at the start (quality checks added): 916,679 23 units past
+uni01B8 kink 1                   # 2026-10-16 known at the start (quality checks added): 1046,-38 6.2 degrees
+uni01B8 smooth 1                 # 2026-10-16 known at the start (quality checks added): 869,203 2.2 degrees
+uni01B9 kink 2                   # 2026-10-16 known at the start (quality checks added): 693,-221 5.2 degrees; 668,-132 5.1 degrees
+uni01B9 smooth 1                 # 2026-10-16 known at the start (quality checks added): 944,-76 2.2 degrees
+uni01B9.sc kink 1                # 2026-10-16 known at the start (quality checks added): 718,-23 5.5 degrees
+uni01B9.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 590,151 2.8 degrees
+uni0237.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni023C kink 2                   # 2026-10-16 known at the start (quality checks added): 913,661 2.7 degrees; 628,612 5.3 degrees
+uni023E extreme 1                # 2026-10-16 known at the start (quality checks added): 1092,1378 14 units past
+uni023E kink 1                   # 2026-10-16 known at the start (quality checks added): 608,1374 1.9 degrees
+uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
+uni0242 kink 1                   # 2026-10-16 known at the start (quality checks added): 60,772 3.6 degrees
+uni0248 smooth 1                 # 2026-10-16 known at the start (quality checks added): 350,147 2.3 degrees
+uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+uni0249.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 278,66 7 units past
+uni0249.sc kink 1                # 2026-10-16 known at the start (quality checks added): 33,142 7.7 degrees
+uni0249.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 280,36 4.6 degrees; 601,277 2.3 degrees
+uni0249.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+uni024D.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
+uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
+uni0250 extreme 1                # 2026-10-16 known at the start (quality checks added): 130,834 5 units past
+uni0253.sc kink 1                # 2026-10-16 known at the start (quality checks added): -23,868 3.4 degrees
+uni0255 extreme 1                # 2026-10-16 known at the start (quality checks added): 630,-10 6 units past
+uni0255 kink 4                   # 2026-10-16 known at the start (quality checks added): 913,661 2.8 degrees; 628,612 5.3 degrees; 553,844 1.0 degrees; 856,170 4.7 degrees
+uni0257.sc kink 1                # 2026-10-16 known at the start (quality checks added): -23,868 3.4 degrees
+uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 689,552 3.8 degrees
+uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 224,362 2.1 degrees
+uni025B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +16 from 1040
+uni025D kink 1                   # 2026-10-16 known at the start (quality checks added): 742,623 6.8 degrees
+uni025E kink 1                   # 2026-10-16 known at the start (quality checks added): 422,-7 3.2 degrees
+uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from 0
+uni0260.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 894,28 2.1 degrees
+uni0262 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+uni0263.sc kink 3                # 2026-10-16 known at the start (quality checks added): 70,942 5.1 degrees; 820,893 4.4 degrees; 553,0 2.0 degrees
+uni0263.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 778,1074 2.1 degrees
+uni0264 kink 5                   # 2026-10-16 known at the start (quality checks added): 60,802 4.8 degrees; 683,919 3.2 degrees; 727,755 4.2 degrees; 489,-16 3.7 degrees; 340,92 2.7 degrees
+uni0264.sc kink 1                # 2026-10-16 known at the start (quality checks added): 565,-20 1.6 degrees
+uni0264.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 943,1002 3.7 degrees; 838,898 3.7 degrees
+uni0266.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 807,815 21 units past; 645,941 7 units past
+uni0266.sc kink 2                # 2026-10-16 known at the start (quality checks added): 215,588 3.7 degrees; 638,891 2.7 degrees
+uni0267 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
+uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 554,177 2.0 degrees
+uni026B.sc extreme 4             # 2026-10-16 known at the start (quality checks added): 196,503 7 units past; 224,602 5 units past; 469,535 6 units past; 442,437 5 units past
+uni026B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 843,148 2.7 degrees
+uni026B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 485,530 3.4 degrees
+uni026E kink 2                   # 2026-10-16 known at the start (quality checks added): 608,-132 5.1 degrees; 583,-221 5.2 degrees
+uni026F.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+uni0272 smooth 1                 # 2026-10-16 known at the start (quality checks added): 91,-413 3.1 degrees
+uni0272.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 299,947 9 units past
+uni0272.sc kink 2                # 2026-10-16 known at the start (quality checks added): 220,64 1.2 degrees; 387,51 2.0 degrees
+uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+uni0279 smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees
+uni027A smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees
+uni027B kink 1                   # 2026-10-16 known at the start (quality checks added): 474,-246 5.5 degrees
+uni027B smooth 2                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees; 735,-246 2.3 degrees
+uni027D.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
+uni027D.sc kink 2                # 2026-10-16 known at the start (quality checks added): 196,51 5.3 degrees; 594,-129 3.0 degrees
+uni0281 extreme 1                # 2026-10-16 known at the start (quality checks added): 1205,976 6 units past
+uni0282 kink 1                   # 2026-10-16 known at the start (quality checks added): 116,-46 7.2 degrees
+uni0288 smooth 1                 # 2026-10-16 known at the start (quality checks added): 561,-207 2.6 degrees
+uni0288.sc kink 1                # 2026-10-16 known at the start (quality checks added): 899,-129 5.4 degrees
+uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+uni028A.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 993,860 3.7 degrees; 235,860 4.0 degrees
+uni028B kink 1                   # 2026-10-16 known at the start (quality checks added): 1031,63 4.2 degrees
+uni028B zone 1                   # 2026-10-16 known at the start (quality checks added): top +6 from 884
+uni028C.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -3 from 0
+uni0291 kink 1                   # 2026-10-16 known at the start (quality checks added): 445,202 6.6 degrees
+uni0292 kink 2                   # 2026-10-16 known at the start (quality checks added): 346,-132 5.1 degrees; 321,-221 5.2 degrees
+uni0292 smooth 1                 # 2026-10-16 known at the start (quality checks added): 70,-76 2.2 degrees
+uni0292.sc kink 1                # 2026-10-16 known at the start (quality checks added): 339,-23 5.5 degrees
+uni0292.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 467,151 2.8 degrees
+uni0295 smooth 1                 # 2026-10-16 known at the start (quality checks added): 527,1396 2.9 degrees
+uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -28 from 0
+uni029D.sc kink 1                # 2026-10-16 known at the start (quality checks added): 114,-377 2.6 degrees
+uni029D.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 679,193 2.9 degrees
+uni02A2 smooth 1                 # 2026-10-16 known at the start (quality checks added): 527,1396 2.9 degrees
+uni02B2 kink 3                   # 2026-10-16 known at the start (quality checks added): -66,432 3.7 degrees; 365,1402 5.3 degrees; 235,1325 1.7 degrees
+uni02B2 smooth 1                 # 2026-10-16 known at the start (quality checks added): 106,1402 2.6 degrees
+uni02B2 width 1                  # 2026-10-16 known at the start (quality checks added): 1.30 of the Regular's, usually 1.09
+uni02B8 kink 1                   # 2026-10-16 known at the start (quality checks added): 116,469 4.1 degrees
+uni02BB smooth 1                 # 2026-10-16 known at the start (quality checks added): 192,1189 6.2 degrees
+uni02BC smooth 1                 # 2026-10-16 known at the start (quality checks added): 228,1311 6.2 degrees
+uni02BD width 1                  # 2026-10-16 known at the start (quality checks added): 1.25 of the Regular's, usually 1.09
+uni02C0 smooth 1                 # 2026-10-16 known at the start (quality checks added): 412,995 2.1 degrees
+uni02C0 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
+uni02C1 extreme 1                # 2026-10-16 known at the start (quality checks added): 497,1047 32 units past
+uni02C1 kink 1                   # 2026-10-16 known at the start (quality checks added): 524,1375 3.3 degrees
+uni02C1 smooth 2                 # 2026-10-16 known at the start (quality checks added): 318,1371 2.1 degrees; 316,1424 2.4 degrees
+uni02C1 width 1                  # 2026-10-16 known at the start (quality checks added): 1.22 of the Regular's, usually 1.09
+uni02C8 width 1                  # 2026-10-16 known at the start (quality checks added): 1.34 of the Regular's, usually 1.09
+uni02CC width 1                  # 2026-10-16 known at the start (quality checks added): 1.34 of the Regular's, usually 1.09
+uni02D0 width 1                  # 2026-10-16 known at the start (quality checks added): 1.26 of the Regular's, usually 1.09
+uni02D1 width 1                  # 2026-10-16 known at the start (quality checks added): 1.26 of the Regular's, usually 1.09
+uni02E0 kink 2                   # 2026-10-16 known at the start (quality checks added): 584,1158 3.3 degrees; 405,300 2.4 degrees
+uni02E0 smooth 1                 # 2026-10-16 known at the start (quality checks added): 614,1013 3.8 degrees
+uni02E1 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
+uni0315 smooth 1                 # 2026-10-16 known at the start (quality checks added): -95,1311 6.2 degrees
+uni0359 kink 4                   # 2026-10-16 known at the start (quality checks added): -510,-244 5.2 degrees; -370,-244 5.2 degrees; -370,-420 5.2 degrees; -510,-420 5.2 degrees
+uni0374 smooth 1                 # 2026-10-16 known at the start (quality checks added): 214,1449 2.6 degrees
+uni0374 width 1                  # 2026-10-16 known at the start (quality checks added): 1.25 of the Regular's, usually 1.09
+uni03CF extreme 6                # 2026-10-16 known at the start (quality checks added): 1386,204 155 units past; 1385,-471 60 units past; 894,-403 49 units past; 916,-188 25 units past; 1207,-369 22 units past; 1316,-403 34 units past
+uni03CF kink 3                   # 2026-10-16 known at the start (quality checks added): 979,745 4.8 degrees; 1386,204 2.9 degrees; 981,274 1.4 degrees
+uni03CF smooth 1                 # 2026-10-16 known at the start (quality checks added): 1207,-369 2.4 degrees
+uni03D7.sc extreme 5             # 2026-10-16 known at the start (quality checks added): 1061,155 115 units past; 1054,-341 46 units past; 661,-290 38 units past; 683,-128 21 units past; 973,-284 18 units past
+uni03D7.sc kink 3                # 2026-10-16 known at the start (quality checks added): 1061,155 2.9 degrees; 906,-200 3.0 degrees; 724,199 2.9 degrees
+uni03DB smooth 2                 # 2026-10-16 known at the start (quality checks added): 476,176 2.3 degrees; 586,-149 2.2 degrees
+uni03E1.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 953,465 2.7 degrees
+uni0408 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+uni0409 extreme 1                # 2026-10-16 known at the start (quality checks added): 331,106 7 units past
+uni0409 smooth 1                 # 2026-10-16 known at the start (quality checks added): 347,157 2.3 degrees
+uni0417 smooth 1                 # 2026-10-16 known at the start (quality checks added): 561,718 2.2 degrees
+uni041B extreme 1                # 2026-10-16 known at the start (quality checks added): 331,106 7 units past
+uni041B smooth 1                 # 2026-10-16 known at the start (quality checks added): 347,157 2.3 degrees
+uni0423 smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,-301 2.8 degrees
+uni0426 extreme 1                # 2026-10-16 known at the start (quality checks added): 564,-242 7 units past
+uni0429 extreme 1                # 2026-10-16 known at the start (quality checks added): 1130,-242 7 units past
+uni042F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+uni0436 extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
+uni0436 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1222,792 2.9 degrees
+uni0436.sc kink 7                # 2026-10-16 known at the start (quality checks added): 307,943 7.1 degrees; 62,931 6.0 degrees; 649,576 4.0 degrees; 1020,576 4.0 degrees; 1606,931 6.0 degrees; 1035,524 3.1 degrees; 634,524 3.1 degree
+uni043C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -26 from 0
+uni0443.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 557,-129 2.6 degrees
+uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+uni0444.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+uni0446 smooth 1                 # 2026-10-16 known at the start (quality checks added): 433,-243 5.8 degrees
+uni0446.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 441,-222 3.4 degrees
+uni0449 smooth 1                 # 2026-10-16 known at the start (quality checks added): 828,-242 3.9 degrees
+uni0449.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 865,-176 13 units past
+uni0449.sc kink 2                # 2026-10-16 known at the start (quality checks added): 1182,-248 4.2 degrees; 1321,-111 6.2 degrees
+uni044F.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0
+uni0458.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni046B extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
+uni046B.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 602,598 3.6 degrees; 1041,598 2.7 degrees
+uni0472 smooth 1                 # 2026-10-16 known at the start (quality checks added): 803,38 2.1 degrees
+uni0473 smooth 1                 # 2026-10-16 known at the start (quality checks added): 489,836 2.1 degrees
+uni0474 extreme 1                # 2026-10-16 known at the start (quality checks added): 1474,1351 5 units past
+uni0474 kink 1                   # 2026-10-16 known at the start (quality checks added): 1062,913 3.4 degrees
+uni0474 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1454,1302 2.3 degrees
+uni0475 extreme 1                # 2026-10-16 known at the start (quality checks added): 942,825 6 units past
+uni0475 kink 1                   # 2026-10-16 known at the start (quality checks added): 698,647 4.5 degrees
+uni0475.sc kink 1                # 2026-10-16 known at the start (quality checks added): 769,659 5.7 degrees
+uni0475.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 1068,941 2.1 degrees
+uni0496 extreme 1                # 2026-10-16 known at the start (quality checks added): 1103,-242 7 units past
+uni0497 extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
+uni0497 smooth 2                 # 2026-10-16 known at the start (quality checks added): 1222,792 2.9 degrees; 798,-243 5.8 degrees
+uni0497.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 917,-196 6 units past
+uni0497.sc kink 9                # 2026-10-16 known at the start (quality checks added): 307,943 7.1 degrees; 62,931 6.0 degrees; 649,576 4.0 degrees; 1020,576 4.0 degrees; 1606,931 6.0 degrees; 1754,-91 3.6 degrees; 1613,-83 6.5 degre
+uni049A extreme 1                # 2026-10-16 known at the start (quality checks added): 582,-242 7 units past
+uni049B smooth 1                 # 2026-10-16 known at the start (quality checks added): 428,-243 3.3 degrees
+uni04A2 extreme 1                # 2026-10-16 known at the start (quality checks added): 551,-242 6 units past
+uni04A3 smooth 1                 # 2026-10-16 known at the start (quality checks added): 425,-243 3.3 degrees
+uni04A3.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 434,-196 5 units past
+uni04A3.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 433,-222 5.2 degrees
+uni04B2 extreme 1                # 2026-10-16 known at the start (quality checks added): 680,-242 6 units past
+uni04B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 1606,49 5.7 degrees
+uni04B3 kink 1                   # 2026-10-16 known at the start (quality checks added): 1152,37 6.0 degrees
+uni04B6 extreme 1                # 2026-10-16 known at the start (quality checks added): 476,-242 6 units past
+uni04B7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 344,-243 3.3 degrees
+uni1D43 kink 1                   # 2026-10-16 known at the start (quality checks added): 185,959 1.0 degrees
+uni1D43 smooth 1                 # 2026-10-16 known at the start (quality checks added): 64,759 2.7 degrees
+uni1D43 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
+uni1D49 kink 1                   # 2026-10-16 known at the start (quality checks added): 517,908 1.2 degrees
+uni1D49 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
+uni1D4B kink 2                   # 2026-10-16 known at the start (quality checks added): 92,1001 2.4 degrees; 509,1087 5.0 degrees
+uni1D4B smooth 1                 # 2026-10-16 known at the start (quality checks added): 70,791 2.5 degrees
+uni1D4B width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
+uni1D4D kink 1                   # 2026-10-16 known at the start (quality checks added): 357,1117 2.3 degrees
+uni1D53 kink 1                   # 2026-10-16 known at the start (quality checks added): 281,1108 1.9 degrees
+uni1D53 smooth 1                 # 2026-10-16 known at the start (quality checks added): 290,802 2.0 degrees
+uni1D53 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
+uni1D6C extreme 2                # 2026-10-16 known at the start (quality checks added): 189,418 31 units past; 1145,467 30 units past
+uni1D6C kink 1                   # 2026-10-16 known at the start (quality checks added): 660,832 1.0 degrees
+uni1D6D extreme 2                # 2026-10-16 known at the start (quality checks added): 1017,466 30 units past; 61,417 30 units past
+uni1D6D kink 1                   # 2026-10-16 known at the start (quality checks added): 546,832 1.0 degrees
+uni1D6E kink 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
+uni1D6F kink 1                   # 2026-10-16 known at the start (quality checks added): 1612,617 5.9 degrees
+uni1D70 smooth 2                 # 2026-10-16 known at the start (quality checks added): 560,393 2.1 degrees; 694,491 2.7 degrees
+uni1D71 extreme 2                # 2026-10-16 known at the start (quality checks added): 179,418 30 units past; 1135,467 30 units past
+uni1D71 kink 1                   # 2026-10-16 known at the start (quality checks added): 650,832 1.0 degrees
+uni1D72 extreme 4                # 2026-10-16 known at the start (quality checks added): 195,425 9 units past; 228,533 6 units past; 456,459 8 units past; 424,351 6 units past
+uni1D72 kink 3                   # 2026-10-16 known at the start (quality checks added): 903,737 3.7 degrees; 659,785 3.7 degrees; 641,836 2.7 degrees
+uni1D73 extreme 4                # 2026-10-16 known at the start (quality checks added): 228,533 6 units past; 456,459 8 units past; 424,351 6 units past; 195,425 9 units past
+uni1D73 kink 3                   # 2026-10-16 known at the start (quality checks added): 903,737 3.7 degrees; 659,785 3.7 degrees; 641,836 2.7 degrees
+uni1D75 extreme 4                # 2026-10-16 known at the start (quality checks added): 458,460 8 units past; 426,351 6 units past; 200,424 8 units past; 231,533 6 units past
+uni1D75 smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,198 2.4 degrees
+uni1D76 kink 1                   # 2026-10-16 known at the start (quality checks added): 736,176 3.0 degrees
+uni1D7E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+uni1DA4 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
+uni1DA4 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
+uni1DB6 kink 1                   # 2026-10-16 known at the start (quality checks added): 300,785 4.0 degrees
+uni1DBB width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+uni1DBF kink 1                   # 2026-10-16 known at the start (quality checks added): 328,636 1.6 degrees
+uni1DBF width 1                  # 2026-10-16 known at the start (quality checks added): 1.22 of the Regular's, usually 1.09
+uni1E42 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
+uni1E46 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
+uni1E48 accent 1                 # 2026-10-16 known at the start (quality checks added): below macron gap 214, usually 242
+uni1E62 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
+uni1E6B accent 1                 # 2026-10-16 known at the start (quality checks added): above dotaccent gap 135, usually 178
+uni1E74 accent 1                 # 2026-10-16 known at the start (quality checks added): below tilde gap 137, usually 165
+uni1E7E accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
+uni1E88 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
+uni1E9E kink 1                   # 2026-10-16 known at the start (quality checks added): 932,233 5.1 degrees
+uni1E9E smooth 2                 # 2026-10-16 known at the start (quality checks added): 568,165 2.2 degrees; 845,145 2.1 degrees
+uni1E9E zone 2                   # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +15 from 1434
+uni1EA2 accent 1                 # 2026-10-16 known at the start (quality checks added): above Hook gap 104, usually 132
+uni1ECC accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
+uni1ECE accent 1                 # 2026-10-16 known at the start (quality checks added): above Hook gap 104, usually 132
+uni1EE4 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
+uni1EF5 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap -462, usually 152
+uni1F1A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -463, usually -491
+uni1F1B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -447, usually -475
+uni1F1C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -447, usually -475
+uni1F1D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -461, usually -489
+uni1F2A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -463, usually -491
+uni1F2B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -447, usually -475
+uni1F2C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -447, usually -475
+uni1F2D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -461, usually -489
+uni1F2E accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -476, usually -504
+uni1F2F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
+uni1F3A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -463, usually -491
+uni1F3B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -447, usually -475
+uni1F3C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -447, usually -475
+uni1F3D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -461, usually -489
+uni1F3E accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -476, usually -504
+uni1F3F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
+uni1FC0 smooth 2                 # 2026-10-16 known at the start (quality checks added): 680,1218 2.3 degrees; 202,1228 2.3 degrees
+uni1FC1 smooth 2                 # 2026-10-16 known at the start (quality checks added): 635,1348 2.2 degrees; 245,1338 2.2 degrees
+uni1FC8 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -447, usually -475
+uni1FCA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -447, usually -475
+uni1FCD smooth 1                 # 2026-10-16 known at the start (quality checks added): 50,1274 2.9 degrees
+uni1FCF smooth 2                 # 2026-10-16 known at the start (quality checks added): 473,1502 2.2 degrees; 83,1492 2.2 degrees
+uni1FDA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -447, usually -475
+uni1FDF smooth 2                 # 2026-10-16 known at the start (quality checks added): 473,1502 2.2 degrees; 83,1492 2.2 degrees
+uni2032 width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
+uni2042 kink 8                   # 2026-10-16 known at the start (quality checks added): 285,859 2.0 degrees; 433,859 2.0 degrees; 433,576 2.0 degrees; 285,576 2.0 degrees; 805,859 2.0 degrees; 953,859 2.0 degrees; 953,576 2.0 degrees;
+uni2042 smooth 2                 # 2026-10-16 known at the start (quality checks added): 697,1277 2.3 degrees; 697,1075 2.3 degrees
+uni2071 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
+uni2071 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
+uni20A1 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1333,1419 2.7 degrees
+uni20A6 kink 1                   # 2026-10-16 known at the start (quality checks added): 416,1316 4.5 degrees
+uni20B8 kink 2                   # 2026-10-16 known at the start (quality checks added): 147,1180 3.6 degrees; 1632,1180 3.6 degrees
+uni20BE kink 2                   # 2026-10-16 known at the start (quality checks added): 1237,754 6.3 degrees; 1444,754 6.3 degrees
+uni2113 extreme 5                # 2026-10-16 known at the start (quality checks added): 557,555 25 units past; 473,152 5 units past; 733,1500 17 units past; 767,1027 15 units past; 637,1025 15 units past
+uni2113 smooth 1                 # 2026-10-16 known at the start (quality checks added): 664,156 2.7 degrees
+uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): top +4 from 1496
+uni22EE width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+uni2C62 extreme 2                # 2026-10-16 known at the start (quality checks added): 313,806 7 units past; 567,623 7 units past
+uni2C64 kink 1                   # 2026-10-16 known at the start (quality checks added): 284,59 5.7 degrees
+uni2C64 smooth 1                 # 2026-10-16 known at the start (quality checks added): 757,-148 2.0 degrees
+uni2C65 extreme 1                # 2026-10-16 known at the start (quality checks added): 466,431 9 units past
+uni2C65 kink 3                   # 2026-10-16 known at the start (quality checks added): 366,642 3.3 degrees; 89,664 5.4 degrees; 423,400 2.5 degrees
+uni2C65 smooth 2                 # 2026-10-16 known at the start (quality checks added): 77,195 2.0 degrees; 851,162 2.7 degrees
+uni2C66 extreme 1                # 2026-10-16 known at the start (quality checks added): 470,-16 6 units past
+uni2C66 smooth 1                 # 2026-10-16 known at the start (quality checks added): 458,192 2.6 degrees
+uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +7 from 1040
+uni2C72 extreme 1                # 2026-10-16 known at the start (quality checks added): 2188,1199 7 units past
+uni2C73 extreme 1                # 2026-10-16 known at the start (quality checks added): 1500,754 18 units past
+uni2C73.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 1425,808 2.8 degrees
+uni2E0E extreme 4                # 2026-10-16 known at the start (quality checks added): 1175,0 24 units past; 796,-64 24 units past; 417,1396 24 units past; 796,1460 24 units past
+uniA7B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 737,262 3.7 degrees
+uniA7B6 kink 5                   # 2026-10-16 known at the start (quality checks added): 509,1457 5.3 degrees; 927,1071 6.3 degrees; 1286,1465 4.7 degrees; 1292,-28 1.1 degrees; 580,-25 1.1 degrees
+uniA7B6 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1143,120 2.1 degrees
+uniA7B7.sc kink 2                # 2026-10-16 known at the start (quality checks added): 413,1059 3.6 degrees; 1072,1065 3.2 degrees
+uniA7B7.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 766,781 2.4 degrees
+uniA7CB kink 1                   # 2026-10-16 known at the start (quality checks added): 796,-28 2.0 degrees
+uniA7CB smooth 2                 # 2026-10-16 known at the start (quality checks added): 1280,1388 2.5 degrees; 1155,1250 2.9 degrees
+uogonek.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+upsilon.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 965,825 10 units past
+v.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+w.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+xi extreme 1                     # 2026-10-16 known at the start (quality checks added): 251,1623 5 units past
+y smooth 1                       # 2026-10-16 known at the start (quality checks added): 223,-470 2.4 degrees
+yen kink 1                       # 2026-10-16 known at the start (quality checks added): 514,691 1.9 degrees
+zeta extreme 1                   # 2026-10-16 known at the start (quality checks added): 259,1567 7 units past

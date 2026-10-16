@@ -102,7 +102,10 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   (`tests/data/shaping-corpus.txt`), a digest over ~1.2M shaped strings,
   fontbakery with an allowlist, and outlines gone wrong
   (`scripts/glyph_lint.py`: specks, twists, pinholes, slivers, notches,
-  steps, ledges) against each style's known findings (`glyph-lint*.txt`; regenerate
+  steps, ledges) and design quality (`scripts/quality/checks.py`: smooth
+  nodes, kinks, extremes, whole units, alignment zones, stem weights, the
+  italic's slant, accent gaps, the Bold's widths; `quality*.txt`, regenerate
+  with `update_test_data.py --quality`) against each style's known findings (`glyph-lint*.txt`; regenerate
   with `update_test_data.py --lint`). derive.py, make_italic.py and
   make_bold.py clean specks, twists, pinholes, steps and ledges from what they
   make; `glyph_lint.py UFO --fix` does it for drawn glyphs.

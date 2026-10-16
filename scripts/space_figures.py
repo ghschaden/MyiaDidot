@@ -78,6 +78,8 @@ def space(font):
         g = font[name]
         left, right = optical(font, name, xh)
         dl, dr = round(target - left), round(target - right)
+        # a unit either way is the measure's rounding: left, so a rerun keeps it
+        dl, dr = (0 if abs(dl) <= 1 else dl), (0 if abs(dr) <= 1 else dr)
         for c in g.contours:
             for p in c.points:
                 p.x += dl

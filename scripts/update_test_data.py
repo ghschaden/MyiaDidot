@@ -3,6 +3,7 @@
     python scripts/update_test_data.py --golden --digest --cmap
     python scripts/update_test_data.py --exceptions   # only adds, with a reason
     python scripts/update_test_data.py --lint --ufo UFO --reason "..."
+    python scripts/update_test_data.py --quality --ufo UFO --reason "..."
 
 Every run accepts the font's current behaviour as correct, so run it only
 for an intended change, and review `git diff tests/data` before committing.
@@ -11,7 +12,8 @@ the current NFD/composite/fontbakery failures that are not listed yet, under
 the reason given with --reason, and leaves existing entries alone. --lint
 rewrites the style's list of known glyph_lint.py findings (glyph-lint.txt,
 glyph-lint-Italic.txt ...): those still found keep their reasons, new ones
-get --reason, fixed ones go.
+get --reason, fixed ones go. --quality does the same for the list of known
+scripts/quality/checks.py findings (quality.txt, quality-Italic.txt ...).
 """
 
 import argparse
@@ -30,9 +32,15 @@ sys.path[:0] = [str(TESTS), str(ROOT / "scripts")]
 
 from conftest import Shaper, style_data
 from shaping import full_digest, shape_golden
-from test_composites import composite_mismatches, nfd_mismatches, read_list, smallcap_mismatches
+from test_composites import (
+    composite_mismatches,
+    nfd_mismatches,
+    read_list,
+    smallcap_mismatches,
+)
 from test_fontbakery import fontbakery_failures
 from test_glyph_lint import lint_keys
+from test_quality import quality_keys
 
 
 def build(ufo_path, tmp):
@@ -74,21 +82,28 @@ def main():
     ap.add_argument("--cmap", action="store_true")
     ap.add_argument("--exceptions", action="store_true")
     ap.add_argument("--lint", action="store_true")
+    ap.add_argument("--quality", action="store_true")
     ap.add_argument("--reason", default="baseline")
     args = ap.parse_args()
+    lists = []
     if args.lint:
-        path = style_data("glyph-lint.txt", args.ufo)
+        lists.append(("glyph-lint.txt", "glyph_lint.py", lambda: lint_keys(ufoLib2.Font.open(args.ufo))))
+    if args.quality:
+        lists.append(("quality.txt", "scripts/quality/checks.py",
+                      lambda: quality_keys(ufoLib2.Font.open(args.ufo), args.ufo)))
+    for name, tool, keys in lists:
+        path = style_data(name, args.ufo)
         listed = read_list(path.name)
-        found = lint_keys(ufoLib2.Font.open(args.ufo))
-        lines = ["# Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.\n"]
+        found = keys()
+        lines = [f"# Known {tool} findings (glyph kind count); fixing one = deleting its line.\n"]
         for k in sorted(found):
             why = listed.get(k) or f"{args.reason}: {found[k]}"[:200]
             lines.append(f"{k:32} # {why}\n")
         path.write_text("".join(lines), encoding="utf-8")
         print(f"{path.name}: {len(found)} findings, {len(set(found) - set(listed))} new, "
               f"{len(set(listed) - set(found))} gone")
-        if not any((args.golden, args.digest, args.cmap, args.exceptions)):
-            return
+    if lists and not any((args.golden, args.digest, args.cmap, args.exceptions)):
+        return
     if not any((args.golden, args.digest, args.cmap, args.exceptions)):
         ap.error("say what to update")
 

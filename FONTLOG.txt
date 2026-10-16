@@ -118,6 +118,14 @@ ChangeLog
         a before v w less, ß looser on the left; in the Bold, t tighter on
         the right, г є looser on the right, т on the left. Frequent pairs
         outside the references' range: 4, 4, 5 became 2, 0, 2.
+    * The quality criteria are tests now (tests/test_quality.py,
+      scripts/quality/checks.py): construction (smooth nodes, kinks,
+      extremes, whole units), alignment zones, stem weights, the italic's
+      slant, accent gaps and the Bold's widths, each style held to its list
+      of known findings, which only shrinks. The drafts are reviewed (their
+      draft keys cleared); make_italic.py keeps them as they are on a rerun
+      (not weighted or cut again, their anchors kept), so it is repeatable:
+      a second run changes nothing.
     * Bold figures: emboldened and not respaced, they stood looser than the
       Bold's letters (1.08 of their side space; bold text faces have
       0.8-1.0): 28 units a side tighter, all alike (they stay tabular), and

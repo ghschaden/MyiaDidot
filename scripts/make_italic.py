@@ -912,13 +912,15 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0)}
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}
 
 
-def horn_stage(font):
+def horn_stage(font, kept=()):
     """The Horn anchors (draft_vietnamese_marks.py) on the Italic's O U o u
     and their small caps, found on the upright outlines."""
     from draft_vietnamese_marks import horn_anchor
 
     up = upright(font)
     for base in ("O", "U", "o", "u", "o.sc", "u.sc"):
+        if base in kept:  # its anchor was set when it was made
+            continue
         x, y = horn_anchor(up, base)
         dx, dy = HORN_NUDGE.get(base, (0, 0))
         x, y = x + dx, y + dy
@@ -1139,7 +1141,7 @@ def main():
     derived, failed = derive_stage(font, regular)
     figures = figures_stage(font, regular)
     small_caps = smallcaps_stage(font)
-    horn_stage(font)
+    horn_stage(font, kept)
     ligatures = drop_ligatures(font)
     font.kerning.update(ITALIC_KERNING)
     still = sorted(g.name for g in font if g.lib.get(SOURCE_KEY) == "sloped roman")
@@ -1147,7 +1149,7 @@ def main():
     # aliases (one letter, unmoved: Cyrillic Е is E) show the Italic letter:
     # its width and its anchors, before anything is built from them
     for g in font:
-        if (len(g.components) == 1 and not g.contours and g.name not in marks
+        if (len(g.components) == 1 and not g.contours and g.name not in marks and g.name not in kept
                 and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
             src = font[g.components[0].baseGlyph]
             g.width = src.width
@@ -1211,7 +1213,8 @@ def main():
     # the added weight (WEIGHT), on the outlines of the letters, the accents
     # and upright signs left as they are
     for g in font:
-        if g.contours and g.name not in marks and g.lib.get(SOURCE_KEY) in WEIGHTED:
+        # (not those kept from the last run: they have it)
+        if g.contours and g.name not in marks and g.name not in kept and g.lib.get(SOURCE_KEY) in WEIGHTED:
             rec = RecordingPen()
             for c in g.contours:
                 c.draw(rec)
@@ -1221,7 +1224,19 @@ def main():
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)
     letter_cut = classifier(font, ITALIC_CUT, ITALIC_CUT)
-    respace(font, lambda n: 0 if n in kept else letter_cut(n))
+    # what is made only of kept glyphs (their aliases, accented forms) has
+    # the cut through them: not cut again; the kept ones not touched at all
+    settled = set(kept)
+    grew = True
+    while grew:
+        grew = False
+        for g in font:
+            if (g.name not in settled and g.components and not g.contours
+                    and all(c.baseGlyph in settled or c.baseGlyph in marks for c in g.components)
+                    and any(c.baseGlyph in settled for c in g.components)):
+                settled.add(g.name)
+                grew = True
+    respace(font, lambda n: 0 if n in settled else letter_cut(n), [g.name for g in font if g.name not in kept])
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
     sidebearings(font, ITALIC_SIDEBEARINGS)
     font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT}
