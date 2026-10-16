@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="lozenge" format="2">
 	<unicode hex="25CA"/>
-	<advance width="1093"/>
+	<advance width="1130"/>
 	<outline>
 		<contour>
-			<point x="257.32" y="690.1403508772" type="line"/>
-			<point x="609.84" y="84.1754385965" type="line"/>
-			<point x="962.36" y="690.1403508772" type="line"/>
-			<point x="609.84" y="1340.171875" type="line"/>
+			<point x="96" y="734" type="line"/>
+			<point x="540" y="1496" type="line"/>
+			<point x="590" y="1496" type="line"/>
+			<point x="1034" y="734" type="line"/>
+			<point x="590" y="-28" type="line"/>
+			<point x="540" y="-28" type="line"/>
 		</contour>
 		<contour>
-			<point x="166.4" y="690.1403508772" type="line"/>
-			<point x="592.9179451149" y="1470.0766189157" type="line"/>
-			<point x="626.7620548851" y="1470.0766189157" type="line"/>
-			<point x="1053.28" y="690.1403508772" type="line"/>
-			<point x="626.9090598797" y="-32.1538912618" type="line"/>
-			<point x="592.7709401203" y="-32.1538912618" type="line"/>
+			<point x="206" y="734" type="line"/>
+			<point x="565" y="118" type="line"/>
+			<point x="924" y="734" type="line"/>
+			<point x="565" y="1350" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

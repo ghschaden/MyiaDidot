@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni207C" format="2">
 	<unicode hex="207C"/>
-	<advance width="1129"/>
+	<advance width="662"/>
 	<outline>
 		<contour>
-			<point x="182.65053957" y="702.8853284172" type="line"/>
-			<point x="182.65053957" y="754.9392329863" type="line"/>
-			<point x="1191.46946043" y="754.9392329863" type="line"/>
-			<point x="1191.46946043" y="702.8853284172" type="line"/>
+			<point x="46" y="822" type="line"/>
+			<point x="46" y="885" type="line"/>
+			<point x="616" y="885" type="line"/>
+			<point x="616" y="822" type="line"/>
 		</contour>
 		<contour>
-			<point x="182.7034043535" y="957.7384519654" type="line"/>
-			<point x="182.7034043535" y="1016.5115480346" type="line"/>
-			<point x="1191.4165956465" y="1016.5115480346" type="line"/>
-			<point x="1191.4165956465" y="957.7384519654" type="line"/>
+			<point x="46" y="995" type="line"/>
+			<point x="46" y="1057" type="line"/>
+			<point x="616" y="1057" type="line"/>
+			<point x="616" y="995" type="line"/>
 		</contour>
 	</outline>
 	<lib>
@@ -21,7 +21,7 @@
 			<key>org.myiadidot.draft</key>
 			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

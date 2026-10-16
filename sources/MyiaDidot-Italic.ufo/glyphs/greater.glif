@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="greater" format="2">
 	<unicode hex="003E"/>
-	<advance width="1861"/>
+	<advance width="1152"/>
 	<outline>
 		<contour>
-			<point x="162.478112159" y="-236.9331502999" type="line"/>
-			<point x="1580.12" y="511.7894736842" type="line"/>
-			<point x="162.6514378755" y="1300.7355118857" type="line"/>
-			<point x="194.4622085269" y="1369.359226636" type="line"/>
-			<point x="1690.7942559938" y="534.631083107" type="line"/>
-			<point x="1690.9601899344" y="489.0078016963" type="line"/>
-			<point x="194.6159217926" y="-297.8904270416" type="line"/>
+			<point x="84" y="64" type="line"/>
+			<point x="953" y="514" type="line"/>
+			<point x="84" y="964" type="line"/>
+			<point x="128" y="1052" type="line"/>
+			<point x="1068" y="562" type="line"/>
+			<point x="1068" y="466" type="line"/>
+			<point x="128" y="-24" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

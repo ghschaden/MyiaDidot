@@ -1,69 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0188" format="2">
 	<unicode hex="0188"/>
-	<advance width="971"/>
+	<advance width="931"/>
 	<outline>
 		<contour>
-			<point x="96" y="432" type="curve" smooth="yes"/>
-			<point x="96" y="684"/>
-			<point x="284" y="900"/>
-			<point x="534" y="900" type="curve" smooth="yes"/>
-			<point x="552" y="900"/>
-			<point x="569" y="899"/>
-			<point x="585" y="897" type="curve"/>
-			<point x="611" y="946"/>
-			<point x="663" y="979"/>
-			<point x="722" y="979" type="curve" smooth="yes"/>
-			<point x="791" y="979"/>
-			<point x="850" y="933"/>
-			<point x="870" y="871" type="curve" smooth="yes"/>
-			<point x="873" y="863"/>
-			<point x="875" y="854"/>
-			<point x="875" y="845" type="curve" smooth="yes"/>
-			<point x="875" y="806"/>
-			<point x="844" y="775"/>
-			<point x="805" y="775" type="curve" smooth="yes"/>
-			<point x="767" y="775"/>
-			<point x="735" y="806"/>
-			<point x="735" y="845" type="curve" smooth="yes"/>
-			<point x="735" y="874"/>
-			<point x="753" y="900"/>
-			<point x="779" y="910" type="curve"/>
-			<point x="763" y="921"/>
-			<point x="743" y="927"/>
-			<point x="722" y="927" type="curve" smooth="yes"/>
-			<point x="675" y="927"/>
-			<point x="636" y="896"/>
-			<point x="623" y="853" type="curve"/>
-			<point x="620" y="854" type="line"/>
-			<point x="620" y="830" type="line"/>
-			<point x="598" y="843"/>
-			<point x="568" y="852"/>
-			<point x="527" y="852" type="curve" smooth="yes"/>
-			<point x="365" y="852"/>
-			<point x="280" y="688"/>
-			<point x="280" y="460" type="curve" smooth="yes"/>
-			<point x="280" y="214"/>
-			<point x="368" y="42"/>
-			<point x="556" y="42" type="curve" smooth="yes"/>
-			<point x="741" y="42"/>
-			<point x="794" y="212"/>
-			<point x="796" y="330" type="curve"/>
-			<point x="848" y="330" type="line"/>
-			<point x="846" y="186"/>
-			<point x="790" y="-16"/>
-			<point x="526" y="-16" type="curve" smooth="yes"/>
-			<point x="268" y="-16"/>
-			<point x="96" y="166"/>
+			<point x="76" y="432" type="curve" smooth="yes"/>
+			<point x="76" y="684"/>
+			<point x="264" y="900"/>
+			<point x="514" y="900" type="curve" smooth="yes"/>
+			<point x="532" y="900"/>
+			<point x="549" y="899"/>
+			<point x="565" y="897" type="curve"/>
+			<point x="591" y="946"/>
+			<point x="643" y="979"/>
+			<point x="702" y="979" type="curve" smooth="yes"/>
+			<point x="771" y="979"/>
+			<point x="830" y="933"/>
+			<point x="850" y="871" type="curve" smooth="yes"/>
+			<point x="853" y="863"/>
+			<point x="855" y="854"/>
+			<point x="855" y="845" type="curve" smooth="yes"/>
+			<point x="855" y="806"/>
+			<point x="824" y="775"/>
+			<point x="785" y="775" type="curve" smooth="yes"/>
+			<point x="747" y="775"/>
+			<point x="715" y="806"/>
+			<point x="715" y="845" type="curve" smooth="yes"/>
+			<point x="715" y="874"/>
+			<point x="733" y="900"/>
+			<point x="759" y="910" type="curve"/>
+			<point x="743" y="921"/>
+			<point x="723" y="927"/>
+			<point x="702" y="927" type="curve" smooth="yes"/>
+			<point x="655" y="927"/>
+			<point x="616" y="896"/>
+			<point x="603" y="853" type="curve" smooth="yes"/>
+			<point x="600" y="842" type="line"/>
+			<point x="578" y="843"/>
+			<point x="548" y="852"/>
+			<point x="507" y="852" type="curve" smooth="yes"/>
+			<point x="345" y="852"/>
+			<point x="260" y="688"/>
+			<point x="260" y="460" type="curve" smooth="yes"/>
+			<point x="260" y="214"/>
+			<point x="348" y="42"/>
+			<point x="536" y="42" type="curve" smooth="yes"/>
+			<point x="721" y="42"/>
+			<point x="774" y="212"/>
+			<point x="776" y="330" type="curve"/>
+			<point x="828" y="330" type="line"/>
+			<point x="826" y="186"/>
+			<point x="770" y="-16"/>
+			<point x="506" y="-16" type="curve" smooth="yes"/>
+			<point x="248" y="-16"/>
+			<point x="76" y="166"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="526" y="-20"/>
-	<anchor name="Bottom" x="526" y="0"/>
-	<anchor name="Acute" x="522" y="980"/>
-	<anchor name="Grave" x="522" y="980"/>
-	<anchor name="Dotaccent" x="522" y="1020"/>
-	<anchor name="Top" x="522" y="1000"/>
-	<anchor name="Cedilla" x="526" y="0"/>
+	<anchor name="DotBelow" x="506" y="-20"/>
+	<anchor name="Bottom" x="506" y="0"/>
+	<anchor name="Acute" x="502" y="980"/>
+	<anchor name="Grave" x="502" y="980"/>
+	<anchor name="Dotaccent" x="502" y="1020"/>
+	<anchor name="Top" x="502" y="1000"/>
+	<anchor name="Cedilla" x="506" y="0"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.draft</key>

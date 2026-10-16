@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni2193" format="2">
 	<unicode hex="2193"/>
-	<advance width="744"/>
+	<advance width="1000"/>
 	<outline>
 		<contour>
-			<point x="149.6847254316" y="79.817888247" type="curve"/>
-			<point x="163.9272627925" y="100.4972157194" type="line"/>
-			<point x="388.051535668" y="-78.364412245" type="line"/>
-			<point x="388.1481855647" y="1377.868989773" type="line"/>
-			<point x="451.3718144353" y="1377.868989773" type="line"/>
-			<point x="451.468464332" y="-78.364412245" type="line"/>
-			<point x="675.5927372075" y="100.4972157194" type="line"/>
-			<point x="689.8352745684" y="79.817888247" type="line"/>
-			<point x="603.8428307837" y="-12.1995777426"/>
-			<point x="488.1789202914" y="-148.5979910582"/>
-			<point x="424.6651514683" y="-303.8494346813" type="curve"/>
-			<point x="414.8548485317" y="-303.8494346813" type="line"/>
-			<point x="351.3410797086" y="-148.5979910582"/>
-			<point x="235.6771692163" y="-12.1995777426"/>
+			<point x="464" y="1320" type="line"/>
+			<point x="536" y="1320" type="line"/>
+			<point x="536" y="261" type="line"/>
+			<point x="730" y="320" type="line"/>
+			<point x="500" y="-40" type="line"/>
+			<point x="270" y="320" type="line"/>
+			<point x="464" y="261" type="line"/>
 		</contour>
 	</outline>
 	<lib>
@@ -25,7 +18,7 @@
 			<key>org.myiadidot.draft</key>
 			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

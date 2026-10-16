@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uniAB53" format="2">
 	<unicode hex="AB53"/>
-	<advance width="1106"/>
+	<advance width="1066"/>
 	<outline>
-		<component base="chi"/>
+		<component base="chi" xOffset="-10"/>
 	</outline>
-	<anchor name="DotBelow" x="542" y="-296"/>
+	<anchor name="DotBelow" x="522" y="-296"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.draft</key>

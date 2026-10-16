@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="imacron" format="2">
 	<unicode hex="012B"/>
-	<advance width="714"/>
+	<advance width="634"/>
 	<outline>
 		<component base="dotlessi"/>
-		<component base="macron.i" xOffset="-98"/>
+		<component base="macron.i" xOffset="-137"/>
 	</outline>
-	<anchor name="DotBelow" x="367" y="-20"/>
-	<anchor name="Bottom" x="367" y="0"/>
+	<anchor name="DotBelow" x="328" y="-20"/>
+	<anchor name="Bottom" x="328" y="0"/>
 </glyph>

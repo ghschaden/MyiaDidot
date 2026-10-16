@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="notequal" format="2">
 	<unicode hex="2260"/>
-	<advance width="1861"/>
+	<advance width="1152"/>
 	<outline>
 		<contour>
-			<point x="111.7746642047" y="291.8809157618" type="line"/>
-			<point x="111.7311751458" y="359.4845216479" type="line"/>
-			<point x="838.1243160628" y="359.7199646154" type="line"/>
-			<point x="973.1792269169" y="659.8859689084" type="line"/>
-			<point x="111.5989876145" y="660.2253800001" type="line"/>
-			<point x="111.5705731055" y="727.8081370795" type="line"/>
-			<point x="1009.6786336824" y="728.4026641119" type="line"/>
-			<point x="1289.995258101" y="1371.3732692184" type="line"/>
-			<point x="1362.4900649579" y="1375.2651402265" type="line"/>
-			<point x="1086.2293005651" y="730.0869224361" type="line"/>
-			<point x="1781.1053357953" y="727.8208386242" type="line"/>
-			<point x="1781.1488248542" y="660.2172327381" type="line"/>
-			<point x="1054.7556839372" y="659.9817897706" type="line"/>
-			<point x="919.7007730831" y="359.8157854775" type="line"/>
-			<point x="1781.2810123855" y="359.4763743858" type="line"/>
-			<point x="1781.3094268945" y="291.8936173065" type="line"/>
-			<point x="883.4275958567" y="291.373508475" type="line"/>
-			<point x="603.0229782713" y="-303.6815761876" type="line"/>
-			<point x="530.3384508145" y="-307.8239635786" type="line"/>
-			<point x="806.4915396857" y="289.7637377142" type="line"/>
+			<point x="62" y="310" type="line"/>
+			<point x="62" y="406" type="line"/>
+			<point x="449" y="406" type="line"/>
+			<point x="591" y="622" type="line"/>
+			<point x="62" y="622" type="line"/>
+			<point x="62" y="718" type="line"/>
+			<point x="655" y="718" type="line"/>
+			<point x="860" y="1028" type="line"/>
+			<point x="972" y="1028" type="line"/>
+			<point x="767" y="718" type="line"/>
+			<point x="1090" y="718" type="line"/>
+			<point x="1090" y="622" type="line"/>
+			<point x="703" y="622" type="line"/>
+			<point x="561" y="406" type="line"/>
+			<point x="1090" y="406" type="line"/>
+			<point x="1090" y="310" type="line"/>
+			<point x="497" y="310" type="line"/>
+			<point x="292" y="0" type="line"/>
+			<point x="180" y="0" type="line"/>
+			<point x="385" y="310" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

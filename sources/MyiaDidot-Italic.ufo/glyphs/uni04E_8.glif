@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni04E8" format="2">
 	<unicode hex="04E8"/>
-	<advance width="1406"/>
+	<advance width="1400"/>
 	<outline>
 		<contour>
-			<point x="190.5960654824" y="481" type="curve" smooth="yes"/>
-			<point x="189.6806543948" y="1015"/>
-			<point x="577.7580303823" y="1468"/>
-			<point x="938.7580303823" y="1468" type="curve" smooth="yes"/>
-			<point x="1195.7580303823" y="1468"/>
-			<point x="1350.302511873" y="1205"/>
-			<point x="1350.620763961" y="897" type="curve" smooth="yes"/>
-			<point x="1350.5248089025" y="374"/>
-			<point x="962.7604382647" y="-30"/>
-			<point x="601.7604382647" y="-30" type="curve"/>
-			<point x="344.4887442779" y="-31"/>
-			<point x="190.0651371722" y="203"/>
+			<point x="165.5960679486" y="481" type="curve"/>
+			<point x="166.1999715473" y="1015"/>
+			<point x="564.1810385504" y="1468"/>
+			<point x="935.7580303823" y="1468" type="curve" smooth="yes"/>
+			<point x="1194.5539705839" y="1468"/>
+			<point x="1347.302511873" y="1205"/>
+			<point x="1369.6207631738" y="897" type="curve"/>
+			<point x="1367.8199622621" y="374"/>
+			<point x="967.1675190901" y="-30"/>
+			<point x="598.7604382647" y="-30" type="curve"/>
+			<point x="341.2950763928" y="-31"/>
+			<point x="187.0651371722" y="203"/>
 		</contour>
 		<contour>
-			<point x="363.9814209291" y="372" type="curve" smooth="yes"/>
-			<point x="364.4918039818" y="142"/>
-			<point x="460.1602195612" y="23"/>
-			<point x="617.8885255745" y="22" type="curve" smooth="yes"/>
-			<point x="876.1602195612" y="23"/>
-			<point x="1021.0609839511" y="295"/>
-			<point x="1089.0526775089" y="479" type="curve" smooth="yes"/>
-			<point x="1114.0712565798" y="549"/>
-			<point x="1132.0898356507" y="619"/>
-			<point x="1145.0216387748" y="685" type="curve"/>
-			<point x="393.0216387748" y="685" type="line"/>
-			<point x="366.6260106993" y="540"/>
-			<point x="364.4793443185" y="418"/>
+			<point x="382.9814209067" y="372" type="curve"/>
+			<point x="361.4918039818" y="142"/>
+			<point x="457.1602195612" y="23"/>
+			<point x="614.8885255745" y="22" type="curve" smooth="yes"/>
+			<point x="873.1602195612" y="23"/>
+			<point x="1003.5194413665" y="295"/>
+			<point x="1065.3941654539" y="479" type="curve" smooth="yes"/>
+			<point x="1090.0424402196" y="549"/>
+			<point x="1107.6383212301" y="619"/>
+			<point x="1142.0216387748" y="685" type="curve"/>
+			<point x="394.0505061757" y="685" type="line"/>
+			<point x="385.5013742488" y="540"/>
+			<point x="383.4766190453" y="418"/>
 		</contour>
 		<contour>
-			<point x="1155.4100539253" y="749" type="line"/>
-			<point x="1174.3718022662" y="874"/>
-			<point x="1176.3562828991" y="977"/>
-			<point x="1176.5825123019" y="1022" type="curve" smooth="yes"/>
-			<point x="1175.5927849306" y="1276"/>
-			<point x="1080.4563911787" y="1408"/>
-			<point x="922.7280851654" y="1409" type="curve"/>
-			<point x="664.4563911787" y="1408"/>
-			<point x="519.6765011737" y="1107"/>
-			<point x="452.2509278813" y="903" type="curve" smooth="yes"/>
-			<point x="433.1228405715" y="851"/>
-			<point x="417.9947532617" y="799"/>
-			<point x="406.4100539253" y="749" type="curve"/>
+			<point x="1148.8756597417" y="749" type="line"/>
+			<point x="1149.4640585977" y="874"/>
+			<point x="1151.3587368177" y="977"/>
+			<point x="1151.5825840258" y="1022" type="curve"/>
+			<point x="1172.5927849306" y="1276"/>
+			<point x="1077.4563911787" y="1408"/>
+			<point x="919.7280851654" y="1409" type="curve"/>
+			<point x="661.4563911787" y="1408"/>
+			<point x="534.6886967297" y="1107"/>
+			<point x="470.0919647511" y="903" type="curve" smooth="yes"/>
+			<point x="451.018483906" y="851"/>
+			<point x="436.2770188342" y="799"/>
+			<point x="403.4100539253" y="749" type="curve"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="608" y="-20"/>
-	<anchor name="Bottom" x="614" y="0"/>
-	<anchor name="TopCap" x="989" y="1580"/>
-	<anchor name="Horn" x="1325" y="1269"/>
+	<anchor name="DotBelow" x="605" y="-20"/>
+	<anchor name="Bottom" x="611" y="0"/>
+	<anchor name="TopCap" x="986" y="1580"/>
+	<anchor name="Horn" x="1322" y="1269"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.draft</key>

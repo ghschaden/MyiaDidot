@@ -1,0 +1,218 @@
+% Full pages of running text, mostly Regular with some italic, bold and small
+% caps, set as a book would be: no headings, no paragraph breaks.
+%   lualatex --output-directory=build/proofs proofs/textpages.tex   (or make proof)
+\documentclass[10.5pt]{article}
+\usepackage[paperwidth=148mm,paperheight=210mm,textwidth=104mm,textheight=166mm,
+  top=19mm,inner=20mm]{geometry}
+\usepackage[french,ngerman,english]{babel}
+\usepackage{fontspec}
+\usepackage{microtype}
+\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz, Numbers=OldStyle,
+  BoldFont=MyiaDidot-Bold.otf, ItalicFont=MyiaDidot-Italic.otf]
+\newcommand\smc[1]{{\addfontfeature{Letters=SmallCaps}#1}}
+\newcommand\allsc[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1}}
+\linespread{1.12}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+\frenchspacing
+\begin{document}
+\smc{When the Didot family} set up their presses in Paris in the last decades
+of the eighteenth century, the printed page in France had already been through
+two hundred years of quiet change, and almost nobody outside the trade noticed
+what happened next. François-Ambroise Didot, the father, was a printer before he
+was a designer of type, and his first concern was not the shape of the letters
+but the way they were measured: the \emph{point Didot}, which he fixed at a
+little more than the English point, gave the founders a common unit, so that a
+line of type cast in one shop would stand true against a line cast in another.
+It sounds like a small thing. It was not. A system of sizes that everyone could
+rely on meant that a book could be set from the founts of three different
+foundries without the compositor having to pack every line with slips of card,
+and it meant, too, that the type itself could be made finer, because nothing had
+to be thickened to survive a careless fit. The son, Firmin, took the next step.
+His roman, cut in the 1780s and refined for twenty years afterwards, pushed the
+contrast between thick and thin strokes further than anyone had dared: the
+hairlines are almost threads, the serifs flat and unbracketed, the stress
+upright, so that a capital \emph{O} looks less like a written circle than like
+a drawing made with a ruling pen. Readers who were used to the warmer letters
+of Garamond or Caslon found it cold, and some said so in print. Others found it
+exactly right for an age that admired order and clear outlines, and the great
+editions of Virgil, Horace and Racine that came from the Didot press between 1798
+and 1801 were bought, admired and imitated across Europe. In Parma, Giambattista
+Bodoni was working along the same lines at the same time, and for a while the
+two houses watched each other with a mixture of rivalry and respect; Bodoni
+had the more theatrical sense of display, Didot the steadier hand for text. It
+is worth remembering how much of what we now call the \textbf{modern face} was
+decided by the paper and the press rather than by taste alone. Hairlines that
+thin can only be printed on smooth, hard paper, with a well-made press and good
+ink, and it was the arrival of wove paper, smoother than the laid sheets of the
+earlier century, that made them possible at all. On rough paper the same
+letters break up; set too small, they glitter and tire the eye. The designers
+knew this. Firmin Didot cut separate sizes for separate uses, each with its own
+proportions, and a fount of eight point was not simply a reduced copy of the
+fount of twenty-four: its hairlines were heavier, its letters wider, its
+spacing more generous. A digital revival has to make the same choices with
+other means, and anybody who has set a page of a Didot at the size of a
+footnote, on an office printer, has seen what happens when it does not. The
+italic presents a different problem. In the eighteenth century the italic was
+still, at heart, a separate letter, descended from the chancery hands of the
+Renaissance, and it kept its own rhythm long after it had been made to share
+the roman’s height and weight. A Didot italic is narrow, steeply sloped and
+written rather than drawn; its \emph{a} and \emph{e} are single movements of
+the pen, its \emph{f} descends below the line, and its \emph{k} and \emph{v}
+end in small curls that have no counterpart in the roman. Setting a phrase in
+italic in the middle of a roman line is therefore not a matter of tilting the
+letters, and the best compositors used it sparingly: for the titles of books
+such as \emph{Paul et Virginie} or \emph{The Vicar of Wakefield}, for words
+borrowed from another language, \emph{à propos}, \emph{tout court},
+\emph{Zeitgeist}, and for the occasional word that needed a stress the
+sentence could not give it. Small capitals had another job. They were used for
+the first words of a chapter, for names in a dramatic text, for the
+abbreviations that would otherwise shout from the middle of a line, such as
+\allsc{UNESCO}, \allsc{NATO} or \allsc{BBC}, and for dates like 1450~\allsc{AD}
+or 753~\allsc{BC}. A good fount of small caps is not a set of reduced
+capitals: it is drawn to the weight of the lower case, a little wider than the
+capitals and a little taller than the x-height, so that a word like
+\smc{Paris} or \smc{Amsterdam} sits in the line without a hole and without a
+blot. Bold type, finally, is a latecomer, and it was not made for books at all.
+It grew out of the jobbing trade of the nineteenth century, out of posters,
+handbills and the lists of prices in shop windows, where a single word had to
+be seen from across the street, and it took a long time to find its way into
+the text page. In a dictionary or a reference work it is indispensable: the
+entry \textbf{quire}, for instance, is easier to find on a crowded page when
+it stands out in bold, and so is the number of a law, \textbf{§~12}, or the
+heading word of a footnote. In continuous reading it should be rare. A page
+that is full of bold words looks like a page that is shouting, and the reader
+soon stops listening. The figures raise questions of their own. Old-style
+figures, with their ascenders and descenders, belong in running text, where
+they behave like lower-case letters: the year 1789, the price of a quarto
+volume at 36~francs, a print run of 2\,500 copies, a page number like p.~147.
+Lining figures, all the height of the capitals, belong in tables and in lines
+of capitals, where a 1789 that rose and fell would look out of place. The
+first editions of the Didot classics were set in numbers that hardly anyone
+could afford: the folio Virgil of 1798 was printed in 250 copies, and a copy on
+vellum cost more than a working family earned in a year. Yet the letters
+spread far beyond those books. By the middle of the nineteenth century, almost
+every newspaper in France, Spain and Italy was set in a face that descended
+from Didot or Bodoni, and the same was true of a good part of the Greek and
+Russian printing of the time. The Russian reader of 1850 met the modern face in
+the novels of Gogol, \emph{Мёртвые души} among them, and in the journals of
+Петербург; the Greek reader met it in
+the editions of the classics produced in Leipzig and Paris, in letters that
+followed the Didot Greek closely. Those letters have their own story, and it
+is not a simple one. Firmin Didot’s Greek was cut to sit beside his roman, and
+it gave up most of the loops and ligatures of the older Greek founts, though
+the separate letters we now expect replaced them only slowly, a little at a
+time. When a Greek word appears in an English sentence today, it is usually
+set in a type that has made peace between the two traditions: λόγος, ἦθος,
+\emph{καιρός}. The same is true of the Cyrillic
+alphabet, whose civil type, introduced by Peter the Great in 1708, was itself
+modelled on the Dutch romans of its time, and which followed the Latin letters
+through every change of fashion that came afterwards. A Russian Didot is
+therefore not an exotic thing. It is a cousin, cut with the same tools, for
+readers who looked at the same engravings and the same architecture, and who
+lived, for the most part, in the same idea of what a clear page should be. That
+idea has not lost its force. Whatever we think of the coldness of the modern
+face, the page it produced was the first that was designed as a whole, from
+the measure of the type to the width of the margins, and the habits of order
+that it taught are still with us every time we open a well-made book, a good
+newspaper or a careful report. The modern face did not survive the
+twentieth century unchanged. Photocomposition made every size from a single
+drawing, and the hairlines that had been cut heavier for the small sizes were
+now reduced with the rest, so that the Didots of the 1970s, admired on the
+covers of fashion magazines, were all but unreadable in the footnotes of a
+book. The digital fonts that followed inherited the same habit, and for a long
+time a designer who wanted a Didot for text had to choose between a face made
+for display and one so softened that it had lost the very contrast that gave
+it its character. More recent revivals have gone back to the sources. They
+measure the punches and the printed pages in the collections of the
+\allsc{BNF} in Paris and of the Museo Bodoniano in Parma, they compare the
+sizes against one another, and they ask what a letter cut for eight point
+would look like if it were redrawn today, with the precision of a screen but
+for the softness of paper. The answers are rarely the same twice. One
+designer keeps the flat serifs and opens the counters; another lowers the
+contrast a little and lengthens the descenders; a third adds an optical size
+for captions and another for headlines, and leaves the reader to decide which
+belongs where. What they share is a sense that the face deserves to be read,
+and not only looked at. A book set in such a type should not draw attention
+to itself. On the first page the reader may notice the sharpness of the
+letters, the long thin strokes of the \emph{y} and the round, heavy dots on
+the \emph{i} and the \emph{j}; by the tenth page, if the work has been done
+well, he or she will notice nothing at all, and will simply go on reading, as
+the readers of 1800 did, without stopping to wonder why the page seems so
+calm. That is the only test that matters in the end, and it is the hardest to
+pass, because nobody can see it from a single specimen, a single word, or a
+single beautiful capital. It can only be seen in the long run, page after
+page, in the middle of a chapter, at the hour when the light is poor and the
+reader is tired, and the letters have to carry the sense on their own. Nothing else, no ornament
+and no clever arrangement, can do that work for them.
+\newpage
+\begin{otherlanguage}{french}
+\smc{Il faut bien le dire}, la typographie française du début du
+dix-neuvième siècle doit presque tout à une seule famille. Les Didot étaient à
+la fois imprimeurs, libraires, fondeurs et fabricants de papier, et c’est sans
+doute cette réunion des métiers qui leur a permis d’aller si loin : quand on
+fabrique soi-même le papier sur lequel on imprimera, on peut graver des
+déliés que personne d’autre n’oserait. Firmin Didot ne s’est pas contenté de
+dessiner des caractères ; il a perfectionné la stéréotypie, ce procédé qui
+consiste à couler une plaque de métal d’après une page composée, et qui permit
+de tirer à bas prix les classiques que réclamait un public nouveau. On lui doit
+aussi, avec son père, le \emph{point typographique} qui porte encore leur nom
+et qui a servi, pendant près de deux siècles, à mesurer les corps dans toute
+l’Europe continentale. Les éditions dites \emph{du Louvre}, parce qu’elles
+furent imprimées dans les galeries du palais où le gouvernement avait installé
+l’atelier, sont restées célèbres : le Virgile, l’Horace et le Racine en trois
+volumes, tirés à quelques centaines d’exemplaires, furent salués, à
+l’une des premières expositions des produits de l’industrie, comme les plus
+beaux livres jamais imprimés. Le
+jugement paraît aujourd’hui excessif, mais il dit bien l’ambition de
+l’entreprise. On y voit une page où rien n’est laissé au hasard : les marges
+sont vastes, les capitales espacées avec soin, l’italique réservé aux titres
+et aux citations, les petites capitales employées pour les noms des
+personnages, et l’on y chercherait en vain un caractère gras, que l’on
+considérait alors comme un procédé d’affiche. Il est d’ailleurs frappant de
+voir combien la lettre de Didot s’accorde avec la langue française : les
+accents aigus, graves et circonflexes, les cédilles et les trémas, si nombreux
+dans une page de Racine, trouvent leur place au-dessus de lettres dont le
+dessin est assez régulier pour les recevoir sans désordre. Qu’on lise à haute
+voix une phrase comme « où est-il allé, ce garçon qu’on croyait déjà à
+Noël ? », et l’on verra que l’œil, lui aussi, a besoin de ces signes pour ne
+pas trébucher. C’est dans cet accord, plus encore que dans la finesse des
+déliés, qu’il faut chercher la raison d’une si longue fortune : deux siècles plus
+tard, le lecteur d’un roman de poche retrouve, sans le savoir, la page que
+l’on composait chez les Didot.
+\end{otherlanguage}
+\newpage
+\begin{otherlanguage}{ngerman}
+\smc{Im deutschen Sprachraum} hatte es die Antiqua der Didot zunächst schwer.
+Bis weit ins neunzehnte Jahrhundert hinein wurden die meisten Bücher in
+Fraktur gesetzt, und die runde, helle Schrift aus Paris galt vielen Lesern als
+fremd, ja als Zeichen einer Gesinnung, die man nicht teilen wollte. Wer sie
+dennoch verwendete, tat es mit Absicht. Der Leipziger Drucker und Verleger
+Georg Joachim Göschen etwa ließ die Werke Wielands in einer Antiqua drucken,
+die sich unmittelbar an Didot anlehnte, und schuf damit einige der schönsten
+Bücher seiner Zeit; Goethe, der sich für solche Fragen lebhaft interessierte,
+verfolgte die Arbeit mit großer Aufmerksamkeit. Für wissenschaftliche Werke,
+für Übersetzungen aus dem Lateinischen und Griechischen und für alles, was
+sich an ein gelehrtes Publikum in ganz Europa richtete, setzte sich die
+Antiqua nach und nach durch, während die Fraktur für Zeitungen, Gesangbücher
+und Volksausgaben noch lange die Regel blieb. Diese Spaltung hat Spuren in der
+Typografie hinterlassen, die bis heute sichtbar sind. Das lange \emph{s} etwa,
+das in der Fraktur selbstverständlich war, wurde in der Antiqua schon früh
+aufgegeben; das scharfe \emph{ß} dagegen blieb, und mit ihm die Frage, wie es
+in einer Zeile aus Großbuchstaben oder Kapitälchen aussehen soll. Wer heute
+eine Überschrift wie \allsc{STRASSE} oder \allsc{GRÖSSE} setzt, steht noch vor
+derselben Wahl, die die Setzer des neunzehnten Jahrhunderts beschäftigte, auch
+wenn es inzwischen ein großes \emph{ẞ} gibt, das seit 2017 offiziell zugelassen
+ist. Auch die Umlaute stellten die Schriftschneider vor Aufgaben: Über einem
+\emph{ä}, \emph{ö} oder \emph{ü} müssen zwei Punkte Platz finden, ohne an die
+Zeile darüber zu stoßen, und bei den Großbuchstaben \emph{Ä}, \emph{Ö} und
+\emph{Ü} ist der Raum noch knapper. Ein guter Satz nimmt darauf Rücksicht,
+ohne dass der Leser es bemerkt, und genau darin liegt seine Kunst. Dass die
+Antiqua sich am Ende durchgesetzt hat, lag weniger an ästhetischen Gründen als
+an der Geschichte selbst: Nach 1941 wurde die Fraktur in Deutschland von
+Amts wegen abgeschafft, und nach dem Krieg wollte niemand sie zurück. Die
+Schriften der Didot und Bodoni aber, die man so lange für fremd gehalten
+hatte, waren inzwischen längst zu Hause, in Zeitungen, Büchern und
+Briefköpfen, und kaum ein Leser wusste noch, woher sie gekommen waren.
+\end{otherlanguage}
+\end{document}

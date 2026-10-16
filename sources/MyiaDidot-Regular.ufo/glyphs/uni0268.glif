@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0268" format="2">
 	<unicode hex="0268"/>
-	<advance width="600"/>
+	<advance width="560"/>
 	<outline>
 		<contour>
-			<point x="84" y="0" type="line"/>
-			<point x="84" y="48" type="line"/>
-			<point x="226" y="48" type="line"/>
-			<point x="226" y="414" type="line"/>
-			<point x="84" y="414" type="line"/>
-			<point x="84" y="470" type="line"/>
-			<point x="226" y="470" type="line"/>
-			<point x="226" y="836" type="line"/>
-			<point x="84" y="836" type="line"/>
-			<point x="84" y="884" type="line"/>
-			<point x="390" y="884" type="line"/>
-			<point x="390" y="470" type="line"/>
-			<point x="532" y="470" type="line"/>
-			<point x="532" y="414" type="line"/>
-			<point x="390" y="414" type="line"/>
-			<point x="390" y="48" type="line"/>
-			<point x="532" y="48" type="line"/>
-			<point x="532" y="0" type="line"/>
+			<point x="64" y="0" type="line"/>
+			<point x="64" y="48" type="line"/>
+			<point x="206" y="48" type="line"/>
+			<point x="206" y="414" type="line"/>
+			<point x="64" y="414" type="line"/>
+			<point x="64" y="470" type="line"/>
+			<point x="206" y="470" type="line"/>
+			<point x="206" y="836" type="line"/>
+			<point x="64" y="836" type="line"/>
+			<point x="64" y="884" type="line"/>
+			<point x="370" y="884" type="line"/>
+			<point x="370" y="470" type="line"/>
+			<point x="512" y="470" type="line"/>
+			<point x="512" y="414" type="line"/>
+			<point x="370" y="414" type="line"/>
+			<point x="370" y="48" type="line"/>
+			<point x="512" y="48" type="line"/>
+			<point x="512" y="0" type="line"/>
 		</contour>
 		<contour>
-			<point x="186" y="1358" type="curve" smooth="yes"/>
-			<point x="186" y="1428"/>
-			<point x="240" y="1482"/>
-			<point x="310" y="1482" type="curve" smooth="yes"/>
-			<point x="380" y="1482"/>
-			<point x="434" y="1428"/>
-			<point x="434" y="1358" type="curve" smooth="yes"/>
-			<point x="434" y="1288"/>
-			<point x="380" y="1234"/>
-			<point x="310" y="1234" type="curve" smooth="yes"/>
-			<point x="240" y="1234"/>
-			<point x="186" y="1288"/>
+			<point x="166" y="1358" type="curve" smooth="yes"/>
+			<point x="166" y="1428"/>
+			<point x="220" y="1482"/>
+			<point x="290" y="1482" type="curve" smooth="yes"/>
+			<point x="360" y="1482"/>
+			<point x="414" y="1428"/>
+			<point x="414" y="1358" type="curve" smooth="yes"/>
+			<point x="414" y="1288"/>
+			<point x="360" y="1234"/>
+			<point x="290" y="1234" type="curve" smooth="yes"/>
+			<point x="220" y="1234"/>
+			<point x="166" y="1288"/>
 		</contour>
 	</outline>
-	<anchor name="Bottom" x="310" y="0"/>
-	<anchor name="DotBelow" x="310" y="-20"/>
+	<anchor name="Bottom" x="290" y="0"/>
+	<anchor name="DotBelow" x="290" y="-20"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.draft</key>

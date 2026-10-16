@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0269" format="2">
 	<unicode hex="0269"/>
-	<advance width="542"/>
+	<advance width="502"/>
 	<outline>
-		<component base="iota"/>
+		<component base="iota" xOffset="-10"/>
 	</outline>
-	<anchor name="DotBelow" x="312" y="-20"/>
-	<anchor name="GreekTop" x="258" y="980"/>
+	<anchor name="DotBelow" x="292" y="-20"/>
+	<anchor name="GreekTop" x="238" y="980"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.draft</key>

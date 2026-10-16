@@ -70,6 +70,16 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   (draft key cleared). Then `make normalize`. Review sheets:
   `drafts-review-Italic.pdf`, `smallcaps-review-Italic.pdf`. A style's own
   fontbakery allowances: `tests/data/fontbakery-allow-Italic.txt`.
+- Spacing: the Regular's letters were tightened once by `scripts/respace.py`
+  (20 a side, Greek lowercase 10; recorded in lib `org.myiadidot.respaced`,
+  a second run refuses). make_bold.py adds the Bold's own cut, make_italic.py
+  undoes the Regular's in memory (it is tuned on the old spacing) and
+  applies the Italic's; derive.py too builds on the uncut spacing and cuts
+  again. It leaves kerning alone. The Bold's figures have a cut of their
+  own (make_bold.py BOLD_FIGURE_CUT). The Italic's letters are made at Old
+  Standard's weight and their thick strokes made heavier at the end
+  (make_italic.py WEIGHT, weight_thick):
+  recipe widths are for the weight before that.
 - The working copy is inside a pCloud/Nextcloud-synced folder: rewriting
   many files fast can leave "(conflicted)" copies and missing glyph files;
   check for them after big generation runs.
@@ -86,9 +96,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   (`tests/data/shaping-corpus.txt`), a digest over ~1.2M shaped strings,
   fontbakery with an allowlist, and outlines gone wrong
   (`scripts/glyph_lint.py`: specks, twists, pinholes, slivers, notches,
-  steps) against each style's known findings (`glyph-lint*.txt`; regenerate
+  steps, ledges) against each style's known findings (`glyph-lint*.txt`; regenerate
   with `update_test_data.py --lint`). derive.py, make_italic.py and
-  make_bold.py clean specks, twists, pinholes and steps from what they
+  make_bold.py clean specks, twists, pinholes, steps and ledges from what they
   make; `glyph_lint.py UFO --fix` does it for drawn glyphs.
 - Exception lists in `tests/data/*.txt` only shrink: a test fails when an
   entry is no longer needed. Fixing an entry = deleting its line.
@@ -105,7 +115,7 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 |---|---|
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
-| `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
+| `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `textpages.pdf` (full book pages, mixed styles), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
 | `make udhr` | `build/proofs/udhr-quarto.pdf`: one quarto page per language (the UDHR; `scripts/udhr_book.py`, texts fetched once into `build/udhr/`) |
 | `make qa` | full fontbakery reports in `build/qa/` |
 | `python scripts/coverage.py fonts/otf/MyiaDidot-Regular.otf --list` | what is missing |

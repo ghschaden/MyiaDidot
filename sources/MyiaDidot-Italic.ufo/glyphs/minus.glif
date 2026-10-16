@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="minus" format="2">
 	<unicode hex="2212"/>
-	<advance width="1861"/>
+	<advance width="1152"/>
 	<outline>
 		<contour>
-			<point x="111.2508196248" y="478.0121695966" type="line"/>
-			<point x="111.2508196248" y="545.5667777718" type="line"/>
-			<point x="1781.6291803752" y="545.5667777718" type="line"/>
-			<point x="1781.6291803752" y="478.0121695966" type="line"/>
+			<point x="62" y="466" type="line"/>
+			<point x="62" y="562" type="line"/>
+			<point x="1090" y="562" type="line"/>
+			<point x="1090" y="466" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uniA7B7" format="2">
 	<unicode hex="A7B7"/>
-	<advance width="1484"/>
+	<advance width="1404"/>
 	<outline>
-		<component base="omega"/>
+		<component base="omega" xOffset="-14"/>
 	</outline>
-	<anchor name="IotaSubscript" x="733" y="-40"/>
-	<anchor name="DotBelow" x="733" y="-20"/>
-	<anchor name="GreekTop" x="744" y="980"/>
+	<anchor name="IotaSubscript" x="694" y="-40"/>
+	<anchor name="DotBelow" x="694" y="-20"/>
+	<anchor name="GreekTop" x="704" y="980"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.draft</key>

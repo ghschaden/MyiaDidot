@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni25CB" format="2">
 	<unicode hex="25CB"/>
-	<advance width="1624"/>
+	<advance width="1228"/>
 	<outline>
 		<contour>
-			<point x="190" y="690.1403508772" type="curve" smooth="yes"/>
-			<point x="190.6532549503" y="323.7052847233"/>
-			<point x="483.7178221105" y="14.8489745897"/>
-			<point x="859.32" y="14.3859649123" type="curve" smooth="yes"/>
-			<point x="1234.9221778895" y="14.8489745897"/>
-			<point x="1527.9867450497" y="323.7052847233"/>
-			<point x="1528.64" y="690.1403508772" type="curve" smooth="yes"/>
-			<point x="1528.0673529162" y="1074.9201729246"/>
-			<point x="1235.21321421" y="1416.9638526112"/>
-			<point x="859.32" y="1417.515625" type="curve" smooth="yes"/>
-			<point x="483.42678579" y="1416.9638526112"/>
-			<point x="190.5726470838" y="1074.9201729246"/>
+			<point x="1128" y="514" type="curve" smooth="yes"/>
+			<point x="1128" y="230"/>
+			<point x="898" y="0"/>
+			<point x="614" y="0" type="curve" smooth="yes"/>
+			<point x="330" y="0"/>
+			<point x="100" y="230"/>
+			<point x="100" y="514" type="curve" smooth="yes"/>
+			<point x="100" y="798"/>
+			<point x="330" y="1028"/>
+			<point x="614" y="1028" type="curve" smooth="yes"/>
+			<point x="898" y="1028"/>
+			<point x="1128" y="798"/>
 		</contour>
 		<contour>
-			<point x="150.56" y="690.1403508772" type="curve" smooth="yes"/>
-			<point x="150.00128731" y="1109.898614432"/>
-			<point x="455.0380902612" y="1468.2061309729"/>
-			<point x="859.32" y="1467.671875" type="curve" smooth="yes"/>
-			<point x="1263.6019097388" y="1468.2061309729"/>
-			<point x="1568.63871269" y="1109.898614432"/>
-			<point x="1568.08" y="690.1403508772" type="curve" smooth="yes"/>
-			<point x="1568.7200598301" y="292.7491532554"/>
-			<point x="1263.8905516007" y="-30.3426274713"/>
-			<point x="859.32" y="-29.8947368421" type="curve" smooth="yes"/>
-			<point x="454.7494483993" y="-30.3426274713"/>
-			<point x="149.9199401699" y="292.7491532554"/>
+			<point x="1056" y="514" type="curve" smooth="yes"/>
+			<point x="1056" y="758"/>
+			<point x="858" y="956"/>
+			<point x="614" y="956" type="curve" smooth="yes"/>
+			<point x="370" y="956"/>
+			<point x="172" y="758"/>
+			<point x="172" y="514" type="curve" smooth="yes"/>
+			<point x="172" y="270"/>
+			<point x="370" y="72"/>
+			<point x="614" y="72" type="curve" smooth="yes"/>
+			<point x="858" y="72"/>
+			<point x="1056" y="270"/>
 		</contour>
 	</outline>
 	<lib>
@@ -37,7 +37,7 @@
 			<key>org.myiadidot.draft</key>
 			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

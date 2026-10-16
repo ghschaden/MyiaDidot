@@ -2,9 +2,9 @@
 <glyph name="Omegatonos" format="2">
 	<unicode hex="038F"/>
 	<unicode hex="1FFB"/>
-	<advance width="1772"/>
+	<advance width="1732"/>
 	<outline>
-		<component base="tonos"/>
+		<component base="tonos" xOffset="-20"/>
 		<component base="Omegagreek" xOffset="248"/>
 	</outline>
 </glyph>

@@ -46,6 +46,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from composites import SPECIAL, Builder, stack_anchors
 from derive import BIG, draw_path, embolden
 from make_bold import mark_like, redraw, write
+from respace import CUT_KEY, classifier, respace, undo
 from smallcaps import ink_bounds, ink_slice
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,6 +58,17 @@ KX = 1.98  # across: between the x-height (1.939) and cap-height (2.014) scales
 OS_XH, OS_CAP = 456, 712
 XH, CAP = 884, 1434
 AX, AY = -16, -10  # Old Standard's strokes, scaled, are a little heavier than Myia's
+# ... but so the Italic was light: 0.80 of the Regular's colour, where
+# italics have 0.93-1.04. Its letters (and all made of them) are built at
+# that weight, which the recipes and transplants are tuned to, and their
+# thick upright strokes then made WEIGHT heavier (weight_thick: hairlines and
+# thin strokes as they are, so the contrast grows): stems about the
+# Regular's, as Old Standard's italic has its roman's
+WEIGHT = 44
+WEIGHTED = ("Old Standard", "derived", "small cap draft")
+# off each side of a letter: Old Standard's spacing, scaled, is loose too (10;
+# less what the added weight takes of the stems at the sides)
+ITALIC_CUT = 3
 SOURCE_KEY = "org.myiadidot.italicSource"
 DRAFT_KEY = "org.myiadidot.draft"
 SMALLCAP_DRAFT_KEY = "org.myiadidot.smallcapDraft"
@@ -72,11 +84,18 @@ def reviewed(g):
             and not g.lib.get(DRAFT_KEY) and not g.lib.get(SMALLCAP_DRAFT_KEY))
 
 
+# signs Old Standard draws for mathematics, far larger than Myia's (+ is
+# 1861 wide to the Regular's 1152), and its raised and lowered + − =: the
+# Regular's are taken instead, upright
+MATH_SIGNS = set(map(ord, "+<=>±×÷¬−≈≠≤≥⁺⁻⁼₊₋₌⊗"))
+
+
 def keeps_upright(u):
     """Signs an italic sets upright (the letterlike and mathematical
     letters 𝔐 𝑙 ℓ ℵ are slanted with the rest)."""
     return (0x2190 <= u <= 0x21FF or 0x2460 <= u <= 0x24FF or 0x25A0 <= u <= 0x25FF
-            or 0x3000 <= u <= 0x303F or u == 0x22EE)
+            or 0x3000 <= u <= 0x303F or 0x23D1 <= u <= 0x23D9 or u in (0x22EE, 0x2042)
+            or u in MATH_SIGNS)
 
 
 def ymap(y):
@@ -147,10 +166,90 @@ def upright(font):
     return up
 
 
+def weight_thick(rec, ax, thin=80, thick=120):
+    """rec with its thick upright strokes ax heavier, its hairlines and thin
+    strokes as they are: each point moves out along the outline's normal as
+    embolden() moves it, by as much of ax as the stroke behind it is thick
+    (none below thin, all above thick, measured across the ink from it)."""
+    import numpy as np
+
+    glyph = ufoLib2.objects.Glyph()
+    rec.replay(glyph.getPen())
+    # the outline as straight segments, to measure across
+    flat = RecordingPen()
+    glyph.draw(flat)
+    segs, start, cur = [], None, None
+    for op, args in flat.value:
+        if op == "moveTo":
+            start = cur = args[0]
+        elif op == "lineTo":
+            segs.append((cur, args[0]))
+            cur = args[0]
+        elif op == "curveTo":
+            (x0, y0), (x1, y1), (x2, y2), (x3, y3) = cur, *args
+            prev = cur
+            for k in range(1, 11):
+                t = k / 10
+                q = ((1 - t) ** 3 * x0 + 3 * (1 - t) ** 2 * t * x1 + 3 * (1 - t) * t * t * x2 + t ** 3 * x3,
+                     (1 - t) ** 3 * y0 + 3 * (1 - t) ** 2 * t * y1 + 3 * (1 - t) * t * t * y2 + t ** 3 * y3)
+                segs.append((prev, q))
+                prev = q
+            cur = args[-1]
+        elif op in ("closePath", "endPath") and cur != start:
+            segs.append((cur, start))
+            cur = start
+    if not segs:
+        return glyph
+    a = np.array([s[0] for s in segs], float)
+    d = np.array([s[1] for s in segs], float) - a
+
+    def across(px, py, ux, uy):
+        """distance from (px, py) along (ux, uy) to the outline's other side"""
+        den = d[:, 0] * uy - d[:, 1] * ux
+        ok = np.abs(den) > 1e-9
+        wx, wy = a[:, 0] - px, a[:, 1] - py
+        t = np.where(ok, (d[:, 0] * wy - d[:, 1] * wx) / np.where(ok, den, 1), -1)  # along the ray
+        s = np.where(ok, (ux * wy - uy * wx) / np.where(ok, den, 1), -1)  # along the segment
+        hit = ok & (t > 3) & (s >= 0) & (s <= 1)
+        return float(t[hit].min()) if hit.any() else 0.0
+
+    def area(contour):
+        pts = [(p.x, p.y) for p in contour.points]
+        return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
+
+    areas = [area(c) for c in glyph.contours]
+    outer = max(areas, key=abs, default=1) > 0
+    for contour, ar in zip(glyph.contours, areas, strict=True):
+        pts = [(p.x, p.y) for p in contour.points]
+        sign = 1 if ar > 0 else -1
+        if (ar > 0) != outer:
+            sign = -sign
+        n = len(pts)
+        moved = []
+        for i in range(n):
+            (x0, y0), (x1, y1) = pts[i - 1], pts[(i + 1) % n]
+            length = math.hypot(x1 - x0, y1 - y0) or 1.0
+            nx, ny = (y1 - y0) / length, -(x1 - x0) / length
+            # the stroke's thickness: across the ink, against the outward normal
+            w = across(pts[i][0], pts[i][1], -sign * nx, -sign * ny)
+            k = min(1.0, max(0.0, (w - thin) / (thick - thin)))
+            moved.append((pts[i][0] + sign * nx * ax * k / 2, pts[i][1]))
+        for p, (x, y) in zip(contour.points, moved, strict=True):
+            p.x, p.y = x, y
+    return glyph
+
+
 def put(font, up, name, source):
     """A glyph made in the upright frame, slanted into the Italic."""
     import derive
-    from glyph_lint import FIXED, ink, step_findings, vector_findings
+    from glyph_lint import (
+        FIXED,
+        LEDGE_KEEP,
+        ink,
+        ledge_findings,
+        step_findings,
+        vector_findings,
+    )
 
     g = copy.deepcopy(up[name])
     shear(g, SLANT)
@@ -161,7 +260,10 @@ def put(font, up, name, source):
         if not (g.contours and not g.components):
             break
         path = ink(font, g)
-        if not any(k in FIXED for k, *_ in vector_findings(path) + step_findings(path)):
+        found = vector_findings(path) + step_findings(path)
+        if name not in LEDGE_KEEP:
+            found += ledge_findings(path)
+        if not any(k in FIXED for k, *_ in found):
             break
         before = copy.deepcopy(g)
         g.clearContours()
@@ -179,8 +281,13 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ"}  # its own recipe fits the Italic better
+                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
+# small caps left to FontForge's drafts of the Italic's capitals (as the
+# others), not derive.py's recipes: a capital scaled down (ʛ from Ɠ) is
+# heavier than the small caps beside it
+SC_DRAFTED = {"ɑ.sc", "ɂ.sc", "ʒ.sc", "ʊ.sc", "ʋ.sc", "ⱳ.sc", "ꞵ.sc", "ƭ.sc", "ƙ.sc",
+              "ɲ.sc", "ʝ.sc", "ϗ.sc", "ƴ.sc", "ƈ.sc", "ɠ.sc", "ƥ.sc", "ɦ.sc"}
 # the Italic's own letters already have the shape: Old Standard's g is ɡ,
 # its h turned is ɥ (the Regular's is u and a descender, its h's serifs
 # would turn)
@@ -211,10 +318,12 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # ɯ with its last stem running down into ɥ's descender
                   "ɰ": ("attach", "uni026F", ("x", [(1150, -BIG, BIG, 300), (1300, -BIG, BIG, 600)],
                                               [("uni0265", (700, -BIG, BIG, 300), (0, 0), (1, 1, 459, 0))], 1500)),
-                  # ɹ's stem to ascender height, ɹ's top on it (not left at the x-height)
-                  "ɺ": ("attach", "uni0279", ("x", [(250, 700, BIG, BIG)],
-                                              [("rect", (494, 650, 658, 1460), (0, 0), (1, 1, 0, 0)),
-                                               ("uni0279", (-BIG, 700, BIG, BIG), (0, 0), (1, 1, 0, 628))])),
+                  # the italic r turned (as Charis's), not the roman's drawn ɹ:
+                  # its stem as light as the other italic stems
+                  "ɹ": ("turn", "r", "x"),
+                  # ɹ's stem to ascender height, l's top on it
+                  "ɺ": ("attach", "uni0279", ("x", [(-BIG, 850, BIG, BIG)],
+                                              [("l", (-BIG, 850, BIG, BIG), (0, 0), (1, 1, 268, 0))])),
                   # the clicks are letters: a sloped bar (the Italic's | is upright)
                   "ǀ": ("attach", "_clickbar", ("x", [(-BIG, -BIG, BIG, 0)], [])),
                   "ǁ": ("attach", "_clickbar", ("x", [(-BIG, -BIG, BIG, 0)],
@@ -282,18 +391,20 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                        "sweep": 210, "ball": 50, "t": (68, 40)})),
                   "ƴ": ("curl", "y", ("x", [(700, 760, BIG, BIG)],
                                       {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", "r": (100, 90),
-                                       "sweep": 200, "ball": 45, "t": (116, 40)})),
+                                       "sweep": 200, "ball": 58, "t": (116, 40)})),  # flush: half the end's 116
                   # p's stem (its entry stroke cut away) rising and curling over
                   "ƥ": ("attach", "p", ("x", [(-BIG, 700, 400, BIG), (-BIG, 400, 270, BIG)],
                                         [("rect", (296, 650, 397, 1150), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 346.5, 1150, 101), "dir": 90, "turn": "cw",
                                                    "r": (150, 130), "sweep": 210, "ball": 55, "t": (101, 45)},
                                           (0, 0), (1, 1, 0, 0))])),
-                  # the bar's left end (its serif cut away) curling down
-                  "Ƭ": ("attach", "T", ("c", [(-BIG, 800, 330, BIG)],
-                                        [("curl", {"at": ("pt", 340, 1400, 60), "dir": 180, "turn": "ccw",
-                                                   "r": (110, 130), "sweep": 200, "ball": 55, "t": (90, 60),
-                                                   "lead": 10, "cuts": [(340, 1300, BIG, BIG)]}, (0, 0), (1, 1, 0, 0))])),
+                  # the bar's left end (its serif cut away) curling down; the curl
+                  # leaves the bar where it is as thin as the curl (it flares
+                  # toward the serif), so they meet without a ledge
+                  "Ƭ": ("attach", "T", ("c", [(-BIG, 800, 420, BIG)],
+                                        [("curl", {"at": ("pt", 420, 1398, 62), "dir": 180, "turn": "ccw",
+                                                   "r": (135, 125), "sweep": 200, "ball": 50, "t": (90, 62),
+                                                   "lead": 10, "cuts": [(420, 1300, BIG, BIG)]}, (0, 0), (1, 1, 0, 0))])),
                   # the top hairline rising from where its ball was into a hook
                   # to the right (as Charis and Libertinus)
                   "ƈ": ("attach", "c", ("x", [(540, 450, BIG, BIG)],
@@ -308,6 +419,12 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # λ whole, a bar drawn across its upper stroke (the Regular's,
                   # transplanted, cut the arch off the long stroke)
                   "ƛ": ("attach", "lambda", ("x", [], [("line", ((130, 1010), (610, 1285), 46), (0, 0), (1, 1, 0, 0))])),
+                  # C's spur likewise (as Ɠ)
+                  "Ƈ": ("attach", "C", ("c", [(1040, 1330, BIG, BIG)],
+                                        [("line", ((1090, 1320), (1090, 1500), 36), (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 1090, 1500, 36), "dir": 90, "turn": "cw",
+                                                   "r": (105, 95), "sweep": 210, "ball": 40, "t": (36, 30),
+                                                   "lead": 10}, (0, 0), (1, 1, 0, 0))])),
                   # G's spur rising above the cap height into a hook to the right
                   # (as Charis and Libertinus), not curling back over the bowl
                   "Ɠ": ("attach", "G", ("c", [(1080, 1330, BIG, BIG)],
@@ -324,21 +441,21 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # (the ball half the stem, flush with the curl's end, as Ɽ's)
                   "Ʈ": ("attach", "T", ("c", [(-BIG, -BIG, BIG, 150)],
                                         retroflex(667.5, 667.5, 200, 165, (150, 125), 82, 50))),
-                  # the stem going on below the baseline into ȷ's descender,
-                  # mirrored (as ɳ's): it thins as the italic stems do
-                  "ɖ": ("hook", "d", ("x", "down-right", "last", 200, 0, 400, [(820, -BIG, BIG, 450)])),
+                  # the stem (below its swell, without the exit stroke) going on
+                  # below the baseline and curling right, as ɭ ɽ ʈ (the bowl kept
+                  # joined)
+                  "ɖ": ("attach", "d", ("x", [(700, -BIG, BIG, 200), (820, -BIG, BIG, 450)],
+                                        retroflex(733, 733, 210, 114, (110, 100), 57, 40))),
                   "ɭ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
                                         retroflex(234, 234, 350, 116, (110, 100), 45, 40))),
                   # the tail on the stem (its foot serif cut away), as ɽ's
                   "Ɽ": ("attach", "R", ("c", [(-BIG, -BIG, 800, 120)],
                                         retroflex(393, 393, 160, 166, (150, 125), 82, 50))),
-                  # ȷ's descender (mirrored for ɳ) on the last stem, as ɲ has it
-                  # on the first: it thins as the italic stems do (cut where
-                  # the stem is as wide as ɲ's, below its swell)
-                  "ɳ": ("hook", "n", ("x", "down-right", "last", 200, 160, 400, [(900, -BIG, BIG, 450)])),
+                  "ɳ": ("attach", "n", ("x", [(700, -BIG, BIG, 200), (900, -BIG, BIG, 450)],
+                                        retroflex(795, 795, 210, 112, (110, 100), 56, 40))),
                   "ɽ": ("attach", "r", ("x", [], retroflex(354.5, 354.5, 100, 119, (110, 100), 55, 40))),
-                  "ɻ": ("attach", "uni0279", ("x", [(494, -BIG, BIG, 60)],  # ɹ's foot serif too
-                                              retroflex(576, 576, 80, 164, (140, 120), 80, 52))),
+                  "ɻ": ("attach", "uni0279", ("x", [(440, -BIG, BIG, 200), (560, 200, BIG, 400)],
+                                              retroflex(502, 502, 250, 110, (120, 105), 55, 40))),
                   # the last stem or leg running on below the baseline (the
                   # exit stroke cut away) and curling to the left
                   "ң": ("attach", "uni043D", ("x", [(700, -BIG, BIG, 250), (950, -BIG, BIG, 450)],
@@ -348,9 +465,12 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "қ": ("attach", "uni043A", ("x", [(640, -BIG, BIG, 200), (900, -BIG, BIG, 450)],
                                               descender(730, 250, 735, -150, 125, 270, (105, 95), 40))),
                   "җ": ("attach", "uni0436", ("x", [(1000, -BIG, BIG, 200), (1350, -BIG, BIG, 450)],
-                                              descender(1087.7, 210, 1167.5, 0, 100, 290.8, (100, 90), 40))),
+                                              descender(1087.7, 210, 1224.5, -150, 100, 290.8, (100, 90), 40))),
                   "ҳ": ("attach", "uni0445", ("x", [(560, -BIG, BIG, 150), (900, -BIG, BIG, 350)],
-                                              descender(612, 155, 725.5, -20, 58, 303, (90, 80), 34))),
+                                              descender(612, 155, 810, -150, 58, 303, (90, 80), 34))),
+                  # ȷ's descender on the last stem, as ɲ has it on the first: it
+                  # thins as the italic stems do (cut in where the stem is as
+                  # wide as ɲ's, below its swell; the exit stroke cleared)
                   "ɧ": ("hook", "uni0266", ("x", "down-left", "last", 200, 160, 400, [(780, -BIG, BIG, 450)])),
                   "ɱ": ("hook", "m", ("x", "down-left", "last", 200, 160, 400, [(1360, -BIG, BIG, 450)])),
                   # F's stem (its foot serif cut away) tapering into the hook
@@ -585,6 +705,8 @@ def derive_stage(font, regular):
 
     made, failed = [], []
     for ch, op, source, band in derive.RECIPES:
+        if ch in SC_DRAFTED:
+            continue
         op, source, band = ITALIC_RECIPES.get(ch, (op, source, band))
         name = resolve(ch)
         if name not in font or font[name].lib.get(SOURCE_KEY) != "sloped roman":
@@ -703,6 +825,7 @@ def smallcaps_stage(font):
     for g in font:
         if ".sc" in g.name and g.lib.get(SOURCE_KEY) == "sloped roman":
             g.lib[SMALLCAP_DRAFT_KEY] = True  # to be replaced
+            g.lib.pop("org.myiadidot.derived", None)  # the Regular's ɠ.sc is derived; this one is drafted
     up = upright(font)
     work = ROOT / "build/italic"
     work.mkdir(parents=True, exist_ok=True)
@@ -759,6 +882,11 @@ def drop_ligatures(font):
     return sorted(gone)
 
 
+# the horn's foot sunk into the top of u's stem: set on it, it leaves a
+# ledge beside the stem (glyph_lint)
+HORN_NUDGE = {"u": (0, -30)}
+
+
 def horn_stage(font):
     """The Horn anchors (draft_vietnamese_marks.py) on the Italic's O U o u
     and their small caps, found on the upright outlines."""
@@ -767,6 +895,8 @@ def horn_stage(font):
     up = upright(font)
     for base in ("O", "U", "o", "u", "o.sc", "u.sc"):
         x, y = horn_anchor(up, base)
+        dx, dy = HORN_NUDGE.get(base, (0, 0))
+        x, y = x + dx, y + dy
         g = font[base]
         for a in [a for a in g.anchors if a.name == "Horn"]:
             g.anchors.remove(a)
@@ -788,7 +918,7 @@ ANCHOR_SOURCES = {
 }
 # anchors moved a little from there (dx, dy): the cedilla's top corner, from
 # Old Standard's Bottom of c, would poke out into the counter
-ANCHOR_NUDGE = {("c", "Cedilla"): (0, -4)}
+ANCHOR_NUDGE = {("c", "Cedilla"): (0, -4), ("e", "Cedilla"): (0, -10)}
 
 
 def italic_anchors(roman, osg, width_it):
@@ -883,6 +1013,10 @@ def main():
     args = ap.parse_args()
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
+    # the Regular as it was spaced before respace.py: the offsets and widths
+    # taken from it below were tuned on that; the Italic has its own cut
+    undo(regular)
+    undo(font)
     oldstd = source_font()
     previous = ufoLib2.Font.open(args.italic) if (Path(args.italic) / "metainfo.plist").exists() else None
     os_cmap = {u: g.name for g in oldstd for u in g.unicodes}
@@ -911,6 +1045,8 @@ def main():
     taken, kept_roman = 0, 0
     for g in font:
         osname = os_cmap.get(g.unicode) if g.unicode is not None else (g.name if g.name in oldstd else None)
+        if g.unicode is not None and keeps_upright(g.unicode):
+            osname = None  # Myia's own, upright (below)
         if g.name in marks:
             # Myia's accents, sloped about the height they sit at
             t = sloped(0)
@@ -1046,7 +1182,21 @@ def main():
     # the cuts (glyph_lint); hand-drawn glyphs stay as drawn
     from glyph_lint import fix
 
+    # the added weight (WEIGHT), on the outlines of the letters, the accents
+    # and upright signs left as they are
+    for g in font:
+        if g.contours and g.name not in marks and g.lib.get(SOURCE_KEY) in WEIGHTED:
+            rec = RecordingPen()
+            for c in g.contours:
+                c.draw(rec)
+            g.clearContours()
+            weight_thick(rec, WEIGHT).draw(g.getPen())
     cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
+    # the letters spaced tighter (scripts/respace.py), not those kept from the
+    # last run, which were (what comes from the Regular has its cut too)
+    letter_cut = classifier(font, ITALIC_CUT, ITALIC_CUT)
+    respace(font, lambda n: 0 if n in kept else letter_cut(n))
+    font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT}
     write(font, Path(args.italic))
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)

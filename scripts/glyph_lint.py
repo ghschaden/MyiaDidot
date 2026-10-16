@@ -14,9 +14,13 @@ Prints one line per finding: "glyph  kind  where  detail". What it looks for
            without blending (found by closing the ink: what a few units of
            growing and shrinking fill in, beyond what a sharp corner gives)
   step     a tiny jog in an outline: a very short segment between two corners
+  ledge    a short straight segment between two corners that turn opposite
+           ways: where a curl, bar or tail was joined on at another width
+           or height than the stroke it joins (or a cusp emboldening made)
 
---fix cleans the specks, twists, pinholes and steps in place (the outline
-merged as it renders, the crumbs dropped, each step shrunk to a point) in
+--fix cleans the specks, twists, pinholes, steps and ledges in place (the
+outline merged as it renders, the crumbs dropped, each step or ledge shrunk
+to a point, so the strokes on either side meet there) in
 glyphs drawn as outlines; then make
 normalize. Glyphs a script generates are better fixed there (make_italic.py
 and derive.py clean what they make).
@@ -52,9 +56,14 @@ CLOSE = 3  # notch: closing radius, pixels (6 units)
 NOTCH_PIXELS = 30  # notch: filled pixels in one place (120 square units)
 STEP = 3  # step: a segment shorter than this between two corners
 CORNER = 25  # step: degrees the outline turns at each end
+LEDGE = 32  # ledge: a straight segment shorter than this ...
+LEDGE_TURN = 40  # ... the outline turning this much at each end, opposite ways
+# ledges meant: bars ending in a stub just past the stroke they cross (ɉ ₲),
+# and ℵ as drawn (Libertinus Math)
+LEDGE_KEEP = {"uni0249", "uni0249.sc", "uni20B2", "uni2135"}
 
 TWIST_AREA = 2  # a piece this small is a self-crossing of the outline, not ink
-KINDS = ("speck", "twist", "pinhole", "sliver", "notch", "step")
+KINDS = ("speck", "twist", "pinhole", "sliver", "notch", "step", "ledge")
 
 
 def ink(font, glyph):
@@ -99,11 +108,11 @@ def vector_findings(path):
     return out
 
 
-def clean(path):
+def clean(path, ledges=True):
     """path merged (an outline crossing itself resolved as it renders), with
-    its specks, twists and pinholes dropped and its steps taken out. Give it
-    the outline as drawn: a crumb pinched off at a point comes apart in the
-    first merge only."""
+    its specks, twists and pinholes dropped and its steps (and ledges) taken
+    out. Give it the outline as drawn: a crumb pinched off at a point comes
+    apart in the first merge only."""
     path = pathops.simplify(path, clockwise=False)
     stats = [(c, contour_stats(c)) for c in path.contours]
     if not stats:
@@ -118,7 +127,7 @@ def clean(path):
         if area * sign < 0 and a < PINHOLE_AREA:
             continue
         c.draw(pen)
-    return unstep(out)
+    return unstep(out, ledges)
 
 
 class _Corners(BasePen):
@@ -184,10 +193,41 @@ def step_findings(path):
     return out
 
 
-def unstep(path):
+def _signed(d0, d1):
+    return math.degrees((d1 - d0 + math.pi) % (2 * math.pi) - math.pi)
+
+
+def _is_ledge(before, d, after, length, straight):
+    if not (straight and STEP <= length < LEDGE):
+        return False
+    t0, t1 = _signed(before, d), _signed(d, after)
+    return abs(t0) > LEDGE_TURN and abs(t1) > LEDGE_TURN and t0 * t1 < 0
+
+
+def ledge_findings(path):
+    """Short straight segments between corners turning opposite ways."""
+    pen = _Corners()
+    path.draw(pen)
+    out = []
+    for segs in pen.contours:
+        n = len(segs)
+        if n < 3:
+            continue
+        for i, (p0, p1, c_in, _c_out) in enumerate(segs):
+            if p0 == p1:
+                continue
+            prev, nxt = segs[i - 1], segs[(i + 1) % n]
+            before = _angle(prev[3] if prev[3] != prev[1] else prev[0], prev[1])
+            after = _angle(nxt[0], nxt[2] if nxt[2] != nxt[0] else nxt[1])
+            if _is_ledge(before, _angle(p0, p1), after, math.dist(p0, p1), c_in == p1):
+                out.append(("ledge", f"{round(p0[0])},{round(p0[1])}", f"{math.dist(p0, p1):.0f} units"))
+    return out
+
+
+def unstep(path, ledges=False):
     """path with its steps taken out: each very short segment between two
     corners shrunk to a point (at its middle, on whole units), so the
-    strokes on either side meet there."""
+    strokes on either side meet there; with ledges, the ledges too."""
     rec = RecordingPen()
     path.draw(rec)
     contours, cur = [], None
@@ -209,7 +249,7 @@ def unstep(path):
                 break
             for i in range(n):
                 p0, p1 = ends[i - 1], ends[i]
-                if p0 == p1 or math.dist(p0, p1) >= STEP:
+                if p0 == p1 or math.dist(p0, p1) >= (LEDGE if ledges else STEP):
                     continue
                 prev, here, nxt = segs[i - 1], segs[i], segs[(i + 1) % n]
                 # directions from the nearest distinct points (a control
@@ -219,7 +259,11 @@ def unstep(path):
                 b = next((q for q in [*reversed(prev[1][:-1]), ends[i - 2]] if q != p0), ends[i - 2])
                 a = next((q for q in nxt[1] if q != p1), nxt[1][-1])
                 before, after = _angle(b, p0), _angle(p1, a)
-                if _turn(before, _angle(p0, c_in)) > CORNER and _turn(_angle(c_out, p1), after) > CORNER:
+                if math.dist(p0, p1) >= STEP:
+                    hit = _is_ledge(before, _angle(p0, p1), after, math.dist(p0, p1), here[0] == "lineTo")
+                else:
+                    hit = _turn(before, _angle(p0, c_in)) > CORNER and _turn(_angle(c_out, p1), after) > CORNER
+                if hit:
                     m = (round((p0[0] + p1[0]) / 2), round((p0[1] + p1[1]) / 2))
                     prev[1][-1] = m
                     if nxt[1] and len(nxt[1]) > 1 and nxt[1][0] == p1:
@@ -323,6 +367,8 @@ def lint_glyph(font, glyph, kinds=KINDS):
         out += [f for f in vector_findings(path) if f[0] in kinds]
     if "step" in kinds:
         out += step_findings(path)
+    if "ledge" in kinds:
+        out += ledge_findings(path)
     if "notch" in kinds:
         out += notch_findings(font, glyph, path.bounds)
     return out
@@ -338,12 +384,12 @@ def lint(font, names=None, kinds=KINDS):
     return found
 
 
-FIXED = ("speck", "twist", "pinhole", "step")
+FIXED = ("speck", "twist", "pinhole", "step", "ledge")
 
 
 def fix(font, names=None):
-    """Clean the specks, twists, pinholes and steps of the outline glyphs;
-    the names of the glyphs changed."""
+    """Clean the specks, twists, pinholes, steps and ledges of the outline
+    glyphs (not the ledges of LEDGE_KEEP); the names of the glyphs changed."""
     import copy
 
     from derive import draw_path
@@ -355,7 +401,10 @@ def fix(font, names=None):
             if not g.contours or g.components:
                 break
             path = ink(font, g)
-            if not any(k in FIXED for k, *_ in vector_findings(path) + step_findings(path)):
+            found = vector_findings(path) + step_findings(path)
+            if name not in LEDGE_KEEP:
+                found += ledge_findings(path)
+            if not any(k in FIXED for k, *_ in found):
                 break
             before = copy.deepcopy(g)
             g.clearContours()
@@ -376,7 +425,7 @@ def main():
     ap.add_argument("ufo")
     ap.add_argument("glyphs", nargs="*")
     ap.add_argument("--kind", action="append", choices=KINDS, help="only these kinds (repeatable)")
-    ap.add_argument("--fix", action="store_true", help="clean specks, twists, pinholes and steps in place")
+    ap.add_argument("--fix", action="store_true", help="clean specks, twists, pinholes, steps and ledges in place")
     args = ap.parse_args()
     font = ufoLib2.Font.open(args.ufo)
     if args.fix:

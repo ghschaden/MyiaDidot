@@ -88,9 +88,9 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 	    --drafts build/proofs/drafts-review-Italic.tex
 	cd build/proofs && for t in charset smallcaps-review drafts-review smallcaps-review-Italic drafts-review-Italic; do \
 	    lualatex -interaction=nonstopmode $$t.tex >/dev/null; done
-	cd proofs && for t in proof smallcaps samples; do \
+	cd proofs && for t in proof smallcaps samples textpages; do \
 	    lualatex -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
-	@echo "proofs: build/proofs/{charset,proof,samples,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-Italic.pdf"
+	@echo "proofs: build/proofs/{charset,proof,samples,textpages,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-Italic.pdf"
 
 # One quarto page per language, the UDHR (texts fetched once into build/udhr)
 udhr: $(OTF)

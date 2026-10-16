@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni23D5" format="2">
 	<unicode hex="23D5"/>
-	<advance width="1980"/>
+	<advance width="1300"/>
 	<outline>
 		<contour>
-			<point x="1076.6994654661" y="758.1889984147" type="curve"/>
-			<point x="1117.994657189" y="757.1459831476" type="line"/>
-			<point x="1144.9411720158" y="633.9887169374"/>
-			<point x="1247.563994329" y="441.4759173796"/>
-			<point x="1504.8" y="440.8771929825" type="curve" smooth="yes"/>
-			<point x="1762.036005671" y="441.4759173796"/>
-			<point x="1864.6588279842" y="633.9887169374"/>
-			<point x="1891.605342811" y="757.1459831476" type="curve"/>
-			<point x="1932.9005345339" y="758.1889984147" type="line"/>
-			<point x="1924.8496066733" y="633.4846807512"/>
-			<point x="1805.2631424598" y="349.2223783962"/>
-			<point x="1504.8" y="350.0701754386" type="curve" smooth="yes"/>
-			<point x="1204.3368575402" y="349.2223783962"/>
-			<point x="1084.7503933267" y="633.4846807512"/>
+			<point x="200" y="100" type="line"/>
+			<point x="200" y="188" type="line"/>
+			<point x="1100" y="188" type="line"/>
+			<point x="1100" y="100" type="line"/>
 		</contour>
 		<contour>
-			<point x="119.1402445995" y="129.0656512673" type="line"/>
-			<point x="119.1402445995" y="196.618559259" type="line"/>
-			<point x="1940.0597554005" y="196.618559259" type="line"/>
-			<point x="1940.0597554005" y="129.0656512673" type="line"/>
+			<point x="656" y="802" type="curve"/>
+			<point x="694" y="818" type="line"/>
+			<point x="726" y="702"/>
+			<point x="787" y="612"/>
+			<point x="880" y="612" type="curve" smooth="yes"/>
+			<point x="973" y="612"/>
+			<point x="1034" y="702"/>
+			<point x="1066" y="818" type="curve"/>
+			<point x="1104" y="802" type="line"/>
+			<point x="1077" y="654"/>
+			<point x="1002" y="500"/>
+			<point x="880" y="500" type="curve" smooth="yes"/>
+			<point x="758" y="500"/>
+			<point x="683" y="654"/>
 		</contour>
 		<contour>
-			<point x="126.2994654661" y="758.1889984147" type="curve"/>
-			<point x="167.594657189" y="757.1459831476" type="line"/>
-			<point x="194.5411720158" y="633.9887169374"/>
-			<point x="297.163994329" y="441.4759173796"/>
-			<point x="554.4" y="440.8771929825" type="curve" smooth="yes"/>
-			<point x="811.636005671" y="441.4759173796"/>
-			<point x="914.2588279842" y="633.9887169374"/>
-			<point x="941.205342811" y="757.1459831476" type="curve"/>
-			<point x="982.5005345339" y="758.1889984147" type="line"/>
-			<point x="974.4496066733" y="633.4846807512"/>
-			<point x="854.8631424598" y="349.2223783962"/>
-			<point x="554.4" y="350.0701754386" type="curve" smooth="yes"/>
-			<point x="253.9368575402" y="349.2223783962"/>
-			<point x="134.3503933267" y="633.4846807512"/>
+			<point x="196" y="802" type="curve"/>
+			<point x="234" y="818" type="line"/>
+			<point x="266" y="702"/>
+			<point x="327" y="612"/>
+			<point x="420" y="612" type="curve" smooth="yes"/>
+			<point x="513" y="612"/>
+			<point x="574" y="702"/>
+			<point x="606" y="818" type="curve"/>
+			<point x="644" y="802" type="line"/>
+			<point x="617" y="654"/>
+			<point x="542" y="500"/>
+			<point x="420" y="500" type="curve" smooth="yes"/>
+			<point x="298" y="500"/>
+			<point x="223" y="654"/>
 		</contour>
 	</outline>
 	<lib>
@@ -47,7 +47,7 @@
 			<key>org.myiadidot.draft</key>
 			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

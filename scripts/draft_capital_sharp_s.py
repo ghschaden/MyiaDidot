@@ -7,7 +7,10 @@ vertically so the ascender (1496, the top of l and h) meets the cap height
 (1434), and thickens the vertical stems from the lowercase 164 to the capital
 208 by moving each point sideways in proportion to how far its outline faces
 left or right: thick vertical strokes gain the full 44 units, the horizontal
-hairlines nothing. The glyph is marked as a draft (lib DRAFT_KEY) for review.
+hairlines nothing. Then the bowls and the ball are moved WIDEN to the right
+(the arch and the waist hairline stretch) and the ball BALL, so the
+letter has a capital's width and the ball stands clear of the stem. The glyph is marked as a draft
+(lib DRAFT_KEY) for review.
 """
 
 import math
@@ -17,6 +20,9 @@ import ufoLib2
 
 ASCENDER, CAP_HEIGHT = 1496, 1434
 LC_STEM, UC_STEM = 164, 208
+WIDEN = 140
+BALL = 60  # the ball low down moves less: ß's own already stands off the stem
+STEM_X = 220  # where the stem's left edge is put before widening
 DRAFT_KEY = "org.myiadidot.draft"
 
 
@@ -45,6 +51,22 @@ def embolden_x(glyph, amount):
             p.x = round(p.x + sign * nx * amount / 2)
 
 
+def widen(glyph, amount, ball):
+    """Move what lies right of the stem: the bowls by amount, the ball low
+    down by ball.
+
+    Above the waist the shift grows from nothing at the stem to the full
+    amount over the arch, so the shoulder stretches without a kink."""
+    for contour in glyph.contours:
+        for p in contour.points:
+            if p.y > 860:
+                p.x += round(amount * min(1, max(0, (p.x - 430) / 300)))
+            elif p.y < 320 and p.x > 435:  # the ball, fading into the bowl's bottom
+                p.x += round(ball + (amount - ball) * min(1, max(0, (p.x - 800) / 40)))
+            elif p.x > 470:
+                p.x += amount
+
+
 def main(path):
     font = ufoLib2.Font.open(path)
     src = font["germandbls"]
@@ -56,21 +78,26 @@ def main(path):
     src.drawPoints(g.getPointPen())
     g.unicodes = [0x1E9E]
     sy = CAP_HEIGHT / ASCENDER
+    # the stem's left edge: the leftmost point above the serif
+    dx = STEM_X - min(p.x for c in g.contours for p in c.points if 100 < p.y < 1000)
     for contour in g.contours:
         for p in contour.points:
             p.y = round(p.y * sy)
+            p.x += dx
     amount = UC_STEM - LC_STEM
     embolden_x(g, amount)
     for contour in g.contours:
         for p in contour.points:
             p.x += amount // 2  # keep the left sidebearing
-    g.width = src.width + amount
+    widen(g, WIDEN, BALL)
+    g.width = src.width + dx + amount + WIDEN
+    shift = dx + amount // 2 + WIDEN // 2
     for a in src.anchors:
         if a.name in ("Bottom", "DotBelow", "Cedilla"):
-            g.appendAnchor({"name": a.name, "x": a.x + amount // 2, "y": a.y})
+            g.appendAnchor({"name": a.name, "x": a.x + shift, "y": a.y})
     tops = [a for a in src.anchors if a.name == "Top"]
     if tops:
-        g.appendAnchor({"name": "TopCap", "x": tops[0].x + amount // 2, "y": 1580})
+        g.appendAnchor({"name": "TopCap", "x": tops[0].x + shift, "y": 1580})
     g.lib[DRAFT_KEY] = True
     if "uni1E9E" not in font.glyphOrder:
         order = list(font.glyphOrder)

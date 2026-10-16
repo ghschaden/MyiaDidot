@@ -1,33 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni2194" format="2">
 	<unicode hex="2194"/>
-	<advance width="1861"/>
+	<advance width="1600"/>
 	<outline>
 		<contour>
-			<point x="114.6730032779" y="504.5601813468" type="curve"/>
-			<point x="114.6730032779" y="519.0187660217" type="line"/>
-			<point x="273.3321538479" y="581.144997032"/>
-			<point x="413.0481693568" y="694.078139377"/>
-			<point x="506.4374829468" y="778.7022231193" type="curve"/>
-			<point x="524.0273718733" y="760.8053351983" type="line"/>
-			<point x="342.9223026446" y="545.6621304775" type="line"/>
-			<point x="1549.9576973554" y="545.6621304775" type="line"/>
-			<point x="1368.8526281267" y="760.8053351983" type="line"/>
-			<point x="1386.4425170532" y="778.7022231193" type="line"/>
-			<point x="1479.8318306432" y="694.078139377"/>
-			<point x="1619.5478461521" y="581.144997032"/>
-			<point x="1778.2069967221" y="519.0187660217" type="curve"/>
-			<point x="1778.2069967221" y="504.5601813468" type="line"/>
-			<point x="1619.5478461521" y="442.4339503364"/>
-			<point x="1479.8318306432" y="329.5008079914"/>
-			<point x="1386.4425170532" y="244.8767242491" type="curve"/>
-			<point x="1368.8526281267" y="262.7736121701" type="line"/>
-			<point x="1549.9576973554" y="477.9168168909" type="line"/>
-			<point x="342.9223026446" y="477.9168168909" type="line"/>
-			<point x="524.0273718733" y="262.7736121701" type="line"/>
-			<point x="506.4374829468" y="244.8767242491" type="line"/>
-			<point x="413.0481693568" y="329.5008079914"/>
-			<point x="273.3321538479" y="442.4339503364"/>
+			<point x="120" y="514" type="line"/>
+			<point x="480" y="744" type="line"/>
+			<point x="421" y="550" type="line"/>
+			<point x="1179" y="550" type="line"/>
+			<point x="1120" y="744" type="line"/>
+			<point x="1480" y="514" type="line"/>
+			<point x="1120" y="284" type="line"/>
+			<point x="1179" y="478" type="line"/>
+			<point x="421" y="478" type="line"/>
+			<point x="480" y="284" type="line"/>
 		</contour>
 	</outline>
 	<lib>
@@ -35,7 +21,7 @@
 			<key>org.myiadidot.draft</key>
 			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>roman</string>
 		</dict>
 	</lib>
 </glyph>

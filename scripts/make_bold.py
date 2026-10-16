@@ -11,7 +11,8 @@ Accents and marks are only made a little heavier (MARK_AX, MARK_AY) and stay
 where they are. Anchors and the offsets of components move with the
 outlines, so composites land where the Regular's would; those the anchor
 rules of composites.py can make are then rebuilt from the Bold's anchors,
-after its stacking anchors are recomputed from its ink. Kerning is scaled
+after its stacking anchors are recomputed from its ink. The letters are then
+spaced tighter (BOLD_CUT, scripts/respace.py). Kerning is scaled
 by KX, and so are the horizontal values of the hand-set positioning in the
 features. Pinholes and crumbs the emboldening leaves are cleaned
 (glyph_lint.py). Afterwards: smallcaps.py on the Bold, make normalize.
@@ -34,11 +35,26 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from composites import SPECIAL, Builder, stack_anchors
 from derive import embolden
 from glyph_lint import fix
+from respace import CUT_KEY, classifier, respace
 
 ROOT = Path(__file__).resolve().parent.parent
 KX = 1.04  # widening, so the counters keep their light
 AX, AY = 90, 8  # stems 164 -> 254 (lowercase), 208 -> 298 (capitals); hairlines +8
 MARK_AX, MARK_AY = 30, 8  # accents a little heavier
+# the Bold's letters are spaced tighter than the Regular's (the Regular's
+# sidebearings times KX), as a bold's are: 40 off each side in all of the
+# Regular's 20 (times KX) and BOLD_CUT, Greek lowercase 25 of 10 and BOLD_CUT_GREEK
+BOLD_CUT, BOLD_CUT_GREEK = 19, 15
+# the figures, which respace.py leaves alone, are tighter too: emboldened
+# they stand looser than the Bold's letters (1.08 of their side space, where
+# bold text faces have 0.8-1.0); one cut for all keeps them tabular, and the
+# figure space and dash keep their width
+BOLD_FIGURE_CUT = 28
+FIGURE_NAMES = {f"{n}{s}" for n in ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+                for s in ("", "oldstyle")} | {"uni2007", "figuredash"}
+# the horn on u a little left: where the Regular's sits, the Bold's heavier
+# foot leaves a ledge beside the stem (glyph_lint)
+ANCHOR_NUDGE = {("u", "Horn"): -10}
 
 
 def mark_like(g):
@@ -194,7 +210,7 @@ def main():
                     dx = dx * KX
                 c.transformation = (xx, xy, yx, yy, round(dx), dy)
             for a in g.anchors:
-                a.x = round(a.x * KX + AX / 2)
+                a.x = round(a.x * KX + AX / 2) + ANCHOR_NUDGE.get((g.name, a.name), 0)
             room = [(b, dx) for b, dx, _ in bases if dx > 0]
             if len(bases) == 1 and room and g.width == regular[room[0][0]].width + room[0][1]:
                 # a capital given room on its left for its accent (Ἤ): as wide
@@ -258,6 +274,11 @@ def main():
     # what emboldening leaves: counters closed to pinholes, outlines crossing
     # themselves (glyph_lint)
     cleaned = fix(font)
+    respace(font, classifier(font, BOLD_CUT, BOLD_CUT_GREEK))
+    respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
+    done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
+    font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
+                         "greekLower": round(done["greekLower"] * KX) + BOLD_CUT_GREEK}
     write(font, Path(args.bold))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
           f"{outlined} outlined letters made from base and mark, {len(cleaned)} cleaned")

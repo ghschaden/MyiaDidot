@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>org.myiadidot.respaced</key>
+		<dict>
+			<key>cut</key>
+			<integer>20</integer>
+			<key>greekLower</key>
+			<integer>10</integer>
+		</dict>
 		<key>org.myiadidot.smallcapHeight</key>
 		<integer>1040</integer>
 		<key>public.glyphOrder</key>

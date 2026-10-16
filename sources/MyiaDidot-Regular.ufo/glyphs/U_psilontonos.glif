@@ -2,9 +2,9 @@
 <glyph name="Upsilontonos" format="2">
 	<unicode hex="038E"/>
 	<unicode hex="1FEB"/>
-	<advance width="1806"/>
+	<advance width="1766"/>
 	<outline>
-		<component base="tonos"/>
+		<component base="tonos" xOffset="-20"/>
 		<component base="Upsilon" xOffset="432"/>
 	</outline>
 </glyph>

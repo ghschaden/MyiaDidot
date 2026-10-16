@@ -302,8 +302,9 @@ RECIPES = [
     ("Ƴ", "curl", "Y", ("c", [(960, 1150, 1460, BIG)],
                         {"at": ("y", 1150, "last"), "dir": 63.4, "turn": "cw", "r": 200,
                          "sweep": 140, "ball": 85})),
+    # ȷ's tail at the width of N's thin left stem (64 of ȷ's 164), centred on it
     ("Ɲ", "attach", "N", ("c", [(90, -BIG, 590, 60)],
-                          [("uni0237", J_TAIL, (320, 100), (0.6, 0.6, 338, 80))])),
+                          [("uni0237", J_TAIL, (320, 100), (64 / 164, 0.6, 326, 80))])),
     ("Ƈ", "curl", "C", ("c", [(1100, 900, BIG, BIG)],
                         {"at": ("x", 1080), "dir": 70, "turn": "cw", "r": 170,
                          "sweep": 145, "ball": 85})),
@@ -833,7 +834,8 @@ def tail_path(font, source, band, mode):
     letter = to_path(font, font[source])
     if mode == "stem":
         ta, tb = stems_at(font, source, TAIL_Y)[-1]
-        letter = path_op(letter, rect_path(ta, -BIG, BIG, foot_top(font, source, (ta, tb))), "DIFFERENCE")
+        # a little above the serif's top, so no hairline of it is left (the tail covers it)
+        letter = path_op(letter, rect_path(ta, -BIG, BIG, foot_top(font, source, (ta, tb)) + 6), "DIFFERENCE")
         keep = rect_path(sa, -BIG, BIG, TAIL_Y)
         dx = ta - sa
     else:
@@ -957,10 +959,10 @@ class CubicPen(BasePen):
 def draw_path(font, src, dst, out):
     """Draw a merged outline (a pathops Path or a recording) into dst,
     rounded and in the source's contour direction."""
-    from glyph_lint import clean
+    from glyph_lint import LEDGE_KEEP, clean
 
     if isinstance(out, pathops.Path):  # no crumbs of the cuts and merges (glyph_lint)
-        out = clean(out)
+        out = clean(out, ledges=dst.name not in LEDGE_KEEP)
     rec = RecordingPen()
     # pathops can return a quadratic segment; the font is cubic
     cubic = CubicPen(rec)
@@ -1061,7 +1063,41 @@ def ezh(font, source, band, ym, bottom, right):
     bowl.draw(TransformPen(rec, (kx, 0, 0, ky, dx - kx * tx0, ym - ky * tongue_y)))
     out = RecordingPen()
     embolden(rec, stem * (1 - kx), hair * (1 - ky)).draw(out)
-    return path_op(top, to_path(None, rec=out), "UNION")
+    joined = path_op(top, to_path(None, rec=out), "UNION")
+    # cut flat across the 3's waist, the bowl's top stands as a shelf beside
+    # the diagonal: cut away above a line from where the diagonal's edge
+    # meets it down to where the bowl's own top edge falls away, so the
+    # diagonal meets the bowl in a crotch
+    def top_at(x):
+        """the top of the ink at x, looked at up to just above the cut"""
+        cut = path_op(joined, rect_path(x - 0.5, -BIG, x + 0.5, ym + 120), "INTERSECTION")
+        tops = [c.bounds[3] for c in cut.contours if c.bounds[1] < ym]
+        return max(tops) if tops else None
+
+    def right_at(y):
+        return max(e for _, e in stems_at(font, source, y))
+
+    x = right_at(ym + 1) + 2
+    while x < right and (top_at(x) or 0) >= ym + 119:  # still under the diagonal
+        x += 2
+    shelf = top_at(x)
+    while x < right and (top_at(x) or 0) > shelf - 4:  # along the shelf (and the stub on it)
+        x += 2
+    bx, by = x + 6, top_at(x + 6)
+    if by is None or x >= right:
+        return joined
+    ay = shelf
+    ax = right_at(ay - 1)
+    h = 60  # the shelf and the stub of the 3's upper bowl on it
+    if right_at(ay + h) >= bx:
+        return joined
+    cut = RecordingPen()
+    cut.moveTo((ax, ay))
+    cut.lineTo((bx, by))
+    cut.lineTo((bx, ay + h))
+    cut.lineTo((right_at(ay + h), ay + h))
+    cut.closePath()
+    return path_op(joined, to_path(None, rec=cut), "DIFFERENCE")
 
 
 def esh(font, source, band, bottom_model):
@@ -1447,8 +1483,14 @@ def main():
             only.update(arg)
 
     font = ufoLib2.Font.open(args.ufo)
+    # built on the spacing the recipes were tuned on, then cut again
+    # (scripts/respace.py): scaled letters (small caps) keep the cut whole
+    from respace import CUT_KEY, classifier, respace, undo
+
+    done = font.lib.get(CUT_KEY)
+    undo(font)
     cmap = {u: g.name for g in font for u in g.unicodes}
-    made, kept = [], []
+    made, kept, built = [], [], []
 
     def resolve(c):
         """Glyph name of a character, or of its small cap ("ƒ.sc" -> florin.sc)."""
@@ -1480,6 +1522,14 @@ def main():
         if not ch.endswith(".sc"):
             cmap[ord(ch)] = g.name
         made.append(ch)
+        built.append(g.name)
+    # what a recipe drew without merging (enlarged, turned) cleaned too
+    from glyph_lint import fix
+
+    fix(font, built)
+    if done:
+        respace(font, classifier(font, done["cut"], done["greekLower"]))
+        font.lib[CUT_KEY] = done
     font.save()
     print(f"drafted {len(made)}: {''.join(made)}")
     if kept:

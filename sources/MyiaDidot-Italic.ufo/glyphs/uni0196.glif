@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0196" format="2">
 	<unicode hex="0196"/>
-	<advance width="928"/>
+	<advance width="922"/>
 	<outline>
 		<contour>
-			<point x="100.5217491987" y="201" type="curve" smooth="yes"/>
-			<point x="100.17049219" y="277"/>
-			<point x="137.0981420929" y="435"/>
-			<point x="150.1394534558" y="483" type="curve" smooth="yes"/>
-			<point x="413.5204348336" y="1434" type="line"/>
-			<point x="552.6072107805" y="1438" type="line"/>
-			<point x="248.2985794998" y="329" type="line" smooth="yes"/>
-			<point x="238.7892899643" y="294"/>
-			<point x="225.3895086678" y="241"/>
-			<point x="225.5217491987" y="201" type="curve" smooth="yes"/>
-			<point x="227.2201099951" y="141"/>
-			<point x="256.9298369374" y="70"/>
-			<point x="367.6581429507" y="69" type="curve" smooth="yes"/>
-			<point x="529.2015309241" y="71"/>
-			<point x="696.11366146" y="332"/>
-			<point x="819.1466663807" y="564" type="curve"/>
-			<point x="787.4410926595" y="543" type="line"/>
-			<point x="683.7438253804" y="338"/>
-			<point x="496.2170502912" y="-32"/>
-			<point x="275.7604382647" y="-30" type="curve"/>
-			<point x="148.4887442779" y="-31"/>
-			<point x="96.8316948445" y="77"/>
+			<point x="76" y="201" type="curve"/>
+			<point x="97" y="277"/>
+			<point x="113" y="435"/>
+			<point x="126" y="483" type="curve" smooth="yes"/>
+			<point x="390" y="1434" type="line"/>
+			<point x="550" y="1438" type="line"/>
+			<point x="267" y="329" type="line" smooth="yes"/>
+			<point x="257" y="294"/>
+			<point x="244" y="241"/>
+			<point x="245" y="201" type="curve" smooth="yes"/>
+			<point x="246" y="141"/>
+			<point x="259" y="70"/>
+			<point x="365" y="69" type="curve" smooth="yes"/>
+			<point x="470" y="70"/>
+			<point x="577" y="181"/>
+			<point x="674" y="323" type="curve"/>
+			<point x="564" y="146"/>
+			<point x="428" y="-31"/>
+			<point x="273" y="-30" type="curve"/>
+			<point x="145" y="-31"/>
+			<point x="94" y="77"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="358" y="-20"/>
-	<anchor name="Bottom" x="364" y="0"/>
-	<anchor name="TopCap" x="758" y="1580"/>
-	<anchor name="Horn" x="951" y="1269"/>
+	<anchor name="DotBelow" x="355" y="-20"/>
+	<anchor name="Bottom" x="361" y="0"/>
+	<anchor name="TopCap" x="755" y="1580"/>
+	<anchor name="Horn" x="948" y="1269"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.draft</key>

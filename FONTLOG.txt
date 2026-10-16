@@ -45,6 +45,55 @@ ChangeLog
       drawn across λ whole; in ₨ R's leg runs out into the s.
     * Ʈ in Regular and Bold: the stem thins below the baseline into a
       light hook (ȷ's tail scaled to the capital stem was heavy).
+    * Italic consistency review: ɹ ɺ ɻ are the italic r turned (no longer
+      the roman's upright stem); ɖ ɳ hook below the baseline as ɭ ɽ ʈ do;
+      ҳ җ reach as deep as ң қ ҷ; Ƈ's hook rises as Ɠ's; the small caps
+      that were capitals scaled down (ʛ ɲ ʝ ϗ ꞵ ƙ ƭ ƴ ƈ ƥ ɦ ʋ ⱳ ʒ ʊ ɂ ɑ) are
+      drafted from the Italic's capitals like the other small caps; the
+      mathematical signs (+ − × = < > ≤ ≥ ≠ ≈ ±, ⁺⁻⁼₊₋₌), arrows, shapes,
+      metrical marks and ⁂ are Myia's, upright (Old Standard's are drawn
+      for mathematics, half again as large).
+    * ẞ in Regular and Bold: wider (1310, near B), its bowls and ball moved
+      off the stem, so it is lighter in the line and the Bold's ball no
+      longer closes onto the stem; its small cap redrafted from it. ß's
+      ball moved off the stem too (open in the Bold), and ß sits 28 units
+      closer to the letter before it (its round shoulder leaves more white
+      than l's serif).
+    * Full pages of running text in the proofs (textpages.pdf).
+    * Spacing: measured against other Didots and text faces (the white
+      beside the letters, relative to the x-height), Myia's letters were
+      spaced loosely, the Bold more than the Regular. The letters (and
+      their small caps and ligatures) are now tighter by 20 units a side
+      in the Regular, 40 in the Bold and 10 in the Italic; Greek
+      lowercase, already tighter than the Latin, by 10 and 25 (Regular,
+      Bold). Figures, punctuation, signs and marks keep their spacing
+      (scripts/respace.py; make_bold.py and make_italic.py apply theirs).
+      62 kerning exceptions keep apart the pairs the tightening brought
+      closer than 20 units (Y J, Ą y, small-cap A Э, ...).
+    * Joins: glyph_lint finds ledges, the short jogs left where a curl, bar,
+      tail or horn was joined on at another width or height than the
+      stroke it joins (and the cusps emboldening leaves), and derive.py,
+      make_italic.py and make_bold.py repair them (the jog shrunk to a
+      point). The larger ones were redrawn: the Italic Ƭ's curl leaves the
+      bar where it is as thin as the curl; ƴ's ball sits flush; the horn of
+      ư sits lower in the Italic, further left in the Bold; the tails of
+      Ң ң Ҷ ҷ lost a hairline of the foot serif they replaced. Ɲ's hook is
+      ȷ's tail at the width of N's thin stem (it stood out on both sides);
+      Ʒ ʒ ƹ Ƹ ɮ: the bowl, cut flat across the 3's waist, stood as a shelf
+      beside the diagonal; cut away, the diagonal meets it in a crotch.
+    * Italic weight: measured against other italics (colour, the ink over
+      the space, lowercase by frequency), Myia's Italic was 0.80 of the
+      Regular's, where italics have 0.93-1.04 of their roman's (Old
+      Standard's own 0.97). Its letters' thick upright strokes are now
+      heavier (stems about the Regular's, as Old Standard's italic has its
+      roman's), the hairlines and thin strokes as they were, so its
+      contrast grows: 0.91. The weight is added after everything is made of
+      them, so the recipes and transplants keep their fit; the spacing is
+      kept.
+    * Bold figures: emboldened and not respaced, they stood looser than the
+      Bold's letters (1.08 of their side space; bold text faces have
+      0.8-1.0): 28 units a side tighter, all alike (they stay tabular), and
+      the figure space and figure dash with them.
     * Every glyph compared with Charis SIL and Libertinus Serif for a hook
       or element on the other side; where both agree against Myia, Myia
       follows: ɔ (and ᵓ) is the turned c, its ball low, not the mirrored

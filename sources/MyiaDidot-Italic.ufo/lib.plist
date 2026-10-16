@@ -4,6 +4,13 @@
 	<dict>
 		<key>org.myiadidot.italicSource</key>
 		<string>Old Standard Italic, akryukov/oldstand (see sources/oldstand/COMMIT)</string>
+		<key>org.myiadidot.respaced</key>
+		<dict>
+			<key>cut</key>
+			<integer>3</integer>
+			<key>greekLower</key>
+			<integer>3</integer>
+		</dict>
 		<key>org.myiadidot.smallcapHeight</key>
 		<integer>1040</integer>
 		<key>public.glyphOrder</key>
