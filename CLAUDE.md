@@ -79,7 +79,13 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   own (make_bold.py BOLD_FIGURE_CUT). The Italic's letters are made at Old
   Standard's weight and their thick strokes made heavier at the end
   (make_italic.py WEIGHT, weight_thick):
-  recipe widths are for the weight before that.
+  recipe widths are for the weight before that. Emboldening (derive.embolden)
+  keeps smooth nodes smooth and fits the handles; derive.rezone puts flat
+  edges it moved back on the zones. Old-style figures are proportional
+  (`scripts/space_figures.py`, run by make_bold.py/make_italic.py; tnum gives
+  the .tf ones). Per-style spacing tweaks: make_bold.py BOLD_SIDEBEARINGS,
+  make_italic.py ITALIC_SIDEBEARINGS and ITALIC_KERNING; one-off sidebearing
+  changes with respace.sidebearings() (it carries composites along).
 - The working copy is inside a pCloud/Nextcloud-synced folder: rewriting
   many files fast can leave "(conflicted)" copies and missing glyph files;
   check for them after big generation runs.
@@ -118,6 +124,7 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 | `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `textpages.pdf` (full book pages, mixed styles), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
 | `make udhr` | `build/proofs/udhr-quarto.pdf`: one quarto page per language (the UDHR; `scripts/udhr_book.py`, texts fetched once into `build/udhr/`) |
 | `make qa` | full fontbakery reports in `build/qa/` |
+| `make quality` | design quality against reference fonts (`scripts/quality/`, references fetched into `build/refs/`): colour, spacing, pairs, alignment, construction, transitions, accents, slant, small sizes, into `build/quality/` |
 | `python scripts/coverage.py fonts/otf/MyiaDidot-Regular.otf --list` | what is missing |
 | `python scripts/status.py --long` | coverage per glyph set + last test run |
 | `python scripts/composites.py UFO --check` | composites vs rules |

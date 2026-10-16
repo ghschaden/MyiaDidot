@@ -91,6 +91,39 @@ def respace(font, cut_for, names=None):
     return changed
 
 
+def sidebearings(font, deltas):
+    """Change sidebearings: deltas {glyph: (left, right)} in units (positive:
+    more space). The glyphs built on one (accented letters, aliases: one of
+    their components, at no offset) change with it; their marks move with
+    the letter. Returns the names changed."""
+    d = dict(deltas)
+    grown = True
+    while grown:  # composites on composites
+        grown = False
+        for g in font:
+            if g.name in d or not g.components or g.contours:
+                continue
+            base = next((c.baseGlyph for c in g.components if c.baseGlyph in d
+                         and abs(c.transformation[4]) < 1 and abs(c.transformation[5]) < 1), None)
+            if base:
+                d[g.name] = d[base]
+                grown = True
+    for name, (dl, dr) in d.items():
+        g = font[name]
+        for c in g.contours:
+            for p in c.points:
+                p.x += dl
+        for a in g.anchors:
+            a.x += dl
+        for c in g.components:
+            shift = dl - d.get(c.baseGlyph, (0, 0))[0]
+            if shift:
+                xx, xy, yx, yy, dx, dy = c.transformation
+                c.transformation = (xx, xy, yx, yy, dx + shift, dy)
+        g.width += dl + dr
+    return list(d)
+
+
 def undo(font):
     """Put back the spacing a font had before respace (its lib records the
     cuts), for scripts tuned on it (make_italic.py reads the Regular so)."""

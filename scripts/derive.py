@@ -33,6 +33,7 @@ unreviewed drafts with --redraft. CHARS limits the run to those characters.
 """
 
 import argparse
+import itertools
 import math
 import sys
 from pathlib import Path
@@ -867,9 +868,13 @@ def strokes(font, name):
     return b, s[1] - s[0], top[1] - top[0]
 
 
-def embolden(rec, ax, ay):
+def embolden(rec, ax, ay, factor=None):
     """Thicken vertical strokes by ax and horizontal ones by ay (negative:
-    thinner), moving each point along its outline's normal."""
+    thinner). Each node moves out along its outline's normal (at a corner,
+    along the bisector, as far as both edges move: a mitre, limited); its
+    handles move with it and grow as their segment grows, so smooth nodes
+    stay smooth and a circle stays a circle. factor(x, y, inward) -> 0..1, if
+    given, scales ax at each node (make_italic: the thick strokes only)."""
     glyph = ufoLib2.objects.Glyph()
     rec.replay(glyph.getPen())
 
@@ -877,9 +882,156 @@ def embolden(rec, ax, ay):
         pts = [(p.x, p.y) for p in contour.points]
         return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
 
+    def unit(dx, dy):
+        n = math.hypot(dx, dy)
+        return (dx / n, dy / n) if n > 1e-9 else None
+
     # outlines wind like the largest contour, counters the other way: an
     # outline grows outward, a counter shrinks (its boundary moves into it),
     # so the ink around a counter thickens too
+    areas = [area(c) for c in glyph.contours]
+    outer = max(areas, key=abs, default=1) > 0
+    for contour, a in zip(glyph.contours, areas, strict=True):
+        P = contour.points
+        n = len(P)
+        sign = 1 if a > 0 else -1
+        if (a > 0) != outer:
+            sign = -sign
+        ons = [i for i, p in enumerate(P) if p.type]
+        if not ons or n < 3:
+            continue
+        old = [(p.x, p.y) for p in P]
+        move, ks = {}, {}
+        for i in ons:
+            x, y = old[i]
+            # the nearest distinct points before and after: the tangents
+            b = next((old[(i - k) % n] for k in range(1, n) if old[(i - k) % n] != (x, y)), None)
+            f = next((old[(i + k) % n] for k in range(1, n) if old[(i + k) % n] != (x, y)), None)
+            t_in, t_out = unit(x - b[0], y - b[1]), unit(f[0] - x, f[1] - y)
+            if not t_in or not t_out:
+                move[i] = (0.0, 0.0)
+                continue
+            # right-hand normals of the edges, and their bisector
+            n_in, n_out = (t_in[1], -t_in[0]), (t_out[1], -t_out[0])
+            m = unit(n_in[0] + n_out[0], n_in[1] + n_out[1]) or n_in
+            # the mitre: as far as both edges move; at a convex corner limited
+            # (no spike), at a concave one (a crotch) whole, or a slit is left
+            turn = t_in[0] * t_out[1] - t_in[1] * t_out[0]
+            convex = turn * sign < 0
+            half = max(0.5 if convex else 0.1, math.hypot(n_in[0] + n_out[0], n_in[1] + n_out[1]) / 2)
+            k = factor(x, y, (-sign * m[0], -sign * m[1])) if factor else 1.0
+            ks[i] = k
+            move[i] = (sign * m[0] / half * ax * k / 2, sign * m[1] / half * ay / 2)
+        new = list(old)
+        for i in ons:
+            new[i] = (old[i][0] + move[i][0], old[i][1] + move[i][1])
+        # handles: along their old directions (so smooth nodes stay smooth),
+        # their lengths fitted (least squares) to the curve's points offset
+        # along their own normals, as far as the nodes are; a tight curve
+        # keeps its shape
+        def offset_fit(i, j, h1, h2, old=old, new=new, ks=ks, sign=sign):
+            P0, P1, P2, P3 = old[i], old[h1], old[h2], old[j]
+            A, B = new[i], new[j]
+            ta = unit(P1[0] - P0[0], P1[1] - P0[1])
+            tb = unit(P3[0] - P2[0], P3[1] - P2[1])
+            if not ta or not tb:
+                return None
+            ka, kb = ks.get(i, 1.0), ks.get(j, 1.0)
+            rows, rhs = [], []
+            for step in range(1, 12):
+                t = step / 12
+                u = 1 - t
+                pt = [u ** 3 * P0[q] + 3 * u * u * t * P1[q] + 3 * u * t * t * P2[q] + t ** 3 * P3[q] for q in (0, 1)]
+                d = [3 * u * u * (P1[q] - P0[q]) + 6 * u * t * (P2[q] - P1[q]) + 3 * t * t * (P3[q] - P2[q])
+                     for q in (0, 1)]
+                tn = unit(*d)
+                if not tn:
+                    continue
+                k = ka + (kb - ka) * t
+                target = (pt[0] + sign * tn[1] * ax * k / 2, pt[1] - sign * tn[0] * ay / 2)
+                b0, b1, b2, b3 = u ** 3, 3 * u * u * t, 3 * u * t * t, t ** 3
+                base = [(b0 + b1) * A[q] + (b2 + b3) * B[q] for q in (0, 1)]
+                for q in (0, 1):
+                    rows.append((b1 * ta[q], -b2 * tb[q]))
+                    rhs.append(target[q] - base[q])
+            s11 = sum(r[0] * r[0] for r in rows)
+            s12 = sum(r[0] * r[1] for r in rows)
+            s22 = sum(r[1] * r[1] for r in rows)
+            r1 = sum(r[0] * v for r, v in zip(rows, rhs, strict=True))
+            r2 = sum(r[1] * v for r, v in zip(rows, rhs, strict=True))
+            det = s11 * s22 - s12 * s12
+            if abs(det) < 1e-9:
+                return None
+            la, lb = (r1 * s22 - r2 * s12) / det, (s11 * r2 - s12 * r1) / det
+            # never shorter than a tenth of the old handles, nor turned round
+            la = max(la, 0.1 * math.dist(P0, P1))
+            lb = max(lb, 0.1 * math.dist(P2, P3))
+            return (A[0] + ta[0] * la, A[1] + ta[1] * la), (B[0] - tb[0] * lb, B[1] - tb[1] * lb)
+
+        for idx, i in enumerate(ons):
+            j = ons[(idx + 1) % len(ons)]
+            offs = [(i + k) % n for k in range(1, (j - i) % n or n)]
+            if not offs:
+                continue
+            fitted = offset_fit(i, j, offs[0], offs[1]) if len(offs) == 2 else None
+            if fitted:
+                new[offs[0]], new[offs[1]] = fitted
+                continue
+            # other segments: the handles with their nodes, scaled as the chord
+            c0, c1 = math.dist(old[i], old[j]), math.dist(new[i], new[j])
+            r = c1 / c0 if c0 > 1e-6 else 1.0
+            for k, h in enumerate(offs):
+                own = i if k < len(offs) / 2 else j
+                ox, oy = old[own]
+                nx, ny = new[own]
+                new[h] = (nx + (old[h][0] - ox) * r, ny + (old[h][1] - oy) * r)
+        for p, (x, y) in zip(P, new, strict=True):
+            p.x, p.y = x, y
+    return glyph
+
+
+# the alignment edges (flat tops and bottoms) of the Regular, which
+# emboldening by ay moves by ay / 2: bottoms (descender, baseline), tops
+ZONE_BOTTOMS = (-612, 0)
+ZONE_TOPS = (884, 1040, 1434, 1496)
+
+
+def rezone(glyph, ay):
+    """Undo what emboldening by ay does to the alignment: the flat edges it
+    moved by ay / 2 (bottoms down, tops up) put back on the zones, the
+    heights between mapped linearly (by under 1 % of a zone)."""
+    if not ay:
+        return glyph
+    moved = sorted([(z - ay / 2, z) for z in ZONE_BOTTOMS] + [(z + ay / 2, z) for z in ZONE_TOPS])
+
+    def f(y):
+        if y <= moved[0][0]:
+            return y + moved[0][1] - moved[0][0]
+        if y >= moved[-1][0]:
+            return y + moved[-1][1] - moved[-1][0]
+        for (y0, z0), (y1, z1) in itertools.pairwise(moved):
+            if y0 <= y <= y1:
+                return z0 + (y - y0) * (z1 - z0) / (y1 - y0)
+        return y
+
+    for c in glyph.contours:
+        for p in c.points:
+            p.y = f(p.y)
+    return glyph
+
+
+def embolden_simple(rec, ax, ay):
+    """The earlier emboldening: each point (handles too) moved along the
+    normal of the chord between its neighbours. Rounder at corners (it does
+    not mitre), but smooth nodes come out a little broken; make_bold.py
+    falls back on it where embolden() would close a gap to a slit."""
+    glyph = ufoLib2.objects.Glyph()
+    rec.replay(glyph.getPen())
+
+    def area(contour):
+        pts = [(p.x, p.y) for p in contour.points]
+        return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
+
     areas = [area(c) for c in glyph.contours]
     outer = max(areas, key=abs, default=1) > 0
     for contour, a in zip(glyph.contours, areas, strict=True):
@@ -907,6 +1059,12 @@ def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False):
     its loop on the baseline for Ɣ)."""
     (b0, s0, h0), (b1, s1, h1) = strokes(font, src_ref), strokes(font, dst_ref)
     k = ((b1[3] - b1[1]) - h1) / ((b0[3] - b0[1]) - h0)
+    # a capital made a small cap: scaled about the baseline from the cap height
+    # to the small caps' (its flat edges on 0 and that height, not on O's
+    # overshoots)
+    on_baseline = src_ref == "O" and dst_ref.endswith(".sc")
+    if on_baseline:
+        k = font.lib.get("org.myiadidot.smallcapHeight", 1040) / (font.info.capHeight or 1434)
     if fit:
         sb = ink_bounds(font, source)
         k = (fit[1] - fit[0]) / (sb[3] - sb[1])
@@ -922,6 +1080,8 @@ def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False):
     else:
         font[source].draw(TransformPen(rec, (k, 0, 0, k, 0, 0)))
         glyph = embolden(rec, s1 - k * s0, h1 - k * h0)
+        if on_baseline:  # its flat edges back on the zones
+            glyph = rezone(glyph, h1 - k * h0)
     out = RecordingPen()
     glyph.draw(out)
     bp = BoundsPen(None)
@@ -929,7 +1089,7 @@ def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False):
     x0, y0, x1, _ = bp.bounds
     lsb, rsb = b1[0], font[dst_ref].width - b1[2]
     moved = RecordingPen()
-    out.replay(TransformPen(moved, (1, 0, 0, 1, lsb - x0, b1[1] - y0)))
+    out.replay(TransformPen(moved, (1, 0, 0, 1, lsb - x0, 0 if on_baseline else b1[1] - y0)))
     return moved, round(lsb + (x1 - x0) + rsb)
 
 

@@ -90,6 +90,34 @@ ChangeLog
       contrast grows: 0.91. The weight is added after everything is made of
       them, so the recipes and transplants keep their fit; the spacing is
       kept.
+    * Quality evaluation (scripts/quality/, make quality: every glyph measured
+      against Didots and text faces) and its fixes:
+      - Emboldening (derive.embolden, used by the Bold, the Italic and
+        recipes) offsets curves properly: each node along its outline's
+        normal (a mitre at corners), its handles along their old directions
+        with their lengths fitted to the offset curve. Smooth nodes stay
+        smooth: in the Bold 1525 broken tangents became 512, 1646 kinks
+        318, missing extremes 236 139. Where parts come close (x's inner
+        feet, the top of ч) the gap is bridged; where a slit or loop would
+        still be left, the earlier, rounder emboldening is used.
+      - Emboldening moved the flat edges by half the change in horizontal
+        strokes (Bold letters 4 below the baseline and above the zones, the
+        Italic's 5 inside them): they are put back on the zones (rezone).
+        Bold and Italic are written in whole units.
+      - The Italic's added weight is taken per straight edge, so its stems
+        keep their slant (n's had leant 1.7° more).
+      - Old-style figures are proportional text figures, each spaced by its
+        shape (the 1 stood alone in a cell as wide as the 0); tnum gives the
+        tabular ones (scripts/space_figures.py; .tf glyphs).
+      - Small caps made from capitals (ƙ ƭ ƴ ɑ ...) scaled about the
+        baseline to the small-cap height (they were 18 short); the curl of
+        ν's right arm no longer rises 46 above the x-height.
+      - Spacing: the right sides of B G Ђ ђ Ь Ъ Љ Њ ь ъ љ њ looser, the
+        left sides of ζ ξ Σ β tighter and τ's looser; v w y before round
+        letters kerned less; in the Italic, f kerned closer to stem letters,
+        a before v w less, ß looser on the left; in the Bold, t tighter on
+        the right, г є looser on the right, т on the left. Frequent pairs
+        outside the references' range: 4, 4, 5 became 2, 0, 2.
     * Bold figures: emboldened and not respaced, they stood looser than the
       Bold's letters (1.08 of their side space; bold text faces have
       0.8-1.0): 28 units a side tighter, all alike (they stay tabular), and

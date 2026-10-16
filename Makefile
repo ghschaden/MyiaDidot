@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa proof udhr normalize winmetrics reimport clean
+.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality proof udhr normalize winmetrics reimport clean
 
 all: fonts
 
@@ -108,6 +108,27 @@ qa: $(OTF) $(TTF)
 	        --ghmarkdown build/qa/fontbakery-$$fmt.md fonts/$$fmt/*.$$fmt || true; \
 	done
 	@echo "reports: build/qa/fontbakery-{otf,ttf}.html"
+
+# Design quality measured against reference fonts (scripts/quality/; the
+# references fetched once into build/refs): colour, spacing, pairs,
+# alignment, construction, transitions, accents, slant, small sizes
+QPY := $(PY) scripts/quality
+quality: $(OTF) $(TTF)
+	@mkdir -p build/quality
+	$(QPY)/fetch_refs.py
+	for s in Regular Italic Bold; do \
+	    $(QPY)/colour.py $$s > build/quality/colour-$$s.txt; \
+	    $(QPY)/evenness.py $$s > build/quality/evenness-$$s.txt; \
+	    $(QPY)/transitions.py $$s > build/quality/transitions-$$s.txt; \
+	    $(QPY)/pairs.py $$s > build/quality/pairs-$$s.txt; \
+	    $(QPY)/zones.py sources/$(FAMILY)-$$s.ufo > build/quality/zones-$$s.txt; \
+	    $(QPY)/outlines.py sources/$(FAMILY)-$$s.ufo > build/quality/outlines-$$s.txt; \
+	    $(QPY)/accents.py sources/$(FAMILY)-$$s.ufo > build/quality/accents-$$s.txt; \
+	done
+	$(QPY)/slant.py sources/$(FAMILY)-Italic.ufo 15.2 > build/quality/slant-Italic.txt
+	$(QPY)/cases.py > build/quality/cases.txt
+	$(QPY)/smallsize.py fonts/ttf/*.ttf > build/quality/smallsize.txt
+	@echo "reports: build/quality/*.txt"
 
 normalize:
 	for u in $(UFOS); do .venv/bin/ufonormalizer -m $$u || exit 1; done

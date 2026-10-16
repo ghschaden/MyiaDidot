@@ -44,10 +44,11 @@ from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from composites import SPECIAL, Builder, stack_anchors
-from derive import BIG, draw_path, embolden
+from derive import BIG, draw_path, embolden, rezone
 from make_bold import mark_like, redraw, write
-from respace import CUT_KEY, classifier, respace, undo
+from respace import CUT_KEY, classifier, respace, sidebearings, undo
 from smallcaps import ink_bounds, ink_slice
+from space_figures import space as space_figures
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE_SFD = ROOT / "sources/oldstand/OldStandard-Italic.sfd"
@@ -168,9 +169,11 @@ def upright(font):
 
 def weight_thick(rec, ax, thin=80, thick=120):
     """rec with its thick upright strokes ax heavier, its hairlines and thin
-    strokes as they are: each point moves out along the outline's normal as
-    embolden() moves it, by as much of ax as the stroke behind it is thick
-    (none below thin, all above thick, measured across the ink from it)."""
+    strokes as they are (embolden() with a factor per node): none below
+    thin, all above thick, by the stroke's thickness measured across the
+    ink. A node at the end of a long straight edge takes the thickness at
+    the edge's middle, so both ends of the edge move alike (it keeps its
+    slant)."""
     import numpy as np
 
     glyph = ufoLib2.objects.Glyph()
@@ -213,30 +216,40 @@ def weight_thick(rec, ax, thin=80, thick=120):
         hit = ok & (t > 3) & (s >= 0) & (s <= 1)
         return float(t[hit].min()) if hit.any() else 0.0
 
+    def k_of(w):
+        return min(1.0, max(0.0, (w - thin) / (thick - thin)))
+
+    # the long straight edges: their thickness at the middle, for both ends
     def area(contour):
         pts = [(p.x, p.y) for p in contour.points]
         return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
 
     areas = [area(c) for c in glyph.contours]
     outer = max(areas, key=abs, default=1) > 0
+    edge_k = {}
     for contour, ar in zip(glyph.contours, areas, strict=True):
-        pts = [(p.x, p.y) for p in contour.points]
         sign = 1 if ar > 0 else -1
         if (ar > 0) != outer:
             sign = -sign
-        n = len(pts)
-        moved = []
-        for i in range(n):
-            (x0, y0), (x1, y1) = pts[i - 1], pts[(i + 1) % n]
-            length = math.hypot(x1 - x0, y1 - y0) or 1.0
-            nx, ny = (y1 - y0) / length, -(x1 - x0) / length
-            # the stroke's thickness: across the ink, against the outward normal
-            w = across(pts[i][0], pts[i][1], -sign * nx, -sign * ny)
-            k = min(1.0, max(0.0, (w - thin) / (thick - thin)))
-            moved.append((pts[i][0] + sign * nx * ax * k / 2, pts[i][1]))
-        for p, (x, y) in zip(contour.points, moved, strict=True):
-            p.x, p.y = x, y
-    return glyph
+        P = contour.points
+        ons = [p for p in P if p.type]
+        for p0, p1 in zip(ons, ons[1:] + ons[:1], strict=True):
+            if p1.type != "line" or math.dist((p0.x, p0.y), (p1.x, p1.y)) < 60:
+                continue
+            ux, uy = (p1.x - p0.x), (p1.y - p0.y)
+            L = math.hypot(ux, uy)
+            nx, ny = uy / L, -ux / L  # right-hand normal; outward is sign x it
+            mx, my = (p0.x + p1.x) / 2, (p0.y + p1.y) / 2
+            k = k_of(across(mx, my, -sign * nx, -sign * ny))
+            for q in (p0, p1):
+                edge_k.setdefault((q.x, q.y), []).append(k)
+
+    def factor(x, y, inward):
+        if (x, y) in edge_k:
+            return max(edge_k[(x, y)])
+        return k_of(across(x, y, *inward))
+
+    return embolden(rec, ax, 0, factor)
 
 
 def put(font, up, name, source):
@@ -882,9 +895,21 @@ def drop_ligatures(font):
     return sorted(gone)
 
 
+# the Italic's own kerning over the Regular's (measured against italics):
+# v w y before round letters less tight (the Regular's -50 left them
+# crowded), and f, its top hanging over, closer to the letters with a stem
+ITALIC_KERNING = {
+    ("public.kern1.v", "public.kern2.c"): -10, ("public.kern1.y", "public.kern2.c"): -10,
+    ("f", "public.kern2.i"): -60, ("f", "public.kern2.u"): -60, ("f", "m"): -60, ("f", "p"): -60, ("f", "r"): -60,
+    # a's exit stroke rises to the right: before v w less kerning than the Regular's -124
+    ("public.kern1.a", "public.kern2.v"): -44,
+}
+# ß's left side looser: with the heavier stems it stood tight against the
+# letter before it (measured, scripts/quality/colour.py)
+ITALIC_SIDEBEARINGS = {"germandbls": (25, 0)}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
-HORN_NUDGE = {"u": (0, -30)}
+HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}
 
 
 def horn_stage(font):
@@ -1070,7 +1095,7 @@ def main():
             osg.draw(rec)
             zoned = RecordingPen()
             rec.replay(Zones(zoned))
-            out = embolden(zoned, AX, AY)
+            out = rezone(embolden(zoned, AX, AY), AY)  # the flat edges kept on the zones
             anchors = italic_anchors(regular[g.name], osg, osg.width * KX)
             g.clearComponents()
             redraw(g, out)
@@ -1116,6 +1141,7 @@ def main():
     small_caps = smallcaps_stage(font)
     horn_stage(font)
     ligatures = drop_ligatures(font)
+    font.kerning.update(ITALIC_KERNING)
     still = sorted(g.name for g in font if g.lib.get(SOURCE_KEY) == "sloped roman")
 
     # aliases (one letter, unmoved: Cyrillic Е is E) show the Italic letter:
@@ -1196,6 +1222,8 @@ def main():
     # last run, which were (what comes from the Regular has its cut too)
     letter_cut = classifier(font, ITALIC_CUT, ITALIC_CUT)
     respace(font, lambda n: 0 if n in kept else letter_cut(n))
+    space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
+    sidebearings(font, ITALIC_SIDEBEARINGS)
     font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT}
     write(font, Path(args.italic))
     # the accented small caps and the smcp/c2sc features, from the new drafts

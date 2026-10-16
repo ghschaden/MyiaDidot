@@ -27,15 +27,17 @@ import sys
 import unicodedata
 from pathlib import Path
 
+import pathops
 import ufoLib2
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from composites import SPECIAL, Builder, stack_anchors
-from derive import embolden
+from derive import embolden, embolden_simple, rezone
 from glyph_lint import fix
-from respace import CUT_KEY, classifier, respace
+from respace import CUT_KEY, classifier, respace, sidebearings
+from space_figures import space as space_figures
 
 ROOT = Path(__file__).resolve().parent.parent
 KX = 1.04  # widening, so the counters keep their light
@@ -52,9 +54,99 @@ BOLD_CUT, BOLD_CUT_GREEK = 19, 15
 BOLD_FIGURE_CUT = 28
 FIGURE_NAMES = {f"{n}{s}" for n in ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
                 for s in ("", "oldstyle")} | {"uni2007", "figuredash"}
+# t's right side tighter in the Bold: emboldened, it stood looser before
+# straight letters than in bold text faces; г and є tight on the right, т on
+# the left (measured, scripts/quality/pairs.py and colour.py)
+BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni0442": (26, 0)}  # t; г є т
 # the horn on u a little left: where the Regular's sits, the Bold's heavier
 # foot leaves a ledge beside the stem (glyph_lint)
 ANCHOR_NUDGE = {("u", "Horn"): -10}
+
+
+def bridge(glyph, maxgap=24, overlap=8):
+    """glyph with the narrow gaps between straight edges that face each other
+    (serif ends that emboldening brought within maxgap: x's inner feet, the
+    top of ч) filled, so the parts join instead of leaving a slit."""
+    import math
+
+    from derive import draw_path
+
+    path = pathops.Path()
+    for c in glyph.contours:
+        c.draw(path.getPen())
+    path = pathops.simplify(path)
+    edges = []
+    for c in glyph.contours:
+        ons = [p for p in c.points if p.type]
+        for p0, p1 in zip(ons, ons[1:] + ons[:1], strict=True):
+            if p1.type == "line" and math.dist((p0.x, p0.y), (p1.x, p1.y)) >= overlap:
+                edges.append(((p0.x, p0.y), (p1.x, p1.y)))
+    fills = []
+    for i, (a0, a1) in enumerate(edges):
+        ax, ay = a1[0] - a0[0], a1[1] - a0[1]
+        la = math.hypot(ax, ay)
+        ux, uy = ax / la, ay / la
+        for b0, b1 in edges[i + 1:]:
+            bx, by = b1[0] - b0[0], b1[1] - b0[1]
+            lb = math.hypot(bx, by)
+            if (ux * bx + uy * by) / lb > -0.985:  # facing edges run opposite ways, parallel
+                continue
+            # B's distance from A's line, and their overlap along it
+            gap = (b0[0] - a0[0]) * -uy + (b0[1] - a0[1]) * ux
+            if not 0 < abs(gap) < maxgap:
+                continue
+            t = sorted(((b0[0] - a0[0]) * ux + (b0[1] - a0[1]) * uy, (b1[0] - a0[0]) * ux + (b1[1] - a0[1]) * uy))
+            lo, hi = max(0, t[0]), min(la, t[1])
+            if hi - lo < overlap:
+                continue
+            nx, ny = -uy * gap, ux * gap
+            mid = (a0[0] + ux * (lo + hi) / 2 + nx / 2, a0[1] + uy * (lo + hi) / 2 + ny / 2)
+            probe = pathops.Path()
+            pen = probe.getPen()
+            pen.moveTo((mid[0] - 0.5, mid[1] - 0.5))
+            pen.lineTo((mid[0] + 0.5, mid[1] - 0.5))
+            pen.lineTo((mid[0] + 0.5, mid[1] + 0.5))
+            pen.lineTo((mid[0] - 0.5, mid[1] + 0.5))
+            pen.closePath()
+            if pathops.op(path, probe, pathops.PathOp.INTERSECTION).bounds != (0, 0, 0, 0):
+                continue  # ink between them: not a gap
+            q = [(a0[0] + ux * lo, a0[1] + uy * lo), (a0[0] + ux * hi, a0[1] + uy * hi)]
+            fill = pathops.Path()
+            pen = fill.getPen()
+            pen.moveTo(q[0])
+            pen.lineTo(q[1])
+            pen.lineTo((q[1][0] + nx, q[1][1] + ny))
+            pen.lineTo((q[0][0] + nx, q[0][1] + ny))
+            pen.closePath()
+            fills.append(fill)
+    if not fills:
+        return glyph
+    for f in fills:
+        path = pathops.op(path, f, pathops.PathOp.UNION)
+    out = ufoLib2.objects.Glyph()
+    draw_path(None, glyph, out, path)
+    return out
+
+
+def slit(glyph, before, font):
+    """Whether glyph (emboldened contours) has a fault the Regular's glyph
+    (before) has not: a notch (a slit between parts that come close), a
+    sliver or a twist (an outline crossing itself at a tight terminal)."""
+    from glyph_lint import notch_findings, vector_findings
+
+    def faults(g):
+        p = pathops.Path()
+        for c in g.contours:
+            c.draw(p.getPen())
+        if not p.contours:
+            return 0
+        only = ufoLib2.objects.Glyph()
+        for c in g.contours:
+            c.drawPoints(only.getPointPen())
+        vec = [f for f in vector_findings(pathops.simplify(p)) if f[0] in ("sliver", "twist")]
+        return len(notch_findings(font, only, p.bounds)) + len(vec)
+
+    return faults(glyph) > faults(before)
 
 
 def mark_like(g):
@@ -115,7 +207,19 @@ def redraw(g, glyph):
 
 def write(font, path):
     """Save font as the Bold: a new UFO, or an existing one updated in place
-    (its glyphs replaced, the files of glyphs no longer there removed)."""
+    (its glyphs replaced, the files of glyphs no longer there removed). Its
+    points, anchors and component offsets are rounded to whole units first,
+    and what that leaves cleaned (glyph_lint)."""
+    for g in font:
+        for c in g.contours:
+            for p in c.points:
+                p.x, p.y = round(p.x), round(p.y)
+        for a in g.anchors:
+            a.x, a.y = round(a.x), round(a.y)
+        for c in g.components:
+            xx, xy, yx, yy, dx, dy = c.transformation
+            c.transformation = (xx, xy, yx, yy, round(dx), round(dy))
+    fix(font)  # what rounding left (a unit's step)
     if not path.exists():
         font.save(path)
         return
@@ -191,7 +295,11 @@ def main():
             else:
                 wide = RecordingPen()
                 rec.replay(TransformPen(wide, (KX, 0, 0, 1, 0, 0)))
-                bold = embolden(wide, AX, AY)
+                bold = bridge(rezone(embolden(wide, AX, AY), AY))  # the flat edges kept on the zones
+                if slit(bold, regular[g.name], regular):
+                    # parts close to each other (x's inner serifs) closed to a
+                    # slit: the rounder emboldening, which leaves them apart
+                    bold = rezone(embolden_simple(wide, AX, AY), AY)
                 moved = ufoLib2.objects.Glyph()
                 bold.draw(TransformPen(moved.getPen(), (1, 0, 0, 1, AX / 2, 0)))
                 redraw(g, moved)
@@ -276,6 +384,8 @@ def main():
     cleaned = fix(font)
     respace(font, classifier(font, BOLD_CUT, BOLD_CUT_GREEK))
     respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
+    space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
+    sidebearings(font, BOLD_SIDEBEARINGS)
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
                          "greekLower": round(done["greekLower"] * KX) + BOLD_CUT_GREEK}
