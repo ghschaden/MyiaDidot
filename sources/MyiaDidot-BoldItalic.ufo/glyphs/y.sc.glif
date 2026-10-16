@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="y.sc" format="2">
+	<advance width="1143"/>
+	<outline>
+		<contour>
+			<point x="47" y="0" type="line"/>
+			<point x="141" y="53" type="line"/>
+			<point x="311" y="53" type="line" smooth="yes"/>
+			<point x="315" y="53"/>
+			<point x="290" y="59"/>
+			<point x="298" y="87" type="curve" smooth="yes"/>
+			<point x="395" y="448" type="line"/>
+			<point x="276" y="914" type="line"/>
+			<point x="258" y="967"/>
+			<point x="276" y="982"/>
+			<point x="254" y="982" type="curve" smooth="yes"/>
+			<point x="122" y="982" type="line"/>
+			<point x="78" y="1040" type="line"/>
+			<point x="722" y="1040" type="line"/>
+			<point x="641" y="982" type="line"/>
+			<point x="528" y="982" type="line" smooth="yes"/>
+			<point x="512" y="982"/>
+			<point x="504" y="942"/>
+			<point x="521" y="911" type="curve"/>
+			<point x="601" y="501" type="line"/>
+			<point x="812" y="788" type="line"/>
+			<point x="838" y="819"/>
+			<point x="879" y="876"/>
+			<point x="874" y="922" type="curve"/>
+			<point x="874" y="954"/>
+			<point x="888" y="982"/>
+			<point x="845" y="982" type="curve" smooth="yes"/>
+			<point x="758" y="982" type="line"/>
+			<point x="720" y="1040" type="line"/>
+			<point x="1328" y="1040" type="line"/>
+			<point x="1247" y="982" type="line"/>
+			<point x="1153" y="982" type="line" smooth="yes"/>
+			<point x="1100" y="982"/>
+			<point x="1051" y="920"/>
+			<point x="1012" y="871" type="curve" smooth="yes"/>
+			<point x="679" y="465" type="line"/>
+			<point x="577" y="89" type="line"/>
+			<point x="568" y="61"/>
+			<point x="542" y="53"/>
+			<point x="545" y="53" type="curve" smooth="yes"/>
+			<point x="716" y="53" type="line"/>
+			<point x="762" y="0" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="729" y="1156"/>
+	<anchor name="Acute" x="724" y="1136"/>
+	<anchor name="Grave" x="724" y="1136"/>
+	<anchor name="Dotaccent" x="734" y="1176"/>
+	<anchor name="TopCap" x="737" y="1186"/>
+	<anchor name="Bottom" x="414" y="0"/>
+	<anchor name="DotBelow" x="408" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>small cap draft</string>
+		</dict>
+	</lib>
+</glyph>

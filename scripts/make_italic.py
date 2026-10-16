@@ -294,7 +294,7 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ"}  # its own recipe fits the Italic better
+                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
 # small caps left to FontForge's drafts of the Italic's capitals (as the
 # others), not derive.py's recipes: a capital scaled down (ʛ from Ɠ) is
@@ -522,6 +522,14 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "Ɦ": ("curl", "H", ("c", [(-BIG, 1300, 700, BIG)],
                                       {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
                                        "sweep": 200, "ball": 90, "t": (164, 60)})),
+                  # w's hairline arm (its ball cut away) rising straight to the
+                  # x-height and curling over (the Regular's curl, carried
+                  # across, left slivers beside the diagonal)
+                  "ⱳ": ("attach", "w", ("x", [(1000, 645, BIG, BIG)],
+                                        [("line", ((1289, 620), (1287, 770), 54), (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 1287, 770, 54), "dir": 92, "turn": "cw",
+                                                   "r": (105, 95), "sweep": 200, "ball": 45, "t": (54, 36),
+                                                   "lead": 6}, (0, 0), (1, 1, 0, 0))])),
                   "Ⱳ": ("curl", "W", ("c", [(1480, 1150, BIG, BIG)],
                                       {"at": ("y", 1150, "last"), "dir": 79, "turn": "cw", "r": (120, 110),
                                        "sweep": 210, "ball": 50, "t": (81, 40)})),

@@ -2,7 +2,7 @@ PY       := .venv/bin/python -I
 FONTMAKE := .venv/bin/fontmake
 FAMILY   := MyiaDidot
 UPSTREAM := sources/upstream/TheanoDidot-Regular.sfd
-UFOS     := sources/$(FAMILY)-Regular.ufo sources/$(FAMILY)-Bold.ufo sources/$(FAMILY)-Italic.ufo
+UFOS     := sources/$(FAMILY)-Regular.ufo sources/$(FAMILY)-Bold.ufo sources/$(FAMILY)-Italic.ufo sources/$(FAMILY)-BoldItalic.ufo
 
 OTF   := $(patsubst sources/%.ufo,fonts/otf/%.otf,$(UFOS))
 TTF   := $(patsubst sources/%.ufo,fonts/ttf/%.ttf,$(UFOS))
@@ -116,7 +116,7 @@ QPY := $(PY) scripts/quality
 quality: $(OTF) $(TTF)
 	@mkdir -p build/quality
 	$(QPY)/fetch_refs.py
-	for s in Regular Italic Bold; do \
+	for s in Regular Italic Bold BoldItalic; do \
 	    $(QPY)/colour.py $$s > build/quality/colour-$$s.txt; \
 	    $(QPY)/evenness.py $$s > build/quality/evenness-$$s.txt; \
 	    $(QPY)/transitions.py $$s > build/quality/transitions-$$s.txt; \

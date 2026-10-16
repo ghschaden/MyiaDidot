@@ -1,0 +1,1160 @@
+# Known scripts/quality/checks.py findings (glyph kind count); fixing one = deleting its line.
+A kink 2                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1233,146 4.5 degrees; 456,280 2.9 degrees
+AE extreme 2                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1109,1333 7 units past; 408,119 6 units past
+AE smooth 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1109,1333 2.0 degrees; 465,280 2.4 degrees
+Aogonek kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1233,146 4.5 degrees; 974,-12 6.1 degrees; 456,280 2.9 degrees
+Aringacute kink 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1289,1911 5.5 degrees; 1384,1847 3.5 degrees; 1233,146 4.5 degrees; 456,280 2.9 degrees
+B smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+C slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
+C smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1272,1336 2.3 degrees
+Cedilla extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 455,-198 7 units past; 258,-604 7 units past
+Cedilla smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,-433 2.3 degrees; 422,-166 2.1 degrees
+D smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+Deltagreek zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +30 from 1434
+E smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+Eng extreme 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 547,1307 10 units past
+Eng kink 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1045,-183 7.4 degrees
+Eng smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 409,162 2.3 degrees
+Eogonek kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 876,-12 6.1 degrees
+Eogonek smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+Eth smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 3.6 degrees
+F smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+G kink 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1359,538 2.8 degrees
+G slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.4 degrees, not 15.2
+Gamma smooth 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.7 degrees
+Hook extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 928,1874 5 units past; 923,1714 14 units past
+Hook kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 778,1791 6.1 degrees
+Horn extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 637,446 6 units past
+I smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+Iogonek kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 542,-12 6.4 degrees
+K extreme 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 934,60 10 units past
+K kink 2                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1457,1243 3.0 degrees; 1248,147 4.2 degrees
+K smooth 3                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees; 1173,1151 2.8 degrees; 945,150 2.6 degrees
+L smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+Lambda kink 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 517,272 5.0 degrees
+Lambda zone 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +30 from 1434
+Lslash smooth 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 3.4 degrees
+M extreme 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 547,1307 11 units past; 1509,115 7 units past
+M smooth 2                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1203,112 2.0 degrees; 409,164 2.3 degrees
+M zone 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
+Mu zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
+N extreme 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 547,1307 10 units past
+N smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 409,162 2.3 degrees
+OE smooth 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 549,887 2.2 degrees
+Ogonek extreme 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 247,-274 8 units past; 234,-530 8 units past
+Omegagreek extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1051,226 5 units past
+Omegagreek kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 235,236 2.8 degrees; 569,223 3.4 degrees
+Omicron_uni0313_uni0342 accent 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCF gap -515, usually -476
+Omicron_uni0314_uni0342 accent 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDF gap -532, usually -493
+Omicrontonos accent 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above tonos gap -486, usually -447
+P kink 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 492,115 4.1 degrees
+Phi extreme 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 911,113 7 units past
+Phi kink 2                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 922,1307 4.3 degrees; 911,113 4.6 degrees
+Phi smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 606,110 2.2 degrees
+Pi kink 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1286,115 4.0 degrees
+Pi smooth 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+Psi smooth 2                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1745,1030 2.3 degrees; 686,112 2.2 degrees
+Psi zone 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
+Q kink 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 932,-76 6.0 degrees
+R extreme 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1209,140 6 units past
+R smooth 2                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.5 degrees; 492,115 2.4 degrees
+R zone 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
+Ring extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 968,1944 6 units past; 856,1532 6 units past
+S extreme 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 331,593 9 units past
+Sigma kink 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1155,785 5.9 degrees
+Sigma slant 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.9 degrees, not 15.2
+T kink 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1095,1309 4.1 degrees
+T smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 473,112 3.2 degrees
+Tbar kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1095,1309 3.1 degrees
+Theta extreme 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 707,837 12 units past; 927,589 9 units past
+Theta smooth 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 961,787 2.5 degrees
+Thorn extreme 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 492,115 5 units past
+Thorn kink 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1015,1146 3.7 degrees
+Thorn smooth 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+U smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1403,1167 2.0 degrees
+Uogonek smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1403,1167 2.0 degrees
+Upsilon kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 761,115 3.6 degrees
+Upsilon smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1520,886 2.1 degrees
+Upsilon_uni0313 accent 1         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FBF gap -486, usually -447
+Upsilon_uni0313_acutecomb accent 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCE gap -486, usually -447
+Upsilon_uni0313_gravecomb accent 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCD gap -502, usually -463
+Upsilon_uni0313_uni0342 accent 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCF gap -515, usually -476
+V kink 2                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1458,1211 4.6 degrees; 461,1271 5.4 degrees
+V smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 758,1266 2.7 degrees
+W kink 2                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2155,1207 3.6 degrees; 453,1271 6.2 degrees
+W smooth 2                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1161,1055 2.3 degrees; 1498,1232 2.7 degrees
+X extreme 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 869,1367 10 units past; 1062,60 12 units past
+X kink 4                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 854,1259 4.4 degrees; 1283,1154 3.3 degrees; 1080,154 4.8 degrees; 630,272 4.4 degrees
+X smooth 3                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 404,207 3.0 degrees; 1526,1256 2.8 degrees; 1394,131 2.1 degrees
+Xi extreme 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 686,837 8 units past
+Xi kink 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1446,1189 3.0 degrees
+Xi smooth 5                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1528,1500 2.1 degrees; 1145,-76 2.2 degrees; 686,837 2.2 degrees; 1076,787 2.6 degrees; 1111,837 2.5 degrees
+Y extreme 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 770,1367 7 units past
+Y kink 2                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 445,1271 5.0 degrees; 778,113 3.9 degrees
+Y smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 473,110 3.0 degrees
+Z slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
+a.sc extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 656,53 6 units past
+a.sc kink 3                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 934,112 4.2 degrees; 655,114 4.8 degrees; 326,205 4.6 degrees
+a.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 7.0 degrees, not 15.2
+a.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 148,153 2.5 degrees
+a.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
+acute smooth 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1014,1396 2.8 degrees
+ae.sc extreme 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 277,93 7 units past
+ae.sc kink 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 277,93 4.1 degrees
+ae.sc smooth 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 757,958 2.6 degrees; 569,88 2.8 degrees
+alpha kink 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 895,362 5.6 degrees
+alpha.sc zone 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
+ampersand kink 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 644,797 7.0 degrees; 1246,777 5.6 degrees
+aogonek kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 698,-32 7.9 degrees
+aogonek smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 737,-294 2.3 degrees; 921,-302 2.3 degrees
+aogonek.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 656,53 6 units past
+aogonek.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 934,112 4.2 degrees; 655,114 4.8 degrees; 326,205 4.6 degrees
+aogonek.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 7.0 degrees, not 15.2
+aogonek.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 148,153 2.5 degrees; 679,-195 2.8 degrees; 509,-238 2.9 degrees
+aogonek.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
+aringacute.sc kink 7             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 896,1385 7.6 degrees; 980,1337 4.5 degrees; 984,1169 4.2 degrees; 875,1167 3.9 degrees; 903,112 4.8 degrees; 625,114 5.1 degrees
+aringacute.sc slant 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 7.5 degrees, not 15.2
+aringacute.sc smooth 2           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 770,1169 2.6 degrees; 139,152 2.9 degrees
+asterisk kink 4                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 307,1148 6.5 degrees; 604,1316 7.5 degrees; 1138,1203 4.1 degrees; 1046,726 1.0 degrees
+asterisk smooth 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 499,888 2.2 degrees; 640,728 2.0 degrees; 611,803 2.6 degrees
+at extreme 2                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1276,499 17 units past; 1100,814 11 units past
+b smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 115,357 3.1 degrees
+b.sc kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees; 783,526 6.6 degrees
+b.sc smooth 4                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 751,303 3.1 degrees; 1116,803 2.7 degrees; 1030,310 3.3 degrees; 852,801 2.2 degrees
+beta extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 323,-531 6 units past; 155,-554 6 units past
+betasymbolgreek zone 1           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +9 from 1434
+braceleft smooth 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 780,927 2.7 degrees
+braceright smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 254,113 2.0 degrees
+bracketright smooth 2            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 124,-289 2.3 degrees; 552,1301 2.3 degrees
+breve extreme 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 733,1077 7 units past
+breve.i extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 736,1090 5 units past
+c.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 9.4 degrees, not 15.2
+c.sc smooth 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 68,353 2.3 degrees; 334,279 2.5 degrees
+caroncommaaccent smooth 2        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 342,1217 2.1 degrees; 312,1279 2.1 degrees
+cedilla extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 442,-156 5 units past
+cedilla smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 225,-390 3.9 degrees; 419,-132 2.4 degrees
+cent extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 602,-23 5 units past
+cent kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1104,692 4.0 degrees
+commaaccent extreme 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 409,-112 7 units past
+copyright kink 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1143,1101 6.4 degrees
+cyrBreve extreme 3               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,1766 6 units past; 1123,1966 8 units past; 849,1506 8 units past
+cyrBreve smooth 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 739,1801 3.2 degrees
+cyrbreve extreme 2               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 927,1346 7 units past; 714,1008 5 units past
+cyrbreve smooth 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 957,1194 2.6 degrees
+cyrflex extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 820,1398 7 units past
+d.sc kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 316,940 3.6 degrees; 965,209 3.2 degrees
+d.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 882,706 2.7 degrees
+dagger smooth 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 656,1060 2.5 degrees
+daggerdbl smooth 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 656,1060 2.5 degrees
+dblgrave smooth 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 413,1398 2.3 degrees; 687,1398 2.3 degrees
+delta extreme 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 585,860 15 units past
+dieresistonos smooth 1           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1114,1485 2.4 degrees
+dollar extreme 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 507,-31 6 units past; 524,29 8 units past; 852,1341 11 units past
+dollar kink 4                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1059,1052 4.1 degrees; 1129,1142 4.5 degrees; 517,1043 3.2 degrees; 735,802 2.4 degrees
+dollar smooth 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 313,963 2.0 degrees; 1150,385 2.5 degrees
+dotlessi slant 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
+e.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees
+eight smooth 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 750,481 2.8 degrees
+eightsuperior kink 3             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 534,1078 6.2 degrees; 574,833 4.9 degrees; 360,879 3.5 degrees
+eng kink 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 845,648 4.1 degrees
+eng smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 455,-388 2.7 degrees
+eng zone 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -12 from -461
+eng.sc smooth 3                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 413,-210 2.6 degrees; 300,183 3.2 degrees; 291,124 3.2 degrees
+eogonek smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 535,-27 2.8 degrees; 441,-294 2.3 degrees
+eogonek.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees
+eogonek.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 606,-195 3.3 degrees; 432,-238 2.1 degrees
+estimated extreme 5              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1185,1462 21 units past; 546,684 45 units past; 796,32 5 units past; 780,-28 23 units past; 1417,747 43 units past
+estimated kink 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1750,743 3.1 degrees
+estimated smooth 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 213,688 2.4 degrees
+eta kink 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 462,129 3.0 degrees
+eth smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 698,1057 2.7 degrees
+eth.sc kink 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 314,940 3.6 degrees; 964,209 3.2 degrees
+eth.sc smooth 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 881,706 2.7 degrees
+f smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 820,1350 4.4 degrees
+f.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees
+f_f_j kink 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1598,595 3.5 degrees
+f_f_j smooth 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 986,-335 3.1 degrees; 1352,615 2.1 degrees
+f_j kink 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1083,595 3.4 degrees
+f_j smooth 2                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 471,-335 3.1 degrees; 837,615 2.1 degrees
+ff smooth 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1339,1350 4.4 degrees
+ff zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
+ffi kink 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1290,649 3.7 degrees
+ffi zone 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
+ffl smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1336,1234 5.2 degrees
+ffl zone 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
+fi kink 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 775,649 3.7 degrees
+fi zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
+five smooth 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 387,818 2.7 degrees; 496,1318 2.0 degrees
+fiveoldstyle smooth 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 477,669 2.3 degrees
+fivesuperior kink 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 422,1275 4.1 degrees
+fl zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
+florin kink 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 36,-327 7.9 degrees
+florin.sc extreme 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 653,295 6 units past
+florin.sc smooth 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -376,-78 2.9 degrees
+four extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 795,113 8 units past
+four kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 576,849 6.8 degrees
+fouroldstyle extreme 1           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 915,-321 7 units past
+fouroldstyle kink 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 666,754 5.1 degrees
+foursuperior smooth 2            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 443,1062 2.2 degrees; 694,1165 2.7 degrees
+g smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 174,-372 3.8 degrees
+g.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 989,389 4.8 degrees
+g.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.4 degrees, not 15.2
+g.sc smooth 4                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 68,353 2.4 degrees; 431,765 2.3 degrees; 334,279 3.0 degrees; 758,99 2.4 degrees
+gamma.sc kink 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.6 degrees
+germandbls smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 457,83 4.1 degrees
+germandbls.sc kink 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 547,124 3.0 degrees; 897,387 3.4 degrees
+germandbls.sc smooth 3           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1171,380 2.6 degrees; 326,147 2.1 degrees; 525,742 2.7 degrees
+grave smooth 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 624,1396 2.8 degrees; 649,1285 2.1 degrees
+hbar smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 376,1335 2.3 degrees
+hbar.sc kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 946,941 3.2 degrees
+hbar.sc smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 327,941 3.7 degrees; 1003,90 2.4 degrees; 383,90 2.2 degrees
+hook extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 798,1406 7 units past; 802,1225 14 units past
+hook kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 635,1313 4.2 degrees; 693,1270 1.7 degrees
+hungarumlaut smooth 2            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 953,1398 2.3 degrees; 1227,1398 2.3 degrees
+hyphen extreme 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 658,542 8 units past; 249,435 8 units past
+i accent 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above dotaccent gap 346, usually 194
+i.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees
+integral smooth 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 145,-435 6.9 degrees
+iogonek.dotless smooth 2         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 463,-2 2.4 degrees; 333,-294 4.0 degrees
+iogonek.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 441,940 2.1 degrees
+iogonek.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 353,-195 2.8 degrees; 565,-248 2.7 degrees
+iota extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 323,121 5 units past
+iota smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 323,121 2.6 degrees
+iota zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+j accent 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above dotaccent gap 346, usually 194
+j.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 841,944 2.7 degrees
+j.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+k kink 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 960,842 4.6 degrees
+k smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 705,103 2.4 degrees
+k weight 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): at 442 stem 499 against 291
+k.sc extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 893,942 7 units past; 673,53 8 units past
+k.sc kink 5                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees; 834,829 4.5 degrees; 893,942 3.0 degrees; 1057,893 3.4 degrees; 915,114 3.4 degrees
+kgreenlandic smooth 2            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 537,802 2.2 degrees; 563,708 2.4 degrees
+l weight 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): at 442 stem 245 against 291
+l.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 316,940 3.6 degrees
+lambda smooth 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 580,1021 3.7 degrees
+lambda.sc kink 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 360,205 4.5 degrees; 318,110 4.9 degrees; 355,53 7.9 degrees
+longs smooth 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 280,942 2.0 degrees; 820,1350 4.4 degrees
+lslash.sc kink 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 4.4 degrees
+m slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
+m.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 353,940 4.4 degrees
+m.sc smooth 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 885,88 2.2 degrees; 290,125 2.8 degrees
+m.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
+mu zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+mugreek extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 864,121 5 units past
+mugreek kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 443,475 7.4 degrees
+mugreek smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 864,121 2.6 degrees; 228,29 2.6 degrees
+mugreek zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+mugreek.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
+n slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
+n smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 909,212 2.7 degrees
+n.sc smooth 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 300,183 3.3 degrees; 291,124 3.2 degrees
+nineoldstyle smooth 3            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 294,-522 2.9 degrees; 271,-457 3.8 degrees; 299,-403 2.3 degrees
+ninesuperior extreme 1           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 355,617 6 units past
+ninesuperior smooth 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 509,1252 2.3 degrees
+nu extreme 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 799,425 6 units past
+nu smooth 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 801,680 2.4 degrees
+o.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 69,347 3.4 degrees
+o.sc smooth 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 395,655 2.0 degrees; 1074,654 2.8 degrees
+oe smooth 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 988,608 3.3 degrees
+oe.sc smooth 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 67,348 2.5 degrees; 924,90 2.4 degrees; 394,645 2.8 degrees
+ogonek extreme 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 238,-263 8 units past; 227,-490 7 units past
+omega.sc kink 4                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 166,190 4.4 degrees; 153,542 2.8 degrees; 1057,393 3.9 degrees; 888,419 3.0 degrees
+omega.sc smooth 6                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 314,896 2.7 degrees; 1253,746 3.3 degrees; 774,183 2.1 degrees; 988,772 2.0 degrees; 517,836 2.7 degrees; 416,498 2.7 degrees
+one extreme 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 656,113 6 units past
+oneoldstyle smooth 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 436,85 2.0 degrees
+oogonek smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 338,-294 2.3 degrees
+oogonek.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 555,-256 4.7 degrees
+oogonek.sc smooth 5              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 395,655 2.0 degrees; 69,348 2.9 degrees; 1074,654 2.7 degrees; 349,-202 3.1 degrees; 181,-246 2.5 degrees
+ordfeminine smooth 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 575,1180 4.6 degrees
+p.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 370,90 4.7 degrees
+p.sc smooth 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1090,794 3.4 degrees; 790,610 2.1 degrees
+percent extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 710,1348 6 units past
+perthousand extreme 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 710,1348 6 units past
+phi.sc kink 8                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 232,746 3.0 degrees; 905,944 3.1 degrees; 1072,281 3.3 degrees; 679,87 4.2 degrees; 920,328 3.5 degrees; 979,658 3.1 degrees; 33
+phi.sc smooth 4                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 66,429 2.8 degrees; 625,943 2.8 degrees; 1242,588 2.7 degrees; 399,85 2.1 degrees
+phisymbolgreek kink 2            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 741,1365 3.5 degrees; 533,-459 2.9 degrees
+pi extreme 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 895,121 5 units past
+pi smooth 5                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 223,139 3.2 degrees; 470,655 2.6 degrees; 247,554 2.2 degrees; 913,196 2.1 degrees; 895,121 2.6 degrees
+pi.sc kink 2                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.0 degrees; 968,90 3.6 degrees
+product smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 415,-188 2.7 degrees
+psi extreme 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 372,748 6 units past
+psi kink 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1098,664 3.9 degrees
+psi smooth 2                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 704,-263 2.8 degrees; 698,-403 2.1 degrees
+psi.sc extreme 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1295,960 10 units past
+psi.sc kink 10                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 677,940 4.7 degrees; 957,942 3.7 degrees; 1245,842 3.8 degrees; 1234,883 4.2 degrees; 1261,742 2.2 degrees; 858,335 1.8 degrees;
+psi.sc smooth 4                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 541,938 2.2 degrees; 1295,960 3.6 degrees; 1304,606 2.8 degrees; 376,906 2.2 degrees
+psi.sc zone 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +22 from 1040
+q.sc extreme 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 325,49 6 units past; 434,-22 17 units past; 463,24 8 units past
+q.sc kink 3                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 684,-179 2.6 degrees; 420,117 6.9 degrees; 452,215 1.2 degrees
+q.sc smooth 3                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 334,273 2.5 degrees; 808,738 2.8 degrees; 487,114 3.8 degrees
+question kink 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 525,1074 4.6 degrees; 574,630 3.1 degrees
+question smooth 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 714,849 2.1 degrees; 449,1155 2.1 degrees; 314,963 2.4 degrees
+questiondown kink 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 512,235 3.8 degrees
+questiondown smooth 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 371,15 2.0 degrees
+quoteleft smooth 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 477,1073 3.1 degrees
+quoteright smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 525,1212 3.1 degrees
+quotesingle smooth 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 627,1419 2.3 degrees
+r extreme 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 7 units past
+r kink 3                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees; 805,621 1.3 degrees; 667,702 6.1 degrees
+r smooth 4                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 563,688 2.2 degrees; 702,763 2.5 degrees; 303,600 2.2 degrees; 348,765 2.9 degrees
+r zone 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
+r.sc kink 3                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 892,110 4.4 degrees; 371,92 3.8 degrees; 800,820 2.7 degrees
+r.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1065,789 2.0 degrees
+r.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0
+registered smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1127,256 2.7 degrees; 841,342 3.2 degrees
+ring extreme 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 845,1492 9 units past; 718,1024 9 units past; 623,1258 7 units past; 941,1258 6 units past
+s kink 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 327,439 4.8 degrees
+s smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 588,627 2.7 degrees
+s.sc extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 230,432 6 units past
+s.sc kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 369,808 3.6 degrees; 871,276 2.8 degrees
+s.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 212,744 2.0 degrees
+section extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 309,-99 5 units past; 994,1127 6 units past; 758,227 14 units past; 557,773 14 units past
+section kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 701,-52 6.2 degrees; 811,1039 7.8 degrees; 614,1060 4.9 degrees; 395,564 6.9 degrees; 758,227 4.0 degrees; 919,437 7.9 degrees
+section smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 557,773 3.4 degrees
+seven smooth 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 638,639 2.8 degrees; 435,1013 3.1 degrees; 1108,1206 2.9 degrees; 1092,983 2.0 degrees
+sevenoldstyle smooth 2           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 324,472 3.1 degrees; 542,83 2.5 degrees
+sevensuperior extreme 1          # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 573,793 8 units past
+sevensuperior kink 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 527,933 3.7 degrees; 421,1172 5.1 degrees
+sevensuperior smooth 2           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 816,1310 4.5 degrees; 791,1346 2.1 degrees
+sigma.sc kink 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -14,63 2.5 degrees; 820,574 1.8 degrees
+sigma.sc slant 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.3 degrees, not 15.2
+sigma1 smooth 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 633,598 2.4 degrees; 672,734 2.6 degrees
+sigmalunatesymbolgreek.sc smooth 3 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 68,353 2.6 degrees; 432,765 2.2 degrees; 334,279 2.8 degrees
+six smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 997,1247 3.8 degrees
+sixsuperior smooth 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 481,853 2.7 degrees
+t smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 319,210 2.9 degrees
+t.sc kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 806,942 2.3 degrees
+tbar smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 319,210 3.1 degrees
+tbar.sc smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 526,940 2.6 degrees
+theta.sc extreme 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 336,492 7 units past
+theta.sc kink 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 69,347 3.4 degrees; 396,658 3.1 degrees
+theta.sc smooth 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1074,654 2.8 degrees; 746,347 3.0 degrees
+thorn zone 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +11 from -461
+thorn.sc kink 4                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 316,940 3.6 degrees; 730,833 4.3 degrees; 1042,594 3.0 degrees; 740,423 3.4 degrees
+thorn.sc smooth 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 777,614 2.8 degrees
+threeoldstyle kink 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 98,252 3.9 degrees; 473,344 3.2 degrees
+threeoldstyle smooth 1           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 365,1108 2.8 degrees
+threesuperior extreme 1          # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 309,702 9 units past
+threesuperior kink 6             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 134,713 6.2 degrees; 440,764 6.5 degrees; 579,1195 6.6 degrees; 302,1208 7.6 degrees; 901,1217 5.2 degrees; 830,811 6.0 degrees
+tonos smooth 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 826,1485 2.4 degrees
+trademark extreme 9              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1533,1340 12 units past; 2369,1389 9 units past; 2190,679 7 units past; 1925,635 9 units past; 1501,741 20 units past; 1063,1389
+trademark kink 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1533,1340 3.2 degrees; 2370,1340 4.5 degrees; 1501,741 7.0 degrees
+trademark smooth 2               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2190,679 2.2 degrees; 618,679 3.3 degrees
+two extreme 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 443,994 12 units past
+two kink 5                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 351,454 4.5 degrees; 443,1006 2.6 degrees; 673,925 4.8 degrees; 268,976 4.1 degrees; 893,299 7.9 degrees
+two smooth 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1229,1028 3.0 degrees
+twooldstyle kink 2               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 640,223 5.7 degrees; 317,329 3.2 degrees
+twooldstyle smooth 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 308,64 2.7 degrees; 425,707 3.4 degrees
+twosuperior extreme 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 407,1174 5 units past
+twosuperior kink 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 333,814 3.1 degrees
+twosuperior smooth 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 280,571 3.8 degrees
+u slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
+u.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 289,942 2.5 degrees
+u.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+u1D459 extreme 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 387,-4 5 units past; 416,162 12 units past
+u1D459 kink 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 152,153 4.6 degrees
+u1D459 slant 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 24.7 degrees, not 15.2
+u1D459 zone 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +19 from -23
+u1D510 extreme 8                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2046,1473 17 units past; 2250,1089 14 units past; 1750,-35 6 units past; 1972,1074 18 units past; 1409,1063 18 units past; 864,1
+u1D510 kink 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1104,156 3.8 degrees
+u1D510 smooth 8                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2325,862 3.5 degrees; 2099,802 2.2 degrees; 1916,85 5.1 degrees; 663,54 4.0 degrees; 655,802 2.1 degrees; 393,547 2.7 degrees; 4
+u1D513 extreme 7                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1452,1209 6 units past; 1745,1225 5 units past; 1493,792 7 units past; 604,-461 82 units past; 856,1001 27 units past; 430,1096 
+u1D513 kink 3                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1263,598 3.4 degrees; 1643,509 3.0 degrees; 416,104 7.4 degrees
+u1D513 smooth 7                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1849,1005 4.0 degrees; 609,88 2.1 degrees; 273,104 2.3 degrees; 647,802 3.1 degrees; 385,547 2.7 degrees; 463,579 2.8 degrees; 5
+u1D516 extreme 8                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1742,1473 7 units past; 441,796 35 units past; 1444,535 11 units past; 831,599 6 units past; 1004,946 6 units past; 807,863 6 un
+u1D516 smooth 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1648,1398 3.9 degrees
+u1D52D extreme 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 361,757 13 units past; 514,1125 9 units past; 865,670 13 units past
+u1D52D smooth 3                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 306,1053 2.2 degrees; 1184,759 2.5 degrees; 1075,360 2.2 degrees
+u1D52D zone 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -10 from -461
+uni0181 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 498,1295 11 units past
+uni0181 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 408,1265 2.1 degrees
+uni0183 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 365,1296 3.7 degrees
+uni0186 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.1 degrees, not 15.2
+uni0186 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 353,53 2.3 degrees
+uni0187 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1625,1505 9 units past; 1594,1498 7 units past
+uni0187 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1374,1496 2.6 degrees; 1720,1496 5.2 degrees; 1681,1439 5.8 degrees; 1464,1326 1.9 degrees
+uni0187 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.7 degrees, not 15.2
+uni0187 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1241,933 2.2 degrees
+uni0188 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 726,813 7 units past
+uni0188 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 843,1091 5.0 degrees
+uni0188 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1012,1002 2.4 degrees; 858,1027 2.1 degrees
+uni0188.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1137,1093 7 units past
+uni0188.sc kink 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 882,996 2.0 degrees; 963,1084 3.9 degrees; 1052,958 4.7 degrees; 334,279 3.4 degrees
+uni0188.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.6 degrees, not 15.2
+uni0188.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 432,764 2.9 degrees
+uni018A extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 498,1295 11 units past
+uni018A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 408,1265 2.1 degrees
+uni0190 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.7 degrees, not 15.2
+uni0191 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 142,-154 3.4 degrees
+uni0193 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1676,1505 9 units past; 1645,1498 7 units past; 1056,558 8 units past; 1093,107 8 units past
+uni0193 kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1293,1357 4.1 degrees; 1425,1496 2.9 degrees; 1771,1496 5.2 degrees; 1732,1439 5.8 degrees; 1514,1326 2.1 degrees; 1359,538 3.0 
+uni0193 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.6 degrees, not 15.2
+uni0194 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +10 from 1434
+uni0197 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.4 degrees
+uni0198 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 524,1349 7 units past; 1463,1183 10 units past; 934,60 15 units past; 470,76 7 units past
+uni0198 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 808,1309 5.3 degrees; 1419,1213 2.3 degrees
+uni0198 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1248,147 2.3 degrees
+uni0199 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 281,993 4.3 degrees
+uni0199 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 729,1232 2.6 degrees; 504,350 2.6 degrees
+uni0199.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 674,53 8 units past
+uni0199.sc kink 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 5.4 degrees; 835,830 4.2 degrees; 674,53 3.2 degrees; 1031,874 1.7 degrees
+uni019A kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 296,95 1.2 degrees
+uni019B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 576,1022 3.8 degrees
+uni019C kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 466,1307 3.1 degrees; 1071,340 1.7 degrees
+uni019C smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2246,1167 2.0 degrees
+uni019D extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 550,1319 7 units past; 106,-252 9 units past
+uni01A4 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 498,1295 11 units past
+uni01A4 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 492,115 4.1 degrees
+uni01A4 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 408,1265 2.1 degrees
+uni01A5 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 773,1141 10 units past
+uni01A5.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 341,939 11 units past
+uni01A5.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 398,90 3.4 degrees; 853,817 2.5 degrees
+uni01AC extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 797,1124 14 units past
+uni01AC smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1094,1309 3.0 degrees; 778,115 2.9 degrees
+uni01AD kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 261,895 7.6 degrees; 275,941 1.7 degrees; 503,895 7.6 degrees; 319,210 4.9 degrees
+uni01AD smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 95,297 2.2 degrees; 713,1226 2.8 degrees; 294,101 2.1 degrees
+uni01AD zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +3 from 1434
+uni01AD.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 533,940 4.6 degrees
+uni01AE kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 948,-220 4.2 degrees
+uni01AE smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 788,1307 2.1 degrees; 1003,-173 2.7 degrees
+uni01B1 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1201,1209 2.4 degrees; 720,1206 2.3 degrees
+uni01B2 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1408,1195 6 units past
+uni01B2 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 466,1307 3.1 degrees
+uni01B2 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1105,1196 2.2 degrees
+uni01B3 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 769,1367 12 units past; 1438,1144 9 units past; 1422,1149 10 units past; 778,113 11 units past
+uni01B3 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 444,1271 4.5 degrees; 769,1367 1.1 degrees; 1583,1149 6.0 degrees; 778,113 6.7 degrees
+uni01B4 kink 5                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18,-293 7.0 degrees; 575,700 3.9 degrees; 418,212 6.6 degrees; 365,97 4.5 degrees; 1071,757 4.3 degrees
+uni01B4 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.9 degrees, not 15.2
+uni01B4 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 384,763 3.4 degrees
+uni01B4.sc extreme 3             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 528,982 22 units past; 1036,831 6 units past; 1012,832 8 units past
+uni01B4.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 297,86 6.6 degrees; 528,982 1.4 degrees
+uni01B4.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 311,53 4.5 degrees; 545,53 4.2 degrees
+uni01B8 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 533,-35 57 units past; 417,511 90 units past; 900,188 9 units past; 891,282 16 units past; 1028,509 42 units past
+uni01B9 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,-461 55 units past; 770,520 9 units past; 217,56 92 units past; 469,-253 13 units past; 603,-56 29 units past
+uni01B9 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 620,708 3.5 degrees
+uni01B9.sc extreme 5             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 758,490 32 units past; 750,437 9 units past; 263,187 25 units past; 691,248 5 units past; 350,-192 13 units past
+uni01B9.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 605,-23 4.0 degrees; 502,151 1.8 degrees
+uni01B9.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.5 degrees, not 15.2
+uni01DD.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 548,774 6 units past
+uni01E4 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
+uni01E5 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 561,-328 14 units past
+uni01E5 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -66,-293 5.8 degrees; 243,-252 6.8 degrees; 551,-373 2.5 degrees; 582,839 2.3 degrees
+uni01E5.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 421,513 43 units past; 549,-24 18 units past
+uni01E5.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
+uni01E5.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +20 from 1040
+uni0237 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -9,-380 2.5 degrees; 379,615 2.1 degrees
+uni0237.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni023A extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 909,60 7 units past
+uni023A kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 244,200 4.4 degrees; 1232,146 4.3 degrees
+uni023A slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 9.9 degrees, not 15.2
+uni023A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 935,150 2.3 degrees
+uni023B slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
+uni023C extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 692,556 48 units past
+uni023C kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 867,692 3.2 degrees
+uni023C.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 222,55 14 units past
+uni023D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.4 degrees
+uni023E extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 811,1352 6 units past; 756,75 7 units past
+uni023E kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 294,863 8.0 degrees; 1279,1434 8.0 degrees
+uni023E smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1317,1305 2.5 degrees; 777,115 2.2 degrees
+uni023E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +6 from 1434
+uni0242 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 435,491 3.9 degrees
+uni0242 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 547,431 2.2 degrees
+uni0242.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 512,1097 10 units past; 512,783 34 units past
+uni0244 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 466,1307 2.8 degrees; 1403,1167 2.0 degrees
+uni0245 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,221 4.6 degrees; 1272,162 6.8 degrees
+uni0245 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 975,166 2.8 degrees
+uni0249 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 86,-258 2.9 degrees; 169,-249 2.9 degrees; 641,742 1.6 degrees; 411,760 5.4 degrees
+uni0249.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 211,66 2.7 degrees
+uni0249.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0; top +3 from 1040
+uni024C extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1209,140 6 units past
+uni024C smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.4 degrees
+uni024C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
+uni024D kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 805,621 1.3 degrees; 667,702 3.9 degrees; 425,121 7.9 degrees; 303,599 6.9 degrees
+uni024D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees
+uni024D zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
+uni024D.sc extreme 6             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 760,1040 7 units past; 974,176 24 units past; 986,45 6 units past; 900,-14 6 units past; 700,338 17 units past; 791,768 20 units
+uni024D.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
+uni0250 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 286,633 3.6 degrees
+uni0250 zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
+uni0250.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
+uni0251.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 553,9 15 units past; 421,506 38 units past
+uni0251.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
+uni0252 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 61,-23 24 units past; 286,362 15 units past; 377,876 18 units past; 877,560 11 units past
+uni0252 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 286,362 4.0 degrees
+uni0252 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 229,824 2.6 degrees
+uni0253 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 279,984 4.9 degrees
+uni0253 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 733,1228 2.6 degrees
+uni0253 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +16 from 1434
+uni0253.sc extreme 8             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 167,369 58 units past; -38,822 7 units past; -25,750 19 units past; -228,549 35 units past; 778,1040 7 units past; 805,559 6 uni
+uni0254.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 810,515 43 units past; 693,1063 19 units past
+uni0254.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
+uni0255 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 600,839 1.9 degrees; 691,143 4.4 degrees; 485,153 4.1 degrees
+uni0255 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 867,692 2.1 degrees; 500,143 2.9 degrees
+uni0256 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 939,-187 2.2 degrees
+uni0257 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 895,1332 6 units past
+uni0257 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1603,1103 2.1 degrees; 1116,1284 2.2 degrees
+uni0257.sc extreme 6             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 167,369 58 units past; -38,822 7 units past; -25,750 19 units past; -228,549 35 units past; 844,1040 19 units past; 930,515 43 u
+uni0258 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 222,-23 7 units past; 292,480 28 units past; 784,738 34 units past; 558,608 9 units past; 373,732 35 units past
+uni0259.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
+uni025A extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 921,639 5 units past; 918,509 5 units past
+uni025B.sc extreme 3             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 384,552 6 units past; 340,362 6 units past; 509,-24 10 units past
+uni025B.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 856,552 4.5 degrees
+uni025B.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1107,924 2.4 degrees; 340,362 2.1 degrees
+uni025B.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +16 from 1040
+uni025C extreme 6                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 462,208 29 units past; 266,377 6 units past; 581,619 48 units past; 244,639 11 units past; 584,884 24 units past; 578,458 20 uni
+uni025D extreme 7                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 462,208 30 units past; 266,377 7 units past; 580,619 49 units past; 244,639 11 units past; 944,828 6 units past; 940,698 5 units
+uni025D smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 150,443 2.1 degrees; 845,651 2.6 degrees
+uni025E extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 584,884 21 units past; 534,459 22 units past; 376,500 19 units past; 580,619 56 units past; 463,208 42 units past
+uni025E kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 732,198 4.9 degrees; 845,651 5.9 degrees
+uni025E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +7 from -23
+uni025F extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 6,-336 11 units past; 412,760 7 units past
+uni025F kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -230,-318 5.1 degrees; 86,-258 4.5 degrees; 169,-249 2.8 degrees
+uni0260 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 752,797 7.1 degrees
+uni0260 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1311,1299 4.0 degrees
+uni0260 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -3 from 1434
+uni0260.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1174,1093 8 units past; 983,424 7 units past
+uni0260.sc kink 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 924,983 6.2 degrees; 1000,1084 3.9 degrees; 1089,959 4.8 degrees; 333,279 3.4 degrees; 983,424 2.9 degrees
+uni0260.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.8 degrees, not 15.2
+uni0260.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 906,678 3.5 degrees; 432,764 2.4 degrees; 989,388 3.7 degrees
+uni0262 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
+uni0264 zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +7 from -23; top +29 from 884
+uni0265 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 884
+uni0266 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 285,996 3.4 degrees; 697,649 3.7 degrees
+uni0266 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
+uni0266.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 341,938 11 units past
+uni0267 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 285,996 3.4 degrees; 697,649 3.7 degrees
+uni0267 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
+uni0268 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 418,212 4.3 degrees; 330,649 5.6 degrees
+uni0269 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+uni0269.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 297,148 7 units past
+uni0269.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 297,148 2.1 degrees
+uni0269.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -5 from 1040
+uni026A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni026B extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 400,1374 6 units past
+uni026B kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 254,-23 1.1 degrees
+uni026B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 378,1335 2.8 degrees
+uni026C extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 193,757 13 units past; 274,607 7 units past
+uni026C kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 98,289 3.2 degrees; 296,95 1.2 degrees
+uni026C smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 337,269 2.6 degrees
+uni026D extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 378,1335 9 units past; 434,-159 5 units past; 434,-164 17 units past
+uni026D kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -21,-146 7.8 degrees
+uni026E smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 136,-256 2.2 degrees; 560,3 2.6 degrees
+uni026F slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
+uni026F zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
+uni026F.sc extreme 3             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 425,239 19 units past; 1036,239 19 units past; 516,-24 13 units past
+uni026F.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +3 from 1040
+uni0270 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 393,235 1.6 degrees
+uni0270 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1144,301 2.3 degrees; 914,286 6.0 degrees
+uni0270 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 884
+uni0271 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 934,-235 5.8 degrees
+uni0271 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.7 degrees, not 15.2
+uni0271 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1097,9 2.4 degrees
+uni0272 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.8 degrees, not 15.2
+uni0272 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -56,-296 2.5 degrees
+uni0272.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 310,180 1.5 degrees
+uni0272.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1012,905 2.1 degrees; 1146,840 2.2 degrees
+uni0272.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni0273 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 821,649 3.7 degrees; 874,763 3.4 degrees
+uni0273 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.2 degrees, not 15.2
+uni0273 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 317,643 2.8 degrees
+uni0275.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
+uni0276 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
+uni0278 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 531,23 17 units past; 491,837 16 units past
+uni0278 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 690,659 2.5 degrees; 331,202 2.6 degrees
+uni0279 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 574,119 7 units past
+uni0279 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 531,0 1.1 degrees; -69,132 3.4 degrees; 254,182 6.1 degrees
+uni0279 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 358,196 2.9 degrees; 219,121 5.2 degrees; 618,284 2.2 degrees
+uni0279 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni027A extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 219,121 31 units past; 657,1335 9 units past; 574,119 7 units past
+uni027A kink 5                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 531,0 1.1 degrees; -69,132 3.4 degrees; 254,182 5.0 degrees; 523,846 2.7 degrees; 772,846 1.3 degrees
+uni027A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 358,196 3.6 degrees
+uni027A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni027B extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 596,206 9 units past; 736,-164 22 units past; 219,121 31 units past
+uni027B kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -69,132 3.4 degrees; 254,182 5.0 degrees
+uni027D extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 552,-166 17 units past
+uni027D kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 805,621 1.3 degrees; 667,702 3.9 degrees
+uni027D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees
+uni027D.sc extreme 5             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 760,1040 7 units past; 940,52 6 units past; 716,-8 6 units past; 700,338 17 units past; 791,768 20 units past
+uni027E extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 703,763 30 units past; 303,600 26 units past
+uni027E kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees; 805,621 1.3 degrees; 667,702 5.0 degrees; 425,121 3.0 degrees
+uni027E smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 561,688 3.2 degrees
+uni027E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni0281 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1363,976 6 units past; 657,271 27 units past
+uni0281 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni0282 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 326,439 3.9 degrees
+uni0282 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 588,627 2.9 degrees; 314,-271 2.2 degrees
+uni0283 kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 109,-258 2.9 degrees; 213,-76 3.5 degrees; 478,896 1.4 degrees; 484,916 1.6 degrees; 945,1234 1.4 degrees; 1000,1303 7.4 degrees
+uni0283 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 603,1184 2.2 degrees
+uni0284 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 838,1146 10 units past; 774,1145 8 units past
+uni0284 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 86,-258 4.1 degrees; 614,549 1.6 degrees
+uni0288 extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 223,-144 6 units past; 432,-159 5 units past; 432,-164 17 units past
+uni0288.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1140,607 7 units past
+uni0289 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 890,95 8 units past
+uni0289 kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 575,700 3.9 degrees; 813,733 7.2 degrees; 934,261 7.0 degrees; 890,95 4.1 degrees; 849,-23 1.1 degrees; 366,97 3.5 degrees
+uni0289 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 384,763 3.4 degrees; 377,33 3.9 degrees
+uni0289.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 516,-24 13 units past; 425,239 19 units past
+uni0289.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +3 from 1040
+uni028A kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 961,720 5.1 degrees; 1026,421 4.5 degrees; 469,725 7.1 degrees
+uni028A slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
+uni028A smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 67,249 2.5 degrees; 233,549 3.0 degrees
+uni028A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -21 from 884
+uni028A.sc kink 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1092,857 3.0 degrees; 1104,500 3.6 degrees; 940,140 2.7 degrees; 201,651 3.9 degrees; 270,267 3.1 degrees
+uni028A.sc smooth 4              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 875,866 2.5 degrees; 4,292 2.3 degrees; 371,623 3.5 degrees; 738,201 2.9 degrees
+uni028A.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +10 from 1040
+uni028B slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.2 degrees, not 15.2
+uni028B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 344,672 2.4 degrees
+uni028B.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1016,863 5 units past
+uni028B.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 569,943 2.5 degrees
+uni028B.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 121,243 2.5 degrees; 289,942 2.5 degrees; 975,842 3.9 degrees
+uni028B.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni028C slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
+uni028C zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
+uni028C.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -3 from 0; top +25 from 1040
+uni028D slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
+uni028D zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
+uni028E slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.1 degrees, not 15.2
+uni028E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni028F zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni0290 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,774 3.7 degrees; 344,149 4.3 degrees
+uni0290 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 668,822 2.5 degrees
+uni0290 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -15 from -461
+uni0291 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,774 3.7 degrees; 344,149 4.8 degrees; 268,37 6.8 degrees
+uni0291 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 733,773 2.5 degrees; 668,821 2.2 degrees
+uni0292 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 515,708 5.4 degrees
+uni0292 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.2 degrees, not 15.2
+uni0292.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -10,201 2.3 degrees; 615,369 4.1 degrees
+uni0292.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.4 degrees, not 15.2
+uni0292.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 890,344 2.5 degrees
+uni0292.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +11 from 1040
+uni0294 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 688,849 3.6 degrees; 292,963 6.3 degrees; 693,689 2.7 degrees
+uni0295 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 273,754 39 units past; 759,1395 31 units past; 797,933 10 units past; 894,1155 19 units past; 449,1073 28 units past
+uni0295 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 382,576 4.1 degrees; 273,754 3.1 degrees; 779,1074 6.3 degrees; 473,849 4.9 degrees
+uni0295 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 708,1013 2.2 degrees
+uni0295 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni0298 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -12 from -23
+uni0299 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni029B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
+uni029C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni029D extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 7,-387 7 units past
+uni029D.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 838,943 3.9 degrees; 273,-134 3.5 degrees
+uni029D.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 82,-255 2.2 degrees
+uni029D.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni029F zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni02A1 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 688,849 3.6 degrees; 292,963 6.3 degrees; 693,689 2.7 degrees; 390,589 4.9 degrees
+uni02A1 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 625,576 2.4 degrees
+uni02A1 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni02A2 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 273,754 39 units past; 759,1395 31 units past; 797,933 10 units past; 894,1155 19 units past; 449,1073 28 units past
+uni02A2 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 779,1074 6.3 degrees; 473,849 4.9 degrees
+uni02A2 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 623,589 2.9 degrees; 382,576 2.2 degrees; 273,754 3.1 degrees; 708,1013 2.2 degrees
+uni02A2 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni02B0 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 545,943 5.5 degrees; 569,1011 3.0 degrees
+uni02B2 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 149,322 7 units past
+uni02B2 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 212,396 2.1 degrees; 153,343 5.6 degrees; 536,1000 4.0 degrees
+uni02B7 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 703,676 4.4 degrees
+uni02B7 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 479,852 2.2 degrees; 227,645 3.2 degrees; 246,767 2.5 degrees; 322,943 3.2 degrees
+uni02B8 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 309,326 6 units past
+uni02B8 smooth 5                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 358,398 4.6 degrees; 227,645 3.2 degrees; 246,767 2.5 degrees; 322,943 3.2 degrees; 479,852 2.2 degrees
+uni02BB extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 495,984 8 units past
+uni02BB smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 477,1207 2.7 degrees; 515,1189 3.4 degrees
+uni02BC extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 604,1516 7 units past
+uni02BC smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 584,1311 3.4 degrees
+uni02C0 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 208,922 2.0 degrees
+uni02C0 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 388,850 3.7 degrees
+uni02C1 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 293,1001 25 units past; 597,1400 18 units past; 617,1110 5 units past; 656,1251 13 units past; 421,1199 17 units past
+uni02C1 kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 470,1032 5.5 degrees; 354,897 6.1 degrees; 293,1001 1.6 degrees; 699,1130 4.9 degrees; 553,1165 4.0 degrees; 434,1068 7.3 degree
+uni02DE extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 365,696 7 units past
+uni02E0 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 639,913 2.1 degrees; 476,358 2.2 degrees
+uni02E1 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 173,652 6.2 degrees; 352,1359 6.9 degrees; 287,529 1.2 degrees
+uni02F3 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 288,-45 7 units past; 179,-444 8 units past; 101,-244 6 units past; 367,-244 5 units past
+uni0315 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 281,1516 7 units past
+uni0315 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 261,1311 3.4 degrees
+uni031C extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -688,-328 8 units past; -578,-562 10 units past
+uni0339 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -481,-94 10 units past; -370,-328 8 units past
+uni033C extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -617,-149 7 units past; -345,-149 5 units past
+uni0359 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -577,-244 4.8 degrees; -436,-244 3.5 degrees; -624,-420 4.6 degrees
+uni0375 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -108,-491 2.4 degrees
+uni03CF extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 10 units past; 681,-273 15 units past; 492,115 10 units past
+uni03CF kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 808,1309 4.7 degrees; 1267,1309 7.3 degrees; 866,-382 4.3 degrees
+uni03CF smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.0 degrees
+uni03D7 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -16 from -461
+uni03D7.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 893,942 7 units past; 487,-196 9 units past
+uni03D7.sc kink 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees; 834,829 4.5 degrees; 893,942 2.9 degrees; 1056,893 3.7 degrees; 479,-179 2.6 degrees
+uni03D8 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 747,115 3.0 degrees
+uni03D9.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 69,618 3.5 degrees; 257,952 3.3 degrees; 913,470 3.5 degrees
+uni03D9.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1088,775 2.2 degrees; 561,90 2.8 degrees
+uni03DA smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1024,1238 3.0 degrees
+uni03DB.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 75,636 3.4 degrees; 727,877 4.4 degrees
+uni03DB.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 206,608 2.3 degrees
+uni03DC smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+uni03DD kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -198,-351 3.2 degrees
+uni03DD slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.1 degrees, not 15.2
+uni03DD smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 259,-297 2.6 degrees
+uni03DD.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees
+uni03DD.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 496,535 4.6 degrees
+uni03DE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 504,1324 16 units past; 975,99 14 units past
+uni03DE kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 243,575 5.9 degrees; 1239,807 7.7 degrees
+uni03DE smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 494,1269 3.2 degrees; 987,149 2.2 degrees
+uni03DF kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 140,-127 4.3 degrees; 142,705 4.9 degrees
+uni03DF slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 24.2 degrees, not 15.2
+uni03DF smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 412,1241 2.3 degrees; 509,1118 2.8 degrees
+uni03DF zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +13 from 1434
+uni03DF.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 336,948 19 units past; 683,82 17 units past
+uni03DF.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 343,909 3.6 degrees; 455,945 4.1 degrees; 872,584 6.1 degrees
+uni03E1 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 603,562 3.4 degrees
+uni03E1.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 261,744 3.5 degrees; 134,754 4.1 degrees
+uni03E1.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1070,406 2.3 degrees; 361,144 2.1 degrees; 836,289 2.0 degrees
+uni03F4 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 474,684 6 units past; 1166,744 8 units past
+uni03F4 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 549,904 2.5 degrees
+uni0402 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 486,60 5 units past; 810,1310 9 units past
+uni0402 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 314,863 8.0 degrees; 823,144 6.8 degrees
+uni0402 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 574,1254 2.0 degrees; 1715,494 2.0 degrees
+uni0404 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.4 degrees, not 15.2
+uni0409 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,77 6 units past
+uni0409 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,77 2.0 degrees; 838,1228 2.5 degrees; 1277,1307 2.1 degrees; 1268,115 3.0 degrees
+uni040A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1318,115 2.6 degrees
+uni040B extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1527,105 6 units past
+uni040B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1338,562 2.5 degrees
+uni040F extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1286,115 5 units past
+uni040F kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1286,115 3.6 degrees; 505,-253 6.3 degrees
+uni040F smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees; 492,115 2.2 degrees; 981,112 2.2 degrees; 764,-349 3.2 degrees
+uni0414 extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 402,95 13 units past; 1155,1307 6 units past; 1148,140 11 units past
+uni0414 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 402,95 2.2 degrees; 666,1208 3.9 degrees
+uni0416 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1967,1324 7 units past; 1774,132 8 units past
+uni0416 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1510,450 3.1 degrees
+uni0416 zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0; top +26 from 1434
+uni0417 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 250,241 3.0 degrees
+uni0418 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1009,112 3.5 degrees
+uni0418 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees; 808,1309 2.6 degrees; 1631,1310 2.4 degrees; 492,115 2.1 degrees
+uni041A extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 481,1307 10 units past; 1145,140 10 units past; 473,115 9 units past
+uni041A kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1623,1268 2.8 degrees; 1240,1135 7.6 degrees; 1145,140 5.1 degrees; 835,152 4.7 degrees
+uni041A smooth 5                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 166,112 2.2 degrees; 481,1307 3.3 degrees; 1353,1276 4.4 degrees; 1200,478 2.8 degrees; 1167,265 2.0 degrees
+uni041A zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0; top +26 from 1434
+uni041B extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,77 6 units past
+uni041B smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,77 2.0 degrees; 838,1228 2.5 degrees; 1266,115 2.3 degrees; 1277,1307 2.1 degrees
+uni041C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
+uni0423 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 875,1367 6 units past
+uni0424 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 911,113 7 units past
+uni0424 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 922,1307 4.3 degrees; 911,113 4.6 degrees
+uni0424 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 606,110 2.2 degrees
+uni0426 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1294,144 11 units past
+uni0426 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+uni0428 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1222,115 5 units past
+uni0428 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees; 1965,1307 2.1 degrees
+uni0429 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1222,115 5 units past; 1957,144 12 units past
+uni0429 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees; 1965,1307 2.1 degrees
+uni042A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 929,1307 2.1 degrees
+uni042B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.9 degrees
+uni042C smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.9 degrees
+uni042D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 546,1352 2.7 degrees
+uni042E smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.8 degrees
+uni042F extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1227,1307 6 units past
+uni042F smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1216,115 2.7 degrees
+uni042F zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
+uni0430.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
+uni0431 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +15 from 1434
+uni0431.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 284,940 2.2 degrees; 700,318 3.9 degrees
+uni0431.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 965,324 2.5 degrees
+uni0434.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 267,77 12 units past; 853,105 11 units past
+uni0434.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 289,144 2.3 degrees; 441,869 4.0 degrees; 1074,942 2.5 degrees
+uni0436 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 286,251 5.5 degrees; 249,100 5.2 degrees; 1442,610 3.4 degrees
+uni0436 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 15,113 2.5 degrees; 1506,807 3.2 degrees; 88,19 2.4 degrees
+uni0436.sc extreme 4             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 473,649 11 units past; 618,807 9 units past; 1490,952 10 units past; 1381,103 7 units past
+uni0436.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 632,915 5.5 degrees; 1086,189 3.7 degrees; 509,442 4.3 degrees
+uni0436.sc smooth 6              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 445,952 2.2 degrees; 820,941 2.1 degrees; 1394,826 2.3 degrees; 1381,103 2.1 degrees; 1076,93 2.3 degrees; 1125,324 3.1 degrees
+uni0436.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0; top +22 from 1040
+uni0437 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 258,144 4.1 degrees
+uni0437.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 183,213 6 units past
+uni0437.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 603,153 1.9 degrees; 760,843 3.2 degrees; 931,313 2.5 degrees
+uni0437.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 652,378 2.8 degrees; 1025,826 2.2 degrees
+uni0438 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
+uni0438.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees; 709,88 3.5 degrees
+uni0438.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1214,942 2.6 degrees
+uni043A smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 537,802 2.2 degrees; 563,708 2.4 degrees
+uni043A.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 300,940 3.7 degrees; 899,820 2.0 degrees; 875,110 5.4 degrees
+uni043A.sc smooth 4              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 587,108 2.5 degrees; 594,202 2.2 degrees; 625,329 3.4 degrees; 358,90 2.5 degrees
+uni043A.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0; top +22 from 1040
+uni043B extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 522,791 9 units past; 714,781 7 units past
+uni043B smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,121 2.7 degrees; 512,754 5.1 degrees; 828,269 2.3 degrees; 714,781 2.2 degrees
+uni043B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+uni043B.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 344,150 2.2 degrees; 974,90 2.6 degrees; 480,157 2.1 degrees
+uni043C kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 512,754 3.7 degrees
+uni043C smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,121 2.7 degrees; 1133,269 3.9 degrees
+uni043C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+uni043C.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
+uni043D smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 930,269 2.4 degrees; 689,289 2.5 degrees
+uni043F slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
+uni043F smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 909,212 2.7 degrees
+uni0442 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
+uni0443.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 605,985 13 units past
+uni0443.sc kink 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 100,152 3.0 degrees; 448,216 4.1 degrees; 940,792 3.9 degrees; 974,913 6.6 degrees
+uni0443.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 295,87 2.7 degrees
+uni0443.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni0444 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 731,-29 2.1 degrees
+uni0444.sc kink 8                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 232,746 3.0 degrees; 905,944 3.1 degrees; 1072,281 3.3 degrees; 679,87 4.2 degrees; 920,328 3.5 degrees; 979,658 3.1 degrees; 33
+uni0444.sc smooth 4              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 66,429 2.8 degrees; 625,943 2.8 degrees; 1242,588 2.7 degrees; 399,85 2.1 degrees
+uni0446 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1010,-180 5.4 degrees; 1014,-235 3.5 degrees
+uni0446 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
+uni0446.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 973,108 8 units past
+uni0446.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees
+uni0447 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 563,708 2.4 degrees
+uni0447.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 872,90 3.0 degrees
+uni0447.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1095,942 2.4 degrees; 591,89 2.8 degrees; 462,562 2.2 degrees
+uni0448 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
+uni0448.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.0 degrees; 1476,90 2.9 degrees; 924,90 3.0 degrees
+uni0449 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1491,-180 7.6 degrees; 1496,-235 4.9 degrees
+uni0449 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
+uni0449 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1247,-374 2.4 degrees
+uni0449.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1478,108 7 units past
+uni0449.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.0 degrees; 924,90 3.0 degrees
+uni0449.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1478,108 2.6 degrees
+uni044A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 228,633 5.7 degrees
+uni044A.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1037,318 3.9 degrees
+uni044A.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1301,324 2.5 degrees
+uni044B kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 542,570 5.5 degrees; 310,649 3.8 degrees
+uni044B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1159,269 3.9 degrees
+uni044B.sc kink 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 314,940 3.7 degrees; 729,318 3.9 degrees; 1158,940 3.8 degrees
+uni044B.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 994,324 2.5 degrees; 1439,942 2.4 degrees; 1215,90 2.5 degrees
+uni044C kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 542,570 5.5 degrees; 310,649 3.8 degrees
+uni044C slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 21.7 degrees, not 15.2
+uni044C.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 314,940 3.7 degrees; 729,318 3.9 degrees
+uni044C.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 993,324 2.5 degrees
+uni044D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 258,144 4.1 degrees
+uni044D.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 28,204 2.9 degrees; 591,150 3.4 degrees
+uni044D.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 382,288 2.1 degrees; 1001,673 2.8 degrees; 814,180 2.6 degrees
+uni044E.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees
+uni044E.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 829,657 2.6 degrees; 1507,654 2.8 degrees
+uni044F smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 734,694 2.5 degrees
+uni044F.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 926,90 6.7 degrees
+uni044F.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 488,704 2.2 degrees; 1151,942 2.5 degrees; 490,395 2.9 degrees
+uni044F.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0
+uni0452.sc kink 6                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1022,782 3.0 degrees; 821,942 4.3 degrees; 1259,360 2.5 degrees; 576,104 3.3 degrees; 780,59 6.6 degrees; 926,84 2.8 degrees
+uni0452.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 995,382 2.7 degrees
+uni0454.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 237,845 3.3 degrees
+uni0454.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.2 degrees, not 15.2
+uni0454.sc smooth 4              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 69,332 3.0 degrees; 897,990 2.4 degrees; 439,767 2.0 degrees; 898,219 2.2 degrees
+uni0458.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni0459 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 522,791 9 units past; 721,781 12 units past
+uni0459 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 830,278 5.2 degrees
+uni0459 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,121 2.7 degrees; 512,754 5.1 degrees; 721,781 2.3 degrees
+uni0459 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+uni0459.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1333,318 3.3 degrees
+uni0459.sc smooth 4              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 344,150 2.2 degrees; 1597,324 2.5 degrees; 480,157 2.1 degrees; 976,90 2.8 degrees
+uni045A kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 929,278 3.5 degrees; 546,572 2.1 degrees
+uni045A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 713,379 3.7 degrees
+uni045A.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1350,318 3.9 degrees
+uni045A.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1614,324 2.5 degrees; 373,90 2.3 degrees
+uni045B.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1022,782 3.0 degrees
+uni045B.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1220,353 2.8 degrees; 949,441 2.1 degrees
+uni045F kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 667,-180 6.1 degrees; 672,-235 4.5 degrees
+uni045F slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
+uni045F.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 3.7 degrees; 990,90 4.9 degrees
+uni045F.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 935,940 2.8 degrees; 304,-275 3.3 degrees
+uni0462 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 749,1306 5.7 degrees
+uni0462 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1055,1308 3.0 degrees
+uni0463 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 768,761 2.3 degrees
+uni0463.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1173,324 2.5 degrees
+uni046A extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1859,116 6 units past; 1554,60 7 units past
+uni046A kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 738,1278 4.1 degrees; 1797,1329 2.8 degrees
+uni046A smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1561,113 2.9 degrees; 423,151 3.4 degrees; 402,93 2.2 degrees
+uni046B kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1264,780 3.8 degrees
+uni046B smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1273,99 2.3 degrees; 1043,256 2.7 degrees
+uni046B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
+uni046B.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 491,920 7.1 degrees; 1319,955 4.7 degrees
+uni046B.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 28,90 2.5 degrees
+uni0472 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 474,684 6 units past; 1166,744 8 units past
+uni0472 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 549,904 2.5 degrees
+uni0473.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 336,492 7 units past
+uni0473.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 69,347 3.4 degrees; 396,658 3.1 degrees
+uni0473.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1074,654 2.8 degrees; 746,347 3.0 degrees
+uni0474 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 25.0 degrees, not 15.2
+uni0474 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 700,1266 2.4 degrees; 1344,1211 2.8 degrees
+uni0474 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
+uni0475 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 744,705 4.7 degrees; 1176,746 3.5 degrees; 875,712 4.2 degrees; 323,818 2.4 degrees
+uni0475 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 21.6 degrees, not 15.2
+uni0475 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 915,775 4.1 degrees
+uni0475.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 498,985 8 units past
+uni0475.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 975,872 4.5 degrees
+uni0475.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 24.4 degrees, not 15.2
+uni0475.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 499,913 2.8 degrees
+uni0490 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.9 degrees
+uni0491 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 255,124 3.0 degrees; 1016,1071 2.1 degrees
+uni0491 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 218,73 2.1 degrees
+uni0492 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.3 degrees
+uni0496 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1509,450 4.9 degrees
+uni0496 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1967,1324 2.7 degrees
+uni0496 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
+uni0497 extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,55 6 units past; 1505,807 7 units past; 1026,-178 11 units past
+uni0497 kink 8                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 58,219 6.7 degrees; 284,251 6.8 degrees; 1641,842 5.6 degrees; 1667,641 5.0 degrees; 1442,610 6.9 degrees; 1386,670 7.5 degrees;
+uni0497.sc extreme 5             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 553,561 5 units past; 629,820 8 units past; 1555,37 5 units past; 1331,-20 16 units past; 1141,360 14 units past
+uni0497.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1131,309 2.5 degrees
+uni0497.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +24 from 1040
+uni049A extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 482,1307 10 units past; 1145,140 10 units past; 473,115 9 units past
+uni049A kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1623,1268 2.8 degrees; 1241,1135 7.0 degrees; 1275,-438 7.3 degrees
+uni049A smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1200,478 2.8 degrees; 1167,265 2.0 degrees; 849,281 2.2 degrees
+uni049A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
+uni049B extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 889,802 5 units past
+uni049B kink 5                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 563,708 4.5 degrees; 542,572 8.0 degrees; 862,315 4.1 degrees; 845,202 2.9 degrees; 579,202 5.8 degrees
+uni049B smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 597,484 2.8 degrees; 577,439 2.2 degrees; 861,767 2.2 degrees
+uni049B.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1159,37 6 units past
+uni049B.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 518,501 2.5 degrees
+uni049B.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1084,-83 2.1 degrees
+uni04A2 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1324,144 11 units past
+uni04A2 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1062,301 1.3 degrees
+uni04A3 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 7 units past
+uni04A3 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 3.2 degrees
+uni04A3.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1046,161 8 units past; 274,-196 7 units past
+uni04A3.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 335,-275 3.7 degrees
+uni04A3.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 277,-222 2.5 degrees
+uni04AF kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 532,-76 2.3 degrees; 278,-76 2.3 degrees; 330,649 3.9 degrees
+uni04AF slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.7 degrees, not 15.2
+uni04B0 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 769,1367 7 units past
+uni04B0 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 473,110 4.6 degrees; 445,1271 5.0 degrees; 778,113 5.9 degrees
+uni04B0 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1219,1281 2.2 degrees
+uni04B1 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 330,649 3.9 degrees
+uni04B1 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
+uni04B1 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 452,-364 2.4 degrees
+uni04B2 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 868,1367 10 units past; 1062,60 12 units past
+uni04B2 kink 5                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 854,1259 4.7 degrees; 1283,1154 3.3 degrees; 1466,60 5.5 degrees; 1080,154 4.8 degrees; 629,272 3.5 degrees
+uni04B2 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.9 degrees, not 15.2
+uni04B2 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 404,207 2.6 degrees; 1527,1256 2.4 degrees; 1394,131 2.9 degrees
+uni04B3 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,55 6 units past; 986,807 7 units past
+uni04B3 kink 7                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 59,219 3.8 degrees; 474,839 1.5 degrees; 1121,842 6.8 degrees; 1149,641 6.8 degrees; 924,610 5.8 degrees; 867,670 7.9 degrees; 8
+uni04B3 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 532,627 2.7 degrees; 549,698 2.4 degrees
+uni04B3.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1103,37 5 units past; 1028,-83 7 units past
+uni04B6 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1159,144 12 units past
+uni04B6 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 320,835 4.2 degrees
+uni04B6 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 329,905 2.9 degrees; 428,1307 2.9 degrees
+uni04B7 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,762 7 units past
+uni04B7 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 648,301 1.9 degrees
+uni04B7 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 476,379 2.0 degrees
+uni04B7.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 982,129 7 units past; 552,668 18 units past
+uni04BB.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 727,612 5 units past; 715,371 18 units past
+uni04D8 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1140,710 5 units past
+uni04D9.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 637,306 2.8 degrees
+uni04D9.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
+uni04E8 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 472,679 6 units past; 1166,750 7 units past
+uni04E9.sc extreme 4             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 845,1063 19 units past; 549,-24 18 units past; 392,486 30 units past; 1003,553 28 units past
+uni04E9.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
+uni0E3F smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 514,115 2.6 degrees
+uni1D05 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni1D43 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 599,529 1.6 degrees; 341,529 1.5 degrees; 352,567 4.4 degrees
+uni1D43 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 227,943 2.5 degrees; 487,1053 2.1 degrees
+uni1D49 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 517,992 2.3 degrees; 394,917 4.9 degrees
+uni1D4B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 641,818 3.7 degrees
+uni1D4D kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 308,399 5.2 degrees; 336,650 2.9 degrees
+uni1D53 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 395,691 6.9 degrees
+uni1D58 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 648,529 1.2 degrees; 534,652 4.8 degrees; 350,529 1.6 degrees
+uni1D58 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 498,974 2.5 degrees; 479,852 2.2 degrees; 245,767 2.1 degrees; 322,943 4.7 degrees
+uni1D6C extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 122,426 43 units past; 375,1335 7 units past; 982,457 45 units past; 468,393 15 units past; 635,491 16 units past
+uni1D6C kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 112,356 6.3 degrees; 691,839 3.3 degrees
+uni1D6C smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 747,101 2.2 degrees; 362,206 2.1 degrees; 472,595 4.3 degrees
+uni1D6D extreme 6                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 67,428 45 units past; 889,1335 6 units past; 909,456 41 units past; 811,95 7 units past; 411,393 17 units past; 575,491 17 units
+uni1D6D kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 49,241 2.9 degrees; 595,172 2.9 degrees; 569,289 4.5 degrees; 582,839 2.3 degrees
+uni1D6D smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 889,1335 3.7 degrees; 854,251 2.2 degrees
+uni1D6E smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 391,1184 2.6 degrees
+uni1D6F kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 909,129 7.4 degrees; 427,129 7.3 degrees
+uni1D6F smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1146,161 2.5 degrees; 354,800 2.7 degrees; 794,626 2.2 degrees
+uni1D70 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1029,455 43 units past; 555,393 26 units past; 249,431 41 units past; 348,765 7 units past; 717,491 22 units past
+uni1D70 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 855,97 3.6 degrees; 427,129 7.8 degrees; 303,599 2.1 degrees
+uni1D70 smooth 5                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 563,688 2.2 degrees; 1064,700 2.2 degrees; 869,33 4.5 degrees; 665,161 2.2 degrees; 348,765 2.9 degrees
+uni1D71 extreme 7                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 42,-409 9 units past; 250,428 41 units past; 345,765 9 units past; 1099,457 42 units past; 291,-364 7 units past; 589,393 17 uni
+uni1D71 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 346,820 1.1 degrees; 558,702 2.2 degrees; 802,839 1.6 degrees
+uni1D71 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 844,696 3.5 degrees; 589,572 5.4 degrees
+uni1D72 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 805,621 1.3 degrees
+uni1D72 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees; 316,640 2.6 degrees
+uni1D72 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
+uni1D73 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 805,621 1.3 degrees
+uni1D73 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees; 425,121 2.1 degrees
+uni1D73 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni1D74 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 317,259 2.7 degrees; 556,484 7.0 degrees
+uni1D74 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 13,204 2.3 degrees; 234,196 2.0 degrees; 588,627 2.9 degrees; 450,559 2.3 degrees
+uni1D75 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 320,210 6.0 degrees
+uni1D75 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 95,297 2.4 degrees; 294,101 2.1 degrees; 294,90 2.9 degrees
+uni1D76 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,774 3.7 degrees; 344,149 3.7 degrees; 268,37 6.8 degrees
+uni1D76 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 668,821 2.2 degrees
+uni1D7B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni1D7D kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 291,-363 4.8 degrees
+uni1D7D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 344,765 3.9 degrees
+uni1D7D.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1071,963 10 units past; 847,709 27 units past
+uni1DA4 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 251,845 5.2 degrees
+uni1DB6 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 771,780 7.8 degrees; 251,845 5.2 degrees
+uni1DB6 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 712,707 2.4 degrees; 477,703 2.8 degrees
+uni1DBB kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 225,529 2.5 degrees
+uni1DBB smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 698,1031 2.6 degrees
+uni1DBF extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 874,906 16 units past; 300,848 7 units past
+uni1DBF kink 8                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 474,821 4.3 degrees; 438,632 3.5 degrees; 334,1179 5.5 degrees; 884,1139 6.9 degrees; 264,665 2.8 degrees; 295,892 2.9 degrees; 
+uni1DBF smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 460,721 2.9 degrees
+uni1E63.sc accent 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): below dotaccent gap 138, usually 168
+uni1E7F.sc accent 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): below dotaccent gap 138, usually 168
+uni1E89.sc accent 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): below dotaccent gap 138, usually 168
+uni1ECD.sc accent 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): below dotaccent gap 138, usually 168
+uni1ECE accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above Hook gap 93, usually 132
+uni1ECF.sc accent 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above Hook gap 100, usually 130
+uni1EE5.sc accent 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): below dotaccent gap 138, usually 168
+uni1EF5 accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): below dotaccent gap -313, usually 145
+uni1F48 accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FBF gap -486, usually -447
+uni1F49 accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FFE gap -486, usually -447
+uni1F4A accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCD gap -502, usually -463
+uni1F4B accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDD gap -486, usually -447
+uni1F4C accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCE gap -486, usually -447
+uni1F4D accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDE gap -500, usually -461
+uni1F59 accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FFE gap -486, usually -447
+uni1F5B accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDD gap -486, usually -447
+uni1F5D accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDE gap -500, usually -461
+uni1F5F accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDF gap -532, usually -493
+uni1F68 accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FBF gap -486, usually -447
+uni1F69 accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FFE gap -486, usually -447
+uni1F6A accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCD gap -502, usually -463
+uni1F6B accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDD gap -486, usually -447
+uni1F6C accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCE gap -486, usually -447
+uni1F6D accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDE gap -500, usually -461
+uni1F6E accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FCF gap -515, usually -476
+uni1F6F accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FDF gap -532, usually -493
+uni1FBE kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 358,105 3.8 degrees
+uni1FBE smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 91,102 3.1 degrees; 506,653 2.8 degrees
+uni1FBE zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni1FBF extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 646,1458 8 units past; 654,1195 6 units past
+uni1FC0 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1011,1218 4.2 degrees; 536,1228 4.2 degrees
+uni1FC1 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 630,1279 3.8 degrees
+uni1FC1 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1001,1348 4.4 degrees; 599,1371 2.7 degrees; 609,1338 4.4 degrees
+uni1FCD extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 441,1438 9 units past
+uni1FCD smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 492,1256 2.2 degrees; 396,1274 4.1 degrees
+uni1FCE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 543,1458 9 units past; 560,1181 8 units past
+uni1FCF extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 615,1370 8 units past; 648,1102 7 units past
+uni1FCF smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 890,1469 2.7 degrees; 881,1502 2.3 degrees; 479,1525 2.7 degrees
+uni1FDD extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 376,1197 6 units past; 478,1000 9 units past
+uni1FDE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 427,1169 9 units past; 458,973 13 units past
+uni1FDF extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 647,941 7 units past
+uni1FDF smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 890,1469 2.7 degrees; 881,1502 2.3 degrees; 479,1525 2.7 degrees
+uni1FEA accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FEF gap -486, usually -447
+uni1FEF smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 420,1485 2.4 degrees; 438,1371 2.3 degrees
+uni1FF8 accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FEF gap -486, usually -447
+uni1FFA accent 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above uni1FEF gap -486, usually -447
+uni1FFE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 565,1209 7 units past; 683,987 10 units past
+uni2042 kink 12                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 279,858 3.1 degrees; 425,860 5.5 degrees; 422,577 3.1 degrees; 276,575 5.5 degrees; 799,858 3.1 degrees; 945,860 5.5 degrees; 94
+uni2042 smooth 20                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 77,615 2.6 degrees; 75,818 2.6 degrees; 439,913 4.4 degrees; 624,820 2.6 degrees; 626,617 2.6 degrees; 434,617 2.3 degrees; 445,
+uni2071 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 479,852 3.7 degrees; 227,645 2.5 degrees; 322,943 2.9 degrees
+uni207F kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 488,967 1.7 degrees
+uni207F smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 794,974 2.8 degrees; 777,852 2.1 degrees; 523,645 2.6 degrees; 620,943 2.9 degrees
+uni20A6 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 569,1307 13 units past
+uni20A6 kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 288,243 3.9 degrees; 569,1307 3.7 degrees; 1432,1163 4.2 degrees; 1445,1256 5.1 degrees; 1586,1166 5.7 degrees; 442,245 4.0 degr
+uni20A6 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 431,162 2.9 degrees
+uni20A9 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 785,1367 13 units past
+uni20A9 kink 9                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 785,1367 1.3 degrees; 773,1266 5.8 degrees; 1183,1055 6.7 degrees; 1222,1271 4.0 degrees; 1566,1367 1.1 degrees; 1920,1045 4.5 d
+uni20A9 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1520,1232 2.3 degrees
+uni20AA extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 729,538 60 units past; 771,-16 22 units past; 852,891 60 units past; 811,1450 22 units past
+uni20AD extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 956,60 10 units past
+uni20AD kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 209,112 3.9 degrees; 1270,147 6.6 degrees
+uni20AD smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 524,1307 3.6 degrees; 1480,1243 2.5 degrees
+uni20AE kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 495,112 4.9 degrees; 1116,1309 3.3 degrees
+uni20AE smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 810,1307 2.7 degrees; 574,1254 2.5 degrees; 799,115 2.6 degrees
+uni20B1 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 528,1323 6 units past; 510,96 6 units past
+uni20B2 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1315,1357 2.2 degrees; 1116,143 2.6 degrees
+uni20B4 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 521,-28 13 units past; 1107,1157 13 units past; 950,1462 14 units past; 339,313 17 units past
+uni20B5 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1005,1473 6 units past; 1249,1394 6 units past; 707,-26 8 units past; 708,25 10 units past
+uni20B5 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1298,1336 4.7 degrees
+uni20B5 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1179,1295 3.1 degrees
+uni20B8 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 800,115 2.7 degrees; 810,1307 3.7 degrees; 575,1254 2.8 degrees
+uni20B9 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1073,1044 11 units past
+uni20B9 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 420,632 1.4 degrees; 445,642 4.8 degrees
+uni20B9 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 792,583 3.2 degrees
+uni20BC extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1101,715 49 units past; 1126,1457 30 units past
+uni20BD extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 524,1307 5 units past
+uni20BD kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 514,115 3.3 degrees
+uni20BE extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1082,1385 7 units past; 1119,1334 7 units past; 579,746 50 units past; 743,119 23 units past
+uni20BF smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 524,1307 3.2 degrees; 514,115 2.1 degrees
+uni2113 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 407,153 11 units past; 1033,1500 83 units past
+uni2113 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 159,143 7.7 degrees
+uni2113 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 24.7 degrees, not 15.2
+uni2113 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 598,156 2.8 degrees
+uni2113 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +21 from -23
+uni2116 extreme 9                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1691,413 12 units past; 1979,737 9 units past; 1991,860 8 units past; 1678,299 8 units past; 200,86 18 units past; 971,1211 23 u
+uni2116 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1639,1130 2.1 degrees
+uni2135 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 431,1099 18 units past; 830,656 7 units past; 1080,1099 10 units past; 901,420 6 units past
+uni2135 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 418,239 6.3 degrees
+uni2135 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 830,656 2.2 degrees; 1148,961 2.5 degrees; 742,56 3.0 degrees; 688,200 2.2 degrees
+uni2144 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 921,66 7 units past
+uni2144 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1247,161 3.5 degrees; 913,1320 5.1 degrees
+uni2144 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 545,339 2.0 degrees
+uni24D0 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1377,293 8 units past
+uni24D0 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 992,790 5.2 degrees
+uni2C62 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.6 degrees
+uni2C63 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 5 units past
+uni2C63 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 492,115 3.6 degrees
+uni2C64 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1209,140 6 units past
+uni2C64 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 663,-221 4.2 degrees
+uni2C64 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.6 degrees
+uni2C65 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 811,95 7 units past
+uni2C65 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 595,172 2.9 degrees; 582,839 2.3 degrees
+uni2C65 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 49,241 2.2 degrees; 169,649 2.0 degrees
+uni2C65.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
+uni2C66 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 320,210 4.8 degrees
+uni2C66 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 293,101 4.2 degrees
+uni2C66.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1140,607 7 units past
+uni2C66.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1113,874 3.3 degrees
+uni2C66.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +7 from 1040
+uni2C6D extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 768,10 23 units past; 550,696 51 units past
+uni2C6F extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1272,1305 5 units past
+uni2C6F kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 451,1287 5.2 degrees
+uni2C6F smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1228,1152 2.1 degrees
+uni2C72 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2186,1126 5 units past
+uni2C72 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 750,1266 2.9 degrees; 1943,1143 3.4 degrees; 2292,1041 5.9 degrees; 454,1271 6.8 degrees
+uni2C72 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1161,1055 2.3 degrees; 1498,1232 2.7 degrees; 2117,1073 2.2 degrees
+uni2C73 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1587,815 5 units past
+uni2C73 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
+uni2C73 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 365,97 2.2 degrees
+uni2C73.sc extreme 4             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 544,984 6 units past; 832,766 6 units past; 853,922 5 units past; 1618,811 7 units past
+uni2C73.sc kink 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 832,766 5.4 degrees; 853,922 2.2 degrees; 1128,891 7.9 degrees; 1438,830 3.7 degrees; 283,922 7.4 degrees
+uni2C73.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni2E0E extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1110,-10 17 units past; 771,-62 29 units past; 433,1376 10 units past; 754,1434 23 units past
+uni2E0E smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 701,-276 2.1 degrees; 825,1671 2.6 degrees
+uniA78B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 390,1324 2.9 degrees
+uniA78C.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 260,930 2.9 degrees
+uniA7AA extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 499,1296 11 units past
+uniA7AA smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 409,1265 5.8 degrees
+uniA7B2 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 400,-303 6 units past
+uniA7B2 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 166,-352 2.0 degrees
+uniA7B4 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 185,112 4.6 degrees
+uniA7B5.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 314,940 3.7 degrees; 783,527 6.6 degrees
+uniA7B5.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1116,803 2.7 degrees; 1029,310 3.3 degrees; 752,304 3.1 degrees
+uniA7B7.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1161,580 2.2 degrees
+uniA7B7.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
+uniA7C7 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.4 degrees
+uniA7C8.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 844,1040 20 units past; 930,515 43 units past
+uniA7CB kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1131,1278 4.0 degrees; 1117,1367 6.3 degrees
+uogonek kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 779,-32 7.0 degrees
+uogonek slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
+uogonek smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1001,-302 2.4 degrees
+uogonek.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 726,-256 3.4 degrees; 352,-245 2.6 degrees
+uogonek.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 120,243 2.7 degrees; 289,942 2.5 degrees; 520,-200 2.1 degrees
+uogonek.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+upsilon extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 372,748 6 units past
+upsilon.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1184,834 3.8 degrees; 1006,762 3.9 degrees
+upsilon.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1109,635 2.1 degrees; 570,90 3.5 degrees
+v slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
+v.sc extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 554,985 6 units past
+v.sc kink 4                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 561,913 7.4 degrees; 858,762 5.0 degrees; 1073,873 5.4 degrees; 287,916 4.9 degrees
+v.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+w slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
+w.sc extreme 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 546,985 6 units past; 829,762 8 units past; 849,916 6 units past
+w.sc kink 7                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 554,913 4.8 degrees; 829,762 6.8 degrees; 1125,888 6.4 degrees; 1392,754 5.4 degrees; 1429,916 1.1 degrees; 1610,869 3.1 degrees
+w.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 849,916 4.4 degrees
+w.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+x kink 3                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 286,251 5.5 degrees; 246,98 3.5 degrees; 923,610 3.4 degrees
+x smooth 3                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 15,113 2.6 degrees; 987,807 3.2 degrees; 88,19 2.3 degrees
+x.sc extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 600,982 11 units past; 745,53 13 units past
+x.sc kink 4                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 256,158 2.5 degrees; 902,917 5.0 degrees; 1088,903 3.0 degrees; 999,104 3.2 degrees
+x.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 425,111 4.2 degrees
+xi kink 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 543,-10 2.2 degrees
+xi.sc kink 4                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 436,1089 5.9 degrees; 1036,845 2.7 degrees; 826,-54 2.7 degrees; 734,424 3.0 degrees
+xi.sc smooth 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1099,1089 3.8 degrees; 174,187 2.3 degrees; 856,139 2.4 degrees; 787,615 2.7 degrees
+y slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.1 degrees, not 15.2
+y.sc extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 528,982 9 units past
+y.sc kink 4                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 276,914 4.4 degrees; 812,788 3.7 degrees; 874,922 6.2 degrees; 577,89 2.6 degrees
+yen extreme 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,1307 8 units past; 664,117 7 units past
+yen kink 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 367,1221 3.1 degrees
+yen smooth 2                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1034,1112 5.0 degrees; 1068,1219 2.2 degrees
+z smooth 5                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 500,703 2.1 degrees; 732,773 2.9 degrees; 668,821 2.1 degrees; 344,149 3.7 degrees; 181,117 2.9 degrees
+z.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.1 degrees, not 15.2
+zeta kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 477,150 6.4 degrees; 498,-12 3.9 degrees

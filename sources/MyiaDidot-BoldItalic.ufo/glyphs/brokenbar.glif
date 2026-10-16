@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="brokenbar" format="2">
+	<unicode hex="00A6"/>
+	<advance width="674"/>
+	<outline>
+		<contour>
+			<point x="283" y="718" type="line"/>
+			<point x="251" y="1473" type="line"/>
+			<point x="464" y="1473" type="line"/>
+			<point x="496" y="718" type="line"/>
+		</contour>
+		<contour>
+			<point x="296" y="-326" type="line"/>
+			<point x="265" y="371" type="line"/>
+			<point x="478" y="371" type="line"/>
+			<point x="509" y="-326" type="line"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
+</glyph>

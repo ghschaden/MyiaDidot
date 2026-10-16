@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni0268.sc" format="2">
+	<advance width="671"/>
+	<outline>
+		<contour>
+			<point x="-126" y="0" type="line"/>
+			<point x="-20" y="52" type="line"/>
+			<point x="84" y="52" type="line"/>
+			<point x="192" y="486" type="line"/>
+			<point x="41" y="486" type="line"/>
+			<point x="87" y="553" type="line"/>
+			<point x="221" y="553" type="line"/>
+			<point x="329" y="988" type="line"/>
+			<point x="228" y="988" type="line"/>
+			<point x="188" y="1040" type="line"/>
+			<point x="858" y="1040" type="line"/>
+			<point x="755" y="988" type="line"/>
+			<point x="649" y="988" type="line"/>
+			<point x="541" y="553" type="line"/>
+			<point x="691" y="553" type="line"/>
+			<point x="647" y="486" type="line"/>
+			<point x="513" y="486" type="line"/>
+			<point x="405" y="52" type="line"/>
+			<point x="506" y="52" type="line"/>
+			<point x="546" y="0" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="Top" x="541" y="1156"/>
+	<anchor name="Acute" x="536" y="1136"/>
+	<anchor name="Grave" x="536" y="1136"/>
+	<anchor name="Dotaccent" x="546" y="1176"/>
+	<anchor name="TopCap" x="549" y="1186"/>
+	<anchor name="Bottom" x="227" y="0"/>
+	<anchor name="DotBelow" x="221" y="-20"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.derived</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>derived</string>
+		</dict>
+	</lib>
+</glyph>

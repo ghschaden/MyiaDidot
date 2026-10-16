@@ -118,6 +118,15 @@ ChangeLog
         a before v w less, ß looser on the left; in the Bold, t tighter on
         the right, г є looser on the right, т on the left. Frequent pairs
         outside the references' range: 4, 4, 5 became 2, 0, 2.
+    * Bold Italic (sources/MyiaDidot-BoldItalic.ufo): made by make_bold.py
+      from the Italic, as the Bold from the Regular, in the upright frame
+      (each outline, anchor and offset deslanted by the italic angle,
+      emboldened, slanted again), with its small caps (smallcaps.py), its
+      own tests and baselines. Its colour against the Bold's is 1.03 (bold
+      italics have 0.97-1.02), its spacing 0.335 (0.27-0.35). The Italic ⱳ
+      has its own recipe: w's hairline arm, its ball cut away, rising to the
+      x-height and curling over (the Regular's curl, carried across, had
+      left slivers beside the diagonal).
     * The quality criteria are tests now (tests/test_quality.py,
       scripts/quality/checks.py): construction (smooth nodes, kinks,
       extremes, whole units), alignment zones, stem weights, the italic's

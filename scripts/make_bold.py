@@ -1,6 +1,7 @@
-"""Derive the Bold master from the Regular.
+"""Derive the Bold master from the Regular (and the Bold Italic from the Italic).
 
     python scripts/make_bold.py [REGULAR.ufo] [BOLD.ufo]
+    python scripts/make_bold.py sources/MyiaDidot-Italic.ufo sources/MyiaDidot-BoldItalic.ufo
 
 A Didone bold is mostly the regular with heavier stems: the hairlines stay
 nearly as fine, so the contrast grows. Every outline of a letter, figure or
@@ -18,10 +19,14 @@ features. Pinholes and crumbs the emboldening leaves are cleaned
 (glyph_lint.py). Afterwards: smallcaps.py on the Bold, make normalize.
 
 This regenerates the whole Bold from the Regular: until the Bold has its own
-reviewed edits, rerun it after changes to the Regular.
+reviewed edits, rerun it after changes to the Regular. From an italic
+source (the Bold Italic from the Italic) the same is done in the upright
+frame: each outline, anchor and offset deslanted by the source's italic
+angle, emboldened, and slanted again (tx), so the stems gain AX across.
 """
 
 import argparse
+import math
 import re
 import sys
 import unicodedata
@@ -58,6 +63,9 @@ FIGURE_NAMES = {f"{n}{s}" for n in ("zero", "one", "two", "three", "four", "five
 # straight letters than in bold text faces; г and є tight on the right, т on
 # the left (measured, scripts/quality/pairs.py and colour.py)
 BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni0442": (26, 0)}  # t; г є т
+# the Bold Italic's own (from the Italic): none yet
+ITALIC_SIDEBEARINGS = {}
+ITALIC_ANCHOR_NUDGE = {}
 # the horn on u a little left: where the Regular's sits, the Bold's heavier
 # foot leaves a ledge beside the stem (glyph_lint)
 ANCHOR_NUDGE = {("u", "Horn"): -10}
@@ -160,6 +168,20 @@ def mark_like(g):
     return g.width == 880
 
 
+SLANT = 0.0  # the source's slant (tan of its italic angle), set in main()
+
+
+def tx(x, y):
+    """Where an x at height y lands in the Bold: in the upright frame scaled
+    across by KX and moved AX / 2 right."""
+    return (x - y * SLANT) * KX + AX / 2 + y * SLANT
+
+
+def tx_offset(dx, dy):
+    """A component offset in the Bold: scaled across in the upright frame."""
+    return (dx - dy * SLANT) * KX + dy * SLANT
+
+
 def attach_point(font, mark, bases, centre):
     """Where a mark component attaches, in the Regular's composite and in the
     Bold's: the anchor of the base component nearest to the mark's ink, or
@@ -169,11 +191,11 @@ def attach_point(font, mark, bases, centre):
     ink = ink_bounds(font, mark.baseGlyph)
     mdx, mdy = mark.transformation[4], mark.transformation[5]
 
-    def moved(x):  # unanchored: the composite's outline moves so
-        return x, x * KX + AX / 2
+    def moved(x, y):  # unanchored: the composite's outline moves so
+        return x, tx(x, y)
 
     if ink is None:
-        return moved(mdx + centre[mark.baseGlyph])
+        return moved(mdx + centre[mark.baseGlyph], mdy)
     mx, my = mdx + (ink[0] + ink[2]) / 2, mdy + (ink[1] + ink[3]) / 2
     best = None
     for base, bdx, bdy in bases:
@@ -186,8 +208,8 @@ def attach_point(font, mark, bases, centre):
                 # in the Bold: the base's anchor and its offset, rounded as
                 # they are written, so the mark lands exactly where mark
                 # positioning puts it
-                best = (d, ax, round(a.x * KX + AX / 2) + round(bdx * KX))
-    return best[1:] if best else moved(mdx + centre[mark.baseGlyph])
+                best = (d, ax, round(tx(a.x, a.y)) + round(tx_offset(bdx, bdy)))
+    return best[1:] if best else moved(mdx + centre[mark.baseGlyph], my)
 
 
 def contours_only(g):
@@ -246,8 +268,14 @@ def main():
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("bold", nargs="?", default=str(ROOT / "sources/MyiaDidot-Bold.ufo"))
     args = ap.parse_args()
+    global SLANT
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
+    angle = -(regular.info.italicAngle or 0)
+    SLANT = math.tan(math.radians(angle))
+    italic = bool(angle)
+    nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
+    up, down = (1, 0, -SLANT, 1, 0, 0), (1, 0, SLANT, 1, 0, 0)  # deslant, slant again
     marks = {g.name for g in regular if mark_like(g)}
     # what a combining mark is made of is an accent too (the spacing
     # ypogegrammeni ͺ is a modifier letter, but uni0345 is built on it)
@@ -290,18 +318,25 @@ def main():
         is_mark = g.name in marks
         if g.contours:
             rec = contours_only(g)
-            if is_mark:
+            if is_mark and not italic:
                 redraw(g, embolden(rec, MARK_AX, MARK_AY))
+            elif is_mark:
+                flat = RecordingPen()
+                rec.replay(TransformPen(flat, up))
+                heavier = embolden(flat, MARK_AX, MARK_AY)
+                sloped = ufoLib2.objects.Glyph()
+                heavier.draw(TransformPen(sloped.getPen(), down))
+                redraw(g, sloped)
             else:
                 wide = RecordingPen()
-                rec.replay(TransformPen(wide, (KX, 0, 0, 1, 0, 0)))
+                rec.replay(TransformPen(TransformPen(wide, (KX, 0, 0, 1, 0, 0)), up))
                 bold = bridge(rezone(embolden(wide, AX, AY), AY))  # the flat edges kept on the zones
                 if slit(bold, regular[g.name], regular):
                     # parts close to each other (x's inner serifs) closed to a
                     # slit: the rounder emboldening, which leaves them apart
                     bold = rezone(embolden_simple(wide, AX, AY), AY)
                 moved = ufoLib2.objects.Glyph()
-                bold.draw(TransformPen(moved.getPen(), (1, 0, 0, 1, AX / 2, 0)))
+                bold.draw(TransformPen(TransformPen(moved.getPen(), down), (1, 0, 0, 1, AX / 2, 0)))
                 redraw(g, moved)
         if not is_mark:
             # the Regular's offsets, before any is changed below
@@ -315,10 +350,10 @@ def main():
                     x, x_bold = attach_point(regular, c, bases, centre)
                     dx = dx + x_bold - x
                 else:
-                    dx = dx * KX
+                    dx = tx_offset(dx, dy)
                 c.transformation = (xx, xy, yx, yy, round(dx), dy)
             for a in g.anchors:
-                a.x = round(a.x * KX + AX / 2) + ANCHOR_NUDGE.get((g.name, a.name), 0)
+                a.x = round(tx(a.x, a.y)) + nudge.get((g.name, a.name), 0)
             room = [(b, dx) for b, dx, _ in bases if dx > 0]
             if len(bases) == 1 and room and g.width == regular[room[0][0]].width + room[0][1]:
                 # a capital given room on its left for its accent (Ἤ): as wide
@@ -337,11 +372,11 @@ def main():
         font.features.text)
 
     info = font.info
-    info.styleName = "Bold"
-    info.styleMapStyleName = "bold"
+    info.styleName = "Bold Italic" if italic else "Bold"
+    info.styleMapStyleName = "bold italic" if italic else "bold"
     info.openTypeOS2WeightClass = 700
-    info.postscriptFontName = "MyiaDidot-Bold"
-    info.postscriptFullName = "Myia Didot Bold"
+    info.postscriptFontName = "MyiaDidot-BoldItalic" if italic else "MyiaDidot-Bold"
+    info.postscriptFullName = "Myia Didot Bold Italic" if italic else "Myia Didot Bold"
     info.openTypeOS2Selection = [s for s in (info.openTypeOS2Selection or []) if s != 7]
 
     log = []
@@ -385,7 +420,7 @@ def main():
     respace(font, classifier(font, BOLD_CUT, BOLD_CUT_GREEK))
     respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
-    sidebearings(font, BOLD_SIDEBEARINGS)
+    sidebearings(font, extra)
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
                          "greekLower": round(done["greekLower"] * KX) + BOLD_CUT_GREEK}

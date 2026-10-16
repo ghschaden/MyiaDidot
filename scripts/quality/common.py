@@ -39,9 +39,10 @@ def _refs(style):
                     "EBGaramond-Regular", "GFSDidot-Regular"],
         "Italic": ["BodoniModa-11-Italic", "LibreBodoni-Italic", "OldStandard-Italic", "EBGaramond-Italic"],
         "Bold": ["BodoniModa-11-Bold", "LibreBodoni-Bold", "OldStandard-Bold", "EBGaramond-Bold"],
+        "BoldItalic": ["BodoniModa-11-BoldItalic", "LibreBodoni-BoldItalic", "EBGaramond-BoldItalic"],
     }[style]
     paths = [str(REFDIR / f"{n}.ttf") for n in names if (REFDIR / f"{n}.ttf").exists()]
-    variant = {"Regular": "", "Italic": ":style=Italic", "Bold": ":style=Bold"}[style]
+    variant = {"Regular": "", "Italic": ":style=Italic", "Bold": ":style=Bold", "BoldItalic": ":style=Bold Italic"}[style]
     for family in ("Libertinus Serif", "Charis SIL"):
         p = system_font(family + variant)
         if p:
@@ -49,7 +50,7 @@ def _refs(style):
     return paths
 
 
-REFS = {style: _refs(style) for style in ("Regular", "Italic", "Bold")}
+REFS = {style: _refs(style) for style in ("Regular", "Italic", "Bold", "BoldItalic")}
 SETS = {
     "latin-lc": "abcdefghijklmnopqrstuvwxyzßæœøðþıȷ",
     "latin-uc": "ABCDEFGHIJKLMNOPQRSTUVWXYZÆŒØÐÞ",

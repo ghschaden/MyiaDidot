@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="thorn" format="2">
+	<unicode hex="00FE"/>
+	<advance width="1158"/>
+	<outline>
+		<contour>
+			<point x="491" y="202" type="curve" smooth="yes"/>
+			<point x="493" y="84"/>
+			<point x="509" y="21"/>
+			<point x="575" y="21" type="curve" smooth="yes"/>
+			<point x="630" y="21"/>
+			<point x="694" y="149"/>
+			<point x="735" y="239" type="curve" smooth="yes"/>
+			<point x="801" y="378"/>
+			<point x="844" y="557"/>
+			<point x="843" y="696" type="curve" smooth="yes"/>
+			<point x="842" y="760"/>
+			<point x="845" y="839"/>
+			<point x="802" y="839" type="curve" smooth="yes"/>
+			<point x="731" y="839"/>
+			<point x="661" y="726"/>
+			<point x="589" y="572" type="curve" smooth="yes"/>
+			<point x="537" y="462"/>
+			<point x="490" y="293"/>
+		</contour>
+		<contour>
+			<point x="-226" y="-450" type="line"/>
+			<point x="-128" y="-397" type="line"/>
+			<point x="44" y="-397" type="line" smooth="yes"/>
+			<point x="50" y="-397"/>
+			<point x="31" y="-389"/>
+			<point x="39" y="-355" type="curve" smooth="yes"/>
+			<point x="490" y="1335" type="line" smooth="yes"/>
+			<point x="501" y="1375"/>
+			<point x="520" y="1384"/>
+			<point x="514" y="1384" type="curve" smooth="yes"/>
+			<point x="300" y="1384" type="line"/>
+			<point x="309" y="1434" type="line"/>
+			<point x="773" y="1434" type="line"/>
+			<point x="564" y="632" type="line"/>
+			<point x="522" y="631" type="line"/>
+			<point x="557" y="703"/>
+			<point x="592" y="884"/>
+			<point x="816" y="884" type="curve" smooth="yes"/>
+			<point x="973" y="884"/>
+			<point x="1105" y="778"/>
+			<point x="1108" y="619" type="curve" smooth="yes"/>
+			<point x="1110" y="439"/>
+			<point x="1039" y="290"/>
+			<point x="987" y="212" type="curve" smooth="yes"/>
+			<point x="894" y="71"/>
+			<point x="719" y="-23"/>
+			<point x="573" y="-23" type="curve" smooth="yes"/>
+			<point x="480" y="-23"/>
+			<point x="386" y="22"/>
+			<point x="352" y="147" type="curve"/>
+			<point x="417" y="150" type="line"/>
+			<point x="294" y="-353" type="line" smooth="yes"/>
+			<point x="286" y="-388"/>
+			<point x="264" y="-397"/>
+			<point x="271" y="-397" type="curve" smooth="yes"/>
+			<point x="541" y="-397" type="line"/>
+			<point x="583" y="-450" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="DotBelow" x="529" y="-20"/>
+	<anchor name="Dotaccent" x="753" y="1020"/>
+	<anchor name="Grave" x="742" y="980"/>
+	<anchor name="Acute" x="742" y="980"/>
+	<anchor name="Top" x="748" y="1000"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
+</glyph>

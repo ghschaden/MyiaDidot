@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="uni2144" format="2">
+	<unicode hex="2144"/>
+	<advance width="1573"/>
+	<outline>
+		<contour>
+			<point x="1541" y="1434" type="line"/>
+			<point x="1452" y="1373" type="line"/>
+			<point x="1226" y="1373" type="line" smooth="yes"/>
+			<point x="1212" y="1373"/>
+			<point x="1229" y="1360"/>
+			<point x="1218" y="1323" type="curve" smooth="yes"/>
+			<point x="1081" y="814" type="line"/>
+			<point x="1247" y="161" type="line"/>
+			<point x="1270" y="89"/>
+			<point x="1256" y="66"/>
+			<point x="1297" y="66" type="curve" smooth="yes"/>
+			<point x="1471" y="66" type="line"/>
+			<point x="1508" y="0" type="line"/>
+			<point x="697" y="0" type="line"/>
+			<point x="775" y="66" type="line"/>
+			<point x="921" y="66" type="line" smooth="yes"/>
+			<point x="950" y="66"/>
+			<point x="971" y="122"/>
+			<point x="952" y="166" type="curve"/>
+			<point x="850" y="742" type="line"/>
+			<point x="545" y="339" type="line" smooth="yes"/>
+			<point x="510" y="296"/>
+			<point x="470" y="217"/>
+			<point x="470" y="152" type="curve" smooth="yes"/>
+			<point x="471" y="106"/>
+			<point x="448" y="66"/>
+			<point x="513" y="66" type="curve" smooth="yes"/>
+			<point x="622" y="66" type="line"/>
+			<point x="662" y="0" type="line"/>
+			<point x="-110" y="0" type="line"/>
+			<point x="-32" y="66" type="line"/>
+			<point x="89" y="66" type="line" smooth="yes"/>
+			<point x="171" y="66"/>
+			<point x="243" y="154"/>
+			<point x="299" y="221" type="curve" smooth="yes"/>
+			<point x="770" y="790" type="line"/>
+			<point x="913" y="1320" type="line"/>
+			<point x="927" y="1358"/>
+			<point x="945" y="1373"/>
+			<point x="934" y="1373" type="curve" smooth="yes"/>
+			<point x="708" y="1373" type="line"/>
+			<point x="667" y="1434" type="line"/>
+		</contour>
+	</outline>
+	<anchor name="DotBelow" x="699" y="-20"/>
+	<anchor name="Bottom" x="706" y="0"/>
+	<anchor name="TopCap" x="1133" y="1580"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>derived</string>
+		</dict>
+	</lib>
+</glyph>
