@@ -25,9 +25,10 @@ setup:
 test:
 	.venv/bin/pytest
 
-# Accept the current behaviour as the new baseline (review git diff tests/data!).
+# Accept the current behaviour as the new baseline (review git diff tests/data!):
+# run once, read the strings that differ from HEAD, then again with N=that many
 test-data:
-	$(PY) scripts/update_test_data.py --golden --digest --cmap
+	$(PY) scripts/update_test_data.py --golden --digest --cmap $(if $(N),--expect-changes $(N))
 
 winmetrics:
 	$(PY) scripts/set_win_metrics.py $(UFOS)

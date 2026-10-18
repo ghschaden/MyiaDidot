@@ -38,6 +38,7 @@ from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from built_from import KEY as BUILT_KEY
 from composites import SPECIAL, Builder, stack_anchors
 from derive import embolden, embolden_simple, rezone
 from glyph_lint import fix
@@ -48,6 +49,12 @@ ROOT = Path(__file__).resolve().parent.parent
 KX = 1.04  # widening, so the counters keep their light
 AX, AY = 90, 8  # stems 164 -> 254 (lowercase), 208 -> 298 (capitals); hairlines +8
 MARK_AX, MARK_AY = 30, 8  # accents a little heavier
+# lib: derived letters left emboldened whole, with why (follow_bases);
+# tests/test_emboldened.py holds them to a list that only shrinks
+WHOLE_KEY = "org.myiadidot.emboldenedWhole"
+# recipes that scale or reshape their one source outline, adding no piece:
+# no junction to thicken, emboldened whole as any letter is
+RESHAPES = {"enlarge", "stretch", "superior", "lower", "ezh", "esh", "nodot"}
 # the Bold's letters are spaced tighter than the Regular's (the Regular's
 # sidebearings times KX), as a bold's are: 40 off each side in all of the
 # Regular's 20 (times KX) and BOLD_CUT, Greek lowercase 25 of 10 and BOLD_CUT_GREEK
@@ -282,8 +289,11 @@ def write(font, path):
     """Save font as the Bold: a new UFO, or an existing one updated in place
     (its glyphs replaced, the files of glyphs no longer there removed). Its
     points, anchors and component offsets are rounded to whole units first,
-    and what that leaves cleaned (glyph_lint)."""
+    and what that leaves cleaned (glyph_lint). The Regular's record of what
+    its derived glyphs were built from (built_from.py) is left behind: a
+    generated style is checked by being generated again."""
     for g in font:
+        g.lib.pop(BUILT_KEY, None)
         for c in g.contours:
             for p in c.points:
                 p.x, p.y = round(p.x), round(p.y)
@@ -314,7 +324,7 @@ def write(font, path):
     target.save()
 
 
-def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
+def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None):
     """Derived letters (derive.py's recipes) made of the Bold's own base:
     emboldened whole, a letter's junctions (a slash meeting a stem, a tilde
     crossing a diagonal) thicken unlike its base's strokes, eating the stem
@@ -325,7 +335,9 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
     that base already. Letters that cut their base (a hook replacing a
     stem's end) stay as emboldened. kx and slant: the widening and the
     italic's slant (make_bold's by default; make_italic's weight pass uses
-    it too, unwidened); skip: names to leave. Returns the names changed."""
+    it too, unwidened); skip: names to leave; whole: a dict that gets the
+    letters left emboldened whole, with the reason. Returns the names
+    changed."""
     sys.path.insert(0, str(ROOT / "scripts" / "quality"))
     import derive
     from derived import KEEPS, TRANSFORMS, Outline, compare, recipes
@@ -349,6 +361,7 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
         return p
 
     changed, failed = [], []
+    whole = {} if whole is None else whole
     for ch, op, base, band in recipes(italic):
         name, base = resolve(ch), resolve(base)
         if name not in source or base not in source or base == "space" or name not in font or name in skip:
@@ -356,7 +369,11 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
         g = font[name]
         if italic and source[name].lib.get("org.myiadidot.italicSource") != "derived":
             continue
-        if g.components or op not in KEEPS | TRANSFORMS:
+        if g.components:
+            continue
+        if op not in KEEPS | TRANSFORMS:
+            if op not in RESHAPES:
+                whole[name] = f"{op}: cuts its base"
             continue
         mine = Outline(source, name, deslant)
         if mine.bounds is None:
@@ -369,6 +386,7 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
                                 "flip": (1, 0, 0, -1, 0, 2 * cy)}[op]
             shares, _, _ = compare(Outline(source, base, (a, 0, -a * slant, d, e, f)), mine)
             if shares["exact"] < 0.98:
+                whole[name] = f"{op}: not exactly its base so moved"
                 continue
             # the same move of the Bold base, in the upright frame
             bw = font[base].width
@@ -385,6 +403,8 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
             # only a letter that keeps its whole base in the source: the
             # Italic's ɨ has the dot of its own, not i's, and would get both
             if shares["lost"] > 0.02:
+                if op not in RESHAPES:
+                    whole[name] = f"{op}: does not keep its whole base"
                 continue
             # nothing to mend when the emboldened letter keeps its Bold base
             # (ʘ: O's outline, the dot inside); and Skia's union fails on
@@ -401,9 +421,10 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
             out = pathops.op(a, b, pathops.PathOp.UNION)
             # the union holds all of both, row by row, or it failed (curves
             # that coincide): then the letter is left as emboldened
-            whole = Outline(None, None, deslant, path=out)
-            if any(compare(Outline(None, None, deslant, path=p), whole)[0]["lost"] > 0.01 for p in (a, b)):
+            joined = Outline(None, None, deslant, path=out)
+            if any(compare(Outline(None, None, deslant, path=p), joined)[0]["lost"] > 0.01 for p in (a, b)):
                 failed.append(name)
+                whole[name] = f"{op}: the union with its base failed"
                 continue
         out = pathops.simplify(out)
         glyph = ufoLib2.objects.Glyph()
@@ -593,8 +614,10 @@ def main():
             elif g.width:
                 g.width = round(g.width * KX + AX)
 
-    followed = follow_bases(regular, font, italic)
+    whole = {}
+    followed = follow_bases(regular, font, italic, whole=whole)
     followed += attached_small(regular, font, italic)
+    font.lib[WHOLE_KEY] = {n: why for n, why in sorted(whole.items()) if n not in followed}
 
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}
     if italic:

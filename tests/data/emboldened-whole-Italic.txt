@@ -1,0 +1,4 @@
+# Known make_bold.py/make_italic.py emboldened-whole findings (glyph: why); fixing one = deleting its line.
+uni0257                          # emboldened whole when the check came in: attach: does not keep its whole base
+uni02A2                          # emboldened whole when the check came in: bar: the union with its base failed
+uni2C73                          # emboldened whole when the check came in: attach: does not keep its whole base

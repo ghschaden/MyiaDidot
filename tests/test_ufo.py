@@ -85,3 +85,35 @@ def test_ufo_is_normalized(ufo_path, tmp_path):
     diff = subprocess.run(["diff", "-rq", str(ufo_path), str(copy)],
                           capture_output=True, text=True, check=False)
     assert diff.returncode == 0, "UFO not normalized; run `make normalize`:\n" + diff.stdout[:2000]
+
+
+def test_no_sync_leftovers(ufo_path):
+    """The working copy is in a synced folder: rewriting many files fast can
+    leave "(conflicted)" copies and glyphs listed whose file is gone."""
+    import plistlib
+
+    strays = [str(p.relative_to(ufo_path)) for p in ufo_path.rglob("*") if "conflict" in p.name.lower()]
+    assert not strays, f"sync conflict copies: {strays}"
+    layers = plistlib.loads((ufo_path / "layercontents.plist").read_bytes())
+    missing = []
+    for _layer, folder in layers:
+        contents = plistlib.loads((ufo_path / folder / "contents.plist").read_bytes())
+        missing += [name for name, file in contents.items() if not (ufo_path / folder / file).exists()]
+        listed = set(contents.values())
+        missing += [f"unlisted {p.name}" for p in (ufo_path / folder).glob("*.glif") if p.name not in listed]
+    assert not missing, f"glyph files missing or not listed: {missing[:20]}"
+
+
+def test_names_and_code_points_agree(ufo):
+    """A glyph named for a character (AGL name, uniXXXX, uXXXXX) is mapped to
+    it: code points look alike (U+A780 was typed for U+A7AD), names less so."""
+    from fontTools import agl
+
+    wrong = []
+    for g in ufo:
+        if "." in g.name or "_" in g.name:
+            continue
+        ch = agl.toUnicode(g.name)
+        if len(ch) == 1 and ord(ch) not in g.unicodes:
+            wrong.append(f"{g.name} -> {[f'U+{u:04X}' for u in g.unicodes]}")
+    assert not wrong, f"glyph names and code points disagree: {wrong}"

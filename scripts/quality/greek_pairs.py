@@ -107,19 +107,20 @@ def gap(face, hbfont, pair, steps=30, depth=0.2):
     return sum(min(v, near + depth * h) if v is not None else near + depth * h for v in vals) / steps / h
 
 
-def latin_offset(style, top=150):
+def latin_offset(style, top=150, myia=None):
     """The median of Myia's gaps less the references' on frequent English
     pairs: how much tighter (negative) or looser Myia's Latin sets than
     these references."""
     text = re.sub(r"<[^>]+>", " ", (ROOT / "build" / "udhr" / "udhr_eng.xml").read_text())
     pairs = frequent_pairs(top, text, lambda a, b: a.isascii() and b.isascii() and b.islower())
-    res, myia, _ = measure(style, top, pairs)
-    return statistics.median(v[myia] - statistics.median(x for k, x in v.items() if k != myia)
-                             for v in res.values() if myia in v and len(v) >= 3)
+    res, name, _ = measure(style, top, pairs, myia)
+    return statistics.median(v[name] - statistics.median(x for k, x in v.items() if k != name)
+                             for v in res.values() if name in v and len(v) >= 3)
 
 
-def measure(style, top, pairs=None):
-    fonts = [MYIA.format(style)] + refs(style)
+def measure(style, top, pairs=None, myia=None):
+    """myia: the font to measure (the built OTF by default)."""
+    fonts = [str(myia or MYIA.format(style))] + refs(style)
     pairs = pairs or frequent_pairs(top)
     out, nn_units = {}, None
     for path in fonts:
@@ -134,6 +135,26 @@ def measure(style, top, pairs=None):
                 if g is not None:
                     out.setdefault(p, {})[face.name] = g / nn
     return out, Face(fonts[0]).name, nn_units
+
+
+def agreeing_against(style, myia=None, top=150, tolerance=0.15):
+    """{pair: off} for the pairs where Charis and Libertinus both set wider,
+    or both tighter, than Myia by more than tolerance (of the n n gap),
+    shifted by the style's Latin offset; off is the nearer one's distance,
+    negative where Myia is tighter. None without both references."""
+    res, name, _ = measure(style, top, myia=myia)
+    both = [Path(p).stem for p in refs(style) if "Charis" in p or "Libertinus" in p]
+    if len(both) < 2:
+        return None
+    shift = latin_offset(style, myia=myia)
+    out = {}
+    for p, v in res.items():
+        if name not in v or not all(b in v for b in both):
+            continue
+        offs = [v[name] - (v[b] + shift) for b in both]
+        if all(o > tolerance for o in offs) or all(o < -tolerance for o in offs):
+            out[p] = round(min(offs, key=abs), 3)
+    return out
 
 
 def main():

@@ -36,7 +36,7 @@ fi
 
 # the generated styles as their generators make them, when a commit touches
 # them, the Regular they come from, or a generator (≈40 s; needs FontForge)
-if git diff --cached --name-only | grep -qE '^(sources/MyiaDidot-|scripts/(make_italic|make_bold|derive|smallcaps|smallcaps_draft|composites|respace|space_figures|glyph_lint)\.py)'; then
+if git diff --cached --name-only | grep -qE '^(sources/MyiaDidot-|scripts/(make_italic|make_bold|derive|built_from|smallcaps|smallcaps_draft|composites|respace|space_figures|glyph_lint)\.py)'; then
     if command -v fontforge >/dev/null 2>&1; then
         echo "pre-commit: checking the generated styles (make reproduce)..." >&2
         if ! .venv/bin/python -I scripts/check_reproducible.py >&2; then

@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>org.myiadidot.emboldenedWhole</key>
+		<dict>
+			<key>uni0257</key>
+			<string>attach: does not keep its whole base</string>
+			<key>uni02A2</key>
+			<string>bar: the union with its base failed</string>
+			<key>uni2C73</key>
+			<string>attach: does not keep its whole base</string>
+		</dict>
 		<key>org.myiadidot.italicSource</key>
 		<string>Old Standard Italic, akryukov/oldstand (see sources/oldstand/COMMIT)</string>
 		<key>org.myiadidot.respaced</key>

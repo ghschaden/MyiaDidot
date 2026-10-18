@@ -30,6 +30,9 @@ meant to be redrawn (a turned serif sits on the wrong side). Every glyph
 is marked as a draft (lib DRAFT_KEY) and appears under "Other drafts" in
 the small-caps review sheet. Existing glyphs are never touched, except
 unreviewed drafts with --redraft. CHARS limits the run to those characters.
+Each glyph drawn records the glyphs its recipe read, as they are saved
+(lib org.myiadidot.builtFrom, scripts/built_from.py), so that a base edited
+later is noticed; existing ones without the record get it on a run.
 """
 
 import argparse
@@ -1682,6 +1685,9 @@ def main():
             only.update(arg)
 
     font = ufoLib2.Font.open(args.ufo)
+    from built_from import KEY as BUILT_KEY
+    from built_from import Tracker, stamp
+
     # built on the spacing the recipes were tuned on, then cut again
     # (scripts/respace.py): scaled letters (small caps) keep the cut whole
     from respace import CUT_KEY, classifier, respace, undo
@@ -1690,6 +1696,23 @@ def main():
     undo(font)
     cmap = {u: g.name for g in font for u in g.unicodes}
     made, kept, built = [], [], []
+    bases = {}  # glyph: the glyphs its recipe read (built_from.py)
+
+    def probe(ch, op, source, band, name):
+        """What the recipe of an existing glyph reads, built aside and dropped."""
+        tmp, order = f"_probe.{name}", font.glyphOrder
+        categories = dict(font.lib.get("public.openTypeCategories", {}))
+        tracker = Tracker(font)
+        try:
+            build(tracker, ch, op, source, band, tmp)
+            return tracker.read - {tmp}
+        except Exception:  # noqa: BLE001 (a recipe that no longer runs on it: no stamp)
+            return None
+        finally:
+            if tmp in font:
+                del font[tmp]
+            font.glyphOrder = order
+            font.lib["public.openTypeCategories"] = categories
 
     def resolve(c):
         """Glyph name of a character, or of its small cap ("ƒ.sc" -> florin.sc)."""
@@ -1712,12 +1735,20 @@ def main():
             draft = lib.get(DRAFT_KEY) or (lib.get(DERIVED_KEY) and lib.get(SMALLCAP_DRAFT_KEY))
             if not (args.redraft and draft):
                 kept.append(ch)
+                # made before bases were recorded: recorded now, as they are
+                if BUILT_KEY not in lib and not font[name].components:
+                    read = probe(ch, op, source, band, name)
+                    if read:
+                        bases[name] = read
                 continue
             del font[name]
+        tracker = Tracker(font)
         try:
-            g = build(font, ch, op, source, band, name)
+            g = build(tracker, ch, op, source, band, name)
         except (IndexError, KeyError, ValueError) as e:
             sys.exit(f"{ch}: {e!r}")
+        if not g.components:  # an alias follows its source itself
+            bases[g.name] = tracker.read
         if not ch.endswith(".sc"):
             cmap[ord(ch)] = g.name
         made.append(ch)
@@ -1729,6 +1760,9 @@ def main():
     if done:
         respace(font, classifier(font, done["cut"], done["greekLower"]))
         font.lib[CUT_KEY] = done
+    # the bases as they are saved, cut again
+    for name, read in bases.items():
+        stamp(font, name, read)
     font.save()
     print(f"drafted {len(made)}: {''.join(made)}")
     if kept:

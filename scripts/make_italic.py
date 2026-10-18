@@ -45,7 +45,7 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from composites import SPECIAL, Builder, stack_anchors
 from derive import BIG, draw_path, embolden, rezone
-from make_bold import mark_like, redraw, write
+from make_bold import WHOLE_KEY, mark_like, redraw, write
 from respace import CUT_KEY, classifier, respace, sidebearings, undo
 from smallcaps import ink_bounds, ink_slice
 from space_figures import space as space_figures
@@ -1314,7 +1314,12 @@ def main():
     # the Bold's are (make_bold.follow_bases)
     from make_bold import follow_bases
 
-    followed = follow_bases(before, font, True, kx=1, slant=SLANT, skip=set(kept) | PREWEIGHTED)
+    whole = {}
+    followed = follow_bases(before, font, True, kx=1, slant=SLANT, skip=set(kept) | PREWEIGHTED, whole=whole)
+    # (those kept from the last run were weighted as they were then)
+    last = previous.lib.get(WHOLE_KEY, {}) if previous else {}
+    whole.update((n, why) for n, why in last.items() if n in kept and n in font)
+    font.lib[WHOLE_KEY] = dict(sorted(whole.items()))
     cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)
