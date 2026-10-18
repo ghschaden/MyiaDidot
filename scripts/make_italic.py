@@ -293,9 +293,12 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 # ... closer by this much, joined: R's leg runs out into the ball of s
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
-                 "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɭ", "Ɽ",
+                 "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɗ", "ɭ", "Ɽ",
                  "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
+# where ɗ leaves the italic d for ɓ's top: above the bowl, below where ɓ's
+# stem begins to bend into its hook (upright frame)
+DHOOK_CUT = 1000
 # small caps left to FontForge's drafts of the Italic's capitals (as the
 # others), not derive.py's recipes: a capital scaled down (ʛ from Ɠ) is
 # heavier than the small caps beside it
@@ -741,17 +744,17 @@ def derive_stage(font, regular):
         old = up[name]
         try:
             if ch == "ɗ":
-                # The Italic d's swashy ascender collides with the added hook.
-                # Start from the clean Regular hooked-d outline, then let put()
-                # apply the Italic slant and the normal derived-glyph cleanup.
-                g = up[name]
-                g.clearContours()
-                g.clearComponents()
-                g.clearAnchors()
-                regular[name].draw(g.getPen())
-                g.width = regular[name].width
-                for a in regular[name].anchors:
-                    g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+                # the italic d (its bowl, its exit stroke) with ɓ's top: the
+                # f-hook recipe does not fit the italic f, and the Regular's
+                # hook transplanted leaves d's flag. ɓ's stem above the cut is
+                # scaled across onto d's stem edges, so it runs on without a step
+                hooked = resolve("ɓ")
+                (a0, a1), (b0, b1) = (derive.stems_at(up, source, DHOOK_CUT)[-1],
+                                      derive.stems_at(up, hooked, DHOOK_CUT)[0])
+                del up[name]
+                derive.build(up, ch, "attach", source, (
+                    "x", [(-BIG, DHOOK_CUT, BIG, BIG)],
+                    [(hooked, (-BIG, DHOOK_CUT - 20, BIG, BIG), (b0, 0), ((a1 - a0) / (b1 - b0), 1, a0, 0))]), name)
             elif op in ("rhotic", "glottal"):
                 if op == "rhotic":
                     out, width = rhotic(up, source, band)
@@ -1240,18 +1243,7 @@ def main():
             for c in g.contours:
                 c.draw(rec)
             g.clearContours()
-            # Ɗ's hooked d begins with the heavier Regular outline. Narrow it
-            # slightly to match the Italic d, then add weight to its strokes.
-            amount = 15 if g.name == "uni0257" else WEIGHT
-            weighted = RecordingPen()
-            weight_thick(rec, amount).draw(weighted)
-            if g.name == "uni0257":
-                weighted.draw(TransformPen(g.getPen(), (0.9, 0, 0, 1, 0, 0)))
-                g.width *= 0.9
-                for anchor in g.anchors:
-                    anchor.x *= 0.9
-            else:
-                weighted.draw(g.getPen())
+            weight_thick(rec, WEIGHT).draw(g.getPen())
     cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)

@@ -470,10 +470,7 @@ uni0255 extreme 2                # 2026-10-16 known at the start (quality checks
 uni0255 kink 3                   # 2026-10-16 known at the start (quality checks added): 626,728 4.1 degrees; 433,-13 6.3 degrees; 399,150 4.3 degrees
 uni0255 smooth 1                 # 2026-10-16 known at the start (quality checks added): 665,783 4.8 degrees
 uni0256 extreme 2                # 2026-10-16 known at the start (quality checks added): 888,1339 7 units past; 642,-150 8 units past
-uni0257 extreme 5                # match hooked d to normal Italic weight: 1301,1512 6 units past; 1315,1387 6 units past; 149,34 23 units past; 256,442 30 units past; 680,442 22 units past
-uni0257 grid 1                   # lightened hooked-d italic outline: 54 off whole units
-uni0257 kink 1                   # lightened hooked-d italic outline: 1489,1334 4.0 degrees
-uni0257 smooth 1                 # lightened hooked-d italic outline: 1516,1387 2.2 degrees
+uni0257 smooth 2                 # ɗ rebuilt from the italic d with ɓ's top (make_italic.py): 1307,1297 2.6 degrees; 1123,1233 2.6 degrees
 uni0257 zone 1                   # fixed hooked-d italic outline: bottom +7 from -23
 uni0257.sc extreme 6             # 2026-10-16 known at the start (quality checks added): 183,368 56 units past; -93,827 5 units past; -68,750 13 units past; -237,554 37 units past; 797,1040 22 units past; 918,516 42 units past
 uni0258 extreme 6                # 2026-10-16 known at the start (quality checks added): 188,-23 8 units past; 36,293 6 units past; 281,484 29 units past; 702,738 26 units past; 562,610 8 units past; 301,736 34 units past
