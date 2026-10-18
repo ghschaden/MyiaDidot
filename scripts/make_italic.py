@@ -1177,7 +1177,9 @@ def main():
             kept_roman += 1
 
     # what was reviewed or drawn in the Italic stays
-    kept = [n for n in (previous.keys() if previous else []) if n in font and reviewed(previous[n])]
+    # (and the Italic's own, reviewed: ʀ.sc, drafted from its Ʀ, is not in the Regular)
+    kept = [g.name for g in (previous or []) if reviewed(g)
+            and (g.name in font or g.name.endswith(".sc"))]
     for name in kept:
         font.layers.defaultLayer.insertGlyph(copy.deepcopy(previous[name]), name, overwrite=True)
     # what Old Standard lacks, made from what it has

@@ -565,6 +565,8 @@ RECIPES = [
     ("ȼ.sc", "slash", "c.sc", ("s", "box", 0.25, -90, 0.8, 1130)),
     ("ⱦ.sc", "slash", "t.sc", ("s", "box", 0.25, -60, 0.75, 1040)),
     ("ɫ.sc", "midtilde", "l.sc", ("s", None, "first")),
+    # ʀ.sc: the small-cap Ʀ (c2sc), r.sc lowered as Ʀ is R, in proportion
+    ("ʀ.sc", "lower", "r.sc", ("s", 145)),
     ("ɬ.sc", "attach", "l.sc", ("s", [], [("degree", (-BIG, -BIG, BIG, BIG), (576, 1118),
                                            (0.4, 0.4, 227, 530)),
                                           ("rect", (227, 380, 553, 436), (0, 0), (1, 1, 0, 0))])),

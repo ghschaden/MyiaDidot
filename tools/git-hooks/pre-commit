@@ -33,3 +33,19 @@ if ! .venv/bin/pytest -q -x -p no:cacheprovider >&2; then
     echo "  .venv/bin/python scripts/update_test_data.py --help" >&2
     exit 1
 fi
+
+# the generated styles as their generators make them, when a commit touches
+# them, the Regular they come from, or a generator (≈40 s; needs FontForge)
+if git diff --cached --name-only | grep -qE '^(sources/MyiaDidot-|scripts/(make_italic|make_bold|derive|smallcaps|smallcaps_draft|composites|respace|space_figures|glyph_lint)\.py)'; then
+    if command -v fontforge >/dev/null 2>&1; then
+        echo "pre-commit: checking the generated styles (make reproduce)..." >&2
+        if ! .venv/bin/python -I scripts/check_reproducible.py >&2; then
+            echo >&2
+            echo "pre-commit: a generator run would change the generated styles; commit aborted." >&2
+            echo "  Move the edit into the Regular or the generator (CLAUDE.md), or rerun them." >&2
+            exit 1
+        fi
+    else
+        echo "pre-commit: fontforge missing, generated styles not checked" >&2
+    fi
+fi
