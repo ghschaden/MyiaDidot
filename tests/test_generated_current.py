@@ -2,7 +2,9 @@
 
 The generated styles are checked by `make reproduce`; the Regular is drawn,
 but parts of it are generated too: the derived letters' records
-(derive.py), the small caps' aliases, accented forms, kerning, groups and
+(derive.py), letters in the kerning groups of their base or model
+(kern_groups.py), pairs loosened where inks meet (kern_clear.py), the
+small caps' aliases, accented forms, kerning, groups and
 smcp/c2sc block (smallcaps.py), the breve resized (adjust_accents.py), the
 anchors composites keep from their base and the stacked ones
 (composites.py), the old-style figures' spacing and tnum block
@@ -21,6 +23,8 @@ from conftest import ROOT, SOURCES
 
 STEPS = [
     ["scripts/derive.py"],
+    ["scripts/kern_groups.py"],
+    ["scripts/kern_clear.py"],
     ["scripts/smallcaps.py"],
     ["scripts/adjust_accents.py"],
     ["scripts/composites.py", "--carry-anchors", "--stack-anchors", "--rebuild-stacked"],

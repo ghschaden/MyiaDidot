@@ -160,9 +160,10 @@ RECIPES = [
     ("Ᵽ", "bar", "P", ("c", 360)),
     ("ᵽ", "bar", "p", ("x", -290)),
     ("Ǥ", "bar", "G", ("c", 260, "last")),
-    # ǥ: bar across the right of the lower loop; easy to miss, to revisit
-    # (the person kept it for now)
-    ("ǥ", "bar", "g", ("x", -300, "last")),
+    # ǥ: the bar across the whole lower loop at its middle, standing out on
+    # both sides, as in Charis, EB Garamond, Noto and Libertinus (across
+    # its right side only, it was easy to miss)
+    ("ǥ", "bar", "g", ("x", -340, "all", (45, 55))),
     ("Ғ", "bar", "uni0413", ("c", None, "first")),
     ("ғ", "bar", "uni0433", ("x", None, "first")),
     ("Ұ", "bar", "uni04AE", ("c", 360)),
@@ -699,10 +700,22 @@ def stroke(pen, p0, p1, t):
 
 def bar_shape(font, source, band, arg):
     """Pen commands for the bar: arg is (y or None, which stems, overhang or
-    None); which is 'all', 'first', 'last' or 'inside' (Ө: the counter only)."""
+    None); which is 'all', 'first', 'last' or 'inside' (Ө: the counter only).
+    An overhang (left, right) is taken as given, past the letter's ink if
+    so (ǥ: a bar standing out of the loop it crosses, not a ledge on it)."""
     y, which, over = (arg + (None, None, None))[:3]
     t, default_over = BARS[band]
     over = default_over if over is None else over
+    if isinstance(over, tuple):
+        stems = stems_at(font, source, bar_y(font, band, y))
+        if which == "first":
+            stems = stems[:1]
+        elif which == "last":
+            stems = stems[-1:]
+        y = bar_y(font, band, y)
+        rec = RecordingPen()
+        rect(rec, stems[0][0] - over[0], y - t / 2, stems[-1][1] + over[1], y + t / 2)
+        return rec
     y = bar_y(font, band, y)
     stems = stems_at(font, source, y)
     if which == "first":

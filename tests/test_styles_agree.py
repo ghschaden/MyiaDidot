@@ -61,3 +61,24 @@ def test_styles_agree_with_the_regular(ufo, ufo_path):
     assert not new, ("differs from the Regular (fix the generator, or if intended: "
                      f"update_test_data.py --styles --ufo UFO --reason ...): {dict(list(new.items())[:30])}")
     assert not stale, f"no longer differs from the Regular, remove from the list: {stale}"
+
+
+# what sets the line: every style the same, or lines of one family set in
+# two styles space apart (Word honours USE_TYPO_METRICS, fsSelection bit 7:
+# without it, the win metrics, 11% looser than the typo ones)
+VERTICAL = ["unitsPerEm", "ascender", "descender", "openTypeOS2TypoAscender", "openTypeOS2TypoDescender",
+            "openTypeOS2TypoLineGap", "openTypeHheaAscender", "openTypeHheaDescender", "openTypeHheaLineGap",
+            "openTypeOS2WinAscent", "openTypeOS2WinDescent"]
+
+
+def test_vertical_metrics_agree_with_the_regular(ufo, ufo_path):
+    if ufo_path.resolve() == REGULAR.resolve():
+        pytest.skip("the Regular itself")
+    import ufoLib2
+
+    regular = ufoLib2.Font.open(REGULAR)
+    differ = {k: (getattr(regular.info, k), getattr(ufo.info, k)) for k in VERTICAL
+              if getattr(regular.info, k) != getattr(ufo.info, k)}
+    assert not differ, f"vertical metrics (Regular, here): {differ}"
+    typo = [7 in (f.info.openTypeOS2Selection or []) for f in (regular, ufo)]
+    assert typo[0] == typo[1], f"USE_TYPO_METRICS (fsSelection bit 7): Regular {typo[0]}, here {typo[1]}"

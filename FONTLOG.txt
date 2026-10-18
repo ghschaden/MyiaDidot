@@ -26,6 +26,23 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-18 Version 0.100 (development), Phase 3: kerning coverage
+
+    * Accented letters take their base letter's kerning (Vietnamese, the
+      dot-below and line-below letters, й ѝ ў ...), and letters shaped like
+      another take its kerning on that side (Cyrillic Ѕ Ј Ү Ө, African Ɔ Ʌ
+      Ɐ Ƭ Ɵ, ə as o ...): 389 letter sides, by scripts/kern_groups.py, which
+      keeps a letter out where its accent would come too near the letter
+      it kerns against in any style (Yì, fï, Ư ẫ).
+    * Pairs whose inks met are kept 20 units apart in every style
+      (scripts/kern_clear.py): ą į ų Ą Į before j (Lithuanian įj, Polish
+      ąj), the Bold Italic's AY and Ư before a small cap.
+    * A capital before a small cap (smcp text) is kerned where it stood
+      outside the reference fonts' range, which mostly leave such pairs
+      unkerned: 10 to 12 pairs per style (scripts/quality/capsc_pairs.py).
+    * scripts/quality/kern_coverage.py reports letters left out of the
+      kerning their shape calls for.
+
 2026-10-16 Version 0.100 (development), Phase 3: QA foundation
 
     * CI builds OTFs for Regular, Italic, Bold and Bold Italic, audits that

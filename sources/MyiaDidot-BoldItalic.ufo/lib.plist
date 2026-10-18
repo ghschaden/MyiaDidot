@@ -34,8 +34,6 @@
 			<string>mirror: not exactly its base so moved</string>
 			<key>uni0253.sc</key>
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
-			<key>uni0255</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0256</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (ɖ: the tail thin where it meets the stem)</string>
 			<key>uni0257</key>
@@ -46,8 +44,6 @@
 			<string>rhotic: emboldened whole, its recipe fails on the Bold (ValueError)</string>
 			<key>uni025D</key>
 			<string>rhotic: emboldened whole, its recipe fails on the Bold (ValueError)</string>
-			<key>uni025E</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0267</key>
 			<string>hook: emboldened whole, made again from the Bold it misses (ɧ: crumbs of the cut at the join)</string>
 			<key>uni0268</key>
@@ -57,12 +53,10 @@
 			<key>uni026E</key>
 			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni0270</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
+			<string>attach: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni0271</key>
 			<string>hook: emboldened whole, made again from the Bold it misses (ɱ: crumbs of the cut at the join)</string>
 			<key>uni0273</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
-			<key>uni027A</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni027B</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
@@ -76,10 +70,6 @@
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0288.sc</key>
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
-			<key>uni0290</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
-			<key>uni0291</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0294</key>
 			<string>glottal: emboldened whole, its recipe fails on the Bold (ValueError)</string>
 			<key>uni02A2</key>
@@ -113,6 +103,35 @@
 		</dict>
 		<key>org.myiadidot.italicSource</key>
 		<string>Old Standard Italic, akryukov/oldstand (see sources/oldstand/COMMIT)</string>
+		<key>org.myiadidot.kernCleared</key>
+		<dict>
+			<key>A Y</key>
+			<integer>-307</integer>
+			<key>Aogonek Y</key>
+			<integer>-306</integer>
+			<key>Iogonek public.kern2.j</key>
+			<string>added</string>
+			<key>aogonek public.kern2.j</key>
+			<string>added</string>
+			<key>iogonek public.kern2.j</key>
+			<string>added</string>
+			<key>public.kern1.A public.kern2.Y</key>
+			<integer>-308</integer>
+			<key>uni01AF public.kern2.O.sc</key>
+			<string>added</string>
+			<key>uni1EE8 public.kern2.O.sc</key>
+			<string>added</string>
+			<key>uni1EEA public.kern2.O.sc</key>
+			<string>added</string>
+			<key>uni1EEC public.kern2.O.sc</key>
+			<string>added</string>
+			<key>uni1EEE public.kern2.O.sc</key>
+			<string>added</string>
+			<key>uni1EF0 public.kern2.O.sc</key>
+			<string>added</string>
+			<key>uogonek public.kern2.j</key>
+			<string>added</string>
+		</dict>
 		<key>org.myiadidot.respaced</key>
 		<dict>
 			<key>cut</key>

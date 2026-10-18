@@ -482,6 +482,7 @@ uni01DD.sc kink 1                # italic small caps derived after the italic sm
 uni01E4 kink 1                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1022,465 1.3 degrees
 uni01E4 slant 1                  # 2026-10-16 known at the start (quality checks added): 11.4 degrees, not 15.2
 uni01E5 kink 1                   # 2026-10-16 known at the start (quality checks added): 96,-377 4.1 degrees
+uni01E5 smooth 2                 # ǥ: the bar across the whole lower loop (roman), across the stem below the baseline (italic), as the references; bar overhang per side (derive.bar_shape): 338,-397 2.1 degrees; 152,-221 2.3 degrees
 uni01E5.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 10.7 degrees, not 15.2
 uni01E5.sc smooth 3              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 83,353 2.5 degrees; 254,276 2.7 degrees; 666,98 2
 uni0237 smooth 1                 # 2026-10-16 known at the start (quality checks added): 390,617 2.1 degrees
@@ -685,10 +686,10 @@ uni028E slant 1                  # 2026-10-16 known at the start (quality checks
 uni028E smooth 1                 # 2026-10-16 known at the start (quality checks added): 806,1215 2.4 degrees
 uni028E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni028F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni0290 extreme 1                # 2026-10-16 known at the start (quality checks added): 500,-330 8 units past
 uni0290 kink 2                   # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 599,774 3.5 degrees; 190,32 5.0 degrees
 uni0290 smooth 3                 # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 669,826 2.3 degrees; 288,143 2.4 degrees; 483,-55 2.3 degrees
 uni0290 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 63 against 183 (0.35, lighter)
+uni0290 zone 1                   # ʐ: own recipe (Italic: turns widened for the weight pass; Bold Italic: ITALIC_BOLD_RECIPES): bottom +16 from -461
 uni0291 kink 2                   # 2026-10-16 known at the start (quality checks added): 599,774 3.5 degrees; 190,32 5.0 degrees
 uni0291 smooth 2                 # 2026-10-16 known at the start (quality checks added): 288,143 2.4 degrees; 228,-144 3.1 degrees
 uni0291 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 63 against 183 (0.35, lighter)

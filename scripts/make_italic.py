@@ -43,6 +43,7 @@ from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from derive import BIG, draw_path, embolden, rezone
 from make_bold import WHOLE_KEY, mark_like, redraw, write
@@ -331,6 +332,10 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 
 
 ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
+                  # ǥ: the single-storey g's bar across its stem below the
+                  # baseline, above the hook, as in DejaVu (the roman's
+                  # height crossed the tail, easy to miss)
+                  "ǥ": ("bar", "g", ("x", -130, "all", (200, 70))),
                   # r without its entry stroke, on a foot serif
                   "ɾ": ("attach", "r", ("x", [(-BIG, 442, 297, BIG)], [("rect", (213, 0, 493, 50), (0, 0), (1, 1, 0, 0))])),
                   "ɸ": ("stem", "o", None),  # o with a stem as heavy as l's through it
@@ -387,7 +392,7 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                           (0, 0), (1, 1, 0, 0)),
                                          ("line", ((690, -20), (690, -330), 110), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 690, -330, 110), "dir": 270, "turn": "ccw",
-                                                   "r": (112, 90), "sweep": 150, "ball": 50, "t": (110, 36)},
+                                                   "r": (135, 95), "sweep": 150, "ball": 60, "t": (110, 40)},
                                           (0, 0), (1, 1, 0, 0))])),
                   # s's bottom stroke runs on to the left and hooks down and round
                   "ʂ": ("attach", "s", ("x", [(-BIG, -BIG, 405, 360)],
@@ -1007,6 +1012,40 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0)}
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}
 
 
+def swapped_sidebearings(font):
+    """Side bearings for the derived letters that are their base turned or
+    mirrored (as wide in ink, upright): the base's, swapped, measured
+    upright, as the Regular's are. A letter made before its base was
+    respaced (Ʊ, turned from Ω before the Greek cut widened it) keeps
+    the old spacing otherwise. Returns {glyph: (left, right)} deltas for
+    sidebearings()."""
+    import derive
+
+    cmap = {u: g.name for g in font for u in g.unicodes}
+
+    def upright_sb(name):
+        g = copy.deepcopy(font[name])
+        shear(g, -SLANT)
+        b = g.getBounds(font)
+        return (b.xMin, g.width - b.xMax, b.xMax - b.xMin) if b else None
+
+    deltas = {}
+    for ch, op, source, band in derive.RECIPES:
+        op, source, band = ITALIC_RECIPES.get(ch, (op, source, band))
+        if op not in ("turn", "mirror") or len(ch) != 1 or len(source) != 1:
+            continue
+        name, base = cmap.get(ord(ch)), cmap.get(ord(source))
+        if name is None or base is None or font[name].lib.get(SOURCE_KEY) != "derived":
+            continue
+        mine, theirs = upright_sb(name), upright_sb(base)
+        if mine is None or theirs is None or abs(mine[2] - theirs[2]) > 3:
+            continue
+        left, right = round(theirs[1] - mine[0]), round(theirs[0] - mine[1])
+        if left or right:
+            deltas[name] = (left, right)
+    return deltas
+
+
 def horn_stage(font, kept=()):
     """The Horn anchors (draft_vietnamese_marks.py) on the Italic's O U o u
     and their small caps, found on the upright outlines."""
@@ -1163,6 +1202,7 @@ def main():
     # taken from it below were tuned on that; the Italic has its own cut
     undo(regular)
     undo(font)
+    kern_clear.undo(font)  # the Regular's loosened pairs: the Italic finds its own
     oldstd = source_font()
     previous = ufoLib2.Font.open(args.italic) if (Path(args.italic) / "metainfo.plist").exists() else None
     os_cmap = {u: g.name for g in oldstd for u in g.unicodes}
@@ -1391,9 +1431,11 @@ def main():
                 grew = True
     respace(font, lambda n: 0 if n in settled else letter_cut(n), [g.name for g in font if g.name not in kept])
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
+    sidebearings(font, swapped_sidebearings(font))
     sidebearings(font, ITALIC_SIDEBEARINGS)
     font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     anchored = missing_anchors(font, regular, marks)
+    kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.italic))
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)

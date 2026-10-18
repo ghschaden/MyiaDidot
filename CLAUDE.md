@@ -43,7 +43,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   drafted glyphs (ẞ) carry `org.myiadidot.draft`. Small-cap height is
   1040 (lib `org.myiadidot.smallcapHeight`, chosen by the person after
   comparing 960/1000/1040); small caps take the `.cap` accents at TopCap =
-  height + 146. To redraft: `smallcaps_draft.py` then `smallcaps.py
+  height + 146. A capital before a small cap is kerned only where a style
+  falls outside the references (CAP_SC_KERNING there, final values per
+  style from `scripts/quality/capsc_pairs.py STYLE`). To redraft: `smallcaps_draft.py` then `smallcaps.py
   --drafts ... --redraft` (replaces only unreviewed drafts).
 - New letters derived from existing ones (same shape, turned, mirrored, with a bar, slash or middle tilde merged in, the Ц tail added, enlarged to capital weight):
   recipes in `scripts/derive.py` (also their small caps, "ɔ.sc"); drafts
@@ -108,8 +110,16 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   own Latin: `scripts/quality/greek_pairs.py STYLE`; the italics' Greek
   cuts are ITALIC_CUT_GREEK (make_italic.py) and BOLD_ITALIC_CUT_GREEK
   (make_bold.py), their Greek pairs in ITALIC_KERNING, BOLD_KERNING and
-  ITALIC_BOLD_KERNING. Accented Greek letters share their base letter's
-  kerning groups (a capital's left side excepted: its accents stand there). make_bold.py adds the Bold's own cut, make_italic.py
+  ITALIC_BOLD_KERNING. Accented letters share their base letter's
+  kerning groups (a Greek capital's left side excepted: its accents stand
+  there), letters shaped like another its groups (ALIKE): both by
+  `scripts/kern_groups.py` on the Regular, where the accent stays clear
+  of what the group kerns against in all four styles (Yì, fï stay out);
+  then smallcaps.py. Gaps: `scripts/quality/kern_coverage.py UFO`.
+  Reviewed collisions (ą į ų before j, the Bold Italic's AY) are
+  loosened to CLEAR units of white by `scripts/kern_clear.py` (PAIRS),
+  per style: the generators undo the source's (lib
+  `org.myiadidot.kernCleared`) and find their own. make_bold.py adds the Bold's own cut, make_italic.py
   undoes the Regular's in memory (it is tuned on the old spacing) and
   applies the Italic's; derive.py too builds on the uncut spacing and cuts
   again. It leaves kerning alone. The Bold's figures have a cut of their

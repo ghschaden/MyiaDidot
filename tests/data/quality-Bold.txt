@@ -198,6 +198,7 @@ uni01B9.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni01C0 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni01C1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni01C2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
+uni01E5 smooth 2                 # ǥ: the bar across the whole lower loop (roman), across the stem below the baseline (italic), as the references; bar overhang per side (derive.bar_shape): 1053,-241 2.2 degrees; 696,-527 2.3 degrees
 uni01E5 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
 uni0237.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
 uni023A stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 407 against 330 (1.23, darker)
@@ -215,8 +216,7 @@ uni024C zone 1                   # 2026-10-16 known at the start (quality checks
 uni024D.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
 uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 uni0253 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 189,1000 3.7 degrees
-uni0255 extreme 1                # 2026-10-16 known at the start (quality checks added): 630,-10 6 units past
-uni0255 kink 4                   # 2026-10-16 known at the start (quality checks added): 913,661 2.8 degrees; 628,612 5.3 degrees; 553,844 1.0 degrees; 856,170 4.7 degrees
+uni0255 kink 1                   # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 566,160 5.3 degrees
 uni0257 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 757,1000 3.7 degrees
 uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 689,552 3.8 degrees
 uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 224,362 2.1 degrees
@@ -227,8 +227,7 @@ uni025D kink 2                   # Greek spacing and kerning against Greek refer
 uni025D smooth 1                 # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
 uni025D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 186 against 261 (0.71, lighter)
 uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of uni025C kept (attach)
-uni025E kink 1                   # 2026-10-16 known at the start (quality checks added): 422,-7 3.2 degrees
-uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from 0
+uni025E stroke 1                 # Bold ɞ: own recipe at the Bold's weight (make_bold.py BOLD_RECIPES), counters open, advance that of ɜ as in the Regular: lc 225 against 261 (0.86, lighter)
 uni0260 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1197,1290 3.9 degrees
 uni0260.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 894,28 2.1 degrees
 uni0262 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0

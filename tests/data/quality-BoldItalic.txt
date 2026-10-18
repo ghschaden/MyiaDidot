@@ -443,7 +443,7 @@ uni0198 extreme 4                # 2026-10-16 Bold Italic: first generated (make
 uni0198 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 808,1309 5.3 degrees; 1419,1213 2.3 degrees
 uni0198 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1248,147 2.3 degrees
 uni0199 kink 2                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 397,979 7.2 degrees; 1080,842 4.6 degrees
-uni0199 smooth 1                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 839,64 2.2 degrees
+uni0199 smooth 2                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni0199 zone 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: top +14 from 1434
 uni0199.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 674,53 8 units past
 uni0199.sc kink 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 5.4 degrees; 835,830 4.2 degrees; 674,53 3.2 degrees; 1031,874 1.7 degrees
@@ -455,12 +455,11 @@ uni019C smooth 3                 # Italic derived letters made of their weighted
 uni019D extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 550,1319 7 units past; 106,-252 9 units past
 uni019D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 190 against 307 (0.62, lighter)
 uni01A4 kink 2                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 627,1300 3.8 degrees; 612,115 4.0 degrees
-uni01A5 smooth 1                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 821,1117 2.5 degrees
 uni01A5.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 341,939 11 units past
 uni01A5.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 398,90 3.4 degrees; 853,817 2.5 degrees
 uni01A6 extreme 2                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 1134,-163 5 units past; 492,115 7 units
 uni01AC kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 592,112 1.1 degrees
-uni01AC smooth 3                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 908,1307 3.6 degrees; 789,1429 2.6 degrees; 1215,1309 2.3 degrees
+uni01AC smooth 4                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni01AD kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 261,895 7.6 degrees; 275,941 1.7 degrees; 503,895 7.6 degrees; 319,210 4.9 degrees
 uni01AD smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 95,297 2.2 degrees; 713,1226 2.8 degrees; 294,101 2.1 degrees
 uni01AD stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 247 against 279 (0.88, lighter)
@@ -487,18 +486,19 @@ uni01B9 kink 1                   # 2026-10-16 Bold Italic: first generated (make
 uni01B9 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 136 against 279 (0.49, lighter)
 uni01B9.sc extreme 6             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 357,-30 45 units past; 797,696 13 units past; 295
 uni01B9.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.5 degrees, not 15.2
-uni01B9.sc smooth 2              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1081,201 2.2 degrees; 547,369 2.6 degrees
+uni01B9.sc smooth 4              # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni01B9.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +11 from 1040
 uni01C0 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 217 against 289 (0.75, lighter)
 uni01C1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 239 against 289 (0.83, lighter)
 uni01C2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 198 against 279 (0.71, lighter)
 uni01DD.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 147,378 8 units past; 543,750 42 units past
 uni01DD.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1061,940 2.0 degrees
-uni01DD.sc smooth 1              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 782,711 2.2 degrees
+uni01DD.sc smooth 2              # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni01E4 kink 2                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1042,481 2.0 degrees; 1392,1387 5.7 degrees
 uni01E4 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
 uni01E4 smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1290,878 2.5 degrees
-uni01E5 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 467,9 2.8 degrees
+uni01E5 kink 3                   # ǥ: the bar across the whole lower loop (roman), across the stem below the baseline (italic), as the references; bar overhang per side (derive.bar_shape): 483,17 4.9 degrees; 448,-266 3.7 degrees; 409,
+uni01E5 smooth 3                 # ǥ: the bar across the whole lower loop (roman), across the stem below the baseline (italic), as the references; bar overhang per side (derive.bar_shape): 537,-372 2.5 degrees; 136,-178 2.4 degrees; -5
 uni01E5.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
 uni01E5.sc smooth 3              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 65,353 2.4 degrees; 331,279 3.0 degrees; 755,99 2
 uni0237 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -9,-380 2.5 degrees; 379,615 2.1 degrees
@@ -539,10 +539,10 @@ uni024D zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni024D.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 797,820 2.7 degrees
 uni024D.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1061,789 2.4 degrees
 uni024D.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
+uni0250 smooth 2                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni0250 zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
 uni0250.sc kink 3                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 276,927 4.2 degrees; 554,925 3.6 degrees; 883,833
 uni0250.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
-uni0250.sc smooth 1              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1315,887 2.5 degrees
 uni0250.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -5 from 0
 uni0251.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 553,9 15 units past; 421,506 38 units past
 uni0251.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 338 against 282 (1.20, darker)
@@ -558,8 +558,7 @@ uni0253.sc smooth 4              # italic small caps derived after the italic sm
 uni0254.sc extreme 3             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 344,-30 8 units past; 169,343 7 units past; 708,1
 uni0254.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 20.9 degrees, not 15.2
 uni0254.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 803,765 2.1 degrees
-uni0255 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 600,839 1.9 degrees; 691,143 4.4 degrees; 485,153 4.1 degrees
-uni0255 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 867,692 2.1 degrees; 500,143 2.9 degrees
+uni0255 extreme 2                # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 647,338 5 units past; 668,158 7 units past
 uni0256 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 939,-187 2.2 degrees
 uni0257 extreme 2                # ɗ rebuilt from the italic d with ɓ's top (make_italic.py): 1231,1347 6 units past; 811,95 7 units past
 uni0257 kink 3                   # ɗ rebuilt from the italic d with ɓ's top (make_italic.py): 899,1177 3.4 degrees; 595,172 2.9 degrees; 582,839 2.3 degrees
@@ -568,7 +567,6 @@ uni0257.sc extreme 4             # italic small caps derived after the italic sm
 uni0257.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 962,209 3.2 degrees
 uni0257.sc smooth 3              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: -85,814 2.1 degrees; 1144,640 2.5 degrees; 879,70
 uni0258 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 222,-23 7 units past; 292,480 28 units past; 784,738 34 units past; 558,608 9 units past; 373,732 35 units past
-uni0258 smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 630,513 2.0 degrees
 uni0259.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
 uni025A extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 921,639 5 units past; 918,509 5 units past
 uni025B.sc extreme 3             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 384,552 6 units past; 340,362 6 units past; 509,-24 10 units past
@@ -579,14 +577,11 @@ uni025B.sc zone 1                # 2026-10-16 Bold Italic: first generated (make
 uni025C extreme 6                # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
 uni025D extreme 7                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 462,208 30 units past; 266,377 7 units past; 580,619 49 units past; 244,639 11 units past; 944,828 6 units past; 940,698 5 units
 uni025D smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 150,443 2.1 degrees; 845,651 2.6 degrees
-uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 44% of uni025C kept (attach)
-uni025E extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 584,884 21 units past; 534,459 22 units past; 376,500 19 units past; 580,619 56 units past; 463,208 42 units past
-uni025E kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 732,198 4.9 degrees; 845,651 5.9 degrees
-uni025E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +7 from -23
+uni025E extreme 4                # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni025F smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 199,-43 2.2 degrees
 uni025F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 252 against 289 (0.87, lighter)
 uni0260 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 752,797 7.1 degrees
-uni0260 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1311,1299 4.0 degrees
+uni0260 smooth 2                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni0260 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -3 from 1434
 uni0260.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1174,1093 8 units past; 983,424 7 units past
 uni0260.sc kink 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 924,983 6.2 degrees; 1000,1084 3.9 degrees; 1089,959 4.8 degrees; 333,279 3.4 degrees; 983,424 2.9 degrees
@@ -601,7 +596,6 @@ uni0265 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni0265 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 884
 uni0266 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 400,988 7.5 degrees
 uni0266 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
-uni0266 smooth 1                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 870,763 2.3 degrees
 uni0266 zone 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: top +16 from 1434
 uni0266.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 341,938 11 units past
 uni0267 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 285,996 3.4 degrees; 697,649 3.7 degrees
@@ -625,7 +619,7 @@ uni026D stroke 1                 # stroke weights against the kind's (scripts/qu
 uni026E smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 136,-256 2.2 degrees; 560,3 2.6 degrees
 uni026E stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 249 against 279 (0.89, lighter)
 uni026F slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
-uni026F smooth 4                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1596,80 5.6 degrees; 1164,286 2.8 degrees; 591,121 2.3 degrees; 572,700 2.7 degrees
+uni026F smooth 5                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni026F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 342 against 289 (1.18, darker)
 uni026F zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
 uni026F.sc kink 2                # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1564,985 3.5 degrees; 722,330 3.7 degrees
@@ -640,7 +634,7 @@ uni0271 slant 1                  # 2026-10-16 Bold Italic: first generated (make
 uni0271 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1097,9 2.4 degrees
 uni0272 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 265,48 5.1 degrees
 uni0272 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.8 degrees, not 15.2
-uni0272 smooth 2                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1014,187 2.8 degrees; 252,-35 3.9 degrees
+uni0272 smooth 1                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni0272.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 310,180 1.5 degrees
 uni0272.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1012,905 2.1 degrees; 1146,840 2.2 degrees
 uni0272.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 143 against 282 (0.51, lighter)
@@ -654,9 +648,8 @@ uni0278 style 1                  # Italic derived letters made of their weighted
 uni0279 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 531,0 1.1 degrees; -69,132 3.4 degrees; 254,182 6.1 degrees
 uni0279 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 868,284 2.2 degrees
 uni0279 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
-uni027A extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 219,121 31 units past; 657,1335 9 units past; 574,119 7 units past
-uni027A kink 5                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 531,0 1.1 degrees; -69,132 3.4 degrees; 254,182 5.0 degrees; 523,846 2.7 degrees; 772,846 1.3 degrees
-uni027A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 358,196 3.6 degrees
+uni027A kink 3                   # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
+uni027A smooth 2                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni027A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni027B extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 596,206 9 units past; 736,-164 22 units past; 219,121 31 units past
 uni027B kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -69,132 3.4 degrees; 254,182 5.0 degrees
@@ -700,31 +693,31 @@ uni028A.sc kink 5                # 2026-10-16 Bold Italic: first generated (make
 uni028A.sc smooth 4              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 875,866 2.5 degrees; 4,292 2.3 degrees; 371,623 3.5 degrees; 738,201 2.9 degrees
 uni028A.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +10 from 1040
 uni028B slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.2 degrees, not 15.2
-uni028B smooth 2                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1043,220 3.4 degrees; 504,763 2.3 degrees
+uni028B smooth 1                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni028B stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 327 against 289 (1.13, darker)
 uni028B.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1016,863 5 units past
 uni028B.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 569,943 2.5 degrees
 uni028B.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 121,243 2.5 degrees; 289,942 2.5 degrees; 975,842 3.9 degrees
 uni028B.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 uni028C slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
-uni028C smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 856,700 2.7 degrees
 uni028C zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
 uni028C.sc kink 3                # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1204,124 2.7 degrees; 418,167 4.6 degrees; 632,278 4.2 degrees
-uni028C.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 331,120 2.3 degrees
 uni028C.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -4 from 0
 uni028D slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
-uni028D smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1395,787 2.4 degrees; 1358,700 2.7 degrees
+uni028D smooth 1                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni028D zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
 uni028E slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.1 degrees, not 15.2
-uni028E smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 975,787 2.4 degrees; 938,700 2.7 degrees
+uni028E smooth 1                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni028E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni028F zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
-uni0290 extreme 3                # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 824,-378 8 units past; 186,148 6 units past; 181,117 5 units past
+uni0290 extreme 1                # ʐ: own recipe (Italic: turns widened for the weight pass; Bold Italic: ITALIC_BOLD_RECIPES): 822,-300 6 units past
 uni0290 kink 2                   # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 672,774 4.1 degrees; 907,793 3.4 degrees
-uni0290 smooth 1                 # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 253,89 2.6 degrees
+uni0290 smooth 4                 # ʐ: own recipe (Italic: turns widened for the weight pass; Bold Italic: ITALIC_BOLD_RECIPES): 620,703 2.1 degrees; 792,774 3.0 degrees; 788,821 2.1 degrees; 1145,-337 3.1 degrees
 uni0290 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 119 against 279 (0.43, lighter)
-uni0291 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,774 3.7 degrees; 344,149 4.8 degrees; 268,37 6.8 degrees
-uni0291 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 733,773 2.5 degrees; 668,821 2.2 degrees
+uni0290 zone 1                   # ʐ: own recipe (Italic: turns widened for the weight pass; Bold Italic: ITALIC_BOLD_RECIPES): bottom -9 from -461
+uni0291 extreme 1                # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 695,321 5 units past
+uni0291 kink 2                   # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 523,-103 3.0 degrees; 578,118 1.9 degrees
+uni0291 smooth 3                 # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 620,703 2.1 degrees; 792,774 3.0 degrees; 788,821 2.1
 uni0291 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 103 against 279 (0.37, lighter)
 uni0292 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 515,708 5.4 degrees
 uni0292 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.2 degrees, not 15.2
@@ -736,14 +729,15 @@ uni0292.sc zone 1                # 2026-10-16 Bold Italic: first generated (make
 uni0294 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 688,849 3.6 degrees; 292,963 6.3 degrees; 693,689 2.7 degrees
 uni0294 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 248 against 289 (0.86, lighter)
 uni0295 extreme 6                # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 716,849 37 units past; 995,1333 20 units past; 951,1013 7 units past; 1287,1067 27 units past; 434,1054 33
-uni0295 kink 5                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 716,849 5.7 degrees; 1024,1074 4.3 degrees; 1174,963 3.8 degrees; 529,754 2.9 degrees; 624,689 5.4 degrees
+uni0295 kink 4                   # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
+uni0295 smooth 2                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni0295 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 248 against 289 (0.86, lighter)
 uni0295 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni0298 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -12 from -23
 uni0299 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni029B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
 uni029C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
-uni029D smooth 2                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 763,742 2.3 degrees; 111,-380 2.5 degrees
+uni029D smooth 3                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni029D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 252 against 289 (0.87, lighter)
 uni029D.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 838,943 3.9 degrees; 273,-134 3.5 degrees
 uni029D.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 82,-255 2.2 degrees
@@ -1040,7 +1034,6 @@ uni04A3 base 1                   # derived-glyph checks added (scripts/quality/d
 uni04A3 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 7 units past
 uni04A3 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 3.2 degrees
 uni04A3 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 252 against 289 (0.87, lighter)
-uni04A3.sc extreme 1             # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1108,83 5 units past
 uni04A3.sc kink 1                # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1054,940 4.8 degrees
 uni04A3.sc smooth 2              # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1100,-209 2.2 degrees; 491,90 2.5 degrees
 uni04AF kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 532,-76 2.3 degrees; 278,-76 2.3 degrees; 330,649 3.9 degrees
@@ -1066,14 +1059,13 @@ uni04B3.sc kink 5                # italic small caps derived after the italic sm
 uni04B3.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 20.8 degrees, not 15.2
 uni04B3.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 233 against 273 (0.86, lighter)
 uni04B6 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1159,144 12 units past
-uni04B6 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 329,905 2.9 degrees; 428,1307 2.9 degrees
+uni04B6 smooth 3                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni04B7 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,762 7 units past
 uni04B7 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 648,301 1.9 degrees
 uni04B7 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 476,379 2.0 degrees
 uni04B7.sc extreme 1             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 870,96 9 units past
-uni04B7.sc smooth 4              # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1216,942 2.6 degrees; 1002,108 2.5 degrees; 988,-209 2.7 degrees; 711,89 2.3 degrees
+uni04B7.sc smooth 5              # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni04BA smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 452,124 2.1 degrees
-uni04BB.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 99,97 3.0 degrees
 uni04BB.sc smooth 2              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1262,438 2.2 degrees; 353,98 2.4 degrees
 uni04D8 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1140,710 5 units past
 uni04D9.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 637,306 2.8 degrees
@@ -1100,7 +1092,7 @@ uni1D6D kink 1                   # Bold derived letters made of their Bold base 
 uni1D6D smooth 3                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 854,251 2.1 degrees; 901,1365 2.1 degrees; 411,393 2.5 degrees
 uni1D6D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 358 against 289 (1.24, darker)
 uni1D6E smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 391,1184 2.6 degrees
-uni1D6F smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1146,161 2.5 degrees; 354,800 2.7 degrees; 794,626 2.2 degrees
+uni1D6F smooth 2                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni1D70 kink 2                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 179,167 1.1 degrees; 652,778 7.8 degrees
 uni1D70 smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 856,97 2.2 degrees; 836,675 2.7 degrees
 uni1D71 kink 2                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 688,851 4.3 degrees; 293,558 2.0 degrees
@@ -1114,6 +1106,7 @@ uni1D73 kink 4                   # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.s
 uni1D73 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni1D74 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 317,259 2.7 degrees; 556,484 7.0 degrees
 uni1D74 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 13,204 2.3 degrees; 234,196 2.0 degrees; 588,627 2.9 degrees; 450,559 2.3 degrees
+uni1D75 smooth 1                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni1D75 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 244 against 279 (0.87, lighter)
 uni1D76 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,774 3.7 degrees; 344,149 3.7 degrees; 268,37 6.8 degrees
 uni1D76 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 668,821 2.2 degrees
@@ -1267,7 +1260,7 @@ uniA7AD smooth 5                 # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.s
 uniA7B2 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 400,-303 6 units past
 uniA7B2 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 166,-352 2.0 degrees
 uniA7B4 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 291,0 3.9 degrees
-uniA7B4 smooth 2                 # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 639,1349 4.3 degrees; 595,75 7.3 degrees
+uniA7B4 smooth 1                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uniA7B5.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 314,940 3.7 degrees; 783,527 6.6 degrees
 uniA7B5.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1116,803 2.7 degrees; 1029,310 3.3 degrees; 752,304 3.1 degrees
 uniA7B7.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1161,580 2.2 degrees

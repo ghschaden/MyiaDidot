@@ -39,6 +39,67 @@ DRAFT_KEY = "org.myiadidot.smallcapDraft"
 HEIGHT_KEY = "org.myiadidot.smallcapHeight"  # in the UFO's lib
 DEFAULT_HEIGHT = 960
 
+# A capital before a small cap (smcp text: P a.sc r.sc ...): most
+# references leave these unkerned, so only the pairs outside the
+# references' range are kerned, just inside it (final values, measured per
+# style by scripts/quality/capsc_pairs.py; rerun it after changing capitals,
+# small caps or their spacing). Greek and Yĵ against two references only.
+CAP_SC_KERNING = {
+    "Regular": {
+        ("public.kern1.T", "public.kern2.J.sc"): 113,  # Tj
+        ("public.kern1.F", "public.kern2.J.sc"): 107,  # Fj
+        ("public.kern1.Alpha", "public.kern2.Tau.sc"): -52,  # Ατ
+        ("public.kern1.Rho", "public.kern2.Deltagreek.sc"): -54,  # Ρδ
+        ("public.kern1.Tau", "public.kern2.Alpha.sc"): -55,  # Τα
+        ("public.kern1.Lambda", "public.kern2.Tau.sc"): -58,  # Λτ
+        ("public.kern1.Nu", "public.kern2.Deltagreek.sc"): -58,  # Νδ
+        ("public.kern1.T", "public.kern2.AE.sc"): -78,  # Tæ
+        ("public.kern1.Alpha", "public.kern2.Psi.sc"): -84,  # Αψ
+        ("public.kern1.R", "public.kern2.Y.sc"): -84,  # Ry
+        ("public.kern1.Lambda", "public.kern2.Psi.sc"): -89,  # Λψ
+    },
+    "Italic": {
+        ("public.kern1.S", "public.kern2.Y.sc"): 94,  # Sy
+        ("public.kern1.A", "public.kern2.Y.sc"): 68,  # Ay
+        ("public.kern1.T", "public.kern2.J.sc"): 53,  # Tj
+        ("public.kern1.R", "public.kern2.C.sc"): 193,  # Rc
+        ("public.kern1.S", "public.kern2.V.sc"): 56,  # Sv
+        ("public.kern1.L", "public.kern2.T.sc"): 57,  # Lt
+        ("public.kern1.B", "public.kern2.Y.sc"): 137,  # By
+        ("public.kern1.R", "public.kern2.U.sc"): 158,  # Ru
+        ("public.kern1.B", "public.kern2.V.sc"): 100,  # Bv
+        ("public.kern1.R", "public.kern2.V.sc"): 62,  # Rv
+    },
+    "Bold": {
+        ("public.kern1.F", "public.kern2.J.sc"): 46,  # Fj
+        ("public.kern1.S", "public.kern2.Y.sc"): -47,  # Sy
+        ("public.kern1.F", "public.kern2.A.sc"): -55,  # Fa
+        ("public.kern1.V", "public.kern2.J.sc"): -56,  # Vj
+        ("public.kern1.A", "public.kern2.T.sc"): -59,  # At
+        ("public.kern1.V", "public.kern2.A.sc"): -59,  # Va
+        ("public.kern1.R", "public.kern2.Y.sc"): -60,  # Ry
+        ("public.kern1.Y", "public.kern2.J.sc"): -65,  # Yĵ
+        ("public.kern1.T", "public.kern2.A.sc"): -71,  # Ta
+        ("public.kern1.A", "public.kern2.V.sc"): -114,  # Av
+        ("public.kern1.F", "public.kern2.AE.sc"): -141,  # Fæ
+        ("public.kern1.T", "public.kern2.AE.sc"): -141,  # Tæ
+    },
+    "BoldItalic": {
+        ("public.kern1.R", "public.kern2.C.sc"): 128,  # Rc
+        ("public.kern1.B", "public.kern2.Y.sc"): 109,  # By
+        ("public.kern1.R", "public.kern2.U.sc"): 82,  # Ru
+        ("public.kern1.P", "public.kern2.Y.sc"): 53,  # Py
+        ("public.kern1.B", "public.kern2.V.sc"): 67,  # Bv
+        ("public.kern1.N", "public.kern2.AE.sc"): -48,  # Næ
+        ("public.kern1.U", "public.kern2.O.sc"): -49,  # Uo
+        ("public.kern1.U", "public.kern2.C.sc"): -51,  # Uc
+        ("public.kern1.N", "public.kern2.A.sc"): -52,  # Na
+        ("public.kern1.C", "public.kern2.AE.sc"): -52,  # Cæ
+        ("public.kern1.V", "public.kern2.A.sc"): -84,  # Va
+        ("public.kern1.Y", "public.kern2.J.sc"): -137,  # Yĵ
+    },
+}
+
 # Set by configure() from the UFO's small-cap height.
 SC_HEIGHT = SCALE = TOP = TOPCAP = None
 
@@ -414,6 +475,15 @@ def scale_kerning(font, log):
             font.kerning[(l2, r2)] = round(value * SCALE)
             n += 1
     log.append(f"kerning: {len(new_groups)} groups, {n} pairs scaled by {SCALE:.3f}")
+    style = (font.info.styleName or "Regular").replace(" ", "")
+    for (left, right), value in CAP_SC_KERNING.get(style, {}).items():
+        if left not in font.groups or right not in font.groups:
+            raise SystemExit(f"CAP_SC_KERNING {style}: no group {left} or {right}")
+        font.kerning[(left, right)] = value
+    log.append(f"kerning: {len(CAP_SC_KERNING.get(style, {}))} capital + small cap pairs")
+    import kern_clear
+
+    kern_clear.clear(font, log)  # the small caps' pairs whose inks would meet
     # Typed Catalan l·l: kern the middle dot over the foot of l.sc, where
     # ŀ (ldot.sc) has it, and keep the total advance of ŀl.
     if all(n in font for n in ("ldot.sc", "l.sc", "periodcentered")):

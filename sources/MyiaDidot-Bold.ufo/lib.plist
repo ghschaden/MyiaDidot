@@ -30,12 +30,8 @@
 			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni01C2</key>
 			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
-			<key>uni0255</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0256</key>
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
-			<key>uni025E</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0261</key>
 			<string>curl: emboldened whole, made again from the Bold it misses (ɡ: a stub of the ear at the cut)</string>
 			<key>uni0265</key>
@@ -68,8 +64,6 @@
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
 			<key>uni028B</key>
 			<string>curl: emboldened whole, made again from the Bold it misses (ʋ: a stub of the foot serif at the cut)</string>
-			<key>uni0291</key>
-			<string>attach: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni03CF</key>
 			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni20B8</key>
@@ -99,6 +93,21 @@
 			<integer>-17</integer>
 			<key>zerooldstyle</key>
 			<integer>-19</integer>
+		</dict>
+		<key>org.myiadidot.kernCleared</key>
+		<dict>
+			<key>Aogonek public.kern2.j</key>
+			<string>added</string>
+			<key>Iogonek public.kern2.j</key>
+			<string>added</string>
+			<key>aogonek public.kern2.j</key>
+			<string>added</string>
+			<key>eogonek public.kern2.j</key>
+			<string>added</string>
+			<key>iogonek public.kern2.j</key>
+			<string>added</string>
+			<key>uogonek public.kern2.j</key>
+			<string>added</string>
 		</dict>
 		<key>org.myiadidot.respaced</key>
 		<dict>

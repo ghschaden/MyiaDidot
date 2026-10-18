@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes generate
+.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate
 
 all: fonts
 
@@ -139,6 +139,14 @@ quality: $(OTF) $(TTF)
 	$(QPY)/cases.py > build/quality/cases.txt
 	$(QPY)/smallsize.py fonts/ttf/*.ttf > build/quality/smallsize.txt
 	@echo "reports: build/quality/*.txt"
+
+# kerning that brings inks together, drawn for review (scripts/quality/kern_touch.py)
+kerntouch:
+	@mkdir -p build/quality
+	for s in Regular Italic Bold BoldItalic; do \
+	    $(PY) scripts/quality/kern_touch.py sources/$(FAMILY)-$$s.ufo --sheet build/quality/kern-touch-$$s.pdf > build/quality/kern-touch-$$s.txt || exit 1; \
+	done
+	@echo "sheets: build/quality/kern-touch-*.pdf"
 
 # glyphs darker or lighter than their kind, drawn for review (scripts/quality/strokes.py)
 strokes:

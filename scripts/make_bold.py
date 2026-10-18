@@ -39,6 +39,7 @@ from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from built_from import KEY as BUILT_KEY
+import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from derive import embolden, embolden_simple, rezone
 from glyph_lint import fix
@@ -71,8 +72,79 @@ BOLD_KEEP_WHOLE = {
 # more than rederive allows: the difference is the point (reviewed)
 BOLD_REBUILD = {
     "uni0290": "ʐ: the foot at the Bold's weight; emboldened whole it was much too fat",
+    "uni0291": "ʑ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
+    "uni0255": "ɕ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
+    "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
 }
-ITALIC_BOLD_REBUILD = {}
+ITALIC_BOLD_REBUILD = {
+    "uni0290": "ʐ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook's counter closed",
+    "uni0291": "ʑ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
+    "uni0255": "ɕ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
+    "uni025E": "ɞ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
+}
+# recipes drawn at the Bold's weight (in the Bold Italic, in its upright
+# frame), where the source's recipe scaled up does not fit (a hook's or a
+# loop's counter closes, its turn too tight for a stroke twice as heavy):
+# used as given, nothing scaled
+BOLD_RECIPES = {
+    # ʑ, ɕ: the Regular's, the loop 0.55 of o's stem (as there), wider and
+    # rounder so its counter stays open; the base cut at the tail, the loop
+    # alone the bottom (overshooting as o does), so no edge of the bar steps
+    # into the counter; ʑ as much wider than z as its loop needs
+    "ʑ": ("attach", "z", ("x", [(605, -10000, 10000, 320), (800, -10000, 10000, 500)],
+                          [("curl", {"at": ("pt", 690, 20, 60), "dir": 0, "turn": "ccw", "r": (160, 150),
+                                     "sweep": 270, "ball": 60, "t": (150, 60), "lead": 35},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((530, 200), (530, -330), 150), (0, 0), (1, 1, 0, 0))], 1075)),
+    "ɕ": ("attach", "c", ("x", [(585, -10000, 10000, 400)],
+                          [("curl", {"at": ("pt", 670, 10, 60), "dir": 0, "turn": "ccw", "r": (160, 150),
+                                     "sweep": 270, "ball": 60, "t": (150, 60), "lead": 35},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((510, 200), (510, -330), 150), (0, 0), (1, 1, 0, 0))])),
+    # ɞ: the Regular's, its bowl met to the Bold ɜ's top stroke (821, 156
+    # thick at x=400), wider and lighter than o's stem so both counters stay open
+    "ɞ": ("attach", "ɜ", ("x", [(-10000, 600, 400, 10000), (-10000, -10000, 400, 300)],
+                          [("curl", {"at": ("pt", 400, 821, 156), "dir": 180, "turn": "ccw",
+                                     "r": (250, 375.5), "sweep": 180, "ball": 70, "t": (230, 156)},
+                            (0, 0), (1, 1, 0, 0))])),
+}
+ITALIC_BOLD_RECIPES = {
+    # ʐ: the Italic's, its stem 225 (0.85 of n) and the turns opened to suit
+    "ʐ": ("attach", "z", ("x", [(660, -10000, 10000, 400)],
+                          [("curl", {"at": ("pt", 660, 40, 125), "dir": 0, "turn": "cw",
+                                     "r": (150, 120), "sweep": 90, "ball": 30, "t": (225, 125)},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((810, -60), (810, -300), 225), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 810, -300, 225), "dir": 270, "turn": "ccw",
+                                     "r": (180, 140), "sweep": 150, "ball": 95, "t": (225, 60)},
+                            (0, 0), (1, 1, 0, 0))])),
+    # ʑ: the Italic's, the loop right of the diagonal; the bottom stroke cut
+    # at the tail, the loop alone the bottom (overshooting as o does), so
+    # neither edge of the stroke steps into or under it
+    "ʑ": ("attach", "z", ("x", [(560, -10000, 10000, 400)],
+                          [("curl", {"at": ("pt", 627, 18, 85), "dir": 0, "turn": "ccw",
+                                     "r": (135, 130), "sweep": 270, "ball": 30, "t": (130, 85), "lead": 35},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((493, 150), (492, 60), 120), (0, 0), (1, 1, 0, 0)),
+                           ("line", ((492, 120), (485, -100), 170), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 485, -100, 170), "dir": 268, "turn": "cw",
+                                     "r": (130, 90), "sweep": 110, "ball": 60, "t": (170, 60)},
+                            (0, 0), (1, 1, 0, 0))])),
+    # ɕ: the Italic's, its loop and tail at the Bold Italic's weight, c cut
+    # at the tail, the loop alone the bottom (as ʑ)
+    "ɕ": ("attach", "c", ("x", [(525, -10000, 10000, 400)],
+                          [("curl", {"at": ("pt", 600, 10, 60), "dir": 10, "turn": "ccw",
+                                     "r": (150, 150), "sweep": 270, "ball": 55, "t": (160, 60),
+                                     "lead": 35},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((445, 180), (445, -200), 160), (0, 0), (1, 1, 0, 0))])),
+    # ɞ: the Italic's (ɜ closed by the left half of o), joined at x=440,
+    # where o's and ɜ's strokes meet at one height; the half 80 further left
+    # than there, so o's stem, twice as heavy, leaves the counters open (its
+    # side bearing given back in ITALIC_SIDEBEARINGS)
+    "ɞ": ("attach", "ɜ", ("x", [(-10000, 600, 440, 10000), (-10000, -10000, 440, 300)],
+                          [("o", (-10000, -10000, 560, 10000), (0, 0), (1, 1, -100, 0))])),
+}
 ITALIC_BOLD_KEEP_WHOLE = {
     "uni019D": "Ɲ: crumbs of the foot serif at the cut",
     "uni049B": "қ: crumbs of the cut at the descender",
@@ -129,7 +201,7 @@ BOLD_KERNING = {
     ("S", "m"): -28,
 }
 # the Bold Italic's own (from the Italic): none yet
-ITALIC_SIDEBEARINGS = {}
+ITALIC_SIDEBEARINGS = {"uni025E": (100, 0)}  # ɞ: its bowl widened leftward (ITALIC_BOLD_RECIPES)
 ITALIC_ANCHOR_NUDGE = {}
 # Bold Italic optical-pair corrections from the pinned-reference spacing
 # comparison (scripts/quality/pairs.py). Values are final Bold Italic kern
@@ -428,14 +500,21 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             if shares["exact"] < 0.98:
                 whole[name] = f"{op}: not exactly its base so moved"
                 continue
-            # the same move of the Bold base, in the upright frame
+            # the same move of the Bold base, in the upright frame the Italic
+            # makes its letters in (make_italic.shear: about half the
+            # x-height, where the frames agree); about the baseline, a
+            # mirrored or turned letter's ink moved right by twice the slant
+            # times its height (ɘ ɐ against the next letter)
+            from make_italic import XH
+
+            y0 = XH / 2
             bw = font[base].width
             e = bw if op in ("turn", "mirror") else 0
             out = pathops.Path()
             rec = DecomposingRecordingPen(font)
             font[base].draw(rec)
-            moved = TransformPen(TransformPen(TransformPen(out.getPen(), (1, 0, slant, 1, 0, 0)),
-                                              (a, 0, 0, d, e, f)), deslant)
+            moved = TransformPen(TransformPen(TransformPen(out.getPen(), (1, 0, slant, 1, -slant * y0, 0)),
+                                              (a, 0, 0, d, e, f)), (1, 0, -slant, 1, slant * y0, 0))
             rec.replay(moved)
             g.width = bw
         else:
@@ -591,7 +670,7 @@ def rederive(source, font, italic, whole):
     keep = ITALIC_BOLD_KEEP_WHOLE if italic else BOLD_KEEP_WHOLE
     up = copy.deepcopy(font)
     if italic:
-        from make_italic import shear
+        from make_italic import XH, shear
 
         for g in up:
             shear(g, -SLANT)
@@ -599,7 +678,7 @@ def rederive(source, font, italic, whole):
     # what the recipes draw by number (a hook's stem, a curl), at the Bold's
     # stems and hairlines, not the source's
     (_, stem, hair), (_, stem0, hair0) = derive.strokes(up, "o"), derive.strokes(source, "o")
-    up.lib[derive.STROKE_KEY] = (stem / stem0, hair / hair0)
+    scale = (stem / stem0, hair / hair0)
 
     def resolve(c):
         if c.endswith(".sc") and len(c) == 4:
@@ -617,8 +696,14 @@ def rederive(source, font, italic, whole):
     for ch, op, base, band in recipes(italic):
         name = resolve(ch)
         why = whole.get(name, "")
-        if not why.endswith(("cuts its base", "does not keep its whole base")):
+        rebuild = ITALIC_BOLD_REBUILD if italic else BOLD_REBUILD
+        if not why.endswith(("cuts its base", "does not keep its whole base")) and not (
+                name in whole and name in rebuild):
             continue
+        own = ch in (ITALIC_BOLD_RECIPES if italic else BOLD_RECIPES)
+        if own:
+            op, base, band = (ITALIC_BOLD_RECIPES if italic else BOLD_RECIPES)[ch]
+        up.lib[derive.STROKE_KEY] = (1, 1) if own else scale
         if name in keep:
             whole[name] = f"{op}: emboldened whole, made again from the Bold it misses ({keep[name]})"
             continue
@@ -642,7 +727,7 @@ def rederive(source, font, italic, whole):
         # a part more than before: a remnant of what the cut should take (a serif's end)
         faults += max(0, parts(up, new) - parts(up, old))
         close = made.bounds is not None and was.bounds is not None and _best_iou(made, was) >= iou
-        if name in (ITALIC_BOLD_REBUILD if italic else BOLD_REBUILD) and faults <= 0:
+        if name in rebuild and faults <= 0:
             close, wide = True, False
         else:
             wide = abs(new.width - old.width) > width * old.width
@@ -652,7 +737,10 @@ def rederive(source, font, italic, whole):
             del up[tmp]
             continue
         glyph = ufoLib2.objects.Glyph()
-        new.draw(TransformPen(glyph.getPen(), (1, 0, SLANT, 1, 0, 0)))
+        # slanted back as unslanted above (make_italic.shear, about half the
+        # x-height): about the baseline, the ink stood SLANT * XH / 2 right
+        y0 = XH / 2 if italic else 0
+        new.draw(TransformPen(glyph.getPen(), (1, 0, SLANT, 1, -SLANT * y0, 0)))
         redraw(font[name], glyph)
         font[name].width = new.width
         del up[tmp]
@@ -669,6 +757,7 @@ def main():
     global SLANT
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
+    kern_clear.undo(font)  # the source's loosened pairs: this style finds its own
     angle = -(regular.info.italicAngle or 0)
     SLANT = math.tan(math.radians(angle))
     italic = bool(angle)
@@ -794,7 +883,10 @@ def main():
     info.openTypeOS2WeightClass = 700
     info.postscriptFontName = "MyiaDidot-BoldItalic" if italic else "MyiaDidot-Bold"
     info.postscriptFullName = "Myia Didot Bold Italic" if italic else "Myia Didot Bold"
-    info.openTypeOS2Selection = [s for s in (info.openTypeOS2Selection or []) if s != 7]
+    # USE_TYPO_METRICS (bit 7) kept, as in the Regular: without it Word spaces
+    # the Bold's lines by the win metrics, 11% looser; ufo2ft sets the
+    # bold, italic and regular bits from styleMapStyleName
+    info.openTypeOS2Selection = list(info.openTypeOS2Selection or [])
 
     log = []
     stack_anchors(font, log)
@@ -842,6 +934,7 @@ def main():
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
                          "greekLower": round(done["greekLower"] * KX) + greek_cut}
+    kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
           f"{outlined} outlined letters made from base and mark, {len(followed)} derived letters "
