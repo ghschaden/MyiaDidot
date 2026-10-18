@@ -55,7 +55,10 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   rerun it after changes to the Regular until the Bold has reviewed edits
   of its own. Tests and baselines are per style (`style_data` in
   tests/conftest.py: `shaping-golden-Bold.json` ...;
-  `update_test_data.py --ufo sources/MyiaDidot-Bold.ufo`).
+  `update_test_data.py --ufo sources/MyiaDidot-Bold.ufo`). Derived letters
+  are made of the Bold's own base where the source letter is its base
+  turned or mirrored, or keeps all of it (`follow_bases`): emboldened
+  whole, their junctions thicken unlike the base's strokes.
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make

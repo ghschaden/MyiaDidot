@@ -86,11 +86,14 @@ def _flatten(rec, steps=12):
 class Outline:
     """A glyph's ink, merged, as polygons: sliced into rows on demand."""
 
-    def __init__(self, font, name, transform=(1, 0, 0, 1, 0, 0)):
+    def __init__(self, font, name, transform=(1, 0, 0, 1, 0, 0), path=None):
         p = pathops.Path()
-        r = DecomposingRecordingPen(font)
-        font[name].draw(r)
-        r.replay(TransformPen(p.getPen(), transform))
+        if path is None:
+            r = DecomposingRecordingPen(font)
+            font[name].draw(r)
+            r.replay(TransformPen(p.getPen(), transform))
+        else:  # a pathops.Path given instead of a glyph
+            path.draw(TransformPen(p.getPen(), transform))
         p = pathops.simplify(p)
         rec = RecordingPen()
         p.draw(rec)

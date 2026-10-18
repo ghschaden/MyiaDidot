@@ -294,6 +294,103 @@ def write(font, path):
     target.save()
 
 
+def follow_bases(source, font, italic):
+    """Derived letters (derive.py's recipes) made of the Bold's own base:
+    emboldened whole, a letter's junctions (a slash meeting a stem, a tilde
+    crossing a diagonal) thicken unlike its base's strokes, eating the stem
+    beside them. One that is its base turned, mirrored or flipped (exactly,
+    in the source) becomes the Bold base so moved; one that adds to its
+    base without cutting any of it is joined with the Bold base, placed
+    where the source's base sits in it, unless the emboldened letter keeps
+    that base already. Letters that cut their base (a hook replacing a
+    stem's end) stay as emboldened. Returns the names changed."""
+    sys.path.insert(0, str(ROOT / "scripts" / "quality"))
+    import derive
+    from derived import KEEPS, TRANSFORMS, Outline, compare, recipes
+    from fontTools.pens.recordingPen import DecomposingRecordingPen
+
+    deslant = (1, 0, -SLANT, 1, 0, 0)
+    cmap = {u: g.name for g in source for u in g.unicodes}
+
+    def resolve(c):
+        if c.endswith(".sc") and len(c) == 4:
+            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
+        return cmap.get(ord(c), derive.glyph_name(c)) if len(c) == 1 else c
+
+    def ink(name):
+        p = pathops.Path()
+        rec = DecomposingRecordingPen(font)
+        font[name].draw(rec)
+        rec.replay(p.getPen())
+        return p
+
+    changed, failed = [], []
+    for ch, op, base, band in recipes(italic):
+        name, base = resolve(ch), resolve(base)
+        if name not in source or base not in source or base == "space" or name not in font:
+            continue
+        g = font[name]
+        if italic and source[name].lib.get("org.myiadidot.italicSource") != "derived":
+            continue
+        if g.components or op not in KEEPS | TRANSFORMS:
+            continue
+        mine = Outline(source, name, deslant)
+        if mine.bounds is None:
+            continue
+        if op in TRANSFORMS:
+            w = source[base].width
+            sb = band if isinstance(band, str) else band[0] if isinstance(band, tuple) else "x"
+            cy = derive.band_middle(source, sb) if op != "mirror" else 0
+            a, _, _, d, e, f = {"turn": (-1, 0, 0, -1, w, 2 * cy), "mirror": (-1, 0, 0, 1, w, 0),
+                                "flip": (1, 0, 0, -1, 0, 2 * cy)}[op]
+            shares, _, _ = compare(Outline(source, base, (a, 0, -a * SLANT, d, e, f)), mine)
+            if shares["exact"] < 0.98:
+                continue
+            # the same move of the Bold base, in the upright frame
+            bw = font[base].width
+            e = bw if op in ("turn", "mirror") else 0
+            out = pathops.Path()
+            rec = DecomposingRecordingPen(font)
+            font[base].draw(rec)
+            moved = TransformPen(TransformPen(TransformPen(out.getPen(), (1, 0, SLANT, 1, 0, 0)),
+                                              (a, 0, 0, d, e, f)), deslant)
+            rec.replay(moved)
+            g.width = bw
+        else:
+            shares, dx, _ = compare(Outline(source, base, deslant), mine)
+            # only a letter that keeps its whole base in the source: the
+            # Italic's ɨ has the dot of its own, not i's, and would get both
+            if shares["lost"] > 0.02:
+                continue
+            # nothing to mend when the emboldened letter keeps its Bold base
+            # (ʘ: O's outline, the dot inside); and Skia's union fails on
+            # curves that coincide, as theirs then do
+            if compare(Outline(font, base, deslant), Outline(font, name, deslant))[0]["lost"] <= 0.02:
+                continue
+            placed = pathops.Path()
+            rec = DecomposingRecordingPen(font)
+            font[base].draw(rec)
+            rec.replay(TransformPen(placed.getPen(), (1, 0, 0, 1, dx * KX, 0)))
+            # each simplified on its own first: a base rebuilt here (ə turned)
+            # winds the other way, and in one path the two would cancel
+            a, b = pathops.simplify(ink(name)), pathops.simplify(placed)
+            out = pathops.op(a, b, pathops.PathOp.UNION)
+            # the union holds all of both, row by row, or it failed (curves
+            # that coincide): then the letter is left as emboldened
+            whole = Outline(None, None, deslant, path=out)
+            if any(compare(Outline(None, None, deslant, path=p), whole)[0]["lost"] > 0.01 for p in (a, b)):
+                failed.append(name)
+                continue
+        out = pathops.simplify(out)
+        glyph = ufoLib2.objects.Glyph()
+        out.draw(glyph.getPen())
+        redraw(g, glyph)
+        changed.append(name)
+    if failed:
+        print("  derived letters left as emboldened (their union failed):", " ".join(failed))
+    return changed
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
@@ -394,6 +491,8 @@ def main():
             elif g.width:
                 g.width = round(g.width * KX + AX)
 
+    followed = follow_bases(regular, font, italic)
+
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}
     if italic:
         font.kerning.update(ITALIC_BOLD_KERNING)
@@ -461,7 +560,8 @@ def main():
                          "greekLower": round(done["greekLower"] * KX) + BOLD_CUT_GREEK}
     write(font, Path(args.bold))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
-          f"{outlined} outlined letters made from base and mark, {len(cleaned)} cleaned")
+          f"{outlined} outlined letters made from base and mark, {len(followed)} derived letters "
+          f"made of their Bold base, {len(cleaned)} cleaned")
 
 
 if __name__ == "__main__":

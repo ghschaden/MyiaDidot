@@ -145,7 +145,7 @@ uni0198 kink 1                   # 2026-10-16 known at the start (quality checks
 uni0199 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
 uni0199.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 915,880 16 units past
 uni0199.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 868,878 2.4 degrees
-uni019B smooth 1                 # 2026-10-16 known at the start (quality checks added): 233,1297 2.2 degrees
+uni019B smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 233,1297 2.2 degrees; 877,318 3.0 degrees
 uni019D kink 2                   # 2026-10-16 known at the start (quality checks added): 272,83 1.2 degrees; 429,63 2.3 degrees
 uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 423,-71 2.6 degrees
 uni01A5.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 348,891 2.7 degrees
@@ -161,30 +161,24 @@ uni01B4.sc kink 1                # 2026-10-16 known at the start (quality checks
 uni01B7 extreme 1                # 2026-10-16 known at the start (quality checks added): 515,671 22 units past
 uni01B7 kink 1                   # 2026-10-16 known at the start (quality checks added): 420,-38 7.3 degrees
 uni01B7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 597,203 2.2 degrees
-uni01B8 extreme 1                # 2026-10-16 known at the start (quality checks added): 916,679 23 units past
 uni01B8 kink 1                   # 2026-10-16 known at the start (quality checks added): 1046,-38 6.2 degrees
 uni01B8 smooth 1                 # 2026-10-16 known at the start (quality checks added): 869,203 2.2 degrees
-uni01B9 kink 2                   # 2026-10-16 known at the start (quality checks added): 693,-221 5.2 degrees; 668,-132 5.1 degrees
+uni01B9 kink 4                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 735,128 1.2 degrees; 668,-132 5.1 degrees; 693,-221 5.2 degrees; 538,-379 1.1 degrees
 uni01B9 smooth 1                 # 2026-10-16 known at the start (quality checks added): 944,-76 2.2 degrees
 uni01B9.sc kink 1                # 2026-10-16 known at the start (quality checks added): 718,-23 5.5 degrees
 uni01B9.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 590,151 2.8 degrees
 uni0237.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
-uni023C kink 2                   # 2026-10-16 known at the start (quality checks added): 913,661 2.7 degrees; 628,612 5.3 degrees
-uni023E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of T kept (slash)
-uni023E extreme 1                # 2026-10-16 known at the start (quality checks added): 1092,1378 14 units past
-uni023E kink 1                   # 2026-10-16 known at the start (quality checks added): 608,1374 1.9 degrees
+uni023B smooth 3                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 245,281 2.9 degrees; 1297,1034 2.6 degrees; 463,472 2.8 degrees
+uni023C.sc kink 1                # Bold derived letters made of their Bold base (make_bold.py follow_bases): 170,207 4.6 degrees
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
 uni0242 kink 1                   # 2026-10-16 known at the start (quality checks added): 60,772 3.6 degrees
 uni0248 smooth 1                 # 2026-10-16 known at the start (quality checks added): 350,147 2.3 degrees
 uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
-uni0249.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 278,66 7 units past
 uni0249.sc kink 1                # 2026-10-16 known at the start (quality checks added): 33,142 7.7 degrees
-uni0249.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 280,36 4.6 degrees; 601,277 2.3 degrees
 uni0249.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni024D.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
 uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
-uni0250 extreme 1                # 2026-10-16 known at the start (quality checks added): 130,834 5 units past
 uni0253.sc kink 1                # 2026-10-16 known at the start (quality checks added): -23,868 3.4 degrees
 uni0255 extreme 1                # 2026-10-16 known at the start (quality checks added): 630,-10 6 units past
 uni0255 kink 4                   # 2026-10-16 known at the start (quality checks added): 913,661 2.8 degrees; 628,612 5.3 degrees; 553,844 1.0 degrees; 856,170 4.7 degrees
@@ -207,22 +201,22 @@ uni0266.sc extreme 2             # 2026-10-16 known at the start (quality checks
 uni0266.sc kink 2                # 2026-10-16 known at the start (quality checks added): 215,588 3.7 degrees; 638,891 2.7 degrees
 uni0267 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
 uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 554,177 2.0 degrees
-uni026B.sc extreme 4             # 2026-10-16 known at the start (quality checks added): 196,503 7 units past; 224,602 5 units past; 469,535 6 units past; 442,437 5 units past
-uni026B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 843,148 2.7 degrees
-uni026B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 485,530 3.4 degrees
+uni026B.sc smooth 2              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 500,555 2.8 degrees; 166,483 5.3 degrees
 uni026E kink 2                   # 2026-10-16 known at the start (quality checks added): 608,-132 5.1 degrees; 583,-221 5.2 degrees
+uni026F.sc smooth 1              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 792,229 3.2 degrees
 uni026F.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0272 smooth 1                 # 2026-10-16 known at the start (quality checks added): 91,-413 3.1 degrees
 uni0272.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 299,947 9 units past
 uni0272.sc kink 2                # 2026-10-16 known at the start (quality checks added): 220,64 1.2 degrees; 387,51 2.0 degrees
 uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+uni0278 kink 8                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 248,76 3.4 degrees; 844,76 3.4 degrees; 844,809 3.4 degrees; 248,809 3.4 degrees; 367,675 3.3 degrees; 367,209 3.3 degrees; 72
 uni0279 smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees
 uni027A smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees
 uni027B kink 1                   # 2026-10-16 known at the start (quality checks added): 474,-246 5.5 degrees
 uni027B smooth 2                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees; 735,-246 2.3 degrees
 uni027D.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
 uni027D.sc kink 2                # 2026-10-16 known at the start (quality checks added): 196,51 5.3 degrees; 594,-129 3.0 degrees
-uni0281 extreme 1                # 2026-10-16 known at the start (quality checks added): 1205,976 6 units past
+uni0281 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1056,1055 3.7 degrees
 uni0282 kink 1                   # 2026-10-16 known at the start (quality checks added): 116,-46 7.2 degrees
 uni0288 smooth 1                 # 2026-10-16 known at the start (quality checks added): 561,-207 2.6 degrees
 uni0288.sc kink 1                # 2026-10-16 known at the start (quality checks added): 899,-129 5.4 degrees
@@ -231,12 +225,12 @@ uni028A.sc smooth 2              # 2026-10-16 known at the start (quality checks
 uni028B kink 1                   # 2026-10-16 known at the start (quality checks added): 1031,63 4.2 degrees
 uni028B zone 1                   # 2026-10-16 known at the start (quality checks added): top +6 from 884
 uni028C.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -3 from 0
+uni028E smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 852,1354 2.4 degrees
 uni0291 kink 1                   # 2026-10-16 known at the start (quality checks added): 445,202 6.6 degrees
 uni0292 kink 2                   # 2026-10-16 known at the start (quality checks added): 346,-132 5.1 degrees; 321,-221 5.2 degrees
 uni0292 smooth 1                 # 2026-10-16 known at the start (quality checks added): 70,-76 2.2 degrees
 uni0292.sc kink 1                # 2026-10-16 known at the start (quality checks added): 339,-23 5.5 degrees
 uni0292.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 467,151 2.8 degrees
-uni0295 smooth 1                 # 2026-10-16 known at the start (quality checks added): 527,1396 2.9 degrees
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -28 from 0
 uni029D.sc kink 1                # 2026-10-16 known at the start (quality checks added): 114,-377 2.6 degrees
 uni029D.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 679,193 2.9 degrees
@@ -314,14 +308,11 @@ uni0497 smooth 2                 # 2026-10-16 known at the start (quality checks
 uni0497.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 917,-196 6 units past
 uni0497.sc kink 9                # 2026-10-16 known at the start (quality checks added): 307,943 7.1 degrees; 62,931 6.0 degrees; 649,576 4.0 degrees; 1020,576 4.0 degrees; 1606,931 6.0 degrees; 1754,-91 3.6 degrees; 1613,-83 6.5 degre
 uni049A extreme 1                # 2026-10-16 known at the start (quality checks added): 582,-242 7 units past
-uni049B smooth 1                 # 2026-10-16 known at the start (quality checks added): 428,-243 3.3 degrees
+uni049B kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 739,50 4.7 degrees
 uni04A2 extreme 1                # 2026-10-16 known at the start (quality checks added): 551,-242 6 units past
 uni04A3 smooth 1                 # 2026-10-16 known at the start (quality checks added): 425,-243 3.3 degrees
 uni04A3.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 434,-196 5 units past
 uni04A3.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 433,-222 5.2 degrees
-uni04B2 extreme 1                # 2026-10-16 known at the start (quality checks added): 680,-242 6 units past
-uni04B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 1606,49 5.7 degrees
-uni04B3 kink 1                   # 2026-10-16 known at the start (quality checks added): 1152,37 6.0 degrees
 uni04B6 extreme 1                # 2026-10-16 known at the start (quality checks added): 476,-242 6 units past
 uni04B7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 344,-243 3.3 degrees
 uni1D43 kink 1                   # 2026-10-16 known at the start (quality checks added): 185,959 1.0 degrees
@@ -336,24 +327,12 @@ uni1D4D kink 1                   # 2026-10-16 known at the start (quality checks
 uni1D53 kink 1                   # 2026-10-16 known at the start (quality checks added): 281,1108 1.9 degrees
 uni1D53 smooth 1                 # 2026-10-16 known at the start (quality checks added): 290,802 2.0 degrees
 uni1D53 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
-uni1D6C extreme 2                # 2026-10-16 known at the start (quality checks added): 189,418 31 units past; 1145,467 30 units past
-uni1D6C kink 1                   # 2026-10-16 known at the start (quality checks added): 660,832 1.0 degrees
-uni1D6D extreme 2                # 2026-10-16 known at the start (quality checks added): 1017,466 30 units past; 61,417 30 units past
-uni1D6D kink 1                   # 2026-10-16 known at the start (quality checks added): 546,832 1.0 degrees
 uni1D6E kink 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
-uni1D6F kink 1                   # 2026-10-16 known at the start (quality checks added): 1612,617 5.9 degrees
 uni1D70 smooth 2                 # 2026-10-16 known at the start (quality checks added): 560,393 2.1 degrees; 694,491 2.7 degrees
-uni1D71 extreme 2                # 2026-10-16 known at the start (quality checks added): 179,418 30 units past; 1135,467 30 units past
-uni1D71 kink 1                   # 2026-10-16 known at the start (quality checks added): 650,832 1.0 degrees
-uni1D72 extreme 4                # 2026-10-16 known at the start (quality checks added): 195,425 9 units past; 228,533 6 units past; 456,459 8 units past; 424,351 6 units past
-uni1D72 kink 3                   # 2026-10-16 known at the start (quality checks added): 903,737 3.7 degrees; 659,785 3.7 degrees; 641,836 2.7 degrees
-uni1D73 extreme 4                # 2026-10-16 known at the start (quality checks added): 228,533 6 units past; 456,459 8 units past; 424,351 6 units past; 195,425 9 units past
-uni1D73 kink 3                   # 2026-10-16 known at the start (quality checks added): 903,737 3.7 degrees; 659,785 3.7 degrees; 641,836 2.7 degrees
-uni1D75 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 57% of t kept (midtilde)
-uni1D75 extreme 4                # 2026-10-16 known at the start (quality checks added): 458,460 8 units past; 426,351 6 units past; 200,424 8 units past; 231,533 6 units past
-uni1D75 smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,198 2.4 degrees
-uni1D76 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 16% of z kept (midtilde)
-uni1D76 kink 1                   # 2026-10-16 known at the start (quality checks added): 736,176 3.0 degrees
+uni1D72 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 519,851 3.8 degrees
+uni1D73 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 519,851 3.8 degrees
+uni1D74 kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 108,575 4.5 degrees
+uni1D74 smooth 3                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 534,530 4.2 degrees; 500,541 2.1 degrees; 564,62 2.3 degrees
 uni1D7E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni1DA4 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
 uni1DA4 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
@@ -406,24 +385,25 @@ uni2042 kink 8                   # 2026-10-16 known at the start (quality checks
 uni2042 smooth 2                 # 2026-10-16 known at the start (quality checks added): 697,1277 2.3 degrees; 697,1075 2.3 degrees
 uni2071 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
 uni2071 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
-uni20A1 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1333,1419 2.7 degrees
+uni20A1 kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1095,1365 6.3 degrees
+uni20A1 smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1090,1448 2.5 degrees; 793,49 2.7 degrees
 uni20A6 kink 1                   # 2026-10-16 known at the start (quality checks added): 416,1316 4.5 degrees
-uni20A9 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 54% of W kept (lines)
+uni20A9 kink 3                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1865,423 1.0 degrees; 1050,806 3.2 degrees; 764,781 3.7 degrees
+uni20B2 kink 4                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1046,-16 4.8 degrees; 683,107 4.7 degrees; 684,1324 5.5 degrees; 1083,87 7.9 degrees
+uni20B2 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 555,1376 2.1 degrees
+uni20B5 kink 3                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1071,58 5.4 degrees; 683,107 4.7 degrees; 684,1324 5.5 degrees
+uni20B5 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 555,1376 2.1 degrees
 uni20B8 kink 2                   # 2026-10-16 known at the start (quality checks added): 147,1180 3.6 degrees; 1632,1180 3.6 degrees
 uni20BE kink 2                   # 2026-10-16 known at the start (quality checks added): 1237,754 6.3 degrees; 1444,754 6.3 degrees
+uni20BF kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1159,1369 4.3 degrees
 uni2113 extreme 5                # 2026-10-16 known at the start (quality checks added): 557,555 25 units past; 473,152 5 units past; 733,1500 17 units past; 767,1027 15 units past; 637,1025 15 units past
 uni2113 smooth 1                 # 2026-10-16 known at the start (quality checks added): 664,156 2.7 degrees
 uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): top +4 from 1496
+uni2205 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 763,1339 3.1 degrees
 uni22EE width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-uni2C62 extreme 2                # 2026-10-16 known at the start (quality checks added): 313,806 7 units past; 567,623 7 units past
+uni2C62 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 642,760 2.5 degrees
 uni2C64 kink 1                   # 2026-10-16 known at the start (quality checks added): 284,59 5.7 degrees
 uni2C64 smooth 1                 # 2026-10-16 known at the start (quality checks added): 757,-148 2.0 degrees
-uni2C65 extreme 1                # 2026-10-16 known at the start (quality checks added): 466,431 9 units past
-uni2C65 kink 3                   # 2026-10-16 known at the start (quality checks added): 366,642 3.3 degrees; 89,664 5.4 degrees; 423,400 2.5 degrees
-uni2C65 smooth 2                 # 2026-10-16 known at the start (quality checks added): 77,195 2.0 degrees; 851,162 2.7 degrees
-uni2C66 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 30% of t kept (slash)
-uni2C66 extreme 1                # 2026-10-16 known at the start (quality checks added): 470,-16 6 units past
-uni2C66 smooth 1                 # 2026-10-16 known at the start (quality checks added): 458,192 2.6 degrees
 uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +7 from 1040
 uni2C72 extreme 1                # 2026-10-16 known at the start (quality checks added): 2188,1199 7 units past
 uni2C73 extreme 1                # 2026-10-16 known at the start (quality checks added): 1500,754 18 units past
