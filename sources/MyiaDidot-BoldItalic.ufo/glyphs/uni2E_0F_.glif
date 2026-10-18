@@ -4,10 +4,16 @@
 	<advance width="1272"/>
 	<outline>
 		<contour>
-			<point x="-469" y="-52" type="line"/>
-			<point x="-441" y="52" type="line"/>
-			<point x="1741" y="52" type="line"/>
-			<point x="1713" y="-52" type="line"/>
+			<point x="-455" y="-47" type="line"/>
+			<point x="-461" y="37" type="line"/>
+			<point x="1682" y="37" type="line"/>
+			<point x="1688" y="-47" type="line"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
 </glyph>

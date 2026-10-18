@@ -366,8 +366,9 @@ uni018E smooth 1                 # 2026-10-16 known at the start (quality checks
 uni0190 slant 1                  # 2026-10-16 known at the start (quality checks added): 12.3 degrees, not 15.2
 uni0191 extreme 1                # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past
 uni0191 smooth 1                 # 2026-10-16 known at the start (quality checks added): 66,-158 2.7 degrees
-uni0193 kink 3                   # 2026-10-16 known at the start (quality checks added): 1402,1330 2.3 degrees; 1244,539 4.3 degrees; 952,136 2.9 degrees
+uni0193 kink 1                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1244,539 3.7 degrees
 uni0193 slant 1                  # 2026-10-16 known at the start (quality checks added): 11.7 degrees, not 15.2
+uni0193 smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1381,1417 2.7 degrees
 uni0194 zone 1                   # 2026-10-16 known at the start (quality checks added): top +10 from 1434
 uni0196 kink 1                   # 2026-10-16 known at the start (quality checks added): 791,536 4.2 degrees
 uni0197 extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past; 405,112 9 units past
@@ -383,7 +384,8 @@ uni019A extreme 1                # 2026-10-16 known at the start (quality checks
 uni019A smooth 2                 # 2026-10-16 known at the start (quality checks added): 95,171 2.2 degrees; 218,91 2.8 degrees
 uni019A.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 335,958 6 units past; 282,73 5 units past
 uni019C extreme 2                # 2026-10-16 known at the start (quality checks added): 481,1311 8 units past; 1291,1311 9 units past
-uni019C smooth 3                 # 2026-10-16 known at the start (quality checks added): 481,1311 2.8 degrees; 1050,340 2.9 degrees; 2191,1171 2.4 degrees
+uni019C kink 1                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1471,1202 1.0 degrees
+uni019C smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 2191,1171 2.5 degrees
 uni019D extreme 1                # 2026-10-16 known at the start (quality checks added): 11,-177 5 units past
 uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 1399,1261 2.1 degrees
 uni01A4 extreme 2                # 2026-10-16 known at the start (quality checks added): 512,1300 7 units past; 405,112 8 units past
@@ -392,10 +394,6 @@ uni01A5 extreme 2                # 2026-10-16 known at the start (quality checks
 uni01A5.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 357,942 6 units past; 314,87 9 units past
 uni01A5.sc kink 2                # 2026-10-16 known at the start (quality checks added): 314,87 4.4 degrees; 846,822 3.1 degrees
 uni01A6 extreme 2                # accepted case counterpart additions: 458,1302 14 units past; 398,123 13 units past
-uni01A6 grid 1                   # accepted case counterpart additions: 64 off whole units
-uni01A6 kink 3                   # accepted case counterpart additions: 1091,146 3.6 degrees; 398,123 2.9 degrees; 1096,1138 2.9 degrees
-uni01A6 smooth 1                 # accepted case counterpart additions: 1332,1091 2.2 degrees
-uni01A6 zone 1                   # accepted case counterpart additions: bottom -28 from 0
 uni01AC extreme 2                # 2026-10-16 known at the start (quality checks added): 791,1311 10 units past; 680,112 9 units past
 uni01AC kink 1                   # 2026-10-16 known at the start (quality checks added): 998,1313 2.7 degrees
 uni01AC smooth 1                 # 2026-10-16 known at the start (quality checks added): 680,112 2.6 degrees
@@ -416,31 +414,31 @@ uni01B4 kink 2                   # 2026-10-16 known at the start (quality checks
 uni01B4 slant 1                  # 2026-10-16 known at the start (quality checks added): 17.8 degrees, not 15.2
 uni01B4.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 495,990 11 units past; 487,85 11 units past
 uni01B4.sc kink 3                # 2026-10-16 known at the start (quality checks added): 291,927 7.4 degrees; 859,868 5.8 degrees; 487,85 7.2 degrees
-uni01B8 extreme 5                # 2026-10-16 known at the start (quality checks added): 487,-35 60 units past; 340,513 88 units past; 883,185 9 units past; 847,284 19 units past; 968,506 44 units past
+uni01B8 extreme 6                # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1285,267 40 units past; 1025,405 16 units past; 1088,284 10 units past; 747,17 91 units past; 1368,1185 8 u
 uni01B9 extreme 5                # 2026-10-16 known at the start (quality checks added): 235,-461 57 units past; 766,525 10 units past; 142,54 89 units past; 445,-256 15 units past; 552,-64 31 units past
 uni01B9 smooth 1                 # 2026-10-16 known at the start (quality checks added): 570,714 2.2 degrees
 uni01B9.sc extreme 6             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 318,-30 47 units past; 792,702 8 units past; 221,
 uni01B9.sc slant 1               # 2026-10-16 known at the start (quality checks added): 11.5 degrees, not 15.2
-uni01B9.sc smooth 4              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 26,342 2.3 degrees; 221,370 2.6 degrees; 604,126 
+uni01B9.sc smooth 4              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 26,342 2.3 degrees; 221,370 2.6 degrees; 604,126
 uni01B9.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +11 from 1040
 uni01DD.sc extreme 4             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 81,373 6 units past; 459,749 34 units past; 780,9
 uni01DD.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 963,944 2.9 degrees
-uni01E4 kink 2                   # 2026-10-16 known at the start (quality checks added): 1244,539 5.8 degrees; 952,136 2.9 degrees
+uni01E4 kink 1                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1022,465 1.3 degrees
 uni01E4 slant 1                  # 2026-10-16 known at the start (quality checks added): 11.4 degrees, not 15.2
 uni01E5 kink 1                   # 2026-10-16 known at the start (quality checks added): 96,-377 4.1 degrees
 uni01E5.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 10.7 degrees, not 15.2
 uni01E5.sc smooth 3              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 83,353 2.5 degrees; 254,276 2.7 degrees; 666,98 2
 uni0237 smooth 1                 # 2026-10-16 known at the start (quality checks added): 390,617 2.1 degrees
 uni0237.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
-uni023A kink 1                   # 2026-10-16 known at the start (quality checks added): 1119,142 5.6 degrees
+uni023A kink 2                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 1120,142 3.8 degrees; 918,566 1.1 degrees
 uni023B slant 1                  # 2026-10-16 known at the start (quality checks added): 11.7 degrees, not 15.2
+uni023C smooth 2                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 631,876 2.4 degrees; 594,845 6.6 degrees
 uni023C.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 10.4 degrees, not 15.2
 uni023C.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 83,353 2.1 degrees; 353,769 2.1 degrees
 uni023D extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past; 405,112 9 units past
 uni023D smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.4 degrees
-uni023E extreme 2                # 2026-10-16 known at the start (quality checks added): 791,1311 9 units past; 679,112 9 units past
+uni023E extreme 1                # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 769,1375 9 units past
 uni023E kink 1                   # 2026-10-16 known at the start (quality checks added): 998,1313 4.4 degrees
-uni023E smooth 1                 # 2026-10-16 known at the start (quality checks added): 679,112 2.6 degrees
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +6 from 1434
 uni0242 kink 3                   # 2026-10-16 known at the start (quality checks added): 422,488 4.2 degrees; 408,395 4.0 degrees; 370,324 2.1 degrees
 uni0242.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 479,1097 12 units past; 520,786 32 units past
@@ -453,7 +451,6 @@ uni0249.sc zone 1                # italic small caps derived after the italic sm
 uni024C extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 9 units past; 405,112 9 units past
 uni024C smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.1 degrees
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -23 from 0
-uni024D extreme 1                # 2026-10-16 known at the start (quality checks added): 709,797 8 units past
 uni024D smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
 uni024D zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni024D.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 792,825 2.9 degrees
@@ -487,7 +484,6 @@ uni0257.sc extreme 5             # italic small caps derived after the italic sm
 uni0257.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 865,209 3.3 degrees
 uni0257.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1041,641 2.2 degrees; 870,710 2.4 degrees
 uni0258 extreme 6                # 2026-10-16 known at the start (quality checks added): 188,-23 8 units past; 36,293 6 units past; 281,484 29 units past; 702,738 26 units past; 562,610 8 units past; 301,736 34 units past
-uni0258 smooth 1                 # 2026-10-16 known at the start (quality checks added): 562,610 2.2 degrees
 uni0259.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
 uni025A extreme 1                # 2026-10-16 known at the start (quality checks added): 867,637 7 units past
 uni025A smooth 1                 # 2026-10-16 known at the start (quality checks added): 861,458 2.5 degrees
@@ -497,6 +493,7 @@ uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni025B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +16 from 1040
 uni025C extreme 6                # 2026-10-16 known at the start (quality checks added): 462,205 38 units past; 236,380 8 units past; 582,620 45 units past; 218,645 14 units past; 546,884 26 units past; 479,455 25 units past
 uni025D extreme 6                # 2026-10-16 known at the start (quality checks added): 462,205 38 units past; 236,380 9 units past; 581,620 46 units past; 218,645 14 units past; 891,827 7 units past; 479,455 25 units past
+uni025E base 1                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 44% of uni025C kept (attach)
 uni025E extreme 4                # 2026-10-16 known at the start (quality checks added): 546,884 26 units past; 479,455 25 units past; 581,620 46 units past; 463,205 38 units past
 uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +7 from -23
 uni025F smooth 2                 # 2026-10-16 known at the start (quality checks added): 12,-263 3.0 degrees; 422,764 2.0 degrees
@@ -529,6 +526,7 @@ uni026B smooth 3                 # 2026-10-16 known at the start (quality checks
 uni026B.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 335,958 6 units past; 282,73 5 units past
 uni026C extreme 2                # 2026-10-16 known at the start (quality checks added): 397,1339 7 units past; 203,612 6 units past
 uni026C smooth 4                 # 2026-10-16 known at the start (quality checks added): 95,171 2.2 degrees; 115,288 3.3 degrees; 258,267 2.6 degrees; 218,91 2.8 degrees
+uni026C.sc extreme 3             # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 181,380 6 units past; 335,958 6 units p
 uni026D extreme 2                # 2026-10-16 known at the start (quality checks added): 397,1339 7 units past; 145,-150 9 units past
 uni026E extreme 1                # 2026-10-16 known at the start (quality checks added): 391,1339 10 units past
 uni026E smooth 4                 # 2026-10-16 known at the start (quality checks added): 108,260 2.6 degrees; 555,0 2.2 degrees; 558,54 3.0 degrees; 490,714 2.0 degrees
@@ -560,8 +558,8 @@ uni027A smooth 1                 # 2026-10-16 known at the start (quality checks
 uni027A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni027B extreme 2                # 2026-10-16 known at the start (quality checks added): 407,-150 7 units past; 136,87 8 units past
 uni027B smooth 1                 # 2026-10-16 known at the start (quality checks added): 136,87 4.4 degrees
-uni027D extreme 2                # 2026-10-16 known at the start (quality checks added): 709,797 8 units past; 269,-150 10 units past
-uni027D kink 1                   # 2026-10-16 known at the start (quality checks added): 344,-156 3.5 degrees
+uni027D extreme 1                # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 279,-230 10 units past
+uni027D kink 2                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 149,0 2.0 degrees; 344,-156 3.5 degrees
 uni027D smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
 uni027D.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 792,825 2.9 degrees
 uni027D.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 963,791 2.2 degrees; 970,184 2.6 degrees
@@ -570,7 +568,9 @@ uni027E extreme 1                # 2026-10-16 known at the start (quality checks
 uni027E kink 1                   # 2026-10-16 known at the start (quality checks added): 341,118 6.3 degrees
 uni027E smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni0281 extreme 6                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1062,1060 37 units past; 1107,814 15 units past; 
+uni0280.sc extreme 2             # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 332,944 10 units past; 289,87 10 units 
+uni0280.sc smooth 4              # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 748,632 2.6 degrees; 516,948 3.6 degree
+uni0281 extreme 6                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1062,1060 37 units past; 1107,814 15 units past;
 uni0281 smooth 3                 # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 520,951 3.2 degrees; 1013,934 3.5 degrees; 626,21
 uni0281 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0282 extreme 2                # 2026-10-16 known at the start (quality checks added): 145,-147 8 units past; 179,-315 6 units past
@@ -584,7 +584,7 @@ uni0284 smooth 3                 # 2026-10-16 known at the start (quality checks
 uni0288 extreme 1                # 2026-10-16 known at the start (quality checks added): 143,-150 9 units past
 uni0288.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1118,612 7 units past
 uni0289 kink 1                   # 2026-10-16 known at the start (quality checks added): 342,650 4.8 degrees
-uni0289 smooth 2                 # 2026-10-16 known at the start (quality checks added): 789,91 2.8 degrees; 336,211 2.2 degrees
+uni0289 smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 336,211 2.6 degrees
 uni0289.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 985,846 3.2 degrees; 994,912 5.2 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni028A slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
@@ -621,10 +621,9 @@ uni0292.sc slant 1               # 2026-10-16 known at the start (quality checks
 uni0292.sc smooth 3              # 2026-10-16 known at the start (quality checks added): 9,200 2.8 degrees; 96,126 3.0 degrees; 792,342 2.5 degrees
 uni0292.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +11 from 1040
 uni0294 kink 3                   # 2026-10-16 known at the start (quality checks added): 670,849 3.3 degrees; 296,970 6.5 degrees; 627,695 5.0 degrees
-uni0295 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 57% of uni0294 kept (mirror)
 uni0295 extreme 6                # 2026-10-16 known at the start (quality checks added): 477,790 5 units past; 268,760 40 units past; 719,1395 32 units past; 753,941 12 units past; 889,1158 16 units past; 378,1078 27 units past
-uni0295 kink 4                   # 2026-10-16 known at the start (quality checks added): 392,577 3.7 degrees; 361,695 7.4 degrees; 844,970 1.0 degrees; 415,849 5.4 degrees
-uni0295 smooth 2                 # 2026-10-16 known at the start (quality checks added): 268,760 2.1 degrees; 821,1099 2.8 degrees
+uni0295 kink 3                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 364,695 7.9 degrees; 845,970 3.2 degrees; 405,849 5.3 degrees
+uni0295 smooth 3                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 466,790 2.5 degrees; 534,590 2.6 degrees; 271,760 2.0 degrees
 uni0295 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -12 from -23
 uni0299 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
@@ -633,11 +632,10 @@ uni029C zone 1                   # 2026-10-16 known at the start (quality checks
 uni029D.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 77,-256 3.5 degrees
 uni029D.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni029F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni02A1 kink 5                   # 2026-10-16 known at the start (quality checks added): 670,849 3.3 degrees; 296,970 6.5 degrees; 627,695 5.0 degrees; 539,577 2.1 degrees; 400,590 4.5 degrees
+uni02A1 kink 3                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 667,849 3.3 degrees; 293,970 6.5 degrees; 624,695 5.0 degrees
 uni02A1 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni02A2 extreme 6                # 2026-10-16 known at the start (quality checks added): 477,790 6 units past; 268,760 40 units past; 719,1395 32 units past; 753,941 12 units past; 889,1158 16 units past; 378,1078 27 units past
-uni02A2 kink 4                   # 2026-10-16 known at the start (quality checks added): 537,590 2.4 degrees; 361,695 7.4 degrees; 844,970 1.0 degrees; 415,849 5.4 degrees
-uni02A2 smooth 2                 # 2026-10-16 known at the start (quality checks added): 268,760 2.1 degrees; 821,1099 2.8 degrees
+uni02A2 kink 3                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 857,970 4.5 degrees; 743,1075 6.5 degrees; 420,849 5.0 degrees
 uni02A2 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni02B0 kink 1                   # 2026-10-16 known at the start (quality checks added): 498,609 5.6 degrees
 uni02B0 smooth 2                 # 2026-10-16 known at the start (quality checks added): 618,977 2.4 degrees; 534,946 2.5 degrees
@@ -691,6 +689,7 @@ uni03DF.sc smooth 2              # 2026-10-16 known at the start (quality checks
 uni03E1 smooth 1                 # 2026-10-16 known at the start (quality checks added): 595,565 2.1 degrees
 uni03E1.sc kink 2                # 2026-10-16 known at the start (quality checks added): 154,758 3.7 degrees; 365,142 2.7 degrees
 uni03E1.sc smooth 3              # 2026-10-16 known at the start (quality checks added): 193,746 3.3 degrees; 966,405 2.6 degrees; 823,289 2.2 degrees
+uni03F3.sc zone 1                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: top +4 from 1040
 uni03F4 extreme 2                # 2026-10-16 known at the start (quality checks added): 392,690 7 units past; 1152,743 9 units past
 uni03F4 smooth 1                 # 2026-10-16 known at the start (quality checks added): 470,908 2.1 degrees
 uni0402 extreme 1                # 2026-10-16 known at the start (quality checks added): 812,1314 9 units past
@@ -878,7 +877,7 @@ uni049B extreme 1                # 2026-10-16 known at the start (quality checks
 uni049B kink 3                   # 2026-10-16 known at the start (quality checks added): 459,573 2.5 degrees; 439,-155 4.2 degrees; 577,200 5.9 degrees
 uni049B smooth 4                 # 2026-10-16 known at the start (quality checks added): 483,709 2.5 degrees; 830,693 4.1 degrees; 746,200 2.8 degrees; 592,255 2.0 degrees
 uni049B.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 334,958 6 units past; 618,45 11 units past
-uni049B.sc kink 4                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 883,947 3.9 degrees; 815,109 1.9 degrees; 958,34 
+uni049B.sc kink 4                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 883,947 3.9 degrees; 815,109 1.9 degrees; 958,34
 uni04A2 extreme 4                # 2026-10-16 known at the start (quality checks added): 516,1311 9 units past; 1308,1311 10 units past; 1206,141 8 units past; 405,112 9 units past
 uni04A2 kink 1                   # 2026-10-16 known at the start (quality checks added): 1042,300 1.1 degrees
 uni04A3 extreme 1                # 2026-10-16 known at the start (quality checks added): 500,-156 6 units past
@@ -900,7 +899,7 @@ uni04B2 kink 1                   # 2026-10-16 known at the start (quality checks
 uni04B2 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.2 degrees, not 15.2
 uni04B3 smooth 6                 # 2026-10-16 known at the start (quality checks added): 33,111 2.7 degrees; 71,215 3.1 degrees; 229,246 3.2 degrees; 553,701 2.8 degrees; 1049,645 2.5 degrees; 975,811 2.5 degrees
 uni04B3.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 561,990 11 units past; 687,45 14 units past
-uni04B3.sc kink 5                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 875,834 1.7 degrees; 967,45 7.6 degrees; 1049,34 
+uni04B3.sc kink 5                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 875,834 1.7 degrees; 967,45 7.6 degrees; 1049,34
 uni04B3.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 19.6 degrees, not 15.2
 uni04B6 extreme 3                # 2026-10-16 known at the start (quality checks added): 1150,1311 10 units past; 1047,141 8 units past; 445,1311 9 units past
 uni04B6 smooth 3                 # 2026-10-16 known at the start (quality checks added): 537,822 2.7 degrees; 335,840 3.1 degrees; 345,909 2.7 degrees
@@ -913,9 +912,11 @@ uni04BB.sc extreme 3             # italic small caps derived after the italic sm
 uni04BB.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 114,94 2.5 degrees
 uni04D8 extreme 1                # 2026-10-16 known at the start (quality checks added): 1127,708 7 units past
 uni04D9.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
-uni04E8 extreme 2                # 2026-10-16 known at the start (quality checks added): 390,685 7 units past; 1152,749 9 units past
+uni04E8 smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 470,908 2.1 degrees
+uni04E9 smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 843,645 2.0 degrees
 uni04E9.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 83,347 2.9 degrees; 970,655 2.7 degrees
 uni0E3F extreme 2                # 2026-10-16 known at the start (quality checks added): 519,1311 10 units past; 408,112 9 units past
+uni0E3F smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 726,1313 2.4 degrees
 uni1D05 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D43 smooth 2                 # 2026-10-16 known at the start (quality checks added): 566,703 3.2 degrees; 245,651 2.1 degrees
 uni1D49 smooth 1                 # 2026-10-16 known at the start (quality checks added): 303,921 2.5 degrees
@@ -928,22 +929,19 @@ uni1D6C extreme 1                # 2026-10-16 known at the start (quality checks
 uni1D6C kink 1                   # 2026-10-16 known at the start (quality checks added): 129,356 6.0 degrees
 uni1D6D extreme 1                # 2026-10-16 known at the start (quality checks added): 888,1339 7 units past
 uni1D6D smooth 1                 # 2026-10-16 known at the start (quality checks added): 567,287 2.7 degrees
-uni1D6E smooth 2                 # 2026-10-16 known at the start (quality checks added): 406,1187 2.0 degrees; 736,1239 3.2 degrees
 uni1D6F kink 1                   # 2026-10-16 known at the start (quality checks added): 1277,650 4.5 degrees
 uni1D6F smooth 1                 # 2026-10-16 known at the start (quality checks added): 789,628 2.7 degrees
 uni1D70 kink 1                   # 2026-10-16 known at the start (quality checks added): 814,650 4.9 degrees
 uni1D71 extreme 1                # 2026-10-16 known at the start (quality checks added): 207,-368 8 units past
 uni1D71 smooth 1                 # 2026-10-16 known at the start (quality checks added): 357,769 2.6 degrees
 uni1D72 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni1D73 extreme 1                # 2026-10-16 known at the start (quality checks added): 709,797 8 units past
-uni1D73 kink 1                   # 2026-10-16 known at the start (quality checks added): 341,118 6.7 degrees
-uni1D73 smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
+uni1D73 kink 1                   # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 338,118 6.0 degrees
 uni1D73 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D74 kink 2                   # 2026-10-16 known at the start (quality checks added): 189,198 1.2 degrees; 493,481 6.0 degrees
 uni1D74 smooth 2                 # 2026-10-16 known at the start (quality checks added): 240,256 2.8 degrees; 391,557 2.2 degrees
 uni1D75 kink 1                   # 2026-10-16 known at the start (quality checks added): 241,208 5.6 degrees
-uni1D76 kink 2                   # 2026-10-16 known at the start (quality checks added): 599,774 3.5 degrees; 190,32 5.0 degrees
-uni1D76 smooth 1                 # 2026-10-16 known at the start (quality checks added): 288,143 2.4 degrees
+uni1D76 kink 1                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 288,143 3.3 degrees
+uni1D76 smooth 2                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 461,729 2.5 degrees; 488,709 2.7 degrees
 uni1D7B zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D7D extreme 1                # 2026-10-16 known at the start (quality checks added): 207,-368 8 units past
 uni1D7D smooth 1                 # 2026-10-16 known at the start (quality checks added): 357,769 2.6 degrees
@@ -1006,6 +1004,7 @@ uni2071 kink 1                   # 2026-10-16 known at the start (quality checks
 uni2071 smooth 2                 # 2026-10-16 known at the start (quality checks added): 385,856 2.2 degrees; 308,679 2.5 degrees
 uni207F kink 1                   # 2026-10-16 known at the start (quality checks added): 570,609 5.6 degrees
 uni207F smooth 2                 # 2026-10-16 known at the start (quality checks added): 690,977 2.4 degrees; 606,946 2.5 degrees
+uni20A1 smooth 2                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 991,1407 2.6 degrees; 582,20 2.8 degrees
 uni20A6 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1402,1261 2.1 degrees
 uni20A6 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 1067 209 against N's 196
 uni20A9 kink 1                   # 2026-10-16 known at the start (quality checks added): 470,1276 6.6 degrees
@@ -1020,19 +1019,20 @@ uni20AE extreme 2                # 2026-10-16 known at the start (quality checks
 uni20AE kink 2                   # 2026-10-16 known at the start (quality checks added): 476,109 3.9 degrees; 1001,1313 3.1 degrees
 uni20AE smooth 1                 # 2026-10-16 known at the start (quality checks added): 682,112 2.2 degrees
 uni20B1 extreme 1                # 2026-10-16 known at the start (quality checks added): 523,1327 7 units past
-uni20B1 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1170,1178 2.2 degrees
+uni20B1 kink 2                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 477,1154 4.6 degrees; 689,1163 5.2 degrees
 uni20B2 kink 2                   # 2026-10-16 known at the start (quality checks added): 1247,539 4.3 degrees; 955,136 2.7 degrees
 uni20B4 extreme 4                # 2026-10-16 known at the start (quality checks added): 457,-28 16 units past; 1078,1161 11 units past; 885,1462 16 units past; 242,312 15 units past
 uni20B5 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1224,938 2.2 degrees
-uni20B8 extreme 2                # 2026-10-16 known at the start (quality checks added): 683,112 9 units past; 794,1311 10 units past
+uni20B8 extreme 1                # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 772,1375 10 units past
 uni20B8 kink 1                   # 2026-10-16 known at the start (quality checks added): 794,1311 3.3 degrees
-uni20B8 smooth 2                 # 2026-10-16 known at the start (quality checks added): 683,112 2.4 degrees; 489,1260 2.5 degrees
+uni20B8 smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 794,1311 2.1 degrees
 uni20B9 extreme 1                # 2026-10-16 known at the start (quality checks added): 1047,1044 9 units past
 uni20BC extreme 2                # 2026-10-16 known at the start (quality checks added): 1067,717 57 units past; 1011,1458 35 units past
 uni20BD extreme 2                # 2026-10-16 known at the start (quality checks added): 519,1311 11 units past; 408,112 8 units past
 uni20BD kink 1                   # 2026-10-16 known at the start (quality checks added): 408,112 3.0 degrees
 uni20BE extreme 2                # 2026-10-16 known at the start (quality checks added): 479,749 49 units past; 673,120 25 units past
 uni20BF extreme 1                # 2026-10-16 known at the start (quality checks added): 519,1311 10 units past
+uni20BF smooth 1                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 726,1313 2.4 degrees
 uni2113 extreme 5                # 2026-10-16 known at the start (quality checks added): 325,150 14 units past; 331,-2 7 units past; 984,1500 79 units past; 932,1030 26 units past; 722,1030 27 units past
 uni2113 kink 1                   # 2026-10-16 known at the start (quality checks added): 171,140 4.3 degrees
 uni2113 slant 1                  # 2026-10-16 known at the start (quality checks added): 24.3 degrees, not 15.2
@@ -1051,6 +1051,7 @@ uni2C63 kink 1                   # 2026-10-16 known at the start (quality checks
 uni2C64 extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 9 units past; 333,-150 11 units past
 uni2C64 kink 1                   # 2026-10-16 known at the start (quality checks added): 579,-222 3.8 degrees
 uni2C64 smooth 2                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.4 degrees; 423,-157 2.4 degrees
+uni2C65 smooth 3                 # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 66,230 2.1 degrees; 185,649 2.2 degrees; 152,589 2.3 degrees
 uni2C65.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 829,108 4.6 degrees
 uni2C65.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 644,112 2.2 degrees
 uni2C66 kink 1                   # 2026-10-16 known at the start (quality checks added): 241,208 4.0 degrees
@@ -1071,6 +1072,8 @@ uniA78B smooth 2                 # 2026-10-16 known at the start (quality checks
 uniA78C extreme 1                # 2026-10-16 known at the start (quality checks added): 381,884 6 units past
 uniA78C.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 510,934 2.7 degrees
 uniA7AA extreme 4                # 2026-10-16 known at the start (quality checks added): 513,1300 7 units past; 1308,1311 10 units past; 1197,112 9 units past; 405,112 9 units past
+uniA7AD extreme 3                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 343,582 6 units past; 516,1311 10 units
+uniA7AD smooth 1                 # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 516,1311 2.5 degrees
 uniA7B2 smooth 1                 # 2026-10-16 known at the start (quality checks added): 156,-353 2.5 degrees
 uniA7B2 style 1                  # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uniA7B2 (0.68) than to J (0.54)
 uniA7B4 extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past; 405,112 9 units past
@@ -1081,7 +1084,6 @@ uniA7B7.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uniA7B7.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
 uniA7C7 extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past; 405,112 9 units past
 uniA7C7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.4 degrees
-uniA7C8 extreme 1                # 2026-10-16 known at the start (quality checks added): 888,1339 7 units past
 uniA7C8.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 797,1040 23 units past; 918,516 42 units past
 uniA7C8.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 865,209 3.3 degrees
 uniA7C8.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1041,641 2.2 degrees; 870,710 2.4 degrees

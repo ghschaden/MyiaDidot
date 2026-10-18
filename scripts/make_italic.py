@@ -947,6 +947,9 @@ ITALIC_KERNING = {
     # a's exit stroke rises to the right: before v w less kerning than the Regular's -124
     ("public.kern1.a", "public.kern2.v"): -44,
 }
+# the Regular's pairs the Italic does without: tt tf were tightened for the
+# roman t (pair review); the italic t's frequent pairs were in range without
+ITALIC_UNKERNED = {("t", "t"), ("t", "f")}
 # ß's left side looser: with the heavier stems it stood tight against the
 # letter before it (measured, scripts/quality/colour.py)
 ITALIC_SIDEBEARINGS = {"germandbls": (25, 0)}
@@ -1145,6 +1148,10 @@ def main():
             g.clearComponents()
             redraw(g, out)
             g.width = round(osg.width * KX)
+            if not g.width and regular[g.name].width:
+                # Old Standard's paragraphos ⸏ ⸐ ⸑ hang at zero width; the
+                # Regular gives them an advance (fontbakery: base_has_width)
+                g.width = regular[g.name].width
             g.clearAnchors()
             for name, x, y in anchors:
                 g.appendAnchor({"name": name, "x": x, "y": y})
@@ -1184,12 +1191,23 @@ def main():
     derived, failed, later = derive_stage(font, regular, kept=kept)
     figures = figures_stage(font, regular)
     small_caps = smallcaps_stage(font, later)
+    # a small cap the Regular lacks (ʀ.sc, drafted from the Italic's own Ʀ):
+    # in the glyph order after its letter, a base glyph
+    order = list(font.glyphOrder)
+    cats = font.lib.setdefault("public.openTypeCategories", {})
+    for name in sorted(g.name for g in font if g.name not in order):
+        stem = name.split(".")[0]
+        order.insert(order.index(stem) + 1 if stem in order else len(order), name)
+        cats.setdefault(name, "base")
+    font.glyphOrder = order
     derived_late, failed_late, _ = derive_stage(font, regular, late=True, kept=kept)
     derived += derived_late
     failed += failed_late
     horn_stage(font, kept)
     ligatures = drop_ligatures(font)
     font.kerning.update(ITALIC_KERNING)
+    for pair in ITALIC_UNKERNED:
+        font.kerning.pop(pair, None)
     still = sorted(g.name for g in font if g.lib.get(SOURCE_KEY) == "sloped roman")
 
     # aliases (one letter, unmoved: Cyrillic Е is E) show the Italic letter:
@@ -1258,6 +1276,7 @@ def main():
 
     # the added weight (WEIGHT), on the outlines of the letters, the accents
     # and upright signs left as they are
+    before = copy.deepcopy(font)
     for g in font:
         # (not those kept from the last run, nor those made from them: they have it)
         if (g.contours and g.name not in marks and g.name not in kept and g.name not in PREWEIGHTED
@@ -1267,6 +1286,12 @@ def main():
                 c.draw(rec)
             g.clearContours()
             weight_thick(rec, WEIGHT).draw(g.getPen())
+    # a derived letter weighted on its own thickens at its junctions unlike
+    # its base (ɨ's bar, Ⱦ's slash): made of the weighted base instead, as
+    # the Bold's are (make_bold.follow_bases)
+    from make_bold import follow_bases
+
+    followed = follow_bases(before, font, True, kx=1, slant=SLANT, skip=set(kept) | PREWEIGHTED)
     cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)
@@ -1293,7 +1318,7 @@ def main():
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "
           f"{upright_signs} signs upright, {len(derived)} derived, {len(figures)} figures, "
           f"{len(small_caps)} small caps drafted, {len(ligatures)} ligatures left out, {rebuilt} composites rebuilt, "
-          f"{len(cleaned)} cleaned; "
+          f"{len(followed)} made of their weighted base, {len(cleaned)} cleaned; "
           f"{len(still)} still sloped roman (of {kept_roman})")
     for line in failed:
         print("  recipe failed:", line)

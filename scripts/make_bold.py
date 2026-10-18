@@ -294,7 +294,7 @@ def write(font, path):
     target.save()
 
 
-def follow_bases(source, font, italic):
+def follow_bases(source, font, italic, kx=None, slant=None, skip=()):
     """Derived letters (derive.py's recipes) made of the Bold's own base:
     emboldened whole, a letter's junctions (a slash meeting a stem, a tilde
     crossing a diagonal) thicken unlike its base's strokes, eating the stem
@@ -303,13 +303,17 @@ def follow_bases(source, font, italic):
     base without cutting any of it is joined with the Bold base, placed
     where the source's base sits in it, unless the emboldened letter keeps
     that base already. Letters that cut their base (a hook replacing a
-    stem's end) stay as emboldened. Returns the names changed."""
+    stem's end) stay as emboldened. kx and slant: the widening and the
+    italic's slant (make_bold's by default; make_italic's weight pass uses
+    it too, unwidened); skip: names to leave. Returns the names changed."""
     sys.path.insert(0, str(ROOT / "scripts" / "quality"))
     import derive
     from derived import KEEPS, TRANSFORMS, Outline, compare, recipes
     from fontTools.pens.recordingPen import DecomposingRecordingPen
 
-    deslant = (1, 0, -SLANT, 1, 0, 0)
+    kx = KX if kx is None else kx
+    slant = SLANT if slant is None else slant
+    deslant = (1, 0, -slant, 1, 0, 0)
     cmap = {u: g.name for g in source for u in g.unicodes}
 
     def resolve(c):
@@ -327,7 +331,7 @@ def follow_bases(source, font, italic):
     changed, failed = [], []
     for ch, op, base, band in recipes(italic):
         name, base = resolve(ch), resolve(base)
-        if name not in source or base not in source or base == "space" or name not in font:
+        if name not in source or base not in source or base == "space" or name not in font or name in skip:
             continue
         g = font[name]
         if italic and source[name].lib.get("org.myiadidot.italicSource") != "derived":
@@ -343,7 +347,7 @@ def follow_bases(source, font, italic):
             cy = derive.band_middle(source, sb) if op != "mirror" else 0
             a, _, _, d, e, f = {"turn": (-1, 0, 0, -1, w, 2 * cy), "mirror": (-1, 0, 0, 1, w, 0),
                                 "flip": (1, 0, 0, -1, 0, 2 * cy)}[op]
-            shares, _, _ = compare(Outline(source, base, (a, 0, -a * SLANT, d, e, f)), mine)
+            shares, _, _ = compare(Outline(source, base, (a, 0, -a * slant, d, e, f)), mine)
             if shares["exact"] < 0.98:
                 continue
             # the same move of the Bold base, in the upright frame
@@ -352,7 +356,7 @@ def follow_bases(source, font, italic):
             out = pathops.Path()
             rec = DecomposingRecordingPen(font)
             font[base].draw(rec)
-            moved = TransformPen(TransformPen(TransformPen(out.getPen(), (1, 0, SLANT, 1, 0, 0)),
+            moved = TransformPen(TransformPen(TransformPen(out.getPen(), (1, 0, slant, 1, 0, 0)),
                                               (a, 0, 0, d, e, f)), deslant)
             rec.replay(moved)
             g.width = bw
@@ -370,7 +374,7 @@ def follow_bases(source, font, italic):
             placed = pathops.Path()
             rec = DecomposingRecordingPen(font)
             font[base].draw(rec)
-            rec.replay(TransformPen(placed.getPen(), (1, 0, 0, 1, dx * KX, 0)))
+            rec.replay(TransformPen(placed.getPen(), (1, 0, 0, 1, dx * kx, 0)))
             # each simplified on its own first: a base rebuilt here (ə turned)
             # winds the other way, and in one path the two would cancel
             a, b = pathops.simplify(ink(name)), pathops.simplify(placed)
@@ -391,6 +395,81 @@ def follow_bases(source, font, italic):
     return changed
 
 
+MIN_PIECE = 3000  # units²: an added piece (ɬ.sc's bar is 8000), not a sliver
+
+
+def attached_small(source, font, italic):
+    """Derived letters that attach a glyph scaled down to their base (ɬ's
+    ring, the degree sign at 0.45; ⁂'s asterisks): emboldened whole, the
+    small piece thickens like a stem and closes up. Made of the Bold base
+    and the source's added parts, those emboldened at the weight of their
+    scale (a ring at 0.45 gains 0.45 of a stem's AX), as the Bold degree
+    sign scaled would be. Recipes that cut the base (Ɲ) stay as they are.
+    Returns the names changed."""
+    sys.path.insert(0, str(ROOT / "scripts" / "quality"))
+    import derive
+    from derived import Outline, compare, recipes
+    from fontTools.pens.recordingPen import DecomposingRecordingPen
+
+    deslant = (1, 0, -SLANT, 1, 0, 0)
+    cmap = {u: g.name for g in source for u in g.unicodes}
+
+    def resolve(c):
+        if c.endswith(".sc") and len(c) == 4:
+            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
+        return cmap.get(ord(c), derive.glyph_name(c)) if len(c) == 1 else c
+
+    def path(f, name, t=(1, 0, 0, 1, 0, 0)):
+        p = pathops.Path()
+        rec = DecomposingRecordingPen(f)
+        f[name].draw(rec)
+        rec.replay(TransformPen(p.getPen(), t))
+        return pathops.simplify(p)
+
+    changed = []
+    for ch, op, base, band in recipes(italic):
+        if op != "attach" or band[1]:
+            continue
+        scales = [min(abs(sx), abs(sy)) for piece, _, _, (sx, sy, *_) in band[2]
+                  if piece not in ("rect", "line", "poly", "curl")]
+        if not scales or min(scales) >= 0.8:
+            continue
+        name, base = resolve(ch), resolve(base)
+        if name not in source or name not in font or base not in source:
+            continue
+        if italic and source[name].lib.get("org.myiadidot.italicSource") != "derived":
+            continue
+        k = min(scales)
+        mine = path(source, name, deslant)
+        added = mine
+        dx = 0
+        if source[base].contours or source[base].components:
+            _, dx, _ = compare(Outline(source, base, deslant), Outline(source, name, deslant))
+            added = pathops.op(mine, path(source, base, (1, 0, -SLANT, 1, dx, 0)), pathops.PathOp.DIFFERENCE)
+        # only the pieces the recipe added: where the source letter's edge
+        # strays a unit from its base's (the Italic's), slivers are left
+        kept = pathops.Path()
+        for c in added.contours:
+            if abs(c.area) >= MIN_PIECE:
+                c.draw(kept.getPen())
+        rec = RecordingPen()
+        kept.draw(TransformPen(rec, (KX, 0, 0, 1, 0, 0)))
+        heavier = embolden(rec, AX * k, AY)
+        out = pathops.Path()
+        heavier.draw(TransformPen(out.getPen(), (1, 0, 0, 1, AX / 2, 0)))
+        if source[base].contours or source[base].components:
+            b = path(font, base, (1, 0, -SLANT, 1, dx * KX, 0))
+            out = pathops.op(pathops.simplify(out), b, pathops.PathOp.UNION)
+            # the union holds all of the base, or it failed: left as it was
+            if compare(Outline(None, None, path=b), Outline(None, None, path=out))[0]["lost"] > 0.01:
+                continue
+        glyph = ufoLib2.objects.Glyph()
+        pathops.simplify(out).draw(TransformPen(glyph.getPen(), (1, 0, SLANT, 1, 0, 0)))
+        redraw(font[name], glyph)
+        changed.append(name)
+    return changed
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
@@ -405,6 +484,9 @@ def main():
     nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
     up, down = (1, 0, -SLANT, 1, 0, 0), (1, 0, SLANT, 1, 0, 0)  # deslant, slant again
     marks = {g.name for g in regular if mark_like(g)}
+    # the paragraphos ⸏ ⸐ ⸑, rules under a line: a mark's weight and
+    # advance, though they have one (fontbakery: base_has_width)
+    marks |= {g.name for g in regular if g.unicode in (0x2E0F, 0x2E10, 0x2E11)}
     # what a combining mark is made of is an accent too (the spacing
     # ypogegrammeni ͺ is a modifier letter, but uni0345 is built on it)
     for g in regular:
@@ -492,6 +574,7 @@ def main():
                 g.width = round(g.width * KX + AX)
 
     followed = follow_bases(regular, font, italic)
+    followed += attached_small(regular, font, italic)
 
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}
     if italic:

@@ -62,8 +62,6 @@ uni0199.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni019D kink 2                   # 2026-10-16 known at the start (quality checks added): 280,80 1.1 degrees; 344,60 2.3 degrees
 uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 338,-75 2.5 degrees
 uni01A4 smooth 1                 # 2026-10-16 known at the start (quality checks added): -56,1236 2.4 degrees
-uni01A6 grid 1                   # accepted case counterpart additions: 48 off whole units
-uni01A6 zone 1                   # accepted case counterpart additions: bottom -19 from 0
 uni01AC kink 1                   # 2026-10-16 known at the start (quality checks added): 400,1433 6.5 degrees
 uni01AC smooth 1                 # 2026-10-16 known at the start (quality checks added): 316,1083 2.4 degrees
 uni01AD.sc kink 1                # 2026-10-16 known at the start (quality checks added): 223,1039 6.4 degrees
@@ -143,6 +141,7 @@ uni03D7.sc extreme 6             # 2026-10-16 known at the start (quality checks
 uni03D7.sc kink 1                # 2026-10-16 known at the start (quality checks added): 677,542 1.4 degrees
 uni03D7.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 960,150 2.8 degrees
 uni03E1.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 884,461 2.2 degrees
+uni03F3.sc zone 2                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: bottom -17 from 0; top +3 from 1040
 uni0408 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni042F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 uni0436.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 248,944 2.8 degrees; 1307,944 2.8 degrees

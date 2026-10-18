@@ -390,6 +390,17 @@ RECIPES = [
     ("ɬ", "attach", "l", ("x", [], [("degree", (-BIG, -BIG, BIG, BIG), (576, 1118),
                                       (0.45, 0.45, 220, 760)),
                                      ("rect", (220, 590, 564, 646), (0, 0), (1, 1, 0, 0))], 640)),
+    # Ɬ: L with ɬ's belt, its ring at half the cap height on the stem's
+    # left edge, a little larger for the capital's stem
+    ("Ɬ", "attach", "L", ("c", [], [("degree", (-BIG, -BIG, BIG, BIG), (576, 1118),
+                                      (0.5, 0.5, 314, 730)),
+                                     ("rect", (314, 542, 702, 598), (0, 0), (1, 1, 0, 0))])),
+    # the Greek yot and Latin chi capitals are J and X (as Libertinus's)
+    ("Ϳ", "alias", "J", None),
+    ("Ꭓ", "alias", "X", None),
+    # Ʀ (yr): R's bowl and leg lowered on its full stem, the leg ending
+    # below the baseline (as Charis and Libertinus draw it)
+    ("Ʀ", "lower", "R", ("c", 200)),
     # ɞ: ɜ without its terminals, closed on the left by a drawn C at the
     # weight of ɜ's strokes, from its top stroke round to its bottom one,
     # its inside meeting ɜ's middle point
@@ -554,6 +565,9 @@ RECIPES = [
     ("ȼ.sc", "slash", "c.sc", ("s", "box", 0.25, -90, 0.8, 1130)),
     ("ⱦ.sc", "slash", "t.sc", ("s", "box", 0.25, -60, 0.75, 1040)),
     ("ɫ.sc", "midtilde", "l.sc", ("s", None, "first")),
+    ("ɬ.sc", "attach", "l.sc", ("s", [], [("degree", (-BIG, -BIG, BIG, BIG), (576, 1118),
+                                           (0.4, 0.4, 227, 530)),
+                                          ("rect", (227, 380, 553, 436), (0, 0), (1, 1, 0, 0))])),
     ("ң.sc", "tail", "h.sc", ("s", "stem")),
     ("ҷ.sc", "tail", "uni0447.sc", ("s", "stem")),
     ("қ.sc", "tail", "k.sc", ("s", "foot")),
@@ -1459,6 +1473,22 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
     return path_op(out, hook, "UNION")
 
 
+def lower(font, source, depth):
+    """The letter right of its first stem (a bowl, a leg) moved down by
+    depth, the stem and its foot serif staying: Ʀ from R."""
+    _, b = stems_at(font, source, 500)[0]
+    # the foot serif: as far right as the first run reaches at the baseline,
+    # as high as that run is wider than the stem
+    x1 = stems_at(font, source, 10)[0][1]
+    top = 10
+    while top < 300 and stems_at(font, source, top)[0][1] > b + 2:
+        top += 2
+    whole = to_path(font, font[source])
+    region = path_op(rect_path(b, top, BIG, BIG), rect_path(x1, -BIG, BIG, top), "UNION")
+    moved = shifted(path_op(whole, region, "INTERSECTION"), 0, -depth)
+    return path_op(path_op(whole, region, "DIFFERENCE"), moved, "UNION")
+
+
 def descend(font, source, band, model, pick=None):
     """A v with a stem down to the descender (ү): the stem and foot serif
     of the model's descender (p) under the vertex; with pick (first/last)
@@ -1568,6 +1598,13 @@ def build(font, ch, op, source, band, name=None):
         draw_path(font, src, g, out)
         for a in src.anchors:
             g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "lower":
+        _band, depth = band
+        g.width = w
+        draw_path(font, src, g, lower(font, source, depth))
+        for a in src.anchors:
+            if a.name not in ("Bottom", "DotBelow", "Cedilla"):
+                g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
     elif op == "descend":
         sband, model, *pick = band
         g.width = w

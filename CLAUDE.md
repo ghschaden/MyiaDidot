@@ -13,6 +13,13 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   read-only reference.
 - Change glyphs with scripts (ufoLib2) where possible; the person may edit the
   same UFO in FontForge or Fontra. After any UFO change: `make normalize`.
+- The Italic, Bold and Bold Italic are generated: change them only through
+  the Regular or their generators (a recipe, a constant in make_italic.py /
+  make_bold.py), never by editing or scripting the generated UFO alone, or
+  the next run undoes it. `make reproduce` (≈40 s) reruns the generators
+  into build/reproduce/ and lists whatever would change; run it before
+  committing changes to the generated styles. Hand-drawn exceptions in the
+  Italic are marked "drawn" (org.myiadidot.italicSource), which a run keeps.
 - Composites are generated: `scripts/composites.py` (anchor-driven, follows
   upstream's accent conventions). After moving an anchor, rerun the builder
   for the affected composites rather than hand-editing offsets. Upstream's
@@ -58,7 +65,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   `update_test_data.py --ufo sources/MyiaDidot-Bold.ufo`). Derived letters
   are made of the Bold's own base where the source letter is its base
   turned or mirrored, or keeps all of it (`follow_bases`): emboldened
-  whole, their junctions thicken unlike the base's strokes.
+  whole, their junctions thicken unlike the base's strokes. Letters that
+  attach a scaled-down glyph (ɬ Ꞁ's ring, ⁂) take it at the weight of its
+  scale (`attached_small`). The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make
@@ -88,7 +97,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   own (make_bold.py BOLD_FIGURE_CUT). The Italic's letters are made at Old
   Standard's weight and their thick strokes made heavier at the end
   (make_italic.py WEIGHT, weight_thick):
-  recipe widths are for the weight before that. Emboldening (derive.embolden)
+  recipe widths are for the weight before that; derived letters that keep
+  their whole base are then made of the weighted base (make_bold's
+  follow_bases, as in the Bold). Emboldening (derive.embolden)
   keeps smooth nodes smooth and fits the handles; derive.rezone puts flat
   edges it moved back on the zones. Old-style figures are proportional
   (`scripts/space_figures.py`, run by make_bold.py/make_italic.py; tnum gives
@@ -135,6 +146,7 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 |---|---|
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
+| `make reproduce` | do the generated styles come out of their generators as committed? |
 | `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `textpages.pdf` (full book pages, mixed styles), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
 | `make udhr` | `build/proofs/udhr-quarto.pdf`: one quarto page per language (the UDHR; `scripts/udhr_book.py`, texts fetched once into `build/udhr/`) |
 | `make qa` | full fontbakery reports in `build/qa/` |

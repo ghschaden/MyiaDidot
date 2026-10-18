@@ -149,8 +149,6 @@ uni019B smooth 2                 # Bold derived letters made of their Bold base 
 uni019D kink 2                   # 2026-10-16 known at the start (quality checks added): 272,83 1.2 degrees; 429,63 2.3 degrees
 uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 423,-71 2.6 degrees
 uni01A5.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 348,891 2.7 degrees
-uni01A6 extreme 1                # accepted case counterpart additions: 1491,62 9 units past
-uni01A6 grid 1                   # accepted case counterpart additions: 48 off whole units
 uni01AC base 1                   # derived-glyph checks added (scripts/quality/derived.py): 56% of T kept (curl)
 uni01AC kink 4                   # 2026-10-16 known at the start (quality checks added): 442,1433 5.1 degrees; 1091,1374 2.6 degrees; 608,1374 2.6 degrees; 219,1238 4.0 degrees
 uni01AD.sc kink 5                # 2026-10-16 known at the start (quality checks added): 257,1039 5.0 degrees; 730,987 6.2 degrees; 380,987 6.2 degrees; 163,774 5.3 degrees; 70,893 6.7 degrees
@@ -267,6 +265,7 @@ uni03D7.sc extreme 5             # 2026-10-16 known at the start (quality checks
 uni03D7.sc kink 3                # 2026-10-16 known at the start (quality checks added): 1061,155 2.9 degrees; 906,-200 3.0 degrees; 724,199 2.9 degrees
 uni03DB smooth 2                 # 2026-10-16 known at the start (quality checks added): 476,176 2.3 degrees; 586,-149 2.2 degrees
 uni03E1.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 953,465 2.7 degrees
+uni03F3.sc zone 2                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: bottom -17 from 0; top +3 from 1040
 uni0408 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni0409 extreme 1                # 2026-10-16 known at the start (quality checks added): 331,106 7 units past
 uni0409 smooth 1                 # 2026-10-16 known at the start (quality checks added): 347,157 2.3 degrees
@@ -381,8 +380,7 @@ uni1FCF smooth 2                 # 2026-10-16 known at the start (quality checks
 uni1FDA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -447, usually -475
 uni1FDF smooth 2                 # 2026-10-16 known at the start (quality checks added): 473,1502 2.2 degrees; 83,1492 2.2 degrees
 uni2032 width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
-uni2042 kink 8                   # 2026-10-16 known at the start (quality checks added): 285,859 2.0 degrees; 433,859 2.0 degrees; 433,576 2.0 degrees; 285,576 2.0 degrees; 805,859 2.0 degrees; 953,859 2.0 degrees; 953,576 2.0 degrees;
-uni2042 smooth 2                 # 2026-10-16 known at the start (quality checks added): 697,1277 2.3 degrees; 697,1075 2.3 degrees
+uni2042 kink 6                   # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 414,578 3.2 degrees; 414,862 3.2 degree
 uni2071 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
 uni2071 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
 uni20A1 kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1095,1365 6.3 degrees

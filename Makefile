@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean
+.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce
 
 all: fonts
 
@@ -138,6 +138,10 @@ quality: $(OTF) $(TTF)
 	$(QPY)/cases.py > build/quality/cases.txt
 	$(QPY)/smallsize.py fonts/ttf/*.ttf > build/quality/smallsize.txt
 	@echo "reports: build/quality/*.txt"
+
+# the generated styles as their generators make them (scripts/check_reproducible.py)
+reproduce:
+	$(PY) scripts/check_reproducible.py
 
 pairs: $(OTF)
 	@mkdir -p build/quality
