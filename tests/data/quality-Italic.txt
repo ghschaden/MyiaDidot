@@ -180,8 +180,8 @@ fivesuperior kink 1              # 2026-10-16 known at the start (quality checks
 fl smooth 2                      # 2026-10-16 known at the start (quality checks added): 859,1304 2.0 degrees; 463,989 2.5 degrees
 fl zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 florin smooth 1                  # 2026-10-16 known at the start (quality checks added): 693,998 2.6 degrees
+florin.sc extreme 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 334,958 6 units past
 florin.sc smooth 1               # 2026-10-16 known at the start (quality checks added): -429,-83 2.1 degrees
-florin.sc stem 1                 # derived-glyph checks added (scripts/quality/derived.py): at 780 225 against f.sc's 188
 four extreme 1                   # 2026-10-16 known at the start (quality checks added): 705,110 9 units past
 four kink 2                      # 2026-10-16 known at the start (quality checks added): 580,850 6.0 degrees; 804,1009 3.1 degrees
 fouroldstyle kink 2              # 2026-10-16 known at the start (quality checks added): 932,981 3.3 degrees; 653,754 4.5 degrees
@@ -381,10 +381,9 @@ uni0199.sc kink 2                # 2026-10-16 known at the start (quality checks
 uni0199.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 332,944 3.1 degrees
 uni019A extreme 1                # 2026-10-16 known at the start (quality checks added): 397,1339 7 units past
 uni019A smooth 2                 # 2026-10-16 known at the start (quality checks added): 95,171 2.2 degrees; 218,91 2.8 degrees
-uni019A.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 222 against l.sc's 182
+uni019A.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 335,958 6 units past; 282,73 5 units past
 uni019C extreme 2                # 2026-10-16 known at the start (quality checks added): 481,1311 8 units past; 1291,1311 9 units past
 uni019C smooth 3                 # 2026-10-16 known at the start (quality checks added): 481,1311 2.8 degrees; 1050,340 2.9 degrees; 2191,1171 2.4 degrees
-uni019C style 1                  # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni019C (0.80) than to U (0.56)
 uni019D extreme 1                # 2026-10-16 known at the start (quality checks added): 11,-177 5 units past
 uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 1399,1261 2.1 degrees
 uni01A4 extreme 2                # 2026-10-16 known at the start (quality checks added): 512,1300 7 units past; 405,112 8 units past
@@ -420,28 +419,23 @@ uni01B4.sc kink 3                # 2026-10-16 known at the start (quality checks
 uni01B8 extreme 5                # 2026-10-16 known at the start (quality checks added): 487,-35 60 units past; 340,513 88 units past; 883,185 9 units past; 847,284 19 units past; 968,506 44 units past
 uni01B9 extreme 5                # 2026-10-16 known at the start (quality checks added): 235,-461 57 units past; 766,525 10 units past; 142,54 89 units past; 445,-256 15 units past; 552,-64 31 units past
 uni01B9 smooth 1                 # 2026-10-16 known at the start (quality checks added): 570,714 2.2 degrees
-uni01B9.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 35% of uni0292.sc kept (mirror)
-uni01B9.sc extreme 5             # 2026-10-16 known at the start (quality checks added): 636,494 6 units past; 186,185 23 units past; 549,42 6 units past; 640,242 7 units past; 310,-192 15 units past
-uni01B9.sc kink 1                # 2026-10-16 known at the start (quality checks added): 599,-27 5.0 degrees
+uni01B9.sc extreme 6             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 318,-30 47 units past; 792,702 8 units past; 221,
 uni01B9.sc slant 1               # 2026-10-16 known at the start (quality checks added): 11.5 degrees, not 15.2
-uni01B9.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 502,148 2.7 degrees
-uni01B9.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni01B9.sc (0.78) than to uni0292.sc (0.35)
-uni01DD.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 2% of e.sc kept (mirror)
+uni01B9.sc smooth 4              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 26,342 2.3 degrees; 221,370 2.6 degrees; 604,126 
+uni01B9.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +11 from 1040
+uni01DD.sc extreme 4             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 81,373 6 units past; 459,749 34 units past; 780,9
+uni01DD.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 963,944 2.9 degrees
 uni01E4 kink 2                   # 2026-10-16 known at the start (quality checks added): 1244,539 5.8 degrees; 952,136 2.9 degrees
 uni01E4 slant 1                  # 2026-10-16 known at the start (quality checks added): 11.4 degrees, not 15.2
 uni01E5 kink 1                   # 2026-10-16 known at the start (quality checks added): 96,-377 4.1 degrees
-uni01E5.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 31% of g.sc kept (bar)
-uni01E5.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 342,514 42 units past; 503,-24 21 units past
-uni01E5.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni01E5.sc (0.87) than to g.sc (0.34)
-uni01E5.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +20 from 1040
+uni01E5.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 10.7 degrees, not 15.2
+uni01E5.sc smooth 3              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 83,353 2.5 degrees; 254,276 2.7 degrees; 666,98 2
 uni0237 smooth 1                 # 2026-10-16 known at the start (quality checks added): 390,617 2.1 degrees
 uni0237.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni023A kink 1                   # 2026-10-16 known at the start (quality checks added): 1119,142 5.6 degrees
 uni023B slant 1                  # 2026-10-16 known at the start (quality checks added): 11.7 degrees, not 15.2
-uni023C.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 29% of c.sc kept (slash)
-uni023C.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 243,53 20 units past; 342,516 15 units past
-uni023C.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 246 189 against c.sc's 160
-uni023C.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni023C.sc (0.89) than to c.sc (0.32)
+uni023C.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 10.4 degrees, not 15.2
+uni023C.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 83,353 2.1 degrees; 353,769 2.1 degrees
 uni023D extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past; 405,112 9 units past
 uni023D smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.4 degrees
 uni023E extreme 2                # 2026-10-16 known at the start (quality checks added): 791,1311 9 units past; 679,112 9 units past
@@ -454,26 +448,21 @@ uni0244 extreme 1                # 2026-10-16 known at the start (quality checks
 uni0244 smooth 3                 # 2026-10-16 known at the start (quality checks added): 259,460 2.2 degrees; 481,1311 2.5 degrees; 1381,1171 2.6 degrees
 uni0245 kink 2                   # 2026-10-16 known at the start (quality checks added): 282,218 4.2 degrees; 1158,158 6.4 degrees
 uni0249 smooth 2                 # 2026-10-16 known at the start (quality checks added): 12,-263 3.0 degrees; 422,764 2.0 degrees
-uni0249.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 134,63 8 units past
-uni0249.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 158,109 2.3 degrees
-uni0249.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 776 222 against j.sc's 183
-uni0249.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0249.sc (0.81) than to j.sc (0.65)
-uni0249.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni0249.sc smooth 3              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: -34,151 2.5 degrees; 218,224 2.1 degrees; 73,96 2
+uni0249.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +4 from 1040
 uni024C extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 9 units past; 405,112 9 units past
 uni024C smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.1 degrees
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -23 from 0
 uni024D extreme 1                # 2026-10-16 known at the start (quality checks added): 709,797 8 units past
 uni024D smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
 uni024D zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni024D.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 52% of r.sc kept (bar)
-uni024D.sc extreme 5             # 2026-10-16 known at the start (quality checks added): 717,1040 9 units past; 869,174 17 units past; 840,-14 7 units past; 695,337 14 units past; 788,771 17 units past
-uni024D.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 775 224 against r.sc's 187
-uni024D.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni024D.sc (0.82) than to r.sc (0.68)
+uni024D.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 792,825 2.9 degrees
+uni024D.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 963,791 2.2 degrees; 970,184 3.0 degrees
 uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -14 from 0
 uni0250 zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
-uni0250.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 33% of a.sc kept (turn)
-uni0250.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 256 204 against a.sc's 175
-uni0250.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0250.sc (0.79) than to a.sc (0.67)
+uni0250.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 292,932 4.6 degrees
+uni0250.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 477,928 2.2 degrees
+uni0250.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -5 from 0
 uni0251.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 507,9 18 units past; 342,507 37 units past
 uni0251.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +5 from 1040
 uni0252 extreme 4                # 2026-10-16 known at the start (quality checks added): 33,-23 26 units past; 292,363 15 units past; 347,876 24 units past; 867,562 11 units past
@@ -481,21 +470,22 @@ uni0252 kink 1                   # 2026-10-16 known at the start (quality checks
 uni0253 kink 1                   # 2026-10-16 known at the start (quality checks added): 298,988 4.4 degrees
 uni0253 smooth 1                 # 2026-10-16 known at the start (quality checks added): 823,1352 3.2 degrees
 uni0253 zone 1                   # 2026-10-16 known at the start (quality checks added): top +16 from 1434
-uni0253.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 57% of b.sc kept (hook)
-uni0253.sc extreme 8             # 2026-10-16 known at the start (quality checks added): 183,368 56 units past; -93,827 5 units past; -68,750 13 units past; -237,554 37 units past; 734,1040 8 units past; 710,556 8 units past; 717,294 2
+uni0253.sc extreme 4             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 140,226 79 units past; -142,806 12 units past; -1
+uni0253.sc kink 2                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 924,308 2.7 degrees; 842,805 2.4 degrees
+uni0253.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1013,805 2.5 degrees; 739,303 2.5 degrees
 uni0254 smooth 1                 # 2026-10-16 known at the start (quality checks added): 239,132 3.7 degrees
-uni0254.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 36% of c.sc kept (mirror)
-uni0254.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 803,516 42 units past; 652,1063 21 units past
-uni0254.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0254.sc (0.86) than to c.sc (0.47)
-uni0254.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
+uni0254.sc extreme 4             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 305,-30 11 units past; 101,337 7 units past; 363,
+uni0254.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 19.8 degrees, not 15.2
+uni0254.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 798,769 2.2 degrees
 uni0255 extreme 2                # 2026-10-16 known at the start (quality checks added): 490,295 6 units past; 500,140 8 units past
 uni0255 kink 3                   # 2026-10-16 known at the start (quality checks added): 626,728 4.1 degrees; 433,-13 6.3 degrees; 399,150 4.3 degrees
 uni0255 smooth 1                 # 2026-10-16 known at the start (quality checks added): 665,783 4.8 degrees
 uni0256 extreme 2                # 2026-10-16 known at the start (quality checks added): 888,1339 7 units past; 642,-150 8 units past
 uni0257 smooth 2                 # ɗ rebuilt from the italic d with ɓ's top (make_italic.py): 1307,1297 2.6 degrees; 1123,1233 2.6 degrees
 uni0257 zone 1                   # fixed hooked-d italic outline: bottom +7 from -23
-uni0257.sc extreme 6             # 2026-10-16 known at the start (quality checks added): 183,368 56 units past; -93,827 5 units past; -68,750 13 units past; -237,554 37 units past; 797,1040 22 units past; 918,516 42 units past
-uni0257.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 218 against d.sc's 182
+uni0257.sc extreme 5             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 151,266 73 units past; -139,818 11 units past; -1
+uni0257.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 865,209 3.3 degrees
+uni0257.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1041,641 2.2 degrees; 870,710 2.4 degrees
 uni0258 extreme 6                # 2026-10-16 known at the start (quality checks added): 188,-23 8 units past; 36,293 6 units past; 281,484 29 units past; 702,738 26 units past; 562,610 8 units past; 301,736 34 units past
 uni0258 smooth 1                 # 2026-10-16 known at the start (quality checks added): 562,610 2.2 degrees
 uni0259.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
@@ -530,14 +520,13 @@ uni0266.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni0267 kink 3                   # 2026-10-16 known at the start (quality checks added): 304,1000 2.9 degrees; 535,200 6.8 degrees; 695,650 3.1 degrees
 uni0267 slant 1                  # 2026-10-16 known at the start (quality checks added): 17.5 degrees, not 15.2
 uni0268 smooth 2                 # 2026-10-16 known at the start (quality checks added): 336,211 2.2 degrees; 342,650 4.8 degrees
-uni0268.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 222 against i.sc's 182
+uni0268.sc extreme 1             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 334,958 6 units past
 uni0269 zone 1                   # 2026-10-16 known at the start (quality checks added): top -24 from 884
 uni0269.sc zone 1                # 2026-10-16 known at the start (quality checks added): top -5 from 1040
 uni026A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni026B extreme 1                # 2026-10-16 known at the start (quality checks added): 397,1339 7 units past
 uni026B smooth 3                 # 2026-10-16 known at the start (quality checks added): 95,171 2.2 degrees; 260,267 2.2 degrees; 218,91 2.8 degrees
-uni026B.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 220 against l.sc's 182
-uni026B.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni026B.sc (0.87) than to l.sc (0.76)
+uni026B.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 335,958 6 units past; 282,73 5 units past
 uni026C extreme 2                # 2026-10-16 known at the start (quality checks added): 397,1339 7 units past; 203,612 6 units past
 uni026C smooth 4                 # 2026-10-16 known at the start (quality checks added): 95,171 2.2 degrees; 115,288 3.3 degrees; 258,267 2.6 degrees; 218,91 2.8 degrees
 uni026D extreme 2                # 2026-10-16 known at the start (quality checks added): 397,1339 7 units past; 145,-150 9 units past
@@ -545,9 +534,8 @@ uni026E extreme 1                # 2026-10-16 known at the start (quality checks
 uni026E smooth 4                 # 2026-10-16 known at the start (quality checks added): 108,260 2.6 degrees; 555,0 2.2 degrees; 558,54 3.0 degrees; 490,714 2.0 degrees
 uni026F slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
 uni026F zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
-uni026F.sc extreme 4             # 2026-10-16 known at the start (quality checks added): 342,237 15 units past; 726,108 13 units past; 930,237 15 units past; 471,-24 15 units past
-uni026F.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 238 214 against u.sc's 177
-uni026F.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni026F.sc (0.85) than to u.sc (0.44)
+uni026F.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 716,329 3.3 degrees
+uni026F.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1558,846 3.2 degrees
 uni026F.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0270 extreme 1                # 2026-10-16 known at the start (quality checks added): 1072,-455 8 units past
 uni0270 smooth 3                 # 2026-10-16 known at the start (quality checks added): 1121,300 2.0 degrees; 313,234 3.1 degrees; 801,256 2.7 degrees
@@ -562,7 +550,6 @@ uni0273 extreme 1                # 2026-10-16 known at the start (quality checks
 uni0273 kink 1                   # 2026-10-16 known at the start (quality checks added): 814,650 3.1 degrees
 uni0273 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.1 degrees, not 15.2
 uni0273 smooth 1                 # 2026-10-16 known at the start (quality checks added): 316,601 2.3 degrees
-uni0275.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
 uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from -23
 uni0279 extreme 1                # 2026-10-16 known at the start (quality checks added): 135,87 7 units past
 uni0279 smooth 1                 # 2026-10-16 known at the start (quality checks added): 529,283 2.3 degrees
@@ -576,17 +563,15 @@ uni027B smooth 1                 # 2026-10-16 known at the start (quality checks
 uni027D extreme 2                # 2026-10-16 known at the start (quality checks added): 709,797 8 units past; 269,-150 10 units past
 uni027D kink 1                   # 2026-10-16 known at the start (quality checks added): 344,-156 3.5 degrees
 uni027D smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
-uni027D.sc extreme 5             # 2026-10-16 known at the start (quality checks added): 717,1040 9 units past; 869,174 12 units past; 748,-11 5 units past; 695,337 14 units past; 788,771 17 units past
-uni027D.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 775 227 against r.sc's 187
+uni027D.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 792,825 2.9 degrees
+uni027D.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 963,791 2.2 degrees; 970,184 2.6 degrees
 uni027E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 56% of r kept (attach)
 uni027E extreme 1                # 2026-10-16 known at the start (quality checks added): 709,797 8 units past
 uni027E kink 1                   # 2026-10-16 known at the start (quality checks added): 341,118 6.3 degrees
 uni027E smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni0281 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 21% of r.sc kept (flip)
-uni0281 extreme 2                # 2026-10-16 known at the start (quality checks added): 677,485 7 units past; 652,269 24 units past
-uni0281 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 795 218 against r.sc's 182
-uni0281 style 1                  # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0281 (0.81) than to r.sc (0.70)
+uni0281 extreme 6                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1062,1060 37 units past; 1107,814 15 units past; 
+uni0281 smooth 3                 # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 520,951 3.2 degrees; 1013,934 3.5 degrees; 626,21
 uni0281 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0282 extreme 2                # 2026-10-16 known at the start (quality checks added): 145,-147 8 units past; 179,-315 6 units past
 uni0282 kink 1                   # 2026-10-16 known at the start (quality checks added): 315,442 3.5 degrees
@@ -598,13 +583,9 @@ uni0284 kink 1                   # 2026-10-16 known at the start (quality checks
 uni0284 smooth 3                 # 2026-10-16 known at the start (quality checks added): 12,-263 3.2 degrees; -82,-385 2.2 degrees; 813,1102 2.7 degrees
 uni0288 extreme 1                # 2026-10-16 known at the start (quality checks added): 143,-150 9 units past
 uni0288.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1118,612 7 units past
-uni0288.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 222 against t.sc's 182
 uni0289 kink 1                   # 2026-10-16 known at the start (quality checks added): 342,650 4.8 degrees
 uni0289 smooth 2                 # 2026-10-16 known at the start (quality checks added): 789,91 2.8 degrees; 336,211 2.2 degrees
-uni0289.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 471,-24 15 units past; 342,237 15 units past
-uni0289.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 143,312 2.2 degrees
-uni0289.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 776 222 against u.sc's 182
-uni0289.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0289.sc (0.88) than to u.sc (0.66)
+uni0289.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 985,846 3.2 degrees; 994,912 5.2 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni028A slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni028A zone 1                   # 2026-10-16 known at the start (quality checks added): top -21 from 884
@@ -619,10 +600,9 @@ uni028B.sc smooth 2              # 2026-10-16 known at the start (quality checks
 uni028B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni028C slant 1                  # 2026-10-16 known at the start (quality checks added): 23.5 degrees, not 15.2
 uni028C zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
-uni028C.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 52% of v.sc kept (turn)
-uni028C.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 264 215 against v.sc's 178
-uni028C.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni028C.sc (0.87) than to v.sc (0.72)
-uni028C.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -3 from 0; top +25 from 1040
+uni028C.sc extreme 1             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 631,47 7 units past
+uni028C.sc kink 3                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 668,124 4.3 degrees; 175,162 4.3 degrees; 848,119
+uni028C.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -4 from 0
 uni028D slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni028D zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
 uni028E slant 1                  # 2026-10-16 known at the start (quality checks added): 18.0 degrees, not 15.2
@@ -881,36 +861,29 @@ uni0491 kink 2                   # 2026-10-16 known at the start (quality checks
 uni0491.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 332,946 10 units past; 288,86 10 units past
 uni0492 extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past; 405,112 9 units past
 uni0492 smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.3 degrees
-uni0493.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 25% of uni0433.sc kept (bar)
-uni0493.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0493.sc (0.78) than to uni0433.sc (0.59)
+uni0493.sc extreme 1             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 334,958 6 units past
 uni0496 extreme 2                # 2026-10-16 known at the start (quality checks added): 1128,1311 10 units past; 1016,112 11 units past
 uni0496 kink 1                   # 2026-10-16 known at the start (quality checks added): 1474,450 4.3 degrees
 uni0496 smooth 4                 # 2026-10-16 known at the start (quality checks added): 554,1325 2.6 degrees; 1891,1269 2.4 degrees; 1923,1329 3.7 degrees; 1639,128 2.8 degrees
 uni0496 zone 1                   # 2026-10-16 known at the start (quality checks added): top +26 from 1434
 uni0497 kink 2                   # 2026-10-16 known at the start (quality checks added): 1417,755 2.5 degrees; 1090,200 6.6 degrees
 uni0497 smooth 7                 # 2026-10-16 known at the start (quality checks added): 33,111 2.7 degrees; 71,215 2.1 degrees; 263,187 3.5 degrees; 1534,843 2.3 degrees; 1548,645 2.1 degrees; 1474,811 2.5 degrees; 86,18 2.3 degrees
-uni0497.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 47% of uni0436.sc kept (tail)
-uni0497.sc extreme 9             # 2026-10-16 known at the start (quality checks added): 553,565 8 units past; 504,819 5 units past; 546,823 8 units past; 1478,980 10 units past; 1099,554 6 units past; 1343,296 32 units past; 1452,30 7
-uni0497.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 656,-200 7.9 degrees; 714,-279 3.4 degrees
-uni0497.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0497.sc (0.87) than to uni0436.sc (0.61)
+uni0497.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 475,652 9 units past; 532,810 9 units past
+uni0497.sc kink 6                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 549,918 4.9 degrees; 1117,0 6.2 degrees; 1061,187
+uni0497.sc smooth 5              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 137,156 2.4 degrees; 149,204 2.4 degrees; 498,926
 uni0497.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +24 from 1040
 uni049A extreme 2                # 2026-10-16 known at the start (quality checks added): 496,1311 10 units past; 387,112 10 units past
 uni049A zone 1                   # 2026-10-16 known at the start (quality checks added): top +26 from 1434
 uni049B extreme 1                # 2026-10-16 known at the start (quality checks added): 439,-155 8 units past
 uni049B kink 3                   # 2026-10-16 known at the start (quality checks added): 459,573 2.5 degrees; 439,-155 4.2 degrees; 577,200 5.9 degrees
 uni049B smooth 4                 # 2026-10-16 known at the start (quality checks added): 483,709 2.5 degrees; 830,693 4.1 degrees; 746,200 2.8 degrees; 592,255 2.0 degrees
-uni049B.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1069,30 7 units past
-uni049B.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 273,-200 7.9 degrees; 331,-279 3.4 degrees
-uni049B.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 224 against k.sc's 186
-uni049B.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni049B.sc (0.86) than to k.sc (0.60)
+uni049B.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 334,958 6 units past; 618,45 11 units past
+uni049B.sc kink 4                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 883,947 3.9 degrees; 815,109 1.9 degrees; 958,34 
 uni04A2 extreme 4                # 2026-10-16 known at the start (quality checks added): 516,1311 9 units past; 1308,1311 10 units past; 1206,141 8 units past; 405,112 9 units past
 uni04A2 kink 1                   # 2026-10-16 known at the start (quality checks added): 1042,300 1.1 degrees
 uni04A3 extreme 1                # 2026-10-16 known at the start (quality checks added): 500,-156 6 units past
 uni04A3 kink 1                   # 2026-10-16 known at the start (quality checks added): 684,300 1.6 degrees
-uni04A3.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 938,158 18 units past; 949,51 7 units past
-uni04A3.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 192,-200 7.9 degrees; 250,-279 3.4 degrees
-uni04A3.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 225 against h.sc's 188
-uni04A3.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni04A3.sc (0.82) than to h.sc (0.67)
+uni04A3.sc extreme 1             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 282,73 5 units past
 uni04AF extreme 1                # 2026-10-16 known at the start (quality checks added): 361,-368 9 units past
 uni04AF kink 2                   # 2026-10-16 known at the start (quality checks added): 441,-80 2.9 degrees; 284,-80 4.8 degrees
 uni04AF slant 1                  # 2026-10-16 known at the start (quality checks added): 19.6 degrees, not 15.2
@@ -920,36 +893,28 @@ uni04B0 kink 3                   # 2026-10-16 known at the start (quality checks
 uni04B1 extreme 1                # 2026-10-16 known at the start (quality checks added): 361,-368 9 units past
 uni04B1 slant 1                  # 2026-10-16 known at the start (quality checks added): 23.5 degrees, not 15.2
 uni04B1 smooth 2                 # 2026-10-16 known at the start (quality checks added): 759,682 2.2 degrees; 342,650 3.2 degrees
-uni04B1.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 57% of y.sc kept (bar)
-uni04B1.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni04B1.sc (0.78) than to y.sc (0.66)
+uni04B1.sc extreme 1             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 492,990 11 units past
+uni04B1.sc kink 2                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 286,920 4.1 degrees; 865,927 4.5 degrees
 uni04B2 extreme 2                # 2026-10-16 known at the start (quality checks added): 826,1375 9 units past; 995,53 12 units past
 uni04B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 1381,53 6.9 degrees
 uni04B2 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.2 degrees, not 15.2
 uni04B3 smooth 6                 # 2026-10-16 known at the start (quality checks added): 33,111 2.7 degrees; 71,215 3.1 degrees; 229,246 3.2 degrees; 553,701 2.8 degrees; 1049,645 2.5 degrees; 975,811 2.5 degrees
-uni04B3.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 18% of uni0445.sc kept (tail)
-uni04B3.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1015,30 7 units past
-uni04B3.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 219,-200 7.9 degrees; 277,-279 3.4 degrees
-uni04B3.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni04B3.sc (0.87) than to uni0445.sc (0.45)
+uni04B3.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 561,990 11 units past; 687,45 14 units past
+uni04B3.sc kink 5                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 875,834 1.7 degrees; 967,45 7.6 degrees; 1049,34 
+uni04B3.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 19.6 degrees, not 15.2
 uni04B6 extreme 3                # 2026-10-16 known at the start (quality checks added): 1150,1311 10 units past; 1047,141 8 units past; 445,1311 9 units past
 uni04B6 smooth 3                 # 2026-10-16 known at the start (quality checks added): 537,822 2.7 degrees; 335,840 3.1 degrees; 345,909 2.7 degrees
 uni04B7 kink 2                   # 2026-10-16 known at the start (quality checks added): 483,709 4.0 degrees; 644,300 1.6 degrees
 uni04B7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 457,-155 2.0 degrees
-uni04B7.sc extreme 4             # 2026-10-16 known at the start (quality checks added): 470,670 15 units past; 886,158 18 units past; 897,51 7 units past; 500,430 6 units past
-uni04B7.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 140,-200 7.9 degrees; 198,-279 3.4 degrees
-uni04B7.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 217 against uni0447.sc's 182
-uni04B7.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni04B7.sc (0.82) than to uni0447.sc (0.64)
+uni04B7.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 768,93 3.8 degrees
 uni04BA extreme 3                # 2026-10-16 known at the start (quality checks added): 420,123 10 units past; 531,1322 10 units past; 1125,123 9 units past
 uni04BA smooth 1                 # 2026-10-16 known at the start (quality checks added): 738,1325 2.1 degrees
-uni04BB.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 709,370 16 units past; 680,610 6 units past
-uni04BB.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 220 against uni0447.sc's 184
+uni04BB.sc extreme 3             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 297,96 10 units past; 340,953 11 units past; 830,
+uni04BB.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 114,94 2.5 degrees
 uni04D8 extreme 1                # 2026-10-16 known at the start (quality checks added): 1127,708 7 units past
 uni04D9.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
 uni04E8 extreme 2                # 2026-10-16 known at the start (quality checks added): 390,685 7 units past; 1152,749 9 units past
-uni04E9.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 17% of o.sc kept (bar)
-uni04E9.sc extreme 4             # 2026-10-16 known at the start (quality checks added): 799,1063 21 units past; 503,-24 21 units past; 314,490 30 units past; 989,550 28 units past
-uni04E9.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 796 183 against o.sc's 153
-uni04E9.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni04E9.sc (0.93) than to o.sc (0.24)
-uni04E9.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +23 from 1040
+uni04E9.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 83,347 2.9 degrees; 970,655 2.7 degrees
 uni0E3F extreme 2                # 2026-10-16 known at the start (quality checks added): 519,1311 10 units past; 408,112 9 units past
 uni1D05 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D43 smooth 2                 # 2026-10-16 known at the start (quality checks added): 566,703 3.2 degrees; 245,651 2.1 degrees
@@ -982,10 +947,9 @@ uni1D76 smooth 1                 # 2026-10-16 known at the start (quality checks
 uni1D7B zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D7D extreme 1                # 2026-10-16 known at the start (quality checks added): 207,-368 8 units past
 uni1D7D smooth 1                 # 2026-10-16 known at the start (quality checks added): 357,769 2.6 degrees
-uni1D7D.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 53% of p.sc kept (bar)
-uni1D7D.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 990,964 12 units past; 841,711 24 units past
-uni1D7D.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 222 against p.sc's 187
-uni1D7D.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni1D7D.sc (0.83) than to p.sc (0.66)
+uni1D7D.sc extreme 1             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 334,960 6 units past
+uni1D7D.sc smooth 3              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 988,796 2.5 degrees; 776,610 2.4 degrees; 817,822
+uni1D7E zone 1                   # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -7 from -23
 uni1DA4 kink 1                   # 2026-10-16 known at the start (quality checks added): 244,769 3.8 degrees
 uni1DA4 smooth 2                 # 2026-10-16 known at the start (quality checks added): 308,679 2.4 degrees; 344,1015 2.9 degrees
 uni1DB6 kink 2                   # 2026-10-16 known at the start (quality checks added): 587,608 4.8 degrees; 244,769 2.4 degrees
@@ -1087,13 +1051,9 @@ uni2C63 kink 1                   # 2026-10-16 known at the start (quality checks
 uni2C64 extreme 2                # 2026-10-16 known at the start (quality checks added): 516,1311 9 units past; 333,-150 11 units past
 uni2C64 kink 1                   # 2026-10-16 known at the start (quality checks added): 579,-222 3.8 degrees
 uni2C64 smooth 2                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.4 degrees; 423,-157 2.4 degrees
-uni2C65.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 37% of a.sc kept (slash)
-uni2C65.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 784 198 against a.sc's 175
-uni2C65.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni2C65.sc (0.87) than to a.sc (0.61)
+uni2C65.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 829,108 4.6 degrees
+uni2C65.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 644,112 2.2 degrees
 uni2C66 kink 1                   # 2026-10-16 known at the start (quality checks added): 241,208 4.0 degrees
-uni2C66.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1118,612 7 units past
-uni2C66.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 220 against t.sc's 182
-uni2C66.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni2C66.sc (0.85) than to t.sc (0.60)
 uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +7 from 1040
 uni2C6D extreme 2                # 2026-10-16 known at the start (quality checks added): 714,10 26 units past; 468,698 50 units past
 uni2C6F kink 1                   # 2026-10-16 known at the start (quality checks added): 465,1292 5.6 degrees
@@ -1123,8 +1083,8 @@ uniA7C7 extreme 2                # 2026-10-16 known at the start (quality checks
 uniA7C7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,1311 2.4 degrees
 uniA7C8 extreme 1                # 2026-10-16 known at the start (quality checks added): 888,1339 7 units past
 uniA7C8.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 797,1040 23 units past; 918,516 42 units past
-uniA7C8.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 221 against d.sc's 182
-uniA7C8.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uniA7C8.sc (0.83) than to d.sc (0.57)
+uniA7C8.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 865,209 3.3 degrees
+uniA7C8.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1041,641 2.2 degrees; 870,710 2.4 degrees
 uniA7CB kink 1                   # 2026-10-16 known at the start (quality checks added): 1088,1372 4.4 degrees
 uniA7CB smooth 2                 # 2026-10-16 known at the start (quality checks added): 1094,1054 2.3 degrees; 1098,1284 3.4 degrees
 uogonek slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2

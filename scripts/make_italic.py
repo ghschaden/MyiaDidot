@@ -704,8 +704,17 @@ def glottal(up, source):
     return derive.path_op(top, stem, "UNION")
 
 
-def derive_stage(font, regular):
-    """derive.py's recipes for the glyphs still sloped roman."""
+# derived from a glyph kept from the last run, which has its weight
+# already: not weighted again (derive_stage fills it)
+PREWEIGHTED = set()
+
+
+def derive_stage(font, regular, late=False, kept=()):
+    """derive.py's recipes for the glyphs still sloped roman. Those made
+    from a small cap (ɔ.sc from c.sc, ʁ from r.sc) wait for the Italic's
+    small caps (smallcaps_stage), late: before it, their sources are the
+    Regular's small caps, sloped. Returns what was made, what failed, and
+    the names left for the late pass."""
     import derive
 
     up = upright(font)
@@ -727,7 +736,7 @@ def derive_stage(font, regular):
     w = stem(regular, "bar") / stem(regular, "l") * stem(up, "l")
     draw_path(up, bar, bar, derive.rect_path(256 - w / 2, -520, 256 + w / 2, CAP))
 
-    made, failed = [], []
+    made, failed, later = [], [], []
     for ch, op, source, band in derive.RECIPES:
         if ch in SC_DRAFTED:
             continue
@@ -737,10 +746,20 @@ def derive_stage(font, regular):
             continue
         if len(source) == 1 or (source.endswith(".sc") and len(source) == 4 and not source[0].isascii()):
             source = resolve(source)
+        if source.endswith(".sc") != late:
+            if not late:
+                later.append(name)
+            continue
         if source not in up:
             failed.append(f"{ch}: no {source}")
             continue
         capital = band == "c" or (isinstance(band, tuple) and band[:1] == ("c",))
+        # (an alias, г.sc of gamma.sc, has its outline's weight)
+        held = source
+        while not up[held].contours and len(up[held].components) == 1:
+            held = up[held].components[0].baseGlyph
+        if held in kept:
+            PREWEIGHTED.add(name)
         old = up[name]
         try:
             if ch == "ɗ":
@@ -815,7 +834,7 @@ def derive_stage(font, regular):
         up[name].lib[DRAFT_KEY] = True
         put(font, up, name, "derived")
         made.append(ch)
-    return made, failed
+    return made, failed, later
 
 
 def figures_stage(font, regular):
@@ -852,14 +871,15 @@ def figures_stage(font, regular):
     return made
 
 
-def smallcaps_stage(font):
+def smallcaps_stage(font, later=()):
     """Small caps still sloped roman: FontForge's drafts of the Italic's
-    capitals, imported (with their anchors) in the upright frame."""
+    capitals, imported (with their anchors) in the upright frame; not
+    those derive_stage makes from them afterwards (later)."""
     import derive
     import smallcaps as sc
 
     for g in font:
-        if ".sc" in g.name and g.lib.get(SOURCE_KEY) == "sloped roman":
+        if ".sc" in g.name and g.lib.get(SOURCE_KEY) == "sloped roman" and g.name not in later:
             g.lib[SMALLCAP_DRAFT_KEY] = True  # to be replaced
             g.lib.pop("org.myiadidot.derived", None)  # the Regular's ɠ.sc is derived; this one is drafted
     up = upright(font)
@@ -1161,9 +1181,12 @@ def main():
             r.lib[SOURCE_KEY] = "roman"
             font.layers.defaultLayer.insertGlyph(r, g.name, overwrite=True)
             upright_signs += 1
-    derived, failed = derive_stage(font, regular)
+    derived, failed, later = derive_stage(font, regular, kept=kept)
     figures = figures_stage(font, regular)
-    small_caps = smallcaps_stage(font)
+    small_caps = smallcaps_stage(font, later)
+    derived_late, failed_late, _ = derive_stage(font, regular, late=True, kept=kept)
+    derived += derived_late
+    failed += failed_late
     horn_stage(font, kept)
     ligatures = drop_ligatures(font)
     font.kerning.update(ITALIC_KERNING)
@@ -1236,8 +1259,8 @@ def main():
     # the added weight (WEIGHT), on the outlines of the letters, the accents
     # and upright signs left as they are
     for g in font:
-        # (not those kept from the last run: they have it)
-        if (g.contours and g.name not in marks and g.name not in kept
+        # (not those kept from the last run, nor those made from them: they have it)
+        if (g.contours and g.name not in marks and g.name not in kept and g.name not in PREWEIGHTED
                 and g.lib.get(SOURCE_KEY) in WEIGHTED):
             rec = RecordingPen()
             for c in g.contours:

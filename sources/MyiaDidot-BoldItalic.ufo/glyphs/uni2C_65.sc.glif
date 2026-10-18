@@ -1,52 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni2C65.sc" format="2">
-	<advance width="1202"/>
+	<advance width="1174"/>
 	<outline>
 		<contour>
-			<point x="-104" y="0" type="line"/>
-			<point x="-90" y="52" type="line"/>
-			<point x="87" y="52" type="line"/>
-			<point x="710" y="1064" type="line"/>
-			<point x="839" y="1064" type="line"/>
-			<point x="845" y="761" type="line"/>
-			<point x="1125" y="1118" type="line"/>
-			<point x="1252" y="1081" type="line"/>
-			<point x="905" y="674" type="line"/>
-			<point x="960" y="52" type="line"/>
-			<point x="1076" y="52" type="line"/>
-			<point x="1116" y="0" type="line"/>
-			<point x="409" y="0" type="line"/>
-			<point x="515" y="52" type="line"/>
-			<point x="635" y="52" type="line"/>
-			<point x="632" y="366" type="line"/>
-			<point x="585" y="366" type="line"/>
-			<point x="364" y="51" type="line"/>
-			<point x="359" y="0" type="line"/>
-			<point x="260" y="0" type="line"/>
-			<point x="183" y="-78" type="line"/>
-			<point x="45" y="-40" type="line"/>
-			<point x="76" y="0" type="line"/>
+			<point x="-100" y="0" type="line"/>
+			<point x="-85" y="52" type="line"/>
+			<point x="-8" y="53" type="line" smooth="yes"/>
+			<point x="72" y="52"/>
+			<point x="118" y="105"/>
+			<point x="145" y="153" type="curve"/>
+			<point x="760" y="1043" type="line"/>
+			<point x="898" y="1043" type="line"/>
+			<point x="854" y="819" type="line"/>
+			<point x="1100" y="1116" type="line"/>
+			<point x="1222" y="1077" type="line"/>
+			<point x="913" y="730" type="line"/>
+			<point x="931" y="112" type="line"/>
+			<point x="937" y="62"/>
+			<point x="904" y="52"/>
+			<point x="945" y="53" type="curve" smooth="yes"/>
+			<point x="1040" y="52" type="line"/>
+			<point x="1031" y="0" type="line"/>
+			<point x="521" y="0" type="line"/>
+			<point x="550" y="52" type="line"/>
+			<point x="653" y="53" type="line" smooth="yes"/>
+			<point x="690" y="52"/>
+			<point x="656" y="55"/>
+			<point x="652" y="114" type="curve"/>
+			<point x="657" y="343" type="line"/>
+			<point x="549" y="343" type="line"/>
+			<point x="298" y="55" type="line"/>
+			<point x="284" y="55"/>
+			<point x="286" y="53"/>
+			<point x="302" y="53" type="curve" smooth="yes"/>
+			<point x="399" y="52" type="line"/>
+			<point x="390" y="0" type="line"/>
+			<point x="226" y="0" type="line"/>
+			<point x="158" y="-77" type="line"/>
+			<point x="51" y="-41" type="line"/>
+			<point x="120" y="0" type="line"/>
 		</contour>
 		<contour>
-			<point x="456" y="417" type="line"/>
-			<point x="493" y="417" type="line"/>
-			<point x="591" y="574" type="line"/>
-			<point x="624" y="797" type="line"/>
+			<point x="456" y="390" type="line"/>
+			<point x="448" y="393" type="line"/>
+			<point x="642" y="617" type="line"/>
+			<point x="716" y="800" type="line"/>
+		</contour>
+		<contour>
+			<point x="685" y="525" type="line"/>
+			<point x="604" y="392" type="line"/>
+			<point x="649" y="393" type="line"/>
+		</contour>
+		<contour>
+			<point x="207" y="129" type="curve"/>
+			<point x="399" y="347" type="line"/>
+			<point x="424" y="343" type="line"/>
+			<point x="323" y="205" type="line" smooth="yes"/>
+			<point x="308" y="185"/>
+			<point x="293" y="155"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="788" y="1156"/>
-	<anchor name="Acute" x="783" y="1136"/>
-	<anchor name="Grave" x="783" y="1136"/>
-	<anchor name="Dotaccent" x="793" y="1176"/>
-	<anchor name="TopCap" x="796" y="1186"/>
-	<anchor name="Bottom" x="418" y="0"/>
-	<anchor name="DotBelow" x="412" y="-20"/>
+	<anchor name="Top" x="831" y="1156"/>
+	<anchor name="Acute" x="826" y="1136"/>
+	<anchor name="Grave" x="826" y="1136"/>
+	<anchor name="Dotaccent" x="836" y="1176"/>
+	<anchor name="TopCap" x="839" y="1186"/>
+	<anchor name="Bottom" x="476" y="0"/>
+	<anchor name="DotBelow" x="470" y="-20"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.derived</key>
 			<true/>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
 		</dict>
 	</lib>
 </glyph>

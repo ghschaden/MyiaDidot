@@ -164,7 +164,7 @@ def _stem(base, glyph, dx, y):
         return None
     c, d = hits[0]
     # only a span that is the stem's own (both edges near): a bar through it is not
-    if abs(c - a) > 40 or abs(d - b) > 40:
+    if abs(c - a) > 25 or abs(d - b) > 25:
         return None
     return b - a, d - c
 
@@ -282,7 +282,8 @@ def derived(font, path=None, only=None, regular=None):
             out.append((name, "base", "", f"{kept:.0%} of {source} kept ({op})"))
         if st and abs(st[1] - st[0]) > max(STEM_OFF[0], STEM_OFF[1] * st[0]):
             out.append((name, "stem", f"at {round(mid)}", f"{round(st[1])} against {source}'s {round(st[0])}"))
-        if italic and regular is not None and name in regular and source in regular:
+        # (a twin is its base twice: no overlap to compare)
+        if italic and regular is not None and name in regular and source in regular and op != "twin":
             mine = _best_iou(glyph, base)
             roman = _best_iou(glyph, Outline(regular, name))
             m["iou_base"], m["iou_roman"] = mine, roman
