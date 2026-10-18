@@ -28,6 +28,10 @@ Each finding is (glyph, kind, where, detail). The kinds (criteria 7-11, 14,
            (derive.py): too little of the base kept, its stem heavier or
            lighter, its advance off, an italic one made from the roman
            (scripts/quality/derived.py)
+  stroke   a letter's or figure's main stroke more than 10 % heavier or
+           lighter than its kind's (n/o, H/O, h.sc/o.sc): darker or
+           lighter than the text around it (scripts/quality/strokes.py;
+           --sheet draws them for review)
 
 tests/test_quality.py holds each style to its list of known findings
 (tests/data/quality.txt, quality-Italic.txt ...); the list only shrinks.
@@ -50,7 +54,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 KINDS = ("smooth", "kink", "extreme", "grid", "zone", "weight", "slant", "accent", "width",
-         "base", "stem", "advance", "style")
+         "base", "stem", "advance", "style", "stroke")
 DERIVED = ("base", "stem", "advance", "style")
 
 
@@ -325,6 +329,10 @@ def check(font, path=None, kinds=KINDS):
     if "width" in kinds and path and Path(path).name.endswith("-Bold.ufo"):
         regular = ufoLib2.Font.open(str(path).replace("-Bold.ufo", "-Regular.ufo"))
         rest += widths(font, regular)
+    if "stroke" in kinds:
+        from strokes import strokes
+
+        rest += strokes(font)[0]
     if set(DERIVED) & set(kinds):
         from derived import derived
 

@@ -45,6 +45,15 @@
 			<string>uni1F0E</string>
 			<string>uni1F0F</string>
 			<string>uni1FBA</string>
+			<string>uni1F88</string>
+			<string>uni1F89</string>
+			<string>uni1F8A</string>
+			<string>uni1F8B</string>
+			<string>uni1F8C</string>
+			<string>uni1F8D</string>
+			<string>uni1F8E</string>
+			<string>uni1F8F</string>
+			<string>uni1FBC</string>
 		</array>
 		<key>public.kern1.Alpha.sc</key>
 		<array>
@@ -112,6 +121,49 @@
 		<array>
 			<string>delta.sc</string>
 		</array>
+		<key>public.kern1.Epsilon</key>
+		<array>
+			<string>Epsilon</string>
+			<string>Epsilontonos</string>
+			<string>uni1F18</string>
+			<string>uni1F19</string>
+			<string>uni1F1A</string>
+			<string>uni1F1B</string>
+			<string>uni1F1C</string>
+			<string>uni1F1D</string>
+			<string>uni1FC8</string>
+		</array>
+		<key>public.kern1.Epsilon.sc</key>
+		<array>
+			<string>epsilon.sc</string>
+		</array>
+		<key>public.kern1.Eta</key>
+		<array>
+			<string>Eta</string>
+			<string>Etatonos</string>
+			<string>uni1F28</string>
+			<string>uni1F29</string>
+			<string>uni1F2A</string>
+			<string>uni1F2B</string>
+			<string>uni1F2C</string>
+			<string>uni1F2D</string>
+			<string>uni1F2E</string>
+			<string>uni1F2F</string>
+			<string>uni1F98</string>
+			<string>uni1F99</string>
+			<string>uni1F9A</string>
+			<string>uni1F9B</string>
+			<string>uni1F9C</string>
+			<string>uni1F9D</string>
+			<string>uni1F9E</string>
+			<string>uni1F9F</string>
+			<string>uni1FCA</string>
+			<string>uni1FCC</string>
+		</array>
+		<key>public.kern1.Eta.sc</key>
+		<array>
+			<string>eta.sc</string>
+		</array>
 		<key>public.kern1.F</key>
 		<array>
 			<string>F</string>
@@ -127,6 +179,28 @@
 		<key>public.kern1.Gamma.sc</key>
 		<array>
 			<string>gamma.sc</string>
+		</array>
+		<key>public.kern1.Iota</key>
+		<array>
+			<string>Iota</string>
+			<string>Iotadieresis</string>
+			<string>Iotatonos</string>
+			<string>uni1F38</string>
+			<string>uni1F39</string>
+			<string>uni1F3A</string>
+			<string>uni1F3B</string>
+			<string>uni1F3C</string>
+			<string>uni1F3D</string>
+			<string>uni1F3E</string>
+			<string>uni1F3F</string>
+			<string>uni1FD8</string>
+			<string>uni1FD9</string>
+			<string>uni1FDA</string>
+		</array>
+		<key>public.kern1.Iota.sc</key>
+		<array>
+			<string>iota.sc</string>
+			<string>iotadieresis.sc</string>
 		</array>
 		<key>public.kern1.J</key>
 		<array>
@@ -175,6 +249,14 @@
 		<key>public.kern1.Lambda.sc</key>
 		<array>
 			<string>lambda.sc</string>
+		</array>
+		<key>public.kern1.Mu</key>
+		<array>
+			<string>Mu</string>
+		</array>
+		<key>public.kern1.Mu.sc</key>
+		<array>
+			<string>mugreek.sc</string>
 		</array>
 		<key>public.kern1.N</key>
 		<array>
@@ -228,6 +310,33 @@
 			<string>oogonek.sc</string>
 			<string>uni01ED.sc</string>
 		</array>
+		<key>public.kern1.Omegagreek</key>
+		<array>
+			<string>Omegagreek</string>
+			<string>Omegatonos</string>
+			<string>uni1F68</string>
+			<string>uni1F69</string>
+			<string>uni1F6A</string>
+			<string>uni1F6B</string>
+			<string>uni1F6C</string>
+			<string>uni1F6D</string>
+			<string>uni1F6E</string>
+			<string>uni1F6F</string>
+			<string>uni1FA8</string>
+			<string>uni1FA9</string>
+			<string>uni1FAA</string>
+			<string>uni1FAB</string>
+			<string>uni1FAC</string>
+			<string>uni1FAD</string>
+			<string>uni1FAE</string>
+			<string>uni1FAF</string>
+			<string>uni1FFA</string>
+			<string>uni1FFC</string>
+		</array>
+		<key>public.kern1.Omegagreek.sc</key>
+		<array>
+			<string>omega.sc</string>
+		</array>
 		<key>public.kern1.Omicron</key>
 		<array>
 			<string>Omicron</string>
@@ -263,6 +372,14 @@
 		<key>public.kern1.Phi.sc</key>
 		<array>
 			<string>phi.sc</string>
+		</array>
+		<key>public.kern1.Pi</key>
+		<array>
+			<string>Pi</string>
+		</array>
+		<key>public.kern1.Pi.sc</key>
+		<array>
+			<string>pi.sc</string>
 		</array>
 		<key>public.kern1.Psi</key>
 		<array>
@@ -311,6 +428,14 @@
 			<string>scedilla.sc</string>
 			<string>scaron.sc</string>
 			<string>scommaaccent.sc</string>
+		</array>
+		<key>public.kern1.Sigma</key>
+		<array>
+			<string>Sigma</string>
+		</array>
+		<key>public.kern1.Sigma.sc</key>
+		<array>
+			<string>sigma.sc</string>
 		</array>
 		<key>public.kern1.T</key>
 		<array>
@@ -419,6 +544,14 @@
 		<array>
 			<string>x.sc</string>
 		</array>
+		<key>public.kern1.Xi</key>
+		<array>
+			<string>Xi</string>
+		</array>
+		<key>public.kern1.Xi.sc</key>
+		<array>
+			<string>xi.sc</string>
+		</array>
 		<key>public.kern1.Y</key>
 		<array>
 			<string>Y</string>
@@ -433,6 +566,14 @@
 			<string>ydieresis.sc</string>
 			<string>uni0233.sc</string>
 		</array>
+		<key>public.kern1.Zeta</key>
+		<array>
+			<string>Zeta</string>
+		</array>
+		<key>public.kern1.Zeta.sc</key>
+		<array>
+			<string>zeta.sc</string>
+		</array>
 		<key>public.kern1.a</key>
 		<array>
 			<string>a</string>
@@ -446,6 +587,35 @@
 			<string>abreve</string>
 			<string>aogonek</string>
 			<string>aringacute</string>
+		</array>
+		<key>public.kern1.alpha</key>
+		<array>
+			<string>alpha</string>
+			<string>uni1F00</string>
+			<string>uni1F01</string>
+			<string>uni1F02</string>
+			<string>uni1F03</string>
+			<string>uni1F04</string>
+			<string>uni1F05</string>
+			<string>uni1F06</string>
+			<string>uni1F07</string>
+			<string>uni1F70</string>
+			<string>uni1F80</string>
+			<string>uni1F81</string>
+			<string>uni1F82</string>
+			<string>uni1F83</string>
+			<string>uni1F84</string>
+			<string>uni1F85</string>
+			<string>uni1F86</string>
+			<string>uni1F87</string>
+			<string>uni1FB0</string>
+			<string>uni1FB1</string>
+			<string>uni1FB2</string>
+			<string>uni1FB3</string>
+			<string>uni1FB4</string>
+			<string>uni1FB6</string>
+			<string>uni1FB7</string>
+			<string>alphatonos</string>
 		</array>
 		<key>public.kern1.b</key>
 		<array>
@@ -463,15 +633,154 @@
 			<string>oogonek</string>
 			<string>uni01ED</string>
 		</array>
+		<key>public.kern1.beta</key>
+		<array>
+			<string>beta</string>
+		</array>
 		<key>public.kern1.chi</key>
 		<array>
 			<string>chi</string>
+		</array>
+		<key>public.kern1.delta</key>
+		<array>
+			<string>delta</string>
+		</array>
+		<key>public.kern1.epsilon</key>
+		<array>
+			<string>epsilon</string>
+			<string>uni1F10</string>
+			<string>uni1F11</string>
+			<string>uni1F12</string>
+			<string>uni1F13</string>
+			<string>uni1F14</string>
+			<string>uni1F15</string>
+			<string>uni1F72</string>
+			<string>epsilontonos</string>
+		</array>
+		<key>public.kern1.eta</key>
+		<array>
+			<string>eta</string>
+			<string>uni1F20</string>
+			<string>uni1F21</string>
+			<string>uni1F22</string>
+			<string>uni1F23</string>
+			<string>uni1F24</string>
+			<string>uni1F25</string>
+			<string>uni1F26</string>
+			<string>uni1F27</string>
+			<string>uni1F74</string>
+			<string>uni1F90</string>
+			<string>uni1F91</string>
+			<string>uni1F92</string>
+			<string>uni1F93</string>
+			<string>uni1F94</string>
+			<string>uni1F95</string>
+			<string>uni1F96</string>
+			<string>uni1F97</string>
+			<string>uni1FC2</string>
+			<string>uni1FC3</string>
+			<string>uni1FC4</string>
+			<string>uni1FC6</string>
+			<string>uni1FC7</string>
+			<string>etatonos</string>
+		</array>
+		<key>public.kern1.gamma</key>
+		<array>
+			<string>gamma</string>
+		</array>
+		<key>public.kern1.iota</key>
+		<array>
+			<string>iota</string>
+			<string>iotadieresis</string>
+			<string>iotadieresistonos</string>
+			<string>uni1F30</string>
+			<string>uni1F31</string>
+			<string>uni1F32</string>
+			<string>uni1F33</string>
+			<string>uni1F34</string>
+			<string>uni1F35</string>
+			<string>uni1F36</string>
+			<string>uni1F37</string>
+			<string>uni1F76</string>
+			<string>uni1FD0</string>
+			<string>uni1FD1</string>
+			<string>uni1FD2</string>
+			<string>uni1FD6</string>
+			<string>uni1FD7</string>
+			<string>iotatonos</string>
 		</array>
 		<key>public.kern1.k</key>
 		<array>
 			<string>k</string>
 			<string>kgreenlandic</string>
 			<string>kcommaaccent</string>
+		</array>
+		<key>public.kern1.kappa</key>
+		<array>
+			<string>kappa</string>
+		</array>
+		<key>public.kern1.lambda</key>
+		<array>
+			<string>lambda</string>
+		</array>
+		<key>public.kern1.mugreek</key>
+		<array>
+			<string>mugreek</string>
+		</array>
+		<key>public.kern1.nu</key>
+		<array>
+			<string>nu</string>
+		</array>
+		<key>public.kern1.omega</key>
+		<array>
+			<string>omega</string>
+			<string>omegatonos</string>
+			<string>uni1F60</string>
+			<string>uni1F61</string>
+			<string>uni1F62</string>
+			<string>uni1F63</string>
+			<string>uni1F64</string>
+			<string>uni1F65</string>
+			<string>uni1F66</string>
+			<string>uni1F67</string>
+			<string>uni1F7C</string>
+			<string>uni1FA0</string>
+			<string>uni1FA1</string>
+			<string>uni1FA2</string>
+			<string>uni1FA3</string>
+			<string>uni1FA4</string>
+			<string>uni1FA5</string>
+			<string>uni1FA6</string>
+			<string>uni1FA7</string>
+			<string>uni1FF2</string>
+			<string>uni1FF3</string>
+			<string>uni1FF4</string>
+			<string>uni1FF6</string>
+			<string>uni1FF7</string>
+		</array>
+		<key>public.kern1.omicron</key>
+		<array>
+			<string>omicron</string>
+			<string>omicrontonos</string>
+			<string>uni1F40</string>
+			<string>uni1F41</string>
+			<string>uni1F42</string>
+			<string>uni1F43</string>
+			<string>uni1F44</string>
+			<string>uni1F45</string>
+			<string>uni1F78</string>
+		</array>
+		<key>public.kern1.phi</key>
+		<array>
+			<string>phi</string>
+		</array>
+		<key>public.kern1.pi</key>
+		<array>
+			<string>pi</string>
+		</array>
+		<key>public.kern1.psi</key>
+		<array>
+			<string>psi</string>
 		</array>
 		<key>public.kern1.quoteleft</key>
 		<array>
@@ -484,6 +793,28 @@
 			<string>racute</string>
 			<string>rcommaaccent</string>
 			<string>rcaron</string>
+		</array>
+		<key>public.kern1.rho</key>
+		<array>
+			<string>rho</string>
+			<string>uni1FE4</string>
+			<string>uni1FE5</string>
+		</array>
+		<key>public.kern1.sigma</key>
+		<array>
+			<string>sigma</string>
+		</array>
+		<key>public.kern1.sigma1</key>
+		<array>
+			<string>sigma1</string>
+		</array>
+		<key>public.kern1.tau</key>
+		<array>
+			<string>tau</string>
+		</array>
+		<key>public.kern1.theta</key>
+		<array>
+			<string>theta</string>
 		</array>
 		<key>public.kern1.tonos</key>
 		<array>
@@ -724,6 +1055,27 @@
 		<array>
 			<string>uni0491</string>
 		</array>
+		<key>public.kern1.upsilon</key>
+		<array>
+			<string>upsilon</string>
+			<string>uni1F50</string>
+			<string>uni1F51</string>
+			<string>uni1F52</string>
+			<string>uni1F53</string>
+			<string>uni1F54</string>
+			<string>uni1F55</string>
+			<string>uni1F56</string>
+			<string>uni1F57</string>
+			<string>uni1F7A</string>
+			<string>uni1FE0</string>
+			<string>uni1FE1</string>
+			<string>uni1FE2</string>
+			<string>uni1FE6</string>
+			<string>uni1FE7</string>
+			<string>upsilondieresis</string>
+			<string>upsilontonos</string>
+			<string>upsilondieresistonos</string>
+		</array>
 		<key>public.kern1.v</key>
 		<array>
 			<string>v</string>
@@ -733,6 +1085,10 @@
 		<key>public.kern1.x</key>
 		<array>
 			<string>x</string>
+		</array>
+		<key>public.kern1.xi</key>
+		<array>
+			<string>xi</string>
 		</array>
 		<key>public.kern1.y</key>
 		<array>
@@ -1061,6 +1417,32 @@
 			<string>alpha</string>
 			<string>uni1FB3</string>
 			<string>uni1FB4</string>
+			<string>uni1F00</string>
+			<string>uni1F01</string>
+			<string>uni1F02</string>
+			<string>uni1F03</string>
+			<string>uni1F04</string>
+			<string>uni1F05</string>
+			<string>uni1F06</string>
+			<string>uni1F07</string>
+			<string>uni1F70</string>
+			<string>uni1F80</string>
+			<string>uni1F81</string>
+			<string>uni1F82</string>
+			<string>uni1F83</string>
+			<string>uni1F84</string>
+			<string>uni1F85</string>
+			<string>uni1F86</string>
+			<string>uni1F87</string>
+			<string>uni1FB0</string>
+			<string>uni1FB1</string>
+			<string>uni1FB2</string>
+			<string>uni1FB6</string>
+			<string>uni1FB7</string>
+		</array>
+		<key>public.kern2.beta</key>
+		<array>
+			<string>beta</string>
 		</array>
 		<key>public.kern2.c</key>
 		<array>
@@ -1125,6 +1507,13 @@
 			<string>epsilontonos</string>
 			<string>epsilon</string>
 			<string>sigmalunatesymbolgreek</string>
+			<string>uni1F10</string>
+			<string>uni1F11</string>
+			<string>uni1F12</string>
+			<string>uni1F13</string>
+			<string>uni1F14</string>
+			<string>uni1F15</string>
+			<string>uni1F72</string>
 		</array>
 		<key>public.kern2.etatonos</key>
 		<array>
@@ -1134,6 +1523,24 @@
 			<string>uni1FC4</string>
 			<string>uni1FC6</string>
 			<string>uni1FC7</string>
+			<string>uni1F20</string>
+			<string>uni1F21</string>
+			<string>uni1F22</string>
+			<string>uni1F23</string>
+			<string>uni1F24</string>
+			<string>uni1F25</string>
+			<string>uni1F26</string>
+			<string>uni1F27</string>
+			<string>uni1F74</string>
+			<string>uni1F90</string>
+			<string>uni1F91</string>
+			<string>uni1F92</string>
+			<string>uni1F93</string>
+			<string>uni1F94</string>
+			<string>uni1F95</string>
+			<string>uni1F96</string>
+			<string>uni1F97</string>
+			<string>uni1FC2</string>
 		</array>
 		<key>public.kern2.g</key>
 		<array>
@@ -1151,15 +1558,44 @@
 			<string>dotlessi</string>
 			<string>nacute</string>
 		</array>
+		<key>public.kern2.iota</key>
+		<array>
+			<string>iota</string>
+			<string>iotadieresis</string>
+			<string>iotadieresistonos</string>
+			<string>uni1F30</string>
+			<string>uni1F31</string>
+			<string>uni1F32</string>
+			<string>uni1F33</string>
+			<string>uni1F34</string>
+			<string>uni1F35</string>
+			<string>uni1F36</string>
+			<string>uni1F37</string>
+			<string>uni1F76</string>
+			<string>uni1FD0</string>
+			<string>uni1FD1</string>
+			<string>uni1FD2</string>
+			<string>uni1FD6</string>
+			<string>uni1FD7</string>
+			<string>iotatonos</string>
+		</array>
 		<key>public.kern2.j</key>
 		<array>
 			<string>j</string>
 			<string>jcircumflex</string>
 			<string>uni0237</string>
 		</array>
+		<key>public.kern2.kappa</key>
+		<array>
+			<string>kappa</string>
+		</array>
 		<key>public.kern2.lambda</key>
 		<array>
 			<string>lambda</string>
+		</array>
+		<key>public.kern2.mugreek</key>
+		<array>
+			<string>mugreek</string>
 		</array>
 		<key>public.kern2.nu</key>
 		<array>
@@ -1171,6 +1607,26 @@
 			<string>omegatonos</string>
 			<string>uni1FF3</string>
 			<string>uni1FF4</string>
+			<string>uni1F60</string>
+			<string>uni1F61</string>
+			<string>uni1F62</string>
+			<string>uni1F63</string>
+			<string>uni1F64</string>
+			<string>uni1F65</string>
+			<string>uni1F66</string>
+			<string>uni1F67</string>
+			<string>uni1F7C</string>
+			<string>uni1FA0</string>
+			<string>uni1FA1</string>
+			<string>uni1FA2</string>
+			<string>uni1FA3</string>
+			<string>uni1FA4</string>
+			<string>uni1FA5</string>
+			<string>uni1FA6</string>
+			<string>uni1FA7</string>
+			<string>uni1FF2</string>
+			<string>uni1FF6</string>
+			<string>uni1FF7</string>
 		</array>
 		<key>public.kern2.omicron</key>
 		<array>
@@ -1178,6 +1634,17 @@
 			<string>sigma</string>
 			<string>phi</string>
 			<string>omicrontonos</string>
+			<string>uni1F40</string>
+			<string>uni1F41</string>
+			<string>uni1F42</string>
+			<string>uni1F43</string>
+			<string>uni1F44</string>
+			<string>uni1F45</string>
+			<string>uni1F78</string>
+		</array>
+		<key>public.kern2.pi</key>
+		<array>
+			<string>pi</string>
 		</array>
 		<key>public.kern2.psi</key>
 		<array>
@@ -1192,6 +1659,20 @@
 		<array>
 			<string>quoteright</string>
 			<string>quotedblright</string>
+		</array>
+		<key>public.kern2.rho</key>
+		<array>
+			<string>rho</string>
+			<string>uni1FE4</string>
+			<string>uni1FE5</string>
+		</array>
+		<key>public.kern2.sigma1</key>
+		<array>
+			<string>sigma1</string>
+		</array>
+		<key>public.kern2.tau</key>
+		<array>
+			<string>tau</string>
 		</array>
 		<key>public.kern2.u</key>
 		<array>
@@ -1442,6 +1923,27 @@
 		<array>
 			<string>uni0475</string>
 		</array>
+		<key>public.kern2.upsilon</key>
+		<array>
+			<string>upsilon</string>
+			<string>uni1F50</string>
+			<string>uni1F51</string>
+			<string>uni1F52</string>
+			<string>uni1F53</string>
+			<string>uni1F54</string>
+			<string>uni1F55</string>
+			<string>uni1F56</string>
+			<string>uni1F57</string>
+			<string>uni1F7A</string>
+			<string>uni1FE0</string>
+			<string>uni1FE1</string>
+			<string>uni1FE2</string>
+			<string>uni1FE6</string>
+			<string>uni1FE7</string>
+			<string>upsilondieresis</string>
+			<string>upsilontonos</string>
+			<string>upsilondieresistonos</string>
+		</array>
 		<key>public.kern2.v</key>
 		<array>
 			<string>v</string>
@@ -1452,10 +1954,18 @@
 		<array>
 			<string>x</string>
 		</array>
+		<key>public.kern2.xi</key>
+		<array>
+			<string>xi</string>
+		</array>
 		<key>public.kern2.y</key>
 		<array>
 			<string>y</string>
 			<string>yacute</string>
+		</array>
+		<key>public.kern2.zeta</key>
+		<array>
+			<string>zeta</string>
 		</array>
 	</dict>
 </plist>

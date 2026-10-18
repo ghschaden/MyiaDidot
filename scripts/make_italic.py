@@ -70,6 +70,10 @@ WEIGHTED = ("Old Standard", "derived", "small cap draft")
 # off each side of a letter: Old Standard's spacing, scaled, is loose too (10;
 # less what the added weight takes of the stems at the sides)
 ITALIC_CUT = 3
+# the Greek lowercase tighter: Old Standard's Greek, so cut, stood 0.07 of an
+# n n gap looser than the Italic's Latin against Greek references
+# (scripts/quality/greek_pairs.py)
+ITALIC_CUT_GREEK = ITALIC_CUT + 11
 SOURCE_KEY = "org.myiadidot.italicSource"
 DRAFT_KEY = "org.myiadidot.draft"
 SMALLCAP_DRAFT_KEY = "org.myiadidot.smallcapDraft"
@@ -946,6 +950,22 @@ ITALIC_KERNING = {
     ("f", "public.kern2.i"): -60, ("f", "public.kern2.u"): -60, ("f", "m"): -60, ("f", "p"): -60, ("f", "r"): -60,
     # a's exit stroke rises to the right: before v w less kerning than the Regular's -124
     ("public.kern1.a", "public.kern2.v"): -44,
+    # Greek (Old Standard's letters) against Greek references, as the
+    # Italic's Latin sets them (scripts/quality/greek_pairs.py)
+    ("public.kern1.chi", "public.kern2.epsilontonos"): -47,  # χε (the Regular's -158)
+    ("public.kern1.eta", "public.kern2.nu"): 86,  # ην
+    ("public.kern1.eta", "public.kern2.rho"): 82,  # ηρ
+    ("public.kern1.theta", "public.kern2.nu"): 71,  # θν
+    ("public.kern1.alpha", "public.kern2.delta"): -70,  # αθ
+    ("public.kern1.alpha", "public.kern2.xi"): -73,  # αξ
+    ("public.kern1.alpha", "public.kern2.zeta"): -79,  # αζ
+    ("public.kern1.alpha", "public.kern2.sigma1"): -91,  # ας
+    ("public.kern1.tau", "public.kern2.etatonos"): -110,  # τη
+    ("public.kern1.sigma", "public.kern2.upsilon"): -120,  # συ
+    ("public.kern1.sigma", "public.kern2.etatonos"): -124,  # ση
+    ("public.kern1.sigma", "public.kern2.kappa"): -127,  # σκ
+    ("public.kern1.Kappa", "public.kern2.alphatonos"): -175,  # Κα
+    ("public.kern1.lambda", "public.kern2.epsilontonos"): 15,  # λε (the Regular's -57)
 }
 # the Regular's pairs the Italic does without: tt tf were tightened for the
 # roman t (pair review); the italic t's frequent pairs were in range without
@@ -1271,6 +1291,7 @@ def main():
     info.copyright = info.copyright.replace(
         " Copyright 2012", " Copyright 2006-2008 Alexey Kryukov (Old Standard Italic). Copyright 2012", 1)
     # (the italic bit comes from styleMapStyleName; USE_TYPO_METRICS stays)
+    font.lib.pop("org.myiadidot.figuresLightened", None)  # the Regular's (lighten_figures.py), not these
     font.lib["org.myiadidot.italicSource"] = "Old Standard Italic, akryukov/oldstand (see sources/oldstand/COMMIT)"
     # Old Standard's outlines crossing themselves at serif tips, crumbs of
     # the cuts (glyph_lint); hand-drawn glyphs stay as drawn
@@ -1297,7 +1318,7 @@ def main():
     cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)
-    letter_cut = classifier(font, ITALIC_CUT, ITALIC_CUT)
+    letter_cut = classifier(font, ITALIC_CUT, ITALIC_CUT_GREEK)
     # what is made only of kept glyphs (their aliases, accented forms) has
     # the cut through them: not cut again; the kept ones not touched at all
     settled = set(kept)
@@ -1313,7 +1334,7 @@ def main():
     respace(font, lambda n: 0 if n in settled else letter_cut(n), [g.name for g in font if g.name not in kept])
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
     sidebearings(font, ITALIC_SIDEBEARINGS)
-    font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT}
+    font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     write(font, Path(args.italic))
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)

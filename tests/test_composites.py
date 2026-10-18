@@ -110,7 +110,8 @@ def test_nfc_and_nfd_render_the_same(ttfont, shaper, decomposing_shaper):
     new = {k: v for k, v in bad.items() if k not in allowed}
     stale = sorted(set(allowed) - set(bad))
     assert not new, ("precomposed and decomposed forms render differently (fix the anchors, "
-                     "or add to tests/data/nfd-exceptions.txt with a reason):\n"
+                     "or compose them: scripts/nfd_compose.py; or add to "
+                     "tests/data/nfd-exceptions.txt with a reason):\n"
                      + "\n".join(f"  {k} {v}" for k, v in new.items()))
     assert not stale, f"NFD exceptions no longer needed, remove them: {stale}"
 

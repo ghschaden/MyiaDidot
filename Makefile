@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce
+.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes generate
 
 all: fonts
 
@@ -138,6 +138,25 @@ quality: $(OTF) $(TTF)
 	$(QPY)/cases.py > build/quality/cases.txt
 	$(QPY)/smallsize.py fonts/ttf/*.ttf > build/quality/smallsize.txt
 	@echo "reports: build/quality/*.txt"
+
+# glyphs darker or lighter than their kind, drawn for review (scripts/quality/strokes.py)
+strokes:
+	@mkdir -p build/quality
+	for s in Regular Italic Bold BoldItalic; do \
+	    $(PY) scripts/quality/strokes.py sources/$(FAMILY)-$$s.ufo --sheet build/quality/strokes-$$s.pdf > build/quality/strokes-$$s.txt || exit 1; \
+	done
+
+# regenerate the Italic, Bold and Bold Italic from the Regular, in order, then
+# normalize and look for files the sync client renamed ("conflicted")
+generate:
+	$(PY) scripts/make_italic.py
+	$(PY) scripts/make_bold.py
+	$(PY) scripts/smallcaps.py sources/$(FAMILY)-Bold.ufo
+	$(PY) scripts/make_bold.py sources/$(FAMILY)-Italic.ufo sources/$(FAMILY)-BoldItalic.ufo
+	$(PY) scripts/smallcaps.py sources/$(FAMILY)-BoldItalic.ufo
+	$(MAKE) normalize
+	@if find sources -iname '*conflict*' | grep -q .; then \
+	    echo "sync conflicts in sources/:"; find sources -iname '*conflict*'; exit 1; fi
 
 # the generated styles as their generators make them (scripts/check_reproducible.py)
 reproduce:

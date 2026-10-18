@@ -2,12 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>org.myiadidot.figuresLightened</key>
+		<dict>
+			<key>fiveoldstyle</key>
+			<integer>-20</integer>
+			<key>fouroldstyle</key>
+			<integer>-15</integer>
+			<key>nineoldstyle</key>
+			<integer>-9</integer>
+			<key>oneoldstyle</key>
+			<integer>-15</integer>
+			<key>sixoldstyle</key>
+			<integer>-10</integer>
+			<key>threeoldstyle</key>
+			<integer>-22</integer>
+			<key>twooldstyle</key>
+			<integer>-17</integer>
+			<key>zerooldstyle</key>
+			<integer>-19</integer>
+		</dict>
 		<key>org.myiadidot.respaced</key>
 		<dict>
 			<key>cut</key>
 			<integer>20</integer>
 			<key>greekLower</key>
-			<integer>10</integer>
+			<integer>2</integer>
 		</dict>
 		<key>org.myiadidot.smallcapHeight</key>
 		<integer>1040</integer>
@@ -2121,6 +2140,14 @@
 			<string>circumflexcmb_hookcomb.cap</string>
 			<string>uni2010</string>
 			<string>uni2011</string>
+			<string>uniA7AD</string>
+			<string>uni037F</string>
+			<string>uniA7B3</string>
+			<string>uni01A6</string>
+			<string>uni026C.sc</string>
+			<string>uni03F3.sc</string>
+			<string>uniAB53.sc</string>
+			<string>uni0280.sc</string>
 			<string>zerooldstyle.tf</string>
 			<string>oneoldstyle.tf</string>
 			<string>twooldstyle.tf</string>
@@ -2131,14 +2158,6 @@
 			<string>sevenoldstyle.tf</string>
 			<string>eightoldstyle.tf</string>
 			<string>nineoldstyle.tf</string>
-			<string>uniA7AD</string>
-			<string>uni037F</string>
-			<string>uniA7B3</string>
-			<string>uni01A6</string>
-			<string>uni026C.sc</string>
-			<string>uni03F3.sc</string>
-			<string>uniAB53.sc</string>
-			<string>uni0280.sc</string>
 		</array>
 		<key>public.openTypeCategories</key>
 		<dict>
@@ -4303,11 +4322,11 @@
 			<key>uni0326</key>
 			<string>mark</string>
 			<key>uni0327</key>
-			<string>base</string>
+			<string>mark</string>
 			<key>uni0327.cap</key>
 			<string>mark</string>
 			<key>uni0328</key>
-			<string>base</string>
+			<string>mark</string>
 			<key>uni0328.cap</key>
 			<string>mark</string>
 			<key>uni0329</key>

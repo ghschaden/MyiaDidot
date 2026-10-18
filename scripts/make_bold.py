@@ -52,6 +52,10 @@ MARK_AX, MARK_AY = 30, 8  # accents a little heavier
 # sidebearings times KX), as a bold's are: 40 off each side in all of the
 # Regular's 20 (times KX) and BOLD_CUT, Greek lowercase 25 of 10 and BOLD_CUT_GREEK
 BOLD_CUT, BOLD_CUT_GREEK = 19, 15
+# the Bold Italic's Greek lowercase tighter still: emboldened from the
+# Italic's (Old Standard's) it stood 0.10 of an n n gap looser than its Latin
+# against Greek references (scripts/quality/greek_pairs.py)
+BOLD_ITALIC_CUT_GREEK = BOLD_CUT_GREEK + 16
 # the figures, which respace.py leaves alone, are tighter too: emboldened
 # they stand looser than the Bold's letters (1.08 of their side space, where
 # bold text faces have 0.8-1.0); one cut for all keeps them tabular, and the
@@ -65,6 +69,13 @@ FIGURE_NAMES = {f"{n}{s}" for n in ("zero", "one", "two", "three", "four", "five
 BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni0442": (26, 0)}  # t; г є т
 # Pair-level corrections measured after the Bold's global kerning scale.
 BOLD_KERNING = {
+    # Greek: σ's right side stood tight against the Greek references, as
+    # the Bold's Latin sets them (scripts/quality/greek_pairs.py)
+    ("public.kern1.sigma", "public.kern2.etatonos"): 81,  # ση
+    ("public.kern1.sigma", "public.kern2.tau"): 77,  # στ
+    ("public.kern1.sigma", "public.kern2.omicron"): 62,  # σο
+    ("public.kern1.sigma", "public.kern2.iota"): 55,  # σι
+    ("public.kern1.tau", "public.kern2.omega"): 49,  # τω
     ("n", "t"): -28,
     ("a", "t"): -45,
     ("a", "s"): -29,
@@ -83,6 +94,15 @@ ITALIC_ANCHOR_NUDGE = {}
 # Most pairs had no source pair adjustment. va overrides its inherited class
 # pair; fr is made 33 units looser relative to the references' range.
 ITALIC_BOLD_KERNING = {
+    # Greek against Greek references, as the Bold Italic's Latin sets them
+    # (scripts/quality/greek_pairs.py)
+    ("public.kern1.delta", "public.kern2.iota"): 78,  # δι
+    ("public.kern1.omicron", "public.kern2.upsilon"): 69,  # ου
+    ("public.kern1.tau", "public.kern2.iota"): -70,  # τι
+    ("public.kern1.nu", "public.kern2.delta"): -76,  # νθ
+    ("public.kern1.upsilon", "public.kern2.sigma1"): -80,  # υς
+    ("public.kern1.tau", "public.kern2.epsilontonos"): -90,  # τε
+    ("public.kern1.mugreek", "public.kern2.pi"): -100,  # μπ
     ("u", "t"): 41,
     ("w", "a"): 57,
     ("g", "h"): 43,
@@ -634,13 +654,14 @@ def main():
     # what emboldening leaves: counters closed to pinholes, outlines crossing
     # themselves (glyph_lint)
     cleaned = fix(font)
-    respace(font, classifier(font, BOLD_CUT, BOLD_CUT_GREEK))
+    greek_cut = BOLD_ITALIC_CUT_GREEK if italic else BOLD_CUT_GREEK
+    respace(font, classifier(font, BOLD_CUT, greek_cut))
     respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
     sidebearings(font, extra)
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
-                         "greekLower": round(done["greekLower"] * KX) + BOLD_CUT_GREEK}
+                         "greekLower": round(done["greekLower"] * KX) + greek_cut}
     write(font, Path(args.bold))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
           f"{outlined} outlined letters made from base and mark, {len(followed)} derived letters "

@@ -2,12 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>org.myiadidot.figuresLightened</key>
+		<dict>
+			<key>fiveoldstyle</key>
+			<integer>-20</integer>
+			<key>fouroldstyle</key>
+			<integer>-15</integer>
+			<key>nineoldstyle</key>
+			<integer>-9</integer>
+			<key>oneoldstyle</key>
+			<integer>-15</integer>
+			<key>sixoldstyle</key>
+			<integer>-10</integer>
+			<key>threeoldstyle</key>
+			<integer>-22</integer>
+			<key>twooldstyle</key>
+			<integer>-17</integer>
+			<key>zerooldstyle</key>
+			<integer>-19</integer>
+		</dict>
 		<key>org.myiadidot.respaced</key>
 		<dict>
 			<key>cut</key>
 			<integer>40</integer>
 			<key>greekLower</key>
-			<integer>25</integer>
+			<integer>17</integer>
 		</dict>
 		<key>org.myiadidot.smallcapHeight</key>
 		<integer>1040</integer>
@@ -4303,11 +4322,11 @@
 			<key>uni0326</key>
 			<string>mark</string>
 			<key>uni0327</key>
-			<string>base</string>
+			<string>mark</string>
 			<key>uni0327.cap</key>
 			<string>mark</string>
 			<key>uni0328</key>
-			<string>base</string>
+			<string>mark</string>
 			<key>uni0328.cap</key>
 			<string>mark</string>
 			<key>uni0329</key>

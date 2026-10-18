@@ -23,7 +23,13 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 - Composites are generated: `scripts/composites.py` (anchor-driven, follows
   upstream's accent conventions). After moving an anchor, rerun the builder
   for the affected composites rather than hand-editing offsets. Upstream's
-  deliberate special designs are in `SPECIAL` there.
+  deliberate special designs are in `SPECIAL` there. Where a precomposed
+  letter is drawn otherwise than its decomposition places the marks
+  (polytonic Greek, the capital breve), `scripts/nfd_compose.py` composes
+  the decomposed form back in ccmp (a generated block in the Regular's
+  features.fea); rerun it when the NFD test reports a new mismatch. The
+  combining cedilla and ogonek are marks (they were base glyphs, so they
+  were never positioned).
 - Accent conventions: spacing accents 880 wide centred at x=440; combining
   marks are those shifted −880; lowercase bases carry Top/Acute/Grave/
   Dotaccent (Acute/Grave = Top−20, Dotaccent = Top+20), Bottom/DotBelow,
@@ -89,8 +95,15 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   `drafts-review-Italic.pdf`, `smallcaps-review-Italic.pdf`. A style's own
   fontbakery allowances: `tests/data/fontbakery-allow-Italic.txt`.
 - Spacing: the Regular's letters were tightened once by `scripts/respace.py`
-  (20 a side, Greek lowercase 10; recorded in lib `org.myiadidot.respaced`,
-  a second run refuses). make_bold.py adds the Bold's own cut, make_italic.py
+  (20 a side, Greek lowercase 10, of which 8 were given back after measuring
+  Greek pairs; recorded in lib `org.myiadidot.respaced`, a second run
+  refuses). Greek spacing and kerning are measured against Greek references
+  (GFS Didot, EB Garamond, Libertinus, Charis), calibrated by each style's
+  own Latin: `scripts/quality/greek_pairs.py STYLE`; the italics' Greek
+  cuts are ITALIC_CUT_GREEK (make_italic.py) and BOLD_ITALIC_CUT_GREEK
+  (make_bold.py), their Greek pairs in ITALIC_KERNING, BOLD_KERNING and
+  ITALIC_BOLD_KERNING. Accented Greek letters share their base letter's
+  kerning groups (a capital's left side excepted: its accents stand there). make_bold.py adds the Bold's own cut, make_italic.py
   undoes the Regular's in memory (it is tuned on the old spacing) and
   applies the Italic's; derive.py too builds on the uncut spacing and cuts
   again. It leaves kerning alone. The Bold's figures have a cut of their
@@ -112,6 +125,43 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 
+## Quality principles (learned the hard way)
+
+- Build a derived glyph from its base in the same style, after that base is
+  final; order generator stages so bases come first, and know what is
+  already transformed (the italic ɗ from the Regular's d; italic small caps
+  derived before the italic small caps existed; kept glyphs weighted twice).
+- Never embolden or weight a combined shape whole: junctions thicken unlike
+  the base (Ⱦ's stem eaten, ɬ's ring closed). Process the base and the
+  added piece apart (the piece at the weight of its scale), then join.
+- One source of truth per decision: where two settings must agree
+  (composites and anchors/GPOS), generate one from the other.
+- Generated styles change only through their generators (enforced: `make
+  reproduce` in the pre-commit hook).
+- Check glyphs against each other, not only one by one: against their base
+  (derived.py), their kind (strokes.py: n/o, H/O, h.sc/o.sc) and their
+  other encoding (NFC/NFD). Per-glyph lint passed every one of today's
+  faults. Weight belongs to the context: old-style figures to the
+  lowercase, lining to the capitals.
+- Reference fonts are a range, not a target, and calibrated: ask whether
+  Greek sets as Myia's own Latin does, not as Garamond does (greek_pairs.py
+  shifts by the style's Latin offset). Charis and Libertinus agreeing
+  against Myia: fix it.
+- Read `make regress` before accepting a new baseline: one composition rule
+  once changed 1098 strings where a few were meant.
+- Metadata fails silently: glyph categories (enforced: combining marks are
+  marks, tests/test_recipes.py), glyph order, lookup order. Code points
+  look alike (enforced: recipes make target characters or their case
+  pairs; U+A780 was typed for U+A7AD).
+- Geometry operations need verifying: Skia's union fails on coinciding
+  curves (check the result row by row), differences leave slivers (filter
+  by area), transformations leave fractions (round to whole units).
+- Do not copy single glyphs between UFOs: aliases keep stale widths,
+  composites point at other versions. Regenerate whole styles.
+- The tools find candidates; the person's eye decides. Make review sheets
+  (`make strokes`, `make proof`), and put designed exceptions (ξ, 7) on the
+  known lists rather than "fixing" them.
+
 ## Tests are the safety net
 
 - `make test` (≈90 s) runs on every commit via the pre-commit hook
@@ -126,7 +176,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   nodes, kinks, extremes, whole units, alignment zones, stem weights, the
   italic's slant, accent gaps, the Bold's widths, and derived letters
   against their recipe's base, `scripts/quality/derived.py`: base kept,
-  stem, whole advance, an italic one made from the roman; `quality*.txt`, regenerate
+  stem, whole advance, an italic one made from the roman; glyphs darker or
+  lighter than their kind, `scripts/quality/strokes.py`: each main stroke
+  against n/o, H/O, h.sc/o.sc, ±10 %; `quality*.txt`, regenerate
   with `update_test_data.py --quality`) against each style's known findings (`glyph-lint*.txt`; regenerate
   with `update_test_data.py --lint`). derive.py, make_italic.py and
   make_bold.py clean specks, twists, pinholes, steps and ledges from what they
@@ -140,13 +192,33 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   say in the commit what changed and why.
 - Never commit with `--no-verify` unless the person asked for it.
 
+## Working economically
+
+Token budgets run out on this project; keep the expensive model for
+analysis, design decisions and new tools, and hand the loops to the project
+agents (`.claude/agents/`):
+
+- `font-runner` (Haiku): `make generate`, tests, `make reproduce`, `make
+  otf`/`proof`, baseline updates you name exactly. Reports pass/fail and
+  failing names only.
+- `font-measure` (Sonnet): strokes.py, derived.py, checks.py, glyph_lint.py,
+  greek_pairs.py, `make pairs`, `make regress`: returns a short table and
+  the paths of the full reports.
+- Searches through the code: the built-in Explore agent.
+
+Write long outputs to files and grep them; render only the glyphs in
+question, small. One task per session (`/clear` between tasks): CLAUDE.md
+and git hold the state.
+
 ## Handy commands
 
 | | |
 |---|---|
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
+| `make generate` | regenerate Italic, Bold, Bold Italic from the Regular (then normalize, check for sync conflicts) |
 | `make reproduce` | do the generated styles come out of their generators as committed? |
+| `make strokes` | `build/quality/strokes-STYLE.pdf`: glyphs darker or lighter than their kind, each between its references, for review |
 | `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `textpages.pdf` (full book pages, mixed styles), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
 | `make udhr` | `build/proofs/udhr-quarto.pdf`: one quarto page per language (the UDHR; `scripts/udhr_book.py`, texts fetched once into `build/udhr/`) |
 | `make qa` | full fontbakery reports in `build/qa/` |

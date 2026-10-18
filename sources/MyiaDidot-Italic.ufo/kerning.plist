@@ -654,6 +654,8 @@
 			<integer>-176</integer>
 			<key>public.kern2.Theta</key>
 			<integer>-112</integer>
+			<key>public.kern2.alphatonos</key>
+			<integer>-175</integer>
 			<key>public.kern2.uni03F9</key>
 			<integer>-40</integer>
 		</dict>
@@ -1301,6 +1303,17 @@
 			<key>public.kern2.y</key>
 			<integer>-80</integer>
 		</dict>
+		<key>public.kern1.alpha</key>
+		<dict>
+			<key>public.kern2.delta</key>
+			<integer>-70</integer>
+			<key>public.kern2.sigma1</key>
+			<integer>-91</integer>
+			<key>public.kern2.xi</key>
+			<integer>-73</integer>
+			<key>public.kern2.zeta</key>
+			<integer>-79</integer>
+		</dict>
 		<key>public.kern1.b</key>
 		<dict>
 			<key>public.kern2.j</key>
@@ -1349,7 +1362,7 @@
 			<key>public.kern2.delta</key>
 			<integer>-101</integer>
 			<key>public.kern2.epsilontonos</key>
-			<integer>-158</integer>
+			<integer>-47</integer>
 			<key>public.kern2.gamma</key>
 			<integer>-130</integer>
 			<key>public.kern2.lambda</key>
@@ -1369,6 +1382,13 @@
 			<key>public.kern2.uni03F9</key>
 			<integer>-127</integer>
 		</dict>
+		<key>public.kern1.eta</key>
+		<dict>
+			<key>public.kern2.nu</key>
+			<integer>86</integer>
+			<key>public.kern2.rho</key>
+			<integer>82</integer>
+		</dict>
 		<key>public.kern1.k</key>
 		<dict>
 			<key>public.kern2.a</key>
@@ -1381,6 +1401,11 @@
 			<integer>-84</integer>
 			<key>public.kern2.v</key>
 			<integer>-42</integer>
+		</dict>
+		<key>public.kern1.lambda</key>
+		<dict>
+			<key>public.kern2.epsilontonos</key>
+			<integer>15</integer>
 		</dict>
 		<key>public.kern1.quoteleft</key>
 		<dict>
@@ -1395,6 +1420,25 @@
 		<dict>
 			<key>public.kern2.comma</key>
 			<integer>-104</integer>
+		</dict>
+		<key>public.kern1.sigma</key>
+		<dict>
+			<key>public.kern2.etatonos</key>
+			<integer>-124</integer>
+			<key>public.kern2.kappa</key>
+			<integer>-127</integer>
+			<key>public.kern2.upsilon</key>
+			<integer>-120</integer>
+		</dict>
+		<key>public.kern1.tau</key>
+		<dict>
+			<key>public.kern2.etatonos</key>
+			<integer>-110</integer>
+		</dict>
+		<key>public.kern1.theta</key>
+		<dict>
+			<key>public.kern2.nu</key>
+			<integer>71</integer>
 		</dict>
 		<key>public.kern1.tonos</key>
 		<dict>
@@ -2113,7 +2157,7 @@
 			<key>public.kern2.delta</key>
 			<integer>-141</integer>
 			<key>public.kern2.epsilontonos</key>
-			<integer>-159</integer>
+			<integer>70</integer>
 			<key>public.kern2.etatonos</key>
 			<integer>-108</integer>
 			<key>public.kern2.gamma</key>

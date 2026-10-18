@@ -10,11 +10,15 @@ J zone 1                         # 2026-10-16 known at the start (quality checks
 Omicrontonos accent 1            # 2026-10-16 known at the start (quality checks added): above tonos gap -475, usually -447
 Psi kink 2                       # 2026-10-16 known at the start (quality checks added): 1903,1310 3.6 degrees; 1615,1266 4.1 degrees
 R zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+S stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 249 against 306 (0.82, lighter)
+Sigma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 267 against 306 (0.87, lighter)
 Upsilon extreme 1                # 2026-10-16 known at the start (quality checks added): 1280,1156 10 units past
+Xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 151 against 306 (0.49, lighter)
 a extreme 1                      # 2026-10-16 known at the start (quality checks added): 910,50 5 units past
 anoteleia width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 aogonek extreme 1                # 2026-10-16 known at the start (quality checks added): 910,50 5 units past
 aringacute.sc kink 2             # 2026-10-16 known at the start (quality checks added): 588,1390 5.4 degrees; 685,1330 2.8 degrees
+aringacute.sc stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 241 against 273 (0.88, lighter)
 asterisk extreme 4               # 2026-10-16 known at the start (quality checks added): 502,1043 6 units past; 501,1063 6 units past; 736,1083 6 units past; 737,1063 6 units past
 asterisk kink 5                  # 2026-10-16 known at the start (quality checks added): 518,1323 3.7 degrees; 720,1323 3.7 degrees; 720,803 4.3 degrees; 619,610 1.5 degrees; 518,803 4.3 degrees
 asterisk smooth 4                # 2026-10-16 known at the start (quality checks added): 751,1419 2.1 degrees; 791,881 2.2 degrees; 751,709 2.1 degrees; 447,881 2.2 degrees
@@ -29,13 +33,17 @@ chi smooth 1                     # 2026-10-16 known at the start (quality checks
 comma width 1                    # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 dagger smooth 4                  # 2026-10-16 known at the start (quality checks added): 482,923 2.4 degrees; 831,923 2.4 degrees; 831,794 2.4 degrees; 482,794 2.4 degrees
 daggerdbl smooth 4               # 2026-10-16 known at the start (quality checks added): 482,987 2.4 degrees; 831,987 2.4 degrees; 831,-73 2.4 degrees; 482,-73 2.4 degrees
+delta stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 202 against 261 (0.77, lighter)
 dollar smooth 1                  # 2026-10-16 known at the start (quality checks added): 936,1189 2.8 degrees
 eight kink 1                     # 2026-10-16 known at the start (quality checks added): 602,624 3.7 degrees
 eight smooth 1                   # 2026-10-16 known at the start (quality checks added): 569,871 2.7 degrees
+eight stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 250 against 306 (0.82, lighter)
 eightoldstyle kink 1             # 2026-10-16 known at the start (quality checks added): 502,890 3.6 degrees
 eightoldstyle smooth 1           # 2026-10-16 known at the start (quality checks added): 640,615 2.1 degrees
+eightoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 224 against 261 (0.86, lighter)
 eightsuperior kink 1             # 2026-10-16 known at the start (quality checks added): 365,1146 6.6 degrees
 eng.sc smooth 1                  # 2026-10-16 known at the start (quality checks added): 791,-251 2.1 degrees
+epsilon stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 176 against 261 (0.67, lighter)
 estimated extreme 1              # 2026-10-16 known at the start (quality checks added): 912,32 5 units past
 estimated smooth 2               # 2026-10-16 known at the start (quality checks added): 152,743 2.3 degrees; 1673,743 2.3 degrees
 exclam width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
@@ -57,8 +65,11 @@ ff smooth 1                      # 2026-10-16 known at the start (quality checks
 ffl extreme 1                    # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
 ffl kink 3                       # 2026-10-16 known at the start (quality checks added): 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
 florin extreme 1                 # 2026-10-16 known at the start (quality checks added): 1009,1396 6 units past
+florin stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 227 against 261 (0.87, lighter)
 florin zone 1                    # 2026-10-16 known at the start (quality checks added): top -8 from 1496
 fraction width 1                 # 2026-10-16 known at the start (quality checks added): 1.45 of the Regular's, usually 1.09
+g stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
+gamma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 185 against 261 (0.71, lighter)
 germandbls kink 1                # 2026-10-16 known at the start (quality checks added): 476,172 4.8 degrees
 germandbls smooth 1              # 2026-10-16 known at the start (quality checks added): 1012,1228 2.7 degrees
 germandbls.sc kink 1             # 2026-10-16 known at the start (quality checks added): 741,173 6.9 degrees
@@ -68,6 +79,7 @@ hook kink 2                      # 2026-10-16 known at the start (quality checks
 horn smooth 1                    # 2026-10-16 known at the start (quality checks added): 524,170 3.9 degrees
 i accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
 integral smooth 1                # 2026-10-16 known at the start (quality checks added): 994,1366 2.9 degrees
+iota stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 222 against 261 (0.85, lighter)
 j accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
 j.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 278,66 7 units past
 j.sc kink 1                      # 2026-10-16 known at the start (quality checks added): 33,142 7.7 degrees
@@ -76,6 +88,7 @@ j.sc zone 2                      # 2026-10-16 known at the start (quality checks
 kappa zone 1                     # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 lambda smooth 1                  # 2026-10-16 known at the start (quality checks added): 248,1297 3.4 degrees
+lambda.sc stroke 1               # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 242 against 273 (0.89, lighter)
 longs smooth 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
 longs_b kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
 longs_h kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
@@ -85,11 +98,17 @@ longs_longs_l extreme 1          # 2026-10-16 known at the start (quality checks
 longs_longs_l kink 1             # 2026-10-16 known at the start (quality checks added): 739,1298 6.5 degrees
 ninesuperior smooth 1            # 2026-10-16 known at the start (quality checks added): 271,757 2.4 degrees
 nu zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+oe stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 315 against 279 (1.13, darker)
+omicron stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
 ordfeminine extreme 2            # 2026-10-16 known at the start (quality checks added): 671,954 8 units past; 770,913 6 units past
 oslash zone 2                    # 2026-10-16 known at the start (quality checks added): bottom -26 from 0; top +26 from 884
 period width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+phi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 261 (0.80, lighter)
 phi zone 1                       # 2026-10-16 known at the start (quality checks added): top +24 from 884
-psi smooth 1                     # 2026-10-16 known at the start (quality checks added): 1089,756 2.8 degrees
+phisymbolgreek stroke 1          # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 205 against 261 (0.78, lighter)
+pi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 227 against 261 (0.87, lighter)
+pisymbolgreek smooth 1           # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
+psi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 261 (0.77, lighter)
 psi.sc kink 1                    # 2026-10-16 known at the start (quality checks added): 1479,946 5.5 degrees
 q.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 1160,-299 5 units past
 q.sc smooth 1                    # 2026-10-16 known at the start (quality checks added): 1084,-278 3.0 degrees
@@ -104,18 +123,29 @@ quotesingle width 1              # 2026-10-16 known at the start (quality checks
 r.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
 r.sc zone 1                      # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 registered extreme 1             # 2026-10-16 known at the start (quality checks added): 1350,348 7 units past
+rho stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 215 against 261 (0.82, lighter)
 rhosymbolgreek extreme 1         # 2026-10-16 known at the start (quality checks added): 720,-503 8 units past
 rhosymbolgreek smooth 1          # 2026-10-16 known at the start (quality checks added): 649,-491 2.7 degrees
+rhosymbolgreek stroke 1          # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 197 against 261 (0.75, lighter)
+s stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 214 against 261 (0.82, lighter)
+s.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 223 against 273 (0.82, lighter)
 s_t extreme 1                    # 2026-10-16 known at the start (quality checks added): 560,869 15 units past
 s_t kink 4                       # 2026-10-16 known at the start (quality checks added): 622,184 5.4 degrees; 93,662 3.6 degrees; 853,1332 1.5 degrees; 291,727 6.2 degrees
 section smooth 1                 # 2026-10-16 known at the start (quality checks added): 748,1215 2.5 degrees
+seven stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 213 against 306 (0.70, lighter)
+sevenoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 261 (0.59, lighter)
 sigma.sc smooth 1                # 2026-10-16 known at the start (quality checks added): 812,221 2.1 degrees
+sigma.sc stroke 1                # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 199 against 273 (0.73, lighter)
 sigma1 smooth 2                  # 2026-10-16 known at the start (quality checks added): 476,176 2.3 degrees; 586,-149 2.2 degrees
+sigma1 stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 261 (0.60, lighter)
+sigmalunatesymbolgreek stroke 1  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 171 against 261 (0.65, lighter)
 sixsuperior smooth 1             # 2026-10-16 known at the start (quality checks added): 505,1340 2.9 degrees
-thetasymbolgreek smooth 1        # 2026-10-16 known at the start (quality checks added): 240,127 2.7 degrees
+tau stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 158 against 261 (0.61, lighter)
+thetasymbolgreek stroke 1        # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 200 against 261 (0.77, lighter)
 thorn.sc zone 1                  # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 trademark smooth 1               # 2026-10-16 known at the start (quality checks added): 280,1346 2.5 degrees
 two kink 1                       # 2026-10-16 known at the start (quality checks added): 443,195 3.0 degrees
+two stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 226 against 306 (0.74, lighter)
 u.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 u1D459 kink 1                    # 2026-10-16 known at the start (quality checks added): 217,153 5.8 degrees
 u1D459 zone 1                    # 2026-10-16 known at the start (quality checks added): bottom -4 from 0
@@ -126,6 +156,7 @@ u1D513 kink 4                    # 2026-10-16 known at the start (quality checks
 u1D513 smooth 3                  # 2026-10-16 known at the start (quality checks added): 1422,1244 2.1 degrees; 1118,731 2.2 degrees; 1091,1284 2.6 degrees
 u1D513 zone 1                    # 2026-10-16 known at the start (quality checks added): top +18 from 1434
 u1D516 kink 1                    # 2026-10-16 known at the start (quality checks added): 739,382 1.1 degrees
+u1D516 stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 377 against 330 (1.14, darker)
 u1D52D smooth 3                  # 2026-10-16 known at the start (quality checks added): 1085,759 2.2 degrees; 1085,360 2.8 degrees; 848,98 2.5 degrees
 uni0187 extreme 1                # 2026-10-16 known at the start (quality checks added): 1290,1430 16 units past
 uni0187 kink 1                   # 2026-10-16 known at the start (quality checks added): 1199,1362 3.5 degrees
@@ -137,9 +168,11 @@ uni0191 smooth 1                 # 2026-10-16 known at the start (quality checks
 uni0193 extreme 1                # 2026-10-16 known at the start (quality checks added): 1290,1430 16 units past
 uni0193 kink 1                   # 2026-10-16 known at the start (quality checks added): 1199,1362 3.5 degrees
 uni0194 smooth 2                 # 2026-10-16 known at the start (quality checks added): 1298,1425 2.4 degrees; 1322,1131 2.2 degrees
+uni0194 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 191 against 306 (0.63, lighter)
 uni0194 zone 1                   # 2026-10-16 known at the start (quality checks added): top -9 from 1434
 uni0196 kink 2                   # 2026-10-16 known at the start (quality checks added): 332,172 4.7 degrees; 704,244 4.1 degrees
 uni0196 smooth 2                 # 2026-10-16 known at the start (quality checks added): 514,1299 2.5 degrees; 249,275 2.6 degrees
+uni0196 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 242 against 306 (0.79, lighter)
 uni0196 zone 1                   # 2026-10-16 known at the start (quality checks added): top +21 from 1434
 uni0198 kink 1                   # 2026-10-16 known at the start (quality checks added): 626,804 3.6 degrees
 uni0199 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
@@ -165,11 +198,18 @@ uni01B9 kink 4                   # Bold derived letters made of their Bold base 
 uni01B9 smooth 1                 # 2026-10-16 known at the start (quality checks added): 944,-76 2.2 degrees
 uni01B9.sc kink 1                # 2026-10-16 known at the start (quality checks added): 718,-23 5.5 degrees
 uni01B9.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 590,151 2.8 degrees
+uni01C0 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
+uni01C1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
+uni01C2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
+uni01E5 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
 uni0237.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni023A stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 407 against 330 (1.23, darker)
 uni023B smooth 3                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 245,281 2.9 degrees; 1297,1034 2.6 degrees; 463,472 2.8 degrees
 uni023C.sc kink 1                # Bold derived letters made of their Bold base (make_bold.py follow_bases): 170,207 4.6 degrees
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
 uni0242 kink 1                   # 2026-10-16 known at the start (quality checks added): 60,772 3.6 degrees
+uni0242 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 184 against 261 (0.70, lighter)
+uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 173 against 273 (0.63, lighter)
 uni0248 smooth 1                 # 2026-10-16 known at the start (quality checks added): 350,147 2.3 degrees
 uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni0249.sc kink 1                # 2026-10-16 known at the start (quality checks added): 33,142 7.7 degrees
@@ -183,8 +223,12 @@ uni0255 kink 4                   # 2026-10-16 known at the start (quality checks
 uni0257.sc kink 1                # 2026-10-16 known at the start (quality checks added): -23,868 3.4 degrees
 uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 689,552 3.8 degrees
 uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 224,362 2.1 degrees
+uni025B.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 179 against 273 (0.65, lighter)
 uni025B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +16 from 1040
-uni025D kink 1                   # 2026-10-16 known at the start (quality checks added): 742,623 6.8 degrees
+uni025C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 176 against 261 (0.67, lighter)
+uni025D kink 2                   # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
+uni025D smooth 1                 # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
+uni025D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 186 against 261 (0.71, lighter)
 uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of uni025C kept (attach)
 uni025E kink 1                   # 2026-10-16 known at the start (quality checks added): 422,-7 3.2 degrees
 uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from 0
@@ -199,6 +243,7 @@ uni0266.sc extreme 2             # 2026-10-16 known at the start (quality checks
 uni0266.sc kink 2                # 2026-10-16 known at the start (quality checks added): 215,588 3.7 degrees; 638,891 2.7 degrees
 uni0267 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
 uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 554,177 2.0 degrees
+uni0269.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 227 against 273 (0.83, lighter)
 uni026B.sc smooth 2              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 500,555 2.8 degrees; 166,483 5.3 degrees
 uni026E kink 2                   # 2026-10-16 known at the start (quality checks added): 608,-132 5.1 degrees; 583,-221 5.2 degrees
 uni026F.sc smooth 1              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 792,229 3.2 degrees
@@ -217,12 +262,14 @@ uni027D.sc kink 2                # 2026-10-16 known at the start (quality checks
 uni0280.sc extreme 1             # ʀ.sc: the small-cap Ʀ (derive.py lower), emboldened: 1081,-100 6 units past
 uni0281 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1056,1055 3.7 degrees
 uni0282 kink 1                   # 2026-10-16 known at the start (quality checks added): 116,-46 7.2 degrees
+uni0282 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 214 against 261 (0.82, lighter)
 uni0288 smooth 1                 # 2026-10-16 known at the start (quality checks added): 561,-207 2.6 degrees
 uni0288.sc kink 1                # 2026-10-16 known at the start (quality checks added): 899,-129 5.4 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni028A.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 993,860 3.7 degrees; 235,860 4.0 degrees
 uni028B kink 1                   # 2026-10-16 known at the start (quality checks added): 1031,63 4.2 degrees
 uni028B zone 1                   # 2026-10-16 known at the start (quality checks added): top +6 from 884
+uni028C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 242 against 273 (0.89, lighter)
 uni028C.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -3 from 0
 uni028E smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 852,1354 2.4 degrees
 uni0291 kink 1                   # 2026-10-16 known at the start (quality checks added): 445,202 6.6 degrees
@@ -230,10 +277,14 @@ uni0292 kink 2                   # 2026-10-16 known at the start (quality checks
 uni0292 smooth 1                 # 2026-10-16 known at the start (quality checks added): 70,-76 2.2 degrees
 uni0292.sc kink 1                # 2026-10-16 known at the start (quality checks added): 339,-23 5.5 degrees
 uni0292.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 467,151 2.8 degrees
+uni0294 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
+uni0295 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -28 from 0
 uni029D.sc kink 1                # 2026-10-16 known at the start (quality checks added): 114,-377 2.6 degrees
 uni029D.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 679,193 2.9 degrees
+uni02A1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
 uni02A2 smooth 1                 # 2026-10-16 known at the start (quality checks added): 527,1396 2.9 degrees
+uni02A2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
 uni02B2 kink 3                   # 2026-10-16 known at the start (quality checks added): -66,432 3.7 degrees; 365,1402 5.3 degrees; 235,1325 1.7 degrees
 uni02B2 smooth 1                 # 2026-10-16 known at the start (quality checks added): 106,1402 2.6 degrees
 uni02B2 width 1                  # 2026-10-16 known at the start (quality checks added): 1.30 of the Regular's, usually 1.09
@@ -264,7 +315,14 @@ uni03CF kink 3                   # 2026-10-16 known at the start (quality checks
 uni03CF smooth 1                 # 2026-10-16 known at the start (quality checks added): 1207,-369 2.4 degrees
 uni03D7.sc extreme 5             # 2026-10-16 known at the start (quality checks added): 1061,155 115 units past; 1054,-341 46 units past; 661,-290 38 units past; 683,-128 21 units past; 973,-284 18 units past
 uni03D7.sc kink 3                # 2026-10-16 known at the start (quality checks added): 1061,155 2.9 degrees; 906,-200 3.0 degrees; 724,199 2.9 degrees
+uni03D9 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 212 against 261 (0.81, lighter)
 uni03DB smooth 2                 # 2026-10-16 known at the start (quality checks added): 476,176 2.3 degrees; 586,-149 2.2 degrees
+uni03DB stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 261 (0.59, lighter)
+uni03DD stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 148 against 261 (0.57, lighter)
+uni03DE stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 179 against 306 (0.58, lighter)
+uni03DF stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 179 against 261 (0.68, lighter)
+uni03DF.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 172 against 273 (0.63, lighter)
+uni03E1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 198 against 261 (0.76, lighter)
 uni03E1.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 953,465 2.7 degrees
 uni03F3.sc zone 2                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: bottom -17 from 0; top +3 from 1040
 uni0408 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
@@ -282,6 +340,7 @@ uni0436 smooth 1                 # 2026-10-16 known at the start (quality checks
 uni0436.sc kink 7                # 2026-10-16 known at the start (quality checks added): 307,943 7.1 degrees; 62,931 6.0 degrees; 649,576 4.0 degrees; 1020,576 4.0 degrees; 1606,931 6.0 degrees; 1035,524 3.1 degrees; 634,524 3.1 degree
 uni043C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -26 from 0
 uni0443.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 557,-129 2.6 degrees
+uni0443.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 243 against 273 (0.89, lighter)
 uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0444.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0446 smooth 1                 # 2026-10-16 known at the start (quality checks added): 433,-243 5.8 degrees
@@ -300,8 +359,10 @@ uni0474 kink 1                   # 2026-10-16 known at the start (quality checks
 uni0474 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1454,1302 2.3 degrees
 uni0475 extreme 1                # 2026-10-16 known at the start (quality checks added): 942,825 6 units past
 uni0475 kink 1                   # 2026-10-16 known at the start (quality checks added): 698,647 4.5 degrees
+uni0475 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 234 against 261 (0.90, lighter)
 uni0475.sc kink 1                # 2026-10-16 known at the start (quality checks added): 769,659 5.7 degrees
 uni0475.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 1068,941 2.1 degrees
+uni0475.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 229 against 273 (0.84, lighter)
 uni0496 extreme 1                # 2026-10-16 known at the start (quality checks added): 1103,-242 7 units past
 uni0497 extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
 uni0497 smooth 2                 # 2026-10-16 known at the start (quality checks added): 1222,792 2.9 degrees; 798,-243 5.8 degrees
@@ -327,12 +388,16 @@ uni1D4D kink 1                   # 2026-10-16 known at the start (quality checks
 uni1D53 kink 1                   # 2026-10-16 known at the start (quality checks added): 281,1108 1.9 degrees
 uni1D53 smooth 1                 # 2026-10-16 known at the start (quality checks added): 290,802 2.0 degrees
 uni1D53 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
+uni1D6C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 360 against 279 (1.29, darker)
+uni1D6D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 310 against 279 (1.11, darker)
 uni1D6E kink 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
 uni1D70 smooth 2                 # 2026-10-16 known at the start (quality checks added): 560,393 2.1 degrees; 694,491 2.7 degrees
+uni1D71 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 360 against 279 (1.29, darker)
 uni1D72 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 519,851 3.8 degrees
 uni1D73 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 519,851 3.8 degrees
 uni1D74 kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 108,575 4.5 degrees
 uni1D74 smooth 3                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 534,530 4.2 degrees; 500,541 2.1 degrees; 564,62 2.3 degrees
+uni1D74 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni1D7E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni1DA4 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
 uni1DA4 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
@@ -398,6 +463,8 @@ uni20BF kink 1                   # Bold derived letters made of their Bold base 
 uni2113 extreme 5                # 2026-10-16 known at the start (quality checks added): 557,555 25 units past; 473,152 5 units past; 733,1500 17 units past; 767,1027 15 units past; 637,1025 15 units past
 uni2113 smooth 1                 # 2026-10-16 known at the start (quality checks added): 664,156 2.7 degrees
 uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): top +4 from 1496
+uni2135 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 308 against 279 (1.10, darker)
+uni2136 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 174 against 261 (0.67, lighter)
 uni2205 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 763,1339 3.1 degrees
 uni22EE width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 uni2C62 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 642,760 2.5 degrees
@@ -408,6 +475,8 @@ uni2C72 extreme 1                # 2026-10-16 known at the start (quality checks
 uni2C73 extreme 1                # 2026-10-16 known at the start (quality checks added): 1500,754 18 units past
 uni2C73.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 1425,808 2.8 degrees
 uni2E0E extreme 4                # 2026-10-16 known at the start (quality checks added): 1175,0 24 units past; 796,-64 24 units past; 417,1396 24 units past; 796,1460 24 units past
+uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 261 (0.77, lighter)
+uniA78C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 194 against 273 (0.71, lighter)
 uniA7B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 737,262 3.7 degrees
 uniA7B6 kink 5                   # 2026-10-16 known at the start (quality checks added): 509,1457 5.3 degrees; 927,1071 6.3 degrees; 1286,1465 4.7 degrees; 1292,-28 1.1 degrees; 580,-25 1.1 degrees
 uniA7B6 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1143,120 2.1 degrees
@@ -417,9 +486,14 @@ uniA7CB kink 1                   # 2026-10-16 known at the start (quality checks
 uniA7CB smooth 2                 # 2026-10-16 known at the start (quality checks added): 1280,1388 2.5 degrees; 1155,1250 2.9 degrees
 uogonek.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 upsilon.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 965,825 10 units past
+v.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 229 against 273 (0.84, lighter)
 v.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+w.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 229 against 273 (0.84, lighter)
 w.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 xi extreme 1                     # 2026-10-16 known at the start (quality checks added): 251,1623 5 units past
+xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 148 against 261 (0.57, lighter)
+xi.sc stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 136 against 273 (0.50, lighter)
 y smooth 1                       # 2026-10-16 known at the start (quality checks added): 223,-470 2.4 degrees
 yen kink 1                       # 2026-10-16 known at the start (quality checks added): 514,691 1.9 degrees
 zeta extreme 1                   # 2026-10-16 known at the start (quality checks added): 259,1567 7 units past
+zeta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 153 against 261 (0.59, lighter)
