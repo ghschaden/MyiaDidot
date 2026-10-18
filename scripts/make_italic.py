@@ -740,7 +740,19 @@ def derive_stage(font, regular):
         capital = band == "c" or (isinstance(band, tuple) and band[:1] == ("c",))
         old = up[name]
         try:
-            if op in ("rhotic", "glottal"):
+            if ch == "ɗ":
+                # The Italic d's swashy ascender collides with the added hook.
+                # Start from the clean Regular hooked-d outline, then let put()
+                # apply the Italic slant and the normal derived-glyph cleanup.
+                g = up[name]
+                g.clearContours()
+                g.clearComponents()
+                g.clearAnchors()
+                regular[name].draw(g.getPen())
+                g.width = regular[name].width
+                for a in regular[name].anchors:
+                    g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+            elif op in ("rhotic", "glottal"):
                 if op == "rhotic":
                     out, width = rhotic(up, source, band)
                 else:
@@ -1222,12 +1234,24 @@ def main():
     # and upright signs left as they are
     for g in font:
         # (not those kept from the last run: they have it)
-        if g.contours and g.name not in marks and g.name not in kept and g.lib.get(SOURCE_KEY) in WEIGHTED:
+        if (g.contours and g.name not in marks and g.name not in kept
+                and g.lib.get(SOURCE_KEY) in WEIGHTED):
             rec = RecordingPen()
             for c in g.contours:
                 c.draw(rec)
             g.clearContours()
-            weight_thick(rec, WEIGHT).draw(g.getPen())
+            # Ɗ's hooked d begins with the heavier Regular outline. Narrow it
+            # slightly to match the Italic d, then add weight to its strokes.
+            amount = 15 if g.name == "uni0257" else WEIGHT
+            weighted = RecordingPen()
+            weight_thick(rec, amount).draw(weighted)
+            if g.name == "uni0257":
+                weighted.draw(TransformPen(g.getPen(), (0.9, 0, 0, 1, 0, 0)))
+                g.width *= 0.9
+                for anchor in g.anchors:
+                    anchor.x *= 0.9
+            else:
+                weighted.draw(g.getPen())
     cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)

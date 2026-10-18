@@ -3,8 +3,9 @@
     python scripts/charset_proof.py FONT OUT.tex [--baseline OLDFONT]
 
 Characters missing from --baseline are printed in red, so new glyphs can be
-reviewed at a glance. Each character is also shown between H/n (or Η/η,
-Н/н for Greek and Cyrillic) to judge spacing.
+reviewed at a glance. Every cmap entry gets a labeled cell; nonprinting
+characters and spaces use a visible placeholder. Each printable character is
+also shown between H/n (or Η/η, Н/н for Greek and Cyrillic) to judge spacing.
 """
 
 import argparse
@@ -47,18 +48,23 @@ def main():
     lines = [PREAMBLE % {"name": os.path.basename(args.font), "path": font_path}]
     new = sorted(set(cmap) - old)
     lines.append(r"{\Large %s}\par\medskip" % os.path.basename(args.font).replace("_", r"\_"))
-    lines.append(r"%d characters, \textcolor{red}{%d new}\par\bigskip" % (len(cmap), len(new)))
+    lines.append(r"%d encoded characters, \textcolor{red}{%d new}\par\bigskip" % (len(cmap), len(new)))
+    lines.append(r"A square marks a space, control, format, or other nonprinting character.\par\medskip")
 
     current = None
     for cp in sorted(cmap):
-        if cp < 0x20 or cp == 0xAD or unicodedata.category(chr(cp)) in ("Cc", "Zs", "Cf"):
-            continue
         b = block(chr(cp))
         if b != current:
             lines.append(r"\par\bigskip{\large\bfseries %s}\par\smallskip" % b)
             current = b
         ch = chr(cp)
-        shown = ("◌" + ch) if unicodedata.category(ch) == "Mn" and 0x25CC in cmap else ch
+        category = unicodedata.category(ch)
+        if category in ("Cc", "Cf", "Zs", "Zl", "Zp") or cp == 0xAD or 0xFE00 <= cp <= 0xFE0F or 0xE0100 <= cp <= 0xE01EF:
+            # Spaces and controls have cmap entries but no independently
+            # printable outline. Keep them in the inventory with a placeholder.
+            shown = r"\rule{0.45em}{0.45em}"
+        else:
+            shown = ("◌" + ch) if category == "Mn" and 0x25CC in cmap else ch
         color = "red" if cp in new else "black"
         lines.append(r"\cell{%04X}{%s}{%s}" % (cp, tex_escape(shown), color))
 

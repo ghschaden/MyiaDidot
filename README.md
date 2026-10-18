@@ -9,7 +9,7 @@ Goals:
 - Regular, Italic, Bold and Bold Italic;
 - true small capitals (`smcp`, `c2sc`) in every style.
 
-Status: **Phase 2** done: Regular, Italic (from Old Standard), Bold and Bold Italic (derived), each with small caps. Next: Phase 3 (spacing, kerning, features). See FONTLOG.txt.
+Status: **Phase 2** done: Regular, Italic (from Old Standard), Bold and Bold Italic (derived), each with small caps. **Phase 3 is underway:** spacing and kerning comparisons, feature-table audits, and specimen proofs now run for all four styles. See FONTLOG.txt.
 
 ## Layout
 
@@ -33,6 +33,8 @@ make                  # fonts/otf, fonts/ttf (hinted), fonts/webfonts
 make test             # the regression test suite (also run on every commit)
 make regress          # shaping diff against the last commit (REF=...)
 make proof            # PDF proofs in build/proofs/
+make proof-svg        # rendered SVG specimen sheets for all four styles
+make pairs            # spacing/kerning comparison reports against pinned fonts
 make qa               # full fontbakery reports in build/qa/
 ```
 

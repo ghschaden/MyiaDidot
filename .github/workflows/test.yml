@@ -13,10 +13,32 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --frozen
       - run: .venv/bin/pytest -q
-      - name: build fonts
+      - name: build all styles
         run: |
-          .venv/bin/fontmake -u sources/MyiaDidot-Regular.ufo -o otf --output-dir fonts/otf
+          set -euo pipefail
+          for style in Regular Italic Bold BoldItalic; do
+            .venv/bin/fontmake \
+              -u "sources/MyiaDidot-${style}.ufo" \
+              -o otf \
+              --output-dir fonts/otf
+          done
+      - name: audit OpenType features
+        run: .venv/bin/python -I scripts/feature_audit.py fonts/otf/*.otf
+      - name: render specimen proofs
+        run: .venv/bin/python -I scripts/proof_svg.py fonts/otf/*.otf --out build/proofs/ci
+      - name: compare spacing and kerning
+        run: |
+          set -euo pipefail
+          mkdir -p build/quality
+          .venv/bin/python -I scripts/quality/fetch_refs.py
+          for style in Regular Italic Bold BoldItalic; do
+            .venv/bin/python -I scripts/quality/pairs.py "$style" \
+              > "build/quality/pairs-${style}.txt"
+          done
       - uses: actions/upload-artifact@v4
         with:
-          name: fonts
-          path: fonts/
+          name: fonts-and-proofs
+          path: |
+            fonts/
+            build/proofs/ci/
+            build/quality/pairs-*.txt

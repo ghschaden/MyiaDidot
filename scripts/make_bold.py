@@ -63,9 +63,40 @@ FIGURE_NAMES = {f"{n}{s}" for n in ("zero", "one", "two", "three", "four", "five
 # straight letters than in bold text faces; г and є tight on the right, т on
 # the left (measured, scripts/quality/pairs.py and colour.py)
 BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni0442": (26, 0)}  # t; г є т
+# Pair-level corrections measured after the Bold's global kerning scale.
+BOLD_KERNING = {
+    ("n", "t"): -28,
+    ("a", "t"): -45,
+    ("a", "s"): -29,
+    ("a", "u"): -24,
+    ("k", "t"): -44,
+    ("z", "t"): -25,
+    ("f", "s"): -41,
+    ("S", "m"): -28,
+}
 # the Bold Italic's own (from the Italic): none yet
 ITALIC_SIDEBEARINGS = {}
 ITALIC_ANCHOR_NUDGE = {}
+# Bold Italic optical-pair corrections from the pinned-reference spacing
+# comparison (scripts/quality/pairs.py). Values are final Bold Italic kern
+# values in font units; they are applied after the source kerning is scaled.
+# Most pairs had no source pair adjustment. va overrides its inherited class
+# pair; fr is made 33 units looser relative to the references' range.
+ITALIC_BOLD_KERNING = {
+    ("u", "t"): 41,
+    ("w", "a"): 57,
+    ("g", "h"): 43,
+    ("f", "r"): -95,
+    ("T", "h"): 237,
+    ("g", "a"): 89,
+    ("i", "f"): 75,
+    ("G", "r"): 121,
+    ("a", "f"): 66,
+    ("a", "y"): 67,
+    ("v", "a"): 50,
+    ("u", "f"): 92,
+    ("R", "e"): 39,
+}
 # the horn on u a little left: where the Regular's sits, the Bold's heavier
 # foot leaves a ledge beside the stem (glyph_lint)
 ANCHOR_NUDGE = {("u", "Horn"): -10}
@@ -364,6 +395,10 @@ def main():
                 g.width = round(g.width * KX + AX)
 
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}
+    if italic:
+        font.kerning.update(ITALIC_BOLD_KERNING)
+    else:
+        font.kerning.update(BOLD_KERNING)
     # hand-set positioning (room for the accents of Greek capitals, ...):
     # horizontal placement and advance scale with the outlines
     font.features.text = re.sub(

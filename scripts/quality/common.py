@@ -3,13 +3,11 @@
 The scripts compare Myia's fonts (fonts/otf, built with `make`) with
 reference fonts: Didots (Bodoni Moda at its 11 pt size, Libre Bodoni,
 Old Standard, GFS Didot) fetched once into build/refs/ by fetch_refs.py,
-and text faces from the system (Libertinus, Charis) where installed, and
-EB Garamond. A reference missing is left out. Outlines are measured
-deslanted by the font's italic angle.
+and EB Garamond. SHA-256 pins in fetch_refs.py keep the inputs stable across
+machines. Outlines are measured deslanted by the font's italic angle.
 """
 
 import math
-import subprocess
 from pathlib import Path
 
 import pathops
@@ -23,16 +21,6 @@ OUT = ROOT / "build" / "quality"
 MYIA = str(ROOT / "fonts" / "otf" / "MyiaDidot-{}.otf")
 
 
-def system_font(pattern):
-    try:
-        path = subprocess.run(["fc-match", "-f", "%{file}", pattern], capture_output=True, text=True,
-                              check=False).stdout
-    except FileNotFoundError:
-        return None
-    family = pattern.split(":")[0].split()[0].lower()
-    return path if path and family in Path(path).name.lower() else None
-
-
 def _refs(style):
     names = {
         "Regular": ["BodoniModa-11-Regular", "LibreBodoni-Regular", "OldStandard-Regular",
@@ -42,11 +30,6 @@ def _refs(style):
         "BoldItalic": ["BodoniModa-11-BoldItalic", "LibreBodoni-BoldItalic", "EBGaramond-BoldItalic"],
     }[style]
     paths = [str(REFDIR / f"{n}.ttf") for n in names if (REFDIR / f"{n}.ttf").exists()]
-    variant = {"Regular": "", "Italic": ":style=Italic", "Bold": ":style=Bold", "BoldItalic": ":style=Bold Italic"}[style]
-    for family in ("Libertinus Serif", "Charis SIL"):
-        p = system_font(family + variant)
-        if p:
-            paths.append(p)
     return paths
 
 

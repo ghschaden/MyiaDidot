@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni2E0F" format="2">
 	<unicode hex="2E0F"/>
+	<advance width="1272"/>
 	<outline>
 		<contour>
-			<point x="-453" y="-48" type="line"/>
-			<point x="-427" y="48" type="line"/>
-			<point x="1725" y="48" type="line"/>
-			<point x="1699" y="-48" type="line"/>
+			<point x="-442" y="-43" type="line"/>
+			<point x="-442" y="33" type="line"/>
+			<point x="1669" y="33" type="line"/>
+			<point x="1669" y="-43" type="line"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>Old Standard</string>
+		</dict>
+	</lib>
 </glyph>

@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality proof udhr normalize winmetrics reimport clean
+.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean
 
 all: fonts
 
@@ -37,16 +37,18 @@ otf: $(OTF)
 ttf: $(TTF)
 webfonts: $(WOFF2)
 
-fonts/otf/%.otf: sources/%.ufo $(UFO_FILES)
+fonts/otf/%.otf: sources/%.ufo $(UFO_FILES) scripts/add_stat.py
 	$(FONTMAKE) -u $< -o otf --output-path $@
+	$(PY) scripts/add_stat.py $@
 
 # Unhinted TTF in build/, then ttfautohint into fonts/ttf.
 build/unhinted/%.ttf: sources/%.ufo $(UFO_FILES)
 	$(FONTMAKE) -u $< -o ttf --flatten-components --output-path $@
 
-fonts/ttf/%.ttf: build/unhinted/%.ttf
+fonts/ttf/%.ttf: build/unhinted/%.ttf scripts/add_stat.py
 	@mkdir -p $(dir $@)
 	ttfautohint --no-info --stem-width-mode=nss --windows-compatibility $< $@
+	$(PY) scripts/add_stat.py $@
 
 fonts/webfonts/%.woff2: fonts/ttf/%.ttf
 	@mkdir -p $(dir $@)
@@ -82,15 +84,21 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 	@mkdir -p build/proofs
 	$(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-Regular.otf build/proofs/charset.tex \
 	    --baseline build/baseline/$(FAMILY)-Regular.otf
+	for s in Italic Bold BoldItalic; do \
+	    $(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-$$s.otf build/proofs/charset-$$s.tex || exit 1; \
+	done
 	$(PY) scripts/smallcap_review.py sources/$(FAMILY)-Regular.ufo fonts/otf/$(FAMILY)-Regular.otf build/proofs/smallcaps-review.tex \
 	    --drafts build/proofs/drafts-review.tex
 	$(PY) scripts/smallcap_review.py sources/$(FAMILY)-Italic.ufo fonts/otf/$(FAMILY)-Italic.otf build/proofs/smallcaps-review-Italic.tex \
 	    --drafts build/proofs/drafts-review-Italic.tex
-	cd build/proofs && for t in charset smallcaps-review drafts-review smallcaps-review-Italic drafts-review-Italic; do \
+	cd build/proofs && for t in charset charset-Italic charset-Bold charset-BoldItalic smallcaps-review drafts-review smallcaps-review-Italic drafts-review-Italic; do \
 	    lualatex -interaction=nonstopmode $$t.tex >/dev/null; done
 	cd proofs && for t in proof smallcaps samples textpages; do \
 	    lualatex -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
-	@echo "proofs: build/proofs/{charset,proof,samples,textpages,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-Italic.pdf"
+	@echo "proofs: build/proofs/{charset,charset-Italic,charset-Bold,charset-BoldItalic,proof,samples,textpages,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-Italic.pdf"
+
+proof-svg: $(OTF)
+	$(PY) scripts/proof_svg.py $(OTF) --out build/proofs/ci
 
 # One quarto page per language, the UDHR (texts fetched once into build/udhr)
 udhr: $(OTF)
@@ -103,10 +111,11 @@ udhr: $(OTF)
 
 qa: $(OTF) $(TTF)
 	@mkdir -p build/qa
-	for fmt in otf ttf; do \
-	    .venv/bin/fontbakery check-universal --html build/qa/fontbakery-$$fmt.html \
-	        --ghmarkdown build/qa/fontbakery-$$fmt.md fonts/$$fmt/*.$$fmt || true; \
-	done
+	set -u; qa_failed=0; for fmt in otf ttf; do \
+	    .venv/bin/fontbakery check-universal -x fontdata_namecheck -x fontbakery_version \
+	        --html build/qa/fontbakery-$$fmt.html \
+	        --ghmarkdown build/qa/fontbakery-$$fmt.md fonts/$$fmt/*.$$fmt || qa_failed=1; \
+	done; exit $$qa_failed
 	@echo "reports: build/qa/fontbakery-{otf,ttf}.html"
 
 # Design quality measured against reference fonts (scripts/quality/; the
@@ -129,6 +138,14 @@ quality: $(OTF) $(TTF)
 	$(QPY)/cases.py > build/quality/cases.txt
 	$(QPY)/smallsize.py fonts/ttf/*.ttf > build/quality/smallsize.txt
 	@echo "reports: build/quality/*.txt"
+
+pairs: $(OTF)
+	@mkdir -p build/quality
+	$(PY) scripts/quality/fetch_refs.py
+	for s in Regular Italic Bold BoldItalic; do \
+	    $(PY) scripts/quality/pairs.py $$s > build/quality/pairs-$$s.txt || exit 1; \
+	done
+	@echo "reports: build/quality/pairs-*.txt"
 
 normalize:
 	for u in $(UFOS); do .venv/bin/ufonormalizer -m $$u || exit 1; done

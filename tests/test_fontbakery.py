@@ -27,7 +27,11 @@ def release_otf(ufo_path, tmp_path_factory):
 def fontbakery_failures(font_path, tmp_path):
     report = tmp_path / "fb.json"
     subprocess.run(
-        [str(ROOT / ".venv/bin/fontbakery"), "check-universal", "--json", str(report), str(font_path)],
+        [
+            str(ROOT / ".venv/bin/fontbakery"), "check-universal",
+            "-x", "fontdata_namecheck", "-x", "fontbakery_version",
+            "--json", str(report), str(font_path),
+        ],
         capture_output=True, text=True, check=False,
     )
     data = json.loads(report.read_text())

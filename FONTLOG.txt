@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-16 Version 0.100 (development), Phase 3: QA foundation
+
+    * CI builds OTFs for Regular, Italic, Bold and Bold Italic, audits that
+      the expected GSUB/GPOS features are present and attached to script and
+      language systems, and saves shaped SVG specimen sheets as artifacts.
+      The sheets cover Latin, Romanian localized forms, polytonic Greek,
+      Cyrillic, small caps, discretionary ligatures, figures, fractions,
+      and stacked accents.
+    * Pair-spacing comparisons now run for all four styles in CI and are
+      saved with the font artifacts for review. Their reference-font inputs
+      are SHA-256 pinned and no longer include fonts installed on the host,
+      so measurements do not depend on the developer or runner's font set.
+    * Bold Italic: 13 frequent pairs outside the pinned references' range
+      were reviewed and corrected with pair-specific kerning exceptions
+      (Th, Gr, uf, ga, if, Re, va, gh, wa, ay, ut, af and fr). The report now
+      places all 295 frequent Bold Italic pairs within the reference range
+      tolerance; the specimen sheet includes those pairs for ongoing review.
+    * Regular: tt and tf were tightened by 33 and 45 units. Bold: eight
+      frequent pairs (nt, at, as, au, kt, zt, fs and Sm) were tightened by
+      24-45 units after the Bold's kerning scale. All four styles now have no
+      frequent pairs outside the comparison tolerance. The Regular, Bold and
+      Bold Italic shaping goldens and 2,108,104-string digests were updated
+      for the intentional advance changes.
+    * `make qa` now returns FontBakery command failures instead of masking
+      them.
+
 2026-10-15 Version 0.100 (development), Phase 2: outline checks, sides
 
     * scripts/glyph_lint.py finds outlines gone wrong (specks, twists,
