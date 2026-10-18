@@ -189,8 +189,10 @@ fiveoldstyle smooth 1            # 2026-10-16 Bold Italic: first generated (make
 fivesuperior kink 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 422,1275 4.1 degrees
 fl zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
 florin kink 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 36,-327 7.9 degrees
+florin.sc base 1                 # derived-glyph checks added (scripts/quality/derived.py): 59% of f.sc kept (hook)
 florin.sc extreme 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 653,295 6 units past
 florin.sc smooth 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -376,-78 2.9 degrees
+florin.sc stem 1                 # derived-glyph checks added (scripts/quality/derived.py): at 260 317 against f.sc's 281
 four extreme 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 795,113 8 units past
 four kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 576,849 6.8 degrees
 fouroldstyle extreme 1           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 915,-321 7 units past
@@ -392,6 +394,7 @@ uni0193 kink 6                   # 2026-10-16 Bold Italic: first generated (make
 uni0193 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.6 degrees, not 15.2
 uni0194 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +10 from 1434
 uni0197 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.4 degrees
+uni0198 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of K kept (curl)
 uni0198 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 524,1349 7 units past; 1463,1183 10 units past; 934,60 15 units past; 470,76 7 units past
 uni0198 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 808,1309 5.3 degrees; 1419,1213 2.3 degrees
 uni0198 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1248,147 2.3 degrees
@@ -400,6 +403,7 @@ uni0199 smooth 2                 # 2026-10-16 Bold Italic: first generated (make
 uni0199.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 674,53 8 units past
 uni0199.sc kink 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 315,940 5.4 degrees; 835,830 4.2 degrees; 674,53 3.2 degrees; 1031,874 1.7 degrees
 uni019A kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 296,95 1.2 degrees
+uni019A.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 321 against l.sc's 279
 uni019B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 576,1022 3.8 degrees
 uni019C kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 466,1307 3.1 degrees; 1071,340 1.7 degrees
 uni019C smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2246,1167 2.0 degrees
@@ -437,27 +441,35 @@ uni01B4.sc smooth 2              # 2026-10-16 Bold Italic: first generated (make
 uni01B8 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 533,-35 57 units past; 417,511 90 units past; 900,188 9 units past; 891,282 16 units past; 1028,509 42 units past
 uni01B9 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,-461 55 units past; 770,520 9 units past; 217,56 92 units past; 469,-253 13 units past; 603,-56 29 units past
 uni01B9 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 620,708 3.5 degrees
+uni01B9.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 43% of uni0292.sc kept (mirror)
 uni01B9.sc extreme 5             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 758,490 32 units past; 750,437 9 units past; 263,187 25 units past; 691,248 5 units past; 350,-192 13 units past
 uni01B9.sc kink 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 605,-23 4.0 degrees; 502,151 1.8 degrees
 uni01B9.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.5 degrees, not 15.2
 uni01DD.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 548,774 6 units past
+uni01DD.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 317 against e.sc's 284
 uni01E4 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
 uni01E5 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 561,-328 14 units past
 uni01E5 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -66,-293 5.8 degrees; 243,-252 6.8 degrees; 551,-373 2.5 degrees; 582,839 2.3 degrees
+uni01E5.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 34% of g.sc kept (bar)
 uni01E5.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 421,513 43 units past; 549,-24 18 units past
 uni01E5.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
 uni01E5.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +20 from 1040
 uni0237 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -9,-380 2.5 degrees; 379,615 2.1 degrees
 uni0237.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
+uni023A base 1                   # derived-glyph checks added (scripts/quality/derived.py): 58% of A kept (slash)
 uni023A extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 909,60 7 units past
 uni023A kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 244,200 4.4 degrees; 1232,146 4.3 degrees
 uni023A slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 9.9 degrees, not 15.2
 uni023A smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 935,150 2.3 degrees
 uni023B slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
+uni023C base 1                   # derived-glyph checks added (scripts/quality/derived.py): 60% of c kept (slash)
 uni023C extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 692,556 48 units past
 uni023C kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 867,692 3.2 degrees
+uni023C stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 657 322 against c's 302
+uni023C.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 36% of c.sc kept (slash)
 uni023C.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 222,55 14 units past
 uni023D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.4 degrees
+uni023E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 49% of T kept (slash)
 uni023E extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 811,1352 6 units past; 756,75 7 units past
 uni023E kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 294,863 8.0 degrees; 1279,1434 8.0 degrees
 uni023E smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1317,1305 2.5 degrees; 777,115 2.2 degrees
@@ -469,6 +481,7 @@ uni0244 smooth 2                 # 2026-10-16 Bold Italic: first generated (make
 uni0245 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 275,221 4.6 degrees; 1272,162 6.8 degrees
 uni0245 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 975,166 2.8 degrees
 uni0249 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 86,-258 2.9 degrees; 169,-249 2.9 degrees; 641,742 1.6 degrees; 411,760 5.4 degrees
+uni0249.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 37% of j.sc kept (bar)
 uni0249.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 211,66 2.7 degrees
 uni0249.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0; top +3 from 1040
 uni024C extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1209,140 6 units past
@@ -478,10 +491,13 @@ uni024D kink 4                   # 2026-10-16 Bold Italic: first generated (make
 uni024D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees
 uni024D zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
 uni024D.sc extreme 6             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 760,1040 7 units past; 974,176 24 units past; 986,45 6 units past; 900,-14 6 units past; 700,338 17 units past; 791,768 20 units
+uni024D.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 775 322 against r.sc's 284
 uni024D.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
 uni0250 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 286,633 3.6 degrees
 uni0250 zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
+uni0250.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 32% of a.sc kept (turn)
 uni0250.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
+uni0250.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 518 301 against a.sc's 270
 uni0251.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 553,9 15 units past; 421,506 38 units past
 uni0251.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
 uni0252 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 61,-23 24 units past; 286,362 15 units past; 377,876 18 units past; 877,560 11 units past
@@ -491,6 +507,8 @@ uni0253 kink 1                   # 2026-10-16 Bold Italic: first generated (make
 uni0253 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 733,1228 2.6 degrees
 uni0253 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +16 from 1434
 uni0253.sc extreme 8             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 167,369 58 units past; -38,822 7 units past; -25,750 19 units past; -228,549 35 units past; 778,1040 7 units past; 805,559 6 uni
+uni0253.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 317 against b.sc's 280
+uni0254.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 35% of c.sc kept (mirror)
 uni0254.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 810,515 43 units past; 693,1063 19 units past
 uni0254.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
 uni0255 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 600,839 1.9 degrees; 691,143 4.4 degrees; 485,153 4.1 degrees
@@ -500,6 +518,7 @@ uni0257 extreme 2                # ɗ rebuilt from the italic d with ɓ's top (m
 uni0257 kink 3                   # ɗ rebuilt from the italic d with ɓ's top (make_italic.py): 899,1177 3.4 degrees; 595,172 2.9 degrees; 582,839 2.3 degrees
 uni0257 zone 1                   # reworked hooked-d italic outline: bottom +7 from -23
 uni0257.sc extreme 6             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 167,369 58 units past; -38,822 7 units past; -25,750 19 units past; -228,549 35 units past; 844,1040 19 units past; 930,515 43 u
+uni0257.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 317 against d.sc's 279
 uni0258 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 222,-23 7 units past; 292,480 28 units past; 784,738 34 units past; 558,608 9 units past; 373,732 35 units past
 uni0259.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
 uni025A extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 921,639 5 units past; 918,509 5 units past
@@ -510,6 +529,7 @@ uni025B.sc zone 1                # 2026-10-16 Bold Italic: first generated (make
 uni025C extreme 6                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 462,208 29 units past; 266,377 6 units past; 581,619 48 units past; 244,639 11 units past; 584,884 24 units past; 578,458 20 uni
 uni025D extreme 7                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 462,208 30 units past; 266,377 7 units past; 580,619 49 units past; 244,639 11 units past; 944,828 6 units past; 940,698 5 units
 uni025D smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 150,443 2.1 degrees; 845,651 2.6 degrees
+uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 44% of uni025C kept (attach)
 uni025E extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 584,884 21 units past; 534,459 22 units past; 376,500 19 units past; 580,619 56 units past; 463,208 42 units past
 uni025E kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 732,198 4.9 degrees; 845,651 5.9 degrees
 uni025E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +7 from -23
@@ -531,6 +551,7 @@ uni0266.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make
 uni0267 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 285,996 3.4 degrees; 697,649 3.7 degrees
 uni0267 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
 uni0268 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 418,212 4.3 degrees; 330,649 5.6 degrees
+uni0268.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 320 against i.sc's 279
 uni0269 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 uni0269.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 297,148 7 units past
 uni0269.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 297,148 2.1 degrees
@@ -539,6 +560,7 @@ uni026A zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni026B extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 400,1374 6 units past
 uni026B kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 254,-23 1.1 degrees
 uni026B smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 378,1335 2.8 degrees
+uni026B.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 315 against l.sc's 279
 uni026C extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 193,757 13 units past; 274,607 7 units past
 uni026C kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 98,289 3.2 degrees; 296,95 1.2 degrees
 uni026C smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 337,269 2.6 degrees
@@ -547,6 +569,7 @@ uni026D kink 1                   # 2026-10-16 Bold Italic: first generated (make
 uni026E smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 136,-256 2.2 degrees; 560,3 2.6 degrees
 uni026F slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
 uni026F zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
+uni026F.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 28% of u.sc kept (twin)
 uni026F.sc extreme 3             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 425,239 19 units past; 1036,239 19 units past; 516,-24 13 units past
 uni026F.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +3 from 1040
 uni0270 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 393,235 1.6 degrees
@@ -581,11 +604,16 @@ uni027D extreme 1                # 2026-10-16 Bold Italic: first generated (make
 uni027D kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 805,621 1.3 degrees; 667,702 3.9 degrees
 uni027D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees
 uni027D.sc extreme 5             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 760,1040 7 units past; 940,52 6 units past; 716,-8 6 units past; 700,338 17 units past; 791,768 20 units past
+uni027D.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 775 327 against r.sc's 284
+uni027E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 48% of r kept (attach)
 uni027E extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 703,763 30 units past; 303,600 26 units past
 uni027E kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees; 805,621 1.3 degrees; 667,702 5.0 degrees; 425,121 3.0 degrees
 uni027E smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 561,688 3.2 degrees
 uni027E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
+uni0281 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 20% of r.sc kept (flip)
 uni0281 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1363,976 6 units past; 657,271 27 units past
+uni0281 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 795 316 against r.sc's 280
+uni0281 style 1                  # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni0281 (0.58) than to r.sc (0.26)
 uni0281 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni0282 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 326,439 3.9 degrees
 uni0282 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 588,627 2.9 degrees; 314,-271 2.2 degrees
@@ -595,10 +623,13 @@ uni0284 extreme 2                # 2026-10-16 Bold Italic: first generated (make
 uni0284 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 86,-258 4.1 degrees; 614,549 1.6 degrees
 uni0288 extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 223,-144 6 units past; 432,-159 5 units past; 432,-164 17 units past
 uni0288.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1140,607 7 units past
+uni0288.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 321 against t.sc's 280
+uni0289 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 50% of u kept (bar)
 uni0289 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 890,95 8 units past
 uni0289 kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 575,700 3.9 degrees; 813,733 7.2 degrees; 934,261 7.0 degrees; 890,95 4.1 degrees; 849,-23 1.1 degrees; 366,97 3.5 degrees
 uni0289 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 384,763 3.4 degrees; 377,33 3.9 degrees
 uni0289.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 516,-24 13 units past; 425,239 19 units past
+uni0289.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 776 321 against u.sc's 279
 uni0289.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +3 from 1040
 uni028A kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 961,720 5.1 degrees; 1026,421 4.5 degrees; 469,725 7.1 degrees
 uni028A slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
@@ -615,6 +646,8 @@ uni028B.sc smooth 3              # 2026-10-16 Bold Italic: first generated (make
 uni028B.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 uni028C slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
 uni028C zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
+uni028C.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 53% of v.sc kept (turn)
+uni028C.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 264 302 against v.sc's 264
 uni028C.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -3 from 0; top +25 from 1040
 uni028D slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
 uni028D zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
@@ -633,6 +666,7 @@ uni0292.sc slant 1               # 2026-10-16 Bold Italic: first generated (make
 uni0292.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 890,344 2.5 degrees
 uni0292.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +11 from 1040
 uni0294 kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 688,849 3.6 degrees; 292,963 6.3 degrees; 693,689 2.7 degrees
+uni0295 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 46% of uni0294 kept (mirror)
 uni0295 extreme 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 273,754 39 units past; 759,1395 31 units past; 797,933 10 units past; 894,1155 19 units past; 449,1073 28 units past
 uni0295 kink 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 382,576 4.1 degrees; 273,754 3.1 degrees; 779,1074 6.3 degrees; 473,849 4.9 degrees
 uni0295 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 708,1013 2.2 degrees
@@ -886,13 +920,16 @@ uni0490 smooth 1                 # 2026-10-16 Bold Italic: first generated (make
 uni0491 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 255,124 3.0 degrees; 1016,1071 2.1 degrees
 uni0491 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 218,73 2.1 degrees
 uni0492 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.3 degrees
+uni0493.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 28% of uni0433.sc kept (bar)
 uni0496 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1509,450 4.9 degrees
 uni0496 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1967,1324 2.7 degrees
 uni0496 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
 uni0497 extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,55 6 units past; 1505,807 7 units past; 1026,-178 11 units past
 uni0497 kink 8                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 58,219 6.7 degrees; 284,251 6.8 degrees; 1641,842 5.6 degrees; 1667,641 5.0 degrees; 1442,610 6.9 degrees; 1386,670 7.5 degrees;
+uni0497.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 45% of uni0436.sc kept (tail)
 uni0497.sc extreme 5             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 553,561 5 units past; 629,820 8 units past; 1555,37 5 units past; 1331,-20 16 units past; 1141,360 14 units past
 uni0497.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1131,309 2.5 degrees
+uni0497.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 792 320 against uni0436.sc's 281
 uni0497.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +24 from 1040
 uni049A extreme 3                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 482,1307 10 units past; 1145,140 10 units past; 473,115 9 units past
 uni049A kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1623,1268 2.8 degrees; 1241,1135 7.0 degrees; 1275,-438 7.3 degrees
@@ -904,13 +941,16 @@ uni049B smooth 3                 # 2026-10-16 Bold Italic: first generated (make
 uni049B.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1159,37 6 units past
 uni049B.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 518,501 2.5 degrees
 uni049B.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1084,-83 2.1 degrees
+uni049B.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 318 against k.sc's 281
 uni04A2 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1324,144 11 units past
 uni04A2 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1062,301 1.3 degrees
+uni04A3 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 53% of uni043D kept (attach)
 uni04A3 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 7 units past
 uni04A3 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 3.2 degrees
 uni04A3.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1046,161 8 units past; 274,-196 7 units past
 uni04A3.sc kink 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 335,-275 3.7 degrees
 uni04A3.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 277,-222 2.5 degrees
+uni04A3.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 260 318 against h.sc's 281
 uni04AF kink 3                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 532,-76 2.3 degrees; 278,-76 2.3 degrees; 330,649 3.9 degrees
 uni04AF slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.7 degrees, not 15.2
 uni04B0 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 769,1367 7 units past
@@ -919,6 +959,7 @@ uni04B0 smooth 1                 # 2026-10-16 Bold Italic: first generated (make
 uni04B1 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 330,649 3.9 degrees
 uni04B1 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
 uni04B1 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 452,-364 2.4 degrees
+uni04B1.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 46% of y.sc kept (bar)
 uni04B2 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 868,1367 10 units past; 1062,60 12 units past
 uni04B2 kink 5                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 854,1259 4.7 degrees; 1283,1154 3.3 degrees; 1466,60 5.5 degrees; 1080,154 4.8 degrees; 629,272 3.5 degrees
 uni04B2 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.9 degrees, not 15.2
@@ -926,6 +967,7 @@ uni04B2 smooth 3                 # 2026-10-16 Bold Italic: first generated (make
 uni04B3 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 221,55 6 units past; 986,807 7 units past
 uni04B3 kink 7                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 59,219 3.8 degrees; 474,839 1.5 degrees; 1121,842 6.8 degrees; 1149,641 6.8 degrees; 924,610 5.8 degrees; 867,670 7.9 degrees; 8
 uni04B3 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 532,627 2.7 degrees; 549,698 2.4 degrees
+uni04B3.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 28% of uni0445.sc kept (tail)
 uni04B3.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1103,37 5 units past; 1028,-83 7 units past
 uni04B6 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1159,144 12 units past
 uni04B6 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 320,835 4.2 degrees
@@ -934,12 +976,16 @@ uni04B7 extreme 1                # 2026-10-16 Bold Italic: first generated (make
 uni04B7 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 648,301 1.9 degrees
 uni04B7 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 476,379 2.0 degrees
 uni04B7.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 982,129 7 units past; 552,668 18 units past
+uni04B7.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 520 350 against uni0447.sc's 310
 uni04BB.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 727,612 5 units past; 715,371 18 units past
 uni04D8 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1140,710 5 units past
 uni04D9.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 637,306 2.8 degrees
 uni04D9.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
 uni04E8 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 472,679 6 units past; 1166,750 7 units past
+uni04E9.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 39% of o.sc kept (bar)
 uni04E9.sc extreme 4             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 845,1063 19 units past; 549,-24 18 units past; 392,486 30 units past; 1003,553 28 units past
+uni04E9.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 246 274 against o.sc's 252
+uni04E9.sc style 1               # derived-glyph checks added (scripts/quality/derived.py): closer to the Regular's uni04E9.sc (0.65) than to o.sc (0.43)
 uni04E9.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
 uni0E3F smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 514,115 2.6 degrees
 uni1D05 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
@@ -968,9 +1014,11 @@ uni1D71 kink 3                   # 2026-10-16 Bold Italic: first generated (make
 uni1D71 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 844,696 3.5 degrees; 589,572 5.4 degrees
 uni1D72 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 805,621 1.3 degrees
 uni1D72 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees; 316,640 2.6 degrees
+uni1D72 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 663 328 against r's 308
 uni1D72 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
 uni1D73 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 805,621 1.3 degrees
 uni1D73 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 990,752 2.6 degrees; 425,121 2.1 degrees
+uni1D73 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 663 318 against uni027E's 297
 uni1D73 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni1D74 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 317,259 2.7 degrees; 556,484 7.0 degrees
 uni1D74 smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 13,204 2.3 degrees; 234,196 2.0 degrees; 588,627 2.9 degrees; 450,559 2.3 degrees
@@ -981,7 +1029,9 @@ uni1D76 smooth 1                 # 2026-10-16 Bold Italic: first generated (make
 uni1D7B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni1D7D kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 291,-363 4.8 degrees
 uni1D7D smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 344,765 3.9 degrees
+uni1D7D.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 54% of p.sc kept (bar)
 uni1D7D.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1071,963 10 units past; 847,709 27 units past
+uni1D7D.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 321 against p.sc's 283
 uni1DA4 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 251,845 5.2 degrees
 uni1DB6 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 771,780 7.8 degrees; 251,845 5.2 degrees
 uni1DB6 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 712,707 2.4 degrees; 477,703 2.8 degrees
@@ -1042,9 +1092,12 @@ uni2042 smooth 20                # 2026-10-16 Bold Italic: first generated (make
 uni2071 smooth 3                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 479,852 3.7 degrees; 227,645 2.5 degrees; 322,943 2.9 degrees
 uni207F kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 488,967 1.7 degrees
 uni207F smooth 4                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 794,974 2.8 degrees; 777,852 2.1 degrees; 523,645 2.6 degrees; 620,943 2.9 degrees
+uni20A1 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 58% of C kept (lines)
+uni20A6 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 41% of N kept (lines)
 uni20A6 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 569,1307 13 units past
 uni20A6 kink 6                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 288,243 3.9 degrees; 569,1307 3.7 degrees; 1432,1163 4.2 degrees; 1445,1256 5.1 degrees; 1586,1166 5.7 degrees; 442,245 4.0 degr
 uni20A6 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 431,162 2.9 degrees
+uni20A6 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 1067 287 against N's 245
 uni20A9 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 785,1367 13 units past
 uni20A9 kink 9                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 785,1367 1.3 degrees; 773,1266 5.8 degrees; 1183,1055 6.7 degrees; 1222,1271 4.0 degrees; 1566,1367 1.1 degrees; 1920,1045 4.5 d
 uni20A9 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1520,1232 2.3 degrees
@@ -1093,11 +1146,13 @@ uni2C64 smooth 1                 # 2026-10-16 Bold Italic: first generated (make
 uni2C65 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 811,95 7 units past
 uni2C65 kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 595,172 2.9 degrees; 582,839 2.3 degrees
 uni2C65 smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 49,241 2.2 degrees; 169,649 2.0 degrees
+uni2C65.sc base 1                # derived-glyph checks added (scripts/quality/derived.py): 37% of a.sc kept (slash)
 uni2C65.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
 uni2C66 kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 320,210 4.8 degrees
 uni2C66 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 293,101 4.2 degrees
 uni2C66.sc extreme 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1140,607 7 units past
 uni2C66.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1113,874 3.3 degrees
+uni2C66.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 520 318 against t.sc's 280
 uni2C66.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +7 from 1040
 uni2C6D extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 768,10 23 units past; 550,696 51 units past
 uni2C6F extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1272,1305 5 units past
@@ -1127,6 +1182,7 @@ uniA7B7.sc smooth 1              # 2026-10-16 Bold Italic: first generated (make
 uniA7B7.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +23 from 1040
 uniA7C7 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 502,1307 2.4 degrees
 uniA7C8.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 844,1040 20 units past; 930,515 43 units past
+uniA7C8.sc stem 1                # derived-glyph checks added (scripts/quality/derived.py): at 780 320 against d.sc's 279
 uniA7CB kink 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1131,1278 4.0 degrees; 1117,1367 6.3 degrees
 uogonek kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 779,-32 7.0 degrees
 uogonek slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2

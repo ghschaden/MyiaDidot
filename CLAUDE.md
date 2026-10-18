@@ -110,7 +110,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   (`scripts/glyph_lint.py`: specks, twists, pinholes, slivers, notches,
   steps, ledges) and design quality (`scripts/quality/checks.py`: smooth
   nodes, kinks, extremes, whole units, alignment zones, stem weights, the
-  italic's slant, accent gaps, the Bold's widths; `quality*.txt`, regenerate
+  italic's slant, accent gaps, the Bold's widths, and derived letters
+  against their recipe's base, `scripts/quality/derived.py`: base kept,
+  stem, whole advance, an italic one made from the roman; `quality*.txt`, regenerate
   with `update_test_data.py --quality`) against each style's known findings (`glyph-lint*.txt`; regenerate
   with `update_test_data.py --lint`). derive.py, make_italic.py and
   make_bold.py clean specks, twists, pinholes, steps and ledges from what they

@@ -23,6 +23,11 @@ Each finding is (glyph, kind, where, detail). The kinds (criteria 7-11, 14,
            nearer than that mark's usual gap on its kind of letter
   width    (the Bold) an advance off the Bold's usual ratio to the Regular's
            by more than 10 %
+  base, stem, advance, style
+           a derived letter against the letter its recipe makes it from
+           (derive.py): too little of the base kept, its stem heavier or
+           lighter, its advance off, an italic one made from the roman
+           (scripts/quality/derived.py)
 
 tests/test_quality.py holds each style to its list of known findings
 (tests/data/quality.txt, quality-Italic.txt ...); the list only shrinks.
@@ -42,8 +47,11 @@ from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-KINDS = ("smooth", "kink", "extreme", "grid", "zone", "weight", "slant", "accent", "width")
+KINDS = ("smooth", "kink", "extreme", "grid", "zone", "weight", "slant", "accent", "width",
+         "base", "stem", "advance", "style")
+DERIVED = ("base", "stem", "advance", "style")
 
 
 def _angle(a, b):
@@ -317,6 +325,10 @@ def check(font, path=None, kinds=KINDS):
     if "width" in kinds and path and Path(path).name.endswith("-Bold.ufo"):
         regular = ufoLib2.Font.open(str(path).replace("-Bold.ufo", "-Regular.ufo"))
         rest += widths(font, regular)
+    if set(DERIVED) & set(kinds):
+        from derived import derived
+
+        rest += [f for f in derived(font, path)[0] if f[1] in kinds]
     for name, k, where, detail in rest:
         found[name].append((k, where, detail))
     return dict(found)

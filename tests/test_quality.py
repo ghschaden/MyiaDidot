@@ -1,6 +1,7 @@
 """Design quality beyond the outlines' faults: construction (smooth nodes,
 kinks, extremes, whole units), alignment zones, stem weights, the italic's
-slant, accent gaps and the Bold's widths against the Regular's.
+slant, accent gaps, the Bold's widths against the Regular's, and derived
+letters against the letters they are made from (scripts/quality/derived.py).
 
 scripts/quality/checks.py finds them; each style has its list of known
 findings, data/quality.txt (the Regular's), quality-Italic.txt,

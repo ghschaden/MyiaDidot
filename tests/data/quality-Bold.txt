@@ -151,6 +151,7 @@ uni019D smooth 1                 # 2026-10-16 known at the start (quality checks
 uni01A5.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 348,891 2.7 degrees
 uni01A6 extreme 1                # accepted case counterpart additions: 1491,62 9 units past
 uni01A6 grid 1                   # accepted case counterpart additions: 48 off whole units
+uni01AC base 1                   # derived-glyph checks added (scripts/quality/derived.py): 56% of T kept (curl)
 uni01AC kink 4                   # 2026-10-16 known at the start (quality checks added): 442,1433 5.1 degrees; 1091,1374 2.6 degrees; 608,1374 2.6 degrees; 219,1238 4.0 degrees
 uni01AD.sc kink 5                # 2026-10-16 known at the start (quality checks added): 257,1039 5.0 degrees; 730,987 6.2 degrees; 380,987 6.2 degrees; 163,774 5.3 degrees; 70,893 6.7 degrees
 uni01AE kink 1                   # 2026-10-16 known at the start (quality checks added): 697,-158 6.5 degrees
@@ -169,6 +170,7 @@ uni01B9.sc kink 1                # 2026-10-16 known at the start (quality checks
 uni01B9.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 590,151 2.8 degrees
 uni0237.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
 uni023C kink 2                   # 2026-10-16 known at the start (quality checks added): 913,661 2.7 degrees; 628,612 5.3 degrees
+uni023E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of T kept (slash)
 uni023E extreme 1                # 2026-10-16 known at the start (quality checks added): 1092,1378 14 units past
 uni023E kink 1                   # 2026-10-16 known at the start (quality checks added): 608,1374 1.9 degrees
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
@@ -191,6 +193,7 @@ uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks
 uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 224,362 2.1 degrees
 uni025B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +16 from 1040
 uni025D kink 1                   # 2026-10-16 known at the start (quality checks added): 742,623 6.8 degrees
+uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of uni025C kept (attach)
 uni025E kink 1                   # 2026-10-16 known at the start (quality checks added): 422,-7 3.2 degrees
 uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from 0
 uni0260.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 894,28 2.1 degrees
@@ -346,9 +349,12 @@ uni1D72 extreme 4                # 2026-10-16 known at the start (quality checks
 uni1D72 kink 3                   # 2026-10-16 known at the start (quality checks added): 903,737 3.7 degrees; 659,785 3.7 degrees; 641,836 2.7 degrees
 uni1D73 extreme 4                # 2026-10-16 known at the start (quality checks added): 228,533 6 units past; 456,459 8 units past; 424,351 6 units past; 195,425 9 units past
 uni1D73 kink 3                   # 2026-10-16 known at the start (quality checks added): 903,737 3.7 degrees; 659,785 3.7 degrees; 641,836 2.7 degrees
+uni1D75 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 57% of t kept (midtilde)
 uni1D75 extreme 4                # 2026-10-16 known at the start (quality checks added): 458,460 8 units past; 426,351 6 units past; 200,424 8 units past; 231,533 6 units past
 uni1D75 smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,198 2.4 degrees
+uni1D76 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 16% of z kept (midtilde)
 uni1D76 kink 1                   # 2026-10-16 known at the start (quality checks added): 736,176 3.0 degrees
+uni1D76 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 221 280 against z's 320
 uni1D7E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni1DA4 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
 uni1DA4 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
@@ -403,6 +409,8 @@ uni2071 kink 3                   # 2026-10-16 known at the start (quality checks
 uni2071 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
 uni20A1 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1333,1419 2.7 degrees
 uni20A6 kink 1                   # 2026-10-16 known at the start (quality checks added): 416,1316 4.5 degrees
+uni20A6 stem 1                   # derived-glyph checks added (scripts/quality/derived.py): at 1068 375 against N's 333
+uni20A9 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 54% of W kept (lines)
 uni20B8 kink 2                   # 2026-10-16 known at the start (quality checks added): 147,1180 3.6 degrees; 1632,1180 3.6 degrees
 uni20BE kink 2                   # 2026-10-16 known at the start (quality checks added): 1237,754 6.3 degrees; 1444,754 6.3 degrees
 uni2113 extreme 5                # 2026-10-16 known at the start (quality checks added): 557,555 25 units past; 473,152 5 units past; 733,1500 17 units past; 767,1027 15 units past; 637,1025 15 units past
@@ -415,6 +423,7 @@ uni2C64 smooth 1                 # 2026-10-16 known at the start (quality checks
 uni2C65 extreme 1                # 2026-10-16 known at the start (quality checks added): 466,431 9 units past
 uni2C65 kink 3                   # 2026-10-16 known at the start (quality checks added): 366,642 3.3 degrees; 89,664 5.4 degrees; 423,400 2.5 degrees
 uni2C65 smooth 2                 # 2026-10-16 known at the start (quality checks added): 77,195 2.0 degrees; 851,162 2.7 degrees
+uni2C66 base 1                   # derived-glyph checks added (scripts/quality/derived.py): 30% of t kept (slash)
 uni2C66 extreme 1                # 2026-10-16 known at the start (quality checks added): 470,-16 6 units past
 uni2C66 smooth 1                 # 2026-10-16 known at the start (quality checks added): 458,192 2.6 degrees
 uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +7 from 1040
