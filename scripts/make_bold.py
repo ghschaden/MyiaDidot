@@ -52,6 +52,42 @@ MARK_AX, MARK_AY = 30, 8  # accents a little heavier
 # lib: derived letters left emboldened whole, with why (follow_bases);
 # tests/test_emboldened.py holds them to a list that only shrinks
 WHOLE_KEY = "org.myiadidot.emboldenedWhole"
+# derived letters their recipe does not make well from the Bold's glyphs
+# (rederive): its cuts, placed for the Regular, leave a stub of the Bold's
+# wider serif or step into the stem; left emboldened whole (reviewed)
+BOLD_KEEP_WHOLE = {
+    "uni0265": "ɥ: a stub of the foot serif at the cut",
+    "uni027E": "ɾ: a stub of the foot serif at the cut",
+    "uni0261": "ɡ: a stub of the ear at the cut",
+    "uni028B": "ʋ: a stub of the foot serif at the cut",
+    "uni01AE": "Ʈ: the hook thin, a step where it meets the stem",
+    "uni01B2": "Ʋ: the hook a thin ring, the stem standing above it",
+    "uni0284": "ʄ: a piece of the bar left at the cut",
+    "uni019D": "Ɲ: the hook thin, a speck of the foot serif left",
+    "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
+    "uni027B": "ɻ: a notch beside the stem at the cut",
+}
+# ... and those made again though they differ from the emboldened letter
+# more than rederive allows: the difference is the point (reviewed)
+BOLD_REBUILD = {
+    "uni0290": "ʐ: the foot at the Bold's weight; emboldened whole it was much too fat",
+}
+ITALIC_BOLD_REBUILD = {}
+ITALIC_BOLD_KEEP_WHOLE = {
+    "uni019D": "Ɲ: crumbs of the foot serif at the cut",
+    "uni049B": "қ: crumbs of the cut at the descender",
+    "uni0191": "Ƒ: the tail far lighter than the stem",
+    "uni0198": "Ƙ: a stepped foot serif",
+    "uni01AE": "Ʈ: the hook thin, a step where it meets the stem",
+    "uni01B2": "Ʋ: the hook a thin ring, the stem standing above it",
+    "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
+    "uni0256": "ɖ: the tail thin where it meets the stem",
+    "uni0267": "ɧ: crumbs of the cut at the join",
+    "uni0271": "ɱ: crumbs of the cut at the join",
+    "uni027E": "ɾ: a stub of the foot serif at the cut",
+    "uni0497": "җ: a stub at the descender",
+    "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
+}
 # recipes that scale or reshape their one source outline, adding no piece:
 # no junction to thicken, emboldened whole as any letter is
 RESHAPES = {"enlarge", "stretch", "superior", "lower", "ezh", "esh", "nodot"}
@@ -110,6 +146,10 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.upsilon", "public.kern2.sigma1"): -80,  # υς
     ("public.kern1.tau", "public.kern2.epsilontonos"): -90,  # τε
     ("public.kern1.mugreek", "public.kern2.pi"): -100,  # μπ
+    # where Charis and Libertinus agree against the Bold Italic (tests/test_greek_pairs.py)
+    ("public.kern1.mugreek", "public.kern2.alphatonos"): 50,  # μα
+    ("public.kern1.lambda", "public.kern2.alphatonos"): 31,  # λα
+    ("public.kern1.alpha", "delta"): 0,  # αδ (αθ keeps the Italic's, scaled)
     ("u", "t"): 41,
     ("w", "a"): 57,
     ("g", "h"): 43,
@@ -417,12 +457,29 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             rec.replay(TransformPen(placed.getPen(), (1, 0, 0, 1, dx * kx, 0)))
             # each simplified on its own first: a base rebuilt here (ə turned)
             # winds the other way, and in one path the two would cancel
-            a, b = pathops.simplify(ink(name)), pathops.simplify(placed)
-            out = pathops.op(a, b, pathops.PathOp.UNION)
+            a = pathops.simplify(ink(name))
             # the union holds all of both, row by row, or it failed (curves
-            # that coincide): then the letter is left as emboldened
-            joined = Outline(None, None, deslant, path=out)
-            if any(compare(Outline(None, None, deslant, path=p), joined)[0]["lost"] > 0.01 for p in (a, b)):
+            # that coincide): then tried with the base a hair higher, which
+            # parts the curves (rounded away on saving), else the letter is
+            # left as emboldened
+            for nudge in (0, 0.25):
+                b = pathops.simplify(placed)
+                if nudge:
+                    b = pathops.Path()
+                    placed.draw(TransformPen(b.getPen(), (1, 0, 0, 1, 0, nudge)))
+                    b = pathops.simplify(b)
+                out = pathops.op(a, b, pathops.PathOp.UNION)
+                joined = Outline(None, None, deslant, path=out)
+                held = all(compare(Outline(None, None, deslant, path=p), joined)[0]["lost"] <= 0.01 for p in (a, b))
+                if held and nudge:
+                    # a nudged join that leaves a step or a crumb is no better
+                    from glyph_lint import step_findings, vector_findings
+
+                    simple = pathops.simplify(out)
+                    held = not (step_findings(simple) or vector_findings(simple))
+                if held:
+                    break
+            if not held:
                 failed.append(name)
                 whole[name] = f"{op}: the union with its base failed"
                 continue
@@ -511,6 +568,99 @@ def attached_small(source, font, italic):
     return changed
 
 
+def rederive(source, font, italic, whole):
+    """Derived letters left emboldened whole because they cut their base (a
+    hook replacing a stem's end, Ц's tail its foot) made again by their
+    recipe (derive.py) from the Bold's own glyphs, in the upright frame: a
+    Bold base and a Bold f-top hook, each at its weight, joined as in the
+    Regular, where emboldened whole the joins thicken and open (ɓ's bowl
+    meeting the stem). A recipe placed by the Regular's coordinates can miss
+    in the Bold, so the new letter replaces the old only if it stays close
+    to it (rows overlapping by IOU, the advance within WIDTH) and has no
+    more outline faults (glyph_lint); else it is left as it was, the reason
+    in whole updated. Returns the names changed."""
+    sys.path.insert(0, str(ROOT / "scripts" / "quality"))
+    import copy
+
+    import derive
+    from derived import Outline, _best_iou, recipes
+    from fontTools.pens.recordingPen import DecomposingRecordingPen
+    from glyph_lint import lint_glyph
+
+    iou, width = 0.85, 0.03
+    keep = ITALIC_BOLD_KEEP_WHOLE if italic else BOLD_KEEP_WHOLE
+    up = copy.deepcopy(font)
+    if italic:
+        from make_italic import shear
+
+        for g in up:
+            shear(g, -SLANT)
+    cmap = {u: g.name for g in up for u in g.unicodes}
+    # what the recipes draw by number (a hook's stem, a curl), at the Bold's
+    # stems and hairlines, not the source's
+    (_, stem, hair), (_, stem0, hair0) = derive.strokes(up, "o"), derive.strokes(source, "o")
+    up.lib[derive.STROKE_KEY] = (stem / stem0, hair / hair0)
+
+    def resolve(c):
+        if c.endswith(".sc") and len(c) == 4:
+            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
+        return cmap.get(ord(c), derive.glyph_name(c)) if len(c) == 1 else c
+
+    def parts(f, g):
+        p = pathops.Path()
+        rec = DecomposingRecordingPen(f)
+        g.draw(rec)
+        rec.replay(p.getPen())
+        return len(list(pathops.simplify(p).contours))
+
+    changed = []
+    for ch, op, base, band in recipes(italic):
+        name = resolve(ch)
+        why = whole.get(name, "")
+        if not why.endswith(("cuts its base", "does not keep its whole base")):
+            continue
+        if name in keep:
+            whole[name] = f"{op}: emboldened whole, made again from the Bold it misses ({keep[name]})"
+            continue
+        if len(base) == 1 or (base.endswith(".sc") and len(base) == 4 and not base[0].isascii()):
+            base = resolve(base)
+        if base not in up:
+            continue
+        tmp = f"_rederived.{name}"
+        order, cats = up.glyphOrder, dict(up.lib.get("public.openTypeCategories", {}))
+        try:
+            new = derive.build(up, ch, op, base, band, tmp)
+        except Exception as e:  # noqa: BLE001 (a recipe that does not run on the Bold: left whole)
+            whole[name] = f"{op}: emboldened whole, its recipe fails on the Bold ({type(e).__name__})"
+            continue
+        finally:
+            up.glyphOrder = order
+            up.lib["public.openTypeCategories"] = cats
+        old = up[name]
+        made, was = Outline(up, tmp), Outline(up, name)
+        faults = len(lint_glyph(up, new)) - len(lint_glyph(up, old))
+        # a part more than before: a remnant of what the cut should take (a serif's end)
+        faults += max(0, parts(up, new) - parts(up, old))
+        close = made.bounds is not None and was.bounds is not None and _best_iou(made, was) >= iou
+        if name in (ITALIC_BOLD_REBUILD if italic else BOLD_REBUILD) and faults <= 0:
+            close, wide = True, False
+        else:
+            wide = abs(new.width - old.width) > width * old.width
+        if not close or wide or faults > 0:
+            whole[name] = (f"{op}: emboldened whole, made again from the Bold it "
+                           + ("strays" if not close else "has faults" if faults > 0 else "changes its advance"))
+            del up[tmp]
+            continue
+        glyph = ufoLib2.objects.Glyph()
+        new.draw(TransformPen(glyph.getPen(), (1, 0, SLANT, 1, 0, 0)))
+        redraw(font[name], glyph)
+        font[name].width = new.width
+        del up[tmp]
+        whole.pop(name)
+        changed.append(name)
+    return changed
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
@@ -528,6 +678,12 @@ def main():
     # the paragraphos ⸏ ⸐ ⸑, rules under a line: a mark's weight and
     # advance, though they have one (fontbakery: base_has_width)
     marks |= {g.name for g in regular if g.unicode in (0x2E0F, 0x2E10, 0x2E11)}
+    # a modifier symbol that is another sign as it is (꞉, the colon): that
+    # sign, emboldened and widened with it, not an accent keeping its width
+    marks -= {g.name for g in regular if g.name in marks and g.width and not g.contours
+              and len(g.components) == 1 and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)
+              and unicodedata.category(chr(g.unicode or 0x2C)) == "Sk"
+              and not mark_like(regular[g.components[0].baseGlyph])}
     # what a combining mark is made of is an accent too (the spacing
     # ypogegrammeni ͺ is a modifier letter, but uni0345 is built on it)
     for g in regular:
@@ -617,6 +773,7 @@ def main():
     whole = {}
     followed = follow_bases(regular, font, italic, whole=whole)
     followed += attached_small(regular, font, italic)
+    followed += rederive(regular, font, italic, whole)
     font.lib[WHOLE_KEY] = {n: why for n, why in sorted(whole.items()) if n not in followed}
 
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}

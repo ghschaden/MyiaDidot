@@ -2,6 +2,7 @@
 
     python scripts/composites.py UFO --check            # rebuild existing, compare
     python scripts/composites.py UFO --anchors          # complete missing anchors
+    python scripts/composites.py UFO --carry-anchors    # composites keep their base's free anchors
     python scripts/composites.py UFO --add U+1EA0 ...   # add composites
     python scripts/composites.py UFO --add-missing FONT # all 'compose' chars of
                                                         # the coverage target
@@ -298,6 +299,29 @@ def ink_bounds(font, name):
     return pen.bounds
 
 
+def carry_anchors(font, log):
+    """The base's anchors no mark of it took (Á keeps A's Bottom and
+    DotBelow, for a mark added below), as Builder.recipe carries them, onto
+    the composites made by the rules that lack them (upstream's were made
+    without): only anchors missing, none moved."""
+    b = Builder(font)
+    for g in font:
+        if g.unicode is None or g.name in SPECIAL or g.contours or not g.components:
+            continue
+        try:
+            r = b.recipe(g.unicode)
+        except ValueError:
+            continue
+        mine = sorted((c.baseGlyph, round(c.transformation[4]), round(c.transformation[5])) for c in g.components)
+        if sorted((p.glyph, p.dx, p.dy) for p in r.components) != mine:
+            continue
+        have = {a.name for a in g.anchors}
+        for name, x, y in r.anchors:
+            if name not in have:
+                g.appendAnchor({"name": name, "x": x, "y": y})
+                log.append(f"{g.name}: {name} carried from its base")
+
+
 def stack_anchors(font, log, gap_lc=STACK_GAP_LC, gap_uc=STACK_GAP_UC):
     """Set TopMark/_TopMark on every top combining mark from its ink.
 
@@ -416,6 +440,8 @@ def main():
     ap.add_argument("--anchors", action="store_true")
     ap.add_argument("--sync-anchors", action="store_true")
     ap.add_argument("--stack-anchors", action="store_true")
+    ap.add_argument("--carry-anchors", action="store_true",
+                    help="give rule-made composites the base anchors no mark took")
     ap.add_argument("--rebuild-stacked", action="store_true",
                     help="regenerate composites with two or more top marks")
     ap.add_argument("--add", nargs="*", default=[])
@@ -440,6 +466,11 @@ def main():
         log = []
         stack_anchors(font, log)
         print("\n".join(log))
+        changed = changed or bool(log)
+    if args.carry_anchors:
+        log = []
+        carry_anchors(font, log)
+        print(f"{len(log)} anchors carried onto composites")
         changed = changed or bool(log)
     if args.rebuild_stacked:
         b = Builder(font)

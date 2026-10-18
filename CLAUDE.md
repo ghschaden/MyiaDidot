@@ -73,7 +73,12 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   turned or mirrored, or keeps all of it (`follow_bases`): emboldened
   whole, their junctions thicken unlike the base's strokes. Letters that
   attach a scaled-down glyph (ɬ Ꞁ's ring, ⁂) take it at the weight of its
-  scale (`attached_small`). The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
+  scale (`attached_small`). Those that cut their base (hooks, Ц's tail)
+  are made again by their recipe from the Bold's own glyphs (`rederive`;
+  what recipes draw by number at the Bold's stems and hairlines,
+  derive.STROKE_KEY), kept where the result stays close and clean; recipes
+  that miss in the Bold are reviewed exceptions (BOLD_KEEP_WHOLE,
+  ITALIC_BOLD_KEEP_WHOLE). The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make
@@ -86,7 +91,8 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   Regular: Old Standard's letters zone-scaled to Myia's metrics, Myia's
   marks and features sloped 15.2°, composites rebuilt. What Old Standard
   lacks is made in an upright frame (derive.py recipes, transplants from
-  the Regular, FontForge small caps, fitted old-style figures); the
+  the Regular (the part at the Italic's stems before the weight pass,
+  measured on n and H), FontForge small caps, fitted old-style figures); the
   Regular's extra ligatures (fb ft ſt ct ...) are left out with their
   rules, so don't run draft_ligatures.py on it; it runs smallcaps.py itself. Lib
   `org.myiadidot.italicSource` says where each glyph came from; a rerun

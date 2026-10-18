@@ -6,7 +6,7 @@ Each recipe below makes one encoded glyph from a source glyph (a glyph name,
 or an earlier recipe's character):
 
     alias     a component of the source (ɑ = α, ɪ = small-cap I); follows
-              any later change to the source
+              any later change to the source (its width on a run)
     turn      outlines turned 180° about the middle of the band given
               (x: x-height, c: cap height, s: small-cap height)
     mirror    outlines mirrored left-right
@@ -58,6 +58,9 @@ from smallcaps import DRAFT_KEY as SMALLCAP_DRAFT_KEY
 
 DRAFT_KEY = "org.myiadidot.draft"
 DERIVED_KEY = "org.myiadidot.derived"
+# font lib: (stems, hairlines) of the font against the style the recipes'
+# drawn thicknesses are for (make_bold.rederive sets it for the Bold's)
+STROKE_KEY = "org.myiadidot.strokeScale"
 
 BIG = 10000
 # parts of f and ȷ used as hooks by "attach"
@@ -330,10 +333,11 @@ RECIPES = [
                                      "r": (140, 120), "sweep": 150, "ball": 68, "t": (140, 52)},
                             (0, 0), (1, 1, 0, 0))])),
     # ʐ: the bar's right end turns down into an upright stem below the
-    # baseline that hooks to the right, as ʂ (and Charis's ʐ)
-    ("ʐ", "attach", "z", ("x", [(700, -BIG, BIG, 500)],
-                          [("curl", {"at": ("pt", 690, 29, 57), "dir": 0, "turn": "cw",
-                                     "r": (100, 100), "sweep": 90, "ball": 40, "t": (140, 57)},
+    # baseline that hooks to the right, as ʂ (and Charis's ʐ); z's beak taken
+    # off, so the hook leaves the bar's flat top (48) without a step
+    ("ʐ", "attach", "z", ("x", [(700, -BIG, BIG, 500), (520, 48, 700, 200)],
+                          [("curl", {"at": ("pt", 690, 24, 48), "dir": 0, "turn": "cw",
+                                     "r": (100, 100), "sweep": 90, "ball": 40, "t": (140, 48)},
                             (0, 0), (1, 1, 0, 0)),
                            ("line", ((790, -60), (790, -330), 140), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 790, -330, 140), "dir": 270, "turn": "ccw",
@@ -1316,6 +1320,12 @@ def attach(font, source, cuts, pieces):
     are boxes, "line" pieces straight strokes, "poly" pieces polygons (with
     curves), "curl"
     pieces drawn hooks."""
+    stems, hairs = font.lib.get(STROKE_KEY, (1, 1))
+
+    def thick(v):
+        """A drawn thickness in this font's weight: a stem's (100 and up) or a hairline's."""
+        return v * (stems if v >= 100 else hairs)
+
     out = to_path(font, font[source])
     for box in cuts:
         out = path_op(out, rect_path(*box), "DIFFERENCE")
@@ -1324,7 +1334,7 @@ def attach(font, source, cuts, pieces):
             part = rect_path(*clip)
         elif name == "line":  # a straight stroke: ((x0, y0), (x1, y1), thickness)
             rec = RecordingPen()
-            stroke(rec, clip[0], clip[1], clip[2])
+            stroke(rec, clip[0], clip[1], thick(clip[2]))
             part = to_path(None, rec=rec)
         elif name == "poly":  # a filled polygon: its points (a stroke tapering);
             # a triple of points is a curve to the last (two handles)
@@ -1339,6 +1349,12 @@ def attach(font, source, cuts, pieces):
             # does not stand out past the stroke it leaves)
             args = dict(clip)
             boxes = args.pop("cuts", ())
+            if (stems, hairs) != (1, 1):
+                if args.get("t"):
+                    args["t"] = tuple(thick(v) for v in args["t"])
+                if args.get("at", ("",))[0] == "pt" and len(args["at"]) > 3:
+                    args["at"] = (*args["at"][:3], thick(args["at"][3]), *args["at"][4:])
+                args["ball"] = args["ball"] * stems
             part = curl(font, "space", [], **args)
             for box in boxes:
                 part = path_op(part, rect_path(*box), "DIFFERENCE")
@@ -1697,6 +1713,7 @@ def main():
     cmap = {u: g.name for g in font for u in g.unicodes}
     made, kept, built = [], [], []
     bases = {}  # glyph: the glyphs its recipe read (built_from.py)
+    aliases = []  # kept aliases: (glyph, source)
 
     def probe(ch, op, source, band, name):
         """What the recipe of an existing glyph reads, built aside and dropped."""
@@ -1735,6 +1752,8 @@ def main():
             draft = lib.get(DRAFT_KEY) or (lib.get(DERIVED_KEY) and lib.get(SMALLCAP_DRAFT_KEY))
             if not (args.redraft and draft):
                 kept.append(ch)
+                if op == "alias":
+                    aliases.append((name, source))
                 # made before bases were recorded: recorded now, as they are
                 if BUILT_KEY not in lib and not font[name].components:
                     read = probe(ch, op, source, band, name)
@@ -1760,6 +1779,13 @@ def main():
     if done:
         respace(font, classifier(font, done["cut"], done["greekLower"]))
         font.lib[CUT_KEY] = done
+    # an alias follows its source's outline, and its width too where the
+    # cut moved neither (ʛ kept the width ɠ.sc had before it was redrafted)
+    for name, source in aliases:
+        g = font[name]
+        if (len(g.components) == 1 and not g.contours
+                and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
+            g.width = font[source].width
     # the bases as they are saved, cut again
     for name, read in bases.items():
         stamp(font, name, read)

@@ -298,7 +298,7 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɗ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ"}  # its own recipe fits the Italic better
+                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
 # where ɗ leaves the italic d for ɓ's top: above the bowl, below where ɓ's
 # stem begins to bend into its hook (upright frame)
@@ -376,6 +376,18 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                          ("line", ((566, 96), (562, -100), 85), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 562, -100, 85), "dir": 268, "turn": "cw",
                                                    "r": (85, 65), "sweep": 110, "ball": 34, "t": (85, 38)},
+                                          (0, 0), (1, 1, 0, 0))])),
+                  # z's bottom stroke, where it turns up, turns down instead into a
+                  # stem that hooks to the right (as the Regular's and Charis's ʐ),
+                  # the stem 110 before the weight pass (0.85 of n after it), run up
+                  # into the stroke so the inner corner is the two edges meeting
+                  "ʐ": ("attach", "z", ("x", [(600, -BIG, BIG, 400)],
+                                        [("curl", {"at": ("pt", 600, 35, 117), "dir": 0, "turn": "cw",
+                                                   "r": (90, 90), "sweep": 90, "ball": 30, "t": (110, 117)},
+                                          (0, 0), (1, 1, 0, 0)),
+                                         ("line", ((690, -20), (690, -330), 110), (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 690, -330, 110), "dir": 270, "turn": "ccw",
+                                                   "r": (112, 90), "sweep": 150, "ball": 50, "t": (110, 36)},
                                           (0, 0), (1, 1, 0, 0))])),
                   # s's bottom stroke runs on to the left and hooks down and round
                   "ʂ": ("attach", "s", ("x", [(-BIG, -BIG, 405, 360)],
@@ -570,6 +582,7 @@ def transplant(up, regular, name, source, curl=False):
     Italic's source, found where the added part meets the letter, and
     scaled about the join as much as that stroke is lighter in the Italic. A part that
     does not touch the letter (the dot of ʘ) is centred as in the Regular."""
+    import derive
     from derive import path_op, to_path
 
     rs, rt = to_path(regular, regular[source]), to_path(regular, regular[name])
@@ -623,11 +636,18 @@ def transplant(up, regular, name, source, curl=False):
         run = min(i_runs, key=lambda r: abs((r[0] + r[1]) / 2 - ix))
         dx = (run[0] + run[1]) / 2 - (r_runs[k][0] + r_runs[k][1]) / 2
         # as much lighter as the stroke it joins, at most as much as the
-        # Italic's stems are (a hairline or terminal: just that much)
+        # Italic's stems are (a hairline or terminal: just that much; a bar
+        # met at its end, whose run is its length, not its weight (ʐ's
+        # foot from z's bar): that much too)
         capital = ink_bounds(regular, source)[3] > (XH + CAP) / 2 and source[:1].isupper()
-        stems = 164 / 208 if capital else 144 / 164  # the Italic's stems to the Regular's
+        # the Italic's stems to the Regular's, as they are now (before the
+        # weight pass: the part is weighted with the letter)
+        ref, h = ("H", CAP / 2) if capital else ("n", XH / 2)
+        (a0, a1), (b0, b1) = derive.stems_at(up, ref, h)[0], derive.stems_at(regular, ref, h)[0]
+        stems = (a1 - a0) / (b1 - b0)
         w_r, w_i = r_runs[k][1] - r_runs[k][0], run[1] - run[0]
-        ratio = stems if w_r < 100 else min(1, max(stems, w_i / w_r))
+        wider = 1.15 * (208 if capital else 164)  # than any stem of its kind in the Regular
+        ratio = stems if w_r < 100 or w_r > wider else min(1, max(stems, w_i / w_r))
         if curl and right:
             # a curl from a terminal (Ƈ Ɠ Ƙ Ƴ): the Italic's stroke ends
             # where it ends, with no beak to cut; the curl starts there, as
@@ -646,6 +666,12 @@ def transplant(up, regular, name, source, curl=False):
         added = to_path(None, rec=rec)
     added = shifted(added, dx)
     letter = to_path(up, up[source])
+    if join.bounds != (0, 0, 0, 0) and removed.bounds != (0, 0, 0, 0):
+        # only what lies beyond the join, where the part takes the letter's
+        # place: what the Regular takes off before it (z's beak, for ʐ) is
+        # the Regular's own shape, which the Italic's letter does not have
+        beyond = derive_rect(jx0 - 10, -10000, 10000, 10000) if right else derive_rect(-10000, -10000, jx1 + 10, 10000)
+        removed = path_op(removed, beyond, "INTERSECTION")
     if removed.bounds != (0, 0, 0, 0):
         # what the Regular cuts away (a serif, a terminal), with room: the
         # Italic's is not quite where the Regular's is; the stroke the part
@@ -966,6 +992,9 @@ ITALIC_KERNING = {
     ("public.kern1.sigma", "public.kern2.kappa"): -127,  # σκ
     ("public.kern1.Kappa", "public.kern2.alphatonos"): -175,  # Κα
     ("public.kern1.lambda", "public.kern2.epsilontonos"): 15,  # λε (the Regular's -57)
+    # where Charis and Libertinus agree against the Italic (tests/test_greek_pairs.py)
+    ("public.kern1.sigma", "public.kern2.mugreek"): -21,  # σμ
+    ("public.kern1.rho", "public.kern2.gamma"): 32,  # ργ
 }
 # the Regular's pairs the Italic does without: tt tf were tightened for the
 # roman t (pair review); the italic t's frequent pairs were in range without
@@ -1014,6 +1043,30 @@ ANCHOR_SOURCES = {
 ANCHOR_NUDGE = {("c", "Cedilla"): (0, -4), ("e", "Cedilla"): (0, -10)}
 
 
+def roman_anchor(roman, a, width_it):
+    """x of the Regular's anchor a on an italic glyph width_it wide: in
+    proportion to the widths, slanted about half the x-height."""
+    return a.x * width_it / (roman.width or 1) + (a.y - XH / 2) * SLANT
+
+
+def missing_anchors(font, regular, marks):
+    """The anchors the Regular's glyph has and the Italic's lacks (a turned
+    letter takes none from its source, a drafted small cap only its
+    capital's), placed as roman_anchor places them; hand-drawn glyphs stay
+    as drawn. Returns the names given anchors."""
+    given = []
+    for g in font:
+        if g.name in marks or g.name not in regular or not g.width or g.lib.get(SOURCE_KEY) == "drawn":
+            continue
+        have = {a.name for a in g.anchors}
+        roman = regular[g.name]
+        for a in roman.anchors:
+            if a.name not in have:
+                g.appendAnchor({"name": a.name, "x": round(roman_anchor(roman, a, g.width)), "y": a.y})
+                given.append(g.name)
+    return sorted(set(given))
+
+
 def italic_anchors(roman, osg, width_it):
     """Myia's anchors for an Old Standard letter: where Old Standard has the
     anchor (or its stand-in), there, slid along the slant to Myia's height;
@@ -1028,7 +1081,7 @@ def italic_anchors(roman, osg, width_it):
         if pos:
             x = pos[0] + (a.y - pos[1]) * SLANT
         else:
-            x = a.x * width_it / (roman.width or 1) + (a.y - XH / 2) * SLANT
+            x = roman_anchor(roman, a, width_it)
         dx, dy = ANCHOR_NUDGE.get((roman.name, a.name), (0, 0))
         out.append((a.name, round(x + dx), a.y + dy))
     return out
@@ -1340,13 +1393,15 @@ def main():
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
     sidebearings(font, ITALIC_SIDEBEARINGS)
     font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
+    anchored = missing_anchors(font, regular, marks)
     write(font, Path(args.italic))
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "
           f"{upright_signs} signs upright, {len(derived)} derived, {len(figures)} figures, "
           f"{len(small_caps)} small caps drafted, {len(ligatures)} ligatures left out, {rebuilt} composites rebuilt, "
-          f"{len(followed)} made of their weighted base, {len(cleaned)} cleaned; "
+          f"{len(followed)} made of their weighted base, {len(cleaned)} cleaned, "
+          f"{len(anchored)} given the Regular's anchors they lacked; "
           f"{len(still)} still sloped roman (of {kept_roman})")
     for line in failed:
         print("  recipe failed:", line)

@@ -1407,6 +1407,11 @@
 			<key>public.kern2.epsilontonos</key>
 			<integer>15</integer>
 		</dict>
+		<key>public.kern1.mugreek</key>
+		<dict>
+			<key>public.kern2.pi</key>
+			<integer>-76</integer>
+		</dict>
 		<key>public.kern1.quoteleft</key>
 		<dict>
 			<key>public.kern2.uni0409</key>
@@ -1421,12 +1426,19 @@
 			<key>public.kern2.comma</key>
 			<integer>-104</integer>
 		</dict>
+		<key>public.kern1.rho</key>
+		<dict>
+			<key>public.kern2.gamma</key>
+			<integer>32</integer>
+		</dict>
 		<key>public.kern1.sigma</key>
 		<dict>
 			<key>public.kern2.etatonos</key>
 			<integer>-124</integer>
 			<key>public.kern2.kappa</key>
 			<integer>-127</integer>
+			<key>public.kern2.mugreek</key>
+			<integer>-21</integer>
 			<key>public.kern2.upsilon</key>
 			<integer>-120</integer>
 		</dict>

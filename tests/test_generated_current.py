@@ -4,8 +4,9 @@ The generated styles are checked by `make reproduce`; the Regular is drawn,
 but parts of it are generated too: the derived letters' records
 (derive.py), the small caps' aliases, accented forms, kerning, groups and
 smcp/c2sc block (smallcaps.py), the breve resized (adjust_accents.py), the
-stacked anchors (composites.py), the old-style figures' spacing and tnum
-block (space_figures.py). Each is idempotent: run again on a copy, nothing
+anchors composites keep from their base and the stacked ones
+(composites.py), the old-style figures' spacing and tnum block
+(space_figures.py). Each is idempotent: run again on a copy, nothing
 may change. A difference means an edit made by hand to a generated part, or
 a script changed without being rerun. (nfd_compose.py's ccmp block is
 checked by what it does: NFC and NFD render alike, test_composites.py.)
@@ -22,7 +23,7 @@ STEPS = [
     ["scripts/derive.py"],
     ["scripts/smallcaps.py"],
     ["scripts/adjust_accents.py"],
-    ["scripts/composites.py", "--stack-anchors", "--rebuild-stacked"],
+    ["scripts/composites.py", "--carry-anchors", "--stack-anchors", "--rebuild-stacked"],
     ["scripts/space_figures.py"],
 ]
 

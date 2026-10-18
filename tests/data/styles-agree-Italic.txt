@@ -1,26 +1,4 @@
 # Known tests/test_styles_agree.py findings (kind glyph [detail]); fixing one = deleting its line.
-anchors uni0188.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni0199.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni01A5.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni01AD.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni01B4.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni01B9.sc Bottom,DotBelow # when the check came in: the Regular's anchors missing here
-anchors uni01EF.sc Bottom,DotBelow,Horn # when the check came in: the Regular's anchors missing here
-anchors uni0242.sc Acute,Bottom,DotBelow,Dotaccent,Grave,Horn,Top,TopCap # when the check came in: the Regular's anchors missing here
-anchors uni0251.sc Acute,Bottom,DotBelow,Dotaccent,Grave,Horn,Top,TopCap # when the check came in: the Regular's anchors missing here
-anchors uni0260 DotBelow         # when the check came in: the Regular's anchors missing here
-anchors uni0260.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni0261 DotBelow         # when the check came in: the Regular's anchors missing here
-anchors uni0265 Acute,Bottom,DotBelow,Dotaccent,Grave,Horn,Top # when the check came in: the Regular's anchors missing here
-anchors uni0266.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni0272.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni028A.sc Acute,Bottom,DotBelow,Dotaccent,Grave,Horn,Top,TopCap # when the check came in: the Regular's anchors missing here
-anchors uni028B.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni0292.sc Bottom,DotBelow,Horn # when the check came in: the Regular's anchors missing here
-anchors uni029D.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni03D7.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uni2C73.sc Horn          # when the check came in: the Regular's anchors missing here
-anchors uniA7B5.sc Horn          # when the check came in: the Regular's anchors missing here
 missing c_t                      # the Regular's extra ligatures, left out with their rules (make_italic.drop_ligatures)
 missing f_b                      # the Regular's extra ligatures, left out with their rules (make_italic.drop_ligatures)
 missing f_f_b                    # the Regular's extra ligatures, left out with their rules (make_italic.drop_ligatures)
