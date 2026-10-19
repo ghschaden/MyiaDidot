@@ -109,3 +109,11 @@ tag `proofs-approved`, moved by `make visual-approve`) and shows the
 changed ones as before, after and overlay; CI does the same against the
 previous commit and uploads the report. `make diffenator` runs diffenator2
 against the same revision. `ruff check` runs in CI and the pre-commit hook.
+
+The golden shaping corpus (recommendation 3) now holds the first sentence
+of UDHR Article 1 in 56 languages (scripts/language_corpus.py extracts
+them, the corpus file is the reviewed record), every feature the fonts
+offer on its own, and common combinations (small caps with old-style
+figures, fractions, case with cpsp, ligatures and kerning switched off).
+tests/test_corpus.py fails when a feature or a language system has no
+case; the visual diff renders the same cases.

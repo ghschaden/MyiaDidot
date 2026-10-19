@@ -247,7 +247,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 - What they hold: UFO integrity, composites in sync with anchors, NFC and NFD
   rendering the same ink (with precomposed glyphs removed from cmap so
   HarfBuzz cannot recompose), coverage ratchet, golden shaping corpus
-  (`tests/data/shaping-corpus.txt`), a digest over ~1.2M shaped strings,
+  (`tests/data/shaping-corpus.txt`: real text in 56 languages, every
+  feature alone and combined; tests/test_corpus.py wants a case for each
+  feature and language system the fonts have), a digest over ~1.2M shaped strings,
   fontbakery with an allowlist, and outlines gone wrong
   (`scripts/glyph_lint.py`: specks, twists, pinholes, slivers, notches,
   steps, ledges) and design quality (`scripts/quality/checks.py`: smooth
