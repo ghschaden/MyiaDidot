@@ -468,7 +468,8 @@ RECIPES = [
     ("ɤ", "enlarge", "gamma", ("o", "o", -16, 900)),
     ("Ɤ", "enlarge", "ɤ", ("o", "O")),
     # spacing modifiers made of existing glyphs
-    ("ˮ", "double", "uni02BC", None),
+    # ˮ: the two as near as before ʼ took more room (respace.sidebearings 50, 90)
+    ("ˮ", "double", "uni02BC", -140),
     ("꞉", "alias", "colon", None),
     # the Unicode hyphen and non-breaking hyphen: the hyphen-minus's shape
     # (babel hyphenates with U+2010 in several languages)
@@ -1718,10 +1719,11 @@ def build(font, ch, op, source, band, name=None):
         g.width = round(w + dx)
         draw_path(font, src, g, out)
     elif op == "double":
-        g.width = 2 * w
+        dx = w + (band or 0)  # band: the second one nearer by that much
+        g.width = w + dx
         pen = g.getPen()
         pen.addComponent(source, (1, 0, 0, 1, 0, 0))
-        pen.addComponent(source, (1, 0, 0, 1, w, 0))
+        pen.addComponent(source, (1, 0, 0, 1, dx, 0))
     elif op in SHAPES:
         g.width = w
         sband, *rest = band

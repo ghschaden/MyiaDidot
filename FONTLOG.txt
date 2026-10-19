@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: ʼ and ʻ spaced as letters
+
+    * The modifier letters ʼ (U+02BC) and ʻ (U+02BB), the apostrophe of
+      Navajo, Hawaiian and many African orthographies, stood so near a
+      following i that ʼi read as a double quote; in the italics they hung
+      past their advance and touched an l. Regular and Bold: ʼ 50 units
+      more on the left and 90 on the right, ʻ 50 and 60, as far from l
+      and i as ’ and ‘. Italics: both moved about 140 units left
+      (measured upright). ˮ keeps its two marks as near as before; Ľ ľ ŉ
+      ģ and the combining comma marks are unchanged. Found by the new
+      language corpus (UDHR in Navajo).
+
 2026-10-19 Version 0.100 (development), Phase 3: Cyrillic spacing
 
     * Cyrillic pairs measured for the first time: the 150 most frequent

@@ -1078,7 +1078,10 @@ ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
 # ß's left side looser: with the heavier stems it stood tight against the
 # letter before it (measured, scripts/quality/colour.py)
 # г's ī: its bar starts where ı's entry hook did not (ITALIC_RECIPES)
-ITALIC_SIDEBEARINGS = {"germandbls": (25, 0), "uni0433.loclSRB": (-80, 0)}
+# ʼ ʻ: the Regular's, sloped about half the x-height, stood far right for
+# glyphs this high (ʼl touched): as far from l and i as ’ ‘, upright
+ITALIC_SIDEBEARINGS = {"germandbls": (25, 0), "uni0433.loclSRB": (-80, 0),
+                       "uni02BC": (-145, 145), "uni02BB": (-130, 130)}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}

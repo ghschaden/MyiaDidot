@@ -95,7 +95,8 @@ def sidebearings(font, deltas):
     """Change sidebearings: deltas {glyph: (left, right)} in units (positive:
     more space). The glyphs built on one (accented letters, aliases: one of
     their components, at no offset) change with it; their marks move with
-    the letter. Returns the names changed."""
+    the letter. Glyphs that use one otherwise keep their ink where it was.
+    Returns the names changed."""
     d = dict(deltas)
     grown = True
     while grown:  # composites on composites
@@ -121,6 +122,14 @@ def sidebearings(font, deltas):
                 xx, xy, yx, yy, dx, dy = c.transformation
                 c.transformation = (xx, xy, yx, yy, dx + shift, dy)
         g.width += dl + dr
+    # glyphs that use one elsewhere (ʼ as Ľ's caron, in ŉ) keep their ink
+    for g in font:
+        if g.name in d:
+            continue
+        for c in g.components:
+            if d.get(c.baseGlyph, (0, 0))[0]:
+                xx, xy, yx, yy, dx, dy = c.transformation
+                c.transformation = (xx, xy, yx, yy, dx - d[c.baseGlyph][0], dy)
     return list(d)
 
 

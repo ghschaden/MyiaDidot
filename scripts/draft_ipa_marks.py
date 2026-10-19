@@ -136,7 +136,8 @@ GLYPHS = [
      [strokes(((C - 130, ALO), (C + 130, AHI)), ((C - 130, AHI), (C + 130, ALO)))]),
     ("uni031A", 0x031A, 0, "mark", [TOP],
      [rects((C + 50, AHI - T, C + 330, AHI), (C + 266, ALO + 40, C + 330, AHI))]),
-    ("uni0315", 0x0315, 0, "mark", [TOP], [part("uni02BC", (1, 0, 0, 1, C + 330 - 213, 0))]),
+    # (ʼ's ink 50 further right since its left side grew)
+    ("uni0315", 0x0315, 0, "mark", [TOP], [part("uni02BC", (1, 0, 0, 1, C + 330 - 213 - 50, 0))]),
     # overlays, at the middle of the x-height
     ("uni0334", 0x0334, 0, "mark", [TOP],
      [part("tilde", (0.9, 0, 0, 0.85, C - 0.9 * 440, 442 - 0.85 * 1181))]),
