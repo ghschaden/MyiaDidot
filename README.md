@@ -25,11 +25,12 @@ fonts/                          build output (otf, ttf, webfonts)
 ## Building
 
 Requirements: [uv](https://docs.astral.sh/uv/), FontForge (only for the
-upstream reference/import), ttfautohint, and LuaLaTeX for proofs.
+upstream reference/import), and LuaLaTeX for proofs. The hinting tools
+(ttfautohint-py, afdko's otfautohint) come with the Python toolchain.
 
 ```sh
 make setup            # Python toolchain in .venv + git pre-commit hook
-make                  # fonts/otf, fonts/ttf (hinted), fonts/webfonts
+make                  # fonts/otf, fonts/ttf, fonts/webfonts (all hinted)
 make test             # the regression test suite (also run on every commit)
 make regress          # shaping diff against the last commit (REF=...)
 make proof            # PDF proofs in build/proofs/

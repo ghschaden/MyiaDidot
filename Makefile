@@ -42,17 +42,20 @@ otf: $(OTF)
 ttf: $(TTF)
 webfonts: $(WOFF2)
 
-fonts/otf/%.otf: sources/%.ufo $(UFO_FILES) scripts/add_stat.py
+# PostScript hints: zones and stems measured per style, then otfautohint.
+fonts/otf/%.otf: sources/%.ufo $(UFO_FILES) scripts/add_stat.py scripts/ps_hints.py
 	$(FONTMAKE) -u $< -o otf --output-path $@
+	$(PY) scripts/ps_hints.py $@
 	$(PY) scripts/add_stat.py $@
 
-# Unhinted TTF in build/, then ttfautohint into fonts/ttf.
+# Unhinted TTF in build/, then ttfautohint (with a control file made for the
+# font, kept in build/hinting/) into fonts/ttf.
 build/unhinted/%.ttf: sources/%.ufo $(UFO_FILES)
 	$(FONTMAKE) -u $< -o ttf --flatten-components --output-path $@
 
-fonts/ttf/%.ttf: build/unhinted/%.ttf scripts/add_stat.py
+fonts/ttf/%.ttf: build/unhinted/%.ttf scripts/add_stat.py scripts/hint_control.py scripts/quality/hint_zones.py
 	@mkdir -p $(dir $@)
-	ttfautohint --no-info --stem-width-mode=nss --windows-compatibility $< $@
+	$(PY) scripts/hint_control.py $< $@ --control build/hinting/$*.txt
 	$(PY) scripts/add_stat.py $@
 
 fonts/webfonts/%.woff2: fonts/ttf/%.ttf

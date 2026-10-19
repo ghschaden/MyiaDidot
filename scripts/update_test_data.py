@@ -8,6 +8,7 @@
     python scripts/update_test_data.py --styles --ufo UFO --reason "..."
     python scripts/update_test_data.py --lookups --ufo UFO
     python scripts/update_test_data.py --greek --ufo UFO --reason "..."
+    python scripts/update_test_data.py --hinting --ufo UFO --reason "..."
 
 Every run accepts the font's current behaviour as correct, so run it only
 for an intended change, and review `git diff tests/data` before committing.
@@ -25,7 +26,9 @@ scripts/quality/checks.py findings (quality.txt, quality-Italic.txt ...).
 --emboldened: the derived letters a weighted style leaves emboldened whole
 (emboldened-whole-Bold.txt ..., from the style's lib, make_bold.WHOLE_KEY).
 --styles: where a generated style differs from the Regular
-(styles-agree-Italic.txt ..., tests/test_styles_agree.py). --lookups
+(styles-agree-Italic.txt ..., tests/test_styles_agree.py). --hinting: the
+letters hinted off their zones (hint-zones.txt, hint-zones-Italic.txt ...,
+tests/test_hinting.py). --lookups
 rewrites the style's compiled lookup order (lookups.txt, lookups-Italic.txt
 ..., tests/test_lookups.py): read the diff first. --greek: the Greek pairs
 where Charis and Libertinus agree against the style (greek-pairs.txt ...,
@@ -154,6 +157,7 @@ def main():
     ap.add_argument("--quality", action="store_true")
     ap.add_argument("--emboldened", action="store_true")
     ap.add_argument("--styles", action="store_true")
+    ap.add_argument("--hinting", action="store_true")
     ap.add_argument("--lookups", action="store_true")
     ap.add_argument("--greek", action="store_true")
     ap.add_argument("--cyrillic", action="store_true")
@@ -177,15 +181,26 @@ def main():
 
         lists.append(("styles-agree.txt", "tests/test_styles_agree.py",
                       lambda: differences(ufoLib2.Font.open(REGULAR), ufoLib2.Font.open(args.ufo))))
+    if args.hinting:
+        import tempfile
+
+        from test_hinting import hinting_keys
+
+        def hint_keys():
+            with tempfile.TemporaryDirectory() as tmp:
+                return hinting_keys(args.ufo, Path(tmp))
+
+        lists.append(("hint-zones.txt", "scripts/quality/hint_zones.py", hint_keys))
     for name, tool, keys in lists:
         path = style_data(name, args.ufo)
         listed = read_list(path.name)
         found = keys()
-        what = {"emboldened-whole.txt": "glyph: why", "styles-agree.txt": "kind glyph [detail]"}.get(
+        what = {"emboldened-whole.txt": "glyph: why", "styles-agree.txt": "kind glyph [detail]",
+                "hint-zones.txt": "interpreter glyph:zone sizes"}.get(
             name, "glyph kind count")
         lines = [f"# Known {tool} findings ({what}); fixing one = deleting its line.\n"]
         for k in sorted(found):
-            why = listed.get(k) or f"{args.reason}: {found[k]}"[:200]
+            why = listed.get(k) or (f"{args.reason}: {found[k]}" if found[k] else args.reason)[:200]
             lines.append(f"{k:32} # {why}\n")
         path.write_text("".join(lines), encoding="utf-8")
         print(f"{path.name}: {len(found)} findings, {len(set(found) - set(listed))} new, "

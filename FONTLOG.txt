@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 4: hinting
+
+    * TrueType: ttfautohint now runs with a control file made for each
+      style (scripts/hint_control.py). The thick diagonal of M N Μ Ν М м
+      and their small caps ends under the left serif in a point
+      ttfautohint did not see; when the serif was rounded to a whole pixel
+      the point stayed behind and poked up to 0.84 px above the cap
+      height (9 to 16 px). It now moves with the serif. A's apex (and Ą Ʌ)
+      snapped to the ascender zone, a pixel above O, at 15, 16 and 20 to
+      34 px; it is moved onto O's row. The Bulgarian forms with ascenders
+      (ж ъ ь ю) are hinted with the Latin zones (ttfautohint's Cyrillic
+      has no ascender zone), and so is the Greek of the italics, whose
+      x-height zone was raised by π σ τ: ε ο ρ stood a row above x. Signs
+      outside any script (brackets, bars, daggers) are hinted as Latin
+      rather than only scaled. Letters ending off their zone between 8 and
+      32 px, in FreeType's two TrueType interpreters: Regular 90 and 60
+      before, 24 and 14 now; Bold 12 and 17, now none; Italic 468 and 512,
+      now 41 and 52; Bold Italic 434 and 484, now 13 and 39 (tests/
+      test_hinting.py holds them, scripts/quality/hint_zones.py).
+    * CFF: the OpenType fonts had no stem hints, and every style carried
+      the Regular's zones and stems (the Bold's StdVW was 52). Zones and
+      stems are now measured from each style's glyphs and the fonts hinted
+      with otfautohint (scripts/ps_hints.py): with FreeType's CFF engine
+      the tops and bottoms of the reference letters now all fall on whole
+      pixels, on one row per zone.
+
 2026-10-19 Version 0.100 (development), Phase 3: ʼ and ʻ spaced as letters
 
     * The modifier letters ʼ (U+02BC) and ʻ (U+02BB), the apostrophe of

@@ -161,6 +161,18 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   tests/test_ufo.py fails on them; the plugin runs it after such commands).
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
+- Hinting is generated at build time, nothing in the UFOs: TTF by
+  `scripts/hint_control.py` (ttfautohint-py with a control file per style,
+  kept in build/hinting/: tips that join the serif edge at their height,
+  Greek on the Latin zones where that is better, Bulgarian ascenders as
+  Latin, whole-pixel deltas onto the zone; ttfautohint drops what does not
+  fit in a control line silently, so lists are cut short); CFF by
+  `scripts/ps_hints.py` (zones and stems measured per style, then
+  otfautohint). `scripts/quality/hint_zones.py TTF` lists letters hinted
+  off their zone (reference glyphs x o H O l p h.sc o.sc, 8–32 px, FreeType
+  v40 and v35); tests/test_hinting.py holds them to `hint-zones*.txt`
+  (`update_test_data.py --hinting`). The test TTF must be built like
+  fontmake's (overlaps removed): point indices depend on it.
 
 ## Quality principles (learned the hard way)
 
