@@ -287,6 +287,7 @@ and git hold the state.
 |---|---|
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
+| `make lint` | ruff, lint only (no formatter: the recipe tables are aligned by hand); pre-commit and CI run it |
 | `make generate` | regenerate Italic, Bold, Bold Italic from the Regular (then normalize, check for sync conflicts) |
 | `make reproduce` | do the generated styles come out of their generators as committed? |
 | `make strokes` | `build/quality/strokes-STYLE.pdf`: glyphs darker or lighter than their kind, each between its references, for review |

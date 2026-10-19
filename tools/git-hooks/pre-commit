@@ -23,6 +23,15 @@ if git diff --cached --name-only | grep -q '^tools/claude-plugin/'; then
     fi
 fi
 
+if git diff --cached --name-only --diff-filter=d | grep -qE '\.py$|^pyproject\.toml$'; then
+    if [ -x .venv/bin/ruff ]; then
+        .venv/bin/ruff check --quiet . || {
+            echo "pre-commit: ruff found problems (make lint); commit aborted." >&2
+            exit 1
+        }
+    fi
+fi
+
 if ! git diff --cached --name-only | grep -qE '^(sources|tests|scripts|Makefile|pyproject.toml|uv.lock)'; then
     exit 0  # nothing that affects the fonts
 fi

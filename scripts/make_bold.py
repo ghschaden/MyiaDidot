@@ -38,9 +38,9 @@ from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from built_from import KEY as BUILT_KEY
 import case_forms
 import kern_clear
+from built_from import KEY as BUILT_KEY
 from composites import SPECIAL, Builder, stack_anchors
 from derive import embolden, embolden_simple, rezone
 from glyph_lint import fix

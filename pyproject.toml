@@ -27,3 +27,28 @@ package = false
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120  # only for import wrapping: E501 is not checked
+extend-exclude = ["sources"]
+
+[tool.ruff.lint]
+# Lint only: no formatter, the recipe tables are aligned by hand.
+select = ["F", "E4", "E7", "E9", "B", "I", "UP", "ISC", "EXE"]
+ignore = [
+    "E402",   # imports after sys.path.insert
+    "E702",   # pen.moveTo(...); pen.lineTo(...) on one line
+    "E741",   # l for left, as in the font tools
+    "B905",   # zip() without strict=
+    "UP031",  # %-formatting in the TeX and SVG generators, braces stay literal
+    "ISC001",  # rf"..." "\n" joined on purpose (udhr_book)
+]
+
+[tool.ruff.lint.isort]
+lines-after-imports = -1
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16",
+]

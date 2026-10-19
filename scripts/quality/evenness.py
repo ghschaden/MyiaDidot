@@ -94,7 +94,7 @@ for path in fonts:
 myia = next(iter(results))
 md = {ch: statistics.mean(v) for ch, v in results[myia][1].items() if len(v) >= 3}
 rd = {}
-for name, (_, devs) in list(results.items())[1:]:
+for _name, (_, devs) in list(results.items())[1:]:
     for ch, v in devs.items():
         if len(v) >= 3:
             rd.setdefault(ch, []).append(statistics.mean(v))

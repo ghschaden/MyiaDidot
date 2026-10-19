@@ -146,7 +146,7 @@ def import_kerning(ufo, subtables, rename):
     def nonzero(st, i, j):
         return st["offsets"][i * len(st["second"]) + j]
 
-    for s, st in enumerate(subtables):
+    for st in subtables:
         for i in range(len(st["first"])):
             for j in range(len(st["second"])):
                 if (i == 0 or j == 0) and nonzero(st, i, j):

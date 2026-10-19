@@ -210,7 +210,7 @@ def guard(font, record, log=None):
         # on the right side, (letter, group) would override the group's own
         # exceptions for single letters of that group: carried over as they are
         if s == 1:
-            for (left, right), v in list(added.items()):
+            for left, right in list(added):
                 if left != name or right not in font.groups:
                     continue
                 for o in members(font, right):

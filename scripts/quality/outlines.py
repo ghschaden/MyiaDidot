@@ -96,7 +96,7 @@ for g in font:
             if j >= len(ring):
                 break
         # curvature continuity at smooth on-curve points between two curves
-        for (P, a0, a3), (Q, b0, b3) in zip(segs, segs[1:] + segs[:1]):
+        for (P, _a0, a3), (Q, b0, _b3) in zip(segs, segs[1:] + segs[:1]):
             if a3 is not b0 or not a3.smooth:
                 continue
             k1, k2 = curvature(*P, 1.0), curvature(*Q, 0.0)

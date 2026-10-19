@@ -458,7 +458,7 @@ def scale_kerning(font, log):
         scs = [cap_sc[m] for m in members if m in cap_sc]
         if scs:
             new_groups[gname] = (gname + ".sc", scs)
-    for gname, (scname, scs) in new_groups.items():
+    for scname, scs in new_groups.values():
         font.groups[scname] = scs
 
     def side(item):

@@ -16,7 +16,6 @@ from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
 
-
 SCALE = 0.02
 WIDTH = 1800
 MARGIN = 70
@@ -78,13 +77,13 @@ def render(path, output):
     style = path.stem.removeprefix("MyiaDidot-")
     height = 130 + ROW_HEIGHT * len(SAMPLES)
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" '
-        f'viewBox="0 0 {WIDTH} {height}">',
+        (f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" '
+         f'viewBox="0 0 {WIDTH} {height}">'),
         '<rect width="100%" height="100%" fill="#fff"/>',
-        '<style>text{font-family:sans-serif;fill:#444}.glyph{fill:#171717}'
-        '.rule{stroke:#ddd;stroke-width:1}</style>',
-        f'<text x="{MARGIN}" y="48" font-size="28" font-weight="600">'
-        f'Myia Didot {html.escape(style)} · Phase 3 specimen</text>',
+        ('<style>text{font-family:sans-serif;fill:#444}.glyph{fill:#171717}'
+         '.rule{stroke:#ddd;stroke-width:1}</style>'),
+        (f'<text x="{MARGIN}" y="48" font-size="28" font-weight="600">'
+         f'Myia Didot {html.escape(style)} · Phase 3 specimen</text>'),
     ]
     for index, sample in enumerate(SAMPLES):
         label, text, features, script, language = sample

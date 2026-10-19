@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate
+.PHONY: all setup test lint test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate
 
 all: fonts
 
@@ -24,6 +24,10 @@ setup:
 
 test:
 	.venv/bin/pytest
+
+# ruff, lint only (no formatter: the recipe tables are aligned by hand)
+lint:
+	.venv/bin/ruff check .
 
 # Accept the current behaviour as the new baseline (review git diff tests/data!):
 # run once, read the strings that differ from HEAD, then again with N=that many

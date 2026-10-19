@@ -13,7 +13,6 @@ from pathlib import Path
 
 from fontTools.ttLib import TTFont
 
-
 REQUIRED = {
     "GSUB": {
         "aalt", "c2sc", "calt", "case", "ccmp", "dlig", "dnom", "frac", "hist",
