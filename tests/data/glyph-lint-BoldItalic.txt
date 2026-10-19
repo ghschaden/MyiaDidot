@@ -1,38 +1,32 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
-Theta notch 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1150,796 43 px; 492,673 70 px
 brevecmb_uni0313_gravecomb.grek ledge 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 181,1320 15 units
 brevecmb_uni0314_gravecomb.grek ledge 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 181,1320 15 units
-cent notch 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 522,79 41 px
-dollar notch 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 760,907 99 px; 639,490 113 px
-four.dnom notch 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 676,478 50 px; 614,414 84 px
-fourinferior notch 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 681,6 50 px; 619,-58 84 px
-foursuperior notch 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 669,1134 50 px; 607,1070 84 px
-onequarter notch 2               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1857,478 50 px; 1795,414 84 px
-psi.sc notch 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1240,844 50 px
-r notch 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 675,741 48 px
-racute notch 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 675,741 48 px
-rcaron notch 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 675,741 48 px
-rcommaaccent notch 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 674,739 56 px
-threequarters notch 2            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1854,475 75 px; 1793,413 68 px
-trademark notch 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 2139,1283 42 px; 1579,1250 49 px
-uni01E5 step 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 314,159 2.2 units
-uni0213 notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 675,741 48 px
+m notch 1                        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 491,520 36 px
+uni01AE notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 693,-159 43 px
+uni0229 step 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 358,35 2.8 units
 uni023A notch 1                  # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 857,831 48 px
-uni026D notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 220,-171 30 px
+uni023E notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 460,126 36 px
+uni0249 ledge 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 551,414 22 units
+uni024D notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 646,734 31 px
+uni0253.sc step 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 403,233 1.4 units
+uni0256 step 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 956,-159 2.2 units
+uni026F notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1176,362 49 px
+uni0271 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 491,520 49 px
+uni0272.sc step 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: -65,-168 1.0 units; -65,-169 1.0 units
+uni0273 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 505,528 54 px
 uni0278 notch 4                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 426,606 43 px; 683,607 33 px; 596,267 36 px; 337,254 47 px
-uni0279 notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 248,152 53 px
-uni027A notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 247,151 56 px
 uni027B notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 247,149 43 px
-uni027E notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 672,736 43 px
-uni0475 notch 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 920,792 50 px; 880,713 33 px
-uni049B notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 877,799 42 px
-uni1D73 notch 2                  # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 695,768 37 px; 560,490 77 px
-uni1DA4 notch 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 198,853 36 px; 511,770 102 px
-uni1DB6 notch 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 198,853 36 px; 800,771 66 px
-uni1E5B notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,734 53 px
+uni027D step 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 499,-170 1.4 units
+uni0289 step 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1118,339 2.2 units; 1117,341 1.0 units
+uni0442 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 491,520 36 px
+uni0442.loclBGR notch 1          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 491,520 36 px
+uni0442.loclSRB notch 1          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1137,342 39 px
+uni0448 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1191,341 40 px
+uni0448.loclBGR notch 1          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1191,341 40 px
+uni04B7.sc step 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 522,978 1.4 units
+uni1E3F notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 491,520 36 px
+uni1E43 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 492,522 48 px
 uni1E6B ledge 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 635,1374 12 units
-uni1EE0 notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1397,1696 54 px
 uni1EF5 notch 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 349,-426 83 px
+uni20A1 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1281,895 32 px
 uni20B2 ledge 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 890,651 25 units
-uni2158 notch 2                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 669,1134 50 px; 607,1070 84 px
-uniA7C8 step 1                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 314,159 2.2 units

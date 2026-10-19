@@ -7,8 +7,10 @@ hook above: the curve of the question mark (ʔ above its stem), scaled to
     accent size and brought up to the weight of the other accents; spacing
     forms `hook`/`Hook` (880 wide, centred at 440, unencoded), combining
     `hookcomb` (U+0309) and `hookcomb.cap`, like acute/acutecomb.
-horn: the comma scaled down, its tail on the base's Horn anchor so the ball
-    rises up and to the right; `horn`/`Horn` and `horncomb` (U+031B) /
+horn: the comma scaled down and brought up to an accent's weight (scaled
+    alone it stood at half the comma's weight, lighter than any reference's
+    horn: Old Standard's is 0.7 of its comma), its tail on the base's Horn
+    anchor so the ball rises up and to the right; `horn`/`Horn` and `horncomb` (U+031B) /
     `horncomb.cap` with a `_Horn` anchor at the tail.
 Horn anchors: on the bowl's outline at 50 degrees (O o), on the right end
     of the top right serif or stem (U u), 24 units inside the ink.
@@ -42,8 +44,8 @@ DRAFT_KEY = "org.myiadidot.draft"
 
 # (spacing name, ink height, ink bottom, extra stem, extra hairline)
 HOOKS = {"hook": (340, 1062, 44, 14), "Hook": (300, 1570, 50, 16)}
-# (spacing name, scale of the comma)
-HORNS = {"horn": 0.56, "Horn": 0.66}
+# (spacing name: scale of the comma, extra stem, extra hairline)
+HORNS = {"horn": (0.56, 24, 8), "Horn": (0.66, 28, 10)}
 INSIDE = 24
 # circumflex + tone mark: (spacing circumflex, tone, combining tone, overlap):
 # the tone's ink starts overlap units left of the circumflex's right end
@@ -89,10 +91,12 @@ def hook_outline(font, height, bottom, ax, ay):
     return moved
 
 
-def horn_outline(font, k):
-    """The comma scaled by k, its tail tip at (0, 0)."""
-    rec = DecomposingRecordingPen(font)
-    font["comma"].draw(TransformPen(rec, (k, 0, 0, k, 0, 0)))
+def horn_outline(font, k, ax=0, ay=0):
+    """The comma scaled by k and emboldened by (ax, ay), its tail tip at (0, 0)."""
+    scaled = DecomposingRecordingPen(font)
+    font["comma"].draw(TransformPen(scaled, (k, 0, 0, k, 0, 0)))
+    rec = RecordingPen()
+    embolden(scaled, ax, ay).draw(rec)
     tip = min((pt for _op, args in rec.value for pt in args), key=lambda p: (p[1], p[0]))
     moved = RecordingPen()
     rec.replay(TransformPen(moved, (1, 0, 0, 1, -tip[0], -tip[1])))
@@ -137,10 +141,10 @@ def main():
             g.appendAnchor({"name": anchor[0], "x": -440, "y": anchor[1]})
             made.append(comb)
 
-    for name, k in HORNS.items():
+    for name, (k, ax, ay) in HORNS.items():
         cap = name[0].isupper()
         comb = "horncomb" + (".cap" if cap else "")
-        outline, _tip = horn_outline(font, k)
+        outline, _tip = horn_outline(font, k, ax, ay)
         if can_write(font, name, args.redraft):
             g = new(font, name, 880)
             moved = RecordingPen()

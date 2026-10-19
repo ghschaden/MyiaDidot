@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="iota" format="2">
 	<unicode hex="03B9"/>
-	<advance width="633"/>
+	<advance width="616"/>
 	<outline>
 		<contour>
-			<point x="57" y="119" type="curve" smooth="yes"/>
-			<point x="57" y="165"/>
-			<point x="74" y="259"/>
-			<point x="83" y="289" type="curve" smooth="yes"/>
-			<point x="241" y="860" type="line"/>
-			<point x="502" y="860" type="line"/>
-			<point x="312" y="196" type="line" smooth="yes"/>
-			<point x="307" y="176"/>
-			<point x="295" y="143"/>
-			<point x="295" y="121" type="curve" smooth="yes"/>
-			<point x="296" y="83"/>
-			<point x="278" y="45"/>
-			<point x="306" y="45" type="curve" smooth="yes"/>
-			<point x="327" y="45"/>
-			<point x="458" y="196"/>
-			<point x="536" y="340" type="curve"/>
-			<point x="631" y="323" type="line"/>
-			<point x="567" y="201"/>
-			<point x="442" y="-23"/>
-			<point x="247" y="-23" type="curve" smooth="yes"/>
-			<point x="145" y="-23"/>
-			<point x="58" y="42"/>
+			<point x="60" y="119" type="curve" smooth="yes"/>
+			<point x="59" y="165"/>
+			<point x="73" y="259"/>
+			<point x="82" y="289" type="curve" smooth="yes"/>
+			<point x="240" y="860" type="line"/>
+			<point x="500" y="860" type="line"/>
+			<point x="311" y="196" type="line" smooth="yes"/>
+			<point x="311" y="194"/>
+			<point x="309" y="192"/>
+			<point x="308" y="190" type="curve" smooth="yes"/>
+			<point x="302" y="170"/>
+			<point x="284" y="140"/>
+			<point x="285" y="121" type="curve" smooth="yes"/>
+			<point x="285" y="85"/>
+			<point x="235" y="45"/>
+			<point x="305" y="45" type="curve" smooth="yes"/>
+			<point x="390" y="45"/>
+			<point x="473" y="199"/>
+			<point x="551" y="340" type="curve"/>
+			<point x="578" y="323" type="line"/>
+			<point x="515" y="203"/>
+			<point x="405" y="-23"/>
+			<point x="246" y="-23" type="curve" smooth="yes"/>
+			<point x="172" y="-23"/>
+			<point x="61" y="41"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="258" y="-20"/>
-	<anchor name="GreekTop" x="392" y="980"/>
+	<anchor name="DotBelow" x="257" y="-20"/>
+	<anchor name="GreekTop" x="391" y="980"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>

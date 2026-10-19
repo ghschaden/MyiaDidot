@@ -143,9 +143,9 @@ def slashed(font):
         g.lib.update(lib)
         if font.info.italicAngle:
             g.lib["org.myiadidot.italicSource"] = "derived"
-        g.lib.pop(DRAFT_KEY, None)
-        if draft:
-            g.lib[DRAFT_KEY] = True
+        # reviewed: the key kept false (absent, the next run would take it
+        # for a new draft)
+        g.lib[DRAFT_KEY] = bool(draft)
         stamp(font, name, [base])  # the zero it was made of (built_from.py)
         font.lib.setdefault("public.openTypeCategories", {})[name] = "base"
         if name not in font.glyphOrder:

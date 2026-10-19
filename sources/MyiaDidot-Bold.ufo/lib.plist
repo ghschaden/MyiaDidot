@@ -10,12 +10,10 @@
 			<string>curl: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni0191</key>
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
-			<key>uni0193</key>
-			<string>curl: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni019D</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (Ɲ: the hook thin, a speck of the foot serif left)</string>
 			<key>uni01AD</key>
-			<string>hook: emboldened whole, made again from the Bold it has faults</string>
+			<string>hook: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni01AE</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (Ʈ: the hook thin, a step where it meets the stem)</string>
 			<key>uni01B2</key>
@@ -23,7 +21,7 @@
 			<key>uni01B3</key>
 			<string>curl: emboldened whole, made again from the Bold it misses (Ƴ: a stub of the arm's serif left apart from the hook)</string>
 			<key>uni01B4</key>
-			<string>curl: emboldened whole, made again from the Bold it has faults</string>
+			<string>curl: emboldened whole, made again from the Bold it strays</string>
 			<key>uni01C0</key>
 			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni01C1</key>
@@ -74,8 +72,6 @@
 			<string>attach: emboldened whole, made again from the Bold it misses (Bulgarian ъ: a step where the raised arm's stem meets l's)</string>
 			<key>uni044E.loclBGR</key>
 			<string>attach: emboldened whole, made again from the Bold it has faults</string>
-			<key>uni20B8</key>
-			<string>lines: the union with its base failed</string>
 			<key>uni2C64</key>
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
 			<key>uniA7AA</key>
@@ -114,8 +110,6 @@
 			<string>added</string>
 			<key>aogonek public.kern2.j</key>
 			<string>added</string>
-			<key>eogonek public.kern2.j</key>
-			<string>added</string>
 			<key>iogonek public.kern2.j</key>
 			<string>added</string>
 			<key>public.kern1.A.sc uni020D.sc</key>
@@ -137,8 +131,6 @@
 			<key>public.kern1.F uni0201</key>
 			<string>added</string>
 			<key>public.kern1.F uni0205</key>
-			<string>added</string>
-			<key>public.kern1.F uni020D</key>
 			<string>added</string>
 			<key>public.kern1.Gamma Alphatonos</key>
 			<string>added</string>
@@ -170,15 +162,9 @@
 			<string>added</string>
 			<key>public.kern1.J.sc uni1EAB.sc</key>
 			<string>added</string>
-			<key>public.kern1.K.sc uni0249.sc</key>
-			<string>added</string>
-			<key>public.kern1.K.sc uni03F3.sc</key>
-			<string>added</string>
 			<key>public.kern1.Kappa uni1F4A</key>
 			<string>added</string>
-			<key>public.kern1.Kappa uni1F4B</key>
-			<string>added</string>
-			<key>public.kern1.L.sc uni0215.sc</key>
+			<key>public.kern1.Nu uni1F08</key>
 			<string>added</string>
 			<key>public.kern1.Nu uni1F0A</key>
 			<string>added</string>
@@ -192,6 +178,8 @@
 			<string>added</string>
 			<key>public.kern1.Nu uni1F0F</key>
 			<string>added</string>
+			<key>public.kern1.Nu uni1F48</key>
+			<string>added</string>
 			<key>public.kern1.Nu uni1F4A</key>
 			<string>added</string>
 			<key>public.kern1.Nu uni1F4B</key>
@@ -199,6 +187,8 @@
 			<key>public.kern1.Nu uni1F4C</key>
 			<string>added</string>
 			<key>public.kern1.Nu uni1F4D</key>
+			<string>added</string>
+			<key>public.kern1.Nu uni1F88</key>
 			<string>added</string>
 			<key>public.kern1.Nu uni1F8A</key>
 			<string>added</string>
@@ -222,7 +212,11 @@
 			<string>added</string>
 			<key>public.kern1.O.sc uni1EAB.sc</key>
 			<string>added</string>
+			<key>public.kern1.O.sc uni1EB1.sc</key>
+			<string>added</string>
 			<key>public.kern1.O.sc uni1EB5.sc</key>
+			<string>added</string>
+			<key>public.kern1.Omicron Upsilontonos</key>
 			<string>added</string>
 			<key>public.kern1.Omicron uni1F0A</key>
 			<string>added</string>
@@ -280,6 +274,8 @@
 			<string>added</string>
 			<key>public.kern1.Rho uni1F0D</key>
 			<string>added</string>
+			<key>public.kern1.Rho uni1F0F</key>
+			<string>added</string>
 			<key>public.kern1.Rho uni1F8A</key>
 			<string>added</string>
 			<key>public.kern1.Rho uni1F8B</key>
@@ -288,7 +284,7 @@
 			<string>added</string>
 			<key>public.kern1.Rho uni1F8D</key>
 			<string>added</string>
-			<key>public.kern1.T uni0201</key>
+			<key>public.kern1.Rho uni1F8F</key>
 			<string>added</string>
 			<key>public.kern1.Tau uni1F0A</key>
 			<string>added</string>
@@ -328,6 +324,10 @@
 			<string>added</string>
 			<key>public.kern1.U uni0201</key>
 			<string>added</string>
+			<key>public.kern1.U uni0205</key>
+			<string>added</string>
+			<key>public.kern1.U uni020D</key>
+			<string>added</string>
 			<key>public.kern1.U uni1EAB</key>
 			<string>added</string>
 			<key>public.kern1.U uni1EB1</key>
@@ -336,11 +336,9 @@
 			<string>added</string>
 			<key>public.kern1.U uni1EC5</key>
 			<string>added</string>
+			<key>public.kern1.U uni1ED7</key>
+			<string>added</string>
 			<key>public.kern1.U.sc uni01CE.sc</key>
-			<string>added</string>
-			<key>public.kern1.U.sc uni01D2.sc</key>
-			<string>added</string>
-			<key>public.kern1.U.sc uni01E7.sc</key>
 			<string>added</string>
 			<key>public.kern1.U.sc uni0201.sc</key>
 			<string>added</string>
@@ -351,8 +349,6 @@
 			<key>public.kern1.U.sc uni1EB1.sc</key>
 			<string>added</string>
 			<key>public.kern1.U.sc uni1EB5.sc</key>
-			<string>added</string>
-			<key>public.kern1.U.sc uni1ED7.sc</key>
 			<string>added</string>
 			<key>public.kern1.Upsilon Alphatonos</key>
 			<string>added</string>
@@ -423,10 +419,6 @@
 			<key>public.kern1.V uni0215</key>
 			<string>added</string>
 			<key>public.kern1.V uni1EB5</key>
-			<string>added</string>
-			<key>public.kern1.V.sc uni0249.sc</key>
-			<string>added</string>
-			<key>public.kern1.V.sc uni03F3.sc</key>
 			<string>added</string>
 			<key>public.kern1.Y ibreve</key>
 			<string>added</string>
@@ -584,9 +576,23 @@
 			<string>added</string>
 			<key>public.kern1.zeta uni1FF8</key>
 			<string>added</string>
+			<key>uni0244 public.kern2.C</key>
+			<string>added</string>
+			<key>uni0244 public.kern2.O</key>
+			<string>added</string>
 			<key>uni0244 public.kern2.a</key>
 			<string>added</string>
 			<key>uni0244 public.kern2.c</key>
+			<string>added</string>
+			<key>uni0289.sc uni01D2.sc</key>
+			<string>added</string>
+			<key>uni0289.sc uni01E7.sc</key>
+			<string>added</string>
+			<key>uni0289.sc uni020D.sc</key>
+			<string>added</string>
+			<key>uni0289.sc uni1ED7.sc</key>
+			<string>added</string>
+			<key>uni0431.loclSRB public.kern2.uni0445</key>
 			<string>added</string>
 			<key>uni0431.loclSRB public.kern2.uni0475</key>
 			<string>added</string>

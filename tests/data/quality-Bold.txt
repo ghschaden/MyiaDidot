@@ -1,320 +1,357 @@
 # Known scripts/quality/checks.py findings (glyph kind count); fixing one = deleting its line.
+.notdef extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 653,738 6 units past
 Alphatonos accent 1              # 2026-10-16 known at the start (quality checks added): above tonos gap -475, usually -447
-Aringacute kink 2                # 2026-10-16 known at the start (quality checks added): 808,1916 2.9 degrees; 921,1835 3.0 degrees
+C smooth 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1164,1415 2.0 degrees
 Cedilla smooth 1                 # 2026-10-16 known at the start (quality checks added): 339,-433 3.0 degrees
 Epsilon_uni0313_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -476, usually -504
 Epsilon_uni0314_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
+G smooth 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1164,1415 2.0 degrees
 Hook kink 1                      # 2026-10-16 known at the start (quality checks added): 291,1791 7.9 degrees
+J extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 326,86 8 units past
 J smooth 1                       # 2026-10-16 known at the start (quality checks added): 350,147 2.3 degrees
 J zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
+OE extreme 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 869,32 6 units past; 977,1256 6 units past
 Omicrontonos accent 1            # 2026-10-16 known at the start (quality checks added): above tonos gap -475, usually -447
-Psi kink 2                       # 2026-10-16 known at the start (quality checks added): 1903,1310 3.6 degrees; 1615,1266 4.1 degrees
+Q smooth 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1396,-391 2.5 degrees
 R zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 S stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 249 against 306 (0.82, lighter)
 Sigma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 267 against 306 (0.87, lighter)
 Upsilon extreme 1                # 2026-10-16 known at the start (quality checks added): 1280,1156 10 units past
 Xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 151 against 306 (0.49, lighter)
-a extreme 1                      # 2026-10-16 known at the start (quality checks added): 910,50 5 units past
+ae extreme 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1164,531 14 units past
 anoteleia width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-aogonek extreme 1                # 2026-10-16 known at the start (quality checks added): 910,50 5 units past
-aringacute.sc kink 2             # 2026-10-16 known at the start (quality checks added): 588,1390 5.4 degrees; 685,1330 2.8 degrees
-aringacute.sc stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 241 against 273 (0.88, lighter)
-asterisk extreme 4               # 2026-10-16 known at the start (quality checks added): 502,1043 6 units past; 501,1063 6 units past; 736,1083 6 units past; 737,1063 6 units past
-asterisk kink 5                  # 2026-10-16 known at the start (quality checks added): 518,1323 3.7 degrees; 720,1323 3.7 degrees; 720,803 4.3 degrees; 619,610 1.5 degrees; 518,803 4.3 degrees
-asterisk smooth 4                # 2026-10-16 known at the start (quality checks added): 751,1419 2.1 degrees; 791,881 2.2 degrees; 751,709 2.1 degrees; 447,881 2.2 degrees
-bar width 1                      # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-brokenbar width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-c_t extreme 1                    # 2026-10-16 known at the start (quality checks added): 561,900 12 units past
-c_t kink 1                       # 2026-10-16 known at the start (quality checks added): 907,1332 1.1 degrees
-c_t smooth 1                     # 2026-10-16 known at the start (quality checks added): 1388,192 2.1 degrees
-caroncommaaccent kink 2          # 2026-10-16 known at the start (quality checks added): 252,1288 4.1 degrees; 71,1407 7.5 degrees
+asterisk smooth 6                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 440,1245 2.3 degrees; 524,1323 2.5 degrees; 714,1323 2.5 degrees; 798,1245 2.3 degrees; 714,803 3.1 degrees; 
+beta extreme 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 152,578 7 units past
+caroncommaaccent smooth 1        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 259,1320 2.0 degrees
 caroncommaaccent width 1         # 2026-10-16 known at the start (quality checks added): 1.32 of the Regular's, usually 1.09
+cent extreme 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 811,750 7 units past
 chi smooth 1                     # 2026-10-16 known at the start (quality checks added): 284,730 3.2 degrees
 comma width 1                    # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-dagger smooth 4                  # 2026-10-16 known at the start (quality checks added): 482,923 2.4 degrees; 831,923 2.4 degrees; 831,794 2.4 degrees; 482,794 2.4 degrees
-daggerdbl smooth 4               # 2026-10-16 known at the start (quality checks added): 482,987 2.4 degrees; 831,987 2.4 degrees; 831,-73 2.4 degrees; 482,-73 2.4 degrees
+dagger smooth 2                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 831,794 2.4 degrees; 482,794 2.4 degrees
 delta stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 202 against 261 (0.77, lighter)
+delta.sc stroke 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: sc 221 against 273 (0.81, lighter)
 dollar smooth 1                  # 2026-10-16 known at the start (quality checks added): 936,1189 2.8 degrees
+e extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 656,531 15 units past
 eight kink 1                     # 2026-10-16 known at the start (quality checks added): 602,624 3.7 degrees
 eight smooth 1                   # 2026-10-16 known at the start (quality checks added): 569,871 2.7 degrees
 eight stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 250 against 306 (0.82, lighter)
 eightoldstyle kink 1             # 2026-10-16 known at the start (quality checks added): 502,890 3.6 degrees
 eightoldstyle smooth 1           # 2026-10-16 known at the start (quality checks added): 640,615 2.1 degrees
 eightoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 224 against 261 (0.86, lighter)
-eightsuperior kink 1             # 2026-10-16 known at the start (quality checks added): 365,1146 6.6 degrees
+eightsuperior kink 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 363,984 6.9 degrees; 350,1146 5.1 degrees
+eng extreme 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 478,673 6 units past
+eng smooth 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 653,-430 2.5 degrees
 eng.sc smooth 1                  # 2026-10-16 known at the start (quality checks added): 791,-251 2.1 degrees
+eogonek extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 656,531 15 units past
 epsilon stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 176 against 261 (0.67, lighter)
-estimated extreme 1              # 2026-10-16 known at the start (quality checks added): 912,32 5 units past
 estimated smooth 2               # 2026-10-16 known at the start (quality checks added): 152,743 2.3 degrees; 1673,743 2.3 degrees
+eta extreme 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 397,466 8 units past
+eta smooth 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 274,742 2.4 degrees
+exclam smooth 2                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 430,791 3.1 degrees; 201,791 3.1 degrees
 exclam width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+exclamdown smooth 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 201,93 3.1 degrees; 430,93 3.1 degrees
 exclamdown width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+f extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 665,1383 9 units past
 f smooth 1                       # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
 f_b kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-f_f_b extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+f_f_b extreme 3                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
 f_f_b kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
-f_f_h extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
+f_f_h extreme 3                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
 f_f_h kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
-f_f_k extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
-f_f_k kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
-f_f_t extreme 1                  # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
-f_f_t kink 3                     # 2026-10-16 known at the start (quality checks added): 739,1298 6.5 degrees; 460,1074 5.4 degrees; 1389,1168 4.4 degrees
-f_f_t smooth 2                   # 2026-10-16 known at the start (quality checks added): 1648,192 2.1 degrees; 1389,198 2.4 degrees
+f_f_h smooth 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1646,412 2.7 degrees
+f_f_j kink 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1240,884 2.6 degrees; 1262,883 2.7 degrees
+f_f_k kink 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1388,1246 6.1 degrees
+f_f_t extreme 4                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1644,192 6 units past; 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
+f_f_t kink 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 735,1298 6.5 degrees; 1385,1168 4.4 degrees
+f_h extreme 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1066,673 6 units past
 f_h kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+f_j kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.5 degrees; 659,883 2.6 degrees
 f_k kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-ff smooth 1                      # 2026-10-16 known at the start (quality checks added): 702,1312 3.0 degrees
-ffl extreme 1                    # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
-ffl kink 3                       # 2026-10-16 known at the start (quality checks added): 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
-florin extreme 1                 # 2026-10-16 known at the start (quality checks added): 1009,1396 6 units past
+ff extreme 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1307,1356 6 units past; 709,1371 7 units past
+ff smooth 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1292,1298 2.4 degrees; 698,1312 3.0 degrees
+ffi kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1239,884 2.6 degrees; 1261,883 2.7 degrees
+ffl extreme 3                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 820,1145 11 units past; 759,1374 11 units past; 680,1456 8 units past
+ffl kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1061,1060 5.7 degrees; 737,1298 6.5 degrees
+fi kink 2                        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.6 degrees; 658,883 2.7 degrees
+florin extreme 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 24,-466 8 units past; 1010,1396 7 units past
+florin smooth 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 988,1357 2.9 degrees
 florin stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 227 against 261 (0.87, lighter)
 florin zone 1                    # 2026-10-16 known at the start (quality checks added): top -8 from 1496
+fouroldstyle kink 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 52,31 7.5 degrees
 fraction width 1                 # 2026-10-16 known at the start (quality checks added): 1.45 of the Regular's, usually 1.09
+g extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 987,765 5 units past
 g stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
 gamma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 185 against 261 (0.71, lighter)
-germandbls kink 1                # 2026-10-16 known at the start (quality checks added): 476,172 4.8 degrees
-germandbls smooth 1              # 2026-10-16 known at the start (quality checks added): 1012,1228 2.7 degrees
 germandbls.sc kink 1             # 2026-10-16 known at the start (quality checks added): 741,173 6.9 degrees
 germandbls.sc smooth 2           # 2026-10-16 known at the start (quality checks added): 987,853 2.0 degrees; 426,122 2.2 degrees
 germandbls.sc zone 2             # 2026-10-16 known at the start (quality checks added): bottom -14 from 0; top +11 from 1040
+h extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 472,673 6 units past
+hbar extreme 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 474,673 6 units past
 hook kink 2                      # 2026-10-16 known at the start (quality checks added): 278,1313 5.2 degrees; 348,1270 1.7 degrees
-horn smooth 1                    # 2026-10-16 known at the start (quality checks added): 524,170 3.9 degrees
 i accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
-integral smooth 1                # 2026-10-16 known at the start (quality checks added): 994,1366 2.9 degrees
+integral smooth 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 335,-346 2.9 degrees; 979,1366 2.9 degrees
 iota stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 222 against 261 (0.85, lighter)
 j accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
-j.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 278,66 7 units past
-j.sc kink 1                      # 2026-10-16 known at the start (quality checks added): 33,142 7.7 degrees
+j.sc extreme 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 263,66 14 units past; 276,36 13 units past
 j.sc smooth 1                    # 2026-10-16 known at the start (quality checks added): 280,36 4.6 degrees
 j.sc zone 2                      # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+kappa smooth 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 272,699 2.3 degrees
 kappa zone 1                     # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
-lambda smooth 1                  # 2026-10-16 known at the start (quality checks added): 248,1297 3.4 degrees
-lambda.sc stroke 1               # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 242 against 273 (0.89, lighter)
+lambda smooth 2                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1031,134 2.1 degrees; 249,1297 3.4 degrees
+longs extreme 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 668,1383 9 units past
 longs smooth 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
 longs_b kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+longs_h extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1068,673 6 units past
 longs_h kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
 longs_k kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-longs_longs smooth 1             # 2026-10-16 known at the start (quality checks added): 702,1312 3.0 degrees
-longs_longs_l extreme 1          # 2026-10-16 known at the start (quality checks added): 820,1145 10 units past
-longs_longs_l kink 1             # 2026-10-16 known at the start (quality checks added): 739,1298 6.5 degrees
-ninesuperior smooth 1            # 2026-10-16 known at the start (quality checks added): 271,757 2.4 degrees
+longs_longs extreme 2            # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1309,1356 6 units past; 711,1371 7 units past
+longs_longs smooth 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1294,1298 2.4 degrees; 700,1312 3.0 degrees
+longs_longs_l extreme 3          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
+longs_longs_l kink 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 195,974 4.5 degrees; 735,1298 6.5 degrees
+m extreme 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1043,685 12 units past; 478,690 6 units past
+n extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 478,673 6 units past
+nu stroke 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 222 against 261 (0.85, lighter)
 nu zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
-oe stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 315 against 279 (1.13, darker)
+oe extreme 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1279,531 16 units past
+oe.sc extreme 2                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 660,28 9 units past; 727,908 9 units past
 omicron stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
-ordfeminine extreme 2            # 2026-10-16 known at the start (quality checks added): 671,954 8 units past; 770,913 6 units past
 oslash zone 2                    # 2026-10-16 known at the start (quality checks added): bottom -26 from 0; top +26 from 884
+oslash.sc extreme 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 949,515 5 units past; 353,515 6 units past
 period width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+phi extreme 2                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 603,-15 12 units past; 442,-371 6 units past
+phi kink 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 963,601 6.8 degrees
 phi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 261 (0.80, lighter)
 phi zone 1                       # 2026-10-16 known at the start (quality checks added): top +24 from 884
 phisymbolgreek stroke 1          # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 205 against 261 (0.78, lighter)
 pi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 227 against 261 (0.87, lighter)
-pisymbolgreek smooth 1           # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
+psi extreme 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1174,888 11 units past
 psi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 261 (0.77, lighter)
-psi.sc kink 1                    # 2026-10-16 known at the start (quality checks added): 1479,946 5.5 degrees
-q.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 1160,-299 5 units past
-q.sc smooth 1                    # 2026-10-16 known at the start (quality checks added): 1084,-278 3.0 degrees
-questiondown smooth 1            # 2026-10-16 known at the start (quality checks added): 567,-512 2.9 degrees
+psi.sc extreme 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1220,840 9 units past; 215,819 7 units past
 quoteleft smooth 1               # 2026-10-16 known at the start (quality checks added): 293,1127 2.2 degrees
 quoteleft width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 quotereversed smooth 1           # 2026-10-16 known at the start (quality checks added): 293,1238 2.2 degrees
 quotereversed width 1            # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 quoteright smooth 1              # 2026-10-16 known at the start (quality checks added): 346,1238 2.2 degrees
 quoteright width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
+quotesingle smooth 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 450,1294 2.9 degrees
 quotesingle width 1              # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-r.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
+r extreme 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 669,785 8 units past; 472,699 9 units past
 r.sc zone 1                      # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 registered extreme 1             # 2026-10-16 known at the start (quality checks added): 1350,348 7 units past
 rho stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 215 against 261 (0.82, lighter)
-rhosymbolgreek extreme 1         # 2026-10-16 known at the start (quality checks added): 720,-503 8 units past
-rhosymbolgreek smooth 1          # 2026-10-16 known at the start (quality checks added): 649,-491 2.7 degrees
 rhosymbolgreek stroke 1          # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 197 against 261 (0.75, lighter)
 s stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 214 against 261 (0.82, lighter)
 s.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 223 against 273 (0.82, lighter)
-s_t extreme 1                    # 2026-10-16 known at the start (quality checks added): 560,869 15 units past
-s_t kink 4                       # 2026-10-16 known at the start (quality checks added): 622,184 5.4 degrees; 93,662 3.6 degrees; 853,1332 1.5 degrees; 291,727 6.2 degrees
+s_t smooth 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 671,846 2.0 degrees
 section smooth 1                 # 2026-10-16 known at the start (quality checks added): 748,1215 2.5 degrees
+seven extreme 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 264,1140 7 units past
 seven stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 213 against 306 (0.70, lighter)
 sevenoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 261 (0.59, lighter)
-sigma.sc smooth 1                # 2026-10-16 known at the start (quality checks added): 812,221 2.1 degrees
+sevensuperior smooth 1           # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 194,1298 5.0 degrees
 sigma.sc stroke 1                # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 199 against 273 (0.73, lighter)
-sigma1 smooth 2                  # 2026-10-16 known at the start (quality checks added): 476,176 2.3 degrees; 586,-149 2.2 degrees
+sigma1 smooth 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 462,176 2.6 degrees
 sigma1 stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 261 (0.60, lighter)
 sigmalunatesymbolgreek stroke 1  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 171 against 261 (0.65, lighter)
 sixsuperior smooth 1             # 2026-10-16 known at the start (quality checks added): 505,1340 2.9 degrees
+sterling smooth 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1282,1178 2.1 degrees
+summation extreme 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1641,-221 9 units past
 tau stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 158 against 261 (0.61, lighter)
+theta stroke 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 208 against 261 (0.80, lighter)
 thetasymbolgreek stroke 1        # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 200 against 261 (0.77, lighter)
 thorn.sc zone 1                  # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+three smooth 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 763,782 3.7 degrees
 trademark smooth 1               # 2026-10-16 known at the start (quality checks added): 280,1346 2.5 degrees
-two kink 1                       # 2026-10-16 known at the start (quality checks added): 443,195 3.0 degrees
 two stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 226 against 306 (0.74, lighter)
+u extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 749,211 6 units past
 u.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+u1D459 extreme 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 471,135 8 units past
 u1D459 kink 1                    # 2026-10-16 known at the start (quality checks added): 217,153 5.8 degrees
 u1D459 zone 1                    # 2026-10-16 known at the start (quality checks added): bottom -4 from 0
 u1D510 kink 2                    # 2026-10-16 known at the start (quality checks added): 437,1395 1.6 degrees; 250,505 1.9 degrees
-u1D510 smooth 2                  # 2026-10-16 known at the start (quality checks added): 71,1123 2.1 degrees; 1981,264 2.2 degrees
+u1D510 smooth 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1937,1308 2.4 degrees
 u1D510 zone 1                    # 2026-10-16 known at the start (quality checks added): top +20 from 1434
-u1D513 kink 4                    # 2026-10-16 known at the start (quality checks added): 422,1391 1.2 degrees; 320,1234 4.1 degrees; 224,505 2.0 degrees; 1039,1352 7.2 degrees
-u1D513 smooth 3                  # 2026-10-16 known at the start (quality checks added): 1422,1244 2.1 degrees; 1118,731 2.2 degrees; 1091,1284 2.6 degrees
+u1D513 extreme 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 408,1391 10 units past; 1127,61 5 units past
+u1D513 kink 2                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 210,505 2.7 degrees; 1025,1352 4.5 degrees
+u1D513 smooth 2                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 923,1156 2.0 degrees; 994,139 2.5 degrees
 u1D513 zone 1                    # 2026-10-16 known at the start (quality checks added): top +18 from 1434
 u1D516 kink 1                    # 2026-10-16 known at the start (quality checks added): 739,382 1.1 degrees
 u1D516 stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 377 against 330 (1.14, darker)
-u1D52D smooth 3                  # 2026-10-16 known at the start (quality checks added): 1085,759 2.2 degrees; 1085,360 2.8 degrees; 848,98 2.5 degrees
-uni0187 extreme 1                # 2026-10-16 known at the start (quality checks added): 1290,1430 16 units past
-uni0187 kink 1                   # 2026-10-16 known at the start (quality checks added): 1199,1362 3.5 degrees
-uni0188.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 881,14 2.1 degrees
-uni0190 smooth 1                 # 2026-10-16 known at the start (quality checks added): 249,498 2.3 degrees
+u1D52D extreme 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 311,-473 6 units past
+uni0181 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 91,1396 5 units past
+uni0183 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 85,1496 1.5 degrees; 85,1440 1.5 degrees
+uni0186 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 383,1415 2.0 degrees
+uni0188.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 940,1033 9 units past
+uni0188.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 901,982 1.9 degrees
+uni018A extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 91,1396 5 units past
+uni0190 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 741,190 14 units past
+uni0190 kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1076,1276 6.6 degrees; 211,965 3.9 degrees; 183,498 3.4 degrees
 uni0190 zone 1                   # 2026-10-16 known at the start (quality checks added): top +18 from 1434
 uni0191 smooth 1                 # 2026-10-16 known at the start (quality checks added): 128,-356 2.0 degrees
-uni0193 extreme 1                # 2026-10-16 known at the start (quality checks added): 1290,1430 16 units past
-uni0193 kink 1                   # 2026-10-16 known at the start (quality checks added): 1199,1362 3.5 degrees
-uni0194 smooth 2                 # 2026-10-16 known at the start (quality checks added): 1298,1425 2.4 degrees; 1322,1131 2.2 degrees
+uni0194 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1298,1425 2.4 degrees
 uni0194 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 191 against 306 (0.63, lighter)
 uni0194 zone 1                   # 2026-10-16 known at the start (quality checks added): top -9 from 1434
 uni0196 kink 2                   # 2026-10-16 known at the start (quality checks added): 332,172 4.7 degrees; 704,244 4.1 degrees
 uni0196 smooth 2                 # 2026-10-16 known at the start (quality checks added): 514,1299 2.5 degrees; 249,275 2.6 degrees
 uni0196 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 242 against 306 (0.79, lighter)
 uni0196 zone 1                   # 2026-10-16 known at the start (quality checks added): top +21 from 1434
+uni0198 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1401,1111 2.6 degrees
 uni0199 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
-uni0199.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 915,880 16 units past
-uni0199.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 868,878 2.4 degrees
-uni019B smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 233,1297 2.2 degrees; 877,318 3.0 degrees
-uni019D kink 2                   # 2026-10-16 known at the start (quality checks added): 272,83 1.2 degrees; 429,63 2.3 degrees
+uni019B smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 226,1297 2.2 degrees
+uni019D kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 347,71 2.6 degrees
 uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 423,-71 2.6 degrees
+uni01A4 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 91,1396 5 units past
+uni01A5 zone 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: top -25 from 1496
+uni01A5.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 359,1001 18 units past
 uni01A5.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 348,891 2.7 degrees
 uni01AC kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 401,1431 7.2 degrees
-uni01AD.sc kink 5                # 2026-10-16 known at the start (quality checks added): 257,1039 5.0 degrees; 730,987 6.2 degrees; 380,987 6.2 degrees; 163,774 5.3 degrees; 70,893 6.7 degrees
+uni01AD extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 662,1385 8 units past
+uni01AD.sc kink 3                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 251,1039 6.1 degrees; 723,987 6.2 degrees; 373,987 6.2 degrees
 uni01AE kink 1                   # 2026-10-16 known at the start (quality checks added): 697,-158 6.5 degrees
-uni01B4 smooth 2                 # 2026-10-16 known at the start (quality checks added): 223,-470 2.4 degrees; 1273,724 2.3 degrees
-uni01B4.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1031,851 18 units past
+uni01B3 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1128,1150 4.6 degrees
+uni01B4 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 211,-521 6 units past
+uni01B4 smooth 3                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 224,-470 2.4 degrees; 791,699 2.3 degrees; 1268,724 2.3 degrees
 uni01B4.sc kink 1                # 2026-10-16 known at the start (quality checks added): 841,832 3.2 degrees
 uni01B7 extreme 1                # 2026-10-16 known at the start (quality checks added): 515,671 22 units past
-uni01B7 kink 1                   # 2026-10-16 known at the start (quality checks added): 420,-38 7.3 degrees
+uni01B7 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 927,766 4.9 degrees; 380,-38 6.3 degrees
 uni01B7 smooth 1                 # 2026-10-16 known at the start (quality checks added): 597,203 2.2 degrees
-uni01B8 kink 1                   # 2026-10-16 known at the start (quality checks added): 1046,-38 6.2 degrees
+uni01B8 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 529,766 4.9 degrees; 1076,-38 6.3 degrees
 uni01B8 smooth 1                 # 2026-10-16 known at the start (quality checks added): 869,203 2.2 degrees
 uni01B9 kink 4                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 735,128 1.2 degrees; 668,-132 5.1 degrees; 693,-221 5.2 degrees; 538,-379 1.1 degrees
 uni01B9 smooth 1                 # 2026-10-16 known at the start (quality checks added): 944,-76 2.2 degrees
-uni01B9.sc kink 1                # 2026-10-16 known at the start (quality checks added): 718,-23 5.5 degrees
+uni01B9.sc kink 3                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 340,551 7.0 degrees; 588,151 2.8 degrees; 743,-23 5.7 degrees
 uni01B9.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 590,151 2.8 degrees
 uni01C0 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni01C1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni01C2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
-uni01E5 smooth 2                 # ǥ: the bar across the whole lower loop (roman), across the stem below the baseline (italic), as the references; bar overhang per side (derive.bar_shape): 1053,-241 2.2 degrees; 696,-527 2.3 degrees
+uni01DD extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 311,311 6 units past
+uni01DD.sc smooth 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 440,445 2.4 degrees
+uni01E4 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1164,1415 2.0 degrees
 uni01E5 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
 uni0237.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
-uni023A stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 407 against 330 (1.23, darker)
-uni023B smooth 3                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 245,281 2.9 degrees; 1297,1034 2.6 degrees; 463,472 2.8 degrees
+uni023A stem 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: at 731 365 against A's 343
+uni023B smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 191,373 2.5 degrees
+uni023C kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 110,223 4.5 degrees
 uni023C.sc kink 1                # Bold derived letters made of their Bold base (make_bold.py follow_bases): 170,207 4.6 degrees
+uni023C.sc smooth 3              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 945,33 7.6 degrees; 365,409 3.5 degrees; 724,1006 5.0 degrees
+uni023E kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 993,1264 2.6 degrees
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
-uni0242 kink 1                   # 2026-10-16 known at the start (quality checks added): 60,772 3.6 degrees
+uni0242 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 41,772 3.6 degrees; 268,847 5.0 degrees
+uni0242 smooth 3                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 313,441 2.7 degrees; 251,823 7.1 degrees; 264,768 3.8 degrees
 uni0242 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 184 against 261 (0.70, lighter)
+uni0242.sc smooth 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 283,565 2.1 degrees; 266,1006 4.8 degrees
 uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 173 against 273 (0.63, lighter)
+uni0248 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 326,86 8 units past
 uni0248 smooth 1                 # 2026-10-16 known at the start (quality checks added): 350,147 2.3 degrees
 uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
-uni0249.sc kink 1                # 2026-10-16 known at the start (quality checks added): 33,142 7.7 degrees
+uni0249.sc extreme 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 327,155 9 units past; 275,36 15 units past
 uni0249.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
-uni024D.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
 uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
+uni0250 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 691,624 2.2 degrees
 uni0253 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 189,1000 3.7 degrees
 uni0255 kink 1                   # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 566,160 5.3 degrees
+uni0256 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 754,51 2.1 degrees
 uni0257 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 757,1000 3.7 degrees
+uni0258 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 345,531 6 units past
+uni025A extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 311,311 6 units past
 uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 689,552 3.8 degrees
 uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 224,362 2.1 degrees
 uni025B.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 179 against 273 (0.65, lighter)
 uni025B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +16 from 1040
 uni025C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 176 against 261 (0.67, lighter)
-uni025D kink 2                   # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
-uni025D smooth 1                 # Greek spacing and kerning against Greek references (greek_pairs.py): Regular Greek lowercase +8 a side, Italic/Bold Italic Greek cuts, accented letters in their base's kerning groups, frequent outlier
 uni025D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 186 against 261 (0.71, lighter)
 uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of uni025C kept (attach)
 uni025E stroke 1                 # Bold ɞ: own recipe at the Bold's weight (make_bold.py BOLD_RECIPES), counters open, advance that of ɜ as in the Regular: lc 225 against 261 (0.86, lighter)
-uni0260 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1197,1290 3.9 degrees
-uni0260.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 894,28 2.1 degrees
+uni0260 zone 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: top -25 from 1496
+uni0260.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 940,1032 6 units past
+uni0260.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 900,982 4.5 degrees
 uni0262 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni0263.sc kink 3                # 2026-10-16 known at the start (quality checks added): 70,942 5.1 degrees; 820,893 4.4 degrees; 553,0 2.0 degrees
 uni0263.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 778,1074 2.1 degrees
 uni0264 kink 5                   # 2026-10-16 known at the start (quality checks added): 60,802 4.8 degrees; 683,919 3.2 degrees; 727,755 4.2 degrees; 489,-16 3.7 degrees; 340,92 2.7 degrees
 uni0264.sc kink 1                # 2026-10-16 known at the start (quality checks added): 565,-20 1.6 degrees
-uni0264.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 943,1002 3.7 degrees; 838,898 3.7 degrees
+uni0264.sc smooth 3              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 943,1002 3.7 degrees; 838,898 3.4 degrees; 366,826 2.1 degrees
+uni0265 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 749,211 6 units past
 uni0266 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 189,1000 3.7 degrees
-uni0266.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 807,815 21 units past; 645,941 7 units past
-uni0266.sc kink 2                # 2026-10-16 known at the start (quality checks added): 215,588 3.7 degrees; 638,891 2.7 degrees
+uni0266.sc extreme 3             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 800,815 7 units past; 638,941 15 units past; 619,1001 9 units past
+uni0266.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 631,891 2.7 degrees
+uni0267 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 659,1383 9 units past; 472,673 6 units past
 uni0267 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
+uni0267 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 686,-413 2.5 degrees
 uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 554,177 2.0 degrees
 uni0269.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 227 against 273 (0.83, lighter)
-uni026B.sc smooth 2              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 500,555 2.8 degrees; 166,483 5.3 degrees
-uni026E kink 2                   # 2026-10-16 known at the start (quality checks added): 608,-132 5.1 degrees; 583,-221 5.2 degrees
-uni026F.sc smooth 1              # Bold derived letters made of their Bold base (make_bold.py follow_bases): 792,229 3.2 degrees
+uni026B.sc kink 3                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 560,1040 1.4 degrees; 87,1040 2.0 degrees; 193,770 2.3 degrees
+uni026E kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 924,537 5.9 degrees; 607,-132 4.8 degrees; 571,-221 5.1 degrees
+uni026F extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 747,211 6 units past; 1352,211 6 units past
 uni026F.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+uni0270 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 747,211 6 units past; 1352,211 6 units past
+uni0271 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1043,685 12 units past; 478,690 6 units past
+uni0272 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 478,673 6 units past
 uni0272 smooth 1                 # 2026-10-16 known at the start (quality checks added): 91,-413 3.1 degrees
-uni0272.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 299,947 9 units past
-uni0272.sc kink 2                # 2026-10-16 known at the start (quality checks added): 220,64 1.2 degrees; 387,51 2.0 degrees
+uni0272.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 316,57 2.5 degrees
+uni0272.sc smooth 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 311,-47 2.8 degrees
+uni0273 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 478,673 6 units past
+uni0273 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1163,-205 2.5 degrees
 uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
-uni0278 kink 8                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 248,76 3.4 degrees; 844,76 3.4 degrees; 844,809 3.4 degrees; 248,809 3.4 degrees; 367,675 3.3 degrees; 367,209 3.3 degrees; 72
-uni0279 smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees
-uni027A smooth 1                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees
-uni027B kink 1                   # 2026-10-16 known at the start (quality checks added): 474,-246 5.5 degrees
-uni027B smooth 2                 # 2026-10-16 known at the start (quality checks added): 199,83 2.0 degrees; 735,-246 2.3 degrees
-uni027D.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 1081,45 6 units past
+uni0278 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 742,573 2.8 degrees; 742,311 2.8 degrees
+uni0278 smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 163,162 3.1 degrees; 163,723 2.7 degrees
+uni027D extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 669,785 8 units past; 472,699 9 units past
+uni027D smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 560,-205 2.5 degrees
 uni027D.sc kink 2                # 2026-10-16 known at the start (quality checks added): 196,51 5.3 degrees; 594,-129 3.0 degrees
-uni0280.sc extreme 1             # ʀ.sc: the small-cap Ʀ (derive.py lower), emboldened: 1081,-100 6 units past
-uni0281 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1056,1055 3.7 degrees
+uni027E extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 670,785 8 units past; 473,699 9 units past
 uni0282 kink 1                   # 2026-10-16 known at the start (quality checks added): 116,-46 7.2 degrees
+uni0282 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 314,82 2.7 degrees
 uni0282 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 214 against 261 (0.82, lighter)
-uni0288.sc kink 1                # 2026-10-16 known at the start (quality checks added): 899,-129 5.4 degrees
+uni0283 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 838,1383 9 units past
+uni0284 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 675,1313 9 units past
+uni0288 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 559,-206 3.1 degrees
+uni0288.sc kink 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 885,-129 5.4 degrees; 487,51 5.3 degrees
+uni0289 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 773,276 4.9 degrees; 554,63 1.1 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
-uni028A.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 993,860 3.7 degrees; 235,860 4.0 degrees
+uni028A.sc smooth 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 201,860 2.9 degrees
 uni028B kink 1                   # 2026-10-16 known at the start (quality checks added): 1031,63 4.2 degrees
 uni028B zone 1                   # 2026-10-16 known at the start (quality checks added): top +6 from 884
-uni028C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 242 against 273 (0.89, lighter)
 uni028C.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -3 from 0
 uni028E smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 852,1354 2.4 degrees
-uni0290 kink 1                   # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 501,52 1.0 degrees
 uni0291 kink 1                   # 2026-10-16 known at the start (quality checks added): 445,202 6.6 degrees
-uni0292 kink 2                   # 2026-10-16 known at the start (quality checks added): 346,-132 5.1 degrees; 321,-221 5.2 degrees
+uni0292 kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 651,537 5.9 degrees; 334,-132 3.2 degrees; 298,-221 5.1 degrees
 uni0292 smooth 1                 # 2026-10-16 known at the start (quality checks added): 70,-76 2.2 degrees
-uni0292.sc kink 1                # 2026-10-16 known at the start (quality checks added): 339,-23 5.5 degrees
-uni0292.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 467,151 2.8 degrees
+uni0292.sc kink 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 707,551 7.0 degrees; 304,-23 5.7 degrees
+uni0292.sc smooth 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 698,506 2.1 degrees; 459,151 2.8 degrees
 uni0294 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
 uni0295 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -28 from 0
-uni029D.sc kink 1                # 2026-10-16 known at the start (quality checks added): 114,-377 2.6 degrees
-uni029D.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 679,193 2.9 degrees
+uni029D smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 85,-555 2.1 degrees
+uni029D.sc smooth 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 676,193 2.9 degrees; 111,-377 2.5 degrees
 uni02A1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
-uni02A2 smooth 1                 # 2026-10-16 known at the start (quality checks added): 527,1396 2.9 degrees
 uni02A2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
-uni02B2 kink 3                   # 2026-10-16 known at the start (quality checks added): -66,432 3.7 degrees; 365,1402 5.3 degrees; 235,1325 1.7 degrees
-uni02B2 smooth 1                 # 2026-10-16 known at the start (quality checks added): 106,1402 2.6 degrees
+uni02B2 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 111,387 7 units past
 uni02B2 width 1                  # 2026-10-16 known at the start (quality checks added): 1.30 of the Regular's, usually 1.09
-uni02B8 kink 1                   # 2026-10-16 known at the start (quality checks added): 116,469 4.1 degrees
 uni02BB smooth 1                 # 2026-10-16 known at the start (quality checks added): 192,1189 6.2 degrees
 uni02BC smooth 1                 # 2026-10-16 known at the start (quality checks added): 228,1311 6.2 degrees
 uni02BD width 1                  # 2026-10-16 known at the start (quality checks added): 1.25 of the Regular's, usually 1.09
+uni02C0 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 228,1007 6 units past
 uni02C0 smooth 1                 # 2026-10-16 known at the start (quality checks added): 412,995 2.1 degrees
 uni02C0 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
-uni02C1 extreme 1                # 2026-10-16 known at the start (quality checks added): 497,1047 32 units past
-uni02C1 kink 1                   # 2026-10-16 known at the start (quality checks added): 524,1375 3.3 degrees
-uni02C1 smooth 2                 # 2026-10-16 known at the start (quality checks added): 318,1371 2.1 degrees; 316,1424 2.4 degrees
-uni02C1 width 1                  # 2026-10-16 known at the start (quality checks added): 1.22 of the Regular's, usually 1.09
+uni02C1 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 314,1086 2.5 degrees
 uni02C8 width 1                  # 2026-10-16 known at the start (quality checks added): 1.34 of the Regular's, usually 1.09
 uni02CC width 1                  # 2026-10-16 known at the start (quality checks added): 1.34 of the Regular's, usually 1.09
 uni02D0 width 1                  # 2026-10-16 known at the start (quality checks added): 1.26 of the Regular's, usually 1.09
 uni02D1 width 1                  # 2026-10-16 known at the start (quality checks added): 1.26 of the Regular's, usually 1.09
-uni02E0 kink 2                   # 2026-10-16 known at the start (quality checks added): 584,1158 3.3 degrees; 405,300 2.4 degrees
-uni02E0 smooth 1                 # 2026-10-16 known at the start (quality checks added): 614,1013 3.8 degrees
 uni02E1 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
 uni0315 smooth 1                 # 2026-10-16 known at the start (quality checks added): -95,1311 6.2 degrees
 uni0359 kink 4                   # 2026-10-16 known at the start (quality checks added): -510,-244 5.2 degrees; -370,-244 5.2 degrees; -370,-420 5.2 degrees; -510,-420 5.2 degrees
-uni0374 smooth 1                 # 2026-10-16 known at the start (quality checks added): 214,1449 2.6 degrees
 uni0374 width 1                  # 2026-10-16 known at the start (quality checks added): 1.25 of the Regular's, usually 1.09
 uni037F zone 1                   # accepted case counterpart additions: bottom -18 from 0
 uni03CF extreme 6                # 2026-10-16 known at the start (quality checks added): 1386,204 155 units past; 1385,-471 60 units past; 894,-403 49 units past; 916,-188 25 units past; 1207,-369 22 units past; 1316,-403 34 units past
-uni03CF kink 3                   # 2026-10-16 known at the start (quality checks added): 979,745 4.8 degrees; 1386,204 2.9 degrees; 981,274 1.4 degrees
+uni03CF kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 979,745 2.2 degrees; 1386,204 2.9 degrees
 uni03CF smooth 1                 # 2026-10-16 known at the start (quality checks added): 1207,-369 2.4 degrees
-uni03D7.sc extreme 5             # 2026-10-16 known at the start (quality checks added): 1061,155 115 units past; 1054,-341 46 units past; 661,-290 38 units past; 683,-128 21 units past; 973,-284 18 units past
-uni03D7.sc kink 3                # 2026-10-16 known at the start (quality checks added): 1061,155 2.9 degrees; 906,-200 3.0 degrees; 724,199 2.9 degrees
+uni03D7 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 272,699 2.3 degrees
+uni03D7.sc extreme 6             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1060,155 96 units past; 1028,-341 44 units past; 660,-290 38 units past; 682,-128 21 units past; 925,-260 18 
+uni03D7.sc kink 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 765,543 4.8 degrees; 1060,155 2.9 degrees
 uni03D9 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 212 against 261 (0.81, lighter)
-uni03DB smooth 2                 # 2026-10-16 known at the start (quality checks added): 476,176 2.3 degrees; 586,-149 2.2 degrees
+uni03DB smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 463,176 2.6 degrees
 uni03DB stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 261 (0.59, lighter)
 uni03DD stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 148 against 261 (0.57, lighter)
 uni03DE stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 179 against 306 (0.58, lighter)
@@ -326,81 +363,85 @@ uni03F3.sc zone 2                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.s
 uni0408 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni0409 extreme 1                # 2026-10-16 known at the start (quality checks added): 331,106 7 units past
 uni0409 smooth 1                 # 2026-10-16 known at the start (quality checks added): 347,157 2.3 degrees
-uni0417 smooth 1                 # 2026-10-16 known at the start (quality checks added): 561,718 2.2 degrees
+uni0416 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 377,1386 14 units past; 1715,1354 14 units past
+uni041A extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1167,1354 17 units past
 uni041B extreme 1                # 2026-10-16 known at the start (quality checks added): 331,106 7 units past
 uni041B smooth 1                 # 2026-10-16 known at the start (quality checks added): 347,157 2.3 degrees
-uni0423 smooth 1                 # 2026-10-16 known at the start (quality checks added): 516,-301 2.8 degrees
 uni0426 extreme 1                # 2026-10-16 known at the start (quality checks added): 564,-242 7 units past
-uni0429 extreme 1                # 2026-10-16 known at the start (quality checks added): 1130,-242 7 units past
+uni0426 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 565,-308 4.2 degrees
+uni0429 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 2181,80 6.8 degrees
+uni0429 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1083,-269 2.9 degrees
 uni042F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
-uni0431.loclSRB smooth 1         # new localized forms: Old Standard's Serbian п т, the italic ī joint, the Bold's upright ∂ (drafts for review): 674,252 2.8 degrees
 uni0436 extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
-uni0436 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1222,792 2.9 degrees
 uni0436.loclBGR extreme 2        # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 7,62 5 units past; 1400,44 5 units past
-uni0436.loclBGR smooth 1         # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 1222,792 2.9 degrees
-uni0436.sc kink 7                # 2026-10-16 known at the start (quality checks added): 307,943 7.1 degrees; 62,931 6.0 degrees; 649,576 4.0 degrees; 1020,576 4.0 degrees; 1606,931 6.0 degrees; 1035,524 3.1 degrees; 634,524 3.1 degree
+uni0436.sc extreme 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 284,998 5 units past; 1391,988 6 units past
+uni0436.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1171,378 2.9 degrees
+uni0437.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 267,155 4.5 degrees
+uni043A extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 866,829 6 units past
+uni043A smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 837,792 3.3 degrees
+uni043A.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 935,987 5 units past
+uni043A.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 906,944 3.8 degrees
+uni043B extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 250,65 11 units past
+uni043B.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 281,86 12 units past
 uni043C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -26 from 0
-uni0443.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 557,-129 2.6 degrees
-uni0443.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 243 against 273 (0.89, lighter)
 uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0444.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+uni0446 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1045,147 14 units past
 uni0446 smooth 1                 # 2026-10-16 known at the start (quality checks added): 433,-243 5.8 degrees
-uni0446.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 441,-222 3.4 degrees
+uni0446.loclBGR extreme 1        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1029,110 6 units past
+uni0446.loclBGR smooth 1         # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 777,300 2.5 degrees
+uni0446.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1092,161 12 units past
+uni0449 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1536,147 14 units past
 uni0449 smooth 1                 # 2026-10-16 known at the start (quality checks added): 828,-242 3.9 degrees
+uni0449.loclBGR extreme 1        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1633,110 6 units past
 uni0449.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 865,-176 13 units past
 uni0449.sc kink 2                # 2026-10-16 known at the start (quality checks added): 1182,-248 4.2 degrees; 1321,-111 6.2 degrees
 uni044A.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 641,1166 1.3 degrees
+uni044D smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 568,393 2.6 degrees
+uni044F smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 460,600 2.5 degrees
 uni044F.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0
+uni0454.sc smooth 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 822,125 2.1 degrees
 uni0458.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
-uni046B extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
-uni046B.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 602,598 3.6 degrees; 1041,598 2.7 degrees
-uni0472 smooth 1                 # 2026-10-16 known at the start (quality checks added): 803,38 2.1 degrees
-uni0473 smooth 1                 # 2026-10-16 known at the start (quality checks added): 489,836 2.1 degrees
+uni0459 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 250,65 11 units past
+uni0459.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 281,86 12 units past
 uni0474 extreme 1                # 2026-10-16 known at the start (quality checks added): 1474,1351 5 units past
-uni0474 kink 1                   # 2026-10-16 known at the start (quality checks added): 1062,913 3.4 degrees
-uni0474 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1454,1302 2.3 degrees
-uni0475 extreme 1                # 2026-10-16 known at the start (quality checks added): 942,825 6 units past
-uni0475 kink 1                   # 2026-10-16 known at the start (quality checks added): 698,647 4.5 degrees
-uni0475 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 234 against 261 (0.90, lighter)
-uni0475.sc kink 1                # 2026-10-16 known at the start (quality checks added): 769,659 5.7 degrees
-uni0475.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 1068,941 2.1 degrees
-uni0475.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 229 against 273 (0.84, lighter)
-uni0496 extreme 1                # 2026-10-16 known at the start (quality checks added): 1103,-242 7 units past
+uni0475 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 933,789 2.5 degrees
+uni0475.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1091,976 12 units past
+uni0496 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 377,1386 14 units past; 1715,1354 14 units past
+uni0496 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1103,-308 4.2 degrees
 uni0497 extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
-uni0497 smooth 2                 # 2026-10-16 known at the start (quality checks added): 1222,792 2.9 degrees; 798,-243 5.8 degrees
-uni0497.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 917,-196 6 units past
-uni0497.sc kink 9                # 2026-10-16 known at the start (quality checks added): 307,943 7.1 degrees; 62,931 6.0 degrees; 649,576 4.0 degrees; 1020,576 4.0 degrees; 1606,931 6.0 degrees; 1754,-91 3.6 degrees; 1613,-83 6.5 degre
+uni0497 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 824,-243 4.8 degrees
+uni0497.sc extreme 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 284,998 5 units past; 1391,988 6 units past
+uni0497.sc kink 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1517,38 7.5 degrees; 1171,378 2.9 degrees
 uni049A extreme 1                # 2026-10-16 known at the start (quality checks added): 582,-242 7 units past
-uni049B kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 739,50 4.7 degrees
-uni1D43 kink 1                   # 2026-10-16 known at the start (quality checks added): 185,959 1.0 degrees
+uni049A smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 586,-308 4.2 degrees
+uni049B extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 866,829 6 units past
+uni049B smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 837,792 3.3 degrees; 417,-243 5.6 degrees
+uni04B3 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 445,-243 2.1 degrees
+uni04B3.sc stroke 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: sc 237 against 273 (0.87, lighter)
+uni04D8 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 528,556 11 units past
+uni04D9.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 396,406 15 units past
 uni1D43 smooth 1                 # 2026-10-16 known at the start (quality checks added): 64,759 2.7 degrees
-uni1D43 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
-uni1D49 kink 1                   # 2026-10-16 known at the start (quality checks added): 517,908 1.2 degrees
-uni1D49 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
-uni1D4B kink 2                   # 2026-10-16 known at the start (quality checks added): 92,1001 2.4 degrees; 509,1087 5.0 degrees
+uni1D49 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 414,952 8 units past
 uni1D4B smooth 1                 # 2026-10-16 known at the start (quality checks added): 70,791 2.5 degrees
 uni1D4B width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
 uni1D4D kink 1                   # 2026-10-16 known at the start (quality checks added): 357,1117 2.3 degrees
-uni1D53 kink 1                   # 2026-10-16 known at the start (quality checks added): 281,1108 1.9 degrees
-uni1D53 smooth 1                 # 2026-10-16 known at the start (quality checks added): 290,802 2.0 degrees
-uni1D53 width 1                  # 2026-10-16 known at the start (quality checks added): 1.20 of the Regular's, usually 1.09
-uni1D6C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 360 against 279 (1.29, darker)
-uni1D6D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 310 against 279 (1.11, darker)
+uni1D4D smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 287,570 2.1 degrees
 uni1D6E kink 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
-uni1D70 smooth 2                 # 2026-10-16 known at the start (quality checks added): 560,393 2.1 degrees; 694,491 2.7 degrees
-uni1D71 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 360 against 279 (1.29, darker)
-uni1D72 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 519,851 3.8 degrees
-uni1D73 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 519,851 3.8 degrees
-uni1D74 kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 108,575 4.5 degrees
-uni1D74 smooth 3                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 534,530 4.2 degrees; 500,541 2.1 degrees; 564,62 2.3 degrees
+uni1D6F extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1027,503 6 units past; 656,820 6 units past
+uni1D6F kink 11                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 540,0 1.0 degrees; 772,88 1.5 degrees; 1119,0 1.0 degrees; 1351,140 4.4 degrees; 1697,0 1.0 degrees; 1080,833
+uni1D6F stroke 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 314 against 278 (1.13, darker)
+uni1D70 kink 8                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 541,0 1.0 degrees; 797,167 4.0 degrees; 1145,0 1.1 degrees; 525,830 3.7 degrees; 76,884 2.5 degrees; 194,748 
+uni1D72 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 634,836 12 units past; 174,430 10 units past
+uni1D72 kink 6                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 544,0 1.1 degrees; 634,836 3.7 degrees; 558,871 3.9 degrees; 79,884 2.2 degrees; 194,689 4.3 degrees; 194,103
+uni1D73 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 638,836 12 units past
+uni1D73 smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 638,836 2.1 degrees; 615,891 2.5 degrees
 uni1D74 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
+uni1D75 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 526,75 3.0 degrees; 196,1024 1.1 degrees
+uni1D75 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 592,100 2.2 degrees
+uni1D76 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 80,736 3.1 degrees
 uni1D7E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
-uni1DA4 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
 uni1DA4 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
-uni1DB6 kink 1                   # 2026-10-16 known at the start (quality checks added): 300,785 4.0 degrees
-uni1DBB width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-uni1DBF kink 1                   # 2026-10-16 known at the start (quality checks added): 328,636 1.6 degrees
-uni1DBF width 1                  # 2026-10-16 known at the start (quality checks added): 1.22 of the Regular's, usually 1.09
 uni1E42 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
 uni1E46 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
 uni1E48 accent 1                 # 2026-10-16 known at the start (quality checks added): below macron gap 214, usually 242
@@ -410,7 +451,7 @@ uni1E74 accent 1                 # 2026-10-16 known at the start (quality checks
 uni1E7E accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
 uni1E88 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
 uni1E9E kink 1                   # 2026-10-16 known at the start (quality checks added): 932,233 5.1 degrees
-uni1E9E smooth 2                 # 2026-10-16 known at the start (quality checks added): 568,165 2.2 degrees; 845,145 2.1 degrees
+uni1E9E smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 565,165 2.2 degrees
 uni1E9E zone 2                   # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +15 from 1434
 uni1EA2 accent 1                 # 2026-10-16 known at the start (quality checks added): above Hook gap 104, usually 132
 uni1ECC accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
@@ -443,52 +484,61 @@ uni1FDA accent 1                 # 2026-10-16 known at the start (quality checks
 uni1FDF smooth 2                 # 2026-10-16 known at the start (quality checks added): 473,1502 2.2 degrees; 83,1492 2.2 degrees
 uni2032 width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
 uni2042 kink 6                   # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 414,578 3.2 degrees; 414,862 3.2 degree
-uni2071 kink 3                   # 2026-10-16 known at the start (quality checks added): 107,1402 2.6 degrees; 366,1402 5.3 degrees; 236,1325 1.7 degrees
 uni2071 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
-uni20A1 kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1095,1365 6.3 degrees
-uni20A1 smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1090,1448 2.5 degrees; 793,49 2.7 degrees
-uni20A6 kink 1                   # 2026-10-16 known at the start (quality checks added): 416,1316 4.5 degrees
-uni20A9 kink 3                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1865,423 1.0 degrees; 1050,806 3.2 degrees; 764,781 3.7 degrees
-uni20B2 kink 4                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1046,-16 4.8 degrees; 683,107 4.7 degrees; 684,1324 5.5 degrees; 1083,87 7.9 degrees
-uni20B2 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 555,1376 2.1 degrees
-uni20B5 kink 3                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1071,58 5.4 degrees; 683,107 4.7 degrees; 684,1324 5.5 degrees
-uni20B5 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 555,1376 2.1 degrees
-uni20B8 kink 2                   # 2026-10-16 known at the start (quality checks added): 147,1180 3.6 degrees; 1632,1180 3.6 degrees
+uni20A1 kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 756,-11 5.2 degrees; 767,51 4.7 degrees; 1079,1374 4.5 degrees
+uni20A1 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 451,125 2.6 degrees
+uni20A8 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 2134,869 2.5 degrees
+uni20B8 kink 5                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 294,997 4.1 degrees; 1629,1116 7.8 degrees; 1628,1184 3.0 degrees; 143,1184 3.0 degrees; 142,1116 7.7 degrees
+uni20BA kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1041,715 7.0 degrees; 1293,715 7.0 degrees
 uni20BE kink 2                   # 2026-10-16 known at the start (quality checks added): 1237,754 6.3 degrees; 1444,754 6.3 degrees
 uni20BF kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1159,1369 4.3 degrees
 uni2113 extreme 5                # 2026-10-16 known at the start (quality checks added): 557,555 25 units past; 473,152 5 units past; 733,1500 17 units past; 767,1027 15 units past; 637,1025 15 units past
-uni2113 smooth 1                 # 2026-10-16 known at the start (quality checks added): 664,156 2.7 degrees
+uni2113 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 779,1452 4.8 degrees; 630,1025 3.4 degrees
+uni2113 smooth 3                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 483,51 2.9 degrees; 660,156 4.5 degrees; 677,55 2.1 degrees
+uni2113 stroke 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 235 against 261 (0.90, lighter)
 uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): top +4 from 1496
-uni2135 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 308 against 279 (1.10, darker)
 uni2136 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 174 against 261 (0.67, lighter)
+uni2205 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 742,1367 4.5 degrees; 396,623 5.4 degrees
 uni2205 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 763,1339 3.1 degrees
 uni22EE width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-uni2C62 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 642,760 2.5 degrees
+uni25B8 width 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1.20 of the Regular's, usually 1.08
+uni25C2 width 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1.20 of the Regular's, usually 1.08
 uni2C64 kink 1                   # 2026-10-16 known at the start (quality checks added): 284,59 5.7 degrees
 uni2C64 smooth 1                 # 2026-10-16 known at the start (quality checks added): 757,-148 2.0 degrees
+uni2C65 kink 5                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 994,-2 7.2 degrees; 226,838 3.1 degrees; 199,395 3.8 degrees; 523,93 7.0 degrees; 441,63 3.8 degrees
+uni2C65 smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 702,25 2.6 degrees; 942,52 2.5 degrees
+uni2C65.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 670,986 1.1 degrees
+uni2C66 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 524,75 2.1 degrees
+uni2C66.sc stem 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: at 261 292 against t.sc's 273
 uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +7 from 1040
-uni2C72 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 1902,1122 3.8 degrees
-uni2C73.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 1425,808 2.8 degrees
-uni2E0E extreme 4                # 2026-10-16 known at the start (quality checks added): 1175,0 24 units past; 796,-64 24 units past; 417,1396 24 units past; 796,1460 24 units past
+uni2C72 smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1943,1120 2.8 degrees; 2378,1157 2.6 degrees
+uni2C73 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1318,700 3.2 degrees
+uni2C73.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1662,866 7 units past
+uniA78B smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 410,1210 2.8 degrees; 146,1210 2.9 degrees
+uniA78C smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 409,662 2.7 degrees; 145,662 2.9 degrees
 uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 261 (0.77, lighter)
+uniA78C.sc smooth 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 409,817 2.7 degrees; 145,817 2.9 degrees
 uniA78C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 194 against 273 (0.71, lighter)
+uniA7AA extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 878,1299 8 units past
+uniA7AA kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 286,810 2.8 degrees
 uniA7B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 737,262 3.7 degrees
-uniA7B6 kink 5                   # 2026-10-16 known at the start (quality checks added): 509,1457 5.3 degrees; 927,1071 6.3 degrees; 1286,1465 4.7 degrees; 1292,-28 1.1 degrees; 580,-25 1.1 degrees
+uniA7B6 kink 4                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 509,1457 5.3 degrees; 927,1071 6.3 degrees; 1286,1465 4.6 degrees; 1292,-28 1.1 degrees
 uniA7B6 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1143,120 2.1 degrees
 uniA7B7.sc kink 2                # 2026-10-16 known at the start (quality checks added): 413,1059 3.6 degrees; 1072,1065 3.2 degrees
-uniA7B7.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 766,781 2.4 degrees
+uniA7B7.sc smooth 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 764,781 2.4 degrees; 1057,957 2.4 degrees
 uniA7CB kink 1                   # 2026-10-16 known at the start (quality checks added): 796,-28 2.0 degrees
 uniA7CB smooth 2                 # 2026-10-16 known at the start (quality checks added): 1280,1388 2.5 degrees; 1155,1250 2.9 degrees
+uogonek extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 757,211 6 units past
 uogonek.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
-upsilon.sc extreme 1             # 2026-10-16 known at the start (quality checks added): 965,825 10 units past
-v.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 229 against 273 (0.84, lighter)
+upsilon.sc extreme 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 860,835 5 units past; 869,909 10 units past
 v.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
-w.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 229 against 273 (0.84, lighter)
 w.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +3 from 1040
+x.sc stroke 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: sc 237 against 273 (0.87, lighter)
 xi extreme 1                     # 2026-10-16 known at the start (quality checks added): 251,1623 5 units past
 xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 148 against 261 (0.57, lighter)
 xi.sc stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 136 against 273 (0.50, lighter)
+y extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 211,-521 6 units past
 y smooth 1                       # 2026-10-16 known at the start (quality checks added): 223,-470 2.4 degrees
-yen kink 1                       # 2026-10-16 known at the start (quality checks added): 514,691 1.9 degrees
+z.sc stroke 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: sc 234 against 273 (0.86, lighter)
 zeta extreme 1                   # 2026-10-16 known at the start (quality checks added): 259,1567 7 units past
 zeta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 153 against 261 (0.59, lighter)

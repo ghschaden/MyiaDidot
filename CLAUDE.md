@@ -96,6 +96,18 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   over a hair-thin joint: the Bold Italic's v.sc w.sc Π Ш, ʌ.sc's feet)
   are kept apart, their tips shortened in the source (part_serifs); serifs
   joined over their whole height (x.sc's inner feet, by bridge) stay joined.
+  Letters are emboldened by stroke weight (`derive.embolden_by_weight`:
+  thick strokes +AX across in any direction, hairlines only AY; a node's
+  weight from its edge's thickness, junctions take the thick stroke's;
+  corners between straight edges where the moved edges meet), so the
+  contrast is a Didot bold's. Glyphs made small (superiors, numerators,
+  modifier letters, ª º: `small_glyphs`) at their scale; marks plainly
+  (MARK_AX). Each glyph's side space is then fitted optically to the white
+  the earlier emboldening gave it (`optical_fit` against `embolden`'s
+  result), so the spacing and kerning tuned on it hold; Greek/Cyrillic pairs
+  still off go into BOLD_KERNING / ITALIC_BOLD_KERNING (final values: add to
+  what the pair had). Where emboldening by weight leaves a slit, the
+  weighted `embolden_simple` is taken if it has fewer faults.
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make

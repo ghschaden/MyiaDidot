@@ -5,9 +5,11 @@
 
 A Didone bold is mostly the regular with heavier stems: the hairlines stay
 nearly as fine, so the contrast grows. Every outline of a letter, figure or
-sign is scaled across by KX (so the counters do not close up), its upright
-strokes thickened by AX and its horizontal ones by AY (moving the outline
-along its normals), and shifted right by AX/2, its advance growing by AX.
+sign is scaled across by KX (so the counters do not close up), its thick
+strokes thickened by AX across in whatever direction they run and every edge
+by AY (derive.embolden_by_weight: an edge moves by the weight of the stroke
+it is on, so the upright hairlines stay hairlines and a thick diagonal gains
+as much as a stem), and shifted right by AX/2, its advance growing by AX.
 Accents and marks are only made a little heavier (MARK_AX, MARK_AY) and stay
 where they are. Anchors and the offsets of components move with the
 outlines, so composites land where the Regular's would; those the anchor
@@ -42,7 +44,7 @@ import case_forms
 import kern_clear
 from built_from import KEY as BUILT_KEY
 from composites import SPECIAL, Builder, stack_anchors
-from derive import embolden, embolden_simple, rezone
+from derive import embolden, embolden_by_weight, embolden_simple, rezone
 from glyph_lint import fix
 from respace import CUT_KEY, classifier, respace, sidebearings
 from space_figures import space as space_figures
@@ -200,6 +202,9 @@ BOLD_KERNING = {
     ("public.kern1.uni0433", "public.kern2.uni0434"): -150,  # гд (the Regular's -40, scaled)
     ("public.kern1.uni0443", "public.kern2.uni0447"): 52,  # уч
     ("public.kern1.uni044A", "public.kern2.uni0447"): -26,  # ъч (-75)
+    # after emboldening by weight: ње tight (њ shares ъ's right side), уд loose
+    ("public.kern1.uni044A", "public.kern2.uni0435"): 40,  # ње
+    ("public.kern1.uni0443", "public.kern2.uni0434"): -210,  # уд (the -160 it had, 50 tighter)
     ("n", "t"): -28,
     ("a", "t"): -45,
     ("a", "s"): -29,
@@ -231,6 +236,10 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.mugreek", "public.kern2.alphatonos"): 50,  # μα
     ("public.kern1.lambda", "public.kern2.alphatonos"): 31,  # λα
     ("public.kern1.alpha", "delta"): 0,  # αδ (αθ keeps the Italic's, scaled)
+    # after emboldening by weight σ's thin arm is spaced in: σα σω σφ tight
+    ("public.kern1.sigma", "public.kern2.alphatonos"): 58,  # σα
+    ("public.kern1.sigma", "public.kern2.omega"): 66,  # σω
+    ("public.kern1.sigma", "phi"): 60,  # σφ (σο, in the same group, is in range)
     # Cyrillic against Cyrillic references, as the Bold Italic's Latin sets
     # them (greek_pairs.py --script cyrillic): а a little wide before the
     # letters with a stem (аг ак ан ап ар ащ) and з э
@@ -241,6 +250,7 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.uni0413", "public.kern2.uni0434"): -100,  # Гд (the Italic's -196, scaled)
     ("public.kern1.uni0413", "public.kern2.uni0431"): 68,  # Гб (-46)
     ("public.kern1.uni0422", "public.kern2.uni0431"): 34,  # Тб (-42)
+    ("public.kern1.uni0430", "public.kern2.uni043B"): -55,  # ал (loose after emboldening by weight)
     ("u", "t"): 41,
     ("w", "a"): 57,
     ("g", "h"): 43,
@@ -435,25 +445,27 @@ def part_serifs(wide, bold, make):
     return bold, 0
 
 
-def slit(glyph, before, font):
-    """Whether glyph (emboldened contours) has a fault the Regular's glyph
-    (before) has not: a notch (a slit between parts that come close), a
-    sliver or a twist (an outline crossing itself at a tight terminal)."""
+def faults(g, font):
+    """How many notches (a slit between parts that come close), slivers and
+    twists (an outline crossing itself at a tight terminal) g's contours have."""
     from glyph_lint import notch_findings, vector_findings
 
-    def faults(g):
-        p = pathops.Path()
-        for c in g.contours:
-            c.draw(p.getPen())
-        if not p.contours:
-            return 0
-        only = ufoLib2.objects.Glyph()
-        for c in g.contours:
-            c.drawPoints(only.getPointPen())
-        vec = [f for f in vector_findings(pathops.simplify(p)) if f[0] in ("sliver", "twist")]
-        return len(notch_findings(font, only, p.bounds)) + len(vec)
+    p = pathops.Path()
+    for c in g.contours:
+        c.draw(p.getPen())
+    if not p.contours:
+        return 0
+    only = ufoLib2.objects.Glyph()
+    for c in g.contours:
+        c.drawPoints(only.getPointPen())
+    vec = [f for f in vector_findings(pathops.simplify(p)) if f[0] in ("sliver", "twist")]
+    return len(notch_findings(font, only, p.bounds)) + len(vec)
 
-    return faults(glyph) > faults(before)
+
+def slit(glyph, before, font):
+    """Whether glyph (emboldened contours) has a fault the Regular's glyph
+    (before) has not."""
+    return faults(glyph, font) > faults(before, font)
 
 
 def mark_like(g):
@@ -468,6 +480,63 @@ def mark_like(g):
 
 
 SLANT = 0.0  # the source's slant (tan of its italic angle), set in main()
+
+
+def optical_fit(ref, new, h, depth=0.2, steps=40):
+    """(left, right) side space to add to new (an outline, upright) so that
+    the white beside its ink across 0..h is ref's, as space_figures.optical
+    measures white (rows across the band, deep white clipped): both
+    measured from the same edges and clipped in ref's window, so a part
+    shorter than ref's (the f's bar end) counts as the white it adds across
+    the band, not as the whole side moving."""
+    from space_figures import _runs
+
+    paths = []
+    for rec in (ref, new):
+        p = pathops.Path()
+        rec.replay(p.getPen())
+        p = pathops.simplify(p)
+        if not p.contours:
+            return None
+        paths.append(p)
+    x0 = min(p.bounds[0] for p in paths)
+    x1 = max(p.bounds[2] for p in paths)
+    rows = [[_runs(p, h * (i + 0.5) / steps) for i in range(steps)] for p in paths]
+    out = []
+    for which in "LR":
+        dist = [[None if not rr else (rr[0][0] - x0 if which == "L" else x1 - rr[-1][1]) for rr in r] for r in rows]
+        real = [v for v in dist[0] if v is not None]
+        if not real:
+            return None
+        cap = min(real) + depth * h
+        mean = [sum(min(v, cap) if v is not None else cap for v in d) / steps for d in dist]
+        out.append(round(mean[0] - mean[1]))
+    return tuple(out)
+
+
+def band_height(font, name):
+    """The height a glyph's side space is judged over: the x-height for
+    lowercase, the small caps' for small caps, the cap height for the rest."""
+    if name.split(".")[1:2] == ["sc"]:
+        return font.lib.get("org.myiadidot.smallcapHeight", 1040)
+    ch = chr(font[name].unicode) if font[name].unicode else ""
+    if ch and unicodedata.category(ch) == "Ll":
+        return font.info.xHeight or 884
+    return font.info.capHeight or 1434
+
+
+def bold_rec(glyph):
+    rec = RecordingPen()
+    glyph.draw(rec)
+    return rec
+
+
+def rec_bounds(rec):
+    """The ink bounds of a recording or glyph (overlaps merged)."""
+    p = pathops.Path()
+    (rec.replay if hasattr(rec, "replay") else rec.draw)(p.getPen())
+    p = pathops.simplify(p)
+    return p.bounds if p.contours else None
 
 
 def tx(x, y):
@@ -519,8 +588,15 @@ def contours_only(g):
 
 
 def redraw(g, glyph):
-    """Replace g's contours with those of glyph (an emboldened ufoLib2 Glyph)."""
+    """Replace g's contours with those of glyph (an emboldened ufoLib2 Glyph);
+    quadratic segments (pathops' results may hold some) made cubic."""
     g.clearContours()
+    if any(p.type == "qcurve" for c in glyph.contours for p in c.points):
+        from derive import CubicPen
+
+        for c in glyph.contours:
+            c.draw(CubicPen(g.getPen()))
+        return
     pen = g.getPointPen()
     for c in glyph.contours:
         c.drawPoints(pen)
@@ -563,6 +639,34 @@ def write(font, path):
     target.features = font.features
     target.lib = font.lib
     target.save()
+
+
+SMALL_SUFFIXES = ("superior", "inferior", ".numr", ".dnom", ".sups", ".subs")
+
+
+def small_glyphs(regular, italic):
+    """(names, scale): the glyphs that are letters or figures made small (the
+    superior and inferior figures, numerators, ª º, the modifier letters),
+    and their scale, the superior zero's round stem against the zero's.
+    Emboldened by weight at full size their stems (about 100) would gain a
+    fraction of AX; as a letter at that scale, they gain AX times it."""
+    import derive
+    from derived import recipes
+
+    scale = derive.strokes(regular, "zerosuperior")[1] / derive.strokes(regular, "zero")[1]
+    names = {g.name for g in regular if g.name.split(".")[0].endswith(SMALL_SUFFIXES[:2])
+             or any(g.name.endswith(sfx) for sfx in SMALL_SUFFIXES[2:])}
+    names |= {"ordfeminine", "ordmasculine"} & set(regular.keys())
+    cmap = {u: g.name for g in regular for u in g.unicodes}
+    for ch, op, _base, _band in recipes(italic):
+        if op == "superior":
+            names.add(derive.resolve(cmap, ch))
+    for u, name in cmap.items():
+        uname = unicodedata.name(chr(u), "")
+        if uname.startswith(("MODIFIER LETTER SMALL", "MODIFIER LETTER CAPITAL")) or "SUPERSCRIPT" in uname \
+                or "SUBSCRIPT" in uname:
+            names.add(name)
+    return names, scale
 
 
 def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None):
@@ -674,7 +778,11 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
                     b = pathops.Path()
                     placed.draw(TransformPen(b.getPen(), (1, 0, 0, 1, 0, nudge)))
                     b = pathops.simplify(b)
-                out = pathops.op(a, b, pathops.PathOp.UNION)
+                try:
+                    out = pathops.op(a, b, pathops.PathOp.UNION)
+                except pathops.PathOpsError:  # failed outright: as a union that lost ink
+                    held = False
+                    continue
                 joined = Outline(None, None, deslant, path=out)
                 held = all(compare(Outline(None, None, deslant, path=p), joined)[0]["lost"] <= 0.01 for p in (a, b))
                 if held and nudge:
@@ -933,7 +1041,10 @@ def main():
         if sorted((p.glyph, p.dx, p.dy) for p in r.components) == sorted(mine):  # in any order
             rule_made.add(g.name)
 
+    small, small_scale = small_glyphs(regular, italic)
+    fit = {}  # glyph: (left, right) side space to change, after emboldening by weight
     parted = []  # serifs kept apart (part_serifs)
+    simple = []  # emboldened the rounder way (a slit otherwise)
     for g in font:
         is_mark = g.name in marks
         if g.contours:
@@ -950,20 +1061,48 @@ def main():
             else:
                 wide = RecordingPen()
                 rec.replay(TransformPen(TransformPen(wide, (KX, 0, 0, 1, 0, 0)), up))
-                def make(w):
-                    return bridge(rezone(embolden(w, AX, AY), AY))  # the flat edges kept on the zones
+                # thick strokes AX heavier in any direction, hairlines AY
+                # (a node moved by the weight of the stroke it is on)
+                # a letter or figure made small, as at its scale (ᵃ, ⁰, ª)
+                sc = small_scale if g.name in small else 1.0
+
+                def make(w, sc=sc):
+                    return bridge(rezone(embolden_by_weight(w, AX * sc, AY, 60 * sc, 160 * sc), AY))
 
                 bold = make(wide)
                 if slit(bold, regular[g.name], regular):
                     # parts close to each other (x's inner serifs) closed to a
-                    # slit: the rounder emboldening, which leaves them apart
-                    def make(w):
-                        return rezone(embolden_simple(w, AX, AY), AY)
+                    # slit: the rounder emboldening, which leaves them apart,
+                    # where it has fewer faults (a thin arch springing from a
+                    # thick stem, the italic n's, is a narrow crotch either way)
+                    def rounder(w, sc=sc):
+                        return rezone(embolden_simple(w, AX * sc, AY, weighted=True, thin=60 * sc,
+                                                      thick=160 * sc), AY)
 
-                    bold = make(wide)
+                    alt = rounder(wide)
+                    if faults(alt, regular) < faults(bold, regular):
+                        make, bold = rounder, alt
+                        simple.append(g.name)
                 bold, n = part_serifs(wide, bold, make)
                 if n:
                     parted.append(g.name)
+                # each side's ink grew by the weight of the stroke there, not
+                # as the earlier emboldening grew it (every side AX / 2, its
+                # convex corners up to twice that: a serif's tip): the side
+                # space set after this loop so that the outermost ink stands
+                # where that emboldening put it, the spacing and kerning tuned
+                # on it kept (N's hairline sides would gain AX / 2 of white,
+                # the italic H's shorter serifs 23 units a side)
+                ref = bridge(rezone(embolden(wide, AX, AY), AY))
+                if slit(ref, regular[g.name], regular):
+                    ref = rezone(embolden_simple(wide, AX, AY), AY)
+                # judged optically (the white beside the ink across the band,
+                # as the figures are spaced): a thin stroke end that no longer
+                # grows (the italic f's bar, r's arm, s's and e's terminals)
+                # leaves white even where the outermost ink stays
+                d = optical_fit(bold_rec(ref), bold_rec(bold), band_height(regular, g.name))
+                if d:
+                    fit[g.name] = d
                 moved = ufoLib2.objects.Glyph()
                 bold.draw(TransformPen(TransformPen(moved.getPen(), down), (1, 0, 0, 1, AX / 2, 0)))
                 redraw(g, moved)
@@ -993,6 +1132,21 @@ def main():
             elif g.width:
                 g.width = round(g.width * KX + AX)
 
+    # the side space emboldening by weight did not take (composites and
+    # aliases carried along, their marks with them); a composite of one
+    # letter placed anywhere (Έ: Ε given room for its accent) changes as
+    # its letter does, as the decomposed form will (NFC and NFD alike)
+    grown = True
+    while grown:
+        grown = False
+        for g in font:
+            if g.name in fit or g.contours or not g.components:
+                continue
+            letters = [c.baseGlyph for c in g.components if c.baseGlyph not in marks]
+            if len(letters) == 1 and letters[0] in fit:
+                fit[g.name] = fit[letters[0]]
+                grown = True
+    sidebearings(font, {n: d for n, d in fit.items() if d != (0, 0)})
     whole = {}
     followed = follow_bases(regular, font, italic, whole=whole)
     followed += attached_small(regular, font, italic)
@@ -1073,6 +1227,8 @@ def main():
     write(font, Path(args.bold))
     if parted:
         print("  serifs kept apart:", " ".join(parted))
+    if simple:
+        print("  emboldened the rounder way (embolden_simple; a slit otherwise):", " ".join(simple))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
           f"{outlined} outlined letters made from base and mark, {len(followed)} derived letters "
           f"made of their Bold base, {len(cleaned)} cleaned")

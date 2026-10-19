@@ -16,6 +16,8 @@
 			<string>curl: emboldened whole, made again from the Bold it misses (Ƙ: a stepped foot serif)</string>
 			<key>uni019D</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (Ɲ: crumbs of the foot serif at the cut)</string>
+			<key>uni01A4</key>
+			<string>curl: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni01AD</key>
 			<string>hook: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni01AE</key>
@@ -25,11 +27,13 @@
 			<key>uni01B3</key>
 			<string>curl: emboldened whole, made again from the Bold it misses (Ƴ: a stub of the arm's serif left apart from the hook)</string>
 			<key>uni01B4</key>
-			<string>curl: emboldened whole, made again from the Bold it has faults</string>
+			<string>curl: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni01B9</key>
 			<string>mirror: not exactly its base so moved</string>
+			<key>uni01E5.sc</key>
+			<string>bar: the union with its base failed</string>
 			<key>uni0249</key>
-			<string>bar: emboldened whole, made again from the Bold it changes its advance</string>
+			<string>bar: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0252</key>
 			<string>mirror: not exactly its base so moved</string>
 			<key>uni0253.sc</key>
@@ -72,12 +76,12 @@
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0294</key>
 			<string>glottal: emboldened whole, its recipe fails on the Bold (ValueError)</string>
-			<key>uni02A2</key>
-			<string>bar: emboldened whole, made again from the Bold it strays</string>
+			<key>uni029D</key>
+			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0432.loclBGR</key>
 			<string>attach: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni0433.loclSRB</key>
-			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
+			<string>attach: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni044C.loclBGR</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni044E.loclBGR</key>
@@ -86,22 +90,22 @@
 			<string>attach: emboldened whole, made again from the Bold it misses (җ: a stub at the descender)</string>
 			<key>uni049B</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (қ: crumbs of the cut at the descender)</string>
-			<key>uni04A3</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni04B3</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni04B7</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni20AD</key>
 			<string>lines: emboldened whole, made again from the Bold it has faults</string>
-			<key>uni20BF</key>
+			<key>uni20B2</key>
 			<string>lines: the union with its base failed</string>
 			<key>uni2C64</key>
 			<string>attach: emboldened whole, made again from the Bold it has faults</string>
+			<key>uni2C65.sc</key>
+			<string>slash: the union with its base failed</string>
 			<key>uni2C66</key>
 			<string>slash: emboldened whole, made again from the Bold it misses (ⱦ: the slash at the Regular's thickness, too light)</string>
 			<key>uni2C73</key>
-			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
+			<string>attach: emboldened whole, made again from the Bold it has faults</string>
 			<key>uniA7AA</key>
 			<string>curl: emboldened whole, made again from the Bold it has faults</string>
 			<key>uniA7B2</key>
@@ -113,8 +117,6 @@
 		<dict>
 			<key>A Y</key>
 			<integer>-307</integer>
-			<key>Aogonek Y</key>
-			<integer>-306</integer>
 			<key>Iogonek public.kern2.j</key>
 			<string>added</string>
 			<key>Lcaron public.kern2.T</key>
@@ -128,6 +130,8 @@
 			<key>Lcaron public.kern2.quoteright</key>
 			<string>added</string>
 			<key>aogonek public.kern2.j</key>
+			<string>added</string>
+			<key>eogonek public.kern2.j</key>
 			<string>added</string>
 			<key>f ibreve</key>
 			<string>added</string>
@@ -427,10 +431,6 @@
 			<string>added</string>
 			<key>public.kern1.Phi uni1F0D</key>
 			<string>added</string>
-			<key>public.kern1.Phi uni1F0E</key>
-			<string>added</string>
-			<key>public.kern1.Phi uni1F0F</key>
-			<string>added</string>
 			<key>public.kern1.Phi uni1F88</key>
 			<string>added</string>
 			<key>public.kern1.Phi uni1F8A</key>
@@ -440,10 +440,6 @@
 			<key>public.kern1.Phi uni1F8C</key>
 			<string>added</string>
 			<key>public.kern1.Phi uni1F8D</key>
-			<string>added</string>
-			<key>public.kern1.Phi uni1F8E</key>
-			<string>added</string>
-			<key>public.kern1.Phi uni1F8F</key>
 			<string>added</string>
 			<key>public.kern1.Psi Alphatonos</key>
 			<string>added</string>
@@ -583,6 +579,12 @@
 			<string>added</string>
 			<key>public.kern1.Theta uni1F8F</key>
 			<string>added</string>
+			<key>public.kern1.U uni0201</key>
+			<string>added</string>
+			<key>public.kern1.U uni0205</key>
+			<string>added</string>
+			<key>public.kern1.U uni020D</key>
+			<string>added</string>
 			<key>public.kern1.U uni1EAB</key>
 			<string>added</string>
 			<key>public.kern1.U uni1EB5</key>
@@ -681,25 +683,13 @@
 			<string>added</string>
 			<key>public.kern1.V uni0215</key>
 			<string>added</string>
-			<key>public.kern1.V uni1E2F</key>
-			<string>added</string>
 			<key>public.kern1.V uni1EB5</key>
 			<string>added</string>
-			<key>public.kern1.V.sc uni0249.sc</key>
-			<string>added</string>
-			<key>public.kern1.V.sc uni03F3.sc</key>
-			<string>added</string>
 			<key>public.kern1.Y ibreve</key>
-			<string>added</string>
-			<key>public.kern1.Y igrave</key>
 			<string>added</string>
 			<key>public.kern1.Y uni01D0</key>
 			<string>added</string>
 			<key>public.kern1.Y uni01D2</key>
-			<string>added</string>
-			<key>public.kern1.Y uni01E7</key>
-			<string>added</string>
-			<key>public.kern1.Y uni01F0</key>
 			<string>added</string>
 			<key>public.kern1.Y uni0201</key>
 			<string>added</string>
@@ -709,15 +699,13 @@
 			<string>added</string>
 			<key>public.kern1.Y uni020D</key>
 			<string>added</string>
-			<key>public.kern1.Y uni0215</key>
-			<string>added</string>
-			<key>public.kern1.Y uni1E2F</key>
-			<string>added</string>
 			<key>public.kern1.Y uni1EB5</key>
 			<string>added</string>
 			<key>public.kern1.Y.sc uni0249.sc</key>
 			<string>added</string>
 			<key>public.kern1.Y.sc uni03F3.sc</key>
+			<string>added</string>
+			<key>public.kern1.a uni01F0</key>
 			<string>added</string>
 			<key>public.kern1.b uni01F0</key>
 			<string>added</string>
@@ -859,10 +847,6 @@
 			<string>added</string>
 			<key>public.kern1.uni0423 uni0431.loclSRB</key>
 			<string>added</string>
-			<key>public.kern1.uni0423 uni0450</key>
-			<string>added</string>
-			<key>public.kern1.uni0490 uni0431.loclSRB</key>
-			<string>added</string>
 			<key>public.kern1.zeta Omicrontonos</key>
 			<string>added</string>
 			<key>public.kern1.zeta uni0263</key>
@@ -881,17 +865,15 @@
 			<string>added</string>
 			<key>public.kern1.zeta uni1F5B</key>
 			<string>added</string>
+			<key>public.kern1.zeta uni1F5D</key>
+			<string>added</string>
 			<key>public.kern1.zeta uni1FF8</key>
 			<string>added</string>
-			<key>uni0245 public.kern2.Y</key>
+			<key>uni0244 public.kern2.a</key>
 			<string>added</string>
 			<key>uni0433.loclSRB public.kern2.uni043B</key>
 			<string>added</string>
-			<key>uni0433.loclSRB public.kern2.uni046B</key>
-			<string>added</string>
 			<key>uni0453.loclSRB public.kern2.uni043B</key>
-			<string>added</string>
-			<key>uni0453.loclSRB public.kern2.uni046B</key>
 			<string>added</string>
 			<key>uni1D6C public.kern2.j</key>
 			<string>added</string>
@@ -938,8 +920,6 @@
 			<key>uniAB53 public.kern2.Tau</key>
 			<string>added</string>
 			<key>uniAB53 public.kern2.Upsilon</key>
-			<string>added</string>
-			<key>uniAB53 public.kern2.comma</key>
 			<string>added</string>
 			<key>uogonek public.kern2.j</key>
 			<string>added</string>

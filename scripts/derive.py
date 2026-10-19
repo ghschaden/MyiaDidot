@@ -485,8 +485,8 @@ RECIPES = [
     ("₽", "lines", "P", ("c", 64, [(30, 300, 960, 364)])),
     ("₮", "lines", "T", ("c", 64, [((560, 380), (1060, 620)), ((560, 700), (1060, 940))])),
     ("₸", "lines", "T", ("c", 64, [(134, 1120, 1490, 1184)])),
-    ("₲", "lines", "G", ("c", 64, [(806, -180, 870, 1640)])),
-    ("₵", "lines", "C", ("c", 64, [(806, -180, 870, 1640)])),
+    ("₲", "lines", "G", ("c", 64, [(708, -180, 772, 1640)])),  # centred on the bowl (146-1334), not the spur
+    ("₵", "lines", "C", ("c", 64, [(688, -180, 752, 1640)])),  # centred on the C (126-1314)
     ("฿", "lines", "B", ("c", 64, [(668, -200, 732, 1634)])),
     ("₿", "lines", "B", ("c", 64, [(538, 1300, 602, 1634), (778, 1300, 842, 1634),
                                     (538, -200, 602, 120), (778, -200, 842, 120)])),
@@ -1146,13 +1146,255 @@ def rezone(glyph, ay):
     return glyph
 
 
-def embolden_simple(rec, ax, ay):
+def merged_glyph(rec):
+    """rec's outline with overlaps removed (pathops), as a ufoLib2 Glyph,
+    cubic, winding as rec's does (pathops turns contours round)."""
+    def winding(g):
+        best = 0.0
+        for c in g.contours:
+            pen = AreaPen()
+            c.draw(pen)
+            if abs(pen.value) > abs(best):
+                best = pen.value
+        return best
+
+    source = ufoLib2.objects.Glyph()
+    rec.replay(source.getPen())
+    merged = pathops.Path()
+    rec.replay(merged.getPen())
+    merged = pathops.simplify(merged)
+    glyph = ufoLib2.objects.Glyph()
+    merged.draw(CubicPen(glyph.getPen()))
+    if winding(glyph) * winding(source) < 0:
+        turned = ufoLib2.objects.Glyph()
+        glyph.draw(ReverseContourPen(turned.getPen()))
+        glyph = turned
+    return glyph
+
+
+def stroke_gauge(glyph):
+    """across(px, py, ux, uy): the distance from (px, py) along (ux, uy) to
+    the other side of the ink, over the glyph's outline as straight pieces
+    (curves in tenths): the thickness of the stroke a point is on, measured
+    inward from its edge."""
+    import numpy as np
+
+    flat = RecordingPen()
+    glyph.draw(flat)
+    segs, start, cur = [], None, None
+    for op, args in flat.value:
+        if op == "moveTo":
+            start = cur = args[0]
+        elif op == "lineTo":
+            segs.append((cur, args[0]))
+            cur = args[0]
+        elif op == "curveTo":
+            (x0, y0), (x1, y1), (x2, y2), (x3, y3) = cur, *args
+            prev = cur
+            for k in range(1, 11):
+                t = k / 10
+                q = ((1 - t) ** 3 * x0 + 3 * (1 - t) ** 2 * t * x1 + 3 * (1 - t) * t * t * x2 + t ** 3 * x3,
+                     (1 - t) ** 3 * y0 + 3 * (1 - t) ** 2 * t * y1 + 3 * (1 - t) * t * t * y2 + t ** 3 * y3)
+                segs.append((prev, q))
+                prev = q
+            cur = args[-1]
+        elif op in ("closePath", "endPath") and cur != start:
+            segs.append((cur, start))
+            cur = start
+    if not segs:
+        return lambda px, py, ux, uy: 0.0
+    a = np.array([s[0] for s in segs], float)
+    d = np.array([s[1] for s in segs], float) - a
+
+    def across(px, py, ux, uy):
+        den = d[:, 0] * uy - d[:, 1] * ux
+        ok = np.abs(den) > 1e-9
+        wx, wy = a[:, 0] - px, a[:, 1] - py
+        t = np.where(ok, (d[:, 0] * wy - d[:, 1] * wx) / np.where(ok, den, 1), -1)  # along the ray
+        s = np.where(ok, (ux * wy - uy * wx) / np.where(ok, den, 1), -1)  # along the segment
+        hit = ok & (t > 3) & (s >= 0) & (s <= 1)
+        return float(t[hit].min()) if hit.any() else 0.0
+
+    return across
+
+
+def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
+    """Thicken the thick strokes by ax across, in whatever direction they
+    run, and every edge by ay vertically (the hairlines' gain): the contrast
+    of a Didot bold, where emboldening every vertical by ax made the
+    Bold's upright hairlines a stem's weight heavier (N's 64 -> 157) and left
+    its thick diagonals light (N's +37: a crotch moved into the diagonal).
+
+    embolden() with a weight per node (none below thin, all of ax above
+    thick, by the stroke's thickness across; a wide band, so a tapering
+    stroke's weight changes gradually): a node on a long straight edge
+    takes the heavier of its edges', each measured at its middle (so an
+    edge moves whole and keeps its slant); both nodes of a short edge (a
+    serif's end, under SHORT) the heavier of the edges beside it (so the end
+    moves whole, no spur); a node on a curve its own, averaged with the
+    outline's a little way on either side; a node on both, the heavier
+    (a junction belongs to its thick stroke). Then each corner
+    between two straight edges goes where its two moved edges meet: a
+    convex one no further than twice their move (no spike), a crotch (N's
+    diagonal meeting its hairline stem) up to three times their move and
+    0.8 of the shorter edge (by the bisector it moved into the diagonal).
+    Overlaps are removed first: the weight is the union's."""
+    SHORT = 60
+    glyph = merged_glyph(rec)  # overlaps removed: Θ's bar, Ø's slash weigh as the union does
+    across = stroke_gauge(glyph)
+
+    def k_of(w):
+        return min(1.0, max(0.0, (w - thin) / (thick - thin)))
+
+    def unit(dx, dy):
+        n = math.hypot(dx, dy)
+        return (dx / n, dy / n) if n > 1e-9 else None
+
+    def area(contour):
+        pts = [(p.x, p.y) for p in contour.points]
+        return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
+
+    areas = [area(c) for c in glyph.contours]
+    outer = max(areas, key=abs, default=1) > 0
+    signs = []
+    fixed = {}  # (x, y) -> weight, for nodes on straight edges
+    corners = []  # (contour, index, in edge, out edge, weights): corners between two straight edges
+    for ci, (contour, ar) in enumerate(zip(glyph.contours, areas, strict=True)):
+        sign = 1 if ar > 0 else -1
+        if (ar > 0) != outer:
+            sign = -sign
+        signs.append(sign)
+        P = contour.points
+        ons = [i for i, p in enumerate(P) if p.type]
+        if len(ons) < 2:
+            continue
+        edges = []  # (i, j, straight, length, weight)
+        for idx, i in enumerate(ons):
+            j = ons[(idx + 1) % len(ons)]
+            straight = P[j].type == "line"
+            ln = math.dist((P[i].x, P[i].y), (P[j].x, P[j].y))
+            k = None
+            if straight and ln >= SHORT:
+                t = unit(P[j].x - P[i].x, P[j].y - P[i].y)
+                nx, ny = t[1], -t[0]
+                k = k_of(across((P[i].x + P[j].x) / 2, (P[i].y + P[j].y) / 2, -sign * nx, -sign * ny))
+            edges.append([i, j, straight, ln, k])
+        m = len(edges)
+        for e_i, e in enumerate(edges):
+            if e[2] and e[3] < SHORT:  # a short straight edge: the heavier beside it
+                ks = [v for v in (edges[(e_i - 1) % m][4], edges[(e_i + 1) % m][4]) if v is not None]
+                if ks:
+                    e[4] = max(ks)
+        for e in edges:
+            if e[4] is None:
+                continue
+            for q in (e[0], e[1]):
+                key = (P[q].x, P[q].y)
+                fixed[key] = max(fixed.get(key, 0.0), e[4])
+        for e_i, e in enumerate(edges):
+            prev = edges[(e_i - 1) % m]
+            if prev[2] and e[2] and prev[3] >= 1 and e[3] >= 1:
+                corners.append((ci, e[0], prev, e))
+
+    # the other nodes (on curves): their stroke's thickness, averaged with
+    # the thickness a little way along the outline on either side (REACH), so
+    # the weight changes gradually where a stem meets an arch's hairline (else
+    # the arch's edge waves: n) and along a tapering stroke (t's top), while
+    # a round's side, thick for a long way, keeps its own (o)
+    REACH = 40
+
+    def point_on(P, i, j, offs, t):
+        """the point and unit tangent at t along the segment i -> j"""
+        if len(offs) == 2:
+            P0, P1, P2, P3 = ((P[q].x, P[q].y) for q in (i, offs[0], offs[1], j))
+            u = 1 - t
+            pt = tuple(u ** 3 * P0[q] + 3 * u * u * t * P1[q] + 3 * u * t * t * P2[q] + t ** 3 * P3[q] for q in (0, 1))
+            d = tuple(3 * u * u * (P1[q] - P0[q]) + 6 * u * t * (P2[q] - P1[q]) + 3 * t * t * (P3[q] - P2[q])
+                      for q in (0, 1))
+        else:
+            pt = (P[i].x + (P[j].x - P[i].x) * t, P[i].y + (P[j].y - P[i].y) * t)
+            d = (P[j].x - P[i].x, P[j].y - P[i].y)
+        return pt, unit(*d)
+
+    smooth = {}
+    for ci, contour in enumerate(glyph.contours):
+        P = contour.points
+        n = len(P)
+        ons = [i for i, p in enumerate(P) if p.type]
+        if len(ons) < 2:
+            continue
+        sg = signs[ci]
+        L = len(ons)
+        for idx, i in enumerate(ons):
+            samples = []
+            for d, (a0, a1) in ((-1, (ons[(idx - 1) % L], i)), (1, (i, ons[(idx + 1) % L]))):
+                offs = [(a0 + k) % n for k in range(1, (a1 - a0) % n or n)]
+                ln = math.dist((P[a0].x, P[a0].y), (P[a1].x, P[a1].y)) or 1
+                for frac in (0.0, min(0.5, REACH / ln)):
+                    t = frac if d == 1 else 1 - frac
+                    pt, tn = point_on(P, a0, a1, offs, t)
+                    if tn:
+                        samples.append(across(pt[0], pt[1], -sg * tn[1], sg * tn[0]))
+            if samples:
+                smooth[(P[i].x, P[i].y)] = k_of(sum(samples) / len(samples))
+
+    def factor(x, y, inward):
+        # a junction (e's bar ending in its bowl) is of the heavier stroke
+        ks = [d[(x, y)] for d in (fixed, smooth) if (x, y) in d]
+        return max(ks) if ks else k_of(across(x, y, *inward))
+
+    rec2 = RecordingPen()
+    glyph.draw(rec2)
+    out = embolden(rec2, ax, ay, factor)
+    # corners between straight edges: where the moved edges meet
+    for ci, i, e_in, e_out in corners:
+        P = glyph.contours[ci].points
+        Q = out.contours[ci].points
+        sign = signs[ci]
+        x, y = P[i].x, P[i].y
+        a0, b0 = P[e_in[0]], P[e_out[1]]
+        t_in, t_out = unit(x - a0.x, y - a0.y), unit(b0.x - x, b0.y - y)
+        if not t_in or not t_out:
+            continue
+        cross = t_in[0] * t_out[1] - t_in[1] * t_out[0]
+        if abs(cross) < 0.03:
+            continue
+        k_in = e_in[4] if e_in[4] is not None else 0.0
+        k_out = e_out[4] if e_out[4] is not None else 0.0
+        n_in, n_out = (t_in[1], -t_in[0]), (t_out[1], -t_out[0])
+        d_in = (k_in * abs(n_in[0]) * ax + abs(n_in[1]) * ay) / 2
+        d_out = (k_out * abs(n_out[0]) * ax + abs(n_out[1]) * ay) / 2
+        ax_, ay_ = sign * n_in[0] * d_in, sign * n_in[1] * d_in
+        bx_, by_ = sign * n_out[0] * d_out, sign * n_out[1] * d_out
+        wx, wy = bx_ - ax_, by_ - ay_
+        u = (wx * t_out[1] - wy * t_out[0]) / cross
+        mvx, mvy = ax_ + u * t_in[0], ay_ + u * t_in[1]
+        convex = cross * sign < 0
+        reach = math.hypot(mvx, mvy)
+        if convex:
+            cap = 2 * max(d_in, d_out)
+        else:
+            cap = min(3 * max(d_in, d_out), 0.8 * min(e_in[3], e_out[3]))
+        if reach > cap > 0:
+            mvx, mvy = mvx * cap / reach, mvy * cap / reach
+        Q[i].x, Q[i].y = x + mvx, y + mvy
+    return out
+
+
+def embolden_simple(rec, ax, ay, weighted=False, thin=60, thick=160):
     """The earlier emboldening: each point (handles too) moved along the
     normal of the chord between its neighbours. Rounder at corners (it does
     not mitre), but smooth nodes come out a little broken; make_bold.py
-    falls back on it where embolden() would close a gap to a slit."""
+    falls back on it where embolden() would close a gap to a slit.
+    weighted: ax scaled at each point by the weight of its stroke (none
+    below thin, all above thick: embolden_by_weight's contrast), overlaps
+    removed first."""
     glyph = ufoLib2.objects.Glyph()
-    rec.replay(glyph.getPen())
+    if weighted:
+        glyph = merged_glyph(rec)
+        across = stroke_gauge(glyph)
+    else:
+        rec.replay(glyph.getPen())
 
     def area(contour):
         pts = [(p.x, p.y) for p in contour.points]
@@ -1171,7 +1413,10 @@ def embolden_simple(rec, ax, ay):
             (x0, y0), (x1, y1) = pts[i - 1], pts[(i + 1) % n]
             length = math.hypot(x1 - x0, y1 - y0) or 1.0
             nx, ny = (y1 - y0) / length, -(x1 - x0) / length
-            moved.append((pts[i][0] + sign * nx * ax / 2, pts[i][1] + sign * ny * ay / 2))
+            k = 1.0
+            if weighted:
+                k = min(1.0, max(0.0, (across(*pts[i], -sign * nx, -sign * ny) - thin) / (thick - thin)))
+            moved.append((pts[i][0] + sign * nx * ax * k / 2, pts[i][1] + sign * ny * ay / 2))
         for p, (x, y) in zip(contour.points, moved, strict=True):
             p.x, p.y = x, y
     return glyph

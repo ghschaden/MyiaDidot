@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="sacute" format="2">
 	<unicode hex="015B"/>
-	<advance width="884"/>
+	<advance width="859"/>
 	<outline>
 		<component base="s"/>
-		<component base="acute" xOffset="10"/>
+		<component base="acute" xOffset="-5"/>
 	</outline>
-	<anchor name="DotBelow" x="450" y="-20"/>
-	<anchor name="Bottom" x="450" y="0"/>
-	<anchor name="Cedilla" x="450" y="0"/>
+	<anchor name="DotBelow" x="435" y="-20"/>
+	<anchor name="Bottom" x="435" y="0"/>
+	<anchor name="Cedilla" x="435" y="0"/>
 </glyph>

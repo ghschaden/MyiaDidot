@@ -26,6 +26,27 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 4: a Didot bold's contrast
+
+    * Bold and Bold Italic emboldened by stroke weight: the thick strokes
+      gain the same in every direction, the hairlines stay hairlines.
+      Before, every upright stroke gained a stem's weight (N's hairlines
+      64 -> 157 units) while thick diagonals ending in a crotch gained
+      little (N's +37): N M И W and their small caps looked light, the
+      hairlines heavy. Now N's diagonal 275 -> 381, its hairlines 67. The
+      letters made small (superiors, numerators, modifier letters, ª º)
+      are emboldened at their scale; accents as before. Each glyph's side
+      space is fitted to the white the earlier Bold gave it, so text sets
+      as before (line lengths unchanged); Greek σα σω σφ and Cyrillic ње уд
+      ал kerned where they fell outside the references.
+    * G's jaw: the bar on the spur shortened (60 % inside the counter,
+      25 % outside), the advance by what it gave up; Ɠ Ǥ ₲ ǥ ɠ rebuilt.
+      ₲ and ₵: the bar centred on the bowl and on the C.
+    * The Vietnamese horn brought up to an accent's weight (0.56 -> 0.72
+      of the comma's, near Old Standard's); the 29 modifier letters rebuilt
+      by their recipes (ᶿ's bar 17 -> 36 units). All drafts in the Regular's
+      review sheet accepted.
+
 2026-10-19 Version 0.100 (development), Phase 4: serifs apart in the Bold Italic
 
     * Emboldening brought neighbouring serifs of the Bold Italic together

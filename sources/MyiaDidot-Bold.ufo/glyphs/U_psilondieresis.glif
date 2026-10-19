@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="Upsilondieresis" format="2">
 	<unicode hex="03AB"/>
-	<advance width="1458"/>
+	<advance width="1453"/>
 	<outline>
 		<component base="Upsilon"/>
-		<component base="Dieresis" xOffset="360"/>
+		<component base="Dieresis" xOffset="355"/>
 	</outline>
-	<anchor name="DotBelow" x="719" y="-20"/>
-	<anchor name="Bottom" x="719" y="0"/>
-	<anchor name="GreekCap" x="-57" y="1460"/>
+	<anchor name="DotBelow" x="714" y="-20"/>
+	<anchor name="Bottom" x="714" y="0"/>
+	<anchor name="GreekCap" x="-62" y="1460"/>
 </glyph>
