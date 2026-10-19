@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: guarded kerning
+
+    * The 92 letter sides left out of their base's kerning because an
+      accent would come too near (Vǎ, Fȍ, ĽV, ΤἈ, ΓΆ, Уѐ, Ầ before Ṽ ...)
+      take it now, guarded: each pair that would bring the accent within
+      40 units of the other letter gets an exception, per style, as tight
+      as that allows and never looser than unkerned (scripts/kern_groups.py,
+      scripts/kern_clear.py). Accented Greek capitals take their base's
+      kerning on the left too. Ὑ joins Υ's group outright. About 3,400
+      to 4,200 strings of the shaping corpus per style set tighter.
+
 2026-10-19 Version 0.100 (development), Phase 3: figure and capital features
 
     * pnum: proportional lining figures (zero.pf ...), the lining ones
@@ -38,6 +49,11 @@ ChangeLog
       (1º, 2ª, 1.º), No before a figure is №.
     * cpsp: capitals 10 units apart on each side in all-caps setting
       (scripts/cpsp.py; the Bold's scaled with its widths).
+    * case: brackets, guillemets, · and @ centred on the capitals, the
+      hyphen and dashes standing to the cap height as to the x-height,
+      ¡ ¿ where ! ? turned about the capitals' middle would stand
+      (parenleft.case ..., the style's own glyphs raised, along the slant
+      in the italics; scripts/case_forms.py, run by the generators).
 
 2026-10-19 Version 0.100 (development), Phase 3: localized forms
 

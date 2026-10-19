@@ -39,6 +39,7 @@ from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from built_from import KEY as BUILT_KEY
+import case_forms
 import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from derive import embolden, embolden_simple, rezone
@@ -929,6 +930,7 @@ def main():
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
                          "greekLower": round(done["greekLower"] * KX) + greek_cut}
+    case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "

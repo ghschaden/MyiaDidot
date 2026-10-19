@@ -14,9 +14,10 @@ A letter joins only where the group's kerning leaves its ink clear of the
 letters it meets in every style (sources/MyiaDidot-*.ufo): no closer than
 the base (the model) in the same pair, or MIN_GAP (kern_coverage.gap),
 less SLACK.
-Where an accent would come too near (Y ì, T ǐ) the letter stays out; the
-run lists those. Accented Greek capitals keep their left side out: their
-accents stand there (Ά after a capital).
+Where an accent would come too near (Y ì, T ǐ, Τ Ἀ) the letter joins
+guarded (lib GUARD_KEY): kern_clear.py gives it, in every style, an
+exception to each pair that would bring it nearer than its gap allows; the
+run lists those.
 
 Idempotent: letters already in a group are left alone. Then smallcaps.py
 (the small caps' groups follow the capitals'), `make normalize`.
@@ -24,12 +25,13 @@ Idempotent: letters already in a group are left alone. Then smallcaps.py
 
 import argparse
 import sys
-import unicodedata
 from pathlib import Path
 
 import ufoLib2
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
+from kern_clear import GUARD_KEY
 from kern_coverage import MIN_GAP, Profiles, base_of, membership, pairs_of
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -138,11 +140,6 @@ ALIKE = {
 }
 
 
-def greek_capital(font, name):
-    g = font[name]
-    return bool(g.unicodes) and unicodedata.name(chr(g.unicodes[0]), "").startswith("GREEK CAPITAL")
-
-
 def clear(fonts, name, model, group, s):
     """None if name keeps clear in group's pairs in every style, else the
     closest miss: (style, other letter, kern, gap, the model's gap)."""
@@ -174,8 +171,6 @@ def proposals(font, side):
             if name in side[s]:
                 continue
             if base in side[s]:
-                if s == 2 and greek_capital(font, name):
-                    continue
                 out.append((name, s, base, side[s][base], "accented"))
             elif alike[s - 1] in side[s]:
                 out.append((name, s, alike[s - 1], side[s][alike[s - 1]], "alike"))
@@ -195,21 +190,26 @@ def main():
             other = ufoLib2.Font.open(path)
             fonts[style] = (other, Profiles(other))
     side = membership(font)
-    joined = kept = 0
+    joined = guarded = 0
+    guard = font.lib.setdefault(GUARD_KEY, {})
     for name, s, model, group, why in proposals(font, side):
         miss = clear(fonts, name, model, group, s)
         ch = chr(font[name].unicodes[0]) if font[name].unicodes else name
+        font.groups[group] = list(font.groups[group]) + [name]
         if miss:
             style, other, v, gap, mgap = miss
             near = f", {model} {mgap:.0f}" if mgap is not None else ""
-            print(f"out   {ch} {name} kern{s} {group}: with {other} ({v}) in {style}, gap {gap:.0f}{near}")
-            kept += 1
+            print(f"guard {ch} {name} kern{s} {group}: with {other} ({v}) in {style}, gap {gap:.0f}{near}")
+            guard[name] = sorted(set(guard.get(name, [])) | {s})
+            guarded += 1
             continue
-        font.groups[group] = list(font.groups[group]) + [name]
         joined += 1
         print(f"join  {ch} {name} kern{s} {group} ({why})")
-    print(f"{joined} letter sides joined a group, {kept} kept out")
-    if not a.dry_run and joined:
+    font.lib[GUARD_KEY] = dict(sorted(guard.items()))
+    if not font.lib[GUARD_KEY]:
+        del font.lib[GUARD_KEY]
+    print(f"{joined} letter sides joined a group, {guarded} guarded (kern_clear.py)")
+    if not a.dry_run and joined + guarded:
         font.save()
 
 

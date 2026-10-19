@@ -12,21 +12,36 @@ would come too close at the kerning they take now, and left out where
 they would not. What it changed is recorded in the lib (KEY: the
 entries and the values they had, "added" where it added one); undo() puts
 those back, so a style made from another (the Bold from the Regular)
-starts from the kerning before it and finds its own. Idempotent.
+starts from the kerning before it and finds its own.
+
+Letters kern_groups.py put in a group though its kerning would bring their
+accent too near (lib GUARD_KEY: Ά Ǎ ǐ Ľ ...; and their small caps) are
+guarded: each of the group's pairs that would leave less than GUARD units
+of white between their ink and the other letter's (kern_coverage's gap)
+gets an exception for that letter, as tight as GUARD allows and never
+looser than unkerned (where that is too near, the log says so: a pair for
+PAIRS, to review). Idempotent.
 """
 
 import argparse
+import math
 import sys
+from pathlib import Path
 
 import pathops
 import ufoLib2
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.pens.transformPen import TransformPen
 
+sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
+from kern_coverage import MIN_GAP, Profiles
+
 CLEAR = 20  # units of white the inks keep, measured across
 STEP = 2
 LIMIT = 600  # no pair needs more: a sign that something else is wrong
 KEY = "org.myiadidot.kernCleared"
+GUARD_KEY = "org.myiadidot.kernGuarded"  # {letter: [side, ...]}, by kern_groups.py
+GUARD = MIN_GAP  # units of white a guarded letter keeps (kern_groups' measure)
 
 OGONEK = ("aogonek", "eogonek", "iogonek", "uogonek", "uni01EB", "uni01ED",
           "Aogonek", "Eogonek", "Iogonek", "Uogonek", "uni01EA", "uni01EC")
@@ -114,6 +129,9 @@ def clear(font, log=None):
     keys, entry = kern_lookup(font)
     ink = Ink(font)
     record = {}
+    # the guarded letters have exceptions of their own (guard()): they do
+    # not loosen their group's pairs
+    held = {s: {n for n, side, _ in guarded(font) if side == s} for s in (1, 2)}
     for left, right in PAIRS:
         if left not in font.groups and left not in font or right not in font.groups and right not in font:
             continue
@@ -121,6 +139,8 @@ def clear(font, log=None):
         pairs = []
         for a in members(font, left):
             for b in members(font, right):
+                if (a in held[1] and left != a) or (b in held[2] and right != b):
+                    continue
                 k = keys(a, b)
                 if (left, right) in k and not any(x in font.kerning for x in k[:k.index((left, right))]):
                     pairs.append((a, b))
@@ -139,9 +159,68 @@ def clear(font, log=None):
             record[f"{left} {right}"] = "added" if was is None else was
             if log is not None:
                 log.append(f"kern_clear: {left} {right} {kern} -> {v}")
+    guard(font, record, log)
     if record:
         font.lib[KEY] = record
     return record
+
+
+def guarded(font):
+    """(letter, side, its group) for the guarded letters and their small caps."""
+    side = {1: {}, 2: {}}
+    for gname, names in font.groups.items():
+        for s in (1, 2):
+            if gname.startswith(f"public.kern{s}."):
+                for m in names:
+                    side[s][m] = gname
+    for name, sides in sorted(font.lib.get(GUARD_KEY, {}).items()):
+        for s in sides:
+            for n in (name, name + ".sc"):
+                if n in side[s]:
+                    yield n, s, side[s][n]
+
+
+def guard(font, record, log=None):
+    """Exceptions for the guarded letters where their group's pairs bring
+    them nearer than GUARD (added to record)."""
+    _, entry = kern_lookup(font)
+    prof = Profiles(font)
+    added = {}
+    for name, s, group in guarded(font):
+        for (left, right), v in list(font.kerning.items()):
+            mine, other = (left, right) if s == 1 else (right, left)
+            if mine != group or v >= 0:
+                continue
+            key = (name, other) if s == 1 else (other, name)
+            if key in font.kerning or key in added:
+                continue
+            need = None
+            for o in members(font, other):
+                a, b = (name, o) if s == 1 else (o, name)
+                if entry(a, b) != (left, right):
+                    continue  # decided by a more specific entry
+                gap = prof.gap(a, b, v)
+                if gap is not None and gap < GUARD:
+                    need = max(need or v, v + math.ceil(GUARD - gap))
+            if need is not None:
+                # no looser than the letter was outside the group: where
+                # even that is too near, a pair to review (PAIRS)
+                added[key] = min(need, 0)
+                if log is not None:
+                    near = f" (wants {need}: near unkerned)" if need > 0 else ""
+                    log.append(f"kern_clear: guard {key[0]} {key[1]} {v} -> {added[key]}{near}")
+        # on the right side, (letter, group) would override the group's own
+        # exceptions for single letters of that group: carried over as they are
+        if s == 1:
+            for (left, right), v in list(added.items()):
+                if left != name or right not in font.groups:
+                    continue
+                for o in members(font, right):
+                    if (group, o) in font.kerning and (name, o) not in added and (name, o) not in font.kerning:
+                        added[(name, o)] = font.kerning[(group, o)]
+    for key, v in added.items():
+        font.kerning[key] = v
+        record[f"{key[0]} {key[1]}"] = "added"
 
 
 def main():

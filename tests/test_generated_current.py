@@ -8,7 +8,8 @@ small caps' aliases, accented forms, kerning, groups and
 smcp/c2sc block (smallcaps.py), the breve resized (adjust_accents.py), the
 anchors composites keep from their base and the stacked ones
 (composites.py), the figures' spacing and their lnum/pnum/tnum/zero
-block (space_figures.py), the capital spacing block (cpsp.py). Each is idempotent: run again on a copy, nothing
+block (space_figures.py), the capital spacing block (cpsp.py), the case-sensitive forms
+(case_forms.py). Each is idempotent: run again on a copy, nothing
 may change. A difference means an edit made by hand to a generated part, or
 a script changed without being rerun. (nfd_compose.py's ccmp block is
 checked by what it does: NFC and NFD render alike, test_composites.py.)
@@ -30,6 +31,7 @@ STEPS = [
     ["scripts/composites.py", "--carry-anchors", "--stack-anchors", "--rebuild-stacked"],
     ["scripts/space_figures.py"],
     ["scripts/cpsp.py"],
+    ["scripts/case_forms.py"],
 ]
 
 

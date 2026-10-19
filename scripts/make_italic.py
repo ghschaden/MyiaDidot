@@ -43,6 +43,7 @@ from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import case_forms
 import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from derive import BIG, draw_path, embolden, rezone
@@ -1503,6 +1504,7 @@ def main():
             g.width = font[g.components[0].baseGlyph].width
     font.lib[CUT_KEY] ={"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     anchored = missing_anchors(font, regular, marks)
+    case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.italic))
     # the accented small caps and the smcp/c2sc features, from the new drafts
