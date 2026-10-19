@@ -86,6 +86,10 @@ GROUPS = [
 ]
 
 
+# a localized form's suffix: fontspec's name for its language
+LOCL_LANGUAGES = {"loclSRB": "Serbian", "loclBGR": "Bulgarian"}
+
+
 def draft_groups(ufo):
     """Glyph name -> (group, source character) for the drafts of derive.py and ẞ."""
     import derive
@@ -93,9 +97,10 @@ def draft_groups(ufo):
     cmap = {u: g.name for g in ufo for u in g.unicodes}
     out = {"uni1E9E": ("drawn", "ß"), "hookcomb": ("drawn", "?"), "horncomb": ("drawn", ",")}
     for ch, op, source, band in derive.RECIPES:
-        if ch.endswith(".sc"):
+        if derive.variant(ch) == ".sc":
             continue
-        name = cmap.get(ord(ch), derive.glyph_name(ch))
+        name = derive.resolve(cmap, ch)
+        ch = ch[0]  # a localized form (б.loclSRB) grouped by its character
         if op == "alias":
             group = "sc" if source.endswith(".sc") else "same"
         else:
@@ -126,11 +131,13 @@ def draft_groups(ufo):
 def drafts_sheet(ufo, preamble):
     groups = draft_groups(ufo)
     drafts = [g for g in ufo if g.lib.get("org.myiadidot.draft") and g.unicode]
+    # localized forms (unencoded, reached through locl)
+    local = [g for g in ufo if g.lib.get("org.myiadidot.draft") and ".locl" in g.name]
     cmap = {u for g in ufo for u in g.unicodes}
     out = [preamble, r"{\Large Myia Didot new letters — review}\par\smallskip",
            r"{\labelfont %d drafted letters. Each cell: source (grey), new letter; then in "
            r"context, and its case pair with small caps where the font has one.}"
-           r"\par\bigskip" % len(drafts)]
+           r"\par\bigskip" % (len(drafts) + len(local))]
     for key, title, note in GROUPS:
         members = [g for g in drafts if groups.get(g.name, ("drawn", ""))[0] == key]
         if not members:
@@ -154,8 +161,22 @@ def drafts_sheet(ufo, preamble):
                          % (g.name, ch, groups.get(g.name, ("", ""))[1], shown, pair))
         for i in range(0, len(cells), 4):
             out.append(r"\begin{cells}" + " & ".join(cells[i:i + 4]) + r"\end{cells}")
+    # the localized forms: the letter set in its language, after the plain letter
+    if local:
+        out.append(r"\par\bigskip{\large\bfseries Localized forms}\par{\small The plain letter "
+                   r"(grey), the form the language takes (locl); in context.}\par\medskip")
+        cells = []
+        for g in local:
+            stem, tag = g.name.split(".", 1)
+            ch = chr(ufo[stem].unicode)
+            lang = LOCL_LANGUAGES[tag]
+            shown = r"{\addfontfeatures{Script=Cyrillic,Language=%s}%s}" % (lang, tex(ch))
+            context = r"{\addfontfeatures{Script=Cyrillic,Language=%s}н%sо}" % (lang, tex(ch))
+            cells.append(r"\odraft{%s %s}{%s}{%s}{%s}" % (g.name, ch, ch, shown, context))
+        for i in range(0, len(cells), 4):
+            out.append(r"\begin{cells}" + " & ".join(cells[i:i + 4]) + r"\end{cells}")
     out.append(r"\end{document}")
-    return "\n".join(out) + "\n", len(drafts)
+    return "\n".join(out) + "\n", len(drafts) + len(local)
 
 
 def tex(ch):

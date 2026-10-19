@@ -224,6 +224,7 @@ RECIPES = [
     ("ѓ.loclSRB", "alias", "uni0453", None),
     # Bulgarian (locl BGR): the lowercase that follows handwriting, letters
     # of Latin shape: д ɡ, и u, к k, л ʌ, п n, т m, ш ɯ, ц щ with Ц's tail
+    # (з stays: Bulgarian typographers differ on it)
     # (й ѝ are и with their mark, in the features); the italic keeps its
     # own (make_italic.ITALIC_RECIPES)
     ("д.loclBGR", "alias", "uni0261", None),
@@ -235,6 +236,30 @@ RECIPES = [
     ("ц.loclBGR", "tail", "u", ("x", "stem")),
     ("ш.loclBGR", "alias", "uni026F", None),
     ("щ.loclBGR", "tail", "uni026F", ("x", "stem")),
+    # ... with ascenders: the stem (ж's middle one) up to l's top, its
+    # serif cut; ъ's arm raised with it to the top, as b's serif runs out
+    ("ь.loclBGR", "attach", "uni044C", ("x", [(-BIG, 760, BIG, BIG)],
+                                         [("l", (-BIG, 700, BIG, BIG), (0, 0), (1, 1, 6, 0))])),
+    ("ю.loclBGR", "attach", "uni044E", ("x", [(-BIG, 760, 560, BIG)],
+                                         [("l", (-BIG, 700, BIG, BIG), (0, 0), (1, 1, 6, 0))])),
+    ("ж.loclBGR", "attach", "uni0436", ("x", [(430, 760, 960, BIG)],
+                                         [("l", (-BIG, 700, BIG, BIG), (0, 0), (1, 1, 415, 0))])),
+    ("ъ.loclBGR", "attach", "uni044A", ("x", [(-BIG, 540, 394, BIG), (-BIG, 760, BIG, BIG)],
+                                         [("l", (-BIG, 500, BIG, 1170), (0, 0), (1, 1, 194, 0)),
+                                          ("uni044A", (-BIG, 540, 558, BIG), (0, 0), (1, 1, 0, 612))])),
+    # в: b with β's loop above (rounded from the stem, its ball on b's bowl
+    # top), not B's flat bowl: β above its waist (750) set on b's bowl top
+    # (884), 0.772 as tall, its loop's thick side on b's stem where they are
+    # as wide (1280; b cut above 1293); its loop's right side and ball apart;
+    # the notch under the ball, between stem and b's arch, filled (along the
+    # stem, the ball and the arch's hairline)
+    ("в.loclBGR", "attach", "b", ("x", [(-BIG, 1293, BIG, BIG)],
+                                  [("beta", (-BIG, 1280, BIG, BIG), (0, 750), (1, 0.772, 0, 884)),
+                                   ("beta", (400, 640, BIG, 1300), (0, 750), (1, 0.772, 0, 884)),
+                                   ("poly", [(378, 690), (378, 905), (430, 905), (480, 862), (550, 862),
+                                             (490, 800), (455, 760), (425, 720)], (0, 0), (1, 1, 0, 0))])),
+    # г: the cursive г, set upright, is s mirrored (ƨ)
+    ("г.loclBGR", "mirror", "s", None),
     # hooks from the font: (band, kind, stem, cut, removed left/right of it)
     ("ɓ", "hook", "b", ("x", "up-right", "first", 1000, 300, 0)),
     ("ɗ", "hook", "d", ("x", "up-right", "last", 1000, 300, 0)),

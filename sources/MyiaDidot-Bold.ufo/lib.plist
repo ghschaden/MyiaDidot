@@ -66,6 +66,14 @@
 			<string>curl: emboldened whole, made again from the Bold it misses (ʋ: a stub of the foot serif at the cut)</string>
 			<key>uni03CF</key>
 			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
+			<key>uni0432.loclBGR</key>
+			<string>attach: emboldened whole, made again from the Bold it has faults</string>
+			<key>uni0436.loclBGR</key>
+			<string>attach: emboldened whole, made again from the Bold it has faults</string>
+			<key>uni044A.loclBGR</key>
+			<string>attach: emboldened whole, made again from the Bold it misses (Bulgarian ъ: a step where the raised arm's stem meets l's)</string>
+			<key>uni044E.loclBGR</key>
+			<string>attach: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni20B8</key>
 			<string>lines: the union with its base failed</string>
 			<key>uni2C64</key>
@@ -658,13 +666,16 @@
 			<string>uni0431</string>
 			<string>uni0431.loclSRB</string>
 			<string>uni0432</string>
+			<string>uni0432.loclBGR</string>
 			<string>uni0433</string>
 			<string>uni0433.loclSRB</string>
+			<string>uni0433.loclBGR</string>
 			<string>uni0434</string>
 			<string>uni0434.loclBGR</string>
 			<string>uni0434.loclSRB</string>
 			<string>uni0435</string>
 			<string>uni0436</string>
+			<string>uni0436.loclBGR</string>
 			<string>uni0437</string>
 			<string>uni0438</string>
 			<string>uni0438.loclBGR</string>
@@ -695,10 +706,13 @@
 			<string>uni0449</string>
 			<string>uni0449.loclBGR</string>
 			<string>uni044A</string>
+			<string>uni044A.loclBGR</string>
 			<string>uni044B</string>
 			<string>uni044C</string>
+			<string>uni044C.loclBGR</string>
 			<string>uni044D</string>
 			<string>uni044E</string>
+			<string>uni044E.loclBGR</string>
 			<string>uni044F</string>
 			<string>uni0450</string>
 			<string>uni0451</string>
@@ -4648,9 +4662,13 @@
 			<string>base</string>
 			<key>uni0432</key>
 			<string>base</string>
+			<key>uni0432.loclBGR</key>
+			<string>base</string>
 			<key>uni0432.sc</key>
 			<string>base</string>
 			<key>uni0433</key>
+			<string>base</string>
+			<key>uni0433.loclBGR</key>
 			<string>base</string>
 			<key>uni0433.loclSRB</key>
 			<string>base</string>
@@ -4669,6 +4687,8 @@
 			<key>uni0435.sc</key>
 			<string>base</string>
 			<key>uni0436</key>
+			<string>base</string>
+			<key>uni0436.loclBGR</key>
 			<string>base</string>
 			<key>uni0436.sc</key>
 			<string>base</string>
@@ -4770,6 +4790,8 @@
 			<string>base</string>
 			<key>uni044A</key>
 			<string>base</string>
+			<key>uni044A.loclBGR</key>
+			<string>base</string>
 			<key>uni044A.sc</key>
 			<string>base</string>
 			<key>uni044B</key>
@@ -4778,6 +4800,8 @@
 			<string>base</string>
 			<key>uni044C</key>
 			<string>base</string>
+			<key>uni044C.loclBGR</key>
+			<string>base</string>
 			<key>uni044C.sc</key>
 			<string>base</string>
 			<key>uni044D</key>
@@ -4785,6 +4809,8 @@
 			<key>uni044D.sc</key>
 			<string>base</string>
 			<key>uni044E</key>
+			<string>base</string>
+			<key>uni044E.loclBGR</key>
 			<string>base</string>
 			<key>uni044E.sc</key>
 			<string>base</string>

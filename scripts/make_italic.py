@@ -299,7 +299,8 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɗ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB"}  # its own recipe fits the Italic better
+                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB",
+                 "ь.loclBGR", "ю.loclBGR", "ж.loclBGR", "ъ.loclBGR", "в.loclBGR"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
 # where ɗ leaves the italic d for ɓ's top: above the bowl, below where ɓ's
 # stem begins to bend into its hook (upright frame)
@@ -574,6 +575,34 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "ц.loclBGR": ("alias", "uni0446", None),
                   "ш.loclBGR": ("alias", "uni0448", None),
                   "щ.loclBGR": ("alias", "uni0449", None),
+                  "г.loclBGR": ("alias", "uni0433", None),  # the cursive г is ƨ already
+                  # ascenders: ь's entry curl and stem top cut where its stem
+                  # is as wide as b's (600), b's stem and flag on it (b's
+                  # bowl clipped); ю's first and ж's middle stem take l's,
+                  # as light as theirs
+                  "ь.loclBGR": ("attach", "uni044C", ("x", [(-BIG, 600, BIG, BIG), (-BIG, 520, 200, BIG)],
+                                                       [("b", (-BIG, 595, 320, BIG), (0, 0), (1, 1, 107, 0))])),
+                  "ю.loclBGR": ("attach", "uni044E", ("x", [(-BIG, 650, 470, BIG), (-BIG, 540, 230, BIG)],
+                                                       [("l", (-BIG, 645, BIG, BIG), (0, 0), (1, 1, 122, 0))])),
+                  "ж.loclBGR": ("attach", "uni0436", ("x", [(680, 800, 980, BIG)],
+                                                       [("l", (-BIG, 790, BIG, BIG), (0, 0), (1, 1, 594, 0))])),
+                  # в: b with β's loop above, as in the Regular: the loop (its
+                  # left side lighter than b's stem) over the stem's top, the
+                  # stem cut where the loop's curve rounds it off; the ball on
+                  # the stem; β's waist (780) on b's bowl top (860), 0.837 as tall;
+                  # below the waist only the ball (not the stroke into β's lower
+                  # bowl); the notch between stem, ball and b's arch filled
+                  "в.loclBGR": ("attach", "b", ("x", [(-BIG, 1355, BIG, BIG), (-BIG, 1300, 203, BIG)],
+                                                [("beta", (-BIG, 1290, BIG, BIG), (0, 780), (1, 0.837, -154, 860)),
+                                                 ("beta", (414, 790, BIG, 1310), (0, 780), (1, 0.837, -154, 860)),
+                                                 ("beta", (414, 735, 674, 800), (0, 780), (1, 0.837, -154, 860)),
+                                                 ("poly", [(300, 690), (300, 835), (360, 835), (430, 820), (395, 800),
+                                                           (375, 780), (360, 760), (345, 740), (335, 720), (325, 700)],
+                                                  (0, 0), (1, 1, 0, 0))])),
+                  # ъ (its stem a cursive diagonal): the ь above with ъ's
+                  # wave arm raised to the ascender, left of the stem
+                  "ъ.loclBGR": ("attach", "ь.loclBGR", ("x", [], [("uni044A", (-BIG, 620, 300, BIG), (300, 884),
+                                                                    (1, 1, 270, 1434))])),
                   # г is ī: ı without its entry hook, below where its stem
                   # is as wide as ū's (650), under the top of ū's first stem
                   # with its bar, which overhangs the stem equally each side

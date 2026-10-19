@@ -57,6 +57,7 @@ WHOLE_KEY = "org.myiadidot.emboldenedWhole"
 # (rederive): its cuts, placed for the Regular, leave a stub of the Bold's
 # wider serif or step into the stem; left emboldened whole (reviewed)
 BOLD_KEEP_WHOLE = {
+    "uni044A.loclBGR": "Bulgarian ъ: a step where the raised arm's stem meets l's",
     "uni0265": "ɥ: a stub of the foot serif at the cut",
     "uni027E": "ɾ: a stub of the foot serif at the cut",
     "uni0261": "ɡ: a stub of the ear at the cut",

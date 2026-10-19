@@ -4678,8 +4678,9 @@ lookup loclSerbianForms {
     sub \uni0453 by \uni0453.loclSRB;
 } loclSerbianForms;
 
-# Bulgarian (BGR): the lowercase that follows handwriting (д ɡ, и u, к k,
-# л ʌ, п n, т m, ш ɯ, ц щ with a tail), й ѝ as и with their mark.
+# Bulgarian (BGR): the lowercase that follows handwriting (в with a closed
+# bowl above, г ƨ, д ɡ, и u, к k, л ʌ, п n, т m, ш ɯ, ц щ with a tail,
+# ж ъ ь ю with ascenders), й ѝ as и with their mark.
 # After smcp, as the Serbian.
 lookup loclBulgarianAccented {
   lookupflag 0;
@@ -4689,7 +4690,10 @@ lookup loclBulgarianAccented {
 
 lookup loclBulgarianForms {
   lookupflag 0;
+    sub \uni0432 by \uni0432.loclBGR;
+    sub \uni0433 by \uni0433.loclBGR;
     sub \uni0434 by \uni0434.loclBGR;
+    sub \uni0436 by \uni0436.loclBGR;
     sub \uni0438 by \uni0438.loclBGR;
     sub \uni043A by \uni043A.loclBGR;
     sub \uni043B by \uni043B.loclBGR;
@@ -4698,6 +4702,9 @@ lookup loclBulgarianForms {
     sub \uni0446 by \uni0446.loclBGR;
     sub \uni0448 by \uni0448.loclBGR;
     sub \uni0449 by \uni0449.loclBGR;
+    sub \uni044A by \uni044A.loclBGR;
+    sub \uni044C by \uni044C.loclBGR;
+    sub \uni044E by \uni044E.loclBGR;
 } loclBulgarianForms;
 
 

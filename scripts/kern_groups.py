@@ -130,6 +130,11 @@ ALIKE = {
     "uni0446.loclBGR": ("uni0446", "u"),  # ц: u with ц's tail
     "uni0448.loclBGR": (None, "u"),  # ш: ɯ
     "uni0449.loclBGR": ("uni0449", "u"),  # щ: ɯ with щ's tail
+    "uni0432.loclBGR": ("b", "b"),  # в: b with a bowl above
+    "uni0436.loclBGR": ("uni0436", "uni0436"),  # ж: its middle stem tall
+    "uni044A.loclBGR": ("uni044A", None),  # ъ: its arm raised
+    "uni044C.loclBGR": ("uni044C", "b"),  # ь: with an ascender
+    "uni044E.loclBGR": ("uni044E", "b"),  # ю: with an ascender
 }
 
 

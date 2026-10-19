@@ -832,12 +832,16 @@ uni0431 zone 1                   # 2026-10-16 known at the start (quality checks
 uni0431.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 302,944 10 units past; 262,87 10 units past
 uni0431.sc kink 1                # 2026-10-16 known at the start (quality checks added): 693,318 3.5 degrees
 uni0431.sc smooth 3              # 2026-10-16 known at the start (quality checks added): 302,944 3.2 degrees; 864,322 2.5 degrees; 262,87 2.1 degrees
+uni0432.loclBGR stem 1           # Bulgarian в redrawn from b and β's loop (draft): at 1070 171 against b's 161
 uni0433 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni0433.loclSRB kink 1           # new localized forms: Old Standard's Serbian п т, the italic ī joint, the Bold's upright ∂ (drafts for review): 262,650 6.3 degrees
 uni0434.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 794,944 9 units past; 752,102 5 units past
 uni0434.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 190,72 4.8 degrees; 484,825 2.3 degrees
 uni0436 smooth 5                 # 2026-10-16 known at the start (quality checks added): 229,246 4.6 degrees; 195,100 3.1 degrees; 1548,645 2.1 degrees; 1391,615 3.2 degrees; 1418,755 3.1 degrees
 uni0436 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
+uni0436.loclBGR extreme 1        # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 967,1392 7 units past
+uni0436.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 1015,860 1.2 degrees
+uni0436.loclBGR smooth 2         # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 111,-2 2.1 degrees; 640,512 2.8 degrees
 uni0436.sc extreme 4             # 2026-10-16 known at the start (quality checks added): 478,652 9 units past; 535,810 9 units past; 818,945 10 units past; 774,87 11 units past
 uni0436.sc kink 4                # 2026-10-16 known at the start (quality checks added): 552,918 4.8 degrees; 1103,323 2.4 degrees; 1114,389 2.1 degrees; 437,445 3.9 degrees
 uni0436.sc smooth 4              # 2026-10-16 known at the start (quality checks added): 501,926 2.5 degrees; 415,865 2.5 degrees; 1431,915 3.6 degrees; 1064,187 3.3 degrees
@@ -892,6 +896,7 @@ uni0449 kink 2                   # 2026-10-16 known at the start (quality checks
 uni0449 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
 uni0449.sc extreme 6             # 2026-10-16 known at the start (quality checks added): 332,944 11 units past; 289,87 9 units past; 863,944 10 units past; 820,87 10 units past; 1394,944 10 units past; 1353,105 7 units past
 uni0449.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 332,944 3.1 degrees
+uni044A.loclBGR kink 2           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 499,679 1.3 degrees; 301,597 6.1 degrees
 uni044A.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 629,944 10 units past; 585,87 9 units past
 uni044A.sc kink 1                # 2026-10-16 known at the start (quality checks added): 1017,318 3.5 degrees
 uni044A.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 1187,322 2.5 degrees; 585,87 2.1 degrees
@@ -902,6 +907,8 @@ uni044B.sc kink 1                # 2026-10-16 known at the start (quality checks
 uni044B.sc smooth 4              # 2026-10-16 known at the start (quality checks added): 331,944 3.1 degrees; 892,322 2.5 degrees; 289,87 2.1 degrees; 1143,944 3.1 degrees
 uni044C kink 2                   # 2026-10-16 known at the start (quality checks added): 459,571 5.3 degrees; 323,650 3.1 degrees
 uni044C slant 1                  # 2026-10-16 known at the start (quality checks added): 21.4 degrees, not 15.2
+uni044C.loclBGR extreme 1        # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 498,1339 11 units past
+uni044C.loclBGR kink 2           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 499,679 1.3 degrees; 301,597 6.1 degrees
 uni044C.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 331,944 11 units past; 289,87 9 units past
 uni044C.sc kink 1                # 2026-10-16 known at the start (quality checks added): 721,318 3.5 degrees
 uni044C.sc smooth 3              # 2026-10-16 known at the start (quality checks added): 331,944 3.1 degrees; 891,322 2.5 degrees; 289,87 2.1 degrees
@@ -909,6 +916,9 @@ uni044D.sc kink 1                # 2026-10-16 known at the start (quality checks
 uni044D.sc smooth 4              # 2026-10-16 known at the start (quality checks added): 45,203 2.7 degrees; 287,1000 2.9 degrees; 903,674 2.6 degrees; 722,180 2.7 degrees
 uni044D.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 211 against 184 (1.15, darker)
 uni044E smooth 1                 # 2026-10-16 known at the start (quality checks added): 318,594 2.2 degrees
+uni044E.loclBGR extreme 1        # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 519,1339 7 units past
+uni044E.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 479,645 3.4 degrees
+uni044E.loclBGR smooth 1         # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 318,594 2.2 degrees
 uni044E.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 332,944 11 units past; 289,87 9 units past
 uni044E.sc smooth 3              # 2026-10-16 known at the start (quality checks added): 736,659 2.4 degrees; 332,944 3.1 degrees; 1390,655 2.7 degrees
 uni044F smooth 1                 # 2026-10-16 known at the start (quality checks added): 772,267 2.5 degrees
