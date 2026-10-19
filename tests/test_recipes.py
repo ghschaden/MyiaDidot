@@ -37,8 +37,9 @@ def test_recipes_make_wanted_characters():
         return any(len(c) == 1 and c != ch and (ord(c) in wanted or ord(c) in have)
                    for c in (ch.lower(), ch.upper()))
 
-    odd = [f"{ch} U+{ord(ch):04X} {unicodedata.name(ch, '?')}"
-           for ch, *_ in derive.RECIPES if not ch.endswith(".sc") and not ok(ch)]
+    # a variant (ɔ.sc, б.loclSRB) by its character
+    odd = [f"{ch} U+{ord(ch[0]):04X} {unicodedata.name(ch[0], '?')}"
+           for ch, *_ in derive.RECIPES if not ok(ch[0] if derive.variant(ch) else ch)]
     assert not odd, f"recipes for characters outside the target (a wrong code point?): {odd}"
 
 

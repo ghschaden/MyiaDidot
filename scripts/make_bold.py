@@ -162,7 +162,7 @@ ITALIC_BOLD_KEEP_WHOLE = {
 }
 # recipes that scale or reshape their one source outline, adding no piece:
 # no junction to thicken, emboldened whole as any letter is
-RESHAPES = {"enlarge", "stretch", "superior", "lower", "ezh", "esh", "nodot"}
+RESHAPES = {"enlarge", "stretch", "superior", "lower", "ezh", "esh", "nodot", "upright"}
 # the Bold's letters are spaced tighter than the Regular's (the Regular's
 # sidebearings times KX), as a bold's are: 40 off each side in all of the
 # Regular's 20 (times KX) and BOLD_CUT, Greek lowercase 25 of 10 and BOLD_CUT_GREEK
@@ -461,9 +461,7 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
     cmap = {u: g.name for g in source for u in g.unicodes}
 
     def resolve(c):
-        if c.endswith(".sc") and len(c) == 4:
-            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
-        return cmap.get(ord(c), derive.glyph_name(c)) if len(c) == 1 else c
+        return derive.resolve(cmap, c)
 
     def ink(name):
         p = pathops.Path()
@@ -592,9 +590,7 @@ def attached_small(source, font, italic):
     cmap = {u: g.name for g in source for u in g.unicodes}
 
     def resolve(c):
-        if c.endswith(".sc") and len(c) == 4:
-            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
-        return cmap.get(ord(c), derive.glyph_name(c)) if len(c) == 1 else c
+        return derive.resolve(cmap, c)
 
     def path(f, name, t=(1, 0, 0, 1, 0, 0)):
         p = pathops.Path()
@@ -681,9 +677,7 @@ def rederive(source, font, italic, whole):
     scale = (stem / stem0, hair / hair0)
 
     def resolve(c):
-        if c.endswith(".sc") and len(c) == 4:
-            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
-        return cmap.get(ord(c), derive.glyph_name(c)) if len(c) == 1 else c
+        return derive.resolve(cmap, c)
 
     def parts(f, g):
         p = pathops.Path()
@@ -707,7 +701,7 @@ def rederive(source, font, italic, whole):
         if name in keep:
             whole[name] = f"{op}: emboldened whole, made again from the Bold it misses ({keep[name]})"
             continue
-        if len(base) == 1 or (base.endswith(".sc") and len(base) == 4 and not base[0].isascii()):
+        if len(base) == 1 or (derive.variant(base) and not base[0].isascii()):
             base = resolve(base)
         if base not in up:
             continue

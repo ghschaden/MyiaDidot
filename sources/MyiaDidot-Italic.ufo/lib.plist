@@ -10,6 +10,8 @@
 			<string>attach: does not keep its whole base</string>
 			<key>uni02A2</key>
 			<string>bar: the union with its base failed</string>
+			<key>uni0433.loclSRB</key>
+			<string>attach: does not keep its whole base</string>
 			<key>uni2C73</key>
 			<string>attach: does not keep its whole base</string>
 		</dict>
@@ -581,30 +583,44 @@
 			<string>uni042F</string>
 			<string>uni0430</string>
 			<string>uni0431</string>
+			<string>uni0431.loclSRB</string>
 			<string>uni0432</string>
 			<string>uni0433</string>
+			<string>uni0433.loclSRB</string>
 			<string>uni0434</string>
+			<string>uni0434.loclBGR</string>
+			<string>uni0434.loclSRB</string>
 			<string>uni0435</string>
 			<string>uni0436</string>
 			<string>uni0437</string>
 			<string>uni0438</string>
+			<string>uni0438.loclBGR</string>
 			<string>uni0439</string>
 			<string>uni043A</string>
+			<string>uni043A.loclBGR</string>
 			<string>uni043B</string>
+			<string>uni043B.loclBGR</string>
 			<string>uni043C</string>
 			<string>uni043D</string>
 			<string>uni043E</string>
 			<string>uni043F</string>
+			<string>uni043F.loclBGR</string>
+			<string>uni043F.loclSRB</string>
 			<string>uni0440</string>
 			<string>uni0441</string>
 			<string>uni0442</string>
+			<string>uni0442.loclBGR</string>
+			<string>uni0442.loclSRB</string>
 			<string>uni0443</string>
 			<string>uni0444</string>
 			<string>uni0445</string>
 			<string>uni0446</string>
+			<string>uni0446.loclBGR</string>
 			<string>uni0447</string>
 			<string>uni0448</string>
+			<string>uni0448.loclBGR</string>
 			<string>uni0449</string>
+			<string>uni0449.loclBGR</string>
 			<string>uni044A</string>
 			<string>uni044B</string>
 			<string>uni044C</string>
@@ -615,6 +631,7 @@
 			<string>uni0451</string>
 			<string>uni0452</string>
 			<string>uni0453</string>
+			<string>uni0453.loclSRB</string>
 			<string>uni0454</string>
 			<string>uni0455</string>
 			<string>uni0456</string>
@@ -4495,6 +4512,8 @@
 			<string>base</string>
 			<key>uni0431</key>
 			<string>base</string>
+			<key>uni0431.loclSRB</key>
+			<string>base</string>
 			<key>uni0431.sc</key>
 			<string>base</string>
 			<key>uni0432</key>
@@ -4503,9 +4522,15 @@
 			<string>base</string>
 			<key>uni0433</key>
 			<string>base</string>
+			<key>uni0433.loclSRB</key>
+			<string>base</string>
 			<key>uni0433.sc</key>
 			<string>base</string>
 			<key>uni0434</key>
+			<string>base</string>
+			<key>uni0434.loclBGR</key>
+			<string>base</string>
+			<key>uni0434.loclSRB</key>
 			<string>base</string>
 			<key>uni0434.sc</key>
 			<string>base</string>
@@ -4523,6 +4548,8 @@
 			<string>base</string>
 			<key>uni0438</key>
 			<string>base</string>
+			<key>uni0438.loclBGR</key>
+			<string>base</string>
 			<key>uni0438.sc</key>
 			<string>base</string>
 			<key>uni0439</key>
@@ -4531,9 +4558,13 @@
 			<string>base</string>
 			<key>uni043A</key>
 			<string>base</string>
+			<key>uni043A.loclBGR</key>
+			<string>base</string>
 			<key>uni043A.sc</key>
 			<string>base</string>
 			<key>uni043B</key>
+			<string>base</string>
+			<key>uni043B.loclBGR</key>
 			<string>base</string>
 			<key>uni043B.sc</key>
 			<string>base</string>
@@ -4551,6 +4582,10 @@
 			<string>base</string>
 			<key>uni043F</key>
 			<string>base</string>
+			<key>uni043F.loclBGR</key>
+			<string>base</string>
+			<key>uni043F.loclSRB</key>
+			<string>base</string>
 			<key>uni043F.sc</key>
 			<string>base</string>
 			<key>uni0440</key>
@@ -4562,6 +4597,10 @@
 			<key>uni0441.sc</key>
 			<string>base</string>
 			<key>uni0442</key>
+			<string>base</string>
+			<key>uni0442.loclBGR</key>
+			<string>base</string>
+			<key>uni0442.loclSRB</key>
 			<string>base</string>
 			<key>uni0442.sc</key>
 			<string>base</string>
@@ -4579,6 +4618,8 @@
 			<string>base</string>
 			<key>uni0446</key>
 			<string>base</string>
+			<key>uni0446.loclBGR</key>
+			<string>base</string>
 			<key>uni0446.sc</key>
 			<string>base</string>
 			<key>uni0447</key>
@@ -4587,9 +4628,13 @@
 			<string>base</string>
 			<key>uni0448</key>
 			<string>base</string>
+			<key>uni0448.loclBGR</key>
+			<string>base</string>
 			<key>uni0448.sc</key>
 			<string>base</string>
 			<key>uni0449</key>
+			<string>base</string>
+			<key>uni0449.loclBGR</key>
 			<string>base</string>
 			<key>uni0449.sc</key>
 			<string>base</string>
@@ -4630,6 +4675,8 @@
 			<key>uni0452.sc</key>
 			<string>base</string>
 			<key>uni0453</key>
+			<string>base</string>
+			<key>uni0453.loclSRB</key>
 			<string>base</string>
 			<key>uni0453.sc</key>
 			<string>base</string>

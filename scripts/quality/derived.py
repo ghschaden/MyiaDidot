@@ -222,11 +222,7 @@ def derived(font, path=None, only=None, regular=None):
     cmap = {u: g.name for g in font for u in g.unicodes}
 
     def resolve(c):
-        if c.endswith(".sc") and len(c) == 4:
-            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
-        if len(c) == 1:
-            return cmap.get(ord(c), derive.glyph_name(c))
-        return c
+        return derive.resolve(cmap, c)
 
     if italic and regular is None and path is not None:
         rpath = Path(path).parent / "MyiaDidot-Regular.ufo"

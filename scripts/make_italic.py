@@ -299,7 +299,7 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɗ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ"}  # its own recipe fits the Italic better
+                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
 # where ɗ leaves the italic d for ɓ's top: above the bowl, below where ɓ's
 # stem begins to bend into its hook (upright frame)
@@ -558,7 +558,33 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                       {"at": ("y", 1150, "last"), "dir": 79, "turn": "cw", "r": (120, 110),
                                        "sweep": 210, "ball": 50, "t": (81, 40)})),
                   # v on a stem under its round bottom
-                  "ү": ("descend", "v", ("x", "p"))}
+                  "ү": ("descend", "v", ("x", "p")),
+                  # Serbian and Macedonian italic (locl SRB, MKD; the
+                  # Regular's are its plain letters, ITALIC_LOCL): б leaning
+                  # back is Old Standard's д, ∂; д is g; ѓ is ı with the
+                  # acute alone, as í
+                  "б.loclSRB": ("alias", "uni0434", None),
+                  "д.loclSRB": ("alias", "g", None),
+                  "ѓ.loclSRB": ("alias", "iacute", None),
+                  # Bulgarian: the italic's own и п т ц ш щ have the shapes
+                  # the upright takes from Latin (u n m)
+                  "и.loclBGR": ("alias", "uni0438", None),
+                  "п.loclBGR": ("alias", "uni043F", None),
+                  "т.loclBGR": ("alias", "uni0442", None),
+                  "ц.loclBGR": ("alias", "uni0446", None),
+                  "ш.loclBGR": ("alias", "uni0448", None),
+                  "щ.loclBGR": ("alias", "uni0449", None),
+                  # г is ī: ı without its entry hook, below where its stem
+                  # is as wide as ū's (650), under the top of ū's first stem
+                  # with its bar, which overhangs the stem equally each side
+                  "г.loclSRB": ("attach", "dotlessi", ("x", [(-BIG, 650, BIG, BIG), (-BIG, 400, 240, BIG)],
+                                                        [("uni043F.loclSRB", (-BIG, 645, 497, BIG), (0, 0),
+                                                          (1, 1, 82, 0))]))}
+# Old Standard's own Serbian italic п and т (ū and ш with the bar above)
+OS_LOCL = {"uni043F.loclSRB": "afii10831", "uni0442.loclSRB": "afii10832"}
+# aliases of a plain letter in the Regular that the Italic makes itself
+ITALIC_LOCL = {"uni0433.loclSRB", "uni0434.loclSRB", "uni0453.loclSRB",
+               "uni0438.loclBGR", "uni043F.loclBGR", "uni0442.loclBGR", "uni0448.loclBGR"}
 
 
 def shifted(path, dx):
@@ -756,9 +782,7 @@ def derive_stage(font, regular, late=False, kept=()):
     cmap = {u: g.name for g in up for u in g.unicodes}
 
     def resolve(c):
-        if c.endswith(".sc") and len(c) == 4:
-            return cmap.get(ord(c[0]), derive.glyph_name(c[0])) + ".sc"
-        return cmap.get(ord(c), derive.glyph_name(c))
+        return derive.resolve(cmap, c)
 
     # the clicks' bar: upright here, so sloped in the Italic, as heavy
     # against l as the Regular's | against its l
@@ -779,7 +803,7 @@ def derive_stage(font, regular, late=False, kept=()):
         name = resolve(ch)
         if name not in font or font[name].lib.get(SOURCE_KEY) != "sloped roman":
             continue
-        if len(source) == 1 or (source.endswith(".sc") and len(source) == 4 and not source[0].isascii()):
+        if len(source) == 1 or (derive.variant(source) and not source[0].isascii()):
             source = resolve(source)
         if source.endswith(".sc") != late:
             if not late:
@@ -1006,7 +1030,8 @@ ITALIC_KERNING = {
 ITALIC_UNKERNED = {("t", "t"), ("t", "f")}
 # ß's left side looser: with the heavier stems it stood tight against the
 # letter before it (measured, scripts/quality/colour.py)
-ITALIC_SIDEBEARINGS = {"germandbls": (25, 0)}
+# г's ī: its bar starts where ı's entry hook did not (ITALIC_RECIPES)
+ITALIC_SIDEBEARINGS = {"germandbls": (25, 0), "uni0433.loclSRB": (-80, 0)}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}
@@ -1231,6 +1256,12 @@ def main():
     taken, kept_roman = 0, 0
     for g in font:
         osname = os_cmap.get(g.unicode) if g.unicode is not None else (g.name if g.name in oldstd else None)
+        osname = OS_LOCL.get(g.name, osname)
+        if g.name in ITALIC_LOCL:
+            # made below by its italic recipe, as what Old Standard lacks
+            g.clearComponents()
+            g.lib[SOURCE_KEY] = "sloped roman"
+            continue
         if g.unicode is not None and keeps_upright(g.unicode):
             osname = None  # Myia's own, upright (below)
         if g.name in marks:
@@ -1248,7 +1279,7 @@ def main():
                 c.transformation = (xx, xy, yx, yy, round(dx + dy * SLANT), dy)
             for a in g.anchors:
                 a.x = round(a.x + a.y * SLANT)
-        elif osname and not (g.components and not g.contours):
+        elif osname and (not (g.components and not g.contours) or g.name in OS_LOCL):
             # an Old Standard letter, unless Myia makes this glyph of others
             # (an alias, an accented letter rebuilt below)
             osg = oldstd[osname]
@@ -1433,7 +1464,13 @@ def main():
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
     sidebearings(font, swapped_sidebearings(font))
     sidebearings(font, ITALIC_SIDEBEARINGS)
-    font.lib[CUT_KEY] = {"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
+    # an alias a recipe made (Serbian д of g) follows its letter's final width,
+    # as derive.py's do in the Regular
+    for g in font:
+        if (g.lib.get(SOURCE_KEY) == "derived" and g.name not in kept and len(g.components) == 1
+                and not g.contours and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
+            g.width = font[g.components[0].baseGlyph].width
+    font.lib[CUT_KEY] ={"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     anchored = missing_anchors(font, regular, marks)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.italic))

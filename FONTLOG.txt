@@ -26,6 +26,23 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: localized forms
+
+    * Dutch (nl): í j takes the acute on the j too (íj́, ÍJ́), as if typed.
+    * Catalan (ca): l·l is set as ŀl, L·L as ĿL.
+    * Serbian and Macedonian (sr, mk): б with its ascender leaning back
+      (∂ set upright; a draft); in the italic also г as ī, д as g, п as ū,
+      т as ш̄ (Old Standard's own Serbian п т) and ѓ as ı with the acute.
+    * Bulgarian (bg): the lowercase of Latin shape, д ɡ, и u (й ѝ: u with
+      the breve, the grave), к k, л ʌ, п n, т m, ш ɯ, ц щ with Ц's tail;
+      the italic keeps its cursive и п т ц ш щ, which have those shapes.
+      Still to draw: в г з (their own shapes) and ж ъ ь ю with ascenders.
+    * Small caps are the same in every language. The new glyphs take the
+      kerning of the letter they stand for, where its kerning keeps them
+      clear in all four styles.
+    * A test holds every language system to its script's default
+      features (a new language left out of a feature loses it silently).
+
 2026-10-18 Version 0.100 (development), Phase 3: kerning coverage
 
     * Accented letters take their base letter's kerning (Vietnamese, the

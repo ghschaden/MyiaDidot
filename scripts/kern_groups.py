@@ -113,6 +113,23 @@ ALIKE = {
     "uniAB53": ("chi", "chi"),  # ꭓ
     "uniA7B7": (None, "omega"),  # ꞷ
     "uni019B": ("lambda", "lambda"),  # ƛ
+    # localized forms (locl): as the letter they stand for, or whose shape
+    # they take; the italic's own shapes are held clear like the others
+    "uni0431.loclSRB": ("uni043E", "uni043E"),  # Serbian б: ∂, round both sides
+    "uni0433.loclSRB": ("uni0433", "uni0433"),  # г (italic ī)
+    "uni0434.loclSRB": ("uni0434", "uni0434"),  # д (italic g)
+    "uni043F.loclSRB": ("uni043F", "uni043F"),  # п (italic ū)
+    "uni0442.loclSRB": ("uni0442", "uni0442"),  # т (italic ш̄)
+    "uni0453.loclSRB": ("uni0453", "uni0453"),  # ѓ (italic í)
+    "uni0434.loclBGR": ("uni0261", "uni0261"),  # Bulgarian д: ɡ
+    "uni0438.loclBGR": ("u", "u"),  # и: u
+    "uni043A.loclBGR": ("k", "k"),  # к: k
+    "uni043B.loclBGR": ("uni028C", "uni028C"),  # л: ʌ
+    "uni043F.loclBGR": ("n", "n"),  # п: n
+    "uni0442.loclBGR": ("m", "m"),  # т: m
+    "uni0446.loclBGR": ("uni0446", "u"),  # ц: u with ц's tail
+    "uni0448.loclBGR": (None, "u"),  # ш: ɯ
+    "uni0449.loclBGR": ("uni0449", "u"),  # щ: ɯ with щ's tail
 }
 
 

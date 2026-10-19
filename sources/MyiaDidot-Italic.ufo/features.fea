@@ -4,12 +4,17 @@
 
 languagesystem DFLT dflt;
 languagesystem cyrl dflt;
+languagesystem cyrl BGR ;
+languagesystem cyrl MKD ;
+languagesystem cyrl SRB ;
 languagesystem grek dflt;
 languagesystem latn AZE ;
+languagesystem latn CAT ;
 languagesystem latn CRT ;
 languagesystem latn DEU ;
 languagesystem latn dflt;
 languagesystem latn MOL ;
+languagesystem latn NLD ;
 languagesystem latn ROM ;
 languagesystem latn TRK ;
 
@@ -157,6 +162,23 @@ lookup ccmpComposeAsDrawn {
 feature ccmp {
     lookup ccmpComposeAsDrawn;
 } ccmp;# END NFD composition
+
+# Dutch (NLD): the ij digraph takes the acute on both letters, í j as if
+# typed íj́. Before the dotless pass, which then drops j's dot.
+lookup loclDutchIJAcute {
+  lookupflag 0;
+    ignore sub [\iacute \Iacute] \j' \acutecomb;
+    ignore sub \Iacute \J' \acutecomb;
+    sub [\iacute \Iacute] \j' by \j \acutecomb;
+    sub \Iacute \J' by \J \acutecomb;
+} loclDutchIJAcute;
+
+# Catalan (CAT): l·l set with the punt volat of ŀ (geminated l).
+lookup loclCatalanLdot {
+  lookupflag 0;
+    sub \l' \periodcentered' \l by \ldot;
+    sub \L' \periodcentered' \L by \Ldot;
+} loclCatalanLdot;
 
 lookup ccmpSimpleGlyphComposition {
   lookupflag 0;
@@ -4643,6 +4665,41 @@ feature ss02 {
 
 # END small caps
 
+# Serbian and Macedonian (SRB, MKD): б with its ascender leaning back;
+# in the italic г д п т ѓ too (the upright's are the plain letters).
+# After smcp: a small cap is the same in every language.
+lookup loclSerbianForms {
+  lookupflag 0;
+    sub \uni0431 by \uni0431.loclSRB;
+    sub \uni0433 by \uni0433.loclSRB;
+    sub \uni0434 by \uni0434.loclSRB;
+    sub \uni043F by \uni043F.loclSRB;
+    sub \uni0442 by \uni0442.loclSRB;
+    sub \uni0453 by \uni0453.loclSRB;
+} loclSerbianForms;
+
+# Bulgarian (BGR): the lowercase that follows handwriting (д ɡ, и u, к k,
+# л ʌ, п n, т m, ш ɯ, ц щ with a tail), й ѝ as и with their mark.
+# After smcp, as the Serbian.
+lookup loclBulgarianAccented {
+  lookupflag 0;
+    sub \uni0439 by \uni0438.loclBGR \brevecmb.cyrl;
+    sub \uni045D by \uni0438.loclBGR \gravecomb;
+} loclBulgarianAccented;
+
+lookup loclBulgarianForms {
+  lookupflag 0;
+    sub \uni0434 by \uni0434.loclBGR;
+    sub \uni0438 by \uni0438.loclBGR;
+    sub \uni043A by \uni043A.loclBGR;
+    sub \uni043B by \uni043B.loclBGR;
+    sub \uni043F by \uni043F.loclBGR;
+    sub \uni0442 by \uni0442.loclBGR;
+    sub \uni0446 by \uni0446.loclBGR;
+    sub \uni0448 by \uni0448.loclBGR;
+    sub \uni0449 by \uni0449.loclBGR;
+} loclBulgarianForms;
+
 
 lookup ss11GreekContextualForms {
   lookupflag 0;
@@ -4994,6 +5051,9 @@ feature ccmp {
       lookup ccmpStackedCapitalAccents;
       lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5062,17 +5122,32 @@ feature ccmp {
       lookup ccmpStackedCapitalAccents;
       lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
+     language CAT ;
+     language NLD ;
 } ccmp;
 
 feature locl {
+
+ script cyrl;
+     language BGR  exclude_dflt;
+      lookup loclBulgarianAccented;
+      lookup loclBulgarianForms;
+     language MKD  exclude_dflt;
+      lookup loclSerbianForms;
+     language SRB  exclude_dflt;
+      lookup loclSerbianForms;
 
  script grek;
      language dflt ;
       lookup loclLocalizedFormsforGreek;
 
  script latn;
+     language CAT  exclude_dflt;
+      lookup loclCatalanLdot;
      language MOL  exclude_dflt;
       lookup loclss01RomanianVariantForms;
+     language NLD  exclude_dflt;
+      lookup loclDutchIJAcute;
      language ROM  exclude_dflt;
       lookup loclss01RomanianVariantForms;
 } locl;
@@ -5082,6 +5157,9 @@ feature case {
  script cyrl;
      language dflt ;
       lookup caseAllCapsFormsforGreekCapitals;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5102,6 +5180,8 @@ feature case {
       lookup caseAllCapsFormsforGreekCapitals;
      language TRK  exclude_dflt;
       lookup caseAllCapsFormsforGreekCapitals;
+     language CAT ;
+     language NLD ;
 } case;
 
 feature ss01 {
@@ -5112,6 +5192,9 @@ feature ss01 {
  script cyrl;
      language dflt ;
       lookup loclss01RomanianVariantForms;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5132,6 +5215,8 @@ feature ss01 {
       lookup loclss01RomanianVariantForms;
      language TRK  exclude_dflt;
       lookup loclss01RomanianVariantForms;
+     language CAT ;
+     language NLD ;
 } ss01;
 
 feature ss11 {
@@ -5142,6 +5227,9 @@ feature ss11 {
  script cyrl;
      language dflt ;
       lookup ss11GreekContextualForms;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5162,6 +5250,8 @@ feature ss11 {
       lookup ss11GreekContextualForms;
      language TRK  exclude_dflt;
       lookup ss11GreekContextualForms;
+     language CAT ;
+     language NLD ;
 } ss11;
 
 feature salt {
@@ -5169,6 +5259,9 @@ feature salt {
  script cyrl;
      language dflt ;
       lookup saltStylisticAlternatives;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5189,6 +5282,8 @@ feature salt {
       lookup saltStylisticAlternatives;
      language TRK  exclude_dflt;
       lookup saltStylisticAlternatives;
+     language CAT ;
+     language NLD ;
 } salt;
 
 feature calt {
@@ -5196,6 +5291,9 @@ feature calt {
  script cyrl;
      language dflt ;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5216,6 +5314,8 @@ feature calt {
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
      language TRK  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+     language CAT ;
+     language NLD ;
 } calt;
 
 feature rlig {
@@ -5223,6 +5323,9 @@ feature rlig {
  script cyrl;
      language dflt ;
       lookup rligStandardLigatureswithZWJ;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5243,6 +5346,8 @@ feature rlig {
       lookup rligStandardLigatureswithZWJ;
      language TRK  exclude_dflt;
       lookup rligStandardLigatureswithZWJ;
+     language CAT ;
+     language NLD ;
 } rlig;
 
 feature liga {
@@ -5251,6 +5356,9 @@ feature liga {
      language dflt ;
       lookup ligaStandardLigaturesforLatin;
       lookup ligaStandardLigaturesforLatinexceptTurkish;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5274,6 +5382,8 @@ feature liga {
       lookup ligaStandardLigaturesforLatinexceptTurkish;
      language TRK  exclude_dflt;
       lookup ligaStandardLigaturesforLatin;
+     language CAT ;
+     language NLD ;
 } liga;
 
 feature dlig {
@@ -5281,6 +5391,9 @@ feature dlig {
  script cyrl;
      language dflt ;
       lookup dligDiscretionaryLigaturesforLatin;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5302,6 +5415,8 @@ feature dlig {
       lookup dligDiscretionaryLigaturesforLatin;
      language TRK  exclude_dflt;
       lookup dligDiscretionaryLigaturesforLatin;
+     language CAT ;
+     language NLD ;
 } dlig;
 
 feature onum {
@@ -5313,6 +5428,9 @@ feature onum {
  script cyrl;
      language dflt ;
       lookup onumOldstyleFigures;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5333,6 +5451,8 @@ feature onum {
       lookup onumOldstyleFigures;
      language TRK  exclude_dflt;
       lookup onumOldstyleFigures;
+     language CAT ;
+     language NLD ;
 } onum;
 
 feature frac {
@@ -5348,6 +5468,9 @@ feature frac {
       lookup supsSuperscriptForms;
       lookup fracDiagonalFractions;
       lookup fracDiagonalFractionsContextual;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5384,6 +5507,8 @@ feature frac {
       lookup supsSuperscriptForms;
       lookup fracDiagonalFractions;
       lookup fracDiagonalFractionsContextual;
+     language CAT ;
+     language NLD ;
 } frac;
 
 feature numr {
@@ -5395,6 +5520,9 @@ feature numr {
  script cyrl;
      language dflt ;
       lookup supsSuperscriptForms;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5415,6 +5543,8 @@ feature numr {
       lookup supsSuperscriptForms;
      language TRK  exclude_dflt;
       lookup supsSuperscriptForms;
+     language CAT ;
+     language NLD ;
 } numr;
 
 feature sups {
@@ -5426,6 +5556,9 @@ feature sups {
  script cyrl;
      language dflt ;
       lookup supsSuperscriptForms;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5446,6 +5579,8 @@ feature sups {
       lookup supsSuperscriptForms;
      language TRK  exclude_dflt;
       lookup supsSuperscriptForms;
+     language CAT ;
+     language NLD ;
 } sups;
 
 feature subs {
@@ -5457,6 +5592,9 @@ feature subs {
  script cyrl;
      language dflt ;
       lookup subsSubscriptForms;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5477,6 +5615,8 @@ feature subs {
       lookup subsSubscriptForms;
      language TRK  exclude_dflt;
       lookup subsSubscriptForms;
+     language CAT ;
+     language NLD ;
 } subs;
 
 feature dnom {
@@ -5488,6 +5628,9 @@ feature dnom {
  script cyrl;
      language dflt ;
       lookup dnomDenominators;
+     language BGR ;
+     language MKD ;
+     language SRB ;
 
  script grek;
      language dflt ;
@@ -5508,6 +5651,8 @@ feature dnom {
       lookup dnomDenominators;
      language TRK  exclude_dflt;
       lookup dnomDenominators;
+     language CAT ;
+     language NLD ;
 } dnom;
 
 feature aalt {

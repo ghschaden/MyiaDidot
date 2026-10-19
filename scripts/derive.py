@@ -213,6 +213,28 @@ RECIPES = [
     # capital schwa: the turned e at capital size and weight
     ("Ә", "enlarge", "ǝ", ("o", "O")),
     ("Ə", "alias", "Ә", None),
+    # Serbian and Macedonian (locl SRB, MKD): б with its ascender leaning
+    # back, ∂ set upright; the others differ only in the italic
+    # (make_italic.ITALIC_RECIPES) and are the plain letters here
+    ("б.loclSRB", "upright", "partialdiff", (13, "uni0431")),
+    ("г.loclSRB", "alias", "uni0433", None),
+    ("д.loclSRB", "alias", "uni0434", None),
+    ("п.loclSRB", "alias", "uni043F", None),
+    ("т.loclSRB", "alias", "uni0442", None),
+    ("ѓ.loclSRB", "alias", "uni0453", None),
+    # Bulgarian (locl BGR): the lowercase that follows handwriting, letters
+    # of Latin shape: д ɡ, и u, к k, л ʌ, п n, т m, ш ɯ, ц щ with Ц's tail
+    # (й ѝ are и with their mark, in the features); the italic keeps its
+    # own (make_italic.ITALIC_RECIPES)
+    ("д.loclBGR", "alias", "uni0261", None),
+    ("и.loclBGR", "alias", "u", None),
+    ("к.loclBGR", "alias", "k", None),
+    ("л.loclBGR", "alias", "uni028C", None),
+    ("п.loclBGR", "alias", "n", None),
+    ("т.loclBGR", "alias", "m", None),
+    ("ц.loclBGR", "tail", "u", ("x", "stem")),
+    ("ш.loclBGR", "alias", "uni026F", None),
+    ("щ.loclBGR", "tail", "uni026F", ("x", "stem")),
     # hooks from the font: (band, kind, stem, cut, removed left/right of it)
     ("ɓ", "hook", "b", ("x", "up-right", "first", 1000, 300, 0)),
     ("ɗ", "hook", "d", ("x", "up-right", "last", 1000, 300, 0)),
@@ -636,10 +658,24 @@ RECIPES = [
 KEEP_ANCHORS = ("Top", "Acute", "Grave", "Dotaccent", "TopCap", "Bottom", "DotBelow")
 
 
+def variant(ch):
+    """A recipe's variant of a character, its suffix: "ɔ.sc" (the small
+    cap), "б.loclSRB" (a localized form, unencoded); "" for the character."""
+    return ch[1:] if len(ch) > 2 and ch[1] == "." and not ch[0].isascii() or ch.endswith(".sc") and len(ch) == 4 else ""
+
+
 def glyph_name(ch):
-    if ch.endswith(".sc") and len(ch) == 4:
-        return glyph_name(ch[0]) + ".sc"
+    if variant(ch):
+        return glyph_name(ch[0]) + variant(ch)
     return f"uni{ord(ch):04X}" if ord(ch) <= 0xFFFF else f"u{ord(ch):05X}"
+
+
+def resolve(cmap, c):
+    """Glyph name of a recipe's character or variant ("ƒ.sc" -> florin.sc,
+    "б.loclSRB" -> uni0431.loclSRB) by the font's cmap; a glyph name as it is."""
+    if variant(c):
+        return cmap.get(ord(c[0]), glyph_name(c[0])) + variant(c)
+    return cmap.get(ord(c), glyph_name(c)) if len(c) == 1 else c
 
 
 def band_middle(font, band):
@@ -657,6 +693,33 @@ def draw_transformed(font, src, dst, transform, reverse):
     if reverse:
         pen = ReverseContourPen(pen)
     rec.replay(TransformPen(pen, transform))
+
+
+def with_extremes(rec, out):
+    """Replay a recording into the pen out with each cubic split where it
+    turns in x or y (a sheared bowl's extremes move off its points),
+    every point rounded to whole units."""
+    from fontTools.misc.bezierTools import solveQuadratic, splitCubicAtT
+
+    def turns(a, b, c, d):
+        # roots of the derivative of one coordinate, inside the curve
+        return [t for t in solveQuadratic(3 * (-a + 3 * b - 3 * c + d), 6 * (a - 2 * b + c), 3 * (b - a))
+                if 0.02 < t < 0.98]
+
+    def r(pt):
+        return (round(pt[0]), round(pt[1]))
+
+    current = None
+    for op, args in rec.value:
+        if op == "curveTo" and len(args) == 3:
+            p0, (p1, p2, p3) = current, args
+            ts = sorted(set(turns(p0[0], p1[0], p2[0], p3[0]) + turns(p0[1], p1[1], p2[1], p3[1])))
+            for seg in splitCubicAtT(p0, p1, p2, p3, *ts) if ts else [(p0, p1, p2, p3)]:
+                out.curveTo(r(seg[1]), r(seg[2]), r(seg[3]))
+            current = p3
+        else:
+            getattr(out, op)(*[r(a) for a in args])
+            current = args[-1] if args else current
 
 
 # bar thickness and how far a bar runs past the stems, as in ħ ŧ / Đ Ŧ
@@ -1553,9 +1616,9 @@ def mirrored_anchors(src, dst, width):
 
 def build(font, ch, op, source, band, name=None):
     src = font[source]
-    small_cap = ch.endswith(".sc")
+    small_cap = variant(ch) == ".sc"
     g = font.newGlyph(name or glyph_name(ch))
-    if not small_cap:
+    if not variant(ch):
         g.unicodes = [ord(ch)]
     w = src.width
     if op == "alias":
@@ -1573,6 +1636,22 @@ def build(font, ch, op, source, band, name=None):
         g.width = w
         draw_transformed(font, src, g, (-1, 0, 0, 1, w, 0), reverse=True)
         mirrored_anchors(src, g, w)
+    elif op == "upright":
+        # a sloped outline (∂) set upright about half the x-height, between
+        # the sidebearings of the model letter (band: angle, model)
+        angle, model = band
+        s = math.tan(math.radians(angle))
+        rec, sheared = DecomposingRecordingPen(font), RecordingPen()
+        src.draw(rec)
+        rec.replay(TransformPen(sheared, (1, 0, -s, 1, s * font.info.xHeight / 2, 0)))
+        with_extremes(sheared, g.getPen())
+        x0, _, x1, _ = ink_bounds(font, g.name)
+        m0, _, m1, _ = ink_bounds(font, model)
+        dx = round(m0 - x0)
+        for c in g.contours:
+            for pt in c.points:
+                pt.x += dx
+        g.width = round(x1 + dx + font[model].width - m1)
     elif op == "flip":
         g.width = w
         cy = band_middle(font, band)
@@ -1695,7 +1774,17 @@ def build(font, ch, op, source, band, name=None):
         g.lib[DRAFT_KEY] = True
     font.lib.setdefault("public.openTypeCategories", {})[g.name] = "base"
     if g.name not in font.glyphOrder:
-        font.glyphOrder = [*font.glyphOrder, g.name]
+        order = list(font.glyphOrder)
+        # a localized form after its letter (and the letter's other variants)
+        stem = g.name.split(".")[0] if variant(ch) and not small_cap else None
+        if stem in order:
+            at = order.index(stem) + 1
+            while at < len(order) and order[at].split(".")[0] == stem:
+                at += 1
+            order.insert(at, g.name)
+        else:
+            order.append(g.name)
+        font.glyphOrder = order
     return g
 
 
@@ -1708,7 +1797,7 @@ def main():
     # characters, and small caps given whole ("ɔ.sc")
     only = set()
     for arg in args.chars:
-        if arg.endswith(".sc") and len(arg) == 4:
+        if variant(arg):
             only.add(arg)
         else:
             only.update(arg)
@@ -1744,21 +1833,14 @@ def main():
             font.glyphOrder = order
             font.lib["public.openTypeCategories"] = categories
 
-    def resolve(c):
-        """Glyph name of a character, or of its small cap ("ƒ.sc" -> florin.sc)."""
-        if c.endswith(".sc") and len(c) == 4:
-            return cmap.get(ord(c[0]), glyph_name(c[0])) + ".sc"
-        return cmap.get(ord(c), glyph_name(c))
-
     for ch, op, source, band in RECIPES:
         if only and ch not in only:
             continue
-        if len(source) == 1 or (source.endswith(".sc") and len(source) == 4
-                                and not source[0].isascii()):
-            source = resolve(source)  # an earlier recipe's character
+        if len(source) == 1 or (variant(source) and not source[0].isascii()):
+            source = resolve(cmap, source)  # an earlier recipe's character
         if source not in font:
             sys.exit(f"{ch}: source {source} missing")
-        name = resolve(ch)
+        name = resolve(cmap, ch)
         if name in font:
             lib = font[name].lib
             # unreviewed: a draft, or a derived small cap still marked a draft
@@ -1781,7 +1863,9 @@ def main():
             sys.exit(f"{ch}: {e!r}")
         if not g.components:  # an alias follows its source itself
             bases[g.name] = tracker.read
-        if not ch.endswith(".sc"):
+        if op == "alias":
+            aliases.append((g.name, source))
+        if not variant(ch):
             cmap[ord(ch)] = g.name
         made.append(ch)
         built.append(g.name)

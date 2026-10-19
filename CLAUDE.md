@@ -62,6 +62,17 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   scaled to the stem) and `curl` (an elliptical ring with a ball, at the
   stroke's own weight) in derive.py. Shaping in this shell defaults to
   German (locale), which has no f-ligatures: pass `--language=en`.
+- Localized forms (locl): recipes in derive.py name them "б.loclSRB" (a
+  character and its suffix; derive.variant/resolve), aliases of the plain
+  letter where only the italic differs (make_italic ITALIC_RECIPES,
+  ITALIC_LOCL, OS_LOCL: Old Standard's own), so all styles share one
+  glyph set and features.fea. Cyrillic locl lookups stand after the small
+  caps block (smcp sees the plain letters); Dutch's before ccmp (it adds
+  a mark the dotless pass then handles). A new languagesystem must be
+  added to every feature that lists its languages (test_lookups.py
+  test_languages_keep_script_defaults); their groups: ALIKE in
+  kern_groups.py, run after the styles have the glyphs (make generate,
+  kern_groups.py, make generate).
 - Inherited accents resized at the same weight (the Latin breve):
   `scripts/adjust_accents.py` (idempotent; then `composites.py
   --stack-anchors --rebuild-stacked`).

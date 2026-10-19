@@ -62,3 +62,32 @@ def test_lookup_order(ttfont, ufo_path):
     diff = list(difflib.unified_diff(accepted, found, "accepted", "compiled", n=1, lineterm=""))
     assert not diff, ("lookups added, gone or moved (if intended: update_test_data.py --lookups "
                       "--ufo UFO):\n" + "\n".join(diff[:60]))
+
+
+# Designed: German sets no f-ligatures, and the italics have none of the
+# Regular's long-s ligatures, which were all German liga had.
+LANGUAGE_DROPS = {("latn", "DEU", "liga")}
+
+
+def test_languages_keep_script_defaults(ttfont):
+    """Every language system has at least its script's default features.
+
+    A language added to languagesystem but left out of a feature that lists
+    its languages one by one gets none of that feature (text tagged nl
+    would lose ccmp). Which lookups a language takes within a feature is
+    its own (Turkish and German liga leave the f-ligatures out)."""
+    missing = []
+    for tag in ("GSUB", "GPOS"):
+        table = ttfont[tag].table
+        feats = table.FeatureList.FeatureRecord
+        for rec in table.ScriptList.ScriptRecord:
+            script = rec.Script
+            if script.DefaultLangSys is None:
+                continue
+            base = {feats[i].FeatureTag for i in script.DefaultLangSys.FeatureIndex}
+            for lang in script.LangSysRecord:
+                have = {feats[i].FeatureTag for i in lang.LangSys.FeatureIndex}
+                missing += [f"{tag} {rec.ScriptTag}/{lang.LangSysTag.strip()}: no {feat}"
+                            for feat in sorted(base - have)
+                            if (rec.ScriptTag, lang.LangSysTag.strip(), feat) not in LANGUAGE_DROPS]
+    assert not missing, "\n".join(missing)
