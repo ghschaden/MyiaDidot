@@ -26,6 +26,16 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: feature audit
+
+    * aalt (the alternates a glyph panel offers) is made from the other
+      features instead of upstream's list of 42: small caps, every figure
+      form, superiors and inferiors, case forms, ª º, the localized
+      letters, the Greek symbol forms (1,071 glyphs). The forms ccmp picks
+      by context (.cap, .grek and .i accents, dotless i) are left out.
+    * Kazakh, Tatar and Gagauz (latn KAZ, TAT, GAG) set i as Turkish does:
+      İ in small caps, no fi ligature that would swallow its dot.
+
 2026-10-19 Version 0.100 (development), Phase 3: kerning leftovers
 
     * The 62 letter sides that kern_coverage.py found shaped like a kerned

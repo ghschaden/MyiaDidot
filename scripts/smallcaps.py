@@ -640,7 +640,7 @@ def features_block(font):
         lines.append("    lookup SmallCapMarkForms;")
         if tag == "smcp" and turkish:
             lines.append("    script latn;")
-            for lang in ("TRK", "AZE", "CRT"):
+            for lang in ("TRK", "AZE", "CRT", "GAG", "KAZ", "TAT"):
                 lines.append(f"    language {lang};\n    lookup SmallCapsTurkish;")
         lines.append(f"}} {tag};\n")
     if "germandbls.sc" in font and "s_s.sc" in font:
