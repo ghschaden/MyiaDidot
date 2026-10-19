@@ -1056,10 +1056,25 @@ ITALIC_KERNING = {
     # where Charis and Libertinus agree against the Italic (tests/test_greek_pairs.py)
     ("public.kern1.sigma", "public.kern2.mugreek"): -21,  # σμ
     ("public.kern1.rho", "public.kern2.gamma"): 32,  # ργ
+    # Cyrillic against Cyrillic references, as the Italic's Latin sets them
+    # (greek_pairs.py --script cyrillic): the Regular's pairs were made for
+    # the upright д л ѵ, the italic's round д and hooked л stood crowded
+    ("public.kern1.uni0420", "public.kern2.uni0434"): -94,  # Рд (the Regular's -192)
+    ("public.kern1.uni0423", "public.kern2.uni0434"): -130,  # Уд (-352)
+    ("public.kern1.uni0490", "public.kern2.uni0434"): -72,  # Ґд (-342)
+    ("public.kern1.uni0490", "public.kern2.uni0443"): -168,  # Ґу (-348)
+    ("public.kern1.uni0433", "public.kern2.uni043B"): -72,  # гл (-156)
+    ("public.kern1.uni0430", "public.kern2.uni0475"): -32,  # аѵ (-124)
 }
 # the Regular's pairs the Italic does without: tt tf were tightened for the
-# roman t (pair review); the italic t's frequent pairs were in range without
-ITALIC_UNKERNED = {("t", "t"), ("t", "f")}
+# roman t (pair review); the italic t's frequent pairs were in range without;
+# Cyrillic pairs made for upright forms, in range unkerned in the Italic
+# (ду уд уе ул уѫ ъу ѫб оѵ; greek_pairs.py --script cyrillic)
+ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
+                   ("uni0434", "public.kern2.uni0443"), ("public.kern1.uni0443", "public.kern2.uni0434"),
+                   ("public.kern1.uni0443", "public.kern2.uni0435"), ("public.kern1.uni0443", "public.kern2.uni043B"),
+                   ("public.kern1.uni0443", "public.kern2.uni046B"), ("public.kern1.uni044A", "public.kern2.uni0443"),
+                   ("public.kern1.uni046B", "public.kern2.uni0431"), ("public.kern1.uni043E", "public.kern2.uni0475")}
 # ß's left side looser: with the heavier stems it stood tight against the
 # letter before it (measured, scripts/quality/colour.py)
 # г's ī: its bar starts where ı's entry hook did not (ITALIC_RECIPES)

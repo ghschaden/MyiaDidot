@@ -182,8 +182,10 @@ FIGURE_NAMES = {f"{n}{s}" for n in ("zero", "one", "two", "three", "four", "five
                 for s in ("", "oldstyle")} | {"uni2007", "figuredash"}
 # t's right side tighter in the Bold: emboldened, it stood looser before
 # straight letters than in bold text faces; г and є tight on the right, т on
-# the left (measured, scripts/quality/pairs.py and colour.py)
-BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni0442": (26, 0)}  # t; г є т
+# the left (measured, scripts/quality/pairs.py and colour.py); ж, emboldened
+# into its neighbours, tight on both sides (greek_pairs.py --script cyrillic)
+BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni0442": (26, 0),  # t; г є т
+                     "uni0436": (40, 40), "uni0436.loclBGR": (40, 40), "uni0497": (40, 40)}  # ж, Bulgarian ж, җ
 # Pair-level corrections measured after the Bold's global kerning scale.
 BOLD_KERNING = {
     # Greek: σ's right side stood tight against the Greek references, as
@@ -193,6 +195,11 @@ BOLD_KERNING = {
     ("public.kern1.sigma", "public.kern2.omicron"): 62,  # σο
     ("public.kern1.sigma", "public.kern2.iota"): 55,  # σι
     ("public.kern1.tau", "public.kern2.omega"): 49,  # τω
+    # Cyrillic against Cyrillic references, as the Bold's Latin sets them
+    # (greek_pairs.py --script cyrillic)
+    ("public.kern1.uni0433", "public.kern2.uni0434"): -150,  # гд (the Regular's -40, scaled)
+    ("public.kern1.uni0443", "public.kern2.uni0447"): 52,  # уч
+    ("public.kern1.uni044A", "public.kern2.uni0447"): -26,  # ъч (-75)
     ("n", "t"): -28,
     ("a", "t"): -45,
     ("a", "s"): -29,
@@ -224,6 +231,16 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.mugreek", "public.kern2.alphatonos"): 50,  # μα
     ("public.kern1.lambda", "public.kern2.alphatonos"): 31,  # λα
     ("public.kern1.alpha", "delta"): 0,  # αδ (αθ keeps the Italic's, scaled)
+    # Cyrillic against Cyrillic references, as the Bold Italic's Latin sets
+    # them (greek_pairs.py --script cyrillic): а a little wide before the
+    # letters with a stem (аг ак ан ап ар ащ) and з э
+    ("public.kern1.uni0430", "public.kern2.uni0433"): -56,  # ан
+    ("public.kern1.uni0430", "public.kern2.uni0437"): -60,  # аз
+    ("uni043A", "public.kern2.uni043B"): -76,  # кл
+    ("uni0427", "public.kern2.uni043B"): -110,  # Чл
+    ("public.kern1.uni0413", "public.kern2.uni0434"): -100,  # Гд (the Italic's -196, scaled)
+    ("public.kern1.uni0413", "public.kern2.uni0431"): 68,  # Гб (-46)
+    ("public.kern1.uni0422", "public.kern2.uni0431"): 34,  # Тб (-42)
     ("u", "t"): 41,
     ("w", "a"): 57,
     ("g", "h"): 43,

@@ -26,6 +26,26 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: Cyrillic spacing
+
+    * Cyrillic pairs measured for the first time: the 150 most frequent
+      pairs of the Russian, Ukrainian, Belarusian, Bulgarian, Serbian and
+      Macedonian UDHR, against Old Standard, EB Garamond, Libertinus and
+      Charis, as each style's own Latin sets against them
+      (greek_pairs.py --script cyrillic).
+    * Regular: д before у kerned (it stood wider than every reference),
+      У before ж т ч less tight. The Bold follows.
+    * Italic and Bold Italic: the Regular's kerning was made for the
+      upright д л ѵ and crowded the italic's round д and hooked л (уд, ул,
+      гл, Уд, Рд, Ґд ...): eight pairs dropped, six eased.
+    * Bold: ж and its relatives (җ, the Bulgarian ж) 40 units wider a
+      side; гд, уч, ъч. Bold Italic: а before the letters with a stem and
+      before з э, кл, Чл, Гд, Гб, Тб.
+    * Left as they are: Гѫ Ґб Үј, pairs that hardly occur in text. Where
+      Charis and Libertinus agree against Myia (the roman т о с, the
+      italic л м), Old Standard and EB Garamond side with Myia; the new
+      test holds every frequent pair inside the references' whole range.
+
 2026-10-19 Version 0.100 (development), Phase 3: discretionary ligatures
 
     * dlig no longer turns ae oe AE OE into æ œ Æ Œ (upstream's rules

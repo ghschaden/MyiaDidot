@@ -29,7 +29,9 @@ scripts/quality/checks.py findings (quality.txt, quality-Italic.txt ...).
 rewrites the style's compiled lookup order (lookups.txt, lookups-Italic.txt
 ..., tests/test_lookups.py): read the diff first. --greek: the Greek pairs
 where Charis and Libertinus agree against the style (greek-pairs.txt ...,
-tests/test_greek_pairs.py), each with how far off it is now.
+tests/test_greek_pairs.py), each with how far off it is now. --cyrillic:
+the Cyrillic pairs outside the references' whole range (cyrillic-pairs.txt
+..., tests/test_cyrillic_pairs.py).
 """
 
 import argparse
@@ -154,6 +156,7 @@ def main():
     ap.add_argument("--styles", action="store_true")
     ap.add_argument("--lookups", action="store_true")
     ap.add_argument("--greek", action="store_true")
+    ap.add_argument("--cyrillic", action="store_true")
     ap.add_argument("--reason", default="baseline")
     ap.add_argument("--expect-changes", type=int, metavar="N",
                     help="strings shaped otherwise than by HEAD's font, as read (--golden, --digest)")
@@ -187,7 +190,7 @@ def main():
         path.write_text("".join(lines), encoding="utf-8")
         print(f"{path.name}: {len(found)} findings, {len(set(found) - set(listed))} new, "
               f"{len(set(listed) - set(found))} gone")
-    shaping = (args.golden, args.digest, args.cmap, args.exceptions, args.lookups, args.greek)
+    shaping = (args.golden, args.digest, args.cmap, args.exceptions, args.lookups, args.greek, args.cyrillic)
     if lists and not any(shaping):
         return
     if not any(shaping):
@@ -212,16 +215,24 @@ def main():
             path = style_data("shaping-digest.txt", args.ufo)
             path.write_text(f"{digest} {n}\n")
             print(f"{path.name}: {n} strings")
+        pair_lists = []
         if args.greek:
             from test_greek_pairs import greek_findings
 
-            path = style_data("greek-pairs.txt", args.ufo)
+            pair_lists.append(("greek", "greek-pairs.txt", greek_findings,
+                               "Greek pairs where Charis and Libertinus agree against Myia"))
+        if args.cyrillic:
+            from test_cyrillic_pairs import cyrillic_findings
+
+            pair_lists.append(("cyrillic", "cyrillic-pairs.txt", cyrillic_findings,
+                               "Cyrillic pairs outside the references' whole range"))
+        for flag, name, findings, what in pair_lists:
+            path = style_data(name, args.ufo)
             listed = read_list(path.name)
-            found = greek_findings(args.ufo, otf)
+            found = findings(args.ufo, otf)
             if found is None:
-                sys.exit("--greek: references or UDHR texts missing (build/refs/, make udhr)")
-            lines = [("# Greek pairs where Charis and Libertinus agree against Myia (pair  # off N: why), "
-                      "N in n n gaps; fixing one = deleting its line.\n")]
+                sys.exit(f"--{flag}: references or UDHR texts missing (build/refs/, make udhr)")
+            lines = [f"# {what} (pair  # off N: why), N in n n gaps; fixing one = deleting its line.\n"]
             for p, off in sorted(found.items()):
                 why = listed.get(p, "").split(": ", 1)[-1] if p in listed else args.reason
                 lines.append(f"{p:8} # off {off:+.3f}: {why}\n")

@@ -1,8 +1,9 @@
-"""Greek letter pairs against Greek references: the optical gap of each
-frequent pair, shaped with kerning, relative to n n (as pairs.py does for the
-mixed corpus, which has too little Greek).
+"""Greek (or Cyrillic) letter pairs against references of that script: the
+optical gap of each frequent pair, shaped with kerning, relative to n n (as
+pairs.py does for the mixed corpus, which has too little Greek or Cyrillic).
 
-    python scripts/quality/greek_pairs.py STYLE [--top N] [--tolerance T] [--json OUT]
+    python scripts/quality/greek_pairs.py STYLE [--script cyrillic] [--top N]
+        [--tolerance T] [--json OUT]
 
 The pairs: the most frequent letter pairs of the Greek UDHR texts
 (build/udhr/, monotonic and polytonic; `make udhr` fetches them), accents
@@ -15,6 +16,14 @@ text faces set tighter or looser than a Didot overall, and Greek is to sit
 as Myia's Latin does. A pair outside that range by more than the tolerance
 (0.15 of the n n gap, as pairs.py) is flagged, with the kerning that would
 bring it just inside, in font units.
+
+--script cyrillic: the same for the Russian, Ukrainian, Belarusian,
+Bulgarian, Serbian and Macedonian UDHR texts, against Old Standard and EB
+Garamond (build/refs/; Old Standard has no Bold Italic), Libertinus and
+Charis. There Charis and Libertinus agreeing against Myia is no finding
+(agreeing_against): they set the roman т о с looser and build the italic л
+м otherwise, Old Standard (Kryukov's Didot Cyrillic) and EB Garamond side
+with Myia; a pair outside all four is (outside).
 """
 
 import argparse
@@ -44,38 +53,55 @@ SYSTEM_REFS = {
 }
 PINNED = {"Regular": ["GFSDidot-Regular", "EBGaramond-Regular"], "Italic": ["EBGaramond-Italic"],
           "Bold": ["EBGaramond-Bold"], "BoldItalic": ["EBGaramond-BoldItalic"]}
+SCRIPTS = {
+    "greek": {"texts": ("udhr_ell_monotonic.xml", "udhr_ell_polytonic.xml"),
+              "letter": lambda ch: "Ͱ" <= ch <= "Ͽ" and ch.isalpha(),
+              "pinned": PINNED},
+    "cyrillic": {"texts": ("udhr_rus.xml", "udhr_ukr.xml", "udhr_bel.xml", "udhr_bul.xml",
+                           "udhr_srp_cyrl.xml", "udhr_mkd.xml"),
+                 "letter": lambda ch: "Ѐ" <= ch <= "ӿ" and ch.isalpha(),
+                 "pinned": {"Regular": ["OldStandard-Regular", "EBGaramond-Regular"],
+                            "Italic": ["OldStandard-Italic", "EBGaramond-Italic"],
+                            "Bold": ["OldStandard-Bold", "EBGaramond-Bold"],
+                            "BoldItalic": ["EBGaramond-BoldItalic"]}},
+}
 
 
-def refs(style):
-    paths = [str(REFDIR / f"{n}.ttf") for n in PINNED[style] if (REFDIR / f"{n}.ttf").exists()]
+def refs(style, script="greek"):
+    pinned = SCRIPTS[script]["pinned"][style]
+    paths = [str(REFDIR / f"{n}.ttf") for n in pinned if (REFDIR / f"{n}.ttf").exists()]
     paths += [str(Path(p).expanduser()) for p in SYSTEM_REFS[style] if Path(p).expanduser().exists()]
     return paths
 
 
-def corpus():
+def corpus(script="greek"):
     text = ""
-    for name in ("udhr_ell_monotonic.xml", "udhr_ell_polytonic.xml"):
+    for name in SCRIPTS[script]["texts"]:
         path = ROOT / "build" / "udhr" / name
         if path.exists():
             text += " " + re.sub(r"<[^>]+>", " ", path.read_text())
     if not text.strip():
-        sys.exit("no Greek UDHR text: make udhr")
+        sys.exit(f"no {script} UDHR text: make udhr")
     return text
 
 
 def base(ch):
-    """The letter without its accents (ά ἀ ᾶ -> α; ς stays)."""
+    """The letter without its accents (ά ἀ ᾶ -> α; ς stays; й ё ї keep
+    theirs: Cyrillic letters of their own)."""
+    if "Ѐ" <= ch <= "ӿ":
+        return ch
     return unicodedata.normalize("NFD", ch)[0]
 
 
 def greek(ch):
-    return "Ͱ" <= ch <= "Ͽ" and ch.isalpha()
+    return SCRIPTS["greek"]["letter"](ch)
 
 
-def frequent_pairs(top, text=None, keep=None):
+def frequent_pairs(top, text=None, keep=None, script="greek"):
     counts = collections.Counter()
-    keep = keep or (lambda a, b: greek(a) and greek(b) and b.islower())
-    for word in (text or corpus()).split():
+    letter = SCRIPTS[script]["letter"]
+    keep = keep or (lambda a, b: letter(a) and letter(b) and b.islower())
+    for word in (text or corpus(script)).split():
         letters = [base(c) for c in word if c.isalpha()]
         for a, b in itertools.pairwise(letters):
             if keep(a, b):
@@ -107,21 +133,21 @@ def gap(face, hbfont, pair, steps=30, depth=0.2):
     return sum(min(v, near + depth * h) if v is not None else near + depth * h for v in vals) / steps / h
 
 
-def latin_offset(style, top=150, myia=None):
+def latin_offset(style, top=150, myia=None, script="greek"):
     """The median of Myia's gaps less the references' on frequent English
     pairs: how much tighter (negative) or looser Myia's Latin sets than
     these references."""
     text = re.sub(r"<[^>]+>", " ", (ROOT / "build" / "udhr" / "udhr_eng.xml").read_text())
     pairs = frequent_pairs(top, text, lambda a, b: a.isascii() and b.isascii() and b.islower())
-    res, name, _ = measure(style, top, pairs, myia)
+    res, name, _ = measure(style, top, pairs, myia, script)
     return statistics.median(v[name] - statistics.median(x for k, x in v.items() if k != name)
                              for v in res.values() if name in v and len(v) >= 3)
 
 
-def measure(style, top, pairs=None, myia=None):
+def measure(style, top, pairs=None, myia=None, script="greek"):
     """myia: the font to measure (the built OTF by default)."""
-    fonts = [str(myia or MYIA.format(style))] + refs(style)
-    pairs = pairs or frequent_pairs(top)
+    fonts = [str(myia or MYIA.format(style))] + refs(style, script)
+    pairs = pairs or frequent_pairs(top, script=script)
     out, nn_units = {}, None
     for path in fonts:
         face = Face(path)
@@ -137,16 +163,16 @@ def measure(style, top, pairs=None, myia=None):
     return out, Face(fonts[0]).name, nn_units
 
 
-def agreeing_against(style, myia=None, top=150, tolerance=0.15):
+def agreeing_against(style, myia=None, top=150, tolerance=0.15, script="greek"):
     """{pair: off} for the pairs where Charis and Libertinus both set wider,
     or both tighter, than Myia by more than tolerance (of the n n gap),
     shifted by the style's Latin offset; off is the nearer one's distance,
     negative where Myia is tighter. None without both references."""
-    res, name, _ = measure(style, top, myia=myia)
-    both = [Path(p).stem for p in refs(style) if "Charis" in p or "Libertinus" in p]
+    res, name, _ = measure(style, top, myia=myia, script=script)
+    both = [Path(p).stem for p in refs(style, script) if "Charis" in p or "Libertinus" in p]
     if len(both) < 2:
         return None
-    shift = latin_offset(style, myia=myia)
+    shift = latin_offset(style, myia=myia, script=script)
     out = {}
     for p, v in res.items():
         if name not in v or not all(b in v for b in both):
@@ -157,15 +183,34 @@ def agreeing_against(style, myia=None, top=150, tolerance=0.15):
     return out
 
 
+def outside(style, myia=None, top=150, tolerance=0.15, script="cyrillic"):
+    """{pair: off} for the frequent pairs outside the references' whole range
+    (shifted by the style's Latin offset) by more than tolerance; off is
+    the distance past the nearer end, negative where Myia is tighter."""
+    res, name, _ = measure(style, top, myia=myia, script=script)
+    shift = latin_offset(style, myia=myia, script=script)
+    out = {}
+    for p, v in res.items():
+        others = [x + shift for k, x in v.items() if k != name]
+        if name not in v or len(others) < 2:
+            continue
+        m = v[name]
+        off = (m - max(others)) if m > max(others) else (m - min(others)) if m < min(others) else 0.0
+        if abs(off) > tolerance:
+            out[p] = round(off, 3)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("style")
+    ap.add_argument("--script", choices=sorted(SCRIPTS), default="greek")
     ap.add_argument("--top", type=int, default=150)
     ap.add_argument("--tolerance", type=float, default=0.15)
     ap.add_argument("--json")
     args = ap.parse_args()
-    res, myia, nn_units = measure(args.style, args.top)
-    shift = latin_offset(args.style)
+    res, myia, nn_units = measure(args.style, args.top, script=args.script)
+    shift = latin_offset(args.style, script=args.script)
     rows = []
     for p, v in res.items():
         if myia not in v or len(v) < 3:  # Myia and at least two references
@@ -182,7 +227,7 @@ def main():
         rows.append({"pair": p, "myia": round(m, 3), "median": round(med, 3), "lo": round(lo, 3),
                      "hi": round(hi, 3), "off": round(off, 3), "kern": kern})
     rows.sort(key=lambda r: r["off"])
-    print(f"{args.style}: {len(rows)} frequent Greek pairs measured (n n gap {nn_units:.0f} units; "
+    print(f"{args.style}: {len(rows)} frequent {args.script} pairs measured (n n gap {nn_units:.0f} units; "
           f"references shifted by the Latin's {shift:+.3f}); "
           f"{sum(1 for r in rows if r['kern'])} outside the references' range by more than {args.tolerance}")
     for r in rows:

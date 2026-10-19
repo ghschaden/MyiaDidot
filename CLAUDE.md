@@ -121,7 +121,10 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   own Latin: `scripts/quality/greek_pairs.py STYLE`; the italics' Greek
   cuts are ITALIC_CUT_GREEK (make_italic.py) and BOLD_ITALIC_CUT_GREEK
   (make_bold.py), their Greek pairs in ITALIC_KERNING, BOLD_KERNING and
-  ITALIC_BOLD_KERNING. Accented letters share their base letter's
+  ITALIC_BOLD_KERNING. Cyrillic likewise (`greek_pairs.py STYLE --script
+  cyrillic`, against Old Standard, EB Garamond, Libertinus, Charis); the
+  Regular's pairs made for the upright д л ѵ are dropped in the italics
+  (ITALIC_UNKERNED). Accented letters share their base letter's
   kerning groups, letters shaped like another its groups (ALIKE): both by
   `scripts/kern_groups.py` on the Regular. Where the group's kerning
   would bring the accent too near in any style (Yì, fï, ΤἈ) the letter
@@ -194,7 +197,11 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   shifts by the style's Latin offset). Charis and Libertinus agreeing
   against Myia: fix it. (Enforced where the references are installed:
   tests/test_greek_pairs.py, `greek-pairs*.txt`, a listed pair may not get
-  further off; `update_test_data.py --greek`.)
+  further off; `update_test_data.py --greek`.) Not for Cyrillic, where
+  Charis and Libertinus are the outliers and Old Standard, Kryukov's own
+  Didot Cyrillic, sides with Myia: there no frequent pair may fall outside
+  all four references' range (tests/test_cyrillic_pairs.py,
+  `cyrillic-pairs*.txt`, `update_test_data.py --cyrillic`).
 - Read `make regress` before accepting a new baseline: one composition rule
   once changed 1098 strings where a few were meant. (Enforced:
   `update_test_data.py --golden/--digest` shows the strings that differ from
