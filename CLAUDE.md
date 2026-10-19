@@ -157,8 +157,8 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   changes with respace.sidebearings() (it carries composites along).
 - The working copy is inside a pCloud/Nextcloud-synced folder: rewriting
   many files fast can leave "(conflicted)" copies and missing glyph files;
-  check for them after big generation runs (tests/test_ufo.py fails on
-  them).
+  check for them after big generation runs (`scripts/sync_check.py`;
+  tests/test_ufo.py fails on them; the plugin runs it after such commands).
 - Win metrics must cover the bbox: `make winmetrics` after adding tall or
   deep glyphs (the fontbakery test flags it).
 
@@ -298,6 +298,8 @@ and git hold the state.
 | `python scripts/status.py --long` | coverage per glyph set + last test run |
 | `python scripts/composites.py UFO --check` | composites vs rules |
 | `python scripts/glyph_lint.py UFO [GLYPH ...]` | outlines gone wrong: where, what |
+| `python scripts/quality/pair_summary.py [STYLE ...]` | Latin, Greek, Cyrillic pairs outside the references, one table (built fonts) |
+| `python scripts/sync_check.py` | sync conflict copies and lost glyph files in the UFOs |
 
 Run Python as `.venv/bin/python -I`.
 
@@ -308,6 +310,9 @@ status line (with "OTF stale" when a UFO is newer than its built font),
 guards (deny re-import and writes to `sources/upstream/`; ask before
 rewriting baselines, `--no-verify`, force-push, and before writing into a
 generated style by anything but its generator), a note on the output of
-scripts that measure `fonts/otf/` while it is stale, and `/font-status`,
+scripts that measure `fonts/otf/` while it is stale, a sync-leftover check
+after commands that rewrite UFOs (toast, and again 30 s later), and
+`/font-pairs` (`scripts/quality/pair_summary.py`: Latin, Greek and Cyrillic
+pairs outside the references, all styles), `/font-status`,
 `/font-test`, `/font-proof`. Its rules have tests: `claude plugin test
 tools/claude-plugin/myia-didot`.

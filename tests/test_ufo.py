@@ -1,6 +1,7 @@
 """Structural integrity of the source UFOs (no build needed)."""
 
 import subprocess
+import sys
 import unicodedata
 from collections import Counter
 
@@ -89,19 +90,13 @@ def test_ufo_is_normalized(ufo_path, tmp_path):
 
 def test_no_sync_leftovers(ufo_path):
     """The working copy is in a synced folder: rewriting many files fast can
-    leave "(conflicted)" copies and glyphs listed whose file is gone."""
-    import plistlib
+    leave "(conflicted)" copies and glyphs listed whose file is gone
+    (scripts/sync_check.py)."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from sync_check import leftovers
 
-    strays = [str(p.relative_to(ufo_path)) for p in ufo_path.rglob("*") if "conflict" in p.name.lower()]
-    assert not strays, f"sync conflict copies: {strays}"
-    layers = plistlib.loads((ufo_path / "layercontents.plist").read_bytes())
-    missing = []
-    for _layer, folder in layers:
-        contents = plistlib.loads((ufo_path / folder / "contents.plist").read_bytes())
-        missing += [name for name, file in contents.items() if not (ufo_path / folder / file).exists()]
-        listed = set(contents.values())
-        missing += [f"unlisted {p.name}" for p in (ufo_path / folder).glob("*.glif") if p.name not in listed]
-    assert not missing, f"glyph files missing or not listed: {missing[:20]}"
+    found = leftovers(ufo_path)
+    assert not found, f"sync leftovers: {found[:20]}"
 
 
 def test_names_and_code_points_agree(ufo):

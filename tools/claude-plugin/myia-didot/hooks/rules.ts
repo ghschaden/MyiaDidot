@@ -124,3 +124,25 @@ export function judgePath(path: string, root: string): Verdict | undefined {
   }
   return undefined
 }
+
+// Commands that rewrite many UFO files at once, after which the file sync
+// can leave "(conflicted)" copies or lose a glyph file.
+const WRITES_UFOS = /\bmake\b[^;&|\n]*\b(generate|normalize)\b|\b(make_bold|make_italic|smallcaps|kern_clear|composites|derive|respace|adjust_accents|kern_groups|cpsp|space_figures|case_forms|nfd_compose|draft_\w+|smallcaps_draft|glyph_lint|ufonormalizer)(\.py)?\b|\.save\(/
+
+/** Whether a shell command may have rewritten UFO files in bulk. */
+export function writesUfos(command: string): boolean {
+  return WRITES_UFOS.test(command)
+}
+
+/** The toast and the note for scripts/sync_check.py's output, or undefined. */
+export function syncNote(output: string): { toast: string; context: string } | undefined {
+  const lines = output.split('\n').map(l => l.trim()).filter(Boolean)
+  if (lines.length === 0) return undefined
+  const ufos = [...new Set(lines.map(l => l.split('/')[0]))]
+  return {
+    toast: `Sync leftovers in ${ufos.join(', ')}: ${lines.length} (scripts/sync_check.py)`,
+    context: `${PREFIX}: the file sync left these in sources/ (scripts/sync_check.py): ${lines.slice(0, 20).join('; ')}` +
+      `${lines.length > 20 ? ` ... and ${lines.length - 20} more` : ''}. Delete the "(conflicted)" copies and ` +
+      'restore missing glyph files (rerun the generator, or git checkout) before going on; tests/test_ufo.py fails on them.',
+  }
+}

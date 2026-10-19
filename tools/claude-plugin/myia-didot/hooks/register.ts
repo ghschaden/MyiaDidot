@@ -1,6 +1,6 @@
 import type { EngineInterface, Register, Timer } from 'claude-code'
 
-import { judgeBash, judgePath, measuresBuiltFonts, STALE_CHECK, staleNote, staleStyles } from './rules'
+import { judgeBash, judgePath, measuresBuiltFonts, STALE_CHECK, staleNote, staleStyles, syncNote, writesUfos } from './rules'
 
 // Active only inside the Myia Didot repository (recognised by its status
 // script and master UFO); everywhere else every hook passes straight through.
@@ -13,6 +13,7 @@ const TOUCHES_FONT = /\b(make|pytest|fontmake|ufonormalizer|git (checkout|reset|
 // Module state: reset on each reload, which only costs one lookup.
 let root: string | null | undefined // undefined: not looked up yet; null: not our repo
 let pendingRefresh: Timer | undefined
+let pendingSync: Timer | undefined
 
 async function projectRoot($: EngineInterface): Promise<string | null> {
   if (root !== undefined) return root
@@ -34,6 +35,26 @@ async function stale($: EngineInterface, dir: string): Promise<string[]> {
   } catch {
     return []
   }
+}
+
+// What the file sync left in sources/, as scripts/sync_check.py reports it.
+async function syncLeftovers($: EngineInterface, dir: string) {
+  try {
+    const { stdout } = await run($, dir, [`${dir}/.venv/bin/python`, '-I', 'scripts/sync_check.py'])
+    return syncNote(stdout)
+  } catch {
+    return undefined
+  }
+}
+
+// The sync client writes its conflict copies a while after the files
+// changed: look again later, and say so only if something turned up.
+function scheduleSyncCheck($: EngineInterface, dir: string) {
+  pendingSync?.cancel()
+  pendingSync = $.clock.after(30_000, () => {
+    pendingSync = undefined
+    void syncLeftovers($, dir).then(note => note && $.ui.toast(note.toast))
+  })
 }
 
 async function refreshStatus($: EngineInterface) {
@@ -71,6 +92,7 @@ export const register: Register = on => {
     await $.command.register({ name: 'font-status', description: 'Myia Didot: coverage per glyph set and last test run' })
     await $.command.register({ name: 'font-test', description: 'Myia Didot: run the test suite and report' })
     await $.command.register({ name: 'font-proof', description: 'Myia Didot: build the PDF proofs and open the character set' })
+    await $.command.register({ name: 'font-pairs', description: 'Myia Didot: Latin, Greek and Cyrillic pair spacing, all styles' })
     await refreshStatus($)
     return result
   })
@@ -100,10 +122,22 @@ export const register: Register = on => {
     const dir = await projectRoot($)
     if (dir === null) return result
     if (TOUCHES_FONT.test(e.command)) scheduleRefresh($)
+    const notes: string[] = []
+    if (writesUfos(e.command)) {
+      const sync = await syncLeftovers($, dir)
+      if (sync) {
+        $.ui.toast(sync.toast)
+        notes.push(sync.context)
+      }
+      scheduleSyncCheck($, dir)
+    }
     // a measurement of fonts/otf/ taken while the UFOs are newer: say so
-    if (measuresBuiltFonts(e.command) && 'result' in result && result.result !== undefined) {
+    if (measuresBuiltFonts(e.command)) {
       const note = staleNote(await stale($, dir))
-      if (note) return { ...result, context: [...(result.context ?? []), note.context] }
+      if (note) notes.push(note.context)
+    }
+    if (notes.length > 0 && 'result' in result && result.result !== undefined) {
+      return { ...result, context: [...(result.context ?? []), ...notes] }
     }
     return result
   }).catch(($, e, next) => next(e))
@@ -141,6 +175,21 @@ export const register: Register = on => {
       text: (exitCode === 0 ? 'Tests passed: ' : 'Tests FAILED:\n') + shown.join('\n'),
       context: exitCode === 0 ? undefined : ['The Myia Didot test suite failed; output above.'],
     }
+  })
+
+  on('command.run', { command: 'font-pairs' }, async $ => {
+    const dir = await projectRoot($)
+    if (dir === null) return { text: 'Not in the Myia Didot repository.' }
+    $.ui.status('Myia Didot · building fonts and measuring pairs…')
+    const made = await run($, dir, ['make', 'otf'], 600_000)
+    if (made.exitCode !== 0) {
+      await refreshStatus($)
+      return { text: `make otf failed:\n${(made.stdout + made.stderr).trimEnd().split('\n').slice(-30).join('\n')}` }
+    }
+    const { stdout, stderr, exitCode } = await run($, dir,
+      [`${dir}/.venv/bin/python`, '-I', 'scripts/quality/pair_summary.py'], 600_000)
+    await refreshStatus($)
+    return { text: exitCode === 0 ? stdout.trimEnd() : `pair_summary.py failed:\n${(stdout + stderr).trimEnd()}` }
   })
 
   on('command.run', { command: 'font-proof' }, async $ => {

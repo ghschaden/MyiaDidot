@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'claude-code/testing'
 
-import { judgeBash, judgePath, measuresBuiltFonts, staleNote, staleStyles, writesGenerated } from '../hooks/rules'
+import { judgeBash, judgePath, measuresBuiltFonts, staleNote, staleStyles, syncNote, writesGenerated, writesUfos } from '../hooks/rules'
 
 const ROOT = '/home/u/src/MyiaDidot'
 
@@ -116,5 +116,28 @@ describe('stale fonts', () => {
     expect(staleStyles('find: warning\n')).toEqual([])
     expect(staleNote([])).toBeUndefined()
     expect(staleNote(['Italic'])?.status).toBe('OTF stale: Italic (make otf)')
+  })
+})
+
+describe('sync leftovers', () => {
+  test('knows the commands that rewrite UFOs in bulk', async () => {
+    for (const cmd of ['make generate', 'make normalize', 'make -C . generate > log 2>&1',
+      '.venv/bin/python -I scripts/make_bold.py', 'python scripts/smallcaps.py sources/MyiaDidot-Regular.ufo',
+      'python scripts/composites.py sources/MyiaDidot-Regular.ufo --stack-anchors',
+      'python - <<EOF\nf = ufoLib2.Font.open(p)\nf.save()\nEOF']) {
+      expect(writesUfos(cmd)).toBe(true)
+    }
+    for (const cmd of ['make test', 'make otf', 'git status', 'python scripts/quality/pairs.py Bold', 'make reproduce']) {
+      expect(writesUfos(cmd)).toBe(false)
+    }
+  })
+
+  test('words the toast and the note from sync_check.py', async () => {
+    expect(syncNote('')).toBeUndefined()
+    expect(syncNote('\n')).toBeUndefined()
+    const note = syncNote('MyiaDidot-Bold.ufo/glyphs/a (conflicted).glif: sync conflict copy\n' +
+      'MyiaDidot-Bold.ufo/glyphs/b.glif: listed for b, missing\nMyiaDidot-Italic.ufo/glyphs/c.glif: not listed\n')
+    expect(note?.toast).toBe('Sync leftovers in MyiaDidot-Bold.ufo, MyiaDidot-Italic.ufo: 3 (scripts/sync_check.py)')
+    expect(note?.context).toContain('b.glif: listed for b, missing')
   })
 })

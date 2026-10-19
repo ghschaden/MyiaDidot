@@ -57,9 +57,11 @@ only shrink. When a change is intended, regenerate the baselines with
 
 `tools/claude-plugin/myia-didot` adds a status line (glyphs, characters
 still missing, last test run, built fonts out of date), guards for the
-pinned upstream sources, the test baselines and the generated styles, and the commands `/font-status`, `/font-test` and
-`/font-proof`. Install it from a local checkout (edits to the folder take
-effect with `/reload-plugins`):
+pinned upstream sources, the test baselines and the generated styles, a
+check for sync leftovers after bulk UFO writes, and the commands
+`/font-status`, `/font-test`, `/font-proof` and `/font-pairs`. Install it
+from a local checkout (edits to the folder take effect with
+`/reload-plugins`):
 
 ```sh
 claude plugin marketplace add /path/to/MyiaDidot
