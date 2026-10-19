@@ -26,6 +26,13 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: discretionary ligatures
+
+    * dlig no longer turns ae oe AE OE into æ œ Æ Œ (upstream's rules
+      changed spelling: Michæl, dœs); æ and œ are typed. dlig gives the
+      linked ct and st in the Regular and Bold, and in German the
+      f-ligatures; the Italics have no ct st.
+
 2026-10-19 Version 0.100 (development), Phase 3: long s on request
 
     * hist (off unless asked for): s is set as ſ at the start and in the

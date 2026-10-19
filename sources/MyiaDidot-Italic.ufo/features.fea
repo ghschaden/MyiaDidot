@@ -4910,16 +4910,7 @@ lookup ligaStandardLigaturesforLatinexceptTurkish {
     sub \f \j  by \f_j;
 } ligaStandardLigaturesforLatinexceptTurkish;
 
-lookup dligDiscretionaryLigaturesforLatin {
-  lookupflag 0;
-    sub \A \E  by \AE;
-    sub \A \e  by \AE;
-    sub \a \e  by \ae;
-    sub \O \E  by \OE;
-    sub \O \e  by \OE;
-    sub \o \e  by \oe;
-} dligDiscretionaryLigaturesforLatin;
-
+# ct st only: æ œ are letters of their own, typed (dlig made Michæl, dœs)
 lookup dligDiscretionaryLigaturesforGerman {
   lookupflag 0;
     sub \f \f  by \ff;
@@ -5457,37 +5448,25 @@ feature dlig {
 
  script cyrl;
      language dflt ;
-      lookup dligDiscretionaryLigaturesforLatin;
      language BGR ;
      language MKD ;
      language SRB ;
 
  script grek;
      language dflt ;
-      lookup dligDiscretionaryLigaturesforLatin;
 
  script latn;
      language dflt ;
-      lookup dligDiscretionaryLigaturesforLatin;
      language AZE  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language CRT  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language GAG  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language KAZ  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language TAT  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language DEU  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
       lookup dligDiscretionaryLigaturesforGerman;
      language MOL  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language ROM  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language TRK  exclude_dflt;
-      lookup dligDiscretionaryLigaturesforLatin;
      language CAT ;
      language NLD ;
 } dlig;
