@@ -1,0 +1,13 @@
+#!/bin/sh
+# Myia Didot post-commit hook: rebuild the proofs (make proof) in the
+# background after a commit that can change them, so build/proofs/ follows
+# the sources. Output: build/proofs/refresh.log.
+
+cd "$(git rev-parse --show-toplevel)" || exit 0
+
+if git diff-tree --root --no-commit-id --name-only -r HEAD |
+    grep -qE '^(sources|scripts|proofs|Makefile)'; then
+    setsid sh tools/git-hooks/refresh-proofs </dev/null >/dev/null 2>&1 &
+    echo "post-commit: rebuilding the proofs in the background (build/proofs/refresh.log)" >&2
+fi
+exit 0

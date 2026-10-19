@@ -143,7 +143,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   keeps smooth nodes smooth and fits the handles; derive.rezone puts flat
   edges it moved back on the zones. Old-style figures are proportional
   (`scripts/space_figures.py`, run by make_bold.py/make_italic.py; tnum gives
-  the .tf ones). Per-style spacing tweaks: make_bold.py BOLD_SIDEBEARINGS,
+  the .tf ones; it also makes the proportional lining .pf (pnum) and the
+  lnum/pnum/tnum/zero block). Capital spacing (cpsp): `scripts/cpsp.py` on
+  the Regular. Per-style spacing tweaks: make_bold.py BOLD_SIDEBEARINGS,
   make_italic.py ITALIC_SIDEBEARINGS and ITALIC_KERNING; one-off sidebearing
   changes with respace.sidebearings() (it carries composites along).
 - The working copy is inside a pCloud/Nextcloud-synced folder: rewriting
@@ -214,7 +216,16 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
 ## Tests are the safety net
 
 - `make test` (≈90 s) runs on every commit via the pre-commit hook
-  (`make setup` installs it) and in GitHub Actions.
+  (`make setup` installs it) and in GitHub Actions. With `make reproduce`
+  a commit takes ≈2–3 min: give `git commit` a Bash timeout of 600000.
+  The checks run detached, once per state of the tree: if a commit times
+  out anyway, run the same commit again; it waits for the run in progress
+  or takes its result (a failure too, without rerunning; `MYIA_RECHECK=1`
+  forces a new run). Results and logs: `.git/myia-checks/`.
+- The post-commit hook rebuilds the proofs (`make proof`) in the
+  background after commits touching sources, scripts or proofs/: the
+  commit built is in `build/proofs/built-from`, the output in
+  `build/proofs/refresh.log`. Look there before building proofs by hand.
 - What they hold: UFO integrity, composites in sync with anchors, NFC and NFD
   rendering the same ink (with precomposed glyphs removed from cmap so
   HarfBuzz cannot recompose), coverage ratchet, golden shaping corpus

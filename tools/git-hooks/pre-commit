@@ -2,6 +2,13 @@
 # Myia Didot pre-commit hook: the test suite must pass before a commit.
 # Installed by `make setup` (git config core.hooksPath tools/git-hooks).
 # Tests run on the working tree. Skip once with `git commit --no-verify`.
+#
+# The checks run once per state of the tree: they run detached
+# (tools/git-hooks/run-checks), so a commit killed by a timeout leaves them
+# to finish, and the next commit of the same tree waits for that run or
+# takes its result (pass or fail) instead of starting again. A commit of a
+# changed tree stops a run for an older one. Run again regardless with
+# MYIA_RECHECK=1 git commit ...
 
 cd "$(git rev-parse --show-toplevel)" || exit 1
 
@@ -25,27 +32,59 @@ if [ ! -x .venv/bin/pytest ]; then
     exit 1
 fi
 
-echo "pre-commit: running the test suite..." >&2
-if ! .venv/bin/pytest -q -x -p no:cacheprovider >&2; then
-    echo >&2
-    echo "pre-commit: tests failed; commit aborted." >&2
-    echo "  Fix the cause, or if the change is intended, update the baselines:" >&2
-    echo "  .venv/bin/python scripts/update_test_data.py --help" >&2
+repro=0
+if git diff --cached --name-only | grep -qE '^(sources/MyiaDidot-|scripts/(make_italic|make_bold|derive|built_from|smallcaps|smallcaps_draft|composites|respace|space_figures|glyph_lint)\.py)'; then
+    repro=1
+fi
+
+# the state checked: the working tree (what the tests read), the index
+# (which checks run) and the checks chosen
+state=$(git rev-parse --git-path myia-checks)
+mkdir -p "$state"
+tmpidx="$state/index.tmp"
+cp "${GIT_INDEX_FILE:-$(git rev-parse --git-path index)}" "$tmpidx"
+work=$(GIT_INDEX_FILE="$tmpidx" git add -A && GIT_INDEX_FILE="$tmpidx" git write-tree)
+rm -f "$tmpidx"
+staged=$(git write-tree)
+key=$(printf '%s %s %s\n' "$work" "$staged" "$repro" | git hash-object --stdin)
+
+if [ -n "$MYIA_RECHECK" ]; then
+    rm -f "$state/$key.pass" "$state/$key.fail"
+fi
+
+running() { [ -f "$1" ] && kill -0 "$(cat "$1")" 2>/dev/null; }
+
+if [ -f "$state/$key.pass" ]; then
+    echo "pre-commit: checks already passed for this tree." >&2
+    exit 0
+elif [ -f "$state/$key.fail" ]; then
+    tail -n 60 "$state/$key.log" >&2
+    echo "pre-commit: (the result of an earlier run on this same tree; MYIA_RECHECK=1 runs it again)" >&2
     exit 1
 fi
 
-# the generated styles as their generators make them, when a commit touches
-# them, the Regular they come from, or a generator (≈40 s; needs FontForge)
-if git diff --cached --name-only | grep -qE '^(sources/MyiaDidot-|scripts/(make_italic|make_bold|derive|built_from|smallcaps|smallcaps_draft|composites|respace|space_figures|glyph_lint)\.py)'; then
-    if command -v fontforge >/dev/null 2>&1; then
-        echo "pre-commit: checking the generated styles (make reproduce)..." >&2
-        if ! .venv/bin/python -I scripts/check_reproducible.py >&2; then
-            echo >&2
-            echo "pre-commit: a generator run would change the generated styles; commit aborted." >&2
-            echo "  Move the edit into the Regular or the generator (CLAUDE.md), or rerun them." >&2
-            exit 1
-        fi
-    else
-        echo "pre-commit: fontforge missing, generated styles not checked" >&2
-    fi
+if running "$state/$key.pid"; then
+    echo "pre-commit: checks for this tree already running; waiting for them..." >&2
+else
+    # a run for an older tree is wasted now
+    for p in "$state"/*.pid; do
+        running "$p" && kill -- "-$(cat "$p")" 2>/dev/null
+        rm -f "$p"
+    done
+    # keep the last results only
+    ls -t "$state"/*.log 2>/dev/null | tail -n +21 | while read -r f; do
+        rm -f "$f" "${f%.log}.pass" "${f%.log}.fail"
+    done
+    : > "$state/$key.log"
+    setsid sh tools/git-hooks/run-checks "$state" "$key" "$repro" </dev/null >/dev/null 2>&1 &
+    i=0
+    while [ ! -f "$state/$key.pid" ] && [ $i -lt 50 ]; do sleep 0.1; i=$((i + 1)); done
 fi
+
+pid=$(cat "$state/$key.pid" 2>/dev/null)
+if [ -n "$pid" ]; then
+    tail -n +1 -f --pid="$pid" "$state/$key.log" >&2
+else
+    cat "$state/$key.log" >&2
+fi
+[ -f "$state/$key.pass" ]

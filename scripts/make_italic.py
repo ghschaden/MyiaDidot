@@ -1492,7 +1492,7 @@ def main():
                 settled.add(g.name)
                 grew = True
     respace(font, lambda n: 0 if n in settled else letter_cut(n), [g.name for g in font if g.name not in kept])
-    space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
+    space_figures(font)  # the old-style figures spaced by their shapes (their .tf, the .pf rebuilt)
     sidebearings(font, swapped_sidebearings(font))
     sidebearings(font, ITALIC_SIDEBEARINGS)
     # an alias a recipe made (Serbian д of g) follows its letter's final width,

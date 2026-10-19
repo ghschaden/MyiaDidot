@@ -20,7 +20,7 @@ all: fonts
 setup:
 	uv sync
 	git config core.hooksPath tools/git-hooks
-	@echo "pre-commit hook installed (tools/git-hooks/pre-commit)"
+	@echo "git hooks installed (tools/git-hooks: pre-commit runs the tests, post-commit rebuilds the proofs)"
 
 test:
 	.venv/bin/pytest

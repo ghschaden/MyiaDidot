@@ -924,7 +924,7 @@ def main():
     greek_cut = BOLD_ITALIC_CUT_GREEK if italic else BOLD_CUT_GREEK
     respace(font, classifier(font, BOLD_CUT, greek_cut))
     respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
-    space_figures(font)  # the old-style figures spaced by their shapes (their .tf rebuilt)
+    space_figures(font)  # the old-style figures spaced by their shapes (their .tf, the .pf rebuilt)
     sidebearings(font, extra)
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,

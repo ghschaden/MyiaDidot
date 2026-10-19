@@ -1325,5 +1325,6 @@ yen smooth 2                     # 2026-10-16 Bold Italic: first generated (make
 z smooth 5                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 500,703 2.1 degrees; 732,773 2.9 degrees; 668,821 2.1 degrees; 344,149 3.7 degrees; 181,117 2.9 degrees
 z stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 121 against 279 (0.43, lighter)
 z.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.1 degrees, not 15.2
+zerooldstyle.zero smooth 1       # slashed zero drafts: hairline slash, join: 506,567 2.3 degrees
 zeta kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 477,150 6.4 degrees; 498,-12 3.9 degrees
 zeta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 147 against 279 (0.53, lighter)

@@ -1,0 +1,43 @@
+#!/bin/sh
+# The pre-commit checks themselves, started detached by the pre-commit hook:
+#   run-checks STATE KEY REPRODUCE
+# so that a commit killed by a timeout leaves them running to the end. The
+# result lands in STATE/KEY.pass or STATE/KEY.fail (output in STATE/KEY.log),
+# where the next commit of the same tree finds it instead of running again.
+
+state=$1 key=$2 repro=$3
+echo $$ > "$state/$key.pid"
+
+checks() {
+    echo "pre-commit: running the test suite..."
+    if ! .venv/bin/pytest -q -x -p no:cacheprovider; then
+        echo
+        echo "pre-commit: tests failed; commit aborted."
+        echo "  Fix the cause, or if the change is intended, update the baselines:"
+        echo "  .venv/bin/python scripts/update_test_data.py --help"
+        return 1
+    fi
+
+    # the generated styles as their generators make them, when a commit
+    # touches them, the Regular they come from, or a generator (≈40 s;
+    # needs FontForge)
+    [ "$repro" = 1 ] || return 0
+    if command -v fontforge >/dev/null 2>&1; then
+        echo "pre-commit: checking the generated styles (make reproduce)..."
+        if ! .venv/bin/python -I scripts/check_reproducible.py; then
+            echo
+            echo "pre-commit: a generator run would change the generated styles; commit aborted."
+            echo "  Move the edit into the Regular or the generator (CLAUDE.md), or rerun them."
+            return 1
+        fi
+    else
+        echo "pre-commit: fontforge missing, generated styles not checked"
+    fi
+}
+
+if checks >> "$state/$key.log" 2>&1; then
+    touch "$state/$key.pass"
+else
+    touch "$state/$key.fail"
+fi
+rm -f "$state/$key.pid"

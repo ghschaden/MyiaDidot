@@ -1266,5 +1266,6 @@ z smooth 1                       # 2026-10-16 known at the start (quality checks
 z stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 64 against 183 (0.35, lighter)
 z.sc slant 1                     # 2026-10-16 known at the start (quality checks added): 18.3 degrees, not 15.2
 zerooldstyle stroke 1            # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 164 against 183 (0.90, lighter)
+zerooldstyle.zero stroke 1       # slashed zero drafts: hairline slash, join: lc 164 against 183 (0.90, lighter)
 zeta kink 2                      # 2026-10-16 known at the start (quality checks added): 438,143 4.5 degrees; 441,-12 4.5 degrees
 zeta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 60 against 183 (0.33, lighter)

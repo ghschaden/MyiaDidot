@@ -1,0 +1,27 @@
+#!/bin/sh
+# Rebuild the proofs, started detached by the post-commit hook. One build at
+# a time: a commit during a build asks for one more after it, not a second
+# build alongside. The commit built is in build/proofs/built-from.
+
+state=$(git rev-parse --git-path myia-checks)
+mkdir -p "$state" build/proofs
+touch "$state/proofs.wanted"
+
+exec 9> "$state/proofs.lock"
+flock -n 9 || exit 0  # the build running takes the request
+
+while [ -f "$state/proofs.wanted" ]; do
+    rm -f "$state/proofs.wanted"
+    head=$(git rev-parse HEAD)
+    rm -f build/proofs/built-from
+    if nice make proof > build/proofs/refresh.log 2>&1; then
+        echo "$head" > build/proofs/built-from
+    else
+        echo "make proof failed for $head" >> build/proofs/refresh.log
+    fi
+done
+
+# a request between the last check and the unlock
+flock -u 9
+[ -f "$state/proofs.wanted" ] && exec sh "$0"
+exit 0

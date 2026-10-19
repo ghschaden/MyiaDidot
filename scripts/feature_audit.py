@@ -17,10 +17,11 @@ from fontTools.ttLib import TTFont
 REQUIRED = {
     "GSUB": {
         "aalt", "c2sc", "calt", "case", "ccmp", "dlig", "dnom", "frac",
-        "liga", "locl", "numr", "onum", "rlig", "salt", "smcp", "ss01",
-        "ss02", "ss11", "subs", "sups", "tnum",
+        "liga", "lnum", "locl", "numr", "onum", "ordn", "pnum", "rlig",
+        "salt", "sinf", "smcp", "ss01", "ss02", "ss11", "subs", "sups",
+        "tnum", "zero",
     },
-    "GPOS": {"kern", "mark", "mkmk"},
+    "GPOS": {"cpsp", "kern", "mark", "mkmk"},
 }
 
 

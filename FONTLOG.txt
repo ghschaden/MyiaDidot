@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: figure and capital features
+
+    * pnum: proportional lining figures (zero.pf ...), the lining ones
+      spaced by their shapes as the tabular 0 is (1 at 629 against 1152);
+      lnum turns old-style figures back into lining ones.
+    * zero: a slashed zero, lining and old-style, in every figure form
+      (drafts for review, made of each style's own zeros by
+      scripts/space_figures.py).
+    * sinf: the inferior figures. ordn: a and o after a figure are ª º
+      (1º, 2ª, 1.º), No before a figure is №.
+    * cpsp: capitals 10 units apart on each side in all-caps setting
+      (scripts/cpsp.py; the Bold's scaled with its widths).
+
 2026-10-19 Version 0.100 (development), Phase 3: localized forms
 
     * Dutch (nl): í j takes the acute on the j too (íj́, ÍJ́), as if typed.
