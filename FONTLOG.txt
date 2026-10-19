@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: kerning leftovers
+
+    * The 62 letter sides that kern_coverage.py found shaped like a kerned
+      group but in none were measured: each pair the group kerns, set
+      unkerned and as if joined, against the references in all four
+      styles. Ʋ takes U's kerning on its right (ƲO, Ʋa, Ʋc come into the
+      references' range), ʋ takes a's (ʋc, ʋv, ʋy). The others stay out,
+      reviewed (kern_coverage.KEPT_OUT): straight sides that set inside
+      the range unkerned (H I M, И Н П ..., N's kerning being for its open
+      corner), letters whose model kerns only another script, and those
+      that joining would set too tight (ɛ ɑ ø ʊ ʎ ɐ before T V Y).
+
 2026-10-19 Version 0.100 (development), Phase 3: italic Greek breathings
 
     * Italic, Bold Italic: the breathings and accents before a Greek

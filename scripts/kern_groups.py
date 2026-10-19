@@ -40,8 +40,10 @@ SLACK = 3  # units a letter may come nearer than its model (rounding, a serif's 
 
 # letter: (model on its right side (kern1), model on its left side (kern2));
 # None: that side stays as it is. Only sides as alike as the model's in all
-# four styles (kern_coverage.py section 3, score under about 10), and
-# letters that set with the model's script or alone.
+# four styles (kern_coverage.py section 3, score under about 10), or whose
+# pairs measured against the references come nearer their range in every
+# style by joining (Ʋ ʋ), and letters that set with the model's script or
+# alone. Sides reviewed and left out: kern_coverage.KEPT_OUT.
 ALIKE = {
     # Cyrillic letters drawn as the Latin or Cyrillic ones
     "uni0405": ("S", "S"),  # Ѕ
@@ -102,8 +104,8 @@ ALIKE = {
     "uni026F": (None, "u"),  # ɯ
     "uni0244": ("U", "U"),  # Ʉ
     "uni0289": (None, "u"),  # ʉ
-    "uni028B": (None, "u"),  # ʋ
-    "uni01B2": (None, "U"),  # Ʋ
+    "uni028B": ("a", "u"),  # ʋ
+    "uni01B2": ("U", "U"),  # Ʋ
     "uni2C72": (None, "V"),  # Ⱳ
     "uni2C73": (None, "v"),  # ⱳ
     "uni01B3": (None, "Y"),  # Ƴ

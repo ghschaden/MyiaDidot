@@ -16,7 +16,8 @@ Read from the UFO (groups are a source decision, not a build result):
    capital has one. (A capital before a small cap is mostly left unkerned,
    as in most references: scripts/quality/capsc_pairs.py measures it.)
 3. Letter sides in no group and no pair whose shape is alike a group's
-   with kerning on that side (for a person to judge).
+   with kerning on that side (for a person to judge); those reviewed and
+   left out (KEPT_OUT) are counted, not listed.
 
 Writes the full report to build/quality/kern-coverage-STYLE.txt and prints
 counts.
@@ -40,6 +41,35 @@ WINDOW = 2  # steps either way: inks closer than this vertically count as meetin
 MIN_GAP = 40
 ALIKE = 40  # shape score (units) under which an ungrouped side is reported
 SCRIPTS = ("LATIN", "GREEK", "CYRILLIC")
+# Letter sides (glyph, kern side) reviewed and left out of the group their
+# shape is alike, measured 2026-10-19: each pair the group kerns, set
+# unkerned and as if joined, against the references (greek_pairs.py's gap
+# and Latin offset) in all four styles.
+KEPT_OUT = {
+    # N's kerning is for its open lower right; these, serifed or straight,
+    # set inside the references' range unkerned
+    "straight sides": [(n, 1) for n in (
+        "H", "Hbar", "I", "M", "uni018E", "uni0197", "uni01C0", "uni01C1", "uni01C2",
+        "uni2C6D", "uniA78D", "uniA7AA", "uniA7AE", "uni0406", "uni0418", "uni041B",
+        "uni041C", "uni041D", "uni041F", "uni0427", "uni0428", "uni042B", "uni042F")]
+    + [(n, 2) for n in ("IJ", "M", "Mu", "N", "Nu", "uni041C")],
+    "inside the range unkerned": [("m", 1), ("n", 1), ("uni1D6F", 1), ("uni1D70", 1),
+                                  ("uni0187", 2), ("uni0193", 2), ("uni03F5", 2)],
+    # their model's group kerns only another script's letters
+    "model of another script": [(n, 2) for n in (
+        "m", "r", "uni024D", "uni027E", "uni1D6F", "uni1D70", "uni1D72", "uni0251",
+        "uni025B")]
+    + [(n, 1) for n in ("oslash", "uni0252", "uni0258", "uniA7B7")],
+    # joining brings more pairs out of the range than into it (ɛ ø as c
+    # only in the italics)
+    "worse joined": [(n, 2) for n in (
+        "uni028E", "uni028A", "uni0250", "uni0269", "uni0268", "uni044A", "oslash")],
+    # rare letters, the measure with one reference only
+    "unmeasured": [("uni1D72", 1), ("uni1D73", 1)],
+    # Greek signs, not letters in a word: ʹ follows its letter, ι is set apart
+    "signs": [("uni0374", 1), ("uni1FBE", 2)],
+}
+KEPT = {item for items in KEPT_OUT.values() for item in items}
 
 
 class FlattenPen(BasePen):
@@ -237,6 +267,7 @@ def ungrouped(font, prof, side, cmap, lines):
     rows inked in one only counting against."""
     lines.append(f"3. Letter sides in no group, alike a kerned group (score under {ALIKE})")
     counts = collections.Counter()
+    kept = 0
     kerned = {s: collections.Counter() for s in (1, 2)}
     for pair in font.kerning:
         kerned[1][pair[0]] += 1
@@ -273,10 +304,13 @@ def ungrouped(font, prof, side, cmap, lines):
                     int((np.isfinite(a) ^ np.isfinite(b)).sum()) * STEP * 0.5
                 if best is None or score < best[0]:
                     best = (score, gname)
-            if best and best[0] < ALIKE:
+            if best and best[0] < ALIKE and (name, s) in KEPT:
+                kept += 1
+            elif best and best[0] < ALIKE:
                 counts[(scr, s)] += 1
                 lines.append(f"    kern{s} {scr:8} {chr(g.unicodes[0])} {name:20} like "
                              f"{best[1]} ({best[0]:.0f}, {kerned[s][best[1]]} pairs)")
+    lines.append(f"    and {kept} sides reviewed and left out (KEPT_OUT)")
     lines.append("")
     return counts
 
