@@ -16,7 +16,7 @@ from fontTools.ttLib import TTFont
 
 REQUIRED = {
     "GSUB": {
-        "aalt", "c2sc", "calt", "case", "ccmp", "dlig", "dnom", "frac",
+        "aalt", "c2sc", "calt", "case", "ccmp", "dlig", "dnom", "frac", "hist",
         "liga", "lnum", "locl", "numr", "onum", "ordn", "pnum", "rlig",
         "salt", "sinf", "smcp", "ss01", "ss02", "ss11", "subs", "sups",
         "tnum", "zero",

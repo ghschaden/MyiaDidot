@@ -4861,6 +4861,36 @@ lookup rligStandardLigatureswithZWJ {
     sub \f \uni200D \j  by \f_j;
 } rligStandardLigatureswithZWJ;
 
+# hist: the long s of 18th-century printing, on request only. s is ſ
+# where a lowercase letter follows (the start and middle of a word), round
+# at its end, before punctuation, and before f (ſf reads as ff); the
+# ligatures ſt ſi ſſ ... then form in liga. After the small caps (smcp
+# sets s.sc). The letters: Latin-1 and Latin Extended-A, those of the
+# languages that printed the long s. German needs its long s by morpheme
+# (Haus|tür), which no such rule knows: type ſ there.
+@histLower = [\a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t \u \v \w \x \y \z
+    \mu \germandbls \agrave \aacute \acircumflex \atilde \adieresis \aring \ae \ccedilla
+    \egrave \eacute \ecircumflex \edieresis \igrave \iacute \icircumflex \idieresis \eth
+    \ntilde \ograve \oacute \ocircumflex \otilde \odieresis \oslash \ugrave \uacute
+    \ucircumflex \udieresis \yacute \thorn \ydieresis \amacron \abreve \aogonek \cacute
+    \ccircumflex \cdotaccent \ccaron \dcaron \dcroat \emacron \ebreve \edotaccent \eogonek
+    \ecaron \gcircumflex \gbreve \gdotaccent \gcommaaccent \hcircumflex \hbar \itilde
+    \imacron \ibreve \iogonek \dotlessi \ij \jcircumflex \kcommaaccent \kgreenlandic \lacute
+    \lcommaaccent \lcaron \ldot \lslash \nacute \ncommaaccent \ncaron \napostrophe \eng
+    \omacron \obreve \ohungarumlaut \oe \racute \rcommaaccent \rcaron \sacute \scircumflex
+    \scedilla \scaron \tcommaaccent \tcaron \tbar \utilde \umacron \ubreve \uring
+    \uhungarumlaut \uogonek \wcircumflex \ycircumflex \zacute \zdotaccent \zcaron \longs];
+
+lookup histLongS {
+  lookupflag IgnoreMarks;
+    ignore sub \s' \f;
+    sub \s' @histLower by \longs;
+} histLongS;
+
+feature hist {
+    lookup histLongS;
+} hist;
+
 lookup ligaStandardLigaturesforLatin {
   lookupflag 0;
     sub \f \f  by \ff;
@@ -5787,6 +5817,7 @@ feature aalt {
     feature ss01;
     feature ss02;
     feature ss11;
+    feature hist;
 } aalt;
 
 # GPOS

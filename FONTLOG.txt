@@ -26,6 +26,15 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: long s on request
+
+    * hist (off unless asked for): s is set as ſ at the start and in the
+      middle of a word, as printed in the eighteenth century, round at
+      its end and before f (Miſſiſſippi, claſſes, tranſfer); ſt ſi ſſ and
+      the other long-s ligatures then form. Small caps keep their s.
+      German places its long s by morpheme (Haus|tür), which a rule
+      cannot know: type ſ there.
+
 2026-10-19 Version 0.100 (development), Phase 3: feature audit
 
     * aalt (the alternates a glyph panel offers) is made from the other
