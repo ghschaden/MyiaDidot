@@ -16,15 +16,8 @@ jobs:
       - run: uv sync --frozen
       - run: .venv/bin/ruff check --output-format github .
       - run: .venv/bin/pytest -q
-      - name: build all styles
-        run: |
-          set -euo pipefail
-          for style in Regular Italic Bold BoldItalic; do
-            .venv/bin/fontmake \
-              -u "sources/MyiaDidot-${style}.ufo" \
-              -o otf \
-              --output-dir fonts/otf
-          done
+      - name: build all styles (OTF, TTF, WOFF2; hinted and with STAT, as make builds them)
+        run: make fonts
       - name: audit OpenType features
         run: .venv/bin/python -I scripts/feature_audit.py fonts/otf/*.otf
       - name: render specimen proofs
