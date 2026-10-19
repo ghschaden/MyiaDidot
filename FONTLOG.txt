@@ -26,6 +26,22 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 4: serifs apart in the Bold Italic
+
+    * Emboldening brought neighbouring serifs of the Bold Italic together
+      only partly: v.sc's, w.sc's and y.sc's top serifs, ʌ.sc's feet,
+      Π's, Ш's, h.sc's and a.sc's met in a notch over a joint a few units
+      thick (ʌ.sc's feet over 4 units). Such serifs are now kept apart,
+      their tips shortened before emboldening until at least half of the
+      Italic's gap stays open (scripts/make_bold.py part_serifs; 40 letters
+      and their accented forms, and ™ in the Bold). Serifs joined over
+      their whole height (x.sc's inner feet) stay joined. Ľ before W now
+      sits 8 units closer, the room the shorter serifs give.
+    * The CFF hinting has a test of its own: letters on a zone must fall on
+      their reference letter's row exactly (tests/test_hinting.py,
+      hint-zones-cff*.txt; only Œ in the uprights, and ẞ ƹ ъ 𝔖 in the
+      italics, stay up to 0.3 px off).
+
 2026-10-19 Version 0.100 (development), Phase 4: hinting
 
     * TrueType: ttfautohint now runs with a control file made for each

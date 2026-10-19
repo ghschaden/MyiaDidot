@@ -1,4 +1,4 @@
-"""TrueType hinting: letters end on their alignment zones.
+"""Hinting: letters end on their alignment zones, TrueType and CFF.
 
 Each style is built as a TTF as `make ttf` does (components flattened,
 overlaps removed: fontmake's defaults, which decide the point order) and
@@ -9,6 +9,12 @@ of known ones, data/hint-zones.txt (the Regular's), hint-zones-Italic.txt
 ...: one "interpreter glyph:zone count" per line with a reason.  A new one
 fails, and so does a listed one that is gone (delete its line).
 After an intended change: scripts/update_test_data.py --hinting.
+
+The CFF fonts likewise (test_cff_hint_zones): an OTF built as `make otf`
+does (overlaps removed: conftest's OTF keeps them, and otfautohint then
+leaves hundreds of letters off their zones), hinted by scripts/ps_hints.py, measured by whole glyphs with
+FreeType's CFF engine (hint_zones.measure_cff), against hint-zones-cff.txt,
+hint-zones-cff-Italic.txt ...
 """
 import sys
 
@@ -19,7 +25,8 @@ from test_composites import read_list
 
 sys.path.insert(0, str(ROOT / "scripts" / "quality"))
 from hint_control import hint  # noqa: E402
-from hint_zones import INTERPRETERS, measure, summary  # noqa: E402
+from hint_zones import INTERPRETERS, measure, measure_cff, summary  # noqa: E402
+from ps_hints import hint as ps_hint  # noqa: E402
 
 
 def hinting_keys(ufo_path, tmp):
@@ -34,11 +41,26 @@ def hinting_keys(ufo_path, tmp):
     return keys
 
 
-def test_hint_zones(ufo_path, tmp_path):
-    listed = read_list(style_data("hint-zones.txt", ufo_path).name)
-    found = hinting_keys(ufo_path, tmp_path)
+def cff_hinting_keys(ufo_path, tmp):
+    """{"cff glyph:top1434 count": ""} for a style, built and hinted as
+    `make otf` does."""
+    hinted = tmp / "hinted.otf"
+    ufo2ft.compileOTF(ufoLib2.Font.open(ufo_path), removeOverlaps=True).save(hinted)
+    ps_hint(hinted)
+    return {f"cff {glyph} {count}": "" for glyph, count in summary(measure_cff(hinted)).items()}
+
+
+def check(listed, found):
     new = sorted(set(found) - set(listed))
     stale = sorted(set(listed) - set(found))
-    assert not new, ("letters hinted off their zones (python scripts/quality/hint_zones.py TTF; "
+    assert not new, ("letters hinted off their zones (python scripts/quality/hint_zones.py FONT; "
                      f"if intended: update_test_data.py --hinting): {new}")
     assert not stale, f"hinting findings fixed, remove from the list: {stale}"
+
+
+def test_cff_hint_zones(ufo_path, tmp_path):
+    check(read_list(style_data("hint-zones-cff.txt", ufo_path).name), cff_hinting_keys(ufo_path, tmp_path))
+
+
+def test_hint_zones(ufo_path, tmp_path):
+    check(read_list(style_data("hint-zones.txt", ufo_path).name), hinting_keys(ufo_path, tmp_path))

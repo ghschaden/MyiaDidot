@@ -162,10 +162,16 @@ def set_private(path):
     return p
 
 
+def hint(path):
+    """Zones and stems into the Private dict, then otfautohint, in place."""
+    p = set_private(path)
+    subprocess.run([str(OTFAUTOHINT), str(path)], check=True, stdout=subprocess.DEVNULL)
+    return p
+
+
 def main():
     for path in sys.argv[1:]:
-        p = set_private(path)
-        subprocess.run([str(OTFAUTOHINT), path], check=True, stdout=subprocess.DEVNULL)
+        p = hint(path)
         print(f"{Path(path).name}: BlueValues {p.BlueValues} OtherBlues {p.OtherBlues} "
               f"StdVW {p.StdVW} StemSnapV {p.StemSnapV} StdHW {p.StdHW} StemSnapH {p.StemSnapH} "
               f"BlueScale {p.BlueScale}")

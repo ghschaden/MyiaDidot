@@ -1,4 +1,4 @@
-"""hint_zones.py TTF [PPEM ...]: hinted contours off their alignment zone.
+"""hint_zones.py TTF|OTF [PPEM ...]: hinted contours off their alignment zone.
 
 A zone is the top or bottom of a reference glyph (REFS: x, o, H, O, l, p,
 h.sc, o.sc), in the font's own units.  Hinted, every contour whose top (bottom)
@@ -14,7 +14,8 @@ and f's).
 
 Measured with FreeType under both TrueType interpreters: v40 (what FreeType
 uses now; it reports ClearType, so ttfautohint's ClearType stem modes run) and
-v35 (the classic grayscale one, close to GDI).
+v35 (the classic grayscale one, close to GDI).  An OTF is measured by whole
+glyphs with FreeType's CFF engine (measure_cff).
 """
 import ctypes
 import sys
@@ -124,6 +125,48 @@ def measure(path, ppems=PPEMS, interpreter=40):
     return found
 
 
+def measure_cff(path, ppems=PPEMS):
+    """The same for a CFF font, by whole glyphs (FreeType's CFF engine):
+    letters whose top (bottom) is at a reference glyph's, off that glyph's
+    row once hinted.  With the Private dict's zones a hinted edge on a zone
+    falls on a whole pixel, so the rows must agree exactly (to 1/16 px),
+    not within OFF.  {ppem: [(glyph, side, height, extreme, row)]}."""
+    from fontTools.pens.boundsPen import BoundsPen
+
+    tt = TTFont(path)
+    gs = tt.getGlyphSet()
+
+    def bounds(name):
+        pen = BoundsPen(gs)
+        gs[name].draw(pen)
+        return pen.bounds
+
+    keep = {n: bounds(n) for n in letters(tt)}
+    keep = {n: b for n, b in keep.items() if b}
+    zones = {}
+    for side, ref in REFS:
+        if ref in keep:
+            zones.setdefault((side, keep[ref][3] if side == "top" else keep[ref][1]), ref)
+    face = freetype.Face(str(path))
+    found = {}
+    for ppem in ppems:
+        face.set_pixel_sizes(0, ppem)
+        ext = {}
+        for n in keep:
+            face.load_glyph(face.get_name_index(n.encode()), freetype.FT_LOAD_DEFAULT)
+            ys = [q[1] / 64 for q in face.glyph.outline.points]
+            ext[n] = (min(ys), max(ys))
+        found[ppem] = []
+        for n, b in keep.items():
+            for side, z, v in (("top", b[3], ext[n][1]), ("bot", b[1], ext[n][0])):
+                ref = zones.get((side, z))
+                if ref:
+                    row = ext[ref][1 if side == "top" else 0]
+                    if abs(v - row) > 1 / 16:
+                        found[ppem].append((n, side, z, v, row))
+    return found
+
+
 def summary(found):
     per = Counter()
     for items in found.values():
@@ -135,6 +178,12 @@ def summary(found):
 def main():
     path = sys.argv[1]
     ppems = [int(a) for a in sys.argv[2:]] or PPEMS
+    if "CFF " in TTFont(path):
+        per = summary(measure_cff(path, ppems))
+        print(f"CFF: {sum(per.values())} off-zone (glyph, ppem) in {len(per)} glyphs")
+        for key, count in per.most_common():
+            print(f"  {key} {count}")
+        return
     for version in INTERPRETERS:
         per = summary(measure(path, ppems, version))
         print(f"v{version}: {sum(per.values())} off-zone (contour, ppem) in {len(per)} contours")

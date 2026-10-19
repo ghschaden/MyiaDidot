@@ -325,6 +325,116 @@ def bridge(glyph, maxgap=24, overlap=8):
     return out
 
 
+PART_GAP = 300  # serifs nearer than this (units) may meet when emboldened
+PART_KEEP = 0.5  # of the source's gap that stays open where they would only touch
+PART_STEP = 8
+
+
+def part_serifs(wide, bold, make):
+    """bold (wide emboldened by make) with neighbouring serifs kept apart
+    where emboldening brings their tips together only partly: the italics'
+    v.sc w.sc y.sc tops and ʌ.sc's feet, 125 units apart in the Italic,
+    meet in a notch over a joint a few units thick.  Serifs joined over their
+    whole height (x.sc's inner feet, by bridge; ш.sc's base) and serifs that
+    stay apart are left alone.  Both tips of such a pair are shortened in the
+    source by the same amount, in steps, until PART_KEEP of the source's gap
+    stays open.  Returns (glyph, number of pairs parted)."""
+    src = ufoLib2.objects.Glyph()
+    wide.replay(src.getPen())
+    path = pathops.Path()
+    for c in src.contours:
+        c.draw(path.getPen())
+
+    def ink(p, box):
+        r = pathops.Path()
+        pen = r.getPen()
+        x0, y0, x1, y1 = box
+        pen.moveTo((x0, y0))
+        pen.lineTo((x1, y0))
+        pen.lineTo((x1, y1))
+        pen.lineTo((x0, y1))
+        pen.closePath()
+        out = pathops.op(p, r, pathops.PathOp.INTERSECTION)
+        return abs(out.area) if out.contours else 0
+
+    # flat edges: (contour, start index, end index, y, xmin, xmax, ink above)
+    edges = []
+    for ci, c in enumerate(src.contours):
+        pts = c.points
+        n = len(pts)
+        for i in range(n):
+            p0, p1 = pts[i], pts[(i + 1) % n]
+            if p0.type and p1.type == "line" and p0.y == p1.y and abs(p1.x - p0.x) >= 30:
+                mx = (p0.x + p1.x) / 2
+                above = ink(path, (mx - 1, p0.y, mx + 1, p0.y + 4)) > 4
+                edges.append((ci, i, (i + 1) % n, p0.y, min(p0.x, p1.x), max(p0.x, p1.x), above))
+
+    def tip(ci, i, step):
+        """The tip's two points: the edge's end i and the corner beside it on
+        the serif's other face (the next point away from the edge)."""
+        pts = src.contours[ci].points
+        j = (i + step) % len(pts)
+        q = pts[j]
+        if q.type == "line" and 10 <= abs(q.y - pts[i].y) <= 150:
+            return [(ci, i), (ci, j)], abs(q.y - pts[i].y)
+        return [(ci, i)], None
+
+    pairs = []
+    for a in edges:
+        for b in edges:
+            if a[3] != b[3] or a[6] != b[6] or not 0 < b[4] - a[5] < PART_GAP:
+                continue
+            # a's right end faces b's left end
+            ia = a[1] if src.contours[a[0]].points[a[1]].x == a[5] else a[2]
+            ib = b[1] if src.contours[b[0]].points[b[1]].x == b[4] else b[2]
+            sa = 1 if ia == a[2] else -1  # away from a's edge
+            sb = 1 if ib == b[2] else -1
+            ta, ha = tip(a[0], ia, sa)
+            tb, hb = tip(b[0], ib, sb)
+            t = min(h for h in (ha, hb) if h) if (ha or hb) else 40
+            gap = b[4] - a[5]
+            band = (a[3], a[3] + t) if a[6] else (a[3] - t, a[3])
+            pairs.append((ta, tb, (a[5] + b[4]) / 2, gap, band, min(a[5] - a[4], b[5] - b[4])))
+
+    def bold_path(g):
+        p = pathops.Path()
+        for c in g.contours:
+            c.draw(p.getPen())
+        return pathops.simplify(p)
+
+    def partly(p, mid, band):
+        h = ink(p, (mid - 1, band[0], mid + 1, band[1])) / 2
+        return 0.05 < h / (band[1] - band[0]) < 0.95
+
+    bp = bold_path(bold)
+    bad = [pr for pr in pairs if partly(bp, pr[2], pr[4])]
+    if not bad:
+        return bold, 0
+    for s in range(PART_STEP, int(min(pr[5] for pr in bad)) - 20, PART_STEP):
+        moved = ufoLib2.objects.Glyph()
+        wide.replay(moved.getPen())
+        for ta, tb, *_ in bad:
+            for tips, dx in ((ta, -s), (tb, s)):
+                for ci, i in tips:
+                    # the point with its handles, so a smooth join stays smooth
+                    pts = moved.contours[ci].points
+                    near = {i}
+                    for step in (-1, 1):
+                        j = (i + step) % len(pts)
+                        if pts[j].type is None:
+                            near.add(j)
+                    for j in near:
+                        pts[j].x += dx
+        rec = RecordingPen()
+        moved.draw(rec)
+        out = make(rec)
+        op = bold_path(out)
+        if all(ink(op, (mid - gap * PART_KEEP / 2, band[0], mid + gap * PART_KEEP / 2, band[1])) == 0
+               for _, _, mid, gap, band, _ in bad):
+            return out, len(bad)
+    return bold, 0
+
+
 def slit(glyph, before, font):
     """Whether glyph (emboldened contours) has a fault the Regular's glyph
     (before) has not: a notch (a slit between parts that come close), a
@@ -823,6 +933,7 @@ def main():
         if sorted((p.glyph, p.dx, p.dy) for p in r.components) == sorted(mine):  # in any order
             rule_made.add(g.name)
 
+    parted = []  # serifs kept apart (part_serifs)
     for g in font:
         is_mark = g.name in marks
         if g.contours:
@@ -839,11 +950,20 @@ def main():
             else:
                 wide = RecordingPen()
                 rec.replay(TransformPen(TransformPen(wide, (KX, 0, 0, 1, 0, 0)), up))
-                bold = bridge(rezone(embolden(wide, AX, AY), AY))  # the flat edges kept on the zones
+                def make(w):
+                    return bridge(rezone(embolden(w, AX, AY), AY))  # the flat edges kept on the zones
+
+                bold = make(wide)
                 if slit(bold, regular[g.name], regular):
                     # parts close to each other (x's inner serifs) closed to a
                     # slit: the rounder emboldening, which leaves them apart
-                    bold = rezone(embolden_simple(wide, AX, AY), AY)
+                    def make(w):
+                        return rezone(embolden_simple(w, AX, AY), AY)
+
+                    bold = make(wide)
+                bold, n = part_serifs(wide, bold, make)
+                if n:
+                    parted.append(g.name)
                 moved = ufoLib2.objects.Glyph()
                 bold.draw(TransformPen(TransformPen(moved.getPen(), down), (1, 0, 0, 1, AX / 2, 0)))
                 redraw(g, moved)
@@ -951,6 +1071,8 @@ def main():
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold))
+    if parted:
+        print("  serifs kept apart:", " ".join(parted))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
           f"{outlined} outlined letters made from base and mark, {len(followed)} derived letters "
           f"made of their Bold base, {len(cleaned)} cleaned")

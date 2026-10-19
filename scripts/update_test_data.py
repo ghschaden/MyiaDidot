@@ -28,7 +28,7 @@ scripts/quality/checks.py findings (quality.txt, quality-Italic.txt ...).
 --styles: where a generated style differs from the Regular
 (styles-agree-Italic.txt ..., tests/test_styles_agree.py). --hinting: the
 letters hinted off their zones (hint-zones.txt, hint-zones-Italic.txt ...,
-tests/test_hinting.py). --lookups
+and the CFF fonts' hint-zones-cff.txt ..., tests/test_hinting.py). --lookups
 rewrites the style's compiled lookup order (lookups.txt, lookups-Italic.txt
 ..., tests/test_lookups.py): read the diff first. --greek: the Greek pairs
 where Charis and Libertinus agree against the style (greek-pairs.txt ...,
@@ -190,13 +190,21 @@ def main():
             with tempfile.TemporaryDirectory() as tmp:
                 return hinting_keys(args.ufo, Path(tmp))
 
+        def cff_keys():
+            from test_hinting import cff_hinting_keys
+
+            with tempfile.TemporaryDirectory() as tmp:
+                return cff_hinting_keys(args.ufo, Path(tmp))
+
         lists.append(("hint-zones.txt", "scripts/quality/hint_zones.py", hint_keys))
+        lists.append(("hint-zones-cff.txt", "scripts/quality/hint_zones.py (CFF)", cff_keys))
     for name, tool, keys in lists:
         path = style_data(name, args.ufo)
         listed = read_list(path.name)
         found = keys()
         what = {"emboldened-whole.txt": "glyph: why", "styles-agree.txt": "kind glyph [detail]",
-                "hint-zones.txt": "interpreter glyph:zone sizes"}.get(
+                "hint-zones.txt": "interpreter glyph:zone sizes",
+                "hint-zones-cff.txt": "cff glyph:zone sizes"}.get(
             name, "glyph kind count")
         lines = [f"# Known {tool} findings ({what}); fixing one = deleting its line.\n"]
         for k in sorted(found):

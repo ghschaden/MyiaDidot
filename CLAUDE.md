@@ -92,6 +92,10 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   derive.STROKE_KEY), kept where the result stays close and clean; recipes
   that miss in the Bold are reviewed exceptions (BOLD_KEEP_WHOLE,
   ITALIC_BOLD_KEEP_WHOLE). The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
+  Neighbouring serifs that emboldening brings into a partial join (a notch
+  over a hair-thin joint: the Bold Italic's v.sc w.sc Π Ш, ʌ.sc's feet)
+  are kept apart, their tips shortened in the source (part_serifs); serifs
+  joined over their whole height (x.sc's inner feet, by bridge) stay joined.
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make
@@ -170,9 +174,12 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   `scripts/ps_hints.py` (zones and stems measured per style, then
   otfautohint). `scripts/quality/hint_zones.py TTF` lists letters hinted
   off their zone (reference glyphs x o H O l p h.sc o.sc, 8–32 px, FreeType
-  v40 and v35); tests/test_hinting.py holds them to `hint-zones*.txt`
-  (`update_test_data.py --hinting`). The test TTF must be built like
-  fontmake's (overlaps removed): point indices depend on it.
+  v40 and v35; an OTF by whole glyphs with FreeType's CFF engine, to the
+  exact row); tests/test_hinting.py holds them to `hint-zones*.txt` and
+  `hint-zones-cff*.txt` (`update_test_data.py --hinting`). The test fonts
+  must be built like fontmake's (overlaps removed): TTF point indices depend
+  on it, and otfautohint leaves hundreds of letters off their zones in a
+  font with overlaps.
 
 ## Quality principles (learned the hard way)
 
