@@ -591,11 +591,13 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # stem cut where the loop's curve rounds it off; the ball on
                   # the stem; β's waist (780) on b's bowl top (860), 0.837 as tall;
                   # below the waist only the ball (not the stroke into β's lower
-                  # bowl); the notch between stem, ball and b's arch filled
+                  # bowl): one piece, β above 735 less its stem below 1290 and
+                  # that stroke (in pieces, the seams kinked the loop); the
+                  # notch between stem, ball and b's arch filled
                   "в.loclBGR": ("attach", "b", ("x", [(-BIG, 1355, BIG, BIG), (-BIG, 1300, 203, BIG)],
-                                                [("beta", (-BIG, 1290, BIG, BIG), (0, 780), (1, 0.837, -154, 860)),
-                                                 ("beta", (414, 790, BIG, 1310), (0, 780), (1, 0.837, -154, 860)),
-                                                 ("beta", (414, 735, 674, 800), (0, 780), (1, 0.837, -154, 860)),
+                                                [("beta", ((-BIG, 735, BIG, BIG), (-BIG, 735, 414, 1290),
+                                                           (674, 735, BIG, 790)),
+                                                  (0, 780), (1, 0.837, -154, 860)),
                                                  ("poly", [(300, 690), (300, 835), (360, 835), (430, 820), (395, 800),
                                                            (375, 780), (360, 760), (345, 740), (335, 720), (325, 700)],
                                                   (0, 0), (1, 1, 0, 0))])),

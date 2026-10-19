@@ -250,12 +250,13 @@ RECIPES = [
     # в: b with β's loop above (rounded from the stem, its ball on b's bowl
     # top), not B's flat bowl: β above its waist (750) set on b's bowl top
     # (884), 0.772 as tall, its loop's thick side on b's stem where they are
-    # as wide (1280; b cut above 1293); its loop's right side and ball apart;
-    # the notch under the ball, between stem and b's arch, filled (along the
-    # stem, the ball and the arch's hairline)
+    # as wide (1280; b cut above 1293); the loop one piece, β above 640 less
+    # its stem below 1280 (in pieces, the seams kinked the loop); the notch
+    # under the ball, between stem and b's arch, filled (along the stem, the
+    # ball and the arch's hairline)
     ("в.loclBGR", "attach", "b", ("x", [(-BIG, 1293, BIG, BIG)],
-                                  [("beta", (-BIG, 1280, BIG, BIG), (0, 750), (1, 0.772, 0, 884)),
-                                   ("beta", (400, 640, BIG, 1300), (0, 750), (1, 0.772, 0, 884)),
+                                  [("beta", ((-BIG, 640, BIG, BIG), (-BIG, 640, 400, 1280)), (0, 750),
+                                    (1, 0.772, 0, 884)),
                                    ("poly", [(378, 690), (378, 905), (430, 905), (480, 862), (550, 862),
                                              (490, 800), (455, 760), (425, 720)], (0, 0), (1, 1, 0, 0))])),
     # г: the cursive г, set upright, is s mirrored (ƨ)
@@ -1415,7 +1416,8 @@ def superior(font, source, ref="zerosuperior"):
 
 def attach(font, source, cuts, pieces):
     """The letter minus the boxes in cuts, merged with pieces: each a part
-    of a glyph (name, clip box) whose point (px, py) goes to (x, y),
+    of a glyph (name, clip box, or boxes: the first less the others) whose
+    point (px, py) goes to (x, y),
     scaled (sx, sy) and optionally turned (degrees, a fifth value); a negative
     sx mirrors. For hooks that need placing by hand (Ɲ, ₪, Ϗ); "rect" pieces
     are boxes, "line" pieces straight strokes, "poly" pieces polygons (with
@@ -1460,7 +1462,12 @@ def attach(font, source, cuts, pieces):
             for box in boxes:
                 part = path_op(part, rect_path(*box), "DIFFERENCE")
         else:
-            part = path_op(to_path(font, font[name]), rect_path(*clip), "INTERSECTION")
+            # a box, or boxes: the first kept, the others cut out of it (one
+            # piece whose outline is the glyph's own, no seam to join)
+            keep, *holes = clip if isinstance(clip[0], (tuple, list)) else (clip,)
+            part = path_op(to_path(font, font[name]), rect_path(*keep), "INTERSECTION")
+            for box in holes:
+                part = path_op(part, rect_path(*box), "DIFFERENCE")
         rec = RecordingPen()
         # scaled, then turned by turn[0] degrees (counter-clockwise) about (px, py)
         t = Transform().translate(x, y).rotate(math.radians(turn[0] if turn else 0))
