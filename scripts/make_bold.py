@@ -846,10 +846,11 @@ def main():
                 c.transformation = (xx, xy, yx, yy, round(dx), dy)
             for a in g.anchors:
                 a.x = round(tx(a.x, a.y)) + nudge.get((g.name, a.name), 0)
-            room = [(b, dx) for b, dx, _ in bases if dx > 0]
+            room = [(b, dx) for b, dx, _ in bases if dx]
             if len(bases) == 1 and room and g.width == regular[room[0][0]].width + room[0][1]:
-                # a capital given room on its left for its accent (Ἤ): as wide
-                # as the base plus that room, rounded as the positioning rule is
+                # a capital given room on its left for its accent (Ἤ; less
+                # than none in the italic's Ἀ): as wide as the base plus that
+                # room, rounded as the positioning rule is
                 b, dx = room[0]
                 g.width = round(regular[b].width * KX + AX) + round(dx * KX)
             elif g.width:

@@ -126,9 +126,9 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   `scripts/kern_groups.py` on the Regular. Where the group's kerning
   would bring the accent too near in any style (Yì, fï, ΤἈ) the letter
   joins guarded (lib `org.myiadidot.kernGuarded`): kern_clear.py gives
-  it, per style, exceptions as tight as 40 units of white allow, never
-  looser than unkerned (it logs the pairs too near even then, for
-  review); then kern_clear.py, smallcaps.py. Gaps: `scripts/quality/kern_coverage.py UFO`.
+  it, per style, exceptions as tight as 40 units of white allow (looser
+  than unkerned where even that is too near: the italics' ĽV); then
+  kern_clear.py, smallcaps.py. Gaps: `scripts/quality/kern_coverage.py UFO`.
   Reviewed collisions (ą į ų before j, the Bold Italic's AY) are
   loosened to CLEAR units of white by `scripts/kern_clear.py` (PAIRS),
   per style: the generators undo the source's (lib

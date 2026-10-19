@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-19 Version 0.100 (development), Phase 3: italic Greek breathings
+
+    * Italic, Bold Italic: the breathings and accents before a Greek
+      capital (Ἀ Ἕ Ὦ Ῥ ...) stood about twice as far from it as in the
+      Regular (Old Standard's GreekCap anchors); they stand now as in the
+      Regular judged upright, the capital moved left by as much (Α 262,
+      Ε Η Ι 252, Ο 270, Ρ 254, Ω 141, Υ 24 units), in the composites
+      and in the room the positioning rules make for combining marks
+      (make_italic.py greek_cap_room).
+    * A guarded pair is loosened past unkerned where even that leaves
+      its letters too near: the italics' Ľ's apostrophe ran into V's arm.
+
 2026-10-19 Version 0.100 (development), Phase 3: guarded kerning
 
     * The 92 letter sides left out of their base's kerning because an

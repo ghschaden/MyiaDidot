@@ -18,9 +18,8 @@ Letters kern_groups.py put in a group though its kerning would bring their
 accent too near (lib GUARD_KEY: Ά Ǎ ǐ Ľ ...; and their small caps) are
 guarded: each of the group's pairs that would leave less than GUARD units
 of white between their ink and the other letter's (kern_coverage's gap)
-gets an exception for that letter, as tight as GUARD allows and never
-looser than unkerned (where that is too near, the log says so: a pair for
-PAIRS, to review). Idempotent.
+gets an exception for that letter, as tight as GUARD allows (looser than
+unkerned where even that is too near). Idempotent.
 """
 
 import argparse
@@ -203,12 +202,11 @@ def guard(font, record, log=None):
                 if gap is not None and gap < GUARD:
                     need = max(need or v, v + math.ceil(GUARD - gap))
             if need is not None:
-                # no looser than the letter was outside the group: where
-                # even that is too near, a pair to review (PAIRS)
-                added[key] = min(need, 0)
+                # loosened past unkerned where even that is too near (the
+                # italics' Ľ's apostrophe in V's arm)
+                added[key] = need
                 if log is not None:
-                    near = f" (wants {need}: near unkerned)" if need > 0 else ""
-                    log.append(f"kern_clear: guard {key[0]} {key[1]} {v} -> {added[key]}{near}")
+                    log.append(f"kern_clear: guard {key[0]} {key[1]} {v} -> {need}")
         # on the right side, (letter, group) would override the group's own
         # exceptions for single letters of that group: carried over as they are
         if s == 1:

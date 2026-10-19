@@ -5695,68 +5695,68 @@ feature aalt {
 
 lookup GreekCapsafterTonos {
   lookupflag 0;
-    pos \Alpha <21 0 21 0>;
-    pos \Epsilon <449 0 449 0>;
-    pos \Eta <449 0 449 0>;
-    pos \Iota <449 0 449 0>;
-    pos \Omicron <333 0 333 0>;
-    pos \Upsilon <449 0 449 0>;
-    pos \Omegagreek <358 0 358 0>;
+    pos \Alpha <-252 0 -252 0>;
+    pos \Epsilon <187 0 187 0>;
+    pos \Eta <187 0 187 0>;
+    pos \Iota <187 0 187 0>;
+    pos \Omicron <52 0 52 0>;
+    pos \Upsilon <424 0 424 0>;
+    pos \Omegagreek <211 0 211 0>;
 } GreekCapsafterTonos;
 
 lookup GreekCapsafterVaria {
   lookupflag 0;
-    pos \Epsilon <385 0 385 0>;
-    pos \Eta <385 0 385 0>;
-    pos \Iota <385 0 385 0>;
-    pos \Omicron <268 0 268 0>;
-    pos \Upsilon <385 0 385 0>;
-    pos \Omegagreek <293 0 293 0>;
+    pos \Epsilon <123 0 123 0>;
+    pos \Eta <123 0 123 0>;
+    pos \Iota <123 0 123 0>;
+    pos \Omicron <-12 0 -12 0>;
+    pos \Upsilon <360 0 360 0>;
+    pos \Omegagreek <147 0 147 0>;
 } GreekCapsafterVaria;
 
 lookup GreekCapsafterBreathings {
   lookupflag 0;
-    pos \Alpha <92 0 92 0>;
-    pos \Epsilon <520 0 520 0>;
-    pos \Eta <520 0 520 0>;
-    pos \Iota <520 0 520 0>;
-    pos \Omicron <404 0 404 0>;
-    pos \Rho <520 0 520 0>;
-    pos \Upsilon <520 0 520 0>;
-    pos \Omegagreek <428 0 428 0>;
+    pos \Alpha <-181 0 -181 0>;
+    pos \Epsilon <258 0 258 0>;
+    pos \Eta <258 0 258 0>;
+    pos \Iota <258 0 258 0>;
+    pos \Omicron <123 0 123 0>;
+    pos \Rho <256 0 256 0>;
+    pos \Upsilon <495 0 495 0>;
+    pos \Omegagreek <282 0 282 0>;
 } GreekCapsafterBreathings;
 
 lookup GreekCapsafteraBreathingandOxia {
   lookupflag 0;
-    pos \Alpha <285 0 285 0>;
-    pos \Epsilon <713 0 713 0>;
-    pos \Eta <713 0 713 0>;
-    pos \Iota <713 0 713 0>;
-    pos \Omicron <597 0 597 0>;
-    pos \Upsilon <713 0 713 0>;
-    pos \Omegagreek <622 0 622 0>;
+    pos \Alpha <12 0 12 0>;
+    pos \Epsilon <451 0 451 0>;
+    pos \Eta <451 0 451 0>;
+    pos \Iota <451 0 451 0>;
+    pos \Omicron <316 0 316 0>;
+    pos \Upsilon <688 0 688 0>;
+    pos \Omegagreek <475 0 475 0>;
 } GreekCapsafteraBreathingandOxia;
 
 lookup GreekCapsafteraBreathingandVaria {
   lookupflag 0;
-    pos \Alpha <141 0 141 0>;
-    pos \Epsilon <570 0 570 0>;
-    pos \Eta <570 0 570 0>;
-    pos \Iota <570 0 570 0>;
-    pos \Omicron <453 0 453 0>;
-    pos \Upsilon <570 0 570 0>;
-    pos \Omegagreek <478 0 478 0>;
+    pos \Alpha <-131 0 -131 0>;
+    pos \Epsilon <308 0 308 0>;
+    pos \Eta <308 0 308 0>;
+    pos \Iota <308 0 308 0>;
+    pos \Omicron <173 0 173 0>;
+    pos \Upsilon <545 0 545 0>;
+    pos \Omegagreek <332 0 332 0>;
 } GreekCapsafteraBreathingandVaria;
 
 lookup GreekCapsafteraBreathingandPerispomeni {
   lookupflag 0;
-    pos \Alpha <175 0 175 0>;
-    pos \Epsilon <603 0 603 0>;
-    pos \Eta <603 0 603 0>;
-    pos \Iota <603 0 603 0>;
-    pos \Omicron <487 0 487 0>;
-    pos \Upsilon <603 0 603 0>;
-    pos \Omegagreek <512 0 512 0>;
+    pos \Alpha <-98 0 -98 0>;
+    pos \Epsilon <341 0 341 0>;
+    pos \Eta <341 0 341 0>;
+    pos \Iota <341 0 341 0>;
+    pos \Omicron <206 0 206 0>;
+    pos \Upsilon <578 0 578 0>;
+    pos \Omegagreek <365 0 365 0>;
 } GreekCapsafteraBreathingandPerispomeni;
 
 lookup GreekCapsAccentPositioning {

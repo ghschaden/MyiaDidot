@@ -32,12 +32,14 @@ it after editing any glyph), and drafts ("derived", "figure draft",
 import argparse
 import copy
 import math
+import re
 import subprocess
 import sys
 import unicodedata
 from pathlib import Path
 
 import ufoLib2
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.filterPen import FilterPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
 from fontTools.pens.transformPen import TransformPen
@@ -1002,8 +1004,6 @@ def drop_ligatures(font):
     with the next letter, and historical italics had only fi fl ff ffi ffl,
     so the Italic leaves them out, with their rules (and any lookup left
     empty) and their kerning."""
-    import re
-
     gone = {g.name for g in font
             if g.lib.get(SOURCE_KEY) == "sloped roman" and "_" in g.name
             and all(p in font for p in g.name.split("_"))}
@@ -1208,6 +1208,65 @@ def attach(font, glyph_name, mark, bases):
             if best is None or d < best[0]:
                 best = (d, base, a.name)
     return best[1:] if best else None
+
+
+# the breathings and accents set before a Greek capital (Ἀ Ἔ Ὦ ...), and
+# the composite measured for each capital
+GREEK_CAP_SAMPLES = {"Alpha": "uni1F08", "Epsilon": "uni1F18", "Eta": "uni1F28", "Iota": "uni1F38",
+                     "Omicron": "uni1F48", "Rho": "uni1FEC", "Upsilon": "uni1F59", "Omegagreek": "uni1F68"}
+
+
+def greek_cap_room(font, regular):
+    """Old Standard's GreekCap anchors leave a breathing far from its
+    capital (Ἀ about twice the Regular's white): each capital's mark is
+    brought as near as it stands in the Regular, judged upright (the
+    letter's leftmost ink against the mark's), and the capital moved left
+    by as much, in its composites (with what follows it: ᾈ's iota) and in
+    the room the GreekCapsafter... lookups make for a combining mark, so
+    that the decomposed text sets the same. Returns {capital: shift}."""
+    def left(f, c, slant):
+        pen = BoundsPen(f)
+        f[c.baseGlyph].draw(TransformPen(TransformPen(pen, (1, 0, -slant, 1, 0, 0)), c.transformation))
+        return pen.bounds[0]
+
+    def spread(f, name, base, slant):
+        comps = f[name].components
+        b = next(c for c in comps if c.baseGlyph == base)
+        m = next(c for c in comps if c.baseGlyph != base)
+        return left(f, b, slant) - left(f, m, slant)
+
+    shift = {}
+    for base, sample in GREEK_CAP_SAMPLES.items():
+        if sample in font and sample in regular:
+            shift[base] = round(spread(font, sample, base, SLANT) - spread(regular, sample, base, 0))
+    for base, d in shift.items():
+        for a in font[base].anchors:
+            if a.name == "GreekCap":
+                a.x += d
+    for g in font:
+        if g.unicode is None or not g.components or g.contours:
+            continue
+        if not unicodedata.name(chr(g.unicode), "").startswith("GREEK CAPITAL"):
+            continue
+        caps = [c for c in g.components if c.baseGlyph in shift]
+        if len(caps) != 1 or caps[0].transformation[4] <= 0:
+            continue  # no room made before the capital
+        cap = caps[0]
+        x0, d = cap.transformation[4], shift[cap.baseGlyph]
+        for c in g.components:
+            t = c.transformation
+            if t[4] >= x0:
+                c.transformation = (t[0], t[1], t[2], t[3], t[4] - d, t[5])
+        g.width -= d
+    rule = re.compile(r"(lookup GreekCapsafter\w+ \{.*?\} GreekCapsafter\w+;)", re.DOTALL)
+    pos = re.compile(r"pos \\(\w+) <(-?\d+) 0 (-?\d+) 0>;")
+
+    def room(m):
+        return pos.sub(lambda p: (f"pos \\{p[1]} <{int(p[2]) - shift.get(p[1], 0)} 0 "
+                                  f"{int(p[3]) - shift.get(p[1], 0)} 0>;"), m[1])
+
+    font.features.text = rule.sub(room, font.features.text)
+    return shift
 
 
 def move_parts(font, regular, marks, rule_made):
@@ -1438,6 +1497,7 @@ def main():
         font[name].lib.update(lib)
         rebuilt += 1
     move_parts(font, regular, marks, rule_made)
+    greek_shift = greek_cap_room(font, regular)  # the breathings nearer their capitals
     info = font.info
     info.styleName = "Italic"
     info.styleMapStyleName = "italic"
@@ -1514,7 +1574,8 @@ def main():
           f"{len(small_caps)} small caps drafted, {len(ligatures)} ligatures left out, {rebuilt} composites rebuilt, "
           f"{len(followed)} made of their weighted base, {len(cleaned)} cleaned, "
           f"{len(anchored)} given the Regular's anchors they lacked; "
-          f"{len(still)} still sloped roman (of {kept_roman})")
+          f"{len(still)} still sloped roman (of {kept_roman}); Greek capitals' marks nearer: "
+          + " ".join(f"{n} {d}" for n, d in greek_shift.items()))
     for line in failed:
         print("  recipe failed:", line)
     print("  still sloped roman:", " ".join(still))
