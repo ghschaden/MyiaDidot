@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # the visual diff builds the previous revision
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --frozen
       - run: .venv/bin/ruff check --output-format github .
@@ -27,6 +29,15 @@ jobs:
         run: .venv/bin/python -I scripts/feature_audit.py fonts/otf/*.otf
       - name: render specimen proofs
         run: .venv/bin/python -I scripts/proof_svg.py fonts/otf/*.otf --out build/proofs/ci
+      - name: visual diff against the previous revision
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+          if [ -z "$BASE" ] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            BASE=$(git rev-parse HEAD~1)
+          fi
+          make visual VISUAL_REF="$BASE"
       - name: compare spacing and kerning
         run: |
           set -euo pipefail
@@ -43,3 +54,4 @@ jobs:
             fonts/
             build/proofs/ci/
             build/quality/pairs-*.txt
+            build/visual/report/

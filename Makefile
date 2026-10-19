@@ -13,7 +13,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test lint test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate
+.PHONY: all setup test lint test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate visual visual-approve diffenator
 
 all: fonts
 
@@ -104,6 +104,52 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 
 proof-svg: $(OTF)
 	$(PY) scripts/proof_svg.py $(OTF) --out build/proofs/ci
+
+# Rendered specimens against an approved build: the tag proofs-approved
+# (`make visual-approve` sets it to HEAD), else HEAD; VISUAL_REF=rev for
+# another. Baseline fonts are built once per revision into build/visual/.
+VISUAL_STYLES := Regular Italic Bold BoldItalic
+VISUAL_REF ?= $(shell git rev-parse -q --verify refs/tags/proofs-approved >/dev/null && echo proofs-approved || echo HEAD)
+VISUAL_BASE = build/visual/base-$(shell git rev-parse --short $(VISUAL_REF))
+
+$(VISUAL_BASE)/done:
+	rm -rf $(VISUAL_BASE) && mkdir -p $(VISUAL_BASE)
+	git archive $(VISUAL_REF) sources | tar -x -C $(VISUAL_BASE)
+	for s in $(VISUAL_STYLES); do \
+	    $(FONTMAKE) -u $(VISUAL_BASE)/sources/$(FAMILY)-$$s.ufo -o otf \
+	        --output-path $(VISUAL_BASE)/$(FAMILY)-$$s.otf >/dev/null 2>&1 & \
+	done; wait
+	for s in $(VISUAL_STYLES); do test -f $(VISUAL_BASE)/$(FAMILY)-$$s.otf || exit 1; done
+	rm -rf $(VISUAL_BASE)/sources && touch $@
+
+visual: $(OTF) $(VISUAL_BASE)/done
+	$(PY) scripts/visual_diff.py $(VISUAL_BASE) fonts/otf --out build/visual/report \
+	    --label-before "$(VISUAL_REF) ($(shell git rev-parse --short $(VISUAL_REF)))"
+
+# diffenator2 (glyphs, words of its wordlists per script, tables) on
+# unhinted TTFs, the same baseline revision: build/visual/diffenator/
+$(VISUAL_BASE)/ttf-done: $(VISUAL_BASE)/done
+	git archive $(VISUAL_REF) sources | tar -x -C $(VISUAL_BASE)
+	for s in $(VISUAL_STYLES); do \
+	    $(FONTMAKE) -u $(VISUAL_BASE)/sources/$(FAMILY)-$$s.ufo -o ttf --flatten-components \
+	        --output-path $(VISUAL_BASE)/$(FAMILY)-$$s.ttf >/dev/null 2>&1 & \
+	done; wait
+	for s in $(VISUAL_STYLES); do test -f $(VISUAL_BASE)/$(FAMILY)-$$s.ttf || exit 1; done
+	rm -rf $(VISUAL_BASE)/sources && touch $@
+
+diffenator: $(patsubst sources/%.ufo,build/unhinted/%.ttf,$(UFOS)) $(VISUAL_BASE)/ttf-done
+	rm -rf build/visual/diffenator && mkdir -p build/visual/diffenator
+	# from build/visual: diffenator2 leaves build.ninja and .ninja_log where it runs
+	cd build/visual && for s in $(VISUAL_STYLES); do \
+	    PATH=$(CURDIR)/.venv/bin:$$PATH $(CURDIR)/.venv/bin/diffenator2 diff --no-diffbrowsers \
+	        -fb $(CURDIR)/$(VISUAL_BASE)/$(FAMILY)-$$s.ttf -fa $(CURDIR)/build/unhinted/$(FAMILY)-$$s.ttf \
+	        -o diffenator/$$s >diffenator-$$s.log 2>&1 || exit 1; \
+	done
+	$(PY) scripts/quality/diffenator_summary.py build/visual/diffenator | tee build/visual/diffenator-summary.txt
+	@echo "summary: build/visual/diffenator-summary.txt; reports: build/visual/diffenator/STYLE/diffenator2-report.html"
+
+visual-approve:
+	git tag -f proofs-approved HEAD
 
 # One quarto page per language, the UDHR (texts fetched once into build/udhr)
 udhr: $(OTF)

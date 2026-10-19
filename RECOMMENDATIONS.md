@@ -101,3 +101,11 @@ pairs (`tt`, `tf`), and eight Bold pairs (`nt`, `at`, `as`, `au`, `kt`, `zt`,
 `fs`, `Sm`). All four styles now have zero frequent pairs outside the
 comparison tolerance. The intended advance changes are recorded in the
 Regular, Bold, and Bold Italic shaping goldens and digests.
+
+Rendered regression comparisons (recommendation 2) and the linter
+(recommendation 6) are in place: `make visual` renders about 130 fixed
+specimens per style in the working tree and in an approved revision (the
+tag `proofs-approved`, moved by `make visual-approve`) and shows the
+changed ones as before, after and overlay; CI does the same against the
+previous commit and uploads the report. `make diffenator` runs diffenator2
+against the same revision. `ruff check` runs in CI and the pre-commit hook.

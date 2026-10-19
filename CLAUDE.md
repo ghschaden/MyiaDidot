@@ -202,6 +202,13 @@ caps. Phases and the coverage target: README.md, FONTLOG.txt,
   Didot Cyrillic, sides with Myia: there no frequent pair may fall outside
   all four references' range (tests/test_cyrillic_pairs.py,
   `cyrillic-pairs*.txt`, `update_test_data.py --cyrillic`).
+- After a change that should touch only some glyphs, scripts or pairs,
+  sweep for side effects: `make diffenator` (diffenator2's word lists over
+  every script, against `VISUAL_REF`) writes
+  `build/visual/diffenator-summary.txt` (tables, changed glyphs, words per
+  script, the pairs behind them in units). Hand it to the font-measure
+  agent with what the change was meant to do; it reports what falls
+  outside. Its pairs are a sample of its word lists, not every pair.
 - Read `make regress` before accepting a new baseline: one composition rule
   once changed 1098 strings where a few were meant. (Enforced:
   `update_test_data.py --golden/--digest` shows the strings that differ from
@@ -292,6 +299,7 @@ and git hold the state.
 | `make reproduce` | do the generated styles come out of their generators as committed? |
 | `make strokes` | `build/quality/strokes-STYLE.pdf`: glyphs darker or lighter than their kind, each between its references, for review |
 | `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `textpages.pdf` (full book pages, mixed styles), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
+| `make visual` | `build/visual/report/index.html`: ~130 fixed specimens (golden corpus, feature samples, running text) per style rendered in the working tree and in `VISUAL_REF` (default: tag `proofs-approved`, else HEAD), changed ones as before / after / overlay; `make visual-approve` moves the tag to HEAD; `make diffenator`: diffenator2 on TTFs against the same revision, summary in `build/visual/diffenator-summary.txt`. CI runs `make visual` against the previous commit |
 | `make udhr` | `build/proofs/udhr-quarto.pdf`: one quarto page per language (the UDHR; `scripts/udhr_book.py`, texts fetched once into `build/udhr/`) |
 | `make qa` | full fontbakery reports in `build/qa/` |
 | `make quality` | design quality against reference fonts (`scripts/quality/`, references fetched into `build/refs/`): colour, spacing, pairs, alignment, construction, transitions, accents, slant, small sizes, into `build/quality/` |
