@@ -1,13 +1,14 @@
 import type { EngineInterface, Register, Timer } from 'claude-code'
 
-import { judgeBash, judgePath } from './rules'
+import { judgeBash, judgePath, measuresBuiltFonts, STALE_CHECK, staleNote, staleStyles } from './rules'
 
 // Active only inside the Myia Didot repository (recognised by its status
 // script and master UFO); everywhere else every hook passes straight through.
 const MARKERS = ['scripts/status.py', 'sources/MyiaDidot-Regular.ufo']
 
 // Tool calls after which the status line is worth recomputing.
-const TOUCHES_FONT = /\b(make|pytest|fontmake|composites\.py|update_test_data\.py|set_win_metrics\.py|ufonormalizer|git (checkout|reset|pull|merge|rebase|stash))\b/
+// (any script under scripts/, any command naming a UFO: inline ufoLib2 too)
+const TOUCHES_FONT = /\b(make|pytest|fontmake|ufonormalizer|git (checkout|reset|pull|merge|rebase|stash))\b|scripts\/\S+\.py\b|\.ufo\b/
 
 // Module state: reset on each reload, which only costs one lookup.
 let root: string | null | undefined // undefined: not looked up yet; null: not our repo
@@ -25,12 +26,25 @@ async function run($: EngineInterface, dir: string, argv: string[], timeoutMs = 
   return $.process.run(argv, { cwd: dir, timeoutMs })
 }
 
+// The styles whose built OTF in fonts/otf/ is older than their UFO.
+async function stale($: EngineInterface, dir: string): Promise<string[]> {
+  try {
+    const { exitCode, stdout } = await run($, dir, ['sh', '-c', STALE_CHECK])
+    return exitCode === 0 ? staleStyles(stdout) : []
+  } catch {
+    return []
+  }
+}
+
 async function refreshStatus($: EngineInterface) {
   const dir = await projectRoot($)
   if (dir === null) return
   try {
-    const { exitCode, stdout, stderr } = await run($, dir, [`${dir}/.venv/bin/python`, '-I', 'scripts/status.py'])
-    $.ui.status(exitCode === 0 ? stdout.trim() : `Myia Didot · status failed: ${stderr.trim().split('\n').pop()}`)
+    const [{ exitCode, stdout, stderr }, styles] = await Promise.all([
+      run($, dir, [`${dir}/.venv/bin/python`, '-I', 'scripts/status.py']), stale($, dir)])
+    const note = staleNote(styles)
+    const line = exitCode === 0 ? stdout.trim() : `Myia Didot · status failed: ${stderr.trim().split('\n').pop()}`
+    $.ui.status(note ? `${line} · ${note.status}` : line)
   } catch {
     $.ui.status('Myia Didot · status unavailable (run make setup)')
   }
@@ -83,7 +97,14 @@ export const register: Register = on => {
 
   on('tool.call', { tool: 'Bash' }, async ($, e, next) => {
     const result = await next(e)
-    if (TOUCHES_FONT.test(e.command) && (await projectRoot($)) !== null) scheduleRefresh($)
+    const dir = await projectRoot($)
+    if (dir === null) return result
+    if (TOUCHES_FONT.test(e.command)) scheduleRefresh($)
+    // a measurement of fonts/otf/ taken while the UFOs are newer: say so
+    if (measuresBuiltFonts(e.command) && 'result' in result && result.result !== undefined) {
+      const note = staleNote(await stale($, dir))
+      if (note) return { ...result, context: [...(result.context ?? []), note.context] }
+    }
     return result
   }).catch(($, e, next) => next(e))
 

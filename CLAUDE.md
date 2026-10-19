@@ -304,7 +304,10 @@ Run Python as `.venv/bin/python -I`.
 ## Claude Code plugin
 
 `tools/claude-plugin/myia-didot` (marketplace file at `.claude-plugin/`):
-status line, guards (deny re-import and writes to `sources/upstream/`; ask
-before rewriting baselines, `--no-verify`, force-push), and `/font-status`,
+status line (with "OTF stale" when a UFO is newer than its built font),
+guards (deny re-import and writes to `sources/upstream/`; ask before
+rewriting baselines, `--no-verify`, force-push, and before writing into a
+generated style by anything but its generator), a note on the output of
+scripts that measure `fonts/otf/` while it is stale, and `/font-status`,
 `/font-test`, `/font-proof`. Its rules have tests: `claude plugin test
 tools/claude-plugin/myia-didot`.
