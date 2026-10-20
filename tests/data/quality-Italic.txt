@@ -189,7 +189,6 @@ ffl stroke 1                     # stroke weights against the kind's (scripts/qu
 ffl zone 1                       # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 fi smooth 3                      # 2026-10-16 known at the start (quality checks added): 770,650 3.1 degrees; 859,1304 2.7 degrees; 463,989 2.5 degrees
 fi zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
-five smooth 1                    # 2026-10-16 known at the start (quality checks added): 408,821 2.0 degrees
 fiveoldstyle smooth 1            # 2026-10-16 known at the start (quality checks added): 401,671 2.2 degrees
 fiveoldstyle stroke 1            # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 236 against 185 (1.27, darker)
 fivesuperior kink 1              # 2026-10-16 known at the start (quality checks added): 420,1279 3.9 degrees
@@ -684,7 +683,7 @@ uni028E slant 1                  # 2026-10-16 known at the start (quality checks
 uni028E smooth 1                 # 2026-10-16 known at the start (quality checks added): 806,1215 2.4 degrees
 uni028E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni028F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni0290 smooth 6                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 599,774 3.5 degrees; 707,780 3.6 degrees; 669,826 2.3 degrees; 288,143 2.4 degrees; 
+uni0290 smooth 6                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 599,774 3.5 degrees; 707,780 3.6 degrees; 669,826 2.3 degrees; 288,143 2.4 degrees;
 uni0290 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 63 against 183 (0.35, lighter)
 uni0290 zone 1                   # ʐ: own recipe (Italic: turns widened for the weight pass; Bold Italic: ITALIC_BOLD_RECIPES): bottom +16 from -461
 uni0291 kink 2                   # 2026-10-16 known at the start (quality checks added): 599,774 3.5 degrees; 190,32 5.0 degrees
@@ -857,7 +856,7 @@ uni043A.sc extreme 2             # 2026-10-16 known at the start (quality checks
 uni043A.sc kink 2                # 2026-10-16 known at the start (quality checks added): 788,196 1.8 degrees; 775,106 5.0 degrees
 uni043A.sc smooth 4              # 2026-10-16 known at the start (quality checks added): 318,944 3.1 degrees; 891,825 2.8 degrees; 591,200 2.3 degrees; 631,390 3.0 degrees
 uni043A.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -20 from 0; top +22 from 1040
-uni043B smooth 3                 # 2026-10-16 known at the start (quality checks added): 519,756 2.6 degrees; 730,267 2.1 degrees; 708,743 2.4 degrees
+uni043B smooth 2                 # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 519,756 2.6 degrees; 730,267 2.1 degrees
 uni043B stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni043B zone 1                   # 2026-10-16 known at the start (quality checks added): top -24 from 884
 uni043B.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 868,87 10 units past; 911,944 11 units past

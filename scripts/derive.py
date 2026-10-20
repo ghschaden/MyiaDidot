@@ -1087,6 +1087,87 @@ def strokes(font, name):
     return b, s[1] - s[0], top[1] - top[0]
 
 
+def keep_brackets(P, ons, old, new, sign):
+    """Brackets the emboldening overran: a concave curve (sign: the
+    contour's winding, as embolden's) between a stroke that grew
+    and a straight edge running on from it (G's jaw stem into its bar, the
+    bar a hairline that only grows in y), whose node on that edge now lies
+    less than half as far from where the two tangents meet as before (or
+    past it: the handles, as long as before, curl back into a hook). That
+    node slides along its edge (no further than half of it) until the
+    bracket is as long as before; the handles keep their share of it.
+    Moves the nodes in new; returns {segment's first node: its handles}."""
+    n, L = len(P), len(ons)
+
+    def unit(dx, dy):
+        d = math.hypot(dx, dy)
+        return (dx / d, dy / d) if d > 1e-9 else None
+
+    def meet(a, ta, b, tb):
+        """s, t with a + s ta = b - t tb (None if parallel)"""
+        det = ta[0] * tb[1] - ta[1] * tb[0]  # s ta + t tb = b - a
+        if abs(det) < 0.2:  # tangents nearly parallel: no bracket
+            return None
+        rx, ry = b[0] - a[0], b[1] - a[1]
+        return (rx * tb[1] - ry * tb[0]) / det, (ta[0] * ry - ta[1] * rx) / det
+
+    out = {}
+    for idx, i in enumerate(ons):
+        j = ons[(idx + 1) % L]
+        if (j - i) % n != 3:
+            continue
+        h1, h2 = (i + 1) % n, (i + 2) % n
+        ta = unit(old[h1][0] - old[i][0], old[h1][1] - old[i][1])
+        tb = unit(old[j][0] - old[h2][0], old[j][1] - old[h2][1])
+        if not ta or not tb:
+            continue
+        if (ta[0] * tb[1] - ta[1] * tb[0]) * sign >= 0:  # a tip rounded (Ɛ's beak), not a bracket
+            continue
+        was = meet(old[i], ta, old[j], tb)
+        if not was or min(was) <= 0:
+            continue
+        now = meet(new[i], ta, new[j], tb)
+        if not now:
+            continue
+        s, t = now
+        # the edge before i, arriving along ta; the one after j, leaving along tb
+        before = ons[(idx - 1) % L]
+        after = ons[(idx + 2) % L]
+        for end, (wanted, got) in (("i", (was[0], s)), ("j", (was[1], t))):
+            if got >= 0.5 * wanted:
+                continue
+            q, far = (i, before) if end == "i" else (j, after)
+            straight = P[q].type == "line" if end == "i" else P[far].type == "line"
+            if not straight:
+                continue
+            edge = unit(old[q][0] - old[far][0], old[q][1] - old[far][1]) if end == "i" else \
+                unit(old[far][0] - old[q][0], old[far][1] - old[q][1])
+            tn = ta if end == "i" else tb
+            if not edge or edge[0] * tn[0] + edge[1] * tn[1] < 0.999:
+                continue
+            # the other end runs on smoothly into the stroke that grew (not
+            # a tip: Ɛ's beak, whose underside is concave too)
+            o, nb = (j, (j + 1) % n) if end == "i" else (i, (i - 1) % n)
+            on = unit(old[nb][0] - old[o][0], old[nb][1] - old[o][1]) if end == "i" else \
+                unit(old[o][0] - old[nb][0], old[o][1] - old[nb][1])
+            to = tb if end == "i" else ta
+            if not on or on[0] * to[0] + on[1] * to[1] < 0.99:
+                continue
+            slide = min(wanted - got, 0.5 * math.dist(new[q], new[far]))
+            sgn = -1 if end == "i" else 1
+            new[q] = (new[q][0] + sgn * tn[0] * slide, new[q][1] + sgn * tn[1] * slide)
+            if end == "i":
+                s += slide
+            else:
+                t += slide
+        if (s, t) != now:
+            la = math.dist(old[i], old[h1]) * max(s, 0) / was[0]
+            lb = math.dist(old[h2], old[j]) * max(t, 0) / was[1]
+            out[i] = ((new[i][0] + ta[0] * la, new[i][1] + ta[1] * la),
+                      (new[j][0] - tb[0] * lb, new[j][1] - tb[1] * lb))
+    return out
+
+
 def embolden(rec, ax, ay, factor=None):
     """Thicken vertical strokes by ax and horizontal ones by ay (negative:
     thinner). Each node moves out along its outline's normal (at a corner,
@@ -1144,6 +1225,7 @@ def embolden(rec, ax, ay, factor=None):
         new = list(old)
         for i in ons:
             new[i] = (old[i][0] + move[i][0], old[i][1] + move[i][1])
+        brackets = keep_brackets(P, ons, old, new, sign)
         # handles: along their old directions (so smooth nodes stay smooth),
         # their lengths fitted (least squares) to the curve's points offset
         # along their own normals, as far as the nodes are; a tight curve
@@ -1191,6 +1273,9 @@ def embolden(rec, ax, ay, factor=None):
             j = ons[(idx + 1) % len(ons)]
             offs = [(i + k) % n for k in range(1, (j - i) % n or n)]
             if not offs:
+                continue
+            if i in brackets:
+                new[offs[0]], new[offs[1]] = brackets[i]
                 continue
             fitted = offset_fit(i, j, offs[0], offs[1]) if len(offs) == 2 else None
             if fitted:
