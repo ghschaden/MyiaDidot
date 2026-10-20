@@ -602,6 +602,25 @@ def redraw(g, glyph):
         c.drawPoints(pen)
 
 
+def refit_horns(font):
+    """The letters with a horn composed again on the outlines as saved:
+    composites.py fits the horn to its base and keeps the marks above
+    clear of it by their ink, which rounding and cleaning still move."""
+    from composites import Builder
+
+    builder = Builder(font)
+    for g in [g for g in font if g.unicode is not None and g.components]:
+        if (len(unicodedata.normalize("NFD", chr(g.unicode))) < 2
+                or not any(c.baseGlyph in ("horn", "Horn") for c in g.components)):
+            continue
+        r = builder.recipe(g.unicode)
+        if [(c.glyph, c.dx, c.dy) for c in r.components] != [(c.baseGlyph, *c.transformation[4:]) for c in g.components]:
+            r.name, lib = g.name, dict(g.lib)
+            del font[g.name]
+            builder.write(r)
+            font[r.name].lib.update(lib)
+
+
 def write(font, path):
     """Save font as the Bold: a new UFO, or an existing one updated in place
     (its glyphs replaced, the files of glyphs no longer there removed). Its
@@ -620,6 +639,7 @@ def write(font, path):
             xx, xy, yx, yy, dx, dy = c.transformation
             c.transformation = (xx, xy, yx, yy, round(dx), round(dy))
     fix(font)  # what rounding left (a unit's step)
+    refit_horns(font)
     if not path.exists():
         font.save(path)
         return
@@ -690,6 +710,8 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
 
     kx = KX if kx is None else kx
     slant = SLANT if slant is None else slant
+    # recipes that only cut their base
+    recuts = {"unserif": derive.unserif_cut}
     deslant = (1, 0, -slant, 1, 0, 0)
     cmap = {u: g.name for g in source for u in g.unicodes}
 
@@ -713,6 +735,27 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
         if italic and source[name].lib.get("org.myiadidot.italicSource") != "derived":
             continue
         if g.components:
+            continue
+        if op in recuts:
+            # only a cut of its base (U.horn: the serif's outer arm): the
+            # same cut of this font's base, found in the upright frame and
+            # made in the font's own (pathops splits curves at the extremes
+            # of the frame it cuts in)
+            from make_italic import XH, shear
+
+            work = ufoLib2.Font()
+            piece = work.newGlyph(base)
+            rec = DecomposingRecordingPen(font)
+            font[base].draw(rec)
+            rec.replay(piece.getPen())
+            shear(piece, -slant, XH / 2)
+            cut = pathops.Path()
+            recuts[op](work, base).draw(TransformPen(cut.getPen(), (1, 0, slant, 1, -slant * XH / 2, 0)))
+            out = derive.path_op(derive.to_path(font, font[base]), cut, "DIFFERENCE")
+            g.clearContours()
+            derive.draw_path(font, font[base], g, out)
+            g.width = font[base].width
+            changed.append(name)
             continue
         if op not in KEEPS | TRANSFORMS:
             if op not in RESHAPES:

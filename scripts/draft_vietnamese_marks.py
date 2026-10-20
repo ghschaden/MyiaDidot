@@ -9,11 +9,15 @@ hook above: the curve of the question mark (ʔ above its stem), scaled to
     `hookcomb` (U+0309) and `hookcomb.cap`, like acute/acutecomb.
 horn: the comma scaled down and brought up to an accent's weight (scaled
     alone it stood at half the comma's weight, lighter than any reference's
-    horn: Old Standard's is 0.7 of its comma), its tail on the base's Horn
+    horn: Old Standard's is 0.7 of its comma; at 0.56 of it and +24 it was
+    still smaller and lighter than EB Garamond's and Libertinus's, now
+    about their size), its tail on the base's Horn
     anchor so the ball rises up and to the right; `horn`/`Horn` and `horncomb` (U+031B) /
     `horncomb.cap` with a `_Horn` anchor at the tail.
 Horn anchors: on the bowl's outline at 50 degrees (O o), on the right end
-    of the top right serif or stem (U u), 24 units inside the ink.
+    of the top right serif or stem (U u), 24 units inside the ink; on Ư's
+    own bases, U without its serif's outer arm (derive.py's U.horn,
+    u.sc.horn; composites.py uses them), on the stem below the top.
 circumflex with a tone mark: as habitual in Vietnamese typesetting
     (Trương, Vietnamese Typography), the acute, grave and hook above sit
     to the right of the circumflex, from halfway up its right arm, not on
@@ -37,7 +41,7 @@ from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from derive import BIG, draw_path, embolden, path_op, rect_path, stems_at, to_path
+from derive import BIG, draw_path, embolden, path_op, rect_path, stem_horn_anchor, stems_at, to_path
 from smallcaps import ink_bounds
 
 DRAFT_KEY = "org.myiadidot.draft"
@@ -45,8 +49,9 @@ DRAFT_KEY = "org.myiadidot.draft"
 # (spacing name, ink height, ink bottom, extra stem, extra hairline)
 HOOKS = {"hook": (340, 1062, 44, 14), "Hook": (300, 1570, 50, 16)}
 # (spacing name: scale of the comma, extra stem, extra hairline)
-HORNS = {"horn": (0.56, 24, 8), "Horn": (0.66, 28, 10)}
+HORNS = {"horn": (0.67, 40, 12), "Horn": (0.79, 46, 14)}
 INSIDE = 24
+HORN_BASES = ("O", "U", "o", "u", "o.sc", "u.sc", "U.horn", "u.sc.horn")
 # circumflex + tone mark: (spacing circumflex, tone, combining tone, overlap):
 # the tone's ink starts overlap units left of the circumflex's right end
 TONES = [("acute", "acutecomb", 70), ("grave", "gravecomb", 70), ("hook", "hookcomb", 40)]
@@ -105,7 +110,10 @@ def horn_outline(font, k, ax=0, ay=0):
 
 def horn_anchor(font, name):
     """Where the horn's tail goes: on a round bowl at 50°, else the right
-    end of the ink at the top (serif or stem), INSIDE units into the ink."""
+    end of the ink at the top (serif or stem), INSIDE units into the ink;
+    on a stem without its serif's outer arm (U.horn), on the stem."""
+    if name.endswith(".horn"):
+        return stem_horn_anchor(font, name, INSIDE)
     _, y0, _, y1 = ink_bounds(font, name)
     if name[0] in "Oo":
         cy, ry = (y0 + y1) / 2, (y1 - y0) / 2
@@ -180,7 +188,7 @@ def main():
                 g.appendAnchor({"name": anchor[0], "x": -440, "y": anchor[1]})
                 made.append(comb)
 
-    for base in ("O", "U", "o", "u", "o.sc", "u.sc"):
+    for base in [b for b in HORN_BASES if b in font]:
         g = font[base]
         for a in [a for a in g.anchors if a.name == "Horn"]:
             g.anchors.remove(a)

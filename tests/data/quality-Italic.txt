@@ -26,7 +26,6 @@ Hbar extreme 4                   # 2026-10-16 known at the start (quality checks
 Hook extreme 2                   # 2026-10-16 known at the start (quality checks added): 927,1870 6 units past; 938,1714 13 units past
 Hook kink 1                      # 2026-10-16 known at the start (quality checks added): 793,1791 6.9 degrees
 Horn extreme 1                   # 2026-10-16 known at the start (quality checks added): 636,442 6 units past
-Horn smooth 1                    # 2026-10-16 known at the start (quality checks added): 640,262 2.2 degrees
 I extreme 2                      # 2026-10-16 known at the start (quality checks added): 516,1311 10 units past; 405,112 9 units past
 Iogonek extreme 2                # 2026-10-16 known at the start (quality checks added): 682,1311 10 units past; 571,112 9 units past
 Iogonek kink 1                   # 2026-10-16 known at the start (quality checks added): 522,-342 3.4 degrees
@@ -80,6 +79,8 @@ Thorn extreme 2                  # 2026-10-16 known at the start (quality checks
 Thorn kink 1                     # 2026-10-16 known at the start (quality checks added): 964,1146 3.8 degrees
 U extreme 1                      # 2026-10-16 known at the start (quality checks added): 480,1311 9 units past
 U smooth 1                       # 2026-10-16 known at the start (quality checks added): 1381,1171 2.5 degrees
+U.horn extreme 1                 # horns heavier, Ư on its own base (U.horn), horns fitted to their base: 484,1323 5 units past
+U.horn smooth 2                  # horns heavier, Ư on its own base (U.horn), horns fitted to their base: 1381,1171 2.5 degrees; 1441,1170 2.5 degrees
 Uogonek extreme 1                # 2026-10-16 known at the start (quality checks added): 480,1311 9 units past
 Uogonek kink 1                   # 2026-10-16 known at the start (quality checks added): 736,-342 3.4 degrees
 Uogonek smooth 1                 # 2026-10-16 known at the start (quality checks added): 1381,1171 2.5 degrees
@@ -225,7 +226,6 @@ hook extreme 2                   # 2026-10-16 known at the start (quality checks
 hook kink 2                      # 2026-10-16 known at the start (quality checks added): 650,1313 4.7 degrees; 694,1274 2.0 degrees
 hook smooth 1                    # 2026-10-16 known at the start (quality checks added): 755,1311 3.5 degrees
 horn extreme 1                   # 2026-10-16 known at the start (quality checks added): 606,375 5 units past
-horn smooth 1                    # 2026-10-16 known at the start (quality checks added): 609,222 3.5 degrees
 i accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 350, usually 198
 i.sc extreme 2                   # 2026-10-16 known at the start (quality checks added): 332,944 11 units past; 289,87 10 units past
 i.sc smooth 1                    # 2026-10-16 known at the start (quality checks added): 332,944 3.1 degrees
@@ -380,6 +380,7 @@ u slant 1                        # 2026-10-16 known at the start (quality checks
 u.sc extreme 1                   # 2026-10-16 known at the start (quality checks added): 307,946 9 units past
 u.sc smooth 2                    # 2026-10-16 known at the start (quality checks added): 988,846 3.1 degrees; 997,912 5.2 degrees
 u.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +4 from 1040
+u.sc.horn smooth 2               # horns heavier, Ư on its own base (U.horn), horns fitted to their base: 985,846 3.1 degrees; 994,912 5.2 degrees
 u1D459 extreme 3                 # 2026-10-16 known at the start (quality checks added): 592,156 5 units past; 347,-4 7 units past; 333,160 14 units past
 u1D459 kink 1                    # 2026-10-16 known at the start (quality checks added): 165,150 4.5 degrees
 u1D459 slant 1                   # 2026-10-16 known at the start (quality checks added): 24.3 degrees, not 15.2

@@ -15,10 +15,13 @@ composed back in ccmp, before any other lookup: the letter as drawn, in any
 shaper. Not a mark made of marks (U+0344 = ̈ + ́): composed, it would
 replace those two marks after every letter.
 
-The rules are found by the test's own comparison (tests/test_composites.py:
-NFC and NFD ink, the precomposed code points taken out of cmap), repeated
+The rules are found by the test's own comparisons (tests/test_composites.py:
+NFC and NFD ink, plain and as small caps (ư.sc is made of u.sc.horn, the
+horn on u.sc's whole serif otherwise), the precomposed code points taken
+out of cmap), repeated
 until nothing differs, and written into the Regular's features.fea between
-BEGIN and END markers (never hand-edit the block); make_italic.py and
+BEGIN and END markers (never hand-edit the block), with every letter with
+a horn besides, whose marks above move per style; make_italic.py and
 make_bold.py carry it to the other styles.
 """
 
@@ -41,9 +44,10 @@ LOOKUP = "ccmpComposeAsDrawn"
 
 
 def mismatches(font):
-    """{code point: text} of characters whose NFC and NFD forms draw apart."""
+    """{code point: text} of characters whose NFC and NFD forms draw apart,
+    as they are or as small caps."""
     from conftest import Shaper
-    from test_composites import nfd_mismatches
+    from test_composites import nfd_mismatches, smallcap_mismatches
 
     with tempfile.TemporaryDirectory() as tmp:
         a = Path(tmp) / "a.otf"
@@ -56,6 +60,7 @@ def mismatches(font):
         b = Path(tmp) / "b.otf"
         t.save(b)
         found = nfd_mismatches(TTFont(a), Shaper(a), Shaper(b))
+        found.update(smallcap_mismatches(TTFont(a), Shaper(a), Shaper(b)))
     return {ord(v.split()[0]): v for v in found.values()}
 
 
@@ -95,6 +100,13 @@ def main():
             if line.startswith("sub ") and " by " in line:
                 seq, glyph = line[4:].rstrip(";").split(" by ")
                 rules[glyph.strip()] = tuple(seq.split())
+    # the horn letters, all of them: composites.py moves the marks above
+    # clear of the horn by each style's own outlines (ở in the italics only),
+    # which no mark anchor can follow, and this block serves every style
+    for cp, name in cmap.items():
+        nfd = unicodedata.normalize("NFD", chr(cp))
+        if len(nfd) > 1 and "\u031b" in nfd and all(ord(c) in cmap for c in nfd):
+            rules[name] = tuple(cmap[ord(c)] for c in nfd)
     for _ in range(4):
         bad = {cp: v for cp, v in mismatches(font).items()
                if not unicodedata.combining(unicodedata.normalize("NFD", chr(cp))[0])}
@@ -109,6 +121,7 @@ def main():
             rules[cmap[cp]] = tuple(cmap[ord(c)] for c in nfd)
         write(font, sorted(((s, g) for g, s in rules.items()), key=lambda r: (r[0], r[1])))
         print(f"{len(bad)} characters drawn apart; {len(rules)} compositions")
+    write(font, sorted(((s, g) for g, s in rules.items()), key=lambda r: (r[0], r[1])))
     bad = mismatches(font)
     font.save()
     print(f"{args.ufo}: {len(rules)} compositions, {len(bad)} characters still drawn apart"

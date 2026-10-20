@@ -585,21 +585,9 @@
 			<string>added</string>
 			<key>public.kern1.U uni020D</key>
 			<string>added</string>
-			<key>public.kern1.U uni1EAB</key>
-			<string>added</string>
-			<key>public.kern1.U uni1EB5</key>
-			<string>added</string>
-			<key>public.kern1.U uni1EC5</key>
-			<string>added</string>
-			<key>public.kern1.U uni1ED7</key>
-			<string>added</string>
-			<key>public.kern1.U uni1ED7.sc</key>
-			<string>added</string>
 			<key>public.kern1.U.sc uni01D2.sc</key>
 			<string>added</string>
 			<key>public.kern1.U.sc uni01E7.sc</key>
-			<string>added</string>
-			<key>public.kern1.U.sc uni0201.sc</key>
 			<string>added</string>
 			<key>public.kern1.U.sc uni020D.sc</key>
 			<string>added</string>
@@ -868,6 +856,8 @@
 			<key>public.kern1.zeta uni1F5D</key>
 			<string>added</string>
 			<key>public.kern1.zeta uni1FF8</key>
+			<string>added</string>
+			<key>uni0244 public.kern2.O.sc</key>
 			<string>added</string>
 			<key>uni0244 public.kern2.a</key>
 			<string>added</string>
@@ -1355,6 +1345,7 @@
 			<string>S</string>
 			<string>T</string>
 			<string>U</string>
+			<string>U.horn</string>
 			<string>V</string>
 			<string>W</string>
 			<string>X</string>
@@ -1387,6 +1378,7 @@
 			<string>s</string>
 			<string>t</string>
 			<string>u</string>
+			<string>u.sc.horn</string>
 			<string>v</string>
 			<string>w</string>
 			<string>x</string>
@@ -3786,6 +3778,8 @@
 			<string>base</string>
 			<key>U</key>
 			<string>base</string>
+			<key>U.horn</key>
+			<string>base</string>
 			<key>Uacute</key>
 			<string>base</string>
 			<key>Ubreve</key>
@@ -4961,6 +4955,8 @@
 			<key>u</key>
 			<string>base</string>
 			<key>u.sc</key>
+			<string>base</string>
+			<key>u.sc.horn</key>
 			<string>base</string>
 			<key>u1D459</key>
 			<string>base</string>

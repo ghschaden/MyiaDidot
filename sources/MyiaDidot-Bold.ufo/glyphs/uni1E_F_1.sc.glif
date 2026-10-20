@@ -2,8 +2,8 @@
 <glyph name="uni1EF1.sc" format="2">
 	<advance width="1168"/>
 	<outline>
-		<component base="u.sc"/>
-		<component base="Horn" xOffset="699" yOffset="1013"/>
+		<component base="u.sc.horn"/>
+		<component base="Horn" xOffset="545" yOffset="971"/>
 		<component base="dotaccent" xOffset="210" yOffset="-1502"/>
 	</outline>
 	<anchor name="Top" x="650" y="1156"/>
@@ -11,5 +11,5 @@
 	<anchor name="Grave" x="650" y="1136"/>
 	<anchor name="Dotaccent" x="650" y="1176"/>
 	<anchor name="TopCap" x="650" y="1186"/>
-	<anchor name="Horn" x="1139" y="1013"/>
+	<anchor name="Horn" x="985" y="971"/>
 </glyph>

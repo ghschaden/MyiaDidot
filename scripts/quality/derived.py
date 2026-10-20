@@ -48,7 +48,7 @@ STYLE_MARGIN = 0.1
 STEP = 10  # row spacing
 # ops whose glyph keeps the base's outline, but for what they add or cut
 KEEPS = {"hook", "tail", "bar", "slash", "midtilde", "lines", "attach", "graft", "curl",
-         "descend", "twin", "nodot", "stem"}
+         "descend", "twin", "nodot", "stem", "unserif"}
 TRANSFORMS = {"turn", "mirror", "flip"}
 SOURCE_KEY = "org.myiadidot.italicSource"
 

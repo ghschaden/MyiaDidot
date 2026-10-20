@@ -17,15 +17,22 @@ The rules follow the conventions of the upstream Theano Didot source:
 * i and j take dotless bases and the narrow ".i" accents, Cyrillic lowercase
   takes the ".cyrl" breve, Cyrillic capitals the ".cyrcap" breve;
 * a second top mark stacks on the first through TopMark/_TopMark.
+* a horn takes the base drawn for it where there is one (U.horn); the
+  marks above move left where they come nearer it than HORN_GAP.
 """
 
 import argparse
 import sys
 import unicodedata
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import ufoLib2
+from fontTools.pens.basePen import BasePen
 from fontTools.pens.boundsPen import ControlBoundsPen
+from fontTools.pens.transformPen import TransformPen
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 TOP_MARK_ANCHORS = ("_Acute", "_Grave", "_Dotaccent", "_Top", "_TopCap")
 BOTTOM_MARK_ANCHORS = ("_DotBelow", "_Bottom")
@@ -44,6 +51,13 @@ SOFT_DOTTED = {"i": "dotlessi", "j": "uni0237", "uni0456": "dotlessi", "uni0458"
 # Vertical gap between the ink of two stacked top marks (font units).
 STACK_GAP_LC = 90
 STACK_GAP_UC = 60
+# least white between a horn and a mark above (ỡ: the tilde's end ran into
+# the horn's ball); the marks above move left as far as it takes
+HORN_GAP = 50
+# how far a horn may move off its anchor so that it joins its base cleanly
+# (the tail hooks left: it stood out of ư.sc's narrow stem in the italics,
+# and its outer edge met u's top corner, a ledge of 4 units)
+HORN_FIT = 24
 
 
 @dataclass
@@ -89,6 +103,11 @@ class Builder:
 
     def is_upper(self, glyph):
         u = self.font[glyph].unicode
+        if u is None and "." in glyph:
+            # an unencoded variant (U.horn) takes its base letter's case
+            stem = glyph.split(".", 1)[0]
+            if stem in self.font:
+                u = self.font[stem].unicode
         return u is not None and unicodedata.category(chr(u)) == "Lu"
 
     def script(self, glyph):
@@ -186,6 +205,10 @@ class Builder:
             raise ValueError(f"{cp_label}: mark without attachment anchors in {marks}")
         if "top" in sides and base in SOFT_DOTTED:
             base = SOFT_DOTTED[base]
+        # a base drawn for the horn (U.horn: the serif's outer arm left out,
+        # the horn growing out of the stem; derive.py)
+        if any("_Horn" in self.anchors(m) for m in marks) and f"{base}.horn" in self.font:
+            base = f"{base}.horn"
 
         r = Recipe(name, cp, base, self.font[base].width)
         r.components.append(Placed(base, 0, 0))
@@ -222,6 +245,8 @@ class Builder:
             r.components.append(Placed(sg, round(dx + sdx), round(dy + sdy), attached))
             last[side] = (mv, dx, dy)
 
+        self.fit_horn(r, sides)
+        self.clear_horn(r, sides)
         used = {s for s in sides}
         for a in self.font[base].anchors:
             if a.name.startswith("_"):
@@ -232,6 +257,58 @@ class Builder:
                 continue
             r.anchors.append((a.name, a.x, a.y))
         return r
+
+    def outline_points(self, glyph, dx, dy):
+        pen = _Points(self.font)
+        self.font[glyph].draw(TransformPen(pen, (1, 0, 0, 1, dx, dy)))
+        return pen.points
+
+    def fit_horn(self, r, sides):
+        """The horn moved the least (up to HORN_FIT) that leaves its join with
+        the base without the faults glyph_lint finds (steps, ledges, slivers)."""
+        from glyph_lint import ink, ledge_findings, step_findings, vector_findings
+
+        horns = [c for c, s in zip(r.components[1:], sides, strict=True)
+                 if s == "side" and c.anchor == "Horn"]
+        if not horns:
+            return
+        horn, base = horns[0], r.components[0]
+
+        def faults(dx, dy):
+            g = ufoLib2.objects.Glyph()
+            pen = g.getPointPen()
+            pen.addComponent(base.glyph, (1, 0, 0, 1, base.dx, base.dy))
+            pen.addComponent(horn.glyph, (1, 0, 0, 1, horn.dx + dx, horn.dy + dy))
+            path = ink(self.font, g)
+            return vector_findings(path) + step_findings(path) + ledge_findings(path)
+
+        if not faults(0, 0):
+            return
+        shifts = sorted(((dx, dy) for dx in range(-HORN_FIT, HORN_FIT + 1, 2)
+                         for dy in range(-HORN_FIT, HORN_FIT + 1, 2)),
+                        key=lambda s: (s[0] ** 2 + s[1] ** 2, s))
+        for dx, dy in shifts[1:]:
+            if dx * dx + dy * dy <= HORN_FIT ** 2 and not faults(dx, dy):
+                horn.dx += dx
+                horn.dy += dy
+                return
+
+    def clear_horn(self, r, sides):
+        """The marks above moved left, all alike, until HORN_GAP of white
+        parts them from the horn (by their outlines, sampled)."""
+        horns = [c for c, s in zip(r.components[1:], sides, strict=True)
+                 if s == "side" and c.anchor == "Horn"]
+        tops = [c for c, s in zip(r.components[1:], sides, strict=True) if s == "top"]
+        if not horns or not tops:
+            return
+        horn = self.outline_points(horns[0].glyph, horns[0].dx, horns[0].dy)
+        marks = [pt for c in tops for pt in self.outline_points(c.glyph, c.dx, c.dy)]
+        shift = 0
+        while shift < 400 and min((hx - mx + shift) ** 2 + (hy - my) ** 2
+                                  for hx, hy in horn for mx, my in marks) < HORN_GAP ** 2:
+            shift += 2
+        for c in tops:
+            c.dx -= shift
 
     def write(self, r, overwrite=False):
         if r.name in self.font and not overwrite:
@@ -252,6 +329,36 @@ class Builder:
             self.font.glyphOrder = [*self.font.glyphOrder, r.name]
         cats = self.font.lib.setdefault("public.openTypeCategories", {})
         cats[r.name] = "base"
+
+
+class _Points(BasePen):
+    """Points along an outline, about every 10 units on curves."""
+
+    def __init__(self, glyphset):
+        super().__init__(glyphset)
+        self.points = []
+
+    def _moveTo(self, pt):
+        self.start = pt
+        self.points.append(pt)
+
+    def _closePath(self):
+        if self._getCurrentPoint() != self.start:
+            self._lineTo(self.start)
+
+    def _lineTo(self, pt):
+        (x0, y0), (x1, y1) = self._getCurrentPoint(), pt
+        n = max(1, int(abs(x1 - x0) + abs(y1 - y0)) // 10)
+        self.points += [(x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n) for i in range(1, n + 1)]
+
+    def _curveToOne(self, p1, p2, p3):
+        x0, y0 = self._getCurrentPoint()
+        n = max(1, int(abs(p3[0] - x0) + abs(p3[1] - y0)) // 10)
+        for i in range(1, n + 1):
+            t = i / n
+            u = 1 - t
+            self.points.append((u ** 3 * x0 + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t ** 3 * p3[0],
+                                u ** 3 * y0 + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t ** 3 * p3[1]))
 
 
 # -- anchor completion ------------------------------------------------------

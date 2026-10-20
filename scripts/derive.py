@@ -20,10 +20,15 @@ or an earlier recipe's character):
     slash     a diagonal stroke merged in: corner to corner like Ø (Ⱥ ȼ),
               or short through one stem like ł (ƛ)
     midtilde  a tilde across the letter at mid height (ɫ ᵬ)
+    unserif   the outer arm of the last stem's top serif cut away, the
+              stem's right edge run up to the top: the base of Ư (U.horn),
+              whose horn grows out of the stem (its Horn anchor there)
 
-A recipe for "ɔ.sc" makes the small cap uni0254.sc (unencoded, reached
-through smcp/c2sc once smallcaps.py has run); it is marked as a small-cap
-draft and reviewed with the other small caps.
+A recipe for "U.horn" makes the unencoded U.horn (a Latin letter's
+variant, only for the suffixes in ASCII_VARIANTS). A recipe for "ɔ.sc"
+makes the small cap uni0254.sc (unencoded, reached through smcp/c2sc once
+smallcaps.py has run); it is marked as a small-cap draft and reviewed with
+the other small caps.
 
 Transformed glyphs get plain outlines, not components, since they are
 meant to be redrawn (a turned serif sits on the wrong side). Every glyph
@@ -67,6 +72,10 @@ BIG = 10000
 F_TOP = (-BIG, 1000, BIG, BIG)
 F_HOOK = (-BIG, 1100, BIG, BIG)
 J_TAIL = (-BIG, -BIG, BIG, 100)
+
+# suffixes that make an ASCII letter's recipe a variant (an ASCII name
+# with any other is a glyph name: g.sc)
+ASCII_VARIANTS = (".horn", ".sc.horn")
 
 # (character, operation, source, band) -- band only for turn/flip
 RECIPES = [
@@ -600,6 +609,9 @@ RECIPES = [
                                         ("O", (-BIG, 717, BIG, BIG), (146, 717), (-0.55, -0.75, 1200, 543)),
                                         ("rect", (1071, 539, 1200, 1434), (0, 0), (1, 1, 0, 0)),
                                         ("rect", (443, 539, 572, 1084), (0, 0), (1, 1, 0, 0))], 1300)),
+    # Ư's base: the horn grows out of the stem, where the serif's outer arm
+    # was (EB Garamond, Old Standard); on it, it stood like a thing put there
+    ("U.horn", "unserif", "U", None),
     # small caps for the new case pairs, derived like their capitals
     ("ɔ.sc", "mirror", "c.sc", None),
     ("ǝ.sc", "mirror", "e.sc", None),
@@ -609,6 +621,7 @@ RECIPES = [
     ("ɪ.sc", "alias", "i.sc", None),
     ("ɨ.sc", "bar", "i.sc", ("s",)),
     ("ʉ.sc", "bar", "u.sc", ("s",)),
+    ("u.sc.horn", "unserif", "u.sc", None),
     ("ƚ.sc", "bar", "l.sc", ("s",)),
     ("ɉ.sc", "bar", "j.sc", ("s",)),
     ("ɍ.sc", "bar", "r.sc", ("s", 260, "first")),
@@ -687,8 +700,11 @@ KEEP_ANCHORS = ("Top", "Acute", "Grave", "Dotaccent", "TopCap", "Bottom", "DotBe
 
 def variant(ch):
     """A recipe's variant of a character, its suffix: "ɔ.sc" (the small
-    cap), "б.loclSRB" (a localized form, unencoded); "" for the character."""
-    return ch[1:] if len(ch) > 2 and ch[1] == "." and not ch[0].isascii() or ch.endswith(".sc") and len(ch) == 4 else ""
+    cap), "б.loclSRB" (a localized form, unencoded), "U.horn" (a base drawn
+    for a mark); "" for the character."""
+    if len(ch) > 2 and ch[1] == "." and (not ch[0].isascii() or ch[1:] in ASCII_VARIANTS):
+        return ch[1:]
+    return ch[1:] if ch.endswith(".sc") and len(ch) == 4 else ""
 
 
 def glyph_name(ch):
@@ -951,6 +967,49 @@ def foot_top(font, name, stem):
         if s and s[0][1] - s[0][0] <= stem[1] - stem[0] + 2:
             return y - 2
     return 0
+
+
+def serif_foot(font, name):
+    """(y, y_stem, x): the height where the last stem's top serif has given
+    way (the slab's underside: the width falls below 0.6 of it; the
+    italics' slab tapers), where its bracket has (the width within 1.15 of
+    the stem's at half the height), and the stem's right edge there."""
+    def width(y):
+        x0, x1 = stems_at(font, name, y)[-1]
+        return x1 - x0
+
+    _, bottom, _, top = ink_bounds(font, name)
+    serif, stem = width(top - 5), width((bottom + top) / 2)
+    y = top - 5
+    while width(y) > 0.6 * serif:
+        y -= 2
+        if y < top - 400:
+            raise ValueError(f"{name}: no top serif on the last stem")
+    y_stem = y
+    while width(y_stem) > 1.15 * stem and y_stem > y - 300:
+        y_stem -= 2
+    return y, y_stem, stems_at(font, name, y_stem)[-1][1]
+
+
+def unserif_cut(font, source):
+    """What unserif cuts away: the outer arm of the last stem's top serif
+    and the bracket under it (the italics'), so that the stem's right edge
+    runs straight up to the slab."""
+    _, y, x = serif_foot(font, source)
+    return rect_path(x, y, BIG, BIG)
+
+
+def unserif_path(font, source):
+    """The letter without the outer arm of its last stem's top serif."""
+    return path_op(to_path(font, font[source]), unserif_cut(font, source), "DIFFERENCE")
+
+
+def stem_horn_anchor(font, name, inside=24):
+    """Where a horn's tail goes on a stem without its serif's outer arm
+    (unserif): on the stem's right edge, 25 below the serif's foot,
+    inside units into the ink."""
+    y = serif_foot(font, name)[0] - 25
+    return round(stems_at(font, name, y)[-1][1] - inside), round(y)
 
 
 def tail_path(font, source, band, mode):
@@ -1997,6 +2056,14 @@ def build(font, ch, op, source, band, name=None):
         for a in src.anchors:
             if a.name not in ("Bottom", "DotBelow", "Cedilla"):
                 g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    elif op == "unserif":
+        g.width = w
+        draw_path(font, src, g, unserif_path(font, source))
+        for a in src.anchors:
+            if a.name != "Horn":
+                g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+        x, y = stem_horn_anchor(font, g.name)
+        g.appendAnchor({"name": "Horn", "x": x, "y": y})
     elif op == "descend":
         sband, model, *pick = band
         g.width = w

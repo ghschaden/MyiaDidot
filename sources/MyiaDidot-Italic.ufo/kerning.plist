@@ -439,7 +439,7 @@
 			<key>uni01E7.sc</key>
 			<integer>100</integer>
 			<key>uni020D.sc</key>
-			<integer>215</integer>
+			<integer>160</integer>
 			<key>uni0215.sc</key>
 			<integer>135</integer>
 			<key>uni1ED7.sc</key>
@@ -1639,14 +1639,6 @@
 			<integer>-74</integer>
 			<key>public.kern2.g</key>
 			<integer>-104</integer>
-			<key>uni1EAB</key>
-			<integer>28</integer>
-			<key>uni1EB5</key>
-			<integer>-37</integer>
-			<key>uni1EC5</key>
-			<integer>48</integer>
-			<key>uni1ED7</key>
-			<integer>44</integer>
 		</dict>
 		<key>public.kern1.U.sc</key>
 		<dict>
@@ -1658,10 +1650,8 @@
 			<integer>-41</integer>
 			<key>public.kern2.O.sc</key>
 			<integer>-48</integer>
-			<key>uni0201.sc</key>
-			<integer>-46</integer>
 			<key>uni020D.sc</key>
-			<integer>52</integer>
+			<integer>-30</integer>
 		</dict>
 		<key>public.kern1.Upsilon</key>
 		<dict>
@@ -3019,6 +3009,8 @@
 		</dict>
 		<key>uni1EA6</key>
 		<dict>
+			<key>public.kern2.O</key>
+			<integer>-91</integer>
 			<key>public.kern2.V</key>
 			<integer>-209</integer>
 			<key>public.kern2.Y</key>
@@ -3028,10 +3020,18 @@
 		</dict>
 		<key>uni1EA7.sc</key>
 		<dict>
+			<key>public.kern2.O.sc</key>
+			<integer>-66</integer>
 			<key>public.kern2.V.sc</key>
 			<integer>-152</integer>
 			<key>public.kern2.Y.sc</key>
 			<integer>-130</integer>
+			<key>uni01D2.sc</key>
+			<integer>51</integer>
+			<key>uni020D.sc</key>
+			<integer>215</integer>
+			<key>uni1ED7.sc</key>
+			<integer>73</integer>
 		</dict>
 		<key>uni1ED5</key>
 		<dict>

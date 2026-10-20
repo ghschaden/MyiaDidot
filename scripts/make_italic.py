@@ -1122,13 +1122,13 @@ def swapped_sidebearings(font):
 
 
 def horn_stage(font, kept=()):
-    """The Horn anchors (draft_vietnamese_marks.py) on the Italic's O U o u
-    and their small caps, found on the upright outlines."""
-    from draft_vietnamese_marks import horn_anchor
+    """The Horn anchors (draft_vietnamese_marks.py) on the Italic's O U o u,
+    their small caps and Ư's bases, found on the upright outlines."""
+    from draft_vietnamese_marks import HORN_BASES, horn_anchor
 
     up = upright(font)
-    for base in ("O", "U", "o", "u", "o.sc", "u.sc"):
-        if base in kept:  # its anchor was set when it was made
+    for base in HORN_BASES:
+        if base in kept or base not in font:  # its anchor was set when it was made
             continue
         x, y = horn_anchor(up, base)
         dx, dy = HORN_NUDGE.get(base, (0, 0))
