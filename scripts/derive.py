@@ -1080,14 +1080,19 @@ def tail_step(letter, piece, top):
         cut = path_op(path, rect_path(-BIG, y - 0.5, BIG, y + 0.5), "INTERSECTION")
         return cut.bounds[2] if list(cut.contours) else None
 
+    # the tail's top at its right corner: the cut, or below it where the
+    # tail's model starts lower (the Italic's Ц: 25)
+    xr = piece.bounds[2]
+    top = min(top, round(path_op(piece, rect_path(xr - 10, -BIG, BIG, BIG), "INTERSECTION").bounds[3]))
     xs, xt = right(letter, top + 1), right(piece, top - 1)
     if xs is None or xt is None or xt - xs < 5:
         return pathops.Path()
     # up the serif's end to its top corner, where the right edge turns back
+    # (onto a flat top, or one sloping as the Italic's)
     y, x = top + 1, xs
     while True:
         nx = right(letter, y + 2)
-        if nx is None or nx < x - 20:
+        if nx is None or nx < x - 8:
             break
         y, x = y + 2, nx
     if y - top < 4 or x - xs > y - top:  # no step, or the end slopes into the tail
@@ -1095,7 +1100,7 @@ def tail_step(letter, piece, top):
     rec = RecordingPen()
     rec.moveTo((x - 1, y))
     rec.lineTo((xt, top))
-    rec.lineTo((xt, top - 2))
+    rec.lineTo((xt - 12, top - 2))  # inside the tail, which runs in below its corner
     rec.lineTo((xs - 1, top - 2))
     rec.closePath()
     return to_path(None, rec=rec)
@@ -1129,7 +1134,10 @@ def keep_brackets(P, ons, old, new, sign):
     node slides along its edge (no further than half of it) until the
     bracket is as long as before; the handles keep their share of it.
     Moves the nodes in new; returns {segment's first node: its handles}
-    and the slid nodes, as (node, the edge's far node, the node's handle)."""
+    and the nodes whose handles must run on from their neighbour (each
+    slid node, along its edge, and the bracket's other end, along the
+    stroke it leaves), as (node, the neighbour, the node's handle, how
+    far the neighbour must stay for its direction to count)."""
     n, L = len(P), len(ons)
 
     def unit(dx, dy):
@@ -1189,7 +1197,13 @@ def keep_brackets(P, ons, old, new, sign):
             slide = min(wanted - got, 0.5 * math.dist(new[q], new[far]))
             sgn = -1 if end == "i" else 1
             new[q] = (new[q][0] + sgn * tn[0] * slide, new[q][1] + sgn * tn[1] * slide)
-            slid.append((q, far, h1 if end == "i" else h2))
+            slid.append((q, far, h1 if end == "i" else h2, 0))
+            # and the other end: there the bracket runs on from the stroke
+            # (the source's slight corner, on handles too short to show it,
+            # would show on the longer ones); not from a tip's few units,
+            # whose direction is noise
+            if math.dist(old[o], old[nb]) >= 20:
+                slid.append((o, nb, h2 if end == "i" else h1, 20))
             if end == "i":
                 s += slide
             else:
@@ -1596,11 +1610,26 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
             mvx, mvy = mvx * cap / reach, mvy * cap / reach
         Q[i].x, Q[i].y = x + mvx, y + mvy
     # a bracket's slid node: its handle along its edge as the corners left
-    # it (the serif's tip moved after the slide: a kink of a few degrees)
-    for ci, q, far, h in slid:
+    # it (the serif's tip moved after the slide: a kink of a few degrees);
+    # its other end's along the stroke it leaves
+    # (a node between two brackets, each aimed along the other: both
+    # handles on the tangent between them)
+    aimed = {(ci, h) for ci, _, _, h, _ in slid}
+    for ci, q, far, h, reach in slid:
+        if not reach or (ci, far) not in aimed or h > far:
+            continue
+        Q = out.contours[ci].points
+        ta, tb = unit(Q[h].x - Q[q].x, Q[h].y - Q[q].y), unit(Q[q].x - Q[far].x, Q[q].y - Q[far].y)
+        t = ta and tb and unit(ta[0] + tb[0], ta[1] + tb[1])
+        if not t:
+            continue
+        for k, sgn in ((h, 1), (far, -1)):
+            ln = math.dist((Q[q].x, Q[q].y), (Q[k].x, Q[k].y))
+            Q[k].x, Q[k].y = Q[q].x + sgn * t[0] * ln, Q[q].y + sgn * t[1] * ln
+    for ci, q, far, h, reach in slid:
         Q = out.contours[ci].points
         d = unit(Q[q].x - Q[far].x, Q[q].y - Q[far].y)
-        if not d:
+        if not d or math.dist((Q[q].x, Q[q].y), (Q[far].x, Q[far].y)) < reach or (reach and (ci, far) in aimed):
             continue
         # the curve runs on from the edge past the node, whichever end it is
         ln = math.dist((Q[q].x, Q[q].y), (Q[h].x, Q[h].y))

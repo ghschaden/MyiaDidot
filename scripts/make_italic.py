@@ -1609,7 +1609,9 @@ def main():
     anchored = missing_anchors(font, regular, marks)
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
-    write(font, Path(args.italic))
+    # rounded plainly: the Bold Italic is made of these outlines, and each
+    # handle a unit off there moves its findings about at random
+    write(font, Path(args.italic), smooth=False)
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "

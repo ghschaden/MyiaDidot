@@ -85,7 +85,7 @@ ITALIC_BOLD_REBUILD = {
     "uni0291": "ʑ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni0255": "ɕ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni025E": "ɞ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
-    "uni04B2": "Ҳ: the tail on the Bold Italic's X; emboldened whole, the Italic's step where the tail meets the serif",
+    "uni04B2": "Ҳ: the tail on the Bold Italic's X; the Italic's tail emboldened, a kink where it meets the serif",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
 # frame), where the source's recipe scaled up does not fit (a hook's or a
@@ -622,18 +622,89 @@ def refit_horns(font):
             font[r.name].lib.update(lib)
 
 
-def write(font, path):
+def round_smoothly(P):
+    """P's points rounded to whole units, a join that ran on (nearly)
+    smoothly, under 3 degrees, not broken further: where rounding leaves
+    it turning by more than a degree and more than it did, one of its
+    handles moved a unit to bring it more in line (a 15-unit
+    handle rounded turns up to 4 degrees), a level or upright one (at an
+    extreme) kept so. Handles under 10 units are left as rounded: theirs
+    is no angle worth the name (checks.py)."""
+    def turn(a, h, b):
+        t = math.atan2(h[1] - a[1], h[0] - a[0]) - math.atan2(b[1] - h[1], b[0] - h[0])
+        return abs(math.degrees((t + math.pi) % (2 * math.pi) - math.pi))
+
+    def overshoot(k, q):
+        """how far the curve through handle k, put at q, bulges past its ends"""
+        h = [(P[(k + d) % n].x, P[(k + d) % n].y) for d in (-2, -1, 0, 1, 2)]
+        seg = h[1:5] if P[(k - 1) % n].type else h[0:4]
+        seg = [q if pt == (P[k].x, P[k].y) else pt for pt in seg]
+        most = 0.0
+        for step in range(1, 32):
+            t = step / 32
+            u = 1 - t
+            pt = [u ** 3 * seg[0][c] + 3 * u * u * t * seg[1][c] + 3 * u * t * t * seg[2][c] + t ** 3 * seg[3][c]
+                  for c in (0, 1)]
+            for c in (0, 1):
+                lo, hi = sorted((seg[0][c], seg[3][c]))
+                most = max(most, lo - pt[c], pt[c] - hi)
+        return most
+
+    n = len(P)
+    raw = [(p.x, p.y) for p in P]
+    for p in P:
+        p.x, p.y = round(p.x), round(p.y)
+    if n < 3:
+        return
+    for i, p in enumerate(P):
+        if not p.type:
+            continue
+        a, b = (i - 1) % n, (i + 1) % n
+        if min(math.dist(raw[a], raw[i]), math.dist(raw[i], raw[b])) < 1 or turn(raw[a], raw[i], raw[b]) > 3:
+            continue
+        node = (p.x, p.y)
+        ends = [(P[a].x, P[a].y), (P[b].x, P[b].y)]
+        least = turn(ends[0], node, ends[1])
+        # only what the rounding broke (an outline in whole units, a drawn
+        # glyph kept, stays as it is)
+        if least <= max(1, turn(raw[a], raw[i], raw[b]) + 0.25) or min(math.dist(e, node) for e in ends) < 10:
+            continue
+        best = None
+        for side, k in enumerate((a, b)):
+            if P[k].type:
+                continue
+            bulge = overshoot(k, (P[k].x, P[k].y))
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    q = (P[k].x + dx, P[k].y + dy)
+                    # an extreme's handle stays level or upright
+                    if math.dist(q, node) < 10 or (P[k].x == p.x and q[0] != p.x) or (P[k].y == p.y and q[1] != p.y):
+                        continue
+                    t = turn(q, node, ends[1]) if side == 0 else turn(ends[0], node, q)
+                    # nor bulging further past its ends (an extreme lost)
+                    if t < least and overshoot(k, q) <= max(bulge, 2):
+                        best, least = (k, q), t
+        if best:
+            k, q = best
+            P[k].x, P[k].y = q
+
+
+def write(font, path, smooth=True):
     """Save font as the Bold: a new UFO, or an existing one updated in place
     (its glyphs replaced, the files of glyphs no longer there removed). Its
     points, anchors and component offsets are rounded to whole units first,
     and what that leaves cleaned (glyph_lint). The Regular's record of what
     its derived glyphs were built from (built_from.py) is left behind: a
-    generated style is checked by being generated again."""
+    generated style is checked by being generated again.
+    smooth: joins the rounding would break kept smooth (round_smoothly)."""
     for g in font:
         g.lib.pop(BUILT_KEY, None)
         for c in g.contours:
-            for p in c.points:
-                p.x, p.y = round(p.x), round(p.y)
+            if smooth:
+                round_smoothly(c.points)
+            else:
+                for p in c.points:
+                    p.x, p.y = round(p.x), round(p.y)
         for a in g.anchors:
             a.x, a.y = round(a.x), round(a.y)
         for c in g.components:
@@ -688,6 +759,23 @@ def small_glyphs(regular, italic):
                 or "SUBSCRIPT" in uname:
             names.add(name)
     return names, scale
+
+
+def saved_flaws(path):
+    """The steps and crumbs (glyph_lint) of path as saved, rounded to whole
+    units and cleaned (write: a step a unit high taken out), by kind and
+    place; None where they cannot be told (a contour rounded away to
+    nothing)."""
+    from fontTools.pens.roundingPen import RoundingPen
+    from glyph_lint import clean, step_findings, vector_findings
+
+    rounded = pathops.Path()
+    pathops.simplify(path).draw(RoundingPen(rounded.getPen()))
+    try:
+        rounded = clean(rounded)
+        return {f[:2] for f in step_findings(rounded) + vector_findings(rounded)}
+    except (pathops.PathOpsError, StopIteration):
+        return None
 
 
 def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None):
@@ -813,14 +901,15 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             # winds the other way, and in one path the two would cancel
             a = pathops.simplify(ink(name))
             # the union holds all of both, row by row, or it failed (curves
-            # that coincide): then tried with the base a hair higher, which
-            # parts the curves (rounded away on saving), else the letter is
-            # left as emboldened
-            for nudge in (0, 0.25):
+            # that coincide): then tried with the base a hair lower, higher
+            # (ⱥ.sc: a.sc's foot a third of a unit above the letter's) or
+            # aside, which parts the curves (rounded away on saving), else
+            # the letter is left as emboldened
+            for nudge in (0, (0, -0.25), (0, 0.25), (0.25, 0)):
                 b = pathops.simplify(placed)
                 if nudge:
                     b = pathops.Path()
-                    placed.draw(TransformPen(b.getPen(), (1, 0, 0, 1, 0, nudge)))
+                    placed.draw(TransformPen(b.getPen(), (1, 0, 0, 1, *nudge)))
                     b = pathops.simplify(b)
                 try:
                     out = pathops.op(a, b, pathops.PathOp.UNION)
@@ -830,11 +919,10 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
                 joined = Outline(None, None, deslant, path=out)
                 held = all(compare(Outline(None, None, deslant, path=p), joined)[0]["lost"] <= 0.01 for p in (a, b))
                 if held and nudge:
-                    # a nudged join that leaves a step or a crumb is no better
-                    from glyph_lint import step_findings, vector_findings
-
-                    simple = pathops.simplify(out)
-                    held = not (step_findings(simple) or vector_findings(simple))
+                    # a nudged join that leaves a step or a crumb, once
+                    # rounded and cleaned as it is saved, is no better
+                    flaws = saved_flaws(out)
+                    held = flaws is not None and not flaws
                 if held:
                     break
             if not held:
@@ -972,8 +1060,7 @@ def rederive(source, font, italic, whole):
         name = resolve(ch)
         why = whole.get(name, "")
         rebuild = ITALIC_BOLD_REBUILD if italic else BOLD_REBUILD
-        if not why.endswith(("cuts its base", "does not keep its whole base")) and not (
-                name in whole and name in rebuild):
+        if not why.endswith(("cuts its base", "does not keep its whole base")) and name not in rebuild:
             continue
         own = ch in (ITALIC_BOLD_RECIPES if italic else BOLD_RECIPES)
         if own:
@@ -1019,7 +1106,7 @@ def rederive(source, font, italic, whole):
         redraw(font[name], glyph)
         font[name].width = new.width
         del up[tmp]
-        whole.pop(name)
+        whole.pop(name, None)
         changed.append(name)
     return changed
 
