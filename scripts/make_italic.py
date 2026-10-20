@@ -97,6 +97,9 @@ def reviewed(g):
 # 1861 wide to the Regular's 1152), and its raised and lowered + − =: the
 # Regular's are taken instead, upright
 MATH_SIGNS = set(map(ord, "+<=>±×÷¬−≈≠≤≥⁺⁻⁼₊₋₌⊗"))
+# Myia's own, sloped, though Old Standard has them: the guillemets
+# (draft_symbols.py's chevrons; Old Standard's are small crescents)
+ROMAN_SIGNS = set(map(ord, "‹›"))
 
 
 def keeps_upright(u):
@@ -1382,8 +1385,8 @@ def main():
             g.clearComponents()
             g.lib[SOURCE_KEY] = "sloped roman"
             continue
-        if g.unicode is not None and keeps_upright(g.unicode):
-            osname = None  # Myia's own, upright (below)
+        if g.unicode is not None and (keeps_upright(g.unicode) or g.unicode in ROMAN_SIGNS):
+            osname = None  # Myia's own, upright or sloped (below)
         if g.name in marks:
             # Myia's accents, sloped about the height they sit at
             t = sloped(0)

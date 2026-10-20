@@ -9,6 +9,13 @@ turned. Geometric shapes: filled (black) or outlined with a 72-unit stroke
 on the math axis. Circled letters: the letter at 60% inside a circle of
 the font's hairline weight. All glyphs are drafts; existing glyphs are
 kept unless they are unreviewed drafts and --redraft is given.
+
+    python scripts/draft_symbols.py UFO --guillemets
+
+redraws ‹ › as Didot chevrons (GFS Didot, Bodoni): a wedge with a small
+flat at its point, straight arms tapering to hairline tips cut square,
+GUILLEMET's proportions of the x-height, centred where Theano's crescents
+stood (its advance kept); « » the two nested, half an x-height apart.
 """
 
 import argparse
@@ -208,12 +215,63 @@ def circled(font, letter):
     return union(ring, to_path(None, rec=rec)), w
 
 
+# guillemets, of the x-height: height, width, the notch's depth behind the
+# point, the flat at the point, the tips (Theano's crescents were 0.62 by
+# 0.26, the references 0.77-1.05 by 0.43-0.74); « »: the second this far on
+GUILLEMET = {"height": 0.80, "width": 0.46, "depth": 0.25, "flat": 0.045, "tip": 0.045}
+GUILLEMET_STEP = 0.5
+
+
+def chevron(xh, left=True):
+    """‹ (left) or ›, its point at x = 0, centred on half the x-height."""
+    g = {k: v * xh for k, v in GUILLEMET.items()}
+    cy, h, w = xh / 2, g["height"] / 2, g["width"]
+    top, bot = (w, cy + h), (w, cy - h)
+    # the tips cut square to the outer edge, tip units long, inward
+    pts = []
+    for (tx, ty), sgn in ((top, 1), (bot, -1)):
+        ux, uy = tx, ty - (cy + sgn * g["flat"] / 2)
+        n = math.hypot(ux, uy)
+        nx, ny = uy / n * sgn, -ux / n * sgn  # the normal into the wedge
+        pts.append(((tx, ty), (tx + nx * g["tip"], ty + ny * g["tip"])))
+    (t_out, t_in), (b_out, b_in) = pts
+    outline = [(0, cy + g["flat"] / 2), t_out, t_in, (g["depth"], cy), b_in, b_out, (0, cy - g["flat"] / 2)]
+    if not left:
+        outline = [(w - x, y) for x, y in reversed(outline)]
+    return poly(outline)
+
+
+def guillemets(font):
+    xh = font.info.xHeight
+    for name, left in (("guilsinglleft", True), ("guilsinglright", False)):
+        g = font[name]
+        b = g.getBounds(font)
+        x0 = (b.xMin + b.xMax) / 2 - GUILLEMET["width"] * xh / 2  # centred where the old ink was
+        g.clearContours()
+        draw_path(font, font["period"], g, transformed(chevron(xh, left), (1, 0, 0, 1, x0, 0)))
+        g.lib[DRAFT_KEY] = True
+    step = round(GUILLEMET_STEP * xh)
+    for name, single in (("guillemotleft", "guilsinglleft"), ("guillemotright", "guilsinglright")):
+        g = font[name]
+        for c in g.components:
+            if c.transformation[4]:
+                c.transformation = (1, 0, 0, 1, step, 0)
+        g.width = font[single].width + step
+        g.lib[DRAFT_KEY] = True
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("ufo")
     ap.add_argument("--redraft", action="store_true")
+    ap.add_argument("--guillemets", action="store_true")
     args = ap.parse_args()
     font = ufoLib2.Font.open(args.ufo)
+    if args.guillemets:
+        guillemets(font)
+        font.save()
+        print("redrawn: ‹ › « »")
+        return
     cats = font.lib.setdefault("public.openTypeCategories", {})
     made, kept = [], []
 

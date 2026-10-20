@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="guillemotright" format="2">
 	<unicode hex="00BB"/>
-	<advance width="942"/>
+	<advance width="1088"/>
 	<outline>
-		<component base="guilsinglright" xOffset="296"/>
+		<component base="guilsinglright" xOffset="442"/>
 		<component base="guilsinglright"/>
 	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
 </glyph>

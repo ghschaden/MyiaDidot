@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="guilsinglleft" format="2">
 	<unicode hex="2039"/>
-	<advance width="743"/>
+	<advance width="753"/>
 	<outline>
 		<contour>
-			<point x="63" y="441" type="curve"/>
-			<point x="315" y="621"/>
-			<point x="387" y="629"/>
-			<point x="639" y="849" type="curve"/>
-			<point x="662" y="832" type="line"/>
-			<point x="336" y="444" type="line"/>
-			<point x="453" y="54" type="line"/>
-			<point x="414" y="35" type="line"/>
-			<point x="286" y="253"/>
-			<point x="214" y="266"/>
+			<point x="138" y="466" type="line"/>
+			<point x="693" y="824" type="line"/>
+			<point x="728" y="769" type="line"/>
+			<point x="414" y="442" type="line"/>
+			<point x="549" y="115" type="line"/>
+			<point x="486" y="59" type="line"/>
+			<point x="126" y="418" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>sloped roman</string>
 		</dict>
 	</lib>
 </glyph>
