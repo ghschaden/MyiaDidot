@@ -179,6 +179,8 @@
 		</dict>
 		<key>a</key>
 		<dict>
+			<key>g</key>
+			<integer>-56</integer>
 			<key>s</key>
 			<integer>-29</integer>
 			<key>t</key>
@@ -341,7 +343,7 @@
 		<key>k</key>
 		<dict>
 			<key>t</key>
-			<integer>-44</integer>
+			<integer>-113</integer>
 		</dict>
 		<key>l.sc</key>
 		<dict>
@@ -1771,6 +1773,13 @@
 			<key>uni0263</key>
 			<integer>-115</integer>
 		</dict>
+		<key>public.kern1.epsilon</key>
+		<dict>
+			<key>public.kern2.chi</key>
+			<integer>49</integer>
+			<key>public.kern2.lambda</key>
+			<integer>-53</integer>
+		</dict>
 		<key>public.kern1.k</key>
 		<dict>
 			<key>public.kern2.a</key>
@@ -1811,18 +1820,18 @@
 		<key>public.kern1.sigma</key>
 		<dict>
 			<key>public.kern2.etatonos</key>
-			<integer>81</integer>
+			<integer>41</integer>
 			<key>public.kern2.iota</key>
-			<integer>55</integer>
+			<integer>15</integer>
 			<key>public.kern2.omicron</key>
-			<integer>62</integer>
+			<integer>22</integer>
 			<key>public.kern2.tau</key>
-			<integer>77</integer>
+			<integer>37</integer>
 		</dict>
 		<key>public.kern1.tau</key>
 		<dict>
 			<key>public.kern2.omega</key>
-			<integer>49</integer>
+			<integer>14</integer>
 		</dict>
 		<key>public.kern1.tonos</key>
 		<dict>
@@ -2687,6 +2696,8 @@
 		<dict>
 			<key>f</key>
 			<integer>-47</integer>
+			<key>r</key>
+			<integer>-40</integer>
 			<key>t</key>
 			<integer>-34</integer>
 		</dict>
@@ -2819,6 +2830,11 @@
 		<dict>
 			<key>public.kern2.j</key>
 			<integer>50</integer>
+		</dict>
+		<key>x</key>
+		<dict>
+			<key>t</key>
+			<integer>-77</integer>
 		</dict>
 		<key>y.sc</key>
 		<dict>

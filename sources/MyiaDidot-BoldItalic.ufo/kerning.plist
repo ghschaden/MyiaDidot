@@ -362,6 +362,8 @@
 			<integer>-62</integer>
 			<key>r</key>
 			<integer>-95</integer>
+			<key>t</key>
+			<integer>-66</integer>
 			<key>uni01D0</key>
 			<integer>46</integer>
 			<key>uni0209</key>
@@ -2095,11 +2097,15 @@
 		</dict>
 		<key>public.kern1.delta</key>
 		<dict>
+			<key>public.kern2.etatonos</key>
+			<integer>62</integer>
 			<key>public.kern2.iota</key>
 			<integer>78</integer>
 		</dict>
 		<key>public.kern1.eta</key>
 		<dict>
+			<key>public.kern2.mugreek</key>
+			<integer>66</integer>
 			<key>public.kern2.nu</key>
 			<integer>89</integer>
 			<key>public.kern2.rho</key>
@@ -2158,8 +2164,12 @@
 		</dict>
 		<key>public.kern1.rho</key>
 		<dict>
+			<key>public.kern2.etatonos</key>
+			<integer>60</integer>
 			<key>public.kern2.gamma</key>
 			<integer>33</integer>
+			<key>public.kern2.upsilon</key>
+			<integer>56</integer>
 		</dict>
 		<key>public.kern1.sigma</key>
 		<dict>

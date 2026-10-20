@@ -188,16 +188,22 @@ FIGURE_NAMES = {f"{n}{s}" for n in ("zero", "one", "two", "three", "four", "five
 # the left (measured, scripts/quality/pairs.py and colour.py); ж, emboldened
 # into its neighbours, tight on both sides (greek_pairs.py --script cyrillic)
 BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni0442": (26, 0),  # t; г є т
-                     "uni0436": (40, 40), "uni0436.loclBGR": (40, 40), "uni0497": (40, 40)}  # ж, Bulgarian ж, җ
+                     "uni0436": (40, 40), "uni0436.loclBGR": (40, 40), "uni0497": (40, 40),  # ж, Bulgarian ж, җ
+                     # Greek sides that stood tight against the Greek references in
+                     # most of their pairs, as the Bold's Latin sets them (greek_pairs.py)
+                     "sigma": (0, 40), "tau": (0, 35), "eta": (0, 45), "kappa": (50, 0)}
 # Pair-level corrections measured after the Bold's global kerning scale.
 BOLD_KERNING = {
     # Greek: σ's right side stood tight against the Greek references, as
-    # the Bold's Latin sets them (scripts/quality/greek_pairs.py)
-    ("public.kern1.sigma", "public.kern2.etatonos"): 81,  # ση
-    ("public.kern1.sigma", "public.kern2.tau"): 77,  # στ
-    ("public.kern1.sigma", "public.kern2.omicron"): 62,  # σο
-    ("public.kern1.sigma", "public.kern2.iota"): 55,  # σι
-    ("public.kern1.tau", "public.kern2.omega"): 49,  # τω
+    # the Bold's Latin sets them (scripts/quality/greek_pairs.py); what is
+    # left of it after its sidebearing (BOLD_SIDEBEARINGS, 40)
+    ("public.kern1.sigma", "public.kern2.etatonos"): 41,  # ση
+    ("public.kern1.sigma", "public.kern2.tau"): 37,  # στ
+    ("public.kern1.sigma", "public.kern2.omicron"): 22,  # σο
+    ("public.kern1.sigma", "public.kern2.iota"): 15,  # σι
+    ("public.kern1.tau", "public.kern2.omega"): 14,  # τω (τ's sidebearing 35)
+    ("public.kern1.epsilon", "public.kern2.chi"): 49,  # εχ
+    ("public.kern1.epsilon", "public.kern2.lambda"): -53,  # ελ
     # Cyrillic against Cyrillic references, as the Bold's Latin sets them
     # (greek_pairs.py --script cyrillic)
     ("public.kern1.uni0433", "public.kern2.uni0434"): -150,  # гд (the Regular's -40, scaled)
@@ -210,10 +216,13 @@ BOLD_KERNING = {
     ("a", "t"): -45,
     ("a", "s"): -29,
     ("a", "u"): -24,
-    ("k", "t"): -44,
+    ("k", "t"): -113,  # -44, then still loose against the Bold references (pairs.py)
     ("z", "t"): -25,
     ("f", "s"): -41,
     ("S", "m"): -28,
+    ("t", "r"): -40,
+    ("a", "g"): -56,
+    ("x", "t"): -77,
 }
 # the Bold Italic's own (from the Italic): none yet
 ITALIC_SIDEBEARINGS = {"uni025E": (100, 0)}  # ɞ: its bowl widened leftward (ITALIC_BOLD_RECIPES)
@@ -241,6 +250,11 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.sigma", "public.kern2.alphatonos"): 58,  # σα
     ("public.kern1.sigma", "public.kern2.omega"): 66,  # σω
     ("public.kern1.sigma", "phi"): 60,  # σφ (σο, in the same group, is in range)
+    # tight against the references after the spacing of 2026-10-20
+    ("public.kern1.delta", "public.kern2.etatonos"): 62,  # δη
+    ("public.kern1.rho", "public.kern2.etatonos"): 60,  # ρη
+    ("public.kern1.rho", "public.kern2.upsilon"): 56,  # ρυ
+    ("public.kern1.eta", "public.kern2.mugreek"): 66,  # ημ
     # Cyrillic against Cyrillic references, as the Bold Italic's Latin sets
     # them (greek_pairs.py --script cyrillic): а a little wide before the
     # letters with a stem (аг ак ан ап ар ащ) and з э
@@ -265,6 +279,7 @@ ITALIC_BOLD_KERNING = {
     ("v", "a"): 50,
     ("u", "f"): 92,
     ("R", "e"): 39,
+    ("f", "t"): -66,
 }
 # the horn on u a little left: where the Regular's sits, the Bold's heavier
 # foot leaves a ledge beside the stem (glyph_lint)

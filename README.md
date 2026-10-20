@@ -9,7 +9,7 @@ Goals:
 - Regular, Italic, Bold and Bold Italic;
 - true small capitals (`smcp`, `c2sc`) in every style.
 
-Status: **Phase 2** done: Regular, Italic (from Old Standard), Bold and Bold Italic (derived), each with small caps. **Phase 3 is underway:** spacing and kerning comparisons, feature-table audits, and specimen proofs now run for all four styles. See FONTLOG.txt.
+Status: **Phase 2** done: Regular, Italic (from Old Standard), Bold and Bold Italic (derived), each with small caps. **Phase 3:** spacing and kerning comparisons, feature-table audits, and specimen proofs run for all four styles; every frequent Latin, Greek and Cyrillic pair lies within the reference fonts' range, but four reviewed ones in the Bold Italic. **Phase 4 is underway:** a Didot bold's contrast, clean construction of the derived styles, and hinting. All drafted glyphs are reviewed. See FONTLOG.txt.
 
 ## Layout
 

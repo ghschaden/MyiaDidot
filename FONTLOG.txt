@@ -26,6 +26,59 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-20 Version 0.100 (development), Phase 3: Bold spacing against the references
+
+    * Every frequent Latin, Greek and Cyrillic pair of every style now lies
+      within the references' range (scripts/quality/pair_summary.py),
+      but four of the Bold Italic (of Wh it ba): measured tight, they look
+      right beside Bodoni Moda, and looser they open into gaps (reviewed,
+      left as they are).
+    * Bold: tr ag xt kt, loose, kerned tighter. The Greek stood tight in
+      most pairs of σ τ η (right side) and κ (left side) against the Greek
+      references, as the Bold's Latin sets them. They now have sidebearings
+      of their own (σ +40, τ +35, η +45, κ +50, their accented forms with
+      them), and εχ ελ are kerned. Bold Italic: ft tighter, δη ρη ρυ ημ
+      looser.
+
+2026-10-20 Version 0.100 (development), Phase 4: brackets, rounding, joins
+
+    * Where emboldening overran a concave bracket into a straight edge (the
+      Bold Italic G's jaw, some 400 serifs that had curled into hooks, the
+      Bold e's bar), the bracket's node slides along the edge until the
+      bracket is as long as before, and its handles grow with it. The
+      bracket's other end now runs on along the stroke it leaves: the
+      source's slight corner there (about 3 degrees, on handles too short
+      to show it) no longer shows as a kink. Bold Italic kinks 655 -> 597.
+    * Rounding to whole units no longer breaks smooth joins in the Bold and
+      Bold Italic: where it turns one by more than a degree, a handle moves
+      a unit to keep it in line (make_bold.py round_smoothly). Smooth nodes
+      broken by more than 2 degrees: Bold 177 -> 66, Bold Italic
+      757 -> 306. The Italic, which the Bold Italic is made of, is rounded
+      as before.
+    * Ҳ: in the italics the tail met the foot serif in a step; the serif's
+      top now runs straight onto the tail's corner. The Bold Italic's ⱥ.sc
+      is a.sc and its slash joined (a.sc's own bracket at the foot), no
+      longer emboldened whole, which thickened the joins.
+    * The Italic's kept glyphs (reviewed or drawn) were respaced on every
+      run of make_italic.py (г.loclSRB lost 80 units each time); they are
+      now kept as they are.
+
+2026-10-20 Version 0.100 (development), Phase 4: guillemets, horns, в, dieresis
+
+    * The guillemets ‹ › « » drawn as Didot chevrons, angled and heavier
+      than the thin ones before (scripts/draft_symbols.py --guillemets);
+      the italics take the Regular's, sloped.
+    * The Vietnamese horn heavier (0.67 of the comma, the capital's 0.79),
+      and 1.2 times as large again in the italics, near the reference
+      italics' weight. Ư and its accented forms grow the horn out of the
+      stem, the serif's outer arm cut away, in every style.
+    * Bulgarian в: the upper bowl's floor level from the stem, without the
+      dip β's waist left; its counters are cut clear of the pieces
+      attached into them.
+    * The dieresis on the capitals (Ä Ö Ü ...) has larger dots (by 192/174),
+      no longer smaller than the lowercase's.
+    * All drafts reviewed and accepted, in every style.
+
 2026-10-19 Version 0.100 (development), Phase 4: a Didot bold's contrast
 
     * Bold and Bold Italic emboldened by stroke weight: the thick strokes
