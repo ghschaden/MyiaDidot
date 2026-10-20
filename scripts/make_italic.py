@@ -1092,6 +1092,10 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0), "uni0433.loclSRB": (-80, 0),
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}
+# the Regular's horn, sloped, was lighter and smaller than every reference
+# italic's (ơ: 19 % of o's ink, EB Garamond 22, Libertinus 34, Charis 24):
+# scaled about its tip (where it attaches), the Bold Italic's with it
+ITALIC_HORN = {"horn": 1.2, "Horn": 1.2}
 
 
 def swapped_sidebearings(font):
@@ -1383,6 +1387,9 @@ def main():
         if g.name in marks:
             # Myia's accents, sloped about the height they sit at
             t = sloped(0)
+            if g.name in ITALIC_HORN:
+                k = ITALIC_HORN[g.name]
+                t = (k, 0, SLANT * k, k, 440 * (1 - k), 0)  # scaled about (440, 0), then sloped
             if g.contours:
                 rec = RecordingPen()
                 for c in g.contours:
