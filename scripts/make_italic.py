@@ -1594,6 +1594,14 @@ def main():
         if (g.lib.get(SOURCE_KEY) == "derived" and g.name not in kept and len(g.components) == 1
                 and not g.contours and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
             g.width = font[g.components[0].baseGlyph].width
+    # the kept ones as they were (the side bearings above, respace carrying
+    # composites along, moved them again each run: г.loclSRB -80 a run);
+    # an alias still as wide as its letter
+    for name in kept:
+        g = copy.deepcopy(previous[name])
+        if len(g.components) == 1 and not g.contours and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0):
+            g.width = font[g.components[0].baseGlyph].width
+        font.layers.defaultLayer.insertGlyph(g, name, overwrite=True)
     font.lib[CUT_KEY] ={"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     anchored = missing_anchors(font, regular, marks)
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
