@@ -1065,8 +1065,40 @@ def tail_path(font, source, band, mode):
     keep = path_op(keep, rect_path(-BIG, -BIG, BIG, 0), "UNION")
     piece = shifted(path_op(to_path(font, font[tsrc]), keep, "INTERSECTION"), dx)
     out = path_op(letter, piece, "UNION")
+    if mode == "foot":
+        out = path_op(out, tail_step(letter, piece, 30), "UNION")
     rsb = font[tsrc].width - ink_bounds(font, tsrc)[2]
     return out, piece.bounds[2] + rsb
+
+
+def tail_step(letter, piece, top):
+    """Where the tail's top (cut flat at top) runs on past a foot serif
+    whose end drops steeply (the italics' Ҳ Қ Җ: a step of 15 units), the
+    step filled: a straight edge from the serif's top corner to the tail's
+    top corner. Nothing where the serif's end slopes into it (the Regular)."""
+    def right(path, y):
+        cut = path_op(path, rect_path(-BIG, y - 0.5, BIG, y + 0.5), "INTERSECTION")
+        return cut.bounds[2] if list(cut.contours) else None
+
+    xs, xt = right(letter, top + 1), right(piece, top - 1)
+    if xs is None or xt is None or xt - xs < 5:
+        return pathops.Path()
+    # up the serif's end to its top corner, where the right edge turns back
+    y, x = top + 1, xs
+    while True:
+        nx = right(letter, y + 2)
+        if nx is None or nx < x - 20:
+            break
+        y, x = y + 2, nx
+    if y - top < 4 or x - xs > y - top:  # no step, or the end slopes into the tail
+        return pathops.Path()
+    rec = RecordingPen()
+    rec.moveTo((x - 1, y))
+    rec.lineTo((xt, top))
+    rec.lineTo((xt, top - 2))
+    rec.lineTo((xs - 1, top - 2))
+    rec.closePath()
+    return to_path(None, rec=rec)
 
 
 def vertical_runs(font, name, x):
@@ -1096,7 +1128,8 @@ def keep_brackets(P, ons, old, new, sign):
     past it: the handles, as long as before, curl back into a hook). That
     node slides along its edge (no further than half of it) until the
     bracket is as long as before; the handles keep their share of it.
-    Moves the nodes in new; returns {segment's first node: its handles}."""
+    Moves the nodes in new; returns {segment's first node: its handles}
+    and the slid nodes, as (node, the edge's far node, the node's handle)."""
     n, L = len(P), len(ons)
 
     def unit(dx, dy):
@@ -1111,7 +1144,7 @@ def keep_brackets(P, ons, old, new, sign):
         rx, ry = b[0] - a[0], b[1] - a[1]
         return (rx * tb[1] - ry * tb[0]) / det, (ta[0] * ry - ta[1] * rx) / det
 
-    out = {}
+    out, slid = {}, []
     for idx, i in enumerate(ons):
         j = ons[(idx + 1) % L]
         if (j - i) % n != 3:
@@ -1156,6 +1189,7 @@ def keep_brackets(P, ons, old, new, sign):
             slide = min(wanted - got, 0.5 * math.dist(new[q], new[far]))
             sgn = -1 if end == "i" else 1
             new[q] = (new[q][0] + sgn * tn[0] * slide, new[q][1] + sgn * tn[1] * slide)
+            slid.append((q, far, h1 if end == "i" else h2))
             if end == "i":
                 s += slide
             else:
@@ -1165,16 +1199,18 @@ def keep_brackets(P, ons, old, new, sign):
             lb = math.dist(old[h2], old[j]) * max(t, 0) / was[1]
             out[i] = ((new[i][0] + ta[0] * la, new[i][1] + ta[1] * la),
                       (new[j][0] - tb[0] * lb, new[j][1] - tb[1] * lb))
-    return out
+    return out, slid
 
 
-def embolden(rec, ax, ay, factor=None):
+def embolden(rec, ax, ay, factor=None, slid=None):
     """Thicken vertical strokes by ax and horizontal ones by ay (negative:
     thinner). Each node moves out along its outline's normal (at a corner,
     along the bisector, as far as both edges move: a mitre, limited); its
     handles move with it and grow as their segment grows, so smooth nodes
     stay smooth and a circle stays a circle. factor(x, y, inward) -> 0..1, if
-    given, scales ax at each node (make_italic: the thick strokes only)."""
+    given, scales ax at each node (make_italic: the thick strokes only).
+    slid, a list if given, gets the bracket nodes keep_brackets slid, as
+    (contour, node, far node, handle)."""
     glyph = ufoLib2.objects.Glyph()
     rec.replay(glyph.getPen())
 
@@ -1225,7 +1261,9 @@ def embolden(rec, ax, ay, factor=None):
         new = list(old)
         for i in ons:
             new[i] = (old[i][0] + move[i][0], old[i][1] + move[i][1])
-        brackets = keep_brackets(P, ons, old, new, sign)
+        brackets, moved = keep_brackets(P, ons, old, new, sign)
+        if slid is not None:
+            slid += [(glyph.contours.index(contour), *m) for m in moved]
         # handles: along their old directions (so smooth nodes stay smooth),
         # their lengths fitted (least squares) to the curve's points offset
         # along their own normals, as far as the nodes are; a tight curve
@@ -1523,7 +1561,8 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
 
     rec2 = RecordingPen()
     glyph.draw(rec2)
-    out = embolden(rec2, ax, ay, factor)
+    slid = []
+    out = embolden(rec2, ax, ay, factor, slid)
     # corners between straight edges: where the moved edges meet
     for ci, i, e_in, e_out in corners:
         P = glyph.contours[ci].points
@@ -1556,6 +1595,16 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
         if reach > cap > 0:
             mvx, mvy = mvx * cap / reach, mvy * cap / reach
         Q[i].x, Q[i].y = x + mvx, y + mvy
+    # a bracket's slid node: its handle along its edge as the corners left
+    # it (the serif's tip moved after the slide: a kink of a few degrees)
+    for ci, q, far, h in slid:
+        Q = out.contours[ci].points
+        d = unit(Q[q].x - Q[far].x, Q[q].y - Q[far].y)
+        if not d:
+            continue
+        # the curve runs on from the edge past the node, whichever end it is
+        ln = math.dist((Q[q].x, Q[q].y), (Q[h].x, Q[h].y))
+        Q[h].x, Q[h].y = Q[q].x + d[0] * ln, Q[q].y + d[1] * ln
     return out
 
 

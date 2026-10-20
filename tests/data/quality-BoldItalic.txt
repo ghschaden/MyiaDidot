@@ -89,7 +89,6 @@ Xi smooth 1                      # contrast-aware Bold (emboldened by stroke wei
 Xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 169 against 307 (0.55, lighter)
 Y extreme 2                      # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 768,1367 19 units past; 773,105 8 units past
 Y kink 2                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 445,1271 5.0 degrees; 778,113 3.9 degrees
-Y smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 473,110 3.0 degrees
 Z slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
 a extreme 3                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 769,95 6 units past; 291,166 14 units past; 648,659 19 units past
 a kink 3                         # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 752,-23 1.0 degrees; 565,839 1.7 degrees; 405,623 3.4 degrees
@@ -208,7 +207,7 @@ ffl zone 1                       # 2026-10-16 Bold Italic: first generated (make
 fi smooth 4                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 877,1303 2.7 degrees; 539,985 2.4 degrees; 788,670 2.6 degrees; 857,763 2.3 degrees
 fi zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
 five slant 1                     # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 17.4 degrees, not 15.2
-five smooth 2                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 387,818 2.7 degrees; 496,1318 2.0 degrees
+five smooth 1                    # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 417,616 2.1 degrees
 fiveoldstyle smooth 2            # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 594,1413 2.1 degrees; 455,669 2.3 degrees
 fiveoldstyle stroke 1            # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 328 against 289 (1.13, darker)
 fivesuperior kink 1              # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 422,1275 4.1 degrees
@@ -259,7 +258,7 @@ k kink 1                         # 2026-10-16 Bold Italic: first generated (make
 k smooth 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 705,103 2.4 degrees
 k weight 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): at 442 stem 499 against 291
 k.sc extreme 1                   # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 631,53 11 units past
-k.sc kink 3                      # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 892,942 2.7 degrees; 842,982 4.8 degrees; 668,115 7.1 degrees
+k.sc kink 2                      # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 892,942 2.7 degrees; 668,115 7.1 degrees
 kappa extreme 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 616,202 7 units past
 kappa smooth 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 518,464 2.5 degrees
 kappa stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 239 against 279 (0.86, lighter)
@@ -368,7 +367,6 @@ sevenoldstyle extreme 1          # contrast-aware Bold (emboldened by stroke wei
 sevenoldstyle smooth 1           # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1057,672 2.5 degrees
 sevenoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 135 against 279 (0.48, lighter)
 sevensuperior extreme 2          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 452,1410 12 units past; 538,793 6 units past
-sevensuperior kink 1             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 672,1019 3.2 degrees
 sevensuperior smooth 2           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 816,1310 4.5 degrees; 791,1346 2.1 degrees
 sigma.sc slant 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.3 degrees, not 15.2
 sigma.sc stroke 1                # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 152 against 273 (0.56, lighter)
@@ -395,7 +393,7 @@ three smooth 1                   # contrast-aware Bold (emboldened by stroke wei
 threesuperior smooth 1           # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 602,871 2.5 degrees
 tonos smooth 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 826,1485 2.4 degrees
 trademark extreme 4              # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1451,741 9 units past; 1155,1062 6 units past; 1058,1389 19 units past; 801,1358 17 units p
-trademark kink 2                 # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1410,741 3.9 degrees; 2409,1389 1.1 degrees
+trademark kink 1                 # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 1410,741 3.9 degrees
 trademark smooth 1               # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1541,1340 3.6 degrees
 two kink 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 362,454 3.9 degrees
 two stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 200 against 307 (0.65, lighter)
@@ -554,7 +552,7 @@ uni0250 kink 2                   # contrast-aware Bold (emboldened by stroke wei
 uni0250 smooth 2                 # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni0250 zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
 uni0250.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 288,928 6.5 degrees
-uni0250.sc smooth 2              # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 896,785 2.2 degrees; 1050,887 2.5 degrees
+uni0250.sc smooth 1              # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 1050,887 2.5 degrees
 uni0250.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -5 from 0
 uni0251.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 553,9 15 units past; 421,506 38 units past
 uni0251.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 338 against 282 (1.20, darker)
@@ -1036,8 +1034,8 @@ uni046B kink 1                   # 2026-10-16 Bold Italic: first generated (make
 uni046B smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1273,99 2.3 degrees; 1043,256 2.7 degrees
 uni046B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 uni046B.sc extreme 1             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1097,367 7 units past
-uni046B.sc kink 2                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 27,90 3.4 degrees; 1110,53 4.1 degrees
-uni046B.sc smooth 1              # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 490,920 2.8 degrees
+uni046B.sc kink 1                # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 27,90 3.4 degrees
+uni046B.sc smooth 2              # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 490,920 2.8 degrees; 1110,53 2.2 degrees
 uni0472 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 474,684 6 units past; 1166,744 8 units past
 uni0472 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 549,904 2.5 degrees
 uni0473 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 312,420 8 units past; 704,464 5 units past
@@ -1068,7 +1066,7 @@ uni0496 smooth 2                 # contrast-aware Bold (emboldened by stroke wei
 uni0496 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
 uni0497 kink 2                   # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 340,190 4.8 degrees; 1185,203 6.8 degrees
 uni0497 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 282,251 2.5 degrees
-uni0497.sc extreme 7             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 503,649 10 units past; 444,989 6 units past; 561,807 10 units past; 813,958 14 units past; 
+uni0497.sc extreme 7             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 503,649 10 units past; 444,989 6 units past; 561,807 10 units past; 813,958 14 units past;
 uni0497.sc kink 3                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 629,915 5.8 degrees; 1083,189 3.7 degrees; 506,44
 uni0497.sc smooth 5              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 134,206 2.5 degrees; 442,952 2.2 degrees; 487,862
 uni0497.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +24 from 1040
@@ -1078,7 +1076,7 @@ uni049A zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni049B kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 829,690 5.2 degrees; 837,202 2.9 degrees
 uni049B smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 533,572 2.5 degrees; 571,202 2.2 degrees
 uni049B.sc extreme 1             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 664,115 10 units past
-uni049B.sc kink 3                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 664,115 6.1 degrees; 1001,53 6.9 degrees; 838,982 4.8 degrees
+uni049B.sc kink 2                # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 664,115 7.1 degrees; 1001,53 6.9 degrees
 uni049B.sc smooth 1              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 867,982 2.2 degrees
 uni04A2 extreme 3                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 502,1316 6 units past; 1328,1322 5 units past; 487,106 6 units past
 uni04A3 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 348,765 7 units past
@@ -1094,10 +1092,9 @@ uni04B1 slant 1                  # 2026-10-16 Bold Italic: first generated (make
 uni04B1 smooth 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 452,-364 2.4 degrees
 uni04B1.sc extreme 1             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 525,982 20 units past
 uni04B1.sc kink 3                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 273,914 4.3 degrees; 871,922 5.4 degrees; 989,871 3.2 degrees
-uni04B2 extreme 3                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 868,1367 17 units past; 1297,1275 7 units past; 1062,60 24 units past
-uni04B2 kink 1                   # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1464,60 6.5 degrees
+uni04B2 extreme 2                # Ҳ made of the Bold Italic's X again (ITALIC_BOLD_REBUILD), the tail's step on the serif filled (derive.tail_step): 865,1367 17 units past; 1058,60 24 units past
 uni04B2 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.9 degrees, not 15.2
-uni04B2 smooth 2                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1527,1256 2.4 degrees; 1283,1154 2.3 degrees
+uni04B2 smooth 1                 # Ҳ made of the Bold Italic's X again (ITALIC_BOLD_REBUILD), the tail's step on the serif filled (derive.tail_step): 1298,1321 2.4 degrees
 uni04B2 stroke 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: uc 271 against 307 (0.88, lighter)
 uni04B3 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 57,219 3.8 degrees; 283,251 1.8 degrees
 uni04B3 smooth 7                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 14,113 4.0 degrees; 340,190 3.5 degrees; 528,624 2.0 degrees; 1147,641 2.3 degrees; 1015,807 3.0 degrees; 732
@@ -1276,7 +1273,6 @@ uni2135 smooth 5                 # contrast-aware Bold (emboldened by stroke wei
 uni2136 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 173 against 289 (0.60, lighter)
 uni2144 extreme 2                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 892,1374 7 units past; 955,168 19 units past
 uni2144 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 316,223 2.7 degrees; 1250,163 5.2 degrees
-uni2144 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 510,342 2.2 degrees
 uni24D0 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 1377,293 8 units past
 uni2C62 extreme 2                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 517,60 6 units past; 467,1367 8 units past
 uni2C63 extreme 1                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 507,1323 5 units past
@@ -1297,12 +1293,11 @@ uni2C66.sc zone 1                # 2026-10-16 Bold Italic: first generated (make
 uni2C6D extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 768,10 23 units past; 550,696 51 units past
 uni2C6D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 373 against 307 (1.22, darker)
 uni2C6F kink 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 451,1287 5.2 degrees
-uni2C6F smooth 1                 # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1235,1103 2.3 degrees
 uni2C72 kink 1                   # serif tips kept apart in the Bold Italic (make_bold part_serifs): 452,1271 4.7 degrees
-uni2C72 smooth 3                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1159,1055 2.1 degrees; 1205,1328 2.6 degrees; 1496,1232 2.3 degrees
+uni2C72 smooth 2                 # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 1159,1055 2.1 degrees; 1496,1232 2.3 degrees
 uni2C73 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
 uni2C73 smooth 4                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 390,188 2.4 degrees; 870,133 2.8 degrees; 679,150 2.7 degrees; 365,706 2.3 degrees
-uni2C73.sc kink 5                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 832,766 5.4 degrees; 853,922 2.2 degrees; 1128,891 7.9 degrees; 1438,830 3.7 degrees; 283,922 7.4 degrees
+uni2C73.sc kink 4                # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 832,766 5.8 degrees; 1447,759 3.6 degrees; 1483,830 3.4 degrees; 283,922 7.6 degrees
 uni2C73.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 uni2E0E smooth 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 701,-276 2.1 degrees; 825,1671 2.6 degrees
 uni2E14 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 245,416 10 units past
@@ -1348,7 +1343,7 @@ v.sc kink 2                      # contrast-aware Bold (emboldened by stroke wei
 v.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 w slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
 w smooth 4                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 388,186 4.3 degrees; 679,150 3.1 degrees; 670,193 3.7 degrees; 405,763 2.4 degrees
-w.sc kink 7                      # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 584,985 1.2 degrees; 829,762 6.9 degrees; 1169,985 4.1 degrees; 1429,916 1.7 degrees; 1392,
+w.sc kink 4                      # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 829,762 6.9 degrees; 1429,916 1.7 degrees; 1602,869 3.9 degrees; 281,916 5.7 degrees
 w.sc smooth 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 849,916 4.4 degrees
 w.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 x kink 2                         # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 279,251 5.5 degrees; 916,610 3.4 degrees
@@ -1364,7 +1359,7 @@ xi.sc stroke 1                   # stroke weights against the kind's (scripts/qu
 y slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.1 degrees, not 15.2
 y smooth 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 405,763 2.4 degrees; 388,186 4.3 degrees
 y.sc extreme 1                   # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 528,982 20 units past
-y.sc kink 4                      # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 276,914 4.3 degrees; 852,788 4.2 degrees; 874,922 5.5 degrees; 992,871 3.2 degrees
+y.sc kink 3                      # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 276,914 4.3 degrees; 874,922 5.4 degrees; 992,871 3.2 degrees
 yen extreme 1                    # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 659,108 6 units past
 yen smooth 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1220,1191 2.5 degrees
 z smooth 3                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 724,773 7.3 degrees; 308,149 3.3 degrees; 241,37 2.7 degrees
