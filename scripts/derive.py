@@ -263,15 +263,18 @@ RECIPES = [
     # its stem below 1280 (in pieces, the seams kinked the loop); the notch
     # under the ball, between stem and b's arch, filled (along the stem, the
     # ball and the arch's hairline); the counter's floor carried level from
-    # the top of the ball (961) into the loop's right side, where β's waist
-    # left a dip (952 at 577)
+    # the top of the ball (961), from the stem (where the ball rose from
+    # 905; a sharp corner: a rounded one turns over in the Bold) into the
+    # loop's right side (β's waist left a dip, 952 at 577); b's counter
+    # kept (β's waist reached into its top: kinks at 518 and 607)
     ("в.loclBGR", "attach", "b", ("x", [(-BIG, 1293, BIG, BIG)],
                                   [("beta", ((-BIG, 640, BIG, BIG), (-BIG, 640, 400, 1280)), (0, 750),
                                     (1, 0.772, 0, 884)),
                                    ("poly", [(378, 690), (378, 905), (430, 905), (480, 862), (550, 862),
                                              (490, 800), (455, 760), (425, 720)], (0, 0), (1, 1, 0, 0)),
-                                   ("poly", [(496, 930), (496, 961), ((540, 961), (604, 961), (647, 999)),
-                                             (647, 930)], (0, 0), (1, 1, 0, 0))])),
+                                   ("poly", [(360, 900), (360, 961), (496, 961), ((540, 961), (604, 961), (647, 999)),
+                                             (647, 930), (496, 900)], (0, 0), (1, 1, 0, 0)),
+                                   ("counter", (-BIG, -BIG, BIG, BIG), (0, 0), (1, 1, 0, 0))])),
     # г: the cursive г, set upright, is s mirrored (ƨ)
     ("г.loclBGR", "mirror", "s", None),
     # hooks from the font: (band, kind, stem, cut, removed left/right of it)
@@ -945,6 +948,33 @@ def to_path(font, glyph=None, rec=None):
         glyph.draw(rec)
     rec.replay(path.getPen())
     return path
+
+
+def counters(font, glyph):
+    """The glyph's counters, each a path: its contours that wind against
+    the largest."""
+    rec = DecomposingRecordingPen(font)
+    glyph.draw(rec)
+    contours, cur = [], []
+    for op, args in rec.value:
+        cur.append((op, args))
+        if op in ("closePath", "endPath"):
+            contours.append(cur)
+            cur = []
+
+    def area(contour):
+        pts = [pt for _, args in contour for pt in args]
+        return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1], strict=True))
+
+    areas = [area(c) for c in contours]
+    outer = max(areas, key=abs, default=1) > 0
+    found = []
+    for contour, a in zip(contours, areas, strict=True):
+        if a and (a > 0) != outer:
+            one = RecordingPen()
+            one.value = contour
+            found.append(to_path(None, rec=one))
+    return found
 
 
 def rect_path(x0, y0, x1, y1):
@@ -1730,8 +1760,8 @@ def attach(font, source, cuts, pieces):
     scaled (sx, sy) and optionally turned (degrees, a fifth value); a negative
     sx mirrors. For hooks that need placing by hand (Ɲ, ₪, Ϗ); "rect" pieces
     are boxes, "line" pieces straight strokes, "poly" pieces polygons (with
-    curves), "curl"
-    pieces drawn hooks."""
+    curves), "curl" pieces drawn hooks; a "counter" piece (a box) clears
+    the letter's own counters within it of the pieces before it."""
     stems, hairs = font.lib.get(STROKE_KEY, (1, 1))
 
     def thick(v):
@@ -1748,6 +1778,26 @@ def attach(font, source, cuts, pieces):
             rec = RecordingPen()
             stroke(rec, clip[0], clip[1], thick(clip[2]))
             part = to_path(None, rec=rec)
+        elif name == "counter":  # the letter's own counters within the box,
+            # cleared again of what the pieces before brought into them
+            own = counters(font, font[source])
+            for c in own:
+                out = path_op(out, path_op(c, rect_path(*clip), "INTERSECTION"), "DIFFERENCE")
+            # one come out whole is drawn as the letter draws it (the merges
+            # split its curves where the pieces crossed it: kinks, crumbs)
+            redrawn = pathops.Path()
+            for contour in out.contours:
+                same = next((c for c in own if all(abs(u - v) < 1 for u, v in zip(c.bounds, contour.bounds))
+                             and abs(abs(c.area) - abs(contour.area)) < 0.001 * abs(c.area)), None)
+                if same is not None:
+                    turn = same.clockwise != contour.clockwise
+                    contour = pathops.Path()
+                    same.draw(contour.getPen())
+                    if turn:  # as the result winds it
+                        contour.reverse()
+                redrawn.addPath(contour)
+            out = redrawn
+            continue
         elif name == "poly":  # a filled polygon: its points (a stroke tapering);
             # a triple of points is a curve to the last (two handles)
             rec = RecordingPen()

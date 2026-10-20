@@ -6,7 +6,9 @@ Each accent in ADJUST is scaled about the middle of its foot (x = 440, the
 bottom of its ink, so its distance from the letter stays), and its strokes
 are brought back to their weight before the scaling. The factors applied
 are recorded in the glyph's lib (org.myiadidot.adjusted), so running the
-script again changes nothing. Afterwards: composites.py --stack-anchors
+script again changes nothing. Each accent in DOTS has each of its dots
+scaled about the middle of its own foot (they grow, stay as far apart and
+as high above the letter). Afterwards: composites.py --stack-anchors
 --rebuild-stacked, smallcaps.py.
 """
 
@@ -15,6 +17,7 @@ import sys
 from pathlib import Path
 
 import ufoLib2
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
@@ -30,6 +33,11 @@ ADJUST = {
     # usual; narrower and a little shallower, as in Libertinus and Charis
     "breve": (0.8, 0.85, 74, 96),
     "Breve": (0.8, 0.85, 112, 96),
+}
+# glyph: scale of each dot - Theano's capital dieresis has dots 0.9 of the
+# lowercase's (174 against 192), small over Ä Ö Ü: as large as those
+DOTS = {
+    "Dieresis": 192 / 174,
 }
 
 
@@ -50,6 +58,24 @@ def main():
         g.clearContours()
         out.drawPoints(g.getPointPen())
         g.lib[KEY] = [kx, ky]
+        done.append(name)
+    for name, k in DOTS.items():
+        g = font[name]
+        done_k = g.lib.get(KEY)
+        if done_k and abs(done_k[0] - k) < 1e-6:  # (as make normalize rounds it)
+            continue
+        out = ufoLib2.objects.Glyph()
+        for c in g.contours:
+            bp = BoundsPen(None)
+            c.draw(bp)
+            x0, y0, x1, _ = bp.bounds
+            c.draw(TransformPen(out.getPen(), (k, 0, 0, k, (x0 + x1) / 2 * (1 - k), y0 * (1 - k))))
+        for c in out.contours:
+            for pt in c.points:
+                pt.x, pt.y = round(pt.x), round(pt.y)
+        g.clearContours()
+        out.drawPoints(g.getPointPen())
+        g.lib[KEY] = [k]
         done.append(name)
     font.save()
     print("adjusted:", " ".join(done) or "nothing")

@@ -884,7 +884,7 @@ def attached_small(source, font, italic):
         if op != "attach" or band[1]:
             continue
         scales = [min(abs(sx), abs(sy)) for piece, _, _, (sx, sy, *_) in band[2]
-                  if piece not in ("rect", "line", "poly", "curl")]
+                  if piece not in ("rect", "line", "poly", "counter", "curl")]
         if not scales or min(scales) >= 0.8:
             continue
         name, base = resolve(ch), resolve(base)
