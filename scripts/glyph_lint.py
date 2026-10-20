@@ -171,8 +171,16 @@ def _turn(d0, d1):
     return min(t, 360 - t)
 
 
-def step_findings(path):
-    """Very short segments with a corner at both ends."""
+def _curved(seg):
+    """A _Corners segment that is a curve (a line's handles are its ends)."""
+    p0, p1, c_in, c_out = seg
+    return (c_in, c_out) != (p1, p0)
+
+
+def step_findings(path, crumbs=False):
+    """Very short segments with a corner at both ends; with crumbs, also
+    curves as short with a corner at one end only, beside a curve (unstep
+    folds them in: what cleaning takes, not what lint reports)."""
     pen = _Corners()
     path.draw(pen)
     out = []
@@ -186,9 +194,14 @@ def step_findings(path):
             prev, nxt = segs[i - 1], segs[(i + 1) % n]
             here_in = _angle(p0, c_in if c_in != p0 else p1)
             here_out = _angle(c_out if c_out != p1 else p0, p1)
-            before = _angle(prev[3] if prev[3] != prev[1] else prev[0], prev[1])
-            after = _angle(nxt[0], nxt[2] if nxt[2] != nxt[0] else nxt[1])
-            if _turn(before, here_in) > CORNER and _turn(here_out, after) > CORNER:
+            # from the nearest distinct points, as unstep (a handle may sit
+            # on its node: then the other handle gives the direction)
+            before = _angle(next(q for q in (prev[3], prev[2], prev[0]) if q != prev[1]), prev[1])
+            after = _angle(nxt[0], next(q for q in (nxt[2], nxt[3], nxt[1]) if q != nxt[0]))
+            corner0, corner1 = _turn(before, here_in) > CORNER, _turn(here_out, after) > CORNER
+            keep = nxt if corner0 else prev
+            crumb = crumbs and corner0 != corner1 and _curved(segs[i]) and _curved(keep)
+            if (corner0 and corner1) or crumb:
                 out.append(("step", f"{round(p0[0])},{round(p0[1])}", f"{math.dist(p0, p1):.1f} units"))
     return out
 
@@ -227,7 +240,9 @@ def ledge_findings(path):
 def unstep(path, ledges=False):
     """path with its steps taken out: each very short segment between two
     corners shrunk to a point (at its middle, on whole units), so the
-    strokes on either side meet there; with ledges, the ledges too."""
+    strokes on either side meet there, and each as short with a corner at
+    one end only (a crumb of a curve) folded into the curve beside it; with
+    ledges, the ledges too."""
     rec = RecordingPen()
     path.draw(rec)
     contours, cur = [], None
@@ -262,7 +277,23 @@ def unstep(path, ledges=False):
                 if math.dist(p0, p1) >= STEP:
                     hit = _is_ledge(before, _angle(p0, p1), after, math.dist(p0, p1), here[0] == "lineTo")
                 else:
-                    hit = _turn(before, _angle(p0, c_in)) > CORNER and _turn(_angle(c_out, p1), after) > CORNER
+                    corner0 = _turn(before, _angle(p0, c_in)) > CORNER
+                    corner1 = _turn(_angle(c_out, p1), after) > CORNER
+                    hit = corner0 and corner1
+                    # a crumb: a curve's last units split off at an extreme
+                    # beside a corner (pathops splits curves there), turning
+                    # the corner sharper (emboldened, it grew a spur: the
+                    # Bold Italic ₲'s beak); folded into the curve it ends
+                    keep = nxt if corner0 else prev
+                    if corner0 != corner1 and here[0] == keep[0] == "curveTo":
+                        d = (p1[0] - p0[0], p1[1] - p0[1]) if corner1 else (p0[0] - p1[0], p0[1] - p1[1])
+                        if corner1:
+                            prev[1][-2] = (prev[1][-2][0] + d[0], prev[1][-2][1] + d[1])
+                            prev[1][-1] = p1
+                        else:
+                            nxt[1][0] = (nxt[1][0][0] + d[0], nxt[1][0][1] + d[1])
+                        del segs[i]
+                        break
                 if hit:
                     m = (round((p0[0] + p1[0]) / 2), round((p0[1] + p1[1]) / 2))
                     prev[1][-1] = m
@@ -401,7 +432,7 @@ def fix(font, names=None):
             if not g.contours or g.components:
                 break
             path = ink(font, g)
-            found = vector_findings(path) + step_findings(path)
+            found = vector_findings(path) + step_findings(path, crumbs=True)
             if name not in LEDGE_KEEP:
                 found += ledge_findings(path)
             if not any(k in FIXED for k, *_ in found):

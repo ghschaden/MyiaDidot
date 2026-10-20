@@ -275,13 +275,14 @@ def put(font, up, name, source):
     g = copy.deepcopy(up[name])
     shear(g, SLANT)
     # crumbs the cuts and merges left (specks, pinholes, an outline crossing
-    # itself, steps): the outline merged and cleaned (glyph_lint)
+    # itself, steps, a curve's end split off at a corner): the outline
+    # merged and cleaned (glyph_lint)
     # (again if rounding the merged outline to whole units crossed it anew)
     for _ in range(3):
         if not (g.contours and not g.components):
             break
         path = ink(font, g)
-        found = vector_findings(path) + step_findings(path)
+        found = vector_findings(path) + step_findings(path, crumbs=True)
         if name not in LEDGE_KEEP:
             found += ledge_findings(path)
         if not any(k in FIXED for k, *_ in found):
@@ -596,13 +597,19 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # below the waist only the ball (not the stroke into β's lower
                   # bowl): one piece, β above 735 less its stem below 1290 and
                   # that stroke (in pieces, the seams kinked the loop); the
-                  # notch between stem, ball and b's arch filled
+                  # notch between stem, ball and b's arch filled; the
+                  # counter's floor carried level from the top of the ball
+                  # (931) into the loop's right side, where β's waist left a
+                  # dip (883 at 508)
                   "в.loclBGR": ("attach", "b", ("x", [(-BIG, 1355, BIG, BIG), (-BIG, 1300, 203, BIG)],
                                                 [("beta", ((-BIG, 735, BIG, BIG), (-BIG, 735, 414, 1290),
                                                            (674, 735, BIG, 790)),
                                                   (0, 780), (1, 0.837, -154, 860)),
                                                  ("poly", [(300, 690), (300, 835), (360, 835), (430, 820), (395, 800),
                                                            (375, 780), (360, 760), (345, 740), (335, 720), (325, 700)],
+                                                  (0, 0), (1, 1, 0, 0)),
+                                                 ("poly", [(354, 915), (354, 931), ((430, 931), (554, 942), (564, 991)),
+                                                           (580, 960), (510, 872)],
                                                   (0, 0), (1, 1, 0, 0))])),
                   # ъ (its stem a cursive diagonal): the ь above with ъ's
                   # wave arm raised to the ascender, left of the stem

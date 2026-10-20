@@ -7,6 +7,7 @@ Epsilon_uni0313_uni0342 accent 1 # 2026-10-16 known at the start (quality checks
 Epsilon_uni0314_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
 G smooth 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1164,1415 2.0 degrees
 Hook kink 1                      # 2026-10-16 known at the start (quality checks added): 291,1791 7.9 degrees
+Hook smooth 1                    # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 425,1789 2.7 degrees
 J extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 326,86 8 units past
 J smooth 1                       # 2026-10-16 known at the start (quality checks added): 350,147 2.3 degrees
 J zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
@@ -67,8 +68,8 @@ f_h extreme 1                    # contrast-aware Bold (emboldened by stroke wei
 f_h kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
 f_j kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.5 degrees; 659,883 2.6 degrees
 f_k kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-ff extreme 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1307,1356 6 units past; 709,1371 7 units past
-ff smooth 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1292,1298 2.4 degrees; 698,1312 3.0 degrees
+ff kink 1                        # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 698,1312 3.0 degrees
+ff smooth 1                      # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1292,1298 2.4 degrees
 ffi kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1239,884 2.6 degrees; 1261,883 2.7 degrees
 ffl extreme 3                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 820,1145 11 units past; 759,1374 11 units past; 680,1456 8 units past
 ffl kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1061,1060 5.7 degrees; 737,1298 6.5 degrees
@@ -106,8 +107,8 @@ longs_b kink 1                   # 2026-10-16 known at the start (quality checks
 longs_h extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1068,673 6 units past
 longs_h kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
 longs_k kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-longs_longs extreme 2            # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1309,1356 6 units past; 711,1371 7 units past
-longs_longs smooth 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1294,1298 2.4 degrees; 700,1312 3.0 degrees
+longs_longs kink 1               # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 700,1312 3.0 degrees
+longs_longs smooth 1             # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1294,1298 2.4 degrees
 longs_longs_l extreme 3          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
 longs_longs_l kink 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 195,974 4.5 degrees; 735,1298 6.5 degrees
 m extreme 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1043,685 12 units past; 478,690 6 units past
@@ -284,6 +285,7 @@ uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni0269.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 227 against 273 (0.83, lighter)
 uni026B.sc kink 3                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 560,1040 1.4 degrees; 87,1040 2.0 degrees; 193,770 2.3 degrees
 uni026E kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 924,537 5.9 degrees; 607,-132 4.8 degrees; 571,-221 5.1 degrees
+uni026E smooth 1                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 329,-41 2.1 degrees
 uni026F extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 747,211 6 units past; 1352,211 6 units past
 uni026F.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0270 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 747,211 6 units past; 1352,211 6 units past
@@ -333,7 +335,6 @@ uni02BB smooth 1                 # 2026-10-16 known at the start (quality checks
 uni02BC smooth 1                 # 2026-10-16 known at the start (quality checks added): 228,1311 6.2 degrees
 uni02BD width 1                  # 2026-10-16 known at the start (quality checks added): 1.25 of the Regular's, usually 1.09
 uni02C0 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 228,1007 6 units past
-uni02C0 smooth 1                 # 2026-10-16 known at the start (quality checks added): 412,995 2.1 degrees
 uni02C0 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
 uni02C1 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 314,1086 2.5 degrees
 uni02C8 width 1                  # 2026-10-16 known at the start (quality checks added): 1.34 of the Regular's, usually 1.09
@@ -506,8 +507,8 @@ uni25B8 width 1                  # contrast-aware Bold (emboldened by stroke wei
 uni25C2 width 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1.20 of the Regular's, usually 1.08
 uni2C64 kink 1                   # 2026-10-16 known at the start (quality checks added): 284,59 5.7 degrees
 uni2C64 smooth 1                 # 2026-10-16 known at the start (quality checks added): 757,-148 2.0 degrees
-uni2C65 kink 5                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 994,-2 7.2 degrees; 226,838 3.1 degrees; 199,395 3.8 degrees; 523,93 7.0 degrees; 441,63 3.8 degrees
-uni2C65 smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 702,25 2.6 degrees; 942,52 2.5 degrees
+uni2C65 kink 4                   # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 226,838 3.1 degrees; 199,395 3.8 degrees; 523,93 7.0 degrees; 441,63 3.8 degrees
+uni2C65 smooth 3                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 702,25 2.6 degrees; 942,52 2.5 degrees; 342,260 2.2 degrees
 uni2C65.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 670,986 1.1 degrees
 uni2C66 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 524,75 2.1 degrees
 uni2C66.sc stem 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: at 261 292 against t.sc's 273

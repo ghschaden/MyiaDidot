@@ -626,26 +626,23 @@ uni0276 zone 1                   # 2026-10-16 known at the start (quality checks
 uni0279 extreme 1                # 2026-10-16 known at the start (quality checks added): 135,87 7 units past
 uni0279 smooth 1                 # 2026-10-16 known at the start (quality checks added): 529,283 2.3 degrees
 uni0279 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni027A extreme 2                # 2026-10-16 known at the start (quality checks added): 136,87 8 units past; 665,1339 7 units past
+uni027A extreme 1                # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 665,1339 7 units past
 uni027A kink 1                   # 2026-10-16 known at the start (quality checks added): 531,850 2.5 degrees
-uni027A smooth 1                 # 2026-10-16 known at the start (quality checks added): 136,87 4.4 degrees
 uni027A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni027B extreme 2                # 2026-10-16 known at the start (quality checks added): 407,-150 7 units past; 136,87 8 units past
-uni027B smooth 1                 # 2026-10-16 known at the start (quality checks added): 136,87 4.4 degrees
+uni027B extreme 1                # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 408,-148 7 units past
 uni027D extreme 1                # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 279,-230 10 units past
 uni027D kink 2                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 149,0 2.0 degrees; 344,-156 3.5 degrees
 uni027D smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
 uni027D.sc kink 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 792,825 2.9 degrees
 uni027D.sc smooth 2              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 963,791 2.2 degrees; 970,184 2.6 degrees
 uni027E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 56% of r kept (attach)
-uni027E extreme 1                # 2026-10-16 known at the start (quality checks added): 709,797 8 units past
 uni027E kink 1                   # 2026-10-16 known at the start (quality checks added): 341,118 6.3 degrees
-uni027E smooth 1                 # 2026-10-16 known at the start (quality checks added): 709,797 4.4 degrees
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0280.sc extreme 2             # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 332,944 10 units past; 289,87 10 units
 uni0280.sc smooth 4              # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 748,632 2.6 degrees; 516,948 3.6 degree
-uni0281 extreme 6                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1062,1060 37 units past; 1107,814 15 units past;
-uni0281 smooth 3                 # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 520,951 3.2 degrees; 1013,934 3.5 degrees; 626,21
+uni0281 extreme 5                # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1062,1060 26 units past; 1107,814 15 units past; 664,516 27 units past; 273,75 5 uni
+uni0281 kink 2                   # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 520,951 3.2 degrees; 1013,934 3.5 degrees
+uni0281 smooth 2                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1152,856 2.4 degrees; 626,215 2.4 degrees
 uni0281 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0282 extreme 2                # 2026-10-16 known at the start (quality checks added): 145,-147 8 units past; 179,-315 6 units past
 uni0282 kink 1                   # 2026-10-16 known at the start (quality checks added): 315,442 3.5 degrees
@@ -655,8 +652,8 @@ uni0283 kink 2                   # 2026-10-16 known at the start (quality checks
 uni0283 smooth 4                 # 2026-10-16 known at the start (quality checks added): 34,-263 3.6 degrees; 221,-80 3.0 degrees; 940,1239 3.2 degrees; 1024,1355 3.4 degrees
 uni0283 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni0284 extreme 1                # 2026-10-16 known at the start (quality checks added): 837,1150 7 units past
-uni0284 kink 1                   # 2026-10-16 known at the start (quality checks added): 528,550 3.9 degrees
-uni0284 smooth 3                 # 2026-10-16 known at the start (quality checks added): 12,-263 3.2 degrees; -82,-385 2.2 degrees; 813,1102 2.7 degrees
+uni0284 kink 2                   # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 12,-263 3.2 degrees; 528,550 3.9 degrees
+uni0284 smooth 2                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: -82,-385 2.2 degrees; 813,1102 2.7 degrees
 uni0284 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni0288 extreme 1                # 2026-10-16 known at the start (quality checks added): 143,-150 9 units past
 uni0288 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.83, lighter)
@@ -687,12 +684,11 @@ uni028E slant 1                  # 2026-10-16 known at the start (quality checks
 uni028E smooth 1                 # 2026-10-16 known at the start (quality checks added): 806,1215 2.4 degrees
 uni028E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni028F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni0290 kink 2                   # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 599,774 3.5 degrees; 190,32 5.0 degrees
-uni0290 smooth 3                 # ʐ redrawn: z's beak off (Regular, Bold), own recipe (Italic); draft, to review: 669,826 2.3 degrees; 288,143 2.4 degrees; 483,-55 2.3 degrees
+uni0290 smooth 6                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 599,774 3.5 degrees; 707,780 3.6 degrees; 669,826 2.3 degrees; 288,143 2.4 degrees; 
 uni0290 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 63 against 183 (0.35, lighter)
 uni0290 zone 1                   # ʐ: own recipe (Italic: turns widened for the weight pass; Bold Italic: ITALIC_BOLD_RECIPES): bottom +16 from -461
 uni0291 kink 2                   # 2026-10-16 known at the start (quality checks added): 599,774 3.5 degrees; 190,32 5.0 degrees
-uni0291 smooth 2                 # 2026-10-16 known at the start (quality checks added): 288,143 2.4 degrees; 228,-144 3.1 degrees
+uni0291 smooth 1                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 288,143 2.4 degrees
 uni0291 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 63 against 183 (0.35, lighter)
 uni0292 smooth 1                 # 2026-10-16 known at the start (quality checks added): 490,714 4.4 degrees
 uni0292 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 109 against 183 (0.60, lighter)
@@ -833,6 +829,7 @@ uni0431 zone 1                   # 2026-10-16 known at the start (quality checks
 uni0431.sc extreme 2             # 2026-10-16 known at the start (quality checks added): 302,944 10 units past; 262,87 10 units past
 uni0431.sc kink 1                # 2026-10-16 known at the start (quality checks added): 693,318 3.5 degrees
 uni0431.sc smooth 3              # 2026-10-16 known at the start (quality checks added): 302,944 3.2 degrees; 864,322 2.5 degrees; 262,87 2.1 degrees
+uni0432.loclBGR kink 1           # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 712,985 4.2 degrees
 uni0432.loclBGR stem 1           # Bulgarian в redrawn from b and β's loop (draft): at 1070 171 against b's 161
 uni0433 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni0433.loclSRB kink 1           # new localized forms: Old Standard's Serbian п т, the italic ī joint, the Bold's upright ∂ (drafts for review): 262,650 6.3 degrees
@@ -842,7 +839,7 @@ uni0436 smooth 5                 # 2026-10-16 known at the start (quality checks
 uni0436 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
 uni0436.loclBGR extreme 1        # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 967,1392 7 units past
 uni0436.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 1015,860 1.2 degrees
-uni0436.loclBGR smooth 2         # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 111,-2 2.1 degrees; 640,512 2.8 degrees
+uni0436.loclBGR smooth 3         # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 111,-2 2.1 degrees; 640,512 2.8 degrees; 491,884 2.7 degrees
 uni0436.sc extreme 4             # 2026-10-16 known at the start (quality checks added): 478,652 9 units past; 535,810 9 units past; 818,945 10 units past; 774,87 11 units past
 uni0436.sc kink 4                # 2026-10-16 known at the start (quality checks added): 552,918 4.8 degrees; 1103,323 2.4 degrees; 1114,389 2.1 degrees; 437,445 3.9 degrees
 uni0436.sc smooth 4              # 2026-10-16 known at the start (quality checks added): 501,926 2.5 degrees; 415,865 2.5 degrees; 1431,915 3.6 degrees; 1064,187 3.3 degrees
@@ -998,7 +995,7 @@ uni0497.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni049A extreme 2                # 2026-10-16 known at the start (quality checks added): 496,1311 10 units past; 387,112 10 units past
 uni049A zone 1                   # 2026-10-16 known at the start (quality checks added): top +26 from 1434
 uni049B extreme 1                # 2026-10-16 known at the start (quality checks added): 439,-155 8 units past
-uni049B kink 3                   # 2026-10-16 known at the start (quality checks added): 459,573 2.5 degrees; 439,-155 4.2 degrees; 577,200 5.9 degrees
+uni049B kink 2                   # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 830,693 4.1 degrees; 577,200 5.9 degrees
 uni049B smooth 4                 # 2026-10-16 known at the start (quality checks added): 483,709 2.5 degrees; 830,693 4.1 degrees; 746,200 2.8 degrees; 592,255 2.0 degrees
 uni049B.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 334,958 6 units past; 618,45 11 units past
 uni049B.sc kink 4                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 883,947 3.9 degrees; 815,109 1.9 degrees; 958,34
@@ -1154,7 +1151,8 @@ uni20AE kink 2                   # 2026-10-16 known at the start (quality checks
 uni20AE smooth 1                 # 2026-10-16 known at the start (quality checks added): 682,112 2.2 degrees
 uni20B1 extreme 1                # 2026-10-16 known at the start (quality checks added): 523,1327 7 units past
 uni20B1 kink 2                   # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 477,1154 4.6 degrees; 689,1163 5.2 degrees
-uni20B2 kink 2                   # 2026-10-16 known at the start (quality checks added): 1247,539 4.3 degrees; 955,136 2.7 degrees
+uni20B2 kink 1                   # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1247,539 4.3 degrees
+uni20B2 smooth 1                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 955,136 2.7 degrees
 uni20B4 extreme 4                # 2026-10-16 known at the start (quality checks added): 457,-28 16 units past; 1078,1161 11 units past; 885,1462 16 units past; 242,312 15 units past
 uni20B5 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1224,938 2.2 degrees
 uni20B8 extreme 1                # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): 772,1375 10 units past

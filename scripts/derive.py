@@ -262,12 +262,16 @@ RECIPES = [
     # as wide (1280; b cut above 1293); the loop one piece, β above 640 less
     # its stem below 1280 (in pieces, the seams kinked the loop); the notch
     # under the ball, between stem and b's arch, filled (along the stem, the
-    # ball and the arch's hairline)
+    # ball and the arch's hairline); the counter's floor carried level from
+    # the top of the ball (961) into the loop's right side, where β's waist
+    # left a dip (952 at 577)
     ("в.loclBGR", "attach", "b", ("x", [(-BIG, 1293, BIG, BIG)],
                                   [("beta", ((-BIG, 640, BIG, BIG), (-BIG, 640, 400, 1280)), (0, 750),
                                     (1, 0.772, 0, 884)),
                                    ("poly", [(378, 690), (378, 905), (430, 905), (480, 862), (550, 862),
-                                             (490, 800), (455, 760), (425, 720)], (0, 0), (1, 1, 0, 0))])),
+                                             (490, 800), (455, 760), (425, 720)], (0, 0), (1, 1, 0, 0)),
+                                   ("poly", [(496, 930), (496, 961), ((540, 961), (604, 961), (647, 999)),
+                                             (647, 930)], (0, 0), (1, 1, 0, 0))])),
     # г: the cursive г, set upright, is s mirrored (ƨ)
     ("г.loclBGR", "mirror", "s", None),
     # hooks from the font: (band, kind, stem, cut, removed left/right of it)
