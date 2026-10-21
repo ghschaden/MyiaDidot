@@ -1,7 +1,7 @@
 ---
 name: font-measure
 description: Runs Myia Didot's measuring and checking scripts and returns the findings as a short table. Use it for stroke weights (scripts/quality/strokes.py), derived letters against their bases (scripts/quality/derived.py), the quality checks (scripts/quality/checks.py), outline lint (scripts/glyph_lint.py), Greek and Latin pair spacing (scripts/quality/greek_pairs.py, make pairs), shaping differences against a commit (make regress), NFD/NFC mismatches (scripts/nfd_compose.py's check), rendered differences against a revision (make visual, make diffenator: build/visual/diffenator-summary.txt) and similar reports, for one or several styles. It measures and summarises; it does not change sources.
-model: sonnet
+model: haiku
 tools: Bash, Read, Grep, Glob
 ---
 
