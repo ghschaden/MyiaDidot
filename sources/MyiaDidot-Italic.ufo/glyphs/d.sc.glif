@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="d.sc" format="2">
-	<advance width="1098"/>
+	<advance width="1109"/>
 	<outline>
 		<contour>
-			<point x="-71" y="0" type="line"/>
-			<point x="-33" y="45" type="line"/>
-			<point x="73" y="45" type="line" smooth="yes"/>
-			<point x="111" y="45"/>
-			<point x="99" y="60"/>
-			<point x="106" y="85" type="curve" smooth="yes"/>
-			<point x="333" y="944" type="line" smooth="yes"/>
-			<point x="343" y="975"/>
-			<point x="355" y="990"/>
-			<point x="321" y="990" type="curve" smooth="yes"/>
-			<point x="219" y="990" type="line"/>
-			<point x="214" y="1040" type="line"/>
-			<point x="698" y="1040" type="line" smooth="yes"/>
-			<point x="920" y="1040"/>
-			<point x="1042" y="873"/>
-			<point x="1044" y="641" type="curve" smooth="yes"/>
-			<point x="1051" y="494"/>
-			<point x="980" y="331"/>
-			<point x="868" y="209" type="curve"/>
-			<point x="774" y="94"/>
-			<point x="646" y="0"/>
-			<point x="456" y="0" type="curve" smooth="yes"/>
+			<point x="-70" y="0" type="line"/>
+			<point x="-51" y="63" type="line"/>
+			<point x="62" y="63" type="line" smooth="yes"/>
+			<point x="91" y="63"/>
+			<point x="99" y="75"/>
+			<point x="105" y="99" type="curve" smooth="yes"/>
+			<point x="326" y="930" type="line" smooth="yes"/>
+			<point x="334" y="958"/>
+			<point x="330" y="970"/>
+			<point x="303" y="970" type="curve" smooth="yes"/>
+			<point x="189" y="970" type="line"/>
+			<point x="210" y="1040" type="line"/>
+			<point x="700" y="1040" type="line" smooth="yes"/>
+			<point x="921" y="1040"/>
+			<point x="1045" y="870"/>
+			<point x="1049" y="637" type="curve"/>
+			<point x="1064" y="491"/>
+			<point x="1012" y="329"/>
+			<point x="885" y="208" type="curve"/>
+			<point x="787" y="93"/>
+			<point x="648" y="0"/>
+			<point x="459" y="0" type="curve" smooth="yes"/>
 		</contour>
 		<contour>
-			<point x="289" y="87" type="line" smooth="yes"/>
-			<point x="281" y="60"/>
-			<point x="268" y="45"/>
-			<point x="301" y="45" type="curve" smooth="yes"/>
-			<point x="481" y="45" type="line" smooth="yes"/>
-			<point x="612" y="45"/>
-			<point x="712" y="122"/>
-			<point x="788" y="254" type="curve" smooth="yes"/>
-			<point x="854" y="360"/>
-			<point x="882" y="528"/>
-			<point x="873" y="710" type="curve" smooth="yes"/>
-			<point x="872" y="855"/>
-			<point x="848" y="990"/>
-			<point x="675" y="990" type="curve" smooth="yes"/>
-			<point x="549" y="990" type="line" smooth="yes"/>
-			<point x="513" y="990"/>
-			<point x="523" y="975"/>
-			<point x="516" y="946" type="curve" smooth="yes"/>
+			<point x="297" y="99" type="line" smooth="yes"/>
+			<point x="290" y="75"/>
+			<point x="293" y="63"/>
+			<point x="320" y="63" type="curve" smooth="yes"/>
+			<point x="501" y="63" type="line" smooth="yes"/>
+			<point x="630" y="63"/>
+			<point x="728" y="136"/>
+			<point x="803" y="263" type="curve"/>
+			<point x="876" y="366"/>
+			<point x="921" y="526"/>
+			<point x="899" y="701" type="curve"/>
+			<point x="898" y="842"/>
+			<point x="852" y="970"/>
+			<point x="687" y="970" type="curve" smooth="yes"/>
+			<point x="560" y="970" type="line" smooth="yes"/>
+			<point x="533" y="970"/>
+			<point x="524" y="958"/>
+			<point x="517" y="930" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="643" y="1156"/>
-	<anchor name="Acute" x="638" y="1136"/>
-	<anchor name="Grave" x="638" y="1136"/>
-	<anchor name="Dotaccent" x="648" y="1176"/>
-	<anchor name="TopCap" x="651" y="1186"/>
-	<anchor name="Bottom" x="299" y="0"/>
-	<anchor name="DotBelow" x="293" y="-20"/>
+	<anchor name="Top" x="645" y="1156"/>
+	<anchor name="Acute" x="640" y="1136"/>
+	<anchor name="Grave" x="640" y="1136"/>
+	<anchor name="Dotaccent" x="650" y="1176"/>
+	<anchor name="TopCap" x="653" y="1186"/>
+	<anchor name="Bottom" x="300" y="0"/>
+	<anchor name="DotBelow" x="294" y="-20"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
 		</dict>
 	</lib>
 </glyph>

@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni20BC" format="2">
 	<unicode hex="20BC"/>
-	<advance width="1442"/>
+	<advance width="1454"/>
 	<outline>
 		<contour>
-			<point x="900" y="0" type="line"/>
-			<point x="1101" y="715" type="line" smooth="yes"/>
-			<point x="1206" y="1103"/>
-			<point x="1111" y="1392"/>
-			<point x="1097" y="1395" type="curve"/>
-			<point x="721" y="0" type="line"/>
-			<point x="459" y="0" type="line"/>
-			<point x="839" y="1395" type="line"/>
-			<point x="826" y="1393"/>
-			<point x="584" y="1098"/>
-			<point x="480" y="715" type="curve" smooth="yes"/>
-			<point x="281" y="0" type="line"/>
-			<point x="-51" y="0" type="line"/>
-			<point x="152" y="718" type="line" smooth="yes"/>
-			<point x="270" y="1139"/>
-			<point x="654" y="1428"/>
-			<point x="868" y="1457" type="curve"/>
-			<point x="906" y="1600" type="line"/>
-			<point x="1168" y="1600" type="line"/>
-			<point x="1126" y="1457" type="line"/>
-			<point x="1316" y="1430"/>
-			<point x="1543" y="1140"/>
-			<point x="1431" y="718" type="curve" smooth="yes"/>
-			<point x="1232" y="0" type="line"/>
+			<point x="922" y="0" type="line"/>
+			<point x="1119" y="715" type="line" smooth="yes"/>
+			<point x="1225" y="1110"/>
+			<point x="1155" y="1381"/>
+			<point x="1086" y="1395" type="curve"/>
+			<point x="707" y="0" type="line"/>
+			<point x="494" y="0" type="line"/>
+			<point x="873" y="1395" type="line"/>
+			<point x="800" y="1381"/>
+			<point x="584" y="1110"/>
+			<point x="475" y="715" type="curve" smooth="yes"/>
+			<point x="280" y="0" type="line"/>
+			<point x="-28" y="0" type="line"/>
+			<point x="169" y="718" type="line" smooth="yes"/>
+			<point x="287" y="1140"/>
+			<point x="660" y="1426"/>
+			<point x="881" y="1457" type="curve"/>
+			<point x="932" y="1600" type="line"/>
+			<point x="1144" y="1600" type="line"/>
+			<point x="1118" y="1457" type="line"/>
+			<point x="1321" y="1428"/>
+			<point x="1538" y="1141"/>
+			<point x="1426" y="718" type="curve" smooth="yes"/>
+			<point x="1230" y="0" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

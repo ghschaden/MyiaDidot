@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="Deltagreek" format="2">
 	<unicode hex="0394"/>
-	<advance width="1416"/>
+	<advance width="1390"/>
 	<outline>
 		<contour>
-			<point x="66" y="82" type="line"/>
-			<point x="972" y="80" type="line"/>
-			<point x="1265" y="1185" type="line"/>
+			<point x="67" y="89" type="line"/>
+			<point x="970" y="89" type="line"/>
+			<point x="1267" y="1172" type="line"/>
 		</contour>
 		<contour>
-			<point x="-80" y="0" type="line"/>
-			<point x="-65" y="55" type="line"/>
-			<point x="1485" y="1464" type="line"/>
-			<point x="1548" y="1464" type="line"/>
-			<point x="1152" y="0" type="line"/>
+			<point x="-103" y="0" type="line"/>
+			<point x="-85" y="62" type="line"/>
+			<point x="1469" y="1464" type="line"/>
+			<point x="1517" y="1464" type="line"/>
+			<point x="1128" y="0" type="line"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="562" y="-20"/>
-	<anchor name="Bottom" x="567" y="0"/>
+	<anchor name="DotBelow" x="549" y="-20"/>
+	<anchor name="Bottom" x="554" y="0"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>

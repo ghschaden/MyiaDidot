@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="scircumflex" format="2">
 	<unicode hex="015D"/>
-	<advance width="826"/>
+	<advance width="800"/>
 	<outline>
 		<component base="s"/>
-		<component base="circumflex" xOffset="-140"/>
+		<component base="circumflex" xOffset="-153"/>
 	</outline>
-	<anchor name="DotBelow" x="300" y="-20"/>
-	<anchor name="Bottom" x="306" y="0"/>
-	<anchor name="Cedilla" x="306" y="0"/>
+	<anchor name="DotBelow" x="287" y="-20"/>
+	<anchor name="Bottom" x="293" y="0"/>
+	<anchor name="Cedilla" x="293" y="0"/>
 </glyph>

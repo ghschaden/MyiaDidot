@@ -7,7 +7,8 @@ Kryukov, SIL OFL 1.1; sources/oldstand, converted with FontForge into
 build/oldstand), the cursive companion by Theano's own designer. They are
 scaled in zones so that its x-height (456 of 1000) lands on Myia's 884 and
 its capitals and ascenders (712) on 1434, the descenders in proportion;
-their stems and hairlines are brought to Myia's (lighter by AX, AY). The
+their stems and hairlines as Old Standard's (AX, AY), the thick strokes
+then made a little heavier (WEIGHT, CAP_WEIGHT). The
 glyph set, features, accents and marks are Myia's: the accents sloped to
 the italic angle (with their anchors), the accented letters rebuilt from
 the anchors by the rules of composites.py, upstream's special composites
@@ -26,7 +27,8 @@ features). Afterwards: make normalize.
 Each glyph's lib key org.myiadidot.italicSource says where it came from.
 A rerun keeps what was reviewed: glyphs marked "drawn" (hand-edited: set
 it after editing any glyph), and drafts ("derived", "figure draft",
-"small cap draft") whose draft key has been cleared.
+"small cap draft") whose draft key has been cleared, as long as the
+weights and cuts (MADE_WITH) are those they were made with.
 """
 
 import argparse
@@ -62,26 +64,46 @@ SLANT = math.tan(math.radians(ANGLE))
 KX = 1.98  # across: between the x-height (1.939) and cap-height (2.014) scales
 OS_XH, OS_CAP = 456, 712
 XH, CAP = 884, 1434
-AX, AY = -16, -10  # Old Standard's strokes, scaled, are a little heavier than Myia's
-# ... but so the Italic was light: 0.80 of the Regular's colour, where
-# italics have 0.93-1.04. Its letters (and all made of them) are built at
-# that weight, which the recipes and transplants are tuned to, and their
-# thick upright strokes then made WEIGHT heavier (weight_thick: hairlines and
-# thin strokes as they are, so the contrast grows): stems about the
-# Regular's, as Old Standard's italic has its roman's
-WEIGHT = 44
+# Old Standard's strokes as they are, scaled (AX, AY across and up: none).
+# Its letters (and all made of them) are built at that weight, which the
+# recipes and transplants are tuned to, and their thick upright strokes then
+# made WEIGHT heavier (weight_thick: hairlines and thin strokes as they are),
+# the capitals CAP_WEIGHT. Thinned hairlines (-16, -10) and stems at the
+# Regular's (+44) gave a contrast of 4.6 where italics have 3.1-4.2 and a
+# colour twice as uneven as Old Standard's (letters of thick strokes, a b g q,
+# and the capitals dark, hairline ones light), hard to read on a full page;
+# chosen by the person from full pages of variants (2026-10-21)
+AX, AY = 0, 0
+WEIGHT = 10
+CAP_WEIGHT = 0
 WEIGHTED = ("Old Standard", "derived", "small cap draft")
-# off each side of a letter: Old Standard's spacing, scaled, is loose too (10;
-# less what the added weight takes of the stems at the sides)
-ITALIC_CUT = 3
+# off each side of a letter: Old Standard's spacing, scaled, is loose for
+# its narrow letters (side space 0.180 of the x-height at a cut of 3, Bodoni
+# Moda's and Libre Bodoni's italics 0.172 and 0.162); 13 more chosen by the
+# person from full pages cut 10, 13 and 16 more (2026-10-21)
+ITALIC_CUT = 16
 # the Greek lowercase tighter: Old Standard's Greek, so cut, stood 0.07 of an
 # n n gap looser than the Italic's Latin against Greek references
 # (scripts/quality/greek_pairs.py)
 ITALIC_CUT_GREEK = ITALIC_CUT + 11
+# the weights and cuts the reviewed drafts were made with (font lib): a
+# rerun with others keeps none of them (kept glyphs are neither weighted nor
+# respaced again), they come back as drafts to review
+MADE_WITH_KEY = "org.myiadidot.italicMadeWith"
+MADE_WITH = {"weight": [AX, AY, WEIGHT, CAP_WEIGHT], "cut": [ITALIC_CUT, ITALIC_CUT_GREEK]}
 SOURCE_KEY = "org.myiadidot.italicSource"
 DRAFT_KEY = "org.myiadidot.draft"
 SMALLCAP_DRAFT_KEY = "org.myiadidot.smallcapDraft"
 FIGURES = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+
+
+def capital(font, g):
+    """g a capital letter, or an unencoded form of one (Ж.loclBGR)"""
+    u = g.unicode
+    if u is None:
+        base = g.name.split(".")[0]
+        u = font[base].unicode if base in font else None
+    return u is not None and unicodedata.category(chr(u)) in ("Lu", "Lt")
 
 
 def reviewed(g):
@@ -1054,6 +1076,7 @@ ITALIC_KERNING = {
     ("public.kern1.eta", "public.kern2.rho"): 82,  # ηρ
     ("public.kern1.theta", "public.kern2.nu"): 71,  # θν
     ("public.kern1.alpha", "public.kern2.delta"): -70,  # αθ
+    ("public.kern1.alpha", "delta"): 0,  # αδ (tight at the cut of 2026-10-21, as in the Bold Italic)
     ("public.kern1.alpha", "public.kern2.xi"): -73,  # αξ
     ("public.kern1.alpha", "public.kern2.zeta"): -79,  # αζ
     ("public.kern1.alpha", "public.kern2.sigma1"): -91,  # ας
@@ -1448,7 +1471,10 @@ def main():
 
     # what was reviewed or drawn in the Italic stays
     # (and the Italic's own, reviewed: ʀ.sc, drafted from its Ʀ, is not in the Regular)
+    # (drafts made at other weights come back as drafts, drawn ones stay)
+    same_settings = previous is not None and previous.lib.get(MADE_WITH_KEY) == MADE_WITH
     kept = [g.name for g in (previous or []) if reviewed(g)
+            and (same_settings or g.lib.get(SOURCE_KEY) == "drawn")
             and (g.name in font or g.name.endswith(".sc"))]
     for name in kept:
         font.layers.defaultLayer.insertGlyph(copy.deepcopy(previous[name]), name, overwrite=True)
@@ -1544,6 +1570,7 @@ def main():
     # (the italic bit comes from styleMapStyleName; USE_TYPO_METRICS stays)
     font.lib.pop("org.myiadidot.figuresLightened", None)  # the Regular's (lighten_figures.py), not these
     font.lib["org.myiadidot.italicSource"] = "Old Standard Italic, akryukov/oldstand (see sources/oldstand/COMMIT)"
+    font.lib[MADE_WITH_KEY] = MADE_WITH
     # Old Standard's outlines crossing themselves at serif tips, crumbs of
     # the cuts (glyph_lint); hand-drawn glyphs stay as drawn
     from glyph_lint import fix
@@ -1559,7 +1586,7 @@ def main():
             for c in g.contours:
                 c.draw(rec)
             g.clearContours()
-            weight_thick(rec, WEIGHT).draw(g.getPen())
+            weight_thick(rec, CAP_WEIGHT if capital(font, g) else WEIGHT).draw(g.getPen())
     # a derived letter weighted on its own thickens at its junctions unlike
     # its base (ɨ's bar, Ⱦ's slash): made of the weighted base instead, as
     # the Bold's are (make_bold.follow_bases)

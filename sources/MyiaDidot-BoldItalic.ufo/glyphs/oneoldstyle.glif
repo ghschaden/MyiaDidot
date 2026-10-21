@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="oneoldstyle" format="2">
 	<unicode hex="F731"/>
-	<advance width="586"/>
+	<advance width="519"/>
 	<outline>
 		<contour>
-			<point x="27" y="0" type="line"/>
-			<point x="594" y="0" type="line"/>
-			<point x="606" y="61" type="line"/>
-			<point x="459" y="61" type="line" smooth="yes"/>
-			<point x="438" y="61"/>
-			<point x="435" y="67"/>
-			<point x="440" y="85" type="curve" smooth="yes"/>
-			<point x="660" y="920" type="line"/>
-			<point x="526" y="920" type="line"/>
-			<point x="428" y="745"/>
-			<point x="414" y="782"/>
-			<point x="177" y="708" type="curve"/>
-			<point x="257" y="661" type="line"/>
-			<point x="378" y="705"/>
-			<point x="394" y="719"/>
-			<point x="395" y="720" type="curve"/>
-			<point x="217" y="83" type="line" smooth="yes"/>
-			<point x="213" y="68"/>
-			<point x="208" y="61"/>
-			<point x="185" y="61" type="curve" smooth="yes"/>
-			<point x="41" y="61" type="line"/>
+			<point x="25" y="0" type="line"/>
+			<point x="520" y="0" type="line"/>
+			<point x="540" y="71" type="line"/>
+			<point x="405" y="71" type="line"/>
+			<point x="381" y="71"/>
+			<point x="411" y="75"/>
+			<point x="425" y="88" type="curve"/>
+			<point x="605" y="919" type="line"/>
+			<point x="505" y="921" type="line"/>
+			<point x="400" y="773"/>
+			<point x="342" y="753"/>
+			<point x="204" y="710" type="curve"/>
+			<point x="228" y="655" type="line"/>
+			<point x="313" y="685"/>
+			<point x="382" y="711"/>
+			<point x="339" y="718" type="curve"/>
+			<point x="162" y="88" type="line" smooth="yes"/>
+			<point x="158" y="71"/>
+			<point x="208" y="71"/>
+			<point x="188" y="71" type="curve"/>
+			<point x="41" y="71" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>figure draft</string>
 		</dict>

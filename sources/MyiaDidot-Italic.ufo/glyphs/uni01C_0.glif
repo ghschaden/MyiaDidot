@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni01C0" format="2">
 	<unicode hex="01C0"/>
-	<advance width="506"/>
+	<advance width="480"/>
 	<outline>
 		<contour>
-			<point x="66" y="0" type="line"/>
-			<point x="468" y="1434" type="line"/>
-			<point x="589" y="1434" type="line"/>
-			<point x="188" y="0" type="line"/>
+			<point x="69" y="0" type="line"/>
+			<point x="462" y="1434" type="line"/>
+			<point x="560" y="1434" type="line"/>
+			<point x="168" y="0" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

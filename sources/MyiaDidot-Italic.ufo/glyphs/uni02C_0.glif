@@ -1,67 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni02C0" format="2">
 	<unicode hex="02C0"/>
-	<advance width="416"/>
+	<advance width="422"/>
 	<outline>
 		<contour>
-			<point x="329" y="829" type="curve" smooth="yes"/>
-			<point x="363" y="850" type="line" smooth="yes"/>
-			<point x="391" y="866"/>
-			<point x="414" y="894"/>
-			<point x="414" y="929" type="curve" smooth="yes"/>
-			<point x="414" y="982"/>
-			<point x="395" y="1022"/>
-			<point x="356" y="1022" type="curve" smooth="yes"/>
-			<point x="286" y="1022"/>
-			<point x="270" y="980"/>
-			<point x="270" y="960" type="curve" smooth="yes"/>
-			<point x="270" y="949"/>
-			<point x="272" y="942"/>
-			<point x="272" y="942" type="curve"/>
-			<point x="279" y="939"/>
-			<point x="285" y="937"/>
-			<point x="290" y="933" type="curve"/>
-			<point x="297" y="924"/>
-			<point x="306" y="921"/>
-			<point x="306" y="909" type="curve"/>
-			<point x="306" y="895"/>
-			<point x="306" y="876"/>
-			<point x="260" y="876" type="curve" smooth="yes"/>
-			<point x="241" y="876"/>
-			<point x="233" y="881"/>
-			<point x="227" y="888" type="curve"/>
-			<point x="219" y="897"/>
-			<point x="210" y="907"/>
-			<point x="209" y="927" type="curve" smooth="yes"/>
-			<point x="209" y="996"/>
-			<point x="297" y="1050"/>
-			<point x="364" y="1050" type="curve" smooth="yes"/>
-			<point x="449" y="1050"/>
-			<point x="490" y="994"/>
-			<point x="490" y="924" type="curve" smooth="yes"/>
-			<point x="490" y="872"/>
-			<point x="453" y="834"/>
-			<point x="404" y="811" type="curve" smooth="yes"/>
-			<point x="358" y="788" type="line"/>
-			<point x="347" y="782"/>
-			<point x="335" y="763"/>
-			<point x="330" y="748" type="curve"/>
-			<point x="289" y="534" type="line"/>
-			<point x="172" y="534" type="line"/>
-			<point x="259" y="746" type="line"/>
-			<point x="259" y="746"/>
-			<point x="259" y="746"/>
-			<point x="259" y="746" type="curve"/>
-			<point x="259" y="747"/>
-			<point x="259" y="748"/>
-			<point x="259" y="749" type="curve" smooth="yes"/>
-			<point x="260" y="753" type="line"/>
-			<point x="271" y="786"/>
-			<point x="299" y="810"/>
+			<point x="328" y="828" type="curve" smooth="yes"/>
+			<point x="362" y="849" type="line" smooth="yes"/>
+			<point x="386" y="863"/>
+			<point x="406" y="891"/>
+			<point x="407" y="923" type="curve"/>
+			<point x="406" y="976"/>
+			<point x="389" y="1012"/>
+			<point x="357" y="1012" type="curve" smooth="yes"/>
+			<point x="291" y="1012"/>
+			<point x="279" y="972"/>
+			<point x="280" y="956" type="curve"/>
+			<point x="280" y="950"/>
+			<point x="279" y="943"/>
+			<point x="279" y="941" type="curve"/>
+			<point x="284" y="938"/>
+			<point x="292" y="936"/>
+			<point x="300" y="930" type="curve"/>
+			<point x="306" y="922"/>
+			<point x="313" y="917"/>
+			<point x="315" y="904" type="curve"/>
+			<point x="314" y="889"/>
+			<point x="299" y="866"/>
+			<point x="260" y="866" type="curve" smooth="yes"/>
+			<point x="247" y="866"/>
+			<point x="230" y="869"/>
+			<point x="222" y="879" type="curve"/>
+			<point x="213" y="888"/>
+			<point x="201" y="900"/>
+			<point x="201" y="921" type="curve" smooth="yes"/>
+			<point x="202" y="994"/>
+			<point x="296" y="1049"/>
+			<point x="367" y="1049" type="curve" smooth="yes"/>
+			<point x="455" y="1049"/>
+			<point x="501" y="991"/>
+			<point x="502" y="920" type="curve" smooth="yes"/>
+			<point x="502" y="865"/>
+			<point x="459" y="826"/>
+			<point x="408" y="802" type="curve" smooth="yes"/>
+			<point x="360" y="780" type="line" smooth="yes"/>
+			<point x="353" y="777"/>
+			<point x="342" y="759"/>
+			<point x="337" y="744" type="curve"/>
+			<point x="282" y="528" type="line"/>
+			<point x="189" y="528" type="line"/>
+			<point x="255" y="743" type="line"/>
+			<point x="255" y="745" type="line"/>
+			<point x="257" y="750" type="line" smooth="yes"/>
+			<point x="269" y="784"/>
+			<point x="297" y="809"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

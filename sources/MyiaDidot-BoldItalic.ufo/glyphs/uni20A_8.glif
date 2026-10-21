@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni20A8" format="2">
 	<unicode hex="20A8"/>
-	<advance width="2189"/>
+	<advance width="2201"/>
 	<outline>
-		<component base="R" xOffset="24"/>
-		<component base="s" xOffset="1267"/>
+		<component base="R" xOffset="36"/>
+		<component base="s" xOffset="1281"/>
 	</outline>
-	<anchor name="DotBelow" x="757" y="-20"/>
-	<anchor name="Bottom" x="763" y="0"/>
-	<anchor name="TopCap" x="1031" y="1580"/>
+	<anchor name="DotBelow" x="763" y="-20"/>
+	<anchor name="Bottom" x="769" y="0"/>
+	<anchor name="TopCap" x="1037" y="1580"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

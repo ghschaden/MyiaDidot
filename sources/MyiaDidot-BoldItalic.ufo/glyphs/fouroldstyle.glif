@@ -1,51 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="fouroldstyle" format="2">
 	<unicode hex="F734"/>
-	<advance width="1368"/>
+	<advance width="1353"/>
 	<outline>
 		<contour>
-			<point x="48" y="170" type="line"/>
-			<point x="689" y="170" type="line"/>
-			<point x="577" y="-241" type="line" smooth="yes"/>
-			<point x="562" y="-297"/>
-			<point x="575" y="-321"/>
-			<point x="494" y="-321" type="curve"/>
-			<point x="222" y="-321" type="line"/>
-			<point x="207" y="-380" type="line"/>
-			<point x="1167" y="-380" type="line"/>
-			<point x="1183" y="-321" type="line"/>
-			<point x="916" y="-321" type="line" smooth="yes"/>
-			<point x="830" y="-321"/>
-			<point x="859" y="-293"/>
-			<point x="873" y="-237" type="curve" smooth="yes"/>
-			<point x="985" y="170" type="line"/>
-			<point x="1422" y="170" type="line"/>
-			<point x="1440" y="239" type="line"/>
-			<point x="999" y="239" type="line"/>
-			<point x="1197" y="971" type="line"/>
-			<point x="1206" y="989"/>
-			<point x="1217" y="1000"/>
-			<point x="1227" y="1025" type="curve"/>
-			<point x="1167" y="1025" type="line"/>
-			<point x="1108" y="972" type="line"/>
-			<point x="1048" y="858"/>
-			<point x="962" y="736"/>
-			<point x="823" y="645" type="curve"/>
-			<point x="703" y="239" type="line"/>
-			<point x="154" y="243" type="line"/>
-			<point x="999" y="975" type="line"/>
-			<point x="1231" y="1204"/>
-			<point x="1367" y="1374"/>
-			<point x="1390" y="1488" type="curve"/>
-			<point x="1130" y="1488" type="line"/>
-			<point x="1094" y="1323"/>
-			<point x="903" y="957"/>
-			<point x="702" y="754" type="curve"/>
-			<point x="63" y="204" type="line"/>
+			<point x="23" y="165" type="line"/>
+			<point x="663" y="165" type="line"/>
+			<point x="554" y="-236" type="line" smooth="yes"/>
+			<point x="539" y="-289"/>
+			<point x="495" y="-312"/>
+			<point x="435" y="-312" type="curve" smooth="yes"/>
+			<point x="199" y="-312" type="line"/>
+			<point x="180" y="-380" type="line"/>
+			<point x="1175" y="-380" type="line"/>
+			<point x="1194" y="-312" type="line"/>
+			<point x="958" y="-312" type="line" smooth="yes"/>
+			<point x="896" y="-312"/>
+			<point x="867" y="-289"/>
+			<point x="882" y="-236" type="curve" smooth="yes"/>
+			<point x="990" y="165" type="line"/>
+			<point x="1428" y="165" type="line"/>
+			<point x="1450" y="242" type="line"/>
+			<point x="1010" y="242" type="line"/>
+			<point x="1178" y="1019" type="line"/>
+			<point x="1117" y="1022" type="line"/>
+			<point x="1067" y="895"/>
+			<point x="960" y="744"/>
+			<point x="802" y="641" type="curve"/>
+			<point x="682" y="242" type="line"/>
+			<point x="165" y="244" type="line"/>
+			<point x="1009" y="962" type="line"/>
+			<point x="1243" y="1195"/>
+			<point x="1373" y="1354"/>
+			<point x="1399" y="1484" type="curve"/>
+			<point x="1109" y="1484" type="line"/>
+			<point x="1071" y="1315"/>
+			<point x="888" y="952"/>
+			<point x="688" y="750" type="curve"/>
+			<point x="41" y="201" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>figure draft</string>
 		</dict>

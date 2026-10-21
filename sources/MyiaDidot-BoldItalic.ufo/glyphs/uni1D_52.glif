@@ -1,45 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni1D52" format="2">
 	<unicode hex="1D52"/>
-	<advance width="660"/>
+	<advance width="679"/>
 	<outline>
 		<contour>
-			<point x="173" y="739" type="curve" smooth="yes"/>
-			<point x="171" y="905"/>
-			<point x="346" y="1091"/>
-			<point x="504" y="1091" type="curve" smooth="yes"/>
-			<point x="573" y="1091"/>
-			<point x="700" y="1025"/>
-			<point x="702" y="879" type="curve" smooth="yes"/>
-			<point x="704" y="714"/>
-			<point x="531" y="529"/>
-			<point x="372" y="529" type="curve" smooth="yes"/>
-			<point x="303" y="529"/>
-			<point x="175" y="595"/>
+			<point x="166" y="735" type="curve" smooth="yes"/>
+			<point x="165" y="902"/>
+			<point x="349" y="1090"/>
+			<point x="514" y="1090" type="curve" smooth="yes"/>
+			<point x="586" y="1090"/>
+			<point x="722" y="1022"/>
+			<point x="724" y="876" type="curve" smooth="yes"/>
+			<point x="726" y="710"/>
+			<point x="546" y="523"/>
+			<point x="380" y="523" type="curve" smooth="yes"/>
+			<point x="308" y="523"/>
+			<point x="168" y="590"/>
 		</contour>
 		<contour>
-			<point x="310" y="672" type="curve" smooth="yes"/>
-			<point x="310" y="613"/>
-			<point x="321" y="567"/>
-			<point x="381" y="567" type="curve" smooth="yes"/>
-			<point x="458" y="567"/>
-			<point x="471" y="635"/>
-			<point x="500" y="700" type="curve" smooth="yes"/>
-			<point x="532" y="773"/>
-			<point x="565" y="873"/>
-			<point x="564" y="947" type="curve" smooth="yes"/>
-			<point x="563" y="1007"/>
-			<point x="554" y="1053"/>
-			<point x="495" y="1053" type="curve" smooth="yes"/>
-			<point x="417" y="1053"/>
-			<point x="402" y="985"/>
-			<point x="372" y="917" type="curve" smooth="yes"/>
-			<point x="341" y="845"/>
-			<point x="308" y="746"/>
+			<point x="336" y="671" type="curve" smooth="yes"/>
+			<point x="337" y="611"/>
+			<point x="335" y="570"/>
+			<point x="390" y="570" type="curve" smooth="yes"/>
+			<point x="462" y="570"/>
+			<point x="459" y="634"/>
+			<point x="488" y="700" type="curve" smooth="yes"/>
+			<point x="521" y="771"/>
+			<point x="554" y="869"/>
+			<point x="554" y="941" type="curve" smooth="yes"/>
+			<point x="554" y="1001"/>
+			<point x="560" y="1043"/>
+			<point x="504" y="1043" type="curve" smooth="yes"/>
+			<point x="430" y="1043"/>
+			<point x="433" y="978"/>
+			<point x="403" y="911" type="curve" smooth="yes"/>
+			<point x="372" y="840"/>
+			<point x="336" y="742"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

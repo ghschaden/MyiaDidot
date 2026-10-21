@@ -1,9 +1,68 @@
 # Known make_bold.py/make_italic.py emboldened-whole findings (glyph: why); fixing one = deleting its line.
+uni0181                          # baseline: curl: does not keep its whole base
+uni0183                          # baseline: attach: does not keep its whole base
+uni0188                          # baseline: attach: does not keep its whole base
+uni018A                          # baseline: curl: does not keep its whole base
+uni0191                          # baseline: attach: does not keep its whole base
+uni0198                          # baseline: curl: does not keep its whole base
+uni0199                          # baseline: hook: does not keep its whole base
+uni019D                          # baseline: attach: does not keep its whole base
+uni01A4                          # baseline: curl: does not keep its whole base
+uni01A5                          # baseline: attach: does not keep its whole base
+uni01AC                          # baseline: attach: does not keep its whole base
+uni01AD                          # baseline: hook: does not keep its whole base
+uni01AE                          # baseline: attach: does not keep its whole base
+uni01B2                          # baseline: curl: does not keep its whole base
+uni01B3                          # baseline: curl: does not keep its whole base
+uni01B4                          # baseline: curl: does not keep its whole base
+uni0249                          # baseline: bar: does not keep its whole base
+uni0253                          # baseline: hook: does not keep its whole base
+uni0253.sc                       # baseline: hook: does not keep its whole base
+uni0255                          # baseline: attach: does not keep its whole base
+uni0256                          # baseline: attach: does not keep its whole base
 uni0257                          # left whole: attach: does not keep its whole base
+uni0257.sc                       # baseline: hook: does not keep its whole base
+uni025A                          # baseline: rhotic: cuts its base
+uni025D                          # baseline: rhotic: cuts its base
+uni025E                          # baseline: attach: does not keep its whole base
+uni0266                          # baseline: hook: does not keep its whole base
+uni0267                          # baseline: hook: does not keep its whole base
+uni0268                          # baseline: bar: does not keep its whole base
+uni026D                          # baseline: attach: does not keep its whole base
+uni026E                          # baseline: attach: does not keep its whole base
+uni0270                          # baseline: attach: does not keep its whole base
+uni0271                          # baseline: hook: does not keep its whole base
+uni0273                          # baseline: attach: does not keep its whole base
+uni027B                          # baseline: attach: does not keep its whole base
+uni027D.sc                       # baseline: hook: does not keep its whole base
+uni027E                          # baseline: attach: does not keep its whole base
+uni0282                          # baseline: attach: does not keep its whole base
+uni0284                          # baseline: attach: does not keep its whole base
+uni0288                          # baseline: attach: does not keep its whole base
+uni0288.sc                       # baseline: hook: does not keep its whole base
+uni028B                          # baseline: curl: does not keep its whole base
 uni0290                          # left whole: attach: does not keep its whole base
-uni02A2                          # left whole: bar: the union with its base failed
+uni0291                          # baseline: attach: does not keep its whole base
+uni0294                          # baseline: glottal: cuts its base
+uni029D                          # baseline: attach: does not keep its whole base
 uni0432.loclBGR                  # Bulgarian в redrawn from b and β's loop (draft): attach: does not keep its whole base
 uni0433.loclSRB                  # italic Serbian г (ī): ı cut and joined with ū's bar, weighted whole: attach: does not keep its whole base
 uni044C.loclBGR                  # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: attach: does not keep its whole base
 uni044E.loclBGR                  # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: attach: does not keep its whole base
+uni0497                          # baseline: attach: does not keep its whole base
+uni049B                          # baseline: attach: does not keep its whole base
+uni04A2                          # baseline: tail: does not keep its whole base
+uni04A3                          # baseline: attach: does not keep its whole base
+uni04A3.sc                       # baseline: tail: does not keep its whole base
+uni04B3                          # baseline: attach: does not keep its whole base
+uni04B6                          # baseline: tail: does not keep its whole base
+uni04B7                          # baseline: attach: does not keep its whole base
+uni04B7.sc                       # baseline: tail: does not keep its whole base
+uni20B1                          # baseline: lines: the union with its base failed
+uni2C64                          # baseline: attach: does not keep its whole base
+uni2C66                          # baseline: slash: does not keep its whole base
+uni2C72                          # baseline: curl: does not keep its whole base
 uni2C73                          # left whole: attach: does not keep its whole base
+uniA7AA                          # baseline: curl: does not keep its whole base
+uniA7B2                          # baseline: attach: does not keep its whole base
+uniA7B4                          # baseline: attach: does not keep its whole base

@@ -1,66 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="c.sc" format="2">
-	<advance width="1044"/>
+	<advance width="1067"/>
 	<outline>
 		<contour>
-			<point x="61" y="353" type="curve" smooth="yes"/>
-			<point x="41" y="688"/>
-			<point x="413" y="1072"/>
-			<point x="684" y="1072" type="curve" smooth="yes"/>
-			<point x="766" y="1072"/>
-			<point x="820" y="1025"/>
-			<point x="846" y="996" type="curve" smooth="yes"/>
-			<point x="872" y="966" type="line" smooth="yes"/>
-			<point x="892" y="943"/>
-			<point x="919" y="938"/>
-			<point x="920" y="938" type="curve" smooth="yes"/>
-			<point x="936" y="938"/>
-			<point x="963" y="1021"/>
-			<point x="967" y="1057" type="curve"/>
-			<point x="1039" y="1057" type="line"/>
-			<point x="954" y="585" type="line"/>
-			<point x="874" y="585" type="line"/>
-			<point x="876" y="610"/>
-			<point x="908" y="643"/>
-			<point x="908" y="676" type="curve" smooth="yes"/>
-			<point x="908" y="719"/>
-			<point x="896" y="854"/>
-			<point x="838" y="934" type="curve" smooth="yes"/>
-			<point x="795" y="991"/>
-			<point x="740" y="1013"/>
-			<point x="678" y="1013" type="curve" smooth="yes"/>
-			<point x="550" y="1013"/>
-			<point x="507" y="953"/>
-			<point x="412" y="765" type="curve" smooth="yes"/>
-			<point x="349" y="650"/>
-			<point x="312" y="464"/>
-			<point x="323" y="279" type="curve" smooth="yes"/>
-			<point x="328" y="48"/>
-			<point x="363" y="24"/>
-			<point x="475" y="24" type="curve" smooth="yes"/>
-			<point x="661" y="24"/>
-			<point x="787" y="179"/>
-			<point x="846" y="343" type="curve"/>
-			<point x="947" y="328" type="line"/>
-			<point x="885" y="149"/>
-			<point x="694" y="-30"/>
-			<point x="451" y="-30" type="curve" smooth="yes"/>
-			<point x="329" y="-30"/>
-			<point x="66" y="78"/>
+			<point x="71" y="351" type="curve"/>
+			<point x="32" y="688"/>
+			<point x="401" y="1078"/>
+			<point x="687" y="1078" type="curve" smooth="yes"/>
+			<point x="773" y="1078"/>
+			<point x="825" y="1026"/>
+			<point x="850" y="994" type="curve" smooth="yes"/>
+			<point x="877" y="962" type="line"/>
+			<point x="895" y="939"/>
+			<point x="916" y="932"/>
+			<point x="919" y="932" type="curve" smooth="yes"/>
+			<point x="955" y="932"/>
+			<point x="938" y="1013"/>
+			<point x="944" y="1060" type="curve"/>
+			<point x="1068" y="1060" type="line"/>
+			<point x="986" y="578" type="line"/>
+			<point x="866" y="578" type="line"/>
+			<point x="868" y="611"/>
+			<point x="905" y="637"/>
+			<point x="904" y="670" type="curve" smooth="yes"/>
+			<point x="903" y="712"/>
+			<point x="892" y="845"/>
+			<point x="835" y="922" type="curve" smooth="yes"/>
+			<point x="793" y="978"/>
+			<point x="739" y="999"/>
+			<point x="680" y="999" type="curve" smooth="yes"/>
+			<point x="555" y="999"/>
+			<point x="516" y="942"/>
+			<point x="421" y="756" type="curve"/>
+			<point x="353" y="642"/>
+			<point x="286" y="463"/>
+			<point x="310" y="283" type="curve"/>
+			<point x="317" y="59"/>
+			<point x="376" y="37"/>
+			<point x="482" y="37" type="curve" smooth="yes"/>
+			<point x="669" y="37"/>
+			<point x="766" y="184"/>
+			<point x="827" y="349" type="curve"/>
+			<point x="1004" y="332" type="line"/>
+			<point x="937" y="142"/>
+			<point x="708" y="-35"/>
+			<point x="462" y="-35" type="curve" smooth="yes"/>
+			<point x="327" y="-35"/>
+			<point x="78" y="74"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="721" y="1156"/>
-	<anchor name="Acute" x="716" y="1136"/>
-	<anchor name="Grave" x="716" y="1136"/>
-	<anchor name="Dotaccent" x="726" y="1176"/>
-	<anchor name="TopCap" x="729" y="1186"/>
-	<anchor name="Bottom" x="452" y="0"/>
-	<anchor name="DotBelow" x="446" y="-20"/>
-	<anchor name="Cedilla" x="452" y="0"/>
+	<anchor name="Top" x="729" y="1156"/>
+	<anchor name="Acute" x="724" y="1136"/>
+	<anchor name="Grave" x="724" y="1136"/>
+	<anchor name="Dotaccent" x="734" y="1176"/>
+	<anchor name="TopCap" x="737" y="1186"/>
+	<anchor name="Bottom" x="461" y="0"/>
+	<anchor name="DotBelow" x="455" y="-20"/>
+	<anchor name="Cedilla" x="461" y="0"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>
+			<key>org.myiadidot.smallcapDraft</key>
+			<true/>
 		</dict>
 	</lib>
 </glyph>

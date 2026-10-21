@@ -1,65 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni01B8" format="2">
 	<unicode hex="01B8"/>
-	<advance width="1202"/>
+	<advance width="1176"/>
 	<outline>
 		<contour>
-			<point x="1045" y="267" type="curve" smooth="yes"/>
-			<point x="1117" y="399"/>
-			<point x="1092" y="506"/>
-			<point x="968" y="506" type="curve" smooth="yes"/>
-			<point x="872" y="506"/>
-			<point x="810" y="452"/>
-			<point x="785" y="405" type="curve" smooth="yes"/>
-			<point x="743" y="329"/>
-			<point x="786" y="304"/>
-			<point x="848" y="284" type="curve" smooth="yes"/>
-			<point x="894" y="269"/>
-			<point x="903" y="222"/>
-			<point x="883" y="185" type="curve" smooth="yes"/>
-			<point x="828" y="84"/>
-			<point x="648" y="17"/>
-			<point x="507" y="17" type="curve" smooth="yes"/>
-			<point x="164" y="17"/>
-			<point x="229" y="303"/>
-			<point x="343" y="513" type="curve" smooth="yes"/>
-			<point x="413" y="642"/>
-			<point x="496" y="741"/>
-			<point x="651" y="741" type="curve" smooth="yes"/>
-			<point x="719" y="741"/>
-			<point x="784" y="713"/>
-			<point x="837" y="653" type="curve"/>
-			<point x="880" y="685" type="line"/>
-			<point x="574" y="1262" type="line"/>
-			<point x="978" y="1264" type="line" smooth="yes"/>
-			<point x="1066" y="1264"/>
-			<point x="1103" y="1242"/>
-			<point x="1128" y="1185" type="curve" smooth="yes"/>
-			<point x="1164" y="1106"/>
-			<point x="1140" y="971"/>
-			<point x="1140" y="971" type="curve"/>
-			<point x="1178" y="971" type="line"/>
-			<point x="1313" y="1434" type="line"/>
-			<point x="386" y="1434" type="line"/>
-			<point x="373" y="1364" type="line"/>
-			<point x="724" y="800" type="line"/>
-			<point x="707" y="785" type="line"/>
-			<point x="665" y="793"/>
-			<point x="651" y="794"/>
-			<point x="614" y="794" type="curve" smooth="yes"/>
-			<point x="419" y="794"/>
-			<point x="194" y="663"/>
-			<point x="90" y="471" type="curve" smooth="yes"/>
-			<point x="-76" y="165"/>
-			<point x="123" y="-35"/>
-			<point x="487" y="-35" type="curve" smooth="yes"/>
-			<point x="717" y="-35"/>
-			<point x="963" y="116"/>
+			<point x="1019" y="269" type="curve" smooth="yes"/>
+			<point x="1091" y="401"/>
+			<point x="1070" y="510"/>
+			<point x="958" y="510" type="curve" smooth="yes"/>
+			<point x="870" y="510"/>
+			<point x="812" y="454"/>
+			<point x="786" y="405" type="curve" smooth="yes"/>
+			<point x="744" y="328"/>
+			<point x="777" y="300"/>
+			<point x="837" y="281" type="curve" smooth="yes"/>
+			<point x="891" y="264"/>
+			<point x="884" y="225"/>
+			<point x="864" y="188" type="curve" smooth="yes"/>
+			<point x="812" y="93"/>
+			<point x="640" y="27"/>
+			<point x="499" y="27" type="curve" smooth="yes"/>
+			<point x="167" y="27"/>
+			<point x="204" y="306"/>
+			<point x="315" y="512" type="curve" smooth="yes"/>
+			<point x="384" y="638"/>
+			<point x="489" y="733"/>
+			<point x="633" y="733" type="curve" smooth="yes"/>
+			<point x="701" y="733"/>
+			<point x="761" y="710"/>
+			<point x="820" y="644" type="curve"/>
+			<point x="877" y="682" type="line"/>
+			<point x="530" y="1254" type="line"/>
+			<point x="960" y="1254" type="line" smooth="yes"/>
+			<point x="1051" y="1254"/>
+			<point x="1089" y="1232"/>
+			<point x="1114" y="1176" type="curve" smooth="yes"/>
+			<point x="1149" y="1099"/>
+			<point x="1116" y="961"/>
+			<point x="1116" y="961" type="curve"/>
+			<point x="1165" y="961" type="line"/>
+			<point x="1290" y="1434" type="line"/>
+			<point x="391" y="1434" type="line"/>
+			<point x="368" y="1357" type="line"/>
+			<point x="699" y="795" type="line"/>
+			<point x="690" y="787" type="line"/>
+			<point x="660" y="793"/>
+			<point x="635" y="795"/>
+			<point x="602" y="795" type="curve" smooth="yes"/>
+			<point x="396" y="795"/>
+			<point x="195" y="663"/>
+			<point x="91" y="471" type="curve" smooth="yes"/>
+			<point x="-75" y="165"/>
+			<point x="99" y="-35"/>
+			<point x="474" y="-35" type="curve" smooth="yes"/>
+			<point x="715" y="-35"/>
+			<point x="936" y="116"/>
 		</contour>
 	</outline>
-	<anchor name="TopCap" x="981" y="1580"/>
+	<anchor name="TopCap" x="968" y="1580"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

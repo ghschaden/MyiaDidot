@@ -52,6 +52,10 @@ from space_figures import space as space_figures
 ROOT = Path(__file__).resolve().parent.parent
 KX = 1.04  # widening, so the counters keep their light
 AX, AY = 90, 8  # stems 164 -> 254 (lowercase), 208 -> 298 (capitals); hairlines +8
+# the Bold Italic's, from the Italic's lighter stems (make_italic.WEIGHT 10):
+# its stems 0.96 of the Bold's, as the Italic's of the Regular's (reference
+# bold italics 0.95-0.98; AX gave 0.92, the heavier Italic of before 1.01)
+ITALIC_AX = 102
 MARK_AX, MARK_AY = 30, 8  # accents a little heavier
 # lib: derived letters left emboldened whole, with why (follow_bases);
 # tests/test_emboldened.py holds them to a list that only shrinks
@@ -1131,13 +1135,15 @@ def main():
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("bold", nargs="?", default=str(ROOT / "sources/MyiaDidot-Bold.ufo"))
     args = ap.parse_args()
-    global SLANT
+    global SLANT, AX
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
     kern_clear.undo(font)  # the source's loosened pairs: this style finds its own
     angle = -(regular.info.italicAngle or 0)
     SLANT = math.tan(math.radians(angle))
     italic = bool(angle)
+    if italic:
+        AX = ITALIC_AX
     nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
     up, down = (1, 0, -SLANT, 1, 0, 0), (1, 0, SLANT, 1, 0, 0)  # deslant, slant again
     marks = {g.name for g in regular if mark_like(g)}

@@ -26,6 +26,37 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-21 Version 0.100 (development), Phase 3: a lighter, more even Italic
+
+    * The Italic was hard to read on a full page and looked darker than
+      Old Standard Italic, though it carries no more ink: its hairlines
+      were thinned (by 16 and 10 units) and its thick strokes made 44
+      heavier, a contrast of 4.6 where italics have 3.1-4.2, and a colour
+      twice as uneven from letter to letter as Old Standard's (a b g q and
+      the capitals dark, e s v x z light). Old Standard's strokes are now
+      kept as they are, the lowercase's thick strokes made 10 heavier, the
+      capitals' not at all (scripts/make_italic.py AX, AY, WEIGHT,
+      CAP_WEIGHT; chosen from full pages of five variants): contrast 3.4,
+      colour spread 0.087 (Old Standard 0.082, before 0.123), capitals
+      against the lowercase within the reference italics.
+    * The Italic spaced 13 units tighter a side (ITALIC_CUT 3 -> 16): Old
+      Standard's spacing is loose for its narrow letters (side space 0.180
+      of the x-height, Bodoni Moda's and Libre Bodoni's italics 0.172 and
+      0.162; now 0.165). αδ unkerned (it was in αθ's group).
+    * Bold Italic: emboldened by 102 instead of the Bold's 90 (make_bold.py
+      ITALIC_AX), its stems 0.96 of the Bold's as the Italic's are of the
+      Regular's (reference bold italics 0.95-0.98; it was 1.01). Its
+      Cyrillic stem pairs (нн ин шт чн лн) now measure 0.02 past the
+      references' range: the Latin they are calibrated by moved with the
+      tighter spacing, н is spaced as n as before (listed).
+    * The Italic records the weights and cuts its drafts were made with
+      (lib org.myiadidot.italicMadeWith): a rerun with others keeps none
+      of them, since kept glyphs are neither weighted nor respaced again.
+      All its derived letters, small caps and figures are drafts again, to
+      be reviewed. Rebuilt, 59 derived letters (hooks, curls, attached
+      pieces) show as weighted whole: they were drafted before the Italic
+      checked it and were weighted whole then too, at 44 instead of 10.
+
 2026-10-20 Version 0.100 (development), Phase 3: Bold spacing against the references
 
     * Every frequent Latin, Greek and Cyrillic pair of every style now lies

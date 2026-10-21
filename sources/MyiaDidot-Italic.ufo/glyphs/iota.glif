@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="iota" format="2">
 	<unicode hex="03B9"/>
-	<advance width="582"/>
+	<advance width="556"/>
 	<outline>
 		<contour>
-			<point x="84" y="117" type="curve" smooth="yes"/>
-			<point x="84" y="162"/>
-			<point x="104" y="259"/>
-			<point x="112" y="288" type="curve" smooth="yes"/>
-			<point x="270" y="860" type="line"/>
-			<point x="434" y="860" type="line"/>
-			<point x="245" y="194" type="line" smooth="yes"/>
-			<point x="239" y="173"/>
-			<point x="229" y="141"/>
-			<point x="229" y="117" type="curve" smooth="yes"/>
-			<point x="229" y="81"/>
-			<point x="216" y="37"/>
-			<point x="279" y="37" type="curve" smooth="yes"/>
-			<point x="365" y="37"/>
-			<point x="460" y="202"/>
-			<point x="530" y="333" type="curve"/>
-			<point x="546" y="320" type="line"/>
-			<point x="486" y="203"/>
-			<point x="370" y="-23"/>
-			<point x="224" y="-23" type="curve" smooth="yes"/>
-			<point x="143" y="-23"/>
-			<point x="84" y="42"/>
+			<point x="75" y="120" type="curve" smooth="yes"/>
+			<point x="75" y="167"/>
+			<point x="97" y="262"/>
+			<point x="105" y="291" type="curve" smooth="yes"/>
+			<point x="264" y="861" type="line"/>
+			<point x="409" y="861" type="line"/>
+			<point x="225" y="196" type="line" smooth="yes"/>
+			<point x="219" y="174"/>
+			<point x="212" y="143"/>
+			<point x="212" y="120" type="curve" smooth="yes"/>
+			<point x="212" y="85"/>
+			<point x="212" y="47"/>
+			<point x="266" y="47" type="curve" smooth="yes"/>
+			<point x="343" y="47"/>
+			<point x="438" y="202"/>
+			<point x="514" y="341" type="curve"/>
+			<point x="543" y="324" type="line"/>
+			<point x="480" y="200"/>
+			<point x="365" y="-23"/>
+			<point x="211" y="-23" type="curve" smooth="yes"/>
+			<point x="122" y="-23"/>
+			<point x="75" y="45"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="234" y="-20"/>
-	<anchor name="GreekTop" x="374" y="980"/>
+	<anchor name="DotBelow" x="221" y="-20"/>
+	<anchor name="GreekTop" x="361" y="980"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
