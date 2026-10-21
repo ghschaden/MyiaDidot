@@ -20,8 +20,9 @@ Each finding is (glyph, kind, where, detail). The kinds (criteria 7-11, 14,
   slant    (italics) a glyph's straight stems leaning more than 2 degrees
            off the italic angle
   accent   a mark above or below a letter more than 25 units further or
-           nearer than that mark's usual gap on its kind of letter (marks
-           set beside a capital are left out)
+           nearer than that mark's usual gap on its kind of letter, counted
+           from the flat zone a round edge overshoots (marks beside a
+           capital or inside a descender are left out)
   width    (the Bold) an advance off the Bold's usual ratio to the Regular's
            by more than 10 %
   base, stem, advance, style
@@ -272,6 +273,18 @@ def accents(font, shapes):
     from make_bold import mark_like
 
     marks = {g.name for g in font if mark_like(g)}
+    # marks are set at one height whatever the letter's overshoot (as in
+    # Libertinus and Charis: Ḍ Ọ, Ả Ẻ alike), so a round or pointed edge
+    # counts from the flat zone it overshoots
+    flat = [b[i] for n in ("H", "x", "h.sc") if n in font and (b := shapes.bounds(n)) for i in (1, 3)]
+    over = max((abs(shapes.bounds(n)[1]) for n in ("O", "o") if n in font and shapes.bounds(n)), default=0) + 6
+
+    def unshoot(y, top):
+        for f in flat:
+            if 0 < (y - f if top else f - y) <= over:
+                return f
+        return y
+
     rows = collections.defaultdict(list)
     for g in font:
         if not g.components or g.contours or len(g.components) != 2:
@@ -284,11 +297,11 @@ def accents(font, shapes):
             continue
         dy = mark.transformation[5] - base.transformation[5]
         top = mb[1] + dy > (bb[1] + bb[3]) / 2
-        gap = (mb[1] + dy - bb[3]) if top else (bb[1] - (mb[3] + dy))
-        if top and gap < -200:
+        gap = (mb[1] + dy - unshoot(bb[3], True)) if top else (unshoot(bb[1], False) - (mb[3] + dy))
+        if gap < -200:
             # beside the letter, not above (Greek capitals' breathings and
-            # tonos): set at one height, so the gap only tells the letter's
-            # overshoot
+            # tonos) or inside a descender (ỵ's dot under the fork): set at
+            # one height, so the gap only tells the letter's overshoot
             continue
         kind = ("cap" if bb[3] > 1200 and not g.name.endswith(".sc") else "sc" if g.name.endswith(".sc") else "lc")
         rows[(mark.baseGlyph, kind, top)].append((gap, g.name))
