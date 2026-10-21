@@ -700,6 +700,24 @@ RECIPES = [
     ("ᵾ", "alias", "ʉ.sc", None),
 ]
 
+# sidebearing changes (left, right) after the recipe, where what it added
+# (a hook, tail, curl) left the letter set otherwise beside its neighbours
+# than the references set it against its base: scripts/quality/
+# derived_spacing.py, each side moved to the references' median (2026-10-21).
+# The Regular's only (main): the Bold fits its sides to the Regular's, the
+# italics are measured on their own (their ITALIC_SIDEBEARINGS).
+# Most hooks were counted into the advance (ɗ ɖ ɳ ʐ); ƴ's curl and the
+# hooks of Ɓ Ɗ Ƥ ran into their neighbours. ƴ: not to the median (+355 left
+# a hole in ƴaƴa) but +160, its ball clear of the a (chosen from renders).
+SPACING = {
+    "ɗ": (0, -270), "ɖ": (0, -175), "ɭ": (0, -205), "ɳ": (0, -195), "ɠ": (0, -305), "ʐ": (0, -440),
+    "ʈ": (0, -130), "ƭ": (0, -140), "ʄ": (0, -195), "ʝ": (0, -110), "ʑ": (0, -125), "ɕ": (0, -75),
+    "ɚ": (0, -110), "ʂ": (-55, 0), "ɾ": (-120, 0), "ʃ": (-145, -140), "ʒ": (145, 0), "ƴ": (0, 160),
+    "Ɓ": (340, 0), "Ɗ": (340, 0), "Ƥ": (340, 0), "Ƭ": (-235, 0), "Ƈ": (0, -125), "Ƙ": (0, -105),
+    "Ʀ": (0, -85), "Ʋ": (0, -80),
+    "Қ": (0, -125), "қ": (0, -95), "Җ": (0, -125), "җ": (0, -100), "Ҳ": (0, -130), "ҳ": (0, -115),
+}
+
 # anchors that keep their meaning when the shape is mirrored left-right
 # within the same vertical band
 KEEP_ANCHORS = ("Top", "Acute", "Grave", "Dotaccent", "TopCap", "Bottom", "DotBelow")
@@ -2485,7 +2503,7 @@ def main():
 
     # built on the spacing the recipes were tuned on, then cut again
     # (scripts/respace.py): scaled letters (small caps) keep the cut whole
-    from respace import CUT_KEY, classifier, respace, undo
+    from respace import CUT_KEY, classifier, respace, sidebearings, undo
 
     done = font.lib.get(CUT_KEY)
     undo(font)
@@ -2538,6 +2556,8 @@ def main():
             g = build(tracker, ch, op, source, band, name)
         except (IndexError, KeyError, ValueError) as e:
             sys.exit(f"{ch}: {e!r}")
+        if ch in SPACING:
+            sidebearings(font, {g.name: SPACING[ch]})
         if not g.components:  # an alias follows its source itself
             bases[g.name] = tracker.read
         if op == "alias":

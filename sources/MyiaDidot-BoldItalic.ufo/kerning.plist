@@ -328,6 +328,11 @@
 			<key>ydieresis.sc</key>
 			<integer>-223</integer>
 		</dict>
+		<key>bracketleft</key>
+		<dict>
+			<key>uni0283</key>
+			<integer>128</integer>
+		</dict>
 		<key>chi</key>
 		<dict>
 			<key>Psi</key>
@@ -414,6 +419,11 @@
 			<integer>53</integer>
 			<key>public.kern2.Y.sc</key>
 			<integer>91</integer>
+		</dict>
+		<key>parenleft</key>
+		<dict>
+			<key>uni0283</key>
+			<integer>174</integer>
 		</dict>
 		<key>periodcentered</key>
 		<dict>
@@ -3129,6 +3139,29 @@
 			<key>t</key>
 			<integer>41</integer>
 		</dict>
+		<key>uni0198</key>
+		<dict>
+			<key>H</key>
+			<integer>202</integer>
+			<key>l</key>
+			<integer>64</integer>
+		</dict>
+		<key>uni0199.sc</key>
+		<dict>
+			<key>h.sc</key>
+			<integer>146</integer>
+		</dict>
+		<key>uni01AD</key>
+		<dict>
+			<key>b</key>
+			<integer>20</integer>
+			<key>h</key>
+			<integer>22</integer>
+			<key>k</key>
+			<integer>22</integer>
+			<key>l</key>
+			<integer>28</integer>
+		</dict>
 		<key>uni0232</key>
 		<dict>
 			<key>J</key>
@@ -3159,6 +3192,36 @@
 			<key>public.kern2.Y</key>
 			<integer>-243</integer>
 		</dict>
+		<key>uni0257</key>
+		<dict>
+			<key>b</key>
+			<integer>18</integer>
+			<key>h</key>
+			<integer>20</integer>
+			<key>k</key>
+			<integer>18</integer>
+			<key>l</key>
+			<integer>24</integer>
+		</dict>
+		<key>uni0260</key>
+		<dict>
+			<key>b</key>
+			<integer>224</integer>
+			<key>bracketright</key>
+			<integer>156</integer>
+			<key>exclam</key>
+			<integer>112</integer>
+			<key>h</key>
+			<integer>226</integer>
+			<key>k</key>
+			<integer>224</integer>
+			<key>l</key>
+			<integer>230</integer>
+			<key>parenright</key>
+			<integer>92</integer>
+			<key>question</key>
+			<integer>192</integer>
+		</dict>
 		<key>uni0289.sc</key>
 		<dict>
 			<key>public.kern2.O.sc</key>
@@ -3174,6 +3237,13 @@
 		<dict>
 			<key>public.kern2.Y.sc</key>
 			<integer>-176</integer>
+		</dict>
+		<key>uni0290</key>
+		<dict>
+			<key>bracketright</key>
+			<integer>158</integer>
+			<key>parenright</key>
+			<integer>198</integer>
 		</dict>
 		<key>uni0404</key>
 		<dict>
@@ -3198,11 +3268,11 @@
 		<key>uni0433.loclSRB</key>
 		<dict>
 			<key>public.kern2.uni0434</key>
-			<integer>-16</integer>
+			<integer>-14</integer>
 			<key>public.kern2.uni043B</key>
-			<integer>-22</integer>
+			<integer>-21</integer>
 			<key>public.kern2.uni046B</key>
-			<integer>-30</integer>
+			<integer>-29</integer>
 		</dict>
 		<key>uni043A</key>
 		<dict>

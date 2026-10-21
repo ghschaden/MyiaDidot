@@ -4,9 +4,10 @@ f-ligatures fb fh fk ft ffb ffh ffk fft (liga) and the long-s ligatures
 
     python scripts/draft_ligatures.py UFO [--redraft]
 
-Each is the first letter without its top terminal, the t at its usual
-distance without the wedge above its crossbar, and an arch from the
-first letter's top stroke up and over into the t's stem: half an
+Each is the first letter whole (its top terminal kept, standing free to
+the right of the arch's foot), the t at its usual distance without the
+wedge above its crossbar, and an arch from the first letter's top stroke
+up and over into the t's stem: half an
 ellipse, a hairline where it leaves the first letter and across the
 top, swelling to the t's stem width as it comes down into it. Glyphs are marked
 as drafts; existing glyphs are kept unless they are unreviewed drafts and
@@ -57,17 +58,19 @@ def arch(left, right, base, peak, t_left, t_right, t_top, clip):
     return path_op(ring, rect_path(-BIG, clip, BIG, BIG), "INTERSECTION")
 
 
-# name, first letter, its terminal cut away, arch: left foot x, base, peak,
-# left leg, top, foot clip; the t moves this much closer
+# name, first letter, a box cut away from it (None: kept whole), arch: left
+# foot x, base, peak, left leg, top, foot clip; the t moves this much closer
 LIGATURES = [
-    ("c_t", "c", (600, 500, BIG, BIG), 560, 800, 1380, 50, 40, 850, 50),
-    ("s_t", "s", (600, 600, BIG, BIG), 560, 800, 1380, 50, 40, 850, 50),
+    ("c_t", "c", None, 400, 800, 1380, 50, 40, 850, 50),
+    ("s_t", "s", None, 400, 800, 1380, 50, 40, 850, 50),
 ]
 
 
 def build(font, name, first, cut, left, base, peak, t_left, t_top, clip, closer):
     w1 = font[first].width - closer
-    a = path_op(to_path(font, font[first]), rect_path(*cut), "DIFFERENCE")
+    a = to_path(font, font[first])
+    if cut:
+        a = path_op(a, rect_path(*cut), "DIFFERENCE")
     # the t without the wedge above its crossbar
     t = path_op(to_path(font, font["t"]), rect_path(-BIG, 884, BIG, BIG), "DIFFERENCE")
     rec = RecordingPen()

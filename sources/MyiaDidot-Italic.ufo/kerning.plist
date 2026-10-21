@@ -306,6 +306,11 @@
 			<key>ydieresis.sc</key>
 			<integer>-214</integer>
 		</dict>
+		<key>bracketleft</key>
+		<dict>
+			<key>uni0283</key>
+			<integer>148</integer>
+		</dict>
 		<key>chi</key>
 		<dict>
 			<key>Psi</key>
@@ -375,6 +380,11 @@
 			<integer>71</integer>
 			<key>public.kern2.Y.sc</key>
 			<integer>108</integer>
+		</dict>
+		<key>parenleft</key>
+		<dict>
+			<key>uni0283</key>
+			<integer>118</integer>
 		</dict>
 		<key>periodcentered</key>
 		<dict>
@@ -2999,6 +3009,27 @@
 			<key>uni1FF8</key>
 			<integer>-2</integer>
 		</dict>
+		<key>uni0198</key>
+		<dict>
+			<key>H</key>
+			<integer>90</integer>
+		</dict>
+		<key>uni0199.sc</key>
+		<dict>
+			<key>h.sc</key>
+			<integer>65</integer>
+		</dict>
+		<key>uni01AD</key>
+		<dict>
+			<key>b</key>
+			<integer>50</integer>
+			<key>h</key>
+			<integer>50</integer>
+			<key>k</key>
+			<integer>50</integer>
+			<key>l</key>
+			<integer>50</integer>
+		</dict>
 		<key>uni0232</key>
 		<dict>
 			<key>J</key>
@@ -3018,10 +3049,47 @@
 			<key>public.kern2.Y</key>
 			<integer>-277</integer>
 		</dict>
+		<key>uni0257</key>
+		<dict>
+			<key>b</key>
+			<integer>34</integer>
+			<key>h</key>
+			<integer>34</integer>
+			<key>k</key>
+			<integer>34</integer>
+			<key>l</key>
+			<integer>34</integer>
+		</dict>
+		<key>uni0260</key>
+		<dict>
+			<key>b</key>
+			<integer>248</integer>
+			<key>bracketright</key>
+			<integer>152</integer>
+			<key>exclam</key>
+			<integer>84</integer>
+			<key>h</key>
+			<integer>248</integer>
+			<key>k</key>
+			<integer>248</integer>
+			<key>l</key>
+			<integer>248</integer>
+			<key>parenright</key>
+			<integer>68</integer>
+			<key>question</key>
+			<integer>178</integer>
+		</dict>
 		<key>uni028C.sc</key>
 		<dict>
 			<key>public.kern2.Y.sc</key>
 			<integer>-201</integer>
+		</dict>
+		<key>uni0290</key>
+		<dict>
+			<key>bracketright</key>
+			<integer>190</integer>
+			<key>parenright</key>
+			<integer>148</integer>
 		</dict>
 		<key>uni0404</key>
 		<dict>

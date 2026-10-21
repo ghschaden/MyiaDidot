@@ -84,6 +84,7 @@ BOLD_KEEP_WHOLE = {
 # more than rederive allows: the difference is the point (reviewed)
 BOLD_REBUILD = {
     "uni0290": "ʐ: the foot at the Bold's weight; emboldened whole it was much too fat",
+    "uni0260": "ɠ: the hook at the Bold's weight overhangs 5 % further than emboldened (derive.SPACING)",
     "uni0291": "ʑ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni0255": "ɕ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
@@ -219,7 +220,14 @@ BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni
                      "uni0436": (40, 40), "uni0436.loclBGR": (40, 40), "uni0497": (40, 40),  # ж, Bulgarian ж, җ
                      # Greek sides that stood tight against the Greek references in
                      # most of their pairs, as the Bold's Latin sets them (greek_pairs.py)
-                     "sigma": (0, 40), "tau": (0, 35), "eta": (0, 45), "kappa": (50, 0)}
+                     "sigma": (0, 40), "tau": (0, 35), "eta": (0, 45), "kappa": (50, 0),
+                     # derived letters still set otherwise against their base than the
+                     # references (scripts/quality/derived_spacing.py Bold, to the
+                     # median; ƴ just inside the tight end, as the Regular's): Ɗ ɽ Ⱳ Ƥ ʋ ɲ ү ƴ
+                     # (ɞ and ʈ too, but their width then strays from the Regular's: to review)
+                     "uni018A": (-80, 0), "uni027D": (-65, 0),
+                     "uni2C72": (0, -85), "uni01A4": (-80, 0), "uni028B": (0, -45), "uni0272": (-50, 0),
+                     "uni04AF": (-45, 0), "uni01B4": (0, 50)}
 # Pair-level corrections measured after the Bold's global kerning scale.
 BOLD_KERNING = {
     # Greek: σ's right side stood tight against the Greek references, as
@@ -252,8 +260,13 @@ BOLD_KERNING = {
     ("a", "g"): -56,
     ("x", "t"): -77,
 }
-# the Bold Italic's own (from the Italic): none yet
-ITALIC_SIDEBEARINGS = {"uni025E": (100, 0)}  # ɞ: its bowl widened leftward (ITALIC_BOLD_RECIPES)
+# the Bold Italic's own (from the Italic)
+ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (ITALIC_BOLD_RECIPES)
+                       # derived letters still set otherwise against their base than the
+                       # references (derived_spacing.py BoldItalic, to the median): ɖ Ƴ ƈ ɚ ҳ Қ Ƙ Җ ƥ җ Ҷ
+                       "uni0256": (0, -140), "uni01B3": (0, -120), "uni0188": (0, -85), "uni025A": (0, -100),
+                       "uni04B3": (0, -65), "uni049A": (0, -60), "uni0198": (0, -70), "uni0496": (0, -55),
+                       "uni01A5": (-60, 0), "uni0497": (0, -50), "uni04B6": (0, -45)}
 ITALIC_ANCHOR_NUDGE = {}
 # Bold Italic optical-pair corrections from the pinned-reference spacing
 # comparison (scripts/quality/pairs.py). Values are final Bold Italic kern
@@ -1138,6 +1151,17 @@ def rederive(source, font, italic, whole):
 
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
+        # the side bearings the source style gave the letter after its recipe
+        # (the Regular's derive.SPACING, the Italic's ITALIC_SIDEBEARINGS):
+        # the recipe's width alone has its hook counted in again
+        if italic:
+            from make_italic import ITALIC_SIDEBEARINGS as SOURCE_SPACING
+
+            delta = SOURCE_SPACING.get(name)
+        else:
+            delta = derive.SPACING.get(ch)
+        if delta:
+            sidebearings(up, {tmp: delta})
         old = up[name]
         made, was = Outline(up, tmp), Outline(up, name)
         faults = len(lint_glyph(up, new)) - len(lint_glyph(up, old))

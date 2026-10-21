@@ -710,10 +710,20 @@ def transplant(up, regular, name, source, curl=False):
     from derive import path_op, to_path
 
     rs, rt = to_path(regular, regular[source]), to_path(regular, regular[name])
+    # the Regular's letter as its recipe made it: the side bearings derive.py
+    # changes after it (SPACING) are the Regular's, the Italic has its own
+    # (ITALIC_SIDEBEARINGS); moved, the letter less its base is no longer the part
+    u = regular[name].unicode
+    dl, dr = derive.SPACING.get(chr(u), (0, 0)) if u else (0, 0)
+    if dl:
+        rec = RecordingPen()
+        rt.draw(TransformPen(rec, (1, 0, 0, 1, -dl, 0)))
+        rt = to_path(None, rec=rec)
+    regular_width = regular[name].width - dl - dr
     if rs.bounds == (0, 0, 0, 0):  # drawn from nothing (₪ on space): the Regular's
         g = up[name]
         draw_path(regular, regular[name], g, rt)
-        g.width = regular[name].width
+        g.width = regular_width
         return
     added, removed = path_op(rt, rs, "DIFFERENCE"), path_op(rs, rt, "DIFFERENCE")
     if added.bounds == (0, 0, 0, 0):
@@ -815,7 +825,7 @@ def transplant(up, regular, name, source, curl=False):
     out = path_op(letter, added, "UNION")
     g = up[name]
     draw_path(up, up[source], g, out)
-    g.width = up[source].width + max(0, regular[name].width - regular[source].width)
+    g.width = up[source].width + max(0, regular_width - regular[source].width)
     for a in up[source].anchors:
         g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
 
@@ -1144,8 +1154,18 @@ ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
 # г's ī: its bar starts where ı's entry hook did not (ITALIC_RECIPES)
 # ʼ ʻ: the Regular's, sloped about half the x-height, stood far right for
 # glyphs this high (ʼl touched): as far from l and i as ’ ‘, upright
+# the derived letters whose hook, tail or curl set them otherwise beside
+# their neighbours than the references set them against their base
+# (scripts/quality/derived_spacing.py Italic, to the references' median;
+# the Regular's are derive.SPACING): ɠ ʂ ʐ ʃ Ƭ ɻ ҷ қ Ƈ ң Ƴ ƭ ɮ ʄ Ƙ ɳ Ʋ ɱ ɧ Ҳ ʝ ɾ
 ITALIC_SIDEBEARINGS = {"germandbls": (25, 0), "uni0433.loclSRB": (-80, 0),
-                       "uni02BC": (-145, 145), "uni02BB": (-130, 130)}
+                       "uni02BC": (-145, 145), "uni02BB": (-130, 130),
+                       "uni0260": (0, -380), "uni0282": (-265, 0), "uni0290": (0, -275), "uni0283": (-215, -135),
+                       "uni01AC": (-215, 0), "uni027B": (0, -170), "uni04B7": (0, -145), "uni049B": (0, -125),
+                       "uni0187": (0, -165), "uni04A3": (0, -145), "uni01B3": (0, -235), "uni01AD": (0, -105),
+                       "uni026E": (0, -85), "uni0284": (-130, 0), "uni0198": (0, -180), "uni0273": (0, -130),
+                       "uni01B2": (0, -80), "uni0271": (0, -100), "uni0267": (0, -100), "uni04B2": (0, -65),
+                       "uni029D": (0, -55), "uni027E": (-90, 0)}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}

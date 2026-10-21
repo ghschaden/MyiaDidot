@@ -304,6 +304,15 @@
 			<key>ydieresis.sc</key>
 			<integer>-214</integer>
 		</dict>
+		<key>bracketleft</key>
+		<dict>
+			<key>uni0191</key>
+			<integer>52</integer>
+			<key>uni0272</key>
+			<integer>62</integer>
+			<key>uni0283</key>
+			<integer>40</integer>
+		</dict>
 		<key>chi</key>
 		<dict>
 			<key>Psi</key>
@@ -332,6 +341,13 @@
 			<integer>-38</integer>
 			<key>public.kern2.Y.sc</key>
 			<integer>-64</integer>
+		</dict>
+		<key>parenleft</key>
+		<dict>
+			<key>uni0191</key>
+			<integer>2</integer>
+			<key>uni0272</key>
+			<integer>16</integer>
 		</dict>
 		<key>periodcentered</key>
 		<dict>
@@ -2655,6 +2671,18 @@
 			<key>t</key>
 			<integer>-33</integer>
 		</dict>
+		<key>uni0198</key>
+		<dict>
+			<key>H</key>
+			<integer>20</integer>
+			<key>l</key>
+			<integer>64</integer>
+		</dict>
+		<key>uni0199.sc</key>
+		<dict>
+			<key>h.sc</key>
+			<integer>15</integer>
+		</dict>
 		<key>uni0232</key>
 		<dict>
 			<key>J</key>
@@ -2673,6 +2701,76 @@
 		<dict>
 			<key>public.kern2.a</key>
 			<integer>-20</integer>
+		</dict>
+		<key>uni0257</key>
+		<dict>
+			<key>b</key>
+			<integer>140</integer>
+			<key>bracketright</key>
+			<integer>104</integer>
+			<key>exclam</key>
+			<integer>116</integer>
+			<key>h</key>
+			<integer>140</integer>
+			<key>k</key>
+			<integer>140</integer>
+			<key>l</key>
+			<integer>140</integer>
+			<key>parenright</key>
+			<integer>62</integer>
+			<key>question</key>
+			<integer>98</integer>
+		</dict>
+		<key>uni0260</key>
+		<dict>
+			<key>b</key>
+			<integer>164</integer>
+			<key>bracketright</key>
+			<integer>130</integer>
+			<key>exclam</key>
+			<integer>150</integer>
+			<key>h</key>
+			<integer>164</integer>
+			<key>k</key>
+			<integer>164</integer>
+			<key>l</key>
+			<integer>164</integer>
+			<key>parenright</key>
+			<integer>86</integer>
+			<key>question</key>
+			<integer>134</integer>
+		</dict>
+		<key>uni0284</key>
+		<dict>
+			<key>b</key>
+			<integer>26</integer>
+			<key>exclam</key>
+			<integer>96</integer>
+			<key>h</key>
+			<integer>26</integer>
+			<key>k</key>
+			<integer>26</integer>
+			<key>l</key>
+			<integer>26</integer>
+			<key>parenright</key>
+			<integer>10</integer>
+			<key>question</key>
+			<integer>78</integer>
+		</dict>
+		<key>uni0290</key>
+		<dict>
+			<key>b</key>
+			<integer>26</integer>
+			<key>bracketright</key>
+			<integer>174</integer>
+			<key>h</key>
+			<integer>26</integer>
+			<key>k</key>
+			<integer>26</integer>
+			<key>l</key>
+			<integer>26</integer>
+			<key>parenright</key>
+			<integer>214</integer>
 		</dict>
 		<key>uni0404</key>
 		<dict>
@@ -2703,6 +2801,32 @@
 		<dict>
 			<key>uni0430.sc</key>
 			<integer>14</integer>
+		</dict>
+		<key>uni0496</key>
+		<dict>
+			<key>l</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni049A</key>
+		<dict>
+			<key>l</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni04B2</key>
+		<dict>
+			<key>l</key>
+			<integer>8</integer>
+		</dict>
+		<key>uni04B3</key>
+		<dict>
+			<key>b</key>
+			<integer>4</integer>
+			<key>h</key>
+			<integer>4</integer>
+			<key>k</key>
+			<integer>4</integer>
+			<key>l</key>
+			<integer>4</integer>
 		</dict>
 		<key>uni1D6C</key>
 		<dict>

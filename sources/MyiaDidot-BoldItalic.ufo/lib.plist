@@ -54,8 +54,6 @@
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0294</key>
 			<string>glottal: emboldened whole, its recipe fails on the Bold (ValueError)</string>
-			<key>uni0433.loclSRB</key>
-			<string>attach: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni044C.loclBGR</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni044E.loclBGR</key>
@@ -118,6 +116,8 @@
 			<string>added</string>
 			<key>aogonek public.kern2.j</key>
 			<string>added</string>
+			<key>bracketleft uni0283</key>
+			<string>added</string>
 			<key>eogonek public.kern2.j</key>
 			<string>added</string>
 			<key>f ibreve</key>
@@ -143,6 +143,8 @@
 			<key>f uni1EC9</key>
 			<string>added</string>
 			<key>iogonek public.kern2.j</key>
+			<string>added</string>
+			<key>parenleft uni0283</key>
 			<string>added</string>
 			<key>public.kern1.A public.kern2.Y</key>
 			<integer>-308</integer>
@@ -918,6 +920,18 @@
 			<string>added</string>
 			<key>public.kern1.zeta uni1FF8</key>
 			<string>added</string>
+			<key>uni0198 H</key>
+			<string>added</string>
+			<key>uni0198 l</key>
+			<string>added</string>
+			<key>uni01AD b</key>
+			<string>added</string>
+			<key>uni01AD h</key>
+			<string>added</string>
+			<key>uni01AD k</key>
+			<string>added</string>
+			<key>uni01AD l</key>
+			<string>added</string>
 			<key>uni0244 public.kern2.O</key>
 			<string>added</string>
 			<key>uni0244 public.kern2.O.sc</key>
@@ -928,11 +942,39 @@
 			<string>added</string>
 			<key>uni0245 public.kern2.Y</key>
 			<string>added</string>
+			<key>uni0257 b</key>
+			<string>added</string>
+			<key>uni0257 h</key>
+			<string>added</string>
+			<key>uni0257 k</key>
+			<string>added</string>
+			<key>uni0257 l</key>
+			<string>added</string>
+			<key>uni0260 b</key>
+			<string>added</string>
+			<key>uni0260 bracketright</key>
+			<string>added</string>
+			<key>uni0260 exclam</key>
+			<string>added</string>
+			<key>uni0260 h</key>
+			<string>added</string>
+			<key>uni0260 k</key>
+			<string>added</string>
+			<key>uni0260 l</key>
+			<string>added</string>
+			<key>uni0260 parenright</key>
+			<string>added</string>
+			<key>uni0260 question</key>
+			<string>added</string>
 			<key>uni0289.sc uni01D2.sc</key>
 			<string>added</string>
 			<key>uni0289.sc uni020D.sc</key>
 			<string>added</string>
 			<key>uni0289.sc uni1ED7.sc</key>
+			<string>added</string>
+			<key>uni0290 bracketright</key>
+			<string>added</string>
+			<key>uni0290 parenright</key>
 			<string>added</string>
 			<key>uni0433.loclSRB public.kern2.uni0434</key>
 			<string>added</string>

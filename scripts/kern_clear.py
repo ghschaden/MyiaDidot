@@ -55,6 +55,15 @@ PAIRS = [
     ("Aogonek", "Y"),
     # the horn reaches over a small cap's accent (the Bold Italic's Ư ỗ.sc)
     *((h, "public.kern2.O.sc") for h in HORN),
+    # hooks and tails that overhang their advance (derive.SPACING; found by
+    # scripts/quality/derived_spacing.py): ɗ ɠ ʄ over a tall letter, ʐ's
+    # tail under ) ], the descenders' tails at a foot serif, the opening
+    # bracket over a hook below
+    *((a, b) for a in ("uni0257", "uni0260", "uni0284", "uni0290", "uni01AD")
+      for b in ("l", "h", "k", "b", "exclam", "question", "parenright", "bracketright")),
+    *((a, b) for a in ("uni049B", "uni0497", "uni04B3") for b in ("l", "h", "k", "b")),
+    *((a, b) for a in ("uni049A", "uni0496", "uni04B2", "uni0198") for b in ("l", "H")),
+    *((a, b) for a in ("parenleft", "bracketleft") for b in ("uni0272", "uni0191", "uni0283")),
 ]
 
 
