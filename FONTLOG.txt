@@ -26,6 +26,22 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-21 Version 0.100 (development), Phase 3: an uncrossed italic W, a lighter a
+
+    * Old Standard's crossed, very wide W (1.47 cap heights; Bodoni Moda
+      1.28) stood out in running text: the Italic's W is now two of its Vs
+      narrowed to 0.75, their strokes brought back to V's weight, the thin
+      stroke of one meeting the thick of the next at the top (make_italic
+      redraw_w; 1.25 cap heights with V's side bearings). Ŵ Ẁ Ẃ Ẅ Ẉ Ⱳ ₩
+      and the Bold Italic follow; Ⱳ's curl and ₩'s bars refitted to it.
+      w.sc is made of v.sc the same way and ⱳ.sc of w.sc with Ⱳ's curl
+      (FontForge's drafts of the narrow W came out light, 0.73 and 0.84
+      of their kind).
+    * The italic a's bowl was as heavy as its stem, its counter small
+      (0.407 of the x-height, references 0.41-0.46): its thick stroke is
+      40 units lighter (ITALIC_A_BOWL; counter 0.429). Both chosen by the
+      person from previews set in words.
+
 2026-10-21 Version 0.100 (development), Phase 3: a lighter, more even Italic
 
     * The Italic was hard to read on a full page and looked darker than

@@ -48,6 +48,8 @@ U.horn smooth 1                  # Italic weighted as its letters are taken, der
 Upsilon smooth 2                 # 2026-10-21 Italic reweighted and tightened: 1402,884 2.8 degrees; 637,114 2.5 degrees
 V kink 2                         # 2026-10-16 known at the start (quality checks added): 1350,1216 4.2 degrees; 474,1276 5.7 degrees
 W kink 2                         # 2026-10-16 known at the start (quality checks added): 2020,1212 3.2 degrees; 466,1276 5.8 degrees
+W slant 1                        # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.3 degrees, not 15.2
+W stroke 1                       # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: uc 165 against 185 (0.89, lighter)
 X extreme 2                      # 2026-10-16 known at the start (quality checks added): 827,1375 9 units past; 995,53 12 units past
 X stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 183 against 209 (0.88, lighter)
 Xi smooth 3                      # 2026-10-21 Italic reweighted and tightened: 1406,1434 2.7 degrees; 1081,163 2.2 degrees; 1006,787 2.7 degrees
@@ -63,7 +65,7 @@ ampersand kink 1                 # 2026-10-21 Italic reweighted and tightened: 9
 aogonek smooth 1                 # 2026-10-21 Italic reweighted and tightened: 695,-293 2.6 degrees
 aogonek.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 827,119 6.8 degrees; 588,-180 7.7 degrees; 776,-238 6.6 degrees; 491,-237 5.7 degrees; 204,107 6.7 degrees
 aogonek.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +5 from 1040
-aringacute.sc kink 7             # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 645,1166 5.8 degrees; 886,1166 4.1 degrees; 679,1166 6.4 degrees; 852,1166 6.4 
+aringacute.sc kink 7             # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 645,1166 5.8 degrees; 886,1166 4.1 degrees; 679,1166 6.4 degrees; 852,1166 6.4
 asterisk kink 4                  # 2026-10-21 Italic reweighted and tightened: 337,1202 3.7 degrees; 1029,1202 3.7 degrees; 1029,748 3.9 degrees; 337,748 3.9 degrees
 asterisk smooth 6                # 2026-10-21 Italic reweighted and tightened: 616,1039 2.0 degrees; 624,1382 3.5 degrees; 742,1382 3.5 degrees; 750,1039 2.0 degrees; 750,897 3.8 degrees; 616,897 3.8 degrees
 at extreme 2                     # 2026-10-16 known at the start (quality checks added): 1146,500 17 units past; 1067,817 12 units past
@@ -881,8 +883,7 @@ uni2042 kink 12                  # 2026-10-16 known at the start (quality checks
 uni2071 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 320,675 3.0 degrees
 uni207F smooth 4                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 606,675 3.0 degrees; 501,645 2.3 degrees; 623,1010 2.9 degrees; 320,1011 4.9 de
 uni20A6 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 337,161 2.3 degrees
-uni20A9 kink 1                   # 2026-10-16 known at the start (quality checks added): 470,1276 6.6 degrees
-uni20A9 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 2029,1204 2.9 degrees
+uni20A9 kink 2                   # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 1740,1208 3.4 degrees; 432,1271 3.6 degrees
 uni20AA extreme 4                # 2026-10-16 known at the start (quality checks added): 620,539 54 units past; 698,-16 27 units past; 830,895 53 units past; 752,1450 27 units past
 uni20AD extreme 1                # 2026-10-21 Italic reweighted and tightened: 875,62 6 units past
 uni20AD smooth 1                 # 2026-10-21 Italic reweighted and tightened: 209,114 2.7 degrees
@@ -908,7 +909,7 @@ uni2113 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +21 from -23
 uni2116 extreme 7                # 2026-10-21 Italic reweighted and tightened: 937,1211 21 units past; 1922,1408 10 units past; 125,-31 8 units past; 1880,861 9 units past; 1573,299 10 units past; 1553,413 6 units past; 1901,737 6 unit
 uni2116 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 145,142 3.4 degrees
-uni2135 extreme 8                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 388,1099 9 units past; 819,655 5 units past; 791,764 6 units past; 1032,1047 8 
+uni2135 extreme 8                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 388,1099 9 units past; 819,655 5 units past; 791,764 6 units past; 1032,1047 8
 uni2135 kink 1                   # 2026-10-21 Italic reweighted and tightened: 331,240 5.7 degrees
 uni2135 smooth 2                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1078,861 2.4 degrees; -5,33 4.9 degrees
 uni2135 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 305 against 185 (1.65, darker)
@@ -920,6 +921,7 @@ uni2C63 kink 1                   # 2026-10-16 known at the start (quality checks
 uni2C63 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 198,114 2.5 degrees
 uni2C64 extreme 1                # 2026-10-21 Italic reweighted and tightened: 300,-148 5 units past
 uni2C64 kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 551,-231 7.4 degrees
+uni2C65 smooth 1                 # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 196,165 2.9 degrees
 uni2C65.sc kink 2                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 825,118 6.8 degrees; 641,122 6.7 degrees
 uni2C65.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 246,207 2.3 degrees
 uni2C66 smooth 2                 # 2026-10-21 Italic reweighted and tightened: 223,209 2.5 degrees; 310,60 2.6 degrees
@@ -928,14 +930,14 @@ uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni2C6D extreme 2                # 2026-10-16 known at the start (quality checks added): 714,10 26 units past; 468,698 50 units past
 uni2C6D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 273 against 222 (1.23, darker)
 uni2C6F kink 1                   # 2026-10-16 known at the start (quality checks added): 465,1292 5.6 degrees
-uni2C72 kink 1                   # 2026-10-16 known at the start (quality checks added): 467,1276 6.5 degrees
-uni2C72 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 1886,1150 3.2 degrees
+uni2C72 kink 3                   # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 1598,1150 5.3 degrees; 1687,1150 7.5 degrees; 416,1271 3.7 degrees
+uni2C72 slant 1                  # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.3 degrees, not 15.2
+uni2C72 stroke 1                 # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: uc 166 against 185 (0.90, lighter)
 uni2C73 slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni2C73 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1489,753 3.4 degrees
 uni2C73 zone 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: top +7 from 884
-uni2C73.sc extreme 1             # 2026-10-21 Italic reweighted and tightened: 524,979 9 units past
-uni2C73.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 814,767 7.1 degrees; 1041,889 6.5 degrees
-uni2C73.sc smooth 1              # 2026-10-21 Italic reweighted and tightened: 854,926 3.0 degrees
+uni2C73.sc kink 5                # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 690,756 3.4 degrees; 730,915 1.8 degrees; 1173,756 5.3 degrees; 1268,834 7.6 degrees
+uni2C73.sc slant 1               # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.6 degrees, not 15.2
 uni2C73.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uniA78B extreme 1                # 2026-10-16 known at the start (quality checks added): 531,1434 5 units past
 uniA78B smooth 2                 # 2026-10-16 known at the start (quality checks added): 408,1328 2.4 degrees; 596,1328 2.4 degrees
@@ -972,8 +974,8 @@ v smooth 1                       # 2026-10-21 Italic reweighted and tightened: 7
 v.sc kink 5                      # 2026-10-21 Italic reweighted and tightened: 486,906 6.2 degrees; 864,755 3.7 degrees; 921,914 4.2 degrees; 987,865 4.6 degrees; 299,910 5.4 degrees
 v.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 w slant 1                        # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
-w.sc extreme 1                   # 2026-10-21 Italic reweighted and tightened: 524,979 6 units past
-w.sc kink 8                      # 2026-10-21 Italic reweighted and tightened: 480,906 5.9 degrees; 810,755 6.9 degrees; 848,910 4.6 degrees; 1036,881 5.1 degrees; 1385,747 3.9 degrees; 1435,910 5.9 degrees; 1515,862 3.7 degrees; 293,9
+w.sc kink 6                      # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 690,756 3.4 degrees; 729,915 4.7 degrees; 1174,756 2.7 degrees; 1213,915 1.5 degrees
+w.sc slant 1                     # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.6 degrees, not 15.2
 w.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 x smooth 3                       # 2026-10-21 Italic reweighted and tightened: 211,252 3.7 degrees; 1029,841 3.3 degrees; 1029,640 3.5 degrees
 x.sc extreme 2                   # 2026-10-16 known at the start (quality checks added): 564,990 11 units past; 690,45 14 units past

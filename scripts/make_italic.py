@@ -206,6 +206,110 @@ def shear(g, s, y0=XH / 2):
         a.x = round(a.x + (a.y - y0) * s)
 
 
+# Old Standard's letters that stood out in running text, redrawn (chosen by
+# the person from previews in words, 2026-10-21): W crossed and very wide
+# (1.47 cap heights, Bodoni Moda 1.28): two Vs narrowed to ITALIC_W_NARROW
+# across, their strokes brought back to V's, meeting at the top (1.20);
+# a's bowl as heavy as its stem, the counter small (0.407 of the x-height,
+# references 0.41-0.46): its thick stroke ITALIC_A_BOWL lighter (0.429)
+ITALIC_W_NARROW = 0.75
+ITALIC_A_BOWL = -40
+
+
+def redraw_w(font, w_name="W", v_name="V"):
+    """W made of the Italic's V (weighted), narrowed, its strokes as V's,
+    the thin stroke of one meeting the thick of the next at the top (their
+    centres at 0.94 of V's height, the diagonals run on from 0.28 and
+    0.70: 1350, 400, 1000 on the capital); V's side bearings, upright; the
+    anchors moved with the ink. w.sc of v.sc likewise (FontForge's draft
+    of the narrow W came out light, 0.73 of its kind)."""
+    import derive
+
+    up = ufoLib2.Font()
+    v = copy.deepcopy(font[v_name])
+    up.layers.defaultLayer.insertGlyph(v, "V")
+    shear(v, -SLANT)
+    h = v.getBounds(up).yMax
+    lo, hi, top = 0.28 * h, 0.70 * h, 0.94 * h
+
+    def runs(f, n, y):
+        xs = ink_slice(f, n, y)
+        return list(zip(xs[::2], xs[1::2]))
+
+    def centre(f, n, i, y):
+        """the centre of the first (thick) or last (thin) diagonal at y,
+        run on in a line from lo and hi"""
+        c0, c1 = (sum(runs(f, n, at)[i]) / 2 for at in (lo, hi))
+        return c1 + (c1 - c0) / (hi - lo) * (y - hi)
+
+    def perp(f, n):
+        """the thick and thin diagonals' thickness across"""
+        out = []
+        for i in (0, -1):
+            a, b = runs(f, n, lo)[i], runs(f, n, hi)[i]
+            s = ((b[0] + b[1]) - (a[0] + a[1])) / 2 / (hi - lo)
+            out.append((b[1] - b[0]) / (1 + s * s) ** 0.5)
+        return out
+
+    thick, _ = perp(up, "V")
+    k = ITALIC_W_NARROW
+    narrow = RecordingPen()
+    v.draw(TransformPen(narrow, (k, 0, 0, 1, 0, 0)))
+
+    def narrowed(ax):
+        g = weight_thick(narrow, ax, thin=0, thick=thick * k)
+        up.layers.defaultLayer.insertGlyph(g, "Vn", overwrite=True)
+        return abs(perp(up, "Vn")[0] - thick)
+
+    narrowed(min(range(0, 100, 2), key=narrowed))
+    dx = centre(up, "Vn", -1, top) - centre(up, "Vn", 0, top)
+    w = derive.path_op(derive.to_path(up, up["Vn"]), derive.shifted(derive.to_path(up, up["Vn"]), dx), "UNION")
+    (x0, _, x1, _), vb = w.bounds, v.getBounds(up)
+    lsb, rsb = vb.xMin, v.width - vb.xMax
+    g = font[w_name]
+    old = copy.deepcopy(g)
+    shear(old, -SLANT)
+    ob = old.getBounds(font)
+    out = ufoLib2.objects.Glyph()
+    pen = out.getPen()
+    if w.clockwise != derive.to_path(up, v).clockwise:
+        # wound as V is (pathops winds the other way: ₩'s bars, joined
+        # to it, cut it instead)
+        from fontTools.pens.reverseContourPen import ReverseContourPen
+
+        pen = ReverseContourPen(pen)
+    w.draw(TransformPen(pen, (1, 0, 0, 1, lsb - x0, 0)))
+    out.width = round(lsb + (x1 - x0) + rsb)
+    for a in old.anchors:  # where they stood across the ink
+        t = (a.x - ob.xMin) / (ob.xMax - ob.xMin)
+        out.appendAnchor({"name": a.name, "x": round(lsb + t * (x1 - x0)), "y": a.y})
+    shear(out, SLANT)
+    g.clearContours()
+    g.clearAnchors()
+    redraw(g, out)
+    for a in out.anchors:
+        g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    g.width = out.width
+
+
+def lighten_a(font):
+    """a's bowl, left of the middle of its counter, ITALIC_A_BOWL lighter
+    across (embolden by node: the stem and the hairlines as they are)."""
+    up = ufoLib2.Font()
+    a = copy.deepcopy(font["a"])
+    up.layers.defaultLayer.insertGlyph(a, "a")
+    shear(a, -SLANT)
+    xs = ink_slice(up, "a", XH / 2)
+    cut = (xs[1] + xs[2]) / 2  # the counter's middle
+    rec = RecordingPen()
+    a.draw(rec)
+    out = embolden(rec, ITALIC_A_BOWL, 0, lambda x, y, inward: 1.0 if x < cut else 0.0)
+    shear(out, SLANT)
+    g = font["a"]
+    g.clearContours()
+    redraw(g, out)
+
+
 def upright(font):
     """The whole font unslanted: what is made in it is slanted back."""
     up = copy.deepcopy(font)
@@ -342,7 +446,7 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɗ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB",
+                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "ⱳ.sc", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB",
                  "ь.loclBGR", "ю.loclBGR", "ж.loclBGR", "ъ.loclBGR", "в.loclBGR"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
 # where ɗ leaves the italic d for ɓ's top: above the bowl, below where ɓ's
@@ -350,8 +454,9 @@ TRANSPLANT = set()  # other recipes better transplanted
 DHOOK_CUT = 1000
 # small caps left to FontForge's drafts of the Italic's capitals (as the
 # others), not derive.py's recipes: a capital scaled down (ʛ from Ɠ) is
-# heavier than the small caps beside it
-SC_DRAFTED = {"ɑ.sc", "ɂ.sc", "ʒ.sc", "ʊ.sc", "ʋ.sc", "ⱳ.sc", "ꞵ.sc", "ƭ.sc", "ƙ.sc",
+# heavier than the small caps beside it (ⱳ.sc not: drafted from the
+# uncrossed Ⱳ, its narrow diagonals came out light, as w.sc's)
+SC_DRAFTED = {"ɑ.sc", "ɂ.sc", "ʒ.sc", "ʊ.sc", "ʋ.sc", "ꞵ.sc", "ƭ.sc", "ƙ.sc",
               "ɲ.sc", "ʝ.sc", "ϗ.sc", "ƴ.sc", "ƈ.sc", "ɠ.sc", "ƥ.sc", "ɦ.sc"}
 # the Italic's own letters already have the shape: Old Standard's g is ɡ,
 # its h turned is ɥ (the Regular's is u and a descender, its h's serifs
@@ -383,6 +488,17 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190, 460), "ⱳ": (590, 700)}
 
 ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
+                  # ₩: the bars from 20 to 20 past the uncrossed W's
+                  # advance (redraw_w), as the Regular's across its W
+                  "₩": ("lines", "W", ("c", 64, [(20, 528, 1807, 592), (20, 842, 1807, 906)])),
+                  # ⱳ.sc: w.sc (made of v.sc as W of V) with Ⱳ's curl at
+                  # the small caps' 0.725, the cut between the middle serif
+                  # and the right one (all of it); enlarged from that Ⱳ, its
+                  # narrow diagonals thinned by the stem's amount (0.84 of
+                  # its kind)
+                  "ⱳ.sc": ("curl", "w.sc", ("c", [(940, 834, BIG, BIG)],
+                                         {"at": ("y", 834, "last"), "dir": 79, "turn": "cw", "r": (87, 80),
+                                          "sweep": 210, "ball": 36, "t": (59, 30)})),
                   # ǥ: the single-storey g's bar across its stem below the
                   # baseline, above the hook, as in DejaVu (the roman's
                   # height crossed the tail, easy to miss)
@@ -611,7 +727,9 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                          ("curl", {"at": ("pt", 1287, 770, 54), "dir": 92, "turn": "cw",
                                                    "r": (105, 95), "sweep": 200, "ball": 45, "t": (54, 36),
                                                    "lead": 6}, (0, 0), (1, 1, 0, 0))])),
-                  "Ⱳ": ("curl", "W", ("c", [(1480, 1150, BIG, BIG)],
+                  # (the cut just inside the top right serif of the
+                  # uncrossed W, redraw_w; 1480 on the crossed one)
+                  "Ⱳ": ("curl", "W", ("c", [(1255, 1150, BIG, BIG)],
                                       {"at": ("y", 1150, "last"), "dir": 79, "turn": "cw", "r": (120, 110),
                                        "sweep": 210, "ball": 50, "t": (81, 40)})),
                   # v on a stem under its round bottom
@@ -1579,6 +1697,9 @@ def main():
             g.lib["org.myiadidot.italicSource"] = "sloped roman"
             kept_roman += 1
 
+    # Old Standard's W and a, redrawn (before anything is made of them)
+    redraw_w(font)
+    lighten_a(font)
     # what was reviewed or drawn in the Italic stays
     # (and the Italic's own, reviewed: ʀ.sc, drafted from its Ʀ, is not in the Regular)
     # (drafts made at other weights come back as drafts, drawn ones stay)
@@ -1599,6 +1720,8 @@ def main():
     derived, failed, later = derive_stage(font, regular, kept=kept)
     figures = figures_stage(font, regular)
     small_caps = smallcaps_stage(font, later)
+    if "w.sc" in small_caps:
+        redraw_w(font, "w.sc", "v.sc")  # as W of V
     # a small cap the Regular lacks (ʀ.sc, drafted from the Italic's own Ʀ):
     # in the glyph order after its letter, a base glyph
     order = list(font.glyphOrder)

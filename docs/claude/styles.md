@@ -55,7 +55,10 @@ Moved from CLAUDE.md (its ground rules apply).
   strokes made heavier (WEIGHT, CAP_WEIGHT: `weight_thick`) as they are
   taken, so all made of them is built from the weighted letter, never
   weighted whole (only a letter enlarged to the other case, made of the
-  unweighted glyphs, gets its case's weight after: `enlarged`). What Old Standard
+  unweighted glyphs, gets its case's weight after: `enlarged`). Its W
+  (uncrossed, of two narrowed Vs: `redraw_w`) and a (the bowl lighter:
+  `lighten_a`) are redrawn from Old Standard's before anything is made of
+  them. What Old Standard
   lacks is made in an upright frame (derive.py recipes, their drawn strokes
   at the weighted stems (`recipe_scale`), transplants from
   the Regular (the part at the Italic's stems,
