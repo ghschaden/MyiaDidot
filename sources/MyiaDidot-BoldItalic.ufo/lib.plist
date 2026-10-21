@@ -4,8 +4,6 @@
 	<dict>
 		<key>org.myiadidot.emboldenedWhole</key>
 		<dict>
-			<key>florin.sc</key>
-			<string>hook: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0188</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0191</key>
@@ -48,8 +46,6 @@
 			<string>attach: emboldened whole, made again from the Bold it misses (ɾ: a stub of the foot serif at the cut)</string>
 			<key>uni0284</key>
 			<string>attach: emboldened whole, made again from the Bold it strays</string>
-			<key>uni0288</key>
-			<string>attach: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0288.sc</key>
 			<string>hook: emboldened whole, made again from the Bold it strays</string>
 			<key>uni0294</key>
@@ -64,10 +60,6 @@
 			<string>attach: emboldened whole, made again from the Bold it misses (қ: crumbs of the cut at the descender)</string>
 			<key>uni04B7</key>
 			<string>attach: emboldened whole, made again from the Bold it has faults</string>
-			<key>uni20B1</key>
-			<string>lines: emboldened whole, made again from the Bold it has faults</string>
-			<key>uni20B8</key>
-			<string>lines: emboldened whole, made again from the Bold it changes its advance</string>
 			<key>uni2C64</key>
 			<string>attach: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni2C66</key>
@@ -143,6 +135,8 @@
 			<key>f uni1EC9</key>
 			<string>added</string>
 			<key>iogonek public.kern2.j</key>
+			<string>added</string>
+			<key>parenleft uni0272</key>
 			<string>added</string>
 			<key>parenleft uni0283</key>
 			<string>added</string>
@@ -598,6 +592,8 @@
 			<string>added</string>
 			<key>public.kern1.U uni1ED7</key>
 			<string>added</string>
+			<key>public.kern1.U.sc uni01D2.sc</key>
+			<string>added</string>
 			<key>public.kern1.U.sc uni01E7.sc</key>
 			<string>added</string>
 			<key>public.kern1.U.sc uni0201.sc</key>
@@ -1027,6 +1023,8 @@
 			<key>uni1ED5.sc public.kern2.A.sc</key>
 			<string>added</string>
 			<key>uni1ED5.sc public.kern2.AE.sc</key>
+			<string>added</string>
+			<key>uni1ED5.sc public.kern2.Y.sc</key>
 			<string>added</string>
 			<key>uni2C6F public.kern2.a</key>
 			<string>added</string>

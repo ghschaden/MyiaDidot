@@ -56,6 +56,28 @@ ChangeLog
       be reviewed. Rebuilt, 59 derived letters (hooks, curls, attached
       pieces) show as weighted whole: they were drafted before the Italic
       checked it and were weighted whole then too, at 44 instead of 10.
+    * The Italic's added weight now comes with Old Standard's letters as
+      they are taken, so its derived letters, small caps and old-style
+      figures are built from weighted bases, their hooks and descenders
+      drawn at the weighted stem; none is weighted whole any more (67
+      before). Capitals enlarged from a lowercase letter and the reverse
+      (Ɩ Ɣ Ꞷ ʊ ɂ, ʊ.sc ...) are made of the unweighted glyphs and given
+      their own case's weight: Ɩ's tail no longer thins to a sliver; a
+      capital's drawn tail comes at the capitals' (unweighted) stem. Small
+      caps are drafted unweighted and then weighted as letters, as before
+      (drafted at the weighted stem, c.sc o.sc came out light). ɛ.sc is
+      the Italic ɛ enlarged by its recipe (it was the Regular's, sloped).
+      The old-style figures are a little darker (made from the weighted
+      lining ones).
+    * Turned and mirrored letters made of a composite (Ʊ of Ω, ɜ of ɛ, ɒ
+      of α) take their base's side bearings swapped, measured upright;
+      the composite was measured sloped and skipped.
+    * Bold Italic: ɯ.sc and ң made again by their recipes (a closed
+      counter no longer counts as a leftover piece; ң emboldened whole
+      had a pinhole in its descender); ʈ ₱ ₸ ƒ.sc no longer emboldened
+      whole (33 left); its recipe strokes at the weights chosen before;
+      ы.sc emboldened the rounder way (by weight its bowl closed up on
+      the stem); ґ.sc, 880 wide, no longer taken for a spacing accent.
 
 2026-10-20 Version 0.100 (development), Phase 3: Bold spacing against the references
 

@@ -51,9 +51,14 @@ Moved from CLAUDE.md (its ground rules apply).
   `scripts/make_italic.py` from Old Standard Italic (Kryukov, OFL; source
   pinned in `sources/oldstand/`, converted into `build/oldstand/`) plus the
   Regular: Old Standard's letters zone-scaled to Myia's metrics, Myia's
-  marks and features sloped 15.2°, composites rebuilt. What Old Standard
-  lacks is made in an upright frame (derive.py recipes, transplants from
-  the Regular (the part at the Italic's stems before the weight pass,
+  marks and features sloped 15.2°, composites rebuilt; the letters' thick
+  strokes made heavier (WEIGHT, CAP_WEIGHT: `weight_thick`) as they are
+  taken, so all made of them is built from the weighted letter, never
+  weighted whole (only a letter enlarged to the other case, made of the
+  unweighted glyphs, gets its case's weight after: `enlarged`). What Old Standard
+  lacks is made in an upright frame (derive.py recipes, their drawn strokes
+  at the weighted stems (`recipe_scale`), transplants from
+  the Regular (the part at the Italic's stems,
   measured on n and H), FontForge small caps, fitted old-style figures); the
   Regular's extra ligatures (fb ft ſt ct ...) are left out with their
   rules, so don't run draft_ligatures.py on it; it runs smallcaps.py itself. Lib

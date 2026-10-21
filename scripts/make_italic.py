@@ -64,11 +64,12 @@ SLANT = math.tan(math.radians(ANGLE))
 KX = 1.98  # across: between the x-height (1.939) and cap-height (2.014) scales
 OS_XH, OS_CAP = 456, 712
 XH, CAP = 884, 1434
-# Old Standard's strokes as they are, scaled (AX, AY across and up: none).
-# Its letters (and all made of them) are built at that weight, which the
-# recipes and transplants are tuned to, and their thick upright strokes then
-# made WEIGHT heavier (weight_thick: hairlines and thin strokes as they are),
-# the capitals CAP_WEIGHT. Thinned hairlines (-16, -10) and stems at the
+# Old Standard's strokes as they are, scaled (AX, AY across and up: none),
+# their thick upright strokes made WEIGHT heavier as they are taken
+# (weight_thick: hairlines and thin strokes as they are), the capitals
+# CAP_WEIGHT. All made of them (derived letters, small caps, figures) is
+# built from those weighted letters, as the Bold's are from the Bold's: a
+# letter weighted on its own thickens at its junctions unlike its base. Thinned hairlines (-16, -10) and stems at the
 # Regular's (+44) gave a contrast of 4.6 where italics have 3.1-4.2 and a
 # colour twice as uneven as Old Standard's (letters of thick strokes, a b g q,
 # and the capitals dark, hairline ones light), hard to read on a full page;
@@ -83,14 +84,13 @@ CAP_WEIGHT = 0
 TUNED_AX, TUNED_AY = -16, -10
 
 
-def recipe_scale(stem, hair, weighted=False):
-    """derive.STROKE_KEY for the Italic's recipes: an o's stem and top
-    hairline as they are (weighted: after the weight pass, WEIGHT added to
-    the stem) against what the numbers were tuned at."""
-    if weighted:
-        stem -= WEIGHT
-    return stem / (stem - AX + TUNED_AX), hair / (hair - AY + TUNED_AY)
-WEIGHTED = ("Old Standard", "derived", "small cap draft")
+def recipe_scale(stem, hair, weight=WEIGHT):
+    """derive.STROKE_KEY for the Italic's recipes: an o's stem (WEIGHT
+    added) and top hairline as they are, against what the numbers were
+    tuned at (Old Standard's, thinned by TUNED_AX, TUNED_AY): a drawn
+    stroke comes at the stem with the weight of the letter it is drawn on
+    (weight: CAP_WEIGHT on a capital's tail)."""
+    return (stem - WEIGHT + weight) / (stem - WEIGHT - AX + TUNED_AX), hair / (hair - AY + TUNED_AY)
 # off each side of a letter: Old Standard's spacing, scaled, is loose for
 # its narrow letters (side space 0.180 of the x-height at a cut of 3, Bodoni
 # Moda's and Libre Bodoni's italics 0.172 and 0.162); 13 more chosen by the
@@ -435,7 +435,7 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                           (0, 0), (1, 1, 0, 0))])),
                   # z's bottom stroke, where it turns up, turns down instead into a
                   # stem that hooks to the right (as the Regular's and Charis's ʐ),
-                  # the stem 110 before the weight pass (0.85 of n after it), run up
+                  # the stem 110 as tuned (0.85 of the weighted n), run up
                   # into the stroke so the inner corner is the two edges meeting
                   "ʐ": ("attach", "z", ("x", [(600, -BIG, BIG, 400)],
                                         [("curl", {"at": ("pt", 600, 35, 117), "dir": 0, "turn": "cw",
@@ -774,8 +774,7 @@ def transplant(up, regular, name, source, curl=False):
         # met at its end, whose run is its length, not its weight (ʐ's
         # foot from z's bar): that much too)
         capital = ink_bounds(regular, source)[3] > (XH + CAP) / 2 and source[:1].isupper()
-        # the Italic's stems to the Regular's, as they are now (before the
-        # weight pass: the part is weighted with the letter)
+        # the Italic's stems to the Regular's, weighted
         ref, h = ("H", CAP / 2) if capital else ("n", XH / 2)
         (a0, a1), (b0, b1) = derive.stems_at(up, ref, h)[0], derive.stems_at(regular, ref, h)[0]
         stems = (a1 - a0) / (b1 - b0)
@@ -868,9 +867,51 @@ def glottal(up, source):
     return derive.path_op(top, stem, "UNION")
 
 
-# derived from a glyph kept from the last run, which has its weight
-# already: not weighted again (derive_stage fills it)
-PREWEIGHTED = set()
+def case_weight(font, g):
+    """the weight added to a letter of g's case"""
+    return CAP_WEIGHT if capital(font, g) else WEIGHT
+
+
+def weight_of(font, name):
+    """The weight added to a glyph's thick strokes: Old Standard's letters'
+    as they are taken (WEIGHT, the capitals CAP_WEIGHT), and that of all
+    made of them."""
+    if name not in font or font[name].lib.get(SOURCE_KEY) not in ("Old Standard", "derived", "small cap draft"):
+        return 0
+    return case_weight(font, font[name])
+
+
+def reweight(up, name, w):
+    """up[name] (decomposed) with its thick strokes w heavier (weight_thick)"""
+    g = up[name]
+    rec = DecomposingRecordingPen(up)
+    g.draw(rec)
+    out = weight_thick(rec, w)
+    g.clearContours()
+    g.clearComponents()
+    out.draw(g.getPen())
+
+
+def enlarged(font, up, ch, op, source, band, name):
+    """A letter scaled to another case (ɩ -> Ɩ with o -> O, Ʊ -> ʊ.sc):
+    derive.enlarge brings all its strokes to the new size's weight by one
+    amount, which the added weight (WEIGHT on the thick strokes, none on
+    the thin) does not scale with: Ɩ's tail thinned to a sliver. So made of
+    the glyphs without it, the letter then given the weight of its case."""
+    import derive
+
+    refs = {source, *band[:2]}
+    saved = {n: copy.deepcopy(up[n]) for n in refs if weight_of(font, n) and n in up}
+    try:
+        for n in saved:
+            reweight(up, n, -weight_of(font, n))
+        derive.build(up, ch, op, source, band, name)
+    finally:
+        for n, g in saved.items():
+            up.layers.defaultLayer.insertGlyph(g, n, overwrite=True)
+    w = case_weight(up, up[name])
+    if w:
+        reweight(up, name, w)
 
 
 def derive_stage(font, regular, late=False, kept=()):
@@ -883,8 +924,7 @@ def derive_stage(font, regular, late=False, kept=()):
 
     up = upright(font)
     cmap = {u: g.name for g in up for u in g.unicodes}
-    _, stem, hair = derive.strokes(up, "o")
-    up.lib[derive.STROKE_KEY] = recipe_scale(stem, hair)
+    _, o_stem, o_hair = derive.strokes(up, "o")
 
     def resolve(c):
         return derive.resolve(cmap, c)
@@ -908,6 +948,7 @@ def derive_stage(font, regular, late=False, kept=()):
         name = resolve(ch)
         if name not in font or font[name].lib.get(SOURCE_KEY) != "sloped roman":
             continue
+        up.lib[derive.STROKE_KEY] = recipe_scale(o_stem, o_hair, case_weight(font, font[name]))
         if len(source) == 1 or (derive.variant(source) and not source[0].isascii()):
             source = resolve(source)
         if source.endswith(".sc") != late:
@@ -918,12 +959,6 @@ def derive_stage(font, regular, late=False, kept=()):
             failed.append(f"{ch}: no {source}")
             continue
         capital = band == "c" or (isinstance(band, tuple) and band[:1] == ("c",))
-        # (an alias, г.sc of gamma.sc, has its outline's weight)
-        held = source
-        while not up[held].contours and len(up[held].components) == 1:
-            held = up[held].components[0].baseGlyph
-        if held in kept:
-            PREWEIGHTED.add(name)
         old = up[name]
         try:
             if ch == "ɗ":
@@ -987,6 +1022,9 @@ def derive_stage(font, regular, late=False, kept=()):
                 except (IndexError, ValueError):  # the Regular's is not source plus a part
                     del up[name]
                     derive.build(up, ch, op, source, band, name)
+            elif op in ("enlarge", "stretch"):
+                del up[name]
+                enlarged(font, up, ch, op, source, band, name)
             else:
                 del up[name]
                 derive.build(up, ch, op, source, band, name)
@@ -1056,7 +1094,10 @@ def smallcaps_stage(font, later=()):
     height = font.lib.get(sc.HEIGHT_KEY, sc.DEFAULT_HEIGHT)
     lc = derive.stems_at(up, "n", XH / 2)[0]
     uc = derive.stems_at(up, "H", CAP - 300)[0]
-    lc, uc = lc[1] - lc[0], uc[1] - uc[0]
+    # drafted without the added weight, then given it as a letter: drafted
+    # at the weighted stem, FontForge thickens the curves less (c.sc o.sc
+    # lighter than their kind)
+    lc, uc = lc[1] - lc[0] - WEIGHT, uc[1] - uc[0] - CAP_WEIGHT
     stem = lc + (height - XH) / (CAP - XH) * (uc - lc)
     subprocess.run(["fontforge", "-quiet", "-lang=py", "-script", str(ROOT / "scripts/smallcaps_draft.py"),
                     str(work / "upright.ufo"), str(work / "smallcaps.ufo"), str(height), f"{stem:.0f}/{uc:.0f}"],
@@ -1068,6 +1109,12 @@ def smallcaps_stage(font, later=()):
     made = [line.split()[1] for line in log]
     for name in made:
         put(font, up, name, "small cap draft")
+        g = font[name]
+        rec = RecordingPen()
+        for c in g.contours:
+            c.draw(rec)
+        g.clearContours()
+        weight_thick(rec, WEIGHT).draw(g.getPen())
     return made
 
 
@@ -1187,7 +1234,13 @@ def swapped_sidebearings(font):
     cmap = {u: g.name for g in font for u in g.unicodes}
 
     def upright_sb(name):
-        g = copy.deepcopy(font[name])
+        # (decomposed: shear leaves a component sloped, and Omega, Ʊ's
+        # base, is the Ohm sign's composite of Ω)
+        g = ufoLib2.objects.Glyph()
+        rec = DecomposingRecordingPen(font)
+        font[name].draw(rec)
+        rec.replay(g.getPen())
+        g.width = font[name].width
         shear(g, -SLANT)
         b = g.getBounds(font)
         return (b.xMin, g.width - b.xMax, b.xMax - b.xMin) if b else None
@@ -1195,9 +1248,10 @@ def swapped_sidebearings(font):
     deltas = {}
     for ch, op, source, band in derive.RECIPES:
         op, source, band = ITALIC_RECIPES.get(ch, (op, source, band))
-        if op not in ("turn", "mirror") or len(ch) != 1 or len(source) != 1:
+        if op not in ("turn", "mirror") or len(ch) != 1:
             continue
-        name, base = cmap.get(ord(ch)), cmap.get(ord(source))
+        name = cmap.get(ord(ch))
+        base = cmap.get(ord(source)) if len(source) == 1 else source if source in font else None
         if name is None or base is None or font[name].lib.get(SOURCE_KEY) != "derived":
             continue
         mine, theirs = upright_sb(name), upright_sb(base)
@@ -1488,6 +1542,11 @@ def main():
             zoned = RecordingPen()
             rec.replay(Zones(zoned))
             out = rezone(embolden(zoned, AX, AY), AY)  # the flat edges kept on the zones
+            # the added weight, on the letters (the accents and upright signs
+            # are left as they are)
+            rec = RecordingPen()
+            out.draw(rec)
+            out = weight_thick(rec, CAP_WEIGHT if capital(font, g) else WEIGHT)
             anchors = italic_anchors(regular[g.name], osg, osg.width * KX)
             g.clearComponents()
             redraw(g, out)
@@ -1626,29 +1685,10 @@ def main():
     # the cuts (glyph_lint); hand-drawn glyphs stay as drawn
     from glyph_lint import fix
 
-    # the added weight (WEIGHT), on the outlines of the letters, the accents
-    # and upright signs left as they are
-    before = copy.deepcopy(font)
-    for g in font:
-        # (not those kept from the last run, nor those made from them: they have it)
-        if (g.contours and g.name not in marks and g.name not in kept and g.name not in PREWEIGHTED
-                and g.lib.get(SOURCE_KEY) in WEIGHTED):
-            rec = RecordingPen()
-            for c in g.contours:
-                c.draw(rec)
-            g.clearContours()
-            weight_thick(rec, CAP_WEIGHT if capital(font, g) else WEIGHT).draw(g.getPen())
-    # a derived letter weighted on its own thickens at its junctions unlike
-    # its base (ɨ's bar, Ⱦ's slash): made of the weighted base instead, as
-    # the Bold's are (make_bold.follow_bases)
-    from make_bold import follow_bases
-
-    whole = {}
-    followed = follow_bases(before, font, True, kx=1, slant=SLANT, skip=set(kept) | PREWEIGHTED, whole=whole)
-    # (those kept from the last run were weighted as they were then)
+    # no letter is weighted whole any more (its weight came with its base);
+    # those kept from the last run were weighted as they were then
     last = previous.lib.get(WHOLE_KEY, {}) if previous else {}
-    whole.update((n, why) for n, why in last.items() if n in kept and n in font)
-    font.lib[WHOLE_KEY] = dict(sorted(whole.items()))
+    font.lib[WHOLE_KEY] = dict(sorted((n, why) for n, why in last.items() if n in kept and n in font))
     cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)
@@ -1695,7 +1735,7 @@ def main():
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "
           f"{upright_signs} signs upright, {len(derived)} derived, {len(figures)} figures, "
           f"{len(small_caps)} small caps drafted, {len(ligatures)} ligatures left out, {rebuilt} composites rebuilt, "
-          f"{len(followed)} made of their weighted base, {len(cleaned)} cleaned, "
+          f"{len(cleaned)} cleaned, "
           f"{len(anchored)} given the Regular's anchors they lacked; "
           f"{len(still)} still sloped roman (of {kept_roman}); Greek capitals' marks nearer: "
           + " ".join(f"{n} {d}" for n, d in greek_shift.items()))

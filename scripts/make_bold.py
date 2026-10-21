@@ -98,6 +98,7 @@ ITALIC_BOLD_REBUILD = {
     "uni0273": "ɳ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the descender too light, the leg pinched",
     "uni0271": "ɱ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook too light, the leg notched",
     "uni0267": "ɧ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the leg pinched above the hook",
+    "uni04A3": "ң: emboldened, a pinhole where the descender's curl meets its stroke",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
 # frame), where the source's recipe scaled up does not fit (a hook's or a
@@ -200,6 +201,12 @@ ITALIC_BOLD_KEEP_WHOLE = {
 BOLD_BY_WEIGHT = {}
 ITALIC_BOLD_BY_WEIGHT = {
     "uni044B": "ы: the rounder way light, its bowl dented where it meets the stem",
+}
+# and the other way: letters emboldened the rounder way though no slit is
+# found, their parts a hair too far apart for it
+BOLD_ROUNDER = {}
+ITALIC_BOLD_ROUNDER = {
+    "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
 }
 # recipes that scale or reshape their one source outline, adding no piece:
 # no junction to thicken, emboldened whole as any letter is
@@ -535,12 +542,13 @@ def slit(glyph, before, font):
 def mark_like(g):
     """Accents and combining marks: zero width, the spacing modifier
     symbols (´ ˆ ΄ ᾿ ..., whatever their width) and the unencoded 880-wide
-    spacing accents (Acute ...)."""
+    spacing accents (Acute ...), not a small cap that width (the Italic's
+    ґ.sc, 880 wide, emboldened as an accent)."""
     if g.width == 0:
         return True
     if g.unicode is not None:
         return unicodedata.category(chr(g.unicode)) in ("Sk", "Mn")
-    return g.width == 880
+    return g.width == 880 and not g.name.endswith(".sc")
 
 
 SLANT = 0.0  # the source's slant (tan of its italic angle), set in main()
@@ -851,10 +859,9 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
     where the source's base sits in it, unless the emboldened letter keeps
     that base already. Letters that cut their base (a hook replacing a
     stem's end) stay as emboldened. kx and slant: the widening and the
-    italic's slant (make_bold's by default; make_italic's weight pass uses
-    it too, unwidened); skip: names to leave; whole: a dict that gets the
-    letters left emboldened whole, with the reason. Returns the names
-    changed."""
+    italic's slant (make_bold's by default); skip: names to leave; whole:
+    a dict that gets the letters left emboldened whole, with the reason.
+    Returns the names changed."""
     sys.path.insert(0, str(ROOT / "scripts" / "quality"))
     import derive
     from derived import KEEPS, TRANSFORMS, Outline, compare, recipes
@@ -1109,21 +1116,32 @@ def rederive(source, font, italic, whole):
     scale = (stem / stem0, hair / hair0)
     if italic:
         # the Italic's recipes are tuned at lighter strokes than the Italic's
-        # (make_italic.recipe_scale)
+        # (make_italic.recipe_scale), here without the Italic's added
+        # weight: the Bold Italic's descenders were chosen so (as heavy as
+        # ȷ's); with it ң's curl closes on its stroke
         from make_italic import recipe_scale
 
-        tuned = recipe_scale(stem0, hair0, weighted=True)
+        tuned = recipe_scale(stem0, hair0, weight=0)
         scale = (scale[0] * tuned[0], scale[1] * tuned[1])
 
     def resolve(c):
         return derive.resolve(cmap, c)
 
     def parts(f, g):
+        """the outer contours, not the counters (ɯ.sc's closed counter is
+        no remnant; simplified, the outer ones all wind like the largest),
+        and the pinholes: counters under MIN_PIECE, where a curl closed on
+        its stroke (ң emboldened whole)"""
         p = pathops.Path()
         rec = DecomposingRecordingPen(f)
         g.draw(rec)
         rec.replay(p.getPen())
-        return len(list(pathops.simplify(p).contours))
+        contours = list(pathops.simplify(p).contours)
+        if not contours:
+            return 0, 0
+        outer = max(contours, key=lambda c: abs(c.area)).clockwise
+        return (sum(c.clockwise == outer for c in contours),
+                sum(c.clockwise != outer and abs(c.area) < MIN_PIECE for c in contours))
 
     changed = []
     for ch, op, base, band in recipes(italic):
@@ -1172,8 +1190,10 @@ def rederive(source, font, italic, whole):
         old = up[name]
         made, was = Outline(up, tmp), Outline(up, name)
         faults = len(lint_glyph(up, new)) - len(lint_glyph(up, old))
-        # a part more than before: a remnant of what the cut should take (a serif's end)
-        faults += max(0, parts(up, new) - parts(up, old))
+        # a part more than before: a remnant of what the cut should take (a
+        # serif's end); a pinhole more or fewer
+        (pn, hn), (po, ho) = parts(up, new), parts(up, old)
+        faults += max(0, pn - po) + hn - ho
         close = made.bounds is not None and was.bounds is not None and _best_iou(made, was) >= iou
         if name in rebuild and faults <= 0:
             close, wide = True, False
@@ -1213,6 +1233,7 @@ def main():
         AX, THIN, THICK = ITALIC_AX, ITALIC_THIN, ITALIC_THICK
     nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
     by_weight = ITALIC_BOLD_BY_WEIGHT if italic else BOLD_BY_WEIGHT
+    rounder_ones = ITALIC_BOLD_ROUNDER if italic else BOLD_ROUNDER
     up, down = (1, 0, -SLANT, 1, 0, 0), (1, 0, SLANT, 1, 0, 0)  # deslant, slant again
     marks = {g.name for g in regular if mark_like(g)}
     # the paragraphos ⸏ ⸐ ⸑, rules under a line: a mark's weight and
@@ -1290,7 +1311,7 @@ def main():
                     return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc), AY))
 
                 bold = make(wide)
-                if g.name not in by_weight and slit(bold, regular[g.name], regular):
+                if g.name in rounder_ones or (g.name not in by_weight and slit(bold, regular[g.name], regular)):
                     # parts close to each other (x's inner serifs) closed to a
                     # slit: the rounder emboldening, which leaves them apart,
                     # where it has fewer faults (a thin arch springing from a
@@ -1300,7 +1321,7 @@ def main():
                                                       thick=THICK * sc), AY)
 
                     alt = rounder(wide)
-                    if faults(alt, regular) < faults(bold, regular):
+                    if g.name in rounder_ones or faults(alt, regular) < faults(bold, regular):
                         make, bold = rounder, alt
                         simple.append(g.name)
                 bold, n = part_serifs(wide, bold, make)
@@ -1314,7 +1335,7 @@ def main():
                 # on it kept (N's hairline sides would gain AX / 2 of white,
                 # the italic H's shorter serifs 23 units a side)
                 ref = bridge(rezone(embolden(wide, AX, AY), AY))
-                if g.name not in by_weight and slit(ref, regular[g.name], regular):
+                if g.name in rounder_ones or (g.name not in by_weight and slit(ref, regular[g.name], regular)):
                     ref = rezone(embolden_simple(wide, AX, AY), AY)
                 # judged optically (the white beside the ink across the band,
                 # as the figures are spaced): a thin stroke end that no longer
