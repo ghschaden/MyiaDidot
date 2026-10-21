@@ -1,14 +1,10 @@
 # Known scripts/quality/checks.py findings (glyph kind count); fixing one = deleting its line.
 .notdef extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 653,738 6 units past
-Alphatonos accent 1              # 2026-10-16 known at the start (quality checks added): above tonos gap -475, usually -447
-Epsilon_uni0313_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -476, usually -504
-Epsilon_uni0314_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
 Hook kink 1                      # 2026-10-16 known at the start (quality checks added): 291,1791 7.9 degrees
 Hook smooth 1                    # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 425,1789 2.7 degrees
 J extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 326,86 8 units past
 J zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 OE extreme 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 869,32 6 units past; 977,1256 6 units past
-Omicrontonos accent 1            # 2026-10-16 known at the start (quality checks added): above tonos gap -475, usually -447
 R zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 S stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 249 against 306 (0.82, lighter)
 Sigma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 267 against 306 (0.87, lighter)
@@ -377,25 +373,6 @@ uni1ECC accent 1                 # 2026-10-16 known at the start (quality checks
 uni1ECE accent 1                 # 2026-10-16 known at the start (quality checks added): above Hook gap 104, usually 132
 uni1EE4 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 140, usually 168
 uni1EF5 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap -462, usually 152
-uni1F1A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -463, usually -491
-uni1F1B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -447, usually -475
-uni1F1C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -447, usually -475
-uni1F1D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -461, usually -489
-uni1F2A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -463, usually -491
-uni1F2B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -447, usually -475
-uni1F2C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -447, usually -475
-uni1F2D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -461, usually -489
-uni1F2E accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -476, usually -504
-uni1F2F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
-uni1F3A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -463, usually -491
-uni1F3B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -447, usually -475
-uni1F3C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -447, usually -475
-uni1F3D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -461, usually -489
-uni1F3E accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -476, usually -504
-uni1F3F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -493, usually -521
-uni1FC8 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -447, usually -475
-uni1FCA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -447, usually -475
-uni1FDA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -447, usually -475
 uni2032 width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
 uni2042 kink 6                   # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 414,578 3.2 degrees; 414,862 3.2 degree
 uni2071 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09

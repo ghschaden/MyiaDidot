@@ -1,11 +1,7 @@
 # Known scripts/quality/checks.py findings (glyph kind count); fixing one = deleting its line.
-Alphatonos accent 1              # 2026-10-16 known at the start (quality checks added): above tonos gap -470, usually -442
 Cedilla smooth 1                 # 2026-10-16 known at the start (quality checks added): 329,-430 2.2 degrees
-Epsilon_uni0313_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -470, usually -498
-Epsilon_uni0314_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -488, usually -516
 G stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 231 against 208 (1.11, darker)
 J zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
-Omicrontonos accent 1            # 2026-10-16 known at the start (quality checks added): above tonos gap -470, usually -442
 R zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 Sigma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 122 against 208 (0.59, lighter)
 Xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 62 against 208 (0.30, lighter)
@@ -231,26 +227,7 @@ uni1ECC accent 1                 # 2026-10-16 known at the start (quality checks
 uni1ECE accent 1                 # 2026-10-16 known at the start (quality checks added): above Hook gap 108, usually 136
 uni1EE4 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap 144, usually 172
 uni1EF5 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap -458, usually 156
-uni1F1A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -458, usually -486
-uni1F1B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -442, usually -470
-uni1F1C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -442, usually -470
-uni1F1D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -456, usually -484
-uni1F2A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -458, usually -486
-uni1F2B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -442, usually -470
-uni1F2C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -442, usually -470
-uni1F2D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -456, usually -484
-uni1F2E accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -470, usually -498
-uni1F2F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -488, usually -516
-uni1F3A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -458, usually -486
-uni1F3B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -442, usually -470
-uni1F3C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -442, usually -470
-uni1F3D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -456, usually -484
-uni1F3E accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -470, usually -498
-uni1F3F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -488, usually -516
 uni1FBE stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 184 against 164 (1.12, darker)
-uni1FC8 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -442, usually -470
-uni1FCA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -442, usually -470
-uni1FDA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -442, usually -470
 uni2042 kink 12                  # 2026-10-16 known at the start (quality checks added): 271,864 3.7 degrees; 333,864 3.7 degrees; 333,576 3.7 degrees; 271,576 3.7 degrees; 771,864 3.7 degrees; 833,864 3.7 degrees; 833,576 3.7 degrees;
 uni20B8 kink 2                   # 2026-10-16 known at the start (quality checks added): 141,1184 3.0 degrees; 1483,1184 3.0 degrees
 uni2113 extreme 3                # 2026-10-16 known at the start (quality checks added): 680,1500 17 units past; 755,1030 26 units past; 545,1030 25 units past

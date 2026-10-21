@@ -20,7 +20,8 @@ Each finding is (glyph, kind, where, detail). The kinds (criteria 7-11, 14,
   slant    (italics) a glyph's straight stems leaning more than 2 degrees
            off the italic angle
   accent   a mark above or below a letter more than 25 units further or
-           nearer than that mark's usual gap on its kind of letter
+           nearer than that mark's usual gap on its kind of letter (marks
+           set beside a capital are left out)
   width    (the Bold) an advance off the Bold's usual ratio to the Regular's
            by more than 10 %
   base, stem, advance, style
@@ -284,6 +285,11 @@ def accents(font, shapes):
         dy = mark.transformation[5] - base.transformation[5]
         top = mb[1] + dy > (bb[1] + bb[3]) / 2
         gap = (mb[1] + dy - bb[3]) if top else (bb[1] - (mb[3] + dy))
+        if top and gap < -200:
+            # beside the letter, not above (Greek capitals' breathings and
+            # tonos): set at one height, so the gap only tells the letter's
+            # overshoot
+            continue
         kind = ("cap" if bb[3] > 1200 and not g.name.endswith(".sc") else "sc" if g.name.endswith(".sc") else "lc")
         rows[(mark.baseGlyph, kind, top)].append((gap, g.name))
     out = []

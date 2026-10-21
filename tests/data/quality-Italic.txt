@@ -24,9 +24,6 @@ Mu zone 1                        # 2026-10-16 known at the start (quality checks
 N stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 163 against 209 (0.78, lighter)
 Ogonek extreme 2                 # 2026-10-16 known at the start (quality checks added): 232,-274 7 units past; 235,-526 8 units past
 Omegagreek smooth 1              # 2026-10-21 Italic reweighted and tightened: 546,225 2.5 degrees
-Omicron_uni0313_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -509, usually -470
-Omicron_uni0314_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -527, usually -488
-Omicrontonos accent 1            # 2026-10-16 known at the start (quality checks added): above tonos gap -481, usually -442
 Oogonek kink 1                   # 2026-10-16 known at the start (quality checks added): 530,-342 3.4 degrees
 P kink 1                         # 2026-10-16 known at the start (quality checks added): 405,112 3.8 degrees
 Phi kink 1                       # 2026-10-21 Italic reweighted and tightened: 782,112 4.3 degrees
@@ -48,10 +45,6 @@ Theta smooth 1                   # 2026-10-16 known at the start (quality checks
 Thorn kink 1                     # 2026-10-16 known at the start (quality checks added): 964,1146 3.8 degrees
 Thorn smooth 1                   # 2026-10-21 Italic reweighted and tightened: 626,1019 2.7 degrees
 Upsilon smooth 2                 # 2026-10-21 Italic reweighted and tightened: 1402,884 2.8 degrees; 637,114 2.5 degrees
-Upsilon_uni0313 accent 1         # 2026-10-16 known at the start (quality checks added): above uni1FBF gap -481, usually -442
-Upsilon_uni0313_acutecomb accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -481, usually -442
-Upsilon_uni0313_gravecomb accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -497, usually -458
-Upsilon_uni0313_uni0342 accent 1 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -509, usually -470
 V kink 2                         # 2026-10-16 known at the start (quality checks added): 1350,1216 4.2 degrees; 474,1276 5.7 degrees
 W kink 2                         # 2026-10-16 known at the start (quality checks added): 2020,1212 3.2 degrees; 466,1276 5.8 degrees
 X extreme 2                      # 2026-10-16 known at the start (quality checks added): 827,1375 9 units past; 995,53 12 units past
@@ -855,24 +848,6 @@ uni1ECE accent 1                 # 2026-10-16 known at the start (quality checks
 uni1ECF.sc accent 1              # 2026-10-16 known at the start (quality checks added): above Hook gap 104, usually 134
 uni1EE5.sc accent 1              # 2026-10-16 known at the start (quality checks added): below dotaccent gap 142, usually 172
 uni1EF5 accent 1                 # 2026-10-16 known at the start (quality checks added): below dotaccent gap -309, usually 149
-uni1F48 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FBF gap -481, usually -442
-uni1F49 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FFE gap -481, usually -442
-uni1F4A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -497, usually -458
-uni1F4B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -481, usually -442
-uni1F4C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -481, usually -442
-uni1F4D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -495, usually -456
-uni1F59 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FFE gap -481, usually -442
-uni1F5B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -481, usually -442
-uni1F5D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -495, usually -456
-uni1F5F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -527, usually -488
-uni1F68 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FBF gap -481, usually -442
-uni1F69 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FFE gap -481, usually -442
-uni1F6A accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCD gap -497, usually -458
-uni1F6B accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDD gap -481, usually -442
-uni1F6C accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCE gap -481, usually -442
-uni1F6D accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDE gap -495, usually -456
-uni1F6E accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FCF gap -509, usually -470
-uni1F6F accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FDF gap -527, usually -488
 uni1FBE smooth 3                 # 2026-10-21 Italic reweighted and tightened: 87,105 2.5 degrees; 237,651 2.5 degrees; 239,105 2.4 degrees
 uni1FBE zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1FBF extreme 2                # 2026-10-16 known at the start (quality checks added): 645,1454 8 units past; 669,1195 6 units past
@@ -887,9 +862,6 @@ uni1FDD extreme 2                # 2026-10-16 known at the start (quality checks
 uni1FDE extreme 2                # 2026-10-16 known at the start (quality checks added): 412,1169 6 units past; 453,978 12 units past
 uni1FDF extreme 1                # 2026-10-16 known at the start (quality checks added): 637,946 7 units past
 uni1FDF smooth 1                 # 2026-10-16 known at the start (quality checks added): 891,1505 2.1 degrees
-uni1FEA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -481, usually -442
-uni1FF8 accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -481, usually -442
-uni1FFA accent 1                 # 2026-10-16 known at the start (quality checks added): above uni1FEF gap -481, usually -442
 uni1FFE extreme 2                # 2026-10-16 known at the start (quality checks added): 550,1209 5 units past; 675,992 9 units past
 uni2042 kink 12                  # 2026-10-16 known at the start (quality checks added): 271,864 3.7 degrees; 333,864 3.7 degrees; 333,576 3.7 degrees; 271,576 3.7 degrees; 771,864 3.7 degrees; 833,864 3.7 degrees; 833,576 3.7 degrees;
 uni207F smooth 1                 # 2026-10-21 Italic reweighted and tightened: 321,1011 2.9 degrees
