@@ -56,6 +56,10 @@ AX, AY = 90, 8  # stems 164 -> 254 (lowercase), 208 -> 298 (capitals); hairlines
 # its stems 0.96 of the Bold's, as the Italic's of the Regular's (reference
 # bold italics 0.95-0.98; AX gave 0.92, the heavier Italic of before 1.01)
 ITALIC_AX = 102
+# strokes this thick and thinner gain no weight across, from there the more
+# the thicker, all of it from THICK on (derive.embolden_by_weight)
+THIN, THICK = 60, 160
+ITALIC_THIN, ITALIC_THICK = 60, 160
 MARK_AX, MARK_AY = 30, 8  # accents a little heavier
 # lib: derived letters left emboldened whole, with why (follow_bases);
 # tests/test_emboldened.py holds them to a list that only shrinks
@@ -90,6 +94,9 @@ ITALIC_BOLD_REBUILD = {
     "uni0255": "ɕ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni025E": "ɞ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
     "uni04B2": "Ҳ: the tail on the Bold Italic's X; the Italic's tail emboldened, a kink where it meets the serif",
+    "uni0273": "ɳ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the descender too light, the leg pinched",
+    "uni0271": "ɱ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook too light, the leg notched",
+    "uni0267": "ɧ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the leg pinched above the hook",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
 # frame), where the source's recipe scaled up does not fit (a hook's or a
@@ -118,6 +125,25 @@ BOLD_RECIPES = {
                             (0, 0), (1, 1, 0, 0))])),
 }
 ITALIC_BOLD_RECIPES = {
+    # ɳ: the Italic's (make_italic.retroflex), on the Bold Italic's leg (its
+    # centre 836, 229 thick at the cut): emboldened whole, the descender took
+    # only part of the weight (its stroke under the thick threshold) and the
+    # leg pinched at the join
+    "ɳ": ("attach", "n", ("x", [(700, -10000, 10000, 200), (1000, -10000, 10000, 450)],
+                          [("line", ((836, 210), (836, -150), 229), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 836, -150, 229), "dir": 270, "turn": "ccw", "r": (150, 130),
+                                     "sweep": 170, "ball": 80, "t": (229, 55)}, (0, 0), (1, 1, 0, 0))])),
+    # ɧ: the Italic's (ȷ's descender on ɦ's leg where it is still whole: 251
+    # at 250, centred at 714.5), the exit stroke cut away beyond 874
+    "ɧ": ("attach", "uni0266", ("x", [(480, -10000, 10000, 250), (890, -10000, 10000, 450)],
+                                [("uni0237", (-10000, -10000, 10000, 260), (443.5, 250),
+                                  (251 / 241, 1, 714.5, 250))])),
+    # ɱ: ȷ's descender (its stem 241, centred at 442.5) on m's last leg
+    # (229 at the cut, centred at 1317.5), the exit stroke cut away beyond
+    # 1479 (the hook recipe takes the emboldened exit stroke for the last
+    # stem): emboldened whole, the hook thinned to 0.8 of ȷ's
+    "ɱ": ("attach", "m", ("x", [(1150, -10000, 10000, 200), (1490, -10000, 10000, 450)],
+                          [("uni0237", (-10000, -10000, 10000, 210), (442.5, 200), (229 / 241, 1, 1317.5, 200))])),
     # ʐ: the Italic's, its stem 225 (0.85 of n) and the turns opened to suit
     "ʐ": ("attach", "z", ("x", [(660, -10000, 10000, 400)],
                           [("curl", {"at": ("pt", 660, 40, 125), "dir": 0, "turn": "cw",
@@ -163,8 +189,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni01B2": "Ʋ: the hook a thin ring, the stem standing above it",
     "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
     "uni0256": "ɖ: the tail thin where it meets the stem",
-    "uni0267": "ɧ: crumbs of the cut at the join",
-    "uni0271": "ɱ: crumbs of the cut at the join",
     "uni027E": "ɾ: a stub of the foot serif at the cut",
     "uni0497": "җ: a stub at the descender",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
@@ -1063,6 +1087,13 @@ def rederive(source, font, italic, whole):
     # stems and hairlines, not the source's
     (_, stem, hair), (_, stem0, hair0) = derive.strokes(up, "o"), derive.strokes(source, "o")
     scale = (stem / stem0, hair / hair0)
+    if italic:
+        # the Italic's recipes are tuned at lighter strokes than the Italic's
+        # (make_italic.recipe_scale)
+        from make_italic import recipe_scale
+
+        tuned = recipe_scale(stem0, hair0, weighted=True)
+        scale = (scale[0] * tuned[0], scale[1] * tuned[1])
 
     def resolve(c):
         return derive.resolve(cmap, c)
@@ -1102,6 +1133,11 @@ def rederive(source, font, italic, whole):
         finally:
             up.glyphOrder = order
             up.lib["public.openTypeCategories"] = cats
+        if italic:
+            from make_italic import ITALIC_JOINS
+
+            if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
+                derive.fair_joins(new, *ITALIC_JOINS[ch])
         old = up[name]
         made, was = Outline(up, tmp), Outline(up, name)
         faults = len(lint_glyph(up, new)) - len(lint_glyph(up, old))
@@ -1135,7 +1171,7 @@ def main():
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("bold", nargs="?", default=str(ROOT / "sources/MyiaDidot-Bold.ufo"))
     args = ap.parse_args()
-    global SLANT, AX
+    global SLANT, AX, THIN, THICK
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
     kern_clear.undo(font)  # the source's loosened pairs: this style finds its own
@@ -1143,7 +1179,7 @@ def main():
     SLANT = math.tan(math.radians(angle))
     italic = bool(angle)
     if italic:
-        AX = ITALIC_AX
+        AX, THIN, THICK = ITALIC_AX, ITALIC_THIN, ITALIC_THICK
     nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
     up, down = (1, 0, -SLANT, 1, 0, 0), (1, 0, SLANT, 1, 0, 0)  # deslant, slant again
     marks = {g.name for g in regular if mark_like(g)}
@@ -1219,7 +1255,7 @@ def main():
                 sc = small_scale if g.name in small else 1.0
 
                 def make(w, sc=sc):
-                    return bridge(rezone(embolden_by_weight(w, AX * sc, AY, 60 * sc, 160 * sc), AY))
+                    return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc), AY))
 
                 bold = make(wide)
                 if slit(bold, regular[g.name], regular):
@@ -1228,8 +1264,8 @@ def main():
                     # where it has fewer faults (a thin arch springing from a
                     # thick stem, the italic n's, is a narrow crotch either way)
                     def rounder(w, sc=sc):
-                        return rezone(embolden_simple(w, AX * sc, AY, weighted=True, thin=60 * sc,
-                                                      thick=160 * sc), AY)
+                        return rezone(embolden_simple(w, AX * sc, AY, weighted=True, thin=THIN * sc,
+                                                      thick=THICK * sc), AY)
 
                     alt = rounder(wide)
                     if faults(alt, regular) < faults(bold, regular):
@@ -1303,6 +1339,16 @@ def main():
     followed = follow_bases(regular, font, italic, whole=whole)
     followed += attached_small(regular, font, italic)
     followed += rederive(regular, font, italic, whole)
+    if italic:
+        # the joins the Italic faired, faired again (emboldened whole or
+        # made again by the recipe)
+        from derive import fair_joins
+        from make_italic import ITALIC_JOINS
+
+        cmap = {g.unicode: g.name for g in font if g.unicode is not None}
+        for ch, band in ITALIC_JOINS.items():
+            if ord(ch) in cmap:
+                fair_joins(font[cmap[ord(ch)]], *band)
     font.lib[WHOLE_KEY] = {n: why for n, why in sorted(whole.items()) if n not in followed}
 
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}

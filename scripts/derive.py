@@ -1772,6 +1772,120 @@ HOOK_BOTTOM = {"x": -628, "c": -628, "s": -500}
 HOOK_BOTTOM_RETROFLEX = {"x": -420, "c": -420, "s": -360}
 
 
+def fair_joins(glyph, y0, y1, max_turn=25, tiny=16):
+    """glyph (in place) with the shallow corners between y0 and y1 faired:
+    where an added piece meets a stroke that runs on at another angle (an
+    italic leg leaning into a straight descender, a cut's stub left in
+    between), each run of on-curve points there that turn by 1 to max_turn
+    degrees is replaced by one curve from the point before to the point
+    after, tangent to the outline at both. A side that was a curve keeps its
+    handle, a straight one gets a third of the span. Bits shorter than tiny
+    (a cut's stubs) go first; corners turning further (serifs, crotches) stay.
+    Returns how many runs were faired."""
+
+    def turn(a, p, b):
+        t = math.degrees(math.atan2(b[1] - p[1], b[0] - p[0]) - math.atan2(p[1] - a[1], p[0] - a[0]))
+        return (t + 180) % 360 - 180
+
+    def inside(pt):
+        return y0 <= pt[1] <= y1
+
+    def unit(a, b):
+        d = math.dist(a, b) or 1
+        return ((b[0] - a[0]) / d, (b[1] - a[1]) / d)
+
+    def into(segs, k):
+        """the point the outline comes to segs[k]'s end from"""
+        end, hs, _ = segs[k]
+        frm = hs[-1] if hs else segs[k - 1][0]
+        return frm if frm != end else (hs[0] if hs else segs[k - 1][0])
+
+    def out_of(segs, k):
+        """the point the outline leaves segs[k]'s end towards"""
+        nxt = segs[(k + 1) % len(segs)]
+        return nxt[1][0] if nxt[1] else nxt[0]
+
+    faired = 0
+    contours = []
+    ends = set()  # where the new curves begin and end
+    for contour in glyph.contours:
+        # as segments [on-curve end, handles (None: a line), smooth], closed
+        pts = list(contour.points)
+        start = next(i for i, p in enumerate(pts) if p.type)
+        segs, handles = [], []
+        for p in pts[start + 1:] + pts[:start + 1]:
+            if p.type:
+                segs.append([(p.x, p.y), handles if p.type == "curve" else None, p.smooth])
+                handles = []
+            else:
+                handles.append((p.x, p.y))
+        # bits in the band too short to give a direction (a cut's stubs)
+        k = 0
+        while k < len(segs) and len(segs) > 3:
+            if inside(segs[k][0]) and math.dist(segs[k - 1][0], segs[k][0]) < tiny:
+                segs[k - 1][0] = segs[k][0]  # the segment before ends here instead
+                del segs[k]
+                continue
+            k += 1
+        n = len(segs)
+        bad = [inside(segs[k][0]) and 1 <= abs(turn(into(segs, k), segs[k][0], out_of(segs, k))) <= max_turn
+               for k in range(n)]
+        if any(bad) and not all(bad):
+            first = next(k for k in range(n) if not bad[k])
+            order = [(first + i) % n for i in range(n)]
+            out, k = [], 0
+            while k < n:
+                if not bad[order[k]]:
+                    out.append(segs[order[k]])
+                    k += 1
+                    continue
+                run = []
+                while k < n and bad[order[k]]:
+                    run.append(order[k])
+                    k += 1
+                # (the first of order is good, so the run ends before it comes round)
+                entry = segs[(run[0] - 1) % n][0]
+                exit_k = order[k % n]
+                lead, trail = segs[run[0]], segs[exit_k]
+                exit_ = trail[0]
+                span = math.dist(entry, exit_)
+                if lead[1]:
+                    h1 = lead[1][0]
+                else:
+                    u = unit(entry, lead[0])
+                    h1 = (entry[0] + u[0] * span / 3, entry[1] + u[1] * span / 3)
+                if trail[1]:
+                    h2 = trail[1][-1]
+                else:
+                    u = unit(segs[run[-1]][0], exit_)
+                    h2 = (exit_[0] - u[0] * span / 3, exit_[1] - u[1] * span / 3)
+                faired += 1
+                ends.update((entry, exit_))
+                if k < n:
+                    out.append([exit_, [h1, h2], trail[2]])
+                    k += 1
+                else:
+                    out[0] = [exit_, [h1, h2], trail[2]]
+            segs = out
+        contours.append(segs)
+    if faired:
+        glyph.clearContours()
+        pen = glyph.getPointPen()
+        for segs in contours:
+            # a new curve's ends smooth where the outline runs on through them
+            # (emboldening keeps a smooth node smooth, a corner a corner)
+            for k, seg in enumerate(segs):
+                if seg[0] in ends and not seg[2]:
+                    seg[2] = abs(turn(into(segs, k), seg[0], out_of(segs, k))) < 1
+            pen.beginPath()
+            for end, hs, smooth in segs:
+                for h in hs or ():
+                    pen.addPoint(tuple(round(v) for v in h))
+                pen.addPoint(tuple(round(v) for v in end), "curve" if hs else "line", smooth)
+            pen.endPath()
+    return faired
+
+
 def hook_path(font, source, band, kind, pick, cut, left, right, cuts=()):
     """The letter with a stem's end replaced by a hook from the font: kind
     'up-right' (ɓ: the top of f), 'up-left' (Ɓ: f mirrored), 'down-left'

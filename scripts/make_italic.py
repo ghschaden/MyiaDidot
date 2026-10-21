@@ -76,6 +76,20 @@ XH, CAP = 884, 1434
 AX, AY = 0, 0
 WEIGHT = 10
 CAP_WEIGHT = 0
+# what the recipes' drawn strokes (ITALIC_RECIPES' lines and curls, by
+# number) were tuned at: Old Standard's strokes thinned by (-16, -10). They
+# are drawn scaled to the strokes as they are now (recipe_scale), so a
+# descender stays as heavy as the stem it continues
+TUNED_AX, TUNED_AY = -16, -10
+
+
+def recipe_scale(stem, hair, weighted=False):
+    """derive.STROKE_KEY for the Italic's recipes: an o's stem and top
+    hairline as they are (weighted: after the weight pass, WEIGHT added to
+    the stem) against what the numbers were tuned at."""
+    if weighted:
+        stem -= WEIGHT
+    return stem / (stem - AX + TUNED_AX), hair / (hair - AY + TUNED_AY)
 WEIGHTED = ("Old Standard", "derived", "small cap draft")
 # off each side of a letter: Old Standard's spacing, scaled, is loose for
 # its narrow letters (side space 0.180 of the x-height at a cut of 3, Bodoni
@@ -361,6 +375,13 @@ def descender(x0, y0, x1, y1, w, d, r, th):
                       "ball": max(36, round(w * 0.48)), "t": (w, th)}, (0, 0), (1, 1, 0, 0))]
 
 
+# where a recipe's straight piece meets an italic stroke that leans or
+# curves (ɰ ɱ ɳ: a leg running on into a descender; ⱳ: the arm into its
+# curl), the join faired between these heights (derive.fair_joins): the
+# piece is straight in the upright frame, the stroke is not, and the edges
+# broke there by 5-20 degrees (seen in print)
+ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190, 460), "ⱳ": (590, 700)}
+
 ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # ǥ: the single-storey g's bar across its stem below the
                   # baseline, above the hook, as in DejaVu (the roman's
@@ -538,7 +559,13 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # ȷ's descender on the last stem, as ɲ has it on the first: it
                   # thins as the italic stems do (cut in where the stem is as
                   # wide as ɲ's, below its swell; the exit stroke cleared)
-                  "ɧ": ("hook", "uni0266", ("x", "down-left", "last", 200, 160, 400, [(780, -BIG, BIG, 450)])),
+                  # ɧ: ȷ's descender (its stem 144, centred at 405) on ɦ's leg
+                  # where it is still whole (152 at 250, centred at 661), the
+                  # exit stroke cut away: cut lower, where the leg thins into
+                  # its exit, the hook was scaled to that and the leg pinched
+                  "ɧ": ("attach", "uni0266", ("x", [(450, -BIG, BIG, 250), (800, -BIG, BIG, 450)],
+                                              [("uni0237", (-BIG, -BIG, BIG, 260), (405, 250),
+                                                (152 / 144, 1, 661, 250))])),
                   "ɱ": ("hook", "m", ("x", "down-left", "last", 200, 160, 400, [(1360, -BIG, BIG, 450)])),
                   # F's stem (its foot serif cut away) tapering into the hook
                   "Ƒ": ("attach", "F", ("c", [(-BIG, -BIG, BIG, 150)],
@@ -846,6 +873,8 @@ def derive_stage(font, regular, late=False, kept=()):
 
     up = upright(font)
     cmap = {u: g.name for g in up for u in g.unicodes}
+    _, stem, hair = derive.strokes(up, "o")
+    up.lib[derive.STROKE_KEY] = recipe_scale(stem, hair)
 
     def resolve(c):
         return derive.resolve(cmap, c)
@@ -956,6 +985,8 @@ def derive_stage(font, regular, late=False, kept=()):
             up.layers.defaultLayer.insertGlyph(old, name, overwrite=True)
             failed.append(f"{ch} ({op}): {e!r}")
             continue
+        if ch in ITALIC_JOINS:
+            derive.fair_joins(up[name], *ITALIC_JOINS[ch])
         up[name].lib[DRAFT_KEY] = True
         put(font, up, name, "derived")
         made.append(ch)
