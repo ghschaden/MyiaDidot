@@ -194,6 +194,13 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni0497": "җ: a stub at the descender",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
 }
+# letters kept emboldened by weight though it leaves a notch: the rounder
+# emboldening (embolden_simple), taken where it has fewer faults, comes
+# out lighter and dented in these (reviewed)
+BOLD_BY_WEIGHT = {}
+ITALIC_BOLD_BY_WEIGHT = {
+    "uni044B": "ы: the rounder way light, its bowl dented where it meets the stem",
+}
 # recipes that scale or reshape their one source outline, adding no piece:
 # no junction to thicken, emboldened whole as any letter is
 RESHAPES = {"enlarge", "stretch", "superior", "lower", "ezh", "esh", "nodot", "upright"}
@@ -1205,6 +1212,7 @@ def main():
     if italic:
         AX, THIN, THICK = ITALIC_AX, ITALIC_THIN, ITALIC_THICK
     nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
+    by_weight = ITALIC_BOLD_BY_WEIGHT if italic else BOLD_BY_WEIGHT
     up, down = (1, 0, -SLANT, 1, 0, 0), (1, 0, SLANT, 1, 0, 0)  # deslant, slant again
     marks = {g.name for g in regular if mark_like(g)}
     # the paragraphos ⸏ ⸐ ⸑, rules under a line: a mark's weight and
@@ -1282,7 +1290,7 @@ def main():
                     return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc), AY))
 
                 bold = make(wide)
-                if slit(bold, regular[g.name], regular):
+                if g.name not in by_weight and slit(bold, regular[g.name], regular):
                     # parts close to each other (x's inner serifs) closed to a
                     # slit: the rounder emboldening, which leaves them apart,
                     # where it has fewer faults (a thin arch springing from a
@@ -1306,7 +1314,7 @@ def main():
                 # on it kept (N's hairline sides would gain AX / 2 of white,
                 # the italic H's shorter serifs 23 units a side)
                 ref = bridge(rezone(embolden(wide, AX, AY), AY))
-                if slit(ref, regular[g.name], regular):
+                if g.name not in by_weight and slit(ref, regular[g.name], regular):
                     ref = rezone(embolden_simple(wide, AX, AY), AY)
                 # judged optically (the white beside the ink across the band,
                 # as the figures are spaced): a thin stroke end that no longer

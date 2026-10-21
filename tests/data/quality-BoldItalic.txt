@@ -412,7 +412,7 @@ uni0249 kink 1                   # 2026-10-21 Italic reweighted and tightened: 4
 uni0249.sc kink 2                # 2026-10-21 Italic reweighted and tightened: -51,153 4.2 degrees; 285,232 6.0 degrees
 uni0249.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +4 from 1040
 uni024C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
-uni024D kink 1                   # 2026-10-21 Italic reweighted and tightened: 215,807 5.3 degrees
+uni024D extreme 2                # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 709,789 10 units past; 352,762 6 units past
 uni024D zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
 uni024D.sc extreme 1             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 867,76 8 units past
 uni024D.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 1078,785 5.3 degrees; 672,109 6.6 degrees; 839,810 6.4 degrees
@@ -458,7 +458,7 @@ uni025F smooth 1                 # 2026-10-21 Italic reweighted and tightened: 6
 uni025F stem 1                   # 2026-10-21 Italic reweighted and tightened: at -140 243 against uni0237's 226
 uni0260 kink 1                   # 2026-10-21 Italic reweighted and tightened: 228,-247 4.2 degrees
 uni0260 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 1317,1298 3.0 degrees
-uni0260.sc kink 7                # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 73,352 6.1 degrees; 1032,1083 6.7 degrees; 1160,1064 2.6 degrees; 1057,982 6.9 degrees; 420,756 3.4 
+uni0260.sc kink 7                # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 73,352 6.1 degrees; 1032,1083 6.7 degrees; 1160,1064 2.6 degrees; 1057,982 6.9 degrees; 420,756 3.4
 uni0260.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.8 degrees, not 15.2
 uni0260.sc smooth 1              # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 802,80 3.2 degrees
 uni0262 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
@@ -511,9 +511,9 @@ uni027A kink 2                   # contrast-aware Bold (emboldened by stroke wei
 uni027A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni027B extreme 2                # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 475,-185 11 units past; 177,68 7 units past
 uni027B kink 2                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 639,400 1.2 degrees; 600,252 2.0 degrees
-uni027D extreme 1                # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 299,-217 11 units past
+uni027D extreme 2                # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 732,803 9 units past; 314,-190 9 units past
 uni027D kink 4                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 338,819 4.5 degrees; 120,4 2.0 degrees; 377,0 2.4 degrees; 199,763 4.1 degrees
-uni027D smooth 1                 # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 411,123 2.6 degrees
+uni027D smooth 2                 # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 334,-145 2.1 degrees; 98,-146 2.2 degrees
 uni027D.sc extreme 2             # 2026-10-21 Italic reweighted and tightened: 104,70 5 units past; 652,557 6 units past
 uni027D.sc kink 4                # 2026-10-21 Italic reweighted and tightened: -11,63 2.0 degrees; 1085,785 5.3 degrees; 679,109 6.6 degrees; 846,810 6.4 degrees
 uni027D.sc smooth 1              # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 1061,789 2.4 degrees
@@ -801,7 +801,7 @@ uni0497.sc extreme 3             # 2026-10-21 Italic reweighted and tightened: 5
 uni0497.sc kink 8                # 2026-10-21 Italic reweighted and tightened: 540,906 4.1 degrees; 203,894 4.0 degrees; 636,901 6.7 degrees; 1499,216 3.0 degrees; 1689,232 6.8 degrees; 1156,187 3.3 degrees; 1194,320 5.4 degrees; 528,4
 uni0497.sc smooth 4              # 2026-10-21 Italic reweighted and tightened: 623,797 2.7 degrees; 1410,760 2.0 degrees; 1570,-205 2.3 degrees; 1247,0 2.0 degrees
 uni0497.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +24 from 1040
-uni049A kink 1                   # 2026-10-21 Italic reweighted and tightened: 1194,108 4.0 degrees
+uni049A kink 3                   # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 1400,308 1.0 degrees; 1218,129 7.6 degrees; 1141,85 4.9 degrees
 uni049A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
 uni049B kink 3                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 549,705 6.0 degrees; 529,569 3.6 degrees; 832,202 3.4 degrees
 uni049B smooth 3                 # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 1069,840 2.8 degrees; 832,687 2.4 degrees; 807,728 2.2 degrees
@@ -853,12 +853,13 @@ uni1D71 extreme 1                # 2026-10-21 Italic reweighted and tightened: 7
 uni1D71 kink 8                   # 2026-10-21 Italic reweighted and tightened: 480,-461 1.0 degrees; 494,-399 1.0 degrees; 447,7 6.6 degrees; 221,817 5.5 degrees; -137,-399 1.8 degrees; 554,31 3.9 degrees; 783,829 4.1 degrees; 832,693
 uni1D71 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 572,393 2.8 degrees
 uni1D71 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 309 against 273 (1.13, darker)
-uni1D72 extreme 1                # 2026-10-21 Italic reweighted and tightened: 235,430 12 units past
-uni1D72 kink 2                   # 2026-10-21 Italic reweighted and tightened: 280,600 3.1 degrees; 188,781 5.9 degrees
+uni1D72 extreme 2                # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 704,789 10 units past; 347,762 6 units past
 uni1D72 stem 1                   # 2026-10-21 Italic reweighted and tightened: at 663 310 against r's 291
 uni1D72 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
-uni1D73 kink 3                   # 2026-10-21 Italic reweighted and tightened: 399,0 1.1 degrees; 481,327 4.6 degrees; 555,525 7.5 degrees
-uni1D73 smooth 2                 # 2026-10-21 Italic reweighted and tightened: 413,123 2.1 degrees; 541,770 2.2 degrees
+uni1D73 extreme 1                # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 729,803 9 units past
+uni1D73 kink 1                   # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 658,699 3.1 degrees
+uni1D73 smooth 1                 # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 406,123 2.6 degrees
+uni1D73 stem 1                   # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: at 663 306 against uni027E's 287
 uni1D73 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni1D74 extreme 3                # 2026-10-21 Italic reweighted and tightened: 682,391 6 units past; 211,565 6 units past; 538,187 6 units past
 uni1D74 kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 306,259 2.7 degrees; 487,317 3.8 degrees; 439,559 3.7 degrees
@@ -925,8 +926,7 @@ uni20A1 kink 3                   # 2026-10-21 Italic reweighted and tightened: 1
 uni20A1 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 618,55 2.6 degrees
 uni20A6 smooth 2                 # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1558,1198 2.4 degrees; 312,243 2.2 degrees
 uni20A6 stem 1                   # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: at 1067 326 against N's 299
-uni20A9 kink 2                   # 2026-10-21 Italic reweighted and tightened: 1518,1164 3.6 degrees; 770,1187 3.1 degrees
-uni20A9 smooth 1                 # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1180,1055 2.0 degrees
+uni20A9 kink 3                   # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 492,1153 1.0 degrees; 2100,1071 2.6 degrees; 2194,1199 6.7 degrees
 uni20AA extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 729,538 60 units past; 771,-16 22 units past; 852,891 60 units past; 811,1450 22 units past
 uni20AB extreme 1                # 2026-10-21 Italic reweighted and tightened: 819,99 5 units past
 uni20AD extreme 1                # 2026-10-21 Italic reweighted and tightened: 915,69 7 units past

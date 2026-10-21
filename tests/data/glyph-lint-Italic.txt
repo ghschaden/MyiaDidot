@@ -1,19 +1,14 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
 Ccedilla step 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 570,30 0.6 units
-ncommaaccent notch 1             # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 430,484 30 px
+m notch 1                        # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 427,478 30 px
 uni0249 ledge 2                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 470,414 21 units; 509,470 20 units
 uni026C notch 3                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 266,911 40 px; 340,620 71 px; 185,610 54 px
 uni026F notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 1134,407 36 px
-uni0272 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 429,482 31 px
-uni028B notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 692,378 31 px
-uni043F.loclSRB notch 1          # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 629,379 30 px
+uni0442 notch 1                  # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 427,478 30 px
+uni0442.loclBGR notch 1          # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 427,478 30 px
 uni0442.loclSRB notch 1          # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 1094,381 32 px
 uni0448 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 1157,382 37 px
 uni0448.loclBGR notch 1          # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 1157,382 37 px
-uni0E3F notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 979,729 30 px
+uni1E3F notch 1                  # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 427,478 30 px
 uni1E43 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 427,478 30 px
-uni1E47 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 430,484 30 px
-uni1E49 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 430,484 30 px
-uni1E4B notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 430,484 30 px
 uni1EF5 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 318,-420 91 px
-uni20BF notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 979,729 30 px

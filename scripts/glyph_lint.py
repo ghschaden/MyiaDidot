@@ -349,6 +349,9 @@ def notch_findings(font, glyph, bounds):
     x0, y0, x1, y1 = bounds
     if x1 <= x0 or y1 <= y0:
         return []
+    # the pixel grid on whole pixels of the glyph's own coordinates, so a
+    # composite measures its base as the base does (a mark below would move it)
+    x0, y0 = math.floor(x0 * SCALE) / SCALE, math.floor(y0 * SCALE) / SCALE
     pad = CLOSE + 2
     w = int((x1 - x0) * SCALE) + 2 * pad
     h = int((y1 - y0) * SCALE) + 2 * pad
@@ -358,7 +361,23 @@ def notch_findings(font, glyph, bounds):
     rec = DecomposingRecordingPen(font)
     glyph.draw(rec)
     rec.replay(pen)
-    tx, ty = pad - x0 * SCALE, pad - y0 * SCALE
+    # a crotch fills a few pixels more or less with where the grid falls on
+    # it, and a slit can split in two at one phase: the lower median of four
+    # half-pixel phases
+    results = []
+    for phase in ((0, 0), (0.5, 0), (0, 0.5), (0.5, 0.5)):
+        tx, ty = pad - x0 * SCALE + phase[0], pad - y0 * SCALE + phase[1]
+        found = _notches(pen, w, h, tx, ty)
+        if found is not None:
+            results.append(found)
+    if not results:
+        return [("notch", "-", "not rasterised")]
+    results.sort(key=lambda found: (max((size for _, size in found), default=0), len(found)))
+    return [("notch", at, f"{size} px") for at, size in results[(len(results) - 1) // 2]]
+
+
+def _notches(pen, w, h, tx, ty):
+    """(centre, pixels) of each notch in the glyph rasterised at this offset; None if it cannot be."""
     # FreeType's rasteriser overflows on some exact positions and scales (the sloped +)
     for nudge, k in ((0, 1), (0.13, 1), (0.29, 1), (0, 0.9), (0.2, 0.9), (0, 0.8), (0.3, 0.7)):
         try:
@@ -368,7 +387,7 @@ def notch_findings(font, glyph, bounds):
         except FT_Exception:
             continue
     else:
-        return [("notch", "-", "not rasterised")]
+        return None
     mask = raster > 0.5
     closed = ~_grow(~_grow(mask, CLOSE), CLOSE)
     filled = closed & ~mask
@@ -385,7 +404,7 @@ def notch_findings(font, glyph, bounds):
         # array rows run top down
         cx = (sum(xs) / len(xs) - tx) / SCALE
         cy = ((h - sum(ys) / len(ys)) - ty) / SCALE
-        out.append(("notch", f"{round(cx)},{round(cy)}", f"{len(region)} px"))
+        out.append((f"{round(cx)},{round(cy)}", len(region)))
     return out
 
 
