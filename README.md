@@ -27,6 +27,8 @@ fonts/                          build output (otf, ttf, webfonts)
 Requirements: [uv](https://docs.astral.sh/uv/), FontForge (only for the
 upstream reference/import), and LuaLaTeX for proofs. The hinting tools
 (ttfautohint-py, afdko's otfautohint) come with the Python toolchain.
+Python 3.12 is pinned in `.python-version` and CI: generated features and
+regression baselines depend on its Unicode 15.0 character data.
 
 ```sh
 make setup            # Python toolchain in .venv + git pre-commit hook

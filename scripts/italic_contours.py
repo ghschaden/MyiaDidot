@@ -31,9 +31,10 @@ REGIONS = {
 
 # The source letters whose shallow joins are also present in the derived
 # Cyrillic bodies. Finish them before those letters are built from them.
-BASES = ("uni0416", "uni0436")
+BASES = ("uni0416", "uni0436", "uni041A", "uni043A")
 BODY_JOINS = {"uni0291", "uni0496", "uni0497", "uni049A", "uni049B"}
-FOLLOWERS = {"uni0436.loclBGR": "derived", "uni0436.sc": "small cap draft", "uni0497.sc": "derived"}
+FOLLOWERS = {"uni0436.loclBGR": "derived", "uni0436.sc": "small cap draft", "uni0497.sc": "derived",
+             "uni043A.sc": "small cap draft"}
 TARGET_SOURCES = {**dict.fromkeys(REGIONS, "derived"), **dict.fromkeys(BASES, "Old Standard"), **FOLLOWERS}
 
 
@@ -45,8 +46,19 @@ def finish_bases(font, skip=()):
         if font[name].lib.get("org.myiadidot.italicSource") != "Old Standard":
             continue
         for contour in font[name].contours:
-            _align_handles(contour.points, lambda x, y: True)
-            _add_extrema(contour.points, lambda x, y: True)
+            _align_handles(contour.points, lambda x, y, name=name: _base_region(name, y))
+            # К/к need tangent repair here. Splitting their other curves
+            # changes the temporary emboldening used for optical spacing.
+            # Finish к's missing extrema after weighting instead.
+            if name not in ("uni041A", "uni043A"):
+                _add_extrema(contour.points, lambda x, y: True)
+
+
+def _base_region(name, y):
+    # К's only broken tangent is in the lower leg. Its upper serif has
+    # unflagged shallow joins whose cleanup switches the Bold generator's
+    # spacing reference; keep this correction local to the leg.
+    return name != "uni041A" or 180 <= y <= 350
 
 
 def _turn(a, p, b):
@@ -199,7 +211,9 @@ def finish(font, skip=(), smooth=True):
         box = REGIONS.get(name)
 
         def inside(x, y, box=box, name=name):
-            if name in BASES or name in BODY_JOINS or name in FOLLOWERS:
+            if name in BASES:
+                return _base_region(name, y)
+            if name in BODY_JOINS or name in FOLLOWERS:
                 return True
             x -= slant * (y - 442)
             return box[0] <= x <= box[2] and box[1] <= y <= box[3]

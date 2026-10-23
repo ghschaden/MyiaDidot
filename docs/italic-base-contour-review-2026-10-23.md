@@ -66,12 +66,16 @@ This fixes the false positive without exempting the letter from checking.
 
 ## Remaining work
 
-The К/к base cleanup is deferred. An experimental correction to Italic К
+The К/к base cleanup was deferred in this pass. An experimental correction to Italic К
 changed its Bold weighting by about 3.7% of ink and shifted the advances
 of К, Ќ and Қ by eight units. That result was discarded. The accepted pass
 preserves their existing base drawings and fixes only the local breaks in
 Қ/қ's already-rebuilt bodies. Review the weight-sensitive generator step
 before changing those bases.
+
+That review is now complete: [К/к cleanup](italic-ka-review-2026-10-23.md).
+The lower-leg correction retains the existing optical-spacing reference
+and all advances.
 
 Bold Italic ʄ's older whole-emboldening/base-retention recipe review remains
 open. The wider inherited-outline backlog in TODO.md also remains.

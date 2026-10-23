@@ -26,6 +26,22 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-23 Version 0.100 (development): italic К/к base contour cleanup
+
+    * Finished К/к and к.sc in both italic weights; Қ/қ and the Ќ/ќ
+      composites follow their corrected bases. Eighteen construction
+      findings removed, with no increased quality findings. Removed ten
+      obsolete quality entries; no shaping baselines changed.
+    * Kept К's repair local to its lower leg so the Bold generator retains
+      its optical-spacing reference. All advances, anchors, kerning,
+      features and accepted upstream signs are preserved. Before/after
+      shaping agrees over 2,119,788 strings per italic weight.
+    * Full suite: 152 passed, 3 skipped. All generated styles reproduce;
+      make proof succeeds. Pinned Python 3.12 for local builds and CI so
+      Unicode classification matches the generated features and baselines.
+    * Comparison: proofs/italic-ka-before-after-2026-10-23.pdf;
+      review: docs/italic-ka-review-2026-10-23.md.
+
 2026-10-23 Version 0.100 (development): inherited italic contour cleanup
 
     * Finished Ж/ж and their Bulgarian/small-cap relatives in both italic

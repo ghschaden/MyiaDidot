@@ -78,3 +78,20 @@ def test_empty_selection_and_reviewed_letters_are_untouched():
     finish_bases(font, skip={"uni0436"})
     finish(font, skip={"uni0291", "uni0436"})
     assert all(glyph == before[glyph.name] for glyph in font)
+
+
+@pytest.mark.parametrize("style", ["Italic", "BoldItalic"])
+def test_ka_base_cleanup_preserves_spacing_reference_curves(style):
+    font = ufoLib2.Font.open(SOURCES / f"MyiaDidot-{style}.ufo")
+    before = copy.deepcopy(font["uni041A"])
+    finish_bases(font)
+    # Cleaning К's upper serif or splitting its curves can switch the
+    # Bold's optical-spacing reference and change three advances by eight
+    # units. Only the broken lower-leg tangent belongs to this pass.
+    for old, new in zip(before.contours, font["uni041A"].contours, strict=True):
+        assert len(old.points) == len(new.points)
+        for a, b in zip(old.points, new.points, strict=True):
+            if not 180 <= a.y <= 350:
+                assert a == b
+    assert font["uni041A"].width == before.width
+    assert font["uni041A"].anchors == before.anchors

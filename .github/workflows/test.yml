@@ -13,7 +13,8 @@ jobs:
         with:
           fetch-depth: 0  # the visual diff builds the previous revision
       - uses: astral-sh/setup-uv@v6
-      - run: uv sync --frozen
+      # Match the Unicode data used for generated features and test baselines.
+      - run: uv sync --frozen --python 3.12
       - run: .venv/bin/ruff check --output-format github .
       - run: .venv/bin/pytest -q
       - name: build all styles (OTF, TTF, WOFF2; hinted and with STAT, as make builds them)

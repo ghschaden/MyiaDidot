@@ -1,6 +1,35 @@
 # To do
 
 
+## К/к base contour review finished (2026-10-23)
+
+Finished К/к and к.sc in both italic weights, with Қ/қ and the Ќ/ќ
+composites following their bases. Five glyph files change per style;
+18 construction findings disappear, with no increased quality findings.
+Removed ten obsolete quality entries. No shaping baselines changed.
+
+The earlier eight-unit advance change came from the Bold generator
+switching its temporary optical-spacing reference when К's unflagged
+upper joins were smoothed. Restricting К's repair to its lower leg keeps
+the existing spacing calculation. All advances, anchors, kerning,
+features and the accepted upstream signs are preserved. Before/after
+shaping of 2,119,788 strings per italic weight has zero differences.
+
+Validation: full suite **152 passed, 3 skipped**. `make reproduce` passes
+for all three generated styles; `make proof` succeeds.
+Diffenator confirms only the five intended outlines per style, with no
+changed words, metrics or layout rules.
+
+Proof: `proofs/italic-ka-before-after-2026-10-23.pdf`.
+Details: `docs/italic-ka-review-2026-10-23.md`.
+
+Next: Bold Italic ʄ's whole-emboldening/base-retention recipe review.
+
+CI's 2026-10-23 failure was a runtime mismatch: `ubuntu-latest` selected
+Python 3.14, whose newer Unicode data changed casing, the shaping corpus
+and generated features (11 failures). Python 3.12 is now pinned locally
+and in the workflow, matching the verified Unicode 15.0 baselines.
+
 ## Inherited italic contours and ɮ check finished (2026-10-23)
 
 Finished Ж/ж, Bulgarian ж, ж.sc and җ.sc in both italic weights, with
