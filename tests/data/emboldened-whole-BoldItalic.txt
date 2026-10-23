@@ -1,5 +1,4 @@
 # Known make_bold.py/make_italic.py emboldened-whole findings (glyph: why); fixing one = deleting its line.
-uni0188                          # left whole: attach: emboldened whole, made again from the Bold it strays
 uni0191                          # left whole: attach: emboldened whole, made again from the Bold it misses (Ƒ: the tail far lighter than the stem)
 uni0198                          # left whole: curl: emboldened whole, made again from the Bold it misses (Ƙ: a stepped foot serif)
 uni019D                          # left whole: attach: emboldened whole, made again from the Bold it misses (Ɲ: crumbs of the foot serif at the cut)
@@ -23,8 +22,6 @@ uni0284                          # left whole: attach: emboldened whole, made ag
 uni0288.sc                       # left whole: hook: emboldened whole, made again from the Bold it strays
 uni0294                          # left whole: glottal: emboldened whole, its recipe fails on the Bold (ValueError)
 uni044E.loclBGR                  # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: attach: emboldened whole, made again from the Bold it has faults
-uni0497                          # left whole: attach: emboldened whole, made again from the Bold it misses (җ: a stub at the descender)
-uni049B                          # left whole: attach: emboldened whole, made again from the Bold it misses (қ: crumbs of the cut at the descender)
 uni04B7                          # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: attach: emboldened whole, made again from the Bold it has faults
 uni2C64                          # left whole: attach: emboldened whole, made again from the Bold it has faults
 uni2C66                          # left whole: slash: emboldened whole, made again from the Bold it misses (ⱦ: the slash at the Regular's thickness, too light)

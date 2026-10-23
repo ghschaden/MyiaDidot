@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-23 Version 0.100 (development): local italic contour finishing
+
+    * Finished the hook, loop, shoulder and descender joins of ƈ ʑ ɮ ʄ
+      Җ җ Қ қ in Italic and Bold Italic. Added missing curve extrema in
+      the final slanted frame. The light қ's leg join keeps its weight.
+    * Both style generators apply italic_contours.py before clearance
+      kerning. Changes are confined to these eight outlines per style;
+      advances, anchors, kerning, features and the accepted Cyrillic sign
+      drawings are preserved. Removed 24 construction findings without
+      adding new quality findings. Retained inherited base-letter faults
+      for a separate review, and tightened the resolved quality exceptions.
+    * Comparison: proofs/italic-contours-before-after-2026-10-23.pdf.
+
 2026-10-23 Version 0.100 (development): Cyrillic italic sign redesign
 
     * Redrew ь ы ъ and Bulgarian ь/ъ in Italic and Bold Italic with a

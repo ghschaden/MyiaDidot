@@ -446,7 +446,7 @@ LETTERS = {"₨": "Rs"}  # signs that are letters side by side
 LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɗ", "ɭ", "Ɽ",
-                 "ң", "ҷ", "қ", "җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "ⱳ.sc", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB",
+                 "ң", "ҷ", "қ", "җ", "Қ", "Җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "ⱳ.sc", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB",
                  "ь.loclBGR", "ю.loclBGR", "ж.loclBGR", "ъ.loclBGR", "в.loclBGR"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
 # where ɗ leaves the italic d for ɓ's top: above the bowl, below where ɓ's
@@ -487,6 +487,8 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 # broke there by 5-20 degrees (seen in print)
 ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190, 460), "ⱳ": (590, 700)}
 
+# ɮ: how far right of l's stem its ʒ stands (ITALIC_RECIPES)
+ZH_DX = 150
 ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # ₩: the bars from 20 to 20 past the uncrossed W's
                   # advance (redraw_w), as the Regular's across its W
@@ -503,6 +505,10 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # baseline, above the hook, as in DejaVu (the roman's
                   # height crossed the tail, easy to miss)
                   "ǥ": ("bar", "g", ("x", -130, "all", (200, 70))),
+                  # ₸'s line across the T's top bar, ₫'s under the bowl and
+                  # stem (the Regular's numbers run past the narrower italics)
+                  "₸": ("lines", "T", ("c", 64, [(118, 1498, 1205, 1562)])),
+                  "₫": ("lines", "dcroat", ("x", 64, [(120, -330, 940, -266)])),
                   # r without its entry stroke, on a foot serif
                   "ɾ": ("attach", "r", ("x", [(-BIG, 442, 297, BIG)], [("rect", (213, 0, 493, 50), (0, 0), (1, 1, 0, 0))])),
                   "ɸ": ("stem", "o", None),  # o with a stem as heavy as l's through it
@@ -538,17 +544,17 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                                    "r": (100, 130), "sweep": 270, "ball": 36, "t": (90, 50)},
                                           (0, 0), (1, 1, 0, 0)),
                                          ("line", ((433, 150), (433, -200), 90), (0, 0), (1, 1, 0, 0))])),
-                  # z's rising end curls back into a loop and runs down
-                  # through its bottom stroke into a tail turning left
-                  "ʑ": ("attach", "z", ("x", [(690, 150, BIG, 400)],
-                                        [("curl", {"at": ("pt", 727.5, 150, 58), "dir": 66.6, "turn": "ccw",
-                                                   "r": (85, 100), "sweep": 205, "ball": 20, "t": (58, 40),
-                                                   "lead": 10, "cuts": [(690, -BIG, BIG, 150)]}, (0, 0), (1, 1, 0, 0)),
-                                         ("line", ((564.5, 190), (566, 60), 58), (0, 0), (1, 1, 0, 0)),
-                                         ("line", ((566, 96), (562, -100), 85), (0, 0), (1, 1, 0, 0)),
-                                         ("curl", {"at": ("pt", 562, -100, 85), "dir": 268, "turn": "cw",
-                                                   "r": (85, 65), "sweep": 110, "ball": 34, "t": (85, 38)},
-                                          (0, 0), (1, 1, 0, 0))])),
+                  # z's bottom stroke runs on (its rising end cut away), thinning
+                  # into a small loop at its end, an upright tail down through
+                  # the loop's left side (as the Regular's)
+                  "ʑ": ("attach", "z", ("x", [(600, -BIG, BIG, 400)],
+                                        [("poly", [(560, -23), (600, -21), ((630, -18), (660, -14), (690, -12)),
+                                                   (690, 52), ((660, 62), (630, 84), (600, 106)), (560, 106)],
+                                          (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 680, 20, 50), "dir": 3, "turn": "ccw",
+                                                   "r": (95, 115), "sweep": 270, "ball": 30, "t": (90, 50), "lead": 10},
+                                          (0, 0), (1, 1, 0, 0)),
+                                         ("line", ((578, 140), (578, -200), 92), (0, 0), (1, 1, 0, 0))])),
                   # z's bottom stroke, where it turns up, turns down instead into a
                   # stem that hooks to the right (as the Regular's and Charis's ʐ),
                   # the stem 110 as tuned (0.85 of the weighted n), run up
@@ -568,15 +574,18 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                                    "lead": 10, "cuts": [(405, -80, BIG, BIG)]}, (0, 0), (1, 1, 0, 0))])),
                   # the stroke across the tail higher, where the tail is
                   "ʝ": ("attach", "j", ("x", [], [("line", ((-20, -400), (580, -110), 50), (0, 0), (1, 1, 0, 0))])),
-                  # l on a straight stem to the baseline, Old Standard's ʒ from
-                  # it: its entry stroke cut, the end of its diagonal in the stem
+                  # l on a straight stem to the baseline, Old Standard's ʒ beside
+                  # it (as the Regular's): its entry stroke cut, its top bar
+                  # run on to the stem, its diagonal and bowl clear of it
                   "ɮ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 250), (300, -BIG, BIG, 600)],  # l's exit stroke too
-                                        [("rect", (176, 0, 292, 260), (0, 0), (1, 1, 0, 0)),
-                                         ("uni0292", (240, 0, BIG, BIG), (0, 0), (1, 1, 0, 0)),
-                                         ("uni0292", (-BIG, -BIG, BIG, 0), (0, 0), (1, 1, 0, 0)),
+                                        [("rect", (163, 0, 304, 260), (0, 0), (1, 1, 0, 0)),
+                                         ("uni0292", (250, 0, BIG, BIG), (0, 0), (1, 1, ZH_DX, 0)),
+                                         ("uni0292", (-BIG, -BIG, BIG, 0), (0, 0), (1, 1, ZH_DX, 0)),
+                                         ("rect", (280, 720, 250 + ZH_DX + 20, 880), (0, 0), (1, 1, 0, 0)),
                                          # filling the notch where ʒ's diagonal meets its bowl
-                                         ("line", ((393, 307), (452, 300), 14), (0, 0), (1, 1, 0, 0)),
-                                         ("line", ((390, 300), (430, 300), 10), (0, 0), (1, 1, 0, 0))], 950)),
+                                         ("line", ((393 + ZH_DX, 307), (452 + ZH_DX, 300), 14), (0, 0), (1, 1, 0, 0)),
+                                         ("line", ((390 + ZH_DX, 300), (430 + ZH_DX, 300), 10), (0, 0), (1, 1, 0, 0))],
+                                        950 + ZH_DX)),
                   # the stem rising through the top serif and curling over to the left
                   **{ch: ("curl", base, ("c", [(-BIG, 1300, 300, BIG)],
                                          {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
@@ -611,7 +620,7 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                                    "lead": 10, "cuts": [(420, 1300, BIG, BIG)]}, (0, 0), (1, 1, 0, 0))])),
                   # the top hairline rising from where its ball was into a hook
                   # to the right (as Charis and Libertinus)
-                  "ƈ": ("attach", "c", ("x", [(540, 450, BIG, BIG)],
+                  "ƈ": ("attach", "c", ("x", [(540, 450, BIG, BIG), (470, 450, 545, 800)],
                                         [("line", ((515, 858), (560, 1100), 44), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 560, 1100, 44), "dir": 75, "turn": "cw",
                                                    "r": (110, 100), "sweep": 200, "ball": 42, "t": (44, 34),
@@ -669,7 +678,13 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "қ": ("attach", "uni043A", ("x", [(640, -BIG, BIG, 200), (900, -BIG, BIG, 450)],
                                               descender(730, 250, 735, -150, 125, 270, (105, 95), 40))),
                   "җ": ("attach", "uni0436", ("x", [(1000, -BIG, BIG, 200), (1350, -BIG, BIG, 450)],
-                                              descender(1087.7, 210, 1224.5, -150, 100, 290.8, (100, 90), 40))),
+                                              descender(1088, 210, 1100, -150, 112, 272, (100, 90), 40))),
+                  # the capitals as the lowercase: the leg's exit stroke cut
+                  # away, a descender in its place (not Ц's tail under it)
+                  "Қ": ("attach", "uni041A", ("c", [(895, -BIG, BIG, 200), (1215, -BIG, BIG, 450)],
+                                              descender(1001, 250, 1008, -150, 165, 270, (130, 115), 45))),
+                  "Җ": ("attach", "uni0416", ("c", [(1480, -BIG, BIG, 200), (1820, -BIG, BIG, 450)],
+                                              descender(1596, 250, 1603, -150, 182, 270, (130, 115), 45))),
                   "ҳ": ("attach", "uni0445", ("x", [(560, -BIG, BIG, 150), (900, -BIG, BIG, 350)],
                                               descender(612, 155, 810, -150, 58, 303, (90, 80), 34))),
                   # ȷ's descender on the last stem, as ɲ has it on the first: it
@@ -703,11 +718,11 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # ɟ's stem (its entry stroke cut away) rising and curling over like f's
                   # (its bar centred on the stem)
                   "ʄ": ("attach", "uni025F", ("x", [(-BIG, 600, BIG, BIG), (-BIG, 475, 330, BIG),
-                                                    (-BIG, 410, 362, 474), (483, 410, BIG, 474)],
-                                              [("rect", (364, 550, 483, 1150), (0, 0), (1, 1, 0, 0)),
+                                                    (-BIG, 410, 345, 474), (500, 410, BIG, 474)],
+                                              [("rect", (351, 550, 495, 1150), (0, 0), (1, 1, 0, 0)),
                                                ("rect", (173, 414, 673, 470), (0, 0), (1, 1, 0, 0)),
-                                               ("curl", {"at": ("pt", 423.5, 1150, 119), "dir": 90, "turn": "cw",
-                                                         "r": (150, 130), "sweep": 210, "ball": 57, "t": (119, 45)},
+                                               ("curl", {"at": ("pt", 423, 1150, 122), "dir": 90, "turn": "cw",
+                                                         "r": (150, 130), "sweep": 210, "ball": 57, "t": (122, 45)},
                                                 (0, 0), (1, 1, 0, 0))], 760)),
                   # u's last stem curling over to the left at the top
                   "ʋ": ("curl", "u", ("x", [(700, 700, BIG, BIG)],
@@ -1851,8 +1866,10 @@ def main():
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
     # These joined bowls have drawings at each weight, not weighted joins.
     from cyrillic_signs import redraw as redraw_cyrillic_signs
+    from italic_contours import finish as finish_contours
 
     redraw_cyrillic_signs(font)
+    finish_contours(font, skip=kept, smooth=False)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     # rounded plainly: the Bold Italic is made of these outlines, and each
     # handle a unit off there moves its findings about at random

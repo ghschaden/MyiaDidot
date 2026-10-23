@@ -302,9 +302,7 @@ uni0186 slant 1                  # 2026-10-16 known at the start (quality checks
 uni0187 kink 1                   # 2026-10-16 known at the start (quality checks added): 1354,1330 2.2 degrees
 uni0187 slant 1                  # 2026-10-16 known at the start (quality checks added): 10.8 degrees, not 15.2
 uni0187 smooth 2                 # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 1594,1500 2.6 degrees; 1199,933 2.1 degrees
-uni0188 kink 2                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 748,1095 5.3 degrees; 637,853 7.5 degrees
 uni0188 slant 1                  # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 24.6 degrees, not 15.2
-uni0188 smooth 1                 # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 917,1005 2.5 degrees
 uni0188.sc kink 4                # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 92,352 5.5 degrees; 965,960 2.1 degrees; 350,760 3.5 degrees; 241,279 6.0 degrees
 uni0188.sc slant 1               # 2026-10-16 known at the start (quality checks added): 10.8 degrees, not 15.2
 uni018A kink 1                   # 2026-10-21 Italic reweighted and tightened: 516,1300 1.4 degrees
@@ -469,7 +467,6 @@ uni026C.sc extreme 1             # 2026-10-21 Italic reweighted and tightened: 1
 uni026C.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 326,931 2.5 degrees
 uni026D kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 275,390 1.2 degrees
 uni026D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 150 against 183 (0.82, lighter)
-uni026E kink 1                   # 2026-10-21 Italic reweighted and tightened: 479,706 2.5 degrees
 uni026E smooth 2                 # 2026-10-21 Italic reweighted and tightened: 172,-145 2.4 degrees; 12,-318 3.2 degrees
 uni026E stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni026F slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
@@ -514,7 +511,6 @@ uni0283 kink 3                   # Italic weighted as its letters are taken, der
 uni0283 smooth 3                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: -267,-380 2.3 degrees; -3,-151 2.7 degrees; 12,-80 2.4 degrees
 uni0283 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni0284 base 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 53% of uni025F kept (attach)
-uni0284 extreme 1                # 2026-10-16 known at the start (quality checks added): 837,1150 7 units past
 uni0284 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: -218,-380 2.3 degrees
 uni0284 stem 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: at 202 135 against uni025F's 144
 uni0284 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
@@ -774,7 +770,7 @@ uni0493.sc smooth 1              # Italic weighted as its letters are taken, der
 uni0496 kink 2                   # 2026-10-21 Italic reweighted and tightened: 1885,1269 3.2 degrees; 1475,452 4.4 degrees
 uni0496 smooth 8                 # 2026-10-21 Italic reweighted and tightened: 656,1103 2.5 degrees; 684,1279 2.0 degrees; 527,1320 2.5 degrees; 1925,1324 4.2 degrees; 1640,279 2.1 degrees; 1492,539 2.7 degrees; 810,114 2.0 degrees; 59
 uni0496 zone 1                   # 2026-10-16 known at the start (quality checks added): top +26 from 1434
-uni0497 kink 3                   # 2026-10-21 Italic reweighted and tightened: 1565,746 2.5 degrees; 1409,756 3.3 degrees; 1072,200 7.4 degrees
+uni0497 kink 2                   # 2026-10-23 local contour finishing; remaining: 29,114 4.1 degrees; 1409,756 2.2 degrees
 uni0497 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1528,841 3.3 degrees
 uni0497 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
 uni0497.sc extreme 2             # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 475,652 9 units past; 532,810 9 units past
@@ -782,10 +778,8 @@ uni0497.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 2
 uni0497.sc smooth 5              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 359,944 2.1 degrees; 1518,905 2.1 degrees; 1466,-208 2.0 degrees; 1119,90 2.1 d
 uni0497.sc stroke 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: sc 213 against 194 (1.10, darker)
 uni0497.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +24 from 1040
-uni049A smooth 1                 # 2026-10-21 Italic reweighted and tightened: 1030,264 2.0 degrees
 uni049A zone 1                   # 2026-10-16 known at the start (quality checks added): top +26 from 1434
-uni049B kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 724,200 4.2 degrees
-uni049B smooth 5                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 455,801 3.0 degrees; 469,706 4.0 degrees; 974,841 2.1 degrees; 628,-161 3.0 deg
+uni049B smooth 4                 # 2026-10-23 local contour finishing; remaining: 455,801 3.0 degrees; 469,706 4.0 degrees; 974,841 2.1 degrees; 608,351 3.1 degrees
 uni049B.sc extreme 1             # 2026-10-21 Italic reweighted and tightened: 642,63 12 units past
 uni049B.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
 uni04A2 extreme 1                # 2026-10-21 Italic reweighted and tightened: 1180,143 7 units past

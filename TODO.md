@@ -1,5 +1,67 @@
 # To do
 
+## Italic contour finishing implemented (2026-10-23)
+
+The eight reviewed letters ƈ ʑ ɮ ʄ Җ җ Қ қ are finished in both italic
+weights through `scripts/italic_contours.py`, called by both generators.
+The pass repairs local tangent breaks, eases ƈ's shoulder, and adds missing
+extrema after slanting. The light қ keeps its original leg weight.
+
+Exactly eight outlines change per style, with advances, anchors, kerning,
+features and other glyphs preserved. Construction findings fall by 24
+(14 Italic, 10 Bold Italic); no quality finding increases. Fourteen obsolete
+quality entries were removed and six remaining counts tightened. Shaping
+baselines are unchanged.
+
+Validation: `make reproduce` passes for all three generated styles. The
+focused structural, contour and quality run has 83 passes, one skip and
+two failures from the remaining inherited quality findings. Both italic
+weights pass TrueType and CFF hinting (four tests). Before/after shaping
+of 2,119,788 strings per italic weight has zero differences; final cmap,
+hmtx, GPOS, GSUB and GDEF tables match that comparison. All ten accepted
+upstream Cyrillic sign files remain byte-identical to upstream. The full
+suite was not rerun; earlier shaping-baseline failures remain separate.
+
+Proof: `proofs/italic-contours-before-after-2026-10-23.pdf`.
+Details: `docs/italic-contour-review-2026-10-23.md`.
+Next: the remaining inherited base-letter findings, ɮ's style heuristic,
+and the earlier uncommitted shaping changes. Bold Italic ʄ's old
+whole-emboldening/base-retention issue remains a separate recipe task.
+
+## Verification before contour finishing (2026-10-23, after upstream pull)
+
+`make reproduce` passes for Italic, Bold and Bold Italic in this
+environment, including the uncommitted italic fixes. The previously
+reported FontForge `l.sc` collapse and Bold small-cap/kerning drift did
+not recur. No master outlines were changed during this check.
+
+Removed five obsolete test exceptions: Regular/Bold ₸'s kink findings,
+and Bold Italic ƈ җ қ's emboldened-whole entries. The latter now use
+their own recipes. No shaping baselines or new quality exceptions were
+accepted.
+
+Validation: full suite 133 passed, 3 skipped, 13 failed. One failure was
+the obsolete Bold ₸ quality entry removed above; the focused cleanup
+checks now pass (3 tests). Four CFF hinting tests failed because the
+sandbox blocked the hinter's helper socket; all four pass outside it.
+Eight failures remain: quality in Italic/Bold Italic, and golden shaping
+plus full-corpus digests in Bold/Italic/Bold Italic. Glyph lint and
+Cyrillic pairs passed. The full suite was not rerun after the focused fixes.
+
+The fresh quality audit reports new findings on Italic ɮ ʑ Җ җ Қ and
+Bold Italic ƈ ʑ Җ җ Қ қ. Most are smooth-node, kink or extreme findings;
+ɮ's style finding is the intended move of ʒ beside l's stem, described
+below. Review the geometry before accepting any new quality entries.
+
+Contour review is recorded in
+`docs/italic-contour-review-2026-10-23.md`, with context and detail sheets
+in `proofs/italic-contour-review-2026-10-23.pdf`. The overall constructions
+are worth retaining. That review led to the implemented local finishing
+pass above; several remaining flags are inherited from the bases.
+The accepted upstream Cyrillic sign
+drawings supersede the earlier hand-edited ь ы ъ and rejected Bold Italic
+versions; preserve those upstream drawings.
+
 ## Cyrillic italic redesign accepted (2026-10-23)
 
 New drawings for ь ы ъ and Bulgarian ь/ъ in both Italic weights are in
@@ -19,17 +81,18 @@ Focused regeneration: `.venv/bin/python -I scripts/cyrillic_signs.py UFO`,
 then normalize. This updates the complete master in place using the same
 drawings as the full generators and does not rerun unrelated small caps.
 `tests/test_cyrillic_signs.py` verifies regeneration, metrics and idempotence.
-Full `make reproduce` remains blocked by the pre-existing FontForge
-small-cap issue in this environment (italic l.sc collapses to height 130,
-then smallcaps.py fails in beside_l). The Bold generator also has unrelated
-small-cap/kerning drift. Those need a separate reproducibility fix; do not
-accept their unrelated changes as part of this redesign.
+The original check reported a FontForge small-cap failure (italic l.sc
+collapsed to height 130, then smallcaps.py failed in beside_l), plus Bold
+small-cap/kerning drift. A fresh full `make reproduce` after the upstream
+pull passes for all three generated styles; see current verification above.
 
 ## IN PROGRESS, uncommitted: Italic glyph fixes (2026-10-22)
 
 The person's list of italic faults, worked through in one session. Working
-tree holds the changes (scripts + regenerated UFOs, `make generate` run);
-**nothing committed, baselines not updated, `make test` fails 13 (below)**.
+tree holds the changes (scripts + regenerated UFOs, `make generate` run).
+The notes below record that session's state: nothing committed, baselines
+not updated, 13 test failures. See current verification above for subsequent
+work; the Cyrillic sign redesign has since been accepted upstream.
 
 Done (in the generators unless noted):
 - ƈ: a speck (rest of c's ball) cut away (make_italic ITALIC_RECIPES).

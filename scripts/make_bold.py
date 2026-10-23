@@ -98,6 +98,11 @@ ITALIC_BOLD_REBUILD = {
     "uni0273": "ɳ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the descender too light, the leg pinched",
     "uni0271": "ɱ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook too light, the leg notched",
     "uni0267": "ɧ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the leg pinched above the hook",
+    "uni0188": "ƈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook a hairline pinched where it leaves c",
+    "uni049A": "Қ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the curl notched",
+    "uni0496": "Җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the ball ran into the descender",
+    "uni0497": "җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, a stub at the descender",
+    "uni049B": "қ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, crumbs of the cut at the descender",
     "uni04A3": "ң: emboldened, a pinhole where the descender's curl meets its stroke",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
@@ -127,6 +132,33 @@ BOLD_RECIPES = {
                             (0, 0), (1, 1, 0, 0))])),
 }
 ITALIC_BOLD_RECIPES = {
+    # ƈ: the Italic's (c's top hairline rising from where its ball was into
+    # a hook), its stroke as heavy as the Bold Italic's arch there (55):
+    # emboldened whole, the hook stayed a hairline, pinched where it left c
+    "ƈ": ("attach", "c", ("x", [(552, 450, 10000, 10000), (490, 450, 565, 818)],
+                          [("line", ((532, 855), (580, 1100), 60), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 580, 1100, 60), "dir": 75, "turn": "cw", "r": (120, 110),
+                                     "sweep": 200, "ball": 58, "t": (60, 46), "lead": 10}, (0, 0), (1, 1, 0, 0))])),
+    # Қ Җ җ қ: the Italic's (make_italic.descender), on the Bold Italic's
+    # leg (its centre and weight at 200, where it is cut), the exit stroke
+    # cut away, the ball half the stroke (as there, so the curl's end has no
+    # step): emboldened whole, the curls closed on their strokes
+    "Қ": ("attach", "uni041A", ("c", [(900, -10000, 10000, 200), (1270, -10000, 10000, 450)],
+                                [("line", ((1057, 210), (1062, -150), 300), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 1062, -150, 300), "dir": 270, "turn": "cw", "r": (195, 170),
+                                           "sweep": 170, "ball": 144, "t": (300, 60)}, (0, 0), (1, 1, 0, 0))])),
+    "Җ": ("attach", "uni0416", ("c", [(1495, -10000, 10000, 200), (1900, -10000, 10000, 450)],
+                                [("line", ((1664, 210), (1669, -150), 318), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 1669, -150, 318), "dir": 270, "turn": "cw", "r": (205, 175),
+                                           "sweep": 155, "ball": 134, "t": (318, 60)}, (0, 0), (1, 1, 0, 0))])),
+    "җ": ("attach", "uni0436", ("x", [(1025, -10000, 10000, 200), (1440, -10000, 10000, 450)],
+                                [("line", ((1140, 210), (1152, -150), 215), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 1152, -150, 215), "dir": 272, "turn": "cw", "r": (150, 130),
+                                           "sweep": 170, "ball": 103, "t": (215, 55)}, (0, 0), (1, 1, 0, 0))])),
+    "қ": ("attach", "uni043A", ("x", [(630, -10000, 10000, 200), (960, -10000, 10000, 450)],
+                                [("line", ((765, 210), (771, -150), 255), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 771, -150, 255), "dir": 270, "turn": "cw", "r": (170, 145),
+                                           "sweep": 170, "ball": 122, "t": (255, 55)}, (0, 0), (1, 1, 0, 0))])),
     # ɳ: the Italic's (make_italic.retroflex), on the Bold Italic's leg (its
     # centre 836, 229 thick at the cut): emboldened whole, the descender took
     # only part of the weight (its stroke under the thick threshold) and the
@@ -155,18 +187,17 @@ ITALIC_BOLD_RECIPES = {
                            ("curl", {"at": ("pt", 810, -300, 225), "dir": 270, "turn": "ccw",
                                      "r": (180, 140), "sweep": 150, "ball": 95, "t": (225, 60)},
                             (0, 0), (1, 1, 0, 0))])),
-    # ʑ: the Italic's, the loop right of the diagonal; the bottom stroke cut
-    # at the tail, the loop alone the bottom (overshooting as o does), so
-    # neither edge of the stroke steps into or under it
-    "ʑ": ("attach", "z", ("x", [(560, -10000, 10000, 400)],
-                          [("curl", {"at": ("pt", 627, 18, 85), "dir": 0, "turn": "ccw",
-                                     "r": (135, 130), "sweep": 270, "ball": 30, "t": (130, 85), "lead": 35},
+    # ʑ: the Italic's: the bottom stroke run on (its rising end cut away),
+    # thinning into a small loop at its end, an upright tail down through
+    # the loop's left side
+    "ʑ": ("attach", "z", ("x", [(600, -10000, 10000, 400)],
+                          [("poly", [(560, -20), (600, -23), ((630, -21), (660, -18), (690, -15)),
+                                     (690, 55), ((660, 66), (630, 88), (600, 108)), (560, 108)],
                             (0, 0), (1, 1, 0, 0)),
-                           ("line", ((493, 150), (492, 60), 120), (0, 0), (1, 1, 0, 0)),
-                           ("line", ((492, 120), (485, -100), 170), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 485, -100, 170), "dir": 268, "turn": "cw",
-                                     "r": (130, 90), "sweep": 110, "ball": 60, "t": (170, 60)},
-                            (0, 0), (1, 1, 0, 0))])),
+                           ("curl", {"at": ("pt", 680, 20, 70), "dir": 3, "turn": "ccw",
+                                     "r": (125, 135), "sweep": 270, "ball": 40, "t": (150, 70), "lead": 10},
+                            (0, 0), (1, 1, 0, 0)),
+                           ("line", ((555, 200), (555, -200), 152), (0, 0), (1, 1, 0, 0))])),
     # ɕ: the Italic's, its loop and tail at the Bold Italic's weight, c cut
     # at the tail, the loop alone the bottom (as ʑ)
     "ɕ": ("attach", "c", ("x", [(525, -10000, 10000, 400)],
@@ -184,7 +215,6 @@ ITALIC_BOLD_RECIPES = {
 }
 ITALIC_BOLD_KEEP_WHOLE = {
     "uni019D": "Ɲ: crumbs of the foot serif at the cut",
-    "uni049B": "қ: crumbs of the cut at the descender",
     "uni0191": "Ƒ: the tail far lighter than the stem",
     "uni0198": "Ƙ: a stepped foot serif",
     "uni01AE": "Ʈ: the hook thin, a step where it meets the stem",
@@ -192,7 +222,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
     "uni0256": "ɖ: the tail thin where it meets the stem",
     "uni027E": "ɾ: a stub of the foot serif at the cut",
-    "uni0497": "җ: a stub at the descender",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
 }
 # letters kept emboldened by weight though it leaves a notch: the rounder
@@ -201,6 +230,7 @@ ITALIC_BOLD_KEEP_WHOLE = {
 BOLD_BY_WEIGHT = {}
 ITALIC_BOLD_BY_WEIGHT = {
     "uni044B": "ы: the rounder way light, its bowl dented where it meets the stem",
+    "uni044C": "ь: the rounder way light (0.82 of its kind), its hook a hairline",
 }
 # and the other way: letters emboldened the rounder way though no slit is
 # found, their parts a hair too far apart for it
@@ -1476,8 +1506,10 @@ def main():
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
     if italic:
         from cyrillic_signs import redraw as redraw_cyrillic_signs
+        from italic_contours import finish as finish_contours
 
         redraw_cyrillic_signs(font)
+        finish_contours(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold))
     if parted:
