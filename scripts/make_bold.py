@@ -1474,6 +1474,10 @@ def main():
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
                          "greekLower": round(done["greekLower"] * KX) + greek_cut}
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
+    if italic:
+        from cyrillic_signs import redraw as redraw_cyrillic_signs
+
+        redraw_cyrillic_signs(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold))
     if parted:

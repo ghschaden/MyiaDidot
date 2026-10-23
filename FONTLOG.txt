@@ -26,6 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-23 Version 0.100 (development): Cyrillic italic sign redesign
+
+    * Redrew ь ы ъ and Bulgarian ь/ъ in Italic and Bold Italic with a
+      shared bowl construction, open counters and continuous stem joins.
+      Bold Italic uses drawings at its own weight, not an emboldened joined
+      outline. The hard sign retains its waving entry; ы shares ь's body.
+    * cyrillic_signs.py is the source for both style generators. It adds
+      curve extrema and rounds smooth joins; advances, anchors and all
+      other outlines stay unchanged. Small caps are outside this pass.
+    * Removed resolved outline, quality and whole-emboldening exceptions,
+      plus the Bold Italic hard sign's fixed CFF alignment exception.
+      Shaping baselines are unchanged. The person accepted the comparison;
+      full style reproducibility still has the separate small-cap blocker
+      documented in TODO.md.
+
 2026-10-21 Version 0.100 (development), Phase 3: an uncrossed italic W, a lighter a
 
     * Old Standard's crossed, very wide W (1.47 cap heights; Bodoni Moda

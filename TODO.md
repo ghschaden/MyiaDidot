@@ -1,5 +1,30 @@
 # To do
 
+## Cyrillic italic redesign accepted (2026-10-23)
+
+New drawings for ь ы ъ and Bulgarian ь/ъ in both Italic weights are in
+`scripts/cyrillic_signs.py`, called by both style generators. The five
+glyphs share the bowl construction; ы shares ь's complete outline. The
+Bold Italic is drawn at its weight, with continuous ascender joins rather
+than emboldened splices. Advances and anchors are preserved explicitly.
+Only these five outlines per style changed; small caps are unchanged.
+
+The drawings have no glyph-lint or design-quality findings. Removed the
+resolved exceptions, including Bold Italic ъ's CFF hinting exception; no
+shaping baselines were changed. The person accepted the comparison in
+`proofs/cyrillic-before-after.png` for publication. The earlier rejected
+Bold Italic verdict below describes the old outlines.
+
+Focused regeneration: `.venv/bin/python -I scripts/cyrillic_signs.py UFO`,
+then normalize. This updates the complete master in place using the same
+drawings as the full generators and does not rerun unrelated small caps.
+`tests/test_cyrillic_signs.py` verifies regeneration, metrics and idempotence.
+Full `make reproduce` remains blocked by the pre-existing FontForge
+small-cap issue in this environment (italic l.sc collapses to height 130,
+then smallcaps.py fails in beside_l). The Bold generator also has unrelated
+small-cap/kerning drift. Those need a separate reproducibility fix; do not
+accept their unrelated changes as part of this redesign.
+
 ## IN PROGRESS, uncommitted: Italic glyph fixes (2026-10-22)
 
 The person's list of italic faults, worked through in one session. Working

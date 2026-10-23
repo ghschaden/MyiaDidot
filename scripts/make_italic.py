@@ -1849,6 +1849,10 @@ def main():
     font.lib[CUT_KEY] ={"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     anchored = missing_anchors(font, regular, marks)
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
+    # These joined bowls have drawings at each weight, not weighted joins.
+    from cyrillic_signs import redraw as redraw_cyrillic_signs
+
+    redraw_cyrillic_signs(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     # rounded plainly: the Bold Italic is made of these outlines, and each
     # handle a unit off there moves its findings about at random

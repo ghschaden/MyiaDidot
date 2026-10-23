@@ -763,10 +763,10 @@ def draw_transformed(font, src, dst, transform, reverse):
     rec.replay(TransformPen(pen, transform))
 
 
-def with_extremes(rec, out):
+def with_extremes(rec, out, round_points=True):
     """Replay a recording into the pen out with each cubic split where it
     turns in x or y (a sheared bowl's extremes move off its points),
-    every point rounded to whole units."""
+    points rounded to whole units unless the caller will round smoothly."""
     from fontTools.misc.bezierTools import solveQuadratic, splitCubicAtT
 
     def turns(a, b, c, d):
@@ -775,7 +775,7 @@ def with_extremes(rec, out):
                 if 0.02 < t < 0.98]
 
     def r(pt):
-        return (round(pt[0]), round(pt[1]))
+        return (round(pt[0]), round(pt[1])) if round_points else pt
 
     current = None
     for op, args in rec.value:

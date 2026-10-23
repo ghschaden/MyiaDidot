@@ -1,4 +1,3 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
 cff u1D516:top1473 3             # 2026-10-21 Italic reweighted and tightened
-cff uni044A:top884 1             # ъ: its flag 0.3 px above x's row at 8 px
 cff uni1E9E:top1473 20           # ẞ (drafted): its round top uncaught by a hint, 0.1-0.2 px above O's row
