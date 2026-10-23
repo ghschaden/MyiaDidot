@@ -1724,6 +1724,9 @@ def main():
             and (g.name in font or g.name.endswith(".sc"))]
     for name in kept:
         font.layers.defaultLayer.insertGlyph(copy.deepcopy(previous[name]), name, overwrite=True)
+    from italic_contours import finish_bases
+
+    finish_bases(font, skip=kept)
     # what Old Standard lacks, made from what it has
     upright_signs = 0
     for g in list(font):

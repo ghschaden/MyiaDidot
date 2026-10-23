@@ -1,5 +1,55 @@
 # To do
 
+
+## Inherited italic contours and ɮ check finished (2026-10-23)
+
+Finished Ж/ж, Bulgarian ж, ж.sc and җ.sc in both italic weights, with
+bases repaired before derivation and final rebuilding/rounding artifacts
+finished locally. Also cleaned the inherited bodies of ʑ Җ җ Қ қ.
+Exactly ten outlines change per style; 95 construction findings disappear
+(55 Italic, 40 Bold Italic), and no quality finding increases. All advances,
+anchors, kerning, features and the accepted upstream signs are preserved.
+Forty obsolete quality entries were removed, including stale entries from
+the earlier ʄ/₸ work. No quality exceptions were added.
+
+ɮ's style check now compares its declared l-and-ʒ construction with the
+same-style recipe. A regression test confirms that substituting a sloped
+Roman ɮ still fails; base-retention and stem checks remain active.
+
+The full suite passes: **150 passed, 3 skipped**, including both formerly
+failing quality checks and TrueType/CFF hinting. `make reproduce` passes
+for all three generated styles. Before/after shaping of 2,119,788 strings
+per italic weight has zero differences. The diffenator word-list sweep
+confirms only the intended outlines and small left-sidebearing changes;
+no changed words, advances or layout rules.
+Proof: `proofs/italic-base-contours-before-after-2026-10-23.pdf`.
+Details: `docs/italic-base-contour-review-2026-10-23.md`.
+
+Next: review the weight-sensitive К/к base cleanup. The discarded trial
+changed Bold К's ink by about 3.7% and the К/Ќ/Қ advances by eight units;
+those base drawings remain unchanged. Bold Italic ʄ's older
+whole-emboldening/base-retention recipe task also remains open.
+
+## Shaping baselines reconciled (2026-10-23)
+
+Reviewed the outstanding Bold/Italic/Bold Italic shaping differences
+against the revisions that produced their recorded baselines. Those
+reference fonts reproduce the old golden cases and digests exactly.
+Across 2,119,788 strings per style, all differences follow the committed
+₸, ƈ, ʄ, ɮ, ʑ and Cyrillic descender advance/anchor changes. Glyph
+selection, kerning and feature rules are unchanged.
+
+Updated only the three affected golden snapshots and full-corpus digests;
+Regular is unchanged. All 12 regression checks pass across the four
+styles (coverage, golden shaping and full-corpus digests). The six prior
+shaping failures are resolved; the two quality failures left at that stage
+are now resolved by the contour/checker work above.
+Review, counts and metric deltas:
+`docs/shaping-baseline-review-2026-10-23.md`.
+
+The Ж/ж family and ɮ's style heuristic are now finished above. The К/к
+weight-sensitive base review and Bold Italic ʄ's recipe review remain open.
+
 ## Italic contour finishing implemented (2026-10-23)
 
 The eight reviewed letters ƈ ʑ ɮ ʄ Җ җ Қ қ are finished in both italic
@@ -24,8 +74,8 @@ suite was not rerun; earlier shaping-baseline failures remain separate.
 
 Proof: `proofs/italic-contours-before-after-2026-10-23.pdf`.
 Details: `docs/italic-contour-review-2026-10-23.md`.
-Next: the remaining inherited base-letter findings, ɮ's style heuristic,
-and the earlier uncommitted shaping changes. Bold Italic ʄ's old
+The shaping snapshots have since been reconciled above. Remaining work:
+the inherited base-letter findings and ɮ's style heuristic. Bold Italic ʄ's old
 whole-emboldening/base-retention issue remains a separate recipe task.
 
 ## Verification before contour finishing (2026-10-23, after upstream pull)
@@ -86,13 +136,13 @@ collapsed to height 130, then smallcaps.py failed in beside_l), plus Bold
 small-cap/kerning drift. A fresh full `make reproduce` after the upstream
 pull passes for all three generated styles; see current verification above.
 
-## IN PROGRESS, uncommitted: Italic glyph fixes (2026-10-22)
+## Historical: Italic glyph fixes (2026-10-22)
 
-The person's list of italic faults, worked through in one session. Working
-tree holds the changes (scripts + regenerated UFOs, `make generate` run).
-The notes below record that session's state: nothing committed, baselines
-not updated, 13 test failures. See current verification above for subsequent
-work; the Cyrillic sign redesign has since been accepted upstream.
+The person's list of italic faults, worked through in one session. These
+changes and the contour finishing pass are committed in `5cea3451`; the
+shaping snapshots are reconciled above. The notes below record that older
+session's state, including its then-open failures. See the newer sections
+above for their resolution; the Cyrillic sign redesign was accepted upstream.
 
 Done (in the generators unless noted):
 - ƈ: a speck (rest of c's ball) cut away (make_italic ITALIC_RECIPES).

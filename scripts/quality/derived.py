@@ -22,7 +22,8 @@ The findings (kinds for checks.py):
            heavier or lighter in the glyph by more than STEM_OFF
   advance  an advance off whole units
   style    (italics) closer to the Regular's glyph than to its own base, by
-           STYLE_MARGIN of overlap: made from the roman, not the italic
+           STYLE_MARGIN of overlap: made from the roman, not the italic.
+           Multi-input attachments also compare their same-style recipe.
 
 Only glyphs that are still the recipe's work are checked: in the Italic
 and Bold Italic those whose org.myiadidot.italicSource is "derived".
@@ -211,6 +212,31 @@ def recipes(italic):
     return out
 
 
+def attachment_reference(font, source, band, slant):
+    """An attachment's same-style inputs, rather than its primary base alone.
+
+    A letter such as ɮ contains l and ʒ. Comparing its whole silhouette
+    with l alone can mistake that deliberate construction for roman ink.
+    Rebuild the declared attachment in the recipe's upright frame. Keep
+    the independent base-retention and stem checks on the primary base.
+    """
+    import derive
+
+    _, cuts, pieces, *_ = band
+    inputs = {piece[0] for piece in pieces if piece[0] in font}
+    if not inputs:
+        return None
+    upright = ufoLib2.Font()
+    transform = (1, 0, -slant, 1, slant * (font.info.xHeight or 884) / 2, 0)
+    for name in inputs | {source, "space"}:
+        glyph = upright.newGlyph(name)
+        rec = DecomposingRecordingPen(font)
+        font[name].draw(rec)
+        rec.replay(TransformPen(glyph.getPen(), transform))
+        glyph.width = font[name].width
+    return Outline(None, None, path=derive.attach(upright, source, cuts, pieces))
+
+
 def derived(font, path=None, only=None, regular=None):
     """[(glyph, kind, where, detail), ...] and {glyph: metrics} for the
     derived glyphs of font."""
@@ -286,8 +312,16 @@ def derived(font, path=None, only=None, regular=None):
             mine = _best_iou(glyph, base)
             roman = _best_iou(glyph, Outline(regular, name))
             m["iou_base"], m["iou_roman"] = mine, roman
+            reference = source
+            if op == "attach" and roman > mine + STYLE_MARGIN:
+                attached = attachment_reference(font, source, band, slant)
+                if attached is not None:
+                    m["iou_recipe"] = _best_iou(glyph, attached)
+                    if m["iou_recipe"] > mine:
+                        mine = m["iou_recipe"]
+                        reference = "its same-style attachment recipe"
             if roman > mine + STYLE_MARGIN:
-                detail = f"closer to the Regular's {name} ({roman:.2f}) than to {source} ({mine:.2f})"
+                detail = f"closer to the Regular's {name} ({roman:.2f}) than to {reference} ({mine:.2f})"
                 out.append((name, "style", "", detail))
         metrics[name] = m
     return out, metrics

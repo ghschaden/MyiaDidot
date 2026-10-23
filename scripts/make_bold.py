@@ -306,6 +306,10 @@ BOLD_KERNING = {
 }
 # the Bold Italic's own (from the Italic)
 ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (ITALIC_BOLD_RECIPES)
+                       # Ж/ж contour finishing moves the optical fit's rounded
+                       # Bulgarian ж origin one unit left; retain its reviewed
+                       # ink/anchor position and advance.
+                       "uni0436.loclBGR": (1, 0),
                        # derived letters still set otherwise against their base than the
                        # references (derived_spacing.py BoldItalic, to the median): ɖ Ƴ ƈ ɚ ҳ Қ Ƙ Җ ƥ җ Ҷ
                        "uni0256": (0, -140), "uni01B3": (0, -120), "uni0188": (0, -85), "uni025A": (0, -100),
@@ -1418,6 +1422,10 @@ def main():
                 fit[g.name] = fit[letters[0]]
                 grown = True
     sidebearings(font, {n: d for n, d in fit.items() if d != (0, 0)})
+    if italic:
+        from italic_contours import finish_bases
+
+        finish_bases(font)
     whole = {}
     followed = follow_bases(regular, font, italic, whole=whole)
     followed += attached_small(regular, font, italic)

@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "scripts/quality"))
 from checks import construction
 from derive import to_path
-from italic_contours import REGIONS, finish
+from italic_contours import BASES, BODY_JOINS, FOLLOWERS, TARGET_SOURCES, finish, finish_bases
 from strokes import strokes
 
 
@@ -23,7 +23,7 @@ def test_reviewed_contours_are_finished_and_stable(style):
     finish(font, smooth=style == "BoldItalic")
     for glyph in font:
         old = before[glyph.name]
-        if glyph.name not in REGIONS:
+        if glyph.name not in TARGET_SOURCES:
             assert glyph == old, glyph.name
             continue
         assert (glyph.width, glyph.anchors, glyph.lib, glyph.unicodes, glyph.components) == (
@@ -33,6 +33,8 @@ def test_reviewed_contours_are_finished_and_stable(style):
         delta = pathops.op(a, b, pathops.PathOp.XOR)
         assert abs(delta.area) < abs(a.area) * 0.002 + 1, glyph.name
     assert not construction(font["uni0188"])
+    for name in (*BASES, *BODY_JOINS, *FOLLOWERS):
+        assert not construction(font[name]), name
     for name in ("uni0291", "uni0284"):
         assert not any(kind == "extreme" for kind, _, _ in construction(font[name])), name
     for name in ("uni0496", "uni0497", "uni049A", "uni049B"):
@@ -57,7 +59,7 @@ def test_reviewed_contours_are_finished_and_stable(style):
 def test_empty_selection_and_reviewed_letters_are_untouched():
     font = ufoLib2.Font()
     font.info.italicAngle = -15.2
-    for name in ("c", "uni0188", "uni0291"):
+    for name in ("c", "uni0188", "uni0291", "uni0416", "uni0436"):
         glyph = font.newGlyph(name)
         # An intentional tiny detached piece would be removed by generic
         # cleanup. Neither an unrelated base nor a kept drawing may lose it.
@@ -70,6 +72,9 @@ def test_empty_selection_and_reviewed_letters_are_untouched():
             pen.closePath()
     font["uni0188"].lib["org.myiadidot.italicSource"] = "drawn"
     font["uni0291"].lib["org.myiadidot.italicSource"] = "derived"
+    font["uni0416"].lib["org.myiadidot.italicSource"] = "drawn"
+    font["uni0436"].lib["org.myiadidot.italicSource"] = "Old Standard"
     before = copy.deepcopy(font)
-    finish(font, skip={"uni0291"})
+    finish_bases(font, skip={"uni0436"})
+    finish(font, skip={"uni0291", "uni0436"})
     assert all(glyph == before[glyph.name] for glyph in font)

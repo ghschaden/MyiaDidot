@@ -1,9 +1,11 @@
-"""Finish the reviewed joins of the italic derived letters at their final size.
+"""Finish the reviewed italic Cyrillic bases and derived-letter joins.
 
 The recipes and Boolean joins are rounded before this pass. Work only in
 the reviewed regions: align the short handles at shallow joins, ease the
 two straight edges at ƈ's shoulder, and split curves at missing extrema.
-The base letters, advances, anchors and terminal sizes stay as drawn.
+The Cyrillic bases are aligned before derivation; the final pass also
+repairs breaks exposed by Boolean rebuilding and rounding. Advances,
+anchors and terminal sizes are preserved.
 Called before clearance kerning; rounds and cleans these letters first,
 using the same rounding policy as their generator's final write.
 """
@@ -26,6 +28,25 @@ REGIONS = {
     "uni049A": (500, -300, 1300, 230),   # Қ: the right leg and curl
     "uni049B": (400, -300, 1100, 230),   # қ: the right leg and curl
 }
+
+# The source letters whose shallow joins are also present in the derived
+# Cyrillic bodies. Finish them before those letters are built from them.
+BASES = ("uni0416", "uni0436")
+BODY_JOINS = {"uni0291", "uni0496", "uni0497", "uni049A", "uni049B"}
+FOLLOWERS = {"uni0436.loclBGR": "derived", "uni0436.sc": "small cap draft", "uni0497.sc": "derived"}
+TARGET_SOURCES = {**dict.fromkeys(REGIONS, "derived"), **dict.fromkeys(BASES, "Old Standard"), **FOLLOWERS}
+
+
+def finish_bases(font, skip=()):
+    """Align the reviewed Cyrillic base joins before derivation, without rounding."""
+    for name in BASES:
+        if name not in font or name in skip:
+            continue
+        if font[name].lib.get("org.myiadidot.italicSource") != "Old Standard":
+            continue
+        for contour in font[name].contours:
+            _align_handles(contour.points, lambda x, y: True)
+            _add_extrema(contour.points, lambda x, y: True)
 
 
 def _turn(a, p, b):
@@ -153,7 +174,7 @@ def _add_extrema(points, inside):
 
 
 def finish(font, skip=(), smooth=True):
-    """Round, clean and finish the eight reviewed derived letters.
+    """Round, clean and finish the reviewed bases and derived letters.
 
     Callers exclude kept/reviewed glyphs. Drawn exceptions and other glyphs
     are never processed. Widths, anchors and glyph metadata are preserved.
@@ -162,8 +183,8 @@ def finish(font, skip=(), smooth=True):
     from make_bold import round_smoothly
 
     slant = math.tan(math.radians(-(font.info.italicAngle or 0)))
-    names = [name for name in REGIONS if name not in skip and name in font
-             and font[name].lib.get("org.myiadidot.italicSource") == "derived"]
+    names = [name for name, source in TARGET_SOURCES.items() if name not in skip and name in font
+             and font[name].lib.get("org.myiadidot.italicSource") == source]
     if not names:
         return
     for name in names:
@@ -175,9 +196,11 @@ def finish(font, skip=(), smooth=True):
                     point.x, point.y = round(point.x), round(point.y)
     fix(font, names)
     for name in names:
-        box = REGIONS[name]
+        box = REGIONS.get(name)
 
-        def inside(x, y, box=box):
+        def inside(x, y, box=box, name=name):
+            if name in BASES or name in BODY_JOINS or name in FOLLOWERS:
+                return True
             x -= slant * (y - 442)
             return box[0] <= x <= box[2] and box[1] <= y <= box[3]
 

@@ -38,3 +38,22 @@ def test_the_italic_d_hook_passes():
     italic = ufoLib2.Font.open(SOURCES / "MyiaDidot-Italic.ufo")
     regular = ufoLib2.Font.open(SOURCES / "MyiaDidot-Regular.ufo")
     assert not derived(italic, regular=regular, only={"uni0257"})[0]
+
+
+def test_attachment_style_uses_both_inputs_and_still_finds_roman_ink():
+    italic = ufoLib2.Font.open(SOURCES / "MyiaDidot-Italic.ufo")
+    regular = ufoLib2.Font.open(SOURCES / "MyiaDidot-Regular.ufo")
+    found, metrics = derived(italic, regular=regular, only={"uni026E"})
+    assert not found
+    assert metrics["uni026E"]["iou_recipe"] > 0.9
+    # The second input must not turn the style check into an exemption:
+    # replacing the joined letter with the sloped roman is still wrong.
+    glyph = italic["uni026E"]
+    glyph.clearContours()
+    glyph.clearComponents()
+    rec = DecomposingRecordingPen(regular)
+    regular[glyph.name].draw(rec)
+    slant = math.tan(math.radians(-italic.info.italicAngle))
+    rec.replay(TransformPen(glyph.getPen(), (1, 0, slant, 1, 0, 0)))
+    found = derived(italic, regular=regular, only={glyph.name})[0]
+    assert any(kind == "style" for _, kind, _, _ in found)

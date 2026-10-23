@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-23 Version 0.100 (development): inherited italic contour cleanup
+
+    * Finished Ж/ж and their Bulgarian/small-cap relatives in both italic
+      weights, plus inherited body joins in ʑ Җ җ Қ қ. The base stage
+      precedes derivation; a final pass handles rebuilding and rounding.
+      Removed 95 construction findings from twenty outlines. Advances,
+      anchors, kerning, features and the upstream Cyrillic signs are kept.
+    * The derived-letter style check also compares multi-input attachments
+      with their same-style recipes. Italic ɮ no longer raises a false
+      style warning; a sloped Roman substitution is still detected.
+    * Full suite: 150 passed, 3 skipped. All generated styles reproduce;
+      before/after shaping over 2,119,788 strings per italic weight agrees.
+    * Removed forty obsolete quality entries. Comparison and review:
+      proofs/italic-base-contours-before-after-2026-10-23.pdf and
+      docs/italic-base-contour-review-2026-10-23.md.
+
+2026-10-23 Version 0.100 (development): shaping baseline reconciliation
+
+    * Reviewed stale Bold, Italic and Bold Italic shaping snapshots against
+      their original baseline fonts over 2,119,788 strings per style.
+      Every difference follows the committed glyph advance/anchor changes;
+      glyph selection, kerning and feature rules are unchanged.
+    * Updated the three golden snapshots and matching full-corpus digests.
+      No font source or quality exception changed. Review and metric deltas:
+      docs/shaping-baseline-review-2026-10-23.md.
+
 2026-10-23 Version 0.100 (development): local italic contour finishing
 
     * Finished the hook, loop, shoulder and descender joins of ƈ ʑ ɮ ʄ
