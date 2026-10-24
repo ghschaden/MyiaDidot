@@ -252,20 +252,30 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni027E": "ɾ: a stub of the foot serif at the cut",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
 }
-# letters kept emboldened by weight though it leaves a notch: the rounder
-# emboldening (embolden_simple), taken where it has fewer faults, comes
-# out lighter and dented in these (reviewed)
+# Reviewed weight-aware choices: the rounder emboldening can lighten or
+# dent a body, and a local contour repair must not switch its construction.
 BOLD_BY_WEIGHT = {}
 ITALIC_BOLD_BY_WEIGHT = {
     "uni044B": "ы: the rounder way light, its bowl dented where it meets the stem",
     "uni044C": "ь: the rounder way light (0.82 of its kind), its hook a hairline",
+    # Keep the established stem construction after rounding r's shoulder:
+    # the local return must not switch these to a heavier/dented body.
+    "uni024D": "ɍ: keep the weighted r body after its shoulder is rounded",
+    "uni027A": "ɺ: keep the weighted turned-r body after its shoulder is rounded",
+    "uni027B": "ɻ: keep the weighted turned-r body after its shoulder is rounded",
+    "uni027E": "ɾ: keep the weighted r body after its shoulder is rounded",
 }
 # and the other way: letters emboldened the rounder way though no slit is
 # found, their parts a hair too far apart for it
 BOLD_ROUNDER = {}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
+    "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
 }
+# The reviewed body choices above must retain their previous rounder
+# optical-spacing reference; body weighting and spacing are independent.
+ITALIC_REFERENCE_ROUNDER = {"uni024D", "uni027A", "uni027B", "uni027E"}
+
 # recipes that scale or reshape their one source outline, adding no piece:
 # no junction to thicken, emboldened whole as any letter is
 RESHAPES = {"enlarge", "stretch", "superior", "lower", "ezh", "esh", "nodot", "upright"}
@@ -879,6 +889,15 @@ def write(font, path, smooth=True, separate_stacks=False):
     from dollar_bars import finish as finish_dollar_bars
 
     finish_dollar_bars(font)
+    from aleph import finish as finish_aleph
+
+    finish_aleph(font)
+    from r_hook import fair_bold_stem, finish_shoulders
+    from r_hook import finish as finish_r_hook
+
+    fair_bold_stem(font)
+    finish_shoulders(font)
+    finish_r_hook(font)
     if separate_stacks:
         separate_breve_grave_stacks(font)
     refit_horns(font)
@@ -1434,7 +1453,8 @@ def main():
                 # on it kept (N's hairline sides would gain AX / 2 of white,
                 # the italic H's shorter serifs 23 units a side)
                 ref = bridge(rezone(embolden(wide, AX, AY), AY))
-                if g.name in rounder_ones or (g.name not in by_weight and slit(ref, regular[g.name], regular)):
+                if (g.name in rounder_ones or (italic and g.name in ITALIC_REFERENCE_ROUNDER)
+                        or (g.name not in by_weight and slit(ref, regular[g.name], regular))):
                     ref = rezone(embolden_simple(wide, AX, AY), AY)
                 # judged optically (the white beside the ink across the band,
                 # as the figures are spaced): a thin stroke end that no longer
@@ -1491,6 +1511,14 @@ def main():
         from italic_contours import finish_bases
 
         finish_bases(font)
+        from r_hook import round_left_shoulder, round_shoulder
+
+        round_shoulder(font)
+        round_left_shoulder(font)
+    else:
+        from r_hook import fair_bold_stem
+
+        fair_bold_stem(font)
     whole = {}
     followed = follow_bases(regular, font, italic, whole=whole)
     followed += attached_small(regular, font, italic)

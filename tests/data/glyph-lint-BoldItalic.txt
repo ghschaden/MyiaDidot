@@ -1,12 +1,9 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
 uni0278 notch 2                  # reviewed 2026-10-24: narrow counter cusps where stem crosses bowl; optical weight review remains open (docs/phi-counter-review-2026-10-24.md): 448,696 100 px; 569,233 54 px
-uni027D notch 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 680,770 35 px
-uni027D.sc notch 1               # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 817,-23 107 px
-uni02B8 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 531,628 32 px
-uni04A3 notch 1                  # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 515,-149 43 px
-uni1D4D notch 1                  # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 484,609 32 px
-uni1D73 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 688,773 55 px
-uni1DA4 notch 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 498,773 32 px
-uni20A1 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1281,895 32 px
-uni2135 ledge 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 746,18 3 units
-uni2C65.sc notch 1               # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 269,164 31 px
+uni027D.sc notch 1               # reviewed 2026-10-24: narrow open gap between curled leg and swash; retained pending visual review, docs/r-hook-review-2026-10-24.md: 817,-23 107 px
+uni02B8 notch 1                  # reviewed 2026-10-24: open lower crotch of italic y construction, 527,619 30 px; docs/remaining-bold-italic-lint-review-2026-10-24.md
+uni04A3 notch 1                  # reviewed 2026-10-24: tapered open counter between descender curl and stem, 514,-151 43 px; docs/remaining-bold-italic-lint-review-2026-10-24.md
+uni1D4D notch 1                  # reviewed 2026-10-24: open lower bowl/stem crotch inherited from italic single-storey g, 476,595 36 px; docs/remaining-bold-italic-lint-review-2026-10-24.md
+uni1DA4 notch 1                  # reviewed 2026-10-24: open slot at crossing bar and curved stem, 498,773 32 px; docs/remaining-bold-italic-lint-review-2026-10-24.md
+uni20A1 notch 1                  # reviewed 2026-10-24: tapered counter between slash and upper C terminal, 1256,836 50 px; docs/remaining-bold-italic-lint-review-2026-10-24.md
+uni2C65.sc notch 1               # reviewed 2026-10-24: tapered lower counter where slash crosses A foot, 269,164 31 px; docs/remaining-bold-italic-lint-review-2026-10-24.md

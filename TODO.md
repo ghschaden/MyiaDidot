@@ -1,5 +1,68 @@
 # To do
 
+## ℵ upper-right terminal join corrected (2026-10-24)
+
+The person accepted the central and lower-left shapes and identified the
+remaining upper-right join issue. Removed the reverse spur under that
+terminal and the S-shaped wiggle on its connector. The central diagonal,
+all lower points and the earlier tip repair are unchanged. The generator
+applies both local repairs independently and repeatably.
+
+Only ℵ’s outline changes; advances, anchors and compiled metrics/layout
+tables match. One existing quality exception shrinks (four extrema to
+three); no new exceptions or shaping baseline changes. **31 focused checks
+pass**, including TrueType/CFF hinting and shaping. Bold Italic reproduces
+and its production OTF rebuilds.
+
+Proof: `proofs/bold-italic-aleph-upper-join-before-after-2026-10-24.pdf`.
+Details: `docs/remaining-bold-italic-lint-review-2026-10-24.md`.
+
+## Remaining Bold Italic lint reviewed; ℵ return repaired (2026-10-24)
+
+Reviewed the seven remaining unreviewed entries with an independent Astra
+inspection. Two small backward returns in ℵ's lower tip came from weighting,
+not the Old Standard Italic source. The generator now replaces their run
+with one smooth curve, preserving its surroundings, advance and anchors.
+One lint exception is removed. No quality or shaping baselines change.
+
+The ʸ ң ᵍ ᶤ ₡ ⱥ.sc findings are tapered open counters or stroke crossings.
+Recommend retaining those drawings and existing exception keys; the proofs
+are ready for the person's review. This does not record visual acceptance
+or resolve separate optical-weight findings. Eight Bold Italic glyphs
+retain known lint findings, including the earlier ɸ and ɽ.sc reviews.
+
+Proofs: `proofs/remaining-bold-italic-lint-review-2026-10-24.pdf` and
+`proofs/bold-italic-aleph-before-after-2026-10-24.pdf`.
+Details: `docs/remaining-bold-italic-lint-review-2026-10-24.md`.
+
+Validation: **30 focused checks pass**, including shaping, TrueType and CFF
+hinting. Bold Italic reproduces; only ℵ’s CFF charstring changes, with
+metrics/layout tables identical. The production Bold Italic OTF rebuilds.
+
+Next unreviewed group: Italic m/arch family and ɬ. Dollar drawing and ɸ
+optical weight remain open separately.
+
+## r shoulders and retroflex hooks redrawn (2026-10-24)
+
+At the person's request, both italic r shoulders now have a continuous
+rounded inner return, shared with their derived letters. Lowercase ɽ
+uses the final r body and a deeper U-shaped hook with a rounded upright
+terminal, calibrated from Regular/Bold at its own stem weight. The hook
+depth is -420, matching the romans; advances and anchors are retained.
+The small-cap narrow leg/swash gap remains unchanged and awaits visual
+review. This is a drawing proposal, not recorded final visual acceptance.
+
+The Bold r and ɽ inner stem bumps are smoothed; Bold Italic r’s left
+shoulder is rounded as requested in the subsequent visual review.
+
+Proof: `proofs/r-shoulders-hooks-before-after-2026-10-24.pdf`.
+Details and validation: `docs/r-hook-review-2026-10-24.md`.
+
+Validation: **175 passed, 3 skipped**, including the separate CFF rerun.
+All three styles reproduce; production fonts/proofs rebuild. Compiled
+metrics/layout tables match and no shaping baselines change.
+Next unreviewed lint entry: Bold Italic ʸ.
+
 ## Bold Italic dollar still needs a drawing pass
 
 The person reviewed the straightened bars and found the central part
@@ -462,9 +525,9 @@ recipe coordinates are in the derive frame (final + ~16 in the Italic).
 ## Outline faults left (glyph lint, `tests/data/glyph-lint-*.txt`)
 
 - Notches are measured at four raster phases now (2026-10-21), so the
-  lists hold what stays a notch. **Bold Italic** 11 glyphs (ɸ ɽ
-  ɽ.sc ʸ ң ᵍ ᵳ ᶤ ₡ ℵ ⱥ.sc; updated 2026-10-24 after the Cyrillic sign,
-  Greek stack, ṫ dot, Ⱦ foot counter, ɉ bar and dollar bar repairs). ɽ ᶤ ⱥ.sc
+  lists hold what stays a notch. **Bold Italic** 8 glyphs (ɸ
+  ɽ.sc ʸ ң ᵍ ᶤ ₡ ⱥ.sc; updated 2026-10-24 after the Cyrillic sign,
+  Greek stack, ṫ dot, Ⱦ foot counter, ɉ bar, dollar bar, r-family and aleph repairs). ᶤ ⱥ.sc
   ℵ came with the weighting change (near-threshold notches at joins, for
   the eye). **Italic** 11: ɬ ɉ and the
   narrow arch crotch of m ḿ ṃ т ш ɯ at exactly the threshold (Old

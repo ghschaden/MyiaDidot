@@ -1737,6 +1737,9 @@ def main():
     from italic_contours import finish_bases
 
     finish_bases(font, skip=kept)
+    from r_hook import round_shoulder
+
+    round_shoulder(font, skip=kept)
     # what Old Standard lacks, made from what it has
     upright_signs = 0
     for g in list(font):
