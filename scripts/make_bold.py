@@ -43,7 +43,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import case_forms
 import kern_clear
 from built_from import KEY as BUILT_KEY
-from composites import SPECIAL, Builder, stack_anchors
+from composites import SPECIAL, STACK_GAP_LC, Builder, stack_anchors
 from derive import embolden, embolden_by_weight, embolden_simple, rezone
 from glyph_lint import fix
 from respace import CUT_KEY, classifier, respace, sidebearings
@@ -822,14 +822,37 @@ def round_smoothly(P):
             P[k].x, P[k].y = q
 
 
-def write(font, path, smooth=True):
+def separate_breve_grave_stacks(font):
+    """Keep the inherited grave/breathing pairs clear of the Greek breve.
+
+    These legacy mark ligatures use fixed component offsets rather than
+    Builder's stacking anchors. Weighting makes the grave touch the breve.
+    Move the complete upper pair, preserving its internal arrangement and
+    the stack's attachment anchor, with the usual lowercase mark gap.
+    """
+    from smallcaps import ink_bounds
+
+    for breathing in ("0313", "0314"):
+        glyph = font[f"brevecmb_uni{breathing}_gravecomb.grek"]
+        upper, breve = glyph.components
+        upper_bounds = ink_bounds(font, upper.baseGlyph)
+        breve_bounds = ink_bounds(font, breve.baseGlyph)
+        gap = upper_bounds[1] + upper.transformation.dy - (breve_bounds[3] + breve.transformation.dy)
+        if gap < STACK_GAP_LC:
+            xx, xy, yx, yy, dx, dy = upper.transformation
+            upper.transformation = (xx, xy, yx, yy, dx, dy + math.ceil(STACK_GAP_LC - gap))
+
+
+def write(font, path, smooth=True, separate_stacks=False):
     """Save font as the Bold: a new UFO, or an existing one updated in place
     (its glyphs replaced, the files of glyphs no longer there removed). Its
     points, anchors and component offsets are rounded to whole units first,
     and what that leaves cleaned (glyph_lint). The Regular's record of what
     its derived glyphs were built from (built_from.py) is left behind: a
     generated style is checked by being generated again.
-    smooth: joins the rounding would break kept smooth (round_smoothly)."""
+    smooth: joins the rounding would break kept smooth (round_smoothly).
+    separate_stacks: fit legacy Greek breve/grave stacks after rounding;
+    enabled for the bold styles, not for the Italic's shared writer."""
     for g in font:
         g.lib.pop(BUILT_KEY, None)
         for c in g.contours:
@@ -844,6 +867,11 @@ def write(font, path, smooth=True):
             xx, xy, yx, yy, dx, dy = c.transformation
             c.transformation = (xx, xy, yx, yy, round(dx), round(dy))
     fix(font)  # what rounding left (a unit's step)
+    from cedilla import finish as finish_cedilla
+
+    finish_cedilla(font)
+    if separate_stacks:
+        separate_breve_grave_stacks(font)
     refit_horns(font)
     if not path.exists():
         font.save(path)
@@ -1547,7 +1575,7 @@ def main():
         redraw_cyrillic_signs(font)
         finish_contours(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
-    write(font, Path(args.bold))
+    write(font, Path(args.bold), separate_stacks=True)
     if parted:
         print("  serifs kept apart:", " ".join(parted))
     if simple:

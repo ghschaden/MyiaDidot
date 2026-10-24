@@ -1,6 +1,4 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
-brevecmb_uni0313_gravecomb.grek ledge 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 181,1320 15 units
-brevecmb_uni0314_gravecomb.grek ledge 1 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 181,1320 15 units
 dollar notch 1                   # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 477,376 35 px
 uni023E notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 460,126 36 px
 uni0249 ledge 2                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 551,410 7 units; 563,471 10 units
@@ -12,7 +10,6 @@ uni04A3 notch 1                  # derived hooks/curls rebuilt at Old Standard's
 uni1D4D notch 1                  # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 484,609 32 px
 uni1D73 notch 1                  # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 688,773 55 px
 uni1DA4 notch 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 498,773 32 px
-uni1E6B step 1                   # 2026-10-21 Italic reweighted (Old Standard's hairlines kept): its narrow arch crotches: 606,1374 0.6 units
 uni20A1 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1281,895 32 px
 uni2135 ledge 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 746,18 3 units
 uni2C65.sc notch 1               # Italic weighted as its letters are taken, derived letters built from weighted bases: near-threshold notches at joins, others gone: 269,164 31 px

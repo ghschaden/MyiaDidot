@@ -1,9 +1,4 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
-Ccedilla step 1                  # the cedilla on the letter, under 2 units (composite) (emboldening offsets curves (tangents kept, handles fitted), flat edges kept on the zones, whole units)
-Scedilla step 1                  # the cedilla on the letter, under 2 units (composite) (emboldening offsets curves (tangents kept, handles fitted), flat edges kept on the zones, whole units)
-brevecmb_uni0313_gravecomb.grek ledge 1 # the marks overlapping (composite) (emboldening offsets curves (tangents kept, handles fitted), flat edges kept on the zones, whole units)
-brevecmb_uni0314_gravecomb.grek ledge 1 # the marks overlapping (composite) (emboldening offsets curves (tangents kept, handles fitted), flat edges kept on the zones, whole units)
-ccedilla.sc step 1               # the cedilla on the letter, under 2 units (composite) (emboldening offsets curves (tangents kept, handles fitted), flat edges kept on the zones, whole units)
 dcaron notch 1                   # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (1059,1413 43 px)
 uni0249 ledge 2                  # design: the bar ends in a stub just past the stem (468,414 26 units, ...)
 uni027B notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (507,176 51 px)

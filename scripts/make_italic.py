@@ -1476,6 +1476,16 @@ def italic_anchors(roman, osg, width_it):
     return out
 
 
+def t_dot_anchor(font):
+    """Give the tall italic t the same dot clearance as z, along the slant."""
+    t, z = font["t"], font["z"]
+    ta = next(a for a in t.anchors if a.name == "Dotaccent")
+    za = next(a for a in z.anchors if a.name == "Dotaccent")
+    dy = round(za.y + t.getBounds(font).yMax - z.getBounds(font).yMax - ta.y)
+    ta.x += round(dy * SLANT)
+    ta.y += dy
+
+
 def attach(font, glyph_name, mark, bases):
     """The anchor (name, x in the composite) a mark component sits on: the
     base anchor nearest to the mark's ink (as in make_bold)."""
@@ -1773,6 +1783,7 @@ def main():
 
     # letters Old Standard draws with their accent in one outline (Ť): made
     # from base and mark like the decomposed text (not upstream's specials)
+    t_dot_anchor(font)
     log = []
     stack_anchors(font, log)
     b = Builder(font)

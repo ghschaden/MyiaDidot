@@ -26,6 +26,57 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-24 Version 0.100 (development): italic t dot clearance
+
+    * Raised t's Dotaccent anchor along the slant to give ṫ the same
+      dot clearance as ż, in Italic and Bold Italic. The former dot
+      overlapped the taller italic stem. Placement is derived from z's
+      anchor and the ink tops in the Italic generator, inherited by Bold
+      Italic; NFC and decomposed mark placement agree.
+    * Only ṫ's visible placement changes; six related glyphs carry the
+      corrected anchor. Base and mark outlines, advances, kerning and
+      other anchors are preserved. One glyph-lint exception removed.
+    * Exactly ten strings per italic weight change over 2,119,788 shaped
+      strings, all dot positions above t with a below mark. Updated only
+      the two full-corpus digests for this intended correction.
+    * Validation: 161 passed, 3 skipped, including TrueType/CFF hinting.
+      All three styles reproduce; proofs pass. Diffenator confirms scope.
+    * Comparison: proofs/italic-t-dot-before-after-2026-10-24.pdf;
+      docs/italic-t-dot-review-2026-10-24.md.
+
+2026-10-24 Version 0.100 (development): cedilla attachment finishing
+
+    * Shortened the capital cedilla's buried tip in the generated styles.
+      Removed the steps inside Bold Ç Ş ç.sc and Italic Ç ç.sc. The
+      composites still use the shared mark and existing attachment anchors.
+      Exactly Cedilla changes in each of Bold, Italic and Bold Italic;
+      the lowercase mark and Regular are unchanged.
+    * Five glyph-lint exceptions removed. Advances, anchors, kerning and
+      layout rules are preserved; no shaping baseline changes.
+    * Validation: 158 passed, 3 skipped, including TrueType/CFF hinting.
+      Proofs pass. Before/after shaping agrees over 2,119,788 strings per
+      generated style, with identical compiled metrics and layout tables.
+      All three styles reproduce; diffenator confirms the intended scope.
+    * Comparison for visual review:
+      proofs/cedilla-attachments-before-after-2026-10-24.pdf;
+      docs/cedilla-attachment-review-2026-10-24.md.
+
+2026-10-24 Version 0.100 (development): Greek breve/grave stack clearance
+
+    * Separated the grave from the breve in the two inherited breathing
+      stacks in Bold and Bold Italic. The generator raises each upper pair
+      to the existing lowercase mark gap after outline rounding, retaining
+      the component drawings, attachment anchors and zero advances.
+    * Exactly two glyphs change per bold style; four glyph-lint exceptions
+      removed. Layout tables, kerning and every other glyph are preserved.
+      Before/after shaping agrees over 2,119,788 strings per bold style.
+      All three generated styles reproduce; diffenator confirms the scope.
+    * Validation: 155 passed, 3 skipped across the full suite and separate
+      CFF rerun (the sandbox blocks the hinter's helper socket). Proofs pass.
+    * Comparison for visual review:
+      proofs/greek-breve-grave-before-after-2026-10-24.pdf;
+      docs/greek-breve-grave-review-2026-10-24.md.
+
 2026-10-23 Version 0.100 (development): Bold Italic j-hook recipe
 
     * Rebuilt ʄ from the same-style ɟ, with its extension, bar and hook

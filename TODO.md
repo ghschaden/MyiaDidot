@@ -1,5 +1,92 @@
 # To do
 
+## Italic ỵ collision reviewed (2026-10-24)
+
+The next glyph-lint item is a dot/descender collision in ỵ. Bold Italic
+has the same overlap despite passing lint. A comparison proof includes
+both Roman styles and a beside-descender trial in each italic weight.
+Both trials have zero overlap and pass glyph lint; masters, generators
+and baselines are unchanged. Placement remains a visual review candidate.
+
+Proof: `proofs/y-dot-placement-review-2026-10-24.pdf`.
+Details: `docs/y-dot-placement-review-2026-10-24.md`.
+
+Next: review the candidate and correct y's DotBelow anchor in the
+italic generators, keeping precomposed and decomposed text together.
+
+## Italic ṫ dot collision repaired (2026-10-24)
+
+The Bold Italic ṫ step came from its dot overlapping the top of t;
+Italic had the same collision without a lint finding. The Italic generator
+now derives t's Dotaccent anchor from z's clearance and the two ink tops.
+Bold Italic inherits the correction. The dot moves 269 units up along the
+slant, leaving the same gap as ż (198 / 194 units in the two weights).
+Base and mark outlines, advances and kerning are preserved.
+
+Only ṫ's visible placement changes in each italic weight. Six related
+glyphs carry the corrected anchor so decomposed text follows it. One
+obsolete glyph-lint entry is removed. Shaping over 2,119,788 strings per
+style changes exactly ten dot positions above t with a below mark;
+only the two corpus digests are updated for these intended changes.
+
+Validation: **161 passed, 3 skipped**, including TrueType/CFF hinting.
+All three styles reproduce; proofs, lint and sync checks pass. Diffenator
+confirms the intended scope.
+
+Proof: `proofs/italic-t-dot-before-after-2026-10-24.pdf`.
+Details: `docs/italic-t-dot-review-2026-10-24.md`.
+
+Next: continue the inherited glyph-lint backlog below. The Regular/Bold
+ṫ dot-gap review remains under quality findings; this pass repairs the
+italic collision.
+
+## Cedilla attachment steps repaired (2026-10-24)
+
+Shortened the buried tip of the shared capital cedilla in Bold, Italic
+and Bold Italic, through `scripts/cedilla.py` in the generated-style writer.
+This removes the steps inside Bold Ç Ş ç.sc and Italic Ç ç.sc without
+moving attachment anchors or composite offsets. Exactly one master glyph
+changes per generated style; the lowercase mark and Regular are unchanged.
+Five glyph-lint exceptions are removed. No shaping baselines changed.
+
+Validation: **158 passed, 3 skipped**, including TrueType/CFF hinting.
+Before/after shaping of 2,119,788 strings per generated style has zero
+differences; compiled metrics and layout tables match. `make proof` passes.
+All three generated styles reproduce. Diffenator confirms the intended
+scope, including the earlier Greek stack work when compared against HEAD.
+
+Proof: `proofs/cedilla-attachments-before-after-2026-10-24.pdf`.
+Details: `docs/cedilla-attachment-review-2026-10-24.md`.
+
+Next: continue the inherited glyph-lint backlog below. The cedilla proof
+is ready for visual review.
+
+## Greek breve/grave stack ledges repaired (2026-10-24)
+
+Started the inherited glyph-lint backlog with the two Greek breve +
+breathing + grave stacks in Bold and Bold Italic. The grave touched the
+breve's right tip. The Bold generator now raises the complete upper pair
+to the existing lowercase stacking gap, measured after rounding. Component
+outlines, attachment anchors, advances, kerning and features are preserved.
+Exactly two glyphs change per bold style; four lint exceptions are removed.
+Regular and Italic are unchanged. No shaping baselines changed.
+
+Before/after shaping of 2,119,788 strings per bold style has zero
+differences. Diffenator confirms only the intended two changed outlines
+per style, with no changed words or layout data. `make reproduce` passes
+for all three generated styles.
+
+Validation: **155 passed, 3 skipped** across the full run and the separate
+CFF rerun. The sandboxed full run has 151 passes and four CFF helper-socket
+failures; all four pass with socket access allowed. `make proof` passes.
+
+Proof: `proofs/greek-breve-grave-before-after-2026-10-24.pdf`.
+Details: `docs/greek-breve-grave-review-2026-10-24.md`.
+
+Next: continue the inherited glyph-lint backlog below, beginning with
+the cedilla attachment steps in Bold and Italic. The new stack placement
+is available in the proof for visual review.
+
 
 ## Bold Italic ʄ recipe review finished (2026-10-23)
 
@@ -267,15 +354,15 @@ recipe coordinates are in the derive frame (final + ~16 in the Italic).
 ## Outline faults left (glyph lint, `tests/data/glyph-lint-*.txt`)
 
 - Notches are measured at four raster phases now (2026-10-21), so the
-  lists hold what stays a notch. **Bold Italic** 19 glyphs (dollar Ⱦ ɉ ɸ ɽ
-  ɽ.sc ʸ ы ь ң ᵍ ᵳ ᶤ ṫ ₡ ℵ ⱥ.sc and two Greek accent stacks): ы is kept
-  emboldened by weight (ITALIC_BOLD_BY_WEIGHT; the rounder way came out
-  light and dented), ы.sc the rounder way (ITALIC_BOLD_ROUNDER). ɽ ᶤ ⱥ.sc
+  lists hold what stays a notch. **Bold Italic** 14 glyphs (dollar Ⱦ ɉ ɸ ɽ
+  ɽ.sc ʸ ң ᵍ ᵳ ᶤ ₡ ℵ ⱥ.sc; updated 2026-10-24 after the Cyrillic sign,
+  Greek stack and ṫ dot repairs). ɽ ᶤ ⱥ.sc
   ℵ came with the weighting change (near-threshold notches at joins, for
-  the eye). **Italic** 14: ɬ ỵ ɉ, Ç ç.sc (steps under a unit), and the
+  the eye). **Italic** 12: ɬ ỵ ɉ and the
   narrow arch crotch of m ḿ ṃ т ш ɯ at exactly the threshold (Old
   Standard's design).
-- Regular 10, Bold 10 (see the lists).
+- Regular 10, Bold 5 (see the lists; Greek stack ledges and cedilla steps
+  repaired 2026-10-24).
 
 ## Derived letters still emboldened whole (junctions thicken)
 
