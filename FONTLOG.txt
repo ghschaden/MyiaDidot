@@ -26,6 +26,23 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-23 Version 0.100 (development): Bold Italic j-hook recipe
+
+    * Rebuilt ʄ from the same-style ɟ, with its extension, bar and hook
+      drawn at the Bold Italic weight. Kept its advance, anchors and
+      kerning. Finished shallow joins in the retained lower body.
+      Reworked the hook after visual review: restored the open counter
+      and rounded terminal, replacing the pinched elliptical construction.
+    * Resolved its base-retention and light-stroke findings; removed one
+      whole-emboldening and two quality exceptions. No new findings or
+      shaping baseline changes. Before/after shaping agrees over
+      2,119,788 strings; every other glyph is preserved.
+    * Full suite: 153 passed, 3 skipped, including TrueType/CFF hinting.
+      Proofs and diffenator pass; the only changed word image contains ʄ.
+      All three generated styles reproduce.
+    * Comparison: proofs/bold-italic-j-hook-before-after-2026-10-23.pdf;
+      review: docs/bold-italic-j-hook-review-2026-10-23.md.
+
 2026-10-23 Version 0.100 (development): italic К/к base contour cleanup
 
     * Finished К/к and к.sc in both italic weights; Қ/қ and the Ќ/ќ

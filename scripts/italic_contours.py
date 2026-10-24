@@ -211,6 +211,10 @@ def finish(font, skip=(), smooth=True):
         box = REGIONS.get(name)
 
         def inside(x, y, box=box, name=name):
+            # The Bold Italic ʄ now retains ɟ's actual descender. Finish its
+            # inherited shallow joins as well as the new stem/hook join.
+            if name == "uni0284" and (font.info.openTypeOS2WeightClass or 400) >= 600:
+                return True
             if name in BASES:
                 return _base_region(name, y)
             if name in BODY_JOINS or name in FOLLOWERS:

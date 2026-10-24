@@ -90,6 +90,7 @@ BOLD_REBUILD = {
     "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
 }
 ITALIC_BOLD_REBUILD = {
+    "uni0284": "ʄ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, it lost its ɟ base and stayed light",
     "uni0290": "ʐ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook's counter closed",
     "uni0291": "ʑ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni0255": "ɕ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
@@ -132,6 +133,33 @@ BOLD_RECIPES = {
                             (0, 0), (1, 1, 0, 0))])),
 }
 ITALIC_BOLD_RECIPES = {
+    # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
+    # bar ends are cut away; the new bar is centred on the extended stem.
+    # At y=600 the upright ɟ stem spans about 335..586. The light recipe's
+    # 351..495 extension and 500-unit cut no longer fit that stem.
+    # The hook follows the old open counter and rounded terminal, with a
+    # continuous inner return. A narrow elliptical curl pinches the counter
+    # and leaves a lump where its terminal overlaps. These upright curves
+    # join the retained stem gradually and keep the old right edge.
+    # 848 minus the inherited 130-unit left adjustment and the 38-unit
+    # Bold cut keeps the 680-unit advance.
+    "ʄ": ("attach", "uni025F", ("x", [(-10000, 600, 10000, 10000), (-10000, 475, 300, 10000),
+                                       (-10000, 410, 330, 474), (590, 410, 10000, 474)],
+                                 [("poly", [
+                                      (335, 550),
+                                      (335, 900),
+                                      ((335, 1000), (339.45, 1055), (339.73, 1146)),
+                                      ((340.0, 1237), (508.44, 1309), (617.44, 1309)),
+                                      ((710.44, 1309), (867.57, 1257), (889.03, 1178)),
+                                      ((910.23, 1100), (845.52, 1029), (756.52, 1029)),
+                                      ((706.52, 1029), (649.54, 1051), (641.12, 1082)),
+                                      ((631.88, 1116), (667.57, 1165), (652.62, 1220)),
+                                      ((648.82, 1234), (641.37, 1243), (617.37, 1243)),
+                                      ((565.37, 1243), (581.78, 1201), (581.73, 1146)),
+                                      ((581.91, 1057), (586, 1000), (586, 900)),
+                                      (586, 550),
+                                  ], (0, 0), (1, 1, 0, 0)),
+                                  ("rect", (201, 414, 721, 470), (0, 0), (1, 1, 0, 0))], 848)),
     # ƈ: the Italic's (c's top hairline rising from where its ball was into
     # a hook), its stroke as heavy as the Bold Italic's arch there (55):
     # emboldened whole, the hook stayed a hairline, pinched where it left c

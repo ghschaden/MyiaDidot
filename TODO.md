@@ -1,6 +1,31 @@
 # To do
 
 
+## Bold Italic ʄ recipe review finished (2026-10-23)
+
+ʄ now uses its own Bold Italic recipe, retaining ɟ's descender and lower
+stem and drawing the extension, bar and hook at that weight. The former
+light recipe's coordinates cut through the heavier base, so the generator
+had left ʄ emboldened whole. The final drawing preserves its advance,
+anchors and kerning. After visual rejection of the first redraw, the hook
+was redrawn with the older open counter and rounded terminal, removing
+the pinched inner return.
+
+Exactly one outline changes. The base-retention and light-stroke findings
+are resolved, with no new quality or glyph-lint findings. Removed one
+whole-emboldening and two quality exceptions. No shaping baselines changed;
+before/after shaping over 2,119,788 strings has zero differences.
+
+Validation: **153 passed, 3 skipped**, including TrueType/CFF hinting.
+The revised Bold Italic master matches its generator; `make proof` passes.
+Master and compiled-font comparisons confirm one changed outline with
+unchanged advances and layout rules.
+
+Proof: `proofs/bold-italic-j-hook-before-after-2026-10-23.pdf`.
+Details: `docs/bold-italic-j-hook-review-2026-10-23.md`.
+
+Next: the inherited outline-fault backlog below (glyph lint).
+
 ## К/к base contour review finished (2026-10-23)
 
 Finished К/к and к.sc in both italic weights, with Қ/қ and the Ќ/ќ
@@ -23,7 +48,8 @@ changed words, metrics or layout rules.
 Proof: `proofs/italic-ka-before-after-2026-10-23.pdf`.
 Details: `docs/italic-ka-review-2026-10-23.md`.
 
-Next: Bold Italic ʄ's whole-emboldening/base-retention recipe review.
+Bold Italic ʄ's whole-emboldening/base-retention recipe review is now
+finished above.
 
 CI's 2026-10-23 failure was a runtime mismatch: `ubuntu-latest` selected
 Python 3.14, whose newer Unicode data changed casing, the shaping corpus
@@ -253,8 +279,8 @@ recipe coordinates are in the derive frame (final + ~16 in the Italic).
 
 ## Derived letters still emboldened whole (junctions thicken)
 
-`tests/data/emboldened-whole-*.txt`: Bold 37, Bold Italic 33, Italic 0
-(2026-10-21: the Italic is weighted as its letters are taken, so nothing
+`tests/data/emboldened-whole-*.txt`: Bold 37, Bold Italic 28, Italic 0
+(2026-10-23: the Italic is weighted as its letters are taken, so nothing
 in it is weighted whole any more).
 Mostly hooks, attached pieces and curls whose recipe, rerun on the Bold,
 "strays" from the emboldened letter or "misses". Candidates for recipes

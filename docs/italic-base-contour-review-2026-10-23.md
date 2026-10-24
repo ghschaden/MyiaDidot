@@ -77,8 +77,9 @@ That review is now complete: [К/к cleanup](italic-ka-review-2026-10-23.md).
 The lower-leg correction retains the existing optical-spacing reference
 and all advances.
 
-Bold Italic ʄ's older whole-emboldening/base-retention recipe review remains
-open. The wider inherited-outline backlog in TODO.md also remains.
+Bold Italic ʄ's older whole-emboldening/base-retention recipe review is
+also [completed](bold-italic-j-hook-review-2026-10-23.md). The wider
+inherited-outline backlog in TODO.md remains.
 
 ## Validation
 
