@@ -392,7 +392,7 @@ uni023C smooth 1                 # Italic weighted as its letters are taken, der
 uni023C.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 71,351 4.7 degrees; 106,194 5.5 degrees; 422,756 4.0 degrees
 uni023C.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 10.1 degrees, not 15.2
 uni023E kink 1                   # 2026-10-21 Italic reweighted and tightened: 1052,1253 5.8 degrees
-uni023E smooth 2                 # 2026-10-21 Italic reweighted and tightened: 1347,1168 2.9 degrees; 459,117 2.1 degrees
+uni023E smooth 1                 # 2026-10-24 foot counter removed: remaining inherited break at 1347,1168 2.9 degrees
 uni023E stem 1                   # 2026-10-21 Italic reweighted and tightened: at 358 311 against T's 290
 uni023E zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +6 from 1434
 uni0242 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 225 against 279 (0.81, lighter)
@@ -400,6 +400,7 @@ uni0242.sc extreme 2             # 2026-10-16 Bold Italic: first generated (make
 uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 204 against 273 (0.75, lighter)
 uni0244 extreme 1                # 2026-10-21 Italic reweighted and tightened: 1395,1253 6 units past
 uni0245 kink 1                   # bracket ends run on along their strokes (derive.keep_brackets); Italic Ҳ tail step filled: 294,223 4.9 degrees
+uni0249 stroke 1                 # 2026-10-24 right bar extended only: unchanged stem; sampling now classifies it straight (241/273, 0.88); docs/j-bar-extension-review-2026-10-24.md
 uni0249.sc kink 2                # 2026-10-21 Italic reweighted and tightened: -51,153 4.2 degrees; 285,232 6.0 degrees
 uni0249.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +4 from 1040
 uni024C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0

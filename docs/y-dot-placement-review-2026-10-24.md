@@ -1,5 +1,8 @@
 # Italic ỵ dot placement review, 2026-10-24
 
+Implemented after review with a closer, 25-unit gap; see the
+[final placement and validation](italic-y-dot-review-2026-10-24.md).
+
 [Comparison proof](../proofs/y-dot-placement-review-2026-10-24.pdf).
 
 The inherited Italic ỵ notch is a dot/descender collision, rather than a

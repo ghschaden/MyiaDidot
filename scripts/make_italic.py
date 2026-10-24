@@ -1784,6 +1784,9 @@ def main():
     # letters Old Standard draws with their accent in one outline (Ť): made
     # from base and mark like the decomposed text (not upstream's specials)
     t_dot_anchor(font)
+    from y_dot import y_dot_anchor
+
+    y_dot_anchor(font)
     log = []
     stack_anchors(font, log)
     b = Builder(font)

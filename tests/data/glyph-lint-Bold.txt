@@ -1,6 +1,6 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
 dcaron notch 1                   # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (1059,1413 43 px)
-uni0249 ledge 2                  # design: the bar ends in a stub just past the stem (468,414 26 units, ...)
+uni0249 ledge 2                  # reviewed 2026-10-24: intentional right bar terminal, preserved by LEDGE_KEEP; 465,410 11 units; 476,472 11 units
 uni027B notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (507,176 51 px)
 uni02C0 notch 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 222,1098 49 px
 uni2135 ledge 4                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 975,1285 11 units; 426,1362 25 units; 1033,71 30 units; 1128,1270 21 units

@@ -1,18 +1,126 @@
 # To do
 
-## Italic ỵ collision reviewed (2026-10-24)
+## Bold Italic dollar still needs a drawing pass
 
-The next glyph-lint item is a dot/descender collision in ỵ. Bold Italic
-has the same overlap despite passing lint. A comparison proof includes
-both Roman styles and a beside-descender trial in each italic weight.
-Both trials have zero overlap and pass glyph lint; masters, generators
-and baselines are unchanged. Placement remains a visual review candidate.
+The person reviewed the straightened bars and found the central part
+too thick. Both endings have swellings that should not be there.
+These faults remain to be repaired; the bar correction below does not
+complete the dollar's design review.
 
-Proof: `proofs/y-dot-placement-review-2026-10-24.pdf`.
-Details: `docs/y-dot-placement-review-2026-10-24.md`.
+## Bold Italic dollar bars straightened (2026-10-24)
 
-Next: review the candidate and correct y's DotBelow anchor in the
-italic generators, keeping precomposed and decomposed text together.
+The person identified that dollar's through-strokes were not straight.
+All sixteen exposed segments now follow four common parallel 15-degree
+edge lines: two 86-unit bars with a 95-unit gap. The generator applies
+the repair after rounding. Ball terminals, vertical coordinates,
+advance and anchors are preserved. Only dollar changes, and its old
+notch finding disappears; removed that exception. No shaping baselines
+changed. This supersedes the earlier terminal-only review.
+
+Two repair tests and 16 Bold Italic quality/lint/UFO/shaping checks pass.
+Bold Italic TrueType and all four styles' CFF hinting checks pass (CFF
+rerun with local helper-socket access after the sandbox blocked it).
+Bold Italic reproduces; compiled metrics/layout tables match, with only
+dollar's CFF charstring changed.
+Proof: `proofs/bold-italic-dollar-bars-before-after-2026-10-24.pdf`.
+Details: `docs/bold-italic-dollar-bars-review-2026-10-24.md`.
+Next unreviewed lint entry: Bold Italic ɽ. The ɸ optical weight/style
+review remains open separately.
+
+## Bold Italic ɉ right bar extended (2026-10-24)
+
+The person found the reviewed bar too short. Its right arm now extends
+80 units past the stem at both edges, with a slanted terminal. Only two
+corners change; advance, anchors and layout are preserved. The generator
+applies the extension. Removed the two-ledge lint exception. A documented
+stroke exception records a sampling/classification change in the unchanged
+stem; no shaping baselines change.
+
+Regression, lint, quality, 15 composite/UFO checks and TrueType/CFF hinting
+pass. Bold Italic reproduces; compiled metrics/layout tables match.
+Proof: `proofs/bold-italic-j-bar-before-after-2026-10-24.pdf`.
+Details: `docs/j-bar-extension-review-2026-10-24.md`.
+
+## Bold Italic ɸ counter cusps reviewed (2026-10-24)
+
+The two notches are the narrow counter tips where the stem crosses the
+bowl. A scratch same-weight o-plus-l-stem rebuild still has two notches,
+so it was discarded. Retain the current counters for this lint pass;
+the glyph's optical weight and existing style-quality finding remain
+open. No font changes or user acceptance recorded.
+
+Proof: `proofs/phi-counter-review-2026-10-24.pdf`.
+Details: `docs/phi-counter-review-2026-10-24.md`.
+Next unreviewed lint entry: Bold Italic ɽ. The person's dollar-bar
+correction is implemented above.
+
+## ɉ bar ledges reviewed (2026-10-24)
+
+The two Bold Italic ledges are the intentional short projections of the
+bar past the stem. All four styles share this construction, and the
+generator's existing `LEDGE_KEEP` rule explicitly preserves it. Retain
+the drawings and exceptions; corrected the misleading italic lint notes
+and refreshed the measurements. No font or shaping-baseline changes.
+
+Focused lint confirms exactly two known ledges in ɉ per style, with no
+other findings. Proof: `proofs/j-bar-ledges-review-2026-10-24.pdf`.
+Details: `docs/j-bar-ledges-review-2026-10-24.md`.
+Next: Bold Italic ɸ's two notches in the inherited glyph-lint backlog.
+
+## Bold Italic Ⱦ foot counter repaired (2026-10-24)
+
+Filled the 402-square-unit residual counter where the slash crosses the
+foot serif. Only one outline changes; the outer contour, upper counter,
+advances, anchors and layout data are preserved. The generated-style
+writer applies the repair after rounding. Removed one lint exception
+and reduced the known smooth-break count by one. No shaping baselines
+changed.
+
+Validation: focused regression, all-style glyph-lint and quality checks,
+68 structural checks, and Bold Italic TrueType/CFF hinting pass. All three
+regenerated styles match after restoring six sync-renamed scratch files
+for comparison in `/tmp`; source sync, Ruff and whitespace checks pass.
+Compiled metrics and layout tables match the pre-repair font.
+
+Proof: `proofs/bold-italic-t-slash-before-after-2026-10-24.pdf`.
+Details: `docs/bold-italic-t-slash-review-2026-10-24.md`.
+Next: Bold Italic ɉ's bar ledges in the inherited glyph-lint backlog.
+
+## Bold Italic dollar notch reviewed (2026-10-24)
+
+The first remaining lint entry is the open channel between dollar's lower
+ball and diagonal. The Italic has the same construction; boldening narrows
+it enough to trigger the checker (one notch, 34 pixels). Visual review
+recommends retaining the terminal and its existing exception. No font
+changes or baseline changes. This recommendation has not been reviewed
+by the person.
+
+Proof: `proofs/dollar-terminal-review-2026-10-24.pdf`.
+Details: `docs/dollar-terminal-review-2026-10-24.md`.
+Focused glyph lint: Italic dollar clean; Bold Italic only the known notch.
+Next: continue the inherited glyph-lint backlog with Bold Italic Ⱦ.
+
+## Italic ỵ collision repaired (2026-10-24)
+
+The person accepted the dot beside the descender and requested a little
+less space. Both italic generators now derive y's DotBelow anchor from
+their weighted ink, with a 25-unit gap rather than the trial's 50. The
+dot keeps its height and clears the descender in both weights. Precomposed
+and combining text follow the same anchor. Only ỵ changes visible ink;
+eight related glyphs per style carry the corrected anchor.
+
+Removed the Italic notch exception. Shaping over 2,119,788 strings per
+weight changes exactly eight below-mark positions, with no changed glyph
+selection or advances; only the two corpus digests are updated.
+
+Validation: **163 passed, 3 skipped** across the full run and separate CFF
+rerun (four sandbox helper-socket failures all pass with socket access).
+All three styles reproduce; proofs, Ruff and source sync checks pass.
+
+Proof: `proofs/italic-y-dot-before-after-2026-10-24.pdf`.
+Details: `docs/italic-y-dot-review-2026-10-24.md`.
+
+Next: continue the inherited glyph-lint backlog below.
 
 ## Italic ṫ dot collision repaired (2026-10-24)
 
@@ -354,11 +462,11 @@ recipe coordinates are in the derive frame (final + ~16 in the Italic).
 ## Outline faults left (glyph lint, `tests/data/glyph-lint-*.txt`)
 
 - Notches are measured at four raster phases now (2026-10-21), so the
-  lists hold what stays a notch. **Bold Italic** 14 glyphs (dollar Ⱦ ɉ ɸ ɽ
+  lists hold what stays a notch. **Bold Italic** 11 glyphs (ɸ ɽ
   ɽ.sc ʸ ң ᵍ ᵳ ᶤ ₡ ℵ ⱥ.sc; updated 2026-10-24 after the Cyrillic sign,
-  Greek stack and ṫ dot repairs). ɽ ᶤ ⱥ.sc
+  Greek stack, ṫ dot, Ⱦ foot counter, ɉ bar and dollar bar repairs). ɽ ᶤ ⱥ.sc
   ℵ came with the weighting change (near-threshold notches at joins, for
-  the eye). **Italic** 12: ɬ ỵ ɉ and the
+  the eye). **Italic** 11: ɬ ɉ and the
   narrow arch crotch of m ḿ ṃ т ш ɯ at exactly the threshold (Old
   Standard's design).
 - Regular 10, Bold 5 (see the lists; Greek stack ledges and cedilla steps

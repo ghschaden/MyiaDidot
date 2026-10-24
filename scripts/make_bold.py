@@ -870,6 +870,15 @@ def write(font, path, smooth=True, separate_stacks=False):
     from cedilla import finish as finish_cedilla
 
     finish_cedilla(font)
+    from t_slash import finish as finish_t_slash
+
+    finish_t_slash(font)
+    from j_bar import finish as finish_j_bar
+
+    finish_j_bar(font)
+    from dollar_bars import finish as finish_dollar_bars
+
+    finish_dollar_bars(font)
     if separate_stacks:
         separate_breve_grave_stacks(font)
     refit_horns(font)
@@ -1521,6 +1530,10 @@ def main():
     # bold, italic and regular bits from styleMapStyleName
     info.openTypeOS2Selection = list(info.openTypeOS2Selection or [])
 
+    if italic:
+        from y_dot import y_dot_anchor
+
+        y_dot_anchor(font)
     log = []
     stack_anchors(font, log)
     bold_builder = Builder(font)
