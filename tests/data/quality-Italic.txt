@@ -100,6 +100,7 @@ dollar smooth 1                  # 2026-10-21 Italic reweighted and tightened: 7
 dotlessi slant 1                 # 2026-10-16 known at the start (quality checks added): 23.5 degrees, not 15.2
 e smooth 1                       # 2026-10-21 Italic reweighted and tightened: 313,607 2.9 degrees
 e.sc smooth 1                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
+eightoldstyle stroke 1           # approved 2026-10-25 old-style redesign: retained fine figure contrast after reduced proportions; see docs/italic-oldstyle-redesign-2026-10-25.md: lc 137 against 167 (0.82, lighter)
 eightsuperior kink 1             # 2026-10-21 Italic reweighted and tightened: 285,876 5.0 degrees
 eng kink 2                       # 2026-10-16 known at the start (quality checks added): 929,502 2.3 degrees; 838,650 3.5 degrees
 eng zone 1                       # 2026-10-16 known at the start (quality checks added): bottom -12 from -461
@@ -123,8 +124,6 @@ ffl stroke 1                     # stroke weights against the kind's (scripts/qu
 ffl zone 1                       # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 fi slant 1                       # 2026-10-21 Italic reweighted and tightened: 17.2 degrees, not 15.2
 fi zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
-fiveoldstyle smooth 1            # 2026-10-16 known at the start (quality checks added): 401,671 2.2 degrees
-fiveoldstyle stroke 1            # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 236 against 185 (1.27, darker)
 fivesuperior extreme 1           # 2026-10-21 Italic reweighted and tightened: 412,1275 6 units past
 fivesuperior kink 1              # 2026-10-16 known at the start (quality checks added): 420,1279 3.9 degrees
 fl stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
@@ -134,9 +133,6 @@ florin stroke 1                  # stroke weights against the kind's (scripts/qu
 florin.sc extreme 2              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: -1868,-19 8 units past; -1043,-49 5 units past
 florin.sc smooth 1               # 2026-10-16 known at the start (quality checks added): -429,-83 2.1 degrees
 four kink 2                      # 2026-10-16 known at the start (quality checks added): 580,850 6.0 degrees; 804,1009 3.1 degrees
-fouroldstyle extreme 1           # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 849,-320 5 units past
-fouroldstyle kink 2              # 2026-10-16 known at the start (quality checks added): 932,981 3.3 degrees; 653,754 4.5 degrees
-fouroldstyle stroke 1            # 2026-10-21 Italic reweighted and tightened: lc 214 against 167 (1.28, darker)
 g.sc kink 5                      # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 90,351 5.2 degrees; 349,760 3.5 degrees; 240,279 5.9 degrees; 886,382 3.0 degre
 g.sc slant 1                     # 2026-10-16 known at the start (quality checks added): 11.2 degrees, not 15.2
 g.sc smooth 1                    # 2026-10-21 Italic reweighted and tightened: 680,99 3.1 degrees
@@ -189,8 +185,6 @@ n slant 1                        # 2026-10-16 known at the start (quality checks
 n.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 125 against 184 (0.68, lighter)
 n.sc zone 1                      # 2026-10-21 Italic reweighted and tightened: bottom -25 from 0
 nine smooth 2                    # 2026-10-21 Italic reweighted and tightened: 320,163 2.7 degrees; 303,56 2.0 degrees
-nineoldstyle smooth 1            # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 252,-405 2.3 degrees
-nineoldstyle stroke 1            # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 212 against 185 (1.15, darker)
 ninesuperior smooth 2            # 2026-10-21 Italic reweighted and tightened: 427,1249 2.3 degrees; 353,1307 2.0 degrees
 nu.sc zone 1                     # 2026-10-21 Italic reweighted and tightened: bottom -25 from 0
 o.sc kink 3                      # 2026-10-21 Italic reweighted and tightened: 304,650 2.9 degrees; 94,346 5.9 degrees; 958,653 6.0 degrees
@@ -241,7 +235,6 @@ s.sc slant 1                     # 2026-10-21 Italic reweighted and tightened: 1
 s.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 135 against 178 (0.76, lighter)
 seven extreme 1                  # 2026-10-16 known at the start (quality checks added): 461,1413 7 units past
 seven stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 151 against 209 (0.72, lighter)
-sevenoldstyle extreme 1          # 2026-10-16 known at the start (quality checks added): 384,753 7 units past
 sevenoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 58 against 183 (0.32, lighter)
 sevensuperior extreme 1          # 2026-10-16 known at the start (quality checks added): 474,797 6 units past
 sigma.sc stroke 1                # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 70 against 178 (0.39, lighter)
@@ -250,8 +243,6 @@ sigma1 stroke 1                  # stroke weights against the kind's (scripts/qu
 sigmalunatesymbolgreek.sc kink 3 # 2026-10-21 Italic reweighted and tightened: 90,351 5.8 degrees; 350,760 4.1 degrees; 241,280 6.2 degrees
 six smooth 1                     # 2026-10-16 known at the start (quality checks added): 937,1194 2.7 degrees
 six stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 262 against 222 (1.18, darker)
-sixoldstyle smooth 1             # 2026-10-16 known at the start (quality checks added): 1045,1272 2.3 degrees
-sixoldstyle stroke 1             # 2026-10-21 Italic reweighted and tightened: lc 191 against 172 (1.11, darker)
 sixsuperior smooth 1             # 2026-10-21 Italic reweighted and tightened: 379,851 2.9 degrees
 sterling smooth 1                # 2026-10-16 known at the start (quality checks added): 1246,1185 6.6 degrees
 t stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 150 against 183 (0.82, lighter)
@@ -268,11 +259,9 @@ thorn.sc kink 4                  # 2026-10-21 Italic reweighted and tightened: 7
 thorn.sc smooth 1                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 326,931 2.4 degrees
 three smooth 2                   # 2026-10-21 Italic reweighted and tightened: 255,235 4.4 degrees; 883,905 2.5 degrees
 three stroke 1                   # 2026-10-21 Italic reweighted and tightened: uc 251 against 197 (1.27, darker)
-threeoldstyle stroke 1           # 2026-10-21 Italic reweighted and tightened: lc 243 against 172 (1.41, darker)
 trademark extreme 3              # 2026-10-21 Italic reweighted and tightened: 1372,741 9 units past; 1114,1060 7 units past; 789,1339 5 units past
 two kink 1                       # 2026-10-16 known at the start (quality checks added): 348,451 3.4 degrees
 two stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 147 against 209 (0.71, lighter)
-twooldstyle kink 1               # 2026-10-16 known at the start (quality checks added): 311,325 3.0 degrees
 twooldstyle stroke 1             # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 119 against 183 (0.65, lighter)
 twosuperior kink 2               # 2026-10-21 Italic reweighted and tightened: 303,814 3.1 degrees; 657,733 5.0 degrees
 u slant 1                        # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2

@@ -221,6 +221,11 @@ def space(font):
         else:
             text = text.rstrip("\n") + "\n\n" + block + "\n"
         font.features.text = text
+    if font.info.styleName == "Regular":
+        # Preserve the reviewed proportional drawings and their optical fit.
+        from oldstyle_figures import finish
+
+        finish(font)
     return done
 
 

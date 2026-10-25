@@ -905,6 +905,15 @@ def write(font, path, smooth=True, separate_stacks=False):
     from glottal_modifier import finish as finish_glottal_modifier
 
     finish_glottal_modifier(font)
+    from phi_drawing import finish as finish_phi_drawing
+
+    finish_phi_drawing(font)
+    from w_curl import finish as finish_w_curl
+
+    finish_w_curl(font)
+    from oldstyle_figures import finish as finish_oldstyle_figures
+
+    finish_oldstyle_figures(font)
     from r_hook import fair_bold_stem, finish_shoulders
     from r_hook import finish as finish_r_hook
 

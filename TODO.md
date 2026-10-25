@@ -1,5 +1,88 @@
 # To do
 
+## Old-style figure sets accepted in all four styles (2026-10-25)
+
+The person approved the redesigned set with the original curled 9.
+`scripts/oldstyle_figures.py` loads the fixed reviewed Italic design inputs,
+rebuilds the old-style slash and recenters tabular old-style components.
+Bold Italic inherits the new drawings at its own weight, with local curve
+finishing. Lining figures, kerning and layout features are unchanged.
+Shaping baselines now include the approved narrower advances (8 Italic,
+11 Bold Italic corpus strings, positions only). Obsolete quality entries
+shrink; one fine-stroke exception records the accepted Italic 8.
+Both italic styles reproduce exactly. Focused checks, quality/lint and
+TrueType/CFF hinting pass; all six affected font formats rebuild.
+Production/Bold Italic proof:
+`proofs/oldstyle-production-bold-italic-review-2026-10-25.pdf`.
+
+The person accepted the matching Roman proposal and requested commit/push.
+Regular now loads its own reviewed design inputs during figure rebuilding;
+Bold inherits its final bases. Both weights retain the Roman shapes and
+curled 9, with the same height rhythm as the italic set.
+Accepted Roman proof: `proofs/roman-oldstyle-redesign-2026-10-25.pdf`.
+Production comparison: `proofs/roman-oldstyle-production-2026-10-25.pdf`.
+Roman shaping changes are positions only: 8 Regular and 10 Bold strings.
+Bold 3/5 retain a modest optical weight increase; 4 has balanced bearings.
+Details: `docs/roman-oldstyle-redesign-2026-10-25.md`.
+
+## Italic old-style set redesigned for review (2026-10-25)
+
+The person requested more conventional old-style proportions: 4 was huge,
+6 too fat, and the tall 3 differed strongly from 9. A new whole-set trial
+supersedes the weight-only proposal. Figures 3/4/5/7/9 have x-height tops
+and moderate descenders; 6/8 have shorter ascenders. The 4 is 25% narrower;
+6 is narrower, shorter and measurably lighter. At the person's request,
+the original curled ball-terminal 9 is restored, fitted to the new band
+and lighter weight; the open-tail proposal is rejected.
+Advances follow the reduced widths. The proof includes Libertinus at equal
+x-height and text comparisons. All ten trial glyphs are construction/lint
+clean. Production remains unchanged; no acceptance recorded yet.
+Latest proof: `proofs/italic-oldstyle-redesign-restored-nine-2026-10-25.pdf`.
+Details: `docs/italic-oldstyle-redesign-2026-10-25.md`.
+Next: visual review, then generator integration, tabular/Bold Italic
+review and production checks.
+
+## Italic old-style figure weight proposal prepared (2026-10-25)
+
+After approval of the integrated Ⱳ, continued to Italic old-style 3, 4,
+5 and 9. A scratch trial reduces their thick strokes while retaining
+hairlines, heights, advances, anchors and metadata. All four trial glyphs
+are construction/lint clean. Current measured ratios fall from 1.35–1.52
+to 1.06–1.19; 3 remains the heaviest and needs a visual verdict in text.
+Other figures and production fonts remain unchanged. No acceptance yet.
+Proof: `proofs/italic-oldstyle-figures-weight-2026-10-25.pdf`.
+Details: `docs/italic-oldstyle-figures-weight-review-2026-10-25.md`.
+The person found 9 too similar to g. A revised proposal keeps its lighter
+bowl and uses a shorter open tail without the curled ball; it is
+construction/lint clean. Latest 9 proof:
+`proofs/italic-nine-open-tail-2026-10-25.pdf`. Production unchanged.
+Next step: visual review, then integrate the chosen drawings and review
+Bold Italic inheritance and tabular figures.
+
+## Bold Italic ɸ and Ⱳ approved and integrated (2026-10-25)
+
+The person approved the lighter through-stem, bowl 5% wider with stable
+black thickness, and smoothed inner returns. The style writer rebuilds
+this drawing from final o/l, with rounded and finished contours. Only
+uni0278 changes; advances, anchors, kerning, features and metadata stay.
+Bold Italic generation plus smallcaps reproduces exactly. 22 focused
+checks pass, including shaping, quality/lint and TrueType/CFF hinting.
+OTF/TTF/WOFF2 rebuild. Obsolete construction/notch exceptions are removed;
+one base-overlap exception records the approved optical widening.
+Production proof: `proofs/bold-italic-phi-production-2026-10-25.pdf`.
+Details: `docs/bold-italic-phi-weight-review-2026-10-25.md`.
+
+Bold Italic Ⱳ's curl proposal was subsequently approved (“go ahead”) and
+integrated in `scripts/w_curl.py`. Both ledges are replaced by continuous
+curves; the production outline equals the approved trial. Advances,
+anchors and metadata are preserved; no exception or shaping-baseline
+changes. Full generation plus smallcaps reproduces the normalized UFO.
+26 focused checks pass, including shaping and TrueType/CFF hinting;
+OTF/TTF/WOFF2 rebuild. Compiled metrics/layout match; only Ⱳ's
+CFF charstring changes.
+Proof: `proofs/w-curl-before-after-2026-10-25.pdf`.
+Details: `docs/w-curl-review-2026-10-25.md`.
+
 ## Bold ˀ rounded drawing accepted; spacing reviewed (2026-10-25)
 
 After approving the dollar, the person requested the next task. Bold ˀ
@@ -765,8 +848,8 @@ window for stems.)
     if they still stand out on full pages with the new W and a.
   - The old-style figures came out a little darker (made from the
     weighted lining ones): 3 4 5 9 at 1.35-1.52 of their stem kind.
-  - Bold Italic Ⱳ: the middle serif runs into the curl's stroke at the
-    top; for the eye.
+  - Bold Italic Ⱳ: approved curl-connection repair integrated 2026-10-25;
+    see the current entry above.
 - **accent gaps (2026-10-21, done for the Greek capitals):** the breathings
   and tonos beside Ὀ Ὁ Ό … sit at one height, as Libertinus's do; the
   check measured the capitals' overshoot. It skips marks set beside a

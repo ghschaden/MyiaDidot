@@ -127,8 +127,6 @@ ffl zone 1                       # 2026-10-16 Bold Italic: first generated (make
 fi slant 1                       # 2026-10-21 Italic reweighted and tightened: 17.3 degrees, not 15.2
 fi zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
 five kink 1                      # 2026-10-21 Italic reweighted and tightened: 467,1157 6.3 degrees
-fiveoldstyle smooth 1            # joins the rounding to whole units broke kept smooth (make_bold.round_smoothly); bracket ends run on along their strokes: 455,669 2.3 degrees
-fiveoldstyle stroke 1            # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 328 against 289 (1.13, darker)
 fivesuperior kink 2              # 2026-10-21 Italic reweighted and tightened: 349,1045 3.7 degrees; 441,1271 7.4 degrees
 fl extreme 2                     # 2026-10-21 Italic reweighted and tightened: 788,99 6 units past; 886,1345 7 units past
 fl stroke 1                      # 2026-10-21 Italic reweighted and tightened: lc 243 against 273 (0.89, lighter)
@@ -136,8 +134,6 @@ fl zone 1                        # 2026-10-16 Bold Italic: first generated (make
 florin stroke 1                  # 2026-10-21 Italic reweighted and tightened: lc 243 against 273 (0.89, lighter)
 florin.sc extreme 2              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: -1134,-111 7 units past; -1951,55 9 units past
 four kink 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 601,849 6.3 degrees; 844,1003 3.8 degrees
-fouroldstyle kink 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 999,975 3.7 degrees; 702,754 4.6 degrees
-fouroldstyle stroke 1            # 2026-10-21 Italic reweighted and tightened: lc 319 against 273 (1.16, darker)
 foursuperior slant 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 11.3 degrees, not 15.2
 g.sc extreme 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 721,396 14 units past
 g.sc kink 4                      # 2026-10-21 Italic reweighted and tightened: 72,351 5.7 degrees; 420,756 3.6 degrees; 308,283 6.6 degrees; 741,100 2.7 degrees
@@ -195,8 +191,6 @@ n.sc stroke 1                    # stroke weights against the kind's (scripts/qu
 n.sc zone 1                      # 2026-10-21 Italic reweighted and tightened: bottom -25 from 0
 nine extreme 1                   # 2026-10-21 Italic reweighted and tightened: 322,118 8 units past
 nine stroke 1                    # 2026-10-21 Italic reweighted and tightened: uc 342 against 300 (1.14, darker)
-nineoldstyle extreme 1           # 2026-10-21 Italic reweighted and tightened: 271,-513 6 units past
-nineoldstyle stroke 1            # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 307 against 277 (1.11, darker)
 ninesuperior smooth 1            # 2026-10-21 Italic reweighted and tightened: 506,1244 2.0 degrees
 nu extreme 2                     # 2026-10-21 Italic reweighted and tightened: 784,427 7 units past; 304,697 9 units past
 nu.sc zone 1                     # 2026-10-21 Italic reweighted and tightened: bottom -25 from 0
@@ -209,7 +203,6 @@ ogonek extreme 2                 # 2026-10-16 Bold Italic: first generated (make
 omega.sc kink 9                  # 2026-10-21 Italic reweighted and tightened: 414,209 7.4 degrees; 167,554 6.7 degrees; 321,900 6.0 degrees; 1279,752 6.3 degrees; 1086,406 6.7 degrees; 938,436 5.7 degrees; 1033,766 5.5 degrees; 518,82
 omega.sc stroke 1                # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 244 against 273 (0.89, lighter)
 omega.sc zone 1                  # 2026-10-21 Italic reweighted and tightened: top +28 from 1040
-oneoldstyle extreme 3            # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 411,71 8 units past; 232,655 16 units past; 163,88 10 units past
 oogonek.sc kink 5                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 72,347 6.1 degrees; 1059,651 6.0 degrees; 323,-192 7.7 degrees; 543,-251 7.5 de
 oogonek.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 383,648 2.6 degrees
 ordfeminine extreme 1            # 2026-10-21 Italic reweighted and tightened: 649,863 5 units past
@@ -258,9 +251,6 @@ sigma1 stroke 1                  # stroke weights against the kind's (scripts/qu
 sigmalunatesymbolgreek.sc kink 3 # 2026-10-21 Italic reweighted and tightened: 67,351 6.0 degrees; 417,756 4.0 degrees; 306,283 6.6 degrees
 six extreme 1                    # 2026-10-21 Italic reweighted and tightened: 1011,1242 8 units past
 six stroke 1                     # 2026-10-21 Italic reweighted and tightened: uc 354 against 300 (1.18, darker)
-sixoldstyle extreme 1            # 2026-10-21 Italic reweighted and tightened: 1109,1393 6 units past
-sixoldstyle kink 1               # 2026-10-21 Italic reweighted and tightened: 1109,1393 2.7 degrees
-sixoldstyle stroke 1             # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: lc 305 against 273 (1.12, darker)
 sixsuperior kink 1               # 2026-10-21 Italic reweighted and tightened: 460,847 2.1 degrees
 t stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 246 against 279 (0.88, lighter)
 tau extreme 2                    # 2026-10-21 Italic reweighted and tightened: 485,124 9 units past; 94,528 6 units past
@@ -272,13 +262,11 @@ thorn zone 1                     # 2026-10-16 Bold Italic: first generated (make
 thorn.sc kink 4                  # 2026-10-21 Italic reweighted and tightened: 755,835 5.2 degrees; 1053,591 6.7 degrees; 774,428 5.7 degrees; 815,607 7.2 degrees
 three extreme 2                  # 2026-10-21 Italic reweighted and tightened: 759,555 11 units past; 915,1135 10 units past
 three kink 1                     # 2026-10-21 Italic reweighted and tightened: 484,630 1.4 degrees
-threeoldstyle extreme 1          # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 682,727 11 units past
 threeoldstyle stroke 1           # 2026-10-21 Italic reweighted and tightened: lc 304 against 273 (1.11, darker)
 threesuperior smooth 1           # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 602,871 2.5 degrees
 trademark extreme 3              # T shoulder bulges faired 2026-10-25; remaining inherited extrema at M foot and outer T terminals
 two kink 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 362,454 3.9 degrees
 two stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 200 against 307 (0.65, lighter)
-twooldstyle kink 2               # 2026-10-21 Italic reweighted and tightened: 650,227 2.7 degrees; 316,335 3.9 degrees
 twooldstyle stroke 1             # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 179 against 279 (0.64, lighter)
 twosuperior kink 2               # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 343,814 2.8 degrees; 715,732 6.2 degrees
 twosuperior smooth 1             # 2026-10-21 Italic reweighted and tightened: 587,869 2.1 degrees
@@ -494,9 +482,8 @@ uni0273 extreme 1                # 2026-10-21 Italic reweighted and tightened: 7
 uni0273 kink 2                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 1020,499 7.5 degrees; 1018,-226 5.4 degrees
 uni0273 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.2 degrees, not 15.2
 uni0276 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
-uni0278 kink 1                   # 2026-10-21 Italic reweighted and tightened: 136,105 5.3 degrees
-uni0278 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 113,537 2.3 degrees
-uni0278 style 1                  # Italic derived letters made of their weighted base (make_italic.py, make_bold.follow_bases): closer to the Regular's uni0278 (0.63) than to o (0.48)
+uni0278 base 1                   # approved 2026-10-25: bowl 5% wider with equal inner/outer expansion, smoothed counters; 45% exact/covered overlap with unexpanded o
+uni0278 style 1                  # approved 2026-10-25: o plus lighter through-stem and wider counters; whole silhouette closer to roman phi (0.72) than o (0.46)
 uni0279 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni027A kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 524,850 2.8 degrees; 507,763 6.3 degrees
 uni027A zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
@@ -954,6 +941,5 @@ z stroke 1                       # stroke weights against the kind's (scripts/qu
 z.sc kink 1                      # 2026-10-21 Italic reweighted and tightened: 310,847 6.7 degrees
 z.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.1 degrees, not 15.2
 z.sc stroke 1                    # 2026-10-21 Italic reweighted and tightened: sc 246 against 307 (0.80, lighter)
-zerooldstyle.zero smooth 1       # 2026-10-21 Italic reweighted and tightened: 401,190 2.9 degrees
 zeta kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 477,150 6.4 degrees; 498,-12 3.9 degrees
 zeta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 147 against 279 (0.53, lighter)
