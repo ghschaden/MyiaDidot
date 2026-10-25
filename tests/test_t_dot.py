@@ -1,4 +1,4 @@
-"""The tall italic t clears its dot like z, in NFC and anchor construction."""
+"""t clears its dot like z, in NFC and anchor construction in every style."""
 
 from copy import deepcopy
 
@@ -9,7 +9,7 @@ from glyph_lint import lint
 from make_italic import SLANT, t_dot_anchor
 
 
-@pytest.mark.parametrize("style", ["Italic", "BoldItalic"])
+@pytest.mark.parametrize("style", ["Regular", "Bold", "Italic", "BoldItalic"])
 def test_t_dot_clearance(style):
     font = ufoLib2.Font.open(ROOT / f"sources/MyiaDidot-{style}.ufo")
     gaps = []

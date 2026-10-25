@@ -1,20 +1,20 @@
 # Known scripts/quality/hint_zones.py findings (interpreter glyph:zone sizes); fixing one = deleting its line.
-v35 G:bot-35 4                   # 2026-10-21 Italic reweighted and tightened
+v35 G:bot-35 4                   # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 r.sc:bot-23 4                # 2026-10-21 Italic reweighted and tightened
-v35 uni0193:bot-35 4             # off the zone after the contrast-aware Bold / G, horns, modifiers
+v35 uni0193:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni01B2:top1434 2            # Ʋ's hook top at cap height: a single sloped point
-v35 uni01E4:bot-35 4             # 2026-10-21 Italic reweighted and tightened
+v35 uni01E4:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni024D.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
-v35 uni0404:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
-v35 uni0417:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
-v35 uni042D:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
-v35 uni042E:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
+v35 uni0404:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
+v35 uni0417:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
+v35 uni042D:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
+v35 uni042E:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni0436.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
 v35 uni043A.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
 v35 uni044F.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
-v35 uni0472:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
-v35 uni0474:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
-v35 uni04D8:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
-v35 uni04E8:bot-35 4             # round bottom one row off O's at a few sizes in the v35 interpreter only
-v40 nu:bot-23 12                 # 2026-10-21 Italic reweighted and tightened
+v35 uni0472:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
+v35 uni0474:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
+v35 uni04D8:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
+v35 uni04E8:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
+v40 nu:bot-23 12                 # current hints accepted 2026-10-25; isolated-point trial rejected (curve distortion)
 v40 uni01B2:top1434 2            # Ʋ's hook top at cap height: a single sloped point

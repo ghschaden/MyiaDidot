@@ -20,13 +20,15 @@ finds.  What it gets wrong in a Didot, mended here:
   Greek is drawn to the Latin zones, so it may be hinted with them: both are
   tried and the one with fewer contours off the zones kept (the italics take
   the Latin zones, the uprights their own).
-- Zones: contours whose flat top or bottom is on a zone but which end a whole
+- Zones: outer contours whose flat top or bottom is on a zone but which end a whole
   pixel off the zone's row once hinted (quality/hint_zones.py: A's apex at
   1462 snapped to the ascender zone instead of O's) are moved onto it by
   `touch` deltas, at the sizes where both FreeType interpreters ask for the
   same shift.  Round extremes (one point) and contours ttfautohint leaves
   between rows are not moved: a delta would dent the one, and only shift the
   other's blur.
+  Counter holes are excluded: a coincident height inside a bowl is not an
+  alignment zone and must not trigger a touch delta.
 
 ttfautohint drops what does not fit in a control line silently, so glyph
 lists are cut into lines of ASSIGN names.

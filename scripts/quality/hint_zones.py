@@ -11,6 +11,8 @@ tone letters and symbols that share a zone's height are not on the zone.
 Heights that only some glyphs share are no zone: ttfautohint
 has none for them, and a few contours at one height may rightly part (ɺ's top
 and f's).
+Only outer ink contours participate: counter holes can coincide with a
+zone coordinate without being designed to align to that zone.
 
 Measured with FreeType under both TrueType interpreters: v40 (what FreeType
 uses now; it reports ClearType, so ttfautohint's ClearType stem modes run) and
@@ -23,6 +25,7 @@ import unicodedata
 from collections import Counter
 
 import freetype
+from fontTools.pens.areaPen import AreaPen
 from fontTools.ttLib import TTFont
 
 REFS = (("top", "x"), ("top", "o"), ("top", "H"), ("top", "O"), ("top", "l"),
@@ -33,6 +36,20 @@ PPEMS = range(8, 33)  # text and heading sizes; above, overshoots are kept
 INTERPRETERS = (40, 35)
 
 
+class _ContourAreas(AreaPen):
+    """Signed areas in the same contour order as the glyf point indices."""
+
+    def __init__(self, glyphset):
+        super().__init__(glyphset)
+        self.areas = []
+        self.previous = 0
+
+    def _closePath(self):
+        super()._closePath()
+        self.areas.append(self.value - self.previous)
+        self.previous = self.value
+
+
 def set_interpreter(version):
     value = ctypes.c_uint(version)
     freetype.FT_Property_Set(freetype.get_handle(), b"truetype", b"interpreter-version",
@@ -40,16 +57,26 @@ def set_interpreter(version):
 
 
 def contours(glyf, name):
-    """[(top, top points, bottom, bottom points, on-curve points)] of a glyph's
-    contours, by point index in the glyf table."""
+    """Outer contours' extrema and original glyf point indices.
+
+    Counter edges do not align to external zones: Þ's counter top happens
+    to equal o.sc's top, and æ.sc's equals x's. Auditing those holes also
+    makes hint_control generate unwanted touch deltas inside the letters.
+    TrueType holes have the opposite winding to their surrounding outline;
+    use the largest contour to establish the outer sign so reversed glyphs
+    are handled consistently too.
+    """
     g = glyf[name]
     if not g.numberOfContours or g.isComposite():
         return []
     coords, ends, flags = g.getCoordinates(glyf)
+    areas = _ContourAreas(glyf)
+    g.draw(areas, glyf)
+    outer = max(areas.areas, key=abs, default=0)
     out, start = [], 0
-    for end in ends:
+    for end, area in zip(ends, areas.areas, strict=True):
         on = [i for i in range(start, end + 1) if flags[i] & 1]
-        if len(on) >= 2:
+        if len(on) >= 2 and area * outer >= 0:
             top = max(coords[i][1] for i in on)
             bot = min(coords[i][1] for i in on)
             out.append((top, [i for i in on if coords[i][1] == top],

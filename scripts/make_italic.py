@@ -1429,7 +1429,11 @@ ANCHOR_SOURCES = {
 }
 # anchors moved a little from there (dx, dy): the cedilla's top corner, from
 # Old Standard's Bottom of c, would poke out into the counter
-ANCHOR_NUDGE = {("c", "Cedilla"): (0, -4), ("e", "Cedilla"): (0, -10)}
+ANCHOR_NUDGE = {("c", "Cedilla"): (0, -4), ("e", "Cedilla"): (0, -10),
+                # The Roman t dot rose 59 units after the italic family was
+                # reviewed. Retain its recipe anchor for hooked/tailed t;
+                # t_dot_anchor sets the plain italic t independently below.
+                ("t", "Dotaccent"): (-59 * SLANT, -59)}
 
 
 def roman_anchor(roman, a, width_it):
@@ -1890,6 +1894,9 @@ def main():
 
     redraw_cyrillic_signs(font)
     finish_contours(font, skip=kept, smooth=False)
+    from italic_i import install as install_italic_i
+
+    install_italic_i(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     # rounded plainly: the Bold Italic is made of these outlines, and each
     # handle a unit off there moves its findings about at random

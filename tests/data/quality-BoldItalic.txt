@@ -310,6 +310,7 @@ uni0193 smooth 2                 # Italic weighted as its letters are taken, der
 uni0194 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 683,1444 7 units past
 uni0194 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 170 against 307 (0.55, lighter)
 uni0194 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +10 from 1434
+uni0197 stem 1                   # 2026-10-25 lighter I approved in text; retain independent barred-I drawing: at 358 290 against I's 273
 uni0198 extreme 2                # 2026-10-21 Italic reweighted and tightened: 1497,1183 6 units past; 932,69 15 units past
 uni0198 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1309,1251 6.4 degrees
 uni0198 smooth 2                 # 2026-10-21 Italic reweighted and tightened: 1188,1149 2.2 degrees; 952,152 2.2 degrees

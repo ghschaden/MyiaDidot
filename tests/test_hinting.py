@@ -3,7 +3,7 @@
 Each style is built as a TTF as `make ttf` does (components flattened,
 overlaps removed: fontmake's defaults, which decide the point order) and
 hinted by scripts/hint_control.py; scripts/quality/hint_zones.py then lists
-the letters' contours that end half a pixel or more off their zone's row
+the letters' outer contours that end half a pixel or more off their zone's row
 (8 to 32 ppem, FreeType's v40 and v35 interpreters).  Each style has its list
 of known ones, data/hint-zones.txt (the Regular's), hint-zones-Italic.txt
 ...: one "interpreter glyph:zone count" per line with a reason.  A new one

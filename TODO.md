@@ -1,5 +1,117 @@
 # To do
 
+## Italic G/Cyrillic round-bottom hints reviewed (2026-10-25)
+
+After acceptance of the current ν hints, reviewed G/Ɠ/Ǥ and
+Є З Э Ю Ѳ Ѵ Ә Ө in both italic weights. At 29–32 ppem in v35
+(Italic G family 30–32), the affected bottoms stay on baseline while
+O extends half a pixel below. The older “one row off” wording overstated
+the coordinate difference. v40 has no mismatch in this group; 28 ppem
+also agrees in both interpreters. Recommend retaining the current curves
+and hints, pending visual verdict. Exception annotations are clarified;
+keys/counts, production fonts and baselines stay unchanged.
+Proof: `proofs/italic-round-bottom-hinting-review-2026-10-25.pdf`.
+Details: `docs/italic-round-bottom-hinting-review-2026-10-25.md`.
+Next unreviewed group: r.sc/ɍ.sc and Cyrillic ж.sc/к.sc/я.sc bottoms.
+The earlier small-cap V/W tip trial remains awaiting its own verdict.
+
+## Italic ν current hints accepted (2026-10-25)
+
+The person accepted the current ν hints on 2026-10-25 and requested
+the next problem. Continued beyond the pending small-cap tip trial to ν
+in both italic weights. Its outside bottom matches o's outline height, but v40 places it
+about 0.5–0.8 pixels below at 16 Italic / 12 Bold Italic sizes; v35 passes.
+A scratch half-pixel bottom-point control removes seven / six reports,
+but lifts the original bottom above the baseline while neighbouring
+points remain below. It also changes the passing v35 rasters. Recommend
+retaining production hints; a future repair needs coherent curve handling.
+Only ν's scratch glyph program changes; all coordinates, metrics, layout
+and shared hint programs match. Raster changes are confined to targeted
+sizes, and the trial adds no audit findings. Production and baselines stay.
+Proof: `proofs/italic-nu-hinting-review-2026-10-25.pdf`.
+Details: `docs/italic-nu-hinting-review-2026-10-25.md`.
+Next: shared v35 round-bottom reports in G/Cyrillic capitals. The earlier
+small-cap tip trial still awaits its separate visual verdict.
+
+## Italic small-cap tip hinting trial prepared (2026-10-25)
+
+After accepting the Þ/counter-audit review, continued to v.sc, w.sc,
+ѵ.sc and ⱳ.sc bottom tips. The current mismatch occurs only at 30/32 ppem
+(v35 flags 32; v40 both). A scratch +0.5 pixel bottom-point hint shift at
+those sizes gives a steadier baseline. The proof includes native-size and
+2× raster samples in both interpreters, with unchanged adjacent sizes.
+Only the four intended glyph programs change; all coordinates, metrics,
+layout and shared hint programs match. Raster verification across 8–32
+ppem changes only 30/32 in each glyph/interpreter. Eight exception entries
+would disappear, with no new findings. Production remains unchanged;
+visual verdict and integration are pending.
+Proof: `proofs/italic-smallcap-tip-hinting-review-2026-10-25.pdf`.
+Details: `docs/italic-smallcap-tip-hinting-review-2026-10-25.md`.
+
+## Counter edges excluded from hint alignment audit (2026-10-25)
+
+The person accepted the review and correction on 2026-10-25. The red
+dashed guide in the diagnostic marks the mistaken counter reference,
+not an intended outside-edge alignment line.
+
+Continued to the pending Italic Þ small-size review. The flagged edge is
+its counter top, accidentally at o.sc's outer height, rather than an outer
+alignment edge. The “7–11 px” below meant counts of affected sizes; the
+actual difference was about one pixel. The false finding also generated
+an unwanted -1 pixel counter touch at 27 ppem.
+
+The checker now excludes opposite-winding counter holes, retaining all
+outer contours and their original hint-control point indices. This also
+resolves the Italic æ.sc and Regular ϐ counter false positives. Six obsolete
+hint exceptions disappear; no other audit reports change or are added.
+Only Italic Þ's hint program changes, with different raster output only
+at 27 ppem in v35/v40. Outlines, metrics, layout, shared hint tables and
+all other glyph programs match. All TTF/WOFF2 files rebuild; no UFO/OTF
+or shaping changes. Six focused checks, Ruff and whitespace pass.
+Proof: `proofs/italic-thorn-hinting-review-2026-10-25.pdf`.
+Details: `docs/italic-thorn-hinting-review-2026-10-25.md`.
+
+## Lighter Italic I approved and integrated (2026-10-25)
+
+The person approved the lighter trial I, superseding the assistant's
+overly numerical retention recommendation. Italic now loads the approved
+fixed drawing in final spacing; Bold Italic inherits it at its weight.
+Only I and its full-size component relatives change visible ink (33 per
+style). Advances, anchors, kerning and feature source stay exact. Small
+caps, barred I and r remain unchanged. The accepted optical weight adds
+one stroke exception, plus two reference-comparison exceptions for the
+unchanged barred I. No new construction findings. Both italic shaping
+corpora (2,119,788 strings each) have zero changes; no baselines update.
+All three generated styles reproduce, and all six italic font files
+rebuild. Compiled layout and advances match; only the expected 33
+charstrings per weight and their ink sidebearings change.
+All 24 focused checks pass, including TrueType/CFF hinting, shaping,
+composites, quality/lint and exact agreement with the approved I.
+Review: `proofs/italic-ri-weight-review-2026-10-25.pdf`.
+Production: `proofs/italic-i-production-review-2026-10-25.pdf`.
+Details: `docs/italic-ri-weight-review-2026-10-25.md`.
+
+## Roman ṫ dot-spacing approved and integrated (2026-10-25)
+
+Continued to the remaining Regular/Bold dot-gap review. Raising ṫ's dot
+by 59 units matches ż's clearance: Regular 139 → 198, Bold 135 → 194.
+The person approved the more even spacing and requested continuation.
+Regular/Bold production now carry the approved placement and matching
+Dotaccent anchors on t's below-mark composites. Seven glyph objects
+change per weight; only ṫ changes visible ink. Italic recipe anchors
+retain their reviewed positions through an explicit generator adjustment.
+Exactly ten corpus strings per Roman weight change, all dot positions
+moving +59 vertically; two digest baselines update. Two obsolete accent
+exceptions are removed. Metrics/layout match except the intended GPOS
+anchors; only ṫ's CFF charstring changes. All six Roman font files rebuild.
+All three generated styles reproduce exactly; all four CFF hinting checks pass.
+The 49 focused checks are covered by the main run plus successful reruns
+after removing stale quality entries and granting CFF helper-socket access.
+The separate quality/t-dot rerun passes all nine checks; Ruff and whitespace pass.
+Proof: `proofs/roman-t-dot-spacing-review-2026-10-25.pdf`.
+Details: `docs/roman-t-dot-spacing-review-2026-10-25.md`.
+Reproduce: `scripts/roman_t_dot_review.py`.
+
 ## Old-style figure sets accepted in all four styles (2026-10-25)
 
 The person approved the redesigned set with the original curled 9.
@@ -844,10 +956,9 @@ window for stems.)
   - Review the Italic's drafts (all derived letters, small caps and
     figures are drafts): `drafts-review-Italic.pdf`,
     `smallcaps-review-Italic.pdf` (`make proof`).
-  - r and I still as heavy as n and H (Old Standard's): a preview first,
-    if they still stand out on full pages with the new W and a.
-  - The old-style figures came out a little darker (made from the
-    weighted lining ones): 3 4 5 9 at 1.35-1.52 of their stem kind.
+  - r/I reviewed 2026-10-25: the lighter I trial is approved and integrated;
+    r is retained. See the current entry above.
+  - Old-style figure redesigns are accepted in all four styles; see above.
   - Bold Italic Ⱳ: approved curl-connection repair integrated 2026-10-25;
     see the current entry above.
 - **accent gaps (2026-10-21, done for the Greek capitals):** the breathings
@@ -855,9 +966,8 @@ window for stems.)
   check measured the capitals' overshoot. It skips marks set beside a
   letter now, and counts from the flat zone a round edge overshoots (dots
   below and hooks sit at one height in Libertinus and Charis too). Left:
-  i j (their own dot, designed) and ṫ in the Regular and Bold: its dot
-  sits about 60 units nearer the t than ż's to the z, where Libertinus
-  and Charis keep the two gaps equal. For the person's eye.
+  i j (their own dot, designed). Regular/Bold ṫ's gap was approved and
+  matched to ż on 2026-10-25; see the current integrated entry above.
 
 ## Hinting
 
@@ -866,9 +976,9 @@ window for stems.)
   (`tests/data/hint-zones*.txt`). Most are designed (𝔖 Fraktur, the horn,
   Ʋ); a few round bottoms one row off O's in the v35 interpreter only.
   New in the Italic (2026-10-21): v.sc w.sc ѵ.sc ⱳ.sc bottoms and ae.sc's
-  top a pixel or two off, and Þ's bowl top (1077) 7-11 px off in v35/v40
-  though Þ did not change: the small caps' tips moved a unit and the
-  small-cap zone with them. Check Þ at small sizes.
+  top a pixel or two off. The Þ/æ.sc reports were counter false positives,
+  resolved by the 2026-10-25 review above; Þ's unnecessary 27 ppem counter
+  correction is removed. Remaining small-cap tip reports stay open.
 
 ## Features
 
