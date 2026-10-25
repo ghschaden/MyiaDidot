@@ -1,5 +1,42 @@
 # To do
 
+## Italic belted-l attachments repaired; arch family reviewed (2026-10-25)
+
+Italic ɬ's three lint findings were gaps separating its ring and bar from
+the stem. Capital Ɬ had the same unflagged fault. The generated-style writer
+now joins only their buried ends to the measured base stems. Bold Italic
+inherits the connected source; piece extraction excludes rounding slivers
+of the stem, and its established advances/anchors are preserved.
+
+Exactly two outlines change per italic weight. Remove the Italic ɬ notch
+exception. The nine m/arch entries are inherited open joins, retained for
+visual review with refreshed annotations; this does not record the
+person's final acceptance or resolve separate weight findings.
+
+**51 focused checks pass**, including shaping and TrueType/CFF hinting.
+All three styles reproduce; both affected OTFs rebuild. Advances, anchors
+and layout tables match; only Bold Italic ɬ's outline bearing shifts one
+unit. No shaping baselines or quality exceptions change.
+
+The person accepted the connected belts after the Charis/Libertinus
+comparison: “lets stay with connected belts then” (2026-10-25). This
+acceptance concerns ɬ/Ɬ in the two italic weights; the arch-family review
+remains separate.
+
+Proof: `proofs/italic-l-belt-before-after-2026-10-25.pdf`.
+Arch review: `proofs/italic-arches-review-2026-10-25.pdf`.
+Details and Bold Italic proof: `docs/italic-arches-and-l-belt-review-2026-10-25.md`.
+
+Reference check requested by the person: installed Charis SIL 6.200 joins
+both belts in both italic weights; Libertinus Serif 7.051 Italic joins ɬ
+(the other compared forms are missing). The interior white counter is
+retained. The person subsequently accepted the connected belts. The
+reference comparison does not establish the original drawing’s intent. Comparison:
+`proofs/l-belt-charis-libertinus-comparison-2026-10-25.pdf`.
+
+Next unreviewed lint entry: Bold ˀ (`uni02C0`). Dollar drawing and ɸ optical
+weight remain open separately.
+
 ## ℵ upper-right terminal join corrected (2026-10-24)
 
 The person accepted the central and lower-left shapes and identified the
@@ -529,7 +566,7 @@ recipe coordinates are in the derive frame (final + ~16 in the Italic).
   ɽ.sc ʸ ң ᵍ ᶤ ₡ ⱥ.sc; updated 2026-10-24 after the Cyrillic sign,
   Greek stack, ṫ dot, Ⱦ foot counter, ɉ bar, dollar bar, r-family and aleph repairs). ᶤ ⱥ.sc
   ℵ came with the weighting change (near-threshold notches at joins, for
-  the eye). **Italic** 11: ɬ ɉ and the
+  the eye). **Italic** 10: ɉ and the
   narrow arch crotch of m ḿ ṃ т ш ɯ at exactly the threshold (Old
   Standard's design).
 - Regular 10, Bold 5 (see the lists; Greek stack ledges and cedilla steps

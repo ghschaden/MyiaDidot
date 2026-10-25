@@ -353,6 +353,10 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
                        "uni0256": (0, -140), "uni01B3": (0, -120), "uni0188": (0, -85), "uni025A": (0, -100),
                        "uni04B3": (0, -65), "uni049A": (0, -60), "uni0198": (0, -70), "uni0496": (0, -55),
                        "uni01A5": (-60, 0), "uni0497": (0, -50), "uni04B6": (0, -45)}
+# Joining the light belts changes the temporary weighted shape's optical
+# fit. Keep their established advances/anchors before rebuilding the belts
+# on this style's final base letters.
+ITALIC_FIT_CORRECTIONS = {"uni026C": (-3, 0), "uniA7AD": (-2, 0)}
 ITALIC_ANCHOR_NUDGE = {}
 # Bold Italic optical-pair corrections from the pinned-reference spacing
 # comparison (scripts/quality/pairs.py). Values are final Bold Italic kern
@@ -898,6 +902,9 @@ def write(font, path, smooth=True, separate_stacks=False):
     fair_bold_stem(font)
     finish_shoulders(font)
     finish_r_hook(font)
+    from l_belt import finish as finish_l_belt
+
+    finish_l_belt(font)
     if separate_stacks:
         separate_breve_grave_stacks(font)
     refit_horns(font)
@@ -1176,6 +1183,15 @@ def attached_small(source, font, italic):
         if source[base].contours or source[base].components:
             _, dx, _ = compare(Outline(source, base, deslant), Outline(source, name, deslant))
             added = pathops.op(mine, path(source, base, (1, 0, -SLANT, 1, dx, 0)), pathops.PathOp.DIFFERENCE)
+        if italic and name in ("uni026C", "uniA7AD"):
+            from l_belt import attachment_band
+
+            low, high = attachment_band(name)
+            # Joined belts can carry a thin base-rounding sliver into the
+            # same contour as the real piece. Do not embolden that sliver
+            # into an extra stem or an ascender extension.
+            added = pathops.op(added, derive.rect_path(-derive.BIG, low, derive.BIG, high),
+                               pathops.PathOp.INTERSECTION)
         # only the pieces the recipe added: where the source letter's edge
         # strays a unit from its base's (the Italic's), slivers are left
         kept = pathops.Path()
@@ -1462,6 +1478,9 @@ def main():
                 # leaves white even where the outermost ink stays
                 d = optical_fit(bold_rec(ref), bold_rec(bold), band_height(regular, g.name))
                 if d:
+                    if italic and g.name in ITALIC_FIT_CORRECTIONS:
+                        adjustment = ITALIC_FIT_CORRECTIONS[g.name]
+                        d = tuple(a + b for a, b in zip(d, adjustment))
                     fit[g.name] = d
                 moved = ufoLib2.objects.Glyph()
                 bold.draw(TransformPen(TransformPen(moved.getPen(), down), (1, 0, 0, 1, AX / 2, 0)))
