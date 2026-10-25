@@ -1,5 +1,26 @@
 # To do
 
+## Italic ligatures accepted and integrated (2026-10-25)
+
+The person requested the missing italic ligatures after the earlier work
+was committed/pushed as c5ea04cf. Both italic weights now build 19 new
+same-style forms: fb/fh/fk/ft and their ff forms, nine long-s combinations,
+and ct/st. The joined heads follow fl/ffl; ct/st have curved arches.
+The shared writer rebuilds at each final weight, with caret anchors,
+ligature categories, spacing and kerning-group membership. Existing
+feature/language policy is preserved; ct/st require dlig. All existing
+outlines, advances, anchors, kerning and font info match HEAD exactly.
+Each full shaping corpus changes exactly 16 of 2,119,788 strings, all
+requested substitutions; reviewed snapshots/digests update. The 38 missing
+style exceptions disappear, with no new quality/lint/hint exceptions.
+Focused construction, feature/language, quality/lint and shaping checks
+pass; all four italic hinting checks pass. All three styles reproduce;
+all six affected font files rebuild. Ruff, whitespace and sync checks pass.
+The person accepted the drawings and requested commit/push on 2026-10-25.
+Draft metadata is cleared in the generator and both masters.
+Proof: `proofs/italic-ligatures-review-2026-10-25.pdf` (four pages).
+Details: `docs/italic-ligatures-review-2026-10-25.md`.
+
 ## Italic G/Cyrillic round-bottom hints reviewed (2026-10-25)
 
 After acceptance of the current ν hints, reviewed G/Ɠ/Ǥ and
@@ -982,10 +1003,8 @@ window for stems.)
 
 ## Features
 
-- The italics lack the Regular's extra ligatures (ct st, fb fh fk ft and
-  their ff forms, the long-s ligatures), left out with their rules
-  (`make_italic.drop_ligatures`, styles-agree-Italic.txt). Italic forms
-  would have to be drawn.
+- The formerly missing 19 ligatures in each italic weight are drawn and
+  accepted and integrated (2026-10-25); see the current entry above.
 
 ## Small leftovers
 

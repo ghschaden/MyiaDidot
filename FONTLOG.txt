@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-25 Version 0.100 (development): accepted italic ligature drawings
+
+    * Add fb/fh/fk/ft and their ff forms, nine long-s combinations, and
+      discretionary ct/st in Italic and Bold Italic. Build each from the
+      final same-style letters, with caret anchors and ligature metadata.
+    * Preserve all existing glyphs and language/feature policy. Remove the
+      19 missing-glyph exceptions per weight and update only the shaping
+      and lookup snapshots for the intended new substitutions.
+    * Drawings accepted 2026-10-25; draft metadata cleared:
+      proofs/italic-ligatures-review-2026-10-25.pdf.
+
 2026-10-25 Version 0.100 (development): rounded Bold modifier glottal stop
 
     * Rebuild ˀ from final Bold ɂ through the superior recipe, fitting the

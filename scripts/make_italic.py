@@ -1251,37 +1251,6 @@ def smallcaps_stage(font, later=()):
     return made
 
 
-def drop_ligatures(font):
-    """The Regular's ligatures Old Standard has no italic for (fb fh fk ft,
-    their ff forms, the long-s ones, ct st): an italic f does not clash
-    with the next letter, and historical italics had only fi fl ff ffi ffl,
-    so the Italic leaves them out, with their rules (and any lookup left
-    empty) and their kerning."""
-    gone = {g.name for g in font
-            if g.lib.get(SOURCE_KEY) == "sloped roman" and "_" in g.name
-            and all(p in font for p in g.name.split("_"))}
-    for name in gone:
-        del font[name]
-    font.glyphOrder = [n for n in font.glyphOrder if n not in gone]
-    cats = font.lib.get("public.openTypeCategories", {})
-    for name in gone:
-        cats.pop(name, None)
-    for group, members in list(font.groups.items()):
-        font.groups[group] = [m for m in members if m not in gone]
-    font.kerning = {pair: v for pair, v in font.kerning.items() if not set(pair) & gone}
-    names = "|".join(re.escape(n) for n in sorted(gone, key=len, reverse=True))
-    rule = re.compile(rf"^\s*sub\b[^;]*\\(?:{names})(?![\w.]).*;\s*$")
-    lines = [line for line in font.features.text.splitlines() if not rule.match(line)]
-    text = "\n".join(lines) + "\n"
-    # lookups with no rule left, and every reference to them
-    empty = re.findall(r"^lookup (\w+) \{\s*(?:lookupflag [^;]*;\s*)?\} \1;\n", text, re.MULTILINE)
-    for name in empty:
-        text = re.sub(rf"^lookup {name} \{{\s*(?:lookupflag [^;]*;\s*)?\}} {name};\n\n?", "", text, flags=re.MULTILINE)
-        text = re.sub(rf"^\s*lookup {name};\n", "", text, flags=re.MULTILINE)
-    font.features.text = text
-    return sorted(gone)
-
-
 # the Italic's own kerning over the Regular's (measured against italics):
 # v w y before round letters less tight (the Regular's -50 left them
 # crowded), and f, its top hanging over, closer to the letters with a stem
@@ -1770,11 +1739,12 @@ def main():
     derived += derived_late
     failed += failed_late
     horn_stage(font, kept)
-    ligatures = drop_ligatures(font)
+    from italic_ligatures import NAMES as LIGATURE_NAMES
     font.kerning.update(ITALIC_KERNING)
     for pair in ITALIC_UNKERNED:
         font.kerning.pop(pair, None)
-    still = sorted(g.name for g in font if g.lib.get(SOURCE_KEY) == "sloped roman")
+    still = sorted(g.name for g in font if g.lib.get(SOURCE_KEY) == "sloped roman"
+                   and g.name not in LIGATURE_NAMES)
 
     # aliases (one letter, unmoved: Cyrillic Е is E) show the Italic letter:
     # its width and its anchors, before anything is built from them
@@ -1905,7 +1875,7 @@ def main():
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "
           f"{upright_signs} signs upright, {len(derived)} derived, {len(figures)} figures, "
-          f"{len(small_caps)} small caps drafted, {len(ligatures)} ligatures left out, {rebuilt} composites rebuilt, "
+          f"{len(small_caps)} small caps drafted, {len(LIGATURE_NAMES)} italic ligatures built, {rebuilt} composites rebuilt, "
           f"{len(cleaned)} cleaned, "
           f"{len(anchored)} given the Regular's anchors they lacked; "
           f"{len(still)} still sloped roman (of {kept_roman}); Greek capitals' marks nearer: "

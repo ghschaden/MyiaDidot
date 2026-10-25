@@ -923,6 +923,9 @@ def write(font, path, smooth=True, separate_stacks=False):
     from l_belt import finish as finish_l_belt
 
     finish_l_belt(font)
+    from italic_ligatures import make as make_italic_ligatures
+
+    make_italic_ligatures(font)
     if separate_stacks:
         separate_breve_grave_stacks(font)
     refit_horns(font)

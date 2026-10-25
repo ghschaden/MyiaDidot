@@ -64,9 +64,9 @@ def test_lookup_order(ttfont, ufo_path):
                       "--ufo UFO):\n" + "\n".join(diff[:60]))
 
 
-# Designed: German sets no f-ligatures, and the italics have none of the
-# Regular's long-s ligatures, which were all German liga had.
-LANGUAGE_DROPS = {("latn", "DEU", "liga")}
+# German keeps liga for long-s combinations in every style, while its
+# lookup selection excludes the ordinary f-ligatures.
+LANGUAGE_DROPS = set()
 
 
 def test_languages_keep_script_defaults(ttfont):

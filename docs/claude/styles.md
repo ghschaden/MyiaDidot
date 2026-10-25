@@ -63,8 +63,10 @@ Moved from CLAUDE.md (its ground rules apply).
   at the weighted stems (`recipe_scale`), transplants from
   the Regular (the part at the Italic's stems,
   measured on n and H), FontForge small caps, fitted old-style figures); the
-  Regular's extra ligatures (fb ft ſt ct ...) are left out with their
-  rules, so don't run draft_ligatures.py on it; it runs smallcaps.py itself. Lib
+  extra ligatures (fb ft ſt ct ...) are rebuilt from the final italic bases
+  by italic_ligatures.py in the shared style writer. The same recipes run
+  on Bold Italic's final bases; keep draft_ligatures.py for the Romans.
+  The Italic generator runs smallcaps.py itself. Lib
   `org.myiadidot.italicSource` says where each glyph came from; a rerun
   keeps "drawn" glyphs (set it after hand-editing one) and reviewed drafts
   (draft key cleared). Then `make normalize`. Review sheets:
