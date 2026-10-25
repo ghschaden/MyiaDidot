@@ -195,7 +195,6 @@ uni0408 zone 1                   # 2026-10-16 known at the start (quality checks
 uni042F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 uni0436.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 248,944 2.8 degrees; 1307,944 2.8 degrees
 uni0437.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 229,156 4.7 degrees
-uni043C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -26 from 0
 uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0444.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0449.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 1124,-248 4.0 degrees; 1233,-119 6.3 degrees
@@ -221,7 +220,7 @@ uni2113 extreme 3                # 2026-10-16 known at the start (quality checks
 uni2113 kink 1                   # 2026-10-16 known at the start (quality checks added): 236,140 5.1 degrees
 uni2113 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 147 against 164 (0.89, lighter)
 uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): top +4 from 1496
-uni2135 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 210 against 182 (1.15, darker)
+uni2135 stroke 1                 # accepted 2026-10-25 upright italic aleph and retained smaller alternate; optical weight approved in height proof; lc 303 against 182 (1.66)
 uni2136 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 80 against 164 (0.49, lighter)
 uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +7 from 1040
 uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 112 against 164 (0.68, lighter)
@@ -243,3 +242,4 @@ x.sc stroke 1                    # stroke weights against the kind's (scripts/qu
 xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 62 against 164 (0.38, lighter)
 xi.sc stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 57 against 176 (0.33, lighter)
 zeta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 69 against 164 (0.42, lighter)
+uni2135.sc stroke 1              # accepted 2026-10-25 upright italic aleph and retained smaller alternate; optical weight approved in height proof; sc 279 against 196 (1.42)

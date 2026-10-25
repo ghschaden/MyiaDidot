@@ -26,6 +26,48 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-25 Version 0.100 (development): rounded Bold modifier glottal stop
+
+    * Rebuild ˀ from final Bold ɂ through the superior recipe, fitting the
+      result to the established ink size and preserving the 449 advance.
+      Smooth the inherited near-tangent joins after whole-unit rounding.
+    * Retain the open counter tip and existing balanced spacing; remove
+      the resolved extremum finding. No shaping baselines change.
+    * Accepted 2026-10-25. Comparison:
+      proofs/bold-glottal-drawing-before-after-2026-10-25.pdf.
+
+2026-10-25 Version 0.100 (development): Bold Italic dollar drawing proposal
+
+    * Narrow the diagonal waist about 20%; redraw compact ball terminals
+      with continuous entrances, removing the old backward neck curves.
+    * Keep the previously corrected straight bars, advance and anchors.
+      The generator applies both passes independently. The person approved
+      this drawing on 2026-10-25.
+    * Proof: proofs/bold-italic-dollar-drawing-before-after-2026-10-25.pdf.
+
+2026-10-25 Version 0.100 (development): roman joins and italic trademark
+
+    * Fill the upper-left diagonal/upright slits in Regular M, Cyrillic м,
+      № and trademark; raise middle M tips to the feet. Bold and M's
+      aliases/composites inherit the source repairs.
+    * Fair Bold Italic trademark's T shoulders and make the two outer M
+      strokes parallel, retaining its middle diagonal.
+    * Preserve advances, anchors, kerning and compiled metrics/layout.
+      Proof: proofs/symbol-joins-before-after-2026-10-25.pdf.
+
+2026-10-25 Version 0.100 (development): upright italic-derived roman aleph
+
+    * Replace Regular and Bold ℵ with the approved unslanted italic
+      drawings, stretched vertically from -23..1099 to 0..1434. Preserve
+      existing advances and anchors. Explicit curve extrema and minor
+      tangent finishing keep the accepted outline clean on the grid.
+    * Retain smaller versions as uni2135.sc, available through smcp/c2sc
+      in all styles; existing italic full-size outlines are unchanged.
+    * Fixed design GLIFs avoid a generation cycle. Remove the obsolete
+      roman serif-lip lint exceptions. Record the approved optical-weight
+      exceptions for the roman forms and smaller alternates.
+    * Proof: proofs/upright-aleph-production-comparison-2026-10-25.pdf.
+
 2026-10-24 Version 0.100 (development): italic t dot clearance
 
     * Raised t's Dotaccent anchor along the slant to give ṫ the same

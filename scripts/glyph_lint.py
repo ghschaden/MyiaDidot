@@ -59,7 +59,7 @@ CORNER = 25  # step: degrees the outline turns at each end
 LEDGE = 32  # ledge: a straight segment shorter than this ...
 LEDGE_TURN = 40  # ... the outline turning this much at each end, opposite ways
 # ledges meant: bars ending in a stub just past the stroke they cross (ɉ ₲),
-# and ℵ as drawn (Libertinus Math)
+# and the roman ℵ's drawn serif/diagonal joins (draft_letterlike.alef).
 LEDGE_KEEP = {"uni0249", "uni0249.sc", "uni20B2", "uni2135"}
 
 TWIST_AREA = 2  # a piece this small is a self-crossing of the outline, not ink

@@ -1,5 +1,153 @@
 # To do
 
+## Bold ˀ rounded drawing accepted; spacing reviewed (2026-10-25)
+
+After approving the dollar, the person requested the next task. Bold ˀ
+is now rebuilt from its final Bold ɂ base, with rounded outer bowl/terminal
+and an even inner edge. The drawing retains its old ink bounds, 449 advance
+and balanced 62/64 sidebearings. The automatic 380-unit recipe advance would
+materially tighten it; the spacing proof supports retaining the existing
+fit. The width exception is retained with a reviewed reason.
+
+One obsolete extremum exception is removed. The inherited open counter
+tip remains, with its existing notch key and refreshed measurements.
+Only ˀ's outline/CFF charstring changes; all compiled metrics/layout tables
+match. No new exceptions or shaping baseline changes. The person accepted
+this drawing on 2026-10-25 and requested commit and push.
+
+**55 focused checks pass**, including TrueType/CFF hinting. Bold reproduces
+from a complete generation and small-cap rebuild; production OTF/TTF/WOFF2
+builds pass.
+Proof: `proofs/bold-glottal-drawing-before-after-2026-10-25.pdf`.
+Details: `docs/bold-glottal-drawing-review-2026-10-25.md`.
+
+Next drawing review: Bold Italic ɸ optical weight/style.
+
+## Bold Italic dollar drawing proposal prepared (2026-10-25)
+
+After accepting the symbol-join/trademark proposal, the person requested
+continuation. The dollar's diagonal waist is now about 20% narrower, and
+both ball entrances are continuous curves without the old backward neck
+bumps. The balls are more compact. Straight through-bars retain their
+15° slope, 86-unit widths and 95-unit gap; spacing/anchors stay unchanged.
+
+The person approved this dollar drawing on 2026-10-25. Exactly dollar's
+outline changes. No quality/lint exceptions or shaping baselines change; compiled metrics and
+layout tables match. **32 focused checks pass**, including shaping and
+TrueType/CFF hinting. Bold Italic reproduces; production OTF/TTF/WOFF2
+builds pass.
+
+Proof: `proofs/bold-italic-dollar-drawing-before-after-2026-10-25.pdf`.
+Details: `docs/bold-italic-dollar-drawing-review-2026-10-25.md`.
+
+Next drawing candidate: Bold ˀ curve/weight and spacing. Bold Italic ɸ
+optical weight remains open separately; dollar drawing is approved.
+
+## Upper-left joins and trademark repaired after visual review (2026-10-25)
+
+The person's review supersedes the earlier Regular-counter retention
+recommendation. Fill the thin slits in Regular M, м, № and trademark's M
+by joining their existing diagonals directly to the uprights. Raise the
+M/middle tips to their feet. Bold inherits the roman repairs; aliases and
+accented M forms follow their base. Bold № retains its old placement and
+advance despite the generator's optical-fit change.
+
+Bold Italic ™ has faired T shoulders and parallel outer M strokes
+(15.18–15.36°); its middle diagonal is unchanged, as clarified by the person.
+Regular/Italic/Bold Italic numeral drawings outside the requested joins
+are retained. The complete upper-left serif joins are enlarged in the proof.
+The person accepted this proposal on 2026-10-25.
+
+Eight Regular lint entries are removed; two zone exceptions and one kink
+exception disappear, and one extreme count shrinks. No new exceptions or
+shaping baselines change in this pass. **95 focused checks pass, one skips**;
+all **eight TrueType/CFF hinting checks pass**. Compiled metrics/layout
+match, including hmtx; advances, anchors and kerning are preserved.
+
+Proof: `proofs/symbol-joins-before-after-2026-10-25.pdf`.
+Details: `docs/symbol-joins-review-2026-10-25.md`.
+
+Next drawing task: Bold Italic dollar's heavy center and swollen endings.
+Bold ˀ curve/weight/spacing and Bold Italic ɸ optical weight remain separate.
+
+## Upright aleph integrated; Regular acute counters reviewed (2026-10-25)
+
+The person accepted the upright italic-derived Regular/Bold ℵ at roman
+height. Production now uses that drawing, with the smaller versions
+available through smcp/c2sc. Existing roman advances and all anchors and
+kerning are preserved; italic full-size outlines are unchanged. Fixed
+reviewed design inputs avoid a generation cycle. This supersedes the
+square-serif roman repair below.
+
+The old roman ℵ lint entries are removed. Minor tangent/extremum finishing
+has no new construction findings. The accepted optical weights are recorded
+explicitly (three new stroke exceptions, one refreshed); no shaping
+baselines change. All three styles reproduce and 83 focused checks pass;
+all four CFF hinting checks pass with helper-socket access. Full suite:
+183 passed, 3 skipped, plus the four CFF passes. All OTF/TTF/WOFF2 files rebuild.
+
+Production proof: `proofs/upright-aleph-production-comparison-2026-10-25.pdf`.
+Details: `docs/upright-aleph-production-2026-10-25.md`.
+
+Continued to the next Regular lint group: eight entries represent four
+inherited open counter constructions. Their flagged regions match Theano
+exactly. Recommend retention, with annotations refreshed; no font changes
+or final visual acceptance recorded for that review.
+Proof: `proofs/regular-acute-counters-review-2026-10-25.pdf`.
+Details: `docs/regular-acute-counters-review-2026-10-25.md`.
+
+The unreviewed lint backlog is exhausted. Next drawing work: Bold Italic
+dollar (heavy center and swollen endings). Bold ˀ curve/weight and spacing,
+and Bold Italic ɸ optical weight remain separate.
+
+## Bold ℵ square serif ends restored (2026-10-25)
+
+Weighting tilted four rectangular serif ends; the lower-right foot gained
+a backward undercut. The generator now restores the square ends with four
+corner moves, retaining every body edge, overall bounds, advance and anchors.
+The source is the local straight-stroke drawing, not Libertinus Math;
+corrected that stale provenance comment. Earlier Bold Italic repairs remain
+unchanged.
+
+The Bold lint exception shrinks from four ledges to two inherited lips.
+The proof compares all styles and every affected serif against Regular.
+This does not record final visual acceptance of the repaired drawing or
+the retained lips. Exactly one outline/CFF charstring changes; all compiled
+metrics/layout tables match. No shaping or quality baselines change.
+
+**26 focused checks pass**, including shaping and TrueType/CFF hinting.
+All three generated styles reproduce. The production Bold OTF rebuilds
+with hints and STAT metadata.
+
+Proof: `proofs/bold-aleph-serif-before-after-2026-10-25.pdf`.
+Details: `docs/bold-aleph-serif-review-2026-10-25.md`.
+
+Next review: Regular acute counters in M/Mu and their Cyrillic/accented
+relatives, trademark and №. Bold ˀ curve/weight and spacing, dollar drawing,
+and ɸ optical weight remain open separately.
+
+## Bold ˀ open counter reviewed; curve drawing remains open (2026-10-25)
+
+The notch is the open upper counter tip where the ball terminal joins the
+bowl. The same construction is present in Regular; a scratch rebuild from
+the final Bold ɂ still reports one notch. Retain the exception key and
+refresh its annotation. This is a review recommendation, not recorded
+final visual acceptance.
+
+Separately, Bold ˀ has angular outer bowl/ball corners and an uneven inner
+edge. The scratch rebuild is smoother but changes the advance 449 → 380;
+it is a drawing candidate, not an adopted repair. Carry that curve/weight
+and spacing review forward. No font outlines or generator code change.
+
+Proof: `proofs/bold-glottal-stop-review-2026-10-25.pdf`.
+Details: `docs/bold-glottal-stop-review-2026-10-25.md`.
+
+All four style lint checks pass; the 16 source-family spot checks find
+only the existing Bold ˀ notch. No exception keys or baselines change.
+
+Next unreviewed lint entry: Bold ℵ (`uni2135`), four ledges. Dollar drawing
+and ɸ optical weight remain open separately.
+
 ## Italic belted-l attachments repaired; arch family reviewed (2026-10-25)
 
 Italic ɬ's three lint findings were gaps separating its ring and bar from

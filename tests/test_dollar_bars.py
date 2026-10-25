@@ -36,6 +36,9 @@ def edge_groups(glyph):
 def test_dollar_bars_repair():
     font = ufoLib2.Font.open(ROOT / "sources/MyiaDidot-BoldItalic.ufo")
     expected = deepcopy(font["dollar"])
+    expected.clearContours()
+    readGlyphFromString((DATA / "dollar-drawing-before.glif").read_text(),
+                       glyphObject=expected, pointPen=expected.getPointPen())
     glyph = font["dollar"]
     glyph.clearContours()
     readGlyphFromString((DATA / "dollar-bars-before.glif").read_text(),

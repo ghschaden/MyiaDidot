@@ -1,4 +1,4 @@
-"""Fair the lower tip and upper terminal join distorted by Bold Italic weighting."""
+"""Finish the accepted roman aleph and the italic joins distorted by weighting."""
 
 
 _LOWER_BEFORE = (
@@ -76,8 +76,13 @@ def _upper_join(glyph):
 
 
 def finish(font):
-    """Apply both reviewed repairs, including when one is already present."""
-    if font.info.styleName != "Bold Italic" or "uni2135" not in font:
+    """Apply the style's repairs, including when they are already present."""
+    if "uni2135" not in font:
         return
-    _lower_return(font["uni2135"])
-    _upper_join(font["uni2135"])
+    if font.info.styleName == "Bold":
+        from upright_aleph import install
+
+        install(font)
+    elif font.info.styleName == "Bold Italic":
+        _lower_return(font["uni2135"])
+        _upper_join(font["uni2135"])

@@ -536,6 +536,10 @@ def smcp_map(font):
     for lo, sc in (("sigma1", "sigma.sc"), ("uni03C2", "sigma.sc")):
         if lo in font and sc in font:
             smcp[lo] = sc
+    # Aleph is Lo, without Unicode case mappings. Offer its reviewed smaller
+    # drawing through either small-cap feature explicitly.
+    if "uni2135.sc" in font:
+        smcp["uni2135"] = c2sc["uni2135"] = "uni2135.sc"
     return smcp, c2sc, multi_lo, multi_up
 
 
@@ -682,6 +686,9 @@ def main():
     if args.height:
         font.lib[HEIGHT_KEY] = args.height
     configure(font.lib.get(HEIGHT_KEY, DEFAULT_HEIGHT))
+    from upright_aleph import install as install_aleph
+
+    install_aleph(font)
     log, failed = [], []
     if args.drafts:
         drafts = ufoLib2.Font.open(args.drafts)

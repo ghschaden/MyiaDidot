@@ -7,10 +7,9 @@
 font's verticals and horizontals), its left side run down as a stem that
 turns out to the right in a hook with a ball (derive.curl), all slanted;
 𝑙 is the font's l from above its foot with the same hook, slanted. ℮ is O
-open at the lower right with a hairline bar across. ℵ ℶ are built from
-straight strokes: the thick diagonal of ℵ falls to the right like the
-font's thick diagonals; in ℶ the horizontals are the heavy strokes, as in
-the Hebrew letter.
+open at the lower right with a hairline bar across. ℵ uses the approved
+upright italic-derived design (upright_aleph.py); in ℶ the horizontals
+are the heavy strokes, as in the Hebrew letter.
 
 The Fraktur 𝔐 𝔓 𝔖 𝔭 is Libertinus Math's (SIL OFL 1.1, The Libertinus
 Project Authors), adapted: scaled to this font's heights, its stems and
@@ -95,13 +94,17 @@ def estimated(font):
 
 
 def alef(font):
-    out = union(
-        lines(((230, 1370), (1170, 64), 210),   # the thick diagonal
-              ((680, 820), (1030, 1300), 90),   # a short arm up from the middle
-              ((700, 640), (560, 40), 72)),     # the leg, nearly upright
-        rects((110, 1370, 400, 1434), (950, 1290, 1200, 1380),   # serifs at the top
-              (1030, 0, 1310, 64), (330, 0, 640, 64)))           # and the feet
-    return out, 1420
+    from upright_aleph import drawing
+
+    width = font["uni2135"].width if "uni2135" in font else 1380
+    glyph = drawing(tall=True, width=width)
+    return to_path(None, rec=_record(glyph)), width
+
+
+def _record(glyph):
+    pen = RecordingPen()
+    glyph.draw(pen)
+    return pen
 
 
 def poly(*pts):

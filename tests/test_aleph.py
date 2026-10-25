@@ -1,4 +1,4 @@
-"""The weighted aleph's two repaired joins preserve the surrounding drawing."""
+"""Weighted aleph repairs preserve the surrounding drawing and source joins."""
 
 from copy import deepcopy
 
@@ -88,9 +88,38 @@ def test_aleph_upper_join_preserves_accepted_drawing():
     assert glyph == expected
 
 
-def test_aleph_other_styles_are_unchanged():
-    for style in ('Regular', 'Bold', 'Italic'):
+def test_upright_aleph_height_spacing_and_smallcap_features():
+    from smallcaps import smcp_map
+    from upright_aleph import drawing, install
+
+    for style in ('Regular', 'Bold', 'Italic', 'BoldItalic'):
         font = ufoLib2.Font.open(ROOT / f'sources/MyiaDidot-{style}.ufo')
         before = deepcopy(font['uni2135'])
-        finish(font)
-        assert font['uni2135'] == before
+        install(font)
+        glyph = font['uni2135']
+        assert glyph.width == before.width
+        assert glyph.anchors == before.anchors
+        assert glyph.unicodes == before.unicodes
+        if 'Italic' in style:
+            assert glyph == before
+        else:
+            bounds = glyph.getBounds(None)
+            assert abs(bounds[1]) < 1
+            assert abs(bounds[3] - 1434) < 1
+            expected = drawing(bold=style == 'Bold', tall=True, width=glyph.width)
+            assert glyph.contours == expected.contours
+        small = font['uni2135.sc']
+        assert small.unicodes == []
+        assert small.width == glyph.width
+        assert small.getBounds(font)[3] < 1125
+        smcp, c2sc, _, _ = smcp_map(font)
+        assert smcp['uni2135'] == c2sc['uni2135'] == 'uni2135.sc'
+        first = deepcopy(glyph), deepcopy(small)
+        install(font)
+        assert (font['uni2135'], font['uni2135.sc']) == first
+
+
+def test_aleph_smallcap_substitution(shaper):
+    assert shaper.shape('ℵ')[0][0] == 'uni2135'
+    for features in ({'smcp': True}, {'c2sc': True}, {'smcp': True, 'c2sc': True}):
+        assert shaper.shape('ℵ', features)[0][0] == 'uni2135.sc'

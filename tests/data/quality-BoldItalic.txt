@@ -275,8 +275,7 @@ three kink 1                     # 2026-10-21 Italic reweighted and tightened: 4
 threeoldstyle extreme 1          # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 682,727 11 units past
 threeoldstyle stroke 1           # 2026-10-21 Italic reweighted and tightened: lc 304 against 273 (1.11, darker)
 threesuperior smooth 1           # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 602,871 2.5 degrees
-trademark extreme 4              # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 1451,741 9 units past; 1155,1062 6 units past; 1058,1389 19 units past; 801,1358 17 units p
-trademark kink 1                 # slid bracket nodes' handles along their edges (derive.embolden_by_weight): 1410,741 3.9 degrees
+trademark extreme 3              # T shoulder bulges faired 2026-10-25; remaining inherited extrema at M foot and outer T terminals
 two kink 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 362,454 3.9 degrees
 two stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 200 against 307 (0.65, lighter)
 twooldstyle kink 2               # 2026-10-21 Italic reweighted and tightened: 650,227 2.7 degrees; 316,335 3.9 degrees

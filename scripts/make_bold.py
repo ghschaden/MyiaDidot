@@ -893,9 +893,18 @@ def write(font, path, smooth=True, separate_stacks=False):
     from dollar_bars import finish as finish_dollar_bars
 
     finish_dollar_bars(font)
+    from dollar_drawing import finish as finish_dollar_drawing
+
+    finish_dollar_drawing(font)
     from aleph import finish as finish_aleph
 
     finish_aleph(font)
+    from symbol_joins import finish as finish_symbol_joins
+
+    finish_symbol_joins(font)
+    from glottal_modifier import finish as finish_glottal_modifier
+
+    finish_glottal_modifier(font)
     from r_hook import fair_bold_stem, finish_shoulders
     from r_hook import finish as finish_r_hook
 
