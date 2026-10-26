@@ -8,7 +8,7 @@ Moved from CLAUDE.md (its ground rules apply).
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
 | `make lint` | ruff, lint only (no formatter: the recipe tables are aligned by hand); pre-commit and CI run it |
 | `make generate` | regenerate Italic, Bold, Bold Italic from the Regular (then normalize, check for sync conflicts) |
-| `make reproduce` | do the generated styles come out of their generators as committed? |
+| `make reproduce` | do the generated styles come out of their generators as the current UFOs specify? |
 | `make strokes` | `build/quality/strokes-STYLE.pdf`: glyphs darker or lighter than their kind, each between its references, for review |
 | `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `textpages.pdf` (full book pages, mixed styles), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts first), `drafts-review.pdf` (other drafted letters, by kind) |
 | `make visual` | `build/visual/report/index.html`: ~130 fixed specimens (golden corpus, feature samples, running text) per style rendered in the working tree and in `VISUAL_REF` (default: tag `proofs-approved`, else HEAD), changed ones as before / after / overlay; `make visual-approve` moves the tag to HEAD; `make diffenator`: diffenator2 on TTFs against the same revision, summary in `build/visual/diffenator-summary.txt`. CI runs `make visual` against the previous commit |
@@ -22,7 +22,10 @@ Moved from CLAUDE.md (its ground rules apply).
 | `python scripts/quality/pair_summary.py [STYLE ...]` | Latin, Greek, Cyrillic pairs outside the references, one table (built fonts) |
 | `python scripts/sync_check.py` | sync conflict copies and lost glyph files in the UFOs |
 
-Run Python as `.venv/bin/python -I`.
+Run Python as `.venv/bin/python -I`. Run
+`.venv/bin/python -I scripts/quality/fetch_refs.py` and
+`.venv/bin/python -I scripts/reference_inputs.py --udhr` to provision
+the pinned comparison inputs.
 
 ## Claude Code plugin
 

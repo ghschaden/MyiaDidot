@@ -1,0 +1,101 @@
+{
+  "google_fonts_commit": "e7db6ca603fd4862010383ff17ffd6cc4ffac1c0",
+  "udhr_commit": "588b3f4b2d0467aff54842a4b926551b69d5a66a",
+  "archives": {
+    "libertinus": {
+      "url": "https://github.com/alerque/libertinus/releases/download/v7.051/Libertinus-7.051.zip",
+      "sha256": "4d9be29b5cb380c35af8ba967abcc752ad1e07be1f738a9789c33e0dd7478c92"
+    },
+    "charis": {
+      "url": "https://github.com/silnrsi/font-charis/releases/download/v6.101/CharisSIL-6.101.zip",
+      "sha256": "2de585f4517636d18039f1dc082258dfb89262d7a7feea2526fb21c0cc69131f"
+    }
+  },
+  "fonts": {
+    "LibertinusSerif-Regular.otf": {
+      "archive": "libertinus",
+      "member": "Libertinus-7.051/static/OTF/LibertinusSerif-Regular.otf",
+      "sha256": "fcf06307a77367394fcb0ccb241e59eea70dba3d732be309647611224679c733"
+    },
+    "LibertinusSerif-Italic.otf": {
+      "archive": "libertinus",
+      "member": "Libertinus-7.051/static/OTF/LibertinusSerif-Italic.otf",
+      "sha256": "9a393d63d6e05f620d3dc0190dfd35a8ede58c0808cf0fc9de7fcb9c723e4c24"
+    },
+    "LibertinusSerif-Bold.otf": {
+      "archive": "libertinus",
+      "member": "Libertinus-7.051/static/OTF/LibertinusSerif-Bold.otf",
+      "sha256": "0264914210ed51b3231ebc92ce529e9f2e166ba9eebf0cd4a579558690a27b64"
+    },
+    "LibertinusSerif-BoldItalic.otf": {
+      "archive": "libertinus",
+      "member": "Libertinus-7.051/static/OTF/LibertinusSerif-BoldItalic.otf",
+      "sha256": "47a665259f09f554f5d133d7718cdad43ff462c6a6b2328f38023465e62d57ce"
+    },
+    "CharisSIL-Regular.ttf": {
+      "archive": "charis",
+      "member": "CharisSIL-6.101/CharisSIL-Regular.ttf",
+      "sha256": "346337374aa347d64ee015b26d441f1970d8631914e2f3941b00e1c4761e28c5"
+    },
+    "CharisSIL-Italic.ttf": {
+      "archive": "charis",
+      "member": "CharisSIL-6.101/CharisSIL-Italic.ttf",
+      "sha256": "e776e2961117b39cf924c0139de01748a77b2fcb99c437b2c77bdd9401606c13"
+    },
+    "CharisSIL-Bold.ttf": {
+      "archive": "charis",
+      "member": "CharisSIL-6.101/CharisSIL-Bold.ttf",
+      "sha256": "68460d2b76c8f781b49f9168f2c7dc3c9f7b788a3a1b8f267c5fa6bb47d5c64d"
+    },
+    "CharisSIL-BoldItalic.ttf": {
+      "archive": "charis",
+      "member": "CharisSIL-6.101/CharisSIL-BoldItalic.ttf",
+      "sha256": "acdf6dc54c0ee5e03cae3398f64133c335084cd1ecab655f2a8636c5d56acedb"
+    }
+  },
+  "udhr": {
+    "udhr_als.xml": "d784c682a875c43cf2cd8b0b7c4215a7494459081421c6868381e75690f503eb",
+    "udhr_azj_latn.xml": "02f6b68f5c57ac428365d0282be799f5e168e3f38df7eef949fcc2fd38a98bc1",
+    "udhr_bel.xml": "c20dec1fbb2b291467d0f7d0885929f3ea65553f3fa791a499c5547636389113",
+    "udhr_bul.xml": "0f6d9cef8de68cb373db92074d86aea164b9ba0bead19939f434ff56c064df6e",
+    "udhr_cat.xml": "fbae2957ce6e4f4d65044a9965403c95145c9f95923585d2b801b05d374d21d8",
+    "udhr_ces.xml": "a7788842d3b26666cb8299bea5a82913b12ef586494089fcaa4cbbe9c7c2aedf",
+    "udhr_cym.xml": "19b70597813b5488efb29d209a755b070d9bffd1bfe7c8acdc4022ae193ffef3",
+    "udhr_dan.xml": "e576b062b862b33f795607e9ce15e414d0e0a7e4ec1b862395f63473b3406d00",
+    "udhr_deu_1996.xml": "c9cdfc09db8e9dac2f6571a51a87178c6d8bce80f0db888ca23fdf002179a917",
+    "udhr_ell_monotonic.xml": "961f32b7aca8371e4709352c9c096b28c6876867aa45e233736547c46fe35748",
+    "udhr_ell_polytonic.xml": "60242b91f737fbfb4b8026453c8a507d3cd33626ee043929a1725c26d25b70e3",
+    "udhr_eng.xml": "df73275821449df4db2b164e59bda812c834d80cacc8792a6f41d6fc331ce204",
+    "udhr_est.xml": "2bb930e05fac669aea8d6aca8b07d355aa86381517bd6df26fa07862625b2f6a",
+    "udhr_eus.xml": "59d51d1c84f26c4826caa7d183fa3f708fb8af9c362c7e6e7f54228cd1deb105",
+    "udhr_ewe.xml": "203e2514c1f7e1a518bfb056e80bf7ea9f9c9b8528597987f3b7591a4ce9ae21",
+    "udhr_fin.xml": "08d70e353f873aaa8d7563bc04d508dcca6281af513ef94614d4fa64bd3fb3e3",
+    "udhr_fra.xml": "d8c5970618f276065532f7aee7467e0dde3dda7fb4e5e38ea925466067e1515d",
+    "udhr_gle.xml": "4c6464ef24b97cab68289dad60a993b26afd0e6130aac3e9626968feb0156d80",
+    "udhr_hau_NG.xml": "c8b47b48bad12c25e0d5483b38076037b43ae28434ea69e069c43971e50ba934",
+    "udhr_hrv.xml": "83f7d07e49f0b8be356fb76f82506a58513ad72c700e36a280999932b054cfc2",
+    "udhr_hun.xml": "f28144225aa49d73d3b1bc68c50061f6cfbaad3f79868d5b4a09158ee00836c9",
+    "udhr_isl.xml": "0c94224fc19987dee6952eef723ac97f830f18d2390b5a8aac929ddb2deb5c07",
+    "udhr_ita.xml": "c4d03506dadff0c1ad5e57dffea44a062739752f7019a9d93aa3d449d2f8f8ff",
+    "udhr_lav.xml": "2eca9fde2ca689d3f65953b56409163ab6d10ebc205d3e6b4dbe4a28f568030b",
+    "udhr_lin.xml": "6e5de9922c6acc4f2c8b37dac59668c2e720407f89ef86d4f35d8509fd975a72",
+    "udhr_lit.xml": "b4bb5b1e0b2b4c340be3af281239df9084edc0535cb85307d14111f68510a3f2",
+    "udhr_mkd.xml": "99dd69fdc8321368cff8b34f78f872d579046a69ab5edaaf930bcb17d9dcae0e",
+    "udhr_mlt.xml": "d42e4805294b5312eee36c8f0dcc866fab8dcf03773459c74b8a2cdf860d7f35",
+    "udhr_nld.xml": "aee494f1485f163a8c8e5a5d7a8849778c7e37999d3b9a62fede8ce49fc8b107",
+    "udhr_nob.xml": "fdeb0f9081735b337cdd2d872a397a950077b2d55950fe15a11ffd54b95511a3",
+    "udhr_pol.xml": "12716a61c3a279c3f361ff621f0f01067ec8a340f6481bac7b234345b43928b3",
+    "udhr_por_PT.xml": "44ae42b32b26774c2db781da9031a9579559fb22b226714a0b9a9e5b4e1393fc",
+    "udhr_ron_2006.xml": "aefbb8c5837472da4bcd35db12cf9fd64b199add883c9a24fc4e1100c6ed99b7",
+    "udhr_rus.xml": "4d91ee6b21c4f2fd26bae1a62b6f2922b2a33335b1559ccfaea29bdaf2ec2972",
+    "udhr_slk.xml": "e8221738fddddab99aef6de0283231af00b1294f3a8a37d7bcb9d48f9b7f7966",
+    "udhr_slv.xml": "802b5c8b91b6b1bb3b3f44bad05ad4c9ffde0005a9659b750b244e410d698d86",
+    "udhr_spa.xml": "64d56ed9fe6c5a40183319f5139be106f2f78a097e39d7652f5c59973e25fc04",
+    "udhr_srp_cyrl.xml": "3c54ba8b455a325579dc9407196e96289e9aae5adfcd87e422c64e045c8198e7",
+    "udhr_swe.xml": "1f94adf8c312ad6a906303627152b889701394b009ef32f087336549799d416e",
+    "udhr_tur.xml": "62131873664c76ba30592ccb5b2cfc0ade4bf5dbec57dffdeae4c9fbeb375118",
+    "udhr_ukr.xml": "6e1b8150d1c631cff56cc7ba0266a80df138c583c2cb79637c28af5558e87058",
+    "udhr_vie.xml": "ec4f9826b59a2aa29cd5562bb17b624657a51bb7275ebf44470129fbe09e6e5f",
+    "udhr_yor.xml": "5da3bcd03e70fa58e3fb2a146182e98a19791e6eedc0c3cbfacd523d4d78cbdc"
+  }
+}

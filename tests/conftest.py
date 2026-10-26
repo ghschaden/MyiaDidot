@@ -12,9 +12,7 @@ import time
 from pathlib import Path
 
 import pytest
-import ufo2ft
 import ufoLib2
-import uharfbuzz as hb
 from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -23,18 +21,7 @@ DATA = Path(__file__).resolve().parent / "data"
 UFO_PATHS = sorted(p for p in SOURCES.glob("*.ufo") if p.is_dir())
 
 sys.path.insert(0, str(ROOT / "scripts"))
-
-
-def style_data(name, ufo_path):
-    """A per-style baseline: the Regular's under its plain name (as before
-    there were other styles), other styles' with the style added
-    (shaping-golden.json -> shaping-golden-Bold.json). Coverage and the
-    exception lists are shared: every style must do what the Regular does."""
-    style = Path(ufo_path).stem.split("-", 1)[-1]
-    if style == "Regular":
-        return DATA / name
-    stem, _, ext = name.partition(".")
-    return DATA / f"{stem}-{style}.{ext}"
+from baseline_support import style_data as style_data
 
 
 def pytest_generate_tests(metafunc):
@@ -48,12 +35,10 @@ def ufo(ufo_path):
 
 
 @pytest.fixture(scope="session")
-def otf_path(ufo_path, tmp_path_factory):
-    font = ufoLib2.Font.open(ufo_path)
-    otf = ufo2ft.compileOTF(font, useProductionNames=False, optimizeCFF=0)
-    path = tmp_path_factory.mktemp("fonts") / f"{ufo_path.stem}.otf"
-    otf.save(path)
-    return path
+def otf_path(ufo_path):
+    from font_builds import compiled_variant
+
+    return compiled_variant(ufo_path, "test_otf")
 
 
 @pytest.fixture(scope="session")
@@ -61,24 +46,7 @@ def ttfont(otf_path):
     return TTFont(otf_path)
 
 
-class Shaper:
-    def __init__(self, path):
-        self.font = hb.Font(hb.Face(hb.Blob.from_file_path(str(path))))
-        self.order = TTFont(path).getGlyphOrder()
-
-    def shape(self, text, features=None, language=None, script=None):
-        buf = hb.Buffer()
-        buf.add_str(text)
-        buf.guess_segment_properties()
-        if script:
-            buf.script = script
-        if language:
-            buf.language = language
-        hb.shape(self.font, buf, features or {})
-        return [
-            (self.order[i.codepoint], p.x_advance, p.x_offset, p.y_offset)
-            for i, p in zip(buf.glyph_infos, buf.glyph_positions, strict=True)
-        ]
+from font_shaping import Shaper
 
 
 @pytest.fixture(scope="session")

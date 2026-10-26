@@ -6,7 +6,7 @@ Moved from CLAUDE.md (its ground rules apply).
   `scripts/hint_control.py` (ttfautohint-py with a control file per style,
   kept in build/hinting/: tips that join the serif edge at their height,
   Greek on the Latin zones where that is better, Bulgarian ascenders as
-  Latin, whole-pixel deltas onto the zone; ttfautohint drops what does not
+  Latin, Regular prosgegrammeni explicitly on Latin x-height zones, whole-pixel deltas onto the zone; ttfautohint drops what does not
   fit in a control line silently, so lists are cut short); CFF by
   `scripts/ps_hints.py` (zones and stems measured per style, then
   otfautohint). `scripts/quality/hint_zones.py TTF` lists letters hinted
@@ -18,3 +18,8 @@ Moved from CLAUDE.md (its ground rules apply).
   on it, and otfautohint leaves hundreds of letters off their zones in a
   font with overlaps.
 
+
+- Accepted Italic v.sc/w.sc/ѵ.sc/ⱳ.sc tip correction: `smallcap_tip_lines`
+  discovers on-curve points at O's bottom zone and raises them half a pixel
+  at 30/32 ppem only. It applies to Italic, excluding Bold Italic. Review:
+  `docs/italic-smallcap-tip-hinting-review-2026-10-26.md`.

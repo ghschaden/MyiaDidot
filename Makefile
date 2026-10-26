@@ -1,3 +1,7 @@
+SHELL := /bin/sh
+.SHELLFLAGS := -eu -c
+.DELETE_ON_ERROR:
+
 PY       := .venv/bin/python -I
 FONTMAKE := .venv/bin/fontmake
 FAMILY   := MyiaDidot
@@ -30,9 +34,9 @@ lint:
 	.venv/bin/ruff check .
 
 # Accept the current behaviour as the new baseline (review git diff tests/data!):
-# run once, read the strings that differ from HEAD, then again with N=that many
+# run once, review build/baseline-review.json, then rerun with ACCEPT=its digest
 test-data:
-	$(PY) scripts/update_test_data.py --golden --digest --cmap $(if $(N),--expect-changes $(N))
+	$(PY) scripts/update_test_data.py --golden --digest --cmap $(if $(N),--expect-changes $(N)) $(if $(ACCEPT),--accept-report $(ACCEPT))
 
 winmetrics:
 	$(PY) scripts/set_win_metrics.py $(UFOS)
@@ -43,34 +47,29 @@ ttf: $(TTF)
 webfonts: $(WOFF2)
 
 # PostScript hints: zones and stems measured per style, then otfautohint.
-fonts/otf/%.otf: sources/%.ufo $(UFO_FILES) scripts/add_stat.py scripts/ps_hints.py
-	$(FONTMAKE) -u $< -o otf --output-path $@
-	$(PY) scripts/ps_hints.py $@
-	$(PY) scripts/add_stat.py $@
+fonts/otf/%.otf: sources/%.ufo $(UFO_FILES) scripts/add_stat.py scripts/ps_hints.py scripts/build_font.py scripts/build_support.py uv.lock
+	$(PY) scripts/build_font.py otf $< $@
 
 # Unhinted TTF in build/, then ttfautohint (with a control file made for the
 # font, kept in build/hinting/) into fonts/ttf.
-build/unhinted/%.ttf: sources/%.ufo $(UFO_FILES)
-	$(FONTMAKE) -u $< -o ttf --flatten-components --output-path $@
+build/unhinted/%.ttf: sources/%.ufo $(UFO_FILES) scripts/build_font.py scripts/build_support.py uv.lock
+	$(PY) scripts/build_font.py unhinted $< $@
 
-fonts/ttf/%.ttf: build/unhinted/%.ttf scripts/add_stat.py scripts/hint_control.py scripts/quality/hint_zones.py
-	@mkdir -p $(dir $@)
-	$(PY) scripts/hint_control.py $< $@ --control build/hinting/$*.txt
-	$(PY) scripts/add_stat.py $@
+fonts/ttf/%.ttf: build/unhinted/%.ttf scripts/add_stat.py scripts/hint_control.py scripts/quality/hint_zones.py scripts/build_font.py scripts/build_support.py uv.lock
+	$(PY) scripts/build_font.py ttf $< $@
 
-fonts/webfonts/%.woff2: fonts/ttf/%.ttf
-	@mkdir -p $(dir $@)
-	$(PY) -m fontTools.ttLib.woff2 compress -o $@ $<
+fonts/webfonts/%.woff2: fonts/ttf/%.ttf scripts/build_font.py scripts/build_support.py uv.lock
+	$(PY) scripts/build_font.py woff2 $< $@
 
 # --- upstream round-trip check -------------------------------------------
 # Builds Theano Didot straight from the pinned SFD with FontForge and
 # compares HarfBuzz shaping against our build (without production names).
 
-build/reference/TheanoDidot-Regular.otf: $(UPSTREAM) scripts/sfd_reference.py
-	fontforge -quiet -lang=py -script scripts/sfd_reference.py $< build/reference
+build/reference/TheanoDidot-Regular.otf: $(UPSTREAM) scripts/sfd_reference.py scripts/build_reference.py scripts/build_support.py
+	$(PY) scripts/build_reference.py $< build/reference
 
-build/compare/%.otf: sources/%.ufo $(UFO_FILES)
-	$(FONTMAKE) -u $< -o otf --no-production-names --output-path $@
+build/compare/%.otf: sources/%.ufo $(UFO_FILES) scripts/build_font.py scripts/build_support.py uv.lock
+	$(PY) scripts/build_font.py compare $< $@
 
 compare: build/reference/TheanoDidot-Regular.otf build/compare/$(FAMILY)-Regular.otf
 	$(PY) scripts/compare_shaping.py $^ --renames sources/glyph-renames.json
@@ -88,10 +87,15 @@ regress: build/compare/$(FAMILY)-Regular.otf
 
 # --- proofs ----------------------------------------------------------------
 
-proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
+proof:
+	@mkdir -p build
+	flock build/proofs.lock $(MAKE) _proof
+
+.PHONY: _proof
+_proof: $(OTF) build/reference/TheanoDidot-Regular.otf
 	@mkdir -p build/proofs
 	$(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-Regular.otf build/proofs/charset.tex \
-	    --baseline build/baseline/$(FAMILY)-Regular.otf
+	    --baseline build/reference/TheanoDidot-Regular.otf
 	for s in Italic Bold BoldItalic; do \
 	    $(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-$$s.otf build/proofs/charset-$$s.tex || exit 1; \
 	done
@@ -100,9 +104,9 @@ proof: $(OTF) build/baseline/$(FAMILY)-Regular.otf
 	$(PY) scripts/smallcap_review.py sources/$(FAMILY)-Italic.ufo fonts/otf/$(FAMILY)-Italic.otf build/proofs/smallcaps-review-Italic.tex \
 	    --drafts build/proofs/drafts-review-Italic.tex
 	cd build/proofs && for t in charset charset-Italic charset-Bold charset-BoldItalic smallcaps-review drafts-review smallcaps-review-Italic drafts-review-Italic; do \
-	    lualatex -interaction=nonstopmode $$t.tex >/dev/null; done
+	    lualatex -halt-on-error -interaction=nonstopmode $$t.tex >/dev/null; done
 	cd proofs && for t in proof smallcaps samples textpages; do \
-	    lualatex -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
+	    lualatex -halt-on-error -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
 	@echo "proofs: build/proofs/{charset,charset-Italic,charset-Bold,charset-BoldItalic,proof,samples,textpages,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-Italic.pdf"
 
 proof-svg: $(OTF)
@@ -120,8 +124,8 @@ $(VISUAL_BASE)/done:
 	git archive $(VISUAL_REF) sources | tar -x -C $(VISUAL_BASE)
 	for s in $(VISUAL_STYLES); do \
 	    $(FONTMAKE) -u $(VISUAL_BASE)/sources/$(FAMILY)-$$s.ufo -o otf \
-	        --output-path $(VISUAL_BASE)/$(FAMILY)-$$s.otf >/dev/null 2>&1 & \
-	done; wait
+	        --output-path $(VISUAL_BASE)/$(FAMILY)-$$s.otf || exit 1; \
+	done
 	for s in $(VISUAL_STYLES); do test -f $(VISUAL_BASE)/$(FAMILY)-$$s.otf || exit 1; done
 	rm -rf $(VISUAL_BASE)/sources && touch $@
 
@@ -135,8 +139,8 @@ $(VISUAL_BASE)/ttf-done: $(VISUAL_BASE)/done
 	git archive $(VISUAL_REF) sources | tar -x -C $(VISUAL_BASE)
 	for s in $(VISUAL_STYLES); do \
 	    $(FONTMAKE) -u $(VISUAL_BASE)/sources/$(FAMILY)-$$s.ufo -o ttf --flatten-components \
-	        --output-path $(VISUAL_BASE)/$(FAMILY)-$$s.ttf >/dev/null 2>&1 & \
-	done; wait
+	        --output-path $(VISUAL_BASE)/$(FAMILY)-$$s.ttf || exit 1; \
+	done
 	for s in $(VISUAL_STYLES); do test -f $(VISUAL_BASE)/$(FAMILY)-$$s.ttf || exit 1; done
 	rm -rf $(VISUAL_BASE)/sources && touch $@
 
@@ -158,7 +162,7 @@ visual-approve:
 udhr: $(OTF)
 	@mkdir -p build/proofs
 	$(PY) scripts/udhr_book.py fonts/otf build/proofs/udhr-quarto.tex --cache build/udhr
-	cd build/proofs && lualatex -interaction=nonstopmode udhr-quarto.tex >/dev/null
+	cd build/proofs && lualatex -halt-on-error -interaction=nonstopmode udhr-quarto.tex >/dev/null
 	@echo "proof: build/proofs/udhr-quarto.pdf"
 
 # --- QA ------------------------------------------------------------------
@@ -241,7 +245,7 @@ reimport: build/reference/TheanoDidot-Regular.otf
 	@test "$(FORCE)" = 1 || { echo "reimport overwrites $(UFOS); run 'make reimport FORCE=1'"; exit 1; }
 	fontforge -quiet -lang=py -script scripts/sfd_export.py $(UPSTREAM) build/import
 	$(PY) scripts/postprocess_import.py build/import $< $(UFOS)
-	.venv/bin/ufonormalizer -m $(UFOS)
+	for u in $(UFOS); do .venv/bin/ufonormalizer -m $$u; done
 
 clean:
 	rm -rf build fonts

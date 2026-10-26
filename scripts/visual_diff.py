@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tests"))
 sys.path.insert(0, str(ROOT / "scripts"))
 from proof_svg import SAMPLES
-from shaping import golden_cases
+from shaping_baselines import golden_cases
 
 STYLES = ["Regular", "Italic", "Bold", "BoldItalic"]
 PX_PER_EM = 40

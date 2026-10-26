@@ -6,7 +6,7 @@
 The Italic, the Bold and the Bold Italic are made by make_italic.py and
 make_bold.py (then smallcaps.py); an edit made in one of them by hand, or by
 a script the generators do not run, is lost at their next run. This reruns
-them on copies (in build/reproduce/, each starting from the committed UFO,
+them on copies (in an isolated workspace, each starting from the current UFO,
 so reviewed glyphs are kept as the generators keep them) and lists every
 glyph, kerning pair, feature line and glyph-order entry that would change.
 Exit status 1 if anything would.
@@ -16,6 +16,7 @@ import difflib
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import ufoLib2
@@ -23,7 +24,6 @@ from fontTools.pens.recordingPen import DecomposingRecordingPen
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "sources"
-WORK = ROOT / "build" / "reproduce"
 PY = sys.executable
 
 
@@ -35,13 +35,18 @@ def ink(font, name):
 
 def differences(new, cur):
     """Lines describing what new (the rerun) changes in cur (the source)."""
-    out = []
+    # No volatile font-info fields are currently excluded. Add exclusions only
+    # with a documented reason and a mutation test.
+    out = [f"font info {field.name}" for field in cur.info.__attrs_attrs__
+           if getattr(new.info, field.name) != getattr(cur.info, field.name)]
     for name in (g.name for g in cur):
         if name not in new:
             out.append(f"glyph {name}: gone in the rerun")
             continue
         a, b = new[name], cur[name]
         anchors = [sorted((p.name, p.x, p.y) for p in g.anchors) for g in (a, b)]
+        if a.unicodes != b.unicodes:
+            out.append(f"glyph {name}: unicodes {b.unicodes} -> {a.unicodes}")
         if a.width != b.width:
             out.append(f"glyph {name}: width {b.width} -> {a.width}")
         elif ink(new, name) != ink(cur, name):
@@ -70,30 +75,37 @@ def run(*args):
     subprocess.run([PY, "-I", *map(str, args)], check=True, stdout=subprocess.DEVNULL)
 
 
-def main():
-    if WORK.exists():
-        shutil.rmtree(WORK)
-    WORK.mkdir(parents=True)
+def reproduce(work, sources):
     for style in ("Italic", "Bold", "BoldItalic"):
-        shutil.copytree(SOURCES / f"MyiaDidot-{style}.ufo", WORK / f"MyiaDidot-{style}.ufo")
-    regular = SOURCES / "MyiaDidot-Regular.ufo"
-    italic, bold, bold_italic = (WORK / f"MyiaDidot-{s}.ufo" for s in ("Italic", "Bold", "BoldItalic"))
+        shutil.copytree(sources / f"MyiaDidot-{style}.ufo", work / f"MyiaDidot-{style}.ufo")
+    regular = sources / "MyiaDidot-Regular.ufo"
+    italic, bold, bold_italic = (work / f"MyiaDidot-{s}.ufo" for s in ("Italic", "Bold", "BoldItalic"))
     run(ROOT / "scripts/make_italic.py", regular, italic)
     run(ROOT / "scripts/make_bold.py", regular, bold)
     run(ROOT / "scripts/smallcaps.py", bold)
-    # the Bold Italic from the committed Italic: each generator on its own input
-    run(ROOT / "scripts/make_bold.py", SOURCES / "MyiaDidot-Italic.ufo", bold_italic)
+    # the Bold Italic from the snapshot Italic: each generator on its own input
+    run(ROOT / "scripts/make_bold.py", sources / "MyiaDidot-Italic.ufo", bold_italic)
     run(ROOT / "scripts/smallcaps.py", bold_italic)
     found = 0
     for style, path in (("Italic", italic), ("Bold", bold), ("BoldItalic", bold_italic)):
-        lines = differences(ufoLib2.Font.open(path), ufoLib2.Font.open(SOURCES / f"MyiaDidot-{style}.ufo"))
+        lines = differences(ufoLib2.Font.open(path), ufoLib2.Font.open(sources / f"MyiaDidot-{style}.ufo"))
         found += len(lines)
         print(f"{style}: {'as generated' if not lines else f'{len(lines)} differences'}")
         for line in lines[:60]:
             print("  " + line)
         if len(lines) > 60:
             print(f"  ... {len(lines) - 60} more")
-    sys.exit(1 if found else 0)
+    return 1 if found else 0
+
+
+def main():
+    # Freeze all source UFOs before running any generator. Each invocation owns
+    # its scratch tree, including the Regular and the Bold Italic's input.
+    with tempfile.TemporaryDirectory(prefix="myia-reproduce-") as temporary:
+        work = Path(temporary)
+        sources = work / "sources"
+        shutil.copytree(SOURCES, sources)
+        raise SystemExit(reproduce(work, sources))
 
 
 if __name__ == "__main__":

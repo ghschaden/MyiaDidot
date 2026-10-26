@@ -9,8 +9,9 @@ regular 400, bold 700).
 """
 
 import hashlib
+import json
 import sys
-import urllib.request
+from pathlib import Path
 
 from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont
@@ -18,7 +19,11 @@ from fontTools.varLib.instancer import instantiateVariableFont
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 from common import REFDIR
 
-BASE = "https://raw.githubusercontent.com/google/fonts/main/ofl/"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from build_support import atomic_output, json_digest
+from reference_inputs import PINS, fetch, fetch_system_references
+
+BASE = f"https://raw.githubusercontent.com/google/fonts/{PINS['google_fonts_commit']}/ofl/"
 # SHA-256 pins for the raw comparison fonts below. The paths remain readable
 # and the hashes make a changed upstream file fail clearly instead of silently
 # changing the quality measurements.
@@ -61,25 +66,30 @@ def main():
     cache.mkdir(exist_ok=True)
     for name, (src, axes) in FONTS.items():
         out = REFDIR / f"{name}.ttf"
-        if out.exists():
-            continue
+        manifest = out.with_suffix(".json")
+        import fontTools
+
+        recipe = {"raw_sha256": RAW_SHA256[src], "axes": axes, "fonttools": fontTools.__version__}
+        if out.exists() and manifest.exists():
+            recorded = json.loads(manifest.read_text())
+            if recorded.get("recipe") == recipe and recorded.get("output_sha256") == hashlib.sha256(out.read_bytes()).hexdigest():
+                continue
         raw = cache / src.replace("/", "_").replace("[", "_").replace("]", "_").replace(",", "_")
-        if not raw.exists():
-            url = BASE + src.replace("[", "%5B").replace("]", "%5D").replace(",", "%2C")
-            print("fetching", url)
-            urllib.request.urlretrieve(url, raw)
-        digest = hashlib.sha256(raw.read_bytes()).hexdigest()
-        expected = RAW_SHA256[src]
-        if digest != expected:
-            raise ValueError(
-                f"reference font {src} has SHA-256 {digest}, expected {expected}; "
-                "review and update the pin before using this reference"
-            )
+        url = BASE + src.replace("[", "%5B").replace("]", "%5D").replace(",", "%2C")
+        fetch(url, raw, RAW_SHA256[src])
         font = TTFont(raw)
         if axes:
             font = instantiateVariableFont(font, axes)
-        font.save(out)
+        # FontTools defaults to wall-clock timestamps when saving instances.
+        font.recalcTimestamp = False
+        with atomic_output(out) as temporary:
+            font.save(temporary)
+        with atomic_output(manifest) as temporary:
+            temporary.write_text(json.dumps({"recipe": recipe, "recipe_sha256": json_digest(recipe),
+                                             "output_sha256": hashlib.sha256(out.read_bytes()).hexdigest()},
+                                            indent=2) + "\n")
         print("made", out.name)
+    fetch_system_references(REFDIR)
 
 
 if __name__ == "__main__":

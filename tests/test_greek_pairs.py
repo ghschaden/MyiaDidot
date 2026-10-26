@@ -12,6 +12,7 @@ the UDHR texts (`make udhr`); skipped without them.
 After an intended change: scripts/update_test_data.py --greek --ufo UFO.
 """
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -29,14 +30,19 @@ def greek_findings(ufo_path, otf):
     from greek_pairs import agreeing_against
 
     udhr = ROOT / "build" / "udhr"
-    if not all((udhr / n).exists() for n in ("udhr_ell_monotonic.xml", "udhr_eng.xml")):
+    if not all((udhr / n).exists() for n in ("udhr_ell_monotonic.xml", "udhr_ell_polytonic.xml", "udhr_eng.xml")):
         return None
-    return agreeing_against(Path(ufo_path).stem.split("-", 1)[-1], myia=otf)
+    try:
+        return agreeing_against(Path(ufo_path).stem.split("-", 1)[-1], myia=otf)
+    except FileNotFoundError:
+        return None
 
 
 def test_greek_pairs(otf_path, ufo_path):
     found = greek_findings(ufo_path, otf_path)
     if found is None:
+        if os.environ.get("MYIA_REQUIRE_REFERENCES") == "1":
+            pytest.fail("required references or UDHR texts missing; provision pinned inputs first")
         pytest.skip("references or UDHR texts missing (build/refs/, make udhr)")
     listed = read_list(style_data("greek-pairs.txt", ufo_path).name)
     new = {p: off for p, off in found.items() if p not in listed}

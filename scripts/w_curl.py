@@ -4,7 +4,7 @@ from copy import deepcopy
 from math import radians, tan
 
 from fontTools.pens.roundingPen import RoundingPen
-from make_italic import XH, shear
+from italic_geometry import XH, shear
 from ufoLib2.objects import Glyph, Point
 from upright_aleph import add_extrema, fair_joins
 

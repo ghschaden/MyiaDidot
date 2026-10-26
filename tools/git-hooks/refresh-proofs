@@ -13,9 +13,9 @@ flock -n 9 || exit 0  # the build running takes the request
 while [ -f "$state/proofs.wanted" ]; do
     rm -f "$state/proofs.wanted"
     head=$(git rev-parse HEAD)
-    rm -f build/proofs/built-from
-    if nice make proof > build/proofs/refresh.log 2>&1; then
-        echo "$head" > build/proofs/built-from
+    if nice .venv/bin/python -I scripts/validate_snapshot.py --tree "$head" --head "$head" \
+        --publish-proofs -- make proof > build/proofs/refresh.log 2>&1; then
+        : # artifacts and provenance were published together
     else
         echo "make proof failed for $head" >> build/proofs/refresh.log
     fi

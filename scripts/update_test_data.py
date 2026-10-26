@@ -14,8 +14,9 @@ Every run accepts the font's current behaviour as correct, so run it only
 for an intended change, and review `git diff tests/data` before committing.
 --golden and --digest first shape compare_shaping.py's corpus with the
 style as committed (HEAD) and as it is now, as `make regress` does, and
-refuse unless --expect-changes gives the number of strings that differ:
-run once without it, read the differences shown, then give the number.
+write a complete JSON report and require --accept-report SHA256 when changes
+exist. Review that exact report before accepting. --expect-changes optionally
+checks the count as well; a count alone never accepts changed shaping.
 --cmap only ever adds code points (the coverage ratchet). --exceptions adds
 the current NFD/composite/fontbakery failures that are not listed yet, under
 the reason given with --reason, and leaves existing entries alone. --lint
@@ -38,11 +39,12 @@ the Cyrillic pairs outside the references' whole range (cyrillic-pairs.txt
 """
 
 import argparse
+import hashlib
 import json
 import sys
+import tempfile
 from pathlib import Path
 
-import ufo2ft
 import ufoLib2
 from fontTools.ttLib import TTFont
 
@@ -51,8 +53,11 @@ TESTS = ROOT / "tests"
 DATA = TESTS / "data"
 sys.path[:0] = [str(TESTS), str(ROOT / "scripts")]
 
-from conftest import Shaper, style_data
-from shaping import full_digest, shape_golden
+from baseline_support import style_data
+from build_support import atomic_output, content_hash, json_digest, publish_files, toolchain
+from font_builds import Builds, compiled_variant
+from font_shaping import Shaper
+from shaping_baselines import full_digest, shape_golden
 from test_composites import (
     composite_mismatches,
     nfd_mismatches,
@@ -64,34 +69,13 @@ from test_glyph_lint import lint_keys
 from test_quality import quality_keys
 
 
-def build(ufo_path, tmp):
-    font = ufoLib2.Font.open(ufo_path)
-    otf = tmp / "test.otf"
-    ufo2ft.compileOTF(font, useProductionNames=False, optimizeCFF=0).save(otf)
-    release = tmp / "release.otf"
-    ufo2ft.compileOTF(ufoLib2.Font.open(ufo_path)).save(release)
-    dec = TTFont(otf)
-    import unicodedata
-
-    for table in dec["cmap"].tables:
-        for cp in list(table.cmap):
-            if len(unicodedata.normalize("NFD", chr(cp))) > 1:
-                del table.cmap[cp]
-    decp = tmp / "decomposed.otf"
-    dec.save(decp)
-    return font, otf, release, decp
-
-
-def append_exceptions(name, keys, reason, header):
+def append_exceptions(outputs, name, keys, reason, header):
     path = DATA / name
     existing = read_list(name)
     add = [(k, why) for k, why in keys if k not in existing]
-    if not path.exists():
-        path.write_text(header, encoding="utf-8")
-    if add:
-        with path.open("a", encoding="utf-8") as fh:
-            for k, why in add:
-                fh.write(f"{k:24} # {reason}: {why}\n")
+    text = path.read_text(encoding="utf-8") if path.exists() else header
+    text += "".join(f"{k:24} # {reason}: {why}\n" for k, why in add)
+    outputs[path] = text
     print(f"{name}: {len(add)} added, {len(existing)} kept")
 
 
@@ -112,41 +96,49 @@ def shaping_changes(ufo_path, otf, tmp):
     if archive.returncode:
         return None
     subprocess.run(["tar", "-x", "-C", str(head)], input=archive.stdout, check=True)
-    head_otf = tmp / "head.otf"
-    ufo2ft.compileOTF(ufoLib2.Font.open(head / rel), useProductionNames=False, optimizeCFF=0).save(head_otf)
+    head_otf = compiled_variant(head / rel, "test_otf")
     ref, new = CorpusShaper(str(head_otf)), CorpusShaper(str(otf))
-    total, diffs = 0, []
+    total, diffs, digest = 0, [], hashlib.sha256()
     for text, feats, script, lang in corpus(ref.cmap):
         total += 1
-        a, b = ref.shape(text, feats, script, lang), new.shape(text, feats, script, lang)
+        a, b = ref.shape(text, feats, script=script, language=lang), new.shape(text, feats, script=script, language=lang)
+        digest.update(json.dumps([text, b], ensure_ascii=False).encode())
         if a != b:
-            diffs.append((text, feats, lang, a, b))
-    return total, diffs
+            diffs.append({"text": text, "features": feats, "script": script, "language": lang,
+                          "before": a, "after": b})
+    return total, diffs, (digest.hexdigest() if ref.cmap == new.cmap else None)
 
 
-def check_changes(ufo_path, otf, tmp, expected, show=20):
-    """Refuse to take a shaping baseline unless the number of strings that
-    changed against HEAD is the number the person read (CLAUDE.md: read
-    `make regress` before accepting a new baseline)."""
+def check_changes(ufo_path, otf, tmp, expected, accepted=None, report_path=None):
+    """Require acceptance of the exact report, not merely its change count."""
     found = shaping_changes(ufo_path, otf, tmp)
     if found is None:
-        print("not committed yet: no shaping to compare against")
-        return
-    total, diffs = found
-    glyphs = sum(1 for *_, a, b in diffs if [g[0] for g in a] != [g[0] for g in b])
-    print(f"{total} strings shaped, {len(diffs)} differ from HEAD "
-          f"({glyphs} in their glyphs, {len(diffs) - glyphs} in positions only)")
-    if expected == len(diffs):
-        return
-    for text, feats, lang, a, b in diffs[:show]:
-        print(f"\n{text!r} {feats or ''} {lang or ''}\n  HEAD: {a}\n  now:  {b}")
-    if len(diffs) > show:
-        print(f"\n... and {len(diffs) - show} more (make regress shows the Regular's)")
-    sys.exit(f"\nbaselines not written: {len(diffs)} strings differ, --expect-changes said "
-             f"{expected}. If these are the changes meant, rerun with --expect-changes {len(diffs)}.")
+        raise SystemExit("cannot accept shaping without a committed reference style")
+    total, diffs, digest = found
+    report = {"source": str(Path(ufo_path).resolve().relative_to(ROOT)),
+              "source_sha256": content_hash(ufo_path), "compiled_sha256": content_hash(otf),
+              "toolchain": toolchain(), "scripts_sha256": content_hash(ROOT / "scripts"),
+              "strings": total, "changes": diffs}
+    # Compiler-generated timestamps are deliberately excluded from approval:
+    # source content, toolchain and exact shaped changes establish its identity.
+    identity = {k: v for k, v in report.items() if k != "compiled_sha256"}
+    approval = json_digest(identity)
+    report["approval_sha256"] = approval
+    report_path = report_path or ROOT / "build" / "baseline-review.json"
+    with atomic_output(report_path) as temporary:
+        temporary.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"{total} strings shaped, {len(diffs)} differ from HEAD; full report: {report_path}")
+    if expected is not None and expected != len(diffs):
+        raise SystemExit(f"baselines not written: expected {expected} changes, found {len(diffs)}")
+    if diffs and accepted != approval:
+        raise SystemExit(f"baselines not written: review {report_path}, then use --accept-report {approval}")
+    if accepted is not None and accepted != approval:
+        raise SystemExit("baselines not written: accepted report no longer matches the inputs")
+    return (digest, total) if digest is not None else None
 
 
 def main():
+    outputs = {}
     ap = argparse.ArgumentParser()
     ap.add_argument("--ufo", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("--golden", action="store_true")
@@ -164,7 +156,16 @@ def main():
     ap.add_argument("--reason", default="baseline")
     ap.add_argument("--expect-changes", type=int, metavar="N",
                     help="strings shaped otherwise than by HEAD's font, as read (--golden, --digest)")
+    ap.add_argument("--accept-report", metavar="SHA256", help="digest of the exact shaping report reviewed")
+    ap.add_argument("--report", type=Path, help="complete shaping report (default: build/baseline-review.json)")
     args = ap.parse_args()
+    source_identity = content_hash(args.ufo)
+
+    def publish():
+        if content_hash(args.ufo) != source_identity:
+            raise SystemExit("baselines not written: source changed during review; retry")
+        publish_files(outputs)
+
     lists = []
     if args.lint:
         lists.append(("glyph-lint.txt", "glyph_lint.py", lambda: lint_keys(ufoLib2.Font.open(args.ufo))))
@@ -182,8 +183,6 @@ def main():
         lists.append(("styles-agree.txt", "tests/test_styles_agree.py",
                       lambda: differences(ufoLib2.Font.open(REGULAR), ufoLib2.Font.open(args.ufo))))
     if args.hinting:
-        import tempfile
-
         from test_hinting import hinting_keys
 
         def hint_keys():
@@ -210,33 +209,35 @@ def main():
         for k in sorted(found):
             why = listed.get(k) or (f"{args.reason}: {found[k]}" if found[k] else args.reason)[:200]
             lines.append(f"{k:32} # {why}\n")
-        path.write_text("".join(lines), encoding="utf-8")
+        outputs[path] = "".join(lines)
         print(f"{path.name}: {len(found)} findings, {len(set(found) - set(listed))} new, "
               f"{len(set(listed) - set(found))} gone")
     shaping = (args.golden, args.digest, args.cmap, args.exceptions, args.lookups, args.greek, args.cyrillic)
     if lists and not any(shaping):
+        publish()
         return
     if not any(shaping):
         ap.error("say what to update")
 
-    import tempfile
-
     DATA.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
-        ufo, otf, release, decp = build(args.ufo, Path(tmp))
+        builds = Builds(args.ufo, Path(tmp))
+        ufo, otf = builds.font, builds.otf
+        checked_digest = None
         tt, shaper = TTFont(otf), Shaper(otf)
         if args.golden or args.digest:
-            check_changes(args.ufo, otf, Path(tmp), args.expect_changes)
+            checked_digest = check_changes(args.ufo, otf, Path(tmp), args.expect_changes,
+                                           args.accept_report, args.report)
 
         if args.golden:
             golden = shape_golden(shaper)
             path = style_data("shaping-golden.json", args.ufo)
-            path.write_text(json.dumps(golden, ensure_ascii=False, indent=0) + "\n", encoding="utf-8")
+            outputs[path] = json.dumps(golden, ensure_ascii=False, indent=0) + "\n"
             print(f"{path.name}: {len(golden)} cases")
         if args.digest:
-            digest, n = full_digest(shaper, tt.getBestCmap())
+            digest, n = checked_digest or full_digest(shaper, tt.getBestCmap())
             path = style_data("shaping-digest.txt", args.ufo)
-            path.write_text(f"{digest} {n}\n")
+            outputs[path] = f"{digest} {n}\n"
             print(f"{path.name}: {n} strings")
         pair_lists = []
         if args.greek:
@@ -259,7 +260,7 @@ def main():
             for p, off in sorted(found.items()):
                 why = listed.get(p, "").split(": ", 1)[-1] if p in listed else args.reason
                 lines.append(f"{p:8} # off {off:+.3f}: {why}\n")
-            path.write_text("".join(lines), encoding="utf-8")
+            outputs[path] = "".join(lines)
             print(f"{path.name}: {len(found)} pairs, {len(set(found) - set(listed))} new, "
                   f"{len(set(listed) - set(found))} gone")
         if args.lookups:
@@ -268,36 +269,38 @@ def main():
             path = style_data("lookups.txt", args.ufo)
             found = lookup_summary(tt)
             old = path.read_text(encoding="utf-8").splitlines() if path.exists() else []
-            path.write_text("\n".join(found) + "\n", encoding="utf-8")
+            outputs[path] = "\n".join(found) + "\n"
             print(f"{path.name}: {len(found)} lookups, {len(set(found) - set(old))} new lines, "
                   f"{len(set(old) - set(found))} gone")
         if args.cmap:
             path = DATA / "cmap.txt"
             old = {int(x, 16) for x in path.read_text().split()} if path.exists() else set()
             new = old | set(tt.getBestCmap())
-            path.write_text("\n".join(f"{u:04X}" for u in sorted(new)) + "\n")
+            outputs[path] = "\n".join(f"{u:04X}" for u in sorted(new)) + "\n"
             print(f"cmap.txt: {len(new) - len(old)} code points added, {len(new)} total")
         if args.exceptions:
-            nfd = nfd_mismatches(tt, shaper, Shaper(decp))
+            nfd = nfd_mismatches(tt, shaper, Shaper(builds.decomposed))
             append_exceptions(
-                "nfd-exceptions.txt", sorted(nfd.items()), args.reason,
+                outputs, "nfd-exceptions.txt", sorted(nfd.items()), args.reason,
                 "# Precomposed characters allowed to render differently from their\n"
                 "# decomposition (base + positioned marks). Remove a line once fixed.\n")
-            sc = smallcap_mismatches(tt, shaper, Shaper(decp))
+            sc = smallcap_mismatches(tt, shaper, Shaper(builds.decomposed))
             append_exceptions(
-                "smallcap-nfd-exceptions.txt", sorted(sc.items()), args.reason,
+                outputs, "smallcap-nfd-exceptions.txt", sorted(sc.items()), args.reason,
                 "# Small caps (smcp/c2sc) allowed to differ between precomposed and\n"
                 "# decomposed input. Remove a line once fixed.\n")
             comp = composite_mismatches(ufo)
             append_exceptions(
-                "composite-exceptions.txt", sorted(comp.items()), args.reason,
+                outputs, "composite-exceptions.txt", sorted(comp.items()), args.reason,
                 "# Composites allowed to differ from scripts/composites.py's rules.\n")
-            fb = fontbakery_failures(release, Path(tmp))
+            fb = fontbakery_failures(builds.release, Path(tmp))
             append_exceptions(
-                "fontbakery-allow.txt",
+                outputs, "fontbakery-allow.txt",
                 sorted((k, " ".join(" / ".join(str(m) for m in v).split())[:160])
                        for k, v in fb.items()),
                 args.reason, "# fontbakery check-universal failures accepted for now.\n")
+
+    publish()
 
 
 if __name__ == "__main__":

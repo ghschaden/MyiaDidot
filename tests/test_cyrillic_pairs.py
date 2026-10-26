@@ -13,6 +13,7 @@ UDHR texts (`make udhr`); skipped without them.
 After an intended change: scripts/update_test_data.py --cyrillic --ufo UFO.
 """
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -32,12 +33,17 @@ def cyrillic_findings(ufo_path, otf):
     udhr = ROOT / "build" / "udhr"
     if not all((udhr / n).exists() for n in (*SCRIPTS["cyrillic"]["texts"], "udhr_eng.xml")):
         return None
-    return outside(Path(ufo_path).stem.split("-", 1)[-1], myia=otf)
+    try:
+        return outside(Path(ufo_path).stem.split("-", 1)[-1], myia=otf)
+    except FileNotFoundError:
+        return None
 
 
 def test_cyrillic_pairs(otf_path, ufo_path):
     found = cyrillic_findings(ufo_path, otf_path)
     if found is None:
+        if os.environ.get("MYIA_REQUIRE_REFERENCES") == "1":
+            pytest.fail("required references or UDHR texts missing; provision pinned inputs first")
         pytest.skip("references or UDHR texts missing (build/refs/, make udhr)")
     listed = read_list(style_data("cyrillic-pairs.txt", ufo_path).name)
     new = {p: off for p, off in found.items() if p not in listed}

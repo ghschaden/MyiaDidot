@@ -67,7 +67,7 @@ for style in ("Italic", "BoldItalic"):
             scale = 0.022
             x = 35
             baseline = y + row * 90
-            for name, advance, dx, dy in shaper.shape(text, feats, None, language):
+            for name, advance, dx, dy in shaper.shape(text, feats, language=language):
                 pen = SVGPathPen(font)
                 font[name].draw(pen)
                 out.append(f'<path d="{pen.getCommands()}" transform="translate({x+dx*scale},{baseline-dy*scale}) scale({scale},{-scale})"/>')

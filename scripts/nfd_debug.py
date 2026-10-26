@@ -18,7 +18,7 @@ from fontTools.pens.boundsPen import BoundsPen
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tests"))
-from conftest import Shaper
+from font_shaping import Shaper
 
 
 def boxes(gs, run):

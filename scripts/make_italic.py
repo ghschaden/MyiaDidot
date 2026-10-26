@@ -37,6 +37,7 @@ import math
 import re
 import subprocess
 import sys
+import tempfile
 import unicodedata
 from pathlib import Path
 
@@ -51,6 +52,7 @@ import case_forms
 import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from derive import BIG, draw_path, embolden, rezone
+from italic_geometry import ANGLE, CAP, SLANT, XH, shear, upright
 from make_bold import WHOLE_KEY, mark_like, redraw, write
 from respace import CUT_KEY, classifier, respace, sidebearings, undo
 from smallcaps import ink_bounds, ink_slice
@@ -58,12 +60,8 @@ from space_figures import space as space_figures
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE_SFD = ROOT / "sources/oldstand/OldStandard-Italic.sfd"
-SOURCE_UFO = ROOT / "build/oldstand/OldStandard-Italic.ufo"
-ANGLE = 15.2  # Old Standard's italic angle
-SLANT = math.tan(math.radians(ANGLE))
 KX = 1.98  # across: between the x-height (1.939) and cap-height (2.014) scales
 OS_XH, OS_CAP = 456, 712
-XH, CAP = 884, 1434
 # Old Standard's strokes as they are, scaled (AX, AY across and up: none),
 # their thick upright strokes made WEIGHT heavier as they are taken
 # (weight_thick: hairlines and thin strokes as they are), the capitals
@@ -177,12 +175,12 @@ class Zones(FilterPen):
 
 
 def source_font():
-    if not SOURCE_UFO.exists():
-        SOURCE_UFO.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="myia-oldstand-") as temporary:
+        source = Path(temporary) / "OldStandard-Italic.ufo"
         subprocess.run(["fontforge", "-quiet", "-lang=py", "-c",
-                        f"import fontforge; fontforge.open({str(SOURCE_SFD)!r}).generate({str(SOURCE_UFO)!r})"],
+                        f"import fontforge; fontforge.open({str(SOURCE_SFD)!r}).generate({str(source)!r})"],
                        check=True)
-    return ufoLib2.Font.open(SOURCE_UFO)
+        return ufoLib2.Font.open(source, lazy=False)
 
 
 def sloped(t_y0):
@@ -190,20 +188,6 @@ def sloped(t_y0):
     return (1, 0, SLANT, 1, -SLANT * t_y0, 0)
 
 
-def shear(g, s, y0=XH / 2):
-    """Slant (s > 0) or unslant (s < 0) a glyph about the height y0."""
-    if g.contours:
-        rec = RecordingPen()
-        for c in g.contours:
-            c.draw(rec)
-        out = ufoLib2.objects.Glyph()
-        rec.replay(TransformPen(out.getPen(), (1, 0, s, 1, -s * y0, 0)))
-        redraw(g, out)
-    for c in g.components:
-        xx, xy, yx, yy, dx, dy = c.transformation
-        c.transformation = (xx, xy, yx, yy, round(dx + dy * s), dy)
-    for a in g.anchors:
-        a.x = round(a.x + (a.y - y0) * s)
 
 
 # Old Standard's letters that stood out in running text, redrawn (chosen by
@@ -310,12 +294,6 @@ def lighten_a(font):
     redraw(g, out)
 
 
-def upright(font):
-    """The whole font unslanted: what is made in it is slanted back."""
-    up = copy.deepcopy(font)
-    for g in up:
-        shear(g, -SLANT)
-    return up
 
 
 def weight_thick(rec, ax, thin=80, thick=120):
@@ -1220,35 +1198,35 @@ def smallcaps_stage(font, later=()):
             g.lib[SMALLCAP_DRAFT_KEY] = True  # to be replaced
             g.lib.pop("org.myiadidot.derived", None)  # the Regular's ɠ.sc is derived; this one is drafted
     up = upright(font)
-    work = ROOT / "build/italic"
-    work.mkdir(parents=True, exist_ok=True)
-    up.features.text = ""  # FontForge only needs the outlines
-    up.save(work / "upright.ufo", overwrite=True)
-    height = font.lib.get(sc.HEIGHT_KEY, sc.DEFAULT_HEIGHT)
-    lc = derive.stems_at(up, "n", XH / 2)[0]
-    uc = derive.stems_at(up, "H", CAP - 300)[0]
-    # drafted without the added weight, then given it as a letter: drafted
-    # at the weighted stem, FontForge thickens the curves less (c.sc o.sc
-    # lighter than their kind)
-    lc, uc = lc[1] - lc[0] - WEIGHT, uc[1] - uc[0] - CAP_WEIGHT
-    stem = lc + (height - XH) / (CAP - XH) * (uc - lc)
-    subprocess.run(["fontforge", "-quiet", "-lang=py", "-script", str(ROOT / "scripts/smallcaps_draft.py"),
-                    str(work / "upright.ufo"), str(work / "smallcaps.ufo"), str(height), f"{stem:.0f}/{uc:.0f}"],
-                   check=True)
-    drafts = ufoLib2.Font.open(work / "smallcaps.ufo")
-    sc.configure(height)
-    log = []
-    sc.import_drafts(up, {g.name: g for g in drafts if g.name.endswith(".sc")}, log, redraft=True)
-    made = [line.split()[1] for line in log]
-    for name in made:
-        put(font, up, name, "small cap draft")
-        g = font[name]
-        rec = RecordingPen()
-        for c in g.contours:
-            c.draw(rec)
-        g.clearContours()
-        weight_thick(rec, WEIGHT).draw(g.getPen())
-    return made
+    with tempfile.TemporaryDirectory(prefix="myia-italic-") as temporary:
+        work = Path(temporary)
+        up.features.text = ""  # FontForge only needs the outlines
+        up.save(work / "upright.ufo", overwrite=True)
+        height = font.lib.get(sc.HEIGHT_KEY, sc.DEFAULT_HEIGHT)
+        lc = derive.stems_at(up, "n", XH / 2)[0]
+        uc = derive.stems_at(up, "H", CAP - 300)[0]
+        # drafted without the added weight, then given it as a letter: drafted
+        # at the weighted stem, FontForge thickens the curves less (c.sc o.sc
+        # lighter than their kind)
+        lc, uc = lc[1] - lc[0] - WEIGHT, uc[1] - uc[0] - CAP_WEIGHT
+        stem = lc + (height - XH) / (CAP - XH) * (uc - lc)
+        subprocess.run(["fontforge", "-quiet", "-lang=py", "-script", str(ROOT / "scripts/smallcaps_draft.py"),
+                        str(work / "upright.ufo"), str(work / "smallcaps.ufo"), str(height), f"{stem:.0f}/{uc:.0f}"],
+                       check=True)
+        drafts = ufoLib2.Font.open(work / "smallcaps.ufo")
+        sc.configure(height)
+        log = []
+        sc.import_drafts(up, {g.name: g for g in drafts if g.name.endswith(".sc")}, log, redraft=True)
+        made = [line.split()[1] for line in log]
+        for name in made:
+            put(font, up, name, "small cap draft")
+            g = font[name]
+            rec = RecordingPen()
+            for c in g.contours:
+                c.draw(rec)
+            g.clearContours()
+            weight_thick(rec, WEIGHT).draw(g.getPen())
+        return made
 
 
 # the Italic's own kerning over the Regular's (measured against italics):

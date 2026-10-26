@@ -16,14 +16,14 @@ leaves hundreds of letters off their zones), hinted by scripts/ps_hints.py, meas
 FreeType's CFF engine (hint_zones.measure_cff), against hint-zones-cff.txt,
 hint-zones-cff-Italic.txt ...
 """
+import shutil
 import sys
 
-import ufo2ft
-import ufoLib2
 from conftest import ROOT, style_data
 from test_composites import read_list
 
 sys.path.insert(0, str(ROOT / "scripts" / "quality"))
+from font_builds import compiled_variant
 from hint_control import hint  # noqa: E402
 from hint_zones import INTERPRETERS, measure, measure_cff, summary  # noqa: E402
 from ps_hints import hint as ps_hint  # noqa: E402
@@ -32,7 +32,7 @@ from ps_hints import hint as ps_hint  # noqa: E402
 def hinting_keys(ufo_path, tmp):
     """{"v40 glyph:top1434 count": ""} for a style, hinted as `make ttf` does."""
     unhinted, hinted = tmp / "unhinted.ttf", tmp / "hinted.ttf"
-    ufo2ft.compileTTF(ufoLib2.Font.open(ufo_path), flattenComponents=True, removeOverlaps=True).save(unhinted)
+    shutil.copyfile(compiled_variant(ufo_path, "hint_ttf"), unhinted)
     hint(unhinted, hinted)
     keys = {}
     for version in INTERPRETERS:
@@ -45,7 +45,7 @@ def cff_hinting_keys(ufo_path, tmp):
     """{"cff glyph:top1434 count": ""} for a style, built and hinted as
     `make otf` does."""
     hinted = tmp / "hinted.otf"
-    ufo2ft.compileOTF(ufoLib2.Font.open(ufo_path), removeOverlaps=True).save(hinted)
+    shutil.copyfile(compiled_variant(ufo_path, "cff_otf"), hinted)
     ps_hint(hinted)
     return {f"cff {glyph} {count}": "" for glyph, count in summary(measure_cff(hinted)).items()}
 

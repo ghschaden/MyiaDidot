@@ -51,7 +51,7 @@ def test_ligatures_follow_their_final_base(ufo):
 
 def test_new_ligature_feature_and_language_policy(shaper):
     def names(text, features=None, language="en"):
-        return [g[0] for g in shaper.shape(text, features, language)]
+        return [g[0] for g in shaper.shape(text, features, language=language)]
 
     for name in F_LIGATURES:
         text = name.replace("_", "")

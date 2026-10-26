@@ -15,11 +15,12 @@ page is in-quarto, 245 x 320 mm, with margins after the Van de Graaf canon;
 
 import argparse
 import sys
-import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-SOURCE = "https://raw.githubusercontent.com/eric-muller/udhr/main/data/udhr/udhr_{}.xml"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from reference_inputs import fetch_udhr
+
 NS = "{http://efele.net/udhr}"
 
 # UDHR file code, babel language, the language's own name
@@ -82,13 +83,7 @@ def tex(s):
 
 
 def fetch(code, cache):
-    path = cache / f"udhr_{code}.xml"
-    if not path.exists():
-        cache.mkdir(parents=True, exist_ok=True)
-        with urllib.request.urlopen(SOURCE.format(code), timeout=60) as r:
-            path.write_bytes(r.read())
-    return path
-
+    return fetch_udhr(code, cache)
 
 def page(path, babel, name):
     root = ET.parse(path).getroot()

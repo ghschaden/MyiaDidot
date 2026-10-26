@@ -32,7 +32,7 @@ if git diff --cached --name-only --diff-filter=d | grep -qE '\.py$|^pyproject\.t
     fi
 fi
 
-if ! git diff --cached --name-only | grep -qE '^(sources|tests|scripts|Makefile|pyproject.toml|uv.lock)'; then
+if ! git diff --cached --name-only | grep -qE '^(sources|tests|scripts|tools/git-hooks|Makefile|pyproject.toml|uv.lock|\.python-version)'; then
     exit 0  # nothing that affects the fonts
 fi
 
@@ -42,20 +42,19 @@ if [ ! -x .venv/bin/pytest ]; then
 fi
 
 repro=0
-if git diff --cached --name-only | grep -qE '^(sources/MyiaDidot-|scripts/(make_italic|make_bold|derive|built_from|smallcaps|smallcaps_draft|composites|respace|space_figures|glyph_lint)\.py)'; then
+if git diff --cached --name-only | grep -qE '^(sources/|scripts/|Makefile$|pyproject\.toml$|uv\.lock$|\.python-version$)'; then
     repro=1
 fi
 
-# the state checked: the working tree (what the tests read), the index
-# (which checks run) and the checks chosen
+# The staged tree is exactly what the commit will contain. Validation runs
+# from that immutable tree, including staged scripts and UFOs.
 state=$(git rev-parse --git-path myia-checks)
 mkdir -p "$state"
-tmpidx="$state/index.tmp"
-cp "${GIT_INDEX_FILE:-$(git rev-parse --git-path index)}" "$tmpidx"
-work=$(GIT_INDEX_FILE="$tmpidx" git add -A && GIT_INDEX_FILE="$tmpidx" git write-tree)
-rm -f "$tmpidx"
 staged=$(git write-tree)
-key=$(printf '%s %s %s\n' "$work" "$staged" "$repro" | git hash-object --stdin)
+head=$(git rev-parse HEAD)
+# Tool upgrades invalidate a cached pass even when source files are unchanged.
+toolchain=$(.venv/bin/python -I -c 'import sys; sys.path.insert(0, "scripts"); from build_support import json_digest, toolchain; print(json_digest(toolchain()))') || exit 1
+key=$(printf '%s %s %s %s\n' "$staged" "$repro" "$head" "$toolchain" | git hash-object --stdin)
 
 if [ -n "$MYIA_RECHECK" ]; then
     rm -f "$state/$key.pass" "$state/$key.fail"
@@ -85,7 +84,7 @@ else
         rm -f "$f" "${f%.log}.pass" "${f%.log}.fail"
     done
     : > "$state/$key.log"
-    setsid sh tools/git-hooks/run-checks "$state" "$key" "$repro" </dev/null >/dev/null 2>&1 &
+    setsid sh tools/git-hooks/run-checks "$state" "$key" "$repro" "$staged" "$head" </dev/null >/dev/null 2>&1 &
     i=0
     while [ ! -f "$state/$key.pid" ] && [ $i -lt 50 ]; do sleep 0.1; i=$((i + 1)); done
 fi

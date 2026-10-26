@@ -49,8 +49,9 @@ Moved from CLAUDE.md (its ground rules apply).
   outside. Its pairs are a sample of its word lists, not every pair.
 - Read `make regress` before accepting a new baseline: one composition rule
   once changed 1098 strings where a few were meant. (Enforced:
-  `update_test_data.py --golden/--digest` shows the strings that differ from
-  HEAD and writes nothing without `--expect-changes N`, N being that count.)
+  `update_test_data.py --golden/--digest` writes a complete JSON report of
+  the strings that differ from HEAD; changed shaping needs that report's
+  digest via `--accept-report`. `--expect-changes N` only checks the count.)
 - Metadata fails silently: glyph categories (enforced: combining marks are
   marks, tests/test_recipes.py), glyph order, lookup order (enforced: the
   compiled lookup order per style, `lookups*.txt`, tests/test_lookups.py;

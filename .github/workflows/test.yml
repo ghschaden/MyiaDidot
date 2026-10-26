@@ -6,6 +6,31 @@ on:
   pull_request:
 
 jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: sudo apt-get update -q && sudo apt-get install -y -q fontforge
+      - run: uv sync --frozen --python 3.12
+      - run: make reproduce
+
+  comparison:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen --python 3.12
+      - name: provision pinned comparison inputs
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q libegl1 libgl1
+          .venv/bin/python -I scripts/quality/fetch_refs.py
+          .venv/bin/python -I scripts/reference_inputs.py --udhr
+      - name: require Greek and Cyrillic comparisons
+        env:
+          MYIA_REQUIRE_REFERENCES: "1"
+        run: .venv/bin/pytest -q tests/test_greek_pairs.py tests/test_cyrillic_pairs.py
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -15,16 +40,16 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       # Match the Unicode data used for generated features and test baselines.
       - run: uv sync --frozen --python 3.12
+      - name: graphics libraries for tests and visual diff
+        run: sudo apt-get update -q && sudo apt-get install -y -q libegl1 libgl1
       - run: .venv/bin/ruff check --output-format github .
-      - run: .venv/bin/pytest -q
+      - run: .venv/bin/pytest -q --durations=15
       - name: build all styles (OTF, TTF, WOFF2; hinted and with STAT, as make builds them)
         run: make fonts
       - name: audit OpenType features
         run: .venv/bin/python -I scripts/feature_audit.py fonts/otf/*.otf
       - name: render specimen proofs
         run: .venv/bin/python -I scripts/proof_svg.py fonts/otf/*.otf --out build/proofs/ci
-      - name: libraries Skia needs (visual diff)
-        run: sudo apt-get update -q && sudo apt-get install -y -q libegl1 libgl1
       - name: visual diff against the previous revision
         env:
           BASE: ${{ github.event.pull_request.base.sha || github.event.before }}

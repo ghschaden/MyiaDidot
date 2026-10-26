@@ -41,16 +41,9 @@ import uharfbuzz as hb
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import MYIA, REFDIR, ROOT, Face, runs
 
-SYSTEM_REFS = {
-    "Regular": ["/usr/share/fonts/libertinus/LibertinusSerif-Regular.otf",
-                "~/texlive/2026/texmf-dist/fonts/truetype/SIL/charissil/CharisSIL-Regular.ttf"],
-    "Italic": ["/usr/share/fonts/libertinus/LibertinusSerif-Italic.otf",
-               "~/texlive/2026/texmf-dist/fonts/truetype/SIL/charissil/CharisSIL-Italic.ttf"],
-    "Bold": ["/usr/share/fonts/libertinus/LibertinusSerif-Bold.otf",
-             "~/texlive/2026/texmf-dist/fonts/truetype/SIL/charissil/CharisSIL-Bold.ttf"],
-    "BoldItalic": ["/usr/share/fonts/libertinus/LibertinusSerif-BoldItalic.otf",
-                   "~/texlive/2026/texmf-dist/fonts/truetype/SIL/charissil/CharisSIL-BoldItalic.ttf"],
-}
+SYSTEM_REFS = {style: [str(REFDIR / f"LibertinusSerif-{style}.otf"),
+                       str(REFDIR / f"CharisSIL-{style}.ttf")]
+               for style in ("Regular", "Italic", "Bold", "BoldItalic")}
 PINNED = {"Regular": ["GFSDidot-Regular", "EBGaramond-Regular"], "Italic": ["EBGaramond-Italic"],
           "Bold": ["EBGaramond-Bold"], "BoldItalic": ["EBGaramond-BoldItalic"]}
 SCRIPTS = {
@@ -69,8 +62,10 @@ SCRIPTS = {
 
 def refs(style, script="greek"):
     pinned = SCRIPTS[script]["pinned"][style]
-    paths = [str(REFDIR / f"{n}.ttf") for n in pinned if (REFDIR / f"{n}.ttf").exists()]
-    paths += [str(Path(p).expanduser()) for p in SYSTEM_REFS[style] if Path(p).expanduser().exists()]
+    paths = [str(REFDIR / f"{n}.ttf") for n in pinned] + SYSTEM_REFS[style]
+    missing = [p for p in paths if not Path(p).exists()]
+    if missing:
+        raise FileNotFoundError("reference inputs missing; run scripts/quality/fetch_refs.py: " + ", ".join(missing))
     return paths
 
 

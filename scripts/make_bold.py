@@ -857,9 +857,8 @@ def separate_breve_grave_stacks(font):
             upper.transformation = (xx, xy, yx, yy, dx, dy + math.ceil(STACK_GAP_LC - gap))
 
 
-def write(font, path, smooth=True, separate_stacks=False):
-    """Save font as the Bold: a new UFO, or an existing one updated in place
-    (its glyphs replaced, the files of glyphs no longer there removed). Its
+def finalize(font, smooth=True, separate_stacks=False):
+    """Finish a generated style before persistence. Its
     points, anchors and component offsets are rounded to whole units first,
     and what that leaves cleaned (glyph_lint). The Regular's record of what
     its derived glyphs were built from (built_from.py) is left behind: a
@@ -881,74 +880,19 @@ def write(font, path, smooth=True, separate_stacks=False):
             xx, xy, yx, yy, dx, dy = c.transformation
             c.transformation = (xx, xy, yx, yy, round(dx), round(dy))
     fix(font)  # what rounding left (a unit's step)
-    from cedilla import finish as finish_cedilla
+    from finalization import finish_glyphs
 
-    finish_cedilla(font)
-    from t_slash import finish as finish_t_slash
-
-    finish_t_slash(font)
-    from j_bar import finish as finish_j_bar
-
-    finish_j_bar(font)
-    from dollar_bars import finish as finish_dollar_bars
-
-    finish_dollar_bars(font)
-    from dollar_drawing import finish as finish_dollar_drawing
-
-    finish_dollar_drawing(font)
-    from aleph import finish as finish_aleph
-
-    finish_aleph(font)
-    from symbol_joins import finish as finish_symbol_joins
-
-    finish_symbol_joins(font)
-    from glottal_modifier import finish as finish_glottal_modifier
-
-    finish_glottal_modifier(font)
-    from phi_drawing import finish as finish_phi_drawing
-
-    finish_phi_drawing(font)
-    from w_curl import finish as finish_w_curl
-
-    finish_w_curl(font)
-    from oldstyle_figures import finish as finish_oldstyle_figures
-
-    finish_oldstyle_figures(font)
-    from r_hook import fair_bold_stem, finish_shoulders
-    from r_hook import finish as finish_r_hook
-
-    fair_bold_stem(font)
-    finish_shoulders(font)
-    finish_r_hook(font)
-    from l_belt import finish as finish_l_belt
-
-    finish_l_belt(font)
-    from italic_ligatures import make as make_italic_ligatures
-
-    make_italic_ligatures(font)
+    finish_glyphs(font)
     if separate_stacks:
         separate_breve_grave_stacks(font)
     refit_horns(font)
-    if not path.exists():
-        font.save(path)
-        return
-    if not (path / "metainfo.plist").exists() or not (path / "layercontents.plist").exists():
-        font.save(path, overwrite=True)  # what a failed run left: not a UFO yet
-        return
-    target = ufoLib2.Font.open(path)
-    # delete only what is gone: deleting a glyph and inserting it again under
-    # the same name gets its file removed on saving
-    for name in [n for n in target.keys() if n not in font]:  # noqa: SIM118 (a Font iterates glyphs)
-        del target[name]
-    for g in font:
-        target.layers.defaultLayer.insertGlyph(g, g.name, overwrite=True)
-    target.info = font.info
-    target.kerning = font.kerning
-    target.groups = font.groups
-    target.features = font.features
-    target.lib = font.lib
-    target.save()
 
+
+def write(font, path, smooth=True, separate_stacks=False):
+    from ufo_io import save_font
+
+    finalize(font, smooth=smooth, separate_stacks=separate_stacks)
+    save_font(font, path)
 
 SMALL_SUFFIXES = ("superior", "inferior", ".numr", ".dnom", ".sups", ".subs")
 

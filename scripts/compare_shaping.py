@@ -13,9 +13,10 @@ import json
 import sys
 import unicodedata
 from collections import Counter
+from pathlib import Path
 
-import uharfbuzz as hb
-from fontTools.ttLib import TTFont
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 
 FEATURE_TESTS = [
     # (text, features, script, language)
@@ -73,27 +74,7 @@ def corpus(cmap):
     yield from FEATURE_TESTS
 
 
-class Shaper:
-    def __init__(self, path):
-        blob = hb.Blob.from_file_path(path)
-        self.font = hb.Font(hb.Face(blob))
-        tt = TTFont(path)
-        self.order = tt.getGlyphOrder()
-        self.cmap = tt.getBestCmap()
-
-    def shape(self, text, features, script, language):
-        buf = hb.Buffer()
-        buf.add_str(text)
-        buf.guess_segment_properties()
-        if script:
-            buf.script = script
-        if language:
-            buf.language = {"TRK": "tr", "ROM": "ro", "DEU": "de"}.get(language, language)
-        hb.shape(self.font, buf, features)
-        return [
-            (self.order[i.codepoint], p.x_advance, p.x_offset, p.y_offset)
-            for i, p in zip(buf.glyph_infos, buf.glyph_positions, strict=True)
-        ]
+from font_shaping import Shaper
 
 
 def main():
@@ -116,8 +97,8 @@ def main():
     total, diffs, kinds = 0, [], Counter()
     for text, feats, script, lang in corpus(ref.cmap):
         total += 1
-        a = [(rename.get(n, n), *pos) for n, *pos in ref.shape(text, feats, script, lang)]
-        b = new.shape(text, feats, script, lang)
+        a = [(rename.get(n, n), *pos) for n, *pos in ref.shape(text, feats, script=script, language=lang)]
+        b = new.shape(text, feats, script=script, language=lang)
         if a != b:
             if [g[0] for g in a] != [g[0] for g in b]:
                 kinds["glyphs"] += 1

@@ -6,7 +6,17 @@
 # where the next commit of the same tree finds it instead of running again.
 
 state=$1 key=$2 repro=$3
-echo $$ > "$state/$key.pid"
+if [ "${4:-}" != --inside ]; then
+    echo $$ > "$state/$key.pid"
+    if .venv/bin/python -I scripts/validate_snapshot.py --tree "$4" --head "$5" -- \
+        sh tools/git-hooks/run-checks "$state" "$key" "$repro" --inside >> "$state/$key.log" 2>&1; then
+        touch "$state/$key.pass"
+    else
+        touch "$state/$key.fail"
+    fi
+    rm -f "$state/$key.pid"
+    exit 0
+fi
 
 checks() {
     echo "pre-commit: running the test suite..."
@@ -31,13 +41,9 @@ checks() {
             return 1
         fi
     else
-        echo "pre-commit: fontforge missing, generated styles not checked"
+        echo "pre-commit: fontforge missing; required reproduction cannot run"
+        return 1
     fi
 }
 
-if checks >> "$state/$key.log" 2>&1; then
-    touch "$state/$key.pass"
-else
-    touch "$state/$key.fail"
-fi
-rm -f "$state/$key.pid"
+checks

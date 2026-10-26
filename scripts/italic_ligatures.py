@@ -7,7 +7,7 @@ from derive import BIG, draw_path, path_op, rect_path, stems_at, to_path
 from draft_ligatures import arch
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
-from make_italic import SLANT, XH, shear, upright
+from italic_geometry import SLANT, XH, shear, upright
 from ufoLib2.objects import Glyph
 from upright_aleph import add_extrema, fair_joins
 

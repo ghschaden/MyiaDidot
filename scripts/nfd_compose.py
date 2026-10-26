@@ -46,7 +46,7 @@ LOOKUP = "ccmpComposeAsDrawn"
 def mismatches(font):
     """{code point: text} of characters whose NFC and NFD forms draw apart,
     as they are or as small caps."""
-    from conftest import Shaper
+    from font_shaping import Shaper
     from test_composites import nfd_mismatches, smallcap_mismatches
 
     with tempfile.TemporaryDirectory() as tmp:

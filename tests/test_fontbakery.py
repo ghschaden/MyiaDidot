@@ -9,8 +9,6 @@ import json
 import subprocess
 
 import pytest
-import ufo2ft
-import ufoLib2
 from conftest import ROOT, style_data
 from test_composites import read_list
 
@@ -18,10 +16,10 @@ BAD = {"FAIL", "ERROR", "FATAL"}
 
 
 @pytest.fixture(scope="session")
-def release_otf(ufo_path, tmp_path_factory):
-    path = tmp_path_factory.mktemp("release") / f"{ufo_path.stem}.otf"
-    ufo2ft.compileOTF(ufoLib2.Font.open(ufo_path)).save(path)
-    return path
+def release_otf(ufo_path):
+    from font_builds import compiled_variant
+
+    return compiled_variant(ufo_path, "release_otf")
 
 
 def fontbakery_failures(font_path, tmp_path):
