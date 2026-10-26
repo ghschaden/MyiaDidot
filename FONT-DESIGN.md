@@ -41,10 +41,6 @@ counts here, where they quickly become stale.
 - **Bold Italic ɺ:** inspect the arm bracket's six-unit overshoot and
   foot's nine-unit overshoot against the intended italic construction;
   these may be natural curves rather than defects.
-- **Italic smooth rounding:** evaluate enabling smooth rounding together
-  with Bold Italic inheritance. An earlier experiment reduced Italic
-  smooth breaks but moved about fourteen Bold Italic glyphs across audit
-  thresholds. Review both weights before adopting it.
 
 ## Spacing: revisit only if specimens warrant it
 

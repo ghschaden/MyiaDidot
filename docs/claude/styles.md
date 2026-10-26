@@ -66,7 +66,10 @@ Moved from CLAUDE.md (its ground rules apply).
   extra ligatures (fb ft ſt ct ...) are rebuilt from the final italic bases
   by italic_ligatures.py in the shared style writer. The same recipes run
   on Bold Italic's final bases; keep draft_ligatures.py for the Romans.
-  The Italic generator runs smallcaps.py itself. Lib
+  The Italic generator runs smallcaps.py itself. It saves with smooth
+  rounding (`round_smoothly`) but for ROUND_PLAIN, glyphs whose repairs
+  match exact points or whose Bold Italic smoothing harms; check a new
+  rounding change in both italic weights. Lib
   `org.myiadidot.italicSource` says where each glyph came from; a rerun
   keeps "drawn" glyphs (set it after hand-editing one) and reviewed drafts
   (draft key cleared). Then `make normalize`. Review sheets:

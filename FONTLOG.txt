@@ -26,6 +26,28 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Development: Italic saved with smooth rounding
+
+    * make_italic.py now saves the Italic with make_bold.round_smoothly,
+      as the Bold styles are: joins that ran smoothly stay smooth after
+      rounding to whole units. Italic quality findings 1581 -> 1292
+      (smooth breaks 432 -> 145); no Italic glyph has more findings.
+    * Bold Italic, made of the Italic's outlines: 1556 -> 1460. Sixteen
+      entries went up, mostly kinks eased into milder smooth breaks
+      (2.0-2.8 degrees); xi.sc has two kinks more. Reviewed in proof:
+      optically better or unchanged.
+    * ROUND_PLAIN keeps plain rounding where smoothing misfires: aleph and
+      the ɬ Ɬ belts (repairs matched to exact points), ȷ (its descender
+      cut for the Bold Italic ɱ ɧ, which a unit shortened), ƹ (top off the
+      x-height zone once CFF-hinted), and eight k.sc § Ȼ ϗ.sc (worse in the
+      Bold Italic for little or nothing in the Italic).
+    * The Bold Italic Bulgarian ю stays emboldened whole
+      (ITALIC_BOLD_KEEP_WHOLE): rederived, it kept a spur of ю's entry
+      stroke under the cut.
+    * Shaping: advances only, by 1-2 units (Bold Italic ᵭ Ɫ, the 7 and 9
+      superiors/inferiors/denominators, ⅞) and kerning by 1 (Greek
+      tonos/breathing pairs, Β, Υ); no glyph or mark position changes.
+
 2026-10-26 Review: pending visual verdicts given
 
     * Accepted the current Italic and Bold Italic round-bottom hints

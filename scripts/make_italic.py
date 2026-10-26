@@ -1561,6 +1561,16 @@ def move_parts(font, regular, marks, rule_made):
             g.width = font[first].width + (rg.width - regular[first].width)
 
 
+# Rounded plainly, not smoothly (make_bold.round_smoothly): the repairs of
+# ℵ (aleph.py) and of ɬ Ɬ's belts (l_belt.py) match their exact points;
+# ȷ's descender is cut and attached for the Bold Italic ɱ and ɧ, where a
+# unit moves the cut; ƹ's smoothed handle takes its top off the x-height
+# zone once CFF-hinted (12-15 ppem); the rest gain little or nothing here
+# and break joins or extremes in the Bold Italic (ϗ.sc: two findings fewer
+# here, five more there).
+ROUND_PLAIN = ("uni2135", "uni026C", "uniA7AD", "uni0237", "uni01B9", "eight", "k.sc", "section", "uni023B", "uni03D7.sc")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
@@ -1846,9 +1856,7 @@ def main():
 
     install_italic_i(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
-    # rounded plainly: the Bold Italic is made of these outlines, and each
-    # handle a unit off there moves its findings about at random
-    write(font, Path(args.italic), smooth=False)
+    write(font, Path(args.italic), plain=ROUND_PLAIN)
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "

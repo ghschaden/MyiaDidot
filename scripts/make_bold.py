@@ -250,6 +250,7 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
     "uni0256": "ɖ: the tail thin where it meets the stem",
     "uni027E": "ɾ: a stub of the foot serif at the cut",
+    "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
 }
 # Reviewed weight-aware choices: the rounder emboldening can lighten or
@@ -857,19 +858,20 @@ def separate_breve_grave_stacks(font):
             upper.transformation = (xx, xy, yx, yy, dx, dy + math.ceil(STACK_GAP_LC - gap))
 
 
-def finalize(font, smooth=True, separate_stacks=False):
+def finalize(font, smooth=True, separate_stacks=False, plain=()):
     """Finish a generated style before persistence. Its
     points, anchors and component offsets are rounded to whole units first,
     and what that leaves cleaned (glyph_lint). The Regular's record of what
     its derived glyphs were built from (built_from.py) is left behind: a
     generated style is checked by being generated again.
     smooth: joins the rounding would break kept smooth (round_smoothly).
+    plain: glyphs rounded plainly all the same.
     separate_stacks: fit legacy Greek breve/grave stacks after rounding;
     enabled for the bold styles, not for the Italic's shared writer."""
     for g in font:
         g.lib.pop(BUILT_KEY, None)
         for c in g.contours:
-            if smooth:
+            if smooth and g.name not in plain:
                 round_smoothly(c.points)
             else:
                 for p in c.points:
@@ -888,10 +890,10 @@ def finalize(font, smooth=True, separate_stacks=False):
     refit_horns(font)
 
 
-def write(font, path, smooth=True, separate_stacks=False):
+def write(font, path, smooth=True, separate_stacks=False, plain=()):
     from ufo_io import save_font
 
-    finalize(font, smooth=smooth, separate_stacks=separate_stacks)
+    finalize(font, smooth=smooth, separate_stacks=separate_stacks, plain=plain)
     save_font(font, path)
 
 SMALL_SUFFIXES = ("superior", "inferior", ".numr", ".dnom", ".sups", ".subs")
