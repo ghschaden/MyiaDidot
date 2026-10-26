@@ -17,6 +17,18 @@ from build_support import atomic_output, content_hash, file_lock, publish_files,
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def sidecar(destination, kind):
+    """build/manifests/fonts/otf/X.otf.json, build/locks/...: kept out of the
+    output folders, which hold only what is distributed."""
+    destination, root = Path(destination).resolve(), ROOT.resolve()
+    try:
+        relative = destination.relative_to(root)
+    except ValueError:
+        relative = Path(destination.name)
+    folder, suffix = {"manifest": ("manifests", ".json"), "lock": ("locks", ".lock")}[kind]
+    return root / "build" / folder / relative.parent / (relative.name + suffix)
+
+
 def build(kind, source, destination, *, run=subprocess.run):
     def command(*args):
         run(list(map(str, args)), check=True)
@@ -75,10 +87,9 @@ def main():
                     "scripts_sha256": content_hash(ROOT / "scripts"),
                     "lock_sha256": content_hash(ROOT / "uv.lock"), "toolchain": toolchain(),
                     "output_sha256": hashlib.sha256(output.read_bytes()).hexdigest()}
-        with file_lock(args.destination.with_suffix(args.destination.suffix + ".lock")):
+        with file_lock(sidecar(args.destination, "lock")):
             publish_files({args.destination: output.read_bytes(),
-                           args.destination.with_suffix(args.destination.suffix + ".json"):
-                               json.dumps(manifest, indent=2) + "\n"})
+                           sidecar(args.destination, "manifest"): json.dumps(manifest, indent=2) + "\n"})
 
 
 if __name__ == "__main__":

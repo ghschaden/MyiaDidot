@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Repository: build sidecars kept out of the font folders
+
+    * Build manifests and locks go to build/manifests/ and build/locks/
+      (same relative path as the font plus .json/.lock) instead of beside
+      each font, so fonts/ holds only the distributed files.
+    * .pytest_cache/ and .ruff_cache/ are ignored.
+    * The pre-pull local changes 2026-10-23 stash (based on 5fee6bd6) holds
+      the 2026-10-22 italic fixes. Its recipes for ₸ ƈ Қ Җ җ қ ʑ are in
+      HEAD in identical or later form; its glyph files differ only because
+      later commits (c01b739a Cyrillic signs, contour finishing) regenerated
+      or redrew them. No unique work.
+
 2026-10-26 Development: approved Italic small-cap tip hints integrated
 
     * Apply the accepted half-pixel bottom-tip correction at 30/32 ppem

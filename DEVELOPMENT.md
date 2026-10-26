@@ -25,7 +25,6 @@ features or prerequisites already agreed for a particular distribution.
   all four styles during release preparation.
 - Add `sources/README.md` describing incorporated upstream materials,
   revisions, credits and licenses, distinguishing comparison-only inputs.
-- Ignore `.pytest_cache/` and `.ruff_cache/`.
 
 ## Optional tooling follow-up
 

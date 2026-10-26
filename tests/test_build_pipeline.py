@@ -317,5 +317,6 @@ def test_published_font_manifest_hashes_file_bytes(tmp_path, monkeypatch):
     monkeypatch.setattr(build_font.sys, "argv", ["build_font", "woff2", str(source), str(destination)])
     monkeypatch.setattr(build_font, "build", lambda kind, src, dst: dst.write_bytes(b"finished font"))
     build_font.main()
-    manifest = json.loads(destination.with_suffix(".woff2.json").read_text())
+    manifest = json.loads((tmp_path / "build/manifests/output.woff2.json").read_text())
     assert manifest["output_sha256"] == hashlib.sha256(destination.read_bytes()).hexdigest()
+    assert sorted(p.name for p in tmp_path.glob("output*")) == ["output.woff2"]  # nothing beside the font
