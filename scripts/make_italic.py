@@ -1,10 +1,10 @@
 """Make the Italic master: Old Standard's italic in Myia's frame.
 
-    python scripts/make_italic.py [REGULAR.ufo] [ITALIC.ufo]
+    python scripts/make_italic.py [REGULAR.ufo] [ITALIC.ufo] [--redraft]
 
 The letters, figures and signs come from Old Standard Italic (Alexey
-Kryukov, SIL OFL 1.1; sources/oldstand, converted with FontForge into
-build/oldstand), the cursive companion by Theano's own designer. They are
+Kryukov, SIL OFL 1.1; sources/oldstand, converted with FontForge once and
+kept there: fontforge_inputs.py, make oldstand), the cursive companion by Theano's own designer. They are
 scaled in zones so that its x-height (456 of 1000) lands on Myia's 884 and
 its capitals and ascenders (712) on 1434, the descenders in proportion;
 their stems and hairlines as Old Standard's (AX, AY), the thick strokes
@@ -37,7 +37,6 @@ import math
 import re
 import subprocess
 import sys
-import tempfile
 import unicodedata
 from pathlib import Path
 
@@ -52,6 +51,7 @@ import case_forms
 import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from derive import BIG, draw_path, embolden, rezone
+from fontforge_inputs import source_font
 from italic_geometry import ANGLE, CAP, SLANT, XH, shear, upright
 from make_bold import WHOLE_KEY, mark_like, redraw, write
 from respace import CUT_KEY, classifier, respace, sidebearings, undo
@@ -59,7 +59,6 @@ from smallcaps import ink_bounds, ink_slice
 from space_figures import space as space_figures
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE_SFD = ROOT / "sources/oldstand/OldStandard-Italic.sfd"
 KX = 1.98  # across: between the x-height (1.939) and cap-height (2.014) scales
 OS_XH, OS_CAP = 456, 712
 # Old Standard's strokes as they are, scaled (AX, AY across and up: none),
@@ -172,15 +171,6 @@ class Zones(FilterPen):
 
     def endPath(self):
         self._outPen.endPath()
-
-
-def source_font():
-    with tempfile.TemporaryDirectory(prefix="myia-oldstand-") as temporary:
-        source = Path(temporary) / "OldStandard-Italic.ufo"
-        subprocess.run(["fontforge", "-quiet", "-lang=py", "-c",
-                        f"import fontforge; fontforge.open({str(SOURCE_SFD)!r}).generate({str(source)!r})"],
-                       check=True)
-        return ufoLib2.Font.open(source, lazy=False)
 
 
 def sloped(t_y0):
@@ -1186,47 +1176,43 @@ def figures_stage(font, regular):
     return made
 
 
-def smallcaps_stage(font, later=()):
+def smallcaps_stage(font, later=(), redraft=False):
     """Small caps still sloped roman: FontForge's drafts of the Italic's
-    capitals, imported (with their anchors) in the upright frame; not
-    those derive_stage makes from them afterwards (later)."""
+    capitals (stored: fontforge_inputs.drafts), imported (with their
+    anchors) in the upright frame; not those derive_stage makes from them
+    afterwards (later). redraft: all drafted anew."""
     import derive
     import smallcaps as sc
+    from fontforge_inputs import drafts as fontforge_drafts
 
     for g in font:
         if ".sc" in g.name and g.lib.get(SOURCE_KEY) == "sloped roman" and g.name not in later:
             g.lib[SMALLCAP_DRAFT_KEY] = True  # to be replaced
             g.lib.pop("org.myiadidot.derived", None)  # the Regular's ɠ.sc is derived; this one is drafted
     up = upright(font)
-    with tempfile.TemporaryDirectory(prefix="myia-italic-") as temporary:
-        work = Path(temporary)
-        up.features.text = ""  # FontForge only needs the outlines
-        up.save(work / "upright.ufo", overwrite=True)
-        height = font.lib.get(sc.HEIGHT_KEY, sc.DEFAULT_HEIGHT)
-        lc = derive.stems_at(up, "n", XH / 2)[0]
-        uc = derive.stems_at(up, "H", CAP - 300)[0]
-        # drafted without the added weight, then given it as a letter: drafted
-        # at the weighted stem, FontForge thickens the curves less (c.sc o.sc
-        # lighter than their kind)
-        lc, uc = lc[1] - lc[0] - WEIGHT, uc[1] - uc[0] - CAP_WEIGHT
-        stem = lc + (height - XH) / (CAP - XH) * (uc - lc)
-        subprocess.run(["fontforge", "-quiet", "-lang=py", "-script", str(ROOT / "scripts/smallcaps_draft.py"),
-                        str(work / "upright.ufo"), str(work / "smallcaps.ufo"), str(height), f"{stem:.0f}/{uc:.0f}"],
-                       check=True)
-        drafts = ufoLib2.Font.open(work / "smallcaps.ufo")
-        sc.configure(height)
-        log = []
-        sc.import_drafts(up, {g.name: g for g in drafts if g.name.endswith(".sc")}, log, redraft=True)
-        made = [line.split()[1] for line in log]
-        for name in made:
-            put(font, up, name, "small cap draft")
-            g = font[name]
-            rec = RecordingPen()
-            for c in g.contours:
-                c.draw(rec)
-            g.clearContours()
-            weight_thick(rec, WEIGHT).draw(g.getPen())
-        return made
+    up.features.text = ""  # FontForge only needs the outlines
+    height = font.lib.get(sc.HEIGHT_KEY, sc.DEFAULT_HEIGHT)
+    lc = derive.stems_at(up, "n", XH / 2)[0]
+    uc = derive.stems_at(up, "H", CAP - 300)[0]
+    # drafted without the added weight, then given it as a letter: drafted
+    # at the weighted stem, FontForge thickens the curves less (c.sc o.sc
+    # lighter than their kind)
+    lc, uc = lc[1] - lc[0] - WEIGHT, uc[1] - uc[0] - CAP_WEIGHT
+    stem = lc + (height - XH) / (CAP - XH) * (uc - lc)
+    drafts = fontforge_drafts(up, height, f"{stem:.0f}/{uc:.0f}", redraft=redraft)
+    sc.configure(height)
+    log = []
+    sc.import_drafts(up, drafts, log, redraft=True)
+    made = [line.split()[1] for line in log]
+    for name in made:
+        put(font, up, name, "small cap draft")
+        g = font[name]
+        rec = RecordingPen()
+        for c in g.contours:
+            c.draw(rec)
+        g.clearContours()
+        weight_thick(rec, WEIGHT).draw(g.getPen())
+    return made
 
 
 # the Italic's own kerning over the Regular's (measured against italics):
@@ -1575,6 +1561,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("italic", nargs="?", default=str(ROOT / "sources/MyiaDidot-Italic.ufo"))
+    ap.add_argument("--redraft", action="store_true", help="draft every small cap anew with FontForge")
     args = ap.parse_args()
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
@@ -1583,7 +1570,7 @@ def main():
     undo(regular)
     undo(font)
     kern_clear.undo(font)  # the Regular's loosened pairs: the Italic finds its own
-    oldstd = source_font()
+    oldstd = source_font()  # fontforge_inputs: converted once, kept in sources/oldstand
     previous = ufoLib2.Font.open(args.italic) if (Path(args.italic) / "metainfo.plist").exists() else None
     os_cmap = {u: g.name for g in oldstd for u in g.unicodes}
 
@@ -1711,7 +1698,7 @@ def main():
             upright_signs += 1
     derived, failed, later = derive_stage(font, regular, kept=kept)
     figures = figures_stage(font, regular)
-    small_caps = smallcaps_stage(font, later)
+    small_caps = smallcaps_stage(font, later, redraft=args.redraft)
     if "w.sc" in small_caps:
         redraw_w(font, "w.sc", "v.sc")  # as W of V
     # a small cap the Regular lacks (ʀ.sc, drafted from the Italic's own Ʀ):

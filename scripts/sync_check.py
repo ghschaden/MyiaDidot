@@ -4,7 +4,7 @@ also the conflict copies in the tracked folders around them (TREES: a
 baseline in tests/data rewritten fast became one, its own file gone, and
 the test read an empty list).
 
-    python scripts/sync_check.py [UFO ...]   (default: every sources/*.ufo, and TREES)
+    python scripts/sync_check.py [UFO ...]   (default: every sources/*.ufo and sources/*/*.ufo, and TREES)
 
 The working copy is in a synced folder: rewriting many files fast (make
 generate, make normalize) can leave them. Prints one line per finding and
@@ -46,7 +46,9 @@ def tree_leftovers():
 
 
 def main():
-    ufos = [Path(a) for a in sys.argv[1:]] or sorted((ROOT / "sources").glob("*.ufo"))
+    # with what FontForge made for the Italic (fontforge_inputs.py)
+    ufos = [Path(a) for a in sys.argv[1:]] or (sorted((ROOT / "sources").glob("*.ufo"))
+                                               + sorted((ROOT / "sources").glob("*/*.ufo")))
     found = 0
     for ufo in ufos:
         for line in leftovers(ufo):

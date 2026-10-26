@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="arrowdown" format="2">
+  <advance width="376"/>
+  <unicode hex="2193"/>
+  <outline>
+    <contour>
+      <point x="72" y="40" type="curve"/>
+      <point x="85" y="54" type="line"/>
+      <point x="192" y="-40" type="line"/>
+      <point x="192" y="686" type="line"/>
+      <point x="232" y="686" type="line"/>
+      <point x="232" y="-40" type="line"/>
+      <point x="339" y="54" type="line"/>
+      <point x="352" y="40" type="line"/>
+      <point x="308" y="-8"/>
+      <point x="250" y="-78"/>
+      <point x="218" y="-158" type="curve"/>
+      <point x="206" y="-158" type="line"/>
+      <point x="174" y="-78"/>
+      <point x="116" y="-8"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>-158</integer>
+            <key>width</key>
+            <integer>21</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>666</integer>
+            <key>width</key>
+            <integer>20</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>192</integer>
+            <key>width</key>
+            <integer>40</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

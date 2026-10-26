@@ -26,6 +26,23 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Development: FontForge's output kept in sources
+
+    * CI's reproduce job had failed since it was added: Ubuntu's FontForge
+      20230101 drafts the Italic's l.sc without ink at mid-height, and
+      smallcaps.py stopped on ŀ.sc. The styles are generated with 20251009.
+    * The Italic generator no longer depends on the FontForge version
+      installed: Old Standard's SFD is converted once into
+      sources/oldstand/OldStandard-Italic.ufo (with the SFD's SHA-256;
+      make oldstand converts it again), and FontForge's raw small-cap
+      drafts are stored in sources/drafts/Italic-smallcaps.ufo with a hash
+      of their inputs (capitals, height, stems, smallcaps_draft.py). Only
+      changed capitals are drafted again (make_italic.py --redraft: all);
+      without FontForge a stale draft stops the run and is named.
+    * Output unchanged: a full redraft, a partial one and a run without
+      FontForge give the committed Italic exactly; make reproduce passes
+      without FontForge, which CI no longer installs.
+
 2026-10-26 Development: Italic saved with smooth rounding
 
     * make_italic.py now saves the Italic with make_bold.round_smoothly,

@@ -11,7 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
-      - run: sudo apt-get update -q && sudo apt-get install -y -q fontforge
+      # no FontForge: the generators read its conversion and drafts from
+      # sources/ (scripts/fontforge_inputs.py) and stop on a stale one
       - run: uv sync --frozen --python 3.12
       - run: make reproduce
 

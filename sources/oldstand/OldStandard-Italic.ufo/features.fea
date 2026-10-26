@@ -1,0 +1,3018 @@
+languagesystem DFLT dflt;
+languagesystem cyrl CSL ;
+languagesystem cyrl dflt;
+languagesystem cyrl SRB ;
+languagesystem grek dflt;
+languagesystem latn AZE ;
+languagesystem latn CRT ;
+languagesystem latn DEU ;
+languagesystem latn dflt;
+languagesystem latn MOL ;
+languagesystem latn NLD ;
+languagesystem latn ROM ;
+languagesystem latn TRK ;
+
+
+# GSUB 
+
+
+lookup aaltAccessAllAlternatesinLatinlookup0 {
+  lookupflag 0;
+    sub \zero from [\zerosuperior \zeroinferior ];
+    sub \one from [\onesuperior \oneinferior ];
+    sub \two from [\twosuperior \twoinferior ];
+    sub \three from [\threesuperior \threeinferior ];
+    sub \four from [\foursuperior \fourinferior ];
+    sub \five from [\fivesuperior \fiveinferior ];
+    sub \six from [\sixsuperior \sixinferior ];
+    sub \seven from [\sevensuperior \seveninferior ];
+    sub \eight from [\eightsuperior \eightinferior ];
+    sub \nine from [\ninesuperior \nineinferior ];
+    sub \G from [\uniA77D ];
+    sub \g from [\uni1D79 ];
+    sub \i from [\dotlessi ];
+    sub \j from [\dotlessj ];
+    sub \iogonek from [\iogonek.dotless ];
+    sub \Scedilla from [\Scommaaccent ];
+    sub \scedilla from [\scommaaccent ];
+    sub \Tcommaaccent from [\uni021A ];
+    sub \tcommaaccent from [\uni021B ];
+    sub \gravecomb from [\gravecomb.grek \gravecomb.cap ];
+    sub \acutecomb from [\acutecomb.grek \acutecomb.cap ];
+    sub \circumflexcmb from [\circumflexcmb.cap ];
+    sub \tildecomb from [\tildecomb.cap ];
+    sub \macroncmb from [\macroncmb.cap ];
+    sub \brevecmb from [\brevecmb.cyrl \brevecmb.cap \brevecmb.cyrcap ];
+    sub \uni0307 from [\uni0307.cap ];
+    sub \uni0308 from [\uni0308.cap ];
+    sub \uni030A from [\uni030A.cap ];
+    sub \uni030B from [\uni030B.cap ];
+    sub \uni030C from [\uni030C.cap ];
+    sub \uni030F from [\uni030F.cap ];
+    sub \uni0311 from [\uni0311.cap ];
+    sub \uni0313 from [\uni0313.grek ];
+    sub \uni0314 from [\uni0314.grek ];
+    sub \uni0327 from [\uni0327.cap ];
+    sub \uni0328 from [\uni0328.cap ];
+    sub \uni0342 from [\uni0342.iota ];
+    sub \Alphatonos from [\Alpha ];
+    sub \Epsilontonos from [\Epsilon ];
+    sub \Etatonos from [\Eta ];
+    sub \Iotatonos from [\Iota ];
+    sub \Omicrontonos from [\Omicron ];
+    sub \Upsilontonos from [\Upsilon ];
+    sub \Omegatonos from [\Omegagreek ];
+    sub \beta from [\betasymbolgreek ];
+    sub \theta from [\theta.mgrk ];
+    sub \afii10066 from [\afii10064 ];
+    sub \afii10069 from [\afii10192 ];
+    sub \afii10081 from [\afii10831 ];
+    sub \afii10084 from [\afii10832 ];
+    sub \afii10103 from [\dotlessi ];
+    sub \uni1F08 from [\Alpha ];
+    sub \uni1F09 from [\Alpha ];
+    sub \uni1F0A from [\Alpha ];
+    sub \uni1F0B from [\Alpha ];
+    sub \uni1F0C from [\Alpha ];
+    sub \uni1F0D from [\Alpha ];
+    sub \uni1F0E from [\Alpha ];
+    sub \uni1F0F from [\Alpha ];
+    sub \uni1F18 from [\Epsilon ];
+    sub \uni1F19 from [\Epsilon ];
+    sub \uni1F1A from [\Epsilon ];
+    sub \uni1F1B from [\Epsilon ];
+    sub \uni1F1C from [\Epsilon ];
+    sub \uni1F1D from [\Epsilon ];
+    sub \uni1F28 from [\Eta ];
+    sub \uni1F29 from [\Eta ];
+    sub \uni1F2A from [\Eta ];
+    sub \uni1F2B from [\Eta ];
+    sub \uni1F2C from [\Eta ];
+    sub \uni1F2D from [\Eta ];
+    sub \uni1F2E from [\Eta ];
+    sub \uni1F2F from [\Eta ];
+    sub \uni1F38 from [\Iota ];
+    sub \uni1F39 from [\Iota ];
+    sub \uni1F3A from [\Iota ];
+    sub \uni1F3B from [\Iota ];
+    sub \uni1F3C from [\Iota ];
+    sub \uni1F3D from [\Iota ];
+    sub \uni1F3E from [\Iota ];
+    sub \uni1F3F from [\Iota ];
+    sub \uni1F48 from [\Omicron ];
+    sub \uni1F49 from [\Omicron ];
+    sub \uni1F4A from [\Omicron ];
+    sub \uni1F4B from [\Omicron ];
+    sub \uni1F4C from [\Omicron ];
+    sub \uni1F4D from [\Omicron ];
+    sub \uni1F59 from [\Upsilon ];
+    sub \uni1F5B from [\Upsilon ];
+    sub \uni1F5D from [\Upsilon ];
+    sub \uni1F5F from [\Upsilon ];
+    sub \uni1F68 from [\Omegagreek ];
+    sub \uni1F69 from [\Omegagreek ];
+    sub \uni1F6A from [\Omegagreek ];
+    sub \uni1F6B from [\Omegagreek ];
+    sub \uni1F6C from [\Omegagreek ];
+    sub \uni1F6D from [\Omegagreek ];
+    sub \uni1F6E from [\Omegagreek ];
+    sub \uni1F6F from [\Omegagreek ];
+    sub \uni1F88 from [\uni1FBC ];
+    sub \uni1F89 from [\uni1FBC ];
+    sub \uni1F8A from [\uni1FBC ];
+    sub \uni1F8B from [\uni1FBC ];
+    sub \uni1F8C from [\uni1FBC ];
+    sub \uni1F8D from [\uni1FBC ];
+    sub \uni1F8E from [\uni1FBC ];
+    sub \uni1F8F from [\uni1FBC ];
+    sub \uni1F98 from [\uni1FCC ];
+    sub \uni1F99 from [\uni1FCC ];
+    sub \uni1F9A from [\uni1FCC ];
+    sub \uni1F9B from [\uni1FCC ];
+    sub \uni1F9C from [\uni1FCC ];
+    sub \uni1F9D from [\uni1FCC ];
+    sub \uni1F9E from [\uni1FCC ];
+    sub \uni1F9F from [\uni1FCC ];
+    sub \uni1FA8 from [\uni1FFC ];
+    sub \uni1FA9 from [\uni1FFC ];
+    sub \uni1FAA from [\uni1FFC ];
+    sub \uni1FAB from [\uni1FFC ];
+    sub \uni1FAC from [\uni1FFC ];
+    sub \uni1FAD from [\uni1FFC ];
+    sub \uni1FAE from [\uni1FFC ];
+    sub \uni1FAF from [\uni1FFC ];
+    sub \uni1FEC from [\Rho ];
+    sub \Rho_uni0313 from [\Rho ];
+    sub \Upsilon_uni0313 from [\Upsilon ];
+    sub \Upsilon_uni0313_gravecomb from [\Upsilon ];
+    sub \Upsilon_uni0313_acutecomb from [\Upsilon ];
+    sub \Upsilon_uni0313_uni0342 from [\Upsilon ];
+    sub \Epsilon_uni0313_uni0342 from [\Epsilon ];
+    sub \Epsilon_uni0314_uni0342 from [\Epsilon ];
+    sub \Omicron_uni0313_uni0342 from [\Omicron ];
+    sub \Omicron_uni0314_uni0342 from [\Omicron ];
+} aaltAccessAllAlternatesinLatinlookup0;
+
+lookup ccmpStandardGlyphComposition {
+  lookupflag 0;
+    sub \C \uni0327  by \Ccedilla;
+    sub \c \uni0327  by \ccedilla;
+    sub \afii10017 \uni0328  by \Aogonek;
+    sub \A \uni0328  by \Aogonek;
+    sub \afii10065 \uni0328  by \aogonek;
+    sub \a \uni0328  by \aogonek;
+    sub \d \uni030C  by \dcaron;
+    sub \afii10022 \uni0328  by \Eogonek;
+    sub \E \uni0328  by \Eogonek;
+    sub \afii10070 \uni0328  by \eogonek;
+    sub \e \uni0328  by \eogonek;
+    sub \G \uni0327  by \Gcommaaccent;
+    sub \g \uni0327  by \gcommaaccent;
+    sub \I \uni0328  by \Iogonek;
+    sub \i \uni0328  by \iogonek;
+    sub \K \uni0327  by \Kcommaaccent;
+    sub \k \uni0327  by \kcommaaccent;
+    sub \L \uni030C  by \Lcaron;
+    sub \l \uni030C  by \lcaron;
+    sub \N \uni0327  by \Ncommaaccent;
+    sub \n \uni0327  by \ncommaaccent;
+    sub \R \uni0327  by \Rcommaaccent;
+    sub \r \uni0327  by \rcommaaccent;
+    sub \S \uni0327  by \Scedilla;
+    sub \s \uni0327  by \scedilla;
+    sub \T \uni0327  by \Tcommaaccent;
+    sub \t \uni0327  by \tcommaaccent;
+    sub \t \uni030C  by \tcaron;
+    sub \U \uni0328  by \Uogonek;
+    sub \u \uni0328  by \uogonek;
+    sub \afii10032 \uni0328  by \Oogonek;
+    sub \O \uni0328  by \Oogonek;
+    sub \afii10080 \uni0328  by \oogonek;
+    sub \o \uni0328  by \oogonek;
+    sub \Aring \acutecomb  by \Aringacute;
+    sub \A \uni030A \acutecomb  by \Aringacute;
+    sub \aring \acutecomb  by \aringacute;
+    sub \a \uni030A \acutecomb  by \aringacute;
+    sub \E \uni0327  by \uni0228;
+    sub \e \uni0327  by \uni0229;
+    sub \H \uni0327  by \uni1E28;
+    sub \h \uni0327  by \uni1E29;
+    sub \uni0486 \gravecomb  by \uni0486_gravecomb;
+    sub \uni0486 \acutecomb  by \uni0486_acutecomb;
+} ccmpStandardGlyphComposition;
+
+lookup DecomposeAccented {
+  lookupflag 0;
+    sub \Atilde by \A \tildecomb ;
+    sub \Adieresis by \A \uni0308 ;
+    sub \Aring by \A \uni030A ;
+    sub \Edieresis by \E \uni0308 ;
+    sub \Idieresis by \I \uni0308 ;
+    sub \Otilde by \O \tildecomb ;
+    sub \Odieresis by \O \uni0308 ;
+    sub \Udieresis by \U \uni0308 ;
+    sub \atilde by \a \tildecomb ;
+    sub \adieresis by \a \uni0308 ;
+    sub \aring by \a \uni030A ;
+    sub \edieresis by \e \uni0308 ;
+    sub \idieresis by \dotlessi \uni0308 ;
+    sub \otilde by \o \tildecomb ;
+    sub \odieresis by \o \uni0308 ;
+    sub \udieresis by \u \uni0308 ;
+    sub \ydieresis by \y \uni0308 ;
+    sub \Amacron by \A \macroncmb ;
+    sub \amacron by \a \macroncmb ;
+    sub \Abreve by \A \brevecmb ;
+    sub \abreve by \a \brevecmb ;
+    sub \Emacron by \E \macroncmb ;
+    sub \emacron by \e \macroncmb ;
+    sub \Ebreve by \E \brevecmb ;
+    sub \ebreve by \e \brevecmb ;
+    sub \Itilde by \I \tildecomb ;
+    sub \itilde by \i \tildecomb ;
+    sub \Imacron by \I \macroncmb ;
+    sub \imacron by \dotlessi \macroncmb ;
+    sub \Ibreve by \I \brevecmb ;
+    sub \ibreve by \dotlessi \brevecmb ;
+    sub \Omacron by \O \macroncmb ;
+    sub \omacron by \o \macroncmb ;
+    sub \Obreve by \O \brevecmb ;
+    sub \obreve by \o \brevecmb ;
+    sub \Utilde by \U \tildecomb ;
+    sub \utilde by \u \tildecomb ;
+    sub \Umacron by \U \macroncmb ;
+    sub \umacron by \u \macroncmb ;
+    sub \Ubreve by \U \brevecmb ;
+    sub \ubreve by \u \brevecmb ;
+    sub \Uring by \U \uni030A ;
+    sub \uring by \u \uni030A ;
+    sub \Ydieresis by \Y \uni0308 ;
+    sub \uni01E2 by \AE \macroncmb ;
+    sub \uni01E3 by \ae \macroncmb ;
+    sub \uni01EC by \Oogonek \macroncmb ;
+    sub \uni01ED by \oogonek \macroncmb ;
+    sub \afii10023 by \afii10022 \uni0308 ;
+    sub \afii10056 by \afii10055 \uni0308 ;
+    sub \afii10071 by \afii10070 \uni0308 ;
+    sub \afii10104 by \dotlessi \uni0308 ;
+} DecomposeAccented;
+
+lookup ccmpDecomposeAccented {
+  lookupflag 0;
+    @cc2_match_1 = [\i \j \iogonek \afii10103 ];
+    @cc2_match_2 = [\Atilde \Adieresis \Aring \Edieresis \Idieresis \Otilde \Odieresis \Udieresis 
+	\atilde \adieresis \aring \edieresis \idieresis \otilde \odieresis 
+	\udieresis \ydieresis \Amacron \amacron \Abreve \abreve \Emacron 
+	\emacron \Ebreve \ebreve \Itilde \itilde \Imacron \imacron \Ibreve 
+	\ibreve \Omacron \omacron \Obreve \obreve \Utilde \utilde \Umacron 
+	\umacron \Ubreve \ubreve \Uring \uring \Ydieresis \uni01E2 \uni01E3 
+	\uni01EC \uni01ED \afii10023 \afii10056 \afii10071 \afii10104 ];
+    @cc2_match_3 = [\gravecomb \acutecomb \circumflexcmb \tildecomb \macroncmb \brevecmb \uni0307 
+	\uni0308 \uni030A \uni030B \uni030C \uni030F \uni0311 \uni0312 \uni0313 
+	\uni0314 \uni033E \uni0351 \uni0357 \uni0363 \uni0364 \uni0365 \uni0366 
+	\uni0367 \uni0368 \uni0369 \uni036A \uni036B \uni036C \uni036D \uni036E 
+	\uni036F \uni0483 \uni0485 \uni0486 \uni0486_gravecomb 
+	\uni0486_acutecomb \brevecmb.cyrl ];
+    sub @cc2_match_1' @cc2_match_3'  by [\dotlessi \dotlessj \iogonek.dotless \dotlessi ] ;
+    sub @cc2_match_2'lookup DecomposeAccented  @cc2_match_3' ;
+} ccmpDecomposeAccented;
+
+lookup CapitalCompositeAccents {
+  lookupflag 0;
+    sub \acutecomb \uni0307  by \acutecomb_uni0307.cap;
+    sub \tildecomb \acutecomb  by \tildecomb_acutecomb.cap;
+    sub \tildecomb \uni0308  by \tildecomb_uni0308.cap;
+    sub \macroncmb \gravecomb  by \macroncmb_gravecomb.cap;
+    sub \macroncmb \acutecomb  by \macroncmb_acutecomb.cap;
+    sub \macroncmb \brevecmb  by \macroncmb_brevecmb.cap;
+    sub \macroncmb \uni0308  by \macroncmb_uni0308.cap;
+    sub \brevecmb \gravecomb  by \brevecmb_gravecomb.cap;
+    sub \brevecmb \acutecomb  by \brevecmb_acutecomb.cap;
+    sub \uni0308 \gravecomb  by \uni0308_gravecomb.cap;
+    sub \uni0308 \acutecomb  by \uni0308_acutecomb.cap;
+    sub \uni030A \acutecomb  by \uni030A_acutecomb.cap;
+    sub \uni030C \uni0307  by \uni030C_uni0307.cap;
+} CapitalCompositeAccents;
+
+lookup CapitalAccents {
+  lookupflag 0;
+    sub \gravecomb by \gravecomb.cap ;
+    sub \acutecomb by \acutecomb.cap ;
+    sub \circumflexcmb by \circumflexcmb.cap ;
+    sub \tildecomb by \tildecomb.cap ;
+    sub \macroncmb by \macroncmb.cap ;
+    sub \brevecmb by \brevecmb.cap ;
+    sub \uni0307 by \uni0307.cap ;
+    sub \uni0308 by \uni0308.cap ;
+    sub \uni030A by \uni030A.cap ;
+    sub \uni030B by \uni030B.cap ;
+    sub \uni030C by \uni030C.cap ;
+    sub \uni030F by \uni030F.cap ;
+    sub \uni0311 by \uni0311.cap ;
+    sub \uni0327 by \uni0327.cap ;
+    sub \uni0328 by \uni0328.cap ;
+} CapitalAccents;
+
+lookup CompositeAccents {
+  lookupflag 0;
+    sub \acutecomb \uni0307  by \acutecomb_uni0307;
+    sub \tildecomb \acutecomb  by \tildecomb_acutecomb;
+    sub \tildecomb \uni0308  by \tildecomb_uni0308;
+    sub \macroncmb \gravecomb  by \macroncmb_gravecomb;
+    sub \macroncmb \acutecomb  by \macroncmb_acutecomb;
+    sub \macroncmb \brevecmb  by \macroncmb_brevecmb;
+    sub \macroncmb \uni0308  by \macroncmb_uni0308;
+    sub \brevecmb \gravecomb  by \brevecmb_gravecomb;
+    sub \brevecmb \acutecomb  by \brevecmb_acutecomb;
+    sub \uni0308 \gravecomb  by \uni0308_gravecomb;
+    sub \uni0308 \acutecomb  by \uni0308_acutecomb;
+    sub \uni030A \acutecomb  by \uni030A_acutecomb;
+    sub \uni030C \uni0307  by \uni030C_uni0307;
+} CompositeAccents;
+
+lookup CompositeAccentsfori {
+  lookupflag 0;
+    sub \acutecomb \uni0307  by \acutecomb_uni0307;
+    sub \tildecomb \acutecomb  by \tildecomb_acutecomb;
+    sub \tildecomb \uni0308  by \tildecomb_uni0308;
+    sub \macroncmb \gravecomb  by \macroncmb_gravecomb;
+    sub \macroncmb \acutecomb  by \macroncmb_acutecomb;
+    sub \macroncmb \brevecmb  by \macroncmb_brevecmb;
+    sub \macroncmb \uni0308  by \macroncmb_uni0308;
+    sub \brevecmb \gravecomb  by \brevecmb_gravecomb;
+    sub \brevecmb \acutecomb  by \brevecmb_acutecomb;
+    sub \uni030A \acutecomb  by \uni030A_acutecomb;
+    sub \uni030C \uni0307  by \uni030C_uni0307;
+    sub \uni0308 \gravecomb  by \uni0308_gravecomb.i;
+    sub \uni0308 \acutecomb  by \uni0308_acutecomb.i;
+} CompositeAccentsfori;
+
+lookup ccmpCapitalandCompositeAccents {
+  lookupflag 0;
+    @cc3_match_1 = [\A \B \C \D \E \F \G \H \I \J \K \L \M \N \O \P \Q \R \S \T \U \V \W \X \Y \Z \AE \Ccedilla \Eth 
+	\Oslash \Thorn \Aogonek \Eogonek \Hbar \Iogonek \OE \Uogonek \uni018F 
+	\uni0190 \uni01B7 \Oogonek \uni0224 \uni0228 \afii10053 \afii10055 
+	\afii10017 \afii10020 \afii10022 \afii10024 \afii10028 \afii10032 
+	\afii10034 \afii10044 \afii10045 \afii10046 \afii10047 \afii10048 
+	\afii10049 \uni0460 \afii10146 \uni0464 \uni0466 \uni0468 \uni046A 
+	\uni046C \afii10148 \uni047A \uni04D8 \uni0510 \uniA646 \uniA64A 
+	\uniA64C \uniA650 \uniA652 \uniA654 \uniA656 \uniA658 \uniA65A \uniA65C 
+	\afii10017.csl ];
+    @cc3_match_2 = [\a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t \u \v \w \x \y \z \ae \ccedilla \eth 
+	\oslash \thorn \aogonek \eogonek \hbar \kgreenlandic \lslash \eng \oe 
+	\tbar \uogonek \longs \uni01BF \uni01DD \oogonek \uni0225 \uni0229 
+	\dotlessj \uni0254 \uni0259 \uni025B \uni0280 \uni0292 \afii10065 
+	\afii10070 \afii10080 \afii10082 \afii10092 \afii10093 \afii10094 
+	\afii10095 \afii10096 \afii10097 \afii10101 \uni0461 \afii10194 
+	\uni0465 \uni0467 \uni0469 \uni046B \uni046D \afii10196 \uni0479 
+	\uni047B \afii10846 \uni0511 \uniA64B \uniA64D \uniA64F \uniA651 
+	\uniA653 \uniA655 \uniA657 \uniA659 \uniA65B \uniA65D \uniA669 \uniA66B 
+	\uniA66D \afii10065.csl \afii10066.low \uniA64B.low ];
+    @cc3_match_3 = [\dotlessi ];
+    @cc3_match_4 = [\afii10026 \afii10037 ];
+    @cc3_match_5 = [\afii10074 \afii10085 ];
+    @cc3_match_6 = [\gravecomb \acutecomb \circumflexcmb \tildecomb \macroncmb \brevecmb \uni0307 
+	\uni0308 \uni030A \uni030B \uni030C \uni030F \uni0311 \uni0327 \uni0328 ];
+    sub @cc3_match_1' @cc3_match_6'lookup CapitalCompositeAccents  @cc3_match_6'lookup CapitalCompositeAccents  ;
+    sub @cc3_match_1' @cc3_match_6'lookup CapitalAccents  ;
+    sub @cc3_match_2' @cc3_match_6'lookup CompositeAccents  @cc3_match_6'lookup CompositeAccents  ;
+    sub @cc3_match_3' @cc3_match_6'lookup CompositeAccentsfori  @cc3_match_6'lookup CompositeAccentsfori  ;
+    sub @cc3_match_3' @cc3_match_6'  by [NULL NULL NULL NULL NULL NULL NULL \uni0308.i NULL NULL NULL NULL NULL NULL NULL ] ;
+    sub @cc3_match_4' @cc3_match_6'lookup CapitalCompositeAccents  @cc3_match_6'lookup CapitalCompositeAccents  ;
+    sub @cc3_match_4' @cc3_match_6'  by [\gravecomb.cap \acutecomb.cap \circumflexcmb.cap \tildecomb.cap \macroncmb.cap \brevecmb.cyrcap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \uni0327.cap \uni0328.cap ] ;
+    sub @cc3_match_5' @cc3_match_6'lookup CompositeAccents  @cc3_match_6'lookup CompositeAccents  ;
+    sub @cc3_match_5' @cc3_match_6'  by [NULL NULL NULL NULL NULL \brevecmb.cyrl NULL NULL NULL NULL NULL NULL NULL NULL NULL ] ;
+} ccmpCapitalandCompositeAccents;
+
+lookup GreekCompositeAccents {
+  lookupflag 0;
+    sub \uni0308 \acutecomb  by \uni0344;
+    sub \uni0308 \gravecomb  by \uni0308_gravecomb.grek;
+    sub \uni0308 \uni0342  by \uni0308_uni0342.grek;
+    sub \uni0313.grek \gravecomb  by \uni0313_gravecomb.grek;
+    sub \uni0313 \gravecomb  by \uni0313_gravecomb.grek;
+    sub \uni0313.grek \acutecomb  by \uni0313_acutecomb.grek;
+    sub \uni0313 \acutecomb  by \uni0313_acutecomb.grek;
+    sub \uni0313.grek \uni0342  by \uni0313_uni0342.grek;
+    sub \uni0313 \uni0342  by \uni0313_uni0342.grek;
+    sub \uni0314.grek \gravecomb  by \uni0314_gravecomb.grek;
+    sub \uni0314 \gravecomb  by \uni0314_gravecomb.grek;
+    sub \uni0314.grek \acutecomb  by \uni0314_acutecomb.grek;
+    sub \uni0314 \acutecomb  by \uni0314_acutecomb.grek;
+    sub \uni0314.grek \uni0342  by \uni0314_uni0342.grek;
+    sub \uni0314 \uni0342  by \uni0314_uni0342.grek;
+} GreekCompositeAccents;
+
+lookup GreekAccents {
+  lookupflag 0;
+    sub \gravecomb by \gravecomb.grek ;
+    sub \acutecomb by \acutecomb.grek ;
+    sub \uni0313 by \uni0313.grek ;
+    sub \uni0314 by \uni0314.grek ;
+} GreekAccents;
+
+lookup GreekCompositeAccentsforIota {
+  lookupflag 0;
+    sub \uni0313.grek \gravecomb  by \uni0313_gravecomb.grek;
+    sub \uni0313 \gravecomb  by \uni0313_gravecomb.grek;
+    sub \uni0313.grek \acutecomb  by \uni0313_acutecomb.grek;
+    sub \uni0313 \acutecomb  by \uni0313_acutecomb.grek;
+    sub \uni0314.grek \gravecomb  by \uni0314_gravecomb.grek;
+    sub \uni0314 \gravecomb  by \uni0314_gravecomb.grek;
+    sub \uni0314.grek \acutecomb  by \uni0314_acutecomb.grek;
+    sub \uni0314 \acutecomb  by \uni0314_acutecomb.grek;
+    sub \uni0313.grek \uni0342  by \uni0313_uni0342.iota;
+    sub \uni0313 \uni0342  by \uni0313_uni0342.iota;
+    sub \uni0314.grek \uni0342  by \uni0314_uni0342.iota;
+    sub \uni0314 \uni0342  by \uni0314_uni0342.iota;
+} GreekCompositeAccentsforIota;
+
+lookup GreekAccentsforIota {
+  lookupflag 0;
+    sub \gravecomb by \gravecomb.grek ;
+    sub \acutecomb by \acutecomb.grek ;
+    sub \uni0313 by \uni0313.grek ;
+    sub \uni0314 by \uni0314.grek ;
+    sub \uni0342 by \uni0342.iota ;
+} GreekAccentsforIota;
+
+lookup ccmpGreekCapitalandCompositeAccents {
+  lookupflag 0;
+    @cc4_match_1 = [\Alpha \Epsilon \Eta \Iota \Omicron \Rho \Upsilon \Omegagreek ];
+    @cc4_match_2 = [\uni1FB8 \uni1FB9 \uni1FD8 \uni1FD9 \uni1FE8 \uni1FE9 \Epsilon_macroncmb 
+	\Epsilon_brevecmb \Omicron_macroncmb \Omicron_brevecmb ];
+    @cc4_match_3 = [\alpha \epsilon \eta \omicron \rho \upsilon \omega ];
+    @cc4_match_4 = [\uni1FB0 \uni1FB1 \epsilon_brevecmb \epsilon_macroncmb \omicron_brevecmb 
+	\omicron_macroncmb \uni1FE0 \uni1FE1 ];
+    @cc4_match_5 = [\iota ];
+    @cc4_match_6 = [\uni1FD0 \uni1FD1 ];
+    @cc4_match_7 = [\macroncmb \brevecmb ];
+    @cc4_match_8 = [\uni0313 \uni0314 ];
+    @cc4_match_9 = [\acutecomb \gravecomb \uni0342 ];
+    @cc4_match_10 = [\uni0308 ];
+    sub @cc4_match_1' @cc4_match_7'lookup CapitalAccents  @cc4_match_8'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_1' @cc4_match_7'lookup CapitalAccents  @cc4_match_8'lookup GreekAccents  ;
+    sub @cc4_match_1' @cc4_match_7'lookup CapitalAccents  @cc4_match_9'lookup GreekAccents  ;
+    sub @cc4_match_1' @cc4_match_7'lookup CapitalAccents  ;
+    sub @cc4_match_1' @cc4_match_8'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_1' @cc4_match_8'lookup GreekAccents  ;
+    sub @cc4_match_1' @cc4_match_9'lookup GreekAccents  ;
+    sub @cc4_match_2' @cc4_match_8'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_2' @cc4_match_8'lookup GreekAccents  ;
+    sub @cc4_match_2' @cc4_match_9'lookup GreekAccents  ;
+    sub @cc4_match_3' @cc4_match_7' @cc4_match_8'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_3' @cc4_match_7' @cc4_match_10'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_3' @cc4_match_7' @cc4_match_8'lookup GreekAccents  ;
+    sub @cc4_match_3' @cc4_match_7' @cc4_match_9'lookup GreekAccents  ;
+    sub @cc4_match_3' @cc4_match_8'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_3' @cc4_match_10'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_3' @cc4_match_8'lookup GreekAccents  ;
+    sub @cc4_match_3' @cc4_match_9'lookup GreekAccents  ;
+    sub @cc4_match_4' @cc4_match_8'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_4' @cc4_match_10'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_4' @cc4_match_8'lookup GreekAccents  ;
+    sub @cc4_match_4' @cc4_match_9'lookup GreekAccents  ;
+    sub @cc4_match_5' @cc4_match_7' @cc4_match_8'lookup GreekCompositeAccentsforIota  @cc4_match_9'lookup GreekCompositeAccentsforIota  ;
+    sub @cc4_match_5' @cc4_match_7' @cc4_match_10'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_5' @cc4_match_7' @cc4_match_8'lookup GreekAccentsforIota  ;
+    sub @cc4_match_5' @cc4_match_7' @cc4_match_9'lookup GreekAccentsforIota  ;
+    sub @cc4_match_5' @cc4_match_8'lookup GreekCompositeAccentsforIota  @cc4_match_9'lookup GreekCompositeAccentsforIota  ;
+    sub @cc4_match_5' @cc4_match_8'lookup GreekAccentsforIota  ;
+    sub @cc4_match_5' @cc4_match_9'lookup GreekAccentsforIota  ;
+    sub @cc4_match_5' @cc4_match_10'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_6' @cc4_match_8'lookup GreekCompositeAccentsforIota  @cc4_match_9'lookup GreekCompositeAccentsforIota  ;
+    sub @cc4_match_6' @cc4_match_10'lookup GreekCompositeAccents  @cc4_match_9'lookup GreekCompositeAccents  ;
+    sub @cc4_match_6' @cc4_match_8'lookup GreekAccentsforIota  ;
+    sub @cc4_match_6' @cc4_match_9'lookup GreekAccentsforIota  ;
+} ccmpGreekCapitalandCompositeAccents;
+
+lookup loclss01LocalizedFormsforRomanian {
+  lookupflag 0;
+    sub \Scedilla by \Scommaaccent ;
+    sub \scedilla by \scommaaccent ;
+    sub \Tcommaaccent by \uni021A ;
+    sub \tcommaaccent by \uni021B ;
+} loclss01LocalizedFormsforRomanian;
+
+lookup loclLocalizedFormsforGreek {
+  lookupflag 0;
+    sub \periodcentered by \anoteleia ;
+    sub \quoteright by \uni1FBF ;
+} loclLocalizedFormsforGreek;
+
+lookup loclss11LocalizedFormsforSerbian {
+  lookupflag 0;
+    sub \afii10069 by \afii10192 ;
+    sub \afii10081 by \afii10831 ;
+    sub \afii10084 by \afii10832 ;
+} loclss11LocalizedFormsforSerbian;
+
+lookup loclss14LocalizedFormsforOldSlavonic {
+  lookupflag 0;
+    sub \afii10017 by \afii10017.csl ;
+    sub \afii10065 by \afii10065.csl ;
+    sub \afii10069 by \afii10192 ;
+    sub \afii10194 by \afii10194.csl ;
+} loclss14LocalizedFormsforOldSlavonic;
+
+lookup ccmpLowVariantsforAccents {
+  lookupflag 0;
+    @cc9_match_1 = [\afii10066 \afii10194.csl \uniA64B ];
+    @cc9_match_2 = [\gravecomb \acutecomb \uni030F \uni033E \uni0483 \uni0484 \uni0485 \uni0486 
+	\uni2DE0 \uni2DE1 \uni2DE2 \uni2DE3 \uni2DE4 \uni2DE5 \uni2DE6 \uni2DE7 
+	\uni2DE8 \uni2DE9 \uni2DEA \uni2DEB \uni2DEC \uni2DED \uni2DEE \uni2DEF 
+	\uni2DF0 \uni2DF1 \uni2DF2 \uni2DF3 \uni2DF4 \uni2DF5 \uni2DF6 \uni2DF7 
+	\uni2DF8 \uni2DF9 \uni2DFA \uni2DFB \uni2DFC \uni2DFD \uni2DFE \uni2DFF 
+	\uniA66F \uniA67C \uniA67D \uni0486_gravecomb \uni0486_acutecomb ];
+    sub @cc9_match_1' @cc9_match_2'  by [\afii10066.low \afii10194 \uniA64B.low ] ;
+} ccmpLowVariantsforAccents;
+
+lookup ss02InsularFormsforOldEnglish {
+  lookupflag 0;
+    sub \G by \uniA77D ;
+    sub \g by \uni1D79 ;
+} ss02InsularFormsforOldEnglish;
+
+lookup ss05GreekClosedTheta {
+  lookupflag 0;
+    sub \theta by \theta.mgrk ;
+} ss05GreekClosedTheta;
+
+lookup MedialFinalformsforGreek {
+  lookupflag 0;
+    sub \beta by \betasymbolgreek ;
+    sub \theta by \theta.mgrk ;
+} MedialFinalformsforGreek;
+
+lookup ss06MedialFinalFormsforGreek {
+  lookupflag IgnoreMarks;
+    @cc12_match_1 = [\Alpha \Beta \Gamma \Deltagreek \Epsilon \Zeta \Eta \Theta \Iota \Kappa \Lambda \Mu 
+	\Nu \Xi \Omicron \Pi \Rho \Sigma \Tau \Upsilon \Phi \Chi \Psi \Omegagreek 
+	\alpha \gamma \delta \epsilon \zeta \eta \theta.mgrk \iota \kappa \lambda 
+	\mugreek \nu \xi \omicron \pi \rho \sigma \sigma1 \tau \upsilon \phi \chi 
+	\psi \omega \betasymbolgreek \thetasymbolgreek \pisymbolgreek 
+	\phisymbolgreek \kappasymbolgreek \rhosymbolgreek \Alphatonos 
+	\Epsilontonos \Etatonos \Iotatonos \Omicrontonos \Upsilontonos 
+	\Omegatonos \alphatonos \epsilontonos \etatonos \iotatonos 
+	\omicrontonos \upsilontonos \omegatonos \Iotadieresis 
+	\Upsilondieresis \iotadieresis \upsilondieresis \iotadieresistonos 
+	\upsilondieresistonos \uni1FD2 \uni1FE2 \uni1FD7 \uni1FE7 \uni1F00 
+	\uni1F01 \uni1F02 \uni1F03 \uni1F04 \uni1F05 \uni1F06 \uni1F07 \uni1F08 
+	\uni1F09 \uni1F0A \uni1F0B \uni1F0C \uni1F0D \uni1F0E \uni1F0F \uni1F10 
+	\uni1F11 \uni1F12 \uni1F13 \uni1F14 \uni1F15 \uni1F18 \uni1F19 \uni1F1A 
+	\uni1F1B \uni1F1C \uni1F1D \uni1F20 \uni1F21 \uni1F22 \uni1F23 \uni1F24 
+	\uni1F25 \uni1F26 \uni1F27 \uni1F28 \uni1F29 \uni1F2A \uni1F2B \uni1F2C 
+	\uni1F2D \uni1F2E \uni1F2F \uni1F30 \uni1F31 \uni1F32 \uni1F33 \uni1F34 
+	\uni1F35 \uni1F36 \uni1F37 \uni1F38 \uni1F39 \uni1F3A \uni1F3B \uni1F3C 
+	\uni1F3D \uni1F3E \uni1F3F \uni1F40 \uni1F41 \uni1F42 \uni1F43 \uni1F44 
+	\uni1F45 \uni1F48 \uni1F49 \uni1F4A \uni1F4B \uni1F4C \uni1F4D \uni1F50 
+	\uni1F51 \uni1F52 \uni1F53 \uni1F54 \uni1F55 \uni1F56 \uni1F57 \uni1F59 
+	\uni1F5B \uni1F5D \uni1F5F \uni1F60 \uni1F61 \uni1F62 \uni1F63 \uni1F64 
+	\uni1F65 \uni1F66 \uni1F67 \uni1F68 \uni1F69 \uni1F6A \uni1F6B \uni1F6C 
+	\uni1F6D \uni1F6E \uni1F6F \uni1F70 \uni1F72 \uni1F74 \uni1F76 \uni1F78 
+	\uni1F7A \uni1F7C \uni1F80 \uni1F81 \uni1F82 \uni1F83 \uni1F84 \uni1F85 
+	\uni1F86 \uni1F87 \uni1F88 \uni1F89 \uni1F8A \uni1F8B \uni1F8C \uni1F8D 
+	\uni1F8E \uni1F8F \uni1F90 \uni1F91 \uni1F92 \uni1F93 \uni1F94 \uni1F95 
+	\uni1F96 \uni1F97 \uni1F98 \uni1F99 \uni1F9A \uni1F9B \uni1F9C \uni1F9D 
+	\uni1F9E \uni1F9F \uni1FA0 \uni1FA1 \uni1FA2 \uni1FA3 \uni1FA4 \uni1FA5 
+	\uni1FA6 \uni1FA7 \uni1FA8 \uni1FA9 \uni1FAA \uni1FAB \uni1FAC \uni1FAD 
+	\uni1FAE \uni1FAF \uni1FB0 \uni1FB1 \uni1FB2 \uni1FB3 \uni1FB4 \uni1FB6 
+	\uni1FB7 \uni1FB8 \uni1FB9 \uni1FBA \uni1FBC \uni1FC2 \uni1FC3 \uni1FC4 
+	\uni1FC6 \uni1FC7 \uni1FC8 \uni1FCA \uni1FCC \uni1FD0 \uni1FD1 \uni1FD6 
+	\uni1FD8 \uni1FD9 \uni1FDA \uni1FE0 \uni1FE1 \uni1FE4 \uni1FE5 \uni1FE6 
+	\uni1FE8 \uni1FE9 \uni1FEA \uni1FEC \uni1FF2 \uni1FF3 \uni1FF4 \uni1FF6 
+	\uni1FF7 \uni1FF8 \uni1FFA \uni1FFC \epsilon_macroncmb 
+	\epsilon_brevecmb \epsilon_uni0342 \epsilon_uni0313_uni0342 
+	\epsilon_uni0314_uni0342 \Epsilon_macroncmb \Epsilon_brevecmb 
+	\Epsilon_uni0313_uni0342 \Epsilon_uni0314_uni0342 
+	\omicron_macroncmb \omicron_brevecmb \omicron_uni0342 
+	\omicron_uni0313_uni0342 \omicron_uni0314_uni0342 
+	\Omicron_macroncmb \Omicron_brevecmb \Omicron_uni0313_uni0342 
+	\Omicron_uni0314_uni0342 \Rho_uni0313 \Upsilon_uni0313 
+	\Upsilon_uni0313_acutecomb \Upsilon_uni0313_gravecomb 
+	\Upsilon_uni0313_uni0342 ];
+    @cc12_match_2 = [\beta \theta ];
+    @cc12_back_1 = [\Alpha \Beta \Gamma \Deltagreek \Epsilon \Zeta \Eta \Theta \Iota \Kappa \Lambda \Mu 
+	\Nu \Xi \Omicron \Pi \Rho \Sigma \Tau \Upsilon \Phi \Chi \Psi \Omegagreek 
+	\alpha \gamma \delta \epsilon \zeta \eta \theta.mgrk \iota \kappa \lambda 
+	\mugreek \nu \xi \omicron \pi \rho \sigma \sigma1 \tau \upsilon \phi \chi 
+	\psi \omega \betasymbolgreek \thetasymbolgreek \pisymbolgreek 
+	\phisymbolgreek \kappasymbolgreek \rhosymbolgreek \Alphatonos 
+	\Epsilontonos \Etatonos \Iotatonos \Omicrontonos \Upsilontonos 
+	\Omegatonos \alphatonos \epsilontonos \etatonos \iotatonos 
+	\omicrontonos \upsilontonos \omegatonos \Iotadieresis 
+	\Upsilondieresis \iotadieresis \upsilondieresis \iotadieresistonos 
+	\upsilondieresistonos \uni1FD2 \uni1FE2 \uni1FD7 \uni1FE7 \uni1F00 
+	\uni1F01 \uni1F02 \uni1F03 \uni1F04 \uni1F05 \uni1F06 \uni1F07 \uni1F08 
+	\uni1F09 \uni1F0A \uni1F0B \uni1F0C \uni1F0D \uni1F0E \uni1F0F \uni1F10 
+	\uni1F11 \uni1F12 \uni1F13 \uni1F14 \uni1F15 \uni1F18 \uni1F19 \uni1F1A 
+	\uni1F1B \uni1F1C \uni1F1D \uni1F20 \uni1F21 \uni1F22 \uni1F23 \uni1F24 
+	\uni1F25 \uni1F26 \uni1F27 \uni1F28 \uni1F29 \uni1F2A \uni1F2B \uni1F2C 
+	\uni1F2D \uni1F2E \uni1F2F \uni1F30 \uni1F31 \uni1F32 \uni1F33 \uni1F34 
+	\uni1F35 \uni1F36 \uni1F37 \uni1F38 \uni1F39 \uni1F3A \uni1F3B \uni1F3C 
+	\uni1F3D \uni1F3E \uni1F3F \uni1F40 \uni1F41 \uni1F42 \uni1F43 \uni1F44 
+	\uni1F45 \uni1F48 \uni1F49 \uni1F4A \uni1F4B \uni1F4C \uni1F4D \uni1F50 
+	\uni1F51 \uni1F52 \uni1F53 \uni1F54 \uni1F55 \uni1F56 \uni1F57 \uni1F59 
+	\uni1F5B \uni1F5D \uni1F5F \uni1F60 \uni1F61 \uni1F62 \uni1F63 \uni1F64 
+	\uni1F65 \uni1F66 \uni1F67 \uni1F68 \uni1F69 \uni1F6A \uni1F6B \uni1F6C 
+	\uni1F6D \uni1F6E \uni1F6F \uni1F70 \uni1F72 \uni1F74 \uni1F76 \uni1F78 
+	\uni1F7A \uni1F7C \uni1F80 \uni1F81 \uni1F82 \uni1F83 \uni1F84 \uni1F85 
+	\uni1F86 \uni1F87 \uni1F88 \uni1F89 \uni1F8A \uni1F8B \uni1F8C \uni1F8D 
+	\uni1F8E \uni1F8F \uni1F90 \uni1F91 \uni1F92 \uni1F93 \uni1F94 \uni1F95 
+	\uni1F96 \uni1F97 \uni1F98 \uni1F99 \uni1F9A \uni1F9B \uni1F9C \uni1F9D 
+	\uni1F9E \uni1F9F \uni1FA0 \uni1FA1 \uni1FA2 \uni1FA3 \uni1FA4 \uni1FA5 
+	\uni1FA6 \uni1FA7 \uni1FA8 \uni1FA9 \uni1FAA \uni1FAB \uni1FAC \uni1FAD 
+	\uni1FAE \uni1FAF \uni1FB0 \uni1FB1 \uni1FB2 \uni1FB3 \uni1FB4 \uni1FB6 
+	\uni1FB7 \uni1FB8 \uni1FB9 \uni1FBA \uni1FBC \uni1FC2 \uni1FC3 \uni1FC4 
+	\uni1FC6 \uni1FC7 \uni1FC8 \uni1FCA \uni1FCC \uni1FD0 \uni1FD1 \uni1FD6 
+	\uni1FD8 \uni1FD9 \uni1FDA \uni1FE0 \uni1FE1 \uni1FE4 \uni1FE5 \uni1FE6 
+	\uni1FE8 \uni1FE9 \uni1FEA \uni1FEC \uni1FF2 \uni1FF3 \uni1FF4 \uni1FF6 
+	\uni1FF7 \uni1FF8 \uni1FFA \uni1FFC \epsilon_macroncmb 
+	\epsilon_brevecmb \epsilon_uni0342 \epsilon_uni0313_uni0342 
+	\epsilon_uni0314_uni0342 \Epsilon_macroncmb \Epsilon_brevecmb 
+	\Epsilon_uni0313_uni0342 \Epsilon_uni0314_uni0342 
+	\omicron_macroncmb \omicron_brevecmb \omicron_uni0342 
+	\omicron_uni0313_uni0342 \omicron_uni0314_uni0342 
+	\Omicron_macroncmb \Omicron_brevecmb \Omicron_uni0313_uni0342 
+	\Omicron_uni0314_uni0342 \Rho_uni0313 \Upsilon_uni0313 
+	\Upsilon_uni0313_acutecomb \Upsilon_uni0313_gravecomb 
+	\Upsilon_uni0313_uni0342 ];
+    @cc12_back_2 = [\beta \theta ];
+    sub @cc12_back_2 @cc12_match_2'lookup MedialFinalformsforGreek  ;
+    sub @cc12_back_1 @cc12_match_2'lookup MedialFinalformsforGreek  ;
+} ss06MedialFinalFormsforGreek;
+
+lookup ss12OptionalSerbianVariantForms {
+  lookupflag 0;
+    sub \afii10066 by \afii10064 ;
+} ss12OptionalSerbianVariantForms;
+
+lookup mgrkMathematicalGreek {
+  lookupflag 0;
+    sub \theta by \theta.mgrk ;
+    sub \kappa by \kappa.mgrk ;
+    sub \rho by \rho.mgrk ;
+} mgrkMathematicalGreek;
+
+lookup saltStylisticAlternatives {
+  lookupflag 0;
+    sub \G by \uniA77D ;
+    sub \g by \uni1D79 ;
+    sub \theta by \theta.mgrk ;
+} saltStylisticAlternatives;
+
+lookup subsSubscriptForms {
+  lookupflag 0;
+    sub \parenleft by \uni208D ;
+    sub \parenright by \uni208E ;
+    sub \plus by \uni208A ;
+    sub \zero by \zeroinferior ;
+    sub \one by \oneinferior ;
+    sub \two by \twoinferior ;
+    sub \three by \threeinferior ;
+    sub \four by \fourinferior ;
+    sub \five by \fiveinferior ;
+    sub \six by \sixinferior ;
+    sub \seven by \seveninferior ;
+    sub \eight by \eightinferior ;
+    sub \nine by \nineinferior ;
+    sub \equal by \uni208C ;
+    sub \minus by \uni208B ;
+} subsSubscriptForms;
+
+lookup supsSuperscriptForms {
+  lookupflag 0;
+    sub \parenleft by \uni207D ;
+    sub \parenright by \uni207E ;
+    sub \plus by \uni207A ;
+    sub \zero by \zerosuperior ;
+    sub \one by \onesuperior ;
+    sub \two by \twosuperior ;
+    sub \three by \threesuperior ;
+    sub \four by \foursuperior ;
+    sub \five by \fivesuperior ;
+    sub \six by \sixsuperior ;
+    sub \seven by \sevensuperior ;
+    sub \eight by \eightsuperior ;
+    sub \nine by \ninesuperior ;
+    sub \equal by \uni207C ;
+    sub \minus by \uni207B ;
+} supsSuperscriptForms;
+
+lookup caseCaseSensitiveFormsforGreek {
+  lookupflag 0;
+    sub \Alphatonos by \Alpha ;
+    sub \Epsilontonos by \Epsilon ;
+    sub \Etatonos by \Eta ;
+    sub \Iotatonos by \Iota ;
+    sub \Omicrontonos by \Omicron ;
+    sub \Upsilontonos by \Upsilon ;
+    sub \Omegatonos by \Omegagreek ;
+    sub \uni1F08 by \Alpha ;
+    sub \uni1F09 by \Alpha ;
+    sub \uni1F0A by \Alpha ;
+    sub \uni1F0B by \Alpha ;
+    sub \uni1F0C by \Alpha ;
+    sub \uni1F0D by \Alpha ;
+    sub \uni1F0E by \Alpha ;
+    sub \uni1F0F by \Alpha ;
+    sub \uni1F18 by \Epsilon ;
+    sub \uni1F19 by \Epsilon ;
+    sub \uni1F1A by \Epsilon ;
+    sub \uni1F1B by \Epsilon ;
+    sub \uni1F1C by \Epsilon ;
+    sub \uni1F1D by \Epsilon ;
+    sub \uni1F28 by \Eta ;
+    sub \uni1F29 by \Eta ;
+    sub \uni1F2A by \Eta ;
+    sub \uni1F2B by \Eta ;
+    sub \uni1F2C by \Eta ;
+    sub \uni1F2D by \Eta ;
+    sub \uni1F2E by \Eta ;
+    sub \uni1F2F by \Eta ;
+    sub \uni1F38 by \Iota ;
+    sub \uni1F39 by \Iota ;
+    sub \uni1F3A by \Iota ;
+    sub \uni1F3B by \Iota ;
+    sub \uni1F3C by \Iota ;
+    sub \uni1F3D by \Iota ;
+    sub \uni1F3E by \Iota ;
+    sub \uni1F3F by \Iota ;
+    sub \uni1F48 by \Omicron ;
+    sub \uni1F49 by \Omicron ;
+    sub \uni1F4A by \Omicron ;
+    sub \uni1F4B by \Omicron ;
+    sub \uni1F4C by \Omicron ;
+    sub \uni1F4D by \Omicron ;
+    sub \uni1F59 by \Upsilon ;
+    sub \uni1F5B by \Upsilon ;
+    sub \uni1F5D by \Upsilon ;
+    sub \uni1F5F by \Upsilon ;
+    sub \uni1F68 by \Omegagreek ;
+    sub \uni1F69 by \Omegagreek ;
+    sub \uni1F6A by \Omegagreek ;
+    sub \uni1F6B by \Omegagreek ;
+    sub \uni1F6C by \Omegagreek ;
+    sub \uni1F6D by \Omegagreek ;
+    sub \uni1F6E by \Omegagreek ;
+    sub \uni1F6F by \Omegagreek ;
+    sub \uni1F88 by \uni1FBC ;
+    sub \uni1F89 by \uni1FBC ;
+    sub \uni1F8A by \uni1FBC ;
+    sub \uni1F8B by \uni1FBC ;
+    sub \uni1F8C by \uni1FBC ;
+    sub \uni1F8D by \uni1FBC ;
+    sub \uni1F8E by \uni1FBC ;
+    sub \uni1F8F by \uni1FBC ;
+    sub \uni1F98 by \uni1FCC ;
+    sub \uni1F99 by \uni1FCC ;
+    sub \uni1F9A by \uni1FCC ;
+    sub \uni1F9B by \uni1FCC ;
+    sub \uni1F9C by \uni1FCC ;
+    sub \uni1F9D by \uni1FCC ;
+    sub \uni1F9E by \uni1FCC ;
+    sub \uni1F9F by \uni1FCC ;
+    sub \uni1FA8 by \uni1FFC ;
+    sub \uni1FA9 by \uni1FFC ;
+    sub \uni1FAA by \uni1FFC ;
+    sub \uni1FAB by \uni1FFC ;
+    sub \uni1FAC by \uni1FFC ;
+    sub \uni1FAD by \uni1FFC ;
+    sub \uni1FAE by \uni1FFC ;
+    sub \uni1FAF by \uni1FFC ;
+    sub \uni1FEC by \Rho ;
+    sub \Rho_uni0313 by \Rho ;
+    sub \Upsilon_uni0313 by \Upsilon ;
+    sub \Upsilon_uni0313_gravecomb by \Upsilon ;
+    sub \Upsilon_uni0313_acutecomb by \Upsilon ;
+    sub \Upsilon_uni0313_uni0342 by \Upsilon ;
+    sub \Epsilon_uni0313_uni0342 by \Epsilon ;
+    sub \Epsilon_uni0314_uni0342 by \Epsilon ;
+    sub \Omicron_uni0313_uni0342 by \Omicron ;
+    sub \Omicron_uni0314_uni0342 by \Omicron ;
+} caseCaseSensitiveFormsforGreek;
+
+lookup rligStandardLigatureswithZWJ {
+  lookupflag 0;
+    sub \A \afii301 \E  by \AE;
+    sub \A \afii301 \e  by \AE;
+    sub \a \afii301 \e  by \ae;
+    sub \O \afii301 \E  by \OE;
+    sub \O \afii301 \e  by \OE;
+    sub \o \afii301 \e  by \oe;
+    sub \f \afii301 \f  by \ff;
+    sub \f \afii301 \i  by \fi;
+    sub \f \afii301 \l  by \fl;
+    sub \ff \afii301 \i  by \ffi;
+    sub \f \afii301 \f \afii301 \i  by \ffi;
+    sub \ff \afii301 \l  by \ffl;
+    sub \f \afii301 \f \afii301 \l  by \ffl;
+    sub \ff \afii301 \j  by \f_f_j;
+    sub \f \afii301 \f \afii301 \j  by \f_f_j;
+    sub \f \afii301 \j  by \f_j;
+} rligStandardLigatureswithZWJ;
+
+lookup ligaStandardLigaturesforNederlands {
+  lookupflag 0;
+    sub \I \J  by \IJ;
+    sub \i \j  by \ij;
+} ligaStandardLigaturesforNederlands;
+
+lookup ligaStandardLigaturesforLatin {
+  lookupflag 0;
+    sub \f \f  by \ff;
+    sub \f \l  by \fl;
+    sub \ff \l  by \ffl;
+    sub \f \f \l  by \ffl;
+    sub \ff \j  by \f_f_j;
+    sub \f \f \j  by \f_f_j;
+    sub \f \j  by \f_j;
+} ligaStandardLigaturesforLatin;
+
+lookup ligaStandardLigaturesforLatinexceptTurkish {
+  lookupflag 0;
+    sub \f \i  by \fi;
+    sub \ff \i  by \ffi;
+    sub \f \f \i  by \ffi;
+} ligaStandardLigaturesforLatinexceptTurkish;
+
+lookup dligDiscretionaryLigaturesforGerman {
+  lookupflag 0;
+    sub \f \f  by \ff;
+    sub \f \i  by \fi;
+    sub \f \l  by \fl;
+    sub \ff \i  by \ffi;
+    sub \f \f \i  by \ffi;
+    sub \ff \l  by \ffl;
+    sub \f \f \l  by \ffl;
+    sub \ff \j  by \f_f_j;
+    sub \f \f \j  by \f_f_j;
+    sub \f \j  by \f_j;
+} dligDiscretionaryLigaturesforGerman;
+
+lookup fracDiagonalFractions {
+  lookupflag 0;
+    sub \slash by \uni2215.frac ;
+} fracDiagonalFractions;
+
+lookup fracDiagonalFractionsContextual {
+  lookupflag 0;
+    @cc25_match_1 = [\uni2215.frac \zero.dnom \one.dnom \two.dnom \three.dnom \four.dnom \five.dnom 
+	\six.dnom \seven.dnom \eight.dnom \nine.dnom ];
+    @cc25_match_2 = [\zerosuperior \onesuperior \twosuperior \threesuperior \foursuperior 
+	\fivesuperior \sixsuperior \sevensuperior \eightsuperior 
+	\ninesuperior ];
+    @cc25_back_1 = [\uni2215.frac \zero.dnom \one.dnom \two.dnom \three.dnom \four.dnom \five.dnom 
+	\six.dnom \seven.dnom \eight.dnom \nine.dnom ];
+    @cc25_back_2 = [\zerosuperior \onesuperior \twosuperior \threesuperior \foursuperior 
+	\fivesuperior \sixsuperior \sevensuperior \eightsuperior 
+	\ninesuperior ];
+    sub @cc25_back_1 @cc25_match_2'  by [\zero.dnom \one.dnom \two.dnom \three.dnom \four.dnom \five.dnom \six.dnom \seven.dnom \eight.dnom \nine.dnom ] ;
+} fracDiagonalFractionsContextual;
+
+feature aalt {
+
+ script cyrl;
+     language dflt ;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language CSL  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language SRB  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+
+ script grek;
+     language dflt ;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+
+ script latn;
+     language dflt ;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language AZE  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language CRT  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language DEU  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language MOL  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language NLD  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language ROM  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+     language TRK  exclude_dflt;
+      lookup aaltAccessAllAlternatesinLatinlookup0;
+} aalt;
+
+feature ccmp {
+
+ script cyrl;
+     language dflt ;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language CSL  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language SRB  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+
+ script grek;
+     language dflt ;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+
+ script latn;
+     language dflt ;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language AZE  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language CRT  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language DEU  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language MOL  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language NLD  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language ROM  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+     language TRK  exclude_dflt;
+      lookup ccmpStandardGlyphComposition;
+      lookup ccmpDecomposeAccented;
+      lookup ccmpCapitalandCompositeAccents;
+      lookup ccmpGreekCapitalandCompositeAccents;
+      lookup ccmpLowVariantsforAccents;
+} ccmp;
+
+feature locl {
+
+ script cyrl;
+     language CSL  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language SRB  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+
+ script grek;
+     language dflt ;
+      lookup loclLocalizedFormsforGreek;
+
+ script latn;
+     language MOL  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language ROM  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+} locl;
+
+feature ss01 {
+  featureNames {
+    name 3 1 0x409 "Localized Forms for Romanian";
+  };
+
+ script cyrl;
+     language dflt ;
+      lookup loclss01LocalizedFormsforRomanian;
+     language CSL  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language SRB  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+
+ script grek;
+     language dflt ;
+      lookup loclss01LocalizedFormsforRomanian;
+
+ script latn;
+     language dflt ;
+      lookup loclss01LocalizedFormsforRomanian;
+     language AZE  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language CRT  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language DEU  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language MOL  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language NLD  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language ROM  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+     language TRK  exclude_dflt;
+      lookup loclss01LocalizedFormsforRomanian;
+} ss01;
+
+feature ss11 {
+  featureNames {
+    name 3 1 0x409 "Localized Forms for Serbian";
+  };
+
+ script cyrl;
+     language dflt ;
+      lookup loclss11LocalizedFormsforSerbian;
+     language CSL  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+     language SRB  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+
+ script grek;
+     language dflt ;
+      lookup loclss11LocalizedFormsforSerbian;
+
+ script latn;
+     language dflt ;
+      lookup loclss11LocalizedFormsforSerbian;
+     language AZE  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+     language CRT  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+     language DEU  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+     language MOL  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+     language NLD  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+     language ROM  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+     language TRK  exclude_dflt;
+      lookup loclss11LocalizedFormsforSerbian;
+} ss11;
+
+feature ss14 {
+  featureNames {
+    name 3 1 0x409 "Localized Forms for Old Slavonic";
+  };
+
+ script cyrl;
+     language dflt ;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language CSL  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language SRB  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+
+ script grek;
+     language dflt ;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+
+ script latn;
+     language dflt ;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language AZE  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language CRT  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language DEU  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language MOL  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language NLD  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language ROM  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+     language TRK  exclude_dflt;
+      lookup loclss14LocalizedFormsforOldSlavonic;
+} ss14;
+
+feature ss02 {
+  featureNames {
+    name 3 1 0x409 "Insular Forms for Old English";
+  };
+
+ script cyrl;
+     language dflt ;
+      lookup ss02InsularFormsforOldEnglish;
+     language CSL  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+     language SRB  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+
+ script grek;
+     language dflt ;
+      lookup ss02InsularFormsforOldEnglish;
+
+ script latn;
+     language dflt ;
+      lookup ss02InsularFormsforOldEnglish;
+     language AZE  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+     language CRT  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+     language DEU  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+     language MOL  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+     language NLD  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+     language ROM  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+     language TRK  exclude_dflt;
+      lookup ss02InsularFormsforOldEnglish;
+} ss02;
+
+feature ss05 {
+  featureNames {
+    name 3 1 0x409 "Closed Greek Theta";
+  };
+
+ script cyrl;
+     language dflt ;
+      lookup ss05GreekClosedTheta;
+     language CSL  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+     language SRB  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+
+ script grek;
+     language dflt ;
+      lookup ss05GreekClosedTheta;
+
+ script latn;
+     language dflt ;
+      lookup ss05GreekClosedTheta;
+     language AZE  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+     language CRT  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+     language DEU  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+     language MOL  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+     language NLD  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+     language ROM  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+     language TRK  exclude_dflt;
+      lookup ss05GreekClosedTheta;
+} ss05;
+
+feature ss06 {
+  featureNames {
+    name 3 1 0x409 "Medial/Final Forms for Greek";
+  };
+
+ script cyrl;
+     language dflt ;
+      lookup ss06MedialFinalFormsforGreek;
+     language CSL  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+     language SRB  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+
+ script grek;
+     language dflt ;
+      lookup ss06MedialFinalFormsforGreek;
+
+ script latn;
+     language dflt ;
+      lookup ss06MedialFinalFormsforGreek;
+     language AZE  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+     language CRT  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+     language DEU  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+     language MOL  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+     language NLD  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+     language ROM  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+     language TRK  exclude_dflt;
+      lookup ss06MedialFinalFormsforGreek;
+} ss06;
+
+feature ss12 {
+  featureNames {
+    name 3 1 0x409 "Optional Serbian Variant Forms";
+  };
+
+ script cyrl;
+     language dflt ;
+      lookup ss12OptionalSerbianVariantForms;
+     language CSL  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+     language SRB  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+
+ script grek;
+     language dflt ;
+      lookup ss12OptionalSerbianVariantForms;
+
+ script latn;
+     language dflt ;
+      lookup ss12OptionalSerbianVariantForms;
+     language AZE  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+     language CRT  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+     language DEU  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+     language MOL  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+     language NLD  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+     language ROM  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+     language TRK  exclude_dflt;
+      lookup ss12OptionalSerbianVariantForms;
+} ss12;
+
+feature mgrk {
+
+ script cyrl;
+     language dflt ;
+      lookup mgrkMathematicalGreek;
+     language CSL  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+     language SRB  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+
+ script grek;
+     language dflt ;
+      lookup mgrkMathematicalGreek;
+
+ script latn;
+     language dflt ;
+      lookup mgrkMathematicalGreek;
+     language AZE  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+     language CRT  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+     language DEU  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+     language MOL  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+     language NLD  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+     language ROM  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+     language TRK  exclude_dflt;
+      lookup mgrkMathematicalGreek;
+} mgrk;
+
+feature salt {
+
+ script cyrl;
+     language dflt ;
+      lookup saltStylisticAlternatives;
+     language CSL  exclude_dflt;
+      lookup saltStylisticAlternatives;
+     language SRB  exclude_dflt;
+      lookup saltStylisticAlternatives;
+
+ script grek;
+     language dflt ;
+      lookup saltStylisticAlternatives;
+
+ script latn;
+     language dflt ;
+      lookup saltStylisticAlternatives;
+     language AZE  exclude_dflt;
+      lookup saltStylisticAlternatives;
+     language CRT  exclude_dflt;
+      lookup saltStylisticAlternatives;
+     language DEU  exclude_dflt;
+      lookup saltStylisticAlternatives;
+     language MOL  exclude_dflt;
+      lookup saltStylisticAlternatives;
+     language NLD  exclude_dflt;
+      lookup saltStylisticAlternatives;
+     language ROM  exclude_dflt;
+      lookup saltStylisticAlternatives;
+     language TRK  exclude_dflt;
+      lookup saltStylisticAlternatives;
+} salt;
+
+feature subs {
+
+ script DFLT;
+     language dflt ;
+      lookup subsSubscriptForms;
+
+ script cyrl;
+     language dflt ;
+      lookup subsSubscriptForms;
+     language CSL  exclude_dflt;
+      lookup subsSubscriptForms;
+     language SRB  exclude_dflt;
+      lookup subsSubscriptForms;
+
+ script grek;
+     language dflt ;
+      lookup subsSubscriptForms;
+
+ script latn;
+     language dflt ;
+      lookup subsSubscriptForms;
+     language AZE  exclude_dflt;
+      lookup subsSubscriptForms;
+     language CRT  exclude_dflt;
+      lookup subsSubscriptForms;
+     language DEU  exclude_dflt;
+      lookup subsSubscriptForms;
+     language MOL  exclude_dflt;
+      lookup subsSubscriptForms;
+     language NLD  exclude_dflt;
+      lookup subsSubscriptForms;
+     language ROM  exclude_dflt;
+      lookup subsSubscriptForms;
+     language TRK  exclude_dflt;
+      lookup subsSubscriptForms;
+} subs;
+
+feature frac {
+
+ script DFLT;
+     language dflt ;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+
+ script cyrl;
+     language dflt ;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+     language CSL  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language SRB  exclude_dflt;
+      lookup supsSuperscriptForms;
+
+ script grek;
+     language dflt ;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+
+ script latn;
+     language dflt ;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+     language AZE  exclude_dflt;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+     language CRT  exclude_dflt;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+     language DEU  exclude_dflt;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+     language MOL  exclude_dflt;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+     language NLD  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language ROM  exclude_dflt;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+     language TRK  exclude_dflt;
+      lookup supsSuperscriptForms;
+      lookup fracDiagonalFractions;
+      lookup fracDiagonalFractionsContextual;
+} frac;
+
+feature sups {
+
+ script DFLT;
+     language dflt ;
+      lookup supsSuperscriptForms;
+
+ script cyrl;
+     language dflt ;
+      lookup supsSuperscriptForms;
+     language CSL  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language SRB  exclude_dflt;
+      lookup supsSuperscriptForms;
+
+ script grek;
+     language dflt ;
+      lookup supsSuperscriptForms;
+
+ script latn;
+     language dflt ;
+      lookup supsSuperscriptForms;
+     language AZE  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language CRT  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language DEU  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language MOL  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language NLD  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language ROM  exclude_dflt;
+      lookup supsSuperscriptForms;
+     language TRK  exclude_dflt;
+      lookup supsSuperscriptForms;
+} sups;
+
+feature case {
+
+ script cyrl;
+     language dflt ;
+      lookup caseCaseSensitiveFormsforGreek;
+     language CSL  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+     language SRB  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+
+ script grek;
+     language dflt ;
+      lookup caseCaseSensitiveFormsforGreek;
+
+ script latn;
+     language dflt ;
+      lookup caseCaseSensitiveFormsforGreek;
+     language AZE  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+     language CRT  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+     language DEU  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+     language MOL  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+     language NLD  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+     language ROM  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+     language TRK  exclude_dflt;
+      lookup caseCaseSensitiveFormsforGreek;
+} case;
+
+feature rlig {
+
+ script cyrl;
+     language dflt ;
+      lookup rligStandardLigatureswithZWJ;
+
+ script grek;
+     language dflt ;
+      lookup rligStandardLigatureswithZWJ;
+
+ script latn;
+     language dflt ;
+      lookup rligStandardLigatureswithZWJ;
+     language AZE  exclude_dflt;
+      lookup rligStandardLigatureswithZWJ;
+     language CRT  exclude_dflt;
+      lookup rligStandardLigatureswithZWJ;
+     language DEU  exclude_dflt;
+      lookup rligStandardLigatureswithZWJ;
+     language MOL  exclude_dflt;
+      lookup rligStandardLigatureswithZWJ;
+     language ROM  exclude_dflt;
+      lookup rligStandardLigatureswithZWJ;
+     language TRK  exclude_dflt;
+      lookup rligStandardLigatureswithZWJ;
+} rlig;
+
+feature liga {
+
+ script latn;
+     language dflt ;
+      lookup ligaStandardLigaturesforLatin;
+      lookup ligaStandardLigaturesforLatinexceptTurkish;
+     language AZE  exclude_dflt;
+      lookup ligaStandardLigaturesforLatin;
+     language CRT  exclude_dflt;
+      lookup ligaStandardLigaturesforLatin;
+     language MOL  exclude_dflt;
+      lookup ligaStandardLigaturesforLatin;
+      lookup ligaStandardLigaturesforLatinexceptTurkish;
+     language NLD  exclude_dflt;
+      lookup ligaStandardLigaturesforNederlands;
+      lookup ligaStandardLigaturesforLatin;
+      lookup ligaStandardLigaturesforLatinexceptTurkish;
+     language ROM  exclude_dflt;
+      lookup ligaStandardLigaturesforLatin;
+      lookup ligaStandardLigaturesforLatinexceptTurkish;
+     language TRK  exclude_dflt;
+      lookup ligaStandardLigaturesforLatin;
+} liga;
+
+feature dlig {
+
+ script latn;
+     language DEU  exclude_dflt;
+      lookup dligDiscretionaryLigaturesforGerman;
+} dlig;
+
+# GPOS 
+
+
+lookup EnclosedCyrillicLetters {
+  lookupflag 0;
+    pos \afii10065 <288 0 592 0>;
+    pos \afii10067 <332 0 702 0>;
+    pos \afii10068 <344 0 708 0>;
+    pos \afii10069 <306 0 633 0>;
+    pos \afii10070 <336 0 718 0>;
+    pos \afii10073 <352 0 714 0>;
+    pos \afii10074 <268 0 556 0>;
+    pos \afii10101 <326 0 706 0>;
+    pos \afii10102 <336 0 708 0>;
+    pos \afii10195 <314 0 668 0>;
+    pos \uniA641 <312 0 674 0>;
+    pos \afii10192 <310 0 648 0>;
+    pos \afii10065.csl <292 0 608 0>;
+} EnclosedCyrillicLetters;
+
+lookup RQDEnclosedCyrillicLetters {
+  lookupflag 0;
+    @cc44_match_1 = [\afii10065 \afii10067 \afii10068 \afii10070 \afii10073 \afii10074 \afii10101 
+	\afii10102 \afii10195 \uniA641 \afii10065.csl \afii10192 ];
+    @cc44_match_2 = [\uni0488 \uni0489 \uni20DD \uniA670 \uniA671 \uniA672 ];
+    @cc44_match_3 = [\uni0483 ];
+    pos @cc44_match_1'lookup EnclosedCyrillicLetters  @cc44_match_2' ;
+    pos @cc44_match_1'lookup EnclosedCyrillicLetters  @cc44_match_3' @cc44_match_2' ;
+} RQDEnclosedCyrillicLetters;
+
+lookup GreekCapsafterOxia {
+  lookupflag 0;
+    pos \Epsilon <220 0 220 0>;
+    pos \Eta <220 0 220 0>;
+    pos \Iota <220 0 220 0>;
+    pos \Omicron <188 0 188 0>;
+    pos \Rho <220 0 220 0>;
+    pos \Upsilon <220 0 220 0>;
+    pos \Omegagreek <164 0 164 0>;
+    pos \uni1FD8 <220 0 220 0>;
+    pos \uni1FD9 <220 0 220 0>;
+    pos \uni1FE8 <220 0 220 0>;
+    pos \uni1FE9 <220 0 220 0>;
+    pos \Epsilon_macroncmb <220 0 220 0>;
+    pos \Epsilon_brevecmb <220 0 220 0>;
+    pos \Omicron_macroncmb <188 0 188 0>;
+    pos \Omicron_brevecmb <188 0 188 0>;
+} GreekCapsafterOxia;
+
+lookup GreekCapsafterVaria {
+  lookupflag 0;
+    pos \Epsilon <134 0 134 0>;
+    pos \Eta <134 0 134 0>;
+    pos \Iota <134 0 134 0>;
+    pos \Omicron <102 0 102 0>;
+    pos \Rho <134 0 134 0>;
+    pos \Upsilon <134 0 134 0>;
+    pos \Omegagreek <78 0 78 0>;
+    pos \uni1FD8 <134 0 134 0>;
+    pos \uni1FD9 <134 0 134 0>;
+    pos \uni1FE8 <134 0 134 0>;
+    pos \uni1FE9 <134 0 134 0>;
+    pos \Epsilon_macroncmb <134 0 134 0>;
+    pos \Epsilon_brevecmb <134 0 134 0>;
+    pos \Omicron_macroncmb <102 0 102 0>;
+    pos \Omicron_brevecmb <102 0 102 0>;
+} GreekCapsafterVaria;
+
+lookup GreekCapsafterBreathings {
+  lookupflag 0;
+    pos \Epsilon <212 0 212 0>;
+    pos \Eta <212 0 212 0>;
+    pos \Iota <212 0 212 0>;
+    pos \Omicron <180 0 180 0>;
+    pos \Rho <212 0 212 0>;
+    pos \Upsilon <212 0 212 0>;
+    pos \Omegagreek <156 0 156 0>;
+    pos \uni1FD8 <212 0 212 0>;
+    pos \uni1FD9 <212 0 212 0>;
+    pos \uni1FE8 <212 0 212 0>;
+    pos \uni1FE9 <212 0 212 0>;
+    pos \Epsilon_macroncmb <212 0 212 0>;
+    pos \Epsilon_brevecmb <212 0 212 0>;
+    pos \Omicron_macroncmb <180 0 180 0>;
+    pos \Omicron_brevecmb <180 0 180 0>;
+} GreekCapsafterBreathings;
+
+lookup GreekCapsafteraBreathingandOxia {
+  lookupflag 0;
+    pos \Alpha <66 0 66 0>;
+    pos \Epsilon <286 0 286 0>;
+    pos \Eta <286 0 286 0>;
+    pos \Iota <286 0 286 0>;
+    pos \Omicron <254 0 254 0>;
+    pos \Rho <286 0 286 0>;
+    pos \Upsilon <286 0 286 0>;
+    pos \Omegagreek <230 0 230 0>;
+    pos \uni1FB8 <66 0 66 0>;
+    pos \uni1FB9 <66 0 66 0>;
+    pos \uni1FD8 <286 0 286 0>;
+    pos \uni1FD9 <286 0 286 0>;
+    pos \uni1FE8 <286 0 286 0>;
+    pos \uni1FE9 <286 0 286 0>;
+    pos \Epsilon_macroncmb <286 0 286 0>;
+    pos \Epsilon_brevecmb <286 0 286 0>;
+    pos \Omicron_macroncmb <254 0 254 0>;
+    pos \Omicron_brevecmb <254 0 254 0>;
+} GreekCapsafteraBreathingandOxia;
+
+lookup GreekCapsafteraBreathingandPerispomeni {
+  lookupflag 0;
+    pos \Alpha <38 0 38 0>;
+    pos \Epsilon <258 0 258 0>;
+    pos \Eta <258 0 258 0>;
+    pos \Iota <258 0 258 0>;
+    pos \Omicron <226 0 226 0>;
+    pos \Rho <258 0 258 0>;
+    pos \Upsilon <258 0 258 0>;
+    pos \Omegagreek <202 0 202 0>;
+    pos \uni1FB8 <38 0 38 0>;
+    pos \uni1FB9 <38 0 38 0>;
+    pos \uni1FD8 <258 0 258 0>;
+    pos \uni1FD9 <258 0 258 0>;
+    pos \uni1FE8 <258 0 258 0>;
+    pos \uni1FE9 <258 0 258 0>;
+    pos \Epsilon_macroncmb <258 0 258 0>;
+    pos \Epsilon_brevecmb <258 0 258 0>;
+    pos \Omicron_macroncmb <226 0 226 0>;
+    pos \Omicron_brevecmb <226 0 226 0>;
+} GreekCapsafteraBreathingandPerispomeni;
+
+lookup GreekCapsafteraBreathingandVaria {
+  lookupflag 0;
+    pos \Alpha <26 0 26 0>;
+    pos \Epsilon <246 0 246 0>;
+    pos \Eta <246 0 246 0>;
+    pos \Iota <246 0 246 0>;
+    pos \Omicron <214 0 214 0>;
+    pos \Rho <246 0 246 0>;
+    pos \Upsilon <246 0 246 0>;
+    pos \Omegagreek <190 0 190 0>;
+    pos \uni1FB8 <26 0 26 0>;
+    pos \uni1FB9 <26 0 26 0>;
+    pos \uni1FD8 <246 0 246 0>;
+    pos \uni1FD9 <246 0 246 0>;
+    pos \uni1FE8 <246 0 246 0>;
+    pos \uni1FE9 <246 0 246 0>;
+    pos \Epsilon_macroncmb <246 0 246 0>;
+    pos \Epsilon_brevecmb <246 0 246 0>;
+    pos \Omicron_macroncmb <214 0 214 0>;
+    pos \Omicron_brevecmb <214 0 214 0>;
+} GreekCapsafteraBreathingandVaria;
+
+lookup RQDGreekCapsafterAccentsPositioning {
+  lookupflag 0;
+    @cc45_match_1 = [\acutecomb.grek ];
+    @cc45_match_2 = [\gravecomb.grek ];
+    @cc45_match_3 = [\uni0313.grek \uni0314.grek ];
+    @cc45_match_4 = [\uni0313_acutecomb.grek \uni0314_acutecomb.grek ];
+    @cc45_match_5 = [\uni0313_gravecomb.grek \uni0314_gravecomb.grek ];
+    @cc45_match_6 = [\uni0313_uni0342.grek \uni0314_uni0342.grek ];
+    @cc45_match_7 = [\Alpha \uni1FB8 \uni1FB9 ];
+    @cc45_match_8 = [\Epsilon \Eta \Iota \Rho \Upsilon \uni1FD8 \uni1FD9 \uni1FE8 \uni1FE9 
+	\Epsilon_macroncmb \Epsilon_brevecmb ];
+    @cc45_match_9 = [\Omicron \Omicron_macroncmb \Omicron_brevecmb ];
+    @cc45_match_10 = [\Omegagreek ];
+    @cc45_match_11 = [\macroncmb.cap \brevecmb.cap ];
+    pos @cc45_match_7'lookup GreekCapsafterOxia  @cc45_match_1' ;
+    pos @cc45_match_8'lookup GreekCapsafterOxia  @cc45_match_1' ;
+    pos @cc45_match_9'lookup GreekCapsafterOxia  @cc45_match_1' ;
+    pos @cc45_match_10'lookup GreekCapsafterOxia  @cc45_match_1' ;
+    pos @cc45_match_7'lookup GreekCapsafterVaria  @cc45_match_2' ;
+    pos @cc45_match_8'lookup GreekCapsafterVaria  @cc45_match_2' ;
+    pos @cc45_match_9'lookup GreekCapsafterVaria  @cc45_match_2' ;
+    pos @cc45_match_10'lookup GreekCapsafterVaria  @cc45_match_2' ;
+    pos @cc45_match_7'lookup GreekCapsafterBreathings  @cc45_match_3' ;
+    pos @cc45_match_8'lookup GreekCapsafterBreathings  @cc45_match_3' ;
+    pos @cc45_match_9'lookup GreekCapsafterBreathings  @cc45_match_3' ;
+    pos @cc45_match_10'lookup GreekCapsafterBreathings  @cc45_match_3' ;
+    pos @cc45_match_7'lookup GreekCapsafteraBreathingandOxia  @cc45_match_4' ;
+    pos @cc45_match_8'lookup GreekCapsafteraBreathingandOxia  @cc45_match_4' ;
+    pos @cc45_match_9'lookup GreekCapsafteraBreathingandOxia  @cc45_match_4' ;
+    pos @cc45_match_10'lookup GreekCapsafteraBreathingandOxia  @cc45_match_4' ;
+    pos @cc45_match_7'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_5' ;
+    pos @cc45_match_8'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_5' ;
+    pos @cc45_match_9'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_5' ;
+    pos @cc45_match_10'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_5' ;
+    pos @cc45_match_7'lookup GreekCapsafteraBreathingandVaria  @cc45_match_6' ;
+    pos @cc45_match_8'lookup GreekCapsafteraBreathingandVaria  @cc45_match_6' ;
+    pos @cc45_match_9'lookup GreekCapsafteraBreathingandVaria  @cc45_match_6' ;
+    pos @cc45_match_10'lookup GreekCapsafteraBreathingandVaria  @cc45_match_6' ;
+    pos @cc45_match_7'lookup GreekCapsafterOxia  @cc45_match_11' @cc45_match_1' ;
+    pos @cc45_match_8'lookup GreekCapsafterOxia  @cc45_match_11' @cc45_match_1' ;
+    pos @cc45_match_9'lookup GreekCapsafterOxia  @cc45_match_11' @cc45_match_1' ;
+    pos @cc45_match_10'lookup GreekCapsafterOxia  @cc45_match_11' @cc45_match_1' ;
+    pos @cc45_match_7'lookup GreekCapsafterVaria  @cc45_match_11' @cc45_match_2' ;
+    pos @cc45_match_8'lookup GreekCapsafterVaria  @cc45_match_11' @cc45_match_2' ;
+    pos @cc45_match_9'lookup GreekCapsafterVaria  @cc45_match_11' @cc45_match_2' ;
+    pos @cc45_match_10'lookup GreekCapsafterVaria  @cc45_match_11' @cc45_match_2' ;
+    pos @cc45_match_7'lookup GreekCapsafterBreathings  @cc45_match_11' @cc45_match_3' ;
+    pos @cc45_match_8'lookup GreekCapsafterBreathings  @cc45_match_11' @cc45_match_3' ;
+    pos @cc45_match_9'lookup GreekCapsafterBreathings  @cc45_match_11' @cc45_match_3' ;
+    pos @cc45_match_10'lookup GreekCapsafterBreathings  @cc45_match_11' @cc45_match_3' ;
+    pos @cc45_match_7'lookup GreekCapsafteraBreathingandOxia  @cc45_match_11' @cc45_match_4' ;
+    pos @cc45_match_8'lookup GreekCapsafteraBreathingandOxia  @cc45_match_11' @cc45_match_4' ;
+    pos @cc45_match_9'lookup GreekCapsafteraBreathingandOxia  @cc45_match_11' @cc45_match_4' ;
+    pos @cc45_match_10'lookup GreekCapsafteraBreathingandOxia  @cc45_match_11' @cc45_match_4' ;
+    pos @cc45_match_7'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_11' @cc45_match_5' ;
+    pos @cc45_match_8'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_11' @cc45_match_5' ;
+    pos @cc45_match_9'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_11' @cc45_match_5' ;
+    pos @cc45_match_10'lookup GreekCapsafteraBreathingandPerispomeni  @cc45_match_11' @cc45_match_5' ;
+    pos @cc45_match_7'lookup GreekCapsafteraBreathingandVaria  @cc45_match_11' @cc45_match_6' ;
+    pos @cc45_match_8'lookup GreekCapsafteraBreathingandVaria  @cc45_match_11' @cc45_match_6' ;
+    pos @cc45_match_9'lookup GreekCapsafteraBreathingandVaria  @cc45_match_11' @cc45_match_6' ;
+    pos @cc45_match_10'lookup GreekCapsafteraBreathingandVaria  @cc45_match_11' @cc45_match_6' ;
+} RQDGreekCapsafterAccentsPositioning;
+
+lookup markMarkPositioning {
+  lookupflag 0;
+  markClass [\gravecomb \acutecomb \circumflexcmb \tildecomb \macroncmb \brevecmb \uni0308 \uni030A \uni030B \uni030C \uni030F \uni0311 \uni0312 \uni0313 \uni0314 \uni033E \uni0351 \uni0357 \uni0363 \uni0364 \uni0365 \uni0366 \uni0367 \uni0368 \uni0369 \uni036A \uni036B \uni036C \uni036D \uni036E \uni036F \uni0483 \uni0484 \uni0485 \uni0487 \uni1DCB \uni1DCC \uni2DE0 \uni2DE1 \uni2DE2 \uni2DE3 \uni2DE4 \uni2DE5 \uni2DE6 \uni2DE7 \uni2DE8 \uni2DE9 \uni2DEA \uni2DEB \uni2DEC \uni2DED \uni2DEE \uni2DEF \uni2DF0 \uni2DF1 \uni2DF2 \uni2DF3 \uni2DF4 \uni2DF5 \uni2DF6 \uni2DF7 \uni2DF8 \uni2DF9 \uni2DFA \uni2DFB \uni2DFC \uni2DFD \uni2DFE \uni2DFF \uniA66F \uniA67D \acutecomb_uni0307 \tildecomb_acutecomb \tildecomb_uni0308 \macroncmb_gravecomb \macroncmb_acutecomb \macroncmb_brevecmb \macroncmb_uni0308 \brevecmb_gravecomb \brevecmb_acutecomb \uni0308_gravecomb \uni0308_acutecomb \uni030A_acutecomb \uni030C_uni0307 \brevecmb.cyrl \uni0308.i \uni0308_gravecomb.i \uni0308_acutecomb.i ] <anchor -222 508> @Top;
+  markClass [\uni0486 \uni0486_gravecomb \uni0486_acutecomb ] <anchor -221 508> @Top;
+  markClass [\uniA67C ] <anchor -223 508> @Top;
+  markClass [\gravecomb.cap \acutecomb.cap \circumflexcmb.cap \tildecomb.cap \macroncmb.cap \brevecmb.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \acutecomb_uni0307.cap \tildecomb_acutecomb.cap \tildecomb_uni0308.cap \macroncmb_gravecomb.cap \macroncmb_acutecomb.cap \macroncmb_brevecmb.cap \macroncmb_uni0308.cap \brevecmb_gravecomb.cap \brevecmb_acutecomb.cap \uni0308_gravecomb.cap \uni0308_acutecomb.cap \uni030A_acutecomb.cap \uni030C_uni0307.cap \brevecmb.cyrcap ] <anchor -156 762> @Top;
+  pos base [\A \afii10017 ] <anchor 550 762> mark @Top;
+  pos base [\B \P \R \uni0243 \Rho \afii10019 \afii10025 \afii10034 ] <anchor 452 762> mark @Top;
+  pos base [\C \G \J \afii10020 \afii10035 ] <anchor 488 762> mark @Top;
+  pos base [\D ] <anchor 458 762> mark @Top;
+  pos base [\E \F \T \Epsilon \afii10022 \afii10036 ] <anchor 478 762> mark @Top;
+  pos base [\H \Eta \afii10031 \afii10049 ] <anchor 552 762> mark @Top;
+  pos base [\I \Iota \afii10055 ] <anchor 346 762> mark @Top;
+  pos base [\K ] <anchor 532 762> mark @Top;
+  pos base [\L ] <anchor 344 762> mark @Top;
+  pos base [\M \afii10030 ] <anchor 586 762> mark @Top;
+  pos base [\N ] <anchor 540 762> mark @Top;
+  pos base [\O \Q \Oslash \Oogonek \Omicron \afii10028 \afii10032 \afii10147 \uniA668 ] <anchor 494 762> mark @Top;
+  pos base [\S \afii10054 ] <anchor 425 762> mark @Top;
+  pos base [\U \afii10044 ] <anchor 544 762> mark @Top;
+  pos base [\V \uniA64A \afii10017.csl ] <anchor 496 762> mark @Top;
+  pos base [\W ] <anchor 668 762> mark @Top;
+  pos base [\X \afii10039 \uni0466 \uniA658 ] <anchor 536 762> mark @Top;
+  pos base [\Y ] <anchor 490 762> mark @Top;
+  pos base [\Z \uni0224 ] <anchor 428 762> mark @Top;
+  pos base [\a \g \q \afii10065 ] <anchor 322 508> mark @Top;
+  pos base [\c \o \oslash \oogonek \afii10080 \afii10083 \afii10195 \uniA669 ] <anchor 314 508> mark @Top;
+  pos base [\e \afii10070 ] <anchor 312 508> mark @Top;
+  pos base [\f \longs ] <anchor 396 752> mark @Top;
+  pos base [\h ] <anchor 356 752> mark @Top;
+  pos base [\k ] <anchor 280 762> mark @Top;
+  pos base [\l ] <anchor 254 762> mark @Top;
+  pos base [\m \afii10084 ] <anchor 488 508> mark @Top;
+  pos base [\n \afii10081 ] <anchor 350 508> mark @Top;
+  pos base [\p \u \y \afii10074 \afii10082 \afii10085 \afii10088 \afii10193 \uni0465 ] <anchor 348 508> mark @Top;
+  pos base [\r \s \afii10102 ] <anchor 290 508> mark @Top;
+  pos base [\t ] <anchor 260 762> mark @Top;
+  pos base [\v \uni0292 ] <anchor 306 508> mark @Top;
+  pos base [\w ] <anchor 456 508> mark @Top;
+  pos base [\x ] <anchor 356 508> mark @Top;
+  pos base [\z ] <anchor 294 508> mark @Top;
+  pos base [\AE ] <anchor 764 762> mark @Top;
+  pos base [\ae ] <anchor 438 508> mark @Top;
+  pos base [\dotlessi \iogonek.dotless ] <anchor 224 508> mark @Top;
+  pos base [\uni0186 ] <anchor 450 762> mark @Top;
+  pos base [\uni0190 \uni0510 ] <anchor 464 762> mark @Top;
+  pos base [\uni01B7 ] <anchor 420 762> mark @Top;
+  pos base [\uni0225 \uniA641 ] <anchor 289 494> mark @Top;
+  pos base [\uni0254 ] <anchor 260 508> mark @Top;
+  pos base [\uni025B \uni0511 ] <anchor 292 508> mark @Top;
+  pos base [\Alpha ] <anchor 700 762> mark @Top;
+  pos base [\Pi \afii10033 \uni0470 \uniA65E ] <anchor 542 762> mark @Top;
+  pos base [\Upsilon \afii10146 ] <anchor 466 762> mark @Top;
+  pos base [\Omegagreek ] <anchor 560 762> mark @Top;
+  pos base [\afii10053 ] <anchor 480 762> mark @Top;
+  pos base [\afii10021 \uniA662 ] <anchor 524 762> mark @Top;
+  pos base [\afii10024 \uni046A ] <anchor 648 762> mark @Top;
+  pos base [\afii10026 \afii10040 ] <anchor 538 762> mark @Top;
+  pos base [\afii10029 \uniA664 ] <anchor 596 762> mark @Top;
+  pos base [\afii10037 ] <anchor 546 762> mark @Top;
+  pos base [\afii10038 ] <anchor 544 760> mark @Top;
+  pos base [\afii10041 ] <anchor 489 762> mark @Top;
+  pos base [\afii10045 ] <anchor 612 762> mark @Top;
+  pos base [\afii10046 ] <anchor 345 762> mark @Top;
+  pos base [\afii10047 ] <anchor 446 762> mark @Top;
+  pos base [\afii10048 ] <anchor 610 762> mark @Top;
+  pos base [\afii10067 ] <anchor 298 508> mark @Top;
+  pos base [\afii10068 \afii10092 ] <anchor 262 508> mark @Top;
+  pos base [\afii10072 ] <anchor 490 508> mark @Top;
+  pos base [\afii10073 ] <anchor 264 508> mark @Top;
+  pos base [\afii10076 \afii10196 ] <anchor 324 508> mark @Top;
+  pos base [\afii10077 \afii10079 \afii10089 \uniA665 ] <anchor 340 508> mark @Top;
+  pos base [\afii10078 \uniA667 ] <anchor 434 508> mark @Top;
+  pos base [\afii10086 ] <anchor 552 712> mark @Top;
+  pos base [\afii10087 \uniA657 ] <anchor 362 508> mark @Top;
+  pos base [\afii10093 ] <anchor 402 508> mark @Top;
+  pos base [\afii10094 ] <anchor 206 508> mark @Top;
+  pos base [\afii10095 \afii10066.low ] <anchor 272 508> mark @Top;
+  pos base [\afii10096 \uniA66D ] <anchor 422 508> mark @Top;
+  pos base [\afii10097 ] <anchor 336 508> mark @Top;
+  pos base [\afii10101 \uni0481 ] <anchor 308 508> mark @Top;
+  pos base [\uni0460 ] <anchor 562 762> mark @Top;
+  pos base [\uni0461 ] <anchor 388 508> mark @Top;
+  pos base [\afii10194 ] <anchor 396 508> mark @Top;
+  pos base [\uni0464 ] <anchor 604 762> mark @Top;
+  pos base [\uni0467 \uniA659 ] <anchor 358 508> mark @Top;
+  pos base [\uni0468 \uniA65C ] <anchor 652 762> mark @Top;
+  pos base [\uni0469 \uniA65D ] <anchor 424 508> mark @Top;
+  pos base [\uni046B ] <anchor 467 508> mark @Top;
+  pos base [\uni046C ] <anchor 832 762> mark @Top;
+  pos base [\uni046D ] <anchor 534 508> mark @Top;
+  pos base [\uni046E ] <anchor 460 924> mark @Top;
+  pos base [\uni046F ] <anchor 354 600> mark @Top;
+  pos base [\uni0471 ] <anchor 504 664> mark @Top;
+  pos base [\afii10148 \uniA652 ] <anchor 504 762> mark @Top;
+  pos base [\uni0478 ] <anchor 968 508> mark @Top;
+  pos base [\uni0479 ] <anchor 748 508> mark @Top;
+  pos base [\uni047A ] <anchor 794 762> mark @Top;
+  pos base [\uni047B ] <anchor 487 508> mark @Top;
+  pos base [\uni0480 ] <anchor 434 762> mark @Top;
+  pos base [\uniA643 ] <anchor 220 508> mark @Top;
+  pos base [\uniA644 ] <anchor 442 762> mark @Top;
+  pos base [\uniA645 ] <anchor 274 508> mark @Top;
+  pos base [\uniA646 ] <anchor 274 762> mark @Top;
+  pos base [\uniA647 ] <anchor 204 506> mark @Top;
+  pos base [\uniA64C ] <anchor 646 762> mark @Top;
+  pos base [\uniA64D \uniA651 \uniA65F ] <anchor 436 508> mark @Top;
+  pos base [\uniA64E ] <anchor 447 -50> mark @Top;
+  pos base [\uniA650 ] <anchor 818 762> mark @Top;
+  pos base [\uniA653 ] <anchor 512 664> mark @Top;
+  pos base [\uniA654 ] <anchor 644 762> mark @Top;
+  pos base [\uniA655 ] <anchor 446 508> mark @Top;
+  pos base [\uniA656 ] <anchor 564 762> mark @Top;
+  pos base [\uniA65A ] <anchor 516 762> mark @Top;
+  pos base [\uniA65B ] <anchor 364 508> mark @Top;
+  pos base [\uniA663 \afii10192 ] <anchor 346 508> mark @Top;
+  pos base [\uniA66A ] <anchor 548 762> mark @Top;
+  pos base [\uniA66B ] <anchor 354 508> mark @Top;
+  pos base [\uniA66C ] <anchor 662 762> mark @Top;
+  pos base [\dotlessj ] <anchor 250 508> mark @Top;
+  pos base [\afii10065.csl ] <anchor 300 508> mark @Top;
+  pos base [\afii10194.csl ] <anchor 296 664> mark @Top;
+  pos base [\uniA64B.low ] <anchor 318 508> mark @Top;
+  markClass [\uni0307 ] <anchor -216 528> @Dotaccent;
+  markClass [\uni0307.cap ] <anchor -150 782> @Dotaccent;
+  pos base [\A \afii10017 ] <anchor 556 782> mark @Dotaccent;
+  pos base [\B \P \R \uni0243 \Rho \afii10019 \afii10025 \afii10034 ] <anchor 458 782> mark @Dotaccent;
+  pos base [\C \G \J \afii10020 \afii10035 ] <anchor 494 782> mark @Dotaccent;
+  pos base [\D ] <anchor 464 782> mark @Dotaccent;
+  pos base [\E \F \T \Epsilon \afii10022 \afii10036 ] <anchor 484 782> mark @Dotaccent;
+  pos base [\H \Eta \afii10031 \afii10049 ] <anchor 558 782> mark @Dotaccent;
+  pos base [\I \Iota \afii10055 ] <anchor 352 782> mark @Dotaccent;
+  pos base [\K ] <anchor 538 782> mark @Dotaccent;
+  pos base [\L ] <anchor 350 782> mark @Dotaccent;
+  pos base [\M \afii10030 ] <anchor 592 782> mark @Dotaccent;
+  pos base [\N ] <anchor 546 782> mark @Dotaccent;
+  pos base [\O \Q \Oslash \Oogonek \Omicron \afii10028 \afii10032 \afii10147 \uniA668 ] <anchor 500 782> mark @Dotaccent;
+  pos base [\S \afii10054 ] <anchor 431 782> mark @Dotaccent;
+  pos base [\U \afii10044 ] <anchor 550 782> mark @Dotaccent;
+  pos base [\V \uniA64A \afii10017.csl ] <anchor 502 782> mark @Dotaccent;
+  pos base [\W ] <anchor 674 782> mark @Dotaccent;
+  pos base [\X \afii10039 \uni0466 \uniA658 ] <anchor 542 782> mark @Dotaccent;
+  pos base [\Y ] <anchor 496 782> mark @Dotaccent;
+  pos base [\Z \uni0224 ] <anchor 434 782> mark @Dotaccent;
+  pos base [\a \g \q \afii10065 ] <anchor 328 528> mark @Dotaccent;
+  pos base [\b ] <anchor 372 528> mark @Dotaccent;
+  pos base [\c \o \oslash \oogonek \afii10080 \afii10083 \afii10195 \uniA669 ] <anchor 320 528> mark @Dotaccent;
+  pos base [\d ] <anchor 286 528> mark @Dotaccent;
+  pos base [\e \afii10070 ] <anchor 318 528> mark @Dotaccent;
+  pos base [\f \longs ] <anchor 404 778> mark @Dotaccent;
+  pos base [\h ] <anchor 363 772> mark @Dotaccent;
+  pos base [\k ] <anchor 286 782> mark @Dotaccent;
+  pos base [\l ] <anchor 260 782> mark @Dotaccent;
+  pos base [\m \afii10084 ] <anchor 494 528> mark @Dotaccent;
+  pos base [\n \afii10081 ] <anchor 356 528> mark @Dotaccent;
+  pos base [\p \u \y \afii10074 \afii10082 \afii10085 \afii10088 \afii10193 \uni0465 ] <anchor 354 528> mark @Dotaccent;
+  pos base [\r \s \afii10102 ] <anchor 296 528> mark @Dotaccent;
+  pos base [\t ] <anchor 266 782> mark @Dotaccent;
+  pos base [\v \uni0292 ] <anchor 312 528> mark @Dotaccent;
+  pos base [\w ] <anchor 462 528> mark @Dotaccent;
+  pos base [\x \uniA66B ] <anchor 360 528> mark @Dotaccent;
+  pos base [\z ] <anchor 300 528> mark @Dotaccent;
+  pos base [\AE ] <anchor 770 782> mark @Dotaccent;
+  pos base [\ae ] <anchor 444 528> mark @Dotaccent;
+  pos base [\dotlessi \iogonek.dotless ] <anchor 230 528> mark @Dotaccent;
+  pos base [\uni0186 ] <anchor 456 782> mark @Dotaccent;
+  pos base [\uni0190 \uni0510 ] <anchor 470 782> mark @Dotaccent;
+  pos base [\uni01B7 ] <anchor 426 782> mark @Dotaccent;
+  pos base [\uni0225 \uniA641 ] <anchor 295 514> mark @Dotaccent;
+  pos base [\uni0254 ] <anchor 266 528> mark @Dotaccent;
+  pos base [\uni025B \uni0511 ] <anchor 298 528> mark @Dotaccent;
+  pos base [\Alpha ] <anchor 706 782> mark @Dotaccent;
+  pos base [\Pi \afii10033 \uni0470 \uniA65E ] <anchor 548 782> mark @Dotaccent;
+  pos base [\Upsilon \afii10146 ] <anchor 472 782> mark @Dotaccent;
+  pos base [\Omegagreek ] <anchor 566 782> mark @Dotaccent;
+  pos base [\afii10053 ] <anchor 486 782> mark @Dotaccent;
+  pos base [\afii10021 \uniA662 ] <anchor 530 782> mark @Dotaccent;
+  pos base [\afii10024 \uni046A ] <anchor 654 782> mark @Dotaccent;
+  pos base [\afii10026 \afii10040 ] <anchor 544 782> mark @Dotaccent;
+  pos base [\afii10029 \uniA664 ] <anchor 602 782> mark @Dotaccent;
+  pos base [\afii10037 ] <anchor 552 782> mark @Dotaccent;
+  pos base [\afii10038 ] <anchor 550 780> mark @Dotaccent;
+  pos base [\afii10041 ] <anchor 495 782> mark @Dotaccent;
+  pos base [\afii10045 ] <anchor 618 782> mark @Dotaccent;
+  pos base [\afii10046 ] <anchor 351 782> mark @Dotaccent;
+  pos base [\afii10047 ] <anchor 452 782> mark @Dotaccent;
+  pos base [\afii10048 ] <anchor 616 782> mark @Dotaccent;
+  pos base [\afii10067 ] <anchor 304 528> mark @Dotaccent;
+  pos base [\afii10068 \afii10092 ] <anchor 268 528> mark @Dotaccent;
+  pos base [\afii10072 ] <anchor 496 528> mark @Dotaccent;
+  pos base [\afii10073 ] <anchor 270 528> mark @Dotaccent;
+  pos base [\afii10076 \afii10196 ] <anchor 330 528> mark @Dotaccent;
+  pos base [\afii10077 \afii10079 \afii10089 \uniA665 ] <anchor 346 528> mark @Dotaccent;
+  pos base [\afii10078 \uniA667 ] <anchor 440 528> mark @Dotaccent;
+  pos base [\afii10086 ] <anchor 558 732> mark @Dotaccent;
+  pos base [\afii10087 \uniA657 ] <anchor 368 528> mark @Dotaccent;
+  pos base [\afii10093 ] <anchor 408 528> mark @Dotaccent;
+  pos base [\afii10094 ] <anchor 212 528> mark @Dotaccent;
+  pos base [\afii10095 \afii10066.low ] <anchor 278 528> mark @Dotaccent;
+  pos base [\afii10096 \uniA66D ] <anchor 428 528> mark @Dotaccent;
+  pos base [\afii10097 ] <anchor 342 528> mark @Dotaccent;
+  pos base [\afii10101 \uni0481 ] <anchor 314 528> mark @Dotaccent;
+  pos base [\uni0460 ] <anchor 568 782> mark @Dotaccent;
+  pos base [\uni0461 ] <anchor 394 528> mark @Dotaccent;
+  pos base [\afii10194 ] <anchor 402 528> mark @Dotaccent;
+  pos base [\uni0464 ] <anchor 610 782> mark @Dotaccent;
+  pos base [\uni0467 \uniA659 ] <anchor 364 528> mark @Dotaccent;
+  pos base [\uni0468 \uniA65C ] <anchor 658 782> mark @Dotaccent;
+  pos base [\uni0469 \uniA65D ] <anchor 430 528> mark @Dotaccent;
+  pos base [\uni046B ] <anchor 473 528> mark @Dotaccent;
+  pos base [\uni046C ] <anchor 838 782> mark @Dotaccent;
+  pos base [\uni046D ] <anchor 540 528> mark @Dotaccent;
+  pos base [\uni046E ] <anchor 466 944> mark @Dotaccent;
+  pos base [\uni046F ] <anchor 360 620> mark @Dotaccent;
+  pos base [\uni0471 ] <anchor 510 684> mark @Dotaccent;
+  pos base [\afii10148 \uniA652 ] <anchor 510 782> mark @Dotaccent;
+  pos base [\uni0478 ] <anchor 974 528> mark @Dotaccent;
+  pos base [\uni0479 ] <anchor 754 528> mark @Dotaccent;
+  pos base [\uni047A ] <anchor 800 782> mark @Dotaccent;
+  pos base [\uni047B ] <anchor 493 528> mark @Dotaccent;
+  pos base [\uni0480 ] <anchor 440 782> mark @Dotaccent;
+  pos base [\uniA643 ] <anchor 226 528> mark @Dotaccent;
+  pos base [\uniA644 ] <anchor 448 782> mark @Dotaccent;
+  pos base [\uniA645 ] <anchor 280 528> mark @Dotaccent;
+  pos base [\uniA646 ] <anchor 280 782> mark @Dotaccent;
+  pos base [\uniA647 ] <anchor 210 526> mark @Dotaccent;
+  pos base [\uniA64C ] <anchor 652 782> mark @Dotaccent;
+  pos base [\uniA64D \uniA651 \uniA65F ] <anchor 442 528> mark @Dotaccent;
+  pos base [\uniA64E ] <anchor 453 -30> mark @Dotaccent;
+  pos base [\uniA650 ] <anchor 824 782> mark @Dotaccent;
+  pos base [\uniA653 ] <anchor 518 684> mark @Dotaccent;
+  pos base [\uniA654 ] <anchor 650 782> mark @Dotaccent;
+  pos base [\uniA655 ] <anchor 452 528> mark @Dotaccent;
+  pos base [\uniA656 ] <anchor 570 782> mark @Dotaccent;
+  pos base [\uniA65A ] <anchor 522 782> mark @Dotaccent;
+  pos base [\uniA65B ] <anchor 370 528> mark @Dotaccent;
+  pos base [\uniA663 \afii10192 ] <anchor 352 528> mark @Dotaccent;
+  pos base [\uniA66A ] <anchor 554 782> mark @Dotaccent;
+  pos base [\uniA66C ] <anchor 668 782> mark @Dotaccent;
+  pos base [\dotlessj ] <anchor 256 528> mark @Dotaccent;
+  pos base [\afii10065.csl ] <anchor 306 528> mark @Dotaccent;
+  pos base [\afii10194.csl ] <anchor 302 684> mark @Dotaccent;
+  pos base [\uniA64B.low ] <anchor 324 528> mark @Dotaccent;
+  markClass [\uni0316 \uni0317 \dotbelowcomb \uni0324 \uni0325 \uni0326 \uni0327 \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni0345 \uni0359 \uni0327.cap ] <anchor -356 0> @Bottom;
+  pos base [\A \E \G \L \Epsilon \afii10017 \afii10022 \Epsilon_macroncmb \Epsilon_brevecmb ] <anchor 312 0> mark @Bottom;
+  pos base [\B \D \uni0243 \Beta \lambda ] <anchor 226 0> mark @Bottom;
+  pos base [\C ] <anchor 306 0> mark @Bottom;
+  pos base [\F \P \c \Gamma \Rho \uni03DC \afii10034 ] <anchor 180 0> mark @Bottom;
+  pos base [\H \Eta \Pi \Phi \afii10033 ] <anchor 346 0> mark @Bottom;
+  pos base [\I \Iota \afii10055 \uni1FD8 \uni1FD9 ] <anchor 145 0> mark @Bottom;
+  pos base [\J ] <anchor 172 0> mark @Bottom;
+  pos base [\K \R \Kappa \uni03DD ] <anchor 336 0> mark @Bottom;
+  pos base [\M \Mu \afii10044 ] <anchor 386 0> mark @Bottom;
+  pos base [\N \X \Nu \Chi ] <anchor 376 0> mark @Bottom;
+  pos base [\O \Oslash \Theta \Omicron \afii10032 \Omicron_macroncmb \Omicron_brevecmb ] <anchor 310 0> mark @Bottom;
+  pos base [\Q ] <anchor 176 0> mark @Bottom;
+  pos base [\S \uni0190 \pi \uni0510 ] <anchor 282 0> mark @Bottom;
+  pos base [\T \V \Y \Z \Zeta \Tau ] <anchor 278 0> mark @Bottom;
+  pos base [\U \uni03F8 ] <anchor 344 0> mark @Bottom;
+  pos base [\W ] <anchor 468 0> mark @Bottom;
+  pos base [\a \d \afii10065 ] <anchor 212 0> mark @Bottom;
+  pos base [\b \k ] <anchor 196 0> mark @Bottom;
+  pos base [\e \v \afii10070 ] <anchor 182 0> mark @Bottom;
+  pos base [\f \sigma ] <anchor 224 0> mark @Bottom;
+  pos base [\h \theta.mgrk ] <anchor 200 0> mark @Bottom;
+  pos base [\i \dotlessi \afii10103 ] <anchor 158 0> mark @Bottom;
+  pos base [\l ] <anchor 112 0> mark @Bottom;
+  pos base [\m ] <anchor 352 0> mark @Bottom;
+  pos base [\n ] <anchor 260 0> mark @Bottom;
+  pos base [\o \oslash \afii10080 ] <anchor 191 0> mark @Bottom;
+  pos base [\r \iota ] <anchor 128 0> mark @Bottom;
+  pos base [\s ] <anchor 156 0> mark @Bottom;
+  pos base [\t ] <anchor 120 0> mark @Bottom;
+  pos base [\u \afii10074 \afii10193 ] <anchor 262 0> mark @Bottom;
+  pos base [\w \afii10148 ] <anchor 324 0> mark @Bottom;
+  pos base [\x ] <anchor 230 0> mark @Bottom;
+  pos base [\y \afii10085 ] <anchor 156 -206> mark @Bottom;
+  pos base [\z \uni0254 ] <anchor 168 0> mark @Bottom;
+  pos base [\AE ] <anchor 452 0> mark @Bottom;
+  pos base [\ae ] <anchor 296 0> mark @Bottom;
+  pos base [\uni0186 ] <anchor 268 0> mark @Bottom;
+  pos base [\uni025B \delta \afii10101 \uni0511 ] <anchor 204 0> mark @Bottom;
+  pos base [\Alpha \Lambda \afii10053 \uni1FB8 \uni1FB9 ] <anchor 320 0> mark @Bottom;
+  pos base [\Deltagreek ] <anchor 288 0> mark @Bottom;
+  pos base [\Xi \uni2206 ] <anchor 326 0> mark @Bottom;
+  pos base [\Sigma \afii10049 ] <anchor 340 0> mark @Bottom;
+  pos base [\Upsilon \uni1FE8 \uni1FE9 ] <anchor 270 0> mark @Bottom;
+  pos base [\Psi ] <anchor 390 0> mark @Bottom;
+  pos base [\Omegagreek ] <anchor 350 0> mark @Bottom;
+  pos base [\alpha ] <anchor 300 0> mark @Bottom;
+  pos base [\beta ] <anchor 330 0> mark @Bottom;
+  pos base [\gamma ] <anchor 416 0> mark @Bottom;
+  pos base [\epsilon ] <anchor 210 0> mark @Bottom;
+  pos base [\zeta ] <anchor 220 -162> mark @Bottom;
+  pos base [\eta ] <anchor 184 0> mark @Bottom;
+  pos base [\theta ] <anchor 254 0> mark @Bottom;
+  pos base [\kappa \kappa.mgrk ] <anchor 250 0> mark @Bottom;
+  pos base [\mugreek \afii10026 ] <anchor 348 0> mark @Bottom;
+  pos base [\nu ] <anchor 162 0> mark @Bottom;
+  pos base [\xi ] <anchor 246 -162> mark @Bottom;
+  pos base [\omicron ] <anchor 190 0> mark @Bottom;
+  pos base [\rho ] <anchor 182 -182> mark @Bottom;
+  pos base [\sigma1 \uni03DB ] <anchor 196 -128> mark @Bottom;
+  pos base [\tau \afii10196 ] <anchor 246 0> mark @Bottom;
+  pos base [\upsilon ] <anchor 232 0> mark @Bottom;
+  pos base [\phi ] <anchor 518 0> mark @Bottom;
+  pos base [\chi ] <anchor 234 -186> mark @Bottom;
+  pos base [\psi ] <anchor 498 0> mark @Bottom;
+  pos base [\omega \afii10093 ] <anchor 322 0> mark @Bottom;
+  pos base [\uni03D8 ] <anchor 266 0> mark @Bottom;
+  pos base [\uni03D9 ] <anchor 366 0> mark @Bottom;
+  pos base [\uni03FC \rho.mgrk ] <anchor 354 0> mark @Bottom;
+  pos base [\afii10024 \uni046A \uni046C ] <anchor 448 0> mark @Bottom;
+  pos base [\afii10037 ] <anchor 272 0> mark @Bottom;
+  pos base [\afii10045 \afii10048 ] <anchor 420 0> mark @Bottom;
+  pos base [\afii10046 ] <anchor 187 0> mark @Bottom;
+  pos base [\afii10047 ] <anchor 252 0> mark @Bottom;
+  pos base [\afii10072 ] <anchor 358 0> mark @Bottom;
+  pos base [\afii10092 ] <anchor 228 0> mark @Bottom;
+  pos base [\afii10094 ] <anchor 220 0> mark @Bottom;
+  pos base [\afii10095 ] <anchor 152 0> mark @Bottom;
+  pos base [\afii10096 ] <anchor 314 0> mark @Bottom;
+  pos base [\afii10097 ] <anchor 236 0> mark @Bottom;
+  pos base [\afii10146 ] <anchor 308 0> mark @Bottom;
+  pos base [\afii10194 ] <anchor 284 0> mark @Bottom;
+  pos base [\uni046B ] <anchor 335 0> mark @Bottom;
+  markClass [\uni0488 \uni0489 \uni20DD ] <anchor -274 252> @Enclosing;
+  markClass [\uniA670 \uniA671 \uniA672 ] <anchor -274 228> @Enclosing;
+  pos base [\afii10065 ] <anchor 276 252> mark @Enclosing;
+  pos base [\afii10067 ] <anchor 232 252> mark @Enclosing;
+  pos base [\afii10068 ] <anchor 220 252> mark @Enclosing;
+  pos base [\afii10070 \afii10102 ] <anchor 228 252> mark @Enclosing;
+  pos base [\afii10073 ] <anchor 212 252> mark @Enclosing;
+  pos base [\afii10074 ] <anchor 296 252> mark @Enclosing;
+  pos base [\afii10101 ] <anchor 238 252> mark @Enclosing;
+  pos base [\afii10195 ] <anchor 250 252> mark @Enclosing;
+  pos base [\uniA641 ] <anchor 252 252> mark @Enclosing;
+  pos base [\afii10192 ] <anchor 254 252> mark @Enclosing;
+  pos base [\afii10065.csl ] <anchor 272 252> mark @Enclosing;
+  markClass [\macroncmb \brevecmb \uni0342 \uni0344 \uni1DC0 \uni1DC1 \uni0308_gravecomb.grek \uni0308_uni0342.grek \uni0313_gravecomb.grek \uni0313_acutecomb.grek \uni0314_gravecomb.grek \uni0314_acutecomb.grek \uni0342.iota ] <anchor -222 508> @GreekTop;
+  pos base [\alpha ] <anchor 372 508> mark @GreekTop;
+  pos base [\epsilon ] <anchor 296 508> mark @GreekTop;
+  pos base [\eta \omicron ] <anchor 314 508> mark @GreekTop;
+  pos base [\iota ] <anchor 198 508> mark @GreekTop;
+  pos base [\rho ] <anchor 334 508> mark @GreekTop;
+  pos base [\upsilon ] <anchor 318 508> mark @GreekTop;
+  pos base [\omega ] <anchor 426 508> mark @GreekTop;
+  pos base [\uni03FC \rho.mgrk ] <anchor 358 508> mark @GreekTop;
+  pos base [\uni1FB0 ] <anchor 416 680> mark @GreekTop;
+  pos base [\uni1FB1 ] <anchor 410 656> mark @GreekTop;
+  pos base [\uni1FD0 ] <anchor 242 680> mark @GreekTop;
+  pos base [\uni1FD1 ] <anchor 236 656> mark @GreekTop;
+  pos base [\uni1FE0 ] <anchor 368 680> mark @GreekTop;
+  pos base [\uni1FE1 ] <anchor 356 656> mark @GreekTop;
+  pos base [\epsilon_brevecmb ] <anchor 340 680> mark @GreekTop;
+  pos base [\omicron_brevecmb ] <anchor 356 680> mark @GreekTop;
+  pos base [\epsilon_macroncmb ] <anchor 334 656> mark @GreekTop;
+  pos base [\omicron_macroncmb ] <anchor 352 656> mark @GreekTop;
+  markClass [\uni0343 \gravecomb.grek \acutecomb.grek \uni0313.grek \uni0314.grek \uni0313_uni0342.grek \uni0314_uni0342.grek \uni0313_uni0342.iota \uni0314_uni0342.iota ] <anchor -222 508> @GreekTopSunken;
+  pos base [\alpha ] <anchor 372 508> mark @GreekTopSunken;
+  pos base [\epsilon ] <anchor 296 508> mark @GreekTopSunken;
+  pos base [\eta \omicron ] <anchor 314 508> mark @GreekTopSunken;
+  pos base [\iota ] <anchor 198 508> mark @GreekTopSunken;
+  pos base [\rho ] <anchor 334 508> mark @GreekTopSunken;
+  pos base [\upsilon ] <anchor 318 508> mark @GreekTopSunken;
+  pos base [\omega ] <anchor 426 508> mark @GreekTopSunken;
+  pos base [\uni03FC \rho.mgrk ] <anchor 358 508> mark @GreekTopSunken;
+  pos base [\uni1FB0 ] <anchor 404 632> mark @GreekTopSunken;
+  pos base [\uni1FB1 ] <anchor 405 636> mark @GreekTopSunken;
+  pos base [\uni1FD0 ] <anchor 230 632> mark @GreekTopSunken;
+  pos base [\uni1FD1 ] <anchor 231 636> mark @GreekTopSunken;
+  pos base [\uni1FE0 ] <anchor 356 632> mark @GreekTopSunken;
+  pos base [\uni1FE1 ] <anchor 351 636> mark @GreekTopSunken;
+  pos base [\epsilon_brevecmb ] <anchor 328 632> mark @GreekTopSunken;
+  pos base [\omicron_brevecmb ] <anchor 346 632> mark @GreekTopSunken;
+  pos base [\epsilon_macroncmb ] <anchor 329 636> mark @GreekTopSunken;
+  pos base [\omicron_macroncmb ] <anchor 347 636> mark @GreekTopSunken;
+  markClass [\gravecomb.grek ] <anchor -194 712> @GreekCap;
+  markClass [\acutecomb.grek ] <anchor -108 712> @GreekCap;
+  markClass [\uni0313.grek \uni0314.grek ] <anchor -116 712> @GreekCap;
+  markClass [\uni0313_gravecomb.grek \uni0314_gravecomb.grek ] <anchor -70 712> @GreekCap;
+  markClass [\uni0313_acutecomb.grek \uni0314_acutecomb.grek ] <anchor -42 712> @GreekCap;
+  markClass [\uni0313_uni0342.grek \uni0314_uni0342.grek \uni0313_uni0342.iota \uni0314_uni0342.iota ] <anchor -82 712> @GreekCap;
+  pos base [\Alpha \uni1FB8 \uni1FB9 ] <anchor 292 712> mark @GreekCap;
+  pos base [\Epsilon \Eta \Iota \Rho \Upsilon \uni1FD8 \uni1FD9 \uni1FE8 \uni1FE9 \Epsilon_macroncmb \Epsilon_brevecmb ] <anchor 72 712> mark @GreekCap;
+  pos base [\Omicron \Omicron_macroncmb \Omicron_brevecmb ] <anchor 104 712> mark @GreekCap;
+  pos base [\Omegagreek ] <anchor 128 712> mark @GreekCap;
+} markMarkPositioning;
+
+lookup mkmkMarktoMarkPositioning {
+  lookupflag 0;
+  markClass [\gravecomb \acutecomb \circumflexcmb \tildecomb \macroncmb \brevecmb \uni0307 \uni0308 \uni030A \uni030B \uni030C \uni030F \uni0311 \uni0312 \uni0313 \uni0314 \uni033E \uni0351 \uni0357 \uni0363 \uni0364 \uni0365 \uni0366 \uni0367 \uni0368 \uni0369 \uni036A \uni036B \uni036C \uni036D \uni036E \uni036F \uni0483 \uni0484 \uni0485 \uni1DCB \uni1DCC \uniA66F \brevecmb.cyrl \uni0308.i ] <anchor -222 508> @TopMark;
+  markClass [\uni0486 ] <anchor -221 508> @TopMark;
+  markClass [\uni0487 ] <anchor -157 762> @TopMark;
+  markClass [\gravecomb.cap \acutecomb.cap \circumflexcmb.cap \tildecomb.cap \macroncmb.cap \brevecmb.cap \uni0307.cap \uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \brevecmb.cyrcap ] <anchor -156 762> @TopMark;
+  pos mark [\gravecomb \acutecomb \circumflexcmb \tildecomb \uni030A \uni030B \uni030C \uni030F \uni0311 \uni0312 \uni0313 \uni0314 \uni033E \uni0351 \uni0357 \brevecmb.cyrl \uni0308.i ] <anchor -166 724> mark @TopMark;
+  pos mark [\macroncmb ] <anchor -184 656> mark @TopMark;
+  pos mark [\brevecmb ] <anchor -178 680> mark @TopMark;
+  pos mark [\uni0307 \uni0308 \uni1DCB \uni1DCC ] <anchor -174 692> mark @TopMark;
+  pos mark [\uni0485 ] <anchor -167 724> mark @TopMark;
+  pos mark [\uni0486 ] <anchor -165 724> mark @TopMark;
+  pos mark [\uni2DE0 \uni2DED ] <anchor -164 762> mark @TopMark;
+  pos mark [\uni2DE1 \uni2DE4 \uni2DE5 \uni2DE8 ] <anchor -160 762> mark @TopMark;
+  pos mark [\uni2DE2 ] <anchor -166 762> mark @TopMark;
+  pos mark [\uni2DE3 ] <anchor -148 762> mark @TopMark;
+  pos mark [\uni2DE6 \uni2DFA ] <anchor -178 762> mark @TopMark;
+  pos mark [\uni2DE7 \uni2DEA \uni2DEC \uni2DEF \uni2DF4 \uni2DF8 \uni2DF9 ] <anchor -156 762> mark @TopMark;
+  pos mark [\uni2DE9 ] <anchor -186 762> mark @TopMark;
+  pos mark [\uni2DEB ] <anchor -188 762> mark @TopMark;
+  pos mark [\uni2DEE \uni2DF2 \uni2DF3 ] <anchor -192 762> mark @TopMark;
+  pos mark [\uni2DF0 ] <anchor -180 762> mark @TopMark;
+  pos mark [\uni2DF1 ] <anchor -176 762> mark @TopMark;
+  pos mark [\uni2DF5 ] <anchor -160 792> mark @TopMark;
+  pos mark [\uni2DF6 \uni2DF7 \uni2DFB ] <anchor -174 762> mark @TopMark;
+  pos mark [\uni2DFC ] <anchor -194 762> mark @TopMark;
+  pos mark [\uni2DFD ] <anchor -170 762> mark @TopMark;
+  pos mark [\uni2DFE ] <anchor -163 762> mark @TopMark;
+  pos mark [\uni2DFF ] <anchor -183 792> mark @TopMark;
+  pos mark [\gravecomb.cap \acutecomb.cap \circumflexcmb.cap \tildecomb.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap \brevecmb.cyrcap ] <anchor -103 964> mark @TopMark;
+  pos mark [\macroncmb.cap ] <anchor -118 906> mark @TopMark;
+  pos mark [\brevecmb.cap ] <anchor -112 932> mark @TopMark;
+  pos mark [\uni0307.cap \uni0308.cap ] <anchor -107 946> mark @TopMark;
+  markClass [\uni0342 \uni0344 \uni1DC0 \uni1DC1 \uni0308_gravecomb.grek \uni0308_uni0342.grek \uni0313_gravecomb.grek \uni0313_acutecomb.grek \uni0314_gravecomb.grek \uni0314_acutecomb.grek \uni0342.iota ] <anchor -222 508> @GreekTopMark;
+  pos mark [\macroncmb ] <anchor -184 656> mark @GreekTopMark;
+  pos mark [\brevecmb ] <anchor -178 680> mark @GreekTopMark;
+  markClass [\uni0343 \gravecomb.grek \acutecomb.grek \uni0313.grek \uni0314.grek \uni0313_uni0342.grek \uni0314_uni0342.grek \uni0313_uni0342.iota \uni0314_uni0342.iota ] <anchor -222 508> @GreekTopMarkSunken;
+  pos mark [\macroncmb ] <anchor -188 636> mark @GreekTopMarkSunken;
+  pos mark [\brevecmb ] <anchor -190 632> mark @GreekTopMarkSunken;
+} mkmkMarktoMarkPositioning;
+
+lookup kernHorizontalKerning {
+  lookupflag IgnoreMarks;
+    @kc56_first_1 = [\A \Agrave \Aacute \Acircumflex \Atilde \Adieresis \Aring \Amacron \Abreve 
+	\Aogonek \uni0200 \uni0202 \uni1E00 ];
+    @kc56_first_2 = [\B \uni1E02 \uni1E04 \uni1E06 ];
+    @kc56_first_3 = [\C \Ccedilla \Cacute \Ccircumflex \Cdotaccent \Ccaron \uni1E08 ];
+    @kc56_first_4 = [\D \Eth \Dcaron \uni1E0A \uni1E0C \uni1E0E \uni1E10 \uni1E12 ];
+    @kc56_first_5 = [\F \uni1E1E ];
+    @kc56_first_6 = [\G \N \Ntilde \Gcircumflex \Gbreve \Gdotaccent \Gcommaaccent \Nacute 
+	\Ncommaaccent \uni01F4 \uni1E20 \uni1E44 \uni1E46 \uni1E48 \uni1E4A ];
+    @kc56_first_7 = [\J \Jcircumflex \uni01C7 \uni01CA ];
+    @kc56_first_8 = [\K \Kcommaaccent \uni1E30 \uni1E32 \uni1E34 ];
+    @kc56_first_9 = [\L \Lacute \Lslash \uni1E36 \uni1E38 \uni1E3A \uni1E3C ];
+    @kc56_first_10 = [\O \Ograve \Oacute \Ocircumflex \Otilde \Odieresis \Omacron \Obreve 
+	\Ohungarumlaut \uni018F \Oogonek \uni01EC \uni020C \uni020E \uni1E4C 
+	\uni1E4E \uni1E50 \uni1E52 ];
+    @kc56_first_11 = [\P \uni1E54 \uni1E56 ];
+    @kc56_first_12 = [\R \Racute \Rcommaaccent \uni0210 \uni0212 \uni1E58 \uni1E5A \uni1E5C \uni1E5E ];
+    @kc56_first_13 = [\S \Sacute \Scircumflex \Scedilla \Scaron \Scommaaccent \uni1E60 \uni1E62 
+	\uni1E64 \uni1E66 \uni1E68 ];
+    @kc56_first_14 = [\T \Tcommaaccent \Tcaron \uni021A \uni1E6A \uni1E6C \uni1E6E \uni1E70 ];
+    @kc56_first_15 = [\U \Ugrave \Uacute \Ucircumflex \Udieresis \Utilde \Umacron \Ubreve \Uring 
+	\Uhungarumlaut \Uogonek \uni0214 \uni0216 \uni1E72 \uni1E74 \uni1E76 
+	\uni1E78 \uni1E7A ];
+    @kc56_first_16 = [\V \W \Wcircumflex \uni1E7C \uni1E7E \Wgrave \Wacute \Wdieresis \uni1E86 \uni1E88 ];
+    @kc56_first_17 = [\X \uni1E8A \uni1E8C ];
+    @kc56_first_18 = [\Y \Yacute \Ydieresis \uni0232 \uni1E8E ];
+    @kc56_first_19 = [\a \d \agrave \aacute \acircumflex \atilde \adieresis \aring \amacron \abreve 
+	\aogonek \aringacute \uni0201 \uni0203 \uni1E01 \uni1E0B \uni1E0D 
+	\uni1E0F \uni1E11 \uni1E13 ];
+    @kc56_first_20 = [\b \o \p \ograve \oacute \ocircumflex \otilde \odieresis \thorn \omacron \obreve 
+	\ohungarumlaut \uni01DD \oogonek \uni01ED \uni020D \uni020F \uni0259 
+	\uni1E05 \uni1E07 \uni1E4D \uni1E4F \uni1E51 \uni1E55 \uni1E57 ];
+    @kc56_first_21 = [\f \longs ];
+    @kc56_first_22 = [\quoteleft \quotedblleft ];
+    @kc56_second_1 = [\comma \period ];
+    @kc56_second_2 = [\A \Agrave \Aacute \Acircumflex \Atilde \Adieresis \Aring \Amacron \Abreve 
+	\Aogonek \Aringacute \uni0200 \uni0202 \uni1E00 ];
+    @kc56_second_3 = [\C \G \Ccedilla \Cacute \Ccircumflex \Cdotaccent \Ccaron \Gcircumflex \Gbreve 
+	\Gdotaccent \Gcommaaccent \uni01F4 \uni1E08 \uni1E20 ];
+    @kc56_second_4 = [\J \Jcircumflex \uni01C7 \uni01CA ];
+    @kc56_second_5 = [\O \Q \Ograve \Oacute \Ocircumflex \Otilde \Odieresis \Omacron \Obreve 
+	\Ohungarumlaut \OE \uni018F \Oogonek \uni01EC \uni020C \uni020E 
+	\uni1E4C \uni1E4E \uni1E50 \uni1E52 ];
+    @kc56_second_6 = [\T \Tcommaaccent \Tcaron \uni021A \uni1E6A \uni1E6C \uni1E6E \uni1E70 ];
+    @kc56_second_7 = [\U \Ugrave \Uacute \Ucircumflex \Udieresis \Utilde \Umacron \Ubreve \Uring 
+	\Uhungarumlaut \Uogonek \uni0214 \uni0216 \uni1E72 \uni1E74 \uni1E76 
+	\uni1E78 \uni1E7A ];
+    @kc56_second_8 = [\V \W \Wcircumflex \uni1E7C \uni1E7E \Wgrave \Wacute \Wdieresis \uni1E86 \uni1E88 ];
+    @kc56_second_9 = [\X \uni1E8A \uni1E8C ];
+    @kc56_second_10 = [\Y \Yacute \Ydieresis \uni0232 \uni1E8E ];
+    @kc56_second_11 = [\AE \uni01E2 \AEacute ];
+    @kc56_second_12 = [\a \c \d \e \g \o \q \aacute \ae \ccedilla \eacute \oacute \aogonek \dcaron \dcroat 
+	\eogonek \oe \oogonek \uni01F5 \aeacute \uni0229 \uni1E01 \uni1E0D 
+	\uni1E0F \uni1E11 \uni1E13 \uni1E19 \uni1E1B ];
+    @kc56_second_13 = [\agrave \acircumflex \atilde \adieresis \aring \egrave \ecircumflex \edieresis 
+	\eth \ograve \ocircumflex \otilde \odieresis \amacron \abreve \cacute 
+	\ccircumflex \cdotaccent \ccaron \emacron \ebreve \edotaccent \ecaron 
+	\omacron \obreve \ohungarumlaut \uni01E3 \uni01ED \aringacute \uni0201 
+	\uni0203 \uni0205 \uni0207 \uni020D \uni020F \uni1E09 \uni1E15 \uni1E17 
+	\uni1E1D \uni1E4D \uni1E4F \uni1E51 \uni1E53 ];
+    @kc56_second_14 = [\b \h \k \l \hcircumflex \hbar \lslash \uni1E03 \uni1E05 \uni1E07 \uni1E23 \uni1E25 
+	\uni1E27 \uni1E29 \uni1E2B \uni1E31 \uni1E33 \uni1E35 \uni1E37 \uni1E39 
+	\uni1E3B \uni1E3D ];
+    @kc56_second_15 = [\i \igrave \iacute \icircumflex \idieresis \itilde \imacron \ibreve \iogonek \ij 
+	\uni0209 \uni020B \uni1E2F ];
+    @kc56_second_16 = [\m \n \p \r \u \y \uacute \yacute \dotlessi \nacute \uni1E3F \uni1E41 \uni1E43 
+	\uni1E45 \uni1E47 \uni1E49 \uni1E4B \uni1E55 \uni1E57 \uni1E59 \uni1E5B 
+	\uni1E5D \uni1E5F \uni1E73 \uni1E75 \uni1E77 \uni1E79 \uni1E7B \uni1E8F ];
+    @kc56_second_17 = [\s ];
+    @kc56_second_18 = [\j \jcircumflex \uni01F0 ];
+    @kc56_second_19 = [\v \w \wcircumflex \uni1E7D \uni1E7F \wgrave \wacute \wdieresis \uni1E87 \uni1E89 ];
+    @kc56_second_20 = [\x \uni1E8B \uni1E8D ];
+    @kc56_second_21 = [\quoteright \quotedblright ];
+    pos @kc56_first_1 @kc56_second_3 -52;
+    pos @kc56_first_1 @kc56_second_5 -56;
+    pos @kc56_first_1 @kc56_second_6 -66;
+    pos @kc56_first_1 @kc56_second_7 -80;
+    pos @kc56_first_1 @kc56_second_8 -144;
+    pos @kc56_first_1 @kc56_second_10 -88;
+    pos @kc56_first_1 @kc56_second_12 -36;
+    pos @kc56_first_1 @kc56_second_19 -64;
+    pos @kc56_first_1 @kc56_second_21 -140;
+    pos @kc56_first_2 @kc56_second_2 -32;
+    pos @kc56_first_2 @kc56_second_7 -14;
+    pos @kc56_first_2 @kc56_second_8 -32;
+    pos @kc56_first_2 @kc56_second_10 -40;
+    pos @kc56_first_2 @kc56_second_11 -44;
+    pos @kc56_first_3 @kc56_second_2 -44;
+    pos @kc56_first_3 @kc56_second_11 -56;
+    pos @kc56_first_4 @kc56_second_2 -66;
+    pos @kc56_first_4 @kc56_second_7 -36;
+    pos @kc56_first_4 @kc56_second_8 -72;
+    pos @kc56_first_4 @kc56_second_10 -60;
+    pos @kc56_first_4 @kc56_second_11 -80;
+    pos @kc56_first_5 @kc56_second_1 -72;
+    pos @kc56_first_5 @kc56_second_2 -96;
+    pos @kc56_first_5 @kc56_second_4 -96;
+    pos @kc56_first_5 @kc56_second_11 -112;
+    pos @kc56_first_5 @kc56_second_12 -64;
+    pos @kc56_first_5 @kc56_second_13 -48;
+    pos @kc56_first_5 @kc56_second_18 -36;
+    pos @kc56_first_6 @kc56_second_2 -56;
+    pos @kc56_first_6 @kc56_second_3 -32;
+    pos @kc56_first_7 @kc56_second_2 -64;
+    pos @kc56_first_7 @kc56_second_11 -72;
+    pos @kc56_first_8 @kc56_second_2 36;
+    pos @kc56_first_8 @kc56_second_3 -40;
+    pos @kc56_first_8 @kc56_second_4 -16;
+    pos @kc56_first_8 @kc56_second_5 -64;
+    pos @kc56_first_9 @kc56_second_7 -52;
+    pos @kc56_first_9 @kc56_second_8 -88;
+    pos @kc56_first_9 @kc56_second_10 -56;
+    pos @kc56_first_9 @kc56_second_21 -88;
+    pos @kc56_first_10 @kc56_second_2 -66;
+    pos @kc56_first_10 @kc56_second_7 -42;
+    pos @kc56_first_10 @kc56_second_8 -72;
+    pos @kc56_first_10 @kc56_second_9 -56;
+    pos @kc56_first_10 @kc56_second_10 -64;
+    pos @kc56_first_10 @kc56_second_11 -72;
+    pos @kc56_first_11 @kc56_second_1 -80;
+    pos @kc56_first_11 @kc56_second_2 -78;
+    pos @kc56_first_11 @kc56_second_4 -112;
+    pos @kc56_first_11 @kc56_second_7 -18;
+    pos @kc56_first_11 @kc56_second_11 -122;
+    pos @kc56_first_11 @kc56_second_12 -44;
+    pos @kc56_first_11 @kc56_second_13 -28;
+    pos @kc56_first_12 @kc56_second_2 24;
+    pos @kc56_first_12 @kc56_second_7 -14;
+    pos @kc56_first_12 @kc56_second_8 -56;
+    pos @kc56_first_12 @kc56_second_10 -44;
+    pos @kc56_first_13 @kc56_second_2 -24;
+    pos @kc56_first_13 @kc56_second_7 -14;
+    pos @kc56_first_14 @kc56_second_1 -64;
+    pos @kc56_first_14 @kc56_second_2 -72;
+    pos @kc56_first_14 @kc56_second_4 -72;
+    pos @kc56_first_14 @kc56_second_11 -88;
+    pos @kc56_first_14 @kc56_second_12 -64;
+    pos @kc56_first_14 @kc56_second_13 -36;
+    pos @kc56_first_14 @kc56_second_16 -48;
+    pos @kc56_first_14 @kc56_second_18 -28;
+    pos @kc56_first_15 @kc56_second_2 -96;
+    pos @kc56_first_15 @kc56_second_3 -36;
+    pos @kc56_first_15 @kc56_second_5 -28;
+    pos @kc56_first_15 @kc56_second_11 -108;
+    pos @kc56_first_15 @kc56_second_12 -50;
+    pos @kc56_first_16 @kc56_second_1 -152;
+    pos @kc56_first_16 @kc56_second_2 -172;
+    pos @kc56_first_16 @kc56_second_5 -64;
+    pos @kc56_first_16 @kc56_second_11 -188;
+    pos @kc56_first_16 @kc56_second_12 -80;
+    pos @kc56_first_16 @kc56_second_13 -56;
+    pos @kc56_first_16 @kc56_second_15 -32;
+    pos @kc56_first_16 @kc56_second_16 -44;
+    pos @kc56_first_17 @kc56_second_2 24;
+    pos @kc56_first_17 @kc56_second_3 -44;
+    pos @kc56_first_17 @kc56_second_5 -48;
+    pos @kc56_first_17 @kc56_second_12 -50;
+    pos @kc56_first_18 @kc56_second_1 -88;
+    pos @kc56_first_18 @kc56_second_2 -136;
+    pos @kc56_first_18 @kc56_second_5 -48;
+    pos @kc56_first_18 @kc56_second_11 -140;
+    pos @kc56_first_18 @kc56_second_12 -64;
+    pos @kc56_first_18 @kc56_second_13 -44;
+    pos @kc56_first_18 @kc56_second_19 -24;
+    pos @kc56_first_19 @kc56_second_19 -24;
+    pos @kc56_first_20 @kc56_second_19 -16;
+    pos @kc56_first_20 @kc56_second_20 -24;
+    pos @kc56_first_21 @kc56_second_14 48;
+    pos @kc56_first_22 @kc56_second_2 -188;
+    pos @kc56_first_22 @kc56_second_4 -96;
+  subtable;
+    @kc57_first_1 = [\Beta ];
+    @kc57_first_2 = [\Gamma ];
+    @kc57_first_3 = [\Theta ];
+    @kc57_first_4 = [\Kappa ];
+    @kc57_first_5 = [\Omicron \Omicron_macroncmb \Omicron_brevecmb \Omicrontonos \uni1F48 \uni1F49 
+	\uni1F4A \uni1F4B \uni1F4C \uni1F4D \uni1FF8 \Omicron_uni0313_uni0342 
+	\Omicron_uni0314_uni0342 ];
+    @kc57_first_6 = [\Rho \uni1FEC \Rho_uni0313 ];
+    @kc57_first_7 = [\Tau ];
+    @kc57_first_8 = [\Upsilon \Upsilondieresis \uni1FE8 \uni1FE9 \Upsilontonos \uni1F59 \uni1F5B 
+	\uni1F5D \uni1F5F \uni1FEA \Upsilon_uni0313 
+	\Upsilon_uni0313_acutecomb \Upsilon_uni0313_gravecomb 
+	\Upsilon_uni0313_uni0342 ];
+    @kc57_first_9 = [\Phi ];
+    @kc57_first_10 = [\Chi ];
+    @kc57_first_11 = [\Psi ];
+    @kc57_first_12 = [\Omegagreek \uni1F68 \uni1F69 \uni1F6A \uni1F6B \uni1F6C \uni1F6D \uni1F6E 
+	\uni1F6F \uni1FFA \uni1FA8 \uni1FA9 \uni1FAA \uni1FAB \uni1FAC \uni1FAD 
+	\uni1FAE \uni1FAF ];
+    @kc57_first_13 = [\uni1FBF \uni1FFE ];
+    @kc57_first_14 = [\tonos \uni1FCE \uni1FDE ];
+    @kc57_first_15 = [\uni1FEF \uni1FCD \uni1FDD ];
+    @kc57_first_16 = [\uni1FCF \uni1FDF ];
+    @kc57_second_1 = [\quoteright \quotedblright ];
+    @kc57_second_2 = [\period \comma \ellipsis ];
+    @kc57_second_3 = [\colon \anoteleia ];
+    @kc57_second_4 = [\Alpha \uni1FB8 \uni1FB9 \uni1FBC ];
+    @kc57_second_5 = [\Deltagreek ];
+    @kc57_second_6 = [\Theta ];
+    @kc57_second_7 = [\Lambda ];
+    @kc57_second_8 = [\Omicron \Omicron_macroncmb \Omicron_brevecmb ];
+    @kc57_second_9 = [\Sigma ];
+    @kc57_second_10 = [\Tau ];
+    @kc57_second_11 = [\Upsilon \Upsilondieresis \uni1FE8 \uni1FE9 ];
+    @kc57_second_12 = [\Phi ];
+    @kc57_second_13 = [\Chi ];
+    @kc57_second_14 = [\Psi ];
+    @kc57_second_15 = [\Omegagreek \uni1FFC ];
+    @kc57_second_16 = [\uni03F9 ];
+    @kc57_second_17 = [\alpha \alphatonos \uni1FB3 \uni1FB4 ];
+    @kc57_second_18 = [\epsilon \epsilontonos ];
+    @kc57_second_19 = [\omicron \omicrontonos \sigma ];
+    @kc57_second_20 = [\upsilon \upsilontonos \psi ];
+    @kc57_second_21 = [\omega \omegatonos \uni1FF3 \uni1FF4 \phi ];
+    pos @kc57_first_1 @kc57_second_4 -44;
+    pos @kc57_first_1 @kc57_second_5 -18;
+    pos @kc57_first_1 @kc57_second_7 -44;
+    pos @kc57_first_2 @kc57_second_2 -68;
+    pos @kc57_first_2 @kc57_second_4 -104;
+    pos @kc57_first_2 @kc57_second_5 -112;
+    pos @kc57_first_2 @kc57_second_7 -104;
+    pos @kc57_first_2 @kc57_second_17 -56;
+    pos @kc57_first_2 @kc57_second_18 -54;
+    pos @kc57_first_2 @kc57_second_19 -60;
+    pos @kc57_first_2 @kc57_second_21 -52;
+    pos @kc57_first_3 @kc57_second_4 -72;
+    pos @kc57_first_3 @kc57_second_5 -44;
+    pos @kc57_first_3 @kc57_second_7 -72;
+    pos @kc57_first_4 @kc57_second_8 -64;
+    pos @kc57_first_4 @kc57_second_16 -40;
+    pos @kc57_first_5 @kc57_second_4 -72;
+    pos @kc57_first_5 @kc57_second_5 -44;
+    pos @kc57_first_5 @kc57_second_7 -72;
+    pos @kc57_first_5 @kc57_second_9 -66;
+    pos @kc57_first_5 @kc57_second_13 -56;
+    pos @kc57_first_6 @kc57_second_4 -122;
+    pos @kc57_first_6 @kc57_second_5 -92;
+    pos @kc57_first_6 @kc57_second_7 -122;
+    pos @kc57_first_6 @kc57_second_17 -26;
+    pos @kc57_first_6 @kc57_second_18 -24;
+    pos @kc57_first_6 @kc57_second_19 -30;
+    pos @kc57_first_6 @kc57_second_21 -22;
+    pos @kc57_first_7 @kc57_second_2 -64;
+    pos @kc57_first_7 @kc57_second_4 -88;
+    pos @kc57_first_7 @kc57_second_5 -64;
+    pos @kc57_first_7 @kc57_second_7 -88;
+    pos @kc57_first_7 @kc57_second_17 -48;
+    pos @kc57_first_7 @kc57_second_18 -46;
+    pos @kc57_first_7 @kc57_second_19 -52;
+    pos @kc57_first_7 @kc57_second_21 -44;
+    pos @kc57_first_8 @kc57_second_4 -76;
+    pos @kc57_first_8 @kc57_second_5 -58;
+    pos @kc57_first_8 @kc57_second_7 -76;
+    pos @kc57_first_9 @kc57_second_2 -48;
+    pos @kc57_first_9 @kc57_second_4 -102;
+    pos @kc57_first_9 @kc57_second_9 -84;
+    pos @kc57_first_9 @kc57_second_13 -64;
+    pos @kc57_first_10 @kc57_second_8 -48;
+    pos @kc57_first_10 @kc57_second_12 -56;
+    pos @kc57_first_10 @kc57_second_16 -44;
+    pos @kc57_first_11 @kc57_second_4 -128;
+    pos @kc57_first_11 @kc57_second_5 -104;
+    pos @kc57_first_11 @kc57_second_7 -128;
+    pos @kc57_first_13 @kc57_second_4 -180;
+    pos @kc57_first_13 @kc57_second_8 -22;
+    pos @kc57_first_13 @kc57_second_15 -38;
+    pos @kc57_first_14 @kc57_second_4 -220;
+    pos @kc57_first_14 @kc57_second_8 -48;
+    pos @kc57_first_14 @kc57_second_15 -70;
+    pos @kc57_first_15 @kc57_second_4 -188;
+    pos @kc57_first_15 @kc57_second_8 -24;
+    pos @kc57_first_15 @kc57_second_15 -34;
+    pos @kc57_first_16 @kc57_second_4 -204;
+    pos @kc57_first_16 @kc57_second_8 -44;
+    pos @kc57_first_16 @kc57_second_15 -64;
+  subtable;
+    @kc58_first_1 = [\afii10057 ];
+    @kc58_first_2 = [\afii10017 ];
+    @kc58_first_3 = [\afii10018 \afii10019 \afii10025 \afii10146 ];
+    @kc58_first_4 = [\afii10020 \afii10052 ];
+    @kc58_first_5 = [\afii10032 \afii10048 \afii10147 ];
+    @kc58_first_6 = [\afii10034 ];
+    @kc58_first_7 = [\afii10035 \afii10053 ];
+    @kc58_first_8 = [\afii10036 ];
+    @kc58_first_9 = [\afii10037 \afii10062 ];
+    @kc58_first_10 = [\afii10038 ];
+    @kc58_first_11 = [\afii10039 ];
+    @kc58_first_12 = [\afii10044 \afii10046 \afii10058 \afii10059 ];
+    @kc58_first_13 = [\afii10047 ];
+    @kc58_first_14 = [\afii10050 ];
+    @kc58_first_15 = [\afii10051 ];
+    @kc58_first_16 = [\afii10065 \afii10074 \afii10078 \afii10079 \afii10081 \afii10084 \afii10089 
+	\afii10090 \afii10091 \afii10097 \uni045D \afii10193 ];
+    @kc58_first_17 = [\afii10148 \uni0476 ];
+    @kc58_first_18 = [\afii10196 \uni0477 ];
+    @kc58_first_19 = [\uni0466 \uni0468 \uniA658 \uniA65C ];
+    @kc58_first_20 = [\uni0467 \uni0469 \uniA659 \uniA65D ];
+    @kc58_first_21 = [\uni046A \uni046C ];
+    @kc58_first_22 = [\uni046B \uni046D ];
+    @kc58_first_23 = [\uniA656 \afii10017.csl ];
+    @kc58_first_24 = [\uniA657 \afii10065.csl ];
+    @kc58_first_25 = [\quoteleft \quotedblleft ];
+    @kc58_second_1 = [\comma \period ];
+    @kc58_second_2 = [\afii10057 ];
+    @kc58_second_3 = [\afii10017 ];
+    @kc58_second_4 = [\afii10021 ];
+    @kc58_second_5 = [\afii10025 \afii10047 ];
+    @kc58_second_6 = [\afii10029 \afii10058 ];
+    @kc58_second_7 = [\afii10032 \afii10147 ];
+    @kc58_second_8 = [\afii10035 \afii10053 ];
+    @kc58_second_9 = [\afii10036 \afii10044 \afii10146 \afii10051 \afii10060 ];
+    @kc58_second_10 = [\afii10037 \afii10062 ];
+    @kc58_second_11 = [\afii10038 ];
+    @kc58_second_12 = [\afii10039 ];
+    @kc58_second_13 = [\afii10041 ];
+    @kc58_second_14 = [\afii10065 \afii10067 \afii10070 \afii10080 \afii10083 \uni0450 \afii10101 
+	\afii10195 \afii10192 ];
+    @kc58_second_15 = [\afii10066 \afii10071 \afii10086 \afii10064 ];
+    @kc58_second_16 = [\afii10068 \afii10074 \afii10076 \afii10079 \afii10081 \afii10082 \afii10084 
+	\afii10085 \afii10088 \afii10089 \afii10090 \afii10091 \afii10092 
+	\afii10093 \afii10094 \afii10096 \afii10098 \afii10100 \afii10107 
+	\afii10193 \afii10194 ];
+    @kc58_second_17 = [\afii10072 \afii10073 \afii10087 \afii10095 ];
+    @kc58_second_18 = [\afii10075 \afii10103 \afii10104 \afii10110 \afii10063 \afii10831 \afii10832 ];
+    @kc58_second_19 = [\afii10077 \afii10078 \afii10097 \afii10106 ];
+    @kc58_second_20 = [\afii10148 \uni0476 ];
+    @kc58_second_21 = [\afii10196 \uni0477 ];
+    @kc58_second_22 = [\uni0466 \uniA658 ];
+    @kc58_second_23 = [\uni0467 \uniA659 \uniA65F ];
+    @kc58_second_24 = [\uni046A ];
+    @kc58_second_25 = [\uni046B ];
+    @kc58_second_26 = [\quoteright \quotedblright ];
+    @kc58_second_27 = [\quoteleft \quotedblleft ];
+    pos @kc58_first_1 @kc58_second_3 -64;
+    pos @kc58_first_2 @kc58_second_5 -38;
+    pos @kc58_first_2 @kc58_second_6 -24;
+    pos @kc58_first_2 @kc58_second_7 -56;
+    pos @kc58_first_2 @kc58_second_8 -52;
+    pos @kc58_first_2 @kc58_second_9 -66;
+    pos @kc58_first_2 @kc58_second_10 -64;
+    pos @kc58_first_2 @kc58_second_11 -66;
+    pos @kc58_first_2 @kc58_second_13 -112;
+    pos @kc58_first_2 @kc58_second_14 -36;
+    pos @kc58_first_2 @kc58_second_26 -128;
+    pos @kc58_first_2 @kc58_second_27 -122;
+    pos @kc58_first_3 @kc58_second_3 -32;
+    pos @kc58_first_3 @kc58_second_9 -36;
+    pos @kc58_first_3 @kc58_second_13 -72;
+    pos @kc58_first_4 @kc58_second_1 -68;
+    pos @kc58_first_4 @kc58_second_2 -80;
+    pos @kc58_first_4 @kc58_second_3 -90;
+    pos @kc58_first_4 @kc58_second_6 -72;
+    pos @kc58_first_4 @kc58_second_14 -72;
+    pos @kc58_first_4 @kc58_second_15 -56;
+    pos @kc58_first_4 @kc58_second_16 -64;
+    pos @kc58_first_4 @kc58_second_17 -56;
+    pos @kc58_first_4 @kc58_second_18 -40;
+    pos @kc58_first_4 @kc58_second_19 -104;
+    pos @kc58_first_4 @kc58_second_24 -64;
+    pos @kc58_first_4 @kc58_second_25 -124;
+    pos @kc58_first_5 @kc58_second_3 -66;
+    pos @kc58_first_5 @kc58_second_4 -48;
+    pos @kc58_first_5 @kc58_second_6 -24;
+    pos @kc58_first_5 @kc58_second_10 -32;
+    pos @kc58_first_5 @kc58_second_12 -56;
+    pos @kc58_first_5 @kc58_second_13 -48;
+    pos @kc58_first_5 @kc58_second_20 -58;
+    pos @kc58_first_5 @kc58_second_22 -48;
+    pos @kc58_first_6 @kc58_second_1 -80;
+    pos @kc58_first_6 @kc58_second_2 -112;
+    pos @kc58_first_6 @kc58_second_3 -78;
+    pos @kc58_first_6 @kc58_second_4 -72;
+    pos @kc58_first_6 @kc58_second_22 -92;
+    pos @kc58_first_7 @kc58_second_3 -44;
+    pos @kc58_first_8 @kc58_second_1 -64;
+    pos @kc58_first_8 @kc58_second_2 -72;
+    pos @kc58_first_8 @kc58_second_3 -72;
+    pos @kc58_first_8 @kc58_second_6 -54;
+    pos @kc58_first_8 @kc58_second_14 -64;
+    pos @kc58_first_8 @kc58_second_15 -48;
+    pos @kc58_first_8 @kc58_second_16 -56;
+    pos @kc58_first_8 @kc58_second_17 -48;
+    pos @kc58_first_8 @kc58_second_18 -32;
+    pos @kc58_first_8 @kc58_second_19 -96;
+    pos @kc58_first_8 @kc58_second_22 -36;
+    pos @kc58_first_8 @kc58_second_24 -28;
+    pos @kc58_first_9 @kc58_second_3 -148;
+    pos @kc58_first_9 @kc58_second_4 -44;
+    pos @kc58_first_9 @kc58_second_6 -92;
+    pos @kc58_first_9 @kc58_second_7 -68;
+    pos @kc58_first_9 @kc58_second_8 -80;
+    pos @kc58_first_9 @kc58_second_11 -56;
+    pos @kc58_first_9 @kc58_second_14 -112;
+    pos @kc58_first_9 @kc58_second_15 -96;
+    pos @kc58_first_9 @kc58_second_16 -88;
+    pos @kc58_first_9 @kc58_second_17 -96;
+    pos @kc58_first_9 @kc58_second_18 -64;
+    pos @kc58_first_9 @kc58_second_19 -128;
+    pos @kc58_first_10 @kc58_second_1 -48;
+    pos @kc58_first_10 @kc58_second_3 -80;
+    pos @kc58_first_10 @kc58_second_4 -36;
+    pos @kc58_first_10 @kc58_second_6 -44;
+    pos @kc58_first_10 @kc58_second_9 -44;
+    pos @kc58_first_10 @kc58_second_12 -64;
+    pos @kc58_first_11 @kc58_second_7 -48;
+    pos @kc58_first_11 @kc58_second_8 -44;
+    pos @kc58_first_11 @kc58_second_11 -56;
+    pos @kc58_first_11 @kc58_second_14 -50;
+    pos @kc58_first_12 @kc58_second_3 -44;
+    pos @kc58_first_12 @kc58_second_9 -52;
+    pos @kc58_first_12 @kc58_second_13 -88;
+    pos @kc58_first_13 @kc58_second_3 -72;
+    pos @kc58_first_13 @kc58_second_4 -48;
+    pos @kc58_first_13 @kc58_second_6 -44;
+    pos @kc58_first_14 @kc58_second_3 -104;
+    pos @kc58_first_14 @kc58_second_4 -50;
+    pos @kc58_first_14 @kc58_second_6 -82;
+    pos @kc58_first_14 @kc58_second_7 -64;
+    pos @kc58_first_14 @kc58_second_14 -112;
+    pos @kc58_first_14 @kc58_second_15 -88;
+    pos @kc58_first_14 @kc58_second_16 -88;
+    pos @kc58_first_14 @kc58_second_17 -104;
+    pos @kc58_first_14 @kc58_second_18 -88;
+    pos @kc58_first_14 @kc58_second_19 -104;
+    pos @kc58_first_15 @kc58_second_3 -24;
+    pos @kc58_first_15 @kc58_second_10 -64;
+    pos @kc58_first_16 @kc58_second_21 -36;
+    pos @kc58_first_17 @kc58_second_6 -82;
+    pos @kc58_first_19 @kc58_second_7 -72;
+    pos @kc58_first_19 @kc58_second_9 -62;
+    pos @kc58_first_20 @kc58_second_14 -22;
+    pos @kc58_first_21 @kc58_second_8 -92;
+    pos @kc58_first_21 @kc58_second_13 -88;
+    pos @kc58_first_21 @kc58_second_26 -162;
+    pos @kc58_first_23 @kc58_second_7 -74;
+    pos @kc58_first_23 @kc58_second_9 -44;
+    pos @kc58_first_25 @kc58_second_3 -188;
+    pos @kc58_first_25 @kc58_second_4 -96;
+    pos @kc58_first_25 @kc58_second_6 -112;
+    pos @kc58_first_25 @kc58_second_24 -122;
+} kernHorizontalKerning;
+
+feature  RQD {
+
+ script DFLT;
+     language dflt ;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+
+ script cyrl;
+     language dflt ;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language CSL  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language SRB  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+
+ script grek;
+     language dflt ;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+
+ script latn;
+     language dflt ;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language AZE  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language CRT  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language DEU  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language MOL  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language NLD  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language ROM  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+     language TRK  exclude_dflt;
+      lookup RQDEnclosedCyrillicLetters;
+      lookup RQDGreekCapsafterAccentsPositioning;
+}  RQD;
+
+feature mark {
+
+ script cyrl;
+     language dflt ;
+      lookup markMarkPositioning;
+     language CSL  exclude_dflt;
+      lookup markMarkPositioning;
+     language SRB  exclude_dflt;
+      lookup markMarkPositioning;
+
+ script grek;
+     language dflt ;
+      lookup markMarkPositioning;
+
+ script latn;
+     language dflt ;
+      lookup markMarkPositioning;
+     language AZE  exclude_dflt;
+      lookup markMarkPositioning;
+     language CRT  exclude_dflt;
+      lookup markMarkPositioning;
+     language DEU  exclude_dflt;
+      lookup markMarkPositioning;
+     language MOL  exclude_dflt;
+      lookup markMarkPositioning;
+     language ROM  exclude_dflt;
+      lookup markMarkPositioning;
+     language TRK  exclude_dflt;
+      lookup markMarkPositioning;
+} mark;
+
+feature mkmk {
+
+ script cyrl;
+     language dflt ;
+      lookup mkmkMarktoMarkPositioning;
+     language CSL  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+     language SRB  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+
+ script grek;
+     language dflt ;
+      lookup mkmkMarktoMarkPositioning;
+
+ script latn;
+     language dflt ;
+      lookup mkmkMarktoMarkPositioning;
+     language AZE  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+     language CRT  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+     language DEU  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+     language MOL  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+     language NLD  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+     language ROM  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+     language TRK  exclude_dflt;
+      lookup mkmkMarktoMarkPositioning;
+} mkmk;
+
+feature kern {
+
+ script cyrl;
+     language dflt ;
+      lookup kernHorizontalKerning;
+     language CSL  exclude_dflt;
+      lookup kernHorizontalKerning;
+     language SRB  exclude_dflt;
+      lookup kernHorizontalKerning;
+
+ script grek;
+     language dflt ;
+      lookup kernHorizontalKerning;
+
+ script latn;
+     language dflt ;
+      lookup kernHorizontalKerning;
+     language AZE  exclude_dflt;
+      lookup kernHorizontalKerning;
+     language CRT  exclude_dflt;
+      lookup kernHorizontalKerning;
+     language DEU  exclude_dflt;
+      lookup kernHorizontalKerning;
+     language MOL  exclude_dflt;
+      lookup kernHorizontalKerning;
+     language NLD  exclude_dflt;
+      lookup kernHorizontalKerning;
+     language ROM  exclude_dflt;
+      lookup kernHorizontalKerning;
+     language TRK  exclude_dflt;
+      lookup kernHorizontalKerning;
+} kern;
+#Mark attachment classes (defined in GDEF, used in lookupflags)
+
+@GDEF_Simple = [\space \exclam \quotedbl \numbersign \dollar \percent \ampersand 
+	\quotesingle \parenleft \parenright \asterisk \plus \comma \hyphen \period 
+	\slash \zero \one \two \three \four \five \six \seven \eight \nine \colon \semicolon 
+	\less \equal \greater \question \at \A \B \C \D \E \F \G \H \I \J \K \L \M \N \O \P \Q \R \S \T 
+	\U \V \W \X \Y \Z \bracketleft \backslash \bracketright \asciicircum \underscore 
+	\grave \a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t \u \v \w \x \y \z \braceleft \bar 
+	\braceright \asciitilde \nonbreakingspace \exclamdown \cent \sterling 
+	\currency \yen \brokenbar \section \dieresis \copyright \ordfeminine 
+	\guillemotleft \logicalnot \softhyphen \registered \macron \degree \plusminus 
+	\twosuperior \threesuperior \acute \mu1 \paragraph \periodcentered \cedilla 
+	\onesuperior \ordmasculine \guillemotright \onequarter \onehalf 
+	\threequarters \questiondown \Agrave \Aacute \Acircumflex \Atilde \Adieresis 
+	\Aring \AE \Ccedilla \Egrave \Eacute \Ecircumflex \Edieresis \Igrave \Iacute 
+	\Icircumflex \Idieresis \Eth \Ntilde \Ograve \Oacute \Ocircumflex \Otilde 
+	\Odieresis \multiply \Oslash \Ugrave \Uacute \Ucircumflex \Udieresis \Yacute 
+	\Thorn \germandbls \agrave \aacute \acircumflex \atilde \adieresis \aring \ae 
+	\ccedilla \egrave \eacute \ecircumflex \edieresis \igrave \iacute \icircumflex 
+	\idieresis \eth \ntilde \ograve \oacute \ocircumflex \otilde \odieresis \divide 
+	\oslash \ugrave \uacute \ucircumflex \udieresis \yacute \thorn \ydieresis 
+	\Amacron \amacron \Abreve \abreve \Aogonek \aogonek \Cacute \cacute \Ccircumflex 
+	\ccircumflex \Cdotaccent \cdotaccent \Ccaron \ccaron \Dcaron \dcaron \Dcroat 
+	\dcroat \Emacron \emacron \Ebreve \ebreve \Edotaccent \edotaccent \Eogonek 
+	\eogonek \Ecaron \ecaron \Gcircumflex \gcircumflex \Gbreve \gbreve \Gdotaccent 
+	\gdotaccent \Gcommaaccent \gcommaaccent \Hcircumflex \hcircumflex \Hbar \hbar 
+	\Itilde \itilde \Imacron \imacron \Ibreve \ibreve \Iogonek \iogonek \Idotaccent 
+	\dotlessi \Jcircumflex \jcircumflex \Kcommaaccent \kcommaaccent \kgreenlandic 
+	\Lacute \lacute \Lcommaaccent \lcommaaccent \Lcaron \lcaron \Ldot \ldot \Lslash 
+	\lslash \Nacute \nacute \Ncommaaccent \ncommaaccent \Ncaron \ncaron 
+	\napostrophe \Eng \eng \Omacron \omacron \Obreve \obreve \Ohungarumlaut 
+	\ohungarumlaut \OE \oe \Racute \racute \Rcommaaccent \rcommaaccent \Rcaron 
+	\rcaron \Sacute \sacute \Scircumflex \scircumflex \Scedilla \scedilla \Scaron 
+	\scaron \Tcommaaccent \tcommaaccent \Tcaron \tcaron \Tbar \tbar \Utilde \utilde 
+	\Umacron \umacron \Ubreve \ubreve \Uring \uring \Uhungarumlaut \uhungarumlaut 
+	\Uogonek \uogonek \Wcircumflex \wcircumflex \Ycircumflex \ycircumflex 
+	\Ydieresis \Zacute \zacute \Zdotaccent \zdotaccent \Zcaron \zcaron \longs 
+	\uni0180 \uni0186 \uni018E \uni018F \uni0190 \florin \uni0195 \uni01A6 \uni01B7 
+	\uni01BF \uni01C4 \uni01C5 \uni01C6 \uni01C7 \uni01C8 \uni01C9 \uni01CA \uni01CB 
+	\uni01CC \uni01DD \uni01E2 \uni01E3 \Oogonek \oogonek \uni01EC \uni01ED \uni01F0 
+	\uni01F1 \uni01F2 \uni01F3 \uni01F4 \uni01F5 \uni01F6 \uni01F7 \AEacute \aeacute 
+	\Oslashacute \oslashacute \uni0200 \uni0201 \uni0202 \uni0203 \uni0204 \uni0205 
+	\uni0206 \uni0207 \uni0208 \uni0209 \uni020A \uni020B \uni020C \uni020D \uni020E 
+	\uni020F \uni0210 \uni0211 \uni0212 \uni0213 \uni0214 \uni0215 \uni0216 \uni0217 
+	\Scommaaccent \scommaaccent \uni021A \uni021B \uni021C \uni021D \uni0224 
+	\uni0225 \uni0228 \uni0229 \uni0232 \uni0233 \uni0243 \uni0254 \uni0259 \uni025B 
+	\uni0280 \uni0292 \uni02BB \afii57929 \afii64937 \uni02BE \uni02BF \circumflex 
+	\caron \breve \dotaccent \ring \ogonek \tilde \hungarumlaut \uni0305 \uni0328 
+	\uni0332 \uni0333 \uni035C \uni035D \uni0361 \uni0370 \uni0371 \uni0372 \uni0373 
+	\uni0374 \uni0375 \uni0376 \uni0377 \uni037A \uni037B \uni037C \uni037D \tonos 
+	\dieresistonos \Alphatonos \anoteleia \Epsilontonos \Etatonos \Iotatonos 
+	\Omicrontonos \Upsilontonos \Omegatonos \iotadieresistonos \Alpha \Beta \Gamma 
+	\Deltagreek \Epsilon \Zeta \Eta \Theta \Iota \Kappa \Lambda \Mu \Nu \Xi \Omicron \Pi 
+	\Rho \Sigma \Tau \Upsilon \Phi \Chi \Psi \Omegagreek \Iotadieresis 
+	\Upsilondieresis \alphatonos \epsilontonos \etatonos \iotatonos 
+	\upsilondieresistonos \alpha \beta \gamma \delta \epsilon \zeta \eta \theta \iota 
+	\kappa \lambda \mugreek \nu \xi \omicron \pi \rho \sigma1 \sigma \tau \upsilon \phi 
+	\chi \psi \omega \iotadieresis \upsilondieresis \omicrontonos \upsilontonos 
+	\omegatonos \uni03CF \betasymbolgreek \thetasymbolgreek \Upsilonhooksymbol 
+	\uni03D3 \uni03D4 \phi1 \pisymbolgreek \uni03D7 \uni03D8 \uni03D9 \uni03DA 
+	\uni03DB \uni03DC \uni03DD \uni03DE \uni03DF \uni03E0 \uni03E1 
+	\kappasymbolgreek \rhosymbolgreek \sigmalunatesymbolgreek \uni03F3 \uni03F4 
+	\uni03F5 \uni03F6 \uni03F7 \uni03F8 \uni03F9 \uni03FA \uni03FB \uni03FC \uni03FD 
+	\uni03FE \uni03FF \uni0400 \afii10023 \afii10051 \afii10052 \afii10053 
+	\afii10054 \afii10055 \afii10056 \afii10057 \afii10058 \afii10059 \afii10060 
+	\afii10061 \uni040D \afii10062 \afii10145 \afii10017 \afii10018 \afii10019 
+	\afii10020 \afii10021 \afii10022 \afii10024 \afii10025 \afii10026 \afii10027 
+	\afii10028 \afii10029 \afii10030 \afii10031 \afii10032 \afii10033 \afii10034 
+	\afii10035 \afii10036 \afii10037 \afii10038 \afii10039 \afii10040 \afii10041 
+	\afii10042 \afii10043 \afii10044 \afii10045 \afii10046 \afii10047 \afii10048 
+	\afii10049 \afii10065 \afii10066 \afii10067 \afii10068 \afii10069 \afii10070 
+	\afii10072 \afii10073 \afii10074 \afii10075 \afii10076 \afii10077 \afii10078 
+	\afii10079 \afii10080 \afii10081 \afii10082 \afii10083 \afii10084 \afii10085 
+	\afii10086 \afii10087 \afii10088 \afii10089 \afii10090 \afii10091 \afii10092 
+	\afii10093 \afii10094 \afii10095 \afii10096 \afii10097 \uni0450 \afii10071 
+	\afii10099 \afii10100 \afii10101 \afii10102 \afii10103 \afii10104 \afii10105 
+	\afii10106 \afii10107 \afii10108 \afii10109 \uni045D \afii10110 \afii10193 
+	\uni0460 \uni0461 \afii10146 \afii10194 \uni0464 \uni0465 \uni0466 \uni0467 
+	\uni0468 \uni0469 \uni046A \uni046B \uni046C \uni046D \uni046E \uni046F \uni0470 
+	\uni0471 \afii10147 \afii10195 \afii10148 \afii10196 \uni0476 \uni0477 \uni0478 
+	\uni0479 \uni047A \uni047B \uni047C \uni047D \uni047E \uni047F \uni0480 \uni0481 
+	\uni0482 \afii10050 \afii10098 \uni04A4 \uni04A5 \uni04C1 \uni04C2 \uni04D8 
+	\afii10846 \uni0510 \uni0511 \afii57664 \uni1D79 \uni1E00 \uni1E01 \uni1E02 
+	\uni1E03 \uni1E04 \uni1E05 \uni1E06 \uni1E07 \uni1E08 \uni1E09 \uni1E0A \uni1E0B 
+	\uni1E0C \uni1E0D \uni1E0E \uni1E0F \uni1E10 \uni1E11 \uni1E12 \uni1E13 \uni1E14 
+	\uni1E15 \uni1E16 \uni1E17 \uni1E18 \uni1E19 \uni1E1A \uni1E1B \uni1E1C \uni1E1D 
+	\uni1E1E \uni1E1F \uni1E20 \uni1E21 \uni1E22 \uni1E23 \uni1E24 \uni1E25 \uni1E26 
+	\uni1E27 \uni1E28 \uni1E29 \uni1E2A \uni1E2B \uni1E2C \uni1E2D \uni1E2E \uni1E2F 
+	\uni1E30 \uni1E31 \uni1E32 \uni1E33 \uni1E34 \uni1E35 \uni1E36 \uni1E37 \uni1E38 
+	\uni1E39 \uni1E3A \uni1E3B \uni1E3C \uni1E3D \uni1E3E \uni1E3F \uni1E40 \uni1E41 
+	\uni1E42 \uni1E43 \uni1E44 \uni1E45 \uni1E46 \uni1E47 \uni1E48 \uni1E49 \uni1E4A 
+	\uni1E4B \uni1E4C \uni1E4D \uni1E4E \uni1E4F \uni1E50 \uni1E51 \uni1E52 \uni1E53 
+	\uni1E54 \uni1E55 \uni1E56 \uni1E57 \uni1E58 \uni1E59 \uni1E5A \uni1E5B \uni1E5C 
+	\uni1E5D \uni1E5E \uni1E5F \uni1E60 \uni1E61 \uni1E62 \uni1E63 \uni1E64 \uni1E65 
+	\uni1E66 \uni1E67 \uni1E68 \uni1E69 \uni1E6A \uni1E6B \uni1E6C \uni1E6D \uni1E6E 
+	\uni1E6F \uni1E70 \uni1E71 \uni1E72 \uni1E73 \uni1E74 \uni1E75 \uni1E76 \uni1E77 
+	\uni1E78 \uni1E79 \uni1E7A \uni1E7B \uni1E7C \uni1E7D \uni1E7E \uni1E7F \Wgrave 
+	\wgrave \Wacute \wacute \Wdieresis \wdieresis \uni1E86 \uni1E87 \uni1E88 
+	\uni1E89 \uni1E8A \uni1E8B \uni1E8C \uni1E8D \uni1E8E \uni1E8F \uni1E90 \uni1E91 
+	\uni1E92 \uni1E93 \uni1E94 \uni1E95 \uni1E96 \uni1E97 \uni1E98 \uni1E99 \uni1E9A 
+	\uni1E9B \uni1E9C \uni1E9E \uni1F00 \uni1F01 \uni1F02 \uni1F03 \uni1F04 \uni1F05 
+	\uni1F06 \uni1F07 \uni1F08 \uni1F09 \uni1F0A \uni1F0B \uni1F0C \uni1F0D \uni1F0E 
+	\uni1F0F \uni1F10 \uni1F11 \uni1F12 \uni1F13 \uni1F14 \uni1F15 \uni1F18 \uni1F19 
+	\uni1F1A \uni1F1B \uni1F1C \uni1F1D \uni1F20 \uni1F21 \uni1F22 \uni1F23 \uni1F24 
+	\uni1F25 \uni1F26 \uni1F27 \uni1F28 \uni1F29 \uni1F2A \uni1F2B \uni1F2C \uni1F2D 
+	\uni1F2E \uni1F2F \uni1F30 \uni1F31 \uni1F32 \uni1F33 \uni1F34 \uni1F35 \uni1F36 
+	\uni1F37 \uni1F38 \uni1F39 \uni1F3A \uni1F3B \uni1F3C \uni1F3D \uni1F3E \uni1F3F 
+	\uni1F40 \uni1F41 \uni1F42 \uni1F43 \uni1F44 \uni1F45 \uni1F48 \uni1F49 \uni1F4A 
+	\uni1F4B \uni1F4C \uni1F4D \uni1F50 \uni1F51 \uni1F52 \uni1F53 \uni1F54 \uni1F55 
+	\uni1F56 \uni1F57 \uni1F59 \uni1F5B \uni1F5D \uni1F5F \uni1F60 \uni1F61 \uni1F62 
+	\uni1F63 \uni1F64 \uni1F65 \uni1F66 \uni1F67 \uni1F68 \uni1F69 \uni1F6A \uni1F6B 
+	\uni1F6C \uni1F6D \uni1F6E \uni1F6F \uni1F70 \uni1F72 \uni1F74 \uni1F76 \uni1F78 
+	\uni1F7A \uni1F7C \uni1F80 \uni1F81 \uni1F82 \uni1F83 \uni1F84 \uni1F85 \uni1F86 
+	\uni1F87 \uni1F88 \uni1F89 \uni1F8A \uni1F8B \uni1F8C \uni1F8D \uni1F8E \uni1F8F 
+	\uni1F90 \uni1F91 \uni1F92 \uni1F93 \uni1F94 \uni1F95 \uni1F96 \uni1F97 \uni1F98 
+	\uni1F99 \uni1F9A \uni1F9B \uni1F9C \uni1F9D \uni1F9E \uni1F9F \uni1FA0 \uni1FA1 
+	\uni1FA2 \uni1FA3 \uni1FA4 \uni1FA5 \uni1FA6 \uni1FA7 \uni1FA8 \uni1FA9 \uni1FAA 
+	\uni1FAB \uni1FAC \uni1FAD \uni1FAE \uni1FAF \uni1FB0 \uni1FB1 \uni1FB2 \uni1FB3 
+	\uni1FB4 \uni1FB6 \uni1FB7 \uni1FB8 \uni1FB9 \uni1FBA \uni1FBC \uni1FBE \uni1FBF 
+	\uni1FC0 \uni1FC1 \uni1FC2 \uni1FC3 \uni1FC4 \uni1FC6 \uni1FC7 \uni1FC8 \uni1FCA 
+	\uni1FCC \uni1FCD \uni1FCE \uni1FCF \uni1FD0 \uni1FD1 \uni1FD2 \uni1FD6 \uni1FD7 
+	\uni1FD8 \uni1FD9 \uni1FDA \uni1FDD \uni1FDE \uni1FDF \uni1FE0 \uni1FE1 \uni1FE2 
+	\uni1FE4 \uni1FE5 \uni1FE6 \uni1FE7 \uni1FE8 \uni1FE9 \uni1FEA \uni1FEC \uni1FED 
+	\uni1FEF \uni1FF2 \uni1FF3 \uni1FF4 \uni1FF6 \uni1FF7 \uni1FF8 \uni1FFA \uni1FFC 
+	\uni1FFE \uni2000 \uni2001 \uni2002 \uni2003 \uni2004 \uni2005 \uni2006 \uni2007 
+	\uni2008 \uni2009 \uni200A \uni200B \afii61664 \afii301 \uni2010 \uni2011 
+	\figuredash \endash \emdash \afii00208 \uni2016 \underscoredbl \quoteleft 
+	\quoteright \quotesinglbase \quotereversed \quotedblleft \quotedblright 
+	\quotedblbase \uni201F \dagger \daggerdbl \bullet \uni2023 \onedotenleader 
+	\twodotenleader \ellipsis \uni2027 \uni202F \perthousand \uni2031 \minute 
+	\second \uni2034 \uni2035 \uni2036 \uni2037 \uni2038 \guilsinglleft 
+	\guilsinglright \uni203B \exclamdbl \uni203D \uni203E \uni203F \uni2040 
+	\uni2041 \uni2042 \uni2043 \fraction \uni2045 \uni2046 \uni2047 \uni2048 
+	\uni2049 \uni204A \uni204B \uni204C \uni204D \uni204E \uni204F \uni2050 \uni2051 
+	\uni2052 \uni2053 \uni2054 \uni2055 \uni2056 \uni2057 \uni2058 \uni2059 \uni205A 
+	\uni205B \uni205C \uni205D \uni205E \uni205F \zerosuperior \foursuperior 
+	\fivesuperior \sixsuperior \sevensuperior \eightsuperior \ninesuperior 
+	\uni207A \uni207B \uni207C \uni207D \uni207E \zeroinferior \oneinferior 
+	\twoinferior \threeinferior \fourinferior \fiveinferior \sixinferior 
+	\seveninferior \eightinferior \nineinferior \uni208A \uni208B \uni208C 
+	\uni208D \uni208E \Euro \uni210C \afii61352 \prescription \uni211F \trademark 
+	\uni2123 \Ohm \uni212D \uni2132 \aleph \uni214E \uni2150 \uni2151 \uni2152 
+	\onethird \twothirds \uni2155 \uni2156 \uni2157 \uni2158 \uni2159 \uni215A 
+	\oneeighth \threeeighths \fiveeighths \seveneighths \uni215F \uni2160 \uni2161 
+	\uni2162 \uni2163 \uni2164 \uni2165 \uni2166 \uni2167 \uni2168 \uni2169 \uni216A 
+	\uni216B \uni216C \uni216D \uni216E \uni216F \uni2170 \uni2171 \uni2172 \uni2173 
+	\uni2174 \uni2175 \uni2176 \uni2177 \uni2178 \uni2179 \uni217A \uni217B \uni217C 
+	\uni217D \uni217E \uni217F \uni2180 \uni2181 \uni2182 \uni2183 \uni2184 \uni2185 
+	\uni2186 \uni2187 \uni2188 \uni2189 \arrowleft \arrowup \arrowright \arrowdown 
+	\arrowboth \arrowupdn \uni2196 \uni2197 \uni2198 \uni2199 \arrowdblleft 
+	\arrowdblup \arrowdblright \arrowdbldown \arrowdblboth \uni21D5 \partialdiff 
+	\emptyset \uni2206 \product \summation \minus \uni2215 \radical \infinity 
+	\integral \similar \approxequal \notequal \lessequal \greaterequal \circleplus 
+	\circlemultiply \angleleft \angleright \uni23D1 \uni23D2 \uni23D3 \uni23D4 
+	\uni23D5 \uni23D6 \uni23D7 \uni23D8 \uni23D9 \H22073 \lozenge \circle \uni25EF 
+	\uni27E6 \uni27E7 \uni27E8 \uni27E9 \uni27EA \uni27EB \uni2AFD \uni2C75 \uni2C76 
+	\uni2E00 \uni2E01 \uni2E02 \uni2E03 \uni2E04 \uni2E05 \uni2E06 \uni2E07 \uni2E08 
+	\uni2E09 \uni2E0A \uni2E0B \uni2E0C \uni2E0D \uni2E0E \uni2E0F \uni2E10 \uni2E11 
+	\uni2E12 \uni2E13 \uni2E14 \uni2E15 \uni2E16 \uni2E17 \uni2E22 \uni2E23 \uni2E24 
+	\uni2E25 \uni2E2F \uni300A \uni300B \uni301A \uni301B \uniA640 \uniA641 \uniA642 
+	\uniA643 \uniA644 \uniA645 \uniA646 \uniA647 \uniA648 \uniA649 \uniA64A \uniA64B 
+	\uniA64C \uniA64D \uniA64E \uniA64F \uniA650 \uniA651 \uniA652 \uniA653 \uniA654 
+	\uniA655 \uniA656 \uniA657 \uniA658 \uniA659 \uniA65A \uniA65B \uniA65C \uniA65D 
+	\uniA65E \uniA65F \uniA662 \uniA663 \uniA664 \uniA665 \uniA666 \uniA667 \uniA668 
+	\uniA669 \uniA66A \uniA66B \uniA66C \uniA66D \uniA66E \uniA673 \uniA67E \uniA67F 
+	\uniA77D \uniA7FB \uniA7FC \uniA7FD \uniA7FE \uniA7FF \Iotainvcircum 
+	\Upsiloninvcircum \iotainvcircum \upsiloninvcircum \epsilon_brevecmb 
+	\omicron_brevecmb \Rho_uni0313 \Upsilon_uni0313 \Upsilon_uni0313_gravecomb 
+	\Upsilon_uni0313_acutecomb \Upsilon_uni0313_uni0342 \epsilon_uni0342 
+	\epsilon_uni0313_uni0342 \epsilon_uni0314_uni0342 \epsilon_macroncmb 
+	\Epsilon_uni0313_uni0342 \Epsilon_uni0314_uni0342 \Epsilon_macroncmb 
+	\Epsilon_brevecmb \omicron_uni0342 \omicron_uni0313_uni0342 
+	\omicron_uni0314_uni0342 \omicron_macroncmb \Omicron_uni0313_uni0342 
+	\Omicron_uni0314_uni0342 \Omicron_macroncmb \Omicron_brevecmb \Dotaccent 
+	\Breve \Ogonek \Cedilla \Ring \Tilde \Circumflex \dotlessj \commaaccent 
+	\afii10063 \afii10064 \afii10192 \afii10831 \afii10832 \Acute \Caron \Dieresis 
+	\Grave \Hungarumlaut \Macron \cyrBreve \cyrFlex \dblGrave \cyrbreve \cyrflex 
+	\dblgrave \u1D50A \u1D510 \u1D513 \u1D516 \caroncommaaccent \ringacute.cap 
+	\dieresis_gravecomb.cap \dieresis_acutecomb.cap \macron_gravecomb.cap 
+	\macron_acutecomb.cap \macron_brevecmb.cap \macron_uni0308.cap 
+	\acute_uni0307.cap \caron_uni0307.cap \breve_gravecomb.cap 
+	\breve_acutecomb.cap \tilde_acutecomb.cap \tilde_uni0308.cap \afii10017.csl 
+	\afii10065.csl \afii10194.csl \zero.dnom \one.dnom \two.dnom \three.dnom 
+	\four.dnom \five.dnom \six.dnom \seven.dnom \eight.dnom \nine.dnom 
+	\iogonek.dotless \uni2215.frac \dieresis.i \uni1FC0.iota \uni1FCF.iota 
+	\uni1FDF.iota \afii10066.low \uniA64B.low \theta.mgrk \kappa.mgrk \rho.mgrk ];
+@GDEF_Ligature = [\IJ \ij \Aringacute \aringacute \ff \fi \fl \ffi \ffl \f_f_j \f_j ];
+@GDEF_Mark = [\gravecomb \acutecomb \circumflexcmb \tildecomb \macroncmb 
+	\brevecmb \uni0307 \uni0308 \uni030A \uni030B \uni030C \uni030F \uni0311 
+	\uni0312 \uni0313 \uni0314 \uni0316 \uni0317 \dotbelowcomb \uni0324 \uni0325 
+	\uni0326 \uni0327 \uni032C \uni032D \uni032E \uni032F \uni0330 \uni0331 \uni033E 
+	\uni0342 \uni0343 \uni0344 \uni0345 \uni0351 \uni0357 \uni0359 \uni0363 \uni0364 
+	\uni0365 \uni0366 \uni0367 \uni0368 \uni0369 \uni036A \uni036B \uni036C \uni036D 
+	\uni036E \uni036F \uni0483 \uni0484 \uni0485 \uni0486 \uni0487 \uni0488 \uni0489 
+	\uni1DC0 \uni1DC1 \uni1DCB \uni1DCC \uni20DD \uni2DE0 \uni2DE1 \uni2DE2 \uni2DE3 
+	\uni2DE4 \uni2DE5 \uni2DE6 \uni2DE7 \uni2DE8 \uni2DE9 \uni2DEA \uni2DEB \uni2DEC 
+	\uni2DED \uni2DEE \uni2DEF \uni2DF0 \uni2DF1 \uni2DF2 \uni2DF3 \uni2DF4 \uni2DF5 
+	\uni2DF6 \uni2DF7 \uni2DF8 \uni2DF9 \uni2DFA \uni2DFB \uni2DFC \uni2DFD \uni2DFE 
+	\uni2DFF \uniA66F \uniA670 \uniA671 \uniA672 \uniA67C \uniA67D 
+	\acutecomb_uni0307 \tildecomb_acutecomb \tildecomb_uni0308 
+	\macroncmb_gravecomb \macroncmb_acutecomb \macroncmb_brevecmb 
+	\macroncmb_uni0308 \brevecmb_gravecomb \brevecmb_acutecomb 
+	\uni0308_gravecomb \uni0308_acutecomb \uni030A_acutecomb \uni030C_uni0307 
+	\uni0486_gravecomb \uni0486_acutecomb \gravecomb.cap \acutecomb.cap 
+	\circumflexcmb.cap \tildecomb.cap \macroncmb.cap \brevecmb.cap \uni0307.cap 
+	\uni0308.cap \uni030A.cap \uni030B.cap \uni030C.cap \uni030F.cap \uni0311.cap 
+	\uni0327.cap \uni0328.cap \acutecomb_uni0307.cap \tildecomb_acutecomb.cap 
+	\tildecomb_uni0308.cap \macroncmb_gravecomb.cap \macroncmb_acutecomb.cap 
+	\macroncmb_brevecmb.cap \macroncmb_uni0308.cap \brevecmb_gravecomb.cap 
+	\brevecmb_acutecomb.cap \uni0308_gravecomb.cap \uni0308_acutecomb.cap 
+	\uni030A_acutecomb.cap \uni030C_uni0307.cap \brevecmb.cyrcap \brevecmb.cyrl 
+	\gravecomb.grek \acutecomb.grek \uni0313.grek \uni0314.grek 
+	\uni0308_gravecomb.grek \uni0308_uni0342.grek \uni0313_gravecomb.grek 
+	\uni0313_acutecomb.grek \uni0313_uni0342.grek \uni0314_gravecomb.grek 
+	\uni0314_acutecomb.grek \uni0314_uni0342.grek \uni0308.i 
+	\uni0308_gravecomb.i \uni0308_acutecomb.i \uni0342.iota 
+	\uni0313_uni0342.iota \uni0314_uni0342.iota ];
+
+table GDEF {
+  GlyphClassDef @GDEF_Simple, @GDEF_Ligature, @GDEF_Mark, ;
+
+  LigatureCaretByPos \AE 544 0;
+  LigatureCaretByPos \ae 352 0;
+  LigatureCaretByPos \IJ 432;
+  LigatureCaretByPos \ij 284;
+  LigatureCaretByPos \OE 594 0;
+  LigatureCaretByPos \oe 376 0;
+  LigatureCaretByPos \ff 266;
+  LigatureCaretByPos \fi 266;
+  LigatureCaretByPos \fl 266;
+  LigatureCaretByPos \ffi 266 516;
+  LigatureCaretByPos \ffl 266 516;
+  LigatureCaretByPos \f_f_j 266 516;
+  LigatureCaretByPos \f_j 266;
+} GDEF;
+

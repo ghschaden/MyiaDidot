@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="macroncmb" format="2">
+  <unicode hex="0304"/>
+  <anchor x="-188" y="636" name="GreekTopMarkSunken"/>
+  <anchor x="-184" y="656" name="TopMark"/>
+  <anchor x="-222" y="508" name="_TopMark"/>
+  <anchor x="-222" y="508" name="_Top"/>
+  <anchor x="-222" y="508" name="_GreekTop"/>
+  <anchor x="-184" y="656" name="GreekTopMark"/>
+  <outline>
+    <component base="macron" xOffset="-528"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>546</integer>
+            <key>width</key>
+            <integer>40</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>-364</integer>
+            <key>width</key>
+            <integer>324</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

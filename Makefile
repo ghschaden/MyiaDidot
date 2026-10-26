@@ -17,7 +17,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup test lint test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate visual visual-approve diffenator
+.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate visual visual-approve diffenator
 
 all: fonts
 
@@ -223,6 +223,10 @@ generate:
 	$(MAKE) normalize
 	@if find sources -iname '*conflict*' | grep -q .; then \
 	    echo "sync conflicts in sources/:"; find sources -iname '*conflict*'; exit 1; fi
+
+# Old Standard's SFD converted again with FontForge (scripts/fontforge_inputs.py)
+oldstand:
+	$(PY) -c "import sys; sys.path.insert(0, 'scripts'); import fontforge_inputs; fontforge_inputs.convert_source()"
 
 # the generated styles as their generators make them (scripts/check_reproducible.py)
 reproduce:
