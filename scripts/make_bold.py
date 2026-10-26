@@ -283,6 +283,7 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni026E": "ɮ: a notch where l's stem meets ʒ",
     "uni0270": "ɰ: a step on the last leg at the cut",
     "uni0249": "ɉ: the bar ends at the stem, no right arm for j_bar.py to extend",
+    "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",
 }
 # Reviewed weight-aware choices: the rounder emboldening can lighten or
 # dent a body, and a local contour repair must not switch its construction.
@@ -1342,7 +1343,12 @@ def rederive(source, font, italic, whole):
         tmp = f"_rederived.{name}"
         order, cats = up.glyphOrder, dict(up.lib.get("public.openTypeCategories", {}))
         try:
-            new = derive.build(up, ch, op, base, band, tmp)
+            if italic:
+                from make_italic import build_own
+
+                # ɗ ɚ ɝ ʔ: the Italic's own constructions, from the Bold Italic's glyphs
+                own_built = build_own(up, ch, op, base, band, tmp, resolve)
+            new = up[tmp] if italic and own_built else derive.build(up, ch, op, base, band, tmp)
         except Exception as e:  # noqa: BLE001 (a recipe that does not run on the Bold: left whole)
             whole[name] = f"{op}: emboldened whole, its recipe fails on the Bold ({type(e).__name__})"
             continue

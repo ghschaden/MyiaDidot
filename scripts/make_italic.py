@@ -1022,6 +1022,44 @@ def enlarged(font, up, ch, op, source, band, name):
         reweight(up, name, w)
 
 
+def build_own(up, ch, op, source, band, name, resolve):
+    """The Italic's own constructions, which derive.build does not know:
+    ɗ, the rhotic ɚ ɝ, the glottal ʔ, made in up[name] (in the upright
+    frame) from up's glyphs; so also the Bold Italic's from its own
+    (make_bold.rederive). Returns whether ch is one of them."""
+    import derive
+
+    if ch == "ɗ":
+        # the italic d (its bowl, its exit stroke) with ɓ's top: the
+        # f-hook recipe does not fit the italic f, and the Regular's
+        # hook transplanted leaves d's flag. ɓ's stem above the cut is
+        # scaled across onto d's stem edges, so it runs on without a step
+        hooked = resolve("ɓ")
+        (a0, a1), (b0, b1) = (derive.stems_at(up, source, DHOOK_CUT)[-1],
+                              derive.stems_at(up, hooked, DHOOK_CUT)[0])
+        if name in up:
+            del up[name]
+        derive.build(up, ch, "attach", source, (
+            "x", [(-BIG, DHOOK_CUT, BIG, BIG)],
+            [(hooked, (-BIG, DHOOK_CUT - 20, BIG, BIG), (b0, 0), ((a1 - a0) / (b1 - b0), 1, a0, 0))]), name)
+        return True
+    if op not in ("rhotic", "glottal"):
+        return False
+    if op == "rhotic":
+        out, width = rhotic(up, source, band)
+    else:
+        out, width = glottal(up, source), up[source].width
+    g = up[name] if name in up else up.newGlyph(name)
+    g.clearContours()
+    g.clearComponents()
+    g.clearAnchors()
+    draw_path(up, up[source], g, out)
+    g.width = width
+    for a in up[source].anchors:
+        g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    return True
+
+
 def derive_stage(font, regular, late=False, kept=()):
     """derive.py's recipes for the glyphs still sloped roman. Those made
     from a small cap (ɔ.sc from c.sc, ʁ from r.sc) wait for the Italic's
@@ -1069,31 +1107,8 @@ def derive_stage(font, regular, late=False, kept=()):
         capital = band == "c" or (isinstance(band, tuple) and band[:1] == ("c",))
         old = up[name]
         try:
-            if ch == "ɗ":
-                # the italic d (its bowl, its exit stroke) with ɓ's top: the
-                # f-hook recipe does not fit the italic f, and the Regular's
-                # hook transplanted leaves d's flag. ɓ's stem above the cut is
-                # scaled across onto d's stem edges, so it runs on without a step
-                hooked = resolve("ɓ")
-                (a0, a1), (b0, b1) = (derive.stems_at(up, source, DHOOK_CUT)[-1],
-                                      derive.stems_at(up, hooked, DHOOK_CUT)[0])
-                del up[name]
-                derive.build(up, ch, "attach", source, (
-                    "x", [(-BIG, DHOOK_CUT, BIG, BIG)],
-                    [(hooked, (-BIG, DHOOK_CUT - 20, BIG, BIG), (b0, 0), ((a1 - a0) / (b1 - b0), 1, a0, 0))]), name)
-            elif op in ("rhotic", "glottal"):
-                if op == "rhotic":
-                    out, width = rhotic(up, source, band)
-                else:
-                    out, width = glottal(up, source), up[source].width
-                g = up[name]
-                g.clearContours()
-                g.clearComponents()
-                g.clearAnchors()
-                draw_path(up, up[source], g, out)
-                g.width = width
-                for a in up[source].anchors:
-                    g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+            if build_own(up, ch, op, source, band, name, resolve):
+                pass
             elif op == "stem":
                 # through the middle, from the descender to the ascender
                 ink = ink_bounds(up, source)

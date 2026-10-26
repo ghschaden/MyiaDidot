@@ -395,18 +395,20 @@ uni0254.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 9
 uni0254.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 20.9 degrees, not 15.2
 uni0255 extreme 2                # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 647,338 5 units past; 668,158 7 units past
 uni0256 extreme 2                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 881,1333 14 units past; 720,-145 10 units past
-uni0257 extreme 1                # 2026-10-21 Italic reweighted and tightened: 784,99 6 units past
 uni0257 zone 1                   # reworked hooked-d italic outline: bottom +7 from -23
 uni0257.sc extreme 4             # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 135,268 84 units past; -104,814 6 units past; -88,739 20 units past; -277,531 37 units past
 uni0257.sc kink 4                # 2026-10-21 Italic reweighted and tightened: 1158,637 4.5 degrees; 974,208 6.4 degrees; 838,266 4.8 degrees; 921,697 7.1 degrees
 uni0258 extreme 6                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 731,305 43 units past; 227,723 27 units past; 227,21 10 units past; -13,286 6 units past; 354,513 36 units pa
 uni0259.sc zone 2                # 2026-10-21 Italic reweighted and tightened: bottom -24 from 0; top +23 from 1040
 uni025A extreme 1                # 2026-10-21 Italic reweighted and tightened: 906,639 5 units past
+uni025A smooth 1                 # 2026-10-26 ɗ ɚ ɝ from the Italic's own constructions (make_italic.build_own): 958,460 2.6 degrees
 uni025B.sc extreme 1             # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 482,744 9 units past
 uni025B.sc zone 2                # 2026-10-21 Italic reweighted and tightened: bottom -24 from 0; top +16 from 1040
 uni025C extreme 6                # 2026-10-21 Italic reweighted and tightened: 715,201 20 units past; 823,648 22 units past; 165,695 11 units past; 553,829 60 units past; 131,443 6 units past; 447,426 52 units past
 uni025C kink 1                   # 2026-10-21 Italic reweighted and tightened: 554,462 5.4 degrees
 uni025D extreme 6                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 448,210 51 units past; 248,373 6 units past; 563,618 58 units past; 224,632 11
+uni025D kink 1                   # 2026-10-26 ɗ ɚ ɝ from the Italic's own constructions (make_italic.build_own): 556,462 4.8 degrees
+uni025D smooth 1                 # 2026-10-26 ɗ ɚ ɝ from the Italic's own constructions (make_italic.build_own): 986,650 2.0 degrees
 uni025E extreme 4                # mirrored and turned letters in the italics placed in the frame they are made in (make_bold.follow_bases, rederive: sheared about half the x-height, as make_italic); Bold Italic ɞ its own recipe; Itali
 uni025E kink 1                   # 2026-10-21 Italic reweighted and tightened: 653,462 4.8 degrees
 uni025F extreme 1                # 2026-10-21 Italic reweighted and tightened: 397,810 8 units past

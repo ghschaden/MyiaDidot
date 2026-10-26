@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Bold Italic ɗ ɚ ɝ rebuilt
+
+    * Their recipes crashed when the Bold Italic remade them: ɗ and the
+      rhotic ɚ ɝ (and ʔ) are the Italic's own constructions, which
+      derive.build does not know. They are now one function,
+      make_italic.build_own, which the Italic's derive stage and
+      make_bold.py's rederive both call (the Italic unchanged). Bold
+      Italic ɗ's top hook and ɚ ɝ's rhotic hook are now at its weight;
+      ɚ ɝ take the Italic's rhotic advance (+50).
+    * ʔ runs now but its cut, placed by number for the Italic, notches the
+      Bold Italic's heavier stroke: kept whole (ITALIC_BOLD_KEEP_WHOLE).
+
 2026-10-26 Bold Bulgarian ж ю rebuilt
 
     * make_bold.py's rederive drops the specks a recipe's cut leaves apart
