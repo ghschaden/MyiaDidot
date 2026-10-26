@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Bold Bulgarian ж ю rebuilt
+
+    * make_bold.py's rederive drops the specks a recipe's cut leaves apart
+      from the letter (outer contours under 6000 units², SPECK) before it
+      judges the result: Bold Bulgarian ж and ю, rejected for a speck
+      alone, are now made of the Bold's own glyphs (2 lines off
+      emboldened-whole-Bold.txt). Reviewed in before/after proofs.
+
 2026-10-26 Bold hooks rebuilt at the Bold's weight
 
     * The hook recipes cut the stem at the Regular's foot-serif top (48,

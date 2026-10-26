@@ -1133,6 +1133,7 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
 
 
 MIN_PIECE = 3000  # units²: an added piece (ɬ.sc's bar is 8000), not a sliver
+SPECK = 6000  # units²: a cut's remnant apart from the letter (Bulgarian ж's 4590), not a piece (i's dot 40000)
 
 
 def attached_small(source, font, italic):
@@ -1212,6 +1213,26 @@ def attached_small(source, font, italic):
         redraw(font[name], glyph)
         changed.append(name)
     return changed
+
+
+def drop_specks(glyph):
+    """glyph (in place) without the specks a recipe's cut leaves apart from
+    the letter (a corner of the Bold's wider serif outside the cut box, Ɲ's
+    feet, Bulgarian ж's and ю's arms): outer contours under SPECK.
+    Counters stay (a pinhole is judged as such)."""
+    p = pathops.Path()
+    glyph.draw(p.getPen())
+    contours = list(pathops.simplify(p).contours)
+    if len(contours) < 2:
+        return
+    outer = max(contours, key=lambda c: abs(c.area)).clockwise
+    kept = [c for c in contours if c.clockwise != outer or abs(c.area) >= SPECK]
+    if len(kept) == len(contours):
+        return
+    glyph.clearContours()
+    pen = glyph.getPen()
+    for c in kept:
+        c.draw(pen)
 
 
 def serif_top(font, name, pick):
@@ -1333,6 +1354,7 @@ def rederive(source, font, italic, whole):
 
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
+        drop_specks(new)
         # the side bearings the source style gave the letter after its recipe
         # (the Regular's derive.SPACING, the Italic's ITALIC_SIDEBEARINGS):
         # the recipe's width alone has its hook counted in again
