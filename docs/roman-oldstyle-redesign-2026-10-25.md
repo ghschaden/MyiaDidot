@@ -67,3 +67,10 @@ In running text the 5's bowl stood out dark: 276 units across its right
 side against 222 in the 3's bowl. The reviewed design's inner bowl edge
 moved 50 units right (226 now; Bold 345, the 3's 341); outline, advance
 and spacing are unchanged. See FONTLOG.
+
+## 2026-10-26: 3 and 5 lower parts lighter
+
+Both still looked fat below in text. Their lower bowls' inner edges moved
+30 more units right (3: 192, 5: 196 across the right side; o 184, 0 189;
+Bold 309 / 314, o 281), and the 5's ball shrank 15 % toward its join
+(258 across; the 3's 251). Advances and spacing are unchanged.

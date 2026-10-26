@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Regular old-style 3 and 5: lower parts lighter
+
+    * Both still looked fat below in running text. Their lower bowls come
+      down to the round letters' weight: the inner edge of the bowl moves
+      30 more units right (3: 222 -> 192, 5: 226 -> 196 across its right
+      side; o 184, 0 189), outlines, advances and spacing otherwise
+      unchanged. The 5's ball is 15 % smaller (301 -> 258 across, the 3's
+      251), shrunk toward its join with the stroke. The Bold follows
+      (3: 309, 5: 314; o 281).
+    * strokes.py now reports both light (0.84, 0.77): its rows at 20-60 %
+      of the x-height catch only the top of the descending bowls. Kept on
+      the known list with the measured bowls.
+
 2026-10-26 Bold Italic ɺ's top bracket
 
     * ɺ is ɹ with l's top. Emboldened as one letter by weight, the bracket
