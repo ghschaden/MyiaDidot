@@ -415,7 +415,7 @@ LETTER_JOIN = {"₨": 240}
 NO_TRANSPLANT = {"ɞ", "ʝ", "ɕ", "ʂ", "ʑ", "ɚ", "ɝ", "ɮ", "Ɓ", "Ɗ", "Ƥ", "ɺ", "ɰ",
                  "Ƙ", "Ʋ", "Ƴ", "ƴ", "Ƭ", "Ɲ", "Ʈ", "ƥ", "ɖ", "ɗ", "ɭ", "Ɽ",
                  "ң", "ҷ", "қ", "җ", "Қ", "Җ", "ҳ", "ɧ", "ɱ", "ɳ", "ɽ", "ɻ", "Ƒ", "Ꞵ", "Ʝ", "ʄ", "ʋ", "ʈ", "Ɦ", "Ⱳ", "ⱳ.sc", "Ɠ", "ƈ", "ƃ", "ƛ", "ɹ", "Ƈ", "ⱳ", "ʐ", "г.loclSRB",
-                 "ь.loclBGR", "ю.loclBGR", "ж.loclBGR", "ъ.loclBGR", "в.loclBGR"}  # its own recipe fits the Italic better
+                 "ɽ.sc", "ʈ.sc", "ь.loclBGR", "ю.loclBGR", "ж.loclBGR", "ъ.loclBGR", "в.loclBGR"}  # its own recipe fits the Italic better
 TRANSPLANT = set()  # other recipes better transplanted
 # where ɗ leaves the italic d for ɓ's top: above the bowl, below where ɓ's
 # stem begins to bend into its hook (upright frame)
@@ -635,6 +635,13 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "ɳ": ("attach", "n", ("x", [(700, -BIG, BIG, 200), (900, -BIG, BIG, 450)],
                                         retroflex(795, 795, 210, 112, (110, 100), 56, 40))),
                   "ɽ": ("attach", "r", ("x", [], retroflex(354.5, 354.5, 100, 119, (110, 100), 55, 40))),
+                  # ɽ.sc ʈ.sc: the tail on the stem (its foot serif cut away),
+                  # as Ɽ's and Ʈ's at the small caps' size: the hook recipe
+                  # took the Italic's ȷ, a swash, and ran it out along the baseline
+                  "ɽ.sc": ("attach", "r.sc", ("s", [(-BIG, -BIG, 690, 110)],
+                                              retroflex(309.5, 309.5, 150, 174, (125, 105), 87, 45))),
+                  "ʈ.sc": ("attach", "t.sc", ("s", [(-BIG, -BIG, BIG, 110)],
+                                              retroflex(521.5, 521.5, 150, 174, (125, 105), 87, 45))),
                   "ɻ": ("attach", "uni0279", ("x", [(440, -BIG, BIG, 200), (560, 200, BIG, 400)],
                                               retroflex(502, 502, 250, 110, (120, 105), 55, 40))),
                   # the last stem or leg running on below the baseline (the

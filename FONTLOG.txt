@@ -26,6 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Italic and Bold Italic retroflex tails
+
+    * Italic ɽ.sc ʈ.sc: the generic hook recipe grafted on the Italic's ȷ,
+      a swash, and ran it out flat along the baseline (advances 2533 and
+      2951, r.sc's 1071). They now have recipes of their own, as Ɽ and Ʈ:
+      the foot serif cut away, the stem run on below the baseline and
+      curled right into a ball (make_italic.py).
+    * Bold Italic Ɽ Ʈ ɽ.sc ʈ.sc: emboldened whole from the Italic, the tail
+      stood left of the stem and heavier than it. Their own recipes now
+      (ITALIC_BOLD_RECIPES) put the tail on the Bold Italic's stem at its
+      weight, the ball half the stroke so the curl meets it without a step.
+      Four lines off emboldened-whole-BoldItalic.txt.
+    * Accepted after visual review of before/after proofs; only these six
+      glyphs change.
+
 2026-10-26 Development: FontForge's output kept in sources
 
     * CI's reproduce job had failed since it was added: Ubuntu's FontForge

@@ -400,7 +400,8 @@ uni0278 style 1                  # 2026-10-21 Italic reweighted and tightened: c
 uni0279 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni027A kink 1                   # 2026-10-16 known at the start (quality checks added): 531,850 2.5 degrees
 uni027A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni027D.sc kink 6                # 2026-10-21 Italic reweighted and tightened: 62,63 3.6 degrees; 973,787 4.8 degrees; 656,107 5.6 degrees; 299,104 3.6 degrees; 321,63 3.6 degrees; 822,815 6.5 degrees
+uni027D.sc extreme 1             # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 235,-149 8 units past
+uni027D.sc kink 3                # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 970,787 4.4 degrees; 653,107 6.1 degrees; 820,817 5.6 degrees
 uni027E base 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 59% of r kept (attach)
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0280.sc kink 4                # 2026-10-21 Italic reweighted and tightened: 299,104 3.6 degrees; 617,-38 5.6 degrees; 933,642 5.6 degrees; 783,670 5.7 degrees
@@ -419,8 +420,8 @@ uni0284 smooth 1                 # Italic weighted as its letters are taken, der
 uni0284 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni0288 kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 220,-156 7.2 degrees
 uni0288 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.83, lighter)
-uni0288.sc kink 2                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 728,931 5.1 degrees; 528,62 3.5 degrees
-uni0288.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 276,62 2.7 degrees
+uni0288.sc extreme 1             # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 447,-150 8 units past
+uni0288.sc kink 1                # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 728,931 4.8 degrees
 uni0289 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 337,649 3.0 degrees
 uni0289.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 996,839 2.6 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040

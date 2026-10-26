@@ -2,6 +2,8 @@
 
 **Verdict 2026-10-26:** Bold Italic ɽ.sc's open gap between curled leg and swash accepted as drawn after visual review.
 
+**Superseded 2026-10-26:** the swash itself was the fault (the hook recipe grafting the Italic's swash ȷ); Italic and Bold Italic ɽ.sc and ʈ.sc now have retroflex tails of their own (FONTLOG, "Italic and Bold Italic retroflex tails").
+
 The user requested rounded r shoulders and retroflex-r hooks that resemble
 the Regular and Bold drawings. This extends the original review of the
 Bold Italic lowercase shoulder notch at 680,770 (35 pixels).

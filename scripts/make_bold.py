@@ -105,6 +105,10 @@ ITALIC_BOLD_REBUILD = {
     "uni0497": "җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, a stub at the descender",
     "uni049B": "қ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, crumbs of the cut at the descender",
     "uni04A3": "ң: emboldened, a pinhole where the descender's curl meets its stroke",
+    "uni2C64": "Ɽ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
+    "uni01AE": "Ʈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
+    "uni027D.sc": "ɽ.sc: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
+    "uni0288.sc": "ʈ.sc: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
 # frame), where the source's recipe scaled up does not fit (a hook's or a
@@ -195,6 +199,29 @@ ITALIC_BOLD_RECIPES = {
                           [("line", ((836, 210), (836, -150), 229), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 836, -150, 229), "dir": 270, "turn": "ccw", "r": (150, 130),
                                      "sweep": 170, "ball": 80, "t": (229, 55)}, (0, 0), (1, 1, 0, 0))])),
+    # Ɽ Ʈ ɽ.sc ʈ.sc: the Italic's (make_italic.retroflex: the foot serif cut
+    # away, the stem run on and curled right), on the Bold Italic's stem
+    # (its centre and weight, 290 or 299 thick at the cut), the ball half
+    # the stroke (as there, so the curl's end has no step): emboldened
+    # whole, the tail stood left of the stem and heavier than it
+    "Ɽ": ("attach", "R", ("c", [(-10000, -10000, 950, 120)],
+                          [("line", ((419, 160), (419, -150), 290), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 419, -150, 290), "dir": 270, "turn": "ccw", "r": (195, 170),
+                                     "sweep": 170, "ball": 145, "t": (290, 60)}, (0, 0), (1, 1, 0, 0))])),
+    "Ʈ": ("attach", "T", ("c", [(-10000, -10000, 10000, 150)],
+                          [("line", ((692, 200), (692, -150), 290), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 692, -150, 290), "dir": 270, "turn": "ccw", "r": (195, 170),
+                                     "sweep": 170, "ball": 145, "t": (290, 60)}, (0, 0), (1, 1, 0, 0))])),
+    "ɽ.sc": ("attach", "r.sc", ("s", [(-10000, -10000, 700, 120)],
+                                [("line", ((332.5, 160), (332.5, -150), 299), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 332.5, -150, 299), "dir": 270, "turn": "ccw",
+                                           "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
+                                  (0, 0), (1, 1, 0, 0))])),
+    "ʈ.sc": ("attach", "t.sc", ("s", [(-10000, -10000, 10000, 120)],
+                                [("line", ((538.5, 160), (538.5, -150), 299), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 538.5, -150, 299), "dir": 270, "turn": "ccw",
+                                           "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
+                                  (0, 0), (1, 1, 0, 0))])),
     # ɧ: the Italic's (ȷ's descender on ɦ's leg where it is still whole: 251
     # at 250, centred at 714.5), the exit stroke cut away beyond 874
     "ɧ": ("attach", "uni0266", ("x", [(480, -10000, 10000, 250), (890, -10000, 10000, 450)],
@@ -245,7 +272,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni019D": "Ɲ: crumbs of the foot serif at the cut",
     "uni0191": "Ƒ: the tail far lighter than the stem",
     "uni0198": "Ƙ: a stepped foot serif",
-    "uni01AE": "Ʈ: the hook thin, a step where it meets the stem",
     "uni01B2": "Ʋ: the hook a thin ring, the stem standing above it",
     "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
     "uni0256": "ɖ: the tail thin where it meets the stem",
