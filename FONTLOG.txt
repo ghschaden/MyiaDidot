@@ -26,6 +26,28 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Bold hooks rebuilt at the Bold's weight
+
+    * The hook recipes cut the stem at the Regular's foot-serif top (48,
+      capitals 52). The Bold's serifs stand taller (55, 59): cut inside the
+      serif, the rebuilt hook took the serif's width and came out a fat
+      ellipse, so these letters stayed emboldened whole. make_bold.py's
+      rederive now raises such a cut to the Bold's serif top (serif_top).
+    * Rebuilt letters close to the emboldened one but set otherwise were
+      rejected for their advance alone; they now keep the emboldened
+      letter's side bearings around the new outline.
+    * Rebuilt from their recipes, their hooks at the Bold's weight: Bold
+      ƒ.sc Ƈ Ƒ ƭ ǀ ǁ ɖ ɧ ɭ ɱ ɲ ɳ ɽ ɽ.sc ʈ.sc Ϗ Ɽ; Bold Italic ƴ (17 lines
+      off emboldened-whole-Bold.txt, 1 off the Bold Italic's). Reviewed in
+      before/after proofs; Bold Ʝ ǂ and Bold Italic ɮ ɰ ɉ, which the new
+      rules would have let through with a step, a notch, too narrow an
+      advance or (ɉ) no right bar arm for j_bar.py, are kept whole (BOLD_KEEP_WHOLE, ITALIC_BOLD_KEEP_WHOLE).
+    * The Bold Italic ɽ takes its hook from the Bold ɽ (r_hook.py): its
+      landmark window now allows the hook's join at 56.
+    * Bold Italic ƴ: its x-height top renders 0.22 px above o at 24-25 ppem
+      in the CFF (the autohinter's hints for the rebuilt hook; the outline
+      top is unchanged): retention accepted.
+
 2026-10-26 Regular old-style 5 lightened
 
     * The 5's bowl stood out dark in running text (textpages.pdf): 276

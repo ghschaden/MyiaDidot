@@ -79,6 +79,8 @@ BOLD_KEEP_WHOLE = {
     "uni019D": "Ɲ: the hook thin, a speck of the foot serif left",
     "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
     "uni027B": "ɻ: a notch beside the stem at the cut",
+    "uniA7B2": "Ʝ: a step at the foot of the stem",
+    "uni01C2": "ǂ: the bars at the Regular's length, 0.85 of its advance",
 }
 # ... and those made again though they differ from the emboldened letter
 # more than rederive allows: the difference is the point (reviewed)
@@ -278,6 +280,9 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni027E": "ɾ: a stub of the foot serif at the cut",
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
+    "uni026E": "ɮ: a notch where l's stem meets ʒ",
+    "uni0270": "ɰ: a step on the last leg at the cut",
+    "uni0249": "ɉ: the bar ends at the stem, no right arm for j_bar.py to extend",
 }
 # Reviewed weight-aware choices: the rounder emboldening can lighten or
 # dent a body, and a local contour repair must not switch its construction.
@@ -1209,6 +1214,23 @@ def attached_small(source, font, italic):
     return changed
 
 
+def serif_top(font, name, pick):
+    """Where the foot serif under a letter's first or last stem ends: the
+    lowest height at which that stem is no wider than above (None: no foot
+    serif)."""
+    import derive
+
+    stems = derive.stems_at(font, name, 300)
+    if not stems:
+        return None
+    a, b = stems[0] if pick == "first" else stems[-1]
+    for y in range(1, 200):  # above the baseline row (a sliver there in the Bold's d)
+        runs = [r for r in derive.stems_at(font, name, y) if r[1] > a and r[0] < b]
+        if runs and max(r[1] - r[0] for r in runs) <= 1.05 * (b - a):
+            return y if y > 1 else None
+    return None
+
+
 def rederive(source, font, italic, whole):
     """Derived letters left emboldened whole because they cut their base (a
     hook replacing a stem's end, Ц's tail its foot) made again by their
@@ -1288,6 +1310,14 @@ def rederive(source, font, italic, whole):
             base = resolve(base)
         if base not in up:
             continue
+        if op == "hook" and band[1].startswith("down"):
+            # the stem cut where the source's foot serif ends: the Bold's
+            # serif stands taller, cut there the hook took the serif's width
+            # (ɭ's a ball as wide as its foot)
+            sband, kind, pick, cut, *rest = band
+            was, now = serif_top(source, base, pick), serif_top(up, base, pick)
+            if was is not None and now is not None and was <= cut <= was + 15:
+                band = (sband, kind, pick, cut + now - was, *rest)
         tmp = f"_rederived.{name}"
         order, cats = up.glyphOrder, dict(up.lib.get("public.openTypeCategories", {}))
         try:
@@ -1326,6 +1356,19 @@ def rederive(source, font, italic, whole):
             close, wide = True, False
         else:
             wide = abs(new.width - old.width) > width * old.width
+        if close and wide and faults <= 0:
+            # close to the letter but set otherwise (the recipe's spacing, not
+            # the optical fit the emboldened letter got): the old side
+            # bearings around the new outline
+            (x0, _, x1, _), (o0, _, o1, _) = derive.ink_bounds(up, tmp), derive.ink_bounds(up, name)
+            dx = round(o0 - x0)
+            for contour in new.contours:
+                for point in contour.points:
+                    point.x += dx
+            for anchor in new.anchors:
+                anchor.x += dx
+            new.width = round(old.width + (x1 - x0) - (o1 - o0))
+            wide = False
         if not close or wide or faults > 0:
             whole[name] = (f"{op}: emboldened whole, made again from the Bold it "
                            + ("strays" if not close else "has faults" if faults > 0 else "changes its advance"))

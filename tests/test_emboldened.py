@@ -28,3 +28,18 @@ def test_derived_letters_not_emboldened_whole(ufo, ufo_path):
                      "their base in the generator, or if intended: update_test_data.py --emboldened): "
                      f"{new}")
     assert not stale, f"no longer emboldened whole, remove from the list: {stale}"
+
+
+def test_serif_top_finds_each_styles_foot_serif():
+    """rederive raises a hook's cut from the source's foot-serif top to the
+    Bold's: measured above the baseline row (a sliver there in the Bold's d),
+    None where a stem has no foot serif."""
+    import ufoLib2
+    from conftest import ROOT
+    from make_bold import serif_top
+
+    regular = ufoLib2.Font.open(ROOT / "sources/MyiaDidot-Regular.ufo")
+    bold = ufoLib2.Font.open(ROOT / "sources/MyiaDidot-Bold.ufo")
+    assert [serif_top(regular, g, p) for g, p in (("l", "first"), ("F", "first"), ("d", "last"))] == [48, 52, 48]
+    assert [serif_top(bold, g, p) for g, p in (("l", "first"), ("F", "first"), ("d", "last"))] == [55, 59, 55]
+    assert serif_top(bold, "t", "first") is None

@@ -86,7 +86,8 @@ def finish(font):
     roman = ufoLib2.Font.open(ROOT / f"sources/MyiaDidot-{roman_style}.ufo")
     source = roman["uni027D"].contours[0].points
     starts = [i for i, p in enumerate(source) if p.type and -125 <= p.y <= -110]
-    ends = [i for i, p in enumerate(source) if p.type == "curve" and 40 <= p.y <= 55]
+    # (the Bold's hook joins at 56: cut above its taller foot serif, make_bold.rederive)
+    ends = [i for i, p in enumerate(source) if p.type == "curve" and 40 <= p.y <= 60]
     if len(starts) != 1 or len(ends) != 1 or starts[0] <= ends[0]:
         raise ValueError("roman retroflex hook landmarks changed; review the transplant")
     start, end = starts[0], ends[0]
@@ -128,6 +129,14 @@ def fair_bold_stem(font):
             for i, node in enumerate(points):
                 if node.type == "curve" and node.y == 699:
                     handle, lower, end = points[i + 1:i + 4]
+                    if end.type == "curve" and end.y != 412 and len(points) > i + 6:
+                        # ɽ remade from its recipe (make_bold.rederive): the
+                        # union split the return in two; one curve again
+                        after = points[i + 6]
+                        if after.type == "curve" and after.y == 412:
+                            del points[i + 3:i + 6]
+                            handle, lower, end = points[i + 1:i + 4]
+                            lower.y = 513
                     if end.type == "curve" and end.y == 412:
                         handle.x, handle.y = end.x, 667
                         lower.x = end.x

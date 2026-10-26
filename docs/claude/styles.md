@@ -24,7 +24,10 @@ Moved from CLAUDE.md (its ground rules apply).
   what recipes draw by number at the Bold's stems and hairlines,
   derive.STROKE_KEY), kept where the result stays close and clean; recipes
   that miss in the Bold are reviewed exceptions (BOLD_KEEP_WHOLE,
-  ITALIC_BOLD_KEEP_WHOLE). The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
+  ITALIC_BOLD_KEEP_WHOLE). A hook cut placed at the source's foot-serif
+  top is raised to the Bold's taller serif (`serif_top`); a result close
+  to the emboldened letter but set wider or narrower keeps that letter's
+  side bearings around its new outline. The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
   Neighbouring serifs that emboldening brings into a partial join (a notch
   over a hair-thin joint: the Bold Italic's v.sc w.sc Π Ш, ʌ.sc's feet)
   are kept apart, their tips shortened in the source (part_serifs); serifs
