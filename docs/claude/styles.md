@@ -27,7 +27,9 @@ Moved from CLAUDE.md (its ground rules apply).
   ITALIC_BOLD_KEEP_WHOLE). A hook cut placed at the source's foot-serif
   top is raised to the Bold's taller serif (`serif_top`); a result close
   to the emboldened letter but set wider or narrower keeps that letter's
-  side bearings around its new outline. The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
+  side bearings around its new outline. Before it is judged, a rebuilt
+  letter loses the specks its cut leaves apart (drop_specks) and has the
+  pinholes filled where the emboldened letter has ink (fill_pinholes). The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
   Neighbouring serifs that emboldening brings into a partial join (a notch
   over a hair-thin joint: the Bold Italic's v.sc w.sc Π Ш, ʌ.sc's feet)
   are kept apart, their tips shortened in the source (part_serifs); serifs
@@ -77,7 +79,12 @@ Moved from CLAUDE.md (its ground rules apply).
   The Italic generator runs smallcaps.py itself. It saves with smooth
   rounding (`round_smoothly`) but for ROUND_PLAIN, glyphs whose repairs
   match exact points or whose Bold Italic smoothing harms; check a new
-  rounding change in both italic weights. Lib
+  rounding change in both italic weights. Slanted letters (derived, sloped
+  roman, the upright mathematical ones) are split at the extremes the
+  slant moves (`shear(..., extremes=True)`, derive.with_extremes, more than
+  EXTREME_PAST units past their points); the Bold Italic splits them again
+  when it slants back (make_bold.slant_back); POINT_REPAIRS (ℵ ɬ Ɬ) keep
+  their points for their repairs. Lib
   `org.myiadidot.italicSource` says where each glyph came from; a rerun
   keeps "drawn" glyphs (set it after hand-editing one) and reviewed drafts
   (draft key cleared). Then `make normalize`. Review sheets:

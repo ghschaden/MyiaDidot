@@ -77,6 +77,15 @@
 	<anchor name="Cedilla" x="418" y="0"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-10-26</string>
+				<key>glyph</key>
+				<string>a583288f7595</string>
+				<key>review</key>
+				<string>commit 8b52c603 (before/after proofs; FONTLOG 2026-10-26)</string>
+			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>
 			<key>org.myiadidot.draft</key>

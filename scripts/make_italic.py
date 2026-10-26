@@ -384,7 +384,7 @@ def put(font, up, name, source):
     )
 
     g = copy.deepcopy(up[name])
-    shear(g, SLANT)
+    shear(g, SLANT, extremes=name not in POINT_REPAIRS)
     # crumbs the cuts and merges left (specks, pinholes, an outline crossing
     # itself, steps, a curve's end split off at a corner): the outline
     # merged and cleaned (glyph_lint)
@@ -1569,6 +1569,9 @@ def move_parts(font, regular, marks, rule_made):
             g.width = font[first].width + (rg.width - regular[first].width)
 
 
+# their repairs match their exact points (aleph.py, l_belt.py): slanted
+# without splitting their curves at the extremes the slant moves
+POINT_REPAIRS = {"uni2135", "uni026C", "uniA7AD"}
 # Rounded plainly, not smoothly (make_bold.round_smoothly): the repairs of
 # ℵ (aleph.py) and of ɬ Ɬ's belts (l_belt.py) match their exact points;
 # ȷ's descender is cut and attached for the Bold Italic ɱ and ɧ, where a
@@ -1673,22 +1676,12 @@ def main():
                 g.appendAnchor({"name": name, "x": x, "y": y})
             g.lib["org.myiadidot.italicSource"] = "Old Standard"
             if g.unicode and (0x2100 <= g.unicode <= 0x214F or 0x1D400 <= g.unicode <= 0x1D7FF):
-                shear(g, SLANT)  # its mathematical letters (𝔐 ℵ) are upright
+                # its mathematical letters (𝔐 ℵ) are upright
+                shear(g, SLANT, extremes=g.name not in POINT_REPAIRS)
             taken += 1
         elif g.contours:
             # not in Old Standard: Myia's roman, sloped about half the x-height
-            t = sloped(XH / 2)
-            rec = RecordingPen()
-            for c in g.contours:
-                c.draw(rec)
-            out = ufoLib2.objects.Glyph()
-            rec.replay(TransformPen(out.getPen(), t))
-            redraw(g, out)
-            for c in g.components:
-                xx, xy, yx, yy, dx, dy = c.transformation
-                c.transformation = (xx, xy, yx, yy, round(dx + dy * SLANT), dy)
-            for a in g.anchors:
-                a.x = round(a.x + (a.y - XH / 2) * SLANT)
+            shear(g, SLANT, extremes=g.name not in POINT_REPAIRS)
             g.lib["org.myiadidot.italicSource"] = "sloped roman"
             kept_roman += 1
 

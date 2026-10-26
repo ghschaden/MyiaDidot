@@ -81,6 +81,10 @@ BOLD_KEEP_WHOLE = {
     "uni027B": "ɻ: a notch beside the stem at the cut",
     "uniA7B2": "Ʝ: a step at the foot of the stem",
     "uni01C2": "ǂ: the bars at the Regular's length, 0.85 of its advance",
+    "uni01B4": "ƴ: y's arms thinner than the Bold y's under the curl's cut",
+    "uni026E": "ɮ: ʒ placed by the Regular's numbers, apart from l's stem",
+    "uni027A": "ɺ: l's stem at the Regular's width, a step where it meets ɹ's",
+    "uni0432.loclBGR": "Bulgarian в: a ledge where β's loop meets the stem",
 }
 # ... and those made again though they differ from the emboldened letter
 # more than rederive allows: the difference is the point (reviewed)
@@ -284,6 +288,12 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni0270": "ɰ: a step on the last leg at the cut",
     "uni0249": "ɉ: the bar ends at the stem, no right arm for j_bar.py to extend",
     "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",
+    "uni0268": "ɨ: Old Standard's own ɨ (its dot not i's); the recipe's i with a bar is another letter",
+    "uni026D": "ɭ: a step on the stem at the cut",
+    "uni027B": "ɻ: a step on the stem's right side at the cut",
+    "uni04B7": "ҷ: a notch at the tail, the stem shifted below the cut",
+    "uni2C73": "ⱳ: a notch where the hook meets the arm",
+    "uniA7B2": "Ʝ: steps on both sides of the stem at the cut",
 }
 # Reviewed weight-aware choices: the rounder emboldening can lighten or
 # dent a body, and a local contour repair must not switch its construction.
@@ -761,6 +771,24 @@ def attach_point(font, mark, bases, centre):
     return best[1:] if best else moved(mdx + centre[mark.baseGlyph], my)
 
 
+def slant_back(path, pen, transforms, split):
+    """path drawn into pen through transforms (applied in the order given);
+    split: its curves split where slanting again sets them past their
+    points (italic_geometry.EXTREME_PAST), as the Italic split them."""
+    from derive import with_extremes
+    from italic_geometry import EXTREME_PAST
+
+    rec = RecordingPen()
+    pen_t = rec
+    for t in reversed(transforms):
+        pen_t = TransformPen(pen_t, t)
+    path.draw(pen_t)
+    if split:
+        with_extremes(rec, pen, round_points=False, past=EXTREME_PAST)
+    else:
+        rec.replay(pen)
+
+
 def contours_only(g):
     rec = RecordingPen()
     for c in g.contours:
@@ -923,9 +951,13 @@ def finalize(font, smooth=True, separate_stacks=False, plain=()):
 
 
 def write(font, path, smooth=True, separate_stacks=False, plain=()):
+    """font finalized and saved to path, the person's acceptances of the
+    style saved there before carried over (accepted.py)."""
+    from accepted import acceptances, carry
     from ufo_io import save_font
 
     finalize(font, smooth=smooth, separate_stacks=separate_stacks, plain=plain)
+    carry(acceptances(ufoLib2.Font.open(path)) if Path(path).exists() else {}, font)
     save_font(font, path)
 
 SMALL_SUFFIXES = ("superior", "inferior", ".numr", ".dnom", ".sups", ".subs")
@@ -1070,9 +1102,10 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             out = pathops.Path()
             rec = DecomposingRecordingPen(font)
             font[base].draw(rec)
-            moved = TransformPen(TransformPen(TransformPen(out.getPen(), (1, 0, slant, 1, -slant * y0, 0)),
-                                              (a, 0, 0, d, e, f)), (1, 0, -slant, 1, slant * y0, 0))
-            rec.replay(moved)
+            # slanted again, its curves split where they run past their
+            # points (the Italic's turned and mirrored letters, ɔ ƹ ɜ, are)
+            slant_back(rec, out.getPen(), [(1, 0, -slant, 1, slant * y0, 0), (a, 0, 0, d, e, f),
+                                           (1, 0, slant, 1, -slant * y0, 0)], bool(slant))
             g.width = bw
         else:
             shares, dx, _ = compare(Outline(source, base, deslant), mine)
@@ -1134,7 +1167,8 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
 
 
 MIN_PIECE = 3000  # units²: an added piece (ɬ.sc's bar is 8000), not a sliver
-SPECK = 6000  # units²: a cut's remnant apart from the letter (Bulgarian ж's 4590), not a piece (i's dot 40000)
+SPECK = 8000  # units²: a cut's remnant apart from the letter (Bulgarian ж's 4590, Bold Italic Ɦ's serif end 6622),
+# not a piece (i's dot 40000)
 
 
 def attached_small(source, font, italic):
@@ -1234,6 +1268,42 @@ def drop_specks(glyph):
     pen = glyph.getPen()
     for c in kept:
         c.draw(pen)
+
+
+def fill_pinholes(glyph, solid, font):
+    """glyph (in place) with its pinholes filled where solid, the letter
+    emboldened whole, has ink: counters under MIN_PIECE in a join the
+    letter had solid (Bold Ɦ's ball over the serif it meets). One the
+    emboldened letter has too, a curl closed on its stroke (ң), stays to
+    be judged."""
+    p = pathops.Path()
+    glyph.draw(p.getPen())
+    contours = list(pathops.simplify(p).contours)
+    if len(contours) < 2:
+        return
+    outer = max(contours, key=lambda c: abs(c.area)).clockwise
+    from fontTools.pens.recordingPen import DecomposingRecordingPen
+
+    ink, rec = pathops.Path(), DecomposingRecordingPen(font)
+    solid.draw(rec)
+    rec.replay(ink.getPen())
+    ink = pathops.simplify(ink, fix_winding=True)
+    holes = []
+    for c in contours:
+        if c.clockwise == outer or abs(c.area) >= MIN_PIECE:
+            continue
+        hole = pathops.Path()
+        c.draw(hole.getPen())
+        hole = pathops.op(pathops.simplify(hole, fix_winding=True), ink, pathops.PathOp.DIFFERENCE)
+        if abs(hole.area) < 0.05 * abs(c.area):  # covered by the emboldened letter's ink
+            holes.append(id(c))
+    if not holes:
+        return
+    glyph.clearContours()
+    pen = glyph.getPen()
+    for c in contours:
+        if id(c) not in holes:
+            c.draw(pen)
 
 
 def serif_top(font, name, pick):
@@ -1361,6 +1431,7 @@ def rederive(source, font, italic, whole):
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
         drop_specks(new)
+        fill_pinholes(new, up[name], up)
         # the side bearings the source style gave the letter after its recipe
         # (the Regular's derive.SPACING, the Italic's ITALIC_SIDEBEARINGS):
         # the recipe's width alone has its hook counted in again
@@ -1484,6 +1555,8 @@ def main():
     fit = {}  # glyph: (left, right) side space to change, after emboldening by weight
     parted = []  # serifs kept apart (part_serifs)
     simple = []  # emboldened the rounder way (a slit otherwise)
+    from make_italic import POINT_REPAIRS, SOURCE_KEY
+
     for g in font:
         is_mark = g.name in marks
         if g.contours:
@@ -1547,7 +1620,14 @@ def main():
                         d = tuple(a + b for a, b in zip(d, adjustment))
                     fit[g.name] = d
                 moved = ufoLib2.objects.Glyph()
-                bold.draw(TransformPen(TransformPen(moved.getPen(), down), (1, 0, 0, 1, AX / 2, 0)))
+                # the Italic's slanted letters (its derived ones, sloped
+                # romans, small-cap drafts) split at their extremes there:
+                # again here, where emboldened upright they move off them
+                # (Old Standard's own, and the repairs matching exact
+                # points, as they come)
+                split = (italic and g.name not in POINT_REPAIRS and regular[g.name].lib.get(SOURCE_KEY)
+                         in ("derived", "sloped roman", "small cap draft"))
+                slant_back(bold, moved.getPen(), [(1, 0, 0, 1, AX / 2, 0), down], split)
                 redraw(g, moved)
         if not is_mark:
             # the Regular's offsets, before any is changed below

@@ -26,6 +26,74 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Development: acceptance recorded apart from draft flags
+
+    * In the Italic, a draft flag means "made anew by the generator":
+      clearing it froze the glyph (make_italic.reviewed), so accepted work
+      (old-style figures, I, Ɽ ...) kept its flag and the flags no longer
+      said what was accepted. scripts/accepted.py records the person's
+      acceptance in lib org.myiadidot.accepted (date, review, the glyph's
+      fingerprint) without freezing; make_bold.write and smallcaps.py carry
+      it over to the glyph made anew (a style's own only: the Bold begins
+      as the Regular's glyphs); tests/test_accepted.py fails when an
+      accepted glyph changes after.
+    * Recorded only where a review doc or commit states the acceptance and
+      the glyph has not changed since: Regular old-style figures (but 3 5),
+      M м № ™, ℵ ℵ.sc, ṫ; Bold ℵ ℵ.sc ˀ ṫ; Italic old-style figures, ɬ Ɬ,
+      I; Bold Italic ɸ Ⱳ ɬ Ɬ I Ɽ ʈ.sc (40 glyphs; the tabular and slashed
+      figures are made of the accepted ones). The blanket acceptance
+      of 2026-10-20 predates the Italic's reweighting (10-21): its drafts
+      are listed for review (accepted.py --drafts).
+
+2026-10-26 Curves split at the extremes a slant or turn moves
+
+    * A slanted, turned or mirrored curve's extremes move off its points:
+      Ϗ's tail (ȷ's turned 35.6°) ran 133 units past them, the Italic's
+      derived letters and sloped romans up to 91, the Bold Italic's
+      turned and mirrored letters (ɔ ƹ Ƹ ɜ) up to 104. derive.with_extremes
+      now takes a tolerance (past, 5 units, as checks.py finds them), and
+      the curves are split there: derive.py's turned pieces, ℓ's shear in
+      draft_letterlike.py, make_italic's slanted letters (derived, sloped
+      roman, the upright mathematical letters), and make_bold's Bold
+      Italic slanted again after emboldening and its turned or mirrored
+      letters. ℵ ɬ Ɬ, whose repairs match exact points, keep theirs
+      (make_italic.POINT_REPAIRS).
+    * The Regular's Ϗ and ϗ.sc were made again by their recipe (ϗ.sc +3),
+      ℓ's curves split in place. Outlines otherwise unchanged (Italic:
+      advances kept, at most 1271 units² moved); in the Bold Italic, the
+      emboldening sees the new points: 8 advances by 1-2 units, outlines
+      checked in overlays; Bold Ϗ's side bearing 12 narrower.
+    * Extreme findings: Regular 15 -> 0, Italic 276 -> 86 (none of 20
+      units or more left), Bold 144 -> 130, Bold Italic 473 -> 213; kinks
+      fewer in both italics. Left: Bold Italic ɓ.sc ɗ.sc (about 80 units),
+      @ ®, л; Bold Ʒ ℓ.
+    * Pending review: Fraktur 𝔖's CFF-hinted top now stands up to 0.48 px
+      above O (8-11, 24 ppem; was up to 0.31 at 9-11).
+
+2026-10-26 Hint-zone and outline-lint reviews closed
+
+    * Every remaining finding in tests/data/hint-zones*.txt (TrueType v35/
+      v40 and CFF) and glyph-lint-*.txt has a dated verdict: accepted
+      hinting (Italic G family and small-cap bottoms at 29-32 ppem, ν, Ʋ's
+      hook, Fraktur 𝔖, ẞ, Œ) and intentional open constructions (italic
+      arch crotches, ɉ's bar terminal). The two items leave FONT-DESIGN.md.
+
+2026-10-26 Bold and Bold Italic Ɦ rebuilt; rederive's rejections reviewed
+
+    * make_bold.py's rederive fills a rebuilt letter's pinholes where the
+      letter emboldened whole has ink (fill_pinholes): Bold Ɦ's ball
+      overlapping H's top serif left a 487 units² wedge, judged a closed
+      counter. A pinhole the emboldened letter shares (a curl closed on its
+      stroke, ң) is still judged as a fault. SPECK rises from 6000 to 8000
+      units²: Bold Italic Ɦ kept a 6622 units² end of H's serif apart from
+      the letter. Both Ɦ now have their hook at their style's weight
+      instead of a heavy emboldened ball (advance +1).
+    * The other letters rederive rejected on its own measures were looked
+      at against their emboldened forms and given reasons in the keep
+      lists: Bold ƴ ɮ ɺ, Bulgarian в; Bold Italic ɨ ɭ ɻ ҷ ⱳ Ʝ (steps or
+      notches at the cut, pieces placed by the Regular's numbers; Bold
+      Italic ɨ is Old Standard's own ɨ, which i with a bar would replace).
+
 2026-10-26 Development: release archive
 
     * make release builds the fonts and prepares (does not publish)

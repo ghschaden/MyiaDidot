@@ -10,6 +10,9 @@ from fontTools.pens.transformPen import TransformPen
 ANGLE = 15.2
 SLANT = math.tan(math.radians(ANGLE))
 XH, CAP = 884, 1434
+# units a slanted curve may run past its end points before it is split at
+# its extreme (as scripts/quality/checks.py finds them)
+EXTREME_PAST = 5
 
 
 def redraw(g, glyph):
@@ -27,14 +30,24 @@ def redraw(g, glyph):
         c.drawPoints(pen)
 
 
-def shear(g, s, y0=XH / 2):
-    """Slant (s > 0) or unslant (s < 0) a glyph about the height y0."""
+def shear(g, s, y0=XH / 2, extremes=False):
+    """Slant (s > 0) or unslant (s < 0) a glyph about the height y0; with
+    extremes, its curves split where they now run past their points
+    (EXTREME_PAST: a slanted bowl's extremes move off them), for a glyph
+    that stays slanted."""
     if g.contours:
         rec = RecordingPen()
         for c in g.contours:
             c.draw(rec)
         out = ufoLib2.objects.Glyph()
-        rec.replay(TransformPen(out.getPen(), (1, 0, s, 1, -s * y0, 0)))
+        slanted = RecordingPen()
+        rec.replay(TransformPen(slanted, (1, 0, s, 1, -s * y0, 0)))
+        if extremes:
+            from derive import with_extremes
+
+            with_extremes(slanted, out.getPen(), round_points=False, past=EXTREME_PAST)
+        else:
+            slanted.replay(out.getPen())
         redraw(g, out)
     for c in g.components:
         xx, xy, yx, yy, dx, dy = c.transformation

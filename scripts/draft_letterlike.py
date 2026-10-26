@@ -37,6 +37,7 @@ from derive import (
     rect_path,
     stroke,
     to_path,
+    with_extremes,
 )
 
 DRAFT_KEY = "org.myiadidot.draft"
@@ -51,9 +52,12 @@ def union(*paths):
 
 
 def transformed(path, t):
-    rec = RecordingPen()
+    """path through t, its curves split where they run past their points
+    (a sheared bowl's extremes move off them: ℓ's loop)."""
+    rec, out = RecordingPen(), RecordingPen()
     path.draw(TransformPen(rec, t))
-    return to_path(None, rec=rec)
+    with_extremes(rec, out, round_points=False, past=5)
+    return to_path(None, rec=out)
 
 
 def lines(*segs):

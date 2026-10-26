@@ -17,6 +17,7 @@ def test_curl_connection_preserves_body_and_metadata():
     glyph.clearContours()
     readGlyphFromString((DATA / 'w-curl-before.glif').read_text(),
                        glyphObject=glyph, pointPen=glyph.getPointPen())
+    glyph.lib.update(approved.lib)  # the fixture is the outline before; the lib is the glyph's own
     before = deepcopy(glyph)
     finish(font)
     assert glyph == approved

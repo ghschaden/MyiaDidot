@@ -30,6 +30,7 @@ from fontTools.pens.basePen import BasePen
 from fontTools.pens.boundsPen import BoundsPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from accepted import acceptances, carry
 from composites import SPECIAL, Builder
 
 CAP_HEIGHT = 1434
@@ -683,6 +684,7 @@ def main():
     args = ap.parse_args()
 
     font = ufoLib2.Font.open(args.ufo)
+    accepted = acceptances(font)  # the person's, kept for the glyphs made anew
     if args.height:
         font.lib[HEIGHT_KEY] = args.height
     configure(font.lib.get(HEIGHT_KEY, DEFAULT_HEIGHT))
@@ -700,6 +702,7 @@ def main():
     build_lowercase_only(font, log, failed)
     scale_kerning(font, log)
     write_features(font, log)
+    carry(accepted, font)
     font.save()
 
     kinds = {}

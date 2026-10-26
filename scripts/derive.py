@@ -763,16 +763,21 @@ def draw_transformed(font, src, dst, transform, reverse):
     rec.replay(TransformPen(pen, transform))
 
 
-def with_extremes(rec, out, round_points=True):
+def with_extremes(rec, out, round_points=True, past=None):
     """Replay a recording into the pen out with each cubic split where it
-    turns in x or y (a sheared bowl's extremes move off its points),
-    points rounded to whole units unless the caller will round smoothly."""
+    turns in x or y (a sheared bowl's extremes move off its points); given
+    past, only where it runs more than past units beyond its end points; points
+    rounded to whole units unless the caller will round smoothly."""
     from fontTools.misc.bezierTools import solveQuadratic, splitCubicAtT
 
     def turns(a, b, c, d):
         # roots of the derivative of one coordinate, inside the curve
         return [t for t in solveQuadratic(3 * (-a + 3 * b - 3 * c + d), 6 * (a - 2 * b + c), 3 * (b - a))
-                if 0.02 < t < 0.98]
+                if 0.02 < t < 0.98 and (past is None or beyond(a, b, c, d, t) > past)]
+
+    def beyond(a, b, c, d, t):
+        v = (1 - t) ** 3 * a + 3 * (1 - t) ** 2 * t * b + 3 * (1 - t) * t * t * c + t ** 3 * d
+        return max(v - max(a, d), min(a, d) - v)
 
     def r(pt):
         return (round(pt[0]), round(pt[1])) if round_points else pt
@@ -2126,6 +2131,9 @@ def attach(font, source, cuts, pieces):
         # scaled, then turned by turn[0] degrees (counter-clockwise) about (px, py)
         t = Transform().translate(x, y).rotate(math.radians(turn[0] if turn else 0))
         part.draw(TransformPen(rec, t.scale(sx, sy).translate(-px, -py)))
+        if turn and turn[0]:  # turned, its curves' extremes move off their points (Ϗ's tail)
+            rec, turned = RecordingPen(), rec
+            with_extremes(turned, rec, round_points=False)
         out = path_op(out, path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG),
                                    "INTERSECTION"), "UNION")
     return out

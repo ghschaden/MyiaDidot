@@ -177,10 +177,9 @@ uni02A2 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni02C0 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 53,1084 5.0 degrees
 uni0359 smooth 4                 # 2026-10-16 known at the start (quality checks added): -522,-247 2.9 degrees; -358,-247 2.9 degrees; -358,-417 2.9 degrees; -522,-417 2.9 degrees
 uni037F zone 1                   # accepted case counterpart additions: bottom -18 from 0
-uni03CF extreme 6                # 2026-10-16 known at the start (quality checks added): 1272,200 133 units past; 1282,-472 57 units past; 869,-405 41 units past; 880,-195 23 units past; 1101,-375 25 units past; 1265,-410 48 units past
+uni03CF kink 1                   # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1272,200 3.0 degrees
 uni03CF smooth 1                 # 2026-10-16 known at the start (quality checks added): 1272,200 2.7 degrees
-uni03D7.sc extreme 6             # 2026-10-16 known at the start (quality checks added): 960,150 100 units past; 964,-342 43 units past; 645,-292 30 units past; 656,-135 19 units past; 836,-266 16 units past; 935,-291 32 units past
-uni03D7.sc kink 1                # 2026-10-16 known at the start (quality checks added): 677,542 1.4 degrees
+uni03D7.sc kink 2                # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 677,542 1.4 degrees; 960,150 3.1 degrees
 uni03D7.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 960,150 2.8 degrees
 uni03DB stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)
 uni03DD stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 56 against 164 (0.34, lighter)
@@ -214,7 +213,6 @@ uni1E9E smooth 3                 # 2026-10-16 known at the start (quality checks
 uni1E9E zone 2                   # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +15 from 1434
 uni1FBE stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 184 against 164 (1.12, darker)
 uni2042 kink 12                  # 2026-10-16 known at the start (quality checks added): 271,864 3.7 degrees; 333,864 3.7 degrees; 333,576 3.7 degrees; 271,576 3.7 degrees; 771,864 3.7 degrees; 833,864 3.7 degrees; 833,576 3.7 degrees;
-uni2113 extreme 3                # 2026-10-16 known at the start (quality checks added): 680,1500 17 units past; 755,1030 26 units past; 545,1030 25 units past
 uni2113 kink 1                   # 2026-10-16 known at the start (quality checks added): 236,140 5.1 degrees
 uni2113 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 147 against 164 (0.89, lighter)
 uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): top +4 from 1496

@@ -18,6 +18,7 @@ def test_belts_join_and_preserve_surroundings(name):
     glyph.clearContours()
     readGlyphFromString((DATA / f'l-belt-before-{name}.glif').read_text(),
                        glyphObject=glyph, pointPen=glyph.getPointPen())
+    glyph.lib.update(expected.lib)  # the fixture is the outline before; the lib is the glyph's own
     before = deepcopy(glyph)
     bases = {n: deepcopy(font[n]) for n in ['l', 'L']}
     assert len(glyph.contours) == 3  # Three floating pieces, not a closed belt.

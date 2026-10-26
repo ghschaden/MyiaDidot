@@ -1,5 +1,5 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
-cff u1D516:top1473 2             # retention accepted 2026-10-26: Fraktur 𝔖 top up to 0.313 px above O at 10/11 ppem
+cff u1D516:top1473 5             # PENDING REVIEW 2026-10-26: extremes split on the slant; 𝔖 top 0.08-0.48 px above O at 8-11 and 24 ppem (was up to 0.31)
 cff uni0199.sc:top1040 1         # retention accepted 2026-10-26: ƙ.sc top 0.094 px above h.sc at 10 ppem
 cff uni044A:top884 1             # retention accepted 2026-10-26: ъ flag 0.172 px above x at 8 ppem
 cff uni1E9E:top1473 20           # retention accepted 2026-10-26: ẞ top 0.078–0.203 px above O at 13–32 ppem
