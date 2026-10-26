@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Development: hint-zone audit measures only letters
+
+    * hint_zones.letters() took any unencoded name spelt with letters for a
+      letter (Horn: H o r n), so the construction pieces Horn horn Hook hook
+      and the mark caroncommaaccent were measured against the baseline zone,
+      and their reports filled the exception lists. Unencoded glyphs now
+      count when named after an encoded letter (h.sc, U.horn) or when GSUB
+      makes them of letters (idotaccent.sc); marks never.
+    * Production TrueType hints, which hint_control.py builds with this
+      list, are byte-identical in all four styles. Four exception lines
+      for Horn/horn are gone (hint-zones.txt, hint-zones-Italic.txt).
+
 2026-10-26 Bold Italic ɗ ɚ ɝ rebuilt
 
     * Their recipes crashed when the Bold Italic remade them: ɗ and the

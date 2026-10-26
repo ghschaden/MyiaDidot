@@ -64,3 +64,16 @@ def test_cff_hint_zones(ufo_path, tmp_path):
 
 def test_hint_zones(ufo_path, tmp_path):
     check(read_list(style_data("hint-zones.txt", ufo_path).name), hinting_keys(ufo_path, tmp_path))
+
+
+def test_audited_letters_exclude_construction_pieces():
+    """The audit measures letters, also those GSUB makes under other names
+    (Turkish i's small cap), not the unencoded pieces composites are built
+    of because their names happen to be spelt with letters (Horn: H o r n),
+    nor marks GSUB splits off (Greek tonos)."""
+    from fontTools.ttLib import TTFont
+    from hint_zones import letters
+
+    found = letters(TTFont(compiled_variant(ROOT / "sources/MyiaDidot-Regular.ufo", "hint_ttf")))
+    assert {"a", "h.sc", "uni0436.loclBGR", "idotaccent.sc", "U.horn"} <= found
+    assert not {"Horn", "horn", "Hook", "hook", "caroncommaaccent", "acutecomb.grek"} & found

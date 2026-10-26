@@ -6,8 +6,10 @@ is at exactly that height should end on the reference's row; a contour any of
 whose on-curve points ends half a pixel or more beyond it (M's apex poking
 above the serif, A's apex snapped to the ascender zone instead of O's) is
 listed, per ppem.  Only letters are measured (Unicode Lu Ll Lt Lo, and the
-small caps, localized forms and ligatures made of them): accents, superiors,
-tone letters and symbols that share a zone's height are not on the zone.
+small caps, localized forms and ligatures made of them, by name or by GSUB):
+accents, superiors, tone letters, symbols and the unencoded pieces
+composites are built of (Horn, Hook) that share a zone's height are not on
+the zone.
 Heights that only some glyphs share are no zone: ttfautohint
 has none for them, and a few contours at one height may rightly part (ɺ's top
 and f's).
@@ -85,9 +87,29 @@ def contours(glyf, name):
     return out
 
 
+def substitutions(tt):
+    """(inputs, output) of each single, multiple, alternate and ligature
+    substitution in GSUB, wherever its lookup is used."""
+    out = []
+    if "GSUB" not in tt:
+        return out
+    for lookup in tt["GSUB"].table.LookupList.Lookup:
+        for sub in lookup.SubTable:
+            sub = getattr(sub, "ExtSubTable", sub)
+            for a, b in getattr(sub, "mapping", {}).items():
+                out += [((a,), g) for g in (b if isinstance(b, list) else [b])]
+            for a, bs in getattr(sub, "alternates", {}).items():
+                out += [((a,), g) for g in bs]
+            for a, ligs in getattr(sub, "ligatures", {}).items():
+                out += [((a, *lig.Component), lig.LigGlyph) for lig in ligs]
+    return out
+
+
 def letters(tt):
-    """Glyph names of letters: encoded as one, or named after letters (h.sc,
-    uni0436.loclBGR, f_f_j, ffi)."""
+    """Glyph names of letters: encoded as one, named after letters (h.sc,
+    uni0436.loclBGR, f_f_j), or made of letters by GSUB under another name
+    (idotaccent.sc, Turkish i's small cap). Not the unencoded pieces composites
+    are built of (Horn, Hook), however their names are spelt, nor marks."""
     by_name = {}
     for code, name in tt.getBestCmap().items():
         by_name.setdefault(name, code)
@@ -101,10 +123,16 @@ def letters(tt):
     for name in tt.getGlyphOrder():
         base = name.split(".")[0]
         parts = base.split("_") if "_" in base else [base]
-        if all(letter(part) for part in parts) or (base not in by_name and base
-                                                   and all(letter(c) for c in base)):
+        if all(letter(part) for part in parts):
             out.add(name)
-    return out
+    gdef = tt["GDEF"].table.GlyphClassDef if "GDEF" in tt and tt["GDEF"].table.GlyphClassDef else None
+    marks = {n for n, c in gdef.classDefs.items() if c == 3} if gdef else set()
+    pairs = substitutions(tt)
+    while True:
+        made = {g for inputs, g in pairs if all(i in out for i in inputs)} - out - set(by_name) - marks
+        if not made:
+            return out
+        out |= made
 
 
 def outlines(tt):

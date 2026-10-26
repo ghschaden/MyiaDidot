@@ -28,13 +28,6 @@ features or prerequisites already agreed for a particular distribution.
 
 ## Optional tooling follow-up
 
-- Refine the hint-zone audit's classification of unencoded letter names.
-  `Horn`/`horn` currently pass as sequences of H/h, o, r and n and generate
-  misleading baseline reports. Preserve coverage of real unencoded letters
-  and ligatures; confirm that the change cannot alter production hints
-  unexpectedly, since the hint-control builder also consumes this audit.
-  [Evidence](docs/horn-hinting-review-2026-10-26.md).
-
 The earlier suggestion of a formatter/type checker was exploratory. Ruff
 linting is implemented; current project policy deliberately avoids automatic
 formatting of aligned recipe tables. Consider targeted type checking only

@@ -12,7 +12,7 @@ counts here, where they quickly become stale.
 - Initial review of listed TrueType/CFF groups is complete.
 - Review remaining TrueType and CFF alignment findings in
   `tests/data/hint-zones*.txt`. Some are intentional constructions
-  (Fraktur 𝔖, horns, Ʋ); inspect the raster before changing outlines or hints.
+  (Fraktur 𝔖, Ʋ); inspect the raster before changing outlines or hints.
   ν's current hints were accepted. Þ/æ.sc/ϐ counter false positives are
   resolved and should not be reopened as alignment defects.
 

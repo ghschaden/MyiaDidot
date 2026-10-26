@@ -56,3 +56,12 @@ These files are disposable; the preserved PDF retains the inspected rasters.
 Next remaining hinting reviews: CFF Œ alignment in the roman weights,
 followed by Fraktur 𝔖, ƙ.sc, ъ and ẞ where still listed. Previously prepared
 small-cap-tip and G/Cyrillic round-bottom verdicts remain separate.
+
+## Follow-up 2026-10-26: audit refined
+
+`hint_zones.letters()` no longer reads an unencoded name letter by letter.
+Unencoded glyphs count as letters when named after an encoded letter (as
+before) or when GSUB makes them of letters (`idotaccent.sc`); marks stay out.
+`Horn`, `horn`, `Hook`, `hook` and `caroncommaaccent` are no longer audited,
+and their four exception lines are gone. Production hints are byte-identical
+(glyf, fpgm, prep, cvt, gasp in all four styles). See FONTLOG.
