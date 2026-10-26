@@ -48,7 +48,7 @@ Ruff and whitespace checks pass.
 The final Roman composite/quality/lint/t-dot selection passes all 14 checks.
 
 Validation logs and compiled/shaping comparisons are in
-`build/roman-t-dot-review/`. Final validation results are recorded in TODO.md.
+`build/roman-t-dot-review/`. Final validation results are recorded in FONTLOG.txt (2026-10-25 Roman dot-spacing consolidation entry).
 
 The commit-time suite also found four stale `builtFrom` fingerprints on
 Regular ƭ/ʈ/ᵵ/ⱦ. Undoing only t's approved +59 Dotaccent move reproduces

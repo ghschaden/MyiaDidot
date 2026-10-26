@@ -26,6 +26,254 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Development: approved Italic small-cap tip hints integrated
+
+    * Apply the accepted half-pixel bottom-tip correction at 30/32 ppem
+      for v.sc, w.sc, ѵ.sc and ⱳ.sc in Italic only. Discover point indices
+      from the compiled outlines and O's bottom zone. Other styles retain
+      their rules. Rebuild Italic TTF/WOFF2; remove eight resolved entries.
+    * Production matches the approved trial; only four glyph programs change.
+      All outlines, shared hint programs, advances, layout and metadata match
+      before. Decoded WOFF2 matches TTF. All four regenerated TrueType
+      hint-zone tests, Ruff and whitespace checks pass. No shaping updates.
+      Review: docs/italic-smallcap-tip-hinting-review-2026-10-26.md;
+      accepted proof: proofs/italic-smallcap-tip-hinting-review-2026-10-26.pdf.
+
+2026-10-26 Development: italic small-cap tip trial refreshed
+
+    * Rebuild current italic TTFs and recreate the half-pixel bottom-point
+      trial for v.sc, w.sc, ѵ.sc and ⱳ.sc at 30/32 ppem. Recommend adoption
+      after visual approval; accepted and integrated on 2026-10-26
+      (see production entry above).
+    * Only four glyph programs differ; all coordinates, metrics, layout and
+      shared fpgm/prep programs match. Rasters differ only at 30/32 ppem in
+      both interpreters. Remove twelve glyph/size findings in scratch audits,
+      representing eight exception entries, with no new findings.
+      Review: docs/italic-smallcap-tip-hinting-review-2026-10-26.md;
+      proof: proofs/italic-smallcap-tip-hinting-review-2026-10-26.pdf.
+
+2026-10-26 Development: approved Regular prosgegrammeni hints integrated
+
+    * Apply the accepted Latin-zone assignment for U+1FBE in Regular only,
+      after the ordinary hint controls. Rebuild Regular TTF and WOFF2;
+      remove the resolved eight-size v35 exception. No shaping updates.
+    * Production glyf records match the approved trial. All outlines match
+      the saved before font; only uni1FBE's glyph program changes. Shared
+      hint, layout, metric and metadata tables match. All four regenerated
+      TrueType hint-zone tests, Ruff and whitespace checks pass. WOFF2 carries
+      the same coordinates, hint programs, advances and layout as the TTF.
+      Review: docs/regular-prosgegrammeni-hinting-review-2026-10-26.md;
+      accepted proof: proofs/regular-prosgegrammeni-hinting-trial-2026-10-26.pdf.
+
+2026-10-26 Development: Regular prosgegrammeni hinting trial prepared
+
+    * A scratch Latin-zone assignment removes eight v35 top-alignment
+      reports for U+1FBE, with no new findings at 8–32 ppem. Only this glyph's
+      program changes; coordinates, metrics, layout and shared hint programs
+      match. v35 rasters change throughout 8–32; v40 rasters are identical.
+    * Trial adoption approved on 2026-10-26 and subsequently integrated
+      (see production entry above). At trial preparation production remained
+      unchanged and only the exception comment was clarified.
+      Review: docs/regular-prosgegrammeni-hinting-review-2026-10-26.md;
+      proof: proofs/regular-prosgegrammeni-hinting-trial-2026-10-26.pdf.
+
+2026-10-26 Development: italic ẞ CFF hints reviewed
+
+    * Both weights have identical top deltas versus O, 0.078–0.203 px at
+      13–32 ppem. Inspect CFF/TTF rasters beside H/S/O and lowercase ß.
+      Retention approved by the person on 2026-10-26. No font changes
+      or glyph acceptance/draft metadata changes.
+    * Complete production CFF audits match current exceptions in both
+      weights. Earlier regenerated italic CFF tests cover unchanged inputs;
+      not rerun for comment-only changes. Clarify two exception comments.
+      Review: docs/italic-capital-sharp-s-cff-review-2026-10-26.md;
+      proof: proofs/italic-capital-sharp-s-cff-review-2026-10-26.pdf.
+
+2026-10-26 Development: Italic ƙ.sc and ъ CFF hints reviewed
+
+    * Audit 8–32 ppem: ƙ.sc top is 0.094 px above h.sc at 10 ppem; ъ's
+      flag is 0.172 px above x at 8 ppem. Inspect CFF/TTF rasters with
+      same-style small-cap and lowercase controls. Recommend retention;
+      retention approved by the person on 2026-10-26. Correct the old
+      0.3 px annotation.
+    * Complete production Italic CFF audit matches all four existing
+      exception keys/counts. Earlier regenerated italic CFF checks cover
+      the unchanged inputs; not rerun for comment-only changes. No font
+      changes. Review: docs/italic-k-hook-hard-sign-cff-review-2026-10-26.md;
+      proof: proofs/italic-k-hook-hard-sign-cff-review-2026-10-26.pdf.
+
+2026-10-26 Development: Fraktur 𝔖 CFF hints reviewed
+
+    * Audit all styles at 8–32 ppem. Italic 𝔖 tops 0.188/0.313 px above O
+      at 10/11 ppem; Bold Italic adds 0.094 px at 9 and measures 0.203/0.313
+      at 10/11. Inspect against 𝔐/𝔓 and S/O, including TTF controls.
+      Retention approved by the person on 2026-10-26.
+    * Both regenerated italic CFF hint-zone tests pass with helper-socket
+      access. Clarify two exception comments without changing keys/counts.
+      No font changes. Review: docs/fraktur-s-cff-hinting-review-2026-10-26.md;
+      proof: proofs/fraktur-s-cff-hinting-review-2026-10-26.pdf.
+
+2026-10-26 Development: roman Œ CFF alignment reviewed
+
+    * Audit Regular/Bold Œ across 8–32 ppem. Both weights have top deltas
+      +0.078–0.172 px versus O at 15–32 ppem and bottom deltas -0.078–0.094
+      px at 22–32. Inspect native/enlarged CFF rasters against O/E and TTF
+      controls. Retention approved by the person on 2026-10-26.
+    * Clarify four exception comments without changing keys/counts. The
+      charstrings contain bowl/body hints and masks; the older explanation
+      that the bowl lacks hints was incomplete. Both regenerated roman
+      CFF hint-zone tests pass with helper-socket access. No font changes.
+      Review: docs/roman-oe-cff-hinting-review-2026-10-26.md;
+      proof: proofs/roman-oe-cff-hinting-review-2026-10-26.pdf.
+
+2026-10-26 Development: horn hinting reviewed
+
+    * Inspect standalone Horn/horn and attached Ơ/Ư/ơ/ư in all four styles.
+      The four listed findings compare unencoded construction tails at y=0
+      against the baseline because the audit mistakes their names for letter
+      sequences. All 24 encoded WITH HORN characters, including tone-accented
+      forms, have no alignment reports across 8–32 ppem in v35/v40.
+    * Retaining font hints accepted by the person on 2026-10-26. Clarify
+      four exception comments without changing keys/counts; record separate
+      audit-classification follow-up in DEVELOPMENT.md. All four regenerated
+      TrueType hint-zone tests pass. No font changes.
+      Review: docs/horn-hinting-review-2026-10-26.md;
+      proof: proofs/horn-hinting-review-2026-10-26.pdf.
+
+2026-10-26 Development: italic Ʋ hook-top hints reviewed
+
+    * Inspect both italic weights in v35/v40 across 8–32 ppem. Only 8/9
+      ppem report a raised curved hook: about 0.6 px in v35 and 1 px in
+      v40 above H. Original top points already align. Recommend retention,
+      accepted by the person on 2026-10-26; no production changes.
+    * Both regenerated italic TrueType hint-zone tests pass. Clarify four
+      exception comments without changing keys/counts. Preserve
+      native-size and enlarged proof:
+      proofs/italic-upsilon-top-hinting-review-2026-10-26.pdf;
+      docs/italic-upsilon-top-hinting-review-2026-10-26.md.
+
+2026-10-26 Development: italic small-cap bottom hinting reviewed
+
+    * Review r.sc/ɍ.sc and Cyrillic ж.sc/к.sc/я.sc in both italic weights.
+      All five bottoms are -0.5 px versus reference o at 0 px at 29–32 ppem
+      in v35; v40 has no mismatch across 8–32 ppem. Inspect native-size and
+      enlarged rasters with same-style small-cap controls. Recommend current
+      hints; the person approved retention on 2026-10-26.
+    * Clarify ten exception comments, preserving keys/counts. No font,
+      generator, hint program or shaping baseline changes. Both regenerated
+      italic TrueType hint-zone tests pass. Review and preserved proof:
+      docs/italic-smallcap-bottoms-hinting-review-2026-10-26.md;
+      proofs/italic-smallcap-bottoms-hinting-review-2026-10-26.pdf.
+
+2026-10-26 Repository: remove superseded batch2-wip stash
+
+    * Inspect stash a05c288d6368d9e171824f72b9c55d51cc1b3ae0, including
+      91 changed tracked files and 34 then-untracked glyphs. Exact versions
+      of 78 tracked files and 32 untracked glyphs occur in later HEAD history.
+    * Remaining differences are superseded recipes/drawings, accumulated
+      metadata and regenerated snapshots. Ligature/arrow work landed in
+      29a7efdb; further coverage in 3b0c97fe; turned-r corrections and the
+      revised long-leg construction supersede early drafts. The ʝ/Ʝ loop
+      trials were replaced by crossed-tail drawings. Every added cmap and
+      shaping-corpus line is retained in the current baselines.
+    * No unique work needs recovery. Drop only batch2-wip; retain the
+      separate pre-pull local changes 2026-10-23 stash. No font changes.
+
+2026-10-26 Development: build and validation pipeline strengthened
+
+    * Consolidated completion record from REC.md (reviewed against
+      94fdcd46): all nine recommendations have implementations. Build
+      outputs publish atomically after compilation, hinting and metadata
+      validation; shell, proof and visual recipes propagate failures.
+    * Require generated-style reproduction in CI with FontForge; local
+      hooks cover generator helpers/data and fail on missing prerequisites.
+      Reproduction compares Unicode assignments and all font-info fields.
+    * Baseline updates prepare outputs transactionally, roll back failed
+      publication and require the complete shaping report's approval digest.
+      Hooks validate immutable staged snapshots; proof refresh uses immutable
+      snapshots, isolated workspaces and source/toolchain manifests.
+    * Pin Google, Libertinus, Charis and UDHR inputs by immutable locations
+      and checksums; CI provisions required Greek/Cyrillic comparison inputs.
+    * Separate shared italic geometry, ordered finishing and UFO persistence.
+      Cache compatible compiled variants by source, toolchain and options;
+      build baseline variants lazily and reuse shaping results. Recorded
+      Regular OTF timing: 3.17 s cold, 0.22 s cached.
+    * Support Python 3.12 explicitly; shared shaping defaults to English
+      with keyword-only language/script arguments.
+    * Validation recorded in REC.md: 236 tests passed with required inputs;
+      eight dedicated comparison cases passed; all generated styles
+      reproduced; twelve font files built and matched hash manifests.
+      Visual comparison: zero changed specimens among 220 per style.
+      Proofs, clean-cache input downloads, Ruff, shell syntax, workflow YAML
+      and whitespace checks passed. This is historical validation, not a
+      fresh test run during the documentation consolidation.
+
+2026-10-26 Documentation: consolidate logs and open work
+
+    * Replace TODO.md, REC.md and RECOMMENDATIONS.md with FONT-DESIGN.md
+      (open design/review work) and DEVELOPMENT.md (open infrastructure and
+      publication work), using this existing FONTLOG as the single changelog.
+      Remove superseded tasks and stale diagnostic counts; preserve pending
+      visual verdicts and links to detailed reviews/proofs.
+    * Earlier RECOMMENDATIONS.md tooling milestones are complete: all-style
+      OTF/TTF/WOFF2 CI builds, feature audits, SVG specimens and pair reports;
+      pinned references; visible FontBakery failures; Ruff in CI/hooks;
+      rendered regression comparisons and diffenator against an approved
+      revision. The shaping corpus covers 56 UDHR languages, every offered
+      feature and common combinations, with feature/language coverage tests.
+      Pair corrections included 13 Bold Italic, two Regular and eight Bold
+      pairs; four visually retained tight Bold Italic pairs remain documented.
+
+2026-10-25 Development: accepted drawings and hinting review outcomes
+
+    * Integrate the approved lighter Italic I and Bold Italic inheritance;
+      preserve advances/layout and small caps/barred I. The r drawing is
+      retained. Reviews: docs/italic-ri-weight-review-2026-10-25.md and
+      proofs/italic-i-production-review-2026-10-25.pdf.
+    * Accept and integrate old-style figures in all four styles, retaining
+      the curled 9 and updating intended narrower advances only. Earlier
+      weight-only and open-tail proposals are superseded. Reviews:
+      docs/italic-oldstyle-redesign-2026-10-25.md and
+      docs/roman-oldstyle-redesign-2026-10-25.md.
+    * Integrate approved Bold Italic ɸ (lighter through-stem, wider bowl,
+      smooth returns) and Ⱳ curl joins, retaining metrics/layout. Reviews:
+      docs/bold-italic-phi-weight-review-2026-10-25.md and
+      docs/w-curl-review-2026-10-25.md.
+    * Raise Regular/Bold ṫ dots by 59 units to match ż clearance, with
+      corresponding anchors and reviewed position-only digest updates.
+      Review: docs/roman-t-dot-spacing-review-2026-10-25.md.
+    * Connect Italic/Bold Italic ɬ and Ɬ belts; the connected drawings were
+      accepted after Charis/Libertinus comparison. The arch-family verdict
+      remains separate. Review:
+      docs/italic-arches-and-l-belt-review-2026-10-25.md.
+    * Exclude counter holes from alignment audits, resolving Þ/æ.sc/ϐ false
+      positives and removing Þ's unwanted 27 ppem counter correction.
+      Review: docs/italic-thorn-hinting-review-2026-10-25.md.
+    * Accept current italic ν hints; discard the scratch bottom-point trial
+      because it disrupts the curve and passing v35 rasters. Small-cap tip
+      and G/Cyrillic round-bottom reviews remain pending in FONT-DESIGN.md.
+      Review: docs/italic-nu-hinting-review-2026-10-25.md.
+
+2026-10-24 Development: contour, attachment and anchor repairs
+
+    * Repair italic r-family shoulders and lowercase retroflex hooks;
+      smooth Bold r/ɽ inner bumps. Retain the small-cap gap pending review.
+      Review: docs/r-hook-review-2026-10-24.md.
+    * Straighten Bold Italic dollar bars; extend ɉ's right bar by request;
+      fill Ⱦ's residual foot counter; repair ℵ's lower return and upper-right
+      terminal join. Preserve advances/layout with no shaping changes.
+      Reviews: docs/bold-italic-dollar-bars-review-2026-10-24.md,
+      docs/j-bar-extension-review-2026-10-24.md,
+      docs/bold-italic-t-slash-review-2026-10-24.md and
+      docs/remaining-bold-italic-lint-review-2026-10-24.md.
+    * Repair italic ỵ dot collisions using same-style ink and a 25-unit gap;
+      update only intended below-mark positions in the corpus digests.
+      Review: docs/italic-y-dot-review-2026-10-24.md.
+    * Reviews recommending retention of dollar/ɸ counters and roman aleph
+      serif repairs were superseded by the accepted 2026-10-25 drawings.
+      Retention recommendations for remaining open constructions do not
+      themselves record final visual acceptance.
+
 2026-10-25 Version 0.100 (development): accepted italic ligature drawings
 
     * Add fb/fh/fk/ft and their ff forms, nine long-s combinations, and
@@ -214,8 +462,8 @@ ChangeLog
     * Removed resolved outline, quality and whole-emboldening exceptions,
       plus the Bold Italic hard sign's fixed CFF alignment exception.
       Shaping baselines are unchanged. The person accepted the comparison;
-      full style reproducibility still has the separate small-cap blocker
-      documented in TODO.md.
+      a later 2026-10-23 reproduction run confirmed all three styles
+      unchanged, resolving the earlier small-cap blocker.
 
 2026-10-21 Version 0.100 (development), Phase 3: an uncrossed italic W, a lighter a
 

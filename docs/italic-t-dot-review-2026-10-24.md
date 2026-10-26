@@ -18,7 +18,7 @@ The anchor moves 269 units up and 73 units right; the dot offset changes
 from y=221 to y=490. The gap is 198 units in Italic and 194 in Bold Italic,
 exactly matching ż in each weight. The standalone dot and base outlines
 are unchanged. Regular and Bold are unchanged; their smaller ṫ gap remains
-an independent visual-review item in TODO.md.
+an independent visual-review item subsequently resolved in FONTLOG.txt (2026-10-25 Roman dot-spacing entry).
 
 Seven glyph objects change per italic style: t, ţ, ț, ṫ, ṭ, ṯ and ṱ.
 Only ṫ changes visible ink. The other six carry the corrected Dotaccent

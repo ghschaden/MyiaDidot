@@ -79,7 +79,7 @@ and all advances.
 
 Bold Italic ʄ's older whole-emboldening/base-retention recipe review is
 also [completed](bold-italic-j-hook-review-2026-10-23.md). The wider
-inherited-outline backlog in TODO.md remains.
+inherited-outline backlog in FONT-DESIGN.md remains.
 
 ## Validation
 

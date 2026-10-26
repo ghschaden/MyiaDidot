@@ -11,6 +11,12 @@ Goals:
 
 Status: **Phase 2** done: Regular, Italic (from Old Standard), Bold and Bold Italic (derived), each with small caps. **Phase 3:** spacing and kerning comparisons, feature-table audits, and specimen proofs run for all four styles; every frequent Latin, Greek and Cyrillic pair lies within the reference fonts' range, but four reviewed ones in the Bold Italic. **Phase 4 is underway:** a Didot bold's contrast, clean construction of the derived styles, and hinting. All drafted glyphs are reviewed. See FONTLOG.txt.
 
+## Project records
+
+- [FONTLOG.txt](FONTLOG.txt): completed changes and validation history.
+- [FONT-DESIGN.md](FONT-DESIGN.md): open drawing, spacing and hinting reviews.
+- [DEVELOPMENT.md](DEVELOPMENT.md): open tooling and publication work.
+
 ## Layout
 
 ```
@@ -24,10 +30,10 @@ fonts/                          build output (otf, ttf, webfonts)
 
 ## Building
 
-Requirements: [uv](https://docs.astral.sh/uv/), FontForge (only for the
+Requirements: [uv](https://docs.astral.sh/uv/), FontForge (for generated styles, reproduction and the
 upstream reference/import), and LuaLaTeX for proofs. The hinting tools
 (ttfautohint-py, afdko's otfautohint) come with the Python toolchain.
-Python 3.12 is pinned in `.python-version` and CI: generated features and
+Python 3.12 is required in `pyproject.toml`, `.python-version` and CI: generated features and
 regression baselines depend on its Unicode 15.0 character data.
 
 ```sh
@@ -46,15 +52,32 @@ make qa               # full fontbakery reports in build/qa/
 
 ## Tests
 
-`make test` runs in about 12 seconds, before every commit (pre-commit hook)
-and on GitHub Actions. It checks the UFO's integrity, that composites follow
+`make test` runs before every commit (against the staged snapshot) and on GitHub Actions. It checks the UFO's integrity, that composites follow
 the anchor rules, that precomposed and decomposed text render identically,
 that no character is ever lost, a golden shaping corpus, a digest over
-~1.2 million shaped strings, and fontbakery's universal profile.
+more than 2 million shaped strings per style, and fontbakery's universal profile.
 
 Known exceptions are listed in `tests/data/*.txt` with a reason; those lists
 only shrink. When a change is intended, regenerate the baselines with
-`scripts/update_test_data.py` and review `git diff tests/data`.
+`scripts/update_test_data.py`; review `build/baseline-review.json` and use
+`--accept-report SHA256` for a changed shaping baseline, then review
+`git diff tests/data`. Reference fonts and UDHR texts are pinned in
+`scripts/data/reference-inputs.json`. CI provisions them before running
+Greek and Cyrillic comparison tests.
+
+## Shared glyph review skill
+
+The `glyph-review` skill has one maintained copy in
+[`skills/glyph-review/SKILL.md`](skills/glyph-review/SKILL.md), discovered through
+relative symlinks in `.agents/skills/` (Codex) and `.claude/skills/` (Claude Code).
+It uses the existing project rules and checks, with a focused SVG proof renderer
+for selected glyphs, optional before/after sources, anchors and shaped text.
+It adds no hooks, global settings or model requirements.
+
+Invoke it in Codex with `$glyph-review`, or in Claude Code with `/glyph-review`,
+for example: “Review Italic r and ɽ against HEAD, with n/o for weight context.”
+The same workflow can also be requested in plain language. A newly added skill
+may require a new session before it appears in the agent's skill list.
 
 ## Claude Code plugin
 

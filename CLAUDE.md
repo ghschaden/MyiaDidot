@@ -27,7 +27,7 @@ Details by topic, read the one the task touches:
 - **Italic, Bold and Bold Italic are generated** (`make_italic.py`,
   `make_bold.py`): change them only through the Regular or their generators
   (a recipe, a constant), never by editing the generated UFO, or the next run
-  undoes it. `make reproduce` (≈40 s) lists what would change; run it before
+  undoes it. `make reproduce` lists what would change; run it before
   committing. Hand-drawn Italic exceptions are marked "drawn"
   (org.myiadidot.italicSource).
 - Composites, small caps, derived letters, the smcp/c2sc block in
@@ -37,8 +37,8 @@ Details by topic, read the one the task touches:
   for "(conflicted)" copies and lost glyph files (`scripts/sync_check.py`).
 - `make winmetrics` after adding tall or deep glyphs.
 - Hinting is generated at build time, nothing in the UFOs.
-- Run Python as `.venv/bin/python -I`. Shaping defaults to German here
-  (no f-ligatures): pass `--language=en`.
+- Run Python as `.venv/bin/python -I`. Shaping tests explicitly default to English; language-specific checks
+  pass `language="de"`, `language="tr"`, and others as needed.
 
 ## Quality principles (in full: `docs/claude/quality.md`)
 
@@ -57,15 +57,15 @@ Details by topic, read the one the task touches:
 
 ## Tests
 
-- `make test` (≈90 s) runs on every commit via the pre-commit hook; with
-  `make reproduce` a commit takes ≈2–3 min: give `git commit` a Bash timeout
-  of 600000. If it times out, run the same commit again (it waits for or
+- `make test` runs on every commit via the pre-commit hook; with
+  `make reproduce` a commit can take several minutes: allow the hook to finish. If it times out, run the same commit again (it waits for or
   reuses the run; `MYIA_RECHECK=1` forces one).
 - Exception lists in `tests/data/*.txt` only shrink; fixing an entry =
   deleting its line.
 - When a test fails, find the cause first (`make regress`,
   `scripts/nfd_debug.py`). Only for an intended change regenerate baselines
-  with `scripts/update_test_data.py` and say in the commit what and why.
+  with `scripts/update_test_data.py`; review the full JSON report and pass its
+  digest with `--accept-report` and say in the commit what and why.
 - Never commit with `--no-verify` unless the person asked for it.
 
 ## Working economically
