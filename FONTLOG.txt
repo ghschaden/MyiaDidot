@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Regular old-style 5 lightened
+
+    * The 5's bowl stood out dark in running text (textpages.pdf): 276
+      units across its right side, against 222 in the 3's bowl, 161-216
+      in 6 and 9 and 184 in o. Its inner edge moved 50 units right in the
+      reviewed design (scripts/data/oldstyle-regular/fiveoldstyle.glif):
+      226 now, the outline, advance and spacing unchanged, the counter a
+      little more open. The Bold follows (345, the 3's 341); the Italic 5
+      (183, the 3's 195) was already in line.
+    * strokes.py now reports the 5 light (0.77): its rows at 20-60 % of
+      the x-height catch only the descending bowl's top. Kept on the
+      known list with that reason.
+
 2026-10-26 Italic and Bold Italic retroflex tails
 
     * Italic ɽ.sc ʈ.sc: the generic hook recipe grafted on the Italic's ȷ,

@@ -50,6 +50,14 @@ def test_other_styles_do_not_load_italic_drawings():
         assert font['nineoldstyle'] == before
 
 
+def _bowl(font, name, rows=range(0, 260, 10)):
+    """The widest run of the bowl's right side, on rows through its side
+    (not its top or bottom)."""
+    from derive import stems_at
+
+    return max(b - a for y in rows for a, b in stems_at(font, name, y)[-1:])
+
+
 def test_bold_reduced_figures_keep_weight_and_room():
     from quality.strokes import strokes
 
@@ -58,8 +66,14 @@ def test_bold_reduced_figures_keep_weight_and_room():
     before = {name: deepcopy(font[name]) for name in names}
     finish(font)
     assert all(font[name] == before[name] for name in names)
-    _, measured = strokes(font, only=('threeoldstyle', 'fiveoldstyle'))
+    _, measured = strokes(font, only=('threeoldstyle',))
     assert all(.80 <= ratio <= 1.10 for _, ratio, *_ in measured.values())
+    # strokes.py's rows (20-60 % of the x-height) catch only the top of the
+    # 5's descending bowl: its bowl is measured at its widest instead, as
+    # heavy as the 3's and heavier than o's side
+    five, three = _bowl(font, 'fiveoldstyle'), _bowl(font, 'threeoldstyle')
+    assert .90 <= five / three <= 1.10
+    assert five >= _bowl(font, 'o', (font.info.xHeight / 2,))
     glyph = font['fouroldstyle']
     left, _, right, _ = glyph.getBounds(font)
     assert left > 0 and glyph.width-right > 0

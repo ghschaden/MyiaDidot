@@ -60,3 +60,10 @@ strings and ten Bold strings change only positions, as expected for the
 approved proportional advances. Italic and Bold Italic remain unchanged
 from their accepted integrated figure sets. Kerning, groups and feature
 text match the pre-Roman-integration masters.
+
+## 2026-10-26: 5 lightened
+
+In running text the 5's bowl stood out dark: 276 units across its right
+side against 222 in the 3's bowl. The reviewed design's inner bowl edge
+moved 50 units right (226 now; Bold 345, the 3's 341); outline, advance
+and spacing are unchanged. See FONTLOG.
