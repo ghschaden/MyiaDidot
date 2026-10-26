@@ -38,9 +38,6 @@ counts here, where they quickly become stale.
   use `make proof` and the draft/small-cap review sheets. The old blanket
   claim that all derived letters, figures and small caps are unreviewed is
   stale: old-style figures, I, Ⱳ, ɸ and italic ligatures have accepted work.
-- **Bold Italic ɺ:** inspect the arm bracket's six-unit overshoot and
-  foot's nine-unit overshoot against the intended italic construction;
-  these may be natural curves rather than defects.
 
 ## Spacing: revisit only if specimens warrant it
 

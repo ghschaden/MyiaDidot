@@ -37,6 +37,7 @@ PASSES = (
          ("final lining figures", "reviewed oldstyle GLIFs"), ("oldstyle figures", "zerooldstyle.zero")),
     Pass("r_hook", "fair_bold_stem", ("Bold",), ("final r",), ("r", "uni027D")),
     Pass("r_hook", "finish_shoulders", ITALIC, ("final italic r family",), ("r family shoulders",)),
+    Pass("r_hook", "finish_turned_r_top", BI, ("r family shoulders", "final l"), ("uni027A",)),
     Pass("r_hook", "finish", ITALIC, ("final same-style r",), ("uni027D",)),
     Pass("l_belt", "finish", ("Italic",), ("final l", "final L"), ("uni026C", "uniA7AD")),
     Pass("italic_ligatures", "make", ITALIC,

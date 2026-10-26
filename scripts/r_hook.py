@@ -48,6 +48,40 @@ def finish_shoulders(font):
                 font.info.styleName == "Bold Italic" or (x > .6 * width and 650 < y < 850)))
 
 
+def finish_turned_r_top(font):
+    """Give Bold Italic ɺ the bracket of its l's top serif.
+
+    ɺ is ɹ with l's top (make_italic.ITALIC_RECIPES); emboldened as one
+    letter by weight, the bracket under the serif swelled 10 units past l's
+    and came out in three curves. The stems' left edges coincide (l's
+    shifted by dx at every height), so l's bracket, from its stem's end to
+    the serif's underside, replaces ɺ's there exactly.
+    """
+    import derive
+
+    if font.info.styleName != "Bold Italic" or "uni027A" not in font:
+        return
+    lp = font["l"].contours[0].points
+    starts = [i for i, p in enumerate(lp) if p.type == "line" and 1320 <= p.y <= 1340]
+    if len(starts) != 1 or not lp[starts[0] + 3].type or lp[starts[0] + 4].type != "line":
+        raise ValueError("l's top bracket landmarks changed; review ɺ's top")
+    s = starts[0]
+    bracket = lp[s + 1:s + 4]  # two handles and the curve's end under the serif
+    corner = lp[s + 4]
+    dx = round(derive.stems_at(font, "uni027A", 1300)[-1][0] - derive.stems_at(font, "l", 1300)[0][0])
+    points = font["uni027A"].contours[0].points
+    a = [i for i, p in enumerate(points) if p.type == "line" and (p.x, p.y) == (lp[s].x + dx, lp[s].y)]
+    b = [i for i, p in enumerate(points) if p.type == "line" and (p.x, p.y) == (corner.x + dx, corner.y)]
+    if len(a) != 1 or len(b) != 1 or not a[0] < b[0]:
+        raise ValueError("ɺ's top no longer meets l's stem edge; review ɺ's top")
+    new = []
+    for p in bracket:
+        q = deepcopy(p)
+        q.x += dx
+        new.append(q)
+    points[a[0] + 1:b[0]] = new
+
+
 def _finish_geometry(glyph, region):
     from italic_contours import _add_extrema, _align_handles
     from make_bold import round_smoothly

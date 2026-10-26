@@ -26,6 +26,16 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Bold Italic ɺ's top bracket
+
+    * ɺ is ɹ with l's top. Emboldened as one letter by weight, the bracket
+      under its top serif swelled 10 units past the Bold Italic l's and
+      came out in three curves. A finishing pass (r_hook.finish_turned_r_top)
+      now gives it l's bracket, shifted onto its stem, whose left edge
+      coincides with l's at every height. The foot's earlier overshoot is
+      gone; the two shallow joins on the stem's left edge (850, 763), where
+      ɹ's stem curves into its arm, are natural and stay as in the Italic.
+
 2026-10-26 Development: hint-zone audit measures only letters
 
     * hint_zones.letters() took any unencoded name spelt with letters for a

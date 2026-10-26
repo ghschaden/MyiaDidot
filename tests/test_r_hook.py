@@ -85,3 +85,16 @@ def test_bold_inner_stems_do_not_dent():
         xs = [a[0] * t**3 + b[0] * t**2 + c[0] * t + d[0] for t in [i / 100 for i in range(101)]]
         assert all(left >= right for left, right in zip(xs, xs[1:]))
         assert min(xs) >= curve[-1].x
+
+
+def test_bold_italic_turned_r_top_bracket_is_l_s():
+    """Bold Italic ɺ's bracket under the top serif is its l's, shifted onto
+    its stem (r_hook.finish_turned_r_top); emboldened with the letter it
+    swelled 10 units past l's."""
+    font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-BoldItalic.ufo')
+    def top(name):  # the stem's end, the bracket, the serif's underside
+        return [(p.x, p.y, p.type) for p in font[name].contours[0].points if 1320 < p.y <= 1374]
+    l, turned = top('l'), top('uni027A')
+    dx = turned[0][0] - l[0][0]
+    assert dx > 200
+    assert turned == [(x + dx, y, t) for x, y, t in l]
