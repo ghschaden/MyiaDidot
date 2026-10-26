@@ -1,5 +1,7 @@
 # r shoulders and retroflex hooks, 2026-10-24
 
+**Verdict 2026-10-26:** Bold Italic ɽ.sc's open gap between curled leg and swash accepted as drawn after visual review.
+
 The user requested rounded r shoulders and retroflex-r hooks that resemble
 the Regular and Bold drawings. This extends the original review of the
 Bold Italic lowercase shoulder notch at 680,770 (35 pixels).

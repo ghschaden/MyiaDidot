@@ -1,5 +1,7 @@
 # Italic arches and belted-l attachments, 2026-10-25
 
+**Verdict 2026-10-26:** The inherited open arch joins (m, ɯ, т, ш and their aliases) accepted as drawn after visual review.
+
 The next lint group comprised the Italic m/arch family and ɬ. The
 [arch comparison](../proofs/italic-arches-review-2026-10-25.pdf) includes
 Old Standard's source drawings, Myia's two italic weights and enlarged

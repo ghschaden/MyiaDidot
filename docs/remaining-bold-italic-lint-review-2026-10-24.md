@@ -1,5 +1,7 @@
 # Remaining Bold Italic lint entries, 2026-10-24
 
+**Verdict 2026-10-26:** ʸ ң ᵍ ᶤ ₡ ⱥ.sc accepted as drawn after visual review.
+
 Reviewed the seven entries after ɽ and its small cap. The
 [four-style sheet](../proofs/remaining-bold-italic-lint-review-2026-10-24.pdf)
 shows the drawings before this pass's aleph repair, with enlarged marked

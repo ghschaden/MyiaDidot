@@ -1,5 +1,7 @@
 # Cedilla attachment review, 2026-10-24
 
+**Verdict 2026-10-26:** The repaired attachments accepted after visual review of the proof.
+
 [Before/after proof](../proofs/cedilla-attachments-before-after-2026-10-24.pdf)
 shows complete letters alongside enlarged attachment details.
 

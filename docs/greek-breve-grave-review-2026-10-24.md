@@ -1,5 +1,7 @@
 # Greek breve/grave stack review, 2026-10-24
 
+**Verdict 2026-10-26:** The repaired stacks accepted after visual review of the proof.
+
 [Before/after proof](../proofs/greek-breve-grave-before-after-2026-10-24.pdf).
 
 The inherited `brevecmb_uni0313_gravecomb.grek` and

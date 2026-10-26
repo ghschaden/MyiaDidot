@@ -26,6 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Review: pending visual verdicts given
+
+    * Accepted the current Italic and Bold Italic round-bottom hints
+      (G Ɠ Ǥ, Є З Э Ю Ѳ Ѵ Ә Ө): bottoms on the baseline while O drops half
+      a pixel at 29–32 ppem in v35 only.
+    * Accepted the inherited open Italic arch joins (m ɯ т ш, their
+      Bulgarian/Serbian forms and the m composites).
+    * Accepted the Bold Italic open gaps of ɽ.sc and ʸ ң ᵍ ᶤ ₡ ⱥ.sc.
+    * Accepted the repaired Greek breve/grave stacks and capital cedilla
+      attachments.
+    * No outline, hint or spacing changes: exception reasons in
+      tests/data/hint-zones-*Italic.txt and glyph-lint-*Italic.txt now say
+      accepted; verdicts noted in the review docs; FONT-DESIGN.md's
+      pending-verdict sections removed.
+
 2026-10-26 Repository: build sidecars kept out of the font folders
 
     * Build manifests and locks go to build/manifests/ and build/locks/
