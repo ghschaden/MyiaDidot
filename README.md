@@ -39,6 +39,7 @@ regression baselines depend on its Unicode 15.0 character data.
 ```sh
 make setup            # Python toolchain in .venv + git pre-commit hook
 make                  # fonts/otf, fonts/ttf, fonts/webfonts (all hinted)
+make release          # build/release/MyiaDidot-VERSION.zip (fonts, OFL, FONTLOG, checksums)
 make test             # the regression test suite (also run on every commit)
 make regress          # shaping diff against the last commit (REF=...)
 make proof            # PDF proofs in build/proofs/

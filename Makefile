@@ -17,7 +17,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate visual visual-approve diffenator
+.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate visual visual-approve diffenator
 
 all: fonts
 
@@ -45,6 +45,12 @@ fonts: otf ttf webfonts
 otf: $(OTF)
 ttf: $(TTF)
 webfonts: $(WOFF2)
+
+# The release archive, prepared only: build/release/MyiaDidot-VERSION.zip
+# (fonts, OFL, FONTLOG, install notes, specimen once `make proof` has run,
+# checksums); every style must state the same version
+release: fonts
+	$(PY) scripts/release.py
 
 # PostScript hints: zones and stems measured per style, then otfautohint.
 fonts/otf/%.otf: sources/%.ufo $(UFO_FILES) scripts/add_stat.py scripts/ps_hints.py scripts/build_font.py scripts/build_support.py uv.lock

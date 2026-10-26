@@ -9,9 +9,6 @@ belong in [FONT-DESIGN.md](FONT-DESIGN.md). Record completed work in
 These are proposals from the repository-structure review, not implemented
 features or prerequisites already agreed for a particular distribution.
 
-- Add a versioned release archive target containing all intended font
-  formats/styles, OFL, FONTLOG, installation instructions, a specimen and
-  checksums. Keep archive preparation separate from publication.
 - Lead README with the font, specimen, downloads, installation, script and
   feature support, and known limitations. Move detailed tooling/plugin
   instructions into linked development documentation.
@@ -21,8 +18,9 @@ features or prerequisites already agreed for a particular distribution.
 - Group dated reviews and historical proof PDFs separately from general
   documentation and specimen sources, with an index and updated links.
 - Define the relationship between Python project version `0.1.0`, font
-  version `0.100`, release tags and archive names; check consistency across
-  all four styles during release preparation.
+  version `0.100` and release tags. `make release` already names the
+  archive after the font version and refuses styles or built fonts that
+  disagree on it.
 - Add `sources/README.md` describing incorporated upstream materials,
   revisions, credits and licenses, distinguishing comparison-only inputs.
 

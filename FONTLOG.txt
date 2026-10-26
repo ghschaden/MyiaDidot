@@ -26,6 +26,15 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-26 Development: release archive
+
+    * make release builds the fonts and prepares (does not publish)
+      build/release/MyiaDidot-VERSION.zip: the fonts by format (otf, ttf,
+      webfonts), OFL.txt, FONTLOG.txt, INSTALL.txt, the specimen once make
+      proof has run, and SHA256SUMS (scripts/release.py). VERSION is the
+      fonts' own (0.100); a style or built font stating another stops it.
+      The archive is reproducible (sorted entries, fixed timestamps).
+
 2026-10-26 Regular old-style 3 and 5: lower parts lighter
 
     * Both still looked fat below in running text. Their lower bowls come
