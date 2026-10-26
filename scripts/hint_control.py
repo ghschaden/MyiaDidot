@@ -167,6 +167,21 @@ def off_zone(path):
     return sum(sum(summary(measure(path, interpreter=v)).values()) for v in INTERPRETERS)
 
 
+def smallcap_tip_lines(tt):
+    """Approved Italic tip adjustment, discovering indices from the outline."""
+    if tt["name"].getDebugName(2) != "Italic":
+        return []
+    glyf = tt["glyf"]
+    lines = []
+    for name in ("v.sc", "w.sc", "uni0475.sc", "uni2C73.sc"):
+        coords, _, flags = glyf[name].getCoordinates(glyf)
+        indices = [i for i, (_, y) in enumerate(coords) if y == glyf["O"].yMin and flags[i] & 1]
+        if not indices:
+            raise ValueError(f"{name}: approved small-cap tip no longer meets O's bottom zone")
+        lines.append(f"{name} touch {', '.join(map(str, indices))} yshift 0.5 @ 30, 32")
+    return lines
+
+
 def delta_lines(path):
     """touch deltas for the contours off their zone, where both interpreters
     want the same shift of the contour's flat; and what is left unmended."""
@@ -217,7 +232,15 @@ def hint(unhinted, hinted, control=None):
                 chosen = (greek, head, first)
         greek, head, first = chosen
         deltas, left = delta_lines(first)
-        control.write_text(head + "# zones\n" + "".join(f"{x}\n" for x in deltas))
+        overrides = ""
+        if tt["name"].getDebugName(2) == "Regular" and "uni1FBE" in tt.getGlyphOrder():
+            # Approved 2026-10-26: the serifed adscript aligns with x in
+            # Latin zones. Append after other assignments, as in the proof.
+            overrides = "# prosgegrammeni: Latin x-height\nlatn dflt @ uni1FBE\n"
+        tip_adjustments = smallcap_tip_lines(tt)
+        if tip_adjustments:
+            overrides += "# approved small-cap bottom tips\n" + "\n".join(tip_adjustments) + "\n"
+        control.write_text(head + "# zones\n" + "".join(f"{x}\n" for x in deltas) + overrides)
         autohint(unhinted, hinted, control)
     return dict(tips=len(tiplines), greek_latin=greek, tried=tried, deltas=len(deltas), left=len(left))
 

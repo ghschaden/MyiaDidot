@@ -1,5 +1,8 @@
 # Italic small-cap tip hinting trial, 2026-10-25
 
+Historical trial record. The refreshed trial was accepted and integrated on
+2026-10-26; see [current production review](italic-smallcap-tip-hinting-review-2026-10-26.md).
+
 [Current/trial proof](../proofs/italic-smallcap-tip-hinting-review-2026-10-25.pdf)
 shows h.sc, v.sc, w.sc and o.sc, plus Cyrillic izhitsa.sc and W-curl.sc,
 under both FreeType TrueType interpreters. Specimens are enlarged 2× by

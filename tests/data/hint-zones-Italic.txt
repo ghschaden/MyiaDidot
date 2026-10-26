@@ -1,30 +1,22 @@
 # Known scripts/quality/hint_zones.py findings (interpreter glyph:zone sizes); fixing one = deleting its line.
 v35 G:bot-35 3                   # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
-v35 Horn:bot0 1                  # the horn as a glyph of its own: a mark, its bottom not on the baseline zone
-v35 r.sc:bot-23 4                # 2026-10-21 Italic reweighted and tightened
+v35 Horn:bot0 1                  # retention accepted 2026-10-26: unencoded horn construction tail, not a baseline-aligned letter
+v35 r.sc:bot-23 4                # current hints accepted 2026-10-26: bottom -0.5 vs o 0 px at 29–32 ppem, v35 only
 v35 uni0193:bot-35 3             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
-v35 uni01B2:top1434 2            # Ʋ's hook top at cap height: a single sloped point
+v35 uni01B2:top1434 2            # current hints accepted 2026-10-26: curved hook rises ~0.6 px (v35), 1 px (v40) above H at 8/9 ppem
 v35 uni01E4:bot-35 3             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
-v35 uni024D.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
+v35 uni024D.sc:bot-23 4          # current hints accepted 2026-10-26: bottom -0.5 vs o 0 px at 29–32 ppem, v35 only
 v35 uni0404:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni0417:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni042D:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni042E:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
-v35 uni0436.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
-v35 uni043A.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
-v35 uni044F.sc:bot-23 4          # 2026-10-21 Italic reweighted and tightened
+v35 uni0436.sc:bot-23 4          # current hints accepted 2026-10-26: bottom -0.5 vs o 0 px at 29–32 ppem, v35 only
+v35 uni043A.sc:bot-23 4          # current hints accepted 2026-10-26: bottom -0.5 vs o 0 px at 29–32 ppem, v35 only
+v35 uni044F.sc:bot-23 4          # current hints accepted 2026-10-26: bottom -0.5 vs o 0 px at 29–32 ppem, v35 only
 v35 uni0472:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni0474:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
-v35 uni0475.sc:bot-35 1          # small caps' tips and tops a unit off (drafted, then weighted), the small-cap zone with them
 v35 uni04D8:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
 v35 uni04E8:bot-35 4             # reviewed 2026-10-25: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32); visual verdict pending
-v35 uni2C73.sc:bot-35 1          # uncrossed W (two narrowed Vs) and lighter a
-v35 v.sc:bot-35 1                # small caps' tips and tops a unit off (drafted, then weighted), the small-cap zone with them
-v35 w.sc:bot-35 1                # small caps' tips and tops a unit off (drafted, then weighted), the small-cap zone with them
-v40 horn:bot0 3                  # horns heavier, Ư on its own base (U.horn), horns fitted to their base
+v40 horn:bot0 3                  # retention accepted 2026-10-26: unencoded horn construction tail, not a baseline-aligned letter
 v40 nu:bot-23 16                 # current hints accepted 2026-10-25; isolated-point trial rejected (curve distortion)
-v40 uni01B2:top1434 2            # Ʋ's hook top at cap height: a single sloped point
-v40 uni0475.sc:bot-35 2          # small caps' tips and tops a unit off (drafted, then weighted), the small-cap zone with them
-v40 uni2C73.sc:bot-35 2          # uncrossed W (two narrowed Vs) and lighter a
-v40 v.sc:bot-35 2                # small caps' tips and tops a unit off (drafted, then weighted), the small-cap zone with them
-v40 w.sc:bot-35 2                # small caps' tips and tops a unit off (drafted, then weighted), the small-cap zone with them
+v40 uni01B2:top1434 2            # current hints accepted 2026-10-26: curved hook rises ~0.6 px (v35), 1 px (v40) above H at 8/9 ppem
