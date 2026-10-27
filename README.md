@@ -66,6 +66,25 @@ only shrink. When a change is intended, regenerate the baselines with
 `scripts/data/reference-inputs.json`. CI provisions them before running
 Greek and Cyrillic comparison tests.
 
+## Shape grammar
+
+The [complete shape grammar](docs/shape-grammar.md) reconstructs every glyph in
+all four styles from line/cubic primitives, shared contour fragments and
+component recipes. Run `.venv/bin/python -I scripts/shape_grammar_full.py` to
+generate its searchable catalogue, exact round-trip checks and reconstructed
+UFOs under `build/glyph-review/shape-grammar/complete/`. Production sources are
+read-only inputs to this experiment.
+
+The [typographic vocabulary study](docs/typographic-vocabulary.md) identifies
+six working shape families through measured anatomical comparisons across all
+four styles. Run `.venv/bin/python -I scripts/typographic_vocabulary.py` to
+regenerate the comparisons and exhaustive family-merger search.
+
+For production preparation, the [shape-consistency workflow](docs/shape-consistency.md)
+audits explicit optical contexts and generates bounded candidates only under
+`build/`, with source protection, dependency reports and layout checks. It has
+no command that applies changes to font sources.
+
 ## Shared glyph review skill
 
 The `glyph-review` skill has one maintained copy in

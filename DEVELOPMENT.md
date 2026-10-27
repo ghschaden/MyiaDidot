@@ -26,6 +26,12 @@ features or prerequisites already agreed for a particular distribution.
 
 ## Optional tooling follow-up
 
+- Develop the [shared-shape workflow](docs/shape-consistency.md) from its
+  protected review previews into generator-owned rules after design review.
+  Audit flattened/case/small-cap dependencies and define attachment ports for
+  connected parts; the current implemented preview handles isolated contours.
+  Preserve optical contexts and exceptions rather than minimising family count.
+
 The earlier suggestion of a formatter/type checker was exploratory. Ruff
 linting is implemented; current project policy deliberately avoids automatic
 formatting of aligned recipe tables. Consider targeted type checking only

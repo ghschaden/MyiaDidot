@@ -129,6 +129,19 @@ ChangeLog
       more than about 20 units past. ʈ.sc and Ɽ accepted anew (unchanged
       in overlay).
 
+2026-10-27 Development: protected shared-shape consistency previews
+
+    * scripts/shape_consistency.py audits 180 anatomical samples in 25
+      explicit optical contexts and generates isolated-contour experiments
+      under build/ only. Source/policy/toolchain-pinned plans, dependency
+      reports, unchanged-metadata checks, idempotence, outline lint and
+      compiled shaping comparisons make the proposals reviewable.
+    * The accent-dot trial changes only scratch dieresis outlines and their
+      component dependants in all four styles; 136 layout comparisons pass.
+      Production source UFO bytes, acceptance records and baselines are
+      unchanged. The rule is not installed or visually accepted. Details:
+      docs/shape-consistency.md.
+
 2026-10-26 Development: acceptance recorded apart from draft flags
 
     * In the Italic, a draft flag means "made anew by the generator":
