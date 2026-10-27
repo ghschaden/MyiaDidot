@@ -24,7 +24,9 @@ Moved from CLAUDE.md (its ground rules apply).
   steps, ledges) and design quality (`scripts/quality/checks.py`: smooth
   nodes, kinks, extremes, steps on the outline (a short straight jog
   between edges running on the same way: a tail or hook set beside its
-  stroke, which the raster lint misses), whole units, alignment zones, stem weights, the
+  stroke, which the raster lint misses), wobbles (the Bold and Bold
+  Italic: a curve bending back for a short stretch more often than in
+  its source glyph), whole units, alignment zones, stem weights, the
   italic's slant, accent gaps, the Bold's widths, and derived letters
   against their recipe's base, `scripts/quality/derived.py`: base kept,
   stem, whole advance, an italic one made from the roman; glyphs darker or

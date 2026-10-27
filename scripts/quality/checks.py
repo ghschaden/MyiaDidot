@@ -17,6 +17,12 @@ Each finding is (glyph, kind, where, detail). The kinds (criteria 7-11, 14,
            STEP_SAME degrees), turning at least STEP_JOG from both: a piece
            set beside its stroke (a tail narrower than its stem, a hook's
            end cut standing out of the letter)
+  wobble   (the Bold, the Bold Italic) a curve bending back the other way
+           for a short stretch (WOBBLE_TURN degrees or more, at most
+           WOBBLE_LEN units, between bends the first way) more often than
+           in the glyph it is generated from (the Regular's, the Italic's):
+           a bulge and shoulder the emboldening put in (ψ's terminal, г's
+           inner curves, o's inner side)
   grid     a point, anchor or component offset off whole units
   zone     a letter's flat top or bottom near an alignment zone (baseline,
            x-height, small-cap and cap height, ascender, descender) but
@@ -60,7 +66,7 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-KINDS = ("smooth", "kink", "extreme", "step", "grid", "zone", "weight", "slant", "accent", "width",
+KINDS = ("smooth", "kink", "extreme", "step", "wobble", "grid", "zone", "weight", "slant", "accent", "width",
          "base", "stem", "advance", "style", "stroke")
 DERIVED = ("base", "stem", "advance", "style")
 
@@ -332,6 +338,82 @@ def accents(font, shapes):
     return out
 
 
+WOBBLE_TURN, WOBBLE_LEN, WOBBLE_STEP = 3, 160, 4  # degrees; units; units between samples
+
+
+def _directions(contour):
+    """(x, y, direction, on a curve) every WOBBLE_STEP units along a contour"""
+    P = list(contour.points)
+    n = len(P)
+    ons = [i for i, p in enumerate(P) if p.type]
+    out = []
+    for k, i in enumerate(ons):
+        j = ons[(k + 1) % len(ons)]
+        offs = [(i + m) % n for m in range(1, (j - i) % n or n)]
+        pts = [(P[x].x, P[x].y) for x in (i, *offs, j)]
+        if len(pts) == 2:
+            m = max(1, int(math.dist(*pts) / WOBBLE_STEP))
+            a = _angle(*pts)
+            out += [(pts[0][0] + (pts[1][0] - pts[0][0]) * s / m, pts[0][1] + (pts[1][1] - pts[0][1]) * s / m, a, False)
+                    for s in range(m)]
+        elif len(pts) == 4:
+            m = max(2, int(sum(math.dist(pts[q], pts[q + 1]) for q in range(3)) / WOBBLE_STEP))
+            for s in range(m):
+                t = s / m
+                u = 1 - t
+                dx, dy = (3 * u * u * (pts[1][q] - pts[0][q]) + 6 * u * t * (pts[2][q] - pts[1][q])
+                          + 3 * t * t * (pts[3][q] - pts[2][q]) for q in (0, 1))
+                if dx or dy:
+                    x, y = _bez(pts, t)
+                    out.append((x, y, math.atan2(dy, dx), True))
+    return out
+
+
+def reversals(glyph):
+    """[(x, y, degrees)]: where a curve bends back the other way for a short
+    stretch between two bends the first way (corners and straight edges
+    break the run)"""
+    out = []
+    for c in glyph.contours:
+        s = _directions(c)
+        n = len(s)
+        if n < 6:
+            continue
+        lobes = []  # [sign, degrees, first sample, samples]
+        for i in range(n):
+            t = math.degrees((s[(i + 1) % n][2] - s[i][2] + math.pi) % (2 * math.pi) - math.pi)
+            if abs(t) > 30 or not s[i][3]:
+                lobes.append([0, 0, i, 1])
+                continue
+            sign = 1 if t > 0.01 else -1 if t < -0.01 else 0
+            if not sign:
+                continue
+            if lobes and lobes[-1][0] == sign:
+                lobes[-1][1] += t
+                lobes[-1][3] += 1
+            else:
+                lobes.append([sign, t, i, 1])
+        for a, b, d in zip(lobes, lobes[1:], lobes[2:]):
+            if (a[0] and b[0] and a[0] == d[0] != b[0] and b[3] * WOBBLE_STEP <= WOBBLE_LEN
+                    and min(abs(a[1]), abs(b[1]), abs(d[1])) > WOBBLE_TURN):
+                x, y = s[b[2] + b[3] // 2][:2]
+                out.append((round(x), round(y), abs(b[1])))
+    return out
+
+
+def wobbles(font, source):
+    """wobble findings (a generated style): reversals beyond its source's."""
+    out = []
+    for g in font:
+        if not g.contours or g.name not in source:
+            continue
+        mine, theirs = reversals(g), reversals(source[g.name])
+        if len(mine) > len(theirs):
+            where = "; ".join(f"{x},{y} {d:.0f} degrees" for x, y, d in mine)
+            out.append((g.name, "wobble", "", f"{len(mine)} against {len(theirs)}: {where}"))
+    return out
+
+
 def widths(font, regular):
     """width findings (the Bold): advances off its usual ratio to the Regular's."""
     ratios = {g.name: g.width / regular[g.name].width for g in font
@@ -361,6 +443,9 @@ def check(font, path=None, kinds=KINDS):
         rest += slant(font)
     if "accent" in kinds:
         rest += accents(font, shapes)
+    if "wobble" in kinds and path and Path(path).name.endswith(("-Bold.ufo", "-BoldItalic.ufo")):
+        source = str(path).replace("-BoldItalic.ufo", "-Italic.ufo").replace("-Bold.ufo", "-Regular.ufo")
+        rest += wobbles(font, ufoLib2.Font.open(source))
     if "width" in kinds and path and Path(path).name.endswith("-Bold.ufo"):
         regular = ufoLib2.Font.open(str(path).replace("-Bold.ufo", "-Regular.ufo"))
         rest += widths(font, regular)

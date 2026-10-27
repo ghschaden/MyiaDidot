@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Development: quality check for wobbles against the source
+
+    * scripts/quality/checks.py `wobble` (the Bold, the Bold Italic): a
+      curve bending back the other way for a short stretch (3 degrees or
+      more within 160 units, between bends the first way) more often than
+      in the glyph it is generated from. It finds the Bold ψ φ of before
+      today's fix (and not after), Bold Italic г ʷ, and o's inner side;
+      absolute curvature measures flagged hundreds of drawn Didot
+      transitions (serif brackets, italic S-strokes) instead.
+    * Bold 169 and Bold Italic 375 glyphs have one more than their source:
+      recorded as candidates (FONT-DESIGN.md); most come from the handle
+      fit in emboldening, to be fixed in the generator.
+
 2026-10-27 Development: quality check for steps on the outline
 
     * scripts/quality/checks.py `step`: a straight edge of at most 70
