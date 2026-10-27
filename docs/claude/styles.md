@@ -45,7 +45,10 @@ Moved from CLAUDE.md (its ground rules apply).
   result), so the spacing and kerning tuned on it hold; Greek/Cyrillic pairs
   still off go into BOLD_KERNING / ITALIC_BOLD_KERNING (final values: add to
   what the pair had). Where emboldening by weight leaves a slit, the
-  weighted `embolden_simple` is taken if it has fewer faults.
+  weighted `embolden_simple` is taken if it has fewer faults. In the Bold
+  only (the Bold Italic's not yet reviewed): that way keeps smooth nodes
+  smooth (keep_smooth), and by weight a short edge running on into a curve
+  takes the curve's weight (runs_on: ƒ's stem under its bar).
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make

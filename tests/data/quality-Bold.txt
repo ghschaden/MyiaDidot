@@ -33,15 +33,15 @@ exclamdown smooth 2              # contrast-aware Bold (emboldened by stroke wei
 exclamdown width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 f extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 665,1383 9 units past
 f_b kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-f_f_b extreme 3                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
-f_f_b kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
+f_f_b extreme 2                  # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 818,1145 9 units past; 678,1456 8 units past
+f_f_b kink 2                     # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1383,1246 5.6 degrees; 1059,1060 5.7 degrees
 f_f_h extreme 3                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
-f_f_h kink 4                     # 2026-10-16 known at the start (quality checks added): 1387,1246 5.6 degrees; 1063,1060 5.7 degrees; 739,1298 6.5 degrees; 460,1074 5.4 degrees
+f_f_h kink 3                     # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1988,642 7.2 degrees; 1383,1246 5.6 degrees; 1059,1060 5.7 degrees
 f_f_h smooth 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1646,412 2.7 degrees
 f_f_j kink 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1240,884 2.6 degrees; 1262,883 2.7 degrees
 f_f_k kink 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1388,1246 6.1 degrees
-f_f_t extreme 4                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1644,192 6 units past; 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
-f_f_t kink 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 735,1298 6.5 degrees; 1385,1168 4.4 degrees
+f_f_t extreme 3                  # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1644,192 6 units past; 818,1145 9 units past; 678,1456 8 units past
+f_f_t kink 1                     # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1385,1168 4.4 degrees
 f_h extreme 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1066,673 6 units past
 f_h kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
 f_j kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.5 degrees; 659,883 2.6 degrees
@@ -49,8 +49,8 @@ f_k kink 1                       # 2026-10-16 known at the start (quality checks
 ff kink 1                        # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 698,1312 3.0 degrees
 ff smooth 1                      # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1292,1298 2.4 degrees
 ffi kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1239,884 2.6 degrees; 1261,883 2.7 degrees
-ffl extreme 3                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 820,1145 11 units past; 759,1374 11 units past; 680,1456 8 units past
-ffl kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1061,1060 5.7 degrees; 737,1298 6.5 degrees
+ffl extreme 2                    # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 820,1145 9 units past; 680,1456 8 units past
+ffl kink 1                       # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1061,1060 5.7 degrees
 fi kink 2                        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.6 degrees; 658,883 2.7 degrees
 fiveoldstyle stroke 1            # accepted Roman old-style set: modest Bold weight increase preserves figure contrast; lc 218 against 261 (0.83, lighter)
 florin extreme 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 24,-466 8 units past; 1010,1396 7 units past
@@ -68,7 +68,7 @@ hook kink 2                      # 2026-10-16 known at the start (quality checks
 i accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
 iota stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 222 against 261 (0.85, lighter)
 j accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 346, usually 178
-j.sc extreme 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 263,66 14 units past; 276,36 13 units past
+j.sc extreme 1                   # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 279,36 13 units past
 j.sc zone 2                      # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
 kappa zone 1                     # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
@@ -79,8 +79,8 @@ longs_h kink 1                   # 2026-10-16 known at the start (quality checks
 longs_k kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
 longs_longs kink 1               # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 700,1312 3.0 degrees
 longs_longs smooth 1             # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1294,1298 2.4 degrees
-longs_longs_l extreme 3          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
-longs_longs_l kink 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 195,974 4.5 degrees; 735,1298 6.5 degrees
+longs_longs_l extreme 2          # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 818,1145 9 units past; 678,1456 8 units past
+longs_longs_l kink 1             # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 195,974 4.5 degrees
 m extreme 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1043,685 12 units past; 478,690 6 units past
 n extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 478,673 6 units past
 nu stroke 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 222 against 261 (0.85, lighter)
@@ -90,13 +90,12 @@ omicron stroke 1                 # stroke weights against the kind's (scripts/qu
 oslash zone 2                    # 2026-10-16 known at the start (quality checks added): bottom -26 from 0; top +26 from 884
 oslash.sc extreme 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 949,515 5 units past; 353,515 6 units past
 period width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-phi extreme 2                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 603,-15 12 units past; 442,-371 6 units past
-phi kink 1                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 963,601 6.8 degrees
+phi extreme 1                    # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 603,-15 9 units past
 phi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 261 (0.80, lighter)
 phi zone 1                       # 2026-10-16 known at the start (quality checks added): top +24 from 884
 phisymbolgreek stroke 1          # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 205 against 261 (0.78, lighter)
 pi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 227 against 261 (0.87, lighter)
-psi extreme 1                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1174,888 11 units past
+psi extreme 2                    # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 618,167 8 units past; 817,1214 9 units past
 psi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 261 (0.77, lighter)
 psi.sc extreme 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1220,840 9 units past; 215,819 7 units past
 quoteleft width 1                # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
@@ -132,7 +131,6 @@ u1D459 zone 1                    # 2026-10-16 known at the start (quality checks
 u1D510 kink 2                    # 2026-10-16 known at the start (quality checks added): 437,1395 1.6 degrees; 250,505 1.9 degrees
 u1D510 smooth 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1937,1308 2.4 degrees
 u1D510 zone 1                    # 2026-10-16 known at the start (quality checks added): top +20 from 1434
-u1D513 extreme 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 408,1391 10 units past; 1127,61 5 units past
 u1D513 kink 2                    # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 210,505 2.7 degrees; 1025,1352 4.5 degrees
 u1D513 smooth 2                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 923,1156 2.0 degrees; 994,139 2.5 degrees
 u1D513 zone 1                    # 2026-10-16 known at the start (quality checks added): top +18 from 1434
@@ -194,7 +192,8 @@ uni0242 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 173 against 273 (0.63, lighter)
 uni0248 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 326,86 8 units past
 uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
-uni0249.sc extreme 2             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 327,155 9 units past; 275,36 15 units past
+uni0249.sc extreme 1             # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 330,155 9 units past
+uni0249.sc smooth 1              # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 286,110 2.7 degrees
 uni0249.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
@@ -295,8 +294,7 @@ uni0416 extreme 2                # contrast-aware Bold (emboldened by stroke wei
 uni041A extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1167,1354 17 units past
 uni041B extreme 1                # 2026-10-16 known at the start (quality checks added): 331,106 7 units past
 uni0426 extreme 1                # 2026-10-16 known at the start (quality checks added): 564,-242 7 units past
-uni0429 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 2181,80 6.8 degrees
-uni0429 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1083,-269 2.9 degrees
+uni0429 extreme 1                # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 2140,223 8 units past
 uni042F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni0436 extreme 2                # 2026-10-16 known at the start (quality checks added): 7,62 5 units past; 1400,44 5 units past
 uni0436.loclBGR kink 1           # 2026-10-26 specks of a cut dropped before rederive judges: 649,700 1.5 degrees
@@ -337,13 +335,12 @@ uni1D4B width 1                  # 2026-10-16 known at the start (quality checks
 uni1D4D kink 1                   # 2026-10-16 known at the start (quality checks added): 357,1117 2.3 degrees
 uni1D6E kink 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
 uni1D6F extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1027,503 6 units past; 656,820 6 units past
-uni1D6F kink 11                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 540,0 1.0 degrees; 772,88 1.5 degrees; 1119,0 1.0 degrees; 1351,140 4.4 degrees; 1697,0 1.0 degrees; 1080,833
+uni1D6F kink 10                  # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 540,0 1.0 degrees; 772,88 1.5 degrees; 1119,0 1.0 degrees; 1351,140
+uni1D6F smooth 1                 # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 500,821 2.2 degrees
 uni1D6F stroke 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 314 against 278 (1.13, darker)
 uni1D70 kink 8                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 541,0 1.0 degrees; 797,167 4.0 degrees; 1145,0 1.1 degrees; 525,830 3.7 degrees; 76,884 2.5 degrees; 194,748
-uni1D72 extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 634,836 12 units past; 174,430 10 units past
+uni1D72 extreme 1                # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 174,430 10 units past
 uni1D72 kink 6                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 544,0 1.1 degrees; 634,836 3.7 degrees; 558,871 3.9 degrees; 79,884 2.2 degrees; 194,689 4.3 degrees; 194,103
-uni1D73 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 638,836 12 units past
-uni1D73 smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 638,836 2.1 degrees; 615,891 2.5 degrees
 uni1D74 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni1D75 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 526,75 3.0 degrees; 196,1024 1.1 degrees
 uni1D75 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 592,100 2.2 degrees
@@ -356,13 +353,10 @@ uni1E9E zone 2                   # 2026-10-16 known at the start (quality checks
 uni2032 width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
 uni2042 kink 6                   # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 414,578 3.2 degrees; 414,862 3.2 degree
 uni2071 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
-uni20A1 kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 756,-11 5.2 degrees; 767,51 4.7 degrees; 1079,1374 4.5 degrees
-uni20A1 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 451,125 2.6 degrees
 uni20BA kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1041,715 7.0 degrees; 1293,715 7.0 degrees
 uni20BE kink 2                   # 2026-10-16 known at the start (quality checks added): 1237,754 6.3 degrees; 1444,754 6.3 degrees
 uni20BF kink 1                   # Bold derived letters made of their Bold base (make_bold.py follow_bases): 1159,1369 4.3 degrees
 uni2113 extreme 3                # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 553,555 20 units past; 465,152 16 units past; 608,773 9 units past
-uni2113 kink 3                   # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 779,1452 3.5 degrees; 630,1025 3.4 degrees; 618,603 5.1 degrees
 uni2113 smooth 1                 # joins the rounding to whole units broke kept smooth (make_bold.round_smoothly); bracket ends run on along their strokes: 677,55 2.1 degrees
 uni2113 stroke 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 235 against 261 (0.90, lighter)
 uni2113 zone 1                   # 2026-10-16 known at the start (quality checks added): top +4 from 1496
@@ -374,10 +368,11 @@ uni2205 smooth 1                 # Bold derived letters made of their Bold base 
 uni22EE width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 uni25B8 width 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1.20 of the Regular's, usually 1.08
 uni25C2 width 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1.20 of the Regular's, usually 1.08
+uni2C62 kink 1                   # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1173,251 3.9 degrees
 uni2C64 kink 1                   # 2026-10-16 known at the start (quality checks added): 284,59 5.7 degrees
 uni2C64 smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 718,-167 2.6 degrees
-uni2C65 kink 4                   # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 226,838 3.1 degrees; 199,395 3.8 degrees; 523,93 7.0 degrees; 441,63 3.8 degrees
-uni2C65 smooth 3                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 702,25 2.6 degrees; 942,52 2.5 degrees; 342,260 2.2 degrees
+uni2C65 kink 1                   # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 447,63 2.1 degrees
+uni2C65 smooth 2                 # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 417,-12 2.1 degrees; 568,791 2.9 degrees
 uni2C65.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 670,986 1.1 degrees
 uni2C66 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 524,75 2.1 degrees
 uni2C66.sc stem 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: at 261 292 against t.sc's 273

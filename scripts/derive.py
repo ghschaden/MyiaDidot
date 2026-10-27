@@ -1471,7 +1471,7 @@ def stroke_gauge(glyph):
     return across
 
 
-def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
+def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False):
     """Thicken the thick strokes by ax across, in whatever direction they
     run, and every edge by ay vertically (the hairlines' gain): the contrast
     of a Didot bold, where emboldening every vertical by ax made the
@@ -1491,8 +1491,11 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
     convex one no further than twice their move (no spike), a crotch (N's
     diagonal meeting its hairline stem) up to three times their move and
     0.8 of the shorter edge (by the bisector it moved into the diagonal).
-    Overlaps are removed first: the weight is the union's."""
+    Overlaps are removed first: the weight is the union's. runs_on: a short
+    edge also takes the weight of a curve it runs on into (RUNS_ON).
+    """
     SHORT = 60
+    RUNS_ON = 10  # degrees: a short edge this close to a curve's direction is part of its stroke
     glyph = merged_glyph(rec)  # overlaps removed: Θ's bar, Ø's slash weigh as the union does
     across = stroke_gauge(glyph)
 
@@ -1533,9 +1536,29 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
                 k = k_of(across((P[i].x + P[j].x) / 2, (P[i].y + P[j].y) / 2, -sign * nx, -sign * ny))
             edges.append([i, j, straight, ln, k])
         m = len(edges)
+        def curve_end(a, b, q, P=P, sign=sign):
+            """k of a curve at its node q, running from point a to b there"""
+            t = unit(P[b].x - P[a].x, P[b].y - P[a].y)
+            if not t:
+                return None
+            return k_of(across(P[q].x, P[q].y, -sign * t[1], sign * t[0]))
+
         for e_i, e in enumerate(edges):
             if e[2] and e[3] < SHORT:  # a short straight edge: the heavier beside it
-                ks = [v for v in (edges[(e_i - 1) % m][4], edges[(e_i + 1) % m][4]) if v is not None]
+                # or the curve it runs on into, beside a long straight edge:
+                # ƒ's stem edge begins under the bar with a short line,
+                # weighed as the hairline bar alone it notched the stem
+                prev, nxt = edges[(e_i - 1) % m], edges[(e_i + 1) % m]
+                ks = [v for v in (prev[4], nxt[4]) if v is not None]
+                d = unit(P[e[1]].x - P[e[0]].x, P[e[1]].y - P[e[0]].y)
+                for side, other, (a, b, q) in ((prev, nxt, ((e[0] - 1) % len(P), e[0], e[0])),
+                                               (nxt, prev, (e[1], (e[1] + 1) % len(P), e[1]))):
+                    c = unit(P[b].x - P[a].x, P[b].y - P[a].y)
+                    if (runs_on and not side[2] and other[2] and other[3] >= SHORT and c and d
+                            and c[0] * d[0] + c[1] * d[1] > math.cos(math.radians(RUNS_ON))):
+                        k = curve_end(a, b, q)
+                        if k is not None:
+                            ks.append(k)
                 if ks:
                     e[4] = max(ks)
         for e in edges:
@@ -1660,14 +1683,18 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160):
     return out
 
 
-def embolden_simple(rec, ax, ay, weighted=False, thin=60, thick=160):
+SMOOTH_TURN = 3  # degrees: a node whose handles turn less runs on smoothly (checks.py's smooth)
+
+
+def embolden_simple(rec, ax, ay, weighted=False, thin=60, thick=160, keep_smooth=False):
     """The earlier emboldening: each point (handles too) moved along the
     normal of the chord between its neighbours. Rounder at corners (it does
     not mitre), but smooth nodes come out a little broken; make_bold.py
     falls back on it where embolden() would close a gap to a slit.
     weighted: ax scaled at each point by the weight of its stroke (none
     below thin, all above thick: embolden_by_weight's contrast), overlaps
-    removed first."""
+    removed first. keep_smooth: a smooth node's handles move with it.
+    """
     glyph = ufoLib2.objects.Glyph()
     if weighted:
         glyph = merged_glyph(rec)
@@ -1696,6 +1723,22 @@ def embolden_simple(rec, ax, ay, weighted=False, thin=60, thick=160):
             if weighted:
                 k = min(1.0, max(0.0, (across(*pts[i], -sign * nx, -sign * ny) - thin) / (thick - thin)))
             moved.append((pts[i][0] + sign * nx * ax * k / 2, pts[i][1] + sign * ny * ay / 2))
+        # keep_smooth: a smooth node's handles move with it (handles in line,
+        # SMOOTH_TURN; the merge drops the flags): each weighed on its own,
+        # off the stroke, they moved less than the node and broke the join
+        # (φ's bowl pointed at its extremes)
+        P = contour.points
+        for i, p in enumerate(P):
+            b, f = (i - 1) % n, (i + 1) % n
+            if not keep_smooth or not p.type or P[b].type or P[f].type:
+                continue
+            t_in = math.atan2(pts[i][1] - pts[b][1], pts[i][0] - pts[b][0])
+            t_out = math.atan2(pts[f][1] - pts[i][1], pts[f][0] - pts[i][0])
+            if abs(math.degrees((t_out - t_in + math.pi) % (2 * math.pi) - math.pi)) > SMOOTH_TURN:
+                continue
+            dx, dy = moved[i][0] - pts[i][0], moved[i][1] - pts[i][1]
+            for h in (b, f):
+                moved[h] = (pts[h][0] + dx, pts[h][1] + dy)
         for p, (x, y) in zip(contour.points, moved, strict=True):
             p.x, p.y = x, y
     return glyph

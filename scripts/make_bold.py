@@ -310,7 +310,11 @@ ITALIC_BOLD_BY_WEIGHT = {
 }
 # and the other way: letters emboldened the rounder way though no slit is
 # found, their parts a hair too far apart for it
-BOLD_ROUNDER = {}
+BOLD_ROUNDER = {
+    # kept as chosen before the rounder way kept smooth nodes smooth (2026-10-27)
+    "uni02C0": "ˀ: kept the rounder way (accepted)",
+    "psi": "ψ: by weight the right arm's terminal overshoots its curve, a shoulder under it",
+}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
@@ -318,6 +322,8 @@ ITALIC_BOLD_ROUNDER = {
 # The reviewed body choices above must retain their previous rounder
 # optical-spacing reference; body weighting and spacing are independent.
 ITALIC_REFERENCE_ROUNDER = {"uni024D", "uni027A", "uni027B", "uni027E"}
+# and rounder bodies spaced on the reference by weight they had before
+BOLD_REFERENCE_BY_WEIGHT = {"psi"}
 
 # recipes that scale or reshape their one source outline, adding no piece:
 # no junction to thicken, emboldened whole as any letter is
@@ -1584,7 +1590,10 @@ def main():
                 sc = small_scale if g.name in small else 1.0
 
                 def make(w, sc=sc):
-                    return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc), AY))
+                    # short edges running on into a curve weighed as it in
+                    # the Bold (ƒ); the Bold Italic's not yet reviewed so
+                    return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc,
+                                                            runs_on=not italic), AY))
 
                 bold = make(wide)
                 if g.name in rounder_ones or (g.name not in by_weight and slit(bold, regular[g.name], regular)):
@@ -1593,7 +1602,9 @@ def main():
                     # where it has fewer faults (a thin arch springing from a
                     # thick stem, the italic n's, is a narrow crotch either way)
                     def rounder(w, sc=sc):
-                        return rezone(embolden_simple(w, AX * sc, AY, weighted=True, thin=THIN * sc,
+                        # smooth nodes kept smooth in the Bold (φ); the Bold
+                        # Italic's rounder letters not yet reviewed so
+                        return rezone(embolden_simple(w, AX * sc, AY, weighted=True, keep_smooth=not italic, thin=THIN * sc,
                                                       thick=THICK * sc), AY)
 
                     alt = rounder(wide)
@@ -1611,7 +1622,8 @@ def main():
                 # on it kept (N's hairline sides would gain AX / 2 of white,
                 # the italic H's shorter serifs 23 units a side)
                 ref = bridge(rezone(embolden(wide, AX, AY), AY))
-                if (g.name in rounder_ones or (italic and g.name in ITALIC_REFERENCE_ROUNDER)
+                if ((g.name in rounder_ones and (italic or g.name not in BOLD_REFERENCE_BY_WEIGHT))
+                        or (italic and g.name in ITALIC_REFERENCE_ROUNDER)
                         or (g.name not in by_weight and slit(ref, regular[g.name], regular))):
                     ref = rezone(embolden_simple(wide, AX, AY), AY)
                 # judged optically (the white beside the ink across the band,

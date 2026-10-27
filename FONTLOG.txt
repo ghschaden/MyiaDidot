@@ -26,6 +26,29 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Bold ƒ ψ φ: notch, shoulder and pointed curves gone
+
+    * φ (emboldened the rounder way, embolden_simple) had its curves
+      pointed at the extremes: each handle moved by the weight measured
+      where it lies, off the stroke, less than its node. The rounder way
+      now moves a smooth node's handles with it (keep_smooth). About 30
+      Bold letters taken that way come out smoother (ɺ ɻ ɹ ﬀb 𝔓 ₡ ⱥ j.sc
+      ...); their optical fit moves advances a few units (𝔓 +15, ⱥ +11).
+      ˀ (accepted) is kept the rounder way, as the changed fault counts
+      would have switched it.
+    * ƒ: its stem edge begins under the bar with a short straight edge,
+      weighed as the hairline bar, so it barely moved and notched the
+      stem. By weight, a short edge running on into a curve (within 10
+      degrees) beside a long straight edge now takes the curve's weight
+      too (runs_on): ƒ, and ₹ Ю ǥ ю.sc old-style 5 by a few units².
+    * ψ: by weight the right arm's terminal handle overshot its curve (a
+      shoulder under it); ψ is now emboldened the rounder way, spaced on
+      its reference by weight as before (BOLD_REFERENCE_BY_WEIGHT; -7).
+    * Bold only: in the Bold Italic both changes need review first
+      (FONT-DESIGN.md). Shaping: advances and the marks on them only, no
+      glyph-sequence change. Quality Bold: 26 findings gone, 21 new or
+      recounted (ψ two extremes of 8-9 units, ⱡ a 3.9 degree kink).
+
 2026-10-27 Development: draft review sheets list what awaits acceptance
 
     * scripts/smallcap_review.py leaves out drafts already accepted

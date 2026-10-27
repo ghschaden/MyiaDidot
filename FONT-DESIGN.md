@@ -13,6 +13,11 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 
 ## Construction and optical quality
 
+- Bold Italic: try the Bold's two emboldening repairs of 2026-10-27
+  (make_bold: keep_smooth for the rounder way, runs_on by weight). Tried
+  there they smooth § 3 ₵ ø.sc Θ ẞ but add side space (3 +21, § +13),
+  notch ẞ, move ɽ's advance and ƙ.sc's CFF top, and runs_on kinks ð ɨ ђ
+  ћ љ ˁ: each needs review before switching them on.
 - Review derived letters still emboldened whole in
   `tests/data/emboldened-whole-*.txt`. Hooks, attachments and curls may need
   recipes drawn at the final weight when rederivation strays or misses.
