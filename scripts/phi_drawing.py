@@ -1,4 +1,5 @@
-"""Approved Bold Italic ɸ: wider white counters and smooth inner returns."""
+"""Approved Bold Italic ɸ: wider white counters; its inner returns as the
+refitted o draws them (make_bold.oval), no longer replaced here."""
 
 from copy import deepcopy
 from math import radians, tan
@@ -8,7 +9,7 @@ from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.roundingPen import RoundingPen
 from fontTools.pens.transformPen import TransformPen
 from italic_geometry import XH, shear
-from ufoLib2.objects import Glyph, Point
+from ufoLib2.objects import Glyph
 from upright_aleph import add_extrema, fair_joins
 
 NAME = "uni0278"
@@ -41,15 +42,6 @@ def finish(font):
     outline = derive.path_op(bowl, derive.rect_path(cx-half, -560, cx+half, 1400), "UNION")
     candidate = Glyph()
     outline.draw(candidate.getPen())
-    # These counter returns replace the inherited inflected o segments.
-    # Sort by x so pathops' contour order is not significant.
-    counters = sorted(candidate.contours[1:], key=lambda c: min(p.x for p in c.points))
-    left, right = counters
-    lp, rp = list(left.points), list(right.points)
-    if len(lp) != 13 or len(rp) != 13:
-        raise ValueError("ɸ base changed: review the approved counter returns")
-    left.points = lp[:4] + [Point(360, 689), Point(380, 790), lp[9]] + lp[10:]
-    right.points = rp[:7] + [Point(636, 174), Point(614, 70), rp[12]]
     fitted = Glyph()
     candidate.draw(TransformPen(RoundingPen(fitted.getPen()), (1, 0, slant, 1, -slant*XH/2, 0)))
     add_extrema(fitted)

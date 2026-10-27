@@ -303,7 +303,7 @@ uni0272.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobb
 uni0273 smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 1163,-205 2.5 degrees
 uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni0278 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 742,573 2.8 degrees; 742,311 2.8 degrees
-uni0278 smooth 2                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 163,162 3.1 degrees; 163,723 2.7 degrees
+uni0278 smooth 1                 # Bold Italic keep_bends; o/O/zero refitted as ovals: 156,171 2.1 degrees
 uni027B extreme 1                # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 729,-246 11 units past
 uni027D smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 495,-205 2.5 degrees
 uni027D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 601,764 23 degrees; 605,795 19 degrees; 513,-291 6 degrees; 510,-259 17 degrees
@@ -499,8 +499,7 @@ uni2135 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni2135.sc stroke 1              # accepted 2026-10-25 upright italic aleph and retained smaller alternate; optical weight approved in height proof; sc 358 against 292 (1.22)
 uni2135.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 1: 975,590 133 degrees; 980,-9 10 degrees; 980,3 10 degrees; 236,136 15 degrees
 uni2136 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 174 against 261 (0.67, lighter)
-uni2205 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 742,1367 4.5 degrees; 396,623 5.4 degrees
-uni2205 smooth 1                 # Bold derived letters made of their Bold base (make_bold.py follow_bases): 763,1339 3.1 degrees
+uni2205 kink 1                   # Bold Italic keep_bends; o/O/zero refitted as ovals: 396,624 5.4 degrees
 uni22EE width 1                  # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 uni25B8 width 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1.20 of the Regular's, usually 1.08
 uni25C2 width 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1.20 of the Regular's, usually 1.08

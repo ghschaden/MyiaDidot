@@ -48,10 +48,12 @@ Moved from CLAUDE.md (its ground rules apply).
   weighted `embolden_simple` is taken if it has fewer faults. In the Bold
   only (the Bold Italic's not yet reviewed): that way keeps smooth nodes
   smooth (keep_smooth), and by weight a short edge running on into a curve
-  takes the curve's weight (runs_on: ƒ's stem under its bar), and a
+  takes the curve's weight (runs_on: ƒ's stem under its bar). In both: a
   fitted curve that bends both ways where its source bent one way has
   its handles moved toward its nodes' as far as takes that out
-  (keep_bends; BOLD_FIT_AS_IS opts a letter out).
+  (keep_bends; BOLD_FIT_AS_IS / ITALIC_BOLD_FIT_AS_IS opt a letter out).
+  The closed rounds o O 0 (OVALS) are then refitted from the lighter
+  style's curves to the emboldened box and ink area (`oval`).
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make

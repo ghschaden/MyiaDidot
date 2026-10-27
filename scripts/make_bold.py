@@ -36,6 +36,8 @@ from pathlib import Path
 
 import pathops
 import ufoLib2
+from fontTools.pens.areaPen import AreaPen
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
@@ -372,6 +374,10 @@ BOLD_BY_WEIGHT = {
 # letters whose fitted curves keep their bends as they came (keep_bends
 # off): there the guard thins a beak to a sliver
 BOLD_FIT_AS_IS = {"uni0190": "Ɛ: the beak at its lower arm's end thinned to a sliver"}
+# the Bold Italic's bends kept too (2026-10-27): fewer new inflections
+ITALIC_BOLD_FIT_AS_IS = {
+    "uni2135": "ℵ: aleph.py's repairs are made on the outline as it came",
+}
 ITALIC_BOLD_BY_WEIGHT = {
     "uni044B": "ы: the rounder way light, its bowl dented where it meets the stem",
     "uni044C": "ь: the rounder way light (0.82 of its kind), its hook a hairline",
@@ -395,6 +401,12 @@ BOLD_ROUNDER = {
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
+    # kept the rounder way when by weight came to keep its bends (2026-10-27):
+    # by weight heavier and wider (§ +21, 1 +63)
+    "section": "§: kept the rounder way",
+    "oneoldstyle": "oldstyle 1: kept the rounder way",
+    "uni02B0": "ʰ: kept the rounder way",
+    "uni20B5": "₵: kept the rounder way",
 }
 # The reviewed body choices above must retain their previous rounder
 # optical-spacing reference; body weighting and spacing are independent.
@@ -543,6 +555,80 @@ ITALIC_BOLD_KERNING = {
 # the horn on u a little left: where the Regular's sits, the Bold's heavier
 # foot leaves a ledge beside the stem (glyph_lint)
 ANCHOR_NUDGE = {("u", "Horn"): -10}
+# closed rounds, outer oval and counter: emboldened by the weight of the
+# stroke at each node, the counter's shoulders come out boxy on one diagonal
+# and flat on the other (the Bold Italic o, an egg); refitted from the
+# lighter style's own curves (oval)
+OVALS = {"o", "O", "zero"}
+
+
+def oval(wide, bold):
+    """bold (a two-contour round) redrawn with wide's curves: each contour of
+    the lighter round fitted to the box of the emboldened one, then its
+    handles lengthened or shortened alike (smooth nodes stay smooth) until
+    it holds the same area, so the ink and its weight stay as emboldened."""
+    def contours(path):
+        rec, out = RecordingPen(), []
+        (path.replay if hasattr(path, "replay") else path.draw)(rec)
+        for op, pts in rec.value:
+            if op == "moveTo":
+                out.append([])
+            out[-1].append((op, pts))
+        return out
+
+    def area(c):
+        pen = AreaPen()
+        for op, pts in c:
+            getattr(pen, op)(*pts)
+        return pen.value
+
+    def bounds(c):
+        pen = BoundsPen(None)
+        for op, pts in c:
+            getattr(pen, op)(*pts)
+        return pen.bounds
+
+    def tension(c, k):
+        """each curve's handles k times as long, from the nodes they leave"""
+        out, cur = [], None
+        for op, pts in c:
+            if op == "curveTo":
+                (h1, h2, p) = pts
+                h1 = (cur[0] + k * (h1[0] - cur[0]), cur[1] + k * (h1[1] - cur[1]))
+                h2 = (p[0] + k * (h2[0] - p[0]), p[1] + k * (h2[1] - p[1]))
+                pts = (h1, h2, p)
+            out.append((op, pts))
+            if pts:
+                cur = pts[-1]
+        return out
+
+    def fit(c, box):
+        (x0, y0, x1, y1), (u0, v0, u1, v1) = bounds(c), box
+        sx, sy = (u1 - u0) / (x1 - x0), (v1 - v0) / (y1 - y0)
+        return [(op, tuple((u0 + (x - x0) * sx, v0 + (y - y0) * sy) for x, y in pts)) for op, pts in c]
+
+    old, new = contours(wide), contours(bold)
+    if len(old) != 2 or len(new) != 2 or any(op not in ("moveTo", "curveTo", "lineTo", "closePath")
+                                             for c in old for op, _ in c):
+        raise ValueError("oval: two contours each, drawn")
+    old.sort(key=lambda c: abs(area(c)))
+    new.sort(key=lambda c: abs(area(c)))
+    out = RecordingPen()
+    for src, dst in zip(old, new):
+        box, target = bounds(dst), abs(area(dst))
+        c = fit(src, box)
+        for _ in range(4):  # the handles move the box a little: fitted again
+            lo, hi = 0.5, 1.5
+            for _ in range(40):
+                k = (lo + hi) / 2
+                if abs(area(tension(c, k))) < target:
+                    lo = k
+                else:
+                    hi = k
+            c = fit(tension(c, (lo + hi) / 2), box)
+        for op, pts in c:
+            getattr(out, op)(*pts)
+    return out
 
 
 def bridge(glyph, maxgap=24, overlap=8):
@@ -1631,6 +1717,7 @@ def main():
     nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
     by_weight = ITALIC_BOLD_BY_WEIGHT if italic else BOLD_BY_WEIGHT
     rounder_ones = ITALIC_BOLD_ROUNDER if italic else BOLD_ROUNDER
+    fit_as_is = ITALIC_BOLD_FIT_AS_IS if italic else BOLD_FIT_AS_IS
     up, down = (1, 0, -SLANT, 1, 0, 0), (1, 0, SLANT, 1, 0, 0)  # deslant, slant again
     marks = {g.name for g in regular if mark_like(g)}
     # the paragraphos ⸏ ⸐ ⸑, rules under a line: a mark's weight and
@@ -1706,7 +1793,7 @@ def main():
                 # a letter or figure made small, as at its scale (ᵃ, ⁰, ª)
                 sc = small_scale if g.name in small else 1.0
 
-                def make(w, sc=sc, bends=not italic and g.name not in BOLD_FIT_AS_IS):
+                def make(w, sc=sc, bends=g.name not in fit_as_is):
                     # short edges running on into a curve weighed as it in
                     # the Bold (ƒ); the Bold Italic's not yet reviewed so
                     return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc,
@@ -1733,6 +1820,8 @@ def main():
                 bold, n = part_serifs(wide, bold, make)
                 if n:
                     parted.append(g.name)
+                if g.name in OVALS:
+                    bold = oval(wide, bold)
                 # each side's ink grew by the weight of the stroke there, not
                 # as the earlier emboldening grew it (every side AX / 2, its
                 # convex corners up to twice that: a serif's tip): the side

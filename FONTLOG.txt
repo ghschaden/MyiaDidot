@@ -26,6 +26,35 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Bold, Bold Italic: o O 0 refitted as ovals
+
+    * Emboldened by the weight of the stroke at each node, the Bold
+      Italic o's counter came out boxy on one diagonal and flat on the
+      other (upright: off an ellipse by 10.8 units rms, the Italic's 5.5),
+      an egg. make_bold.oval refits o, O and zero (OVALS) in both bold
+      styles from the lighter style's own curves: each contour fitted to
+      the emboldened one's box, its handles then lengthened alike until
+      it holds the same area (ink within 0.2 %). The Bold Italic o's
+      counter now follows the Italic's (7.6 rms); the Bold's barely moves.
+      Advances: Bold O and its accented and Greek/Cyrillic forms -2, Bold
+      Italic o -1, oldstyle figures +-2; kerning around them follows.
+    * Bold Italic ɸ is built from the final o as before, without the
+      counter returns phi_drawing put in for o's inflected segments
+      (there are none now); accepted anew, with Bold ˀ (zero's stroke
+      scales it: 3 units²) and Bold Italic Ɽ (R's -1).
+
+2026-10-27 Bold Italic: emboldened curves keep their source's bends
+
+    * keep_bends, the Bold's since this morning, in the Bold Italic too:
+      inflecting cubics 2746 -> 2344, fewer in 265 glyphs, more in 17
+      (ɾ ⁿ ɻ, the f ligatures). γ Ɣ ˠ Ɤ change most (their thick stroke
+      lighter, γ 9 units narrower, Υγ kerned -21). § ₵ ʰ and the oldstyle
+      1 would switch to emboldening by weight (heavier, 1 +63 wide): kept
+      the rounder way (ITALIC_BOLD_ROUNDER); ℵ keeps its fit
+      (ITALIC_BOLD_FIT_AS_IS: aleph.py repairs that outline). Quality
+      findings 37 new (small kinks: ϡ.sc ђ.sc ʉ ʀ.sc; ɻ's tail), 58 gone;
+      ʸ's notch fixed. keep_smooth stays off in the Bold Italic.
+
 2026-10-27 Hook balls as large as the drawn ones (Italic, Bold Italic)
 
     * The Italic's curls over the top (Ƈ Ɠ ƈ Ƙ Ʋ Ƴ ƴ ʋ ⱳ ƥ Ɓ Ɗ Ƥ Ɦ ʄ

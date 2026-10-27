@@ -57,8 +57,9 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   the first stem); ʷ's left stroke turns at its join; г's inner curves
   flattened upright (the handle fit, as ψ's); Ɯ's join into its second
   stem not smooth below.
-- Bold Italic: try the Bold's two emboldening repairs of 2026-10-27
-  (make_bold: keep_smooth for the rounder way, runs_on by weight). Tried
+- Bold Italic: keep_bends is on (2026-10-27); still to try the Bold's two
+  other repairs (make_bold: keep_smooth for the rounder way, runs_on by
+  weight; keep_smooth adds inflections there, Codex's study). Tried
   there they smooth § 3 ₵ ø.sc Θ ẞ but add side space (3 +21, § +13),
   notch ẞ, move ɽ's advance and ƙ.sc's CFF top, and runs_on kinks ð ɨ ђ
   ћ љ ˁ: each needs review before switching them on.
