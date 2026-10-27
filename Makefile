@@ -107,13 +107,17 @@ _proof: $(OTF) build/reference/TheanoDidot-Regular.otf
 	done
 	$(PY) scripts/smallcap_review.py sources/$(FAMILY)-Regular.ufo fonts/otf/$(FAMILY)-Regular.otf build/proofs/smallcaps-review.tex \
 	    --drafts build/proofs/drafts-review.tex
-	$(PY) scripts/smallcap_review.py sources/$(FAMILY)-Italic.ufo fonts/otf/$(FAMILY)-Italic.otf build/proofs/smallcaps-review-Italic.tex \
-	    --drafts build/proofs/drafts-review-Italic.tex
-	cd build/proofs && for t in charset charset-Italic charset-Bold charset-BoldItalic smallcaps-review drafts-review smallcaps-review-Italic drafts-review-Italic; do \
+	for s in Italic Bold BoldItalic; do \
+	    $(PY) scripts/smallcap_review.py sources/$(FAMILY)-$$s.ufo fonts/otf/$(FAMILY)-$$s.otf build/proofs/smallcaps-review-$$s.tex \
+	        --drafts build/proofs/drafts-review-$$s.tex || exit 1; \
+	done
+	cd build/proofs && for t in charset charset-Italic charset-Bold charset-BoldItalic smallcaps-review drafts-review \
+	    smallcaps-review-Italic drafts-review-Italic smallcaps-review-Bold drafts-review-Bold \
+	    smallcaps-review-BoldItalic drafts-review-BoldItalic; do \
 	    lualatex -halt-on-error -interaction=nonstopmode $$t.tex >/dev/null; done
 	cd proofs && for t in proof smallcaps samples textpages; do \
 	    lualatex -halt-on-error -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
-	@echo "proofs: build/proofs/{charset,charset-Italic,charset-Bold,charset-BoldItalic,proof,samples,textpages,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-Italic.pdf"
+	@echo "proofs: build/proofs/{charset,charset-Italic,charset-Bold,charset-BoldItalic,proof,samples,textpages,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-{Italic,Bold,BoldItalic}.pdf"
 
 proof-svg: $(OTF)
 	$(PY) scripts/proof_svg.py $(OTF) --out build/proofs/ci

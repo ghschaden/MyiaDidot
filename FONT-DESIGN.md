@@ -34,8 +34,10 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 - Accept, or send back, the drafts not yet accepted: `scripts/accepted.py
   UFO --drafts` (about 350 in each italic weight, ₸ ct st in the Romans).
   Acceptance is recorded with accepted.py, not by clearing draft flags
-  (docs/claude/quality.md); a review sheet of the list (`make proof`) is
-  the next step. Bold and Bold Italic old-style figures have no recorded
+  (docs/claude/quality.md). `make proof` writes the review sheets of
+  exactly those (drafts-review-STYLE.pdf, smallcaps-review-STYLE.pdf):
+  the next step is the person's pass through them. Bold and Bold Italic
+  old-style figures (not drafts, so not on the sheets) have no recorded
   acceptance; Regular old-style 3 and 5 changed after theirs.
 
 ## Spacing: revisit only if specimens warrant it

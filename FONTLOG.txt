@@ -26,6 +26,15 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Development: draft review sheets list what awaits acceptance
+
+    * scripts/smallcap_review.py leaves out drafts already accepted
+      (scripts/accepted.py) and counts both draft flags (Italic ɬ.sc ꞌ.sc
+      were shown as built); the unencoded drafts (c_t s_t by dlig, U.horn
+      u.sc.horn in Ư ư) have a section of their own. make proof writes
+      the sheets for all four styles: their cells match accepted.py
+      --drafts exactly (Regular 3, Italic 351, Bold 3, Bold Italic 357).
+
 2026-10-27 Bold Italic rederived letters split at their extremes
 
     * make_bold.rederive slanted its rebuilt letters back without the

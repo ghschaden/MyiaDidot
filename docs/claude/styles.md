@@ -89,5 +89,6 @@ Moved from CLAUDE.md (its ground rules apply).
   `org.myiadidot.italicSource` says where each glyph came from; a rerun
   keeps "drawn" glyphs (set it after hand-editing one) and reviewed drafts
   (draft key cleared). Then `make normalize`. Review sheets:
-  `drafts-review-Italic.pdf`, `smallcaps-review-Italic.pdf`. A style's own
+  `drafts-review-Italic.pdf`, `smallcaps-review-Italic.pdf` (and
+  `-BoldItalic`), listing the drafts not yet accepted. A style's own
   fontbakery allowances: `tests/data/fontbakery-allow-Italic.txt`.

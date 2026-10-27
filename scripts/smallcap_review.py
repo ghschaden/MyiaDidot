@@ -2,11 +2,12 @@
 
     python scripts/smallcap_review.py UFO FONT OUT.tex
 
-One cell per small cap, drafts first (flagged DRAFT in red, built ones in
-grey): the capital, the small cap and the lowercase side by side at large
+One cell per small cap, drafts not yet accepted first (flagged DRAFT in
+red; built or accepted ones in grey, scripts/accepted.py): the capital, the small cap and the lowercase side by side at large
 size over guide lines (baseline, x-height, small-cap height, cap height),
 then the small cap in context. The font is FONT (a build of UFO); the small
 caps are reached through smcp/c2sc, since they have no code points.
+--drafts writes the sheet of the other drafted letters not yet accepted.
 """
 
 import argparse
@@ -19,7 +20,9 @@ import ufoLib2
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import smallcaps
-from smallcaps import CAP_HEIGHT, DEFAULT_HEIGHT, DRAFT_KEY, HEIGHT_KEY, X_HEIGHT, smcp_map
+from accepted import DRAFT_KEYS
+from accepted import KEY as ACCEPTED_KEY
+from smallcaps import CAP_HEIGHT, DEFAULT_HEIGHT, HEIGHT_KEY, X_HEIGHT, smcp_map
 
 UPM = 2048
 SIZE = 44  # pt, the large specimen
@@ -89,6 +92,20 @@ GROUPS = [
 # a localized form's suffix: fontspec's name for its language
 LOCL_LANGUAGES = {"loclSRB": "Serbian", "loclBGR": "Bulgarian"}
 
+# drafts without a code point of their own, reached through a feature or a
+# composite: (the glyph shown, in context)
+UNENCODED = {
+    "c_t": (r"{\addfontfeatures{Ligatures=Rare}ct}", r"{\addfontfeatures{Ligatures=Rare}acta}"),
+    "s_t": (r"{\addfontfeatures{Ligatures=Rare}st}", r"{\addfontfeatures{Ligatures=Rare}esta}"),
+    "U.horn": ("Ư", "Ứ Ừ Ự"),
+    "u.sc.horn": (r"{\smallcapfont ư}", r"{\smallcapfont ứ ừ ự}"),
+}
+
+
+def to_review(g, keys=("org.myiadidot.draft",)):
+    """a draft the person has not accepted yet"""
+    return any(g.lib.get(k) for k in keys) and ACCEPTED_KEY not in g.lib
+
 
 def draft_groups(ufo):
     """Glyph name -> (group, source character) for the drafts of derive.py and ẞ."""
@@ -130,14 +147,16 @@ def draft_groups(ufo):
 
 def drafts_sheet(ufo, preamble):
     groups = draft_groups(ufo)
-    drafts = [g for g in ufo if g.lib.get("org.myiadidot.draft") and g.unicode]
+    drafts = [g for g in ufo if to_review(g) and g.unicode]
     # localized forms (unencoded, reached through locl)
-    local = [g for g in ufo if g.lib.get("org.myiadidot.draft") and ".locl" in g.name]
+    local = [g for g in ufo if to_review(g) and ".locl" in g.name]
+    other = [g for g in ufo if to_review(g) and g.name in UNENCODED]
     cmap = {u for g in ufo for u in g.unicodes}
     out = [preamble, r"{\Large Myia Didot new letters — review}\par\smallskip",
-           r"{\labelfont %d drafted letters. Each cell: source (grey), new letter; then in "
-           r"context, and its case pair with small caps where the font has one.}"
-           r"\par\bigskip" % (len(drafts) + len(local))]
+           r"{\labelfont %d drafted letters not yet accepted. Each cell: source (grey), new "
+           r"letter; then in context, and its case pair with small caps where the font has "
+           r"one. Accept by name: scripts/accepted.py UFO GLYPH ... --date D --review DOC.}"
+           r"\par\bigskip" % (len(drafts) + len(local) + len(other))]
     for key, title, note in GROUPS:
         members = [g for g in drafts if groups.get(g.name, ("drawn", ""))[0] == key]
         if not members:
@@ -175,8 +194,15 @@ def drafts_sheet(ufo, preamble):
             cells.append(r"\odraft{%s %s}{%s}{%s}{%s}" % (g.name, ch, ch, shown, context))
         for i in range(0, len(cells), 4):
             out.append(r"\begin{cells}" + " & ".join(cells[i:i + 4]) + r"\end{cells}")
+    if other:
+        out.append(r"\par\bigskip{\large\bfseries Without a code point}\par{\small Ligatures "
+                   r"(dlig) and parts of composites, shown as they are reached.}\par\medskip")
+        cells = [r"\odraft{%s}{}{%s}{%s}" % (g.name.replace("_", r"\_"), *UNENCODED[g.name])
+                 for g in other]
+        for i in range(0, len(cells), 4):
+            out.append(r"\begin{cells}" + " & ".join(cells[i:i + 4]) + r"\end{cells}")
     out.append(r"\end{document}")
-    return "\n".join(out) + "\n", len(drafts) + len(local)
+    return "\n".join(out) + "\n", len(drafts) + len(local) + len(other)
 
 
 def tex(ch):
@@ -205,8 +231,8 @@ def main():
         rep_up.setdefault(sc, chr(ufo[name].unicode))
 
     scs = sorted((g for g in ufo if g.name.endswith(".sc")),
-                 key=lambda g: (not g.lib.get(DRAFT_KEY), g.name))
-    n_drafts = sum(1 for g in scs if g.lib.get(DRAFT_KEY))
+                 key=lambda g: (not to_review(g, DRAFT_KEYS), g.name))
+    n_drafts = sum(1 for g in scs if to_review(g, DRAFT_KEYS))
 
     guides = "\n".join(
         r"\rlap{\textcolor{%s}{\rule[%.4fpt]{\guidew}{0.25pt}}}%%" % (color, units / UPM * SIZE)
@@ -231,11 +257,11 @@ def main():
             row.clear()
 
     for g in scs:
-        is_draft = bool(g.lib.get(DRAFT_KEY))
+        is_draft = to_review(g, DRAFT_KEYS)
         if section != is_draft:
             flush()
             section = is_draft
-            title = "Drafts (FontForge, to review)" if is_draft else "Built from components"
+            title = "Drafts (FontForge or derived, to review)" if is_draft else "Built from components or accepted"
             out.append(r"\par\bigskip{\large\bfseries %s}\par\medskip" % title)
         lo = rep_lo.get(g.name)
         up = rep_up.get(g.name)
@@ -246,7 +272,8 @@ def main():
         if up is None:
             # ĸ, ȷ: lowercase-only letters; ch.upper() would return the letter itself
             up = lo.upper() if lo.upper() != lo else None
-        status, color = ("DRAFT", "red") if is_draft else ("built", "black!45")
+        status, color = (("DRAFT", "red") if is_draft else ("accepted", "black!45") if ACCEPTED_KEY in g.lib
+                         else ("built", "black!45"))
         label = g.name.replace("_", r"\_")
         cap = tex(up) if up else r"\textcolor{black!30}{—}"
         cell = r"\cell{%s}{%s}{%s}{%s}{%s}" % (label, status, color, cap, tex(lo))
