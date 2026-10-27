@@ -182,3 +182,14 @@ position, tangent, local thickness and permitted blending region. Entry,
 interior and exit variants should be explicit. It should preserve outside ink
 and counter clearance and report every dependent construction. This work is
 more useful for production than continuing to reduce the vocabulary count.
+
+The [attachment audit](shape-ports.md) now measures original-curve crossings,
+ink intervals and edge tangents for all 132 connected study regions across the
+four styles. It records ambiguous crop contacts explicitly and compares cut
+constraints with each declared donor. This supplies the measurement layer;
+connected-part fitting and replacement remain disabled.
+
+A separate [seam-fitting experiment](shape-seams.md) now constructs n-to-h
+shoulders and H-to-I feet with explicit attachment constraints in all four
+styles. It produces isolated scratch candidates; the original consistency
+policy and production generators remain unchanged.
