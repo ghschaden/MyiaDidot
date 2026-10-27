@@ -13,6 +13,11 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 
 ## Construction and optical quality
 
+- Review the step candidates (checks.py `step`, 2026-10-27, in
+  `tests/data/quality-*.txt`): a short straight jog between edges running
+  on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar
+  ends, ₿); others look like faults (Ƈ Ɠ ƴ hook tops, ɾ, ʝ, Serbian г п,
+  Regular ɝ, ʋ).
 - Bold Italic, seen in print (2026-10-27): ʋ's curl starts narrower than
   the stem (a step each side; a curl is one thickness all round, a
   tapering one or a drawn recipe is needed, emboldened whole it runs into

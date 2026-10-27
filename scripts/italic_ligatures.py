@@ -115,7 +115,14 @@ def make(font):
             ca, cb = stems_at(up, base, cut)[i]
             la, lb = stems_at(up, "longs", cut)[0]
             dx = (ca + cb - la - lb) / 2
-            region = rect_path(a - 220, -BIG, b + 230, cut)
+            right = b + 230
+            if name == "longs_t":
+                # not into t's own crossbar arm (where f_t set t: lx - t's
+                # stem): the Bold Italic's wider f stem cut it to a stub
+                t_dx = stems_at(up, "fl", 1000)[-1][0] - stems_at(up, "t", 1000)[0][0]
+                arm = min(p.x for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900)
+                right = min(right, t_dx + arm)
+            region = rect_path(a - 220, -BIG, right, cut)
             path = path_op(path, region, "DIFFERENCE")
             stem = path_op(to_path(up, up["longs"]), rect_path(-BIG, cut, BIG, BIG), "DIFFERENCE")
             path = path_op(path, shift(stem, dx), "UNION")

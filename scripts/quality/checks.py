@@ -12,6 +12,11 @@ Each finding is (glyph, kind, where, detail). The kinds (criteria 7-11, 14,
            segments at least 20 units long: meant smooth, drawn broken
   extreme  a curve bulging more than 5 units past its end points without a
            point at the extreme
+  step     a short straight edge (STEP_LEN units at most) jogging aside
+           between two edges that run on in the same direction (within
+           STEP_SAME degrees), turning at least STEP_JOG from both: a piece
+           set beside its stroke (a tail narrower than its stem, a hook's
+           end cut standing out of the letter)
   grid     a point, anchor or component offset off whole units
   zone     a letter's flat top or bottom near an alignment zone (baseline,
            x-height, small-cap and cap height, ascender, descender) but
@@ -55,7 +60,7 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-KINDS = ("smooth", "kink", "extreme", "grid", "zone", "weight", "slant", "accent", "width",
+KINDS = ("smooth", "kink", "extreme", "step", "grid", "zone", "weight", "slant", "accent", "width",
          "base", "stem", "advance", "style", "stroke")
 DERIVED = ("base", "stem", "advance", "style")
 
@@ -73,8 +78,11 @@ def _bez(p, t):
     return tuple(u ** 3 * p[0][q] + 3 * u * u * t * p[1][q] + 3 * u * t * t * p[2][q] + t ** 3 * p[3][q] for q in (0, 1))
 
 
+STEP_LEN, STEP_SAME, STEP_JOG = 70, 35, 40  # units; degrees (step)
+
+
 def construction(glyph):
-    """smooth, kink, extreme, grid findings of one glyph's contours."""
+    """smooth, kink, extreme, step, grid findings of one glyph's contours."""
     out = []
     for c in glyph.contours:
         P = list(c.points)
@@ -94,6 +102,14 @@ def construction(glyph):
                 out.append(("smooth", f"{round(p.x)},{round(p.y)}", f"{t:.1f} degrees"))
             if not p.smooth and 1 < t < 8 and la >= 20 and lb >= 20:
                 out.append(("kink", f"{round(p.x)},{round(p.y)}", f"{t:.1f} degrees"))
+            # a step: the line from p to nxt, between the edge into p and
+            # the one out of nxt (each toward its nearest point)
+            after = P[(i + 2) % n]
+            if nxt.type == "line" and 0 < lb <= STEP_LEN and (after.x, after.y) != b:
+                d_in, d_step, d_out = _angle(a, h), _angle(h, b), _angle(b, (after.x, after.y))
+                if (_turn(d_in, d_out) <= STEP_SAME and _turn(d_in, d_step) >= STEP_JOG
+                        and _turn(d_step, d_out) >= STEP_JOG):
+                    out.append(("step", f"{round(p.x)},{round(p.y)}", f"{lb:.0f} units aside"))
         # curves: their extremes
         ons = [k for k, p in enumerate(P) if p.type]
         for k, i in enumerate(ons):
@@ -330,7 +346,7 @@ def widths(font, regular):
 def check(font, path=None, kinds=KINDS):
     """{glyph: [(kind, where, detail), ...]} for the glyphs with findings."""
     found = collections.defaultdict(list)
-    if {"smooth", "kink", "extreme", "grid"} & set(kinds):
+    if {"smooth", "kink", "extreme", "step", "grid"} & set(kinds):
         for g in font:
             for k, where, detail in construction(g):
                 if k in kinds:

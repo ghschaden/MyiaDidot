@@ -26,6 +26,22 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Development: quality check for steps on the outline
+
+    * scripts/quality/checks.py `step`: a straight edge of at most 70
+      units jogging aside (turning 40 degrees or more from both) between
+      two edges that run on the same way (within 35 degrees): a tail
+      narrower than its stem, a hook's end cut standing out of the
+      letter. It finds every step fixed today in the Bold Italic (ʈ ɳ ɚ
+      ɝ on the outlines before) and ʋ's, still open; glyph_lint's raster
+      steps missed them.
+    * The current findings are listed as candidates to review (Regular
+      11, Italic 16, Bold 14, Bold Italic 23 glyph entries; FONT-DESIGN.md).
+    * It found Bold Italic ſt's crossbar arm cut to a 36-unit stub: the
+      cut making ſt of ﬅ reached past the wider f stem into t's arm
+      (italic_ligatures.py). It now stops where t's arm begins: arms as
+      t's (Italic 131, Bold Italic 91).
+
 2026-10-27 ɚ ɝ hooks joined whole; Bold Italic ɳ ʈ tails without steps
 
     * The rhotic hook (˞) was placed by its leftmost point, 30 units into
