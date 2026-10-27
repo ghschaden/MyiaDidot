@@ -26,6 +26,36 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Hook balls as large as the drawn ones (Italic, Bold Italic)
+
+    * The Italic's curls over the top (Ƈ Ɠ ƈ Ƙ Ʋ Ƴ ƴ ʋ ⱳ ƥ Ɓ Ɗ Ƥ Ɦ ʄ
+      ⱳ.sc) take their case's ball (derive.ball_for): about 72 for 40-58
+      (the drawn c y 92-94: the curls' radii leave no room for more). Ⱳ
+      keeps its number (the approved Bold Italic connection, w_curl.py),
+      Ƭ 65 for 50 (the case's 86 nearly filled its curl, ƭ.sc's draft
+      closed to a slit); the tails off a stem keep half their stroke (the
+      person's decision).
+    * The Bold Italic took those curls at the Italic's radii with strokes
+      twice as heavy: the balls closed them into blobs. Its own recipes
+      now (ITALIC_BOLD_RECIPES): Ƈ Ɠ ƈ Ƙ Ʋ Ƴ ƴ ʋ ⱳ Ƭ, curls wider and
+      turned less; balls (45-58 before) 85-105 on the capitals (the drawn
+      J 143: more closed the counters), ƈ ⱳ 80, ƴ ʋ 124-126 (their curls
+      end upright, as thick as the stroke: the ball half of it, flush,
+      as the tails'). Ƙ Ʋ Ƴ ⱳ are no longer emboldened whole; Ƴ Ƈ refitted
+      to the references (derived_spacing.py: +176, +85 on the right).
+    * Its small caps ƈ.sc ƙ.sc ƥ.sc ƭ.sc ƴ.sc ɠ.sc ɦ.sc ʋ.sc, emboldened
+      from the Italic's drafts, are made again from its new capitals:
+      rederive now builds on the letters it has made again (also Bold and
+      Bold Italic ɧ on ɦ, Bold Italic ɗ on ɓ), and a small cap scaled from
+      its capital takes h.sc's stem where its main stroke is one (they
+      came out 255 for 304: the Bold Italic's small-cap stems stand
+      heavier against its rounds than its capitals' do). All are drafts,
+      for review.
+    * Italic and Bold Italic ƒ.sc: the Regular's recipe hangs ȷ's tail on
+      f.sc's stem; the Italic's ȷ is a swash, so scaled to the stem it ran
+      as a crescent far under the letter before (since 2026-10-16). Now
+      drafted from the Italic's Ƒ, as its other hooked small caps.
+
 2026-10-27 Hook balls as large as the drawn ones (Regular, Bold)
 
     * Measured across the glyphs, the curl recipes' terminal balls were

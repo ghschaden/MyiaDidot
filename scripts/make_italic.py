@@ -425,7 +425,10 @@ DHOOK_CUT = 1000
 # heavier than the small caps beside it (ⱳ.sc not: drafted from the
 # uncrossed Ⱳ, its narrow diagonals came out light, as w.sc's)
 SC_DRAFTED = {"ɑ.sc", "ɂ.sc", "ʒ.sc", "ʊ.sc", "ʋ.sc", "ꞵ.sc", "ƭ.sc", "ƙ.sc",
-              "ɲ.sc", "ʝ.sc", "ϗ.sc", "ƴ.sc", "ƈ.sc", "ɠ.sc", "ƥ.sc", "ɦ.sc"}
+              "ɲ.sc", "ʝ.sc", "ϗ.sc", "ƴ.sc", "ƈ.sc", "ɠ.sc", "ƥ.sc", "ɦ.sc",
+              # ƒ.sc: the Regular's hook recipe takes ȷ's tail, a swash here,
+              # scaled to f.sc's stem a crescent under the letter before
+              "ƒ.sc"}
 # the Italic's own letters already have the shape: Old Standard's g is ɡ,
 # its h turned is ɥ (the Regular's is u and a descender, its h's serifs
 # would turn)
@@ -455,6 +458,11 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 # broke there by 5-20 degrees (seen in print)
 ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190, 460), "ⱳ": (590, 700)}
 
+# the curls over the top end in a ball as the case draws them ("ball":
+# None, derive.ball_for, 2026-10-27; the Bold Italic draws its own at its
+# weight, make_bold.ITALIC_BOLD_RECIPES); tails off a stem (retroflex,
+# descender) keep a ball half their stroke, flush with the curl's end;
+# Ⱳ keeps its number (w_curl.py's approved Bold Italic connection)
 # ɮ: how far right of l's stem its ʒ stands (ITALIC_RECIPES)
 ZH_DX = 150
 ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
@@ -468,7 +476,7 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # its kind)
                   "ⱳ.sc": ("curl", "w.sc", ("c", [(940, 834, BIG, BIG)],
                                          {"at": ("y", 834, "last"), "dir": 79, "turn": "cw", "r": (87, 80),
-                                          "sweep": 210, "ball": 36, "t": (59, 30)})),
+                                          "sweep": 210, "ball": None, "t": (59, 30)})),
                   # ǥ: the single-storey g's bar across its stem below the
                   # baseline, above the hook, as in DejaVu (the roman's
                   # height crossed the tail, easy to miss)
@@ -557,41 +565,43 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # the stem rising through the top serif and curling over to the left
                   **{ch: ("curl", base, ("c", [(-BIG, 1300, 300, BIG)],
                                          {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
-                                          "sweep": 200, "ball": 90, "t": (166, 60)}))
+                                          "sweep": 200, "ball": None, "t": (166, 60)}))
                      for ch, base in (("Ɓ", "B"), ("Ɗ", "D"), ("Ƥ", "P"))},
                   # the arm or stem itself curling over at the top (its serif
                   # cut away), at its own weight
                   "Ƙ": ("curl", "K", ("c", [(850, 1250, BIG, BIG)],
                                       {"at": ("y", 1250, "last"), "dir": 51, "turn": "cw", "r": (110, 100),
-                                       "sweep": 210, "ball": 55, "t": (89, 45)})),
+                                       "sweep": 210, "ball": None, "t": (89, 45)})),
                   "Ʋ": ("curl", "U", ("c", [(930, 1200, BIG, BIG)],
                                       {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", "r": (140, 120),
-                                       "sweep": 200, "ball": 50, "t": (64, 40)})),
+                                       "sweep": 200, "ball": None, "t": (64, 40)})),
                   "Ƴ": ("curl", "Y", ("c", [(780, 1200, BIG, BIG)],
                                       {"at": ("y", 1200, "last"), "dir": 62, "turn": "cw", "r": (110, 100),
-                                       "sweep": 210, "ball": 50, "t": (68, 40)})),
+                                       "sweep": 210, "ball": None, "t": (68, 40)})),
                   "ƴ": ("curl", "y", ("x", [(700, 760, BIG, BIG)],
                                       {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", "r": (100, 90),
-                                       "sweep": 200, "ball": 58, "t": (116, 40)})),  # flush: half the end's 116
+                                       "sweep": 200, "ball": None, "t": (116, 40)})),
                   # p's stem (its entry stroke cut away) rising and curling over
                   "ƥ": ("attach", "p", ("x", [(-BIG, 700, 400, BIG), (-BIG, 400, 270, BIG)],
                                         [("rect", (296, 650, 397, 1150), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 346.5, 1150, 101), "dir": 90, "turn": "cw",
-                                                   "r": (150, 130), "sweep": 210, "ball": 55, "t": (101, 45)},
+                                                   "r": (150, 130), "sweep": 210, "ball": None, "t": (101, 45)},
                                           (0, 0), (1, 1, 0, 0))])),
                   # the bar's left end (its serif cut away) curling down; the curl
                   # leaves the bar where it is as thin as the curl (it flares
                   # toward the serif), so they meet without a ledge
+                  # (its ball less than the case's 86: that nearly filled the
+                  # curl, its small cap's draft closed to a slit)
                   "Ƭ": ("attach", "T", ("c", [(-BIG, 800, 420, BIG)],
                                         [("curl", {"at": ("pt", 420, 1398, 62), "dir": 180, "turn": "ccw",
-                                                   "r": (135, 125), "sweep": 200, "ball": 50, "t": (90, 62),
+                                                   "r": (135, 125), "sweep": 200, "ball": 65, "t": (90, 62),
                                                    "lead": 10, "cuts": [(420, 1300, BIG, BIG)]}, (0, 0), (1, 1, 0, 0))])),
                   # the top hairline rising from where its ball was into a hook
                   # to the right (as Charis and Libertinus)
                   "ƈ": ("attach", "c", ("x", [(540, 450, BIG, BIG), (470, 450, 545, 800)],
                                         [("line", ((515, 858), (560, 1100), 44), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 560, 1100, 44), "dir": 75, "turn": "cw",
-                                                   "r": (110, 100), "sweep": 200, "ball": 42, "t": (44, 34),
+                                                   "r": (110, 100), "sweep": 200, "ball": None, "t": (44, 34),
                                                    "lead": 10}, (0, 0), (1, 1, 0, 0))])),
                   # b's stem without its flag serif, the bar its top run on to
                   # the right
@@ -604,14 +614,14 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "Ƈ": ("attach", "C", ("c", [(1040, 1330, BIG, BIG)],
                                         [("line", ((1090, 1320), (1090, 1500), 36), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 1090, 1500, 36), "dir": 90, "turn": "cw",
-                                                   "r": (105, 95), "sweep": 210, "ball": 40, "t": (36, 30),
+                                                   "r": (105, 95), "sweep": 210, "ball": None, "t": (36, 30),
                                                    "lead": 10}, (0, 0), (1, 1, 0, 0))])),
                   # G's spur rising above the cap height into a hook to the right
                   # (as Charis and Libertinus), not curling back over the bowl
                   "Ɠ": ("attach", "G", ("c", [(1080, 1330, BIG, BIG)],
                                         [("line", ((1139, 1320), (1139, 1500), 36), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 1139, 1500, 36), "dir": 90, "turn": "cw",
-                                                   "r": (105, 95), "sweep": 210, "ball": 40, "t": (36, 30),
+                                                   "r": (105, 95), "sweep": 210, "ball": None, "t": (36, 30),
                                                    "lead": 10}, (0, 0), (1, 1, 0, 0))])),
                   # the stem (its foot serif cut away) running down into the hook
                   "Ɲ":("attach", "N", ("c", [(-BIG, -BIG, 700, 250)],
@@ -697,25 +707,25 @@ ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                                               [("rect", (351, 550, 495, 1150), (0, 0), (1, 1, 0, 0)),
                                                ("rect", (173, 414, 673, 470), (0, 0), (1, 1, 0, 0)),
                                                ("curl", {"at": ("pt", 423, 1150, 122), "dir": 90, "turn": "cw",
-                                                         "r": (150, 130), "sweep": 210, "ball": 57, "t": (122, 45)},
+                                                         "r": (150, 130), "sweep": 210, "ball": None, "t": (122, 45)},
                                                 (0, 0), (1, 1, 0, 0))], 760)),
                   # u's last stem curling over to the left at the top
                   "ʋ": ("curl", "u", ("x", [(700, 700, BIG, BIG)],
                                       {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", "r": (120, 110),
-                                       "sweep": 200, "ball": 55, "t": (120, 42)})),
+                                       "sweep": 200, "ball": None, "t": (120, 42)})),
                   "ʈ": ("attach", "t", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
                                         retroflex(232, 232, 350, 116, (110, 100), 45, 40))),
                   # the left stem curling over to the left, as on Ɓ; W's right arm to the right
                   "Ɦ": ("curl", "H", ("c", [(-BIG, 1300, 700, BIG)],
                                       {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
-                                       "sweep": 200, "ball": 90, "t": (164, 60)})),
+                                       "sweep": 200, "ball": None, "t": (164, 60)})),
                   # w's hairline arm (its ball cut away) rising straight to the
                   # x-height and curling over (the Regular's curl, carried
                   # across, left slivers beside the diagonal)
                   "ⱳ": ("attach", "w", ("x", [(1000, 645, BIG, BIG)],
                                         [("line", ((1289, 620), (1287, 770), 54), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 1287, 770, 54), "dir": 92, "turn": "cw",
-                                                   "r": (105, 95), "sweep": 200, "ball": 45, "t": (54, 36),
+                                                   "r": (105, 95), "sweep": 200, "ball": None, "t": (54, 36),
                                                    "lead": 6}, (0, 0), (1, 1, 0, 0))])),
                   # (the cut just inside the top right serif of the
                   # uncrossed W, redraw_w; 1480 on the crossed one)

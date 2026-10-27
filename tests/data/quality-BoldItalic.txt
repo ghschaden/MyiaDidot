@@ -140,7 +140,7 @@ exclam kink 2                    # 2026-10-21 Italic reweighted and tightened: 3
 exclamdown kink 2                # 2026-10-21 Italic reweighted and tightened: 210,197 3.9 degrees; 402,168 3.6 degrees
 exclamdown wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 183,139 10 degrees
 f stroke 1                       # 2026-10-21 Italic reweighted and tightened: lc 243 against 273 (0.89, lighter)
-f_b wobble 1                     # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 9 against 0: 859,1296 9 degrees; 866,1300 4 degrees; 878,1317 63 degrees; 853,186 6 degrees; 853,182 
+f_b wobble 1                     # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 9 against 0: 859,1296 9 degrees; 866,1300 4 degrees; 878,1317 63 degrees; 853,186 6 degrees; 853,182
 f_f_b wobble 1                   # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 9 against 0: 1374,1296 9 degrees; 1381,1300 4 degrees; 1393,1317 63 degrees; 1368,186 6 degrees; 1368
 f_f_h wobble 1                   # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 1: 1771,721 38 degrees; 1374,1296 9 degrees; 1381,1300 4 degrees; 1393,1317 63 degrees
 f_f_j extreme 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1398,760 11 units past
@@ -174,7 +174,9 @@ fl wobble 1                      # 2026-10-27 wobble check added (checks.py wobb
 fl zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -8 from -461
 florin stroke 1                  # 2026-10-21 Italic reweighted and tightened: lc 243 against 273 (0.89, lighter)
 florin wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 38,-316 4 degrees; 26,-324 8 degrees
+florin.sc kink 1                 # italic curl balls: 425,112 1.3 degrees
 florin.sc wobble 1               # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: -1133,-113 6 degrees; -1969,13 113 degrees; -1935,-9 26 degrees
+florin.sc zone 1                 # italic curl balls: top +9 from 1040
 four kink 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 601,849 6.3 degrees; 844,1003 3.8 degrees
 foursuperior slant 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 11.3 degrees, not 15.2
 g wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 181,-323 8 degrees; 173,-329 3 degrees; 158,-344 48 degrees; 144,-373 3 degrees; 507,-61
@@ -230,17 +232,17 @@ longs_b wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 longs_h wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 10 against 1: 1266,179 10 degrees; 1263,176 3 degrees; 1255,720 32 degrees; 1271,757 6 degrees; 1272,
 longs_i wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 1: 531,1006 11 degrees; 816,717 38 degrees; 834,760 6 degrees
 longs_k wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 16 against 1: 1248,737 11 degrees; 1254,745 30 degrees; 1261,753 24 degrees; 1263,755 5 degrees; 1265
-longs_l wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 1: 798,145 23 degrees; 787,89 14 degrees; 859,1296 9 degrees; 866,1300 4 degrees; 878,1317 
+longs_l wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 1: 798,145 23 degrees; 787,89 14 degrees; 859,1296 9 degrees; 866,1300 4 degrees; 878,1317
 longs_longs wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 2: 1285,1293 5 degrees; 1293,1299 10 degrees; 1046,1007 11 degrees; 815,1028 6 degrees; 531
 longs_longs_i wobble 1           # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 1: 1045,1006 21 degrees; 531,1006 11 degrees; 1333,720 38 degrees; 1348,764 5 degrees
 longs_longs_l wobble 1           # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 2: 1346,229 12 degrees; 1374,1296 9 degrees; 1381,1300 4 degrees; 1393,1317 63 degrees; 104
-longs_t wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 1: 789,145 23 degrees; 780,105 4 degrees; 859,1296 9 degrees; 866,1300 4 degrees; 878,1317 
+longs_t wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 1: 789,145 23 degrees; 780,105 4 degrees; 859,1296 9 degrees; 866,1300 4 degrees; 878,1317
 lslash extreme 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 379,1339 20 units past
 lslash stroke 1                  # 2026-10-21 Italic reweighted and tightened: lc 238 against 267 (0.89, lighter)
 lslash wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 278,160 21 degrees; 264,87 14 degrees
 m extreme 1                      # 2026-10-21 Italic reweighted and tightened: 350,760 5 units past
 m slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
-m wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 1340,719 37 degrees; 1357,768 4 degrees; 785,620 16 degrees; 796,645 6 degrees; 336,700 
+m wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 1340,719 37 degrees; 1357,768 4 degrees; 785,620 16 degrees; 796,645 6 degrees; 336,700
 m.sc wobble 1                    # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 267,126 6 degrees
 m.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
 mu zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
@@ -315,7 +317,7 @@ r wobble 1                       # 2026-10-27 wobble check added (checks.py wobb
 r zone 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
 r.sc kink 3                      # 2026-10-21 Italic reweighted and tightened: 1078,785 5.3 degrees; 672,109 7.0 degrees; 839,810 6.4 degrees
 r.sc smooth 2                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1078,185 2.3 degrees; 608,928 2.0 degrees
-r.sc wobble 1                    # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 3: 1075,789 4 degrees; 899,115 29 degrees; 1079,188 50 degrees; 668,105 4 degrees; 838,808 
+r.sc wobble 1                    # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 3: 1075,789 4 degrees; 899,115 29 degrees; 1079,188 50 degrees; 668,105 4 degrees; 838,808
 r.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0
 registered extreme 2             # 2026-10-21 Italic reweighted and tightened: 1259,488 9 units past; 1287,304 20 units past
 rho wobble 1                     # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 549,219 5 degrees; 396,639 4 degrees
@@ -383,7 +385,7 @@ u.sc wobble 1                    # 2026-10-27 wobble check added (checks.py wobb
 u.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 u1D459 slant 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 24.7 degrees, not 15.2
 u1D459 step 1                    # 2026-10-27 step check added (checks.py step): a candidate to review: 510,140 44 units aside
-u1D459 wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 8 against 1: 699,113 43 degrees; 692,103 40 degrees; 682,95 16 degrees; 623,59 8 degrees; 388,121 32 
+u1D459 wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 8 against 1: 699,113 43 degrees; 692,103 40 degrees; 682,95 16 degrees; 623,59 8 degrees; 388,121 32
 u1D459 zone 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +19 from -23
 u1D510 extreme 1                 # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1844,113 9 units past
 u1D510 kink 2                    # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 1071,161 2.7 degrees; 453,583 6.4 degrees
@@ -404,37 +406,30 @@ uni0183 kink 1                   # 2026-10-16 Bold Italic: first generated (make
 uni0183 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 594,207 5 degrees
 uni0186 kink 1                   # 2026-10-21 Italic reweighted and tightened: 357,54 2.2 degrees
 uni0186 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 12.1 degrees, not 15.2
-uni0187 kink 1                   # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 1397,1496 4.0 degrees
 uni0187 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.7 degrees, not 15.2
-uni0187 smooth 3                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1529,1461 2.6 degrees; 1643,1437 2.1 degrees; 1197,1373 2.4 degrees
-uni0187 step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 1382,1455 58 units aside
-uni0187 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 1311,435 6 degrees
+uni0187 smooth 2                 # italic curl balls: 1197,1373 2.2 degrees; 1332,1500 2.4 degrees
 uni0188 slant 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 25.0 degrees, not 15.2
 uni0188 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 381,533 4 degrees
-uni0188.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 73,352 5.8 degrees; 1001,1083 7.5 degrees; 1018,984 4.3 degrees; 420,756 4.0 degrees; 307,282 6.3 degrees
+uni0188.sc kink 1                # italic curl balls: 853,993 3.0 degrees
 uni0188.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.6 degrees, not 15.2
-uni0188.sc stroke 1              # 2026-10-21 Italic reweighted and tightened: sc 235 against 262 (0.90, lighter)
-uni0188.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 2: 1042,1078 4 degrees; 421,762 4 degrees; 305,286 6 degrees
+uni0188.sc smooth 2              # italic curl balls: 915,1077 2.1 degrees; 1212,1031 2.8 degrees
+uni0188.sc zone 1                # italic curl balls: bottom -25 from 0
 uni018A kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 627,1300 3.8 degrees
 uni0190 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.7 degrees, not 15.2
 uni0191 kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 200,155 7.7 degrees
 uni0191 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 2: -88,-196 11 degrees; -89,-193 8 degrees; -90,-190 13 degrees
-uni0193 kink 2                   # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 1284,858 3.1 degrees; 1448,1496 4.0 degrees
+uni0193 kink 1                   # italic curl balls: 1381,1500 3.4 degrees
 uni0193 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.6 degrees, not 15.2
-uni0193 smooth 2                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1580,1461 2.6 degrees; 1694,1437 2.1 degrees
-uni0193 step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 1433,1455 56 units aside
-uni0193 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1210,1290 4 degrees; 1229,1380 7 degrees
 uni0194 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 170 against 307 (0.55, lighter)
 uni0194 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +10 from 1434
 uni0196 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 320,187 7 degrees
 uni0197 stem 1                   # 2026-10-25 lighter I approved in text; retain independent barred-I drawing: at 358 290 against I's 273
-uni0198 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1309,1251 6.4 degrees
-uni0198 smooth 1                 # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1188,1149 2.2 degrees
+uni0198 smooth 2                 # italic curl balls: 1232,152 2.6 degrees; 947,152 2.1 degrees
+uni0198 wobble 1                 # italic curl balls: 1 against 0: 1515,860 7 degrees
 uni0199 kink 1                   # 2026-10-21 Italic reweighted and tightened: 273,983 7.5 degrees
 uni0199 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 360,1152 12 degrees; 769,1285 3 degrees; 779,1292 10 degrees; 758,778 49 degrees; 766,78
 uni0199 zone 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: top +14 from 1434
-uni0199.sc smooth 1              # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 89,101 2.3 degrees
-uni0199.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 1: 1088,748 17 degrees; 1043,745 82 degrees
+uni0199.sc kink 2                # italic curl balls: 1154,610 5.3 degrees; 966,124 4.0 degrees
 uni019A stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 239 against 267 (0.89, lighter)
 uni019A wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 283,161 21 degrees; 269,88 14 degrees
 uni019D kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 274,301 1.7 degrees
@@ -443,11 +438,10 @@ uni019D wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni01A4 kink 1                   # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 507,1300 3.8 degrees
 uni01A5 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 408,1144 38 units aside; 547,1148 37 units aside
 uni01A5 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 1: 807,1087 10 degrees; 651,216 4 degrees; 785,710 5 degrees
-uni01A5.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 366,922 1.3 degrees; 1160,789 4.7 degrees; 448,101 7.1 degrees; 881,612 4.4 degrees; 924,808 7.2 degrees
-uni01A5.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 3: 342,1018 196 degrees; 24,883 3 degrees; 1154,794 3 degrees; 873,609 5 degrees; 919,804 6
 uni01A6 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 888,163 2.1 degrees
 uni01A6 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1126,-88 13 degrees; 1117,-170 18 degrees
-uni01AC extreme 1                # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 584,1117 5 units past
+uni01AC smooth 1                 # italic curl balls: 457,1439 2.3 degrees
+uni01AC zone 1                   # italic curl balls: top +5 from 1434
 uni01AD kink 3                   # 2026-10-21 Italic reweighted and tightened: 251,900 3.6 degrees; 262,937 2.7 degrees; 486,900 2.1 degrees
 uni01AD stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 238 against 267 (0.89, lighter)
 uni01AD wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 369,1165 8 degrees; 731,1276 4 degrees; 268,141 43 degrees; 260,100 25 degrees
@@ -455,15 +449,12 @@ uni01AD zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni01AD.sc zone 1                # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: top +2 from 1040
 uni01AE kink 2                   # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 472,200 1.3 degrees; 748,150 1.5 degrees
 uni01B1 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1274,1207 5.9 degrees
-uni01B2 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 2: 1433,1192 14 degrees; 1436,1200 12 degrees; 1527,1200 10 degrees
 uni01B3 kink 1                   # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1253,1198 7.0 degrees
+uni01B3 smooth 1                 # italic curl balls: 1284,1100 2.8 degrees
 uni01B3 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1209,1140 6 degrees; 1456,1048 4 degrees
 uni01B4 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.9 degrees, not 15.2
-uni01B4 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 820,760 65 units aside; 1001,760 64 units aside
 uni01B4 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 1: 587,-80 6 degrees; 594,-49 15 degrees; 1187,730 8 degrees
 uni01B4.sc kink 1                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 931,864 6.1 degrees
-uni01B4.sc smooth 1              # 2026-10-21 Italic reweighted and tightened: 1174,822 2.0 degrees
-uni01B4.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 1: 484,940 34 degrees; 486,928 47 degrees; 897,820 8 degrees; 1075,739 14 degrees
 uni01B9 slant 1                  # 2026-10-21 Italic reweighted and tightened: 13.0 degrees, not 15.2
 uni01B9 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 136 against 279 (0.49, lighter)
 uni01B9.sc kink 4                # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 824,210 5.3 degrees; 536,298 4.3 degrees; 279,366 4.5 degrees; 15,345 4.0 degrees
@@ -505,13 +496,13 @@ uni023E zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni0242 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 225 against 279 (0.81, lighter)
 uni0242 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 312,634 27 degrees; 334,620 18 degrees
 uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 204 against 273 (0.75, lighter)
-uni0242.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 327,571 47 degrees; 332,561 8 degrees; 495,761 11 degrees; 432,1016 17 degrees; 426,999 
+uni0242.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 327,571 47 degrees; 332,561 8 degrees; 495,761 11 degrees; 432,1016 17 degrees; 426,999
 uni0244 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 1396,1265 9 degrees
 uni0245 kink 1                   # bracket ends run on along their strokes (derive.keep_brackets); Italic Ҳ tail step filled: 294,223 4.9 degrees
 uni0248 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 838,1313 9 degrees
 uni0249 smooth 1                 # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 409,756 2.0 degrees
 uni0249 stroke 1                 # 2026-10-24 right bar extended only: unchanged stem; sampling now classifies it straight (241/273, 0.88); docs/j-bar-extension-review-2026-10-24.md
-uni0249 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: -23,-349 60 degrees; -41,-379 6 degrees; 164,-172 7 degrees; 381,652 3 degrees; 403,712 
+uni0249 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: -23,-349 60 degrees; -41,-379 6 degrees; 164,-172 7 degrees; 381,652 3 degrees; 403,712
 uni0249.sc kink 2                # 2026-10-21 Italic reweighted and tightened: -51,153 4.2 degrees; 285,232 6.0 degrees
 uni0249.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +4 from 1040
 uni024C wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 1198,203 12 degrees; 1191,131 18 degrees; 1436,285 80 degrees
@@ -519,7 +510,7 @@ uni024C zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni024D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 340,705 24 degrees
 uni024D zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
 uni024D.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 1078,785 5.3 degrees; 672,109 6.6 degrees; 839,810 6.4 degrees
-uni024D.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 3: 1075,789 4 degrees; 899,115 34 degrees; 1081,190 47 degrees; 668,105 4 degrees; 838,808 
+uni024D.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 3: 1075,789 4 degrees; 899,115 34 degrees; 1081,190 47 degrees; 668,105 4 degrees; 838,808
 uni024D.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
 uni0250 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 342,800 16 degrees; 330,737 25 degrees; 467,197 4 degrees
 uni0250 zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
@@ -538,6 +529,7 @@ uni0254 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni0254.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 946,351 3.9 degrees; 817,756 4.9 degrees; 670,283 4.2 degrees
 uni0254.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 20.9 degrees, not 15.2
 uni0255 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 614,718 12 degrees; 621,723 11 degrees; 381,533 6 degrees
+uni0257 kink 1                   # italic curl balls: 1227,1218 2.8 degrees
 uni0257 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 1267,1286 5 degrees; 1278,1294 10 degrees; 783,89 16 degrees
 uni0257 zone 1                   # reworked hooked-d italic outline: bottom +7 from -23
 uni0257.sc kink 4                # 2026-10-21 Italic reweighted and tightened: 1158,637 4.5 degrees; 974,208 6.4 degrees; 838,266 4.8 degrees; 921,697 7.1 degrees
@@ -557,9 +549,9 @@ uni025F smooth 3                 # Italic weighted as its letters are taken, der
 uni025F stem 1                   # 2026-10-21 Italic reweighted and tightened: at -140 243 against uni0237's 226
 uni025F wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 8 against 0: -236,-345 9 degrees; -198,-404 43 degrees; -143,-443 4 degrees; 302,832 3 degrees; 403,7
 uni0260 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 181,-323 7 degrees; 174,-329 3 degrees; 159,-344 48 degrees; 145,-373 4 degrees; 506,-61
-uni0260.sc kink 5                # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 72,352 5.7 degrees; 1032,1084 5.3 degrees; 1055,982 6.7 degrees; 419,756 4.0 degrees
+uni0260.sc kink 1                # italic curl balls: 951,1077 2.5 degrees
 uni0260.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.8 degrees, not 15.2
-uni0260.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 799,80 3.2 degrees
+uni0260.sc zone 1                # italic curl balls: bottom -25 from 0
 uni0262 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
 uni0263.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 158,727 45 degrees; 719,483 14 degrees
 uni0264 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 638,715 6 degrees; 639,759 20 degrees; 354,343 29 degrees; 367,373 3 degrees
@@ -574,9 +566,10 @@ uni0266 kink 1                   # Italic saved with smooth rounding (make_itali
 uni0266 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.6 degrees, not 15.2
 uni0266 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 764,1289 8 degrees; 774,1296 9 degrees; 753,768 4 degrees
 uni0266 zone 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: top +16 from 1434
-uni0266.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 1: 378,955 30 degrees; 381,976 24 degrees; 342,1018 192 degrees; 27,881 6 degrees
+uni0266.sc step 1                # italic curl balls: 735,943 45 units aside
 uni0267 kink 4                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 275,991 5.2 degrees; 900,499 3.0 degrees; 876,450 5.3 degrees; 865,421 3.3 degr
 uni0267 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 764,1289 4 degrees; 774,1297 9 degrees; 243,-348 65 degrees; 225,-385 6 degrees; 436,-17
+uni0267 zone 1                   # italic curl balls: top +16 from 1434
 uni0269 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 uni0269.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 284,126 23 degrees
 uni0269.sc zone 2                # 2026-10-21 Italic reweighted and tightened: bottom -24 from 0; top -5 from 1040
@@ -657,9 +650,8 @@ uni028A zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni028A.sc kink 9                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1110,494 5.4 degrees; 953,135 5.6 degrees; 0,289 4.9 degrees; 196,646 7.3 degre
 uni028A.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +10 from 1040
 uni028B slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.2 degrees, not 15.2
-uni028B step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 793,700 66 units aside; 979,700 65 units aside
 uni028B wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 3: 738,695 16 degrees; 731,682 12 degrees; 617,657 10 degrees; 877,156 24 degrees; 863,89 1
-uni028B.sc kink 1                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 418,301 2.0 degrees
+uni028B zone 1                   # italic curl balls: top +12 from 884
 uni028B.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 uni028C slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.9 degrees, not 15.2
 uni028C zone 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23; top +23 from 884
@@ -692,7 +684,6 @@ uni0295 zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni0298 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 532,897 2.4 degrees
 uni0298 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -12 from -23
 uni0299 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
-uni029B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
 uni029C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni029D step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: -204,-397 64 units aside; -273,-377 47 units aside
 uni029D stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 243 against 273 (0.89, lighter)
@@ -795,7 +786,7 @@ uni0433.loclSRB step 1           # 2026-10-27 step check added (checks.py step):
 uni0434 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 576,222 4 degrees; 423,643 4 degrees
 uni0434.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 449,887 38 degrees; 241,130 81 degrees
 uni0436 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 237 against 267 (0.89, lighter)
-uni0436 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 215,85 66 degrees; 196,56 7 degrees; 523,699 7 degrees; 1490,776 62 degrees; 1509,805 7 
+uni0436 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 215,85 66 degrees; 196,56 7 degrees; 523,699 7 degrees; 1490,776 62 degrees; 1509,805 7
 uni0436.loclBGR wobble 1         # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 221,85 67 degrees; 202,56 8 degrees; 529,699 7 degrees; 1494,776 62 degrees; 1513,807 10
 uni0436.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 8 against 4: 517,643 21 degrees; 505,718 40 degrees; 417,937 5 degrees; 602,733 37 degrees; 610,669 2
 uni0436.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0; top +22 from 1040
@@ -825,13 +816,13 @@ uni043F wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni043F.loclSRB extreme 1        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 792,95 5 units past
 uni043F.loclSRB smooth 1         # joins the rounding to whole units broke kept smooth (make_bold.round_smoothly); bracket ends run on along their strokes: 155,361 2.6 degrees
 uni043F.loclSRB step 1           # 2026-10-27 step check added (checks.py step): a candidate to review: 1046,799 46 units aside
-uni043F.loclSRB wobble 1         # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 147,354 15 degrees; 809,156 24 degrees; 794,87 13 degrees; 351,238 6 degrees; 339,206 7 
+uni043F.loclSRB wobble 1         # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 147,354 15 degrees; 809,156 24 degrees; 794,87 13 degrees; 351,238 6 degrees; 339,206 7
 uni0442 extreme 1                # 2026-10-21 Italic reweighted and tightened: 350,760 5 units past
 uni0442 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
-uni0442 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 1340,719 37 degrees; 1357,768 4 degrees; 785,620 16 degrees; 796,645 6 degrees; 336,700 
+uni0442 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 1340,719 37 degrees; 1357,768 4 degrees; 785,620 16 degrees; 796,645 6 degrees; 336,700
 uni0442.loclSRB extreme 1        # 2026-10-21 Italic reweighted and tightened: 1280,101 6 units past
 uni0442.loclSRB smooth 2         # 2026-10-21 Italic reweighted and tightened: 738,730 2.7 degrees; 1220,730 2.1 degrees
-uni0442.loclSRB wobble 1         # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 149,354 15 degrees; 1293,158 23 degrees; 1279,89 14 degrees; 353,238 6 degrees; 341,206 
+uni0442.loclSRB wobble 1         # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 149,354 15 degrees; 1293,158 23 degrees; 1279,89 14 degrees; 353,238 6 degrees; 341,206
 uni0443.sc kink 2                # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 99,153 6.1 degrees; 434,220 6.8 degrees
 uni0443.sc smooth 1              # 2026-10-21 Italic reweighted and tightened: 524,153 2.3 degrees
 uni0443.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
@@ -842,19 +833,19 @@ uni0446 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 6
 uni0446 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 337,88 5 degrees; 986,-117 5 degrees; 987,-147 9 degrees
 uni0446.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 1019,112 9 degrees
 uni0447 extreme 2                # 2026-10-21 Italic reweighted and tightened: 816,99 6 units past; 351,758 5 units past
-uni0447 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 505,536 4 degrees; 456,410 24 degrees; 448,368 6 degrees; 830,159 23 degrees; 815,87 14 
+uni0447 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 505,536 4 degrees; 456,410 24 degrees; 448,368 6 degrees; 830,159 23 degrees; 815,87 14
 uni0447.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 475,572 11 degrees
 uni0448 extreme 1                # 2026-10-21 Italic reweighted and tightened: 1345,101 5 units past
 uni0448 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
 uni0448 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 911,246 19 degrees; 899,217 7 degrees; 1359,158 26 degrees; 1344,85 14 degrees
 uni0449 extreme 1                # 2026-10-21 Italic reweighted and tightened: 1474,63 7 units past
 uni0449 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
-uni0449 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 337,88 5 degrees; 911,246 18 degrees; 900,220 7 degrees; 1466,-109 8 degrees; 1469,-150 
+uni0449 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 337,88 5 degrees; 911,246 18 degrees; 900,220 7 degrees; 1466,-109 8 degrees; 1469,-150
 uni044A.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 1300,328 6.6 degrees; 1062,320 6.3 degrees
 uni044B.sc kink 2                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 307,927 3.0 degrees; 1179,927 4.9 degrees
 uni044C.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 1006,328 6.6 degrees; 768,320 6.3 degrees
 uni044D.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 30,215 5.8 degrees; 374,289 3.8 degrees; 603,157 7.4 degrees; 986,671 6.6 degrees; 798,177 6.5 degrees
-uni044D.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 4: 598,152 6 degrees; 749,697 4 degrees; 329,963 182 degrees; 985,674 5 degrees; 800,180 5 
+uni044D.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 4: 598,152 6 degrees; 749,697 4 degrees; 329,963 182 degrees; 985,674 5 degrees; 800,180 5
 uni044E extreme 1                # 2026-10-21 Italic reweighted and tightened: 351,762 6 units past
 uni044E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 338,699 22 degrees; 352,774 13 degrees; 1062,219 5 degrees; 912,639 4 degrees
 uni044E.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 562,643 2.9 degrees
@@ -879,7 +870,7 @@ uni0454.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobb
 uni0458.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 uni0459 extreme 1                # 2026-10-21 Italic reweighted and tightened: 728,777 15 units past
 uni0459 slant 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 17.3 degrees, not 15.2
-uni0459 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 505,780 64 degrees; 725,767 27 degrees; 731,785 43 degrees; 1064,399 4 degrees; 870,415 
+uni0459 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 505,780 64 degrees; 725,767 27 degrees; 731,785 43 degrees; 1064,399 4 degrees; 870,415
 uni0459 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 uni0459.sc kink 2                # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 1661,327 6.4 degrees; 1423,319 5.9 degrees
 uni0459.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: -58,115 2.3 degrees
@@ -963,7 +954,7 @@ uni04E8 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni04E9 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 590,270 10 degrees; 587,262 11 degrees; 576,235 6 degrees; 421,639 4 degrees
 uni04E9.sc kink 2                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 70,345 5.9 degrees; 1060,651 5.8 degrees
 uni1D05 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
-uni1D43 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 668,696 4 degrees; 663,682 8 degrees; 643,632 22 degrees; 635,593 47 degrees; 457,691 4 
+uni1D43 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 668,696 4 degrees; 663,682 8 degrees; 643,632 22 degrees; 635,593 47 degrees; 457,691 4
 uni1D4D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 247,320 14 degrees; 435,504 26 degrees; 414,941 6 degrees
 uni1D52 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 478,673 6 degrees; 418,938 7 degrees
 uni1D53 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 458,740 4 degrees
@@ -978,10 +969,10 @@ uni1D6E wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni1D6F kink 6                   # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 286,598 4.3 degrees; 935,278 3.3 degrees; 1197,27 4.5 degrees; 1417,91 6.0 degrees;
 uni1D6F smooth 1                 # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 336,760 2.3 degrees
 uni1D6F stroke 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: lc 304 against 273 (1.11, darker)
-uni1D6F wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 11 against 1: 338,770 6 degrees; 315,681 12 degrees; 1144,109 6 degrees; 1165,65 28 degrees; 1194,30 
+uni1D6F wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 11 against 1: 338,770 6 degrees; 315,681 12 degrees; 1144,109 6 degrees; 1165,65 28 degrees; 1194,30
 uni1D70 kink 7                   # 2026-10-21 Italic reweighted and tightened: 283,600 7.8 degrees; 670,92 4.4 degrees; 705,38 4.0 degrees; 944,102 7.4 degrees; 218,812 5.7 degrees; 841,818 6.9 degrees; 862,760 3.5 degrees
 uni1D70 smooth 3                 # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 336,762 2.3 degrees; 671,89 2.6 degrees; 591,604 2.1 degrees
-uni1D70 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 338,772 7 degrees; 319,696 12 degrees; 826,91 17 degrees; 839,137 40 degrees; 221,815 5 
+uni1D70 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 338,772 7 degrees; 319,696 12 degrees; 826,91 17 degrees; 839,137 40 degrees; 221,815 5
 uni1D71 kink 6                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 198,796 5.9 degrees; -141,-399 2.1 degrees; 707,243 7.7 degrees; 552,31 5.4 deg
 uni1D71 stem 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: at 212 305 against p's 287
 uni1D71 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 309 against 273 (1.13, darker)
@@ -1010,9 +1001,9 @@ uni1D7D wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni1D7D.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 1104,788 5.4 degrees; 824,612 6.3 degrees; 866,807 5.8 degrees
 uni1D7E zone 1                   # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -7 from -23
 uni1DA4 kink 1                   # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 481,779 7.2 degrees
-uni1DA4 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 393,659 4 degrees; 374,631 36 degrees; 365,604 6 degrees; 365,600 6 degrees; 364,596 14 
+uni1DA4 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 393,659 4 degrees; 374,631 36 degrees; 365,604 6 degrees; 365,600 6 degrees; 364,596 14
 uni1DB6 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 228,642 2.2 degrees
-uni1DB6 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 9 against 0: 709,679 22 degrees; 707,674 27 degrees; 694,641 27 degrees; 684,593 45 degrees; 678,585 
+uni1DB6 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 9 against 0: 709,679 22 degrees; 707,674 27 degrees; 694,641 27 degrees; 684,593 45 degrees; 678,585
 uni1DBF wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 11 against 1: 437,657 22 degrees; 432,622 3 degrees; 973,905 4 degrees; 973,891 28 degrees; 967,874 2
 uni1E9E kink 2                   # 2026-10-21 Italic reweighted and tightened: 153,117 3.7 degrees; 1096,1261 3.9 degrees
 uni1E9E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 1269,531 9 degrees
@@ -1088,10 +1079,9 @@ uni2C6D stroke 1                 # stroke weights against the kind's (scripts/qu
 uni2C72 slant 1                  # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.5 degrees, not 15.2
 uni2C72 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 1: 1338,1275 13 degrees; 1002,1256 17 degrees
 uni2C73 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
-uni2C73 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: 860,93 2.0 degrees
-uni2C73 zone 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: top +7 from 884
 uni2C73.sc kink 3                # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1033,834 4.6 degrees; 1244,754 3.2 degrees; 699,754 6.4 degrees
 uni2C73.sc slant 1               # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 11.5 degrees, not 15.2
+uni2C73.sc smooth 1              # italic curl balls: 1472,759 2.2 degrees
 uni2C73.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 3: 1259,808 27 degrees; 1260,810 27 degrees; 1261,821 51 degrees; 1268,831 12 degrees; 1475
 uni2C73.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 uni2E0E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1115,1188 105 degrees; 1128,161 157 degrees

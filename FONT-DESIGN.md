@@ -21,9 +21,15 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
     no room in the Bold). The italic tails off a stem (retroflex,
     descender: ɳ ʈ ɭ ɖ Ɽ ң қ ...) keep their ball at half the hook's
     stroke, flush with the curl's end (the person's decision, 2026-10-27).
-    Left: the italics' other curls set by number (make_italic
-    ITALIC_RECIPES, make_bold ITALIC_BOLD_RECIPES: Bold Italic Ƈ Ɠ 45,
-    ƈ 51, ʋ ƴ 56 for 113). Bold Italic a's ball does not grow (68 -> 66).
+    The italics' curls over the top (2026-10-27): the Italic's take the
+    case's ball (about 72; its curls too small for its drawn c's 94); the
+    Bold Italic's drawn at its weight, wider (balls 80-126 for its c's
+    121, J's 143: more closed the counters). Its ⱳ.sc, emboldened from
+    the Italic's draft, still has kinks and a wobble at the curl; ɦ.sc a
+    step where Ɦ's top serif is cut (both in quality-BoldItalic.txt).
+    Left: whether the person wants the capitals' curls larger still, to
+    carry balls as large as J's; Ⱳ keeps its number (w_curl.py's
+    approved connection); Bold Italic a's ball does not grow (68 -> 66).
   - Dots: in the Bold and Bold Italic they are widened three times as
     much as heightened (period about 1.36:1, ⸁ ⸄ ⸅ ⸇ ⸈ 271x182, Bold Italic
     ※ ⁜ ⸓ ⸖ 323x207); ※ ⁜ ⸓ ⸖ take the accent dot (248), not the

@@ -45,7 +45,12 @@ Moved from CLAUDE.md (its ground rules apply).
   scaled to the stem) and `curl` (an elliptical ring with a ball, at the
   stroke's own weight) in derive.py; a terminal ball given as None is
   sized as the drawn balls (derive.ball_for: 0.52 of the case's stem, at
-  most 0.77 of the curl's radius). Shaping in this shell defaults to
+  most 0.77 of the curl's radius; the Italic's curls over the top too,
+  its tails off a stem keep half their stroke). The Bold Italic draws its
+  curls over the top at its weight (make_bold ITALIC_BOLD_RECIPES,
+  CURL_CAP/CURL_LOW: wider curls, balls as large as leave the counter
+  open); rederive builds what follows on the letters it has made again
+  (ƈ.sc from the new Ƈ). Shaping in this shell defaults to
   German (locale), which has no f-ligatures: pass `--language=en`.
 - Localized forms (locl): recipes in derive.py name them "б.loclSRB" (a
   character and its suffix; derive.variant/resolve), aliases of the plain

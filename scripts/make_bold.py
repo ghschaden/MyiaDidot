@@ -106,6 +106,23 @@ ITALIC_BOLD_REBUILD = {
     "uni0271": "ɱ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook too light, the leg notched",
     "uni0267": "ɧ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the leg pinched above the hook",
     "uni0188": "ƈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook a hairline pinched where it leaves c",
+    "uni0187": "Ƈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni0193": "Ɠ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni0198": "Ƙ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni01B2": "Ʋ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni01B3": "Ƴ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni01B4": "ƴ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni028B": "ʋ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni2C73": "ⱳ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
+    "uni01AC": "Ƭ: its own recipe (ITALIC_BOLD_RECIPES); the Italic's ball scaled up closed the curl",
+    "uni0188.sc": "ƈ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni0199.sc": "ƙ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni01A5.sc": "ƥ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni01AD.sc": "ƭ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni01B4.sc": "ƴ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni0260.sc": "ɠ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni0266.sc": "ɦ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni028B.sc": "ʋ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni049A": "Қ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the curl notched",
     "uni0496": "Җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the ball ran into the descender",
     "uni0497": "җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, a stub at the descender",
@@ -142,6 +159,9 @@ BOLD_RECIPES = {
                                      "r": (250, 375.5), "sweep": 180, "ball": 70, "t": (230, 156)},
                             (0, 0), (1, 1, 0, 0))])),
 }
+# the Bold Italic's curls over the top (ITALIC_BOLD_RECIPES): radii, turn and ball
+CURL_CAP = {"r": (205, 185), "sweep": 190, "ball": 105}
+CURL_LOW = {"r": (185, 165), "sweep": 190, "ball": 90}
 ITALIC_BOLD_RECIPES = {
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
@@ -170,13 +190,56 @@ ITALIC_BOLD_RECIPES = {
                                       (586, 550),
                                   ], (0, 0), (1, 1, 0, 0)),
                                   ("rect", (201, 414, 721, 470), (0, 0), (1, 1, 0, 0))], 848)),
+    # the curls over the top (Ƈ Ɠ ƈ Ƙ Ʋ Ƴ ƴ ʋ ⱳ): the Italic's, at this
+    # weight; the Italic's balls (its case's, derive.ball_for) closed the
+    # Italic's small curls once their strokes were this heavy (2026-10-27):
+    # the curls wider and turned less, the balls as large as leaves their
+    # counters open (CURL_CAP, CURL_LOW; the drawn c's is 121, J's 143)
     # ƈ: the Italic's (c's top hairline rising from where its ball was into
     # a hook), its stroke as heavy as the Bold Italic's arch there (55):
     # emboldened whole, the hook stayed a hairline, pinched where it left c
     "ƈ": ("attach", "c", ("x", [(552, 450, 10000, 10000), (490, 450, 565, 818)],
                           [("line", ((532, 855), (580, 1100), 60), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 580, 1100, 60), "dir": 75, "turn": "cw", "r": (120, 110),
-                                     "sweep": 200, "ball": 58, "t": (60, 46), "lead": 10}, (0, 0), (1, 1, 0, 0))])),
+                           ("curl", {"at": ("pt", 580, 1100, 60), "dir": 75, "turn": "cw", "r": (150, 135),
+                                     "sweep": 200, "ball": 80, "t": (60, 46), "lead": 10}, (0, 0), (1, 1, 0, 0))])),
+    # Ƈ Ɠ: the Italic's, the stroke and hook at this weight
+    **{ch: ("attach", base, ("c", [(x - 50, 1330, 10000, 10000)],
+                             [("line", ((x, 1320), (x, 1500), 53), (0, 0), (1, 1, 0, 0)),
+                              ("curl", {"at": ("pt", x, 1500, 53), "dir": 90, "turn": "cw", "r": (165, 150),
+                                        "sweep": 200, "ball": 85, "t": (53, 45), "lead": 10}, (0, 0), (1, 1, 0, 0))]))
+       for ch, base, x in (("Ƈ", "C", 1090), ("Ɠ", "G", 1139))},
+    # Ƭ: the Italic's, its strokes at this weight (as rederive scales them)
+    # and its ball as large as the curl takes with no notch (80-90 at 180-200
+    # degrees; the case's, 96, notched it): the Italic's smaller one (65)
+    # scaled up would close the curl
+    "Ƭ": ("attach", "T", ("c", [(-10000, 800, 420, 10000)],
+                          [("curl", {"at": ("pt", 420, 1398, 92), "dir": 180, "turn": "ccw",
+                                     "r": (135, 125), "sweep": 190, "ball": 90, "t": (133, 92),
+                                     "lead": 10, "cuts": [(420, 1300, 10000, 10000)]}, (0, 0), (1, 1, 0, 0))])),
+    # Ƙ Ƴ: the arm cut below its flare into the serif (its own width there),
+    # running on in its own direction; Ʋ: U's right stem
+    "Ƙ": ("curl", "K", ("c", [(870, 1130, 10000, 10000)],  # (at 1150 a step, ƙ.sc's ledges)
+                        {"at": ("y", 1130, "last"), "dir": 51.6, "turn": "cw", **CURL_CAP, "t": (132, 67)})),
+    "Ʋ": ("curl", "U", ("c", [(950, 1200, 10000, 10000)],
+                        {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", **CURL_CAP, "t": (139, 59)})),
+    "Ƴ": ("curl", "Y", ("c", [(800, 1100, 10000, 10000)],
+                        {"at": ("y", 1100, "last"), "dir": 68.5, "turn": "cw", **CURL_CAP, "t": (103, 59)})),
+    # ƴ ʋ: the thick right stroke (246, 251) curling over; it ends upright,
+    # as thick, so its ball is half that, flush with the curl's end (90 left
+    # 60 units of the end's face standing beside it)
+    "ƴ": ("curl", "y", ("x", [(705, 760, 10000, 10000)],
+                        {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", **CURL_LOW, "ball": 124,
+                         "t": (246, 62)})),
+    "ʋ": ("curl", "u", ("x", [(705, 700, 10000, 10000)],
+                        {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", **CURL_LOW, "ball": 126,
+                         "t": (251, 62)})),
+    # ⱳ: the Italic's, on the Bold Italic's arm, cut below where it flares
+    # (1312-1404 at 600) and narrowing to the curl's stroke (a straight
+    # stroke at the curl's width stepped 36 units aside of the arm at 645)
+    "ⱳ": ("attach", "w", ("x", [(1000, 600, 10000, 10000)],
+                          [("poly", [(1314, 595), (1405, 595), (1378, 770), (1298, 770)], (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 1338, 770, 80), "dir": 92, "turn": "cw", "r": (165, 150),
+                                     "sweep": 200, "ball": 80, "t": (80, 53), "lead": 6}, (0, 0), (1, 1, 0, 0))])),
     # Қ Җ җ қ: the Italic's (make_italic.descender), on the Bold Italic's
     # leg (its centre and weight at 200, where it is cut), the exit stroke
     # cut away, the ball half the stroke (as there, so the curl's end has no
@@ -285,9 +348,6 @@ ITALIC_BOLD_RECIPES = {
 ITALIC_BOLD_KEEP_WHOLE = {
     "uni019D": "Ɲ: crumbs of the foot serif at the cut",
     "uni0191": "Ƒ: the tail far lighter than the stem",
-    "uni0198": "Ƙ: a stepped foot serif",
-    "uni01B2": "Ʋ: the hook a thin ring, the stem standing above it",
-    "uni01B3": "Ƴ: a stub of the arm's serif left apart from the hook",
     "uni0256": "ɖ: the tail thin where it meets the stem",
     "uni027E": "ɾ: a stub of the foot serif at the cut",
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
@@ -300,7 +360,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni026D": "ɭ: a step on the stem at the cut",
     "uni027B": "ɻ: a step on the stem's right side at the cut",
     "uni04B7": "ҷ: a notch at the tail, the stem shifted below the cut",
-    "uni2C73": "ⱳ: a notch where the hook meets the arm",
     "uniA7B2": "Ʝ: steps on both sides of the stem at the cut",
 }
 # Reviewed weight-aware choices: the rounder emboldening can lighten or
@@ -418,8 +477,8 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
                        # ink/anchor position and advance.
                        "uni0436.loclBGR": (1, 0),
                        # derived letters still set otherwise against their base than the
-                       # references (derived_spacing.py BoldItalic, to the median): ɖ Ƴ ƈ ɚ ҳ Қ Ƙ Җ ƥ җ Ҷ
-                       "uni0256": (0, -140), "uni01B3": (0, -120), "uni0188": (0, -85), "uni025A": (0, -100),
+                       # references (derived_spacing.py BoldItalic, to the median; Ƴ Ƈ again for their own curls, 2026-10-27): ɖ Ƴ ƈ ɚ ҳ Қ Ƙ Җ ƥ җ Ҷ
+                       "uni0256": (0, -140), "uni01B3": (0, 56), "uni0188": (0, -85), "uni0187": (0, 85), "uni025A": (0, -100),
                        "uni04B3": (0, -65), "uni049A": (0, -60), "uni0198": (0, -70), "uni0496": (0, -55),
                        "uni01A5": (-60, 0), "uni0497": (0, -50), "uni04B6": (0, -45)}
 # Joining the light belts changes the temporary weighted shape's optical
@@ -1276,6 +1335,32 @@ def attached_small(source, font, italic):
     return changed
 
 
+def small_cap_stems(up, glyph):
+    """A small cap made from its capital (derive.enlarge: all its strokes
+    brought to o.sc's round by one amount), its stems to h.sc's: the Bold
+    Italic's small-cap stems stand heavier against its rounds than its
+    capitals' do (h.sc 304, o.sc 263; ƙ.sc ƥ.sc ƭ.sc ɠ.sc ɦ.sc came out
+    255, 2026-10-27). Only a letter whose main stroke is a stem; its round
+    strokes then reach the stem's weight, within the stroke check's band."""
+    from derived import Outline
+    from strokes import main_stroke, zone
+
+    top = zone(up, "sc")
+    stem = main_stroke(Outline(up, "h.sc"), top)[0]
+    weight, straight = main_stroke(Outline(up, glyph.name), top)
+    if not (weight and straight and stem and weight < stem):
+        return
+    ax = stem - weight
+    rec = RecordingPen()
+    glyph.draw(rec)
+    out = embolden(rec, ax, 0)
+    glyph.clearContours()
+    out.draw(TransformPen(glyph.getPen(), (1, 0, 0, 1, ax / 2, 0)))  # its left side bearing kept
+    glyph.width = round(glyph.width + ax)
+    for a in glyph.anchors:
+        a.x = round(a.x + ax / 2)
+
+
 def drop_specks(glyph):
     """glyph (in place) without the specks a recipe's cut leaves apart from
     the letter (a corner of the Bold's wider serif outside the cut box, Ɲ's
@@ -1456,6 +1541,8 @@ def rederive(source, font, italic, whole):
 
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
+            if op == "enlarge" and name.endswith(".sc"):
+                small_cap_stems(up, new)
         drop_specks(new)
         fill_pinholes(new, up[name], up)
         # the side bearings the source style gave the letter after its recipe
@@ -1511,6 +1598,16 @@ def rederive(source, font, italic, whole):
                    italic and name not in POINT_REPAIRS)
         redraw(font[name], glyph)
         font[name].width = new.width
+        # the recipes after it build on the letter made again, not the
+        # emboldened one (ƈ.sc from Ƈ: the Italic's draft emboldened closed
+        # its curl, 2026-10-27)
+        redraw(up[name], new)
+        up[name].width = new.width
+        # its aliases as wide as it (ʛ, ɠ.sc)
+        for g in font:
+            if (len(g.components) == 1 and not g.contours and g.components[0].baseGlyph == name
+                    and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
+                g.width = up[g.name].width = font[name].width
         del up[tmp]
         whole.pop(name, None)
         changed.append(name)
