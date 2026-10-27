@@ -14,12 +14,12 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 ## Construction and optical quality
 
 - Wobbles (checks.py `wobble`, 2026-10-27): the emboldening puts short
-  reversals into curves its source glyph has not (Bold 169 glyphs, Bold
-  Italic 375; ψ φ, г, o's inner side): mostly the handle fit of
-  derive.embolden_by_weight, which wants a fix in the generator, checked
-  against these lists (a clamp of handles to their nodes' box was tried
-  and changed too much at once). Large ones at ball necks (ƒ y) may be
-  design.
+  reversals into curves its source glyph has not. In the Bold a fitted
+  curve now keeps its source's bends (keep_bends: 169 -> 130 glyphs);
+  the rest bend back across a node, between two curves, which the guard
+  (one curve at a time) does not see. In the Bold Italic (375; г, o's
+  inner side) the same guard took only 16 away: another cause, to be
+  found. Large ones at ball necks (ƒ y) may be design.
 - Review the step candidates (checks.py `step`, 2026-10-27, in
   `tests/data/quality-*.txt`): a short straight jog between edges running
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar

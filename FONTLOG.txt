@@ -26,6 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Bold: emboldened curves keep their source's bends
+
+    * derive.embolden fits each curve's handles to the thickened outline;
+      where the weight changes along a curve the fit could bend it both
+      ways, a wobble the Regular's curve has not. With keep_bends (the
+      Bold) such a curve's handles move toward its nodes' only as far as
+      takes the second bend out (or stay fitted where none does: a
+      terminal's would loop). Wobble findings 169 -> 130 glyphs, extremes
+      121 -> 116; 306 glyphs changed, mostly by a few hundred units²;
+      advances +-1 (R, π, τ ...). Ɛ keeps its fit (BOLD_FIT_AS_IS: its
+      beak thinned to a sliver); Ɛ ɕ ɦ.sc keep their way of emboldening.
+      ˀ ṫ accepted anew (no visible change). Bold Italic ɽ follows the
+      Bold's hook (r_hook); the guard did little in the Bold Italic and
+      is left off there.
+
 2026-10-27 Development: quality check for wobbles against the source
 
     * scripts/quality/checks.py `wobble` (the Bold, the Bold Italic): a

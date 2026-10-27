@@ -1239,7 +1239,7 @@ def keep_brackets(P, ons, old, new, sign):
     return out, slid
 
 
-def embolden(rec, ax, ay, factor=None, slid=None):
+def embolden(rec, ax, ay, factor=None, slid=None, keep_bends=False):
     """Thicken vertical strokes by ax and horizontal ones by ay (negative:
     thinner). Each node moves out along its outline's normal (at a corner,
     along the bisector, as far as both edges move: a mitre, limited); its
@@ -1247,7 +1247,10 @@ def embolden(rec, ax, ay, factor=None, slid=None):
     stay smooth and a circle stays a circle. factor(x, y, inward) -> 0..1, if
     given, scales ax at each node (make_italic: the thick strokes only).
     slid, a list if given, gets the bracket nodes keep_brackets slid, as
-    (contour, node, far node, handle)."""
+    (contour, node, far node, handle). keep_bends: a fitted curve that
+    bends both ways where the source curve bent one way only has its
+    handles moved with its nodes instead (a wobble the fit put in).
+    """
     glyph = ufoLib2.objects.Glyph()
     rec.replay(glyph.getPen())
 
@@ -1353,20 +1356,49 @@ def embolden(rec, ax, ay, factor=None, slid=None):
                 new[offs[0]], new[offs[1]] = brackets[i]
                 continue
             fitted = offset_fit(i, j, offs[0], offs[1]) if len(offs) == 2 else None
-            if fitted:
-                new[offs[0]], new[offs[1]] = fitted
-                continue
             # other segments: the handles with their nodes, scaled as the chord
             c0, c1 = math.dist(old[i], old[j]), math.dist(new[i], new[j])
             r = c1 / c0 if c0 > 1e-6 else 1.0
+            plain = []
             for k, h in enumerate(offs):
                 own = i if k < len(offs) / 2 else j
                 ox, oy = old[own]
                 nx, ny = new[own]
-                new[h] = (nx + (old[h][0] - ox) * r, ny + (old[h][1] - oy) * r)
+                plain.append((nx + (old[h][0] - ox) * r, ny + (old[h][1] - oy) * r))
+            if fitted and keep_bends and inflects((new[i], *fitted, new[j])) and not inflects(
+                    tuple(old[q] for q in (i, offs[0], offs[1], j))):
+                # only as far toward the plain handles as takes the wobble out
+                # (none does: the fit kept, as a terminal's plain handles loop)
+                for w in (0.25, 0.5, 0.75, 1.0):
+                    blend = tuple(tuple(f + (p_ - f) * w for f, p_ in zip(fh, ph, strict=True))
+                                  for fh, ph in zip(fitted, plain, strict=True))
+                    if not inflects((new[i], *blend, new[j])):
+                        fitted = blend
+                        break
+            if fitted:
+                new[offs[0]], new[offs[1]] = fitted
+                continue
+            for h, q in zip(offs, plain, strict=True):
+                new[h] = q
         for p, (x, y) in zip(P, new, strict=True):
             p.x, p.y = x, y
     return glyph
+
+
+def inflects(pts):
+    """Whether a cubic bends both ways (its curvature changes sign inside)."""
+    signs = set()
+    for s in range(1, 20):
+        t = s / 20
+        u = 1 - t
+        d1 = [3 * u * u * (pts[1][q] - pts[0][q]) + 6 * u * t * (pts[2][q] - pts[1][q])
+              + 3 * t * t * (pts[3][q] - pts[2][q]) for q in (0, 1)]
+        d2 = [6 * u * (pts[2][q] - 2 * pts[1][q] + pts[0][q]) + 6 * t * (pts[3][q] - 2 * pts[2][q] + pts[1][q])
+              for q in (0, 1)]
+        c = d1[0] * d2[1] - d1[1] * d2[0]
+        if abs(c) > 1e-6 * (d1[0] ** 2 + d1[1] ** 2) ** 1.5:
+            signs.add(c > 0)
+    return len(signs) > 1
 
 
 # the alignment edges (flat tops and bottoms) of the Regular, which
@@ -1471,7 +1503,7 @@ def stroke_gauge(glyph):
     return across
 
 
-def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False):
+def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False, keep_bends=False):
     """Thicken the thick strokes by ax across, in whatever direction they
     run, and every edge by ay vertically (the hairlines' gain): the contrast
     of a Didot bold, where emboldening every vertical by ax made the
@@ -1622,7 +1654,7 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False):
     rec2 = RecordingPen()
     glyph.draw(rec2)
     slid = []
-    out = embolden(rec2, ax, ay, factor, slid)
+    out = embolden(rec2, ax, ay, factor, slid, keep_bends=keep_bends)
     # corners between straight edges: where the moved edges meet
     for ci, i, e_in, e_out in corners:
         P = glyph.contours[ci].points

@@ -305,7 +305,14 @@ ITALIC_BOLD_KEEP_WHOLE = {
 }
 # Reviewed weight-aware choices: the rounder emboldening can lighten or
 # dent a body, and a local contour repair must not switch its construction.
-BOLD_BY_WEIGHT = {}
+BOLD_BY_WEIGHT = {
+    # kept as chosen before by weight kept a curve's bends (keep_bends,
+    # 2026-10-27), which changed the fault counts the choice is made by
+    "uni0190": "Ɛ: kept by weight",
+}
+# letters whose fitted curves keep their bends as they came (keep_bends
+# off): there the guard thins a beak to a sliver
+BOLD_FIT_AS_IS = {"uni0190": "Ɛ: the beak at its lower arm's end thinned to a sliver"}
 ITALIC_BOLD_BY_WEIGHT = {
     "uni044B": "ы: the rounder way light, its bowl dented where it meets the stem",
     "uni044C": "ь: the rounder way light (0.82 of its kind), its hook a hairline",
@@ -322,6 +329,9 @@ BOLD_ROUNDER = {
     # kept as chosen before the rounder way kept smooth nodes smooth (2026-10-27)
     "uni02C0": "ˀ: kept the rounder way (accepted)",
     "psi": "ψ: by weight the right arm's terminal overshoots its curve, a shoulder under it",
+    # kept the rounder way when by weight came to keep its bends (2026-10-27)
+    "uni0255": "ɕ: kept the rounder way",
+    "uni0266.sc": "ɦ.sc: kept the rounder way",
 }
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
@@ -332,6 +342,8 @@ ITALIC_BOLD_ROUNDER = {
 ITALIC_REFERENCE_ROUNDER = {"uni024D", "uni027A", "uni027B", "uni027E"}
 # and rounder bodies spaced on the reference by weight they had before
 BOLD_REFERENCE_BY_WEIGHT = {"psi"}
+# and bodies kept by weight spaced on the rounder reference they had
+BOLD_REFERENCE_ROUNDER = {"uni0190"}
 
 # recipes that scale or reshape their one source outline, adding no piece:
 # no junction to thicken, emboldened whole as any letter is
@@ -1597,11 +1609,13 @@ def main():
                 # a letter or figure made small, as at its scale (ᵃ, ⁰, ª)
                 sc = small_scale if g.name in small else 1.0
 
-                def make(w, sc=sc):
+                def make(w, sc=sc, bends=not italic and g.name not in BOLD_FIT_AS_IS):
                     # short edges running on into a curve weighed as it in
                     # the Bold (ƒ); the Bold Italic's not yet reviewed so
                     return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc,
-                                                            runs_on=not italic), AY))
+                                                            runs_on=not italic,
+                                                            keep_bends=bends),
+                                         AY))
 
                 bold = make(wide)
                 if g.name in rounder_ones or (g.name not in by_weight and slit(bold, regular[g.name], regular)):
@@ -1631,7 +1645,7 @@ def main():
                 # the italic H's shorter serifs 23 units a side)
                 ref = bridge(rezone(embolden(wide, AX, AY), AY))
                 if ((g.name in rounder_ones and (italic or g.name not in BOLD_REFERENCE_BY_WEIGHT))
-                        or (italic and g.name in ITALIC_REFERENCE_ROUNDER)
+                        or (g.name in (ITALIC_REFERENCE_ROUNDER if italic else BOLD_REFERENCE_ROUNDER))
                         or (g.name not in by_weight and slit(ref, regular[g.name], regular))):
                     ref = rezone(embolden_simple(wide, AX, AY), AY)
                 # judged optically (the white beside the ink across the band,
