@@ -7,11 +7,11 @@
 			<point x="996" y="1040" type="line"/>
 			<point x="1015" y="609" type="line"/>
 			<point x="950" y="609" type="line"/>
-			<point x="941" y="702"/>
-			<point x="917" y="811"/>
+			<point x="940" y="709"/>
+			<point x="918" y="810"/>
 			<point x="871" y="879" type="curve" smooth="yes"/>
-			<point x="836" y="931"/>
-			<point x="783" y="995"/>
+			<point x="835" y="932"/>
+			<point x="778" y="995"/>
 			<point x="677" y="995" type="curve" smooth="yes"/>
 			<point x="598" y="995" type="line"/>
 			<point x="598" y="45" type="line"/>
@@ -22,36 +22,35 @@
 			<point x="419" y="45" type="line"/>
 			<point x="419" y="995" type="line"/>
 			<point x="340" y="995" type="line" smooth="yes"/>
-			<point x="303" y="995"/>
+			<point x="304" y="995"/>
 			<point x="275" y="987"/>
-			<point x="248" y="974" type="curve"/>
-			<point x="245" y="973" type="line" smooth="yes"/>
-			<point x="239" y="971"/>
-			<point x="230" y="967"/>
+			<point x="249" y="974" type="curve"/>
+			<point x="248" y="974"/>
+			<point x="244" y="973"/>
+			<point x="243" y="973" type="curve"/>
+			<point x="243" y="973"/>
+			<point x="232" y="967"/>
 			<point x="224" y="968" type="curve"/>
-			<point x="189" y="965"/>
-			<point x="174" y="930"/>
-			<point x="174" y="897" type="curve" smooth="yes"/>
-			<point x="174" y="890"/>
-			<point x="167" y="886"/>
-			<point x="169" y="880" type="curve"/>
-			<point x="179" y="887"/>
-			<point x="184" y="890"/>
-			<point x="199" y="890" type="curve" smooth="yes"/>
-			<point x="233" y="890"/>
-			<point x="271" y="868"/>
-			<point x="271" y="829" type="curve" smooth="yes"/>
-			<point x="271" y="789"/>
-			<point x="233" y="768"/>
-			<point x="199" y="768" type="curve" smooth="yes"/>
-			<point x="185" y="768"/>
-			<point x="167" y="772"/>
-			<point x="155" y="780" type="curve" smooth="yes"/>
-			<point x="116" y="805"/>
+			<point x="200" y="966"/>
+			<point x="176" y="933"/>
+			<point x="174" y="914" type="curve"/>
+			<point x="175" y="915"/>
+			<point x="184" y="928"/>
+			<point x="209" y="928" type="curve" smooth="yes"/>
+			<point x="260" y="928"/>
+			<point x="301" y="891"/>
+			<point x="301" y="846" type="curve" smooth="yes"/>
+			<point x="301" y="801"/>
+			<point x="260" y="765"/>
+			<point x="209" y="765" type="curve" smooth="yes"/>
+			<point x="193" y="765"/>
+			<point x="176" y="768"/>
+			<point x="163" y="775" type="curve" smooth="yes"/>
+			<point x="118" y="801"/>
 			<point x="86" y="844"/>
 			<point x="86" y="897" type="curve" smooth="yes"/>
-			<point x="86" y="976"/>
-			<point x="152" y="1031"/>
+			<point x="86" y="971"/>
+			<point x="145" y="1030"/>
 		</contour>
 	</outline>
 	<anchor name="Top" x="549" y="1156"/>
@@ -71,9 +70,11 @@
 				<key>o.sc</key>
 				<string>e14453ef9c8a</string>
 				<key>uni01AC</key>
-				<string>7a5aca851556</string>
+				<string>86f0a0fbdfc4</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
+			<true/>
+			<key>org.myiadidot.smallcapDraft</key>
 			<true/>
 		</dict>
 	</lib>

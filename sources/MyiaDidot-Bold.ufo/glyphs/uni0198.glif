@@ -26,20 +26,20 @@
 			<point x="1404" y="1132"/>
 			<point x="1403" y="1121"/>
 			<point x="1401" y="1111" type="curve" smooth="yes"/>
-			<point x="1395" y="1072"/>
-			<point x="1362" y="1043"/>
-			<point x="1322" y="1043" type="curve" smooth="yes"/>
-			<point x="1278" y="1043"/>
-			<point x="1242" y="1079"/>
-			<point x="1242" y="1123" type="curve" smooth="yes"/>
-			<point x="1242" y="1167"/>
-			<point x="1278" y="1203"/>
-			<point x="1322" y="1203" type="curve" smooth="yes"/>
-			<point x="1325" y="1203"/>
-			<point x="1327" y="1203"/>
-			<point x="1329" y="1203" type="curve"/>
-			<point x="1307" y="1250"/>
-			<point x="1259" y="1282"/>
+			<point x="1391" y="1048"/>
+			<point x="1337" y="1001"/>
+			<point x="1272" y="1001" type="curve" smooth="yes"/>
+			<point x="1200" y="1001"/>
+			<point x="1141" y="1059"/>
+			<point x="1141" y="1131" type="curve" smooth="yes"/>
+			<point x="1141" y="1204"/>
+			<point x="1200" y="1262"/>
+			<point x="1272" y="1262" type="curve" smooth="yes"/>
+			<point x="1273" y="1262"/>
+			<point x="1274" y="1262"/>
+			<point x="1275" y="1262" type="curve"/>
+			<point x="1254" y="1275"/>
+			<point x="1230" y="1282"/>
 			<point x="1204" y="1282" type="curve" smooth="yes"/>
 			<point x="1162" y="1282"/>
 			<point x="1124" y="1264"/>
@@ -62,7 +62,13 @@
 			<point x="789" y="0" type="line"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="838" y="-20"/>
-	<anchor name="Bottom" x="838" y="0"/>
-	<anchor name="TopCap" x="776" y="1580"/>
+	<anchor name="DotBelow" x="842" y="-20"/>
+	<anchor name="Bottom" x="842" y="0"/>
+	<anchor name="TopCap" x="780" y="1580"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
 </glyph>

@@ -16,29 +16,29 @@
 			<point x="455" y="585" type="line"/>
 			<point x="719" y="906" type="line"/>
 			<point x="728" y="909" type="line"/>
-			<point x="752" y="951"/>
-			<point x="800" y="972"/>
+			<point x="749" y="946"/>
+			<point x="797" y="972"/>
 			<point x="849" y="972" type="curve" smooth="yes"/>
-			<point x="930" y="972"/>
-			<point x="1006" y="911"/>
+			<point x="936" y="972"/>
+			<point x="1006" y="906"/>
 			<point x="1006" y="826" type="curve" smooth="yes"/>
-			<point x="1006" y="820"/>
-			<point x="1006" y="816"/>
-			<point x="1005" y="810" type="curve"/>
-			<point x="1003" y="771"/>
-			<point x="966" y="751"/>
-			<point x="933" y="751" type="curve" smooth="yes"/>
-			<point x="899" y="751"/>
-			<point x="861" y="773"/>
-			<point x="861" y="812" type="curve" smooth="yes"/>
-			<point x="861" y="851"/>
-			<point x="899" y="873"/>
-			<point x="927" y="873" type="curve"/>
-			<point x="907" y="902"/>
-			<point x="889" y="925"/>
+			<point x="1006" y="818"/>
+			<point x="1005" y="810"/>
+			<point x="1004" y="802" type="curve" smooth="yes"/>
+			<point x="998" y="764"/>
+			<point x="958" y="734"/>
+			<point x="912" y="734" type="curve" smooth="yes"/>
+			<point x="861" y="734"/>
+			<point x="820" y="771"/>
+			<point x="820" y="815" type="curve" smooth="yes"/>
+			<point x="820" y="858"/>
+			<point x="857" y="892"/>
+			<point x="904" y="896" type="curve"/>
+			<point x="899" y="902"/>
+			<point x="880" y="925"/>
 			<point x="849" y="925" type="curve" smooth="yes"/>
-			<point x="816" y="925"/>
-			<point x="793" y="907"/>
+			<point x="818" y="925"/>
+			<point x="794" y="908"/>
 			<point x="776" y="884" type="curve" smooth="yes"/>
 			<point x="597" y="659" type="line"/>
 			<point x="1034" y="45" type="line"/>
@@ -71,9 +71,11 @@
 				<key>o.sc</key>
 				<string>e14453ef9c8a</string>
 				<key>uni0198</key>
-				<string>dc31cbf5c816</string>
+				<string>643e83d19afe</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
+			<true/>
+			<key>org.myiadidot.smallcapDraft</key>
 			<true/>
 		</dict>
 	</lib>

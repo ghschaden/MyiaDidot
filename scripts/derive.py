@@ -44,6 +44,7 @@ import argparse
 import itertools
 import math
 import sys
+import unicodedata
 from pathlib import Path
 
 import pathops
@@ -128,7 +129,7 @@ RECIPES = [
                                ("r", (-BIG, 700, 390, BIG), (0, 0), (1, 1, 268, 0)),
                                ("r", (226, -BIG, BIG, 60), (0, 0), (1, 1, 268, 0)),
                                ("curl", {"at": ("pt", 540, 330, 56), "dir": 180, "turn": "ccw",
-                                         "r": (230, 250), "sweep": 100, "ball": 80,
+                                         "r": (230, 250), "sweep": 100, "ball": None,
                                          "t": (160, 56)}, (0, 0), (1, 1, 0, 0))], 884)),
     ("ʌ", "turn", "v", "x"),
     ("ʍ", "turn", "w", "x"),
@@ -296,7 +297,7 @@ RECIPES = [
                           [("poly", [(708, 401), (916, 401), ((916, 213), (890, 26), (838, -162)),
                                      (708, -162)], (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 773, -150, 130), "dir": 270, "turn": "ccw",
-                                     "r": (170, 140), "sweep": 170, "ball": 65, "t": (130, 44)},
+                                     "r": (170, 140), "sweep": 170, "ball": None, "t": (130, 44)},
                             (0, 0), (1, 1, 0, 0))])),
     ("ɖ", "hook", "d", ("x", "down-right", "last", 48, 0, 200)),
     ("Ɖ", "alias", "Eth", None),
@@ -329,7 +330,7 @@ RECIPES = [
     # round to the left as wide as the bowl, into a ball under its left side
     ("ɡ", "curl", "q", ("x", [(500, -BIG, BIG, -90)],
                         {"at": ("y", -100, "last"), "dir": 270, "turn": "cw", "r": (290, 440),
-                         "sweep": 165, "ball": 80, "t": (164, 52)})),
+                         "sweep": 165, "ball": None, "t": (164, 52)})),
     ("ɠ", "hook", "ɡ", ("x", "up-right", "last", 800, 0, 200)),
     ("Ʊ", "turn", "Omega", "c"),
     ("ʊ", "enlarge", "Ʊ", ("O", "o")),
@@ -362,30 +363,31 @@ RECIPES = [
     # descender of ȷ (stem centre 320 at y 100)
     # hooks drawn on (band, cuts, curl arguments): part of an elliptical ring
     # leaving the stroke at its own weight, ending in a ball
+    # ʋ: its own ball (as drawn before 2026-10-27): at its stem's size it merges into u's first stem in the Bold
     ("ʋ", "curl", "u", ("x", [(940, -BIG, BIG, 60), (620, 600, BIG, BIG)],
                         {"at": ("y", 600, "last"), "dir": 90, "turn": "ccw", "r": (190, 262),
                          "sweep": 150, "ball": 78, "t": (164, 56)})),
     ("Ʋ", "curl", "U", ("c", [(1000, 1000, BIG, BIG)],
                         {"at": ("y", 1000, "last"), "dir": 90, "turn": "ccw", "r": (240, 400),
-                         "sweep": 160, "ball": 92, "t": (64, 64)})),
+                         "sweep": 160, "ball": None, "t": (64, 64)})),
     ("ƴ", "curl", "y", ("x", [(660, 700, 1000, BIG)],
                         {"at": ("y", 700, "last"), "dir": 70.7, "turn": "cw", "r": 200,
-                         "sweep": 140, "ball": 70}, 1080)),
+                         "sweep": 140, "ball": None}, 1080)),
     ("Ƴ", "curl", "Y", ("c", [(960, 1150, 1460, BIG)],
                         {"at": ("y", 1150, "last"), "dir": 63.4, "turn": "cw", "r": 200,
-                         "sweep": 140, "ball": 85})),
+                         "sweep": 140, "ball": None})),
     # ȷ's tail at the width of N's thin left stem (64 of ȷ's 164), centred on it
     ("Ɲ", "attach", "N", ("c", [(90, -BIG, 590, 60)],
                           [("uni0237", J_TAIL, (320, 100), (64 / 164, 0.6, 326, 80))])),
     ("Ƈ", "curl", "C", ("c", [(1100, 900, BIG, BIG)],
                         {"at": ("x", 1080), "dir": 70, "turn": "cw", "r": 170,
-                         "sweep": 145, "ball": 85})),
+                         "sweep": 145, "ball": None})),
     ("Ɠ", "curl", "G", ("c", [(1100, 900, BIG, BIG)],
                         {"at": ("x", 1080), "dir": 70, "turn": "cw", "r": 170,
-                         "sweep": 145, "ball": 85})),
+                         "sweep": 145, "ball": None})),
     ("ƈ", "curl", "c", ("x", [(620, 500, BIG, BIG)],
                         {"at": ("x", 600), "dir": 70, "turn": "cw", "r": 130,
-                         "sweep": 145, "ball": 70})),
+                         "sweep": 145, "ball": None})),
     # more hooks, curls and loops drawn on
     # ʂ: s's bottom stroke turns down at the left into an upright stem below
     # the baseline, which hooks to the right, as ʈ's (and Charis's ʂ)
@@ -395,7 +397,7 @@ RECIPES = [
                             (0, 0), (1, 1, 0, 0)),
                            ("line", ((220, -50), (220, -300), 140), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 220, -300, 140), "dir": 270, "turn": "ccw",
-                                     "r": (140, 120), "sweep": 150, "ball": 68, "t": (140, 52)},
+                                     "r": (140, 120), "sweep": 150, "ball": None, "t": (140, 52)},
                             (0, 0), (1, 1, 0, 0))])),
     # ʐ: the bar's right end turns down into an upright stem below the
     # baseline that hooks to the right, as ʂ (and Charis's ʐ); z's beak taken
@@ -406,7 +408,7 @@ RECIPES = [
                             (0, 0), (1, 1, 0, 0)),
                            ("line", ((790, -60), (790, -330), 140), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 790, -330, 140), "dir": 270, "turn": "ccw",
-                                     "r": (150, 120), "sweep": 150, "ball": 68, "t": (140, 52)},
+                                     "r": (150, 120), "sweep": 150, "ball": None, "t": (140, 52)},
                             (0, 0), (1, 1, 0, 0))])),
     # ʑ: the bar turns up into a small loop and comes down through itself
     # into an upright tail below the baseline, as in Charis
@@ -423,19 +425,19 @@ RECIPES = [
                            ("line", ((480, 200), (480, -330), 110), (0, 0), (1, 1, 0, 0))])),
     ("Ƭ", "curl", "T", ("c", [(-BIG, 600, 420, BIG)],
                         {"at": ("x", 440), "dir": 180, "turn": "ccw", "r": 150,
-                         "sweep": 150, "ball": 80})),
+                         "sweep": 150, "ball": None})),
     ("ⱳ", "curl", "w", ("x", [(1150, 700, BIG, BIG)],
                         {"at": ("y", 700, "last"), "dir": 71, "turn": "cw", "r": 160,
-                         "sweep": 140, "ball": 70})),
+                         "sweep": 140, "ball": None})),
     ("Ⱳ", "curl", "W", ("c", [(1800, 1120, BIG, BIG), (1600, 1300, BIG, BIG)],
                         {"at": ("y", 1120, "last"), "dir": 73.8, "turn": "cw", "r": 200,
-                         "sweep": 140, "ball": 85})),
+                         "sweep": 140, "ball": None})),
     ("ɧ", "hook", "ɦ", ("x", "down-left", "last", 48, 160, 160)),
     # Ƙ: the hook on the thin arm, as on Ƴ; Ϗ: the leg run on below the
     # baseline and turned back; ʝ Ʝ: the stem's tail looped back across it
     ("Ƙ", "curl", "K", ("c", [(900, 1250, BIG, BIG), (800, 1360, BIG, BIG)],
                         {"at": ("y", 1250, "last"), "dir": 50.8, "turn": "cw", "r": 170,
-                         "sweep": 150, "ball": 80})),
+                         "sweep": 150, "ball": None})),
     # Ϗ: the leg (and its foot serif) cut above the baseline, run on in its
     # own direction and weight below it, turning back left into a ball
     # (the tail is ȷ's descender, its stem scaled to the leg's width and
@@ -531,6 +533,7 @@ RECIPES = [
                                  ("r", (-BIG, 700, 390, BIG), (0, 0), (1, 1, 268, 628))])),
     # ɻ: ɹ's stem runs on below the baseline at its full width and hooks to
     # the right (the arm stays)
+    # ɻ: its own ball: at its stem's size it fills the tail's counter in the Bold
     ("ɻ", "attach", "uni0279", ("x", [(494, -BIG, BIG, 60)],
                                 [("line", ((576, 80), (576, -250), 164), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 576, -250, 164), "dir": 270, "turn": "ccw",
@@ -2191,7 +2194,11 @@ def attach(font, source, cuts, pieces):
                     args["t"] = tuple(thick(v) for v in args["t"])
                 if args.get("at", ("",))[0] == "pt" and len(args["at"]) > 3:
                     args["at"] = (*args["at"][:3], thick(args["at"][3]), *args["at"][4:])
-                args["ball"] = args["ball"] * stems
+                if args.get("ball") is not None:
+                    args["ball"] = args["ball"] * stems
+            if args.get("ball") is None:  # a terminal ball as the letter's case draws them
+                r = args["r"]
+                args["ball"] = min(ball_for(font, source), BALL_OF_RADIUS * (min(r) if isinstance(r, (tuple, list)) else r))
             part = curl(font, "space", [], **args)
             for box in boxes:
                 part = path_op(part, rect_path(*box), "DIFFERENCE")
@@ -2278,6 +2285,28 @@ def _ellipse(cx, cy, rx, ry):
     return to_path(None, rec=rec)
 
 
+# a terminal ball's radius against its case's stem (l, I, l.sc), as the
+# drawn letters have them: c a y 0.53, J 0.51, j.sc 0.49 (2026-10-27)
+BALL_OF_STEM = 0.52
+# and no more than this of the curl's smallest radius: the recipes keep the
+# Regular's radii, a Bold ball at its stem's size ran into the stroke it
+# hangs from (Ƙ ʐ: lint faults); the Regular's largest is Ʈ's 0.77
+BALL_OF_RADIUS = 0.77
+
+
+def ball_for(font, source):
+    """The radius of a terminal ball on the letter source, at this font's
+    weight: BALL_OF_STEM of its case's stem."""
+    g = font[source] if source in font else None
+    if source.endswith(".sc"):
+        ref = "l.sc"
+    elif g is not None and g.unicode and unicodedata.category(chr(g.unicode)) == "Lu":
+        ref = "I"
+    else:
+        ref = "l"
+    return BALL_OF_STEM * strokes(font, ref)[1]
+
+
 def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
     """The letter minus cuts, with a hook drawn as part of an elliptical
     ring ending in a ball: it leaves the letter's stroke at `at` (('y', y,
@@ -2288,8 +2317,10 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
     t thick: (across vertical parts, across horizontal parts), by default
     the stroke's own width where it meets the letter, so the stroke runs on
     at its weight; the ball (radius) sits inside the end, flush with the
-    outer edge, as on f."""
+    outer edge, as on f; None: as the letter's case draws them (ball_for)."""
     a, b = (r, r) if not isinstance(r, (tuple, list)) else r
+    if ball is None:
+        ball = min(ball_for(font, source), BALL_OF_RADIUS * min(a, b))
     if at[0] == "y":
         _, y, pick = at
         ra, rb_ = _run_at(font, source, y, pick)

@@ -43,7 +43,9 @@ Moved from CLAUDE.md (its ground rules apply).
   (dlig), f-ligatures fb fh fk ft (liga) and long-s ligatures (own liga
   lookups): `scripts/draft_ligatures.py`. Hooks: `hook` (f top or ȷ tail
   scaled to the stem) and `curl` (an elliptical ring with a ball, at the
-  stroke's own weight) in derive.py. Shaping in this shell defaults to
+  stroke's own weight) in derive.py; a terminal ball given as None is
+  sized as the drawn balls (derive.ball_for: 0.52 of the case's stem, at
+  most 0.77 of the curl's radius). Shaping in this shell defaults to
   German (locale), which has no f-ligatures: pass `--language=en`.
 - Localized forms (locl): recipes in derive.py name them "б.loclSRB" (a
   character and its suffix; derive.variant/resolve), aliases of the plain

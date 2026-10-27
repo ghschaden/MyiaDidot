@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0199.sc" format="2">
-	<advance width="1316"/>
+	<advance width="1317"/>
 	<outline>
 		<contour>
 			<point x="79" y="1" type="line"/>
@@ -16,29 +16,29 @@
 			<point x="495" y="586" type="line"/>
 			<point x="771" y="906" type="line"/>
 			<point x="781" y="908" type="line"/>
-			<point x="806" y="950"/>
-			<point x="858" y="972"/>
+			<point x="803" y="945"/>
+			<point x="854" y="972"/>
 			<point x="908" y="972" type="curve" smooth="yes"/>
-			<point x="978" y="972"/>
-			<point x="1111" y="910"/>
-			<point x="1111" y="823" type="curve" smooth="yes"/>
-			<point x="1111" y="817"/>
-			<point x="1109" y="812"/>
-			<point x="1108" y="806" type="curve"/>
-			<point x="1106" y="765"/>
-			<point x="1044" y="744"/>
-			<point x="995" y="744" type="curve" smooth="yes"/>
-			<point x="945" y="744"/>
-			<point x="880" y="767"/>
-			<point x="880" y="809" type="curve" smooth="yes"/>
-			<point x="880" y="851"/>
-			<point x="961" y="873"/>
-			<point x="963" y="873" type="curve"/>
-			<point x="956" y="884"/>
-			<point x="958" y="917"/>
+			<point x="984" y="972"/>
+			<point x="1116" y="905"/>
+			<point x="1116" y="823" type="curve" smooth="yes"/>
+			<point x="1116" y="814"/>
+			<point x="1115" y="806"/>
+			<point x="1114" y="798" type="curve" smooth="yes"/>
+			<point x="1107" y="757"/>
+			<point x="1034" y="727"/>
+			<point x="973" y="727" type="curve" smooth="yes"/>
+			<point x="902" y="727"/>
+			<point x="833" y="765"/>
+			<point x="833" y="812" type="curve" smooth="yes"/>
+			<point x="833" y="853"/>
+			<point x="917" y="895"/>
+			<point x="922" y="895" type="curve"/>
+			<point x="928" y="900"/>
+			<point x="949" y="917"/>
 			<point x="908" y="917" type="curve" smooth="yes"/>
-			<point x="874" y="917"/>
-			<point x="850" y="900"/>
+			<point x="876" y="917"/>
+			<point x="851" y="901"/>
 			<point x="833" y="878" type="curve" smooth="yes"/>
 			<point x="673" y="685" type="line"/>
 			<point x="1145" y="53" type="line"/>
@@ -47,8 +47,7 @@
 			<point x="660" y="1" type="line"/>
 			<point x="660" y="52" type="line"/>
 			<point x="814" y="52" type="line"/>
-			<point x="479" y="514" type="line"/>
-			<point x="490" y="520" type="line"/>
+			<point x="490" y="499" type="line"/>
 			<point x="490" y="53" type="line"/>
 			<point x="627" y="52" type="line"/>
 			<point x="627" y="1" type="line"/>
@@ -65,6 +64,8 @@
 	<lib>
 		<dict>
 			<key>org.myiadidot.derived</key>
+			<true/>
+			<key>org.myiadidot.smallcapDraft</key>
 			<true/>
 		</dict>
 	</lib>

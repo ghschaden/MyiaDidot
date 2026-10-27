@@ -16,28 +16,33 @@
 			<point x="1032" y="24"/>
 			<point x="1204" y="153"/>
 			<point x="1204" y="414" type="curve" smooth="yes"/>
-			<point x="1204" y="1000" type="line" smooth="yes"/>
+			<point x="1204" y="983" type="line" smooth="yes"/>
+			<point x="1204" y="989"/>
+			<point x="1204" y="994"/>
+			<point x="1204" y="1000" type="curve" smooth="yes"/>
 			<point x="1204" y="1203"/>
 			<point x="1111" y="1368"/>
 			<point x="996" y="1368" type="curve" smooth="yes"/>
-			<point x="925" y="1368"/>
-			<point x="862" y="1305"/>
-			<point x="824" y="1208" type="curve"/>
-			<point x="827" y="1208" type="line" smooth="yes"/>
-			<point x="878" y="1208"/>
-			<point x="919" y="1167"/>
-			<point x="919" y="1116" type="curve" smooth="yes"/>
-			<point x="919" y="1065"/>
-			<point x="878" y="1024"/>
-			<point x="827" y="1024" type="curve" smooth="yes"/>
-			<point x="776" y="1024"/>
-			<point x="735" y="1065"/>
-			<point x="735" y="1116" type="curve" smooth="yes"/>
-			<point x="735" y="1133"/>
-			<point x="739" y="1148"/>
-			<point x="746" y="1162" type="curve"/>
-			<point x="785" y="1321"/>
-			<point x="882" y="1432"/>
+			<point x="927" y="1368"/>
+			<point x="866" y="1309"/>
+			<point x="828" y="1218" type="curve"/>
+			<point x="833" y="1219"/>
+			<point x="837" y="1219"/>
+			<point x="842" y="1219" type="curve" smooth="yes"/>
+			<point x="902" y="1219"/>
+			<point x="950" y="1170"/>
+			<point x="950" y="1111" type="curve" smooth="yes"/>
+			<point x="950" y="1051"/>
+			<point x="902" y="1003"/>
+			<point x="842" y="1003" type="curve" smooth="yes"/>
+			<point x="782" y="1003"/>
+			<point x="734" y="1051"/>
+			<point x="734" y="1111" type="curve" smooth="yes"/>
+			<point x="734" y="1124"/>
+			<point x="736" y="1136"/>
+			<point x="740" y="1147" type="curve"/>
+			<point x="778" y="1313"/>
+			<point x="878" y="1432"/>
 			<point x="996" y="1432" type="curve" smooth="yes"/>
 			<point x="1146" y="1432"/>
 			<point x="1268" y="1239"/>
@@ -60,9 +65,13 @@
 		<dict>
 			<key>org.myiadidot.builtFrom</key>
 			<dict>
+				<key>I</key>
+				<string>28007cb98524</string>
 				<key>U</key>
 				<string>417ae7c0565c</string>
 			</dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 		</dict>
 	</lib>
 </glyph>

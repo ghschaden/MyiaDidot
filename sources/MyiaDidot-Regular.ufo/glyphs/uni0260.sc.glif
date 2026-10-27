@@ -15,21 +15,21 @@
 			<point x="894" y="1113" type="curve" smooth="yes"/>
 			<point x="969" y="1113"/>
 			<point x="1034" y="1064"/>
-			<point x="1052" y="998" type="curve"/>
-			<point x="1054" y="993"/>
-			<point x="1055" y="987"/>
-			<point x="1055" y="981" type="curve" smooth="yes"/>
-			<point x="1055" y="945"/>
-			<point x="1021" y="916"/>
-			<point x="979" y="916" type="curve" smooth="yes"/>
-			<point x="937" y="916"/>
-			<point x="903" y="945"/>
-			<point x="903" y="981" type="curve" smooth="yes"/>
-			<point x="903" y="998"/>
-			<point x="922" y="1035"/>
-			<point x="924" y="1036" type="curve"/>
-			<point x="922" y="1037"/>
-			<point x="915" y="1051"/>
+			<point x="1052" y="998" type="curve" smooth="yes"/>
+			<point x="1054" y="991"/>
+			<point x="1055" y="985"/>
+			<point x="1055" y="977" type="curve" smooth="yes"/>
+			<point x="1055" y="931"/>
+			<point x="1014" y="895"/>
+			<point x="962" y="895" type="curve" smooth="yes"/>
+			<point x="912" y="895"/>
+			<point x="870" y="931"/>
+			<point x="870" y="977" type="curve" smooth="yes"/>
+			<point x="870" y="1001"/>
+			<point x="898" y="1047"/>
+			<point x="901" y="1048" type="curve"/>
+			<point x="900" y="1048"/>
+			<point x="898" y="1051"/>
 			<point x="894" y="1051" type="curve" smooth="yes"/>
 			<point x="855" y="1051"/>
 			<point x="826" y="1023"/>
@@ -85,9 +85,11 @@
 				<key>o.sc</key>
 				<string>e14453ef9c8a</string>
 				<key>uni0193</key>
-				<string>4d691580190d</string>
+				<string>5c2f03bf30c9</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
+			<true/>
+			<key>org.myiadidot.smallcapDraft</key>
 			<true/>
 		</dict>
 	</lib>

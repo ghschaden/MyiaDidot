@@ -5,25 +5,20 @@
 	<outline>
 		<contour>
 			<point x="474" y="291" type="line"/>
-			<point x="414" y="263"/>
-			<point x="370" y="179"/>
-			<point x="370" y="80" type="curve" smooth="yes"/>
-			<point x="370" y="68" type="line"/>
-			<point x="372" y="61"/>
-			<point x="373" y="54"/>
-			<point x="373" y="46" type="curve" smooth="yes"/>
-			<point x="373" y="1"/>
-			<point x="338" y="-34"/>
-			<point x="293" y="-34" type="curve" smooth="yes"/>
-			<point x="249" y="-34"/>
-			<point x="213" y="1"/>
-			<point x="213" y="46" type="curve" smooth="yes"/>
-			<point x="213" y="47" type="line"/>
-			<point x="213" y="47"/>
-			<point x="213" y="50"/>
-			<point x="213" y="50" type="curve"/>
-			<point x="211" y="60"/>
-			<point x="210" y="70"/>
+			<point x="416" y="264"/>
+			<point x="374" y="186"/>
+			<point x="370" y="93" type="curve"/>
+			<point x="379" y="80"/>
+			<point x="384" y="64"/>
+			<point x="384" y="47" type="curve" smooth="yes"/>
+			<point x="384" y="-1"/>
+			<point x="346" y="-39"/>
+			<point x="299" y="-39" type="curve" smooth="yes"/>
+			<point x="255" y="-39"/>
+			<point x="218" y="-5"/>
+			<point x="214" y="38" type="curve"/>
+			<point x="211" y="51"/>
+			<point x="210" y="66"/>
 			<point x="210" y="80" type="curve" smooth="yes"/>
 			<point x="210" y="220"/>
 			<point x="325" y="335"/>
@@ -32,8 +27,8 @@
 			<point x="332" y="836" type="line"/>
 			<point x="332" y="884" type="line"/>
 			<point x="638" y="884" type="line"/>
-			<point x="638" y="-250" type="line" smooth="yes"/>
-			<point x="638" y="-302"/>
+			<point x="638" y="-248" type="line" smooth="yes"/>
+			<point x="638" y="-300"/>
 			<point x="664" y="-344"/>
 			<point x="696" y="-344" type="curve" smooth="yes"/>
 			<point x="724" y="-344"/>
@@ -47,7 +42,7 @@
 			<point x="897" y="-290" type="curve" smooth="yes"/>
 			<point x="897" y="-299"/>
 			<point x="895" y="-307"/>
-			<point x="894" y="-314" type="curve"/>
+			<point x="894" y="-315" type="curve"/>
 			<point x="893" y="-318"/>
 			<point x="891" y="-320"/>
 			<point x="888" y="-323" type="curve"/>
@@ -69,8 +64,10 @@
 				<key>space</key>
 				<string>be9b285ea4de</string>
 				<key>uni0279</key>
-				<string>a4a1b414fe7f</string>
+				<string>dbf4c49fd1e0</string>
 			</dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 		</dict>
 	</lib>
 </glyph>

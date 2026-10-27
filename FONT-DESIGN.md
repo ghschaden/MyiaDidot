@@ -13,6 +13,24 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 
 ## Construction and optical quality
 
+- Shared parts compared across glyphs (2026-10-27, measured on the
+  outlines; the drawn glyphs agree, the generators make these):
+  - Hook endings: the curl recipes' balls were fixed numbers, 20-60 %
+    under the drawn balls of c a f r y. Done for derive.py's recipes in
+    the Regular and Bold (2026-10-27, derive.ball_for; ʋ ɻ keep theirs:
+    no room in the Bold). Left: the Italic's own recipes (make_italic
+    ITALIC_RECIPES, retroflex, descender) and make_bold's ITALIC_BOLD /
+    BOLD_RECIPES, which set theirs by number (Bold Italic Ƈ Ɠ 45, ƈ 51,
+    ʋ ƴ 56 for 113). Bold Italic a's ball does not grow (68 -> 66).
+  - Dots: in the Bold and Bold Italic they are widened three times as
+    much as heightened (period about 1.36:1, ⸁ ⸄ ⸅ ⸇ ⸈ 271x182, Bold Italic
+    ※ ⁜ ⸓ ⸖ 323x207); ※ ⁜ ⸓ ⸖ take the accent dot (248), not the
+    period's (256), and in the Italic their dots differ within a glyph.
+  - Serifs: consistent but where make_bold.part_serifs shortens them, also
+    those with no neighbour: Bold ﬀb ﬀh ﬀt ﬄ ſſl reach 103 (f 141); Щ, Bold
+    Italic Ш; Bold m.sc ɦ.sc ƭ.sc ʝ.sc, Bold Italic ƙ.sc ϗ.sc ы.sc about 100
+    (135-152). Bold ɫ.sc's top serif has a 1-unit end face. At hairline
+    stems (N M U) the Bold's serifs reach 250 against 196.
 - Wobbles (checks.py `wobble`, 2026-10-27): the emboldening puts short
   reversals into curves its source glyph has not. In the Bold a fitted
   curve now keeps its source's bends (keep_bends: 169 -> 130 glyphs);

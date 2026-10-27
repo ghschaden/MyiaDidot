@@ -66,29 +66,26 @@
 			<point x="253" y="-350"/>
 			<point x="268" y="-390"/>
 			<point x="286" y="-390" type="curve" smooth="yes"/>
-			<point x="296" y="-390"/>
-			<point x="305" y="-377"/>
-			<point x="312" y="-357" type="curve"/>
-			<point x="308" y="-346"/>
-			<point x="306" y="-335"/>
-			<point x="306" y="-323" type="curve" smooth="yes"/>
-			<point x="306" y="-266"/>
-			<point x="352" y="-219"/>
-			<point x="410" y="-219" type="curve" smooth="yes"/>
-			<point x="467" y="-219"/>
-			<point x="514" y="-266"/>
-			<point x="514" y="-323" type="curve" smooth="yes"/>
-			<point x="514" y="-338"/>
-			<point x="511" y="-352"/>
-			<point x="507" y="-365" type="curve"/>
+			<point x="303" y="-390"/>
+			<point x="317" y="-355"/>
+			<point x="324" y="-311" type="curve"/>
+			<point x="337" y="-269"/>
+			<point x="374" y="-236"/>
+			<point x="420" y="-236" type="curve" smooth="yes"/>
+			<point x="471" y="-236"/>
+			<point x="512" y="-278"/>
+			<point x="512" y="-329" type="curve" smooth="yes"/>
+			<point x="512" y="-341"/>
+			<point x="510" y="-353"/>
+			<point x="507" y="-365" type="curve" smooth="yes"/>
 			<point x="506" y="-369"/>
 			<point x="503" y="-372"/>
 			<point x="500" y="-375" type="curve"/>
-			<point x="483" y="-404"/>
-			<point x="453" y="-424"/>
-			<point x="419" y="-427" type="curve"/>
-			<point x="380" y="-442"/>
-			<point x="335" y="-450"/>
+			<point x="486" y="-399"/>
+			<point x="462" y="-416"/>
+			<point x="434" y="-420" type="curve"/>
+			<point x="393" y="-439"/>
+			<point x="342" y="-450"/>
 			<point x="286" y="-450" type="curve" smooth="yes"/>
 			<point x="150" y="-450"/>
 			<point x="39" y="-383"/>
@@ -106,4 +103,10 @@
 	<anchor name="Grave" x="385" y="980"/>
 	<anchor name="Acute" x="385" y="980"/>
 	<anchor name="Cedilla" x="385" y="0"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
 </glyph>

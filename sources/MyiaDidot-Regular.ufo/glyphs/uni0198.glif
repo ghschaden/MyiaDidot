@@ -23,23 +23,23 @@
 			<point x="1243" y="1340"/>
 			<point x="1331" y="1251"/>
 			<point x="1331" y="1143" type="curve" smooth="yes"/>
-			<point x="1331" y="1135"/>
-			<point x="1331" y="1128"/>
-			<point x="1330" y="1121" type="curve"/>
-			<point x="1328" y="1078"/>
-			<point x="1293" y="1044"/>
-			<point x="1250" y="1044" type="curve" smooth="yes"/>
-			<point x="1206" y="1044"/>
-			<point x="1170" y="1080"/>
-			<point x="1170" y="1124" type="curve" smooth="yes"/>
-			<point x="1170" y="1168"/>
-			<point x="1206" y="1204"/>
-			<point x="1250" y="1204" type="curve" smooth="yes"/>
-			<point x="1255" y="1204"/>
-			<point x="1259" y="1203"/>
-			<point x="1264" y="1203" type="curve"/>
-			<point x="1241" y="1252"/>
-			<point x="1192" y="1285"/>
+			<point x="1331" y="1132"/>
+			<point x="1330" y="1121"/>
+			<point x="1329" y="1111" type="curve"/>
+			<point x="1321" y="1060"/>
+			<point x="1276" y="1020"/>
+			<point x="1222" y="1020" type="curve" smooth="yes"/>
+			<point x="1162" y="1020"/>
+			<point x="1114" y="1069"/>
+			<point x="1114" y="1128" type="curve" smooth="yes"/>
+			<point x="1114" y="1188"/>
+			<point x="1162" y="1236"/>
+			<point x="1222" y="1236" type="curve" smooth="yes"/>
+			<point x="1229" y="1236"/>
+			<point x="1237" y="1236"/>
+			<point x="1244" y="1234" type="curve"/>
+			<point x="1217" y="1266"/>
+			<point x="1178" y="1285"/>
 			<point x="1134" y="1285" type="curve" smooth="yes"/>
 			<point x="1087" y="1285"/>
 			<point x="1045" y="1262"/>
@@ -65,9 +65,13 @@
 		<dict>
 			<key>org.myiadidot.builtFrom</key>
 			<dict>
+				<key>I</key>
+				<string>28007cb98524</string>
 				<key>K</key>
 				<string>9754d0f923b3</string>
 			</dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 		</dict>
 	</lib>
 </glyph>
