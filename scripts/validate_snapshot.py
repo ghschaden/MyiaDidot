@@ -3,6 +3,7 @@
 import argparse
 import io
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -16,8 +17,15 @@ from build_support import atomic_output, content_hash, file_lock, publish_files,
 ROOT = Path(__file__).resolve().parent.parent
 
 
+# git sets GIT_DIR (and the like) for its hooks: in a worktree an absolute
+# path to that worktree's git dir, so a git command in the snapshot would
+# act on the real repository. The snapshot and what runs in it go without.
+CLEAN_ENV = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+
+
 def git(*args, cwd=None):
-    return subprocess.check_output(["git", "-C", str(cwd or ROOT), *args]).decode().strip()
+    env = CLEAN_ENV if cwd is not None else None
+    return subprocess.check_output(["git", "-C", str(cwd or ROOT), *args], env=env).decode().strip()
 
 
 def run_snapshot(tree, command, *, head=None, publish_proofs=False):
@@ -47,7 +55,7 @@ def run_snapshot(tree, command, *, head=None, publish_proofs=False):
         build = snapshot / "build"
         build.mkdir(exist_ok=True)
         (build / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-        result = subprocess.run(command, cwd=snapshot, check=False)
+        result = subprocess.run(command, cwd=snapshot, check=False, env=CLEAN_ENV)
         if result.returncode:
             return result.returncode
         if publish_proofs:
