@@ -26,8 +26,12 @@ setup:
 	git config core.hooksPath tools/git-hooks
 	@echo "git hooks installed (tools/git-hooks: pre-commit runs the tests, post-commit rebuilds the proofs)"
 
+# one test or validation run at a time across all working copies
+# (worktrees), at most 6 cores each
+VALIDATE_LOCK = $(shell cd "$$(git rev-parse --git-common-dir)" && pwd)/myia-validate.lock
+
 test:
-	.venv/bin/pytest
+	flock $(VALIDATE_LOCK) .venv/bin/pytest -n 6
 
 # ruff, lint only (no formatter: the recipe tables are aligned by hand)
 lint:
@@ -240,7 +244,7 @@ oldstand:
 
 # the generated styles as their generators make them (scripts/check_reproducible.py)
 reproduce:
-	$(PY) scripts/check_reproducible.py
+	flock $(VALIDATE_LOCK) $(PY) scripts/check_reproducible.py
 
 pairs: $(OTF)
 	@mkdir -p build/quality

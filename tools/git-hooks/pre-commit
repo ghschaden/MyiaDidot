@@ -48,7 +48,9 @@ fi
 
 # The staged tree is exactly what the commit will contain. Validation runs
 # from that immutable tree, including staged scripts and UFOs.
-state=$(git rev-parse --git-path myia-checks)
+# per working copy (a worktree has its own git dir): a run for another
+# branch's tree is not "older" and is left alone
+state="$(git rev-parse --git-dir)/myia-checks"
 mkdir -p "$state"
 staged=$(git write-tree)
 head=$(git rev-parse HEAD)

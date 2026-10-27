@@ -8,7 +8,10 @@
 state=$1 key=$2 repro=$3
 if [ "${4:-}" != --inside ]; then
     echo $$ > "$state/$key.pid"
-    if .venv/bin/python -I scripts/validate_snapshot.py --tree "$4" --head "$5" -- \
+    # one validation at a time on this machine, whichever working copy
+    # (worktree) it is for: each uses up to 6 cores (pytest -n 6)
+    lock="$(cd "$(git rev-parse --git-common-dir)" && pwd)/myia-validate.lock"
+    if flock "$lock" .venv/bin/python -I scripts/validate_snapshot.py --tree "$4" --head "$5" -- \
         sh tools/git-hooks/run-checks "$state" "$key" "$repro" --inside >> "$state/$key.log" 2>&1; then
         touch "$state/$key.pass"
     else
@@ -20,7 +23,7 @@ fi
 
 checks() {
     echo "pre-commit: running the test suite..."
-    if ! .venv/bin/pytest -q -x -p no:cacheprovider; then
+    if ! .venv/bin/pytest -q -x -n 6 -p no:cacheprovider; then
         echo
         echo "pre-commit: tests failed; commit aborted."
         echo "  Fix the cause, or if the change is intended, update the baselines:"
