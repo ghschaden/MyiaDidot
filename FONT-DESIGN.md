@@ -18,10 +18,12 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   - Hook endings: the curl recipes' balls were fixed numbers, 20-60 %
     under the drawn balls of c a f r y. Done for derive.py's recipes in
     the Regular and Bold (2026-10-27, derive.ball_for; ʋ ɻ keep theirs:
-    no room in the Bold). Left: the Italic's own recipes (make_italic
-    ITALIC_RECIPES, retroflex, descender) and make_bold's ITALIC_BOLD /
-    BOLD_RECIPES, which set theirs by number (Bold Italic Ƈ Ɠ 45, ƈ 51,
-    ʋ ƴ 56 for 113). Bold Italic a's ball does not grow (68 -> 66).
+    no room in the Bold). The italic tails off a stem (retroflex,
+    descender: ɳ ʈ ɭ ɖ Ɽ ң қ ...) keep their ball at half the hook's
+    stroke, flush with the curl's end (the person's decision, 2026-10-27).
+    Left: the italics' other curls set by number (make_italic
+    ITALIC_RECIPES, make_bold ITALIC_BOLD_RECIPES: Bold Italic Ƈ Ɠ 45,
+    ƈ 51, ʋ ƴ 56 for 113). Bold Italic a's ball does not grow (68 -> 66).
   - Dots: in the Bold and Bold Italic they are widened three times as
     much as heightened (period about 1.36:1, ⸁ ⸄ ⸅ ⸇ ⸈ 271x182, Bold Italic
     ※ ⁜ ⸓ ⸖ 323x207); ※ ⁜ ⸓ ⸖ take the accent dot (248), not the
