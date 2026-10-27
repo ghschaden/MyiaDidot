@@ -946,6 +946,17 @@ def rhotic(up, source, y):
     sx = ink[0] + 12
     sy = derive.vertical_runs(up, "uni02DE", sx)[0][0]
     tx = derive.stems_at(up, source, y)[-1][1] - 30
+    # its end cut (the straight edge from its leftmost point) inside the
+    # stroke whole, its far corner 15 units in at its own height: the Bold
+    # Italic's wider cut stood out under the hook, a step that left it
+    # joined by a neck (ɚ ɝ)
+    pts = [(p.x, p.y, p.type) for c in up["uni02DE"].contours for p in c.points]
+    i = min(range(len(pts)), key=lambda k: pts[k][0])
+    for j in ((i - 1) % len(pts), (i + 1) % len(pts)):
+        if (pts[i][2] == "line" and j == (i - 1) % len(pts)) or (pts[j][2] == "line" and j == (i + 1) % len(pts)):
+            cx, cy = pts[j][0] - sx + tx, pts[j][1] - sy + y
+            edge = derive.stems_at(up, source, cy)[-1][1]
+            tx += min(0, edge - 15 - cx)
     out = derive.attach(up, source, [], [("uni02DE", (-BIG, -BIG, BIG, BIG), (sx, sy), (1, 1, tx, y))])
     return out, round(tx + ink[2] - sx + 70)
 

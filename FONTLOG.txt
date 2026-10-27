@@ -26,6 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 ɚ ɝ hooks joined whole; Bold Italic ɳ ʈ tails without steps
+
+    * The rhotic hook (˞) was placed by its leftmost point, 30 units into
+      the stroke; its slanted end cut's far corner stood outside, in the
+      Bold Italic 40 units (a step under the hook, joined by a neck). Now
+      that corner is 15 units inside the stroke at its own height
+      (make_italic.rhotic): Italic ɚ ɝ hooks 26-29 units further in,
+      Bold Italic ɚ 1048 -> 980, ɝ 1122 -> 1050.
+    * Bold Italic ɳ: its ball half the stroke (115), as the Italic's and
+      Ɽ's; at 80 the curl's end stood out of it, a straight step.
+    * Bold Italic ʈ: its own recipe on its stem (121-359 upright): the
+      Italic's numbers cut a slice off the stem (a step at 350) and set
+      the tail narrower; 668 -> 731.
+    * Shaping: these advances and the marks on them only.
+
 2026-10-27 Bold ƒ ψ φ: notch, shoulder and pointed curves gone
 
     * φ (emboldened the rounder way, embolden_simple) had its curves

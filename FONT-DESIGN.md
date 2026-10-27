@@ -13,6 +13,12 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 
 ## Construction and optical quality
 
+- Bold Italic, seen in print (2026-10-27): ʋ's curl starts narrower than
+  the stem (a step each side; a curl is one thickness all round, a
+  tapering one or a drawn recipe is needed, emboldened whole it runs into
+  the first stem); ʷ's left stroke turns at its join; г's inner curves
+  flattened upright (the handle fit, as ψ's); Ɯ's join into its second
+  stem not smooth below.
 - Bold Italic: try the Bold's two emboldening repairs of 2026-10-27
   (make_bold: keep_smooth for the rounder way, runs_on by weight). Tried
   there they smooth § 3 ₵ ø.sc Θ ẞ but add side space (3 +21, § +13),

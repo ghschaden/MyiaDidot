@@ -200,11 +200,12 @@ ITALIC_BOLD_RECIPES = {
     # ɳ: the Italic's (make_italic.retroflex), on the Bold Italic's leg (its
     # centre 836, 229 thick at the cut): emboldened whole, the descender took
     # only part of the weight (its stroke under the thick threshold) and the
-    # leg pinched at the join
+    # leg pinched at the join; the ball half the stroke, as the Italic's and
+    # Ɽ's (80 left a straight step where the curl ran into it)
     "ɳ": ("attach", "n", ("x", [(700, -10000, 10000, 200), (1000, -10000, 10000, 450)],
                           [("line", ((836, 210), (836, -150), 229), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 836, -150, 229), "dir": 270, "turn": "ccw", "r": (150, 130),
-                                     "sweep": 170, "ball": 80, "t": (229, 55)}, (0, 0), (1, 1, 0, 0))])),
+                                     "sweep": 170, "ball": 115, "t": (229, 55)}, (0, 0), (1, 1, 0, 0))])),
     # Ɽ Ʈ ɽ.sc ʈ.sc: the Italic's (make_italic.retroflex: the foot serif cut
     # away, the stem run on and curled right), on the Bold Italic's stem
     # (its centre and weight, 290 or 299 thick at the cut), the ball half
@@ -223,6 +224,13 @@ ITALIC_BOLD_RECIPES = {
                                  ("curl", {"at": ("pt", 332.5, -150, 299), "dir": 270, "turn": "ccw",
                                            "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
                                   (0, 0), (1, 1, 0, 0))])),
+    # ʈ: the Italic's (make_italic: t's tail and foot cut away), on the Bold
+    # Italic's stem (121-359 upright, its centre 240): with the Italic's
+    # numbers the cut at 300 took a slice off the stem, a step at 350
+    "ʈ": ("attach", "t", ("x", [(-10000, -10000, 10000, 300), (380, -10000, 10000, 600)],
+                          [("line", ((240, 350), (240, -150), 238), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 240, -150, 238), "dir": 270, "turn": "ccw", "r": (150, 130),
+                                     "sweep": 170, "ball": 119, "t": (238, 55)}, (0, 0), (1, 1, 0, 0))])),
     "ʈ.sc": ("attach", "t.sc", ("s", [(-10000, -10000, 10000, 120)],
                                 [("line", ((538.5, 160), (538.5, -150), 299), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 538.5, -150, 299), "dir": 270, "turn": "ccw",

@@ -343,11 +343,9 @@ uni0254.sc slant 1               # italic small caps derived after the italic sm
 uni0257 zone 1                   # reworked hooked-d italic outline: bottom +7 from -23
 uni0257.sc kink 4                # 2026-10-21 Italic reweighted and tightened: 1158,637 4.5 degrees; 974,208 6.4 degrees; 838,266 4.8 degrees; 921,697 7.1 degrees
 uni0259.sc zone 2                # 2026-10-21 Italic reweighted and tightened: bottom -24 from 0; top +23 from 1040
-uni025A smooth 1                 # 2026-10-26 ɗ ɚ ɝ from the Italic's own constructions (make_italic.build_own): 958,460 2.6 degrees
 uni025B.sc zone 2                # 2026-10-21 Italic reweighted and tightened: bottom -24 from 0; top +16 from 1040
 uni025C kink 1                   # 2026-10-21 Italic reweighted and tightened: 554,462 5.4 degrees
 uni025D kink 1                   # 2026-10-26 ɗ ɚ ɝ from the Italic's own constructions (make_italic.build_own): 556,462 4.8 degrees
-uni025D smooth 1                 # 2026-10-26 ɗ ɚ ɝ from the Italic's own constructions (make_italic.build_own): 986,650 2.0 degrees
 uni025E kink 1                   # 2026-10-21 Italic reweighted and tightened: 653,462 4.8 degrees
 uni025F kink 5                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: -139,-445 4.8 degrees; 569,412 1.2 degrees; 586,473 5.1 degrees; 299,829 4.1 de
 uni025F smooth 3                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 608,592 2.8 degrees; 180,-37 2.0 degrees; 152,-242 2.8 degrees
@@ -388,7 +386,7 @@ uni0272 slant 1                  # 2026-10-16 Bold Italic: first generated (make
 uni0272.sc kink 1                # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 212,220 3.3 degrees
 uni0272.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 143 against 282 (0.51, lighter)
 uni0272.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
-uni0273 kink 2                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 1020,499 7.5 degrees; 1018,-226 5.4 degrees
+uni0273 kink 1                   # 2026-10-27 rhotic hook's end cut inside the stroke (ɚ ɝ); Bold Italic ɳ ball half the stroke, ʈ on its own stem: 1020,499 7.5 degrees
 uni0273 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.2 degrees, not 15.2
 uni0276 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -7 from -23
 uni0278 base 1                   # approved 2026-10-25: bowl 5% wider with equal inner/outer expansion, smoothed counters; 45% exact/covered overlap with unexpanded o
@@ -412,7 +410,6 @@ uni0282 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni0283 kink 3                   # 2026-10-21 Italic reweighted and tightened: 478,896 1.2 degrees; 483,916 1.2 degrees; 942,1229 3.9 degrees
 uni0283 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: -4,-76 2.4 degrees
 uni0283 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 240 against 273 (0.88, lighter)
-uni0288 base 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 55% of t kept (attach)
 uni0288 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 247 against 289 (0.85, lighter)
 uni0288.sc kink 2                # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 303,160 1.3 degrees; 592,120 1.8 degrees
 uni0288.sc smooth 2              # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 517,927 2.6 degrees; 508,-150 2.1 degrees
