@@ -83,7 +83,8 @@ Moved from CLAUDE.md (its ground rules apply).
   roman, the upright mathematical ones) are split at the extremes the
   slant moves (`shear(..., extremes=True)`, derive.with_extremes, more than
   EXTREME_PAST units past their points); the Bold Italic splits them again
-  when it slants back (make_bold.slant_back); POINT_REPAIRS (ℵ ɬ Ɬ) keep
+  when it slants back (make_bold.slant_back, also its rederived letters);
+  POINT_REPAIRS (ℵ ɬ Ɬ) keep
   their points for their repairs. Lib
   `org.myiadidot.italicSource` says where each glyph came from; a rerun
   keeps "drawn" glyphs (set it after hand-editing one) and reviewed drafts

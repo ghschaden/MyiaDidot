@@ -66,9 +66,12 @@
 			<point x="859" y="684" type="curve" smooth="yes"/>
 			<point x="632" y="684" type="line"/>
 			<point x="468" y="120" type="line"/>
-			<point x="384" y="-149" type="line" smooth="yes"/>
-			<point x="364" y="-226"/>
-			<point x="368" y="-290"/>
+			<point x="384" y="-149" type="line"/>
+			<point x="376" y="-181"/>
+			<point x="371" y="-211"/>
+			<point x="371" y="-235" type="curve" smooth="yes"/>
+			<point x="371" y="-268"/>
+			<point x="380" y="-290"/>
 			<point x="396" y="-290" type="curve" smooth="yes"/>
 			<point x="420" y="-290"/>
 			<point x="453" y="-244"/>
@@ -79,8 +82,11 @@
 			<point x="500" y="-79"/>
 			<point x="583" y="-15"/>
 			<point x="663" y="-15" type="curve" smooth="yes"/>
-			<point x="743" y="-15"/>
-			<point x="790" y="-79"/>
+			<point x="730" y="-15"/>
+			<point x="774" y="-60"/>
+			<point x="774" y="-121" type="curve" smooth="yes"/>
+			<point x="774" y="-134"/>
+			<point x="772" y="-147"/>
 			<point x="768" y="-160" type="curve"/>
 			<point x="767" y="-166"/>
 			<point x="765" y="-172"/>
@@ -121,11 +127,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-10-26</string>
+				<string>2026-10-27</string>
 				<key>glyph</key>
-				<string>7ea314e6bc30</string>
+				<string>7df12f9e615c</string>
 				<key>review</key>
-				<string>commit 8b52c603 (before/after proofs; FONTLOG 2026-10-26)</string>
+				<string>overlay before/after the rederive extreme split (outline unchanged; FONTLOG 2026-10-27)</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

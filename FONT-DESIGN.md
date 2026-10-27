@@ -29,7 +29,8 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   `make diffenator` results. Use `make strokes` for optical-weight proofs.
   W-family diagonal slant and i/j dot gaps can be intentional.
   Extremes lost to a slant or turn are split by the generators now
-  (2026-10-26); the largest left are Bold Italic ɓ.sc ɗ.sc.
+  (2026-10-26), the rederived Bold Italic letters too (2026-10-27); none
+  left runs more than about 20 units past (Bold Ʒ ℓ, Bold Italic ѫ ® л @).
 - Accept, or send back, the drafts not yet accepted: `scripts/accepted.py
   UFO --drafts` (about 350 in each italic weight, ₸ ct st in the Romans).
   Acceptance is recorded with accepted.py, not by clearing draft flags

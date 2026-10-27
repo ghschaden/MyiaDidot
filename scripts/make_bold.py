@@ -1475,9 +1475,14 @@ def rederive(source, font, italic, whole):
             continue
         glyph = ufoLib2.objects.Glyph()
         # slanted back as unslanted above (make_italic.shear, about half the
-        # x-height): about the baseline, the ink stood SLANT * XH / 2 right
+        # x-height): about the baseline, the ink stood SLANT * XH / 2 right;
+        # its curves split where the slant sets them past their points, as
+        # the emboldened letters' are (ɓ.sc's hook ran 80 units past)
         y0 = XH / 2 if italic else 0
-        new.draw(TransformPen(glyph.getPen(), (1, 0, SLANT, 1, -SLANT * y0, 0)))
+        from make_italic import POINT_REPAIRS
+
+        slant_back(new, glyph.getPen(), [(1, 0, SLANT, 1, -SLANT * y0, 0)],
+                   italic and name not in POINT_REPAIRS)
         redraw(font[name], glyph)
         font[name].width = new.width
         del up[tmp]

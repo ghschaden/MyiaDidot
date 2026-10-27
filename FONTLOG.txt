@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Bold Italic rederived letters split at their extremes
+
+    * make_bold.rederive slanted its rebuilt letters back without the
+      extreme split the emboldened ones get (slant_back): Bold Italic
+      ɓ.sc ɗ.sc's hooks ran 80 units past their points. 22 letters now
+      split there (ɓ ɓ.sc ƃ ƙ Ʈ ɕ ɗ.sc ɚ ɝ ɳ ɽ.sc ʂ ʈ.sc ʐ ʑ Bulgarian в
+      ҷ Қ қ Ң Ҳ Ɽ); outlines otherwise unchanged (at most 224 units²
+      moved by rounding), advances and anchors kept.
+    * Bold Italic extreme findings: 21 gone; none left in any style runs
+      more than about 20 units past. ʈ.sc and Ɽ accepted anew (unchanged
+      in overlay).
+
 2026-10-26 Development: acceptance recorded apart from draft flags
 
     * In the Italic, a draft flag means "made anew by the generator":
