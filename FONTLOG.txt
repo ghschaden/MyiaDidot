@@ -26,6 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-27 Bold, Bold Italic: Ø ø as O o with a stroke through; ư's horn
+
+    * Ø ø ø.sc, drawn whole in the Regular and Italic, were emboldened
+      whole: the ring swelled where the slash crosses it (worst in the
+      Bold Italic ø.sc, which also took the rounder way). make_bold.slashed
+      now makes them of their round (O o o.sc, emboldened as it is, oval
+      refit included) and their slash as one straight bar (the hull of its
+      straight edges), emboldened apart and joined; spaced as their round
+      (SLASHED). Advances: Bold Ø +2 ø +4, Bold Italic Ø +4 ø +7 (now O's
+      and o's); Ǿ ǿ and the marks below follow. The Regular's ø.sc ring
+      is not quite o.sc's (left as drawn).
+    * Bold Italic ư ứ ừ ử ữ ự: the horn moved 45 units right
+      (ITALIC_ANCHOR_NUDGE), its outer edge running on from the stem's as
+      in the Italic; the heavier stem's top had stood out beside it.
+
 2026-10-27 Bold, Bold Italic: o O 0 refitted as ovals
 
     * Emboldened by the weight of the stroke at each node, the Bold

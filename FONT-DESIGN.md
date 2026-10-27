@@ -43,9 +43,16 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   reversals into curves its source glyph has not. In the Bold a fitted
   curve now keeps its source's bends (keep_bends: 169 -> 130 glyphs);
   the rest bend back across a node, between two curves, which the guard
-  (one curve at a time) does not see. In the Bold Italic (375; г, o's
-  inner side) the same guard took only 16 away: another cause, to be
-  found. Large ones at ball necks (ƒ y) may be design.
+  (one curve at a time) does not see. In the Bold Italic (about 350)
+  the cause (2026-10-27): 309 come from embolden_by_weight itself (not
+  the slant, the zones or the bridge); nodes moved by different weights
+  leave a curve that bends back whatever its handles' lengths along the
+  kept directions (the guard's fitted and plain handles both bend in
+  most). Shortening the handles takes out a third (365 -> 238 glyphs,
+  Bold 142 -> 80) but changes Ⱳ's approved curl: not committed. The
+  person's verdict: the Bold Italic reads as pieced together, not drawn;
+  a pilot rebuilds strokes from the Italic's centre lines and widths
+  (in progress). Large ones at ball necks (ƒ y) may be design.
 - Review the step candidates (checks.py `step`, 2026-10-27, in
   `tests/data/quality-*.txt`): a short straight jog between edges running
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar

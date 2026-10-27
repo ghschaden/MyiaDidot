@@ -275,8 +275,7 @@ oogonek.sc smooth 1              # Italic weighted as its letters are taken, der
 ordfeminine extreme 1            # 2026-10-21 Italic reweighted and tightened: 649,863 5 units past
 ordfeminine smooth 1             # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 575,1180 4.6 degrees
 ordfeminine wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 655,871 40 degrees
-oslash wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 410,621 5 degrees; 573,240 6 degrees
-oslash.sc kink 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 374,648 8.0 degrees
+oslash.sc kink 2                 # 2026-10-27 slashed rounds rebuilt from their round and a bar; Bold Italic u's horn moved onto the stem's edge: 70,345 5.8 degrees; 1057,651 6.5 degrees
 p wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 333,702 28 degrees; 349,779 13 degrees; 711,216 4 degrees; 845,710 5 degrees
 p.sc kink 4                      # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1101,788 5.1 degrees; 388,101 7.1 degrees; 821,612 5.5 degrees; 863,808 5.7 deg
 partialdiff wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 664,205 3 degrees; 464,630 4 degrees

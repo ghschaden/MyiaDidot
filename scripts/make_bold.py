@@ -39,6 +39,7 @@ import ufoLib2
 from fontTools.pens.areaPen import AreaPen
 from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.reverseContourPen import ReverseContourPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -497,7 +498,10 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
 # fit. Keep their established advances/anchors before rebuilding the belts
 # on this style's final base letters.
 ITALIC_FIT_CORRECTIONS = {"uni026C": (-3, 0), "uniA7AD": (-2, 0)}
-ITALIC_ANCHOR_NUDGE = {}
+# the horn on u right, so that its outer edge runs on from the stem's as in
+# the Italic (the stem top 840-981, the horn there 883-984): the heavier
+# stem's top reached 1089, the horn's edge 1044, a shelf beside it
+ITALIC_ANCHOR_NUDGE = {("u", "Horn"): 45}
 # Bold Italic optical-pair corrections from the pinned-reference spacing
 # comparison (scripts/quality/pairs.py). Values are final Bold Italic kern
 # values in font units; they are applied after the source kerning is scaled.
@@ -560,6 +564,80 @@ ANCHOR_NUDGE = {("u", "Horn"): -10}
 # and flat on the other (the Bold Italic o, an egg); refitted from the
 # lighter style's own curves (oval)
 OVALS = {"o", "O", "zero"}
+# slashed rounds, drawn whole in the lighter style: emboldened whole, the
+# ring swelled where the slash crosses it (Ø not O with a stroke through);
+# the ring is the round's own, the slash emboldened apart (slashed)
+SLASHED = {"Oslash": "O", "oslash": "o", "oslash.sc": "o.sc"}
+
+
+def slashed(wide, ring, make, refit):
+    """wide (a slashed round) as its round emboldened as the round itself is
+    (make, oval if refit) joined to its slash (what it has beyond ring, the
+    round's own wide outline: slivers where the two rings differ left out)
+    emboldened apart."""
+    def path(rec):
+        p = pathops.Path()
+        (rec.replay if hasattr(rec, "replay") else rec.draw)(p.getPen())
+        return p
+
+    def contours(rec):
+        out = []
+        for op, pts in rec.value:
+            if op == "moveTo":
+                out.append([])
+            out[-1].append((op, pts))
+        return out
+
+    def area(c):
+        pen = AreaPen()
+        for op, pts in c:
+            getattr(pen, op)(*pts)
+        return pen.value
+
+    rest = RecordingPen()
+    pathops.op(path(wide), path(ring), pathops.PathOp.DIFFERENCE).draw(rest)
+    # the slash whole, as one straight bar (the hull of its pieces' straight
+    # edges): cut at the ring, its ends would be thin wedges along it,
+    # emboldened into fins; where the two rings differ the pieces carry
+    # slivers of ring along
+    pts = set()
+    for c in contours(rest):
+        start = cur = c[0][1][0]
+        for op, ps in c[1:]:
+            end = ps[-1] if ps else start
+            if op in ("lineTo", "closePath") and math.dist(cur, end) > 50:
+                pts |= {cur, end}
+            cur = end
+    pts = sorted(pts)
+
+    def half(seq):
+        h = []
+        for p in seq:
+            while len(h) > 1 and ((h[-1][0] - h[-2][0]) * (p[1] - h[-2][1])
+                                  - (h[-1][1] - h[-2][1]) * (p[0] - h[-2][0])) <= 0:
+                h.pop()
+            h.append(p)
+        return h[:-1]
+
+    hull = half(pts) + half(pts[::-1])
+    slash = RecordingPen()
+    slash.moveTo(hull[0])
+    for p in hull[1:]:
+        slash.lineTo(p)
+    slash.closePath()
+    whole = make(ring)
+    if refit:
+        whole = oval(ring, whole)
+    before, rec = RecordingPen(), RecordingPen()
+    (whole.replay if hasattr(whole, "replay") else whole.draw)(before)
+    pathops.op(path(whole), path(make(slash)), pathops.PathOp.UNION).draw(rec)
+    # wound as the round is (pathops winds its own way)
+    glyph = ufoLib2.objects.Glyph()
+    pen = glyph.getPen()
+    if (max(map(area, contours(rec)), key=abs) > 0) != (max(map(area, contours(before)), key=abs) > 0):
+        pen = ReverseContourPen(pen)
+    rec.replay(pen)
+    return glyph
 
 
 def oval(wide, bold):
@@ -1802,7 +1880,9 @@ def main():
                                          AY))
 
                 bold = make(wide)
-                if g.name in rounder_ones or (g.name not in by_weight and slit(bold, regular[g.name], regular)):
+                # (a slashed round as its round: by weight, ring and slash apart)
+                if g.name in rounder_ones or (g.name not in by_weight and g.name not in SLASHED
+                                              and slit(bold, regular[g.name], regular)):
                     # parts close to each other (x's inner serifs) closed to a
                     # slit: the rounder emboldening, which leaves them apart,
                     # where it has fewer faults (a thin arch springing from a
@@ -1822,6 +1902,11 @@ def main():
                     parted.append(g.name)
                 if g.name in OVALS:
                     bold = oval(wide, bold)
+                if g.name in SLASHED:
+                    ring = RecordingPen()
+                    contours_only(regular[SLASHED[g.name]]).replay(
+                        TransformPen(TransformPen(ring, (KX, 0, 0, 1, 0, 0)), up))
+                    bold = slashed(wide, ring, make, SLASHED[g.name] in OVALS)
                 # each side's ink grew by the weight of the stroke there, not
                 # as the earlier emboldening grew it (every side AX / 2, its
                 # convex corners up to twice that: a serif's tip): the side
@@ -1894,6 +1979,10 @@ def main():
             if len(letters) == 1 and letters[0] in fit:
                 fit[g.name] = fit[letters[0]]
                 grown = True
+    # a slashed round spaced as its round (the Regular's Ø is as wide as O,
+    # its ring where O's is): the slash is not fitted
+    for name, ring in SLASHED.items():
+        fit[name] = fit.get(ring, (0, 0))
     sidebearings(font, {n: d for n, d in fit.items() if d != (0, 0)})
     if italic:
         from italic_contours import finish_bases

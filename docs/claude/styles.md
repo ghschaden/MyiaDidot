@@ -54,6 +54,8 @@ Moved from CLAUDE.md (its ground rules apply).
   (keep_bends; BOLD_FIT_AS_IS / ITALIC_BOLD_FIT_AS_IS opt a letter out).
   The closed rounds o O 0 (OVALS) are then refitted from the lighter
   style's curves to the emboldened box and ink area (`oval`).
+  The slashed rounds Ø ø ø.sc (SLASHED) are their round so made plus
+  their slash as one bar emboldened apart (`slashed`), spaced as the round.
 - **Bold Italic** (`sources/MyiaDidot-BoldItalic.ufo`) is generated from the
   Italic by the same script: `make_bold.py sources/MyiaDidot-Italic.ufo
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make

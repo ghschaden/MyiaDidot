@@ -107,9 +107,7 @@ nu zone 1                        # 2026-10-16 known at the start (quality checks
 oe.sc extreme 2                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 660,28 9 units past; 727,908 9 units past
 omicron stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
 ordfeminine wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 454,1028 3 degrees; 322,1125 81 degrees
-oslash wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 747,491 7 degrees
 oslash zone 2                    # 2026-10-16 known at the start (quality checks added): bottom -26 from 0; top +26 from 884
-oslash.sc extreme 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 949,515 5 units past; 353,515 6 units past
 period width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 phi extreme 1                    # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 603,-15 9 units past
 phi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 261 (0.80, lighter)
