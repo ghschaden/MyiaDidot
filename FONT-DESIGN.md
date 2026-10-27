@@ -49,10 +49,44 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   leave a curve that bends back whatever its handles' lengths along the
   kept directions (the guard's fitted and plain handles both bend in
   most). Shortening the handles takes out a third (365 -> 238 glyphs,
-  Bold 142 -> 80) but changes Ⱳ's approved curl: not committed. The
-  person's verdict: the Bold Italic reads as pieced together, not drawn;
-  a pilot rebuilds strokes from the Italic's centre lines and widths
-  (in progress). Large ones at ball necks (ƒ y) may be design.
+  Bold 142 -> 80) but changes Ⱳ's approved curl: not committed.
+- **Bold Italic from strokes (next, the person's choice 2026-10-27).**
+  The person's verdict: the Italic reads as drawn with a pen, the Bold
+  Italic as pieced together, its curves unround. Cause: it offsets the
+  Italic's nodes, each by the weight measured there, and patches the
+  symptoms (keep_bends, oval, recipes). Tried 2026-10-27, not enough:
+  - Thin ends (scripts/pilot/thin-ends.patch): a stroke's cut end (n's
+    exit) is weighed across its length, a stem's weight, a wedge; left
+    out of the measure, 320 Bold Italic glyphs change (n u i up to 28
+    narrower), ℵ kept as it was; the ends thin, but the person: "still
+    edgy, not smooth". In the Bold the same rule moves 212 glyphs
+    (parentheses) and breaks ℵ's repair.
+  - Runs redrawn (scripts/pilot/fair_runs.py): each run between corners
+    and extremes as the fewest one-way cubics within 5 units. e's stem
+    below its bar and s lose their wobbles; n a c h barely change: n's
+    wobbles (inner crowns, the S above the foot) come from where nodes
+    sit (the foot's extreme further left than one-way curves reach).
+  - Stroke pilot (scripts/pilot/strokes_pilot.py): the Italic sampled
+    every 2 units, each section's weight (ray to the facing side) shared
+    by both its sides and smoothed along the outline (sigma 45), moved by
+    make_bold's gain (AX*k across, AY up/down), mitred at corners,
+    cleaned (pathops) and refitted. The person: n's right downstroke
+    "definitely much better"; e and г no different. Its faults: about a
+    third more nodes, kinks (г's spine, e's bar join, n's stem under the
+    crotch), o's counter keeps its slight S, n a up to 8 % lighter (ends
+    and hairlines gain only AY). Swapping in fair_runs' fitter made it
+    worse (91 nodes in n, e's counter filled): not the way.
+  Plan: (1) weights as the pilot's (paired, smoothed; ends thin by
+  construction); (2) the structure from the Italic: fit the stroke
+  outline with as many curves as the Italic glyph has, its nodes where
+  the Italic's fall along each stroke (mapped by arc length per stroke
+  side), tangents from the target outline, extremes kept, so the curves
+  are as few and as smooth as the Italic's; (3) settle with the person
+  what hairlines and ends gain; (4) a sheet of about 20 lowercase (n m h
+  u a e c o s г ...) against the Italic and today's Bold Italic before
+  anything goes into make_bold; then a full sweep and baselines.
+  Render with node views (Italic | now | pilot); the person judges
+  smoothness by eye, the reversal count is only a check.
 - Review the step candidates (checks.py `step`, 2026-10-27, in
   `tests/data/quality-*.txt`): a short straight jog between edges running
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar

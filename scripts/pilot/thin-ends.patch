@@ -1,0 +1,69 @@
+diff --git a/scripts/derive.py b/scripts/derive.py
+index 2f8cd0e9..3022f52c 100644
+--- a/scripts/derive.py
++++ b/scripts/derive.py
+@@ -1506,7 +1506,7 @@ def stroke_gauge(glyph):
+     return across
+ 
+ 
+-def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False, keep_bends=False):
++def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False, keep_bends=False, thin_ends=False):
+     """Thicken the thick strokes by ax across, in whatever direction they
+     run, and every edge by ay vertically (the hairlines' gain): the contrast
+     of a Didot bold, where emboldening every vertical by ax made the
+@@ -1528,6 +1528,8 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False, keep_bend
+     0.8 of the shorter edge (by the bisector it moved into the diagonal).
+     Overlaps are removed first: the weight is the union's. runs_on: a short
+     edge also takes the weight of a curve it runs on into (RUNS_ON).
++    thin_ends: a stroke's cut end (a short line between two curves) is no
++    section of it, so a hairline's end keeps a hairline's weight.
+     """
+     SHORT = 60
+     RUNS_ON = 10  # degrees: a short edge this close to a curve's direction is part of its stroke
+@@ -1641,6 +1643,11 @@ def embolden_by_weight(rec, ax, ay, thin=60, thick=160, runs_on=False, keep_bend
+             for d, (a0, a1) in ((-1, (ons[(idx - 1) % L], i)), (1, (i, ons[(idx + 1) % L]))):
+                 offs = [(a0 + k) % n for k in range(1, (a1 - a0) % n or n)]
+                 ln = math.dist((P[a0].x, P[a0].y), (P[a1].x, P[a1].y)) or 1
++                # a stroke's cut end (n's exit): across it runs the stroke's
++                # length, a stem's weight at a hairline (its end a wedge)
++                if (thin_ends and not offs and ln < SHORT and P[a0].type == "curve"
++                        and P[ons[(ons.index(a1) + 1) % L]].type == "curve"):
++                    continue
+                 for frac in (0.0, min(0.5, REACH / ln)):
+                     t = frac if d == 1 else 1 - frac
+                     pt, tn = point_on(P, a0, a1, offs, t)
+diff --git a/scripts/make_bold.py b/scripts/make_bold.py
+index 7c286011..be885862 100644
+--- a/scripts/make_bold.py
++++ b/scripts/make_bold.py
+@@ -379,6 +379,11 @@ BOLD_FIT_AS_IS = {"uni0190": "Ɛ: the beak at its lower arm's end thinned to a s
+ ITALIC_BOLD_FIT_AS_IS = {
+     "uni2135": "ℵ: aleph.py's repairs are made on the outline as it came",
+ }
++# letters whose stroke ends keep the weight they had before thin_ends
++# (2026-10-27): a later repair is made on the ends as they came
++ITALIC_BOLD_THICK_ENDS = {
++    "uni2135": "ℵ: aleph.py's lower return repair is made on the tip as it came",
++}
+ ITALIC_BOLD_BY_WEIGHT = {
+     "uni044B": "ы: the rounder way light, its bowl dented where it meets the stem",
+     "uni044C": "ь: the rounder way light (0.82 of its kind), its hook a hairline",
+@@ -1871,12 +1876,15 @@ def main():
+                 # a letter or figure made small, as at its scale (ᵃ, ⁰, ª)
+                 sc = small_scale if g.name in small else 1.0
+ 
+-                def make(w, sc=sc, bends=g.name not in fit_as_is):
++                def make(w, sc=sc, bends=g.name not in fit_as_is,
++                         thin_ends=italic and g.name not in ITALIC_BOLD_THICK_ENDS):
+                     # short edges running on into a curve weighed as it in
+-                    # the Bold (ƒ); the Bold Italic's not yet reviewed so
++                    # the Bold (ƒ); the Bold Italic's not yet reviewed so.
++                    # The Bold Italic's stroke ends as thin as their strokes
++                    # (n's exit no wedge); the Bold's not reviewed so
+                     return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc,
+                                                             runs_on=not italic,
+-                                                            keep_bends=bends),
++                                                            keep_bends=bends, thin_ends=thin_ends),
+                                          AY))
+ 
+                 bold = make(wide)
