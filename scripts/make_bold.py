@@ -448,6 +448,11 @@ BOLD_ROUNDER = {
     "uni0255": "ɕ: kept the rounder way",
     "uni0266.sc": "ɦ.sc: kept the rounder way",
 }
+# Bold Italic letters whose hairline leaves its crotch heavier, the
+# weight there (0..1, a stem's 1) fading over stroke_bold.ROOT units (k's
+# arm a thin wedge where it left the stem; the person chose 0.7 of 0.3, 0.5,
+# 0.7, k only, 2026-10-28)
+ITALIC_BOLD_ROOTS = {"k": 0.7}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
@@ -1936,7 +1941,7 @@ def main():
     def strokes_job(name, w, sc):
         gain = sc * ITALIC_BOLD_HEAVIER.get(name, 1.0)
         return (name, w.value, (ITALIC_AX * gain, AY, ITALIC_THIN * sc, ITALIC_THICK * sc,
-                                ITALIC_HAIR * gain, SLANT, SLIVER * sc * sc))
+                                ITALIC_HAIR * gain, SLANT, SLIVER * sc * sc, ITALIC_BOLD_ROOTS.get(name, 0.0)))
 
     stroked, unstroked = {}, []
     if italic:

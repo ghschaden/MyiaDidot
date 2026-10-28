@@ -82,6 +82,8 @@ Moved from CLAUDE.md (its ground rules apply).
   bends; serif brackets (up to three curves under 120 units between
   lines) held as drawn; an arc taken only within LIMIT (6) units; the
   cleaning's leftover curves under 8 units merged first (`rejoined`).
+  ITALIC_BOLD_ROOTS: letters whose hairline leaves its crotch heavier
+  (k 0.7, the person's choice: its arm was a thin wedge at the stem).
   make_bold pins numpy and OpenBLAS to AVX2 (the solves the same on CI).
   Run in
   a pool of JOBS processes. Spaced as by weight (that letter's optical

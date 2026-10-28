@@ -49,6 +49,7 @@ TIGHT = 2.0
 FULL = 0.75
 ZONES = ZONE_TOPS + ZONE_BOTTOMS
 CLEAR = 0.25  # of the white in front, the most a side may move into it
+ROOT = 160  # units from a crotch over which a hairline's root weight fades (make_bold.ITALIC_BOLD_ROOTS)
 ZONE_NEAR = 100  # units
 SHALLOW = 0.55  # (about 33 degrees from level, fading to 44)
 ACROSS = 0.45  # (z's spine, 25° from level, read as a hairline at 1: the person, 2026-10-28)
@@ -213,10 +214,12 @@ def smooth(ks, arc, total):
 class Strokes:
     """the gain: ax across a stem, hair across a hairline, ay up and down;
     thin / thick: the section widths of a hairline and a stem; slant: the
-    frame's (its upright is an extreme's direction)"""
+    frame's (its upright is an extreme's direction); root: a hairline's
+    weight where it leaves a crotch, fading over ROOT units (0: none)"""
 
-    def __init__(self, ax, ay, thin, thick, hair, slant):
+    def __init__(self, ax, ay, thin, thick, hair, slant, root=0.0):
         self.ax, self.ay, self.thin, self.thick, self.hair = ax, ay, thin, thick, hair
+        self.root = root
         self.upright = unit(np.array([-slant, 1.0]))
 
     def offset(self, k):
@@ -364,6 +367,12 @@ class Strokes:
             room = CLEAR * gap[starts[c]:starts[c + 1]]
             cap = smooth(np.clip((2 * room - self.hair) / (self.ax - self.hair), 0, 1), arc, total)
             capv = smooth(np.clip((2 * room / max(FULL, 1e-9) - self.hair) / (self.ax - self.hair), 0, 1), arc, total)
+            if self.root and cuts:
+                # a hairline springing from a crotch heavier at its root
+                # (k's arm, the person: thicker in the beginning), both its
+                # sides: by the distance from the crotch, not along the outline
+                d = np.min(np.linalg.norm(P[:, None] - P[cuts][None], axis=2), axis=1)
+                sm = np.maximum(sm, self.root * np.clip(1 - d / ROOT, 0, 1) ** 2)
             out.append((np.minimum(sm, cap), np.minimum(np.minimum(sm, mn), capv)))
         return out
 
@@ -753,11 +762,11 @@ def rejoined(contour, anchors):
     return rec
 
 
-def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER):
+def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0):
     """rec (a RecordingPen, upright frame) emboldened by its strokes, as a
     ufoLib2 Glyph, cleaned (contours under sliver units' area dropped);
-    not shifted (the caller moves it by ax / 2)"""
-    strokes = Strokes(ax, ay, thin, thick, hair, slant)
+    not shifted (the caller moves it by ax / 2); root: Strokes'"""
+    strokes = Strokes(ax, ay, thin, thick, hair, slant, root)
     flat = tidy(merged_glyph(rec))
     out = ufoLib2.objects.Glyph()
     if not flat.contours:
