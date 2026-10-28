@@ -1,4 +1,5 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
 uni0198 step 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 1261,1082 2.2 units
 uni023A notch 1                  # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 453,287 75 px
+uni1DBB notch 1                  # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs); ᶻ's curl squared (a 35 px slit) and OE's CFF bottom at 11 sizes accepted by the person; ѵ
 uni2C65.sc notch 1               # accepted 2026-10-26: tapered lower counter where slash crosses A foot, 269,164 31 px; docs/remaining-bold-italic-lint-review-2026-10-24.md

@@ -80,7 +80,10 @@ Moved from CLAUDE.md (its ground rules apply).
   so tight inner turns stay tight), rising from nothing out of a line (the
   curve next to it split in two, only fading towards the line), no new
   bends; serif brackets (up to three curves under 120 units between
-  lines) held as drawn; an arc taken only within LIMIT (6) units. Run in
+  lines) held as drawn; an arc taken only within LIMIT (6) units; the
+  cleaning's leftover curves under 8 units merged first (`rejoined`).
+  make_bold pins numpy and OpenBLAS to AVX2 (the solves the same on CI).
+  Run in
   a pool of JOBS processes. Spaced as by weight (that letter's optical
   fit), so the stems stand where they did, then cut less than the Bold
   (BOLD_ITALIC_CUT: ITALIC_LOOSER, 10 units a side, looser; tests holding

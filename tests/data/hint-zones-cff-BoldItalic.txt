@@ -1,5 +1,5 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
-cff OE:bot-35 7                  # 2026-10-28: whole arcs faired (fair_arcs); OE oe.sc ɶ CFF tops/bottoms 0.08-0.27 px off O's row, accepted by the person
+cff OE:bot-35 11                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs); ᶻ's curl squared (a 35 px slit) and OE's CFF bottom at 11 sizes accepted by the person; ѵ
 cff OE:top1473 23                # 2026-10-28: whole arcs faired (fair_arcs); OE oe.sc ɶ CFF tops/bottoms 0.08-0.27 px off O's row, accepted by the person
 cff oe.sc:bot-35 7               # 2026-10-28: whole arcs faired (fair_arcs); OE oe.sc ɶ CFF tops/bottoms 0.08-0.27 px off O's row, accepted by the person
 cff uni0276:bot-35 7             # 2026-10-28: whole arcs faired (fair_arcs); OE oe.sc ɶ CFF tops/bottoms 0.08-0.27 px off O's row, accepted by the person

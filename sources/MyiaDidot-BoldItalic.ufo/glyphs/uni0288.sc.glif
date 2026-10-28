@@ -7,15 +7,12 @@
 			<point x="526" y="919" type="line" smooth="yes"/>
 			<point x="532" y="943"/>
 			<point x="531" y="959"/>
-			<point x="504" y="960" type="curve" smooth="yes"/>
-			<point x="503" y="960"/>
-			<point x="501" y="958"/>
-			<point x="500" y="958" type="curve"/>
-			<point x="482" y="954"/>
-			<point x="417" y="938"/>
-			<point x="370" y="886" type="curve" smooth="yes"/>
-			<point x="288" y="796"/>
-			<point x="240" y="720"/>
+			<point x="504" y="960" type="curve"/>
+			<point x="485" y="956"/>
+			<point x="430" y="942"/>
+			<point x="366" y="881" type="curve" smooth="yes"/>
+			<point x="295" y="813"/>
+			<point x="235" y="706"/>
 			<point x="206" y="614" type="curve"/>
 			<point x="113" y="614" type="line"/>
 			<point x="228" y="1040" type="line"/>
@@ -27,7 +24,8 @@
 			<point x="1013" y="725" type="curve" smooth="yes"/>
 			<point x="1013" y="810"/>
 			<point x="974" y="959"/>
-			<point x="868" y="959" type="curve" smooth="yes"/>
+			<point x="868" y="959" type="curve"/>
+			<point x="868" y="959" type="line"/>
 			<point x="837" y="959"/>
 			<point x="827" y="947"/>
 			<point x="821" y="918" type="curve"/>
@@ -63,7 +61,9 @@
 			<point x="833" y="-252"/>
 			<point x="757" y="-306"/>
 			<point x="683" y="-306" type="curve" smooth="yes"/>
-			<point x="679" y="-306" type="line"/>
+			<point x="682" y="-306"/>
+			<point x="680" y="-306"/>
+			<point x="679" y="-306" type="curve"/>
 			<point x="624" y="-323"/>
 			<point x="563" y="-332"/>
 			<point x="500" y="-332" type="curve" smooth="yes"/>
@@ -87,9 +87,9 @@
 				<key>date</key>
 				<string>2026-10-28</string>
 				<key>glyph</key>
-				<string>6c32b5c59426</string>
+				<string>82fcc5ebace6</string>
 				<key>review</key>
-				<string>the person, 2026-10-28: G2 refit switched on (stroke_bold.G2), curves within 3 units of their accepted outline</string>
+				<string>leftover pieces merged, fairing without libm: within a few units</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>

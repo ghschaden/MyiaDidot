@@ -231,6 +231,25 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   they are, faults for later. Ɠ's hook stroke now starts at 1310 (from
   1320 it left a notch on the faired G and the recipe was refused).
   Still to do: k's arm (12 units), q's tail, s, y's tail refused at 6.
+  The cleaning's leftovers (2026-10-28, stroke_bold.rejoined): curves under
+  8 units merged into their neighbours, at the piece's sharper end (a
+  crotch stays where the cleaning cut it) or at a line's end (€'s bar
+  stays level); not lines (ɉ's bar end is a 4-unit line). The Bold
+  Italic's flagged pieces 386 -> 234; r's zigzag and d's pieces gone, z's
+  knob at the top of its spine. Tried and dropped: ending a curve where its
+  moved samples run backwards into a corner (k's arm became a straight
+  chord), an end doubling back taking its samples' direction (fixed k's
+  and z's hooks, but notched ξ, which then went the rounder way), the
+  merged join made smooth (joined ɕ's slit into one arc; the fairing closed
+  it). Left: k's hook where arm meets leg, z's bottom-left curl. The
+  fairing: no curve under 16 units split, a result with a piece under 8
+  refused, a contour crossing itself once faired kept as fitted (k's
+  crotch). CI's make reproduce found 68, then 49 glyphs otherwise: make_bold
+  pins numpy and OpenBLAS to AVX2, and the solve uses no sine, cosine,
+  exponential or logarithm (the C library's differ between systems), runs
+  until settled with central differences, kinks rounded off, ties broken
+  alike. Next: k's upper arm, a thin wedge where it leaves the stem (the
+  person: thicker in the beginning; not CLEAR, tried).
 - Review the step candidates (checks.py `step`, 2026-10-27, in
   `tests/data/quality-*.txt`): a short straight jog between edges running
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar

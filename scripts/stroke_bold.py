@@ -28,6 +28,7 @@ import math
 import os
 
 import numpy as np
+import pathops
 import ufoLib2
 from derive import ZONE_BOTTOMS, ZONE_TOPS, merged_glyph
 from fair_arcs import draw, fair_contour, segments
@@ -54,6 +55,7 @@ ACROSS = 0.45  # (z's spine, 25° from level, read as a hairline at 1: the perso
 OPEN = 1e9  # (smooth's length of a run that does not close)
 TINY = 4  # units: a line this short left by the overlap removal is dropped (7: 3)
 SLIVER = 800        # area under which a cleaned contour is a crotch's crossing sides
+LEFTOVER = 8  # units (fair_arcs.SHORT): a piece of the cleaned outline shorter is merged into its neighbours
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
 # curvature continuous at the smooth joins of curves (G2; MYIA_G2=0: tangents
 # only), a curve kept as fitted where that would move it over G2_ERR units
@@ -632,6 +634,13 @@ class Strokes:
         return rec
 
 
+def pieces(contours):
+    """the contours (segment arrays) once their overlaps are removed"""
+    path = pathops.Path()
+    draw(path.getPen(), contours)
+    return list(pathops.simplify(path).contours)
+
+
 def tidy(glyph):
     """glyph without the overlap removal's near-zero lines (a node and its
     copy a unit apart): the copy goes, the node takes its smoothness"""
@@ -669,6 +678,35 @@ def rejoined(contour, anchors):
         j = ons[(k + 1) % len(ons)]
         offs = [(i + m) % n for m in range(1, (j - i) % n or n)]
         segs.append([pt(i)] + [pt(q) for q in offs] + [pt(j)])
+    # a curve under LEFTOVER units (the cleaning's leftovers where an
+    # inside-out loop was cut; a short line is drawn, ɉ's bar end) gone:
+    # its neighbours meet at its sharper end (a line's end, where one is),
+    # their handles moved with their ends (rejoined into them, it left
+    # zigzags: r, z)
+    while len(segs) > 3:
+        k = next((k for k, s in enumerate(segs) if len(s) == 4 and np.linalg.norm(s[-1] - s[0]) < LEFTOVER), None)
+        if k is None:
+            break
+        s, before, after = segs[k], segs[k - 1], segs[(k + 1) % len(segs)]
+        # (at a line's end where one is: the line keeps its place and
+        # direction, € bar's underside level)
+        # (else at its sharper end: a crotch stays where the cleaning cut it)
+        if len(before) == 2 and len(after) == 4:
+            mid = s[0]
+        elif len(after) == 2 and len(before) == 4:
+            mid = s[-1]
+        else:
+            ts = unit(s[1] - s[0]) if np.linalg.norm(s[1] - s[0]) > 1e-9 else unit(s[-1] - s[0])
+            te = unit(s[-1] - s[-2]) if np.linalg.norm(s[-1] - s[-2]) > 1e-9 else unit(s[-1] - s[0])
+            turn0 = float(unit(before[-1] - before[-2]) @ ts)
+            turn1 = float(te @ unit(after[1] - after[0]))
+            mid = s[0] if turn0 < turn1 else s[-1]
+        if len(before) == 4:
+            before[2] = before[2] + mid - s[0]
+        if len(after) == 4:
+            after[1] = after[1] + mid - s[-1]
+        before[-1], after[0] = mid, mid
+        del segs[k]
 
     def split_here(k):
         a, b = segs[k - 1], segs[k]
@@ -734,7 +772,12 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER):
         rec = rejoined(c, anchors)
         segs = segments(rec.value) if FAIR else None
         if segs:
-            draw(pen, [fair_contour(sg, strokes.upright)[0] for sg in segs])
+            faired = [fair_contour(sg, strokes.upright)[0] for sg in segs]
+            # (one crossing itself where the fitted one did not, a twist
+            # the size of a unit: as fitted; k's crotch)
+            if len(pieces(faired)) > len(pieces(segs)):
+                faired = segs
+            draw(pen, faired)
         else:
             rec.replay(pen)
     return out

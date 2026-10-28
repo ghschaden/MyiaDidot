@@ -41,8 +41,10 @@ SHORT = 8  # units: a cubic with a shorter chord is not refitted
 SMOOTH = math.cos(math.radians(3))  # a node turning less is a smooth join (made exactly so)
 NK = 16  # curvature samples per cubic
 STEP = 4.0  # units between the old outline's samples
-OUTER = 3  # rounds of matching the samples to the new outline
-INNER = 15  # steps per round (6 and 30: within a unit of these)
+TOL = 1e-8  # a step gaining less (relatively) ends the solve
+HOLD = 0.1  # a parameter's pull towards the drawing (units, a turn, a handle's share)
+OUTER = 3  # rounds of matching the samples to the new outline, at most
+INNER = 20  # steps per round, at most
 DENSE = 150  # points per segment the samples are first matched to
 
 
@@ -102,6 +104,16 @@ def arcs(segs):
         if any(len(segs[k % L]) == 4 for k in range(a, b)):
             out.append((a, b - a, False))
     return out
+
+
+def below(x):
+    """min(0, x), its kink rounded off (by 1/100)"""
+    return (x - np.sqrt(x * x + 1e-4)) / 2
+
+
+def above(x):
+    """max(0, x), its kink rounded off"""
+    return (x + np.sqrt(x * x + 1e-4)) / 2
 
 
 def brackets(run, closed):
@@ -191,7 +203,7 @@ class Arc:
         flat += [(q, drawn[self.slots[q][0]][1] / self.h0[self.slots[q][0]][1]) for q in kind["lb"]
                  if (self.slots[q][0] + 1) % nn in extremes]
         self.flat = np.array([q for q, _r in flat], int)
-        self.flat_min = np.log(np.array([max(r, 1e-9) for _q, r in flat]))
+        self.flat_min = np.array([r - 1 for _q, r in flat])
         self.cubic = ~np.array(self.lines)
         self.ia = np.arange(m)
         self.ib = (self.ia + 1) % nn
@@ -232,11 +244,14 @@ class Arc:
         nrm = np.stack([-self.T[:, 1], self.T[:, 0]], axis=1)
         P[nd["t"]] += z[k["t"]][:, None] * self.T[nd["t"]]
         P[nd["n"]] += z[k["n"]][:, None] * nrm[nd["n"]]
-        c, s = np.cos(z[k["a"]])[:, None], np.sin(z[k["a"]])[:, None]
-        T[nd["a"]] = c * self.T[nd["a"]] + s * nrm[nd["a"]]
+        # (no sine, cosine, exponential or logarithm in the solve: the C
+        # library's differ between machines in the last bits, and the
+        # solve can end otherwise; square roots are exact everywhere)
+        turned = self.T[nd["a"]] + z[k["a"]][:, None] * nrm[nd["a"]]
+        T[nd["a"]] = turned / np.sqrt(np.sum(turned * turned, axis=1))[:, None]
         hl = self.h0.copy()
-        hl[nd["la"], 0] *= np.exp(z[k["la"]])
-        hl[nd["lb"], 1] *= np.exp(z[k["lb"]])
+        hl[nd["la"], 0] *= 1 + z[k["la"]]
+        hl[nd["lb"], 1] *= 1 + z[k["lb"]]
         A, B = P[self.ia], P[self.ib]
         cub = self.cubic[:, None]
         X = np.empty((self.m, 4, 2))
@@ -254,7 +269,8 @@ class Arc:
         on a grid, then exactly (Newton on t)"""
         ts = np.linspace(0, 1, DENSE)
         grid = np.concatenate([bez(s, ts) if len(s) == 4 else s[0] + ts[:, None] * (s[1] - s[0]) for s in segs])
-        idx = np.linalg.norm(self.target[:, None] - grid[None], axis=2).argmin(axis=1)
+        # (to 1/1000 unit: a sample on a node goes to the same side on any machine)
+        idx = np.round(np.linalg.norm(self.target[:, None] - grid[None], axis=2), 3).argmin(axis=1)
         self.nj, self.nt = idx // DENSE, ts[idx % DENSE]
         for j, s in enumerate(segs):
             sel = np.nonzero(self.nj == j)[0]
@@ -282,28 +298,42 @@ class Arc:
         out = [(np.einsum("nq,nqd->nd", self.Bfit, X[self.nj]) - self.target).ravel()]
         D1 = np.einsum("kq,mqd->mkd", self.Bd1, X)
         D2 = np.einsum("kq,mqd->mkd", self.Bd2, X)
-        sp = np.maximum(np.hypot(D1[..., 0], D1[..., 1]), 1e-9)
+        sp = np.maximum(np.sqrt(D1[..., 0] * D1[..., 0] + D1[..., 1] * D1[..., 1]), 1e-9)
         k = (D1[..., 0] * D2[..., 1] - D1[..., 1] * D2[..., 0]) / sp ** 3
         k[~self.cubic] = 0
         c = self.cubic
         ds = (sp[c, :-1] + sp[c, 1:]) / 2 / (NK - 1)
-        out.append((math.sqrt(FAIR) * np.diff(np.log(np.abs(k[c]) + K0), axis=1) / np.sqrt(ds)).ravel())
+        # (every kink rounded off, |k| and the one-sided terms: a solve
+        # stalling on a kink ends a little apart on another machine)
+        ak = np.sqrt(k * k + K0 * K0 / 100)
+        a = ak[c] + K0  # (its relative change: of log |k|, without the logarithm)
+        out.append((math.sqrt(FAIR) * 2 * np.diff(a, axis=1) / (a[:, 1:] + a[:, :-1]) / np.sqrt(ds)).ravel())
         sign, fade = self.sign[:, None], self.fade[:, None]
-        out.append((BEND * np.minimum(0, sign * k) * (sign != 0)).ravel())
-        dk = np.diff(np.abs(k), axis=1)
-        out.append((BEND * np.maximum(0, np.where(fade > 0, dk, -dk)) * (fade != 0)).ravel())
+        out.append((below(BEND * sign * k) * (sign != 0)).ravel())
+        dk = np.diff(ak, axis=1)
+        out.append((above(BEND * np.where(fade > 0, dk, -dk)) * (fade != 0)).ravel())
         out.append(JOIN * (k[self.ja, -1] - k[self.jb, 0]))
-        out.append(10 * np.maximum(0, z[self.handles] - 1.0))  # (no loops)
-        out.append(1000 * np.minimum(0, z[self.flat] - self.flat_min))
+        out.append(above(10 * (z[self.handles] - 1.7)))  # (no loops)
+        out.append(below(100 * (z[self.handles] + 0.9)))  # (nor a handle gone)
+        out.append(below(1000 * (z[self.flat] - self.flat_min)))
+        out.append(HOLD * z)  # (no free valley: one optimum, the same on any machine)
         return np.concatenate(out)
 
     def solve(self):
+        """Levenberg-Marquardt to convergence (a solve cut short ends where
+        its path took it: the same arc on another machine came out a tenth
+        of a unit apart, rounded otherwise); the samples matched again till
+        the match settles"""
         z = np.zeros(len(self.slots))
         if not len(z):
             return self.old
-        eps = 1e-4
+        eps = 1e-6
+        last = None
         for _outer in range(OUTER):
             self.assign(self.build(z))
+            if last is not None and np.array_equal(last[0], self.nj) and np.abs(last[1] - self.nt).max() < 1e-9:
+                break
+            last = (self.nj.copy(), self.nt.copy())
             lam = 1e-2
             r = self.residuals(z)
             if not np.isfinite(r).all():  # a curve with a cusp: left as it is
@@ -311,19 +341,20 @@ class Arc:
             for _ in range(INNER):
                 J = np.empty((len(r), len(z)))
                 for q in range(len(z)):
-                    dz = z.copy()
-                    dz[q] += eps
-                    J[:, q] = (self.residuals(dz) - r) / eps
+                    dz = np.zeros(len(z))
+                    dz[q] = eps
+                    J[:, q] = (self.residuals(z + dz) - self.residuals(z - dz)) / (2 * eps)
                 A, g = J.T @ J, J.T @ r
-                while lam <= 1e8:
+                cost = float(r @ r)
+                while lam <= 1e10:
                     step = np.linalg.solve(A + lam * np.diag(np.diag(A) + 1e-9), -g)
                     nr = self.residuals(z + step)
-                    if nr @ nr < r @ r:
+                    if np.isfinite(nr).all() and float(nr @ nr) < cost:
                         z, r = z + step, nr
-                        lam = max(1e-6, lam / 3)
+                        lam = max(1e-8, lam / 3)
                         break
                     lam *= 10
-                if lam > 1e8 or np.abs(step).max() < 1e-6:
+                if lam > 1e10 or np.abs(step).max() < 1e-10 or cost - float(r @ r) <= TOL * cost:
                     break
         return self.build(z)
 
@@ -387,7 +418,7 @@ def fair_contour(segs, up):
             # (an open arc's ends are corners, not lines)
             before = (closed or k > 0) and len(run[k - 1]) == 2
             after = (closed or k < n - 1) and len(run[(k + 1) % n]) == 2
-            if len(s) == 4 and before != after and not held[k]:
+            if len(s) == 4 and before != after and not held[k] and np.linalg.norm(s[3] - s[0]) >= 2 * SHORT:
                 cut += split(s, 0.5)
                 h = (np.linalg.norm(s[1] - s[0]), np.linalg.norm(s[3] - s[2]))
                 drawn += [(h[0], 0.0), (0.0, h[1])]
@@ -400,6 +431,8 @@ def fair_contour(segs, up):
                 owner.append(k)
         out = Arc(cut, closed, fade, up, drawn, [held[k] for k in owner]).solve()
         moved = apart(run, out)
+        if any(degenerate(s) for s in out):  # (a node slid onto its neighbour)
+            moved = math.inf
         report.append((a, n, moved, moved <= LIMIT))
         if moved <= LIMIT:
             for k in range(n):

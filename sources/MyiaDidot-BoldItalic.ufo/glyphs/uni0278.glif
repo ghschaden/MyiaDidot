@@ -7,7 +7,7 @@
 			<point x="47" y="337" type="curve" smooth="yes"/>
 			<point x="49" y="185"/>
 			<point x="142" y="42"/>
-			<point x="292" y="-6" type="curve"/>
+			<point x="293" y="-6" type="curve"/>
 			<point x="142" y="-560" type="line"/>
 			<point x="332" y="-560" type="line"/>
 			<point x="479" y="-18" type="line"/>
@@ -18,7 +18,7 @@
 			<point x="871" y="821"/>
 			<point x="720" y="868" type="curve"/>
 			<point x="864" y="1400" type="line"/>
-			<point x="674" y="1400" type="line"/>
+			<point x="675" y="1400" type="line"/>
 			<point x="533" y="878" type="line"/>
 			<point x="260" y="836"/>
 			<point x="44" y="583"/>
@@ -32,17 +32,17 @@
 			<point x="669" y="407"/>
 			<point x="616" y="253" type="curve" smooth="yes"/>
 			<point x="596" y="195"/>
-			<point x="566" y="103"/>
+			<point x="566" y="102"/>
 			<point x="499" y="57" type="curve"/>
 		</contour>
 		<contour>
 			<point x="299" y="153" type="curve" smooth="yes"/>
 			<point x="289" y="301"/>
-			<point x="343" y="457"/>
+			<point x="340" y="456"/>
 			<point x="396" y="608" type="curve" smooth="yes"/>
-			<point x="416" y="665"/>
+			<point x="417" y="665"/>
 			<point x="448" y="754"/>
-			<point x="511" y="800" type="curve"/>
+			<point x="512" y="800" type="curve"/>
 			<point x="316" y="81" type="line"/>
 			<point x="302" y="108"/>
 			<point x="300" y="138"/>
@@ -62,9 +62,9 @@
 				<key>date</key>
 				<string>2026-10-28</string>
 				<key>glyph</key>
-				<string>94450d2c5f9c</string>
+				<string>9ee4d453a0f1</string>
 				<key>review</key>
-				<string>whole arcs faired (fair_arcs), within a few units of their accepted outlines; overlays seen by the person</string>
+				<string>leftover pieces merged, fairing without libm: within a few units</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>
