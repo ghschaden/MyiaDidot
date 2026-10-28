@@ -17,7 +17,9 @@ two curves meeting smoothly share one curvature, G2), one line for each line
 moved sides cross and the cleaning (pathops) cuts them at their meeting
 point; a concave round too tight to be moved (radius under half the
 offset: r's ball meeting its arm) becomes such a crotch. The cleaning's
-splits at smooth nodes are joined again.
+splits at smooth nodes are joined again. Last, each whole arc of the
+cleaned outline is refitted fair (fair_arcs: curvature continuous and
+changing gently, rising from nothing where a curve leaves a line).
 
 The person's review, the study and its choices: FONT-DESIGN.md (Bold
 Italic from strokes), scripts/pilot/strokes_fit.py.
@@ -28,6 +30,7 @@ import os
 import numpy as np
 import ufoLib2
 from derive import ZONE_BOTTOMS, ZONE_TOPS, merged_glyph
+from fair_arcs import draw, fair_contour, segments
 from fontTools.pens.recordingPen import RecordingPen
 
 STEP = 2.0          # units between samples
@@ -63,6 +66,9 @@ G2_ERR = float(os.environ.get("MYIA_G2_ERR", 3))
 G2_LINES = os.environ.get("MYIA_G2_LINES") == "1"
 G2_LINE_ERR = float(os.environ.get("MYIA_G2_LINE_ERR", G2_ERR))  # (a curve straight at one end)
 TS_G2 = np.linspace(0, 1, 80)  # (its distances, measured coarser)
+# then each whole arc refitted fair (fair_arcs; MYIA_FAIR=0: as fitted;
+# the person, 2026-10-28)
+FAIR = os.environ.get("MYIA_FAIR", "1") == "1"
 
 
 def unit(v):
@@ -725,7 +731,12 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER):
     for c in cleaned.contours:
         if contour_area(c) < sliver:
             continue
-        rejoined(c, anchors).replay(pen)
+        rec = rejoined(c, anchors)
+        segs = segments(rec.value) if FAIR else None
+        if segs:
+            draw(pen, [fair_contour(sg, strokes.upright)[0] for sg in segs])
+        else:
+            rec.replay(pen)
     return out
 
 

@@ -30,11 +30,15 @@ angle, emboldened, and slanted again (tx), so the stems gain AX across.
 import argparse
 import functools
 import math
+import os
 import re
 import sys
 import unicodedata
 from pathlib import Path
 
+# one thread per process (a pool of JOBS does the stroking; numpy's
+# OpenBLAS would take every core for fair_arcs' small solves)
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
 import pathops
 import ufoLib2
 from fontTools.pens.areaPen import AreaPen
@@ -244,12 +248,14 @@ ITALIC_BOLD_RECIPES = {
                           [("line", ((532, 855), (580, 1100), 60), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 580, 1100, 60), "dir": 75, "turn": "cw", "r": (150, 135),
                                      "sweep": 200, "ball": 80, "t": (60, 46), "lead": 10}, (0, 0), (1, 1, 0, 0))])),
-    # Ƈ Ɠ: the Italic's, the stroke and hook at this weight
+    # Ƈ Ɠ: the Italic's, the stroke and hook at this weight; the stroke from
+    # y0, within the terminal's ink (Ɠ's from 1320 left a notch on the faired
+    # G, fair_arcs, 2026-10-28)
     **{ch: ("attach", base, ("c", [(x - 50, 1330, 10000, 10000)],
-                             [("line", ((x, 1320), (x, 1500), 53), (0, 0), (1, 1, 0, 0)),
+                             [("line", ((x, y0), (x, 1500), 53), (0, 0), (1, 1, 0, 0)),
                               ("curl", {"at": ("pt", x, 1500, 53), "dir": 90, "turn": "cw", "r": (165, 150),
                                         "sweep": 200, "ball": 85, "t": (53, 45), "lead": 10}, (0, 0), (1, 1, 0, 0))]))
-       for ch, base, x in (("Ƈ", "C", 1090), ("Ɠ", "G", 1139))},
+       for ch, base, x, y0 in (("Ƈ", "C", 1090, 1320), ("Ɠ", "G", 1139, 1310))},
     # Ƭ: the Italic's, its strokes at this weight (as rederive scales them)
     # and its ball as large as the curl takes with no notch (80-90 at 180-200
     # degrees; the case's, 96, notched it): the Italic's smaller one (65)
@@ -1141,10 +1147,10 @@ def refit_horns(font):
 def round_smoothly(P):
     """P's points rounded to whole units, a join that ran on (nearly)
     smoothly, under 3 degrees, not broken further: where rounding leaves
-    it turning by more than a degree and more than it did, one of its
-    handles moved a unit to bring it more in line (a 15-unit
-    handle rounded turns up to 4 degrees), a level or upright one (at an
-    extreme) kept so. Handles under 10 units are left as rounded: theirs
+    it turning by more than a degree and more than it did, its handles
+    moved a unit each, together, to bring it more in line (a 15-unit
+    handle rounded turns up to 4 degrees, one moved alone in steps of 3-4),
+    a level or upright one (at an extreme) kept so. Handles under 10 units are left as rounded: theirs
     is no angle worth the name (checks.py)."""
     def turn(a, h, b):
         t = math.atan2(h[1] - a[1], h[0] - a[0]) - math.atan2(b[1] - h[1], b[0] - h[0])
@@ -1185,24 +1191,31 @@ def round_smoothly(P):
         # glyph kept, stays as it is)
         if least <= max(1, turn(raw[a], raw[i], raw[b]) + 0.25) or min(math.dist(e, node) for e in ends) < 10:
             continue
+        # each handle's places a unit around it (an on-curve neighbour, a
+        # line's end, stays), tried together: one alone, 15-20 units long,
+        # turns in steps of 3-4 degrees
+        options = []
+        for k in (a, b):
+            places = [(P[k].x, P[k].y)]
+            if not P[k].type:
+                bulge = overshoot(k, (P[k].x, P[k].y))
+                for dx in (-1, 0, 1):
+                    for dy in (-1, 0, 1):
+                        q = (P[k].x + dx, P[k].y + dy)
+                        # an extreme's handle stays level or upright
+                        if (dx or dy) and math.dist(q, node) >= 10 and not (P[k].x == p.x and q[0] != p.x) \
+                                and not (P[k].y == p.y and q[1] != p.y) and overshoot(k, q) <= max(bulge, 2):
+                            places.append(q)  # (nor bulging further past its ends: an extreme lost)
+            options.append(places)
         best = None
-        for side, k in enumerate((a, b)):
-            if P[k].type:
-                continue
-            bulge = overshoot(k, (P[k].x, P[k].y))
-            for dx in (-1, 0, 1):
-                for dy in (-1, 0, 1):
-                    q = (P[k].x + dx, P[k].y + dy)
-                    # an extreme's handle stays level or upright
-                    if math.dist(q, node) < 10 or (P[k].x == p.x and q[0] != p.x) or (P[k].y == p.y and q[1] != p.y):
-                        continue
-                    t = turn(q, node, ends[1]) if side == 0 else turn(ends[0], node, q)
-                    # nor bulging further past its ends (an extreme lost)
-                    if t < least and overshoot(k, q) <= max(bulge, 2):
-                        best, least = (k, q), t
+        for qa in options[0]:
+            for qb in options[1]:
+                t = turn(qa, node, qb)
+                moved = abs(qa[0] - P[a].x) + abs(qa[1] - P[a].y) + abs(qb[0] - P[b].x) + abs(qb[1] - P[b].y)
+                if t < least - 1e-9 or (best and abs(t - least) < 1e-9 and moved < best[2]):
+                    best, least = (qa, qb, moved), t
         if best:
-            k, q = best
-            P[k].x, P[k].y = q
+            (P[a].x, P[a].y), (P[b].x, P[b].y) = best[0], best[1]
 
 
 def separate_breve_grave_stacks(font):

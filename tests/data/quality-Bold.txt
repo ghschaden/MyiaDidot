@@ -235,7 +235,7 @@ uni023B wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni023C kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 110,223 4.5 degrees
 uni023C wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 108,226 4 degrees
 uni023C.sc kink 1                # Bold derived letters made of their Bold base (make_bold.py follow_bases): 170,207 4.6 degrees
-uni023C.sc smooth 2              # joins the rounding to whole units broke kept smooth (make_bold.round_smoothly); bracket ends run on along their strokes: 945,33 2.9 degrees; 365,409 2.9 degrees
+uni023C.sc smooth 1              # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 365,409 2.9 degrees
 uni023E kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 993,1264 2.6 degrees
 uni023E wobble 1                 # 2026-10-27 Bold: a fitted curve keeps its source's bends (derive.embolden keep_bends): 1 against 0: 1108,1373 4 degrees
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
@@ -301,7 +301,6 @@ uni0272.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobb
 uni0273 smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 1163,-205 2.5 degrees
 uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni0278 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 742,573 2.8 degrees; 742,311 2.8 degrees
-uni0278 smooth 1                 # Bold Italic keep_bends; o/O/zero refitted as ovals: 156,171 2.1 degrees
 uni027B extreme 1                # notches measured at four raster phases (lower median), the grid on the glyph's coordinates; Bold Italic ы kept emboldened by weight: 729,-246 11 units past
 uni027D smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 495,-205 2.5 degrees
 uni027D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 601,764 23 degrees; 605,795 19 degrees; 513,-291 6 degrees; 510,-259 17 degrees
@@ -330,6 +329,7 @@ uni0291 kink 1                   # 2026-10-16 known at the start (quality checks
 uni0292 kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 651,537 5.9 degrees; 334,-132 3.2 degrees; 298,-221 5.1 degrees
 uni0292.sc kink 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 707,551 7.0 degrees; 304,-23 5.7 degrees
 uni0292.sc smooth 1              # joins the rounding to whole units broke kept smooth (make_bold.round_smoothly); bracket ends run on along their strokes: 459,151 2.8 degrees
+uni0292.sc wobble 1              # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 2 against 0: 377,48 16 degrees; 370,44 16 degrees
 uni0294 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
 uni0295 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 165 against 261 (0.63, lighter)
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -28 from 0
@@ -474,7 +474,6 @@ uni1D7E zone 1                   # 2026-10-16 known at the start (quality checks
 uni1DA4 step 4                   # 2026-10-27 step check added (checks.py step): a candidate to review: 137,872 52 units aside; 85,920 52 units aside; 318,920 51 units aside; 369,872 51 units aside
 uni1DA4 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
 uni1DB6 step 4                   # 2026-10-27 step check added (checks.py step): a candidate to review: 639,920 52 units aside; 691,872 52 units aside; 125,872 52 units aside; 73,920 52 units aside
-uni1DB6 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 426,760 3 degrees
 uni1E9E kink 1                   # 2026-10-16 known at the start (quality checks added): 932,233 5.1 degrees
 uni1E9E smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 565,165 2.2 degrees
 uni1E9E zone 2                   # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +15 from 1434

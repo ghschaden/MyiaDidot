@@ -69,6 +69,7 @@ def finish_turned_r_top(font):
     bracket = lp[s + 1:s + 4]  # two handles and the curve's end under the serif
     corner = lp[s + 4]
     dx = round(derive.stems_at(font, "uni027A", 1300)[-1][0] - derive.stems_at(font, "l", 1300)[0][0])
+    _run_as(font["uni027A"], font["l"].contours[0])
     points = font["uni027A"].contours[0].points
     # (within a few units: the two are fitted and rounded apart)
     a = [i for i, p in enumerate(points) if p.type == "line" and abs(p.x - lp[s].x - dx) <= 4 and p.y == lp[s].y]
@@ -82,6 +83,24 @@ def finish_turned_r_top(font):
         new.append(q)
     points[a[0]].x, points[b[0]].x = lp[s].x + dx, corner.x + dx
     points[a[0] + 1:b[0]] = new
+
+
+def _run_as(glyph, model):
+    """glyph's first contour turned to run the way model does (the cleaning
+    may draw it either way round; the bracket is found by its order)"""
+    from fontTools.pens.pointPen import ReverseContourPointPen
+    from ufoLib2.objects import Glyph
+
+    def area(c):
+        P = [(p.x, p.y) for p in c.points if p.type]
+        return sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(P, P[1:] + P[:1]))
+
+    contour = glyph.contours[0]
+    if area(contour) * area(model) >= 0:
+        return
+    turned = Glyph()
+    contour.drawPoints(ReverseContourPointPen(turned.getPointPen()))
+    contour.points[:] = turned.contours[0].points
 
 
 def _finish_geometry(glyph, region):

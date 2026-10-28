@@ -73,7 +73,14 @@ Moved from CLAUDE.md (its ground rules apply).
   few and round as the Italic's; two curves meeting smoothly share one
   curvature (G2, stroke_bold.G2: each within 3 units of its own fit, else
   left so; a curve into a line is not made straight there); serif brackets move whole, keeping their
-  radius; a crotch between two lines is where the moved lines meet. Run in
+  radius; a crotch between two lines is where the moved lines meet. Last,
+  each whole arc of the cleaned outline (corner to corner) is refitted
+  fair (`fair_arcs.py`, 2026-10-28, the person's review; MYIA_FAIR=0 to
+  compare): curvature continuous, changing gently (by its relative change,
+  so tight inner turns stay tight), rising from nothing out of a line (the
+  curve next to it split in two, only fading towards the line), no new
+  bends; serif brackets (up to three curves under 120 units between
+  lines) held as drawn; an arc taken only within LIMIT (6) units. Run in
   a pool of JOBS processes. Spaced as by weight (that letter's optical
   fit), so the stems stand where they did, then cut less than the Bold
   (BOLD_ITALIC_CUT: ITALIC_LOOSER, 10 units a side, looser; tests holding

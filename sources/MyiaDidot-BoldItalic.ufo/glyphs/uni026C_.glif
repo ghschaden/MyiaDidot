@@ -4,26 +4,27 @@
 	<advance width="672"/>
 	<outline>
 		<contour>
-			<point x="79" y="190" type="curve" smooth="yes"/>
-			<point x="79" y="53"/>
+			<point x="79" y="184" type="curve" smooth="yes"/>
+			<point x="79" y="48"/>
 			<point x="149" y="-23"/>
-			<point x="247" y="-23" type="curve" smooth="yes"/>
-			<point x="424" y="-23"/>
-			<point x="506" y="219"/>
+			<point x="248" y="-23" type="curve" smooth="yes"/>
+			<point x="425" y="-23"/>
+			<point x="506" y="218"/>
 			<point x="554" y="345" type="curve"/>
 			<point x="501" y="360" type="line"/>
 			<point x="478" y="296"/>
-			<point x="383" y="51"/>
-			<point x="287" y="51" type="curve" smooth="yes"/>
-			<point x="281" y="51"/>
-			<point x="277" y="51"/>
-			<point x="277" y="73" type="curve" smooth="yes"/>
-			<point x="277" y="116"/>
-			<point x="292" y="161"/>
-			<point x="307" y="207" type="curve" smooth="yes"/>
-			<point x="314" y="228"/>
-			<point x="321" y="248"/>
-			<point x="327" y="270" type="curve" smooth="yes"/>
+			<point x="384" y="51"/>
+			<point x="289" y="51" type="curve" smooth="yes"/>
+			<point x="279" y="51"/>
+			<point x="277" y="53"/>
+			<point x="277" y="75" type="curve" smooth="yes"/>
+			<point x="276" y="136"/>
+			<point x="296" y="182"/>
+			<point x="303" y="198" type="curve" smooth="yes"/>
+			<point x="303" y="198" type="line" smooth="yes"/>
+			<point x="316" y="230"/>
+			<point x="323" y="252"/>
+			<point x="328" y="271" type="curve" smooth="yes"/>
 			<point x="412" y="586" type="line"/>
 			<point x="596" y="586" type="line"/>
 			<point x="613" y="650" type="line"/>
@@ -43,8 +44,11 @@
 			<point x="89" y="606"/>
 			<point x="177" y="591" type="curve"/>
 			<point x="96" y="292" type="line" smooth="yes"/>
-			<point x="86" y="255"/>
-			<point x="79" y="225"/>
+			<point x="92" y="278"/>
+			<point x="90" y="270"/>
+			<point x="88" y="262" type="curve" smooth="yes"/>
+			<point x="85" y="247"/>
+			<point x="79" y="219"/>
 		</contour>
 		<contour>
 			<point x="254" y="881" type="curve"/>
@@ -69,9 +73,9 @@
 				<key>date</key>
 				<string>2026-10-28</string>
 				<key>glyph</key>
-				<string>a34c04eb5cab</string>
+				<string>4d25b892449e</string>
 				<key>review</key>
-				<string>the person, 2026-10-28: G2 refit switched on (stroke_bold.G2), curves within 3 units of their accepted outline</string>
+				<string>whole arcs faired (fair_arcs), within a few units of their accepted outlines; overlays seen by the person</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

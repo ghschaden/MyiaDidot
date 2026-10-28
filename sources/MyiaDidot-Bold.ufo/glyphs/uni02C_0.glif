@@ -34,9 +34,9 @@
 			<point x="234" y="1116"/>
 			<point x="205" y="1116" type="curve" smooth="yes"/>
 			<point x="203" y="1116"/>
-			<point x="220" y="1127"/>
-			<point x="214" y="1107" type="curve" smooth="yes"/>
-			<point x="213" y="1104"/>
+			<point x="221" y="1127"/>
+			<point x="214" y="1107" type="curve"/>
+			<point x="213" y="1105"/>
 			<point x="223" y="1093"/>
 			<point x="222" y="1078" type="curve" smooth="yes"/>
 			<point x="220" y="1054"/>
@@ -51,11 +51,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-10-27</string>
+				<string>2026-10-28</string>
 				<key>glyph</key>
-				<string>18123286b763</string>
+				<string>3b524c7f1f7f</string>
 				<key>review</key>
-				<string>2026-10-27 session: keep_bends in the Bold Italic, o/O/zero refitted as ovals (overlays ov-oval-*, counters2)</string>
+				<string>round_smoothly moves both handles: two handles a unit</string>
 			</dict>
 		</dict>
 	</lib>

@@ -212,6 +212,25 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   today's (n's at y 352 178 -> 48), curvature not continuous at smooth
   joins (tangents are); its order: settle the exits' weight at text size,
   then fair whole arcs (its shape_fairing.py), then o's lower stroke.
+  Whole arcs faired (2026-10-28, scripts/fair_arcs.py, on in stroke_bold
+  since, MYIA_FAIR=0 to compare): each arc between corners refitted at
+  once, nodes and handles together. Tried and dropped: the squared change
+  of curvature (rounds the tight inner turns at n's and h's counter tops
+  by up to 9 units, a Didot mark lost; weighting the fit by curvature only
+  moved the change elsewhere); without the one-way rule the transitions
+  bent back (S-bends). Kept: the change of log |k| (scale-free), curves
+  may not bend back, a curve next to a line split in two and only fading
+  towards it (else a swell before n's outer stem). The person compared
+  combs (today | faired) and found the faired better; at 72 and 260 px per
+  em they cannot be told apart. Bold Italic: curve joins over 1/250 1236
+  -> 860; curves leaving lines over 1/250, brackets aside, 826 -> 585 (the
+  rest mostly capital serif curves over 120 units, refused: straight ends
+  would move them 12-18 units); n m h 8-11 nodes more. make_bold for the
+  Bold Italic 3 min 10 s -> 5 min 40 s. Arcs holding the cleaning's
+  leftovers (1-unit cubics, a handle doubling back: d k r z) are left as
+  they are, faults for later. Ɠ's hook stroke now starts at 1310 (from
+  1320 it left a notch on the faired G and the recipe was refused).
+  Still to do: k's arm (12 units), q's tail, s, y's tail refused at 6.
 - Review the step candidates (checks.py `step`, 2026-10-27, in
   `tests/data/quality-*.txt`): a short straight jog between edges running
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar
