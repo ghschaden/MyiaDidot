@@ -1,3 +1,2 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
-cff u1D516:top1473 5             # PENDING REVIEW 2026-10-26: extremes split on the slant; 𝔖 top 0.08-0.48 px above O at 8-11 and 24 ppem (was up to 0.31)
-cff uni1E9E:top1473 20           # retention accepted 2026-10-26: ẞ top 0.078–0.203 px above O at 13–32 ppem
+cff uni0463:top884 4             # PENDING REVIEW 2026-10-28: new with the Bold Italic by strokes; ѣ top 4 units off the x-height zone, not yet seen by the person

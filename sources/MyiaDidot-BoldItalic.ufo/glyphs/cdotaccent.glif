@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="cdotaccent" format="2">
 	<unicode hex="010B"/>
-	<advance width="893"/>
+	<advance width="913"/>
 	<outline>
 		<component base="c"/>
-		<component base="dotaccent" xOffset="-63"/>
+		<component base="dotaccent" xOffset="-53"/>
 	</outline>
-	<anchor name="DotBelow" x="377" y="-20"/>
-	<anchor name="Bottom" x="382" y="0"/>
-	<anchor name="Cedilla" x="382" y="-4"/>
+	<anchor name="DotBelow" x="387" y="-20"/>
+	<anchor name="Bottom" x="392" y="0"/>
+	<anchor name="Cedilla" x="392" y="-4"/>
 </glyph>

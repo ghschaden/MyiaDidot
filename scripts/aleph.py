@@ -26,6 +26,16 @@ _UPPER_AFTER = (
 )
 
 
+def _at(signature, i, pattern):
+    """The horizontal offset at which pattern runs from signature[i] (the
+    letter as spaced: the Bold Italic's cut moves it), else None."""
+    run = signature[i:i + len(pattern)]
+    if len(run) < len(pattern):
+        return None
+    dx = run[0][0] - pattern[0][0]
+    return dx if all((x - dx, y, t) == p for (x, y, t), p in zip(run, pattern)) else None
+
+
 def _lower_return(glyph):
     """Restore the source's smooth lower return, preserving its surroundings.
 
@@ -39,12 +49,13 @@ def _lower_return(glyph):
         points = contour.points
         signature = tuple((p.x, p.y, p.type) for p in points)
         for i in range(len(points)):
-            if signature[i:i + len(_LOWER_BEFORE)] == _LOWER_BEFORE:
-                points[i + 2].x, points[i + 2].y = 729, 22
+            dx = _at(signature, i, _LOWER_BEFORE)
+            if dx is not None:
+                points[i + 2].x, points[i + 2].y = 729 + dx, 22
                 points[i + len(_LOWER_BEFORE) - 1].smooth = True
                 del points[i + 3:i + len(_LOWER_BEFORE) - 1]
                 return
-            if signature[i:i + len(_LOWER_AFTER)] == _LOWER_AFTER:
+            if _at(signature, i, _LOWER_AFTER) is not None:
                 return
     raise ValueError("Bold Italic aleph's lower tip changed; review the return repair")
 
@@ -62,15 +73,16 @@ def _upper_join(glyph):
         points = contour.points
         signature = tuple((p.x, p.y, p.type) for p in points)
         for i in range(len(points)):
-            if signature[i:i + len(_UPPER_BEFORE)] == _UPPER_BEFORE:
-                points[i + 1].x, points[i + 1].y = 951, 588
-                points[i + 2].x, points[i + 2].y = 941, 606
-                points[i + 7].x, points[i + 7].y = 830, 606
-                points[i + 8].x, points[i + 8].y = 864, 514
+            dx = _at(signature, i, _UPPER_BEFORE)
+            if dx is not None:
+                points[i + 1].x, points[i + 1].y = 951 + dx, 588
+                points[i + 2].x, points[i + 2].y = 941 + dx, 606
+                points[i + 7].x, points[i + 7].y = 830 + dx, 606
+                points[i + 8].x, points[i + 8].y = 864 + dx, 514
                 del points[i + 9:i + 12]
                 del points[i + 3:i + 6]
                 return
-            if signature[i:i + len(_UPPER_AFTER)] == _UPPER_AFTER:
+            if _at(signature, i, _UPPER_AFTER) is not None:
                 return
     raise ValueError("Bold Italic aleph's upper join changed; review the join repair")
 

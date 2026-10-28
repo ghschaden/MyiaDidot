@@ -1,62 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0250.sc" format="2">
-	<advance width="1180"/>
+	<advance width="1200"/>
 	<outline>
 		<contour>
-			<point x="1365" y="1040" type="line"/>
-			<point x="798" y="1040" type="line"/>
-			<point x="777" y="971" type="line"/>
-			<point x="919" y="971" type="line" smooth="yes"/>
-			<point x="943" y="971"/>
-			<point x="951" y="968"/>
-			<point x="951" y="963" type="curve" smooth="yes"/>
-			<point x="951" y="959"/>
-			<point x="947" y="955"/>
-			<point x="943" y="950" type="curve" smooth="yes"/>
-			<point x="937" y="944"/>
-			<point x="931" y="937"/>
-			<point x="931" y="930" type="curve"/>
-			<point x="934" y="912"/>
-			<point x="941" y="887"/>
-			<point x="941" y="865" type="curve" smooth="yes"/>
-			<point x="941" y="853"/>
-			<point x="939" y="842"/>
-			<point x="932" y="833" type="curve" smooth="yes"/>
-			<point x="833" y="706" type="line"/>
-			<point x="582" y="706" type="line"/>
-			<point x="574" y="916" type="line" smooth="yes"/>
-			<point x="572" y="966"/>
-			<point x="591" y="971"/>
-			<point x="625" y="971" type="curve" smooth="yes"/>
-			<point x="711" y="971" type="line"/>
-			<point x="732" y="1040" type="line"/>
-			<point x="145" y="1040" type="line"/>
-			<point x="125" y="971" type="line"/>
-			<point x="216" y="971" type="line" smooth="yes"/>
-			<point x="259" y="971"/>
-			<point x="284" y="962"/>
-			<point x="285" y="918" type="curve" smooth="yes"/>
-			<point x="309" y="-11" type="line"/>
-			<point x="424" y="-11" type="line"/>
-			<point x="1067" y="873" type="line" smooth="yes"/>
-			<point x="1097" y="918"/>
-			<point x="1131" y="971"/>
-			<point x="1232" y="971" type="curve" smooth="yes"/>
-			<point x="1344" y="971" type="line"/>
+			<point x="1345" y="1040" type="line"/>
+			<point x="839" y="1040" type="line"/>
+			<point x="817" y="970" type="line"/>
+			<point x="929" y="970" type="line" smooth="yes"/>
+			<point x="965" y="970"/>
+			<point x="967" y="958"/>
+			<point x="970" y="929" type="curve" smooth="yes"/>
+			<point x="973" y="900"/>
+			<point x="955" y="860"/>
+			<point x="934" y="833" type="curve" smooth="yes"/>
+			<point x="837" y="707" type="line"/>
+			<point x="587" y="707" type="line"/>
+			<point x="582" y="911" type="line"/>
+			<point x="578" y="951"/>
+			<point x="584" y="971"/>
+			<point x="632" y="971" type="curve" smooth="yes"/>
+			<point x="691" y="971" type="line"/>
+			<point x="712" y="1040" type="line"/>
+			<point x="185" y="1040" type="line"/>
+			<point x="164" y="970" type="line"/>
+			<point x="273" y="970" type="line" smooth="yes"/>
+			<point x="299" y="970"/>
+			<point x="306" y="965"/>
+			<point x="306" y="956" type="curve" smooth="yes"/>
+			<point x="306" y="952"/>
+			<point x="305" y="947"/>
+			<point x="303" y="941" type="curve" smooth="yes"/>
+			<point x="300" y="934"/>
+			<point x="297" y="926"/>
+			<point x="298" y="918" type="curve" smooth="yes"/>
+			<point x="324" y="-11" type="line"/>
+			<point x="451" y="-11" type="line"/>
+			<point x="1070" y="873" type="line" smooth="yes"/>
+			<point x="1105" y="922"/>
+			<point x="1187" y="969"/>
+			<point x="1241" y="969" type="curve" smooth="yes"/>
+			<point x="1323" y="969" type="line"/>
 		</contour>
 		<contour>
-			<point x="796" y="637" type="line"/>
-			<point x="592" y="322" type="line"/>
-			<point x="585" y="637" type="line"/>
+			<point x="799" y="635" type="line"/>
+			<point x="581" y="299" type="line"/>
+			<point x="574" y="635" type="line"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="725" y="1156"/>
-	<anchor name="Acute" x="720" y="1136"/>
-	<anchor name="Grave" x="720" y="1136"/>
-	<anchor name="Dotaccent" x="730" y="1176"/>
-	<anchor name="TopCap" x="733" y="1186"/>
-	<anchor name="Bottom" x="452" y="0"/>
-	<anchor name="DotBelow" x="446" y="-20"/>
+	<anchor name="Top" x="735" y="1156"/>
+	<anchor name="Acute" x="730" y="1136"/>
+	<anchor name="Grave" x="730" y="1136"/>
+	<anchor name="Dotaccent" x="740" y="1176"/>
+	<anchor name="TopCap" x="743" y="1186"/>
+	<anchor name="Bottom" x="462" y="0"/>
+	<anchor name="DotBelow" x="456" y="-20"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.derived</key>

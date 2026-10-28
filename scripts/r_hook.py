@@ -51,9 +51,9 @@ def finish_shoulders(font):
 def finish_turned_r_top(font):
     """Give Bold Italic ɺ the bracket of its l's top serif.
 
-    ɺ is ɹ with l's top (make_italic.ITALIC_RECIPES); emboldened as one
-    letter by weight, the bracket under the serif swelled 10 units past l's
-    and came out in three curves. The stems' left edges coincide (l's
+    ɺ is ɹ with l's top (make_italic.ITALIC_RECIPES), its bracket split in
+    two curves there (l's is one); emboldened by strokes both brackets move
+    whole, to the same ends. The stems' left edges coincide (l's
     shifted by dx at every height), so l's bracket, from its stem's end to
     the serif's underside, replaces ɺ's there exactly.
     """
@@ -70,8 +70,9 @@ def finish_turned_r_top(font):
     corner = lp[s + 4]
     dx = round(derive.stems_at(font, "uni027A", 1300)[-1][0] - derive.stems_at(font, "l", 1300)[0][0])
     points = font["uni027A"].contours[0].points
-    a = [i for i, p in enumerate(points) if p.type == "line" and (p.x, p.y) == (lp[s].x + dx, lp[s].y)]
-    b = [i for i, p in enumerate(points) if p.type == "line" and (p.x, p.y) == (corner.x + dx, corner.y)]
+    # (within a few units: the two are fitted and rounded apart)
+    a = [i for i, p in enumerate(points) if p.type == "line" and abs(p.x - lp[s].x - dx) <= 4 and p.y == lp[s].y]
+    b = [i for i, p in enumerate(points) if p.type == "line" and abs(p.x - corner.x - dx) <= 4 and p.y == corner.y]
     if len(a) != 1 or len(b) != 1 or not a[0] < b[0]:
         raise ValueError("ɺ's top no longer meets l's stem edge; review ɺ's top")
     new = []
@@ -79,6 +80,7 @@ def finish_turned_r_top(font):
         q = deepcopy(p)
         q.x += dx
         new.append(q)
+    points[a[0]].x, points[b[0]].x = lp[s].x + dx, corner.x + dx
     points[a[0] + 1:b[0]] = new
 
 
@@ -174,23 +176,3 @@ def fair_bold_stem(font):
                     if end.type == "curve" and end.y == 412:
                         handle.x, handle.y = end.x, 667
                         lower.x = end.x
-
-
-def round_left_shoulder(font):
-    """Replace Bold Italic r's stepped inner arch with one round turn."""
-    if font.info.styleName != "Bold Italic":
-        return
-    points = font["r"].contours[0].points
-    starts = [i for i, p in enumerate(points) if p.type and 595 <= p.y <= 605 and 250 < p.x < 330]
-    ends = [i for i, p in enumerate(points) if p.type and 808 <= p.y <= 815 and 320 < p.x < 370]
-    if len(starts) != 1 or len(ends) != 1:
-        raise ValueError("r's left shoulder landmarks changed; review its rounding")
-    a, b = starts[0], ends[0]
-    if a >= b:
-        raise ValueError("r's left shoulder direction changed")
-    start, end = points[a], points[b]
-    points[a + 1:b] = [Point(start.x + 27, start.y + 96), Point(end.x + 45, end.y)]
-    end.smooth = True
-    from italic_contours import _add_extrema
-
-    _add_extrema(points, lambda x, y: start.y <= y <= end.y and x < 420)

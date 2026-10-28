@@ -26,6 +26,30 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-28 Bold Italic: emboldened by its strokes; a little looser
+
+    * The Bold Italic is no longer emboldened node by node but by its
+      strokes (scripts/stroke_bold.py): each stroke section of the Italic
+      is measured, its weight smoothed along the outline (between
+      crotches), and the outline moved out as a heavier pen would draw it,
+      redrawn with the Italic's own curves (one cubic per curve, its
+      extremes kept). The curves are as few and round as the Italic's:
+      kinks 495 -> about 110, wobbles 352 -> 190 (checks.py). Hairlines
+      gain a quarter, as Libre Bodoni's; the cut ends stay thin. Serif
+      brackets keep their round; shallow diagonals (z s 2, Cyrillic г) are
+      weighed nearer the horizontal and thicken up and down too, away
+      from the zones; no stroke closes more than a quarter of the white
+      in front of it (z's loop). z is given a little more (1.15).
+    * Spacing as before for the stems, then the letters 10 units a side
+      looser (BOLD_ITALIC_CUT); Greek ωρ ωμ ρω γα αδ and Cyrillic шт ін
+      corrected against the references.
+    * Derived letters: the slashed ones (Ⱥ ⱥ Ȼ ȼ Ⱦ, ⱥ ȼ ⱦ .sc) and the
+      middle tildes (ɫ Ɫ ᵬ-ᵶ, ɫ.sc) made by their recipe on the stroked
+      base, slash and tilde at one weight; Ⱳ by strokes (its curl repair
+      no longer needed); Ƴ ʄ ҳ rebuilt again. The by-weight repairs of r's
+      shoulders and the oval refit of o O 0 are not applied any more; the
+      dollar, ℵ and ™ keep the old emboldening for their repairs.
+
 2026-10-27 Bold, Bold Italic: Ø ø as O o with a stroke through; ư's horn
 
     * Ø ø ø.sc, drawn whole in the Regular and Italic, were emboldened

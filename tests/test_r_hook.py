@@ -4,7 +4,7 @@ from copy import deepcopy
 
 import pytest
 import ufoLib2
-from conftest import DATA, ROOT
+from conftest import DATA, ROOT, respaced
 from fontTools.ufoLib.glifLib import readGlyphFromString
 from glyph_lint import lint
 from r_hook import finish, round_shoulder
@@ -22,6 +22,8 @@ def test_r_hook_matches_body_and_preserves_metadata(style):
     expected = deepcopy(font["uni027D"])
     glyph = font["uni027D"]
     restore(glyph, "r-hook-before-Italic.glif" if style == "Italic" else "r-hook-before.glif")
+    if style == "BoldItalic":
+        respaced(glyph)  # (recorded at the Bold's cut)
     before = deepcopy(glyph)
     assert min(p.y for c in glyph.contours for p in c.points) == -275
     finish(font)
@@ -90,7 +92,7 @@ def test_bold_inner_stems_do_not_dent():
 def test_bold_italic_turned_r_top_bracket_is_l_s():
     """Bold Italic ɺ's bracket under the top serif is its l's, shifted onto
     its stem (r_hook.finish_turned_r_top); emboldened with the letter it
-    swelled 10 units past l's."""
+    came out in two curves (by weight it swelled 10 units past l's)."""
     font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-BoldItalic.ufo')
     def top(name):  # the stem's end, the bracket, the serif's underside
         return [(p.x, p.y, p.type) for p in font[name].contours[0].points if 1320 < p.y <= 1374]

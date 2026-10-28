@@ -4,14 +4,14 @@ from copy import deepcopy
 
 import pathops
 import ufoLib2
-from conftest import ROOT
+from conftest import ROOT, respaced
 from glyph_lint import ink, lint
 from j_bar import finish
 
 
 def test_j_bar_extension():
     font = ufoLib2.Font.open(ROOT / "sources/MyiaDidot-BoldItalic.ufo")
-    glyph = font["uni0249"]
+    glyph = respaced(font["uni0249"], back=True)  # (coordinates at the Bold's cut)
     expected = deepcopy(glyph)
     points = glyph.contours[0].points
     top = next(i for i, p in enumerate(points) if (p.x, p.y) == (572, 474))

@@ -87,6 +87,107 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   anything goes into make_bold; then a full sweep and baselines.
   Render with node views (Italic | now | pilot); the person judges
   smoothness by eye, the reversal count is only a check.
+  Step (2) done as a study (2026-10-28, scripts/pilot/strokes_fit.py,
+  sheets by scripts/pilot/node_sheet.py): every sample keeps the Italic
+  segment it came from, so each Italic curve is redrawn as one cubic and
+  each line as one line (moved parallel by its mean weight); an extreme's
+  node slides along the moved outline to where its tangent is again
+  level or upright (the offset is wider across than up and down: left
+  fixed, the inner crowns bent back); a line running smoothly into a
+  curve gives the curve its direction; the cleaning's splits are joined
+  again. On n m h u a e c o s г b d p q g r t v y f: nodes as the Italic
+  (a crotch's pair becomes its one meeting point: a 20/23), reversals 2
+  (today's Bold Italic 38, the pilot 16), weight within 1 % of the
+  pilot's, so 0-10 % lighter than today's Bold Italic (n u r 9 %): the
+  hairlines and ends of step (3) are still to settle with the person.
+  Seen, still to look at: r's ball join keeps a small hook.
+  Step (3), measured (2026-10-28, horizontal cuts at 0.3 and 0.8 x-height,
+  per 1000 units): the lightness is in the entry and exit hairlines,
+  which today's Bold Italic triples (Italic 23 -> 68, measured as wedges
+  from a stem); Bodoni Moda's hairlines gain nothing (22 -> 22, stems
+  x1.6), Libre Bodoni's a quarter (25 -> 31, stems x1.3); the fit 23 -> 24,
+  stems x1.6 as today. strokes_fit's HAIR (env) adds a hairline gain
+  across fading into AX: 0 / 12 / 24 give hairlines 24 / 30 / 36 and
+  0.96 / 0.98 / 1.00 of today's weight. The person chose +12 (Libre
+  Bodoni's quarter), now HAIR's default. The ends as the strokes give
+  them (the person, 2026-10-28): raising a cut end's weight (at least 0.5
+  or 0.8, falling off over 60 or 160 units) made a knob with a waist
+  behind it, not today's straight wedge; tried and dropped.
+  r's ball-join hook: the Italic rounds the join with a 12-unit curve of
+  radius 10, under half the offset there, which turns inside out when
+  moved; such a round is now drawn as a line between corners and the
+  cleaning cuts a crotch (s's, radius 34 against 35, is left a curve).
+  Step (4), the review sheet (Italic | today | fit, the 20 lowercase,
+  hairlines +12): the person, "looks better, continue" (2026-10-28).
+  In make_bold (2026-10-28, scripts/stroke_bold.py, the study's code made
+  exact and fast: about 90 s for the style on 6 cores). Found in the sweep
+  and fixed: the capitals' serif brackets (radius 40-65, under the stem's
+  offset) folded into a corner and a jog: a bracket between two lines now
+  moves whole; a crotch between two lines (K's arm) is where the moved
+  lines meet; the oval refit of o O 0 gave the stroked counter cusps (not
+  needed: Bold only); ø's slash by weight; r's shoulder roundings and ɺ's
+  top graft (repairs of the by-weight outline) dropped. Kept by weight:
+  ITALIC_BOLD_BY_POINTS (dollar ℵ ™ Ⱳ, repairs matching their points).
+  checks.py against HEAD: kink 495 -> 108, wobble 352 -> 193, extreme 173
+  -> 135, smooth 145 -> 102, step 30 -> 49; glyph_lint 5 -> 1 (Ⱥ notch).
+  Still to do: the tests holding the by-weight outlines' coordinates (Ⱦ Ɉ
+  ɸ repairs, ɬ Ꞁ belts, accepted glyphs), the new steps, К's kink, Ⱥ's
+  notch, the shaping and hinting baselines (advances shift a few units).
+  The person's choices after the sweep (2026-10-28): г's spine had a knee
+  where the weight rose within one curve: SIGMA 45 -> 90; z s г too light
+  beside the stems: a shallow diagonal is weighed by its width nearer the
+  horizontal (ACROSS 0.6, faded out below 20 degrees so serifs and bars
+  stay as measured) and a heavy diagonal gains half its offset up and down
+  too (FULL 0.5; 1, today's rule, made the rounds dark), that weight from
+  the section's own measure (diagonal sections only, smoothed), so serifs,
+  feet and cut ends do not gain from the stem beside them. z s г about
+  +11-13 % on today's ink, rounds +5-9 %, stems -3 %. Tried and dropped:
+  the slashed letters (Ⱥ Ȼ Ⱦ ...) as base plus bar like ø (the derived
+  letter's base is not exactly its glyph: the "bar" took half the letter).
+  Then (the person: z s still light; 2 7 kinked; κ's leg not joined):
+  FULL 0.75, ACROSS 0.45, the gain up and down for shallow strokes only
+  (SHALLOW: under about 33 degrees, so κ's 45-degree arm pulls no waist
+  where its hairline leg leaves it) and fading out within ZONE_NEAR of the
+  zones (else v w y z α ... rose past their overshoots); 2's and 7's kinks
+  were 3-unit lines the overlap removal leaves (TINY 4). z s г 2 now
+  +11-15 % on today's ink, o +7 %, stems -5 %. z's bottom loop closes to a
+  slit. Then (the person: "minimum noticeably blacker"; z's loop to stay
+  open): the blackness was the spacing, not the ink (n m 5 % lighter than
+  today's): fitted to the stroked letter's own white, the thinner entries
+  and exits drew every letter about 23 units closer; now spaced as by
+  weight (the by-weight letter's optical fit, so the stems stand where
+  today's do; advances as today's but 65 glyphs). z's loop: no side moves
+  more than CLEAR (a quarter) of the white in front of it, and hairline
+  curls are not weighed as diagonals; z needs no exception. z still light
+  (the person): its waves are shallow and near the zones, so gain little;
+  ITALIC_BOLD_HEAVIER gives it 1.15 of the gain (+15 % on today's ink,
+  ʐ ʑ ž follow). Letting the zone-facing fade spare inner edges added
+  only 2 % to z and pulled counters off their zones: dropped.
+  Derived letters (the person: the problem is in the letters put together):
+  the slashed ones (Ⱥ ⱥ Ȼ ȼ Ⱦ and ⱥ ȼ ⱦ .sc) rebuilt by their recipe on the
+  stroked base (Ȼ 51 -> 28 nodes); a rebuilt letter is cleaned
+  (glyph_lint.fix) before it is judged, so Ƴ ʄ ҳ, steps of 1-3 units where
+  the piece meets the base, are rebuilt again; Ⱳ by strokes and not joined
+  to W after (53 -> 43 nodes, w_curl.py's repair no longer needed); Ⱦ's
+  foot counter, larger now, closed by t_slash.py (limits widened); Greek
+  ωρ ωμ ρω γα αδ and Cyrillic шт ін corrected in ITALIC_BOLD_KERNING.
+  The middle tildes (ɫ Ɫ ᵬ-ᵶ, ɫ.sc) rebuilt by their recipe too: the tilde
+  at the slashes' weight, lighter (the person preferred the new slashes),
+  ᵭ's upper counter round again (emboldened whole, small and tight, it
+  came out a triangle). The Bold Italic spaced 10 units a side looser
+  ("a bit narrow"; BOLD_ITALIC_CUT, Greek alike): aleph.py's repair finds
+  its points at any offset; Cyrillic ин лн back in range.
+  For the person's review before the baselines: the accepted glyphs that
+  changed (I ɬ ɸ ʈ.sc Ɽ Ⱳ Ꞁ) and the lint candidates (Ɠ's curl notch, Ƙ
+  ᵭ steps of 1-2 units, the slash wedges of Ⱥ ⱥ.sc, ⊗'s cross wedges). The person
+  and Codex agree on the order: exit weight, derived letters, a G2 trial
+  in the fitter, paired fitting of a stroke's two sides where thickness
+  problems remain.
+  Codex's audit of the stroked h n u o (MyiaDidot-shapes,
+  docs/main-stroke-audit-2026-10-28.md): exit strokes much lighter than
+  today's (n's at y 352 178 -> 48), curvature not continuous at smooth
+  joins (tangents are); its order: settle the exits' weight at text size,
+  then fair whole arcs (its shape_fairing.py), then o's lower stroke.
 - Review the step candidates (checks.py `step`, 2026-10-27, in
   `tests/data/quality-*.txt`): a short straight jog between edges running
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar

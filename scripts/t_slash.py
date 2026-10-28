@@ -23,5 +23,7 @@ def finish(font):
         if bounds.bounds is None:
             continue
         _, y0, _, y1 = bounds.bounds
-        if area * outer < 0 and abs(area) <= 600 and 0 < y0 < y1 < 160:
+        # (by strokes the slash comes from its recipe on the stroked T: the
+        # counter grew from about 400 units² to 3000, up to 200 high)
+        if area * outer < 0 and abs(area) <= 4000 and 0 < y0 < y1 < 220:
             glyph.contours.remove(contour)

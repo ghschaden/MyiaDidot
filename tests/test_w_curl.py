@@ -11,16 +11,18 @@ from w_curl import finish
 
 
 def test_curl_connection_preserves_body_and_metadata():
+    """The repair on the by-weight outline it was drawn for (the fixture)."""
     font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-BoldItalic.ufo')
     glyph = font['uni2C72']
-    approved = deepcopy(glyph)
+    lib = deepcopy(glyph.lib)
     glyph.clearContours()
     readGlyphFromString((DATA / 'w-curl-before.glif').read_text(),
                        glyphObject=glyph, pointPen=glyph.getPointPen())
-    glyph.lib.update(approved.lib)  # the fixture is the outline before; the lib is the glyph's own
+    glyph.lib.update(lib)  # the fixture is the outline before; the lib is the glyph's own
     before = deepcopy(glyph)
     finish(font)
-    assert glyph == approved
+    approved = deepcopy(glyph)
+    assert glyph != before
     # Global tangent finishing may shift a handle by one unit; body nodes stay.
     for a, b in zip(glyph.contours[1].points, before.contours[1].points, strict=True):
         assert a.type == b.type
@@ -45,3 +47,15 @@ def test_curl_other_styles_unchanged():
         before = deepcopy(font['uni2C72'])
         finish(font)
         assert font['uni2C72'] == before
+
+
+def test_stroked_curl_needs_no_repair():
+    """Ⱳ emboldened by its strokes (make_bold, 2026-10-28) has no ledges at
+    its curl: the repair leaves it as it is, and it is clean."""
+    font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-BoldItalic.ufo')
+    glyph = font['uni2C72']
+    before = deepcopy(glyph)
+    finish(font)
+    assert glyph == before
+    assert not construction(glyph)
+    assert not lint_glyph(font, glyph)

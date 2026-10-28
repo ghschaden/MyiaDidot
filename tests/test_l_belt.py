@@ -4,7 +4,7 @@ from copy import deepcopy
 
 import pytest
 import ufoLib2
-from conftest import DATA, ROOT
+from conftest import DATA, ROOT, respaced
 from fontTools.ufoLib.glifLib import readGlyphFromString
 from glyph_lint import lint
 from l_belt import finish
@@ -60,6 +60,7 @@ def test_bold_belts_keep_spacing_and_follow_final_base(name, base):
     before.clearContours()
     readGlyphFromString((DATA / f'l-belt-before-BoldItalic-{name}.glif').read_text(),
                        glyphObject=before, pointPen=before.getPointPen())
+    respaced(before)  # (recorded at the Bold's cut)
     assert glyph.width == before.width
     assert glyph.anchors == before.anchors
     assert glyph.getBounds(font).yMax == font[base].getBounds(font).yMax

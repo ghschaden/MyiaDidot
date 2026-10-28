@@ -24,6 +24,23 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from baseline_support import style_data as style_data
 
 
+def respaced(glyph, back=False):
+    """glyph (a fixture recorded at the Bold's cut) moved as the Bold
+    Italic's letters are now spaced (make_bold.BOLD_ITALIC_CUT, looser
+    since 2026-10-28): its outline and anchors right, its advance wider;
+    back: the other way (the font's glyph as the fixture was spaced)."""
+    from make_bold import BOLD_CUT, BOLD_ITALIC_CUT
+
+    d = (BOLD_CUT - BOLD_ITALIC_CUT) * (-1 if back else 1)
+    for c in glyph.contours:
+        for p in c.points:
+            p.x += d
+    for a in glyph.anchors:
+        a.x += d
+    glyph.width += 2 * d
+    return glyph
+
+
 def pytest_generate_tests(metafunc):
     if "ufo_path" in metafunc.fixturenames:
         metafunc.parametrize("ufo_path", UFO_PATHS, ids=[p.stem for p in UFO_PATHS], scope="session")

@@ -4,14 +4,14 @@ from copy import deepcopy
 
 import ufoLib2
 from aleph import _lower_return, finish
-from conftest import DATA, ROOT
+from conftest import DATA, ROOT, respaced
 from fontTools.ufoLib.glifLib import readGlyphFromString
 from glyph_lint import lint
 
 
 def test_aleph_return_repair_is_local_and_repeatable():
     font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-BoldItalic.ufo')
-    final = deepcopy(font['uni2135'])
+    final = respaced(deepcopy(font['uni2135']), back=True)  # (fixtures at the Bold's cut)
     glyph = font['uni2135']
     expected = deepcopy(glyph)
     expected.clearContours()
@@ -52,7 +52,7 @@ def test_aleph_return_repair_is_local_and_repeatable():
 
 def test_aleph_upper_join_preserves_accepted_drawing():
     font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-BoldItalic.ufo')
-    expected = deepcopy(font['uni2135'])
+    expected = respaced(deepcopy(font['uni2135']), back=True)  # (fixtures at the Bold's cut)
     glyph = font['uni2135']
     glyph.clearContours()
     readGlyphFromString((DATA / 'aleph-upper-before.glif').read_text(),

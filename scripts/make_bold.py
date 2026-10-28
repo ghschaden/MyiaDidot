@@ -28,6 +28,7 @@ angle, emboldened, and slanted again (tx), so the stems gain AX across.
 """
 
 import argparse
+import functools
 import math
 import re
 import sys
@@ -51,6 +52,7 @@ from derive import embolden, embolden_by_weight, embolden_simple, rezone
 from glyph_lint import fix
 from respace import CUT_KEY, classifier, respace, sidebearings
 from space_figures import space as space_figures
+from stroke_bold import SLIVER, emboldened
 
 ROOT = Path(__file__).resolve().parent.parent
 KX = 1.04  # widening, so the counters keep their light
@@ -63,6 +65,28 @@ ITALIC_AX = 102
 # the thicker, all of it from THICK on (derive.embolden_by_weight)
 THIN, THICK = 60, 160
 ITALIC_THIN, ITALIC_THICK = 60, 160
+# the Bold Italic is emboldened by its strokes (stroke_bold), its hairlines
+# gaining this across (both sides), fading into ITALIC_AX as a stroke
+# thickens: Libre Bodoni's quarter, hairlines 23 -> 30 per 1000 (the
+# person's choice, 2026-10-28; Bodoni Moda's gain nothing)
+ITALIC_HAIR = 12
+JOBS = 6  # processes at most (the project's limit)
+# Bold Italic letters gaining more than their strokes give (ITALIC_AX and
+# ITALIC_HAIR times this): z, its top and bottom waves shallow, gains little
+# across and near the zones nothing up and down; still light beside n
+# (the person, 2026-10-28)
+ITALIC_BOLD_HEAVIER = {"z": 1.15}
+# Bold Italic derived letters by strokes not joined to their base after
+# (follow_bases): the same Italic strokes give the same base, the join
+# tangles where they part
+ITALIC_BOLD_UNJOINED = {"uni2C72": "Ⱳ: the curl's join tangled (53 nodes)"}
+# Bold Italic letters still emboldened by weight: a repair after matches
+# that outline's points (to redo on the stroked outline)
+ITALIC_BOLD_BY_POINTS = {
+    "dollar": "dollar_drawing.py's waist and ball entrances",
+    "uni2135": "ℵ: aleph.py's return and join repairs",
+    "trademark": "™: symbol_joins.py's shoulder and stem repair",
+}
 MARK_AX, MARK_AY = 30, 8  # accents a little heavier
 # lib: derived letters left emboldened whole, with why (follow_bases);
 # tests/test_emboldened.py holds them to a list that only shrinks
@@ -99,6 +123,21 @@ BOLD_REBUILD = {
     "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
 }
 ITALIC_BOLD_REBUILD = {
+    # the slashed letters: the slash drawn on the stroked base at the Bold
+    # Italic's weight (emboldened whole, it left a slit by the diagonal it
+    # crosses and redrew the brackets beside it: Ⱥ; the person, 2026-10-28)
+    "uni023A": "Ⱥ: the slash on the Bold Italic's A", "uni2C65": "ⱥ: the slash on the Bold Italic's a",
+    "uni023B": "Ȼ: the slash on the Bold Italic's C", "uni023C": "ȼ: the slash on the Bold Italic's c",
+    "uni023E": "Ⱦ: the slash on the Bold Italic's T", "uni2C65.sc": "ⱥ.sc: the slash on a.sc",
+    "uni023C.sc": "ȼ.sc: the slash on c.sc", "uni2C66.sc": "ⱦ.sc: the slash on t.sc",
+    # and the middle tildes, at the slashes' weight (the person, 2026-10-28:
+    # emboldened whole the tilde was heavier than the slashes, and ᵭ's upper
+    # counter, small and tight, came out a triangle)
+    **{name: f"{ch}: the tilde on the Bold Italic's {base}" for name, ch, base in (
+        ("uni026B", "ɫ", "l"), ("uni2C62", "Ɫ", "L"), ("uni1D6C", "ᵬ", "b"), ("uni1D6D", "ᵭ", "d"),
+        ("uni1D6E", "ᵮ", "f"), ("uni1D6F", "ᵯ", "m"), ("uni1D70", "ᵰ", "n"), ("uni1D71", "ᵱ", "p"),
+        ("uni1D72", "ᵲ", "r"), ("uni1D73", "ᵳ", "ɾ"), ("uni1D74", "ᵴ", "s"), ("uni1D75", "ᵵ", "t"),
+        ("uni1D76", "ᵶ", "z"), ("uni026B.sc", "ɫ.sc", "l.sc"))},
     "uni0284": "ʄ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, it lost its ɟ base and stayed light",
     "uni0290": "ʐ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook's counter closed",
     "uni0291": "ʑ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
@@ -428,6 +467,11 @@ BOLD_CUT, BOLD_CUT_GREEK = 19, 15
 # Italic's (Old Standard's) it stood 0.10 of an n n gap looser than its Latin
 # against Greek references (scripts/quality/greek_pairs.py)
 BOLD_ITALIC_CUT_GREEK = BOLD_CUT_GREEK + 16
+# the Bold Italic's letters by strokes a little looser than the Bold's
+# ("a bit narrow", the person, 2026-10-28): ITALIC_LOOSER units less cut a
+# side, its Greek lowercase alike (the Greek pairs are judged against n n)
+ITALIC_LOOSER = 10
+BOLD_ITALIC_CUT = BOLD_CUT - ITALIC_LOOSER
 # the figures, which respace.py leaves alone, are tighter too: emboldened
 # they stand looser than the Bold's letters (1.08 of their side space, where
 # bold text faces have 0.8-1.0); one cut for all keeps them tabular, and the
@@ -520,7 +564,7 @@ ITALIC_BOLD_KERNING = {
     # where Charis and Libertinus agree against the Bold Italic (tests/test_greek_pairs.py)
     ("public.kern1.mugreek", "public.kern2.alphatonos"): 50,  # μα
     ("public.kern1.lambda", "public.kern2.alphatonos"): 31,  # λα
-    ("public.kern1.alpha", "delta"): 0,  # αδ (αθ keeps the Italic's, scaled)
+    ("public.kern1.alpha", "delta"): 63,  # αδ (αθ keeps the Italic's, scaled; 0 before strokes)
     # after emboldening by weight σ's thin arm is spaced in: σα σω σφ tight
     ("public.kern1.sigma", "public.kern2.alphatonos"): 58,  # σα
     ("public.kern1.sigma", "public.kern2.omega"): 66,  # σω
@@ -530,6 +574,12 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.rho", "public.kern2.etatonos"): 60,  # ρη
     ("public.kern1.rho", "public.kern2.upsilon"): 56,  # ρυ
     ("public.kern1.eta", "public.kern2.mugreek"): 66,  # ημ
+    # tight against the references after emboldening by strokes (2026-10-28):
+    # the rounds' ink sits otherwise in the same advances
+    ("public.kern1.omega", "public.kern2.rho"): 81,  # ωρ
+    ("public.kern1.omega", "public.kern2.mugreek"): 50,  # ωμ
+    ("public.kern1.rho", "public.kern2.omega"): 50,  # ρω
+    ("public.kern1.gamma", "public.kern2.alphatonos"): 53,  # γα
     # Cyrillic against Cyrillic references, as the Bold Italic's Latin sets
     # them (greek_pairs.py --script cyrillic): а a little wide before the
     # letters with a stem (аг ак ан ап ар ащ) and з э
@@ -538,6 +588,10 @@ ITALIC_BOLD_KERNING = {
     ("uni043A", "public.kern2.uni043B"): -76,  # кл
     ("uni0427", "public.kern2.uni043B"): -110,  # Чл
     ("public.kern1.uni0413", "public.kern2.uni0434"): -100,  # Гд (the Italic's -196, scaled)
+    # loose after emboldening by strokes (2026-10-28): the entries and exits
+    # shorter in the same advances
+    ("uni0448", "public.kern2.uni0442"): -69,  # шт
+    ("uni0456", "public.kern2.uni0433"): -68,  # ін
     ("public.kern1.uni0413", "public.kern2.uni0431"): 68,  # Гб (-46)
     ("public.kern1.uni0422", "public.kern2.uni0431"): 34,  # Тб (-42)
     ("public.kern1.uni0430", "public.kern2.uni043B"): -55,  # ал (loose after emboldening by weight)
@@ -562,7 +616,9 @@ ANCHOR_NUDGE = {("u", "Horn"): -10}
 # closed rounds, outer oval and counter: emboldened by the weight of the
 # stroke at each node, the counter's shoulders come out boxy on one diagonal
 # and flat on the other (the Bold Italic o, an egg); refitted from the
-# lighter style's own curves (oval)
+# lighter style's own curves (oval); in the Bold only, the Bold Italic's
+# are drawn with the Italic's curves (stroke_bold), and refitted to its
+# area the counter's handles overshoot into cusps
 OVALS = {"o", "O", "zero"}
 # slashed rounds, drawn whole in the lighter style: emboldened whole, the
 # ring swelled where the slash crosses it (Ø not O with a stroke through);
@@ -570,11 +626,12 @@ OVALS = {"o", "O", "zero"}
 SLASHED = {"Oslash": "O", "oslash": "o", "oslash.sc": "o.sc"}
 
 
-def slashed(wide, ring, make, refit):
+def slashed(wide, ring, make, refit, bar):
     """wide (a slashed round) as its round emboldened as the round itself is
     (make, oval if refit) joined to its slash (what it has beyond ring, the
     round's own wide outline: slivers where the two rings differ left out)
-    emboldened apart."""
+    emboldened apart (bar: by weight; by strokes its hairline edge runs on
+    along the counter and the union leaves crumbs of curve there)."""
     def path(rec):
         p = pathops.Path()
         (rec.replay if hasattr(rec, "replay") else rec.draw)(p.getPen())
@@ -630,7 +687,7 @@ def slashed(wide, ring, make, refit):
         whole = oval(ring, whole)
     before, rec = RecordingPen(), RecordingPen()
     (whole.replay if hasattr(whole, "replay") else whole.draw)(before)
-    pathops.op(path(whole), path(make(slash)), pathops.PathOp.UNION).draw(rec)
+    pathops.op(path(whole), path(bar(slash)), pathops.PathOp.UNION).draw(rec)
     # wound as the round is (pathops winds its own way)
     glyph = ufoLib2.objects.Glyph()
     pen = glyph.getPen()
@@ -1709,6 +1766,10 @@ def rederive(source, font, italic, whole):
                 small_cap_stems(up, new)
         drop_specks(new)
         fill_pinholes(new, up[name], up)
+        # the steps and ledges where the recipe's piece meets the base, a
+        # unit or two off: cleaned as the font is after (fix), not counted
+        # as faults (the stroked bases, 2026-10-28: Ƴ ʄ ҳ)
+        fix(up, [tmp])
         # the side bearings the source style gave the letter after its recipe
         # (the Regular's derive.SPACING, the Italic's ITALIC_SIDEBEARINGS):
         # the recipe's width alone has its hook counted in again
@@ -1850,6 +1911,39 @@ def main():
     simple = []  # emboldened the rounder way (a slit otherwise)
     from make_italic import POINT_REPAIRS, SOURCE_KEY
 
+    # the Bold Italic's letters emboldened by their strokes, all at once in
+    # a pool (each about half a second); a glyph's own outline is looked up,
+    # another (part_serifs' shortened serifs) drawn when asked
+    def strokes_job(name, w, sc):
+        gain = sc * ITALIC_BOLD_HEAVIER.get(name, 1.0)
+        return (name, w.value, (ITALIC_AX * gain, AY, ITALIC_THIN * sc, ITALIC_THICK * sc,
+                                ITALIC_HAIR * gain, SLANT, SLIVER * sc * sc))
+
+    stroked, unstroked = {}, []
+    if italic:
+        from concurrent.futures import ProcessPoolExecutor
+
+        jobs = []
+        for g in font:
+            if g.contours and g.name not in marks and g.name not in ITALIC_BOLD_BY_POINTS:
+                wide = RecordingPen()
+                contours_only(g).replay(TransformPen(TransformPen(wide, (KX, 0, 0, 1, 0, 0)), up))
+                jobs.append(strokes_job(g.name, wide, small_scale if g.name in small else 1.0))
+        with ProcessPoolExecutor(JOBS) as pool:
+            done = dict(pool.map(emboldened, jobs, chunksize=8))
+        stroked = {repr(job[1]): done[job[0]] for job in jobs}
+
+    def by_strokes(w, sc, name):
+        """w (name's) emboldened by its strokes, a ufoLib2 Glyph (None: failed)"""
+        value = stroked[repr(w.value)] if repr(w.value) in stroked else emboldened(strokes_job(name, w, sc))[1]
+        if value is None:
+            return None
+        glyph = ufoLib2.objects.Glyph()
+        rec = RecordingPen()
+        rec.value = value
+        rec.replay(glyph.getPen())
+        return glyph
+
     for g in font:
         is_mark = g.name in marks
         if g.contours:
@@ -1871,9 +1965,16 @@ def main():
                 # a letter or figure made small, as at its scale (ᵃ, ⁰, ª)
                 sc = small_scale if g.name in small else 1.0
 
-                def make(w, sc=sc, bends=g.name not in fit_as_is):
+                def make(w, sc=sc, bends=g.name not in fit_as_is, name=g.name, strokes=True):
+                    # the Bold Italic's by its strokes (stroke_bold), where
+                    # that fails by weight
+                    if italic and strokes and name not in ITALIC_BOLD_BY_POINTS:
+                        drawn = by_strokes(w, sc, name)
+                        if drawn is not None:
+                            return bridge(rezone(drawn, AY))
+                        unstroked.append(name)
                     # short edges running on into a curve weighed as it in
-                    # the Bold (ƒ); the Bold Italic's not yet reviewed so
+                    # the Bold (ƒ)
                     return bridge(rezone(embolden_by_weight(w, AX * sc, AY, THIN * sc, THICK * sc,
                                                             runs_on=not italic,
                                                             keep_bends=bends),
@@ -1900,13 +2001,14 @@ def main():
                 bold, n = part_serifs(wide, bold, make)
                 if n:
                     parted.append(g.name)
-                if g.name in OVALS:
+                if g.name in OVALS and not italic:
                     bold = oval(wide, bold)
                 if g.name in SLASHED:
                     ring = RecordingPen()
                     contours_only(regular[SLASHED[g.name]]).replay(
                         TransformPen(TransformPen(ring, (KX, 0, 0, 1, 0, 0)), up))
-                    bold = slashed(wide, ring, make, SLASHED[g.name] in OVALS)
+                    bold = slashed(wide, ring, make, SLASHED[g.name] in OVALS and not italic,
+                                   functools.partial(make, strokes=False))
                 # each side's ink grew by the weight of the stroke there, not
                 # as the earlier emboldening grew it (every side AX / 2, its
                 # convex corners up to twice that: a serif's tip): the side
@@ -1924,6 +2026,15 @@ def main():
                 # grows (the italic f's bar, r's arm, s's and e's terminals)
                 # leaves white even where the outermost ink stays
                 d = optical_fit(bold_rec(ref), bold_rec(bold), band_height(regular, g.name))
+                if (italic and g.name not in ITALIC_BOLD_BY_POINTS and g.name not in simple
+                        and g.name not in unstroked):
+                    # by strokes spaced as by weight (the stems stand where it
+                    # put them): fitted to the stroked letter's own white, the
+                    # thinner entries and exits drew the letters some 23 units
+                    # closer, minimum blacker (the person, 2026-10-28)
+                    weighted = bridge(rezone(embolden_by_weight(wide, AX * sc, AY, THIN * sc, THICK * sc,
+                                                                keep_bends=g.name not in fit_as_is), AY))
+                    d = optical_fit(bold_rec(ref), bold_rec(weighted), band_height(regular, g.name))
                 if d:
                     if italic and g.name in ITALIC_FIT_CORRECTIONS:
                         adjustment = ITALIC_FIT_CORRECTIONS[g.name]
@@ -1988,16 +2099,15 @@ def main():
         from italic_contours import finish_bases
 
         finish_bases(font)
-        from r_hook import round_left_shoulder, round_shoulder
-
-        round_shoulder(font)
-        round_left_shoulder(font)
+        # (r's shoulders not rounded after: the by-weight r's stepped arch
+        # and return, the stroked r has neither)
     else:
         from r_hook import fair_bold_stem
 
         fair_bold_stem(font)
     whole = {}
-    followed = follow_bases(regular, font, italic, whole=whole)
+    # (Ⱳ by strokes keeps its W; joined to it, the curl's join tangled)
+    followed = follow_bases(regular, font, italic, whole=whole, skip=ITALIC_BOLD_UNJOINED if italic else ())
     followed += attached_small(regular, font, italic)
     followed += rederive(regular, font, italic, whole)
     if italic:
@@ -2077,13 +2187,14 @@ def main():
     # what emboldening leaves: counters closed to pinholes, outlines crossing
     # themselves (glyph_lint)
     cleaned = fix(font)
-    greek_cut = BOLD_ITALIC_CUT_GREEK if italic else BOLD_CUT_GREEK
-    respace(font, classifier(font, BOLD_CUT, greek_cut))
+    greek_cut = BOLD_ITALIC_CUT_GREEK - ITALIC_LOOSER if italic else BOLD_CUT_GREEK
+    cut = BOLD_ITALIC_CUT if italic else BOLD_CUT
+    respace(font, classifier(font, cut, greek_cut))
     respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf, the .pf rebuilt)
     sidebearings(font, extra)
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
-    font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + BOLD_CUT,
+    font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + cut,
                          "greekLower": round(done["greekLower"] * KX) + greek_cut}
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
     if italic:
@@ -2096,6 +2207,8 @@ def main():
     write(font, Path(args.bold), separate_stacks=True)
     if parted:
         print("  serifs kept apart:", " ".join(parted))
+    if unstroked:
+        print("  emboldened by weight (by strokes failed):", " ".join(sorted(set(unstroked))))
     if simple:
         print("  emboldened the rounder way (embolden_simple; a slit otherwise):", " ".join(simple))
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
