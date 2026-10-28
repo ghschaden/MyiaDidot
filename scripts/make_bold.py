@@ -37,8 +37,12 @@ import unicodedata
 from pathlib import Path
 
 # one thread per process (a pool of JOBS does the stroking; numpy's
-# OpenBLAS would take every core for fair_arcs' small solves)
+# OpenBLAS would take every core for fair_arcs' small solves); and the
+# same arithmetic on any x86 machine, AVX2 at most: fair_arcs' solves
+# came out otherwise on GitHub's AVX-512 runners (68 Bold Italic glyphs)
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_CORETYPE", "Haswell")
+os.environ.setdefault("NPY_DISABLE_CPU_FEATURES", "X86_V4 AVX512F AVX512_SKX AVX512_ICL AVX512_SPR")
 import pathops
 import ufoLib2
 from fontTools.pens.areaPen import AreaPen
