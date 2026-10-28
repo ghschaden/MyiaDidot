@@ -183,6 +183,30 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   and Codex agree on the order: exit weight, derived letters, a G2 trial
   in the fitter, paired fitting of a stroke's two sides where thickness
   problems remain.
+  The G2 trial (2026-10-28, stroke_bold.py; on in the build since, MYIA_G2=0 to compare):
+  at each smooth node between two curves both take one curvature, chosen
+  between their own where the larger move is least (a short tight curve
+  bends, a long one hardly), handle lengths solved for it; no curve moves
+  more than G2_ERR (3 units) from its G1 fit, else that node stays G1. The
+  rejoin keeps a merged run's end curvatures. Measured
+  (scripts/pilot/g2_measure.py; joins turning under 2 degrees, handles of
+  10 units or more, jumps over 1/250): Bold Italic 1999 -> 1236, a-z 84 ->
+  33; 12 glyphs move over 5 units; ⊗ now falls back to the rounder way, ᵯ
+  no longer does; the strokes take half as long again (n m s a g 2.0 ->
+  3.1 s; make_bold for the Bold Italic 3 min 10 s). Found on
+  the way: bounding by the samples let a curve move 40-65 units where the
+  samples are far from any cubic (Ә's counter, q.sc's tail). Joins where
+  3 units do not suffice (p g a) stay G1.
+  Curves straight where they run on from a line (MYIA_G2_LINES=1, limit
+  MYIA_G2_LINE_ERR): within 3 units only the gentle joins go straight
+  (n's shoulder needs about 7, its tightest joins have no cubic at all);
+  at 8 units n m h's stem joins are straight, but one cubic must then
+  raise its curvature all at once: a spike on n's and h's right shoulders
+  and a blob in the inner bowl, worse than today's step, and the curve
+  joins at the cubics' other ends get worse (1236 -> 1313). Dropped as a
+  fitter setting: a stem join needs a transition curve (an added node),
+  the fairing of whole arcs. At text size (28 and 72 px per em) today, G2
+  and G2 with straight ends cannot be told apart.
   Codex's audit of the stroked h n u o (MyiaDidot-shapes,
   docs/main-stroke-audit-2026-10-28.md): exit strokes much lighter than
   today's (n's at y 352 178 -> 48), curvature not continuous at smooth

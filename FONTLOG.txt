@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-10-28 Bold Italic: curves meet with continuous curvature (G2)
+
+    * Where two curves of the stroked Bold Italic meet smoothly, both now
+      bend alike at the join, not only point the same way: the shared
+      curvature is chosen where the curves move least (a short tight curve
+      bends, a long one hardly), no curve more than 3 units from its
+      earlier fit. Curvature jumps at such joins 1999 -> 1236, a-z 84 ->
+      33. Invisible at text size; seen on curvature combs at the
+      shoulders and bowls. Joins into a straight stem keep their step
+      (one cubic made straight there kinks further on).
+    * Spacing follows the refit (advances within 2 units); Greek λλ
+      kerned closer.
+
 2026-10-28 Bold Italic: emboldened by its strokes; a little looser
 
     * The Bold Italic is no longer emboldened node by node but by its

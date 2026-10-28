@@ -580,6 +580,8 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.omega", "public.kern2.mugreek"): 50,  # ωμ
     ("public.kern1.rho", "public.kern2.omega"): 50,  # ρω
     ("public.kern1.gamma", "public.kern2.alphatonos"): 53,  # γα
+    # wide after G2 refit λ's legs (2026-10-28; Charis and Libertinus agree)
+    ("public.kern1.lambda", "public.kern2.lambda"): -72,  # λλ
     # Cyrillic against Cyrillic references, as the Bold Italic's Latin sets
     # them (greek_pairs.py --script cyrillic): а a little wide before the
     # letters with a stem (аг ак ан ап ар ащ) and з э

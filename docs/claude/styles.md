@@ -70,7 +70,9 @@ Moved from CLAUDE.md (its ground rules apply).
   away from the zones), no side further than a quarter of the white in
   front of it (a loop's eye stays open); redrawn with the Italic's own
   segments (one cubic per curve, its extremes kept), so the curves are as
-  few and round as the Italic's; serif brackets move whole, keeping their
+  few and round as the Italic's; two curves meeting smoothly share one
+  curvature (G2, stroke_bold.G2: each within 3 units of its own fit, else
+  left so; a curve into a line is not made straight there); serif brackets move whole, keeping their
   radius; a crotch between two lines is where the moved lines meet. Run in
   a pool of JOBS processes. Spaced as by weight (that letter's optical
   fit), so the stems stand where they did, then cut less than the Bold

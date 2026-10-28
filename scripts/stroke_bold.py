@@ -11,7 +11,8 @@ across and ay / 2 up or down. Each sample keeps the segment it came from,
 so the moved outline is redrawn with the source's own segments: one cubic
 for each curve (handle lengths by least squares, tangents from the moved
 outline, an extreme kept level or upright in the slanted frame and its
-node slid to where the moved outline is so again), one line for each line
+node slid to where the moved outline is so again; then refitted so that
+two curves meeting smoothly share one curvature, G2), one line for each line
 (moved parallel by its mean weight). Convex corners are mitred; a crotch's
 moved sides cross and the cleaning (pathops) cuts them at their meeting
 point; a concave round too tight to be moved (radius under half the
@@ -22,6 +23,7 @@ The person's review, the study and its choices: FONT-DESIGN.md (Bold
 Italic from strokes), scripts/pilot/strokes_fit.py.
 """
 import math
+import os
 
 import numpy as np
 import ufoLib2
@@ -50,6 +52,17 @@ OPEN = 1e9  # (smooth's length of a run that does not close)
 TINY = 4  # units: a line this short left by the overlap removal is dropped (7: 3)
 SLIVER = 800        # area under which a cleaned contour is a crotch's crossing sides
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
+# curvature continuous at the smooth joins of curves (G2; MYIA_G2=0: tangents
+# only), a curve kept as fitted where that would move it over G2_ERR units
+# (the person, 2026-10-28)
+G2 = os.environ.get("MYIA_G2", "1") == "1"
+G2_ERR = float(os.environ.get("MYIA_G2_ERR", 3))
+# and (MYIA_G2_LINES=1) where a curve runs on smoothly from a line: its end
+# straight there too (curvature 0); tried and dropped: one cubic then raises
+# its curvature all at once, a spike past n's stem (FONT-DESIGN.md)
+G2_LINES = os.environ.get("MYIA_G2_LINES") == "1"
+G2_LINE_ERR = float(os.environ.get("MYIA_G2_LINE_ERR", G2_ERR))  # (a curve straight at one end)
+TS_G2 = np.linspace(0, 1, 80)  # (its distances, measured coarser)
 
 
 def unit(v):
@@ -96,6 +109,68 @@ def fit_cubic(pts, t0, t1):
         dist = np.linalg.norm(pts[:, None, :] - curve[None, :, :], axis=2)
         u = TS[np.argmin(dist, axis=1)]
     return ctrl, np.min(dist, axis=1)
+
+
+def curvatures(ctrl):
+    """a cubic's signed curvature at its start and end"""
+    P0, P1, P2, P3 = ctrl
+    cross = lambda a, b: a[0] * b[1] - a[1] * b[0]  # noqa: E731
+    a, b = np.linalg.norm(P1 - P0), np.linalg.norm(P3 - P2)
+    k0 = 2 / 3 * cross(P1 - P0, P2 - P1) / a ** 3 if a > 1e-9 else 0.0
+    k1 = 2 / 3 * cross(P2 - P1, P3 - P2) / b ** 3 if b > 1e-9 else 0.0
+    return k0, k1
+
+
+def apart(pts, ctrl):
+    """how far cubic ctrl and the points pts are apart, both ways (a curve
+    can bulge out between points that all lie near it)"""
+    d = np.linalg.norm(pts[:, None, :] - bez(ctrl, TS_G2)[None, :, :], axis=2)
+    return max(d.min(axis=1).max(), d.min(axis=0).max())
+
+
+def fit_g2(pts, t0, t1, k0, k1, ls):
+    """one cubic from pts[0] to pts[-1], end tangents t0 t1 and end
+    curvatures k0 k1 (None: free, its handle as ls's, the least-squares
+    fit's); handle lengths solved for them (Newton from several starts, the
+    root nearest pts kept); (control points, largest distance to pts) or
+    None where none holds"""
+    P0, P3 = pts[0], pts[-1]
+    D = P3 - P0
+    d = np.linalg.norm(D)
+    span = np.sum(np.linalg.norm(np.diff(pts, axis=0), axis=1))
+    cross = lambda a, b: a[0] * b[1] - a[1] * b[0]  # noqa: E731
+    a0, a1, x = cross(t0, D), cross(D, t1), cross(t0, t1)
+    if (k0 is None) != (k1 is None) and abs(k0 if k0 is not None else k1) < 1e-9:
+        # straight at one end, the other end's handle is fixed by it alone:
+        # the free end keeps its curvature instead of its handle
+        own = curvatures([P0, P0 + ls[0] * t0, P3 - ls[1] * t1, P3])
+        k0, k1 = (k0, own[1]) if k1 is None else (own[0], k1)
+    best = None
+    for la, lb in [ls] + [(s0 * span, s1 * span) for s0, s1 in ((1 / 3, 1 / 3), (0.2, 0.5), (0.5, 0.2), (0.6, 0.6))]:
+        if best is not None:  # the least-squares fit's own root holds
+            break
+        for _ in range(40):
+            # 3/2 la^2 k0 = a0 - lb x, 3/2 lb^2 k1 = a1 - la x
+            f = np.array([a0 - lb * x - 1.5 * k0 * la * la if k0 is not None else la - ls[0],
+                          a1 - la * x - 1.5 * k1 * lb * lb if k1 is not None else lb - ls[1]])
+            J = np.array([[-3 * k0 * la, -x] if k0 is not None else [1.0, 0.0],
+                          [-x, -3 * k1 * lb] if k1 is not None else [0.0, 1.0]])
+            try:
+                step = np.linalg.solve(J, -f)
+            except np.linalg.LinAlgError:
+                break
+            la, lb = la + step[0], lb + step[1]
+            if np.abs(step).max() < 1e-6:
+                break
+        if np.abs(f).max() > 1e-3 * d:
+            continue
+        if not (0.02 * span < la < span and 0.02 * span < lb < span):
+            continue
+        ctrl = [P0, P0 + la * t0, P3 - lb * t1, P3]
+        err = apart(pts, ctrl)
+        if best is None or err < best[1]:
+            best = (ctrl, err)
+    return best
 
 
 def smooth(ks, arc, total):
@@ -368,6 +443,59 @@ class Strokes:
             found.append((k, n))
         return found
 
+    def join_curvature(self, fits, nodes, inner, braced):
+        """fits (each curve's samples and cubic, None for a line) refitted so
+        that at each smooth node between two curves both have one curvature
+        (G2): each node's, between its two curves' own, where the larger of
+        their distances from their own fits is least (a short tight curve
+        bends more readily than a long one), node by node, a few rounds; a
+        node where that is over G2_ERR is left as fitted"""
+        L = len(fits)
+        if L < 2:
+            return
+        curve = [f is not None and f[1] is not None for f in fits]
+        g1 = [f[1] if c else None for f, c in zip(fits, curve)]
+        # (measured from the fit, not the samples: where the samples are far
+        # from any cubic, at a crotch, a quite different curve is as far)
+        ref = [bez(g, TS_G2) if c else None for g, c in zip(g1, curve)]
+        own = [curvatures(g) if c else None for g, c in zip(g1, curve)]
+        joins = [k for k in range(L) if curve[k - 1] and curve[k] and not nodes[k]["corner"] and k not in inner]
+        target = [None] * L  # at node k, between curve k - 1 and curve k
+        # a curve running on from a line (not a bracket's): straight there
+        straight = [k for k in range(L) if G2_LINES and not nodes[k]["corner"] and k not in braced
+                    and (fits[k - 1] is None) != (fits[k] is None) and (curve[k - 1] or curve[k])]
+        for k in straight:
+            target[k] = 0.0
+
+        def refit(k, t0, t1):
+            """curve k with end curvatures t0 t1: (cubic, its extra distance)"""
+            c = g1[k]
+            if t0 is None and t1 is None:
+                return c, 0.0
+            ls = (np.linalg.norm(c[1] - c[0]), np.linalg.norm(c[3] - c[2]))
+            got = fit_g2(ref[k], unit(c[1] - c[0]), unit(c[3] - c[2]), t0, t1, ls)
+            return (None, math.inf) if got is None else got
+        for _ in range(3):
+            for k in joins:
+                i, j = k - 1, (k + 1) % L
+                ka, kb = own[i][1], own[k][0]
+                def worst(lam, i=i, k=k, j=j, ka=ka, kb=kb):
+                    t = ka + (kb - ka) * lam
+                    return max(refit(i, target[i], t)[1], refit(k, t, target[j])[1]), t
+                best = min(worst(lam) for lam in (0, 0.25, 0.5, 0.75, 1))
+                lam = (best[1] - ka) / (kb - ka) if abs(kb - ka) > 1e-12 else 0.5
+                best = min([best] + [worst(min(1, max(0, lam + d))) for d in (-0.125, 0.125)])
+                target[k] = best[1] if best[0] <= G2_ERR else None
+            for k in straight:
+                c = k if curve[k] else k - 1
+                target[k] = 0.0  # (tried with it)
+                target[k] = 0.0 if refit(c, target[c], target[(c + 1) % L])[1] <= G2_LINE_ERR else None
+        for k in range(L):
+            if curve[k]:
+                c, extra = refit(k, target[k], target[(k + 1) % L])
+                if c is not None and extra <= (G2_LINE_ERR if 0.0 in (target[k], target[(k + 1) % L]) else G2_ERR):
+                    fits[k] = (fits[k][0], c)
+
     def draw(self, glyph, anchors):
         """glyph (merged) -> RecordingPen of the moved outline, drawn with
         its segments (uncleaned); the moved nodes added to anchors"""
@@ -474,19 +602,22 @@ class Strokes:
             for k, t in shifts.items():  # a bracket keeps its nodes' directions
                 tans[k] = (t, t)
             anchors += [p for e in ends for p in e]
+            fits = [None] * L
+            for k in range(L):
+                if not lines[k]:
+                    j = (k + 1) % L
+                    pts = np.array([ends[k][1]] + moved[k][1:] + [ends[j][0]])
+                    fits[k] = (pts, fit_cubic(pts, tans[k][1], tans[j][0])[0])
+            if G2:
+                self.join_curvature(fits, nodes, inner, {(k + m) % L for k, n in whole for m in range(n + 1)})
             rec.moveTo(tuple(ends[0][1]))
             for k in range(L):
                 j = (k + 1) % L
-                start, end = ends[k][1], ends[j][0]
-                if lines[k]:
-                    rec.lineTo(tuple(end))
+                if lines[k] or fits[k][1] is None:
+                    rec.lineTo(tuple(ends[j][0]))
                 else:
-                    pts = np.array([start] + moved[k][1:] + [end])
-                    ctrl, _err = fit_cubic(pts, tans[k][1], tans[j][0])
-                    if ctrl is None:
-                        rec.lineTo(tuple(end))
-                    else:
-                        rec.curveTo(tuple(ctrl[1]), tuple(ctrl[2]), tuple(ctrl[3]))
+                    ctrl = fits[k][1]
+                    rec.curveTo(tuple(ctrl[1]), tuple(ctrl[2]), tuple(ctrl[3]))
                 if j and not np.allclose(ends[j][0], ends[j][1]):
                     rec.lineTo(tuple(ends[j][1]))
             if not np.allclose(ends[0][0], ends[0][1]):
@@ -556,7 +687,23 @@ def rejoined(contour, anchors):
                 rec.curveTo(*(tuple(q) for q in sg[1:]))
             continue
         pts = np.concatenate([bez(sg, ts) for sg in run] + [run[-1][-1][None]])
-        ctrl, _err = fit_cubic(pts, unit(run[0][1] - run[0][0]), unit(run[-1][-1] - run[-1][-2]))
+        t0, t1 = unit(run[0][1] - run[0][0]), unit(run[-1][-1] - run[-1][-2])
+        ctrl, _err = fit_cubic(pts, t0, t1)
+        if G2:
+            # the run's own curvature at its ends where it runs on smoothly
+            # into a curve (a corner's end is free)
+            # (straight where it runs on from a line, G2_LINES)
+            before, after = segs[(a - 1) % len(segs)], segs[b % len(segs)]
+            on = math.cos(math.radians(2))
+            k0 = k1 = None
+            if len(run[0]) == 4 and float(unit(before[-1] - before[-2]) @ t0) > on:
+                k0 = curvatures(run[0])[0] if len(before) == 4 else 0.0 if G2_LINES else None
+            if len(run[-1]) == 4 and float(t1 @ unit(after[1] - after[0])) > on:
+                k1 = curvatures(run[-1])[1] if len(after) == 4 else 0.0 if G2_LINES else None
+            ls = (np.linalg.norm(ctrl[1] - ctrl[0]), np.linalg.norm(ctrl[3] - ctrl[2]))
+            got = fit_g2(pts[::3], t0, t1, k0, k1, ls) if k0 is not None or k1 is not None else None
+            if got is not None and got[1] <= G2_ERR:
+                ctrl = got[0]
         rec.curveTo(*(tuple(q) for q in ctrl[1:]))
     rec.closePath()
     return rec
