@@ -73,7 +73,21 @@ Moved from CLAUDE.md (its ground rules apply).
   few and round as the Italic's; two curves meeting smoothly share one
   curvature (G2, stroke_bold.G2: each within 3 units of its own fit, else
   left so; a curve into a line is not made straight there); serif brackets move whole, keeping their
-  radius; a crotch between two lines is where the moved lines meet. Last,
+  radius; a crotch between two lines is where the moved lines meet. A
+  curve running smoothly into a line, split short just before it (the
+  cleaning's cut at an extreme; under BLEND_SHORT, 40 units), takes on
+  the line's weight towards it over BLEND (120) units where the two would
+  move over BLEND_STEP (4) units apart (`Strokes.blend`, 2026-10-29,
+  Codex's review: y's descender met its inner line in a sideways step,
+  that line's mean weight lowered by the crotch above it; not short
+  curves between two lines, no blend lines those up); in such a
+  glyph the short piece is joined into its curve, and a leftover merged
+  at a line's end leaves the curve along the line (`rejoined(short=)`:
+  one curve into the line, as the Italic draws it). A glyph takes the
+  blend only if it leaves fewer such steps (`steps`), no more bends
+  (`bends`), as many contours and, slanted back and rounded, no more of
+  the quality checks' findings (`findings`), else it stays exactly as
+  drawn without (MYIA_BLEND=0 to compare; tests/test_stroke_steps.py). Last,
   each whole arc of the cleaned outline (corner to corner) is refitted
   fair (`fair_arcs.py`, 2026-10-28, the person's review; MYIA_FAIR=0 to
   compare): curvature continuous, changing gently (by its relative change,
@@ -93,7 +107,9 @@ Moved from CLAUDE.md (its ground rules apply).
   given more gain (z). ITALIC_BOLD_BY_POINTS keeps by weight the letters
   whose later repairs match that outline's points (dollar, ℵ, ™); ø's
   slash bar too (`slashed`'s bar). The slashed letters (Ⱥ Ȼ Ⱦ ...) are
-  rebuilt by their recipe on the stroked base (ITALIC_BOLD_REBUILD), a
+  rebuilt by their recipe on the stroked base (ITALIC_BOLD_REBUILD; Ɯ
+  too, U twinned: its own stroked stem, unioned with U's, crossed it in
+  a step), a
   rebuilt letter cleaned (glyph_lint.fix) before it is judged; Ⱳ is not
   joined to its W after (ITALIC_BOLD_UNJOINED). OVALS and r's shoulder
   roundings (by-weight repairs) are not applied to it.

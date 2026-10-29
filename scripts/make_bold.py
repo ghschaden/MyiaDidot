@@ -146,6 +146,10 @@ ITALIC_BOLD_REBUILD = {
         ("uni1D6E", "ᵮ", "f"), ("uni1D6F", "ᵯ", "m"), ("uni1D70", "ᵰ", "n"), ("uni1D71", "ᵱ", "p"),
         ("uni1D72", "ᵲ", "r"), ("uni1D73", "ᵳ", "ɾ"), ("uni1D74", "ᵴ", "s"), ("uni1D75", "ᵵ", "t"),
         ("uni1D76", "ᵶ", "z"), ("uni026B.sc", "ɫ.sc", "l.sc"))},
+    # Ɯ, U twinned: its stems the Bold Italic U's (by strokes its own, its
+    # third stem's edge unioned with U's crossed it in a step; the person,
+    # 2026-10-29)
+    "uni019C": "Ɯ: the twin of the Bold Italic's U",
     "uni0284": "ʄ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, it lost its ɟ base and stayed light",
     "uni0290": "ʐ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook's counter closed",
     "uni0291": "ʑ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",

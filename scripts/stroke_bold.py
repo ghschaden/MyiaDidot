@@ -56,6 +56,10 @@ ACROSS = 0.45  # (z's spine, 25° from level, read as a hairline at 1: the perso
 OPEN = 1e9  # (smooth's length of a run that does not close)
 TINY = 4  # units: a line this short left by the overlap removal is dropped (7: 3)
 SLIVER = 800        # area under which a cleaned contour is a crotch's crossing sides
+BLEND = 120  # units of a curve over which it takes on the weight of the line it runs into
+BLEND_SHORT = 40  # units: only where the curve next to the line is shorter (no room for its fit to take it up)
+BLEND_STEP = 4  # units: only where the two would be moved further apart than this
+STEP_TURN = 12  # degrees: a short piece's chord turning out and back more is a step (steps)
 LEFTOVER = 8  # units (fair_arcs.SHORT): a piece of the cleaned outline shorter is merged into its neighbours
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
 # curvature continuous at the smooth joins of curves (G2; MYIA_G2=0: tangents
@@ -72,6 +76,7 @@ TS_G2 = np.linspace(0, 1, 80)  # (its distances, measured coarser)
 # then each whole arc refitted fair (fair_arcs; MYIA_FAIR=0: as fitted;
 # the person, 2026-10-28)
 FAIR = os.environ.get("MYIA_FAIR", "1") == "1"
+BLENDS = os.environ.get("MYIA_BLEND", "1") == "1"  # (Strokes.blend; 0 to compare)
 
 
 def unit(v):
@@ -90,6 +95,11 @@ def dbez(p, t):
     t = np.asarray(t, float)[..., None]
     u = 1 - t
     return 3 * u * u * (p[1] - p[0]) + 6 * u * t * (p[2] - p[1]) + 3 * t * t * (p[3] - p[2])
+
+
+def ddbez(p, t):
+    t = np.asarray(t, float)[..., None]
+    return 6 * (1 - t) * (p[2] - 2 * p[1] + p[0]) + 6 * t * (p[3] - 2 * p[2] + p[1])
 
 
 def fit_cubic(pts, t0, t1):
@@ -221,6 +231,7 @@ class Strokes:
         self.ax, self.ay, self.thin, self.thick, self.hair = ax, ay, thin, thick, hair
         self.root = root
         self.upright = unit(np.array([-slant, 1.0]))
+        self.blending, self.blended = BLENDS, False  # (blend: asked for, done)
 
     def offset(self, k):
         return (self.hair + (self.ax - self.hair) * k) / 2
@@ -513,6 +524,56 @@ class Strokes:
                 if c is not None and extra <= (G2_LINE_ERR if 0.0 in (target[k], target[(k + 1) % L]) else G2_ERR):
                     fits[k] = (fits[k][0], c)
 
+    def blend(self, segs, lines, nodes, kc, kv, kline, vline):
+        """kc, kv with a curve running smoothly into a line taking on the
+        line's weight (kline, vline: it moves parallel, by its mean) towards it, over
+        BLEND units of the curve (up to its next corner or line): moved
+        each by its own, they met in a sideways step (y's descender, where
+        its inner line's weight is lowered by the crotch above it)"""
+        L = len(segs)
+        if L < 2:
+            return kc, kv
+        first = np.cumsum([0] + [len(s) for s in segs])
+        kc, kv = kc.copy(), kv.copy()
+        base_c, base_v = kc.copy(), kv.copy()
+        N = len(kc)
+        pts = np.array([p for seg in segs for p, _t in seg])
+        for k in range(L):
+            if nodes[k]["corner"] or lines[k - 1] == lines[k]:
+                continue
+            line = (k - 1) % L if lines[k - 1] else k
+            # the curve's samples away from the node, to its next corner or line
+            step = 1 if lines[k - 1] else -1
+            run, seg, closed = [], k if step == 1 else k - 1, False
+            while not (closed := lines[seg % L]) and len(run) < N:
+                idx = range(first[seg % L], first[seg % L + 1])
+                run += list(idx) if step == 1 else list(reversed(idx))
+                end = (seg + 1) % L if step == 1 else seg % L
+                if nodes[end]["corner"]:
+                    break
+                seg += step
+            if not run:
+                continue
+            # (by how far the curve's end is from the line's weight)
+            dc = kline[line] - base_c[run[0]]
+            dv = vline[line] - base_v[run[0]]
+            # (only a short curve next to the line, the cleaning's split at
+            # an extreme just before it: a longer one's fit takes up the
+            # difference, and the rest of the font stays as reviewed)
+            near = k if lines[k - 1] else (k - 1) % L
+            # (nor short curves between two lines: moved each by its own
+            # mean, they stand apart whatever the curves do)
+            if (len(segs[near]) * STEP > BLEND_SHORT or (closed and len(run) * STEP < 2 * BLEND_SHORT)
+                    or abs(self.offset(base_c[run[0]] + dc) - self.offset(base_c[run[0]])) < BLEND_STEP):
+                continue
+            along = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(pts[run], axis=0), axis=1))])
+            span = min(BLEND, along[-1] + 1e-9)
+            fade = np.where(along < span, 0.5 * (1 + np.cos(np.pi * along / span)), 0.0)
+            kc[run] += dc * fade
+            kv[run] += dv * fade
+            self.blended = True
+        return np.clip(kc, 0, 1), np.clip(kv, 0, 1)
+
     def draw(self, glyph, anchors):
         """glyph (merged) -> RecordingPen of the moved outline, drawn with
         its segments (uncleaned); the moved nodes added to anchors"""
@@ -527,6 +588,12 @@ class Strokes:
             self.crotches(segs, lines, nodes, kc, sign)
             whole = self.rigid(segs, lines, nodes, kc, sign)
             inner = {(k + m) % len(segs) for k, n in whole for m in range(1, n)}
+            # (the lines' own weights, before the curves take them on)
+            first = np.cumsum([0] + [len(s) for s in segs])
+            kline = [float(kc[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(len(segs))]
+            vline = [float(kv[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(len(segs))]
+            if self.blending:
+                kc, kv = self.blend(segs, lines, nodes, kc, kv, kline, vline)
             moved, q = [], 0
             for seg in segs:
                 moved.append([self.move(p, t, kc[q + s], sign, kv[q + s]) for s, (p, t) in enumerate(seg)])
@@ -551,9 +618,6 @@ class Strokes:
             # each node's moved position(s), arriving and leaving; a line
             # moves parallel, by its weight along its length (its ends' alone
             # thin where the weight fades towards a cut end)
-            first = np.cumsum([0] + [len(s) for s in segs])
-            kline = [float(kc[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(L)]
-            vline = [float(kv[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(L)]
             ends = []
             for k in range(L):
                 nd = nodes[k]
@@ -674,10 +738,13 @@ def contour_area(c):
     return abs(sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1]))) / 2
 
 
-def rejoined(contour, anchors):
+def rejoined(contour, anchors, short=False):
     """contour with the cleaning's splits undone: a smooth node that is
     none of the moved nodes joins the cubics either side (refitted through
-    both, exact where they are halves of one cubic)"""
+    both, exact where they are halves of one cubic); short: also one
+    joining a curve to a short one (under BLEND_SHORT) running on smoothly
+    into a line (the cleaning's split at an extreme just before the line,
+    blended: one curve into the line, as the source draws it)"""
     P = contour.points
     n = len(P)
     ons = [i for i, p in enumerate(P) if p.type]
@@ -715,11 +782,44 @@ def rejoined(contour, anchors):
         if len(after) == 4:
             after[1] = after[1] + mid - s[-1]
         before[-1], after[0] = mid, mid
+        # (short: a piece running on smoothly from a line into a curve, the
+        # curve leaving along the line, smooth as the source; Џ's tail)
+        on = math.cos(math.radians(3))
+        if short and len(before) == 2 and len(after) == 4 and np.linalg.norm(s[1] - s[0]) > 1e-9:
+            line = unit(before[1] - before[0])
+            if float(unit(s[1] - s[0]) @ line) > on:
+                after[1] = mid + np.linalg.norm(after[1] - after[0]) * line
+        elif short and len(after) == 2 and len(before) == 4 and np.linalg.norm(s[-1] - s[-2]) > 1e-9:
+            line = unit(after[1] - after[0])
+            if float(unit(s[-1] - s[-2]) @ line) > on:
+                before[2] = mid - np.linalg.norm(before[3] - before[2]) * line
         del segs[k]
+
+    def runs_into_line(k, step):
+        """the curves from segment k on (step 1) or back (step -1) to a line
+        are short (their chord under BLEND_SHORT) and run on smoothly into it"""
+        L = len(segs)
+        start = segs[k % L][0] if step == 1 else segs[k % L][-1]
+        for m in range(L):
+            c = segs[(k + m * step) % L]
+            if len(c) == 2:
+                return False
+            nxt = segs[(k + (m + 1) * step) % L]
+            end = c[-1] if step == 1 else c[0]
+            if np.linalg.norm(end - start) >= BLEND_SHORT:
+                return False
+            if len(nxt) == 2:
+                tc = unit(c[-1] - c[-2]) if step == 1 else unit(c[1] - c[0])
+                return float(tc @ unit(nxt[1] - nxt[0])) > math.cos(math.radians(3))
+        return False
 
     def split_here(k):
         a, b = segs[k - 1], segs[k]
         here = b[0]
+        if (short and len(a) == 4 and len(b) == 4
+                and float(unit(here - a[-2]) @ unit(b[1] - here)) > math.cos(math.radians(2))
+                and (runs_into_line(k, 1) or runs_into_line(k - 1, -1))):
+            return False
         if len(anchors) and np.min(np.linalg.norm(anchors - here, axis=1)) < 0.5:
             return True
         if len(a) == 2 or len(b) == 2:
@@ -762,23 +862,62 @@ def rejoined(contour, anchors):
     return rec
 
 
-def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0):
-    """rec (a RecordingPen, upright frame) emboldened by its strokes, as a
-    ufoLib2 Glyph, cleaned (contours under sliver units' area dropped);
-    not shifted (the caller moves it by ax / 2); root: Strokes'"""
-    strokes = Strokes(ax, ay, thin, thick, hair, slant, root)
-    flat = tidy(merged_glyph(rec))
+def bends(contours):
+    """the times the contours (segment arrays) bend back along a run of
+    smooth curves (a corner or a line starts a new run)"""
+    n = 0
+    for segs in contours:
+        last = 0.0
+        for k, sg in enumerate(segs):
+            prev = segs[k - 1]
+            if len(sg) == 2 or float(unit(sg[1] - sg[0]) @ unit(prev[-1] - prev[-2])) < math.cos(math.radians(3)):
+                last = 0.0
+            if len(sg) == 2:
+                continue
+            d, dd = dbez(sg, TS[1:-1:8]), ddbez(sg, TS[1:-1:8])
+            sp = np.linalg.norm(d, axis=1)
+            ks = (d[:, 0] * dd[:, 1] - d[:, 1] * dd[:, 0]) / np.maximum(sp, 1e-9) ** 3
+            for kk in ks[np.abs(ks) > 1e-4]:  # (straighter than a 10000 unit radius: no side)
+                if last and kk * last < 0:
+                    n += 1
+                last = kk
+    return n
+
+
+def steps(contours):
+    """the short pieces (chord under BLEND_SHORT) between two smooth joins
+    whose chord turns out from the edge and back: a sideways step"""
+    n = 0
+    on = math.cos(math.radians(3))
+    for segs in contours:
+        for k, sg in enumerate(segs):
+            prev, nxt = segs[k - 1], segs[(k + 1) % len(segs)]
+            chord = sg[-1] - sg[0]
+            if len(segs) < 3 or not 2 < np.linalg.norm(chord) < BLEND_SHORT:
+                continue
+            tin, tout = unit(prev[-1] - prev[-2]), unit(nxt[1] - nxt[0])
+            if float(tin @ unit(sg[1] - sg[0])) < on or float(unit(sg[-1] - sg[-2]) @ tout) < on:
+                continue
+            c = unit(chord)
+            t1 = math.degrees(math.atan2(tin[0] * c[1] - tin[1] * c[0], float(tin @ c)))
+            t2 = math.degrees(math.atan2(c[0] * tout[1] - c[1] * tout[0], float(c @ tout)))
+            if abs(t1) > STEP_TURN and abs(t2) > STEP_TURN and t1 * t2 < 0:
+                n += 1
+    return n
+
+
+def stroked(strokes, flat, sliver):
+    """flat emboldened by strokes: (glyph, its contours as segment arrays)"""
     out = ufoLib2.objects.Glyph()
-    if not flat.contours:
-        return out
     anchors = []
     cleaned = merged_glyph(strokes.draw(flat, anchors))
     anchors = np.array(anchors)
     pen = out.getPen()
+    kept = []
     for c in cleaned.contours:
         if contour_area(c) < sliver:
             continue
-        rec = rejoined(c, anchors)
+        rec = rejoined(c, anchors, short=strokes.blended)
         segs = segments(rec.value) if FAIR else None
         if segs:
             faired = [fair_contour(sg, strokes.upright)[0] for sg in segs]
@@ -787,9 +926,60 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
             if len(pieces(faired)) > len(pieces(segs)):
                 faired = segs
             draw(pen, faired)
+            kept += faired
         else:
             rec.replay(pen)
+            kept += segments(rec.value) or []
+    return out, kept
+
+
+def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0):
+    """rec (a RecordingPen, upright frame) emboldened by its strokes, as a
+    ufoLib2 Glyph, cleaned (contours under sliver units' area dropped);
+    not shifted (the caller moves it by ax / 2); root: Strokes'"""
+    strokes = Strokes(ax, ay, thin, thick, hair, slant, root)
+    flat = tidy(merged_glyph(rec))
+    if not flat.contours:
+        return ufoLib2.objects.Glyph()
+    out, kept = stroked(strokes, flat, sliver)
+    if strokes.blended:
+        # a blended curve taken only where it has fewer steps, no more bends
+        # and as many contours as drawn without, nor more of the quality
+        # checks' findings once slanted back and rounded (else as reviewed)
+        plain = Strokes(ax, ay, thin, thick, hair, slant, root)
+        plain.blending = False
+        before, was = stroked(plain, flat, sliver)
+        if not (steps(kept) < steps(was) and bends(kept) <= bends(was) and len(kept) == len(was)
+                and findings(out, slant) <= findings(before, slant)):
+            out = before
     return out
+
+
+def findings(glyph, slant):
+    """the quality checks' construction findings and reversals of glyph
+    (upright frame) slanted back and rounded (but smooth nodes turning
+    between two curves: make_bold rounds them smoothly, round_smoothly;
+    one at a line it cannot turn)"""
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
+    from checks import construction, reversals
+    from fontTools.pens.roundingPen import RoundingPen
+    from fontTools.pens.transformPen import TransformPen
+
+    sloped = ufoLib2.objects.Glyph()
+    glyph.draw(TransformPen(RoundingPen(sloped.getPen()), (1, 0, slant, 1, 0, 0)))
+    def at_line(where):
+        x, y = (int(v) for v in where.split(","))
+        for c in sloped.contours:
+            ons = [p for p in c.points if p.type]
+            for i, p in enumerate(ons):
+                if (round(p.x), round(p.y)) == (x, y):
+                    return p.type == "line" or ons[(i + 1) % len(ons)].type == "line"
+        return True
+    found = [f for f in construction(sloped) if f[0] != "smooth" or at_line(f[1])]
+    return len(found) + len(reversals(sloped))
 
 
 def emboldened(job):
