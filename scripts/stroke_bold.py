@@ -31,7 +31,7 @@ import numpy as np
 import pathops
 import ufoLib2
 from derive import ZONE_BOTTOMS, ZONE_TOPS, merged_glyph
-from fair_arcs import draw, fair_contour, segments
+from fair_arcs import LIMIT, arcs, draw, fair_contour, segments
 from fontTools.pens.recordingPen import RecordingPen
 
 STEP = 2.0          # units between samples
@@ -59,7 +59,41 @@ SLIVER = 800        # area under which a cleaned contour is a crotch's crossing 
 BLEND = 120  # units of a curve over which it takes on the weight of the line it runs into
 BLEND_SHORT = 40  # units: only where the curve next to the line is shorter (no room for its fit to take it up)
 BLEND_STEP = 4  # units: only where the two would be moved further apart than this
-STEP_TURN = 12  # degrees: a short piece's chord turning out and back more is a step (steps)
+# a sideways step (steps): the edge, followed every unit along it, turning
+# out by STEP_TURN degrees or more and back to its course (at least half
+# way) within STEP_REACH units each way, the turn under STEP_WIDTH units
+# wide (at half its height), the edge moved STEP_SIDE units aside or more;
+# not a bar or notch drawn with a corner at each end NOTCH units apart or
+# more (calibrated 2026-10-29 on the steps stroke_bold made before Strokes.blend,
+# 25 to 72 degrees, and the controls n h u v w o: u's knee into its bowl 18)
+STEP_TURN = 20
+# a knee: a curve beside a line whose fit bends back though the source's
+# turns one way (Strokes.draw), with a step of KNEE_TURN degrees or more left
+# within KNEE_NEAR units of it in the stroked outline (u's inner stem into its
+# bowl, 10 here, 18 finished; none in n h m v w a b d p q r: the person,
+# 2026-10-29): blended into its line whatever its curve's length, over
+# KNEE_BLEND units
+KNEE_BLEND = float(os.environ.get("MYIA_KNEE_BLEND", 240))  # (120 kinked u at its line once rounded, 500 a little below; 200-300 clean)
+KNEE_TURN = 8
+KNEE_NEAR = 20
+STEP_REACH = 40
+STEP_WIDTH = 30
+STEP_SIDE = 1.0
+NOTCH = 12
+# findings of a candidate and of the outline it would replace (compared)
+# are the same one when each is the other's nearest of its kind within NEAR
+# units, and worse when its measure grows by over WORSE (and half a unit)
+NEAR = 20
+WORSE = 0.1
+BEND_NEAR = 40  # (an inflection on a nearly straight stretch slides along it: ʲ's stem, Џ's tail)
+# a blended candidate (embolden_by_strokes, guarded) may move the outline
+# only within REGION times ax of the source's points it blended (declared
+# before fitting), elsewhere by OUTSIDE units at most; across its strokes
+# there its ink no narrower or wider than without by over WIDTH units, its
+# width rising and falling no more often, no less white in front
+REGION = 1.0
+OUTSIDE = 1.0
+WIDTH = 3.0
 LEFTOVER = 8  # units (fair_arcs.SHORT): a piece of the cleaned outline shorter is merged into its neighbours
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
 # curvature continuous at the smooth joins of curves (G2; MYIA_G2=0: tangents
@@ -232,6 +266,12 @@ class Strokes:
         self.root = root
         self.upright = unit(np.array([-slant, 1.0]))
         self.blending, self.blended = BLENDS, False  # (blend: asked for, done)
+        self.region = []  # where blend changed the source's weights, and rejoined(short=) the outline
+        # (contour, segment): a curve beside a line whose fit bends back
+        # where the source's turns one way (draw finds them, with their
+        # moved samples; knees: those blend then takes on whatever their
+        # length, over KNEE_BLEND units)
+        self.knees, self.found = set(), {}
 
     def offset(self, k):
         return (self.hair + (self.ax - self.hair) * k) / 2
@@ -524,7 +564,7 @@ class Strokes:
                 if c is not None and extra <= (G2_LINE_ERR if 0.0 in (target[k], target[(k + 1) % L]) else G2_ERR):
                     fits[k] = (fits[k][0], c)
 
-    def blend(self, segs, lines, nodes, kc, kv, kline, vline):
+    def blend(self, segs, lines, nodes, kc, kv, kline, vline, ci=0):
         """kc, kv with a curve running smoothly into a line taking on the
         line's weight (kline, vline: it moves parallel, by its mean) towards it, over
         BLEND units of the curve (up to its next corner or line): moved
@@ -563,15 +603,17 @@ class Strokes:
             near = k if lines[k - 1] else (k - 1) % L
             # (nor short curves between two lines: moved each by its own
             # mean, they stand apart whatever the curves do)
-            if (len(segs[near]) * STEP > BLEND_SHORT or (closed and len(run) * STEP < 2 * BLEND_SHORT)
+            knee = (ci, near) in self.knees  # (a long curve's knee: KNEE_TURN)
+            if ((len(segs[near]) * STEP > BLEND_SHORT and not knee) or (closed and len(run) * STEP < 2 * BLEND_SHORT)
                     or abs(self.offset(base_c[run[0]] + dc) - self.offset(base_c[run[0]])) < BLEND_STEP):
                 continue
             along = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(pts[run], axis=0), axis=1))])
-            span = min(BLEND, along[-1] + 1e-9)
+            span = min(KNEE_BLEND if knee else BLEND, along[-1] + 1e-9)
             fade = np.where(along < span, 0.5 * (1 + np.cos(np.pi * along / span)), 0.0)
             kc[run] += dc * fade
             kv[run] += dv * fade
             self.blended = True
+            self.region += list(pts[run][fade > 0])
         return np.clip(kc, 0, 1), np.clip(kv, 0, 1)
 
     def draw(self, glyph, anchors):
@@ -584,7 +626,7 @@ class Strokes:
         contours = [self.sample(c) for c in glyph.contours]
         ks = self.weights(contours, sign)
         rec = RecordingPen()
-        for (segs, lines, nodes), (kc, kv) in zip(contours, ks):
+        for ci, ((segs, lines, nodes), (kc, kv)) in enumerate(zip(contours, ks)):
             self.crotches(segs, lines, nodes, kc, sign)
             whole = self.rigid(segs, lines, nodes, kc, sign)
             inner = {(k + m) % len(segs) for k, n in whole for m in range(1, n)}
@@ -593,7 +635,7 @@ class Strokes:
             kline = [float(kc[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(len(segs))]
             vline = [float(kv[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(len(segs))]
             if self.blending:
-                kc, kv = self.blend(segs, lines, nodes, kc, kv, kline, vline)
+                kc, kv = self.blend(segs, lines, nodes, kc, kv, kline, vline, ci)
             moved, q = [], 0
             for seg in segs:
                 moved.append([self.move(p, t, kc[q + s], sign, kv[q + s]) for s, (p, t) in enumerate(seg)])
@@ -691,6 +733,10 @@ class Strokes:
                     fits[k] = (pts, fit_cubic(pts, tans[k][1], tans[j][0])[0])
             if G2:
                 self.join_curvature(fits, nodes, inner, {(k + m) % L for k, n in whole for m in range(n + 1)})
+            for k in range(L):
+                if (not lines[k] and fits[k][1] is not None and (lines[k - 1] or lines[(k + 1) % L])
+                        and inflections(fits[k][1]) and one_way(segs[k])):
+                    self.found[(ci, k)] = fits[k][0]
             rec.moveTo(tuple(ends[0][1]))
             for k in range(L):
                 j = (k + 1) % L
@@ -738,13 +784,15 @@ def contour_area(c):
     return abs(sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1]))) / 2
 
 
-def rejoined(contour, anchors, short=False):
+def rejoined(contour, anchors, short=False, acted=None):
     """contour with the cleaning's splits undone: a smooth node that is
     none of the moved nodes joins the cubics either side (refitted through
     both, exact where they are halves of one cubic); short: also one
     joining a curve to a short one (under BLEND_SHORT) running on smoothly
     into a line (the cleaning's split at an extreme just before the line,
-    blended: one curve into the line, as the source draws it)"""
+    blended: one curve into the line, as the source draws it); acted, a
+    list: where short changed the outline is added to it"""
+    acted = [] if acted is None else acted
     P = contour.points
     n = len(P)
     ons = [i for i, p in enumerate(P) if p.type]
@@ -789,10 +837,12 @@ def rejoined(contour, anchors, short=False):
             line = unit(before[1] - before[0])
             if float(unit(s[1] - s[0]) @ line) > on:
                 after[1] = mid + np.linalg.norm(after[1] - after[0]) * line
+                acted.append(mid)
         elif short and len(after) == 2 and len(before) == 4 and np.linalg.norm(s[-1] - s[-2]) > 1e-9:
             line = unit(after[1] - after[0])
             if float(unit(s[-1] - s[-2]) @ line) > on:
                 before[2] = mid - np.linalg.norm(before[3] - before[2]) * line
+                acted.append(mid)
         del segs[k]
 
     def runs_into_line(k, step):
@@ -816,16 +866,19 @@ def rejoined(contour, anchors, short=False):
     def split_here(k):
         a, b = segs[k - 1], segs[k]
         here = b[0]
+        if len(anchors) and np.min(np.linalg.norm(anchors - here, axis=1)) < 0.5:
+            split = True
+        elif len(a) == 2 or len(b) == 2:
+            split = True
+        else:
+            split = float(unit(here - a[-2]) @ unit(b[1] - here)) < math.cos(math.radians(2))
         if (short and len(a) == 4 and len(b) == 4
                 and float(unit(here - a[-2]) @ unit(b[1] - here)) > math.cos(math.radians(2))
                 and (runs_into_line(k, 1) or runs_into_line(k - 1, -1))):
+            if split:
+                acted.append(here)
             return False
-        if len(anchors) and np.min(np.linalg.norm(anchors - here, axis=1)) < 0.5:
-            return True
-        if len(a) == 2 or len(b) == 2:
-            return True
-        ta, tb = unit(here - a[-2]), unit(b[1] - here)
-        return float(ta @ tb) < math.cos(math.radians(2))
+        return split
     keep = [k for k in range(len(segs)) if split_here(k)] or [0]
     rec = RecordingPen()
     rec.moveTo(tuple(segs[keep[0]][0]))
@@ -862,48 +915,358 @@ def rejoined(contour, anchors, short=False):
     return rec
 
 
+def one_way(seg):
+    """a source segment's samples [(point, tangent)] turn one way only"""
+    t = np.array([q for _p, q in seg])
+    turn = t[:-1, 0] * t[1:, 1] - t[:-1, 1] * t[1:, 0]
+    turn = turn[np.abs(turn) > 1e-4]
+    return bool(len(turn)) and bool((np.sign(turn) == np.sign(turn[0])).all())
+
+
+def inflections(sg):
+    """the cubic sg's inflections (t in 0..1): where its curvature's sign
+    changes, its numerator B' x B'' (a quadratic in t) passing zero"""
+    d, dd = dbez(sg, [0.0, 0.5, 1.0]), ddbez(sg, [0.0, 0.5, 1.0])
+    f = d[:, 0] * dd[:, 1] - d[:, 1] * dd[:, 0]
+    a = 2 * f[2] - 4 * f[1] + 2 * f[0]
+    b = f[2] - f[0] - a
+    if abs(a) < 1e-12:
+        roots = [-f[0] / b] if abs(b) > 1e-12 else []
+    else:
+        disc = b * b - 4 * a * f[0]
+        roots = [(-b + r) / (2 * a) for r in (math.sqrt(disc), -math.sqrt(disc))] if disc > 0 else []
+    return sorted(t for t in roots if 0 < t < 1)
+
+
 def bends(contours):
-    """the times the contours (segment arrays) bend back along a run of
-    smooth curves (a corner or a line starts a new run)"""
-    n = 0
-    for segs in contours:
-        last = 0.0
-        for k, sg in enumerate(segs):
-            prev = segs[k - 1]
-            if len(sg) == 2 or float(unit(sg[1] - sg[0]) @ unit(prev[-1] - prev[-2])) < math.cos(math.radians(3)):
-                last = 0.0
-            if len(sg) == 2:
-                continue
-            d, dd = dbez(sg, TS[1:-1:8]), ddbez(sg, TS[1:-1:8])
-            sp = np.linalg.norm(d, axis=1)
-            ks = (d[:, 0] * dd[:, 1] - d[:, 1] * dd[:, 0]) / np.maximum(sp, 1e-9) ** 3
-            for kk in ks[np.abs(ks) > 1e-4]:  # (straighter than a 10000 unit radius: no side)
-                if last and kk * last < 0:
-                    n += 1
-                last = kk
-    return n
-
-
-def steps(contours):
-    """the short pieces (chord under BLEND_SHORT) between two smooth joins
-    whose chord turns out from the edge and back: a sideways step"""
-    n = 0
+    """where the contours (segment arrays) bend back the other way along a
+    run of smooth curves (a corner or a line starts a new run; a contour of
+    smooth curves only runs on from its end into its start): [("bend", x,
+    y, 0)], each cubic's inflections found exactly, a stretch straighter
+    than a 10000 unit radius taking no side"""
+    out = []
     on = math.cos(math.radians(3))
     for segs in contours:
-        for k, sg in enumerate(segs):
-            prev, nxt = segs[k - 1], segs[(k + 1) % len(segs)]
-            chord = sg[-1] - sg[0]
-            if len(segs) < 3 or not 2 < np.linalg.norm(chord) < BLEND_SHORT:
+        L = len(segs)
+        joined = [len(segs[k]) == 4 and len(segs[k - 1]) == 4
+                  and float(unit(segs[k][1] - segs[k][0]) @ unit(segs[k - 1][-1] - segs[k - 1][-2])) >= on
+                  for k in range(L)]
+        first = next((k for k in range(L) if not joined[k]), None)
+        last = start = None
+        for k in ((first + i) % L for i in range(L)) if first is not None else range(L):
+            sg = segs[k]
+            if not joined[k]:
+                last = None
+            if len(sg) == 2:
                 continue
-            tin, tout = unit(prev[-1] - prev[-2]), unit(nxt[1] - nxt[0])
-            if float(tin @ unit(sg[1] - sg[0])) < on or float(unit(sg[-1] - sg[-2]) @ tout) < on:
-                continue
-            c = unit(chord)
-            t1 = math.degrees(math.atan2(tin[0] * c[1] - tin[1] * c[0], float(tin @ c)))
-            t2 = math.degrees(math.atan2(c[0] * tout[1] - c[1] * tout[0], float(c @ tout)))
-            if abs(t1) > STEP_TURN and abs(t2) > STEP_TURN and t1 * t2 < 0:
-                n += 1
+            cuts = [0.0] + inflections(sg) + [1.0]
+            for t0, t1 in zip(cuts, cuts[1:]):
+                ts = np.linspace(t0, t1, 9)
+                d, dd = dbez(sg, ts), ddbez(sg, ts)
+                ks = (d[:, 0] * dd[:, 1] - d[:, 1] * dd[:, 0]) / np.maximum(np.linalg.norm(d, axis=1), 1e-9) ** 3
+                side = ks[np.argmax(np.abs(ks))]
+                if abs(side) <= 1e-4:
+                    continue
+                if last is not None and side * last < 0:
+                    x, y = bez(sg, t0)
+                    out.append(("bend", round(float(x)), round(float(y)), 0.0))
+                last = side
+                start = side if start is None else start
+        if first is None and last is not None and start * last < 0:  # (around)
+            x, y = segs[0][0]
+            out.append(("bend", round(float(x)), round(float(y)), 0.0))
+    return out
+
+
+def traced(segs):
+    """a closed contour (segment array) every unit or so along it (an
+    equal share of its length): (points, the share); (None, 0) if short"""
+    pts = []
+    for sg in segs:
+        t = np.linspace(0, 1, max(8, math.ceil(np.linalg.norm(np.diff(sg, axis=0), axis=1).sum() * 4)))[:-1]
+        pts.append(bez(sg, t) if len(sg) == 4 else sg[0] + t[:, None] * (sg[1] - sg[0]))
+    p = np.vstack(pts + [segs[0][0][None]])
+    s = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(p, axis=0), axis=1))])
+    n = int(s[-1])
+    if n <= 2 * STEP_REACH + 2:
+        return None, 0
+    u = np.arange(n) * s[-1] / n
+    return np.stack([np.interp(u, s, p[:, 0]), np.interp(u, s, p[:, 1])], 1), s[-1] / n
+
+
+def foot(x, c, d, reach):
+    """from the top at c, the lowest x going d (+1, -1) while it falls (half
+    a degree's leeway), within reach samples"""
+    j = low = c
+    while abs(j - c) < reach:
+        j += d
+        if x[j] < x[low]:
+            low = j
+        elif x[j] > x[low] + math.radians(0.5):
+            break
+    return low
+
+
+def steps(contours, turn=STEP_TURN):
+    """the sideways steps along the contours (segment arrays, turning out
+    turn degrees or more, STEP_TURN):
+    [("step", x, y, degrees out and back, units aside)]; from the outline
+    followed along its length, so the same however it is cut into segments"""
+    out = []
+    for segs in contours:
+        pts, ds = traced(segs)
+        if pts is None:
+            continue
+        n, m = len(pts), round(STEP_REACH / ds)
+        v = np.roll(pts, -1, 0) - pts
+        th = np.unwrap(np.arctan2(v[:, 1], v[:, 0]))
+        whole = 2 * math.pi * round((th[-1] - th[0]) / (2 * math.pi))
+        ext = np.concatenate([th[-m:] - whole, th, th[:m] + whole])  # (around the start)
+        corner = np.abs(np.diff(ext)) > math.radians(CORNER)
+        found = []
+        for sign in (1, -1):
+            x = sign * ext
+            mid = x[m:m + n]
+            for c in m + np.flatnonzero((mid >= x[m - 1:m + n - 1]) & (mid > x[m + 1:m + n + 1])):
+                lo, hi = foot(x, c, -1, m), foot(x, c, 1, m)
+                top = x[c] - max(x[lo], x[hi])
+                if top < math.radians(turn) or abs(x[lo] - x[hi]) > top / 2:
+                    continue
+                a = b = c
+                while a > lo and x[a - 1] > x[c] - top / 2:
+                    a -= 1
+                while b < hi and x[b + 1] > x[c] - top / 2:
+                    b += 1
+                aside = abs(float(np.sin(x[lo:hi + 1] - np.linspace(x[lo], x[hi], hi - lo + 1)).sum())) * ds
+                turns = [k for k in range(lo, hi) if corner[k]]
+                notch = turns and turns[0] < c <= turns[-1] and (turns[-1] - turns[0]) * ds >= NOTCH
+                if (b - a + 1) * ds <= STEP_WIDTH and aside >= STEP_SIDE and not notch:
+                    found.append((top, a, b, c, aside))
+        kept = []
+        for top, a, b, c, aside in sorted(found, reverse=True):
+            if not any(ka <= c <= kb for _, ka, kb in kept):  # (a ripple on a step's top)
+                kept.append((top, a, b))
+                x, y = pts[(c - m) % n]
+                out.append(("step", round(float(x)), round(float(y)), math.degrees(top), aside))
+    return out
+
+
+def compared(old, new, reach=NEAR):
+    """findings [(kind, x, y, measure, ...)] of an outline and of a candidate
+    for it, matched one to one by kind and place (not by node: a refit moves
+    and recuts the outline; within reach): (the old ones gone, the new ones with no
+    match or worse than theirs, WORSE); a finding matched ambiguously (not
+    each the other's nearest) counts as new"""
+    def nearest(f, pool):
+        near = [k for k, g in enumerate(pool) if g[0] == f[0] and math.dist(f[1:3], g[1:3]) <= reach]
+        return min(near, key=lambda k: math.dist(f[1:3], pool[k][1:3]), default=None)
+    pairs = {}
+    for k, f in enumerate(new):
+        o = nearest(f, old)
+        if o is not None and nearest(old[o], new) == k:
+            pairs[k] = o
+    gone = [f for k, f in enumerate(old) if k not in pairs.values()]
+    added = [f for k, f in enumerate(new)
+             if k not in pairs or f[3] > old[pairs[k]][3] + max(0.5, WORSE * old[pairs[k]][3])]
+    return gone, added
+
+
+def dense(segs):
+    """a closed contour (segment array) as a polyline, a point a unit or
+    closer, its start repeated at its end"""
+    pts = []
+    for sg in segs:
+        t = np.linspace(0, 1, max(2, math.ceil(np.linalg.norm(np.diff(sg, axis=0), axis=1).sum())) + 1)[:-1]
+        pts.append(bez(sg, t) if len(sg) == 4 else sg[0] + t[:, None] * (sg[1] - sg[0]))
+    return np.vstack(pts + [segs[0][0][None]])
+
+
+def crossings(p, d, a, e, which=False):
+    """how far along d from p each edge (a, a + e) is crossed (beyond a
+    tenth of a unit); which: and the edges crossed"""
+    w = a - p
+    den = d[0] * e[:, 1] - d[1] * e[:, 0]
+    with np.errstate(divide="ignore", invalid="ignore"):
+        t = (w[:, 0] * e[:, 1] - w[:, 1] * e[:, 0]) / den
+        u = (w[:, 0] * d[1] - w[:, 1] * d[0]) / den
+    hit = (np.abs(den) > 1e-12) & (t > 0.1) & (u >= -1e-9) & (u < 1 + 1e-9)
+    return (t[hit], np.flatnonzero(hit)) if which else t[hit]
+
+
+def across(p, d, a, e, t, own=()):
+    """the distance along d from p to the nearest side met, if that side
+    runs within PARALLEL of t (a section of a stroke, as Strokes measures
+    it), else inf; own: the edges next to p along its contour, not met"""
+    dist, idx = crossings(p, d, a, e, which=True)
+    keep = ~np.isin(idx, own)
+    dist, idx = dist[keep], idx[keep]
+    if not len(dist):
+        return math.inf
+    k = int(np.argmin(dist))
+    return float(dist[k]) if abs(float(unit(e[idx[k]]) @ t)) >= PARALLEL else math.inf
+
+
+def near(pts, region, r):
+    """which of pts lie within r of a point of region"""
+    if not len(region) or not len(pts):
+        return np.zeros(len(pts), bool)
+    return nearest(pts, np.asarray(region)) <= r
+
+
+def nearest(pts, ref):
+    """each of pts' distance to the nearest point of ref"""
+    out = np.empty(len(pts))
+    for i in range(0, len(pts), 256):
+        q = pts[i:i + 256]
+        out[i:i + 256] = np.sqrt(np.min(((q[:, None, :] - ref[None, :, :]) ** 2).sum(axis=2), axis=1))
+    return out
+
+
+def zone(was, region, r):
+    """where a candidate for was may move it, blended at region (the
+    source's points): within r of region, and along the arcs of was that
+    come within r of it (fair_arcs refits each arc whole), within LIMIT
+    units of the arc: (points, their reach)"""
+    region = np.asarray(region, float).reshape(-1, 2)
+    pts, reach = [region], [np.full(len(region), float(r))]
+    for segs in was:
+        for a, n, _ in arcs(segs):
+            q = dense([segs[(a + k) % len(segs)] for k in range(n)])[:-1:3]
+            if near(q, region, r).any():
+                pts.append(q)
+                reach.append(np.full(len(q), float(LIMIT)))
+    return np.vstack(pts), np.concatenate(reach)
+
+
+def within(pts, where):
+    """which of pts lie in where (zone's)"""
+    ref, reach = where
+    out = np.zeros(len(pts), bool)
+    for i in range(0, len(pts), 256):
+        q = pts[i:i + 256]
+        out[i:i + 256] = (np.sqrt(((q[:, None, :] - ref[None, :, :]) ** 2).sum(axis=2)) <= reach[None, :]).any(axis=1)
+    return out
+
+
+def sections(contours, where):
+    """the outline measured across in where (zone's), every two units, at
+    the samples whose ink meets a facing side: [(contour, its sample, the
+    ink's width, the white's in front, inf where no facing side)]"""
+    lines = [dense(sg) for sg in contours]
+    a = np.vstack([q[:-1] for q in lines])
+    e = np.vstack([np.diff(q, axis=0) for q in lines])
+    out, first = [], 0
+    for c, q in enumerate(lines):
+        pts, n = q[:-1:2], len(q) - 1
+        for i in np.flatnonzero(within(pts, where)):
+            own = first + (2 * i + np.arange(-8, 9)) % n
+            t = unit(pts[(i + 1) % len(pts)] - pts[i - 1])
+            nrm = np.array([-t[1], t[0]])
+            if len(crossings(pts[i] + 0.5 * nrm, np.array([1.0, 0.3]), a, e)) % 2 == 0:
+                nrm = -nrm  # (into the ink)
+            ink = across(pts[i], nrm, a, e, t, own)
+            if ink < math.inf:
+                out.append((c, i, ink, across(pts[i], -nrm, a, e, t, own)))
+        first += n
+    return out
+
+
+def ups_and_downs(values, by):
+    """the times values turn from rising to falling or back by over by"""
+    n, ref, d = 0, values[0], 0
+    for v in values[1:]:
+        if d >= 0 and v > ref or d <= 0 and v < ref:
+            ref = v
+        elif abs(v - ref) > by:
+            n += d != 0
+            d, ref = (1 if v > ref else -1), v
     return n
+
+
+def evenness(was, kept, where):
+    """what the candidate kept does worse than was across its strokes
+    in where (zone's; the two edges of a stroke paired by a
+    section at each sample, each outline on its own): narrower or wider
+    ink than was has there (WIDTH), its width rising and falling more
+    often, less white in front; [what], or ["unresolved ..."]"""
+    found = []
+    old, new = sections(was, where), sections(kept, where)
+    if not old or not new:
+        return ["unresolved: no sections"]
+    wo, wn = [s[2] for s in old], [s[2] for s in new]
+    if min(wn) < min(wo) - WIDTH:
+        found.append(f"pinched {min(wo):.0f} -> {min(wn):.0f}")
+    if max(wn) > max(wo) + WIDTH:
+        found.append(f"swollen {max(wo):.0f} -> {max(wn):.0f}")
+
+    def turns(secs):
+        runs, n = [], 0
+        for c, i, w, _ in secs:
+            if runs and runs[-1][0] == c and i - runs[-1][1] == 1:
+                runs[-1][2].append(w)
+            else:
+                runs.append([c, i, [w]])
+            runs[-1][1] = i
+        for _, _, ws in runs:
+            n += ups_and_downs(ws, WIDTH) if len(ws) > 2 else 0
+        return n
+    if turns(new) > turns(old):
+        found.append(f"width rising and falling {turns(old)} -> {turns(new)}")
+    co = [s[3] for s in old if s[3] < math.inf]
+    cn = [s[3] for s in new if s[3] < math.inf]
+    if co and cn and min(cn) < min(co) - WIDTH:
+        found.append(f"white in front {min(co):.0f} -> {min(cn):.0f}")
+    return found
+
+
+def kept_outside(was, kept, where):
+    """how far the candidate kept moves the outline of was outside where
+    (zone's; units, both ways)"""
+    far = 0.0
+    for one, other in ((kept, was), (was, kept)):
+        pts = np.vstack([dense(sg) for sg in one])
+        ref = np.vstack([dense(sg) for sg in other])
+        same = {tuple(q) for q in np.round(ref, 3)}
+        away = np.array([q for q in pts if tuple(np.round(q, 3)) not in same]).reshape(-1, 2)
+        away = away[~within(away, where)]
+        if len(away):
+            far = max(far, float(nearest(away, ref).max()))
+    return far
+
+
+def layout(contours):
+    """each contour's turn (+1, -1) and how many others hold it, sorted"""
+    lines = [dense(sg) for sg in contours]
+    out = []
+    for k, q in enumerate(lines):
+        area = float(np.sum(q[:-1, 0] * q[1:, 1] - q[1:, 0] * q[:-1, 1]))
+        depth = 0
+        for j, o in enumerate(lines):
+            if j != k:
+                depth += len(crossings(q[0], np.array([1.0, 0.3]), o[:-1], np.diff(o, axis=0))) % 2
+        out.append((1 if area > 0 else -1, depth))
+    return sorted(out)
+
+
+def guarded(was, kept, region, r):
+    """the protections a candidate (kept) for was must keep, blended at
+    region (the source's points; zone): [what it breaks]"""
+    where = zone(was, region, r)
+    found = []
+    if len(kept) != len(was) or layout(kept) != layout(was):
+        found.append("contours, their turn or nesting changed")
+    if len(pieces(kept)) != len(kept):
+        found.append("a contour crosses itself or another")
+    far = kept_outside(was, kept, where)
+    if far > OUTSIDE:
+        found.append(f"moved {far:.1f} units away from the blend")
+    b1, b0 = (np.vstack([dense(sg) for sg in c]) for c in (kept, was))
+    for axis in (0, 1):
+        for pick in (np.argmin, np.argmax):
+            q1, q0 = b1[pick(b1[:, axis])], b0[pick(b0[:, axis])]
+            if abs(q1[axis] - q0[axis]) > OUTSIDE and not within(np.array([q1, q0]), where).all():
+                found.append(f"bounds moved {q0[axis]:.0f} -> {q1[axis]:.0f} away from the blend")
+    return found + evenness(was, kept, where)
 
 
 def stroked(strokes, flat, sliver):
@@ -917,7 +1280,7 @@ def stroked(strokes, flat, sliver):
     for c in cleaned.contours:
         if contour_area(c) < sliver:
             continue
-        rec = rejoined(c, anchors, short=strokes.blended)
+        rec = rejoined(c, anchors, short=strokes.blended, acted=strokes.region)
         segs = segments(rec.value) if FAIR else None
         if segs:
             faired = [fair_contour(sg, strokes.upright)[0] for sg in segs]
@@ -933,24 +1296,46 @@ def stroked(strokes, flat, sliver):
     return out, kept
 
 
-def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0):
+def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0, log=None):
     """rec (a RecordingPen, upright frame) emboldened by its strokes, as a
     ufoLib2 Glyph, cleaned (contours under sliver units' area dropped);
-    not shifted (the caller moves it by ax / 2); root: Strokes'"""
+    not shifted (the caller moves it by ax / 2); root: Strokes'; log, a
+    list: given, the blend's verdict is added to it"""
     strokes = Strokes(ax, ay, thin, thick, hair, slant, root)
     flat = tidy(merged_glyph(rec))
     if not flat.contours:
         return ufoLib2.objects.Glyph()
     out, kept = stroked(strokes, flat, sliver)
+    turn = STEP_TURN
+    knees = {key for key, pts in strokes.found.items()
+             if any(near(pts, [f[1:3]], KNEE_NEAR).any() for f in steps(kept, KNEE_TURN))} if strokes.blending else ()
+    if knees:
+        # a knee left in the outline: stroked again, its curve blended into
+        # its line too, and judged by the knee's step
+        again = Strokes(ax, ay, thin, thick, hair, slant, root)
+        again.knees = knees
+        out, kept = stroked(again, flat, sliver)
+        strokes, turn = again, KNEE_TURN
     if strokes.blended:
-        # a blended curve taken only where it has fewer steps, no more bends
-        # and as many contours as drawn without, nor more of the quality
-        # checks' findings once slanted back and rounded (else as reviewed)
+        # a blended curve taken only where it removes a step and leaves no
+        # step, bend or quality finding (slanted back and rounded) new or
+        # worse, each matched to its own; and where it keeps what it must
+        # (guarded: the outline away from the blend, contours, bounds, the
+        # strokes' widths and the white between them); else as reviewed
         plain = Strokes(ax, ay, thin, thick, hair, slant, root)
         plain.blending = False
         before, was = stroked(plain, flat, sliver)
-        if not (steps(kept) < steps(was) and bends(kept) <= bends(was) and len(kept) == len(was)
-                and findings(out, slant) <= findings(before, slant)):
+        fixed, stepped = compared(steps(was, turn), steps(kept, turn))
+        bent = compared(bends(was), bends(kept), BEND_NEAR)[1]
+        worse = compared(findings(before, slant), findings(out, slant))[1]
+        broken = guarded(was, kept, strokes.region, REGION * ax) if fixed and not (stepped or bent or worse) else None
+        taken = broken == []
+        if log is not None:
+            log.append(f"{'blended' if taken else 'as drawn'}: {'knees ' + str(sorted(strokes.knees)) + '; ' if strokes.knees else ''}"
+                       f"steps gone {fixed}, steps new or worse {stepped}; "
+                       f"bends new {bent}; findings new or worse {worse}; "
+                       f"guarded {'not reached' if broken is None else broken or 'kept'}")
+        if not taken:
             out = before
     return out
 
@@ -959,7 +1344,8 @@ def findings(glyph, slant):
     """the quality checks' construction findings and reversals of glyph
     (upright frame) slanted back and rounded (but smooth nodes turning
     between two curves: make_bold rounds them smoothly, round_smoothly;
-    one at a line it cannot turn)"""
+    one at a line it cannot turn): [(kind, x, y, measure)], the measure in
+    degrees, units (extreme, step) or nodes (grid)"""
     import sys
     from pathlib import Path
 
@@ -979,20 +1365,27 @@ def findings(glyph, slant):
                     return p.type == "line" or ons[(i + 1) % len(ons)].type == "line"
         return True
     found = [f for f in construction(sloped) if f[0] != "smooth" or at_line(f[1])]
-    return len(found) + len(reversals(sloped))
+    return ([(kind, *(map(int, where.split(",")) if where else (0, 0)), float(detail.split()[0]))
+             for kind, where, detail in found]
+            + [("wobble", x, y, d) for x, y, d in reversals(sloped)])
 
 
 def emboldened(job):
     """embolden_by_strokes for a process pool: job = (name, rec's value,
     its arguments); (name, the result's RecordingPen value, or None where
-    it failed: the caller falls back)"""
+    it failed: the caller falls back); with MYIA_BLEND_LOG (a file) the
+    blend's verdicts are added to it, a line a glyph"""
     name, value, args = job
     rec = RecordingPen()
     rec.value = value
+    log = []
     try:
-        glyph = embolden_by_strokes(rec, *args)
+        glyph = embolden_by_strokes(rec, *args, log=log)
     except (ValueError, IndexError, ZeroDivisionError, np.linalg.LinAlgError):
         return name, None
+    if log and os.environ.get("MYIA_BLEND_LOG"):
+        with open(os.environ["MYIA_BLEND_LOG"], "a") as f:
+            f.write(f"{name}: {log[0]}\n")
     out = RecordingPen()
     glyph.draw(out)
     return name, out.value

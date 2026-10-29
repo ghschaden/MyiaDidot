@@ -281,13 +281,15 @@ ITALIC_BOLD_RECIPES = {
     "Ƴ": ("curl", "Y", ("c", [(800, 1100, 10000, 10000)],
                         {"at": ("y", 1100, "last"), "dir": 68.5, "turn": "cw", **CURL_CAP, "t": (103, 59)})),
     # ƴ ʋ: the thick right stroke (246, 251) curling over; it ends upright,
-    # as thick, so its ball is half that, flush with the curl's end (90 left
-    # 60 units of the end's face standing beside it)
+    # as thick, so it ends in a round cap touching both its edges ("end";
+    # 90 left 60 units of the end's face standing beside it; half the
+    # stroke, 124 and 126, stood a few units into the counter in a dent:
+    # the person, 2026-10-29)
     "ƴ": ("curl", "y", ("x", [(705, 760, 10000, 10000)],
-                        {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", **CURL_LOW, "ball": 124,
+                        {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", **CURL_LOW, "ball": "end",
                          "t": (246, 62)})),
     "ʋ": ("curl", "u", ("x", [(705, 700, 10000, 10000)],
-                        {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", **CURL_LOW, "ball": 126,
+                        {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", **CURL_LOW, "ball": "end",
                          "t": (251, 62)})),
     # ⱳ: the Italic's, on the Bold Italic's arm, cut below where it flares
     # (1312-1404 at 600) and narrowing to the curl's stroke (a straight

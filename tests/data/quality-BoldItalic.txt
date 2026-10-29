@@ -676,7 +676,6 @@ uniA7B7.sc zone 2                # 2026-10-21 Italic reweighted and tightened: b
 uniA7C8 kink 2                   # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 898,1330 5.2 degrees; 675,781 5.1 degrees
 uniA7C8 wobble 1                 # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 1 against 0: 614,393 20 degrees
 uogonek slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
-uogonek smooth 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 564,575 2.7 degrees
 uogonek wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 878,156 24 degrees; 863,85 9 degrees
 uogonek zone 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: bottom +14 from -462
 uogonek.sc smooth 2              # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 129,282 2.4 degrees; 138,327 2.6 degrees

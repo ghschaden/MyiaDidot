@@ -2194,7 +2194,7 @@ def attach(font, source, cuts, pieces):
                     args["t"] = tuple(thick(v) for v in args["t"])
                 if args.get("at", ("",))[0] == "pt" and len(args["at"]) > 3:
                     args["at"] = (*args["at"][:3], thick(args["at"][3]), *args["at"][4:])
-                if args.get("ball") is not None:
+                if args.get("ball") not in (None, "end"):
                     args["ball"] = args["ball"] * stems
             if args.get("ball") is None:  # a terminal ball as the letter's case draws them
                 r = args["r"]
@@ -2317,7 +2317,11 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
     t thick: (across vertical parts, across horizontal parts), by default
     the stroke's own width where it meets the letter, so the stroke runs on
     at its weight; the ball (radius) sits inside the end, flush with the
-    outer edge, as on f; None: as the letter's case draws them (ball_for)."""
+    outer edge, as on f; None: as the letter's case draws them (ball_for);
+    "end": a round cap touching both the ring's edges, the outer at the
+    end, the ring cut between where it touches (ƴ: a ball a few units
+    wider than the end stood into the counter in a dent; one across the
+    end from the centre crossed its edges, wobbling)."""
     a, b = (r, r) if not isinstance(r, (tuple, list)) else r
     if ball is None:
         ball = min(ball_for(font, source), BALL_OF_RADIUS * min(a, b))
@@ -2350,7 +2354,8 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
     # the part swept, from just before the start (into the letter's stroke)
     # lead: degrees the ring starts back inside the letter's stroke, so a
     # stroke cut across at an angle to the ring still flows into it (Ϗ)
-    angles = [start - sign * lead + sign * (sweep + lead) * i / 24 for i in range(25)]
+    past = 30 if ball == "end" else 0  # (cut again where the end's cap touches, below)
+    angles = [start - sign * lead + sign * (sweep + lead + past) * i / 24 for i in range(25)]
     pts = [(cx, cy)] + [(cx + 4 * (a + tv) * math.cos(math.radians(g)),
                          cy + 4 * (b + th) * math.sin(math.radians(g))) for g in angles]
     rec = RecordingPen()
@@ -2361,8 +2366,57 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
     wedge = path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG), "INTERSECTION")
     hook = path_op(ring, wedge, "INTERSECTION")
     end = math.radians(start + sign * sweep)
-    bx = cx + (a + tv / 2 - ball) * math.cos(end)
-    by = cy + (b + th / 2 - ball) * math.sin(end)
+    if ball == "end":
+        # a cap touching both edges: tangent to the outer edge at the end,
+        # its radius where it touches the inner edge too (along the outer
+        # edge's normal); the ring cut between the two touching points
+        A, B = a + tv / 2, b + th / 2
+        ox, oy = cx + A * math.cos(end), cy + B * math.sin(end)
+        nx, ny = -math.cos(end) / A, -math.sin(end) / B
+        nl = math.hypot(nx, ny)
+        nx, ny = nx / nl, ny / nl
+        inner = [(cx + (a - tv / 2) * math.cos(end + math.radians(d / 20)),
+                  cy + (b - th / 2) * math.sin(end + math.radians(d / 20))) for d in range(-1800, 1801)]
+
+        def gap(r):
+            x, y = ox + r * nx, oy + r * ny
+            return min(math.hypot(x - qx, y - qy) for qx, qy in inner) - r
+        lo, hi = 0.0, max(tv, th)
+        for _ in range(40):
+            mid = (lo + hi) / 2
+            lo, hi = (mid, hi) if gap(mid) > 0 else (lo, mid)
+        ball = (lo + hi) / 2
+        bx, by = ox + ball * nx, oy + ball * ny
+        tx, ty = min(inner, key=lambda q: math.hypot(q[0] - bx, q[1] - by))
+        # (the half-plane past the chord, on the far side from the ring
+        # before the end, within the end's reach)
+        ux, uy = tx - ox, ty - oy
+        ul = math.hypot(ux, uy)
+        ux, uy = ux / ul, uy / ul
+        back = end - sign * math.radians(20)
+        px, py = cx + a * math.cos(back), cy + b * math.sin(back)
+        mx, my = -uy, ux
+        if (px - ox) * mx + (py - oy) * my > 0:
+            mx, my = -mx, -my
+        reach = 2 * max(tv, th)
+        rec = RecordingPen()
+        rec.moveTo((ox - ux * reach, oy - uy * reach))
+        rec.lineTo((tx + ux * reach, ty + uy * reach))
+        rec.lineTo((tx + ux * reach + mx * reach, ty + uy * reach + my * reach))
+        rec.lineTo((ox - ux * reach + mx * reach, oy - uy * reach + my * reach))
+        rec.closePath()
+        near = RecordingPen()  # (and about the end only: it crossed the ring's start)
+        near.moveTo((cx, cy))
+        for i in range(13):
+            g = end + sign * math.radians(-25 + (past + 30) * i / 12)
+            near.lineTo((cx + 4 * (a + tv) * math.cos(g), cy + 4 * (b + th) * math.sin(g)))
+        near.closePath()
+        cut = path_op(to_path(None, rec=rec), path_op(to_path(None, rec=near), rect_path(-BIG, -BIG, BIG, BIG),
+                                                       "INTERSECTION"), "INTERSECTION")
+        hook = path_op(hook, cut, "DIFFERENCE")
+    else:
+        bx = cx + (a + tv / 2 - ball) * math.cos(end)
+        by = cy + (b + th / 2 - ball) * math.sin(end)
     hook = path_op(hook, _ellipse(bx, by, ball, ball), "UNION")
     out = to_path(font, font[source])
     for box in cuts:

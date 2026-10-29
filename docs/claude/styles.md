@@ -84,10 +84,42 @@ Moved from CLAUDE.md (its ground rules apply).
   glyph the short piece is joined into its curve, and a leftover merged
   at a line's end leaves the curve along the line (`rejoined(short=)`:
   one curve into the line, as the Italic draws it). A glyph takes the
-  blend only if it leaves fewer such steps (`steps`), no more bends
-  (`bends`), as many contours and, slanted back and rounded, no more of
-  the quality checks' findings (`findings`), else it stays exactly as
-  drawn without (MYIA_BLEND=0 to compare; tests/test_stroke_steps.py). Last,
+  blend only if it removes a sideways step and leaves none new or worse
+  (`steps`: the edge followed unit by unit along its length, turning out
+  STEP_TURN, 20 degrees, or more and back to its course within a short
+  stretch; the same however the curves are cut), no bend new (`bends`:
+  each cubic's inflections found exactly, around a contour's start too),
+  slanted back and rounded none of the quality checks' findings new or
+  worse (`findings`), and keeps what it must (`guarded`, 2026-10-29,
+  Codex's memo): the outline unmoved (OUTSIDE, a unit) but in the
+  declared zone (`zone`: within REGION times ax of the source's points
+  blended and of where `rejoined(short=)` joined, and along the arcs
+  there, which fair_arcs refits whole, within its LIMIT), the same
+  contours, turns and nesting, none crossing, the bounds moved only in
+  the zone, and across the strokes there (`sections`: a ray into the
+  ink meeting a facing side) the ink no narrower or wider than without
+  by over WIDTH units, its width rising and falling no more often, no
+  less white in front; nothing to measure there is a failure. Else it
+  stays exactly as drawn without (MYIA_BLEND=0 to compare;
+  MYIA_BLEND_LOG=file lists the verdicts and why). Findings are compared
+  one by one (`compared`: by kind and place, each the other's nearest
+  within NEAR units, bends BEND_NEAR, not by node), so a wobble taken
+  away cannot pay for a kink added; one matched ambiguously counts as
+  new. tests/test_stroke_steps.py holds the letters' old steps
+  (tests/data/steps-before-BoldItalic-*.glif, from dc373511) found and
+  gone and n h u v w o free of steps; tests/test_stroke_gate.py the
+  guards on constructed outlines, the controls never blended, and the
+  finished letters against dc373511 but for the changes declared there
+  (y's DotBelow, Ɯ's advance and joint). A knee (KNEE_TURN, 2026-10-29,
+  the person's review: u's inner stem ran into its bowl with a shoulder,
+  18 degrees finished, и ш щ џ ų with it): a curve beside a line whose
+  fit bends back though the source's turns one way (Strokes.draw finds
+  them), where a step of KNEE_TURN (8) degrees is left within KNEE_NEAR
+  units of it in the stroked outline; the glyph is stroked again with
+  that curve blended into its line whatever its length (over KNEE_BLEND,
+  240 units: 120 kinked u at its line once rounded) and judged by the
+  same gate at that turn (refused, MYIA_BLEND_LOG says why: ц, an
+  extreme overshoot near its tail; f_h f_f_h u.sc ² ʸ Ɠ љ Қ Ѫ). Last,
   each whole arc of the cleaned outline (corner to corner) is refitted
   fair (`fair_arcs.py`, 2026-10-28, the person's review; MYIA_FAIR=0 to
   compare): curvature continuous, changing gently (by its relative change,
