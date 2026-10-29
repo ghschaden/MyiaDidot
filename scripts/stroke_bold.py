@@ -76,6 +76,19 @@ STEP_TURN = 20
 KNEE_BLEND = float(os.environ.get("MYIA_KNEE_BLEND", 240))  # (120 kinked u at its line once rounded, 500 a little below; 200-300 clean)
 KNEE_TURN = 8
 KNEE_NEAR = 20
+# a knee taken (or found beside one taken: ш's middle stem) is then drawn as
+# the Italic turns there, seen slanted: the edge from its line to upright,
+# then round into the counter's bottom, ending on the bowl's own curve
+# (the person, 2026-10-29: blended, it still went inward before turning,
+# and turned too tight); the quarter KNEE_QUARTER times the downstroke
+# weight wide (46 units at 160; 30 and 38 tried), KNEE_RATIO times that
+# high, the upright KNEE_CLEAR times it right of the line, handles as the
+# Italic's u (KNEE_HANDLES: the line's, the upright's going in and out,
+# the bottom's, of the drop or of the quarter)
+KNEE_QUARTER = 46 / 160
+KNEE_RATIO = 1.48
+KNEE_CLEAR = 0.364
+KNEE_HANDLES = (0.21, 0.31, 0.53, 0.76)
 STEP_REACH = 40
 STEP_WIDTH = 30
 STEP_SIDE = 1.0
@@ -265,6 +278,7 @@ class Strokes:
         self.ax, self.ay, self.thin, self.thick, self.hair = ax, ay, thin, thick, hair
         self.root = root
         self.upright = unit(np.array([-slant, 1.0]))
+        self.slant = slant
         self.blending, self.blended = BLENDS, False  # (blend: asked for, done)
         self.region = []  # where blend changed the source's weights, and rejoined(short=) the outline
         # (contour, segment): a curve beside a line whose fit bends back
@@ -787,12 +801,19 @@ def contour_area(c):
 def rejoined(contour, anchors, short=False, acted=None):
     """contour with the cleaning's splits undone: a smooth node that is
     none of the moved nodes joins the cubics either side (refitted through
-    both, exact where they are halves of one cubic); short: also one
-    joining a curve to a short one (under BLEND_SHORT) running on smoothly
-    into a line (the cleaning's split at an extreme just before the line,
-    blended: one curve into the line, as the source draws it); acted, a
-    list: where short changed the outline is added to it"""
+    both, exact where they are halves of one cubic); short, (points, r):
+    also one within r of those points (where blend acted) joining a curve
+    to a short one (under BLEND_SHORT) running on smoothly into a line (the
+    cleaning's split at an extreme just before the line, blended: one curve
+    into the line, as the source draws it; not elsewhere: ц's tail, joined
+    so, overshot its extreme more); acted, a list: where short changed the
+    outline is added to it"""
     acted = [] if acted is None else acted
+    if short:
+        region, r = np.asarray(short[0], float).reshape(-1, 2), short[1]
+        short = lambda q: bool(near(np.asarray(q, float)[None], region, r)[0])  # noqa: E731
+    else:
+        short = lambda q: False  # noqa: E731
     P = contour.points
     n = len(P)
     ons = [i for i, p in enumerate(P) if p.type]
@@ -833,12 +854,12 @@ def rejoined(contour, anchors, short=False, acted=None):
         # (short: a piece running on smoothly from a line into a curve, the
         # curve leaving along the line, smooth as the source; Џ's tail)
         on = math.cos(math.radians(3))
-        if short and len(before) == 2 and len(after) == 4 and np.linalg.norm(s[1] - s[0]) > 1e-9:
+        if short(mid) and len(before) == 2 and len(after) == 4 and np.linalg.norm(s[1] - s[0]) > 1e-9:
             line = unit(before[1] - before[0])
             if float(unit(s[1] - s[0]) @ line) > on:
                 after[1] = mid + np.linalg.norm(after[1] - after[0]) * line
                 acted.append(mid)
-        elif short and len(after) == 2 and len(before) == 4 and np.linalg.norm(s[-1] - s[-2]) > 1e-9:
+        elif short(mid) and len(after) == 2 and len(before) == 4 and np.linalg.norm(s[-1] - s[-2]) > 1e-9:
             line = unit(after[1] - after[0])
             if float(unit(s[-1] - s[-2]) @ line) > on:
                 before[2] = mid - np.linalg.norm(before[3] - before[2]) * line
@@ -872,7 +893,7 @@ def rejoined(contour, anchors, short=False, acted=None):
             split = True
         else:
             split = float(unit(here - a[-2]) @ unit(b[1] - here)) < math.cos(math.radians(2))
-        if (short and len(a) == 4 and len(b) == 4
+        if (short(here) and len(a) == 4 and len(b) == 4
                 and float(unit(here - a[-2]) @ unit(b[1] - here)) > math.cos(math.radians(2))
                 and (runs_into_line(k, 1) or runs_into_line(k - 1, -1))):
             if split:
@@ -1277,10 +1298,15 @@ def stroked(strokes, flat, sliver):
     anchors = np.array(anchors)
     pen = out.getPen()
     kept = []
+    # (where blend acted, before rejoined adds to it, and along the knees
+    # it was asked to take: ш's middle stem, too little apart to blend,
+    # joined into its line smooth)
+    blended = list(strokes.region) + [q for key in strokes.knees if key in strokes.found for q in strokes.found[key]]
     for c in cleaned.contours:
         if contour_area(c) < sliver:
             continue
-        rec = rejoined(c, anchors, short=strokes.blended, acted=strokes.region)
+        rec = rejoined(c, anchors, short=strokes.blended and (list(blended), REGION * strokes.ax),
+                       acted=strokes.region)
         segs = segments(rec.value) if FAIR else None
         if segs:
             faired = [fair_contour(sg, strokes.upright)[0] for sg in segs]
@@ -1337,7 +1363,107 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
                        f"guarded {'not reached' if broken is None else broken or 'kept'}")
         if not taken:
             out = before
+        elif strokes.knees:
+            # each knee then drawn as the Italic turns there (KNEE_QUARTER)
+            # (looked for in every contour: the source's numbering is not
+            # the cleaned outline's)
+            for key in sorted(strokes.knees & set(strokes.found)):
+                for n, c in enumerate(kept):
+                    turned = knee_turned(c, strokes.found[key], strokes.slant, KNEE_QUARTER * thick)
+                    if turned:
+                        kept[n] = turned
+                        break
+            out = ufoLib2.objects.Glyph()
+            draw(out.getPen(), kept)
     return out
+
+
+def split_cubic(sg, t):
+    """the cubic sg cut at t (de Casteljau): (first, second)"""
+    a, b, c, d = sg
+    ab, bc, cd = a + (b - a) * t, b + (c - b) * t, c + (d - c) * t
+    abc, bcd = ab + (bc - ab) * t, bc + (cd - bc) * t
+    m = abc + (bcd - abc) * t
+    return np.array([a, ab, abc, m]), np.array([m, bcd, cd, d])
+
+
+def knee_turned(contour, found, slant, w):
+    """contour (segment arrays, upright frame) with the knee beside found
+    (its curve's moved samples) drawn as the Italic turns (KNEE_QUARTER):
+    seen slanted, from the line's end to upright, then a quarter w wide
+    round onto the bowl's curve after the counter's bottom; None where
+    there is no such line, bottom or room"""
+    sl = lambda q: q + np.outer(q[:, 1], [slant, 0])  # noqa: E731
+    up = lambda q: q - np.outer(q[:, 1], [slant, 0])  # noqa: E731
+    segs = [sl(np.asarray(sg, float)) for sg in contour]
+    found = sl(np.asarray(found, float))
+    L = len(segs)
+    for back in (False, True):
+        if back:  # (the contour running the other way: turned, done, turned back)
+            segs = [sg[::-1] for sg in segs[::-1]]
+        k = next((k for k, sg in enumerate(segs) if len(sg) == 2
+                  and min(np.linalg.norm(found[[0, -1]] - sg[1], axis=1)) < KNEE_NEAR), None)
+        if k is None:
+            continue
+        # the counter's bottom: the first node after the line where the
+        # edge runs level, a curve after it
+        m = None
+        for n in range(1, 5):
+            sg = segs[(k + n) % L]
+            if len(sg) != 4:
+                break
+            t = sg[3] - sg[2]
+            if np.linalg.norm(t) > 1e-9 and abs(unit(t)[1]) < math.sin(math.radians(3)) and len(segs[(k + n + 1) % L]) == 4:
+                m = n
+                break
+        if m is None:
+            continue
+        P0, Lp = segs[k]
+        d = unit(Lp - P0)
+        if d[1] >= 0:
+            continue
+        bowl = segs[(k + m + 1) % L]
+        H = KNEE_RATIO * w
+        for t in np.linspace(0, 0.9, 1801):
+            Bp = bez(bowl, t)
+            V = np.array([Bp[0] - w, Bp[1] + H])
+            if V[0] - (Lp[0] + (V[1] - Lp[1]) * d[0] / d[1]) >= KNEE_CLEAR * w:
+                break
+        else:
+            continue
+        if V[1] >= Lp[1]:
+            continue
+        rest = split_cubic(bowl, t)[1]
+        tb = unit(rest[1] - rest[0])
+        hl, hv, hq, hb = KNEE_HANDLES
+        drop = Lp[1] - V[1]
+        quarter = np.array([V, V - [0, hq * H], Bp - hb * w * tb, Bp])
+        # (a node at the counter's bottom, level, as before: the quarter
+        # cut at its lowest point, the rest of it fitted into the bowl)
+        ts = np.linspace(0, 1, 2001)
+        tl = ts[np.argmin(bez(quarter, ts)[:, 1])]
+        if 0.02 < tl < 0.98:
+            quarter, after = split_cubic(quarter, tl)
+            low = quarter[3].copy()
+            quarter[2][1] = low[1]
+            run = np.concatenate([bez(after, ts[::50]), bez(rest, ts[::25])])
+            ctrl, _err = fit_cubic(run, np.array([1.0, 0.0]), unit(rest[3] - rest[2]))
+            if ctrl is None:
+                continue
+            rest = np.array(ctrl)
+        new = [np.array([Lp, Lp + hl * drop / abs(d[1]) * d, V + [0, hv * drop], V]), quarter, rest]
+        # (in place: the contour starts where it did)
+        gone = {(k + j) % L for j in range(1, m + 2)}
+        out = []
+        for j in range(L):
+            if j == (k + 1) % L:
+                out += new
+            elif j not in gone:
+                out.append(segs[j])
+        if back:
+            out = [sg[::-1] for sg in out[::-1]]
+        return [up(sg) for sg in out]
+    return None
 
 
 def findings(glyph, slant):

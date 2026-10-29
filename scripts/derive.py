@@ -839,11 +839,14 @@ def stroke(pen, p0, p1, t):
 
 def bar_shape(font, source, band, arg):
     """Pen commands for the bar: arg is (y or None, which stems, overhang or
-    None); which is 'all', 'first', 'last' or 'inside' (Ө: the counter only).
-    An overhang (left, right) is taken as given, past the letter's ink if
-    so (ǥ: a bar standing out of the loop it crosses, not a ledge on it)."""
-    y, which, over = (arg + (None, None, None))[:3]
+    None, thickness or None); which is 'all', 'first', 'last' or 'inside'
+    (Ө: the counter only). An overhang (left, right) is taken as given, past
+    the letter's ink if so (ǥ: a bar standing out of the loop it crosses,
+    not a ledge on it); a thickness, a heavier style's own bar (the Bold
+    Italic's ʉ, rebuilt on its u)."""
+    y, which, over, own = (arg + (None, None, None, None))[:4]
     t, default_over = BARS[band]
+    t = own or t
     over = default_over if over is None else over
     if isinstance(over, tuple):
         stems = stems_at(font, source, bar_y(font, band, y))

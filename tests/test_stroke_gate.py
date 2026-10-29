@@ -24,6 +24,7 @@ sys.path.insert(0, str(ROOT / "scripts" / "quality"))
 from checks import construction, reversals
 from fair_arcs import segments
 from stroke_bold import bends, compared, dbez, ddbez, guarded, pieces
+from test_stroke_steps import FIXED
 
 BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "uni01B4", "uni019C"]
 # what the repair changed in the finished letters, reviewed and accepted
@@ -134,11 +135,9 @@ def test_bends_matched_by_place():
     assert compared(old, [("bend", 797, -296, 0.0), ("bend", 500, 100, 0.0)], 40)[1] == [("bend", 500, 100, 0.0)]
 
 
-@pytest.mark.parametrize("name", ["n", "h", "v", "w", "o"])
-def test_controls_not_blended(name):
-    """the repair leaves the letters without a curve split short before
-    its line, nor a knee, as they were: the blend does not even start on
-    them"""
+def verdict(name):
+    """the blend's verdict on the Italic's name stroked (MYIA_BLEND_LOG's
+    line, [] where the blend does not start)"""
     import make_bold as mb
     from stroke_bold import embolden_by_strokes
 
@@ -148,7 +147,23 @@ def test_controls_not_blended(name):
     mb.contours_only(italic[name]).replay(TransformPen(TransformPen(wide, (mb.KX, 0, 0, 1, 0, 0)), (1, 0, -slant, 1, 0, 0)))
     log = []
     embolden_by_strokes(wide, mb.ITALIC_AX, mb.AY, mb.ITALIC_THIN, mb.ITALIC_THICK, mb.ITALIC_HAIR, slant, log=log)
-    assert log == []
+    return log
+
+
+@pytest.mark.parametrize("name", ["n", "h", "v", "w", "o"])
+def test_controls_not_blended(name):
+    """the repair leaves the letters without a curve split short before
+    its line, nor a knee, as they were: the blend does not even start on
+    them"""
+    assert verdict(name) == []
+
+
+def test_refused_where_it_adds_a_fault():
+    """љ's knee blended takes its step away but brings in a wobble, an
+    extreme and a smooth node elsewhere: refused, љ as drawn"""
+    [line] = verdict("uni0459")
+    assert line.startswith("as drawn") and "steps gone [('step'" in line
+    assert "findings new or worse [('" in line and "'wobble'" in line, line
 
 
 @pytest.fixture(scope="module")
@@ -156,9 +171,9 @@ def bold_italic():
     return ufoLib2.Font.open(SOURCES / "MyiaDidot-BoldItalic.ufo")
 
 
-def before(name):
+def before(name, fixture="steps-before"):
     glyph = ufoLib2.objects.Glyph(name)
-    readGlyphFromString((DATA / f"steps-before-BoldItalic-{name}.glif").read_text(),
+    readGlyphFromString((DATA / f"{fixture}-BoldItalic-{name}.glif").read_text(),
                         glyphObject=glyph, pointPen=glyph.getPointPen())
     return glyph
 
@@ -168,12 +183,18 @@ def found(glyph):
             + [("wobble", x, y, d) for x, y, d in reversals(glyph)])
 
 
-@pytest.mark.parametrize("name", BLENDED)
+# ʋ redrawn since (a short hook and a ball, its top open: one contour, not
+# two; the person, 2026-10-29): not held to what it was
+REDRAWN = {"uni028B"}
+
+
+@pytest.mark.parametrize("name", BLENDED + [n for n in FIXED if n not in REDRAWN])
 def test_finished_letter_keeps_what_it_was(bold_italic, name):
     """the repaired letter as finished (slanted, rounded, spaced): its
     advance, anchors, side bearings (within a unit), contours and quality
-    findings as before the repair, but for the changes declared"""
-    old, new = before(name), bold_italic[name]
+    findings as before the repair (the knees and dents too, before theirs:
+    test_stroke_steps.FIXED), but for the changes declared"""
+    old, new = before(name, *FIXED.get(name, ())[:1]), bold_italic[name]
     assert (old.width, new.width) == WIDTHS.get(name, (old.width, old.width))
     moved = ANCHORS.get(name, {})
     was = {a.name: (a.x + moved.get(a.name, (0, 0))[0], a.y + moved.get(a.name, (0, 0))[1]) for a in old.anchors}

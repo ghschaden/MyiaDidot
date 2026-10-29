@@ -150,6 +150,11 @@ ITALIC_BOLD_REBUILD = {
     # third stem's edge unioned with U's crossed it in a step; the person,
     # 2026-10-29)
     "uni019C": "Ɯ: the twin of the Bold Italic's U",
+    # ʉ, the bar on u: u's knees drawn as the Italic turns (stroke_bold
+    # KNEE_QUARTER); by strokes its own, the bar cutting the stem, its knee
+    # stayed and its union with u left scraps (2026-10-29); its own recipe
+    # (ITALIC_BOLD_RECIPES: the bar's weight)
+    "uni0289": "ʉ: the bar on the Bold Italic's u (ITALIC_BOLD_RECIPES)",
     "uni0284": "ʄ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, it lost its ɟ base and stayed light",
     "uni0290": "ʐ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook's counter closed",
     "uni0291": "ʑ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the loop's counter closed",
@@ -217,6 +222,10 @@ BOLD_RECIPES = {
 CURL_CAP = {"r": (205, 185), "sweep": 190, "ball": 105}
 CURL_LOW = {"r": (185, 165), "sweep": 190, "ball": 90}
 ITALIC_BOLD_RECIPES = {
+    # ʉ: the bar on the Bold Italic's u (ITALIC_BOLD_REBUILD) as heavy and
+    # long as emboldened, as ɨ's: the Italic's 56 and AY, its overhang
+    # less by about half of AX (the stems are wider)
+    "ʉ": ("bar", "u", ("x", None, None, 143, 56 + AY)),
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
     # At y=600 the upright ɟ stem spans about 335..586. The light recipe's
@@ -280,7 +289,7 @@ ITALIC_BOLD_RECIPES = {
                         {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", **CURL_CAP, "t": (139, 59)})),
     "Ƴ": ("curl", "Y", ("c", [(800, 1100, 10000, 10000)],
                         {"at": ("y", 1100, "last"), "dir": 68.5, "turn": "cw", **CURL_CAP, "t": (103, 59)})),
-    # ƴ ʋ: the thick right stroke (246, 251) curling over; it ends upright,
+    # ƴ (and ʋ before): the thick right stroke (246, 251) curling over; it ends upright,
     # as thick, so it ends in a round cap touching both its edges ("end";
     # 90 left 60 units of the end's face standing beside it; half the
     # stroke, 124 and 126, stood a few units into the counter in a dent:
@@ -288,9 +297,13 @@ ITALIC_BOLD_RECIPES = {
     "ƴ": ("curl", "y", ("x", [(705, 760, 10000, 10000)],
                         {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", **CURL_LOW, "ball": "end",
                          "t": (246, 62)})),
+    # ʋ: a short hook over the stem, ending in a ball hanging from its outer
+    # edge, as on r (the person, 2026-10-29: curling on, 190 degrees, the
+    # ring lay on the left stem's hook and closed the top; narrower, its
+    # eye closed to a slit; the stem tapered into it, a dead end)
     "ʋ": ("curl", "u", ("x", [(705, 700, 10000, 10000)],
-                        {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", **CURL_LOW, "ball": "end",
-                         "t": (251, 62)})),
+                        {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", **CURL_LOW, "sweep": 105,
+                         "ball": 95, "t": (251, 62)})),
     # ⱳ: the Italic's, on the Bold Italic's arm, cut below where it flares
     # (1312-1404 at 600) and narrowing to the curl's stroke (a straight
     # stroke at the curl's width stepped 36 units aside of the arm at 645)
@@ -1159,6 +1172,37 @@ def refit_horns(font):
             font[r.name].lib.update(lib)
 
 
+def in_line(glyph, base, most=5):
+    """a curve running into a line (or out of one) within most degrees of
+    it, where base has that node (within 1.5 units) running on smoothly
+    (under a degree): its handle there put in line, its length kept (a
+    letter made again in the upright frame is rounded there, then slanted
+    back: ʉ's stem under its bar turned 3.7 degrees where u's runs on,
+    more than round_smoothly mends)"""
+    def joins(g):
+        for c in g.contours:
+            P, n = c.points, len(c.points)
+            for i, p in enumerate(P):
+                prev, nxt = P[(i - 1) % n], P[(i + 1) % n]
+                if p.type == "line" and prev.type and not nxt.type:
+                    o, h = prev, nxt  # a line in, a curve out
+                elif p.type == "curve" and not prev.type and nxt.type == "line":
+                    o, h = nxt, prev  # a curve in, a line out
+                else:
+                    continue
+                lx, ly = p.x - o.x, p.y - o.y
+                hx, hy = h.x - p.x, h.y - p.y
+                ll, hl = math.hypot(lx, ly), math.hypot(hx, hy)
+                if ll > 1e-9 and hl > 1e-9:
+                    t = math.degrees(math.acos(max(-1.0, min(1.0, (lx * hx + ly * hy) / (ll * hl)))))
+                    yield p, h, (lx / ll, ly / ll), hl, t
+
+    smooth = [(p.x, p.y) for p, _, _, _, t in joins(base) if t < 1]
+    for p, h, (ux, uy), hl, t in list(joins(glyph)):
+        if 0 < t <= most and any(math.dist((p.x, p.y), q) <= 1.5 for q in smooth):
+            h.x, h.y = p.x + ux * hl, p.y + uy * hl
+
+
 def round_smoothly(P):
     """P's points rounded to whole units, a join that ran on (nearly)
     smoothly, under 3 degrees, not broken further: where rounding leaves
@@ -1851,6 +1895,14 @@ def rederive(source, font, italic, whole):
 
         slant_back(new, glyph.getPen(), [(1, 0, SLANT, 1, -SLANT * y0, 0)],
                    italic and name not in POINT_REPAIRS)
+        in_line(glyph, font[base])  # (the base's smooth joins kept so)
+        if op == "bar" and new.width == font[base].width:
+            # a bar on its whole base, set as it (ʉ on u): its accents where
+            # the base has them (as emboldened, they stood 3 units left of
+            # the ink made again)
+            font[name].clearAnchors()
+            for anchor in font[base].anchors:
+                font[name].appendAnchor({"name": anchor.name, "x": anchor.x, "y": anchor.y})
         redraw(font[name], glyph)
         font[name].width = new.width
         # the recipes after it build on the letter made again, not the

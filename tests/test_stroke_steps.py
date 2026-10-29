@@ -13,7 +13,7 @@ from fontTools.ufoLib.glifLib import readGlyphFromString
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from fair_arcs import segments
-from stroke_bold import compared, steps
+from stroke_bold import bends, compared, steps
 
 # where a curve split short before its line met it in a step (Strokes.blend),
 # ƴ, made of y, and Ɯ, U twinned (make_bold.ITALIC_BOLD_REBUILD)
@@ -21,13 +21,14 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 CONTROLS = ["n", "h", "v", "w", "o"]
 # u's inner stem ran into its bowl in a knee (18 degrees finished: the
 # stroked curve's fit took up the line's heavier weight, a knee blended,
-# KNEE_TURN), and и ш щ џ ų with it; ƴ's curl met its ball in a dent (21:
-# the ball a few units wider than the curl's end; a cap touching both its
-# edges now, derive.curl "end"), and ʋ's (15); the person, 2026-10-29: each
+# KNEE_TURN), and и ш щ џ ų with it, ц too once its tail was left as drawn;
+# ƴ's curl met its ball in a dent (21: the ball a few units wider than the
+# curl's end; a cap touching both its edges now, derive.curl "end"), and
+# ʋ's (15); the person, 2026-10-29: each
 # before the fix (tests/data/*-before-*), the turn it is found at, and the
 # fixed letters checked at that turn too
-FIXED = {"u": ("knee-before", 15), "uni01B4": ("dent-before", 15), "uni028B": ("dent-before", 15)}
-KNEED = ["u", "uni0438", "uni0448", "uni0449", "uni045F", "uogonek"]
+KNEED = ["u", "uni0438", "uni0446", "uni0448", "uni0449", "uni045F", "uogonek"]
+FIXED = {**{name: ("knee-before", 15) for name in KNEED}, "uni01B4": ("dent-before", 15), "uni028B": ("dent-before", 15)}
 
 
 def upright(glyph, angle):
@@ -64,6 +65,17 @@ def test_no_sideways_step(bold_italic, name):
 def test_no_knee_or_dent(bold_italic, name):
     """nor a smaller step, as u's knee and ƴ's dent were (FIXED)"""
     assert steps(upright(bold_italic[name], bold_italic.info.italicAngle), 15) == []
+
+
+@pytest.mark.parametrize("name", KNEED)
+def test_knee_turns_one_way(bold_italic, name):
+    """the knee drawn as the Italic turns (stroke_bold.KNEE_QUARTER): from
+    the line to upright and round into the counter, no bend (blended only,
+    it went inward first: two bends, 355,223 and 341,170 upright; the
+    person, 2026-10-29); ш щ's middle stem too"""
+    knees = [(345, 195)] + ([(830, 215)] if name in ("uni0448", "uni0449") else [])
+    found = bends(upright(bold_italic[name], bold_italic.info.italicAngle))
+    assert not [f for f in found if any(math.dist(f[1:3], k) < 100 for k in knees)], found
 
 
 @pytest.mark.parametrize("name", FIXED)

@@ -6,7 +6,7 @@
 		<contour>
 			<point x="198" y="160" type="line"/>
 			<point x="513" y="1297" type="line" smooth="yes"/>
-			<point x="523" y="1336"/>
+			<point x="524" y="1336"/>
 			<point x="512" y="1355"/>
 			<point x="473" y="1355" type="curve" smooth="yes"/>
 			<point x="356" y="1355" type="line"/>
@@ -115,7 +115,7 @@
 			<point x="968" y="1354" type="curve" smooth="yes"/>
 			<point x="869" y="1354" type="line" smooth="yes"/>
 			<point x="830" y="1354"/>
-			<point x="810" y="1335"/>
+			<point x="810" y="1334"/>
 			<point x="800" y="1296" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
@@ -127,11 +127,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-10-28</string>
+				<string>2026-10-29</string>
 				<key>glyph</key>
-				<string>67cef9c4b23d</string>
+				<string>4fc522c499bc</string>
 				<key>review</key>
-				<string>leftover pieces merged, fairing without libm: within a few units</string>
+				<string>in_line: a handle put back in line with its line, 1 unit (knee commit)</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

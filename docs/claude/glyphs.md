@@ -49,9 +49,11 @@ Moved from CLAUDE.md (its ground rules apply).
   its tails off a stem keep half their stroke). The Bold Italic draws its
   curls over the top at its weight (make_bold ITALIC_BOLD_RECIPES,
   CURL_CAP/CURL_LOW: wider curls, balls as large as leave the counter
-  open; ƴ ʋ end in a round cap touching both the curl's edges, ball
+  open; ƴ ends in a round cap touching both the curl's edges, ball
   "end", the ring cut between where it touches: a ball half the stroke
-  stood a few units into the counter in a dent, 2026-10-29); rederive builds what follows on the letters it has made again
+  stood a few units into the counter in a dent, 2026-10-29; ʋ is a short
+  hook, 105 degrees, ending in a ball of 95 hanging from its outer edge:
+  curling on, its ring closed the top on the left stem); rederive builds what follows on the letters it has made again
   (ƈ.sc from the new Ƈ). Shaping in this shell defaults to
   German (locale), which has no f-ligatures: pass `--language=en`.
 - Localized forms (locl): recipes in derive.py name them "б.loclSRB" (a
