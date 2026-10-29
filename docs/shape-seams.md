@@ -4,6 +4,10 @@
 Italic, Bold and Bold Italic. They are source-protected experiments, not enabled
 production rules. All generated artifacts stay under `build/`.
 
+The subsequent [curvature audit](shape-curvature.md) finds new inflections and
+curvature spikes in the italic transition collars despite passing the checks
+below. The current fitter needs revision before production integration.
+
 | Context | Donor → target | Seams | Fitting frame |
 |---|---|---|---|
 | Lowercase entry shoulder | n → h | Entry curve and exit stem | Deskewed |

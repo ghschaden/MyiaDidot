@@ -1,0 +1,1143 @@
+{
+  "format": "myiadidot-relationship-corpus-v1",
+  "units_per_em": 1000,
+  "scope": "Independent synthetic construction and retrieval cases. Held-out base families are separate; this is not font-wide optical validation.",
+  "glyphs": {
+    "dcurve": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              100,
+              40
+            ],
+            [
+              100,
+              100
+            ]
+          ],
+          [
+            [
+              100,
+              100
+            ],
+            [
+              100,
+              300
+            ]
+          ],
+          [
+            [
+              100,
+              300
+            ],
+            [
+              -100,
+              300
+            ]
+          ],
+          [
+            [
+              -100,
+              300
+            ],
+            [
+              -100,
+              0
+            ]
+          ],
+          [
+            [
+              -100,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      ]
+    },
+    "dcopy": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              -100,
+              0
+            ]
+          ],
+          [
+            [
+              -100,
+              0
+            ],
+            [
+              -100,
+              300
+            ]
+          ],
+          [
+            [
+              -100,
+              300
+            ],
+            [
+              100,
+              300
+            ]
+          ],
+          [
+            [
+              100,
+              300
+            ],
+            [
+              100,
+              100
+            ]
+          ],
+          [
+            [
+              100,
+              100
+            ],
+            [
+              100,
+              40
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      ]
+    },
+    "duncertain": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              97.47035299616434,
+              50.06403214079069
+            ],
+            [
+              100,
+              100
+            ]
+          ],
+          [
+            [
+              100,
+              100
+            ],
+            [
+              100,
+              300
+            ]
+          ],
+          [
+            [
+              100,
+              300
+            ],
+            [
+              -100,
+              300
+            ]
+          ],
+          [
+            [
+              -100,
+              300
+            ],
+            [
+              -100,
+              0
+            ]
+          ],
+          [
+            [
+              -100,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      ]
+    },
+    "dlong": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              100,
+              40
+            ],
+            [
+              100,
+              100
+            ]
+          ],
+          [
+            [
+              100,
+              100
+            ],
+            [
+              100,
+              900
+            ]
+          ],
+          [
+            [
+              100,
+              900
+            ],
+            [
+              -100,
+              900
+            ]
+          ],
+          [
+            [
+              -100,
+              900
+            ],
+            [
+              -100,
+              0
+            ]
+          ],
+          [
+            [
+              -100,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      ]
+    },
+    "dcorner": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              50,
+              50
+            ],
+            [
+              100,
+              100
+            ]
+          ],
+          [
+            [
+              100,
+              100
+            ],
+            [
+              100,
+              300
+            ]
+          ],
+          [
+            [
+              100,
+              300
+            ],
+            [
+              -100,
+              300
+            ]
+          ],
+          [
+            [
+              -100,
+              300
+            ],
+            [
+              -100,
+              0
+            ]
+          ],
+          [
+            [
+              -100,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      ]
+    },
+    "dbase": {
+      "unicodes": [
+        97
+      ],
+      "anchors": [
+        [
+          "Top",
+          100,
+          500
+        ]
+      ]
+    },
+    "dattached": {
+      "unicodes": [
+        225
+      ],
+      "components": [
+        [
+          "dbase",
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "accentPiece",
+          [
+            1,
+            0,
+            0,
+            1,
+            50,
+            0
+          ]
+        ]
+      ]
+    },
+    "dmisplaced": {
+      "unicodes": [
+        225
+      ],
+      "components": [
+        [
+          "dbase",
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "accentPiece",
+          [
+            1,
+            0,
+            0,
+            1,
+            70,
+            0
+          ]
+        ]
+      ]
+    },
+    "dduplicatebase": {
+      "unicodes": [
+        97
+      ],
+      "anchors": [
+        [
+          "Top",
+          100,
+          500
+        ],
+        [
+          "Top",
+          100,
+          500
+        ]
+      ]
+    },
+    "dambiguousmark": {
+      "unicodes": [
+        225
+      ],
+      "components": [
+        [
+          "dduplicatebase",
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "accentPiece",
+          [
+            1,
+            0,
+            0,
+            1,
+            50,
+            0
+          ]
+        ]
+      ]
+    },
+    "hcurve": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              10
+            ],
+            [
+              70,
+              15
+            ],
+            [
+              70,
+              130
+            ]
+          ],
+          [
+            [
+              70,
+              130
+            ],
+            [
+              70,
+              330
+            ]
+          ],
+          [
+            [
+              70,
+              330
+            ],
+            [
+              -100,
+              330
+            ]
+          ],
+          [
+            [
+              -100,
+              330
+            ],
+            [
+              -100,
+              10
+            ]
+          ],
+          [
+            [
+              -100,
+              10
+            ],
+            [
+              0,
+              10
+            ]
+          ]
+        ]
+      ]
+    },
+    "hcopy": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              10
+            ],
+            [
+              -100,
+              10
+            ]
+          ],
+          [
+            [
+              -100,
+              10
+            ],
+            [
+              -100,
+              330
+            ]
+          ],
+          [
+            [
+              -100,
+              330
+            ],
+            [
+              70,
+              330
+            ]
+          ],
+          [
+            [
+              70,
+              330
+            ],
+            [
+              70,
+              130
+            ]
+          ],
+          [
+            [
+              70,
+              130
+            ],
+            [
+              70,
+              15
+            ],
+            [
+              0,
+              10
+            ]
+          ]
+        ]
+      ]
+    },
+    "huncertain": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              10
+            ],
+            [
+              67.47035299616434,
+              80.06403214079069
+            ],
+            [
+              70,
+              130
+            ]
+          ],
+          [
+            [
+              70,
+              130
+            ],
+            [
+              70,
+              330
+            ]
+          ],
+          [
+            [
+              70,
+              330
+            ],
+            [
+              -100,
+              330
+            ]
+          ],
+          [
+            [
+              -100,
+              330
+            ],
+            [
+              -100,
+              10
+            ]
+          ],
+          [
+            [
+              -100,
+              10
+            ],
+            [
+              0,
+              10
+            ]
+          ]
+        ]
+      ]
+    },
+    "hlong": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              10
+            ],
+            [
+              70,
+              15
+            ],
+            [
+              70,
+              130
+            ]
+          ],
+          [
+            [
+              70,
+              130
+            ],
+            [
+              70,
+              930
+            ]
+          ],
+          [
+            [
+              70,
+              930
+            ],
+            [
+              -100,
+              930
+            ]
+          ],
+          [
+            [
+              -100,
+              930
+            ],
+            [
+              -100,
+              10
+            ]
+          ],
+          [
+            [
+              -100,
+              10
+            ],
+            [
+              0,
+              10
+            ]
+          ]
+        ]
+      ]
+    },
+    "hcorner": {
+      "contours": [
+        [
+          [
+            [
+              0,
+              10
+            ],
+            [
+              20,
+              80
+            ],
+            [
+              70,
+              130
+            ]
+          ],
+          [
+            [
+              70,
+              130
+            ],
+            [
+              70,
+              330
+            ]
+          ],
+          [
+            [
+              70,
+              330
+            ],
+            [
+              -100,
+              330
+            ]
+          ],
+          [
+            [
+              -100,
+              330
+            ],
+            [
+              -100,
+              10
+            ]
+          ],
+          [
+            [
+              -100,
+              10
+            ],
+            [
+              0,
+              10
+            ]
+          ]
+        ]
+      ]
+    },
+    "hbase": {
+      "unicodes": [
+        101
+      ],
+      "anchors": [
+        [
+          "Top",
+          100,
+          500
+        ]
+      ]
+    },
+    "hattached": {
+      "unicodes": [
+        233
+      ],
+      "components": [
+        [
+          "hbase",
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "accentPiece",
+          [
+            1,
+            0,
+            0,
+            1,
+            50,
+            0
+          ]
+        ]
+      ]
+    },
+    "hmisplaced": {
+      "unicodes": [
+        233
+      ],
+      "components": [
+        [
+          "hbase",
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "accentPiece",
+          [
+            1,
+            0,
+            0,
+            1,
+            70,
+            0
+          ]
+        ]
+      ]
+    },
+    "hduplicatebase": {
+      "unicodes": [
+        101
+      ],
+      "anchors": [
+        [
+          "Top",
+          100,
+          500
+        ],
+        [
+          "Top",
+          100,
+          500
+        ]
+      ]
+    },
+    "hambiguousmark": {
+      "unicodes": [
+        233
+      ],
+      "components": [
+        [
+          "hduplicatebase",
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "accentPiece",
+          [
+            1,
+            0,
+            0,
+            1,
+            50,
+            0
+          ]
+        ]
+      ]
+    },
+    "accentPiece": {},
+    "acutecomb": {
+      "unicodes": [
+        769
+      ],
+      "components": [
+        [
+          "accentPiece",
+          [
+            1,
+            0,
+            0,
+            1,
+            -200,
+            0
+          ]
+        ]
+      ],
+      "anchors": [
+        [
+          "_Top",
+          -150,
+          500
+        ]
+      ]
+    }
+  },
+  "membership": {
+    "dcurve": "d-curve",
+    "dcopy": "d-curve",
+    "duncertain": "d-curve",
+    "dlong": "d-curve",
+    "dcorner": "d-curve",
+    "dbase": "d-attachment",
+    "dattached": "d-attachment",
+    "dmisplaced": "d-attachment",
+    "dduplicatebase": "d-attachment",
+    "dambiguousmark": "d-attachment",
+    "hcurve": "h-curve",
+    "hcopy": "h-curve",
+    "huncertain": "h-curve",
+    "hlong": "h-curve",
+    "hcorner": "h-curve",
+    "hbase": "h-attachment",
+    "hattached": "h-attachment",
+    "hmisplaced": "h-attachment",
+    "hduplicatebase": "h-attachment",
+    "hambiguousmark": "h-attachment",
+    "accentPiece": "support",
+    "acutecomb": "support"
+  },
+  "cases": [
+    {
+      "id": "d-detect",
+      "split": "development",
+      "left": {
+        "glyph": "dcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      },
+      "expected": "structural-candidate"
+    },
+    {
+      "id": "d-equivalent",
+      "split": "development",
+      "left": {
+        "glyph": "dcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      },
+      "expected": "compatible",
+      "right": {
+        "glyph": "dcopy",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      }
+    },
+    {
+      "id": "d-different-length",
+      "split": "development",
+      "left": {
+        "glyph": "dcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      },
+      "expected": "incompatible",
+      "right": {
+        "glyph": "dlong",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      }
+    },
+    {
+      "id": "d-ambiguous",
+      "split": "development",
+      "left": {
+        "glyph": "dcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      },
+      "expected": "uncertain",
+      "right": {
+        "glyph": "duncertain",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      }
+    },
+    {
+      "id": "d-corner",
+      "split": "development",
+      "left": {
+        "glyph": "dcorner",
+        "relationship": "curve-to-line",
+        "junction": [
+          100,
+          100
+        ]
+      },
+      "expected": "absent"
+    },
+    {
+      "id": "dattached",
+      "split": "development",
+      "left": {
+        "glyph": "dattached",
+        "relationship": "base-mark-attachment"
+      },
+      "expected": "confirmed"
+    },
+    {
+      "id": "dmisplaced",
+      "split": "development",
+      "left": {
+        "glyph": "dmisplaced",
+        "relationship": "base-mark-attachment"
+      },
+      "expected": "unresolved"
+    },
+    {
+      "id": "d-ambiguous-anchor",
+      "split": "development",
+      "left": {
+        "glyph": "dambiguousmark",
+        "relationship": "base-mark-attachment"
+      },
+      "expected": "unresolved"
+    },
+    {
+      "id": "h-detect",
+      "split": "heldout",
+      "left": {
+        "glyph": "hcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      },
+      "expected": "structural-candidate"
+    },
+    {
+      "id": "h-equivalent",
+      "split": "heldout",
+      "left": {
+        "glyph": "hcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      },
+      "expected": "compatible",
+      "right": {
+        "glyph": "hcopy",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      }
+    },
+    {
+      "id": "h-different-length",
+      "split": "heldout",
+      "left": {
+        "glyph": "hcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      },
+      "expected": "incompatible",
+      "right": {
+        "glyph": "hlong",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      }
+    },
+    {
+      "id": "h-ambiguous",
+      "split": "heldout",
+      "left": {
+        "glyph": "hcurve",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      },
+      "expected": "uncertain",
+      "right": {
+        "glyph": "huncertain",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      }
+    },
+    {
+      "id": "h-corner",
+      "split": "heldout",
+      "left": {
+        "glyph": "hcorner",
+        "relationship": "curve-to-line",
+        "junction": [
+          70,
+          130
+        ]
+      },
+      "expected": "absent"
+    },
+    {
+      "id": "hattached",
+      "split": "heldout",
+      "left": {
+        "glyph": "hattached",
+        "relationship": "base-mark-attachment"
+      },
+      "expected": "confirmed"
+    },
+    {
+      "id": "hmisplaced",
+      "split": "heldout",
+      "left": {
+        "glyph": "hmisplaced",
+        "relationship": "base-mark-attachment"
+      },
+      "expected": "unresolved"
+    },
+    {
+      "id": "h-ambiguous-anchor",
+      "split": "heldout",
+      "left": {
+        "glyph": "hambiguousmark",
+        "relationship": "base-mark-attachment"
+      },
+      "expected": "unresolved"
+    }
+  ]
+}

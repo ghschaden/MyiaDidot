@@ -107,6 +107,11 @@ Connected shoulders/returns still need source-guided or fair-curve fitting
 inside the seam contract. The existing seam work provides fixed attachment
 positions and directions, but does not yet constrain curvature between them.
 
+The follow-up [connected-seam curvature audit](shape-curvature.md) now measures
+these transitions analytically and supplies curvature comb proofs. It finds
+additional inflections and curvature spikes in the existing italic collars;
+curvature-constrained fitting remains the next construction task.
+
 ## Reproduce and scope
 
 ```sh

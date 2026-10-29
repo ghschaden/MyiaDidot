@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import derive
 import glyph_lint
 import shape_consistency as consistency
+import shape_curvature as curvature
 import shape_ports as ports
 import typographic_vocabulary as vocabulary
 
@@ -291,6 +292,9 @@ def fit(font, recipe, policy=POLICY):
             donor_bounds = donor_part.transform(1, 0, slant, 1, 0, 0).bounds
             target_bounds = target_part.transform(1, 0, slant, 1, 0, 0).bounds
         replacement, report = fit_arc(donor_curves, target_curves, donor_bounds, target_bounds, policy)
+        native_shear = slant if recipe["fitting_frame"] == "deskewed" else 0
+        report["curvature"] = curvature.comparison(shear_curves(target_curves, native_shear),
+                                                    shear_curves(replacement, native_shear))
         if recipe["fitting_frame"] == "native":
             replacement = shear_curves(replacement, -slant)
         chunk["curves"] = replacement
@@ -389,6 +393,25 @@ def overlay(before, after, report, destination, style):
     destination.write_text('\n'.join(lines))
 
 
+def curvature_proof(before, after, report, destination, style):
+    name = report["target"]
+    bounds = before[name].getBounds(before)
+    scale = min(350/(bounds[2]-bounds[0]), 400/(bounds[3]-bounds[1]))
+    lines = ['<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600">',
+             '<rect width="100%" height="100%" fill="white"/><g font-family="sans-serif">',
+             f'<text x="20" y="30" font-size="22">{style} {name}: native curvature comb</text>']
+    for font, offset, label in ((before, 60, "Original"), (after, 550, "Candidate")):
+        x, baseline = offset-bounds[0]*scale, 510+bounds[1]*scale
+        lines.append(f'<text x="{offset}" y="65" font-size="18">{label}</text>')
+        lines.append(vocabulary.draw(derive.to_path(font, font[name]), x, baseline, scale, "#222", .35))
+        contours, slant = deskew(font, name)
+        for contour in contours:
+            lines.append(curvature.comb(shear_curves(contour, slant), x, baseline, scale))
+    lines.append('<text x="20" y="560" font-size="13">17 samples/segment; signed curvature × 1500, capped at ±40 font units. Not a quality score.</text>')
+    lines.append('<text x="20" y="582" font-size="13">Unequal sample density follows curve subdivision. Source outlines, no hinting; candidates remain unaccepted.</text></g></svg>')
+    destination.write_text('\n'.join(lines))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, default=consistency.ROOT / "build/glyph-review/shape-seams")
@@ -398,6 +421,7 @@ def main():
     implementation = consistency.content_hash(Path(__file__))
     engine = consistency.engine_hash()
     ports_hash = consistency.content_hash(Path(ports.__file__))
+    curvature_hash = consistency.content_hash(Path(curvature.__file__))
     run = consistency.safe_output(out / "runs" / uuid4().hex[:12])
     run.mkdir(parents=True)
     reports, links = {}, []
@@ -434,6 +458,9 @@ def main():
         for operation in operations:
             detail = directory / f'{operation["recipe"]}.svg'
             overlay(before, after, operation, detail, style)
+            comb_path = directory / f'{operation["recipe"]}-curvature.svg'
+            curvature_proof(before, after, operation, comb_path, style)
+            links.append(f'<li>{style}: <a href="{comb_path.relative_to(out)}">{operation["recipe"]} curvature comb</a></li>')
             links.append(f'<li>{style}: <a href="{detail.relative_to(out)}">{operation["recipe"]}</a> — {operation["status"]}</li>')
         links.append(f'<li><a href="{proof.relative_to(out)}">{style}: full proof with shaped text</a></li>')
         reports[style] = {"operations": operations, "impact": impact, "shaping": shaping,
@@ -444,12 +471,14 @@ def main():
     if consistency.source_hashes() != identities:
         raise RuntimeError("Production source bytes changed during experiment")
     if (implementation != consistency.content_hash(Path(__file__)) or engine != consistency.engine_hash()
-            or ports_hash != consistency.content_hash(Path(ports.__file__))):
+            or ports_hash != consistency.content_hash(Path(ports.__file__))
+            or curvature_hash != consistency.content_hash(Path(curvature.__file__))):
         raise RuntimeError("Implementation changed during experiment; rerun before publishing")
     result = {"format": "myiadidot-connected-seam-preview-v1", "policy": POLICY,
               "source_hashes": identities, "sources_byte_identical": True,
               "implementation_sha256": implementation,
               "engine_sha256": engine, "ports_sha256": ports_hash,
+              "curvature_sha256": curvature_hash,
               "styles": reports, "release_ready": False,
               "limitations": ["Experimental outline fitting; no generator integration or integer finishing",
                               "Contour topology and point metadata are reconstructed in scratch fonts",
