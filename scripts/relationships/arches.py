@@ -10,8 +10,9 @@ import numpy as np
 
 from .boundaries import Sections
 from .counter_scope import SCOPE_POLICY, classify_scope
-from .geometry import Outline, sub
+from .geometry import sub
 from .identity import digest
+from .observation import observed_outline
 from .return_context import CONTEXT_POLICY, locate
 from .returns import RETURN_POLICY, lower_returns
 from .terminal_context import TERMINAL_POLICY
@@ -151,12 +152,15 @@ def arch_report(font, report, names):
     em = font.info.unitsPerEm
     slant = math.tan(math.radians(-(font.info.italicAngle or 0)))
     results, omissions = [], []
+    observations = {}
     for name in sorted(names):
-        outline = Outline()
-        font[name].draw(outline)
-        rows, notes = upper_arches(outline.contours, em, slant)
+        outline = observed_outline(font, name, report['source_identity'])
+        observations[name] = {k: v for k, v in outline.items() if k != 'contours'}
+        omissions.extend({'glyph': name, **issue} for issue in outline['issues'])
+        rows, notes = upper_arches(outline['contours'], em, slant)
         for row in rows:
-            row.update(glyph=name, source_sha256=report['source_identity'])
+            row.update(glyph=name, source_sha256=report['source_identity'],
+                       contour_origin=outline['origins'][row['contour']])
             row['geometry_id'] = 'arch-'+digest([name, row['geometry_id']])[:24]
             for conflict in row['conflicts']:
                 for key in ('arch', 'following_arch'):
@@ -168,11 +172,11 @@ def arch_report(font, report, names):
         omissions.extend({'glyph': name, **note} for note in notes)
         if not rows:
             omissions.append({'glyph': name, 'reason': 'No upper-counter candidate; absence is not proof of no arch.'})
-    return {'format': 'myiadidot-upper-arches-v2', 'policy': ARCH_POLICY, 'candidate_policy': RETURN_POLICY,
+    return {'format': 'myiadidot-upper-arches-v3', 'policy': ARCH_POLICY, 'candidate_policy': RETURN_POLICY,
             'cap_policy': CONTEXT_POLICY, 'scope_policy': SCOPE_POLICY, 'terminal_policy': TERMINAL_POLICY, 'results': results,
-            'omissions': omissions, 'scope': sorted(names),
+            'omissions': omissions, 'scope': sorted(names), 'observations': observations,
             'limitations': ['Horizontal ink intervals establish local shared-stem topology, not normal width compatibility or ancestry.',
-                            'Open-counter pilot; components, tail attribution and independent real-family accuracy remain unsupported.']}
+                            'Components expand with contour provenance, without Boolean union; tail attribution and independent real-family accuracy remain unsupported.']}
 
 
 def terminal_links(contours, rows, em):

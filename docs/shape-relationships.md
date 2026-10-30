@@ -439,3 +439,41 @@ This evidence is separate from normal-width bands and is not used to grant roles
 or splice findings. Optional anatomical-scope labels are scored separately from raw
 candidate outcomes. See [terminal evidence review](terminal-evidence-review-2026-10-30.md)
 for the frozen-detector evaluation and explicit component/heavy-terminal misses.
+
+### Component observations in counter reports
+
+Lower-return v4 and upper-arch v3 reports expand explicit components without
+mutating sources. `observations[glyph]` records completeness, issues and contour
+origins (source glyph/index, component path, composed transform, source hash).
+Candidates carry `contour_origin`; contour indices address that expanded inventory.
+Lower-return `observed_strokes` stores locally measured component stroke records
+used by neighbour references. These records do not extend core Stage 2 ancestry
+claims. Missing/cyclic references, invalid transforms and open contours withhold
+the full observation rather than using partial geometry. Overlaps are not Boolean
+unioned. See [the component replay](component-observation-review-2026-10-30.md).
+
+### Terminal-window diagnostics
+
+`terminal_context.window_checks` records measured units/em, maximum em,
+ratio/excess and maximum-pass status for trace, rise and span when measured.
+Rise also has `minimum_em` and `passes_minimum`; its `passes` field covers the
+maximum only. Missing checks mean unmeasured, not accepted. The diagnostic policy
+is `terminal-window-checks-v1`. These additive measurements do not change
+thresholds or grant stem/role evidence. The [heavy-terminal investigation](heavy-terminal-limits-review-2026-10-30.md)
+records the width sweep and the remaining qualification gap.
+
+### Per-arm terminal anatomy evaluation
+
+`relationships.terminal_evaluation.evaluate_terminal_arms(corpus, report, em,
+slant)` accepts the existing region-corpus v1 format with optional
+`terminal_arms: {left, right}` labels (`terminal`, `nonterminal`, `ambiguous`) and
+`attachment_context` (`free-end`, `stem-connection`, `interior-connection`,
+`uncertain`). Regions still match extrema in original source coordinates; sides
+refer to the deskewed arms. The output is `myiadidot-terminal-arm-evaluation-v1`.
+
+Normal caps and reciprocal closure evidence are reported separately. Missing
+observations, ambiguous assignment, unreported evidence, unscored anatomy and
+unresolved terminals remain distinct. `not-promoted` does not prove nonterminal
+anatomy. Attachment labels are retained as reviewer context, never inferred roles.
+The full region evaluation retains unmatched detections and coverage accounting.
+See [the development contrast](terminal-anatomy-contrast-review-2026-10-30.md).

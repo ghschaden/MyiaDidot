@@ -91,3 +91,33 @@ def test_other_contour_is_not_a_terminal_return(monkeypatch):
     result = terminal_context(field, 0, arc, direction, 1000, CONTEXT_POLICY)
     assert result['status'] == 'unresolved'
     assert 'another contour' in result['reason']
+
+
+def test_window_diagnostics_explain_width_failure_without_relaxing_it():
+    field, arc, direction = fixture(width=140)
+    result = terminal_context(field, 0, arc, direction, 1000, CONTEXT_POLICY)
+    assert result['status'] == 'unresolved'
+    checks = result['window_checks']
+    assert checks['trace']['passes'] and checks['rise']['passes']
+    assert checks['rise']['passes_minimum']
+    assert checks['span']['measured_em'] == pytest.approx(.14)
+    assert checks['span']['ratio_to_maximum'] == pytest.approx(7/6)
+    assert checks['span']['excess_units'] == pytest.approx(20)
+    assert not checks['span']['passes']
+    assert reflect_terminal(result)['window_checks'] == checks
+
+
+def test_trace_refusal_does_not_claim_unmeasured_dimensions_pass():
+    field, arc, direction = fixture(height=400)
+    result = terminal_context(field, 0, arc, direction, 1000, CONTEXT_POLICY)
+    assert result['status'] == 'unresolved'
+    assert set(result['window_checks']) == {'trace'}
+    assert not result['window_checks']['trace']['passes']
+
+
+def test_preclosure_refusal_has_no_window_claims(monkeypatch):
+    field, arc, direction = fixture()
+    monkeypatch.setattr(field, 'hit', lambda *args: (None, 'ambiguous boundary'))
+    result = terminal_context(field, 0, arc, direction, 1000, CONTEXT_POLICY)
+    assert result['status'] == 'unresolved'
+    assert result['window_checks'] == {}

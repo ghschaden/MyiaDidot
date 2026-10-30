@@ -48,7 +48,7 @@ def analyse(font, source_digest=None, *, paired=False, boundary_glyphs=None):
             "summary": dict(Counter(r['status'] for r in records)),
             "limitations": ["No repair or aesthetic acceptance is performed.",
                             "Curve and paired-section metrics are sampled source-outline diagnostics, not global topology or hinting guarantees.",
-                            "Composite geometry is represented by ancestry, not redundantly analysed.",
+                            "Core relationships retain component ancestry; optional counter reports separately expand component geometry.",
                             "Flattened unrecorded derivations and shared stems are not inferred.",
                             "Only single-mark canonical decompositions with explicit components can be confirmed.",
                             "Recorded generator inputs are not verified part-level provenance."]}

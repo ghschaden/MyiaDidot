@@ -23,7 +23,7 @@ RETURN_POLICY = {'rise_em': .08, 'minimum_opening_em': .015,
 def lower_returns(contours, pairs, em, slant=0):
     contours = [[tuple((x-slant*y, y) for x, y in s) for s in c] for c in contours if c]
     if not contours:
-        return [], [{'reason': 'No own closed contours; component ancestry is not expanded.'}]
+        return [], [{'reason': 'No complete closed contours available for observation.'}]
     field = Sections(contours, em)
     rows, notes = [], []
     for ci, contour in enumerate(contours):
@@ -138,18 +138,33 @@ def lower_returns(contours, pairs, em, slant=0):
 
 
 def return_report(font, report, names):
-    from .geometry import Outline
+    from .boundaries import paired_boundaries
+    from .identity import identify
+    from .observation import observed_outline
     em = font.info.unitsPerEm
     slant = math.tan(math.radians(-(font.info.italicAngle or 0)))
-    results, omissions = [], []
+    results, omissions, observed_strokes = [], [], []
+    observations = {}
     for name in sorted(names):
-        outline = Outline()
-        font[name].draw(outline)
+        outline = observed_outline(font, name, report['source_identity'])
+        observations[name] = {k: v for k, v in outline.items() if k != 'contours'}
+        omissions.extend({'glyph': name, **issue} for issue in outline['issues'])
         pairs = [r for r in report['relationships'] if r['glyph'] == name
                  and r['relationship'] == 'paired-stroke-boundaries' and r['identity_status'] == 'unique']
-        rows, notes = lower_returns(outline.contours, pairs, em, slant)
+        if font[name].components and outline['status'] == 'complete':
+            pairs, pair_notes = paired_boundaries(outline['contours'], em, slant)
+            for pair in pairs:
+                pair['glyph'] = name
+            identify(pairs, report['source_identity'])
+            for pair in pairs:
+                pair['contour_origins'] = outline['origins']
+            observed_strokes.extend(pairs)
+            pairs = [p for p in pairs if p['identity_status'] == 'unique']
+            omissions.extend({'glyph': name, **note} for note in pair_notes)
+        rows, notes = lower_returns(outline['contours'], pairs, em, slant)
         for row in rows:
-            row.update(glyph=name, source_sha256=report['source_identity'])
+            row.update(glyph=name, source_sha256=report['source_identity'],
+                       contour_origin=outline['origins'][row['contour']])
             row['geometry_id'] = 'turn-'+digest([name, row['geometry_id']])[:24]
         # Resolve graph references after glyph-scoping identities.
         for row in rows:
@@ -159,10 +174,11 @@ def return_report(font, report, names):
         omissions.extend({'glyph': name, **note} for note in notes)
         if not rows:
             omissions.append({'glyph': name, 'reason': 'No supported lower-counter candidate found; absence is not proof of no return.'})
-    return {'format': 'myiadidot-lower-returns-v3', 'policy': RETURN_POLICY, 'context_policy': CONTEXT_POLICY, 'scope_policy': SCOPE_POLICY, 'terminal_policy': TERMINAL_POLICY,
+    return {'format': 'myiadidot-lower-returns-v4', 'policy': RETURN_POLICY, 'context_policy': CONTEXT_POLICY, 'scope_policy': SCOPE_POLICY, 'terminal_policy': TERMINAL_POLICY,
             'scope': sorted(names), 'results': results, 'omissions': omissions,
+            'observed_strokes': observed_strokes, 'observations': observations,
             'matches': match_returns(results, em, font.info.styleName),
             'limitations': ['Source-outline pilot; no repair, design acceptance or verified base inheritance.',
                            'Exit requires supported local bands and a traced short cap; below-floor context withholds exit, without proving tail attachment.',
                            'Counter clearance is sampled over a fixed lower window, not the whole counter.',
-                           'Components are not expanded. Missing paired stems prevent a complete graph.']}
+                           'Components are expanded with contour provenance, without Boolean union. Missing paired stems prevent a complete graph.']}

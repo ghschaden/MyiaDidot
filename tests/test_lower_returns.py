@@ -126,12 +126,12 @@ def test_interrupted_counter_is_not_clear():
     assert any('interrupted' in note['reason'] for note in report['omissions'])
 
 
-def test_component_only_geometry_is_explicitly_unresolved():
+def test_component_only_geometry_has_explicit_origin():
     font = fixture()
     font.newGlyph('derived').getPen().addComponent('u', (1, 0, 0, 1, 0, 0))
     report = return_report(font, analyse(font, paired=True), ['derived'])
-    assert not report['results']
-    assert any('component ancestry' in note['reason'] for note in report['omissions'])
+    assert report['results']
+    assert all(r['contour_origin']['source_glyph'] == 'u' for r in report['results'])
 
 
 def capped_fixture(tail=False, tall=False, reverse=False):

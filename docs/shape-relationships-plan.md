@@ -370,3 +370,47 @@ regions; f/o are transfer controls. Component-only j is explicitly missed. See
 [terminal evidence review](terminal-evidence-review-2026-10-30.md). Prioritize
 component-aware observation with provenance; investigate heavy-terminal limits
 separately. These evaluated families are development evidence for future tuning.
+
+2026-10-30 component follow-up: counter reports now expand explicit components
+with source-pinned contour/instance provenance and reject incomplete observation
+fields. All six labelled j regions are observed; four resolve as terminal curves
+and the two heavy lower hooks remain unresolved. Other replayed candidate records
+are unchanged. See [component observation review](component-observation-review-2026-10-30.md).
+Next: investigate heavy-terminal limits on development evidence, retaining close
+negatives and positive closure requirements; fresh-family qualification remains open.
+
+2026-10-30 heavy-terminal investigation: the eight reviewed heavy c/f/j/s arms
+fail the 0.12 em span limit despite valid local closure. A 0.15 em trial admits
+all eight but also the prior oversized-lobe control; no anatomical qualification
+follows from this size sweep. Thresholds remain unchanged. Added explicit window
+measurements and verified 213 existing cut contexts are otherwise identical;
+93 focused tests pass. See [heavy-terminal limits](heavy-terminal-limits-review-2026-10-30.md).
+Next: a region-labelled anatomical contrast set for broad terminal versus
+nonterminal return/branch lobes, including attachment context and ambiguous cases,
+before considering a larger or locally scaled window. Keep fresh families reserved
+for qualification; no repair or smoothing.
+
+2026-10-30 anatomical contrast pass: 54 prelabelled development regions now carry
+108 left/right arm labels and separate attachment context. The 0.15 em trial
+supports 23 labelled terminals versus 15 at baseline, with no promotions among
+57 observed nonterminal arms; 16 absent arms, 12 ambiguous labels and 36 unlabelled
+detections remain explicit. The historical Italic interior tongue stays locally
+terminal, while Bold Italic's joined branch fails the opposing-contour check.
+See [terminal anatomy contrast](terminal-anatomy-contrast-review-2026-10-30.md).
+Next: pre-register that fixed morphology-only 0.15 em candidate and compare it
+against baseline on fresh, provenance-separated base families, labelled before
+exposure. Do not tune on the holdout or grant roles from terminal evidence. Current
+thresholds remain unchanged; 107 focused tests pass. No repair/smoothing.
+
+2026-10-30 fixed-window holdout: pre-registered the morphology-only 0.15 em
+candidate and froze labels for a/t/k/x before detector exposure. Across four
+styles, supported terminals increase from 17 to 20, with no promotions among
+32 observed nonterminal arms. Sixteen nonterminal and four ambiguous arms remain
+unobserved, including the selected branch junctions. Available provenance shows
+no development-family ancestry overlap; undocumented reuse remains unknown.
+See [terminal holdout review](terminal-holdout-review-2026-10-30.md).
+All sixteen plain/labelled/baseline/trial proofs were inspected; 102 focused tests
+pass. Default threshold remains 0.12 em. Next: expose a separately named opt-in
+reciprocal-terminal policy, with role/normal-cap invariance checks and frozen
+corpus replay. Missing branch observation still prevents general qualification;
+no repairs or smoothing.
