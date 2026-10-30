@@ -25,7 +25,43 @@ def proof(font, names, records, path):
         lines.append(f'<path d="{pen.getCommands()}" transform="translate({x},{baseline}) scale({scale},{-scale})" fill="#333"/>')
         local = [r for r in records if r['glyph'] == name]
         for j, r in enumerate(local):
-            if r['relationship'] == 'curve-to-line':
+            if r['relationship'] in ('lower-return', 'upper-arch'):
+                for turn_path in r['paths']:
+                    pts = ' '.join(f'{x+(p[0]+slant*p[1])*scale},{baseline-p[1]*scale}' for p in turn_path)
+                    lines.append(f'<polyline points="{pts}" fill="none" stroke="#007c91" stroke-width="2"/>')
+                for section in r['counter_sections']:
+                    y = section['y']
+                    lines.append(f'<line x1="{x+(section["left"]+slant*y)*scale}" y1="{baseline-y*scale}" x2="{x+(section["right"]+slant*y)*scale}" y2="{baseline-y*scale}" stroke="#b52a90" stroke-width=".7"/>')
+                for context in r.get('arm_context', []):
+                    for section in context['sections']:
+                        a, b = section['p'], section['q']
+                        lines.append(f'<line x1="{x+(a[0]+slant*a[1])*scale}" y1="{baseline-a[1]*scale}" x2="{x+(b[0]+slant*b[1])*scale}" y2="{baseline-b[1]*scale}" stroke="#23a05b" stroke-width=".9"/>')
+                    if context['cap_status'] == 'short-contour-cap':
+                        pts = ' '.join(f'{x+(p[0]+slant*p[1])*scale},{baseline-p[1]*scale}' for p in context['cap_trace'])
+                        lines.append(f'<polyline points="{pts}" fill="none" stroke="#d77a00" stroke-width="1.5"/>')
+                if r['relationship'] == 'upper-arch':
+                    bands = [n for side in r['neighbours'] for n in side] + r.get('lower_terminals', [])
+                    for band in bands:
+                        for section in band['sections']:
+                            if section:
+                                a, b = section['p'], section['q']
+                                lines.append(f'<line x1="{x+(a[0]+slant*a[1])*scale}" y1="{baseline-a[1]*scale}" x2="{x+(b[0]+slant*b[1])*scale}" y2="{baseline-b[1]*scale}" stroke="#23a05b" stroke-width="1"/>')
+                    cap_paths = r['cap_traces'] + [t['cap_trace'] for t in r.get('lower_terminals', []) if t['cap_verified']]
+                    for cap_path in cap_paths:
+                        pts = ' '.join(f'{x+(p[0]+slant*p[1])*scale},{baseline-p[1]*scale}' for p in cap_path)
+                        lines.append(f'<polyline points="{pts}" fill="none" stroke="#d77a00" stroke-width="1.5"/>')
+                    for conflict in r['conflicts']:
+                        px, py = conflict['terminal_bottom']
+                        lines.append(f'<circle cx="{x+(px+slant*py)*scale}" cy="{baseline-py*scale}" r="9" fill="none" stroke="#c52d21" stroke-width="2"/>')
+                terminal_contexts = r.get('terminal_context', []) or [c.get('terminal_context', {}) for c in r.get('arm_context', [])]
+                for terminal in terminal_contexts:
+                    if terminal.get('status') == 'verified-contour-terminal':
+                        pts = ' '.join(f'{x+(p[0]+slant*p[1])*scale},{baseline-p[1]*scale}' for p in terminal['trace'])
+                        lines.append(f'<polyline points="{pts}" fill="none" stroke="#7141b5" stroke-width="1.5"/>')
+                desc = f"{r['geometry_id'][:12]} {r['status']}; role {r['role']}; scope {r.get('anatomical_scope', {}).get('kind', 'unresolved')}"
+                if r.get('conflicts'):
+                    desc = f"{r['geometry_id'][:12]} {r['role']}: " + ', '.join(c['kind'] for c in r['conflicts'])
+            elif r['relationship'] == 'curve-to-line':
                 pts = ' '.join(f'{x+(p[0]+slant*p[1])*scale},{baseline-p[1]*scale}' for p in r['span'])
                 color = '#c52d21' if r['review_notice'] else '#007c91'
                 lines.append(f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="2"/>')
@@ -70,9 +106,16 @@ def write_html(report, out):
             '<p><a href="report.json">Full evidence and provenance graph</a> · <a href="proof.svg">Focused visual proof</a></p>'
             f'<p>{html.escape(json.dumps(report["summary"]))}</p>'
             f'<details><summary>Related-glyph query and matching evidence</summary><pre>{html.escape(json.dumps(report.get("query", {}), ensure_ascii=False, indent=2))}</pre></details>'
+            f'<details open><summary>Constituent reuse</summary><pre>{html.escape(json.dumps(report.get("constituent_reuse", {}), ensure_ascii=False, indent=2))}</pre></details>'
             '<h2>Ranked base families</h2><p>Explicit derivative ancestry is grouped; inferred peers remain candidates.</p>'
             '<table><tr><th>Base family</th><th>Members</th><th>Matching evidence</th><th>Spans</th></tr>'+ranked+'</table>'
             '<p><label>Filter relationships <input id="filter" type="search" placeholder="glyph, family, or status"></label></p>'
             '<table class="findings"><tr><th>ID</th><th>Glyph</th><th>Relationship</th><th>Status</th><th>Family</th><th>Why</th></tr>'+rows+'</table>'
             '<script>document.getElementById("filter").addEventListener("input",function(){const q=this.value.toLowerCase();document.querySelectorAll(".findings tr").forEach((r,i)=>{if(i)r.hidden=!r.textContent.toLowerCase().includes(q)});});</script>')
+    if 'lower_returns' in report:
+        page += ('<h2>Lower returns</h2><p><a href="returns.svg">Counter-turn overlay</a></p>'
+                 '<pre>'+html.escape(json.dumps(report['lower_returns'], ensure_ascii=False, indent=2))+'</pre>')
+    if 'upper_arches' in report:
+        page += ('<h2>Upper arches</h2><p><a href="arches.svg">Arch and conflict overlay</a></p>'
+                 '<pre>'+html.escape(json.dumps(report['upper_arches'], ensure_ascii=False, indent=2))+'</pre>')
     (out/'index.html').write_text(page)

@@ -287,3 +287,155 @@ The proofs show opposite edges in blue/orange and sampled sections in green.
 Synthetic tests cover rectangles, taper, a curved ribbon, separate neighbouring
 strokes, counters, branching, and reversed/subdivided/rotated/sheared geometry.
 This is experimental discovery; it neither repairs nor installs font outlines.
+
+## Stage 2: declared constituent reuse
+
+`--constituent-reuse` enables paired-boundary detection and adds a separately
+versioned `constituent_reuse` evidence section to JSON and HTML. Use
+`--boundary-glyphs uni019C U m n` to keep the pilot focused. The existing paired
+proof displays both observed boundaries and normal sections. Production sources
+remain read-only.
+
+The optional provenance sidecar now accepts `operation: "stroke-copy"`. Its
+`part` contains `base_geometry_id` and `target_geometry_id` selecting unique
+paired-boundary findings. Add a nonempty `constituent` instance label, such as
+`left-U` or `right-U`; retain the existing source hash/style, transform,
+protected landmarks and evidence origin fields. Each declared native-frame affine
+transform must map **both** base stroke boundaries to the observed target edges
+within 0.001 em, symmetrically, including endpoints. Edge order and traversal
+orientation are immaterial. The declaration verifies sampled geometric support
+for intent, not historical authorship. It does not assert that an entire U survives
+when only a stem was checked.
+
+Pairs of distinct constituent labels in one target are classified as:
+
+- `shared`: both declarations verify and both observed stroke edges coincide
+  within 0.001 em, including their supported endpoints.
+- `repeated-but-separate`: both declarations verify, but their observed stroke
+  regions have disjoint bounding boxes.
+- `unresolved`: a claim fails verification, regions overlap only partly, or
+  constituent correspondence is absent. Recorded generator inputs alone cannot
+  resolve ancestry, including after a Boolean union erases the evidence.
+- `similar-only`: observed spans have compatible axis families and width profiles,
+  without verified constituent correspondence. This never establishes that m can
+  reuse n's entry/exit role.
+
+Shared/separate comparisons retain declaration and target-span IDs, boundary
+agreement and a bidirectional sampled boundary clearance in font units. This
+clearance is a local diagnostic, not a certified global counter minimum. The
+bounding-box separation rule deliberately leaves some rotated or curved separate
+regions unresolved. Partial-span correspondence and automatic component expansion
+are not implemented; supply verified complete paired-span declarations instead.
+
+Validation: 61 focused tests through `make test` cover the existing recognisers
+and new shared/separate cases, reflections, explicit taper, stale declarations,
+displaced endpoints, wrong width, missing evidence and read-only CLI artifacts.
+These are synthetic controls, not a measured real-font precision guarantee.
+A runnable generated sidecar and positive proof are under
+`build/glyph-review/constituent-reuse/synthetic/`. Four-style Ɯ/U/m/n reports are
+under `build/glyph-review/constituent-reuse/{Regular,Italic,Bold,BoldItalic}/`.
+They retain unresolved ancestry for every pilot glyph without declarations.
+The Regular overlay was visually inspected: it shows the middle stem and curved
+returns in Ɯ, and stops m/n stem sections below the shoulder junctions. All four style overlays were inspected; Italic m/n have less supported heavy-stem
+coverage, so those omissions must not be read as successful constituent checks.
+No design acceptance or repair is implied.
+
+A source-pinned Regular U-to-Ɯ hypothesis is under
+`build/glyph-review/constituent-reuse/Regular-declared/`: identity and an 800-unit
+horizontal translation were checked against the surviving heavy stem spans.
+The first verifies at 0.403 units; the translated span differs by 2.134 units
+against a 2.048-unit tolerance and is rejected. The combined reuse result remains
+unresolved. This can include different detector trimming at endpoints; it is not
+a finding of a defective outline or proof against historical reuse. The threshold
+was not relaxed to accept this case.
+
+Current-main evaluation is recorded in
+[`stage2-current-source-evaluation-2026-10-30.md`](stage2-current-source-evaluation-2026-10-30.md).
+It replaces the historical pilot as the current-source evidence: four freshly
+pinned sidecars and inspected overlays, explicit missed/interrupted spans, and
+65 passing focused tests including an independent radial-ribbon family. Local
+verified copies do not establish complete base coverage or a shared Ɯ middle stem.
+
+## Stage 3 pilot: lower returns
+
+`--lower-returns` enables the observed-stem graph and emits `returns.svg` plus
+`lower_returns` evidence in JSON/HTML. Use `--boundary-glyphs` to restrict the
+scope. The initial pilot measures lower-counter profiles and reports missing or
+competing neighbours; exit and tail roles remain unresolved. See
+[`lower-return-pilot-2026-10-30.md`](lower-return-pilot-2026-10-30.md) for the
+four-style inspected results, controls, and limitations. This is not a complete
+Stage 3 recogniser or a source of repair approval.
+
+The subsequent [arm/context increment](return-context-review-2026-10-30.md)
+uses `myiadidot-lower-returns-v2`. It adds `arm_context` section evidence, bounded
+cap traces and below-baseline refusal context. A few real exits are now supported;
+real interior roles and tail attribution remain unresolved. Green proof marks
+show individual valid sections; only five consecutive sections with compatible
+axis/width establish a complete local band. Orange traces show verified short
+caps. The existing global `neighbours` evidence is preserved separately.
+
+Same-style, same-role retrieval is now included under `lower_returns.matches`
+(`myiadidot-return-matches-v1`). It gates on resolved roles and local support,
+then compares counter profiles, both adjoining width profiles, attachment
+directions and verified cap traces. `candidate` is not design or repair approval;
+unresolved contexts remain non-positive. See the
+[matching evaluation](return-matching-review-2026-10-30.md), including reconstructed
+historical bad-m regions and the distinction between refusal and diagnosis.
+
+## Upper arches and interior return conflicts
+
+`--upper-arches` enables `upper_arches` (`myiadidot-upper-arches-v1`) and an
+`arches.svg` proof. Scope uses `--boundary-glyphs`; JSON/HTML retain source hashes,
+policies, counter clearances, traced arms, local normal-band statuses, verified
+caps, shared horizontal sections, unresolved roles and local conflict findings.
+
+```sh
+.venv/bin/python -I scripts/shape_relationships.py \
+  --ufo build/glyph-review/main-progress-2026-10-30/current/sources/MyiaDidot-BoldItalic.ufo \
+  --upper-arches --boundary-glyphs n h m u v w --proof-glyphs n h m u v w \
+  --out build/glyph-review/upper-arches-example
+```
+
+Entry/interior/exit are local topology roles established by shared ink intervals
+and verified terminal context. They do not override failed normal-width checks
+or establish reusable geometry. An interior stem also feeding a lower return is
+reported as `interior-terminal-conflict` if its cap verifies, otherwise
+`interior-return-detour`; both are review findings, not automatic design rejection.
+The final exit is excluded by its lack of a following arch. See
+[the upper-arch review](upper-arch-review-2026-10-30.md) for the pinned four-style
+results, both historical diagnoses and remaining omissions.
+
+## Region-level evaluation
+
+`relationships.region_evaluation.evaluate_regions(corpus, report, em, slant)`
+scores `myiadidot-region-corpus-v1` annotations against saved arch/return reports.
+Each source-pinned region names its glyph, anatomical family, split, detector,
+original-font-coordinate box, candidate expectation and optional role expectation.
+Conflict regions separately label expected findings at the lower-turn location.
+Output preserves missed candidates, unresolved/wrong roles, out-of-scope candidates,
+ambiguous assignments, unlabelled detections and missed/false conflicts. Stale or
+unpreserved sources, incomplete detector scope and within-corpus family leakage
+are rejected. It does not infer labels from detector output.
+
+The [first real-family evaluation](arch-family-evaluation-2026-10-30.md) covers
+58 regions with fixed labels and thresholds. It exposes closed-counter/terminal
+scope mismatches and fixed-window misses despite zero false splice warnings on
+those normal drawings. These results do not establish general repair reliability.
+
+### Counter scope (2026-10-30)
+
+Upper/lower candidates retain raw geometry separately from `anatomical_scope`:
+closed counters, verified terminal curves, supported stem connections and unresolved
+context. Closed counters are excluded from role graphs and terminal conflicts;
+missing stem support alone never establishes a terminal. See
+[counter scope review](counter-scope-review-2026-10-30.md) for evidence and remaining
+s/r coverage limits. Lower report schema is v3; upper schema is v2.
+
+### Terminal closure evidence (2026-10-30)
+
+Terminal scope additionally accepts a reciprocal horizontal ink cut whose directed
+contour closes on its verified opposite boundary within the existing cap window.
+This evidence is separate from normal-width bands and is not used to grant roles
+or splice findings. Optional anatomical-scope labels are scored separately from raw
+candidate outcomes. See [terminal evidence review](terminal-evidence-review-2026-10-30.md)
+for the frozen-detector evaluation and explicit component/heavy-terminal misses.

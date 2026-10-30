@@ -180,5 +180,193 @@ locators; local-span retrieval; ranked families based on explicit ancestry;
 validated component/span sidecars; verified reuse of the existing exact grammar;
 and a labelled evaluation harness with family separation and per-case outcomes.
 See `docs/shape-relationships.md` for schemas, commands, evidence scopes and limits.
-No additional recogniser or repair solver has been started. Production-side
+At that point no additional recogniser or repair solver had been started. Production-side
 provenance instrumentation remains the explicitly separate integration task.
+
+## Stages 1–2 implementation status — 2026-10-30
+
+Stage 1 is available as the guarded paired-boundary recogniser documented in
+`docs/shape-relationships.md`. Stage 2 now adds source-pinned `stroke-copy`
+declarations, verification of both transformed boundaries, and shared,
+repeated-but-separate, similar-only and unresolved outcomes. Synthetic controls
+exercise positive reuse and deliberately displaced/wrong-width claims; focused
+Ɯ/U and m/n reports exist in all four styles under build.
+
+This first Stage 2 implementation supports complete observed paired spans.
+Partial overlaps, erased union boundaries, automatic component expansion and
+unknown constituent ancestry remain unresolved. It does not establish historical
+reuse in the real pilot from unverified generator records. All four pilot style proofs were inspected, and 61 focused tests pass. Broader
+independent family evaluation is still needed before treating this recogniser as
+repair guidance. A real Regular translation hypothesis verifies one constituent
+span and rejects the other at the fixed endpoint tolerance; the pair correctly
+remains unresolved. Stage 3 (arches and
+returns, including neighbour roles) is not implemented.
+
+## Reprioritisation after main review — 2026-10-30
+
+Reviewed main `cef605f813e307acd419326bd6a4821cd5e10c64`, 15 commits
+ahead of this branch's shared history. Main was clean at inspection. Frozen
+sources, the inspected four-style comparison against Bold Italic `dc373511`,
+and a fresh relationship run are under
+`build/glyph-review/main-progress-2026-10-30/`; see `review.md` there.
+Existing Stage 2 implementation work is preserved. This review does not merge
+main or change production sources.
+
+Main now contains stroke-aware Bold Italic construction, fairing, repaired
+curve/line steps, a stronger per-finding repair gate, U-based Ɯ, redrawn u-family
+knees, u-based ʉ and an open hooked ʋ. Earlier examples of these defects become
+historical regression inputs, not a queue of outstanding production repairs.
+The recorded user choices of knee width and ʋ terminal are constraints, not
+parameters for an automatic recogniser to optimise away.
+
+Next tasks, in order:
+
+1. **Finish Stage 2 evaluation on current sources.** Pin main's revision and
+   source hashes; regenerate declarations instead of carrying old span IDs over.
+   Prioritise Bold Italic U/Ɯ and u/ʉ, with m/n as a role-confusion control.
+   Explicitly report missed heavy stems and interrupted spans: the fresh overlay
+   finds U/Ɯ stems but misses substantial heavy-stem coverage in ʉ and ʋ.
+   The recipe documents intent; without verified declarations the current
+   recogniser still cannot establish reuse. Do not loosen endpoint tolerances
+   merely to turn this into a positive case.
+2. **Make Stage 3's first pilot the lower returns.** Compare u/ų/и/ц/ш/щ/џ
+   with their final same-style bases and Italic references. Distinguish interior
+   and exit turns, preserve tail attachments, and measure counter clearance and
+   turn direction. Then add n/h/m upper arches; they are not interchangeable
+   with lower returns. Retain v/w and the historical bad m splice as negatives.
+3. **Use refusal cases to evaluate explanations.** Start with љ, whose attempted
+   knee repair is documented as introducing a wobble, then u.sc and f_h/f_f_h.
+   Report unsupported geometry and competing findings; a production refusal is
+   not itself proof of a visible defect or an instruction to repair it.
+4. **Defer another repair solver and general smoothing.** Main already implements
+   much of the earlier proposed gating. Future experiments must demonstrate a
+   specific gap against that current gate. Keep bowls and terminals queued;
+   use ʋ's before/after as an aperture/terminal evaluation case, not a demand
+   for a closed curl. Promote additions only after base correspondence works.
+
+Completion evidence remains independent-family evaluation and inspected overlays,
+not the number of detected relationships. Historical Stage 1–2 proofs and their
+61-test result above describe their original source state, not validation of
+current main. This inspection ran no production build or test suite and makes
+no new hinting, shaping, or design-acceptance claim.
+
+## Current-source Stage 2 evaluation pass — 2026-10-30
+
+Priority 1's evaluation pass is complete; see
+[`stage2-current-source-evaluation-2026-10-30.md`](stage2-current-source-evaluation-2026-10-30.md).
+All four source snapshots match main `cef605f8` file-for-file. Fresh declarations
+and inspected overlays retain successes, failures and heavy-stem omissions.
+Bold Italic verifies 6/14 fixed-transform span hypotheses, with no shared-stem
+conclusion; ʉ and ʋ still lack heavy-stem observations. The tolerance is unchanged.
+Independent curved-ribbon controls extend validation; 65 focused tests pass.
+This is not a real-family precision/recall qualification or repair approval.
+The next implementation priority is Stage 3's lower-return pilot, carrying those
+missing-boundary limitations into its neighbour graph. Region-labelled real-family
+evaluation remains required before using Stage 2 as repair guidance.
+
+## Stage 3 lower-return pilot — 2026-10-30
+
+Implemented lower-counter candidates, fixed-height clearance profiles, observed
+paired-stem neighbours and shared-neighbour interior graph linkage. See
+[`lower-return-pilot-2026-10-30.md`](lower-return-pilot-2026-10-30.md).
+All four current-source style overlays were inspected; 77 focused tests pass.
+Bold u/ų have supported local turns, but no real-font role is resolved yet.
+Italic and Bold Italic expose the intended body counters while retaining missing,
+competing or non-distinct neighbour evidence. Descenders and ogonek context remain
+explicit omissions. Same-style and Italic comparisons are diagnostic only.
+
+Stage 3 remains in progress. Next: local arm-to-stroke support and explicit
+terminal/tail context before asserting exit/interior matches. Keep v/w unresolved
+where rounded italic construction defeats a simple angular negative. Upper arches,
+the historical bad-m-splice evaluation and independent-family accuracy remain
+pending; do not move to repair solvers or smoothing.
+
+## Local arm and terminal context — 2026-10-30
+
+Implemented the next Stage 3 increment: direct five-section arm support,
+shared-band comparison, bounded cap tracing back to a verified opposite boundary,
+and explicit below-baseline context that withholds exit roles. Nested return
+schema is v2. See
+[`return-context-review-2026-10-30.md`](return-context-review-2026-10-30.md).
+The pinned four-style run supports exits in Bold Italic u/и and Italic ш; real
+interior roles remain unresolved. Refusal controls љ/u.sc/f_h/f_f_h retain their
+limitations. Four focused overlays were inspected and 83 focused tests pass.
+
+Next: same-role comparison using counter profiles, adjoining widths and terminal
+context, excluding unresolved roles from positives. Include historical bad-splice
+and v/w negatives and independent family evaluation. Tail attachment attribution
+and upper arches remain unfinished; no repair solver or smoothing is authorised
+by these observations.
+
+## Same-role return retrieval — 2026-10-30
+
+Implemented role-gated counter/arm/direction/cap comparisons with explicit
+candidate, incompatible and unresolved decisions. See
+[`return-matching-review-2026-10-30.md`](return-matching-review-2026-10-30.md).
+The current four-style run finds one local candidate (Bold Italic u/и exits).
+Reconstructed historical Italic/Bold Italic bad-m interior regions are withheld
+as unresolved, not diagnosed as bad splices. Current v/w controls stay non-positive.
+Inspected the current positive/control proof and both historical reconstructions;
+96 focused tests pass, including a separately constructed rounded-cap family.
+
+Next mechanism: upper arches with explicit entry/interior/exit neighbour context,
+using the reconstructed bad-m case to test role diagnosis. Lower-return interior
+coverage, tail attachment attribution and independent real-family evaluation
+remain open. Stage 3 is not complete; retain these misses through reassessment
+rather than advancing to bowls, repairs or general smoothing.
+
+## Upper-arch roles and splice diagnosis — 2026-10-30
+
+Implemented upper-counter candidates and shared horizontal ink-band topology,
+with separate entry/interior/exit context and interior lower-return conflicts.
+See [`upper-arch-review-2026-10-30.md`](upper-arch-review-2026-10-30.md).
+Current Italic/Bold Italic n/m roles resolve; reconstructed historical bad-m now
+has an explained middle-leg finding in both styles. Italic verifies a terminal
+cap; Bold Italic instead has a return detour merging into the following stroke.
+Normal n/m and u/v/w controls receive no conflict findings. Six overlays were
+inspected and 112 focused tests pass.
+
+This supplies topology evidence, not normal-width compatibility, ancestry or
+positive upper-arch reuse recommendations. Upright serif roles, h's ascender
+context and the extra upper entry projection remain unresolved. Next qualification
+work is a region-labelled independent real-family corpus, retaining these misses
+and lower-return/tail limitations. Stage 3 remains incomplete; no repair solver,
+general smoothing or production changes follow from the two diagnosed cases.
+
+## Independent-family evaluation pass — 2026-10-30
+
+Completed a frozen-detector pass over 58 prelabelled regions in η/π/ω/ρ/r/s,
+with π/ω/ρ/s held out from detector development and η/r treated as related
+transfer probes. See
+[`arch-family-evaluation-2026-10-30.md`](arch-family-evaluation-2026-10-30.md).
+The held-out set has 10/12 detected turn regions, two misses, 18 candidate scope
+mismatches and no splice-conflict warnings on its normal drawings. Italic π's exit
+resolves; Bold Italic π's remains unresolved. Closed ρ bowls expose a missing
+scope distinction. All labels and detector thresholds were held fixed.
+
+Added region scoring with explicit misses, unresolved roles, ambiguous/unmatched
+observations and stale-source/scope checks. 63 focused tests pass; four plain,
+four labelled and eight detector proofs were inspected. This is a bounded
+evaluation result, not qualification: independent positive upper roles and new
+positive bad-splice examples remain absent.
+
+Next: separate candidate extrema from supported anatomical scope, beginning with
+closed-counter containment and then stem-versus-terminal context. Retain π's
+sampling-window miss, tail/ascender/serif gaps and the upper-entry projection.
+These inspected families become development evidence if used to tune the detector;
+use fresh held-out families for the next accuracy claim. No repairs or smoothing.
+
+2026-10-30 scope follow-up: closed-counter winding containment and explicit
+terminal-versus-stem evidence now accompany raw candidates. All eight development
+ρ observations are excluded from stem roles; terminal coverage remains partial.
+See [counter scope review](counter-scope-review-2026-10-30.md). Next: extend terminal
+evidence without treating failed stem support as terminal proof, and qualify on a
+fresh holdout; existing family labels are development evidence now.
+
+2026-10-30 terminal follow-up: reciprocal-cut closure now supplies terminal-scope
+evidence without relaxing stem checks or changing roles. The fresh labelled c/e,
+j and z evaluation retains 14 correct, two unresolved and six unobserved known-scope
+regions; f/o are transfer controls. Component-only j is explicitly missed. See
+[terminal evidence review](terminal-evidence-review-2026-10-30.md). Prioritize
+component-aware observation with provenance; investigate heavy-terminal limits
+separately. These evaluated families are development evidence for future tuning.

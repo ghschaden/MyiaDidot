@@ -68,8 +68,10 @@ def verified_declarations(manifest, font, report, source_digest):
             raise ValueError('Provenance glyph names must be strings')
         if target not in font or base not in font:
             raise ValueError('Unknown glyph in provenance declaration')
-        if declaration['operation'] not in ('component', 'span-copy'):
+        if declaration['operation'] not in ('component', 'span-copy', 'stroke-copy'):
             raise ValueError('Unsupported provenance operation')
+        if declaration['operation'] == 'stroke-copy' and (not isinstance(declaration.get('constituent'), str) or not declaration['constituent'].strip()):
+            raise ValueError('Stroke copies require a constituent instance name')
         landmarks = declaration['protected_landmarks']
         if not isinstance(landmarks, list):
             raise ValueError('Protected landmarks must be a list')
@@ -98,12 +100,18 @@ def verified_declarations(manifest, font, report, source_digest):
         else:
             a = by_geometry.get(part.get('base_geometry_id'))
             b = by_geometry.get(part.get('target_geometry_id'))
-            if not a or not b or a['glyph'] != base or b['glyph'] != target or a['relationship'] != 'curve-to-line' or b['relationship'] != 'curve-to-line':
+            if not a or not b or a['glyph'] != base or b['glyph'] != target or a['relationship'] != ('paired-stroke-boundaries' if declaration['operation'] == 'stroke-copy' else 'curve-to-line') or b['relationship'] != a['relationship']:
                 errors.append('span absent, ambiguous or not in the declared glyph')
             else:
-                pa = [transform.transformPoint((x+slant*y, y)) for x, y in a['span']]
-                pb = [(x+slant*y, y) for x, y in b['span']]
-                error = polyline_distance(pa, pb)
+                if declaration['operation'] == 'stroke-copy':
+                    from .reuse import stroke_error
+                    pa = [[transform.transformPoint((x+slant*y, y)) for x, y in edge] for edge in a['edges']]
+                    pb = [[(x+slant*y, y) for x, y in edge] for edge in b['edges']]
+                    error = stroke_error(pa, pb)
+                else:
+                    pa = [transform.transformPoint((x+slant*y, y)) for x, y in a['span']]
+                    pb = [(x+slant*y, y) for x, y in b['span']]
+                    error = polyline_distance(pa, pb)
                 measurements['bidirectional_sample_distance_units'] = error
                 measurements['tolerance_units'] = font.info.unitsPerEm*0.001
                 if error > measurements['tolerance_units']:
