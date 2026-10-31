@@ -25,7 +25,7 @@ def proof(font, names, records, path):
         lines.append(f'<path d="{pen.getCommands()}" transform="translate({x},{baseline}) scale({scale},{-scale})" fill="#333"/>')
         local = [r for r in records if r['glyph'] == name]
         for j, r in enumerate(local):
-            if r['relationship'] in ('lower-return', 'upper-arch'):
+            if r['relationship'] in ('lower-return', 'upper-arch', 'angular-junction'):
                 for turn_path in r['paths']:
                     pts = ' '.join(f'{x+(p[0]+slant*p[1])*scale},{baseline-p[1]*scale}' for p in turn_path)
                     lines.append(f'<polyline points="{pts}" fill="none" stroke="#007c91" stroke-width="2"/>')
@@ -118,4 +118,7 @@ def write_html(report, out):
     if 'upper_arches' in report:
         page += ('<h2>Upper arches</h2><p><a href="arches.svg">Arch and conflict overlay</a></p>'
                  '<pre>'+html.escape(json.dumps(report['upper_arches'], ensure_ascii=False, indent=2))+'</pre>')
+    if 'angular_junctions' in report:
+        page += ('<h2>Angular boundary observations</h2><p><a href="angular.svg">Arm and clearance overlay</a></p>'
+                 '<pre>'+html.escape(json.dumps(report['angular_junctions'], ensure_ascii=False, indent=2))+'</pre>')
     (out/'index.html').write_text(page)

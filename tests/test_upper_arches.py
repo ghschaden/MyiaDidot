@@ -156,3 +156,32 @@ def test_final_terminal_is_exit_without_interior_conflict():
     result = rows(fixture(final_terminal=True))
     assert [r['role'] for r in result] == ['entry', 'interior', 'exit']
     assert not any(r['conflicts'] for r in result)
+
+
+@pytest.mark.parametrize('mode', ['normal', 'reverse', 'shear', 'subdivide'])
+@pytest.mark.parametrize('kind', ['normal', 'detour', 'uncapped', 'exit'])
+def test_terminal_experiment_preserves_roles_caps_scope_and_conflicts(mode, kind):
+    import copy
+
+    from relationships.returns import lower_returns
+    font = fixture(mode, detour=kind in ('detour', 'uncapped'),
+                   cap=kind != 'uncapped', final_terminal=kind == 'exit')
+    outline = Outline()
+    font['arches'].draw(outline)
+    slant = math.tan(math.radians(-(font.info.italicAngle or 0)))
+    for observe in [lambda policy: upper_arches(outline.contours, 1000, slant, terminal_policy=policy),
+                    lambda policy: lower_returns(outline.contours, [], 1000, slant, terminal_policy=policy)]:
+        base = observe('baseline')
+        wide = copy.deepcopy(observe('wide-morphology'))
+        assert [r['geometry_id'] for r in base[0]] == [r['geometry_id'] for r in wide[0]]
+        # Every field outside reciprocal-terminal morphology must remain equal.
+        for old, new in zip(base[0], wide[0]):
+            if 'arm_context' in old:
+                for a, b in zip(old['arm_context'], new['arm_context']):
+                    assert b['terminal_context'].pop('baseline_status') == a['terminal_context']['status']
+                    b['terminal_context'] = a['terminal_context']
+            else:
+                for a, b in zip(old['terminal_context'], new['terminal_context']):
+                    assert b['baseline_status'] == a['status']
+                new['terminal_context'] = old['terminal_context']
+        assert base == wide

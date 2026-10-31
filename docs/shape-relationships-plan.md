@@ -414,3 +414,50 @@ pass. Default threshold remains 0.12 em. Next: expose a separately named opt-in
 reciprocal-terminal policy, with role/normal-cap invariance checks and frozen
 corpus replay. Missing branch observation still prevents general qualification;
 no repairs or smoothing.
+
+2026-10-31 opt-in terminal policy: exposed `wide-morphology` (0.15 em) separately
+from the default reciprocal-terminal and normal-cap windows (both 0.12 em).
+Experimental contexts retain baseline scope status; roles, caps, conflicts and
+matches remain baseline decisions. See [terminal policy replay](terminal-policy-review-2026-10-31.md).
+Next: investigate observation limits at the previously labelled but unobserved
+branch junctions, retaining ambiguous regions and provenance. The development and
+former holdout families are development evidence now; new anatomical accuracy
+claims need fresh families. Stage 3 role/context gaps remain open; no repairs or
+smoothing follow from the opt-in morphology policy.
+
+2026-10-31 branch-observation investigation: all ten selected k/x regions have
+local extrema. Nine fail the rounded-turn bend gate; the ambiguous Bold Italic
+x merge fails shoulder rise first (0.07373 versus 0.08 em). Added separate
+source-pinned discovery diagnostics and inspected four overlays; labels and
+thresholds stay fixed. See [branch observation review](branch-observation-review-2026-10-31.md).
+Next: a separate angular-junction observation channel, keeping rounded-return
+acceptance fixed and short/ambiguous merges explicit, before testing terminal
+closure at branches. These seeds supply no new branch anatomy or role evidence;
+keep fresh families reserved for qualification. No repair or smoothing.
+
+2026-10-31 angular observation pilot: added an opt-in separate angular-boundary
+channel, retaining both arm paths and sampled counter clearance. Nine selected
+regions reach the unchanged 0.08 em window; ambiguous Bold Italic x retains two
+short arms and seven sections. Angular paths stop at cumulative reversal without
+altering the rounded recognizer. Four enlarged and four whole-scope proofs were
+inspected; all forty archived rounded reports replay exactly. See
+[angular observation review](angular-observation-review-2026-10-31.md).
+Next: evaluate reciprocal terminal closure on fully observed angular arms in this
+separate scope, retaining both fixed policies, short/obstructed windows, ambiguous
+labels, closed counters and broad-lobe controls. Closure failure does not prove
+branch continuation; no roles, repairs or smoothing follow from arm visibility.
+Fresh-family qualification remains open.
+
+2026-10-31 angular terminal evaluation: optional closure now uses traced source
+occurrences on complete angular windows; short/obstructed contexts are withheld.
+Both fixed policies verify a stem-foot closure on Italic k's labelled nonterminal
+arm (1 mismatch, 15 nonterminal arms not promoted). Uncertain x labels remain
+unscored; Bold Italic x remains withheld. One wide-policy promotion on Bold Italic
+a is outside frozen angular boxes and stays unlabelled. The broad-lobe control
+retains its known wide-policy acceptance. See
+[angular terminal review](angular-terminal-review-2026-10-31.md).
+Next: attachment-context contrast for stem-foot versus free-terminal closure,
+with adjoining-stroke evidence before any classification gate. Preserve the
+mismatches and uncertainty; do not tune closure windows to hide them. Rounded
+reports/scores remain unchanged; fresh-family qualification, roles and repair
+acceptance are still open. No repair or smoothing.

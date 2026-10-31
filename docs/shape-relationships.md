@@ -477,3 +477,99 @@ unresolved terminals remain distinct. `not-promoted` does not prove nonterminal
 anatomy. Attachment labels are retained as reviewer context, never inferred roles.
 The full region evaluation retains unmatched detections and coverage accounting.
 See [the development contrast](terminal-anatomy-contrast-review-2026-10-30.md).
+
+### Opt-in reciprocal-terminal policy
+
+`--reciprocal-terminal-policy baseline` (the default) uses an independent
+0.12 em reciprocal-terminal span window. `wide-morphology` selects the reviewed
+0.15 em window. Both retain the same 0.35 em trace and 0.16 em rise limits,
+minimum rise, same-contour and reciprocal-cut checks. Normal caps continue to use
+`CONTEXT_POLICY`, including its 0.12 em width window.
+
+For example:
+
+```sh
+.venv/bin/python -I scripts/shape_relationships.py \
+  --lower-returns --upper-arches --boundary-glyphs a t k x \
+  --proof-glyphs a t k x --reciprocal-terminal-policy wide-morphology \
+  --out build/glyph-review/wide-terminal-policy
+```
+
+The Python `run`, `return_report`, `arch_report`, `lower_returns` and
+`upper_arches` functions accept keyword `terminal_policy='wide-morphology'`.
+Unknown names fail even for empty observation scopes. Nested `terminal_policy`
+metadata records the selected name and explicit limits. Experimental terminal
+contexts include `baseline_status`; anatomical scope consumes that baseline
+status. The experiment changes reciprocal-terminal evidence and its overlays,
+while roles, normal caps, conflicts, matches and whole-candidate scope remain
+baseline decisions. Terminal-arm evaluation consumes the selected morphology.
+
+The wider window admits the previously documented oversized synthetic lobe as
+well as real terminals. Missing branch observations still prevent general
+anatomical qualification. See [the policy replay](terminal-policy-review-2026-10-31.md)
+for the frozen development and former-holdout comparisons.
+
+### Discovery-gate diagnostics
+
+`lower_returns` and `upper_arches` accept an optional `diagnostics=[]` sink.
+It records each examined local extremum as `accepted` at `candidate` or `rejected`
+at the first failed gate: `ink-side`, `shoulders`, `bend`, `opening` or `clearance`.
+`point` is in deskewed font units for both observers; upper reflection is restored.
+Available `measurements` report bend degrees, required and achieved arm rise in
+em, opening in em, or the count of clear sections. Later gates are not implied to
+have passed. These traces do not change returned candidates or omissions.
+
+`relationships.candidate_diagnostics.candidate_diagnostics(font, names,
+source_sha256)` produces a separate `myiadidot-counter-diagnostics-v1` sidecar,
+including pinned contour/component provenance, seed IDs, policy, coordinate frame
+and incomplete-observation issues. The caller must verify the source hash.
+Rejected seeds are not terminal evidence or branch classifications. The
+[branch observation review](branch-observation-review-2026-10-31.md) traces the
+former holdout's ten unobserved branch regions without changing frozen labels.
+
+### Angular-boundary arm observations
+
+`--angular-junctions` / `run(..., angular=True)` adds a separate
+`myiadidot-angular-observations-v1` report under `angular_junctions`, using the
+existing `--boundary-glyphs` scope when specified. `angular.svg` and the HTML
+index show its arm paths and sampled clearances. The Python APIs are
+`relationships.angular.angular_observations(contours, em, slant=0)` and
+`angular_report(font, report, names)`.
+
+Angular seeds exceed the unchanged rounded-turn bend limit; they stay outside
+rounded-return results. The observer preserves both complete and partial paths,
+fixed 0.08 em reach, sampled clearance and closed-counter containment. It bounds
+reversal from the maximum rise reached by each arm using 0.003 em; this leaves
+the rounded recognizer's per-edge test unchanged. `visible-angular-arms` requires
+both arms to reach the fixed window, all eight clear sections and the existing
+minimum opening. Other cases remain `unresolved`, with partial measurements.
+
+All output geometry is deskewed; upper reflection is restored. Each report carries
+source-pinned contour/component origins and incomplete-observation issues.
+`role` remains unresolved and `terminal_evidence` is `not-evaluated`, including
+visible angular arms. Existing terminal-arm evaluation does not consume this new
+scope. See [the angular pilot](angular-observation-review-2026-10-31.md).
+
+### Opt-in terminal closure in angular scope
+
+`--angular-terminal-closure` enables the angular channel and tests reciprocal
+closure only for complete angular windows, using the selected
+`--reciprocal-terminal-policy`. The Python equivalents are
+`run(..., angular_terminals=True)` and `terminal_policy='baseline'` or
+`'wide-morphology'` on the angular observation/report functions. Leaving the policy
+unset preserves observation-only v1 output. Closure-enabled output is angular v2.
+
+Each row retains its arm-visibility status and unresolved role. Per-arm
+`terminal_context` reports verified/unresolved closure, or `not-evaluated` with
+empty measurements for an incomplete window. The shoulder's source occurrence
+is reconstructed from its retained arc, directed path length and contour direction;
+an inconsistent occurrence is withheld. Reflected upper traces and sections are
+restored to deskewed font coordinates. Existing purple proof traces show verified
+closure. Closed-counter containment is retained.
+
+`relationships.terminal_evaluation.evaluate_angular_terminal_arms` scores this
+scope independently against the original region boxes. Normal caps are unreported,
+withheld closure remains unknown, and ambiguous labels/assignments and unmatched
+angular observations are retained. Neither positive closure nor failure supplies
+a branch or attachment role. The [angular terminal review](angular-terminal-review-2026-10-31.md)
+records the stem-foot mismatch in Italic k under both fixed policies.

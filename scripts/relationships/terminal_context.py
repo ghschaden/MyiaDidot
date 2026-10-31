@@ -3,10 +3,38 @@
 import numpy as np
 
 TERMINAL_POLICY = {'section': 'reciprocal horizontal first-hit ink interval',
-                   'limits': 'Existing context_policy cap_trace_em/cap_height_em/cap_width_em',
+                   'limits': 'Independent reciprocal-terminal window; normal caps retain context_policy',
+                   'name': 'baseline', 'cap_trace_em': .35, 'cap_height_em': .16,
+                   'cap_width_em': .12,
                    'minimum_rise_em': .005,
                    'use_for_roles': False,
                    'diagnostics': 'terminal-window-checks-v1; unmeasured limits are not passes'}
+
+
+TERMINAL_POLICIES = ('baseline', 'wide-morphology')
+
+
+def terminal_policy(name='baseline'):
+    """Return a fresh named policy; arbitrary windows are not a public option."""
+    if name not in TERMINAL_POLICIES:
+        raise ValueError(f'Unknown reciprocal-terminal policy: {name}')
+    return {**TERMINAL_POLICY, 'name': name,
+            'cap_width_em': .15 if name == 'wide-morphology' else .12}
+
+
+def reciprocal_terminal_context(field, ci, arc, direction, em, policy='baseline'):
+    limits = terminal_policy(policy)
+    baseline = terminal_context(field, ci, arc, direction, em, TERMINAL_POLICY)
+    if policy == 'baseline':
+        return baseline
+    result = terminal_context(field, ci, arc, direction, em, limits)
+    # The experiment supplies morphology only. Scope remains a baseline decision,
+    # as do roles, conflicts and normal caps, which never consume this status.
+    return {**result, 'baseline_status': baseline['status']}
+
+
+def scope_terminal_supported(context):
+    return context.get('baseline_status', context['status']) == 'verified-contour-terminal'
 
 
 def terminal_context(field, ci, arc, direction, em, limits):

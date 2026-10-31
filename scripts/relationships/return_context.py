@@ -3,7 +3,7 @@
 import numpy as np
 
 from .geometry import length, sub
-from .terminal_context import terminal_context
+from .terminal_context import reciprocal_terminal_context
 
 CONTEXT_POLICY = {'section_step_em': .015, 'section_count': 5,
                   'cap_trace_em': .35, 'cap_height_em': .16,
@@ -22,7 +22,7 @@ def locate(poly, point):
     return float(poly.starts[k]+t[k]*poly.lengths[k])
 
 
-def arm_context(field, ci, path, bottom, em):
+def arm_context(field, ci, path, bottom, em, *, terminal_policy='baseline'):
     poly = field.polygons[ci]
     shoulder = path[-1]
     arc = locate(poly, shoulder)
@@ -72,7 +72,7 @@ def arm_context(field, ci, path, bottom, em):
     below = low < below_threshold
     return {'status': 'supported-local-band' if supported else 'unresolved',
             'sections': samples, 'failures': reasons, 'cap_status': cap,
-            'terminal_context': terminal_context(field, ci, arc, direction, em, CONTEXT_POLICY),
+            'terminal_context': reciprocal_terminal_context(field, ci, arc, direction, em, terminal_policy),
             'cap_trace': trace, 'below_floor_context': 'present' if below else 'not-observed',
             'cap_return_distance_units': cap_return_distance,
             'below_floor_depth_units': bottom[1]-low,

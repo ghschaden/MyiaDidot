@@ -15,7 +15,8 @@ from .identity import digest
 from .observation import observed_outline
 from .return_context import CONTEXT_POLICY, locate
 from .returns import RETURN_POLICY, lower_returns
-from .terminal_context import TERMINAL_POLICY
+from .terminal_context import scope_terminal_supported
+from .terminal_context import terminal_policy as resolve_terminal_policy
 
 ARCH_POLICY = {'depth_em': .32, 'trace_step_em': .002, 'trace_limit_em': 1.2,
                'terminal_trace_depth_em': .6,
@@ -85,10 +86,19 @@ def reflect_terminal(context):
     return result
 
 
-def upper_arches(contours, em, slant=0):
+def upper_arches(contours, em, slant=0, *, terminal_policy='baseline', diagnostics=None):
+    resolve_terminal_policy(terminal_policy)
     contours = [[tuple((x-slant*y, y) for x, y in s) for s in c] for c in contours if c]
     reflected = [[tuple((x, -y) for x, y in s) for s in c] for c in contours]
-    candidates, notes = lower_returns(reflected, [], em)
+    traced = [] if diagnostics is not None else None
+    candidates, notes = lower_returns(reflected, [], em, terminal_policy=terminal_policy, diagnostics=traced)
+    if diagnostics is not None:
+        for item in traced:
+            restored = {**item, 'point': (item['point'][0], -item['point'][1])}
+            if 'arms' in item:
+                restored['arms'] = [{**arm, 'path': [(x, -y) for x, y in arm['path']]} for arm in item['arms']]
+            restored.pop('geometry_id', None)  # Lower identities belong to the reflected frame.
+            diagnostics.append(restored)
     if not contours:
         return [], notes
     field = Sections(contours, em)
@@ -142,13 +152,14 @@ def upper_arches(contours, em, slant=0):
             row['reason'] = 'Incomplete neighbour or terminal evidence; graph position alone does not establish an exit.'
     conflicts = terminal_links(contours, rows, em)
     for row in rows:
-        classify_scope(row, row['role'] != 'unresolved' or all(row['neighbours']), [cap or c['status'] == 'verified-contour-terminal'
+        classify_scope(row, row['role'] != 'unresolved' or all(row['neighbours']), [cap or scope_terminal_supported(c)
                         for cap, c in zip(row['terminal_caps'], row['terminal_context'])])
         row['conflicts'] = [c for c in conflicts if c['arch'] == row['geometry_id']]
     return rows, [{**n, 'bottom': (n['bottom'][0], -n['bottom'][1])} if 'bottom' in n else n for n in notes]
 
 
-def arch_report(font, report, names):
+def arch_report(font, report, names, *, terminal_policy='baseline'):
+    selected_terminal_policy = resolve_terminal_policy(terminal_policy)
     em = font.info.unitsPerEm
     slant = math.tan(math.radians(-(font.info.italicAngle or 0)))
     results, omissions = [], []
@@ -157,7 +168,7 @@ def arch_report(font, report, names):
         outline = observed_outline(font, name, report['source_identity'])
         observations[name] = {k: v for k, v in outline.items() if k != 'contours'}
         omissions.extend({'glyph': name, **issue} for issue in outline['issues'])
-        rows, notes = upper_arches(outline['contours'], em, slant)
+        rows, notes = upper_arches(outline['contours'], em, slant, terminal_policy=terminal_policy)
         for row in rows:
             row.update(glyph=name, source_sha256=report['source_identity'],
                        contour_origin=outline['origins'][row['contour']])
@@ -173,7 +184,7 @@ def arch_report(font, report, names):
         if not rows:
             omissions.append({'glyph': name, 'reason': 'No upper-counter candidate; absence is not proof of no arch.'})
     return {'format': 'myiadidot-upper-arches-v3', 'policy': ARCH_POLICY, 'candidate_policy': RETURN_POLICY,
-            'cap_policy': CONTEXT_POLICY, 'scope_policy': SCOPE_POLICY, 'terminal_policy': TERMINAL_POLICY, 'results': results,
+            'cap_policy': CONTEXT_POLICY, 'scope_policy': SCOPE_POLICY, 'terminal_policy': selected_terminal_policy, 'results': results,
             'omissions': omissions, 'scope': sorted(names), 'observations': observations,
             'limitations': ['Horizontal ink intervals establish local shared-stem topology, not normal width compatibility or ancestry.',
                             'Components expand with contour provenance, without Boolean union; tail attribution and independent real-family accuracy remain unsupported.']}

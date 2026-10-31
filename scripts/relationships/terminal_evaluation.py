@@ -28,7 +28,7 @@ def arm_evidence(row, detector, side):
             'window_checks': terminal.get('window_checks', {})}
 
 
-def evaluate_terminal_arms(corpus, report, em, slant=0):
+def _evaluate_terminal_arms(corpus, report, em, slant=0, *, evidence_reader=arm_evidence):
     """Use existing source/split/region validation and retain all coverage gaps.
 
     Optional terminal_arms labels are anatomical judgements for left/right arms.
@@ -60,7 +60,7 @@ def evaluate_terminal_arms(corpus, report, em, slant=0):
             ambiguous = len(matched) != 1
         for side, label in enumerate(('left', 'right')):
             expected = region['terminal_arms'][label]
-            evidence = arm_evidence(matched[0], region['detector'], side) if len(matched) == 1 and not ambiguous else None
+            evidence = evidence_reader(matched[0], region['detector'], side) if len(matched) == 1 and not ambiguous else None
             if ambiguous:
                 outcome = 'ambiguous-assignment'
             elif not observations:
@@ -87,3 +87,37 @@ def evaluate_terminal_arms(corpus, report, em, slant=0):
             'limitations': ['Not-promoted means no positive terminal evidence, not proven nonterminal anatomy.',
                             'A local terminal does not establish an exit or a compatible attachment role.',
                             'Labels are reviewer judgements; ambiguous and missing observations are not successes.']}
+
+
+def evaluate_terminal_arms(corpus, report, em, slant=0):
+    return _evaluate_terminal_arms(corpus, report, em, slant)
+
+
+def angular_arm_evidence(row, detector, side):
+    contexts = row.get('terminal_context', [])
+    context = contexts[side] if len(contexts) == 2 else {}
+    status = context.get('status')
+    observed = True if status == 'verified-contour-terminal' else False if status == 'unresolved' else None
+    return {'observed': observed, 'normal_cap': None, 'reciprocal_closure': status,
+            'reason': context.get('reason'), 'window_checks': context.get('window_checks', {})}
+
+
+def evaluate_angular_terminal_arms(corpus, report, em, slant=0):
+    """Score the angular scope independently using the same frozen region boxes.
+
+    A local projection reuses region/source validation and assignment accounting;
+    original rounded results and scores are not extended or overwritten.
+    """
+    angular = report['angular_junctions']
+    if angular.get('source_sha256') != report['source']['sha256']:
+        raise ValueError('Stale angular observation source')
+    projected = dict(report)
+    for detector, point_key in [('lower_returns', 'bottom'), ('upper_arches', 'crown')]:
+        projected[detector] = {'scope': angular['scope'],
+                               'results': [{**r, point_key: r['point']} for r in angular['results']
+                                           if r['seed_detector'] == detector]}
+    result = _evaluate_terminal_arms(corpus, projected, em, slant, evidence_reader=angular_arm_evidence)
+    result.update(format='myiadidot-angular-terminal-arm-evaluation-v1', scope='angular-boundaries',
+                  terminal_policy=angular.get('terminal_policy'))
+    result['limitations'].append('Angular observations and closure are scored separately from rounded relationships; normal caps are not evaluated.')
+    return result

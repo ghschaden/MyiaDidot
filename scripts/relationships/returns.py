@@ -13,14 +13,16 @@ from .geometry import angle, length, sub
 from .identity import digest
 from .return_context import CONTEXT_POLICY, arm_context, resolve_context
 from .return_matching import match_returns
-from .terminal_context import TERMINAL_POLICY
+from .terminal_context import scope_terminal_supported
+from .terminal_context import terminal_policy as resolve_terminal_policy
 
 RETURN_POLICY = {'rise_em': .08, 'minimum_opening_em': .015,
                  'maximum_backtrack_em': .003, 'neighbour_distance_em': .06,
                  'minimum_stem_length_em': .10, 'corner_degrees': 25.0}
 
 
-def lower_returns(contours, pairs, em, slant=0):
+def lower_returns(contours, pairs, em, slant=0, *, terminal_policy='baseline', diagnostics=None):
+    resolve_terminal_policy(terminal_policy)
     contours = [[tuple((x-slant*y, y) for x, y in s) for s in c] for c in contours if c]
     if not contours:
         return [], [{'reason': 'No complete closed contours available for observation.'}]
@@ -40,34 +42,59 @@ def lower_returns(contours, pairs, em, slant=0):
                 continue
             q = points[j % count]
             bottom = ((p[0]+q[0])/2, p[1])
+            diagnostic = {'contour': ci, 'point': bottom, 'status': 'rejected',
+                          'stage': 'ink-side', 'measurements': {}}
+            if diagnostics is not None:
+                diagnostics.append(diagnostic)
             probe = em*.001
             if field.ink((bottom[0], bottom[1]+probe)) or not field.ink((bottom[0], bottom[1]-probe)):
                 continue  # Outer bottom, closed contour exterior, or ambiguous ink.
+            bend = angle(sub(p, points[(i-1) % count]), sub(points[(j+1) % count], q)) if i == j else max(
+                angle(sub(p, points[(i-1) % count]), sub(q, p)),
+                angle(sub(q, p), sub(points[(j+1) % count], q)))
+            diagnostic['measurements']['bend_degrees'] = bend
+            diagnostic['stage'] = 'shoulders'
+            diagnostic['measurements']['required_rise_em'] = RETURN_POLICY['rise_em']
+            diagnostic['measurements']['arm_rise_em'] = []
+            diagnostic['arms'] = []
             paths = []
             for start, direction in [(i, -1), (j % count, 1)]:
                 path = [points[start]]
+                reached = False
+                stop = 'contour-exhausted'
                 for k in range(1, count):
                     a, b = path[-1], points[(start+direction*k) % count]
                     if b[1] < a[1]-em*RETURN_POLICY['maximum_backtrack_em']:
+                        stop = 'backtrack'
                         break
                     if b[1] >= bottom[1]+em*RETURN_POLICY['rise_em']:
                         t = (bottom[1]+em*RETURN_POLICY['rise_em']-a[1])/(b[1]-a[1])
                         path.append((a[0]+t*(b[0]-a[0]), a[1]+t*(b[1]-a[1])))
                         paths.append(path)
+                        reached, stop = True, 'window-reached'
                         break
                     path.append(b)
+                rise = max(a[1]-bottom[1] for a in path)/em
+                diagnostic['measurements']['arm_rise_em'].append(rise)
+                if diagnostics is not None:
+                    diagnostic['arms'].append({'path': path, 'reaches_window': reached,
+                                               'achieved_rise_em': rise, 'stop': stop,
+                                               'start_arc_units': float(poly.starts[start]),
+                                               'source_direction': direction})
             if len(paths) != 2:
                 notes.append({'contour': ci, 'bottom': bottom, 'reason': 'Turn does not reach both observation shoulders.'})
                 continue
             paths.sort(key=lambda path: path[-1][0])
             left, right = paths
             opening = right[-1][0]-left[-1][0]
-            bend = angle(sub(p, points[(i-1) % count]), sub(points[(j+1) % count], q)) if i == j else max(
-                angle(sub(p, points[(i-1) % count]), sub(q, p)),
-                angle(sub(q, p), sub(points[(j+1) % count], q)))
+            diagnostic['stage'] = 'bend'
+            diagnostic['measurements']['opening_em'] = opening/em
+            diagnostic['measurements']['maximum_bend_degrees'] = RETURN_POLICY['corner_degrees']
             if bend > RETURN_POLICY['corner_degrees']:
                 notes.append({'contour': ci, 'bottom': bottom, 'reason': 'Angular lower junction; rounded-return role withheld.'})
                 continue
+            diagnostic['stage'] = 'opening'
+            diagnostic['measurements']['minimum_opening_em'] = RETURN_POLICY['minimum_opening_em']
             if opening < em*RETURN_POLICY['minimum_opening_em']:
                 notes.append({'contour': ci, 'bottom': bottom, 'reason': 'Counter opening too narrow or arms reversed.'})
                 continue
@@ -78,6 +105,7 @@ def lower_returns(contours, pairs, em, slant=0):
                         t = (y-a[1])/(b[1]-a[1])
                         return a[0]+t*(b[0]-a[0])
                 return None
+            diagnostic['stage'] = 'clearance'
             sections = []
             for k in range(1, 9):
                 y = bottom[1]+em*RETURN_POLICY['rise_em']*k/8
@@ -85,6 +113,7 @@ def lower_returns(contours, pairs, em, slant=0):
                 if x0 is None or x1 is None or x1 <= x0 or any(field.ink((x0+(x1-x0)*t/10, y)) for t in range(1, 10)):
                     break
                 sections.append({'y': y, 'left': x0, 'right': x1, 'clearance_units': x1-x0})
+            diagnostic['measurements']['clear_sections'] = len(sections)
             if len(sections) != 8:
                 notes.append({'contour': ci, 'bottom': bottom, 'reason': 'Counter cross-sections interrupted or ambiguous.'})
                 continue
@@ -105,9 +134,10 @@ def lower_returns(contours, pairs, em, slant=0):
                 neighbours.append(sorted(candidates, key=lambda c: (c['distance_units'], c['geometry_id'])))
             supported = all(len(n) == 1 for n in neighbours) and neighbours[0][0]['geometry_id'] != neighbours[1][0]['geometry_id']
             geometry = {'bottom': [round(v, 6) for v in bottom], 'shoulders': [[round(v, 6) for v in path[-1]] for path in paths]}
+            diagnostic.update(status='accepted', stage='candidate', geometry_id='turn-'+digest(geometry)[:24])
             rows.append({'geometry_id': 'turn-'+digest(geometry)[:24], 'contour': ci,
                          'counter_topology': counter_topology(field, ci, bottom, em),
-                         'arm_context': [arm_context(field, ci, path, bottom, em) for path in paths],
+                         'arm_context': [arm_context(field, ci, path, bottom, em, terminal_policy=terminal_policy) for path in paths],
                          'bottom': bottom, 'paths': paths, 'direction': 'lower-return',
                          'status': 'supported-local-turn' if supported else 'unresolved',
                          'role': 'unresolved', 'neighbours': neighbours, 'counter_sections': sections,
@@ -132,12 +162,13 @@ def lower_returns(contours, pairs, em, slant=0):
     resolve_context(rows, em)
     for row in rows:
         classify_scope(row, row['status'] == 'supported-local-turn',
-                       [c['cap_status'] == 'short-contour-cap' or c['terminal_context']['status'] == 'verified-contour-terminal'
+                       [c['cap_status'] == 'short-contour-cap' or scope_terminal_supported(c['terminal_context'])
                         for c in row['arm_context']])
     return rows, notes
 
 
-def return_report(font, report, names):
+def return_report(font, report, names, *, terminal_policy='baseline'):
+    selected_terminal_policy = resolve_terminal_policy(terminal_policy)
     from .boundaries import paired_boundaries
     from .identity import identify
     from .observation import observed_outline
@@ -161,7 +192,7 @@ def return_report(font, report, names):
             observed_strokes.extend(pairs)
             pairs = [p for p in pairs if p['identity_status'] == 'unique']
             omissions.extend({'glyph': name, **note} for note in pair_notes)
-        rows, notes = lower_returns(outline['contours'], pairs, em, slant)
+        rows, notes = lower_returns(outline['contours'], pairs, em, slant, terminal_policy=terminal_policy)
         for row in rows:
             row.update(glyph=name, source_sha256=report['source_identity'],
                        contour_origin=outline['origins'][row['contour']])
@@ -174,7 +205,7 @@ def return_report(font, report, names):
         omissions.extend({'glyph': name, **note} for note in notes)
         if not rows:
             omissions.append({'glyph': name, 'reason': 'No supported lower-counter candidate found; absence is not proof of no return.'})
-    return {'format': 'myiadidot-lower-returns-v4', 'policy': RETURN_POLICY, 'context_policy': CONTEXT_POLICY, 'scope_policy': SCOPE_POLICY, 'terminal_policy': TERMINAL_POLICY,
+    return {'format': 'myiadidot-lower-returns-v4', 'policy': RETURN_POLICY, 'context_policy': CONTEXT_POLICY, 'scope_policy': SCOPE_POLICY, 'terminal_policy': selected_terminal_policy,
             'scope': sorted(names), 'results': results, 'omissions': omissions,
             'observed_strokes': observed_strokes, 'observations': observations,
             'matches': match_returns(results, em, font.info.styleName),

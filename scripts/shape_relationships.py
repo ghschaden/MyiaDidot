@@ -10,6 +10,7 @@ import ufoLib2
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_support import content_hash
+from relationships.angular import angular_report
 from relationships.arches import arch_report
 from relationships.discovery import analyse
 from relationships.geometry import POLICY as POLICY
@@ -27,6 +28,8 @@ from relationships.recognisers import transitions as transitions
 from relationships.reporting import proof, write_html
 from relationships.returns import return_report
 from relationships.reuse import constituent_reuse
+from relationships.terminal_context import TERMINAL_POLICIES
+from relationships.terminal_context import terminal_policy as resolve_terminal_policy
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -41,7 +44,9 @@ def safe_output(path):
     return path
 
 
-def run(source, out, query=None, proof_names=None, *, span=None, limit=20, declarations=None, fragments=None, paired=False, boundary_glyphs=None, proof_relationship=None, reuse=False, returns=False, arches=False):
+def run(source, out, query=None, proof_names=None, *, span=None, limit=20, declarations=None, fragments=None, paired=False, boundary_glyphs=None, proof_relationship=None, reuse=False, returns=False, arches=False, terminal_policy='baseline', angular=False, angular_terminals=False):
+    resolve_terminal_policy(terminal_policy)
+    angular = angular or angular_terminals
     source, out = Path(source).resolve(), safe_output(out)
     if source.is_relative_to(out) or out.is_relative_to(source):
         raise ValueError('Source and output must be disjoint')
@@ -59,9 +64,11 @@ def run(source, out, query=None, proof_names=None, *, span=None, limit=20, decla
     if reuse:
         report['constituent_reuse'] = constituent_reuse(report, font.info.unitsPerEm)
     if returns:
-        report['lower_returns'] = return_report(font, report, report['paired_boundary_scope'])
+        report['lower_returns'] = return_report(font, report, report['paired_boundary_scope'], terminal_policy=terminal_policy)
     if arches:
-        report['upper_arches'] = arch_report(font, report, report['paired_boundary_scope'])
+        report['upper_arches'] = arch_report(font, report, report['paired_boundary_scope'], terminal_policy=terminal_policy)
+    if angular:
+        report['angular_junctions'] = angular_report(font, report, boundary_glyphs if boundary_glyphs is not None else font.keys(), terminal_policy=terminal_policy if angular_terminals else None)
     if fragments:
         fragment_bytes = Path(fragments).read_bytes()
         report['fragment_evidence'] = fragment_evidence(json.loads(fragment_bytes), font, font.info.styleName)
@@ -87,6 +94,8 @@ def run(source, out, query=None, proof_names=None, *, span=None, limit=20, decla
         proof(font, names, [{**r, 'relationship': 'lower-return'} for r in report['lower_returns']['results']], out/'returns.svg')
     if arches:
         proof(font, names, [{**r, 'relationship': 'upper-arch'} for r in report['upper_arches']['results']], out/'arches.svg')
+    if angular:
+        proof(font, names, [{**r, 'relationship': 'angular-junction'} for r in report['angular_junctions']['results']], out/'angular.svg')
     report['proof_glyphs'] = names
     report['source_preserved'] = content_hash(source) == before
     if not report['source_preserved']:
@@ -106,6 +115,10 @@ def main():
     parser.add_argument('--provenance', type=Path, help='Source-pinned declaration sidecar')
     parser.add_argument('--fragments', type=Path, help='Existing exact shape-grammar JSON, verified before use')
     parser.add_argument('--constituent-reuse', action='store_true', help='Compare verified constituent strokes; enables paired boundaries')
+    parser.add_argument('--reciprocal-terminal-policy', choices=TERMINAL_POLICIES, default='baseline',
+                        help='Reciprocal terminal morphology only: baseline 0.12 em or opt-in wide-morphology 0.15 em; roles, scope and normal caps stay baseline')
+    parser.add_argument('--angular-terminal-closure', action='store_true', help='Evaluate reciprocal closure on complete angular windows; enables --angular-junctions and uses --reciprocal-terminal-policy')
+    parser.add_argument('--angular-junctions', action='store_true', help='Separate angular-boundary arm observation; no branch, terminal or role qualification')
     parser.add_argument('--upper-arches', action='store_true', help='Upper-counter roles and interior return conflicts')
     parser.add_argument('--lower-returns', action='store_true', help='Pilot lower counter turns and observed stem neighbours; enables paired boundaries')
     parser.add_argument('--paired-boundaries', action='store_true', help='Enable sampled paired-boundary recognition')
@@ -113,7 +126,7 @@ def main():
     parser.add_argument('--proof-relationship', choices=['curve-to-line', 'base-mark-attachment', 'paired-stroke-boundaries'])
     parser.add_argument('--proof-glyphs', nargs='+', help='Glyphs for focused source-outline proof')
     args = parser.parse_args()
-    report = run(args.ufo, args.out, args.related, args.proof_glyphs, span=args.span, limit=args.limit, declarations=args.provenance, fragments=args.fragments, paired=args.paired_boundaries, boundary_glyphs=args.boundary_glyphs, proof_relationship=args.proof_relationship, reuse=args.constituent_reuse, returns=args.lower_returns, arches=args.upper_arches)
+    report = run(args.ufo, args.out, args.related, args.proof_glyphs, span=args.span, limit=args.limit, declarations=args.provenance, fragments=args.fragments, paired=args.paired_boundaries, boundary_glyphs=args.boundary_glyphs, proof_relationship=args.proof_relationship, reuse=args.constituent_reuse, returns=args.lower_returns, arches=args.upper_arches, terminal_policy=args.reciprocal_terminal_policy, angular=args.angular_junctions, angular_terminals=args.angular_terminal_closure)
     print(json.dumps({'summary': report['summary'], 'relationships': len(report['relationships']),
                       'omissions': len(report['omissions']), 'source_preserved': report['source_preserved'],
                       'index': str(args.out/'index.html')}, indent=2))

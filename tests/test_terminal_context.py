@@ -121,3 +121,45 @@ def test_preclosure_refusal_has_no_window_claims(monkeypatch):
     result = terminal_context(field, 0, arc, direction, 1000, CONTEXT_POLICY)
     assert result['status'] == 'unresolved'
     assert result['window_checks'] == {}
+
+
+@pytest.mark.parametrize('reverse', [False, True])
+def test_named_wide_policy_is_morphology_only_and_preserves_default(reverse):
+    from relationships.terminal_context import (
+        reciprocal_terminal_context,
+        scope_terminal_supported,
+        terminal_policy,
+    )
+    field, arc, direction = fixture(reverse, width=140)
+    baseline = reciprocal_terminal_context(field, 0, arc, direction, 1000)
+    assert baseline == terminal_context(field, 0, arc, direction, 1000, CONTEXT_POLICY)
+    wide = reciprocal_terminal_context(field, 0, arc, direction, 1000, 'wide-morphology')
+    assert baseline['status'] == wide['baseline_status'] == 'unresolved'
+    assert wide['status'] == 'verified-contour-terminal'
+    assert not scope_terminal_supported(wide)
+    assert not scope_terminal_supported(reflect_terminal(wide))
+    assert wide['trace'] == baseline['trace']
+    assert terminal_policy()['cap_width_em'] == CONTEXT_POLICY['cap_width_em'] == .12
+    assert terminal_policy('wide-morphology')['use_for_roles'] is False
+    limits = terminal_policy('wide-morphology')
+    limits['cap_width_em'] = 1
+    assert terminal_policy('wide-morphology')['cap_width_em'] == .15
+
+
+@pytest.mark.parametrize('height,width', [(400, 90), (200, 170)])
+def test_wide_policy_retains_other_limits(height, width):
+    from relationships.terminal_context import reciprocal_terminal_context
+    field, arc, direction = fixture(height=height, width=width)
+    assert reciprocal_terminal_context(field, 0, arc, direction, 1000,
+                                       'wide-morphology')['status'] == 'unresolved'
+
+
+def test_unknown_policy_is_rejected_even_without_observations():
+    from relationships.arches import upper_arches
+    from relationships.returns import lower_returns
+    from relationships.terminal_context import terminal_policy
+    for call in [lambda: terminal_policy('typo'),
+                 lambda: lower_returns([], [], 1000, terminal_policy='typo'),
+                 lambda: upper_arches([], 1000, terminal_policy='typo')]:
+        with pytest.raises(ValueError, match='Unknown reciprocal-terminal policy'):
+            call()
