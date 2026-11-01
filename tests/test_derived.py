@@ -5,6 +5,7 @@ must find it. (Their findings on the sources themselves are held by
 test_quality.py, with the other quality kinds.)"""
 
 import copy
+import json
 import math
 import sys
 
@@ -14,7 +15,7 @@ from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(ROOT / "scripts" / "quality"))
-from derived import derived
+from derived import derived, report
 
 
 def test_roman_in_the_italic_is_found():
@@ -57,3 +58,18 @@ def test_attachment_style_uses_both_inputs_and_still_finds_roman_ink():
     rec.replay(TransformPen(glyph.getPen(), (1, 0, slant, 1, 0, 0)))
     found = derived(italic, regular=regular, only={glyph.name})[0]
     assert any(kind == "style" for _, kind, _, _ in found)
+
+
+def test_report_is_plain_repeatable_and_tells_a_changed_glyph():
+    path = SOURCES / "MyiaDidot-BoldItalic.ufo"
+    font = ufoLib2.Font.open(path)
+    only = {"uni019C", "uni0289"}
+    made = report(font, path, *derived(font, path, only))
+    assert json.loads(json.dumps(made)) == made
+    assert made == report(font, path, *derived(font, path, only))
+    assert (made["glyphs"]["uni019C"]["op"], made["glyphs"]["uni019C"]["source"]) == ("twin", "U")
+    assert (made["glyphs"]["uni0289"]["op"], made["glyphs"]["uni0289"]["dx"]) == ("bar", 0)
+    font["U"].width += 1
+    moved = report(font, path, *derived(font, path, only))
+    assert moved["glyphs"]["uni019C"]["source_sha256"] != made["glyphs"]["uni019C"]["source_sha256"]
+    assert moved["glyphs"]["uni019C"]["glyph_sha256"] == made["glyphs"]["uni019C"]["glyph_sha256"]

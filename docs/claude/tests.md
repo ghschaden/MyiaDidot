@@ -29,7 +29,8 @@ Moved from CLAUDE.md (its ground rules apply).
   its source glyph), whole units, alignment zones, stem weights, the
   italic's slant, accent gaps, the Bold's widths, and derived letters
   against their recipe's base, `scripts/quality/derived.py`: base kept,
-  stem, whole advance, an italic one made from the roman; glyphs darker or
+  stem, whole advance, an italic one made from the roman (`--json` for
+  other tools: measures, findings, outline hashes); glyphs darker or
   lighter than their kind, `scripts/quality/strokes.py`: each main stroke
   against n/o, H/O, h.sc/o.sc, ±10 %; `quality*.txt`, regenerate
   with `update_test_data.py --quality`) against each style's known findings (`glyph-lint*.txt`; regenerate

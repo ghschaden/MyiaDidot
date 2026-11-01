@@ -27,9 +27,16 @@ The findings (kinds for checks.py):
 
 Only glyphs that are still the recipe's work are checked: in the Italic
 and Bold Italic those whose org.myiadidot.italicSource is "derived".
+
+--json PATH writes the measures and findings for other tools, each glyph
+and base with a hash of its outline, so that a stale report can be told.
+The recipe is the one the check reads: derive.py's, or the Italic's; the
+Bold Italic's own (ITALIC_BOLD_RECIPES) are not among them.
 """
 
 import collections
+import hashlib
+import json
 import math
 import sys
 from pathlib import Path
@@ -327,6 +334,32 @@ def derived(font, path=None, only=None, regular=None):
     return out, metrics
 
 
+def outline_hash(font, name):
+    """A glyph's advance and decomposed outline, hashed."""
+    rec = DecomposingRecordingPen(font)
+    font[name].draw(rec)
+    return hashlib.sha256(json.dumps([font[name].width, rec.value]).encode()).hexdigest()
+
+
+def report(font, path, found, metrics):
+    """The findings and measures as plain data: the same sources give the
+    same report."""
+    from build_support import content_hash
+
+    def plain(v):
+        if isinstance(v, (tuple, list)):
+            return [plain(x) for x in v]
+        return round(v, 4) if isinstance(v, float) else v
+
+    glyphs = {n: {**{k: plain(v) for k, v in m.items()}, "glyph_sha256": outline_hash(font, n),
+                  "source_sha256": outline_hash(font, m["source"])}
+              for n, m in metrics.items()}
+    return {"format": "myiadidot-derived-v1", "ufo": Path(path).name, "ufo_sha256": content_hash(path),
+            "limits": {"tol": TOL, "kept": KEPT, "stem_off": list(STEM_OFF), "step": STEP},
+            "glyphs": glyphs,
+            "findings": [dict(zip(("glyph", "kind", "where", "detail"), f)) for f in found]}
+
+
 def main():
     import argparse
 
@@ -334,9 +367,13 @@ def main():
     ap.add_argument("ufo")
     ap.add_argument("glyphs", nargs="*")
     ap.add_argument("--all", action="store_true", help="print every glyph's measures")
+    ap.add_argument("--json", type=Path, help="write the measures and findings here")
     args = ap.parse_args()
     font = ufoLib2.Font.open(args.ufo)
     found, metrics = derived(font, args.ufo, set(args.glyphs) or None)
+    if args.json:
+        args.json.write_text(json.dumps(report(font, args.ufo, found, metrics), indent=1,
+                                        sort_keys=True, ensure_ascii=False) + "\n")
     if args.all:
         for n, m in sorted(metrics.items(), key=lambda kv: kv[1]["exact"]):
             st = m["stem"]
