@@ -186,7 +186,8 @@ ITALIC_BOLD_REBUILD = {
     "uni0496": "Җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the ball ran into the descender",
     "uni0497": "җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, a stub at the descender",
     "uni049B": "қ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, crumbs of the cut at the descender",
-    "uni04A3": "ң: emboldened, a pinhole where the descender's curl meets its stroke",
+    "uni04A3": "ң: its own recipe (ITALIC_BOLD_RECIPES); emboldened, a pinhole where the descender's curl meets its stroke",
+    "uni0270": "ɰ: its own recipe (ITALIC_BOLD_RECIPES): ɯ, ɥ's descender",
     "uni2C64": "Ɽ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
     "uni01AE": "Ʈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
     "uni027D.sc": "ɽ.sc: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
@@ -331,6 +332,18 @@ ITALIC_BOLD_RECIPES = {
                                 [("line", ((765, 210), (771, -150), 255), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 771, -150, 255), "dir": 270, "turn": "cw", "r": (170, 145),
                                            "sweep": 170, "ball": 122, "t": (255, 55)}, (0, 0), (1, 1, 0, 0))])),
+    # ң: the Italic's, on the Bold Italic's н (the stem's centre 855 in the
+    # upright frame, 241 thick at the cut, its ball between қ's and җ's): by the Italic's numbers the
+    # stroke stood 40 units beside the stem, a step on either side
+    "ң": ("attach", "uni043D", ("x", [(675, -10000, 10000, 200), (1015, -10000, 10000, 450)],
+                                [("line", ((855, 210), (858, -150), 245), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 858, -150, 245), "dir": 270, "turn": "cw", "r": (162, 139),
+                                           "sweep": 170, "ball": 114, "t": (245, 55)}, (0, 0), (1, 1, 0, 0))])),
+    # ɰ: the Bold Italic's ɯ, its last stem running down into ɥ's descender,
+    # narrowed to that stem (216 at the cut, ɥ's 236): emboldened from the
+    # Italic's ɰ, it was notched at the knees where ɯ is whole
+    "ɰ": ("attach", "uni026F", ("x", [(1205, -10000, 10000, 300), (1445, -10000, 10000, 600)],
+                                [("uni0265", (717, -10000, 10000, 300), (0, 0), (0.92, 1, 554, 0))], 1620)),
     # ɳ: the Italic's (make_italic.retroflex), on the Bold Italic's leg (its
     # centre 836, 229 thick at the cut): emboldened whole, the descender took
     # only part of the weight (its stroke under the thick threshold) and the
@@ -424,7 +437,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
     "uni026E": "ɮ: a notch where l's stem meets ʒ",
-    "uni0270": "ɰ: a step on the last leg at the cut",
     "uni0249": "ɉ: the bar ends at the stem, no right arm for j_bar.py to extend",
     "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",
     "uni0268": "ɨ: Old Standard's own ɨ (its dot not i's); the recipe's i with a bar is another letter",
