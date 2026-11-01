@@ -101,6 +101,8 @@ longs_longs_l extreme 2          # 2026-10-27 Bold: the rounder way keeps smooth
 longs_longs_l kink 1             # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 195,974 4.5 degrees
 m extreme 2                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1043,685 12 units past; 478,690 6 units past
 m.sc step 1                      # 2026-10-27 step check added (checks.py step): a candidate to review: 1318,988 60 units aside
+m.sc zone 1                      # baseline: bottom -7 from 1
+mugreek.sc zone 1                # baseline: bottom -7 from 1
 n extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 478,673 6 units past
 nu stroke 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: lc 222 against 261 (0.85, lighter)
 nu zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
@@ -402,6 +404,7 @@ uni043B extreme 1                # contrast-aware Bold (emboldened by stroke wei
 uni043B wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 267,104 42 degrees
 uni043B.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 281,86 12 units past
 uni043B.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 284,114 47 degrees; 275,79 68 degrees
+uni043C.sc zone 1                # baseline: bottom -7 from 1
 uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0444.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0446 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1045,147 14 units past

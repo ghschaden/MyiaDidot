@@ -25,6 +25,7 @@ BI = ("Bold Italic",)
 PASSES = (
     Pass("cedilla", "finish", ALL, ("rounded Cedilla",), ("Cedilla",)),
     Pass("t_slash", "finish", BI, ("weighted uni023E",), ("uni023E",)),
+    Pass("sc_feet", "finish", BOLD, ("weighted m.sc", "weighted v.sc", "weighted w.sc"), ("m.sc", "v.sc", "w.sc", "k.sc", "x.sc")),
     Pass("j_bar", "finish", BI, ("weighted uni0249",), ("uni0249",)),
     Pass("dollar_bars", "finish", BI, ("weighted dollar",), ("dollar",)),
     Pass("dollar_drawing", "finish", BI, ("dollar after bar correction",), ("dollar",)),

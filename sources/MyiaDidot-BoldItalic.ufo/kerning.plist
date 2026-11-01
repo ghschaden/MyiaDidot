@@ -131,7 +131,7 @@
 		<key>Iogonek</key>
 		<dict>
 			<key>public.kern2.j</key>
-			<integer>120</integer>
+			<integer>150</integer>
 		</dict>
 		<key>Jcircumflex</key>
 		<dict>
@@ -143,15 +143,15 @@
 		<key>Lcaron</key>
 		<dict>
 			<key>public.kern2.T</key>
-			<integer>-46</integer>
+			<integer>-16</integer>
 			<key>public.kern2.U</key>
-			<integer>-10</integer>
+			<integer>20</integer>
 			<key>public.kern2.V</key>
-			<integer>24</integer>
+			<integer>54</integer>
 			<key>public.kern2.Y</key>
-			<integer>76</integer>
+			<integer>106</integer>
 			<key>public.kern2.quoteright</key>
-			<integer>-47</integer>
+			<integer>-32</integer>
 		</dict>
 		<key>Phi</key>
 		<dict>
@@ -164,11 +164,6 @@
 		<dict>
 			<key>e</key>
 			<integer>39</integer>
-		</dict>
-		<key>T</key>
-		<dict>
-			<key>h</key>
-			<integer>237</integer>
 		</dict>
 		<key>Y</key>
 		<dict>
@@ -278,7 +273,7 @@
 		<key>aogonek</key>
 		<dict>
 			<key>public.kern2.j</key>
-			<integer>27</integer>
+			<integer>57</integer>
 			<key>y</key>
 			<integer>-51</integer>
 			<key>yacute</key>
@@ -331,7 +326,7 @@
 		<key>bracketleft</key>
 		<dict>
 			<key>uni0283</key>
-			<integer>126</integer>
+			<integer>142</integer>
 		</dict>
 		<key>chi</key>
 		<dict>
@@ -341,22 +336,22 @@
 		<key>eogonek</key>
 		<dict>
 			<key>public.kern2.j</key>
-			<integer>6</integer>
+			<integer>36</integer>
 		</dict>
 		<key>f</key>
 		<dict>
 			<key>ibreve</key>
-			<integer>72</integer>
+			<integer>102</integer>
 			<key>icircumflex</key>
-			<integer>7</integer>
+			<integer>37</integer>
 			<key>idieresis</key>
-			<integer>113</integer>
+			<integer>143</integer>
 			<key>igrave</key>
-			<integer>-39</integer>
+			<integer>-9</integer>
 			<key>imacron</key>
-			<integer>86</integer>
+			<integer>116</integer>
 			<key>itilde</key>
-			<integer>79</integer>
+			<integer>109</integer>
 			<key>m</key>
 			<integer>-62</integer>
 			<key>p</key>
@@ -370,15 +365,17 @@
 			<key>t</key>
 			<integer>-66</integer>
 			<key>uni01D0</key>
-			<integer>28</integer>
+			<integer>58</integer>
 			<key>uni0209</key>
-			<integer>165</integer>
+			<integer>195</integer>
+			<key>uni0215</key>
+			<integer>-60</integer>
 			<key>uni0457</key>
-			<integer>113</integer>
+			<integer>143</integer>
 			<key>uni1E2F</key>
-			<integer>113</integer>
+			<integer>143</integer>
 			<key>uni1EC9</key>
-			<integer>-42</integer>
+			<integer>-12</integer>
 		</dict>
 		<key>g</key>
 		<dict>
@@ -395,7 +392,7 @@
 		<key>iogonek</key>
 		<dict>
 			<key>public.kern2.j</key>
-			<integer>42</integer>
+			<integer>72</integer>
 		</dict>
 		<key>jcircumflex.sc</key>
 		<dict>
@@ -407,30 +404,28 @@
 		<key>l.sc</key>
 		<dict>
 			<key>periodcentered</key>
-			<integer>-436</integer>
+			<integer>-421</integer>
 		</dict>
 		<key>lcaron.sc</key>
 		<dict>
 			<key>public.kern2.T.sc</key>
-			<integer>-33</integer>
+			<integer>-12</integer>
 			<key>public.kern2.U.sc</key>
-			<integer>-7</integer>
+			<integer>15</integer>
 			<key>public.kern2.V.sc</key>
-			<integer>17</integer>
+			<integer>38</integer>
 			<key>public.kern2.Y.sc</key>
-			<integer>55</integer>
-			<key>uni0215.sc</key>
-			<integer>124</integer>
+			<integer>77</integer>
 		</dict>
 		<key>parenleft</key>
 		<dict>
 			<key>uni0283</key>
-			<integer>100</integer>
+			<integer>114</integer>
 		</dict>
 		<key>periodcentered</key>
 		<dict>
 			<key>l.sc</key>
-			<integer>-59</integer>
+			<integer>-74</integer>
 		</dict>
 		<key>phi.sc</key>
 		<dict>
@@ -464,9 +459,9 @@
 			<key>public.kern2.y</key>
 			<integer>-100</integer>
 			<key>uni1EC5</key>
-			<integer>-30</integer>
+			<integer>0</integer>
 			<key>uni1ED7</key>
-			<integer>-33</integer>
+			<integer>-3</integer>
 		</dict>
 		<key>public.kern1.A.sc</key>
 		<dict>
@@ -483,15 +478,15 @@
 			<key>public.kern2.Y.sc</key>
 			<integer>-223</integer>
 			<key>uni01D2.sc</key>
-			<integer>58</integer>
+			<integer>88</integer>
 			<key>uni01E7.sc</key>
-			<integer>59</integer>
+			<integer>89</integer>
 			<key>uni020D.sc</key>
-			<integer>146</integer>
+			<integer>115</integer>
 			<key>uni0215.sc</key>
-			<integer>41</integer>
+			<integer>71</integer>
 			<key>uni1ED7.sc</key>
-			<integer>224</integer>
+			<integer>254</integer>
 		</dict>
 		<key>public.kern1.Alpha</key>
 		<dict>
@@ -574,7 +569,7 @@
 		<key>public.kern1.Beta</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>86</integer>
+			<integer>116</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-58</integer>
 			<key>public.kern2.Deltagreek</key>
@@ -586,35 +581,41 @@
 			<key>public.kern2.Upsilon</key>
 			<integer>-19</integer>
 			<key>uni1F08</key>
-			<integer>3</integer>
+			<integer>33</integer>
 			<key>uni1F09</key>
-			<integer>2</integer>
+			<integer>32</integer>
 			<key>uni1F0A</key>
-			<integer>127</integer>
+			<integer>157</integer>
 			<key>uni1F0B</key>
-			<integer>199</integer>
+			<integer>229</integer>
 			<key>uni1F0C</key>
-			<integer>81</integer>
+			<integer>111</integer>
 			<key>uni1F0D</key>
-			<integer>119</integer>
+			<integer>149</integer>
+			<key>uni1F0E</key>
+			<integer>-29</integer>
 			<key>uni1F0F</key>
-			<integer>18</integer>
+			<integer>48</integer>
 			<key>uni1F5B</key>
-			<integer>-16</integer>
+			<integer>14</integer>
 			<key>uni1F88</key>
-			<integer>3</integer>
+			<integer>33</integer>
 			<key>uni1F89</key>
-			<integer>2</integer>
+			<integer>32</integer>
 			<key>uni1F8A</key>
-			<integer>127</integer>
+			<integer>157</integer>
 			<key>uni1F8B</key>
-			<integer>199</integer>
+			<integer>229</integer>
 			<key>uni1F8C</key>
-			<integer>81</integer>
+			<integer>111</integer>
 			<key>uni1F8D</key>
-			<integer>119</integer>
+			<integer>149</integer>
+			<key>uni1F8E</key>
+			<integer>-29</integer>
 			<key>uni1F8F</key>
-			<integer>18</integer>
+			<integer>48</integer>
+			<key>uni1FBA</key>
+			<integer>-52</integer>
 		</dict>
 		<key>public.kern1.Beta.sc</key>
 		<dict>
@@ -644,7 +645,7 @@
 		<key>public.kern1.Chi</key>
 		<dict>
 			<key>Omicrontonos</key>
-			<integer>-59</integer>
+			<integer>-29</integer>
 			<key>public.kern2.Omicron</key>
 			<integer>-116</integer>
 			<key>public.kern2.Phi</key>
@@ -654,19 +655,19 @@
 			<key>public.kern2.uni03F9</key>
 			<integer>-75</integer>
 			<key>uni1F48</key>
-			<integer>-4</integer>
+			<integer>26</integer>
 			<key>uni1F49</key>
-			<integer>-16</integer>
+			<integer>14</integer>
 			<key>uni1F4A</key>
-			<integer>191</integer>
+			<integer>221</integer>
 			<key>uni1F4B</key>
-			<integer>177</integer>
+			<integer>207</integer>
 			<key>uni1F4C</key>
-			<integer>82</integer>
+			<integer>112</integer>
 			<key>uni1F4D</key>
-			<integer>72</integer>
+			<integer>102</integer>
 			<key>uni1FF8</key>
-			<integer>75</integer>
+			<integer>105</integer>
 		</dict>
 		<key>public.kern1.Chi.sc</key>
 		<dict>
@@ -708,9 +709,9 @@
 		<key>public.kern1.Deltagreek</key>
 		<dict>
 			<key>Omicrontonos</key>
-			<integer>97</integer>
+			<integer>127</integer>
 			<key>Upsilontonos</key>
-			<integer>-130</integer>
+			<integer>-100</integer>
 			<key>public.kern2.Omicron</key>
 			<integer>-92</integer>
 			<key>public.kern2.Phi</key>
@@ -724,27 +725,27 @@
 			<key>public.kern2.quoteright</key>
 			<integer>-196</integer>
 			<key>uni1F48</key>
-			<integer>43</integer>
+			<integer>73</integer>
 			<key>uni1F49</key>
-			<integer>45</integer>
+			<integer>75</integer>
 			<key>uni1F4A</key>
-			<integer>237</integer>
+			<integer>267</integer>
 			<key>uni1F4B</key>
-			<integer>241</integer>
+			<integer>271</integer>
 			<key>uni1F4C</key>
-			<integer>129</integer>
+			<integer>159</integer>
 			<key>uni1F4D</key>
-			<integer>148</integer>
+			<integer>178</integer>
 			<key>uni1F5B</key>
-			<integer>18</integer>
+			<integer>48</integer>
 			<key>uni1F5D</key>
-			<integer>-79</integer>
+			<integer>-49</integer>
 			<key>uni1F5F</key>
-			<integer>-26</integer>
+			<integer>4</integer>
 			<key>uni1FEA</key>
-			<integer>-90</integer>
+			<integer>-60</integer>
 			<key>uni1FF8</key>
-			<integer>132</integer>
+			<integer>162</integer>
 		</dict>
 		<key>public.kern1.Deltagreek.sc</key>
 		<dict>
@@ -794,7 +795,7 @@
 		<key>public.kern1.Gamma</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>72</integer>
+			<integer>102</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-133</integer>
 			<key>public.kern2.Deltagreek</key>
@@ -812,39 +813,39 @@
 			<key>public.kern2.omicron</key>
 			<integer>-162</integer>
 			<key>uni1F08</key>
-			<integer>23</integer>
+			<integer>53</integer>
 			<key>uni1F09</key>
-			<integer>30</integer>
+			<integer>60</integer>
 			<key>uni1F0A</key>
-			<integer>220</integer>
+			<integer>250</integer>
 			<key>uni1F0B</key>
-			<integer>228</integer>
+			<integer>258</integer>
 			<key>uni1F0C</key>
-			<integer>106</integer>
+			<integer>136</integer>
 			<key>uni1F0D</key>
-			<integer>132</integer>
+			<integer>162</integer>
 			<key>uni1F0E</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1F0F</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1F88</key>
-			<integer>23</integer>
+			<integer>53</integer>
 			<key>uni1F89</key>
-			<integer>30</integer>
+			<integer>60</integer>
 			<key>uni1F8A</key>
-			<integer>220</integer>
+			<integer>250</integer>
 			<key>uni1F8B</key>
-			<integer>228</integer>
+			<integer>258</integer>
 			<key>uni1F8C</key>
-			<integer>106</integer>
+			<integer>136</integer>
 			<key>uni1F8D</key>
-			<integer>132</integer>
+			<integer>162</integer>
 			<key>uni1F8E</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1F8F</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1FBA</key>
-			<integer>71</integer>
+			<integer>101</integer>
 		</dict>
 		<key>public.kern1.Gamma.sc</key>
 		<dict>
@@ -890,7 +891,7 @@
 		<key>public.kern1.Kappa</key>
 		<dict>
 			<key>Omicrontonos</key>
-			<integer>32</integer>
+			<integer>62</integer>
 			<key>public.kern2.Omicron</key>
 			<integer>-137</integer>
 			<key>public.kern2.Phi</key>
@@ -902,19 +903,19 @@
 			<key>public.kern2.uni03F9</key>
 			<integer>-42</integer>
 			<key>uni1F48</key>
-			<integer>87</integer>
+			<integer>117</integer>
 			<key>uni1F49</key>
-			<integer>75</integer>
+			<integer>105</integer>
 			<key>uni1F4A</key>
-			<integer>281</integer>
+			<integer>311</integer>
 			<key>uni1F4B</key>
-			<integer>267</integer>
+			<integer>297</integer>
 			<key>uni1F4C</key>
-			<integer>172</integer>
+			<integer>202</integer>
 			<key>uni1F4D</key>
-			<integer>162</integer>
+			<integer>192</integer>
 			<key>uni1FF8</key>
-			<integer>165</integer>
+			<integer>195</integer>
 		</dict>
 		<key>public.kern1.Kappa.sc</key>
 		<dict>
@@ -954,7 +955,7 @@
 		<key>public.kern1.Lambda</key>
 		<dict>
 			<key>Omicrontonos</key>
-			<integer>-3</integer>
+			<integer>27</integer>
 			<key>public.kern2.Omicron</key>
 			<integer>-112</integer>
 			<key>public.kern2.Phi</key>
@@ -982,27 +983,27 @@
 			<key>public.kern2.uni03F9</key>
 			<integer>-100</integer>
 			<key>uni1F48</key>
-			<integer>-58</integer>
+			<integer>-28</integer>
 			<key>uni1F49</key>
-			<integer>-56</integer>
+			<integer>-26</integer>
 			<key>uni1F4A</key>
-			<integer>136</integer>
+			<integer>166</integer>
 			<key>uni1F4B</key>
-			<integer>140</integer>
+			<integer>170</integer>
 			<key>uni1F4C</key>
-			<integer>28</integer>
+			<integer>58</integer>
 			<key>uni1F4D</key>
-			<integer>47</integer>
+			<integer>77</integer>
 			<key>uni1F5B</key>
-			<integer>-83</integer>
+			<integer>-53</integer>
 			<key>uni1F5D</key>
-			<integer>-180</integer>
+			<integer>-150</integer>
 			<key>uni1F5F</key>
-			<integer>-127</integer>
+			<integer>-97</integer>
 			<key>uni1FEA</key>
-			<integer>-191</integer>
+			<integer>-161</integer>
 			<key>uni1FF8</key>
-			<integer>31</integer>
+			<integer>61</integer>
 		</dict>
 		<key>public.kern1.Lambda.sc</key>
 		<dict>
@@ -1054,9 +1055,9 @@
 		<key>public.kern1.Nu</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>47</integer>
+			<integer>77</integer>
 			<key>Omicrontonos</key>
-			<integer>79</integer>
+			<integer>109</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-75</integer>
 			<key>public.kern2.Deltagreek</key>
@@ -1070,53 +1071,53 @@
 			<key>public.kern2.uni03F9</key>
 			<integer>-67</integer>
 			<key>uni1F08</key>
-			<integer>125</integer>
+			<integer>155</integer>
 			<key>uni1F09</key>
-			<integer>113</integer>
+			<integer>143</integer>
 			<key>uni1F0A</key>
-			<integer>321</integer>
+			<integer>351</integer>
 			<key>uni1F0B</key>
-			<integer>307</integer>
+			<integer>337</integer>
 			<key>uni1F0C</key>
-			<integer>208</integer>
+			<integer>238</integer>
 			<key>uni1F0D</key>
-			<integer>198</integer>
+			<integer>228</integer>
 			<key>uni1F0E</key>
-			<integer>271</integer>
+			<integer>301</integer>
 			<key>uni1F0F</key>
-			<integer>271</integer>
+			<integer>301</integer>
 			<key>uni1F48</key>
-			<integer>134</integer>
+			<integer>164</integer>
 			<key>uni1F49</key>
-			<integer>122</integer>
+			<integer>152</integer>
 			<key>uni1F4A</key>
-			<integer>329</integer>
+			<integer>359</integer>
 			<key>uni1F4B</key>
-			<integer>315</integer>
+			<integer>345</integer>
 			<key>uni1F4C</key>
-			<integer>220</integer>
+			<integer>250</integer>
 			<key>uni1F4D</key>
-			<integer>210</integer>
+			<integer>240</integer>
 			<key>uni1F88</key>
-			<integer>125</integer>
+			<integer>155</integer>
 			<key>uni1F89</key>
-			<integer>113</integer>
+			<integer>143</integer>
 			<key>uni1F8A</key>
-			<integer>321</integer>
+			<integer>351</integer>
 			<key>uni1F8B</key>
-			<integer>307</integer>
+			<integer>337</integer>
 			<key>uni1F8C</key>
-			<integer>208</integer>
+			<integer>238</integer>
 			<key>uni1F8D</key>
-			<integer>198</integer>
+			<integer>228</integer>
 			<key>uni1F8E</key>
-			<integer>271</integer>
+			<integer>301</integer>
 			<key>uni1F8F</key>
-			<integer>271</integer>
+			<integer>301</integer>
 			<key>uni1FBA</key>
-			<integer>173</integer>
+			<integer>203</integer>
 			<key>uni1FF8</key>
-			<integer>212</integer>
+			<integer>242</integer>
 		</dict>
 		<key>public.kern1.Nu.sc</key>
 		<dict>
@@ -1159,18 +1160,20 @@
 			<key>public.kern2.Y.sc</key>
 			<integer>-115</integer>
 			<key>uni01CE.sc</key>
-			<integer>-88</integer>
+			<integer>-58</integer>
 			<key>uni0201.sc</key>
-			<integer>0</integer>
+			<integer>30</integer>
 			<key>uni1EAB.sc</key>
-			<integer>78</integer>
+			<integer>108</integer>
 			<key>uni1EB5.sc</key>
-			<integer>57</integer>
+			<integer>87</integer>
 		</dict>
 		<key>public.kern1.Omicron</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>15</integer>
+			<integer>45</integer>
+			<key>Upsilontonos</key>
+			<integer>-150</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-146</integer>
 			<key>public.kern2.Chi</key>
@@ -1184,35 +1187,39 @@
 			<key>public.kern2.Upsilon</key>
 			<integer>-154</integer>
 			<key>uni1F08</key>
-			<integer>-80</integer>
+			<integer>-50</integer>
 			<key>uni1F09</key>
-			<integer>-115</integer>
+			<integer>-85</integer>
 			<key>uni1F0A</key>
-			<integer>57</integer>
+			<integer>87</integer>
 			<key>uni1F0B</key>
-			<integer>85</integer>
+			<integer>115</integer>
 			<key>uni1F0C</key>
-			<integer>2</integer>
+			<integer>32</integer>
 			<key>uni1F0D</key>
-			<integer>14</integer>
+			<integer>44</integer>
+			<key>uni1F0E</key>
+			<integer>-143</integer>
 			<key>uni1F0F</key>
-			<integer>-84</integer>
+			<integer>-54</integer>
 			<key>uni1F5B</key>
-			<integer>-130</integer>
+			<integer>-100</integer>
 			<key>uni1F88</key>
-			<integer>-80</integer>
+			<integer>-50</integer>
 			<key>uni1F89</key>
-			<integer>-115</integer>
+			<integer>-85</integer>
 			<key>uni1F8A</key>
-			<integer>57</integer>
+			<integer>87</integer>
 			<key>uni1F8B</key>
-			<integer>85</integer>
+			<integer>115</integer>
 			<key>uni1F8C</key>
-			<integer>2</integer>
+			<integer>32</integer>
 			<key>uni1F8D</key>
-			<integer>14</integer>
+			<integer>44</integer>
+			<key>uni1F8E</key>
+			<integer>-143</integer>
 			<key>uni1F8F</key>
-			<integer>-84</integer>
+			<integer>-54</integer>
 		</dict>
 		<key>public.kern1.Omicron.sc</key>
 		<dict>
@@ -1272,7 +1279,7 @@
 		<key>public.kern1.Phi</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>-27</integer>
+			<integer>3</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-127</integer>
 			<key>public.kern2.Chi</key>
@@ -1287,22 +1294,30 @@
 			<integer>-171</integer>
 			<key>public.kern2.comma</key>
 			<integer>-166</integer>
+			<key>uni1F08</key>
+			<integer>-100</integer>
 			<key>uni1F0A</key>
-			<integer>15</integer>
+			<integer>45</integer>
 			<key>uni1F0B</key>
-			<integer>-6</integer>
+			<integer>24</integer>
 			<key>uni1F0C</key>
-			<integer>-37</integer>
+			<integer>-7</integer>
 			<key>uni1F0D</key>
-			<integer>-60</integer>
+			<integer>-30</integer>
+			<key>uni1F0F</key>
+			<integer>-119</integer>
+			<key>uni1F88</key>
+			<integer>-100</integer>
 			<key>uni1F8A</key>
-			<integer>15</integer>
+			<integer>45</integer>
 			<key>uni1F8B</key>
-			<integer>-6</integer>
+			<integer>24</integer>
 			<key>uni1F8C</key>
-			<integer>-37</integer>
+			<integer>-7</integer>
 			<key>uni1F8D</key>
-			<integer>-60</integer>
+			<integer>-30</integer>
+			<key>uni1F8F</key>
+			<integer>-119</integer>
 		</dict>
 		<key>public.kern1.Phi.sc</key>
 		<dict>
@@ -1322,7 +1337,7 @@
 		<key>public.kern1.Psi</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>159</integer>
+			<integer>189</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-241</integer>
 			<key>public.kern2.Lambda</key>
@@ -1338,39 +1353,39 @@
 			<key>public.kern2.omicron</key>
 			<integer>-137</integer>
 			<key>uni1F08</key>
-			<integer>100</integer>
+			<integer>130</integer>
 			<key>uni1F09</key>
-			<integer>158</integer>
+			<integer>188</integer>
 			<key>uni1F0A</key>
-			<integer>319</integer>
+			<integer>349</integer>
 			<key>uni1F0B</key>
-			<integer>357</integer>
+			<integer>387</integer>
 			<key>uni1F0C</key>
-			<integer>184</integer>
+			<integer>214</integer>
 			<key>uni1F0D</key>
-			<integer>267</integer>
+			<integer>297</integer>
 			<key>uni1F0E</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1F0F</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1F88</key>
-			<integer>100</integer>
+			<integer>130</integer>
 			<key>uni1F89</key>
-			<integer>158</integer>
+			<integer>188</integer>
 			<key>uni1F8A</key>
-			<integer>319</integer>
+			<integer>349</integer>
 			<key>uni1F8B</key>
-			<integer>357</integer>
+			<integer>387</integer>
 			<key>uni1F8C</key>
-			<integer>184</integer>
+			<integer>214</integer>
 			<key>uni1F8D</key>
-			<integer>267</integer>
+			<integer>297</integer>
 			<key>uni1F8E</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1F8F</key>
-			<integer>169</integer>
+			<integer>199</integer>
 			<key>uni1FBA</key>
-			<integer>107</integer>
+			<integer>137</integer>
 		</dict>
 		<key>public.kern1.Psi.sc</key>
 		<dict>
@@ -1408,7 +1423,7 @@
 		<key>public.kern1.Rho</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>131</integer>
+			<integer>161</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-183</integer>
 			<key>public.kern2.Deltagreek</key>
@@ -1424,39 +1439,39 @@
 			<key>public.kern2.omicron</key>
 			<integer>-69</integer>
 			<key>uni1F08</key>
-			<integer>47</integer>
+			<integer>77</integer>
 			<key>uni1F09</key>
-			<integer>43</integer>
+			<integer>73</integer>
 			<key>uni1F0A</key>
-			<integer>173</integer>
+			<integer>203</integer>
 			<key>uni1F0B</key>
-			<integer>240</integer>
+			<integer>270</integer>
 			<key>uni1F0C</key>
-			<integer>125</integer>
+			<integer>155</integer>
 			<key>uni1F0D</key>
-			<integer>159</integer>
+			<integer>189</integer>
 			<key>uni1F0E</key>
-			<integer>-17</integer>
+			<integer>13</integer>
 			<key>uni1F0F</key>
-			<integer>58</integer>
+			<integer>88</integer>
 			<key>uni1F88</key>
-			<integer>47</integer>
+			<integer>77</integer>
 			<key>uni1F89</key>
-			<integer>43</integer>
+			<integer>73</integer>
 			<key>uni1F8A</key>
-			<integer>173</integer>
+			<integer>203</integer>
 			<key>uni1F8B</key>
-			<integer>240</integer>
+			<integer>270</integer>
 			<key>uni1F8C</key>
-			<integer>125</integer>
+			<integer>155</integer>
 			<key>uni1F8D</key>
-			<integer>159</integer>
+			<integer>189</integer>
 			<key>uni1F8E</key>
-			<integer>-17</integer>
+			<integer>13</integer>
 			<key>uni1F8F</key>
-			<integer>58</integer>
+			<integer>88</integer>
 			<key>uni1FBA</key>
-			<integer>-40</integer>
+			<integer>-10</integer>
 		</dict>
 		<key>public.kern1.Rho.sc</key>
 		<dict>
@@ -1491,15 +1506,15 @@
 			<key>public.kern2.Y.sc</key>
 			<integer>-39</integer>
 			<key>uni01CE.sc</key>
-			<integer>-66</integer>
+			<integer>-36</integer>
 			<key>uni0201.sc</key>
-			<integer>-66</integer>
+			<integer>-36</integer>
 			<key>uni1EAB.sc</key>
-			<integer>-66</integer>
+			<integer>-36</integer>
 			<key>uni1EB1.sc</key>
-			<integer>-66</integer>
+			<integer>-36</integer>
 			<key>uni1EB5.sc</key>
-			<integer>-66</integer>
+			<integer>-36</integer>
 		</dict>
 		<key>public.kern1.T</key>
 		<dict>
@@ -1536,7 +1551,7 @@
 		<key>public.kern1.Tau</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>74</integer>
+			<integer>104</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-108</integer>
 			<key>public.kern2.Deltagreek</key>
@@ -1554,39 +1569,39 @@
 			<key>public.kern2.omicron</key>
 			<integer>-131</integer>
 			<key>uni1F08</key>
-			<integer>25</integer>
+			<integer>55</integer>
 			<key>uni1F09</key>
-			<integer>32</integer>
+			<integer>62</integer>
 			<key>uni1F0A</key>
-			<integer>221</integer>
+			<integer>251</integer>
 			<key>uni1F0B</key>
-			<integer>230</integer>
+			<integer>260</integer>
 			<key>uni1F0C</key>
-			<integer>108</integer>
+			<integer>138</integer>
 			<key>uni1F0D</key>
-			<integer>134</integer>
+			<integer>164</integer>
 			<key>uni1F0E</key>
-			<integer>171</integer>
+			<integer>201</integer>
 			<key>uni1F0F</key>
-			<integer>171</integer>
+			<integer>201</integer>
 			<key>uni1F88</key>
-			<integer>25</integer>
+			<integer>55</integer>
 			<key>uni1F89</key>
-			<integer>32</integer>
+			<integer>62</integer>
 			<key>uni1F8A</key>
-			<integer>221</integer>
+			<integer>251</integer>
 			<key>uni1F8B</key>
-			<integer>230</integer>
+			<integer>260</integer>
 			<key>uni1F8C</key>
-			<integer>108</integer>
+			<integer>138</integer>
 			<key>uni1F8D</key>
-			<integer>134</integer>
+			<integer>164</integer>
 			<key>uni1F8E</key>
-			<integer>171</integer>
+			<integer>201</integer>
 			<key>uni1F8F</key>
-			<integer>171</integer>
+			<integer>201</integer>
 			<key>uni1FBA</key>
-			<integer>73</integer>
+			<integer>103</integer>
 		</dict>
 		<key>public.kern1.Tau.sc</key>
 		<dict>
@@ -1600,7 +1615,7 @@
 		<key>public.kern1.Theta</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>15</integer>
+			<integer>45</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-146</integer>
 			<key>public.kern2.Lambda</key>
@@ -1610,33 +1625,37 @@
 			<key>public.kern2.Upsilon</key>
 			<integer>-67</integer>
 			<key>uni1F08</key>
-			<integer>-80</integer>
+			<integer>-50</integer>
 			<key>uni1F09</key>
-			<integer>-115</integer>
+			<integer>-85</integer>
 			<key>uni1F0A</key>
-			<integer>57</integer>
+			<integer>87</integer>
 			<key>uni1F0B</key>
-			<integer>85</integer>
+			<integer>115</integer>
 			<key>uni1F0C</key>
-			<integer>2</integer>
+			<integer>32</integer>
 			<key>uni1F0D</key>
-			<integer>14</integer>
+			<integer>44</integer>
+			<key>uni1F0E</key>
+			<integer>-143</integer>
 			<key>uni1F0F</key>
-			<integer>-84</integer>
+			<integer>-54</integer>
 			<key>uni1F88</key>
-			<integer>-80</integer>
+			<integer>-50</integer>
 			<key>uni1F89</key>
-			<integer>-115</integer>
+			<integer>-85</integer>
 			<key>uni1F8A</key>
-			<integer>57</integer>
+			<integer>87</integer>
 			<key>uni1F8B</key>
-			<integer>85</integer>
+			<integer>115</integer>
 			<key>uni1F8C</key>
-			<integer>2</integer>
+			<integer>32</integer>
 			<key>uni1F8D</key>
-			<integer>14</integer>
+			<integer>44</integer>
+			<key>uni1F8E</key>
+			<integer>-143</integer>
 			<key>uni1F8F</key>
-			<integer>-84</integer>
+			<integer>-54</integer>
 		</dict>
 		<key>public.kern1.Theta.sc</key>
 		<dict>
@@ -1679,8 +1698,16 @@
 			<integer>-77</integer>
 			<key>public.kern2.g</key>
 			<integer>-108</integer>
+			<key>uni0201</key>
+			<integer>-87</integer>
 			<key>uni1EAB</key>
-			<integer>-88</integer>
+			<integer>-58</integer>
+			<key>uni1EC5</key>
+			<integer>-48</integer>
+			<key>uni1ED7</key>
+			<integer>-51</integer>
+			<key>uni1ED7.sc</key>
+			<integer>-46</integer>
 		</dict>
 		<key>public.kern1.U.sc</key>
 		<dict>
@@ -1692,21 +1719,31 @@
 			<integer>-42</integer>
 			<key>public.kern2.O.sc</key>
 			<integer>-50</integer>
-			<key>uni0201.sc</key>
-			<integer>-96</integer>
-			<key>uni020D.sc</key>
-			<integer>15</integer>
-			<key>uni1EB5.sc</key>
+			<key>uni01CE.sc</key>
 			<integer>-89</integer>
+			<key>uni01D2.sc</key>
+			<integer>-35</integer>
+			<key>uni01E7.sc</key>
+			<integer>-34</integer>
+			<key>uni0201.sc</key>
+			<integer>-66</integer>
+			<key>uni020D.sc</key>
+			<integer>45</integer>
+			<key>uni1EAB.sc</key>
+			<integer>-87</integer>
+			<key>uni1EB1.sc</key>
+			<integer>-89</integer>
+			<key>uni1EB5.sc</key>
+			<integer>-59</integer>
 			<key>uni1ED7.sc</key>
-			<integer>-6</integer>
+			<integer>24</integer>
 		</dict>
 		<key>public.kern1.Upsilon</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>225</integer>
+			<integer>255</integer>
 			<key>Omicrontonos</key>
-			<integer>257</integer>
+			<integer>287</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-183</integer>
 			<key>public.kern2.Deltagreek</key>
@@ -1734,55 +1771,55 @@
 			<key>public.kern2.psi</key>
 			<integer>-129</integer>
 			<key>uni0263</key>
-			<integer>-130</integer>
+			<integer>-100</integer>
 			<key>uni1F08</key>
-			<integer>146</integer>
+			<integer>176</integer>
 			<key>uni1F09</key>
-			<integer>166</integer>
+			<integer>196</integer>
 			<key>uni1F0A</key>
-			<integer>317</integer>
+			<integer>347</integer>
 			<key>uni1F0B</key>
-			<integer>366</integer>
+			<integer>396</integer>
 			<key>uni1F0C</key>
-			<integer>223</integer>
+			<integer>253</integer>
 			<key>uni1F0D</key>
-			<integer>280</integer>
+			<integer>310</integer>
 			<key>uni1F0E</key>
-			<integer>174</integer>
+			<integer>204</integer>
 			<key>uni1F0F</key>
-			<integer>175</integer>
+			<integer>205</integer>
 			<key>uni1F48</key>
-			<integer>155</integer>
+			<integer>185</integer>
 			<key>uni1F49</key>
-			<integer>175</integer>
+			<integer>205</integer>
 			<key>uni1F4A</key>
-			<integer>325</integer>
+			<integer>355</integer>
 			<key>uni1F4B</key>
-			<integer>374</integer>
+			<integer>404</integer>
 			<key>uni1F4C</key>
-			<integer>235</integer>
+			<integer>265</integer>
 			<key>uni1F4D</key>
-			<integer>292</integer>
+			<integer>322</integer>
 			<key>uni1F88</key>
-			<integer>146</integer>
+			<integer>176</integer>
 			<key>uni1F89</key>
-			<integer>166</integer>
+			<integer>196</integer>
 			<key>uni1F8A</key>
-			<integer>317</integer>
+			<integer>347</integer>
 			<key>uni1F8B</key>
-			<integer>366</integer>
+			<integer>396</integer>
 			<key>uni1F8C</key>
-			<integer>223</integer>
+			<integer>253</integer>
 			<key>uni1F8D</key>
-			<integer>280</integer>
+			<integer>310</integer>
 			<key>uni1F8E</key>
-			<integer>174</integer>
+			<integer>204</integer>
 			<key>uni1F8F</key>
-			<integer>175</integer>
+			<integer>205</integer>
 			<key>uni1FBA</key>
-			<integer>105</integer>
+			<integer>135</integer>
 			<key>uni1FF8</key>
-			<integer>144</integer>
+			<integer>174</integer>
 		</dict>
 		<key>public.kern1.Upsilon.sc</key>
 		<dict>
@@ -1802,7 +1839,7 @@
 		<key>public.kern1.V</key>
 		<dict>
 			<key>ibreve</key>
-			<integer>-16</integer>
+			<integer>14</integer>
 			<key>public.kern2.A</key>
 			<integer>-262</integer>
 			<key>public.kern2.A.sc</key>
@@ -1836,21 +1873,21 @@
 			<key>public.kern2.y</key>
 			<integer>-108</integer>
 			<key>uni01D0</key>
-			<integer>-6</integer>
+			<integer>24</integer>
 			<key>uni01D2</key>
-			<integer>-189</integer>
+			<integer>-159</integer>
 			<key>uni01F0</key>
-			<integer>-59</integer>
+			<integer>-29</integer>
 			<key>uni0201</key>
-			<integer>-92</integer>
+			<integer>-62</integer>
 			<key>uni0205</key>
-			<integer>-82</integer>
+			<integer>-52</integer>
 			<key>uni0209</key>
-			<integer>98</integer>
+			<integer>128</integer>
 			<key>uni020D</key>
-			<integer>-85</integer>
+			<integer>-55</integer>
 			<key>uni1EB5</key>
-			<integer>-152</integer>
+			<integer>-122</integer>
 		</dict>
 		<key>public.kern1.V.sc</key>
 		<dict>
@@ -1884,7 +1921,9 @@
 		<key>public.kern1.Y</key>
 		<dict>
 			<key>ibreve</key>
-			<integer>-45</integer>
+			<integer>-15</integer>
+			<key>igrave</key>
+			<integer>-112</integer>
 			<key>public.kern2.A</key>
 			<integer>-233</integer>
 			<key>public.kern2.AE</key>
@@ -1920,17 +1959,19 @@
 			<key>public.kern2.y</key>
 			<integer>-158</integer>
 			<key>uni01D0</key>
-			<integer>-36</integer>
+			<integer>-6</integer>
+			<key>uni01D2</key>
+			<integer>-189</integer>
 			<key>uni0201</key>
-			<integer>-121</integer>
+			<integer>-91</integer>
 			<key>uni0205</key>
-			<integer>-111</integer>
+			<integer>-81</integer>
 			<key>uni0209</key>
-			<integer>69</integer>
+			<integer>99</integer>
 			<key>uni020D</key>
-			<integer>-114</integer>
+			<integer>-84</integer>
 			<key>uni1EB5</key>
-			<integer>-181</integer>
+			<integer>-151</integer>
 		</dict>
 		<key>public.kern1.Y.sc</key>
 		<dict>
@@ -1955,6 +1996,8 @@
 			<integer>-46</integer>
 			<key>public.kern2.y</key>
 			<integer>-83</integer>
+			<key>uni01F0</key>
+			<integer>-42</integer>
 		</dict>
 		<key>public.kern1.alpha</key>
 		<dict>
@@ -1980,20 +2023,22 @@
 			<key>public.kern2.y</key>
 			<integer>-33</integer>
 			<key>uni01F0</key>
-			<integer>66</integer>
+			<integer>96</integer>
 			<key>uni0249</key>
-			<integer>8</integer>
+			<integer>38</integer>
 			<key>uni029D</key>
-			<integer>3</integer>
+			<integer>33</integer>
 			<key>uni03F3</key>
-			<integer>26</integer>
+			<integer>56</integer>
 		</dict>
 		<key>public.kern1.chi</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>-86</integer>
+			<integer>-56</integer>
+			<key>Omicrontonos</key>
+			<integer>-111</integer>
 			<key>Upsilontonos</key>
-			<integer>-554</integer>
+			<integer>-524</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-422</integer>
 			<key>public.kern2.Chi</key>
@@ -2049,41 +2094,41 @@
 			<key>public.kern2.uni03F9</key>
 			<integer>-132</integer>
 			<key>uni1F08</key>
-			<integer>-156</integer>
+			<integer>-126</integer>
 			<key>uni1F09</key>
-			<integer>-156</integer>
+			<integer>-126</integer>
 			<key>uni1F0A</key>
-			<integer>-206</integer>
+			<integer>-176</integer>
 			<key>uni1F0B</key>
-			<integer>-206</integer>
+			<integer>-176</integer>
 			<key>uni1F0C</key>
-			<integer>-350</integer>
+			<integer>-320</integer>
 			<key>uni1F0D</key>
-			<integer>-350</integer>
+			<integer>-320</integer>
 			<key>uni1F0E</key>
-			<integer>-240</integer>
+			<integer>-210</integer>
 			<key>uni1F0F</key>
-			<integer>-240</integer>
+			<integer>-210</integer>
 			<key>uni1F88</key>
-			<integer>-156</integer>
+			<integer>-126</integer>
 			<key>uni1F89</key>
-			<integer>-156</integer>
+			<integer>-126</integer>
 			<key>uni1F8A</key>
-			<integer>-206</integer>
+			<integer>-176</integer>
 			<key>uni1F8B</key>
-			<integer>-206</integer>
+			<integer>-176</integer>
 			<key>uni1F8C</key>
-			<integer>-350</integer>
+			<integer>-320</integer>
 			<key>uni1F8D</key>
-			<integer>-350</integer>
+			<integer>-320</integer>
 			<key>uni1F8E</key>
-			<integer>-240</integer>
+			<integer>-210</integer>
 			<key>uni1F8F</key>
-			<integer>-240</integer>
+			<integer>-210</integer>
 			<key>uni1FBA</key>
-			<integer>-328</integer>
+			<integer>-298</integer>
 			<key>uni1FEA</key>
-			<integer>-489</integer>
+			<integer>-459</integer>
 		</dict>
 		<key>public.kern1.delta</key>
 		<dict>
@@ -2211,11 +2256,11 @@
 		<key>public.kern1.tonos</key>
 		<dict>
 			<key>Alphatonos</key>
-			<integer>331</integer>
+			<integer>346</integer>
 			<key>Omegatonos</key>
-			<integer>186</integer>
+			<integer>201</integer>
 			<key>Omicrontonos</key>
-			<integer>363</integer>
+			<integer>378</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>-428</integer>
 			<key>public.kern2.Omegagreek</key>
@@ -2223,87 +2268,87 @@
 			<key>public.kern2.Omicron</key>
 			<integer>-137</integer>
 			<key>uni1F08</key>
-			<integer>268</integer>
+			<integer>283</integer>
 			<key>uni1F09</key>
-			<integer>251</integer>
+			<integer>266</integer>
 			<key>uni1F0A</key>
-			<integer>446</integer>
+			<integer>461</integer>
 			<key>uni1F0B</key>
-			<integer>449</integer>
+			<integer>464</integer>
 			<key>uni1F0C</key>
-			<integer>354</integer>
+			<integer>369</integer>
 			<key>uni1F0D</key>
-			<integer>353</integer>
+			<integer>368</integer>
 			<key>uni1F0E</key>
-			<integer>484</integer>
+			<integer>499</integer>
 			<key>uni1F0F</key>
-			<integer>484</integer>
+			<integer>499</integer>
 			<key>uni1F48</key>
-			<integer>277</integer>
+			<integer>292</integer>
 			<key>uni1F49</key>
-			<integer>260</integer>
+			<integer>275</integer>
 			<key>uni1F4A</key>
-			<integer>454</integer>
+			<integer>469</integer>
 			<key>uni1F4B</key>
-			<integer>457</integer>
+			<integer>472</integer>
 			<key>uni1F4C</key>
-			<integer>366</integer>
+			<integer>381</integer>
 			<key>uni1F4D</key>
-			<integer>365</integer>
+			<integer>380</integer>
 			<key>uni1F68</key>
-			<integer>100</integer>
+			<integer>115</integer>
 			<key>uni1F69</key>
-			<integer>83</integer>
+			<integer>98</integer>
 			<key>uni1F6A</key>
-			<integer>277</integer>
+			<integer>292</integer>
 			<key>uni1F6B</key>
-			<integer>280</integer>
+			<integer>295</integer>
 			<key>uni1F6C</key>
-			<integer>189</integer>
+			<integer>204</integer>
 			<key>uni1F6D</key>
-			<integer>188</integer>
+			<integer>203</integer>
 			<key>uni1F6E</key>
-			<integer>317</integer>
+			<integer>332</integer>
 			<key>uni1F6F</key>
-			<integer>317</integer>
+			<integer>332</integer>
 			<key>uni1F88</key>
-			<integer>268</integer>
+			<integer>283</integer>
 			<key>uni1F89</key>
-			<integer>251</integer>
+			<integer>266</integer>
 			<key>uni1F8A</key>
-			<integer>446</integer>
+			<integer>461</integer>
 			<key>uni1F8B</key>
-			<integer>449</integer>
+			<integer>464</integer>
 			<key>uni1F8C</key>
-			<integer>354</integer>
+			<integer>369</integer>
 			<key>uni1F8D</key>
-			<integer>353</integer>
+			<integer>368</integer>
 			<key>uni1F8E</key>
-			<integer>484</integer>
+			<integer>499</integer>
 			<key>uni1F8F</key>
-			<integer>484</integer>
+			<integer>499</integer>
 			<key>uni1FA8</key>
-			<integer>100</integer>
+			<integer>115</integer>
 			<key>uni1FA9</key>
-			<integer>83</integer>
+			<integer>98</integer>
 			<key>uni1FAA</key>
-			<integer>277</integer>
+			<integer>292</integer>
 			<key>uni1FAB</key>
-			<integer>280</integer>
+			<integer>295</integer>
 			<key>uni1FAC</key>
-			<integer>189</integer>
+			<integer>204</integer>
 			<key>uni1FAD</key>
-			<integer>188</integer>
+			<integer>203</integer>
 			<key>uni1FAE</key>
-			<integer>317</integer>
+			<integer>332</integer>
 			<key>uni1FAF</key>
-			<integer>317</integer>
+			<integer>332</integer>
 			<key>uni1FBA</key>
-			<integer>396</integer>
+			<integer>411</integer>
 			<key>uni1FF8</key>
-			<integer>435</integer>
+			<integer>450</integer>
 			<key>uni1FFA</key>
-			<integer>259</integer>
+			<integer>274</integer>
 		</dict>
 		<key>public.kern1.uni0402</key>
 		<dict>
@@ -2632,7 +2677,7 @@
 			<key>public.kern2.uni046A</key>
 			<integer>-220</integer>
 			<key>uni0431.loclSRB</key>
-			<integer>-230</integer>
+			<integer>-200</integer>
 		</dict>
 		<key>public.kern1.uni0423.sc</key>
 		<dict>
@@ -2913,7 +2958,7 @@
 			<key>public.kern2.uni046B</key>
 			<integer>-349</integer>
 			<key>uni0431.loclSRB</key>
-			<integer>-298</integer>
+			<integer>-268</integer>
 		</dict>
 		<key>public.kern1.uni0490.sc</key>
 		<dict>
@@ -2980,7 +3025,9 @@
 		<key>public.kern1.zeta</key>
 		<dict>
 			<key>Omicrontonos</key>
-			<integer>167</integer>
+			<integer>197</integer>
+			<key>Upsilontonos</key>
+			<integer>-30</integer>
 			<key>public.kern2.Alpha</key>
 			<integer>67</integer>
 			<key>public.kern2.Chi</key>
@@ -3038,23 +3085,25 @@
 			<key>public.kern2.uni03F9</key>
 			<integer>-381</integer>
 			<key>uni0263</key>
-			<integer>-232</integer>
+			<integer>-202</integer>
 			<key>uni1F48</key>
-			<integer>64</integer>
+			<integer>94</integer>
 			<key>uni1F49</key>
-			<integer>54</integer>
+			<integer>84</integer>
 			<key>uni1F4A</key>
-			<integer>183</integer>
+			<integer>213</integer>
 			<key>uni1F4B</key>
-			<integer>253</integer>
+			<integer>283</integer>
 			<key>uni1F4C</key>
-			<integer>145</integer>
+			<integer>175</integer>
 			<key>uni1F4D</key>
-			<integer>181</integer>
+			<integer>211</integer>
 			<key>uni1F5B</key>
-			<integer>30</integer>
+			<integer>60</integer>
+			<key>uni1F5D</key>
+			<integer>-16</integer>
 			<key>uni1FF8</key>
-			<integer>-13</integer>
+			<integer>17</integer>
 		</dict>
 		<key>u</key>
 		<dict>
@@ -3066,25 +3115,25 @@
 		<key>uni0198</key>
 		<dict>
 			<key>H</key>
-			<integer>108</integer>
+			<integer>138</integer>
 			<key>l</key>
-			<integer>10</integer>
+			<integer>40</integer>
 		</dict>
 		<key>uni0199.sc</key>
 		<dict>
 			<key>h.sc</key>
-			<integer>78</integer>
+			<integer>100</integer>
 		</dict>
 		<key>uni01AD</key>
 		<dict>
 			<key>b</key>
-			<integer>30</integer>
+			<integer>60</integer>
 			<key>h</key>
-			<integer>32</integer>
+			<integer>62</integer>
 			<key>k</key>
-			<integer>32</integer>
+			<integer>62</integer>
 			<key>l</key>
-			<integer>38</integer>
+			<integer>68</integer>
 		</dict>
 		<key>uni0232</key>
 		<dict>
@@ -3103,33 +3152,50 @@
 		<key>uni0244</key>
 		<dict>
 			<key>public.kern2.O.sc</key>
-			<integer>14</integer>
+			<integer>44</integer>
+			<key>public.kern2.a</key>
+			<integer>-88</integer>
+		</dict>
+		<key>uni0245</key>
+		<dict>
+			<key>public.kern2.Y</key>
+			<integer>-296</integer>
+		</dict>
+		<key>uni0257</key>
+		<dict>
+			<key>l</key>
+			<integer>4</integer>
 		</dict>
 		<key>uni0260</key>
 		<dict>
 			<key>b</key>
-			<integer>222</integer>
+			<integer>252</integer>
 			<key>bracketright</key>
-			<integer>118</integer>
+			<integer>132</integer>
 			<key>exclam</key>
-			<integer>102</integer>
+			<integer>118</integer>
 			<key>h</key>
-			<integer>224</integer>
+			<integer>254</integer>
 			<key>k</key>
-			<integer>224</integer>
+			<integer>254</integer>
 			<key>l</key>
-			<integer>230</integer>
+			<integer>260</integer>
 			<key>parenright</key>
-			<integer>36</integer>
+			<integer>50</integer>
 			<key>question</key>
-			<integer>178</integer>
+			<integer>194</integer>
+		</dict>
+		<key>uni028C.sc</key>
+		<dict>
+			<key>public.kern2.Y.sc</key>
+			<integer>-215</integer>
 		</dict>
 		<key>uni0290</key>
 		<dict>
 			<key>bracketright</key>
-			<integer>122</integer>
+			<integer>138</integer>
 			<key>parenright</key>
-			<integer>94</integer>
+			<integer>110</integer>
 		</dict>
 		<key>uni0404</key>
 		<dict>
@@ -3151,15 +3217,39 @@
 			<key>uni044D.sc</key>
 			<integer>2</integer>
 		</dict>
+		<key>uni0433.loclSRB</key>
+		<dict>
+			<key>public.kern2.uni043B</key>
+			<integer>-49</integer>
+			<key>public.kern2.uni046B</key>
+			<integer>-54</integer>
+		</dict>
+		<key>uni0438</key>
+		<dict>
+			<key>public.kern2.uni0433</key>
+			<integer>-20</integer>
+		</dict>
 		<key>uni043A</key>
 		<dict>
 			<key>public.kern2.uni043B</key>
 			<integer>-76</integer>
 		</dict>
+		<key>uni043B</key>
+		<dict>
+			<key>public.kern2.uni0433</key>
+			<integer>-20</integer>
+		</dict>
 		<key>uni0448</key>
 		<dict>
 			<key>public.kern2.uni0442</key>
 			<integer>-69</integer>
+		</dict>
+		<key>uni0453.loclSRB</key>
+		<dict>
+			<key>public.kern2.uni043B</key>
+			<integer>-49</integer>
+			<key>public.kern2.uni046B</key>
+			<integer>-55</integer>
 		</dict>
 		<key>uni0454.sc</key>
 		<dict>
@@ -3174,72 +3264,100 @@
 		<key>uni1D6C</key>
 		<dict>
 			<key>public.kern2.j</key>
-			<integer>26</integer>
+			<integer>56</integer>
 			<key>public.kern2.v</key>
-			<integer>44</integer>
+			<integer>74</integer>
+			<key>public.kern2.x</key>
+			<integer>-33</integer>
 			<key>public.kern2.y</key>
-			<integer>44</integer>
+			<integer>74</integer>
+		</dict>
+		<key>uni1E07</key>
+		<dict>
+			<key>public.kern2.j</key>
+			<integer>-52</integer>
+		</dict>
+		<key>uni1E07.sc</key>
+		<dict>
+			<key>public.kern2.AE.sc</key>
+			<integer>-68</integer>
 		</dict>
 		<key>uni1EA6</key>
 		<dict>
+			<key>public.kern2.O</key>
+			<integer>-92</integer>
 			<key>public.kern2.V</key>
-			<integer>-283</integer>
+			<integer>-253</integer>
 			<key>public.kern2.Y</key>
-			<integer>-242</integer>
+			<integer>-212</integer>
 			<key>public.kern2.c</key>
-			<integer>-30</integer>
+			<integer>-3</integer>
 		</dict>
 		<key>uni1EA7.sc</key>
 		<dict>
+			<key>public.kern2.O.sc</key>
+			<integer>-67</integer>
 			<key>public.kern2.V.sc</key>
-			<integer>-205</integer>
+			<integer>-183</integer>
 			<key>public.kern2.Y.sc</key>
-			<integer>-176</integer>
+			<integer>-154</integer>
+			<key>uni01D2.sc</key>
+			<integer>22</integer>
+			<key>uni020D.sc</key>
+			<integer>176</integer>
+			<key>uni1ED7.sc</key>
+			<integer>26</integer>
 		</dict>
 		<key>uni1ED5</key>
 		<dict>
 			<key>public.kern2.j</key>
-			<integer>66</integer>
+			<integer>96</integer>
 		</dict>
 		<key>uni1ED5.sc</key>
 		<dict>
 			<key>public.kern2.A.sc</key>
-			<integer>-101</integer>
+			<integer>-71</integer>
+			<key>public.kern2.AE.sc</key>
+			<integer>-149</integer>
+			<key>public.kern2.Y.sc</key>
+			<integer>-103</integer>
 		</dict>
 		<key>uni2C6F</key>
 		<dict>
 			<key>public.kern2.a</key>
-			<integer>-92</integer>
+			<integer>-62</integer>
 			<key>public.kern2.c</key>
-			<integer>-82</integer>
+			<integer>-52</integer>
+			<key>public.kern2.egrave</key>
+			<integer>-156</integer>
 			<key>public.kern2.i</key>
-			<integer>98</integer>
+			<integer>128</integer>
 			<key>public.kern2.j</key>
-			<integer>-59</integer>
+			<integer>-29</integer>
 		</dict>
 		<key>uniAB53</key>
 		<dict>
 			<key>public.kern2.Alpha</key>
-			<integer>-110</integer>
+			<integer>-80</integer>
 			<key>public.kern2.Chi</key>
-			<integer>-466</integer>
+			<integer>-436</integer>
 			<key>public.kern2.Deltagreek</key>
-			<integer>-322</integer>
+			<integer>-292</integer>
 			<key>public.kern2.Lambda</key>
-			<integer>-355</integer>
+			<integer>-325</integer>
 			<key>public.kern2.Psi</key>
-			<integer>-261</integer>
+			<integer>-231</integer>
 			<key>public.kern2.Sigma</key>
-			<integer>-427</integer>
+			<integer>-397</integer>
 			<key>public.kern2.Tau</key>
-			<integer>-190</integer>
+			<integer>-160</integer>
 			<key>public.kern2.Upsilon</key>
-			<integer>-146</integer>
+			<integer>-116</integer>
 		</dict>
 		<key>uogonek</key>
 		<dict>
 			<key>public.kern2.j</key>
-			<integer>32</integer>
+			<integer>62</integer>
 		</dict>
 		<key>v</key>
 		<dict>

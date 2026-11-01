@@ -148,7 +148,8 @@ Moved from CLAUDE.md (its ground rules apply).
   Run in
   a pool of JOBS processes. Spaced as by weight (that letter's optical
   fit), so the stems stand where they did, then cut less than the Bold
-  (BOLD_ITALIC_CUT: ITALIC_LOOSER, 10 units a side, looser; tests holding
+  (BOLD_ITALIC_CUT: ITALIC_LOOSER, -5: 5 units a side tighter since 2026-11-01,
+  lowercase +8.6 % of the Italic; tests holding
   fixtures at the Bold's cut move them by conftest.respaced). ITALIC_BOLD_HEAVIER: letters
   given more gain (z). ITALIC_BOLD_BY_POINTS keeps by weight the letters
   whose later repairs match that outline's points (dollar, ℵ, ™); ø's

@@ -30,9 +30,9 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # what the repair changed in the finished letters, reviewed and accepted
 # by the person (10ddbcdc): y's DotBelow 5 units right; Ɯ, U twinned, 36
 # narrower, a 1.9 degree joint under its middle serif
-WIDTHS = {"uni019C": (2476, 2440)}
+WIDTHS = {"uni019C": (2446, 2410)}
 ANCHORS = {"y": {"DotBelow": (5, 0)}}
-FINDINGS = {"uni019C": [("kink", 1227, 1355)]}
+FINDINGS = {"uni019C": [("kink", 1212, 1355)]}
 
 
 def p(x, y):
@@ -178,6 +178,21 @@ def before(name, fixture="steps-before"):
     return glyph
 
 
+def as_spaced(glyph):
+    """A fixture, recorded at ITALIC_LOOSER 10, as the letters are spaced now
+    (make_bold.ITALIC_LOOSER): outline and anchors left, its advance narrower."""
+    from make_bold import ITALIC_LOOSER
+
+    d = 10 - ITALIC_LOOSER
+    for c in glyph.contours:
+        for p in c.points:
+            p.x -= d
+    for a in glyph.anchors:
+        a.x -= d
+    glyph.width -= 2 * d
+    return glyph
+
+
 def found(glyph):
     return ([(k, *(map(int, w.split(",")) if w else (0, 0)), float(d.split()[0])) for k, w, d in construction(glyph)]
             + [("wobble", x, y, d) for x, y, d in reversals(glyph)])
@@ -194,7 +209,10 @@ def test_finished_letter_keeps_what_it_was(bold_italic, name):
     advance, anchors, side bearings (within a unit), contours and quality
     findings as before the repair (the knees and dents too, before theirs:
     test_stroke_steps.FIXED), but for the changes declared"""
-    old, new = before(name, *FIXED.get(name, ())[:1]), bold_italic[name]
+    old = before(name, *FIXED.get(name, ())[:1])
+    if name != "uni02B2":  # a modifier letter, not respaced
+        old = as_spaced(old)
+    new = bold_italic[name]
     assert (old.width, new.width) == WIDTHS.get(name, (old.width, old.width))
     moved = ANCHORS.get(name, {})
     was = {a.name: (a.x + moved.get(a.name, (0, 0))[0], a.y + moved.get(a.name, (0, 0))[1]) for a in old.anchors}

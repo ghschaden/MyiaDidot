@@ -83,7 +83,12 @@ JOBS = 6  # processes at most (the project's limit)
 # ITALIC_HAIR times this): z, its top and bottom waves shallow, gains little
 # across and near the zones nothing up and down; still light beside n
 # (the person, 2026-10-28)
-ITALIC_BOLD_HEAVIER = {"z": 1.15}
+ITALIC_BOLD_HEAVIER = {"z": 1.15,
+                       # the small caps the Italic's drafts leave light against h.sc,
+                       # o.sc 0.86 and x.sc 0.75 where the Bold's are 1.07 and 0.87
+                       # (the person, samples.pdf, 2026-11-01)
+                       "o.sc": 1.15, "c.sc": 1.15, "g.sc": 1.15, "q.sc": 1.15,
+                       "x.sc": 1.6, "n.sc": 1.32, "z.sc": 1.32}
 # Bold Italic derived letters by strokes not joined to their base after
 # (follow_bases): the same Italic strokes give the same base, the join
 # tangles where they part
@@ -95,6 +100,9 @@ ITALIC_BOLD_BY_POINTS = {
     "uni2135": "ℵ: aleph.py's return and join repairs",
     "trademark": "™: symbol_joins.py's shoulder and stem repair",
 }
+# heavier by ITALIC_BOLD_HEAVIER in their thick strokes only: x.sc's hairlines
+# as much heavier swelled, a knee where each runs into its serif
+ITALIC_BOLD_HAIR_KEPT = {"x.sc"}
 MARK_AX, MARK_AY = 30, 8  # accents a little heavier
 # lib: derived letters left emboldened whole, with why (follow_bases);
 # tests/test_emboldened.py holds them to a list that only shrinks
@@ -515,8 +523,10 @@ BOLD_CUT, BOLD_CUT_GREEK = 19, 15
 BOLD_ITALIC_CUT_GREEK = BOLD_CUT_GREEK + 16
 # the Bold Italic's letters by strokes a little looser than the Bold's
 # ("a bit narrow", the person, 2026-10-28): ITALIC_LOOSER units less cut a
-# side, its Greek lowercase alike (the Greek pairs are judged against n n)
-ITALIC_LOOSER = 10
+# side, its Greek lowercase alike (the Greek pairs are judged against n n);
+# tighter than the Bold's since 2026-11-01: lowercase +8.6 % of the Italic,
+# as the Bold of the Regular (the name stays: a negative looseness)
+ITALIC_LOOSER = -5
 BOLD_ITALIC_CUT = BOLD_CUT - ITALIC_LOOSER
 # the figures, which respace.py leaves alone, are tighter too: emboldened
 # they stand looser than the Bold's letters (1.08 of their side space, where
@@ -543,6 +553,7 @@ BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni
                      "uni04AF": (-45, 0), "uni01B4": (0, 50)}
 # Pair-level corrections measured after the Bold's global kerning scale.
 BOLD_KERNING = {
+    ("public.kern1.X.sc", "k.sc"): -30,  # wide beside the pairs around it (BOXKÄMPFER, 2026-11-01)
     # Greek: σ's right side stood tight against the Greek references, as
     # the Bold's Latin sets them (scripts/quality/greek_pairs.py); what is
     # left of it after its sidebearing (BOLD_SIDEBEARINGS, 40)
@@ -647,7 +658,6 @@ ITALIC_BOLD_KERNING = {
     ("w", "a"): 57,
     ("g", "h"): 43,
     ("f", "r"): -95,
-    ("T", "h"): 237,
     ("g", "a"): 89,
     ("i", "f"): 75,
     ("G", "r"): 121,
@@ -657,6 +667,16 @@ ITALIC_BOLD_KERNING = {
     ("u", "f"): 92,
     ("R", "e"): 39,
     ("f", "t"): -66,
+    # small caps close against their neighbours in a word (the person, ZWÖLF
+    # BOXKÄMPFER, 2026-11-01): the white of B O 232 and E R 291 against the
+    # 350-375 around them; the Bold's 282 and 317
+    ("public.kern1.B.sc", "public.kern2.O.sc"): 40,
+    ("e.sc", "r.sc"): 20,
+    # a little wide at the tighter spacing of 2026-11-01 (ин лн, 0.16 past the
+    # references, greek_pairs.py --script cyrillic)
+    ("uni0438", "public.kern2.uni0433"): -20,
+    ("uni043B", "public.kern2.uni0433"): -20,
+    ("public.kern1.X.sc", "k.sc"): -30,
 }
 # the horn on u a little left: where the Regular's sits, the Bold's heavier
 # foot leaves a ledge beside the stem (glyph_lint)
@@ -2011,7 +2031,7 @@ def main():
     def strokes_job(name, w, sc):
         gain = sc * ITALIC_BOLD_HEAVIER.get(name, 1.0)
         return (name, w.value, (ITALIC_AX * gain, AY, ITALIC_THIN * sc, ITALIC_THICK * sc,
-                                ITALIC_HAIR * gain, SLANT, SLIVER * sc * sc, ITALIC_BOLD_ROOTS.get(name, 0.0)))
+                                ITALIC_HAIR * (sc if name in ITALIC_BOLD_HAIR_KEPT else gain), SLANT, SLIVER * sc * sc, ITALIC_BOLD_ROOTS.get(name, 0.0)))
 
     stroked, unstroked = {}, []
     if italic:
