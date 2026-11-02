@@ -295,6 +295,12 @@ def derived(font, path=None, only=None, regular=None):
             # deslanted, then turned: the recipes work in the upright frame
             a, _, _, d, e, f = m
             base = outline(source, (a, 0, -a * slant, d, e, f))
+        elif ch in derive.NARROW and not italic:
+            # the base with its bowl narrowed as the recipe narrows it
+            factor, _ = derive.NARROW[ch]
+            sb = band[0] if isinstance(band, tuple) else "x"
+            x0 = derive.stems_at(font, source, derive.band_middle(font, sb))[-1][0]
+            base = Outline(font, None, path=derive.narrowed(derive.to_path(font, font[source]), x0, factor))
         else:
             base = outline(source)
         if base.bounds is None:

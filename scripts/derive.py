@@ -729,6 +729,32 @@ SPACING = {
     "Қ": (0, -125), "қ": (0, -95), "Җ": (0, -125), "җ": (0, -100), "Ҳ": (0, -130), "ҳ": (0, -115),
 }
 
+# letters made from a wider base whose bowl, left of the last stem, is
+# narrowed by the factor towards it (the stem and its serifs unchanged,
+# the left side bearing kept, the advance shortened by as much), and the
+# letter whose marks above they take (the base's are over its ascender).
+# ɑ from d: 1.18 times a's ink width, Charis and Libertinus 1.10-1.13;
+# at 0.93 1.12 (2026-11-02).
+NARROW = {"ɑ": (0.93, "q")}
+
+
+def narrowed(path, x0, factor):
+    """path with every point left of x0 moved towards it by factor (an
+    affine map on that side, so curves keep their smoothness where their
+    points all lie on it)"""
+    rec = RecordingPen()
+    path.draw(rec)
+    pen = RecordingPen()
+
+    def f(pt):
+        x, y = pt
+        return (x0 - (x0 - x) * factor if x < x0 else x, y)
+
+    for op, args in rec.value:
+        getattr(pen, op)(*(f(pt) for pt in args))
+    return to_path(None, rec=pen)
+
+
 # anchors that keep their meaning when the shape is mirrored left-right
 # within the same vertical band
 KEEP_ANCHORS = ("Top", "Acute", "Grave", "Dotaccent", "TopCap", "Bottom", "DotBelow")
@@ -2624,9 +2650,22 @@ def build(font, ch, op, source, band, name=None):
             g.width = width[0]
         else:
             g.width = max(w, round(out.bounds[2] + w - ink_bounds(font, source)[2]))
+        anchors = [(a.name, a.x, a.y) for a in src.anchors]
+        if ch in NARROW:
+            factor, above = NARROW[ch]
+            x0 = stems_at(font, source, band_middle(font, _band))[-1][0]
+            left = out.bounds[0]
+            out = narrowed(out, x0, factor)
+            dx = left - out.bounds[0]
+            out = shifted(out, dx)
+            g.width += round(dx)
+            tops = ("Top", "Acute", "Grave", "Dotaccent")
+            anchors = ([(a.name, a.x, a.y) for a in font[above].anchors if a.name in tops]
+                       + [a for a in anchors if a[0] not in tops])
+            anchors = [(n, round((x0 - (x0 - x) * factor if x < x0 else x) + dx), y) for n, x, y in anchors]
         draw_path(font, src, g, out)
-        for a in src.anchors:
-            g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+        for n, x, y in anchors:
+            g.appendAnchor({"name": n, "x": x, "y": y})
     elif op in ("ezh", "esh"):
         out = (ezh(font, source, *band) if op == "ezh" else esh(font, source, *band))
         rsb = w - ink_bounds(font, source)[2]
