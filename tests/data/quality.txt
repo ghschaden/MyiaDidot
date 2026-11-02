@@ -126,7 +126,6 @@ uni0249.sc zone 2                # 2026-10-16 known at the start (quality checks
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -14 from 0
 uni0251.sc step 2                # 2026-10-27 step check added (checks.py step): a candidate to review: 749,986 54 units aside; 749,0 32 units aside
-uni0252 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 143 against 164 (0.87, lighter)
 uni0253.sc kink 1                # 2026-10-16 known at the start (quality checks added): -89,871 3.4 degrees
 uni0257.sc kink 1                # 2026-10-16 known at the start (quality checks added): -89,871 3.4 degrees
 uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 594,553 4.0 degrees
@@ -138,7 +137,8 @@ uni025E kink 1                   # 2026-10-16 known at the start (quality checks
 uni025E smooth 1                 # 2026-10-16 known at the start (quality checks added): 380,142 2.8 degrees
 uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from 0
 uni0260.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 196 against 176 (1.11, darker)
-uni0262 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+uni0262 smooth 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 710,23 2.6 degrees
+uni0262 step 1                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 701,304 67 units aside
 uni0263.sc kink 3                # 2026-10-16 known at the start (quality checks added): 86,946 3.6 degrees; 742,900 4.1 degrees; 506,0 2.3 degrees
 uni0263.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 723,1074 2.6 degrees
 uni0264 kink 4                   # 2026-10-16 known at the start (quality checks added): 76,805 4.1 degrees; 632,919 3.7 degrees; 652,761 3.9 degrees; 445,-16 4.1 degrees

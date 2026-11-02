@@ -621,7 +621,8 @@ ITALIC_BOLD_KERNING = {
     # where Charis and Libertinus agree against the Bold Italic (tests/test_greek_pairs.py)
     ("public.kern1.mugreek", "public.kern2.alphatonos"): 50,  # μα
     ("public.kern1.lambda", "public.kern2.alphatonos"): 31,  # λα
-    ("public.kern1.alpha", "delta"): 63,  # αδ (αθ keeps the Italic's, scaled; 0 before strokes)
+    ("public.kern1.alpha", "delta"): 63,  # αδ (0 before strokes)
+    ("public.kern1.alpha", "theta"): 10,  # αθ, the θ closed (δ ϐ in its class stay)
     # after emboldening by weight σ's thin arm is spaced in: σα σω σφ tight
     ("public.kern1.sigma", "public.kern2.alphatonos"): 58,  # σα
     ("public.kern1.sigma", "public.kern2.omega"): 66,  # σω

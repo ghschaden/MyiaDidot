@@ -132,7 +132,10 @@ def reviewed(g):
 MATH_SIGNS = set(map(ord, "+<=>±×÷¬−≈≠≤≥⁺⁻⁼₊₋₌⊗"))
 # Myia's own, sloped, though Old Standard has them: the guillemets
 # (draft_symbols.py's chevrons; Old Standard's are small crescents)
-ROMAN_SIGNS = set(map(ord, "‹›"))
+# θ closed, not the cursive form Old Standard shares with ϑ: IPA needs the
+# two apart; ɑ and æ the roman's, sloped: Old Standard's ɑ is its α, and
+# its æ, of the one-storey a, read as œ
+ROMAN_SIGNS = set(map(ord, "‹›θɑæ"))
 
 
 def keeps_upright(u):
@@ -465,7 +468,14 @@ ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190
 # Ⱳ keeps its number (w_curl.py's approved Bold Italic connection)
 # ɮ: how far right of l's stem its ʒ stands (ITALIC_RECIPES)
 ZH_DX = 150
-ITALIC_RECIPES = {"ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
+# the roman's own, sloped, not remade on the italic letter: ʌ turned from the
+# italic v rounds its apex and reads as a (the person, 2026-11-01)
+# Old Standard has it, but derive.py's recipe matches the IPA small capitals
+# around it (Old Standard's ʀ stood lower and lighter)
+OWN_RECIPE = {"ʀ"}
+KEPT_SLOPED = {"ʌ", "ɑ"}
+ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
+                  "ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   # ₩: the bars from 20 to 20 past the uncrossed W's
                   # advance (redraw_w), as the Regular's across its W
                   "₩": ("lines", "W", ("c", 64, [(20, 528, 1807, 592), (20, 842, 1807, 906)])),
@@ -1029,7 +1039,7 @@ def enlarged(font, up, ch, op, source, band, name):
     the glyphs without it, the letter then given the weight of its case."""
     import derive
 
-    refs = {source, *band[:2]}
+    refs = {source, *(n for n in band if isinstance(n, str))}
     saved = {n: copy.deepcopy(up[n]) for n in refs if weight_of(font, n) and n in up}
     try:
         for n in saved:
@@ -1110,6 +1120,8 @@ def derive_stage(font, regular, late=False, kept=()):
     made, failed, later = [], [], []
     for ch, op, source, band in derive.RECIPES:
         if ch in SC_DRAFTED:
+            continue
+        if ch in KEPT_SLOPED:
             continue
         op, source, band = ITALIC_RECIPES.get(ch, (op, source, band))
         name = resolve(ch)
@@ -1650,7 +1662,8 @@ def main():
             g.clearComponents()
             g.lib[SOURCE_KEY] = "sloped roman"
             continue
-        if g.unicode is not None and (keeps_upright(g.unicode) or g.unicode in ROMAN_SIGNS):
+        if g.unicode is not None and (keeps_upright(g.unicode) or g.unicode in ROMAN_SIGNS
+                                      or chr(g.unicode) in OWN_RECIPE):
             osname = None  # Myia's own, upright or sloped (below)
         if g.name in marks:
             # Myia's accents, sloped about the height they sit at

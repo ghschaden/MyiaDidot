@@ -273,7 +273,8 @@ uni025E base 1                   # derived-glyph checks added (scripts/quality/d
 uni025E stroke 1                 # Bold ɞ: own recipe at the Bold's weight (make_bold.py BOLD_RECIPES), counters open, advance that of ɜ as in the Regular: lc 225 against 261 (0.86, lighter)
 uni025E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 378,-9 5 degrees; 381,742 23 degrees; 386,742 5 degrees
 uni0260 zone 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: top -25 from 1496
-uni0262 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
+uni0262 step 1                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 706,301 62 units aside
+uni0262 wobble 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 2 against 0: 792,839 95 degrees; 821,41 94 degrees
 uni0263.sc kink 3                # 2026-10-16 known at the start (quality checks added): 70,942 5.1 degrees; 820,893 4.4 degrees; 553,0 2.0 degrees
 uni0263.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 778,1074 2.1 degrees
 uni0264 kink 5                   # 2026-10-16 known at the start (quality checks added): 60,802 4.8 degrees; 683,919 3.2 degrees; 727,755 4.2 degrees; 489,-16 3.7 degrees; 340,92 2.7 degrees
@@ -310,6 +311,8 @@ uni027D.sc kink 1                # 2026-10-26 rederived hooks: cut above the Bol
 uni027D.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 600,-225 6 degrees; 596,-188 17 degrees; 712,739 4 degrees
 uni027E extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 670,785 8 units past; 473,699 9 units past
 uni027E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 542,764 23 degrees; 546,796 17 degrees
+uni0280 extreme 2                # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 888,164 7 units past; 547,501 5 units past
+uni0280 wobble 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 1 against 0: 607,629 5 degrees
 uni0281 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 712,301 4 degrees
 uni0282 kink 1                   # 2026-10-16 known at the start (quality checks added): 116,-46 7.2 degrees
 uni0282 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 214 against 261 (0.82, lighter)

@@ -5,7 +5,7 @@
 Each recipe below makes one encoded glyph from a source glyph (a glyph name,
 or an earlier recipe's character):
 
-    alias     a component of the source (ɑ = α, ɪ = small-cap I); follows
+    alias     a component of the source (Ɪ = I, ɩ = ι); follows
               any later change to the source (its width on a run)
     turn      outlines turned 180° about the middle of the band given
               (x: x-height, c: cap height, s: small-cap height)
@@ -81,7 +81,9 @@ ASCII_VARIANTS = (".horn", ".sc.horn")
 # (character, operation, source, band) -- band only for turn/flip
 RECIPES = [
     # same shape as an existing letter
-    ("ɑ", "alias", "alpha", None),
+    # ɑ: d's bowl and stem, the ascender cut at the x-height (the bowl's
+    # overshoot kept), as in Charis; an alias of α was the same letter
+    ("ɑ", "attach", "d", ("x", [(600, 884, BIG, BIG), (-BIG, 1000, BIG, BIG)], [])),
     ("ɛ", "alias", "epsilon", None),
     ("ɣ", "alias", "gamma", None),
     # ɸ: not the open Greek φ of this font, but o with a stem through it
@@ -96,15 +98,18 @@ RECIPES = [
     ("һ", "alias", "h", None),
     ("Ү", "alias", "Y", None),
     ("Ɪ", "alias", "I", None),
-    # IPA small capitals are the small caps
-    ("ɢ", "alias", "g.sc", None),
-    ("ɪ", "alias", "i.sc", None),
-    ("ʟ", "alias", "l.sc", None),
-    ("ɴ", "alias", "n.sc", None),
-    ("ʀ", "alias", "r.sc", None),
-    ("ʏ", "alias", "y.sc", None),
-    ("ʙ", "alias", "b.sc", None),
-    ("ʜ", "alias", "h.sc", None),
+    # IPA small capitals at the x-height, weighted as the lowercase beside them
+    # (Charis 0.98-1.00 of it); the small caps' height stood above the line.
+    # Their weight goes by straight stems, i.sc to n: the italics' small caps
+    # have heavier stems for their rounds than the lowercase has
+    ("ɢ", "enlarge", "g.sc", ("o.sc", "o", -20, 884, "o.sc", "o")),  # round, the foot on the line
+    ("ɪ", "enlarge", "i.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
+    ("ʟ", "enlarge", "l.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
+    ("ɴ", "enlarge", "n.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
+    ("ʀ", "enlarge", "r.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
+    ("ʏ", "enlarge", "y.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
+    ("ʙ", "enlarge", "b.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
+    ("ʜ", "enlarge", "h.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
     ("ᴅ", "alias", "d.sc", None),
     ("ɶ", "alias", "oe.sc", None),
     ("ʁ", "flip", "r.sc", "s"),
@@ -134,7 +139,7 @@ RECIPES = [
     ("ʌ", "turn", "v", "x"),
     ("ʍ", "turn", "w", "x"),
     ("ʎ", "turn", "y", "x"),
-    ("ɒ", "mirror", "alpha", None),
+    ("ɒ", "turn", "ɑ", "x"),  # turned alpha
     ("Ʌ", "turn", "V", "c"),
     ("Ɐ", "turn", "A", "c"),
     ("Ɯ", "twin", "U", 1000),
@@ -1153,6 +1158,14 @@ def strokes(font, name):
     return b, s[1] - s[0], top[1] - top[0]
 
 
+def straight_stem(font, name):
+    """The width of the first stem a third of the way up: an italic's stem
+    swells towards the branch at mid height."""
+    b = ink_bounds(font, name)
+    x0, x1 = stems_at(font, name, b[1] + (b[3] - b[1]) / 3)[0]
+    return x1 - x0
+
+
 def keep_brackets(P, ons, old, new, sign):
     """Brackets the emboldening overran: a concave curve (sign: the
     contour's winding, as embolden's) between a stroke that grew
@@ -1782,13 +1795,16 @@ def embolden_simple(rec, ax, ay, weighted=False, thin=60, thick=160, keep_smooth
     return glyph
 
 
-def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False):
+def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False, stems=None):
     """The source scaled so that src_ref's strokes and height become
     dst_ref's (ə -> Ә with o -> O): scaled uniformly, then the stems and
     hairlines brought to dst_ref's weight; sidebearings of dst_ref. With
     fit (y0, y1) the source's ink is scaled into that band instead (γ with
-    its loop on the baseline for Ɣ)."""
+    its loop on the baseline for Ɣ). With stems (two letters with a straight
+    stem) the first's stem becomes the second's, in place of the round ones."""
     (b0, s0, h0), (b1, s1, h1) = strokes(font, src_ref), strokes(font, dst_ref)
+    if stems:
+        s0, s1 = (straight_stem(font, name) for name in stems)
     k = ((b1[3] - b1[1]) - h1) / ((b0[3] - b0[1]) - h0)
     # a capital made a small cap: scaled about the baseline from the cap height
     # to the small caps' (its flat edges on 0 and that height, not on O's
@@ -1799,6 +1815,8 @@ def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False):
     if fit:
         sb = ink_bounds(font, source)
         k = (fit[1] - fit[0]) / (sb[3] - sb[1])
+        if stems:  # the finished letter in the band, hairlines brought to weight
+            k = (fit[1] - fit[0] - h1) / (sb[3] - sb[1] - h0)
         b1 = (b1[0], fit[0], b1[2], fit[1])
     rec = DecomposingRecordingPen(font)
     if stretch:
@@ -2618,9 +2636,11 @@ def build(font, ch, op, source, band, name=None):
         out, g.width = superior(font, source, *([band] if band else []))
         draw_path(font, src, g, out)
     elif op in ("enlarge", "stretch"):
-        src_ref, dst_ref, *fit = band
-        out, g.width = enlarge(font, source, src_ref, dst_ref, tuple(fit) or None,
-                               stretch=op == "stretch")
+        src_ref, dst_ref, *rest = band
+        fit = tuple(v for v in rest if not isinstance(v, str)) or None
+        stems = tuple(v for v in rest if isinstance(v, str)) or None
+        out, g.width = enlarge(font, source, src_ref, dst_ref, fit,
+                               stretch=op == "stretch", stems=stems)
         draw_path(font, src, g, out)
         ref = font[dst_ref]
         # a letter taller than dst_ref (ʒ.sc on the baseline, from Ʒ with its

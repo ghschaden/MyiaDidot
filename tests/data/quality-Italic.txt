@@ -55,6 +55,7 @@ Y kink 3                         # 2026-10-21 Italic reweighted and tightened: 4
 Z slant 1                        # 2026-10-16 known at the start (quality checks added): 18.0 degrees, not 15.2
 a.sc kink 2                      # 2026-10-21 Italic reweighted and tightened: 827,119 6.8 degrees; 204,107 6.7 degrees
 a.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +5 from 1040
+ae zone 2                        # 2026-11-02 ɑ drawn from d (was α), ɒ turned ɑ; in the italics ɑ and æ the roman's sloped, with its overshoots: bottom +7 from -23; top +16 from 884
 ae.sc kink 2                     # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 239,208 3.6 degrees; 188,100 3.8 degrees
 alpha.sc zone 1                  # 2026-10-16 known at the start (quality checks added): top +5 from 1040
 ampersand kink 1                 # 2026-10-21 Italic reweighted and tightened: 946,923 3.5 degrees
@@ -211,6 +212,7 @@ tau stroke 1                     # stroke weights against the kind's (scripts/qu
 tbar stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
 tbar.sc kink 1                   # 2026-10-16 known at the start (quality checks added): 718,946 1.6 degrees
 tbar.sc smooth 1                 # 2026-10-16 known at the start (quality checks added): 535,944 2.1 degrees
+theta zone 1                     # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: bottom +7 from -23
 theta.sc kink 3                  # 2026-10-21 Italic reweighted and tightened: 94,346 5.9 degrees; 958,653 6.0 degrees; 306,658 2.9 degrees
 thorn zone 1                     # 2026-10-16 known at the start (quality checks added): bottom +11 from -461
 thorn.sc kink 4                  # 2026-10-21 Italic reweighted and tightened: 704,835 5.4 degrees; 946,591 6.5 degrees; 743,426 6.5 degrees; 797,610 6.2 degrees
@@ -317,9 +319,11 @@ uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni0250 zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
 uni0250.sc kink 3                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 291,922 5.5 degrees; 475,918 5.7 degrees; 913,934 4.9 degrees
 uni0250.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -5 from 0
+uni0251 zone 2                   # 2026-11-02 ɑ drawn from d (was α), ɒ turned ɑ; in the italics ɑ and æ the roman's sloped, with its overshoots: bottom +7 from -23; top +16 from 884
 uni0251.sc step 1                # 2026-10-27 step check added (checks.py step): a candidate to review: 689,0 49 units aside
 uni0251.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 239 against 184 (1.30, darker)
 uni0251.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +5 from 1040
+uni0252 zone 2                   # 2026-11-02 ɑ drawn from d (was α), ɒ turned ɑ; in the italics ɑ and æ the roman's sloped, with its overshoots: bottom +7 from -23; top +16 from 884
 uni0253 kink 1                   # 2026-10-16 known at the start (quality checks added): 298,988 4.4 degrees
 uni0253 zone 1                   # 2026-10-16 known at the start (quality checks added): top +16 from 1434
 uni0253.sc kink 4                # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1018,801 4.5 degrees; 929,308 5.6 degrees; 768,305 5.7 degrees; 869,798 4.3 degrees
@@ -334,7 +338,9 @@ uni025E zone 1                   # 2026-10-16 known at the start (quality checks
 uni025F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni0260.sc kink 5                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 91,352 5.4 degrees; 997,962 5.2 degrees; 349,760 3.5 degrees; 240,279 5.9 degre
 uni0260.sc slant 1               # 2026-10-16 known at the start (quality checks added): 11.0 degrees, not 15.2
-uni0262 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from -23
+uni0262 kink 5                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 87,294 5.6 degrees; 330,630 3.5 degrees; 239,231 5.7 degre
+uni0262 slant 1                  # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 9.8 degrees, not 15.2
+uni0262 smooth 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 747,563 2.2 degrees
 uni0264 zone 1                   # 2026-10-21 Italic reweighted and tightened: bottom +7 from -23
 uni0264.sc kink 1                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 762,1000 6.8 degrees
 uni0264.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 770,937 2.5 degrees
@@ -367,6 +373,8 @@ uni0271 slant 1                  # Italic weighted as its letters are taken, der
 uni0272 slant 1                  # 2026-10-16 known at the start (quality checks added): 19.6 degrees, not 15.2
 uni0272.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 121 against 178 (0.68, lighter)
 uni0272.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
+uni0274 stroke 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: lc 96 against 167 (0.57, lighter)
+uni0274 zone 1                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: bottom +23 from -23
 uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from -23
 uni0278 style 1                  # 2026-10-21 Italic reweighted and tightened: closer to the Regular's uni0278 (0.63) than to o (0.49)
 uni0279 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
@@ -376,6 +384,9 @@ uni027D.sc kink 3                # 2026-10-26 Italic/Bold Italic retroflex tails
 uni027E base 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 59% of r kept (attach)
 uni027E step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 210,50 70 units aside; 0,50 67 units aside
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
+uni0280 kink 4                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 861,675 4.4 degrees; 595,105 5.6 degrees; 294,99 4.5 degre
+uni0280 smooth 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 318,798 2.4 degrees
+uni0280 zone 1                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: bottom +23 from -23
 uni0280.sc kink 4                # 2026-10-21 Italic reweighted and tightened: 299,104 3.6 degrees; 617,-38 5.6 degrees; 933,642 5.6 degrees; 783,670 5.7 degrees
 uni0281 kink 4                   # 2026-10-21 Italic reweighted and tightened: 828,253 3.5 degrees; 880,933 4.1 degrees; 525,936 4.0 degrees; 662,225 4.7 degrees
 uni0281 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 196 against 167 (1.17, darker)
@@ -403,7 +414,6 @@ uni028B slant 1                  # 2026-10-16 known at the start (quality checks
 uni028B smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 337,649 2.9 degrees
 uni028B.sc kink 1                # 2026-10-21 Italic reweighted and tightened: 328,300 2.9 degrees
 uni028B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
-uni028C slant 1                  # 2026-10-16 known at the start (quality checks added): 23.5 degrees, not 15.2
 uni028C zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
 uni028C.sc extreme 1             # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 620,60 5 units past
 uni028C.sc kink 5                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 666,133 6.2 degrees; 288,284 3.1 degrees; 231,125 4.2 degrees; 164,174 4.7 degr
@@ -412,6 +422,8 @@ uni028D slant 1                  # 2026-10-16 known at the start (quality checks
 uni028D zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
 uni028E slant 1                  # 2026-10-16 known at the start (quality checks added): 18.0 degrees, not 15.2
 uni028E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
+uni028F extreme 1                # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 538,77 5 units past
+uni028F kink 3                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 361,778 4.4 degrees; 870,783 7.6 degrees; 538,77 5.3 degre
 uni028F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0290 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 63 against 183 (0.35, lighter)
 uni0290 zone 1                   # ʐ: own recipe (Italic: turns widened for the weight pass; Bold Italic: ITALIC_BOLD_RECIPES): bottom +16 from -461
@@ -426,6 +438,7 @@ uni0295 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni0295 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0298 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 444,901 2.1 degrees
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -12 from -23
+uni0299 kink 3                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 702,259 5.3 degrees; 914,682 4.4 degrees; 838,257 5.7 degr
 uni0299 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni029B zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from -23
 uni029C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23

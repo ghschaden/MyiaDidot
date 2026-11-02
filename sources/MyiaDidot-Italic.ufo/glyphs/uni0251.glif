@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0251" format="2">
 	<unicode hex="0251"/>
-	<advance width="1112"/>
+	<advance width="1108"/>
 	<outline>
-		<component base="alpha" xOffset="11"/>
+		<contour>
+			<point x="80" y="442" type="curve" smooth="yes"/>
+			<point x="133" y="637"/>
+			<point x="243" y="778"/>
+			<point x="379" y="850" type="curve" smooth="yes"/>
+			<point x="445" y="885"/>
+			<point x="510" y="900"/>
+			<point x="573" y="900" type="curve" smooth="yes"/>
+			<point x="707" y="900"/>
+			<point x="780" y="820"/>
+			<point x="812" y="720" type="curve"/>
+			<point x="826" y="722" type="line"/>
+			<point x="870" y="884" type="line"/>
+			<point x="1034" y="884" type="line"/>
+			<point x="807" y="48" type="line"/>
+			<point x="949" y="48" type="line"/>
+			<point x="936" y="0" type="line"/>
+			<point x="630" y="0" type="line"/>
+			<point x="674" y="162" type="line"/>
+			<point x="660" y="164" type="line"/>
+			<point x="574" y="64"/>
+			<point x="459" y="-16"/>
+			<point x="325" y="-16" type="curve" smooth="yes"/>
+			<point x="262" y="-16"/>
+			<point x="205" y="-1"/>
+			<point x="157" y="34" type="curve" smooth="yes"/>
+			<point x="92" y="83"/>
+			<point x="55" y="164"/>
+			<point x="55" y="272" type="curve" smooth="yes"/>
+			<point x="55" y="323"/>
+			<point x="63" y="380"/>
+		</contour>
+		<contour>
+			<point x="264" y="442" type="curve" smooth="yes"/>
+			<point x="244" y="370"/>
+			<point x="233" y="301"/>
+			<point x="233" y="243" type="curve" smooth="yes"/>
+			<point x="233" y="124"/>
+			<point x="279" y="44"/>
+			<point x="396" y="44" type="curve" smooth="yes"/>
+			<point x="516" y="44"/>
+			<point x="684" y="198"/>
+			<point x="750" y="442" type="curve" smooth="yes"/>
+			<point x="766" y="501"/>
+			<point x="773" y="555"/>
+			<point x="773" y="603" type="curve" smooth="yes"/>
+			<point x="773" y="752"/>
+			<point x="703" y="840"/>
+			<point x="612" y="840" type="curve" smooth="yes"/>
+			<point x="437" y="840"/>
+			<point x="323" y="660"/>
+		</contour>
 	</outline>
-	<anchor name="DotBelow" x="573" y="-20"/>
-	<anchor name="IotaSubscript" x="567" y="-40"/>
-	<anchor name="GreekTop" x="716" y="980"/>
+	<anchor name="Grave" x="1116" y="1480"/>
+	<anchor name="Acute" x="1116" y="1480"/>
+	<anchor name="Top" x="943" y="1528"/>
+	<anchor name="Dotaccent" x="583" y="1020"/>
+	<anchor name="DotBelow" x="454" y="-20"/>
+	<anchor name="Bottom" x="460" y="0"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.italicSource</key>
+			<string>sloped roman</string>
+		</dict>
+	</lib>
 </glyph>
