@@ -76,13 +76,16 @@ J_TAIL = (-BIG, -BIG, BIG, 100)
 
 # suffixes that make an ASCII letter's recipe a variant (an ASCII name
 # with any other is a glyph name: g.sc)
-ASCII_VARIANTS = (".horn", ".sc.horn")
+ASCII_VARIANTS = (".horn", ".sc.horn", ".ipa")
 
 # (character, operation, source, band) -- band only for turn/flip
 RECIPES = [
     # same shape as an existing letter
     # ɑ: d's bowl and stem, the ascender cut at the x-height (the bowl's
     # overshoot kept), as in Charis; an alias of α was the same letter
+    # a in IPA text (locl, language IPPH): the two-storey a, which the
+    # italics' own a is not (make_italic.py: the roman's, sloped)
+    ("a.ipa", "alias", "a", None),
     ("ɑ", "attach", "d", ("x", [(600, 884, BIG, BIG), (-BIG, 1000, BIG, BIG)], [])),
     ("ɛ", "alias", "epsilon", None),
     ("ɣ", "alias", "gamma", None),

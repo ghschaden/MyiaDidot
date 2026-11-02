@@ -56,6 +56,11 @@ Moved from CLAUDE.md (its ground rules apply).
   curling on, its ring closed the top on the left stem); rederive builds what follows on the letters it has made again
   (ƈ.sc from the new Ƈ). Shaping in this shell defaults to
   German (locale), which has no f-ligatures: pass `--language=en`.
+- IPA (languagesystem latn IPPH, BCP 47 und-fonipa): locl takes a to
+  a.ipa (an alias of a; in the italics the roman's two-storey a, sloped:
+  make_italic ROMAN_GLYPHS) and the accented a's apart onto it, so a stays
+  apart from ɑ, the italic's one-storey a. ɐ ᵃ æ θ are the roman's, sloped,
+  in the italics (ROMAN_SIGNS).
 - Localized forms (locl): recipes in derive.py name them "б.loclSRB" (a
   character and its suffix; derive.variant/resolve), aliases of the plain
   letter where only the italic differs (make_italic ITALIC_RECIPES,

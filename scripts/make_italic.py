@@ -133,9 +133,12 @@ MATH_SIGNS = set(map(ord, "+<=>±×÷¬−≈≠≤≥⁺⁻⁼₊₋₌⊗"))
 # Myia's own, sloped, though Old Standard has them: the guillemets
 # (draft_symbols.py's chevrons; Old Standard's are small crescents)
 # θ closed, not the cursive form Old Standard shares with ϑ: IPA needs the
-# two apart; ɑ and æ the roman's, sloped: Old Standard's ɑ is its α, and
-# its æ, of the one-storey a, read as œ
-ROMAN_SIGNS = set(map(ord, "‹›θɑæ"))
+# two apart; æ ɐ ᵃ the roman's, sloped, keeping the two-storey a apart from
+# ɑ as in the roman (Old Standard's æ, of the one-storey a, read as œ; ɐ
+# turned from it read as ɒ)
+ROMAN_SIGNS = set(map(ord, "‹›θæɐᵃ"))
+# unencoded glyphs taken the same way: a in IPA text (locl IPPH)
+ROMAN_GLYPHS = {"a.ipa"}
 
 
 def keeps_upright(u):
@@ -472,10 +475,12 @@ ZH_DX = 150
 # italic v rounds its apex and reads as a (the person, 2026-11-01)
 # Old Standard has it, but derive.py's recipe matches the IPA small capitals
 # around it (Old Standard's ʀ stood lower and lighter)
-OWN_RECIPE = {"ʀ"}
-KEPT_SLOPED = {"ʌ", "ɑ"}
+# ɑ is the italic's one-storey a (Old Standard's ɑ is its α), ɒ that turned
+OWN_RECIPE = {"ʀ", "ɑ"}
+KEPT_SLOPED = {"ʌ", "ɐ", "ᵃ", "a.ipa"}
 ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   "ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
+                  "ɑ": ("alias", "a", None),
                   # ₩: the bars from 20 to 20 past the uncrossed W's
                   # advance (redraw_w), as the Regular's across its W
                   "₩": ("lines", "W", ("c", 64, [(20, 528, 1807, 592), (20, 842, 1807, 906)])),
@@ -1657,6 +1662,16 @@ def main():
     for g in font:
         osname = os_cmap.get(g.unicode) if g.unicode is not None else (g.name if g.name in oldstd else None)
         osname = OS_LOCL.get(g.name, osname)
+        if g.name in ROMAN_GLYPHS:
+            # an alias in the Regular: its outlines, sloped
+            rec = DecomposingRecordingPen(regular)
+            g.draw(rec)
+            g.clearComponents()
+            rec.replay(g.getPen())
+            shear(g, SLANT, extremes=g.name not in POINT_REPAIRS)
+            g.lib[SOURCE_KEY] = "sloped roman"
+            kept_roman += 1
+            continue
         if g.name in ITALIC_LOCL:
             # made below by its italic recipe, as what Old Standard lacks
             g.clearComponents()

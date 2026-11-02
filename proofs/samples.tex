@@ -11,6 +11,7 @@
 \newcommand\smc[1]{{\addfontfeature{Letters=SmallCaps}#1}}
 \newcommand\allsc[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1}}
 \newcommand\lang[2]{{\addfontfeature{Language=#1}#2}}
+\newfontlanguage{IPA}{IPPH}
 \newcommand\head[1]{\par\bigskip{\large\allsc{#1}}\par\smallskip}
 \newcommand\bi[1]{{\bfseries\itshape #1}\par}
 \newcommand\lng[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1.}\enspace}
@@ -159,6 +160,7 @@ Những điều trông thấy mà đau đớn lòng.
 \bi{Yorùbá ẹ̀kọ́, ọmọ, ṣé — Ẹ Ọ Ṣ\quad Fulfulde ɓe, ɗum, ŋ, ƴ — Ɓ Ɗ Ŋ Ƴ\quad Ɣ ɣ Ɩ ɩ Ʊ ʊ Ʒ ʒ Ɑ ɑ}
 
 \head{The North Wind and the Sun, in IPA}
+\begingroup\addfontfeature{Language=IPA}% the two-storey a in the italics too
 \def\aaa{a ɑ α · sat sɑt · ɐ æ ʌ · θ ϑ · ɪ i · ʏ y · ɴ n · ʀ r · ɢ g · ʟ l · ʙ b · ʜ h}
 \aaa\par{\itshape\aaa\par}{\bfseries\aaa\par}{\bfseries\itshape\aaa\par}\smallskip
 ðə ˈnɔɹθ ˌwɪnd ən ðə ˈsʌn wɚ dɪˈspjutɪŋ ˈwɪtʃ wəz ðə ˈstɹɔŋɡɚ, wɛn ə
@@ -178,6 +180,7 @@ kənˈsɪdɚd ˈstɹɔŋɡɚ ðən ðə ˈʌðɚ.\par
 \bi{ðə ˈnɔɹθ ˌwɪnd ən ðə ˈsʌn wɚ dɪˈspjutɪŋ ˈwɪtʃ wəz ðə ˈstɹɔŋɡɚ}
 \bi{ɓ ɗ ʄ ɠ ʛ · ɖ ɭ ɳ ɽ ʈ ʂ ʐ ɻ · ʋ ɹ ɰ ɥ ɯ · ʃ ʒ ɕ ʑ ɧ · ɸ β θ ð χ ʁ ħ ʕ ʔ ʡ ʢ}
 \bi{ɚ ɝ ɞ ɘ ɵ ɤ ɶ ʉ ɨ · ǀ ǁ ǂ ǃ ʘ · tʰ tʲ tʷ nˠ aː aˑ ə̃ n̩ t̪ d̥ e̞ o̝ ɑ̟ ʊ̈ ˥˦˧˨˩}
+\endgroup
 
 % -- 5. Greek -----------------------------------------------------------------
 \head{Greek}

@@ -15,6 +15,7 @@ languagesystem latn GAG ;
 languagesystem latn KAZ ;
 languagesystem latn TAT ;
 languagesystem latn DEU ;
+languagesystem latn IPPH;
 languagesystem latn dflt;
 languagesystem latn MOL ;
 languagesystem latn NLD ;
@@ -5214,8 +5215,43 @@ feature ccmp {
       lookup ccmpVietnameseToneMarks;
       lookup ccmpSubsitutionforGreekAccents;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } ccmp;
+
+# IPA (language IPPH): the two-storey a, apart from ɑ also in the italics
+# (a.ipa; the accented a's taken apart onto it)
+lookup loclIPAAccented {
+    sub agrave by a.ipa gravecomb;
+    sub aacute by a.ipa acutecomb;
+    sub acircumflex by a.ipa circumflexcmb;
+    sub atilde by a.ipa tildecomb;
+    sub adieresis by a.ipa uni0308;
+    sub aring by a.ipa uni030A;
+    sub amacron by a.ipa macroncmb;
+    sub abreve by a.ipa brevecmb;
+    sub aogonek by a.ipa uni0328;
+    sub uni01CE by a.ipa uni030C;
+    sub aringacute by a.ipa uni030A acutecomb;
+    sub uni0201 by a.ipa uni030F;
+    sub uni0227 by a.ipa uni0307;
+    sub uni1EA1 by a.ipa dotbelowcomb;
+    sub uni1EA3 by a.ipa hookcomb;
+    sub uni1EA5 by a.ipa circumflexcmb acutecomb;
+    sub uni1EA7 by a.ipa circumflexcmb gravecomb;
+    sub uni1EA9 by a.ipa circumflexcmb hookcomb;
+    sub uni1EAB by a.ipa circumflexcmb tildecomb;
+    sub uni1EAD by a.ipa dotbelowcomb circumflexcmb;
+    sub uni1EAF by a.ipa brevecmb acutecomb;
+    sub uni1EB1 by a.ipa brevecmb gravecomb;
+    sub uni1EB3 by a.ipa brevecmb hookcomb;
+    sub uni1EB5 by a.ipa brevecmb tildecomb;
+    sub uni1EB7 by a.ipa dotbelowcomb brevecmb;
+} loclIPAAccented;
+
+lookup loclIPA {
+    sub a by a.ipa;
+} loclIPA;
 
 feature locl {
 
@@ -5233,6 +5269,9 @@ feature locl {
       lookup loclLocalizedFormsforGreek;
 
  script latn;
+     language IPPH  exclude_dflt;
+      lookup loclIPAAccented;
+      lookup loclIPA;
      language CAT  exclude_dflt;
       lookup loclCatalanLdot;
      language MOL  exclude_dflt;
@@ -5278,6 +5317,7 @@ feature case {
      language TRK  exclude_dflt;
       lookup caseAllCapsFormsforGreekCapitals;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } case;
 
@@ -5319,6 +5359,7 @@ feature ss01 {
      language TRK  exclude_dflt;
       lookup loclss01RomanianVariantForms;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } ss01;
 
@@ -5360,6 +5401,7 @@ feature ss11 {
      language TRK  exclude_dflt;
       lookup ss11GreekContextualForms;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } ss11;
 
@@ -5398,6 +5440,7 @@ feature salt {
      language TRK  exclude_dflt;
       lookup saltStylisticAlternatives;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } salt;
 
@@ -5436,6 +5479,7 @@ feature calt {
      language TRK  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } calt;
 
@@ -5474,6 +5518,7 @@ feature rlig {
      language TRK  exclude_dflt;
       lookup rligStandardLigatureswithZWJ;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } rlig;
 
@@ -5534,6 +5579,7 @@ feature liga {
       lookup ligaStandardLigaturesforLatin;
       lookup ligaLongS;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } liga;
 
@@ -5573,6 +5619,7 @@ feature dlig {
      language TRK  exclude_dflt;
       lookup dligDiscretionaryLigaturesforLatin;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } dlig;
 
@@ -5615,6 +5662,7 @@ feature onum {
      language TRK  exclude_dflt;
       lookup onumOldstyleFigures;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } onum;
 
@@ -5683,6 +5731,7 @@ feature frac {
       lookup fracDiagonalFractions;
       lookup fracDiagonalFractionsContextual;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } frac;
 
@@ -5725,6 +5774,7 @@ feature numr {
      language TRK  exclude_dflt;
       lookup supsSuperscriptForms;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } numr;
 
@@ -5767,6 +5817,7 @@ feature sups {
      language TRK  exclude_dflt;
       lookup supsSuperscriptForms;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } sups;
 
@@ -5809,6 +5860,7 @@ feature subs {
      language TRK  exclude_dflt;
       lookup subsSubscriptForms;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } subs;
 
@@ -5851,6 +5903,7 @@ feature dnom {
      language TRK  exclude_dflt;
       lookup dnomDenominators;
      language CAT ;
+     language IPPH ;
      language NLD ;
 } dnom;
 

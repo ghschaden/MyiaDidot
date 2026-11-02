@@ -128,6 +128,7 @@ ALIKE = {
     "uni0434.loclBGR": ("uni0261", "uni0261"),  # Bulgarian д: ɡ
     "uni0438.loclBGR": ("u", "u"),  # и: u
     "uni043A.loclBGR": ("k", "k"),  # к: k
+    "uni0199": ("k", None),  # ƙ: k's arm (ƙa stood as loose as k unkerned)
     "uni043B.loclBGR": ("uni028C", "uni028C"),  # л: ʌ
     "uni043F.loclBGR": ("n", "n"),  # п: n
     "uni0442.loclBGR": ("m", "m"),  # т: m
