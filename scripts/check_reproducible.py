@@ -33,6 +33,23 @@ def ink(font, name):
     return [(op, tuple(tuple(round(v) for v in pt) for pt in args)) for op, args in pen.value]
 
 
+def outline_change(new, cur):
+    """None if the outlines agree; else how: the largest point move and
+    where, when only coordinates differ, or how the structure differs (so
+    that a machine's rounding is told from a real change)."""
+    if new == cur:
+        return None
+    if [(op, len(args)) for op, args in new] != [(op, len(args)) for op, args in cur]:
+        return f"structure: {len(cur)} -> {len(new)} segments"
+    worst = (0, None, None)
+    for (_, a), (_, b) in zip(new, cur):
+        for p, q in zip(a, b):
+            d = max(abs(p[0] - q[0]), abs(p[1] - q[1]))
+            if d > worst[0]:
+                worst = (d, q, p)
+    return f"points moved up to {worst[0]}: {worst[1]} -> {worst[2]}"
+
+
 def differences(new, cur):
     """Lines describing what new (the rerun) changes in cur (the source)."""
     # No volatile font-info fields are currently excluded. Add exclusions only
@@ -49,8 +66,8 @@ def differences(new, cur):
             out.append(f"glyph {name}: unicodes {b.unicodes} -> {a.unicodes}")
         if a.width != b.width:
             out.append(f"glyph {name}: width {b.width} -> {a.width}")
-        elif ink(new, name) != ink(cur, name):
-            out.append(f"glyph {name}: outline")
+        elif (moved := outline_change(ink(new, name), ink(cur, name))) is not None:
+            out.append(f"glyph {name}: outline ({moved})")
         elif anchors[0] != anchors[1]:
             out.append(f"glyph {name}: anchors")
         elif dict(a.lib) != dict(b.lib):

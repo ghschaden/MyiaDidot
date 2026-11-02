@@ -553,6 +553,12 @@ BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni
                      "uni04AF": (-45, 0), "uni01B4": (0, 50)}
 # Pair-level corrections measured after the Bold's global kerning scale.
 BOLD_KERNING = {
+    # ƴ: its hook sets its right side; the diagonal under it stood far
+    # from a, o, e (kerned until the hook comes near a's terminal)
+    ("uni01B4", "public.kern2.a"): -60,
+    ("uni01B4", "public.kern2.agrave"): -60,
+    ("uni01B4", "public.kern2.c"): -60,
+    ("uni01B4", "public.kern2.egrave"): -60,
     ("public.kern1.X.sc", "k.sc"): -30,  # wide beside the pairs around it (BOXKÄMPFER, 2026-11-01)
     # Greek: σ's right side stood tight against the Greek references, as
     # the Bold's Latin sets them (scripts/quality/greek_pairs.py); what is

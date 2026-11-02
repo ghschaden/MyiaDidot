@@ -1279,6 +1279,12 @@ def smallcaps_stage(font, later=(), redraft=False):
 # v w y before round letters less tight (the Regular's -50 left them
 # crowded), and f, its top hanging over, closer to the letters with a stem
 ITALIC_KERNING = {
+    # ƴ: its hook sets its right side; the diagonal under it stood far
+    # from a, o, e (kerned until the hook comes near a's terminal)
+    ("uni01B4", "public.kern2.a"): -120,
+    ("uni01B4", "public.kern2.agrave"): -120,
+    ("uni01B4", "public.kern2.c"): -120,
+    ("uni01B4", "public.kern2.egrave"): -120,
     ("public.kern1.v", "public.kern2.c"): -10, ("public.kern1.y", "public.kern2.c"): -10,
     ("f", "public.kern2.i"): -60, ("f", "public.kern2.u"): -60, ("f", "m"): -60, ("f", "p"): -60, ("f", "r"): -60,
     # a's exit stroke rises to the right: before v w less kerning than the Regular's -124
@@ -1338,7 +1344,10 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0), "uni0433.loclSRB": (-80, 0),
                        "uni0187": (0, -165), "uni04A3": (0, -145), "uni01B3": (0, -235), "uni01AD": (0, -105),
                        "uni026E": (0, -85), "uni0284": (-130, 0), "uni0198": (0, -180), "uni0273": (0, -130),
                        "uni01B2": (0, -80), "uni0271": (0, -100), "uni0267": (0, -100), "uni04B2": (0, -65),
-                       "uni029D": (0, -55), "uni027E": (-90, 0)}
+                       "uni029D": (0, -55), "uni027E": (-90, 0),
+                       # ɗ: the hook overhangs, the advance 32 past d's as in the
+                       # Regular (Charis 35); set by the hook, ɗa stood 150 looser than da
+                       "uni0257": (0, -119)}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}
