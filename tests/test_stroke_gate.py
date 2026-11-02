@@ -199,11 +199,13 @@ def found(glyph):
 
 
 # ʋ redrawn since (a short hook and a ball, its top open: one contour, not
-# two; the person, 2026-10-29): not held to what it was
-REDRAWN = {"uni028B"}
+# two; the person, 2026-10-29), ʲ made small from the Bold Italic's j
+# (make_bold.ITALIC_BOLD_REBUILD_OPS, the person, 2026-11-02: 11 narrower):
+# not held to what they were
+REDRAWN = {"uni028B", "uni02B2"}
 
 
-@pytest.mark.parametrize("name", BLENDED + [n for n in FIXED if n not in REDRAWN])
+@pytest.mark.parametrize("name", [n for n in BLENDED + list(FIXED) if n not in REDRAWN])
 def test_finished_letter_keeps_what_it_was(bold_italic, name):
     """the repaired letter as finished (slanted, rounded, spaced): its
     advance, anchors, side bearings (within a unit), contours and quality

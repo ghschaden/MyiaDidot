@@ -138,6 +138,16 @@ BOLD_REBUILD = {
     "uni0255": "ɕ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
 }
+# Bold Italic recipes made again whole from the Bold Italic's final bases,
+# every letter they make: the modifier letters (ʰ ʷ ʸ ᵘ ⁿ ⁱ ᶤ ᶶ ...),
+# its w y u n i at the superior figures' size and weight, as the Italic
+# makes them of its own. Stroked at their scale from the Italic's, the
+# entry hook's inner curl was squeezed into a corner (32 degrees: the
+# strokes gain 34 across, 4 up and down; the person, 2026-11-02). Set with
+# the side bearings their optical fit gave them; only those the Italic
+# derived so, and only where the gate takes them (ᵘ ⁿ: the arch's crotch a
+# notch at that size, kept as stroked)
+ITALIC_BOLD_REBUILD_OPS = {"superior": "a modifier letter: the Bold Italic's letter made small"}
 ITALIC_BOLD_REBUILD = {
     # the slashed letters: the slash drawn on the stroked base at the Bold
     # Italic's weight (emboldened whole, it left a slit by the diagonal it
@@ -1834,7 +1844,11 @@ def rederive(source, font, italic, whole):
         name = resolve(ch)
         why = whole.get(name, "")
         rebuild = ITALIC_BOLD_REBUILD if italic else BOLD_REBUILD
-        if not why.endswith(("cuts its base", "does not keep its whole base")) and name not in rebuild:
+        # (only what the Italic made so: its ᵃ is the sloped roman's, its ⁺ ⁼
+        # the roman's, not its own a + = made small)
+        by_op = (italic and op in ITALIC_BOLD_REBUILD_OPS and name in source
+                 and source[name].lib.get("org.myiadidot.italicSource") == "derived")
+        if not why.endswith(("cuts its base", "does not keep its whole base")) and name not in rebuild and not by_op:
             continue
         own = ch in (ITALIC_BOLD_RECIPES if italic else BOLD_RECIPES)
         if own:
@@ -1902,8 +1916,8 @@ def rederive(source, font, italic, whole):
         (pn, hn), (po, ho) = parts(up, new), parts(up, old)
         faults += max(0, pn - po) + hn - ho
         close = made.bounds is not None and was.bounds is not None and _best_iou(made, was) >= iou
-        if name in rebuild and faults <= 0:
-            close, wide = True, False
+        if (name in rebuild or by_op) and faults <= 0:
+            close, wide = True, by_op
         else:
             wide = abs(new.width - old.width) > width * old.width
         if close and wide and faults <= 0:
@@ -1920,6 +1934,11 @@ def rederive(source, font, italic, whole):
             new.width = round(old.width + (x1 - x0) - (o1 - o0))
             wide = False
         if not close or wide or faults > 0:
+            if by_op and not why:
+                # (a stroked letter the rebuild missed stays as stroked, no
+                # letter emboldened whole)
+                del up[tmp]
+                continue
             whole[name] = (f"{op}: emboldened whole, made again from the Bold it "
                            + ("strays" if not close else "has faults" if faults > 0 else "changes its advance"))
             del up[tmp]

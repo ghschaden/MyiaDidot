@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-02 Bold Italic: modifier letters made small from its own letters
+
+    * ʷ ʸ ʰ ʲ ⁱ ᶤ ᶶ ˡ ˠ ᵉ ᵒ ᵍ ᶻ ᶿ and the other modifier letters the
+      Italic derives with its superior recipe are now made the same way
+      from the Bold Italic's own w y h j i ... (make_bold.py
+      ITALIC_BOLD_REBUILD_OPS), keeping the side bearings their optical
+      fit gave them. Stroked at their scale from the Italic's, their entry
+      hook's inner curl was squeezed into a corner (ʷ 32 degrees, now 11,
+      as the full w's): the strokes gain 34 units across but 4 up and
+      down. ʰ's shoulder is whole again. 0.5-8 % less ink (ⁱ ʲ: the dot
+      in i's proportion). ᵘ ⁿ stay as stroked (made small, n's arch
+      crotch is a notch at that size); ᵃ ⁺ ⁼, not derived so in the
+      Italic, are untouched.
+
+2026-11-02 Italic, Bold Italic: capital contrast reviewed, kept
+
+    * Stem/hairline (H, O; 2048 units, slant removed): Regular 4.0 4.5,
+      Bold 5.1 5.6, Italic 2.9 3.2, Bold Italic 4.1 4.4. The lowercase
+      matches Regular -> Bold (n 3.7 vs 4.0, o 5.3 vs 5.0); the italic
+      capitals keep Old Standard's lower contrast, and the Bold Italic
+      follows them. Prototypes (capital hairlines 10 thinner, stems 24
+      heavier, both) would bring the Bold Italic to 4.7-5.5, but thinner
+      hairlines with heavier stems is the setting rejected on 2026-10-21
+      for its uneven colour, and thinner capital hairlines alone would
+      unbalance capitals against lowercase the other way. Kept as is.
+
 2026-10-28 Bold Italic: curves meet with continuous curvature (G2)
 
     * Where two curves of the stroked Bold Italic meet smoothly, both now

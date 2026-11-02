@@ -424,12 +424,12 @@ uni02A2 stroke 1                 # 2026-10-21 Italic reweighted and tightened: l
 uni02A2 wobble 1                 # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 2 against 0: 840,1098 10 degrees; 851,1103 3 degrees
 uni02A2 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni02B0 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 409,828 3 degrees; 351,673 3 degrees
-uni02B7 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 683,606 9 degrees; 951,904 3 degrees; 941,936 79 degrees
-uni02B8 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 355,980 35 degrees; 366,1014 14 degrees; 374,628 36 degrees; 366,599 6 degrees
+uni02B8 smooth 2                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed by the person on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni02BB extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 495,984 8 units past
 uni02BC extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 604,1516 7 units past
-uni02C1 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 1: 548,1156 6 degrees; 652,1222 50 degrees; 673,1249 11 degrees
+uni02C1 kink 1                   # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed by the person on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni02DE extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 365,696 7 units past
+uni02E0 smooth 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed by the person on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni02E1 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 330,642 22 degrees; 320,594 45 degrees
 uni02F3 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 288,-45 7 units past; 179,-444 8 units past; 101,-244 6 units past; 367,-244 5 units past
 uni0315 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 281,1516 7 units past
@@ -575,6 +575,7 @@ uni04E9 smooth 1                 # 2026-10-28: leftover pieces of the stroked Bo
 uni04E9 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 590,270 10 degrees; 587,262 11 degrees; 576,235 6 degrees; 421,639 4 degrees
 uni1D05 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni1D43 wobble 1                 # 2026-11-02 italic IPA a: ɑ the italic's one-storey a, ɐ ᵃ the roman's sloped (the Bold Italic's ᵃ emboldened with a small notch at the bowl's join): 2 against 1: 631,686 10 degrees; 368,826 58 degrees
+uni1D4D wobble 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed by the person on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni1D58 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 368,599 16 degrees; 696,641 24 degrees; 357,981 36 degrees; 367,1015 14 degrees
 uni1D6C wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 978,563 9 degrees; 594,207 5 degrees
 uni1D6F stroke 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: lc 304 against 273 (1.11, darker)
@@ -591,6 +592,9 @@ uni1D7D wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni1D7D.sc kink 1                # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 391,105 2.1 degrees
 uni1D7E zone 1                   # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -7 from -23
 uni1DA4 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 393,659 4 degrees; 374,631 36 degrees; 365,604 6 degrees; 365,600 6 degrees; 364,596 14
+uni1DB6 smooth 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed by the person on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
+uni1DB6 wobble 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed by the person on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
+uni1DBB smooth 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed by the person on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni1E9E stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: uc 369 against 304 (1.21, darker)
 uni1FBE zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni1FBF extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 646,1458 8 units past; 654,1195 6 units past

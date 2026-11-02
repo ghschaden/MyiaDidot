@@ -255,12 +255,21 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar
   ends, ₿); others look like faults (Ƈ Ɠ ƴ hook tops, ɾ, ʝ, Serbian г п,
   Regular ɝ, ʋ).
-- Bold Italic, seen in print (2026-10-27): ʋ's curl starts narrower than
-  the stem (a step each side; a curl is one thickness all round, a
-  tapering one or a drawn recipe is needed, emboldened whole it runs into
-  the first stem); ʷ's left stroke turns at its join; г's inner curves
-  flattened upright (the handle fit, as ψ's); Ɯ's join into its second
-  stem not smooth below.
+- Bold Italic, seen in print (2026-10-27), reviewed 2026-11-02: ʋ (its
+  own recipe) and Ɯ (U twinned) done 2026-10-29; ʷ ʸ ʰ ʲ ⁱ ᶤ ᶶ and the
+  other modifier letters the Italic derives are made small from the Bold
+  Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS): the entry
+  hook's curl no longer squeezed into a corner (32 degrees, now 11, as w's
+  own). Still open: ᵘ ⁿ, refused by the gate (made small, n's arch crotch
+  is a notch at that size), keep their 32 degree corner; г's inner curves
+  stand upright from the stroking itself (the fit follows its samples
+  within 2 units; s з 3 2 alike), not a fault of г's; the person to say
+  whether the counters should keep rounder. A sweep of Bold Italic
+  corners where the Italic is smooth found about 190 candidates (many
+  designed: crotches, ligature joins, ⁂), not yet reviewed. Limiting the
+  stroke gain on tight inner turns (tried 2026-11-02) only moved the bend
+  and added corners (k r c W J): the strokes gain 34 across but 4 up and
+  down, so a curl's upright side moves in far more than its top.
 - Bold Italic: keep_bends is on (2026-10-27); still to try the Bold's two
   other repairs (make_bold: keep_smooth for the rounder way, runs_on by
   weight; keep_smooth adds inflections there, Codex's study). Tried
