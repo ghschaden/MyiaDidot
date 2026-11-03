@@ -28,8 +28,8 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
     the Italic's draft, still has kinks and a wobble at the curl; ɦ.sc a
     step where Ɦ's top serif is cut (both in quality-BoldItalic.txt).
     Left: whether the person wants the capitals' curls larger still, to
-    carry balls as large as J's; Ⱳ keeps its number (w_curl.py's
-    approved connection); Bold Italic a's ball does not grow (68 -> 66).
+    carry balls as large as J's; Ⱳ keeps its number (its curl run on
+    straight from W's arm, 2026-11-03); Bold Italic a's ball does not grow (68 -> 66).
   - Dots: in the Bold and Bold Italic they are widened three times as
     much as heightened (period about 1.36:1, ⸁ ⸄ ⸅ ⸇ ⸈ 271x182, Bold Italic
     ※ ⁜ ⸓ ⸖ 323x207); ※ ⁜ ⸓ ⸖ take the accent dot (248), not the

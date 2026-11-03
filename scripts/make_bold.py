@@ -78,7 +78,7 @@ ITALIC_THIN, ITALIC_THICK = 60, 160
 # thickens: Libre Bodoni's quarter, hairlines 23 -> 30 per 1000 (the
 # person's choice, 2026-10-28; Bodoni Moda's gain nothing)
 ITALIC_HAIR = 12
-JOBS = 6  # processes at most (the project's limit)
+JOBS = int(os.environ.get("MYIA_JOBS", "4"))  # processes at most (the project's limit: 4, the person 2026-11-03)
 # Bold Italic letters gaining more than their strokes give (ITALIC_AX and
 # ITALIC_HAIR times this): z, its top and bottom waves shallow, gains little
 # across and near the zones nothing up and down; still light beside n
@@ -376,10 +376,12 @@ ITALIC_BOLD_RECIPES = {
     # (its centre and weight, 290 or 299 thick at the cut), the ball half
     # the stroke (as there, so the curl's end has no step): emboldened
     # whole, the tail stood left of the stem and heavier than it
+    # (Ɽ's stem is 298 at its cut: the tail at R's 290 stood 9
+    # units in from its right edge, a step at 120, the person 2026-11-03)
     "Ɽ": ("attach", "R", ("c", [(-10000, -10000, 950, 120)],
-                          [("line", ((419, 160), (419, -150), 290), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 419, -150, 290), "dir": 270, "turn": "ccw", "r": (195, 170),
-                                     "sweep": 170, "ball": 145, "t": (290, 60)}, (0, 0), (1, 1, 0, 0))])),
+                          [("line", ((429, 160), (429, -150), 309), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 429, -150, 309), "dir": 270, "turn": "ccw", "r": (195, 170),
+                                     "sweep": 170, "ball": 154, "t": (309, 60)}, (0, 0), (1, 1, 0, 0))])),
     "Ʈ": ("attach", "T", ("c", [(-10000, -10000, 10000, 150)],
                           [("line", ((692, 200), (692, -150), 290), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 692, -150, 290), "dir": 270, "turn": "ccw", "r": (195, 170),

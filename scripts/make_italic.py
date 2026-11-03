@@ -194,6 +194,85 @@ def sloped(t_y0):
 # references 0.41-0.46): its thick stroke ITALIC_A_BOWL lighter (0.429)
 ITALIC_W_NARROW = 0.75
 ITALIC_A_BOWL = -40
+# W's thick stems take the Italic I's and H's bracket under their serifs
+# (across, up the stem, the handles' shares of each): V's own, its inner
+# side curling in under the serif, read as a pinch on W's steeper stems and
+# the Bold Italic deepened it; the first V's thin arm runs on straight into
+# the next V's thick stem, ITALIC_W_RUN_ON past where their left edges meet,
+# without its own serif and flare (in the Bold Italic a bulge on the second
+# stem's left; the person, 2026-11-03: the join a plain angle)
+ITALIC_W_BRACKET = (60, 58, 0.58, 0.7)
+ITALIC_W_RUN_ON = 80
+# and its serifs this share of V's gap apart at the least, their inner tips
+# cut back (W's 102-114 in the Italic, w.sc's 51-64, the Bold Italic's
+# emboldening closed them to 64-78 and to one bar: the person, 2026-11-03)
+ITALIC_W_SERIF_GAP = 0.75
+
+
+def fillet_brackets(glyph, x_edges, y_at, y_under):
+    """glyph's brackets from the serif underside (y_under) down onto the
+    stem edges at x_edges (at height y_at) redrawn as ITALIC_W_BRACKET:
+    tangent to the underside and to the straight edge below the bracket"""
+    ra, rb, ka, kb = ITALIC_W_BRACKET
+    for c in glyph.contours:
+        P = c.points
+        n = len(P)
+        ons = [i for i, p in enumerate(P) if p.type]
+        for idx, i in enumerate(ons):
+            j = ons[(idx + 1) % len(ons)]
+            if (j - i) % n != 3:
+                continue
+            if abs(P[i].y - y_under) < 2 and P[j].y < y_under - 20:
+                top, bot, below = i, j, ons[(idx + 2) % len(ons)]
+            elif abs(P[j].y - y_under) < 2 and P[i].y < y_under - 20:
+                top, bot, below = j, i, ons[(idx - 1) % len(ons)]
+            else:
+                continue
+            e, f = P[bot], P[below]  # the stem's edge, up to the bracket
+            if f.y >= e.y - 30:
+                continue
+            if min(abs(e.x + (e.x - f.x) / (e.y - f.y) * (y_at - e.y) - x) for x in x_edges) > 40:
+                continue  # not a thick stem's
+            d = math.hypot(e.x - f.x, e.y - f.y)
+            ux, uy = (e.x - f.x) / d, (e.y - f.y) / d  # up the edge
+            cx = e.x + ux / uy * (y_under - e.y)  # the corner the bracket rounds
+            side = 1 if P[top].x > cx else -1  # the way the serif runs
+            a = (cx + side * ra, y_under)
+            b = (cx - ux * rb, y_under - uy * rb)
+            handles = ((top + 1) % n, (top + 2) % n) if (bot - top) % n == 3 else ((top - 1) % n, (top - 2) % n)
+            P[top].x, P[top].y = a
+            P[bot].x, P[bot].y = b
+            P[handles[0]].x, P[handles[0]].y = a[0] - side * ra * ka, y_under
+            P[handles[1]].x, P[handles[1]].y = b[0] + ux * rb * kb, b[1] + uy * rb * kb
+
+
+def unbreak(glyph, tol=0.5):
+    """on-curve nodes between two straight edges running on in one line
+    dropped (the seams where W's thin arm was cut and run on)"""
+    for c in glyph.contours:
+        changed = True
+        while changed:
+            changed = False
+            P = c.points
+            for i, p in enumerate(P):
+                a, b = P[i - 1], P[(i + 1) % len(P)]
+                if p.type != "line" or not a.type or b.type != "line":
+                    continue
+                dx, dy = b.x - a.x, b.y - a.y
+                d = math.hypot(dx, dy)
+                if d and abs((p.x - a.x) * dy - (p.y - a.y) * dx) / d < tol and min(a.y, b.y) <= p.y <= max(a.y, b.y):
+                    del P[i]
+                    changed = True
+                    break
+
+
+def _path_slice(path, y):
+    """the x where a pathops path's outline crosses height y"""
+    g = ufoLib2.objects.Glyph()
+    path.draw(g.getPen())
+    f = ufoLib2.Font()
+    f.layers.defaultLayer.insertGlyph(g, "_")
+    return ink_slice(f, "_", y)
 
 
 def redraw_w(font, w_name="W", v_name="V"):
@@ -202,7 +281,8 @@ def redraw_w(font, w_name="W", v_name="V"):
     centres at 0.94 of V's height, the diagonals run on from 0.28 and
     0.70: 1350, 400, 1000 on the capital); V's side bearings, upright; the
     anchors moved with the ink. w.sc of v.sc likewise (FontForge's draft
-    of the narrow W came out light, 0.73 of its kind)."""
+    of the narrow W came out light, 0.73 of its kind). The thick stems'
+    brackets and the first thin arm's join: ITALIC_W_BRACKET, _RUN_ON."""
     import derive
 
     up = ufoLib2.Font()
@@ -242,8 +322,52 @@ def redraw_w(font, w_name="W", v_name="V"):
         return abs(perp(up, "Vn")[0] - thick)
 
     narrowed(min(range(0, 100, 2), key=narrowed))
+    vn = up["Vn"]
+    y_under = max(p.y for c in vn.contours for p in c if p.type and p.y < h - 10)  # the serifs' underside
+    fillet_brackets(vn, runs(up, "Vn", 0.85 * h)[0], 0.85 * h, y_under)
     dx = centre(up, "Vn", -1, top) - centre(up, "Vn", 0, top)
-    w = derive.path_op(derive.to_path(up, up["Vn"]), derive.shifted(derive.to_path(up, up["Vn"]), dx), "UNION")
+
+    def line(i, side, y, shift=0):
+        """an edge of the first (thick) or last (thin) diagonal at y, run on
+        in a line from lo and hi"""
+        a, b = runs(up, "Vn", lo)[i][side], runs(up, "Vn", hi)[i][side]
+        return a + (b - a) / (hi - lo) * (y - lo) + shift
+
+    # the first V's thin arm, its serif and flare cut away along the white
+    # between its strokes (from the opening's middle at hi to the gap's
+    # between its serifs), run on straight from lo into the next V's thick
+    # stem, ITALIC_W_RUN_ON past where their left edges meet
+    a0, a1 = line(-1, 0, lo), line(-1, 0, hi)
+    b0, b1 = line(0, 0, lo, dx), line(0, 0, hi, dx)
+    meet = lo + (b0 - a0) / ((a1 - a0) - (b1 - b0)) * (hi - lo)
+    end = meet + ITALIC_W_RUN_ON
+    r, s = runs(up, "Vn", hi), runs(up, "Vn", (y_under + h) / 2)
+    cut = RecordingPen()
+    cut.moveTo(((r[0][1] + r[-1][0]) / 2, hi))
+    cut.lineTo(((s[0][1] + s[1][0]) / 2, (y_under + h) / 2))
+    cut.lineTo(((s[0][1] + s[1][0]) / 2, BIG))
+    cut.lineTo((BIG, BIG))
+    cut.lineTo((BIG, hi))
+    cut.closePath()
+    arm = RecordingPen()
+    arm.moveTo((line(-1, 0, lo), lo))
+    arm.lineTo((line(-1, 0, end), end))
+    arm.lineTo((line(-1, 1, end), end))
+    arm.lineTo((line(-1, 1, lo), lo))
+    arm.closePath()
+    first = derive.path_op(derive.to_path(up, up["Vn"]), derive.to_path(None, rec=cut), "DIFFERENCE")
+    first = derive.path_op(first, derive.to_path(None, rec=arm), "UNION")
+    w = derive.path_op(first, derive.shifted(derive.to_path(up, up["Vn"]), dx), "UNION")
+    # neighbouring serifs kept ITALIC_W_SERIF_GAP of V's gap apart
+    y_mid = (y_under + h) / 2
+    v_runs = runs(up, "V", y_mid)
+    least = ITALIC_W_SERIF_GAP * (v_runs[1][0] - v_runs[0][1])
+    xs = sorted(x for x in _path_slice(w, y_mid))
+    tops = list(zip(xs[::2], xs[1::2]))
+    for (_, r0), (l1, _) in zip(tops, tops[1:]):
+        if l1 - r0 < least:
+            mid = (r0 + l1) / 2
+            w = derive.path_op(w, derive.rect_path(mid - least / 2, y_under, mid + least / 2, BIG), "DIFFERENCE")
     (x0, _, x1, _), vb = w.bounds, v.getBounds(up)
     lsb, rsb = vb.xMin, v.width - vb.xMax
     g = font[w_name]
@@ -263,6 +387,7 @@ def redraw_w(font, w_name="W", v_name="V"):
     for a in old.anchors:  # where they stood across the ink
         t = (a.x - ob.xMin) / (ob.xMax - ob.xMin)
         out.appendAnchor({"name": a.name, "x": round(lsb + t * (x1 - x0)), "y": a.y})
+    unbreak(out)
     shear(out, SLANT)
     g.clearContours()
     g.clearAnchors()
@@ -468,7 +593,7 @@ ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190
 # None, derive.ball_for, 2026-10-27; the Bold Italic draws its own at its
 # weight, make_bold.ITALIC_BOLD_RECIPES); tails off a stem (retroflex,
 # descender) keep a ball half their stroke, flush with the curl's end;
-# Ⱳ keeps its number (w_curl.py's approved Bold Italic connection)
+# Ⱳ keeps its number (its ball 50, the curl run on straight from W's arm)
 # ɮ: how far right of l's stem its ʒ stands (ITALIC_RECIPES)
 ZH_DX = 150
 # the roman's own, sloped, not remade on the italic letter: ʌ turned from the
@@ -742,11 +867,17 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                          ("curl", {"at": ("pt", 1287, 770, 54), "dir": 92, "turn": "cw",
                                                    "r": (105, 95), "sweep": 200, "ball": None, "t": (54, 36),
                                                    "lead": 6}, (0, 0), (1, 1, 0, 0))])),
-                  # (the cut just inside the top right serif of the
-                  # uncrossed W, redraw_w; 1480 on the crossed one)
-                  "Ⱳ": ("curl", "W", ("c", [(1255, 1150, BIG, BIG)],
-                                      {"at": ("y", 1150, "last"), "dir": 79, "turn": "cw", "r": (120, 110),
-                                       "sweep": 210, "ball": 50, "t": (81, 40)})),
+                  # W's last arm cut below its flare into the serif
+                  # (redraw_w) and run on straight (its centre 1386.5 at
+                  # 900, 1414.5 at 1000; 77 across) to 1150, where the
+                  # curl leaves it at its own slant: cut at 1150, the
+                  # flare's upright bend stayed under the curl, a bump on
+                  # its outer edge (the person, 2026-11-03)
+                  "Ⱳ": ("attach", "W", ("c", [(1255, 990, BIG, BIG)],
+                                        [("line", ((1386.5, 900), (1459.9, 1162), 77), (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 1456.5, 1150, 77), "dir": 74.4, "turn": "cw",
+                                                   "r": (120, 110), "sweep": 210, "ball": 50, "t": (77, 40)},
+                                          (0, 0), (1, 1, 0, 0))])),
                   # v on a stem under its round bottom
                   "ү": ("descend", "v", ("x", "p")),
                   # Serbian and Macedonian italic (locl SRB, MKD; the

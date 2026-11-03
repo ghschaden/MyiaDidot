@@ -44,7 +44,7 @@ Thorn kink 1                     # 2026-10-16 known at the start (quality checks
 U.horn smooth 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 425,409 2.3 degrees
 Upsilon smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 637,114 2.5 degrees
 V kink 2                         # 2026-10-16 known at the start (quality checks added): 1350,1216 4.2 degrees; 474,1276 5.7 degrees
-W kink 2                         # 2026-10-16 known at the start (quality checks added): 2020,1212 3.2 degrees; 466,1276 5.8 degrees
+W kink 1                         # W rebuilt (thick stems' brackets as I's, thin arm run on into the next stem), Ⱳ's curl run on straight from the arm; Ɽ's tail as wide as its stem (the person, 2026-11-03): 1724,1208 3.5 degrees
 W slant 1                        # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.3 degrees, not 15.2
 W stroke 1                       # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: uc 165 against 185 (0.89, lighter)
 X extreme 2                      # 2026-10-16 known at the start (quality checks added): 827,1375 9 units past; 995,53 12 units past
@@ -654,7 +654,7 @@ uni1FDF extreme 1                # 2026-10-16 known at the start (quality checks
 uni1FFE extreme 1                # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 675,992 9 units past
 uni2042 kink 12                  # 2026-10-16 known at the start (quality checks added): 271,864 3.7 degrees; 333,864 3.7 degrees; 333,576 3.7 degrees; 271,576 3.7 degrees; 771,864 3.7 degrees; 833,864 3.7 degrees; 833,576 3.7 degrees;
 uni20A1 step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 1340,1455 46 units aside
-uni20A9 kink 2                   # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 1740,1208 3.4 degrees; 432,1271 3.6 degrees
+uni20A9 kink 1                   # W rebuilt (thick stems' brackets as I's, thin arm run on into the next stem), Ⱳ's curl run on straight from the arm; Ɽ's tail as wide as its stem (the person, 2026-11-03): 1740,1208 3.4 degrees
 uni20AD smooth 1                 # 2026-10-21 Italic reweighted and tightened: 209,114 2.7 degrees
 uni20AE kink 1                   # 2026-10-21 Italic reweighted and tightened: 993,1307 3.7 degrees
 uni20AE smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 669,114 2.1 degrees
@@ -686,12 +686,12 @@ uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni2C6D step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 924,0 49 units aside
 uni2C6D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 273 against 222 (1.23, darker)
 uni2C6F kink 1                   # 2026-10-16 known at the start (quality checks added): 465,1292 5.6 degrees
-uni2C72 kink 3                   # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 1598,1150 5.3 degrees; 1687,1150 7.5 degrees; 416,1271 3.7 degrees
+uni2C72 kink 1                   # W rebuilt (thick stems' brackets as I's, thin arm run on into the next stem), Ⱳ's curl run on straight from the arm; Ɽ's tail as wide as its stem (the person, 2026-11-03): 1598,990 1.5 degrees
 uni2C72 slant 1                  # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.3 degrees, not 15.2
 uni2C72 stroke 1                 # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: uc 166 against 185 (0.90, lighter)
 uni2C73 slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni2C73 zone 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: top +7 from 884
-uni2C73.sc kink 6                # italic curl balls: 690,756 3.4 degrees; 730,915 1.8 degrees; 1173,756 5.3 degrees; 1392,759 5.3 degrees; 1268,834 7.6 degrees; 257,911 3.1 degrees
+uni2C73.sc kink 3                # W rebuilt (thick stems' brackets as I's, thin arm run on into the next stem), Ⱳ's curl run on straight from the arm; Ɽ's tail as wide as its stem (the person, 2026-11-03): 1173,756 5.3 degrees; 1392,7
 uni2C73.sc slant 1               # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.6 degrees, not 15.2
 uni2C73.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 112 against 183 (0.61, lighter)
@@ -718,7 +718,7 @@ v slant 1                        # 2026-10-16 known at the start (quality checks
 v.sc kink 5                      # 2026-10-21 Italic reweighted and tightened: 486,906 6.2 degrees; 864,755 3.7 degrees; 921,914 4.2 degrees; 987,865 4.6 degrees; 299,910 5.4 degrees
 v.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 w slant 1                        # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
-w.sc kink 6                      # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 690,756 3.4 degrees; 729,915 4.7 degrees; 1174,756 2.7 degrees; 1213,915 1.5 degrees
+w.sc kink 3                      # W rebuilt (thick stems' brackets as I's, thin arm run on into the next stem), Ⱳ's curl run on straight from the arm; Ɽ's tail as wide as its stem (the person, 2026-11-03): 1174,756 2.7 degrees; 1213,9
 w.sc slant 1                     # uncrossed W (two narrowed Vs) and lighter a: the narrowed V's thick diagonal (5 degrees) read as a stem; W's joins: 5.6 degrees, not 15.2
 w.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 x.sc kink 4                      # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 858,825 6.2 degrees; 881,909 6.2 degrees; 357,208 7.3 degrees; 323,119 5.4 degr

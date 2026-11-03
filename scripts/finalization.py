@@ -33,7 +33,6 @@ PASSES = (
     Pass("symbol_joins", "finish", BOLD, ("weighted symbols",), ("uni2116", "trademark")),
     Pass("glottal_modifier", "finish", ("Bold",), ("final uni0242",), ("uni02C0",)),
     Pass("phi_drawing", "finish", BI, ("final o", "final l"), ("uni0278",)),
-    Pass("w_curl", "finish", BI, ("weighted uni2C72",), ("uni2C72",)),
     Pass("oldstyle_figures", "finish", ALL,
          ("final lining figures", "reviewed oldstyle GLIFs"), ("oldstyle figures", "zerooldstyle.zero")),
     Pass("r_hook", "fair_bold_stem", ("Bold",), ("final r",), ("r", "uni027D")),

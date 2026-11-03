@@ -26,6 +26,27 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-03 Italic and Bold Italic W and Ⱳ rebuilt; Bold Italic Ɽ
+
+    * W (make_italic.redraw_w, two narrowed Vs): the thick stems take the
+      I's and H's brackets under their serifs; V's own, its inner side
+      curling in, read as a pinch on W's steeper stems, deeper in the Bold
+      Italic. The first V's thin arm no longer carries its serif and flare
+      into the second stem: it runs on straight into it and meets it at a
+      plain angle (in the Bold Italic the flare stood out as a bulge over
+      the stem). Its serifs stay 0.75 of V's gap apart (ITALIC_W_SERIF_GAP:
+      158 in the Italic, 112 in the Bold Italic; w.sc 112 and 52, where
+      the Bold Italic's had closed into one bar). w.sc, ₩, Ŵ Ẁ Ẃ Ẅ Ẉ
+      follow.
+    * Ⱳ: its curl leaves W's last arm where it is still straight (cut at
+      990, run on to 1150 at its slant); cut at 1150, the arm's upright
+      bend into its serif stayed under the curl, a bump on its outer edge.
+      The Bold Italic needs no repair: w_curl.py is retired.
+    * Bold Italic Ɽ: the tail as wide as its stem (298, the recipe's 290
+      stood 9 units in from the stem's right edge, a step at 120).
+    * The commit checks, make test and make_bold use 4 processes at most
+      (JOBS / MYIA_JOBS); the proofs rebuilt after a commit wait for them.
+
 2026-11-03 Bold Italic: crotches meet where the strokes cross
 
     * Where two strokes meet in a crotch, each side now keeps its own

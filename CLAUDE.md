@@ -37,7 +37,7 @@ Details by topic, read the one the task touches:
   `~/src/MyiaDidot-shapes` on branch `shape-grammar` (AGENTS.md): stay on
   `main` here, never write there, and leave merging it to the person.
   `make test` / `make reproduce` and the commit checks share one lock across
-  both working copies (6 cores at most).
+  both working copies (4 cores at most: `JOBS`/`MYIA_JOBS`; your own parallel runs too).
 - The working copy is in a synced folder: after big generation runs check
   for "(conflicted)" copies and lost glyph files (`scripts/sync_check.py`).
 - `make winmetrics` after adding tall or deep glyphs.

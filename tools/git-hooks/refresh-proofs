@@ -4,6 +4,7 @@
 # build alongside. The commit built is in build/proofs/built-from.
 
 state=$(git rev-parse --git-path myia-checks)
+lock="$(cd "$(git rev-parse --git-common-dir)" && pwd)/myia-validate.lock"
 mkdir -p "$state" build/proofs
 touch "$state/proofs.wanted"
 
@@ -13,7 +14,9 @@ flock -n 9 || exit 0  # the build running takes the request
 while [ -f "$state/proofs.wanted" ]; do
     rm -f "$state/proofs.wanted"
     head=$(git rev-parse HEAD)
-    if nice .venv/bin/python -I scripts/validate_snapshot.py --tree "$head" --head "$head" \
+    # after any test or generator run holding the shared lock, not alongside
+    # it (the two together overran the machine, the person 2026-11-03)
+    if flock "$lock" nice .venv/bin/python -I scripts/validate_snapshot.py --tree "$head" --head "$head" \
         --publish-proofs -- make proof > build/proofs/refresh.log 2>&1; then
         : # artifacts and provenance were published together
     else

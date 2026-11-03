@@ -23,9 +23,9 @@ If you are in `~/src/MyiaDidot` (branch `main`), stop and work in
 - Bringing work into `main` is the person's decision: they merge, or ask
   Claude to. To pick up new work from `main`, `git merge main` on your
   branch (not rebase of shared history).
-- At most 6 CPU cores, for both agents together. Run the suite with
+- At most 4 CPU cores (the person, 2026-11-03), for both agents together. Run the suite with
   `make test` and reproduction with `make reproduce`: both take a lock
-  shared by both working copies, so only one runs at a time, on 6
+  shared by both working copies, so only one runs at a time, on 4
   workers. Do not run `pytest -n auto`, or several test runs at once.
 - Commits run the pre-commit checks (`tools/git-hooks`): they take the same
   lock, and may wait for a run in the other working copy. Do not commit
