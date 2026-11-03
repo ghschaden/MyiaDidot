@@ -60,7 +60,7 @@ from derive import embolden, embolden_by_weight, embolden_simple, rezone
 from glyph_lint import fix
 from respace import CUT_KEY, classifier, respace, sidebearings
 from space_figures import space as space_figures
-from stroke_bold import SLIVER, emboldened
+from stroke_bold import SLIVER, emboldened, smooth_counter
 
 ROOT = Path(__file__).resolve().parent.parent
 KX = 1.04  # widening, so the counters keep their light
@@ -500,8 +500,25 @@ BOLD_ROUNDER = {
 # Bold Italic letters whose hairline leaves its crotch heavier, the
 # weight there (0..1, a stem's 1) fading over stroke_bold.ROOT units (k's
 # arm a thin wedge where it left the stem; the person chose 0.7 of 0.3, 0.5,
-# 0.7, k only, 2026-10-28)
-ITALIC_BOLD_ROOTS = {"k": 0.7}
+# 0.7, k only, 2026-10-28); &'s bowl tail at its stem, where the crotch,
+# moved by the hairline only, drew the stem's foot into a knee (19 units
+# aside, 29 without; 1.0 bracketed the diagonal's crotch, 2026-11-02)
+ITALIC_BOLD_ROOTS = {"k": 0.7, "ampersand": 0.7}
+# Bold Italic letters whose curves running into a crotch are fitted with
+# more cubics where one strays from the stroked points (stroke_bold.SPLIT_ERR):
+# ξ's bowl, run on to its hairline, drew in a waist above its middle crotch
+# (2026-11-03; for every letter it bent ɱ's hook and щ's stems)
+ITALIC_BOLD_SPLIT = {"xi"}
+# Bold Italic letters whose sides near a crotch are not held back by the
+# white in front (stroke_bold.CLEAR), within this many units of it: q.sc's
+# bowl, its counter narrowing into the crotch over the tail's loop, bent in
+# above it (2026-11-03; for every letter it broke the oldstyle 2 and filled q)
+ITALIC_BOLD_CAP_FREE = {"q.sc": 300}
+# Bold Italic letters whose smallest counter is refitted smooth over this
+# many units after stroking (stroke_bold.smooth_counter), its one corner
+# kept: q.sc's loop, the tail's weight changing fast along it, left with a
+# flat slanted side and a double kink (the person, 2026-11-03)
+ITALIC_BOLD_SMOOTH_COUNTER = {"q.sc": 16}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
@@ -2057,7 +2074,8 @@ def main():
     def strokes_job(name, w, sc):
         gain = sc * ITALIC_BOLD_HEAVIER.get(name, 1.0)
         return (name, w.value, (ITALIC_AX * gain, AY, ITALIC_THIN * sc, ITALIC_THICK * sc,
-                                ITALIC_HAIR * (sc if name in ITALIC_BOLD_HAIR_KEPT else gain), SLANT, SLIVER * sc * sc, ITALIC_BOLD_ROOTS.get(name, 0.0)))
+                                ITALIC_HAIR * (sc if name in ITALIC_BOLD_HAIR_KEPT else gain), SLANT, SLIVER * sc * sc, ITALIC_BOLD_ROOTS.get(name, 0.0),
+                                name in ITALIC_BOLD_SPLIT, ITALIC_BOLD_CAP_FREE.get(name, 0.0)))
 
     stroked, unstroked = {}, []
     if italic:
@@ -2111,6 +2129,8 @@ def main():
                     if italic and strokes and name not in ITALIC_BOLD_BY_POINTS:
                         drawn = by_strokes(w, sc, name)
                         if drawn is not None:
+                            if name in ITALIC_BOLD_SMOOTH_COUNTER:
+                                drawn = smooth_counter(drawn, ITALIC_BOLD_SMOOTH_COUNTER[name])
                             return bridge(rezone(drawn, AY))
                         unstroked.append(name)
                     # short edges running on into a curve weighed as it in

@@ -26,6 +26,29 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-03 Bold Italic: crotches meet where the strokes cross
+
+    * Where two strokes meet in a crotch, each side now keeps its own
+      weight to its end and the two moved sides meet where they cross,
+      run on or trimmed back to that point (stroke_bold.py
+      Strokes.crossing). Before, a side's end took the other side's
+      weight: γ's arm hooked back into a step at the descender and its
+      descender's edge bent into a shoulder; &'s bowl and diagonal stood
+      in steps at the stem; q.sc and Q kept a white sliver between bowl
+      and tail; ξ's hairline was cut off below its middle; ү's counter
+      filled black. A crotch drawn as a very short line (ξ's middle, γ's
+      below its loop) meets as one point.
+    * &'s bowl tail heavier where it leaves the stem (ITALIC_BOLD_ROOTS,
+      as k's arm): the stem's foot bent 29 units aside, now 19.
+    * ξ's curves into its middle crotch fitted with more than one cubic
+      (ITALIC_BOLD_SPLIT): one drew in a waist.
+    * About 330 Bold Italic letters change slightly; 75 quality findings
+      go, 31 come (small extremes and joins, reviewed in proofs).
+    * q.sc's bowl inside runs straight into its crotch: near it the
+      narrowing counter no longer holds its weight back
+      (ITALIC_BOLD_CAP_FREE); its small loop's corner is the Italic
+      draft's.
+
 2026-11-02 Bold Italic: modifier letters made small from its own letters
 
     * ʷ ʸ ʰ ʲ ⁱ ᶤ ᶶ ˡ ˠ ᵉ ᵒ ᵍ ᶻ ᶿ and the other modifier letters the

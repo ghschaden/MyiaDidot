@@ -270,6 +270,15 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   stroke gain on tight inner turns (tried 2026-11-02) only moved the bend
   and added corners (k r c W J): the strokes gain 34 across but 4 up and
   down, so a curl's upright side moves in far more than its top.
+  2026-11-03: γ & ξ ү ұ Q q.sc crotches meet where the strokes cross
+  (stroke_bold Strokes.crossing; FONTLOG). q.sc's bowl inside bent just
+  above its small loop, where the room cap (Strokes.weights, min of the
+  weight and CLEAR of the white in front) took over as the counter
+  narrowed: lifted within 300 units of its crotch (make_bold
+  ITALIC_BOLD_CAP_FREE). For every letter that broke the oldstyle 2 and
+  filled q's crotch; a larger CLEAR alone left an S. Still open: &'s stem
+  foot bends 19 units (the Italic's 7); q.sc's small loop keeps the
+  Italic draft's corner on its right.
 - Bold Italic: keep_bends is on (2026-10-27); still to try the Bold's two
   other repairs (make_bold: keep_smooth for the rounder way, runs_on by
   weight; keep_smooth adds inflections there, Codex's study). Tried

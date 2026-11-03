@@ -32,7 +32,11 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # narrower, a 1.9 degree joint under its middle serif
 WIDTHS = {"uni019C": (2446, 2410)}
 ANCHORS = {"y": {"DotBelow": (5, 0)}}
-FINDINGS = {"uni019C": [("kink", 1212, 1355)]}
+# ų: its stem's foot, a crotch drawn as a short line, now meets as one
+# point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it
+# draws the stem's inside a little bowed, a wobble the size of a unit, not
+# seen in text (proofed to the person with γ & ξ q.sc)
+FINDINGS = {"uni019C": [("kink", 1212, 1355)], "uogonek": [("wobble", 873, 136)]}
 
 
 def p(x, y):

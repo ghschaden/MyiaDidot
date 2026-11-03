@@ -123,6 +123,10 @@ TS_G2 = np.linspace(0, 1, 80)  # (its distances, measured coarser)
 # then each whole arc refitted fair (fair_arcs; MYIA_FAIR=0: as fitted;
 # the person, 2026-10-28)
 FAIR = os.environ.get("MYIA_FAIR", "1") == "1"
+CORNER_OWN = os.environ.get("MYIA_CORNER_OWN", "2")  # (Strokes.draw: 0 off, 1 the lighter only, 2 always)
+CORNER_MEET = os.environ.get("MYIA_CORNER_MEET", "1") == "1"  # (Strokes.draw: 0 to compare)
+SPLIT = os.environ.get("MYIA_SPLIT", "1") == "1"  # (Strokes.split_fit: 0 to compare)
+SPLIT_ERR = 3.0  # units a moved side's one cubic may stray from its points (split: make_bold.ITALIC_BOLD_SPLIT)
 BLENDS = os.environ.get("MYIA_BLEND", "1") == "1"  # (Strokes.blend; 0 to compare)
 
 
@@ -272,11 +276,13 @@ class Strokes:
     """the gain: ax across a stem, hair across a hairline, ay up and down;
     thin / thick: the section widths of a hairline and a stem; slant: the
     frame's (its upright is an extreme's direction); root: a hairline's
-    weight where it leaves a crotch, fading over ROOT units (0: none)"""
+    weight where it leaves a crotch, fading over ROOT units (0: none);
+    split: Strokes.split_fit at crotches; free: units from a crotch within
+    which the white in front does not hold a side back (0: none)"""
 
-    def __init__(self, ax, ay, thin, thick, hair, slant, root=0.0):
+    def __init__(self, ax, ay, thin, thick, hair, slant, root=0.0, split=False, free=0.0):
         self.ax, self.ay, self.thin, self.thick, self.hair = ax, ay, thin, thick, hair
-        self.root = root
+        self.root, self.split, self.free = root, split, free
         self.upright = unit(np.array([-slant, 1.0]))
         self.slant = slant
         self.blending, self.blended = BLENDS, False  # (blend: asked for, done)
@@ -432,6 +438,14 @@ class Strokes:
             room = CLEAR * gap[starts[c]:starts[c + 1]]
             cap = smooth(np.clip((2 * room - self.hair) / (self.ax - self.hair), 0, 1), arc, total)
             capv = smooth(np.clip((2 * room / max(FULL, 1e-9) - self.hair) / (self.ax - self.hair), 0, 1), arc, total)
+            if self.free and cuts:
+                # near a crotch the two strokes' crossing decides where they
+                # meet, not the white between them: a side capped there by the
+                # narrowing counter bent in above it (q.sc's bowl over its loop)
+                d = np.min(np.linalg.norm(P[:, None] - P[cuts][None], axis=2), axis=1)
+                free = np.clip(1 - d / self.free, 0, 1) ** 2
+                cap = np.maximum(cap, free)
+                capv = np.maximum(capv, free)
             if self.root and cuts:
                 # a hairline springing from a crotch heavier at its root
                 # (k's arm, the person: thicker in the beginning), both its
@@ -461,6 +475,94 @@ class Strokes:
         if np.linalg.norm(m - p1) < 3 * self.ax and np.linalg.norm(m - p2) < 3 * self.ax:
             return m
         return None
+
+    def crossing(self, a, b, nd, prev, here):
+        """a crotch's moved sides, the arriving one ending at a and the
+        leaving one starting at b (prev, here: a curve's moved samples; None
+        for a line), each run on straight past its end: where they cross
+        nearest the corner, and how many of prev's samples to keep and from
+        which of here's to go on (None: all); None where they do not cross
+        within reach"""
+        reach = 3 * self.ax
+        n_in = int(reach / STEP)
+        if prev is None:
+            A = [a - nd["tin"] * reach, a]
+            off_a = 0
+        else:
+            A = list(prev[-n_in:]) + [a]
+            off_a = len(prev) - (len(A) - 1)
+        da = unit(A[-1] - A[max(0, len(A) - 4)]) if prev is not None else nd["tin"]
+        A = np.array(A + [A[-1] + da * reach])
+        if here is None:
+            B = [b, b + nd["tout"] * reach]
+        else:
+            B = [b] + list(here[1:n_in])
+        db = unit(B[min(3, len(B) - 1)] - B[0]) if here is not None else nd["tout"]
+        B = np.array([B[0] - db * reach] + B)
+        p, e = A[:-1], np.diff(A, axis=0)
+        q, f = B[:-1], np.diff(B, axis=0)
+        den = e[:, None, 0] * f[None, :, 1] - e[:, None, 1] * f[None, :, 0]
+        w = q[None] - p[:, None]
+        with np.errstate(divide="ignore", invalid="ignore"):
+            u = (w[..., 0] * f[None, :, 1] - w[..., 1] * f[None, :, 0]) / den
+            v = (w[..., 0] * e[:, None, 1] - w[..., 1] * e[:, None, 0]) / den
+        ok = (np.abs(den) > 1e-12) & (u >= 0) & (u <= 1) & (v >= 0) & (v <= 1)
+        if not ok.any():
+            return None
+        la = np.concatenate([[0], np.cumsum(np.linalg.norm(e, axis=1))])
+        lb = np.concatenate([[0], np.cumsum(np.linalg.norm(f, axis=1))])
+        ia, ib = np.nonzero(ok)
+        posa = la[ia] + u[ia, ib] * (la[ia + 1] - la[ia])
+        posb = lb[ib] + v[ia, ib] * (lb[ib + 1] - lb[ib])
+        # nearest the ends, a side run on straight past its end counting
+        # four times what a side trimmed back does (ξ's bowl run on to its
+        # hairline bent the bowl; its hairline run on to the bowl does not)
+        da, db_ = posa - la[-2], posb - lb[1]
+        cost = np.where(da > 0, 4 * da, -da) + np.where(db_ < 0, -4 * db_, db_)
+        best = int(np.argmin(cost))
+        i, j = int(ia[best]), int(ib[best])
+        m = p[i] + u[i, j] * e[i]
+        na = None
+        if prev is not None and i < len(A) - 3:
+            na = off_a + i + 1
+            if na < 2:
+                return None
+        nb = None
+        if here is not None and j >= 1:
+            nb = j
+            if len(here) - nb < 2:
+                return None
+        return m, na, nb
+
+    @staticmethod
+    def split_fit(pts, ctrl, depth=3):
+        """ctrl, one cubic fitted to pts, as cubics: split where it strays
+        furthest from them, while it strays more than SPLIT_ERR units (q.sc's
+        bowl inside, its weight falling towards the loop, waved one way and
+        the other about its points)"""
+        def stray(p, c):
+            return float(np.min(np.linalg.norm(p[:, None, :] - bez(c, TS)[None, :, :], axis=2), axis=1).max())
+
+        def pieces(p, c, depth):
+            """(cubics, the furthest any strays)"""
+            e = stray(p, c)
+            if depth == 0 or len(p) < 24 or e <= SPLIT_ERR:
+                return [c], e
+            err = np.min(np.linalg.norm(p[:, None, :] - bez(c, TS)[None, :, :], axis=2), axis=1)
+            i = int(np.argmax(err))
+            if not len(p) // 4 <= i <= 3 * len(p) // 4:  # (at an end: halved)
+                i = len(p) // 2
+            tm = unit(p[i + 3] - p[i - 3])
+            first = fit_cubic(p[:i + 1], unit(c[1] - c[0]), tm)[0]
+            second = fit_cubic(p[i:], tm, unit(c[3] - c[2]))[0]
+            if first is None or second is None:
+                return [c], e
+            (a, ea), (b, eb) = pieces(p[:i + 1], first, depth - 1), pieces(p[i:], second, depth - 1)
+            return (a + b, max(ea, eb)) if max(ea, eb) < 0.8 * e else ([c], e)
+
+        if ctrl is None or not SPLIT:
+            return [ctrl]
+        return pieces(pts, ctrl, depth)[0]
 
     def meet(self, a, ta, b, tb, start, end):
         """where the moved line arriving at a (from start's side) meets the
@@ -674,12 +776,22 @@ class Strokes:
             # each node's moved position(s), arriving and leaving; a line
             # moves parallel, by its weight along its length (its ends' alone
             # thin where the weight fades towards a cut end)
-            ends = []
+            ends, trims = [], {}
             for k in range(L):
                 nd = nodes[k]
                 p = segs[k][0][0]
                 kk, vv = kc[first[k]], kv[first[k]]
                 ka, va = (kk, vv) if kline[k - 1] is None else (kline[k - 1], vline[k - 1])
+                if nd["corner"] and kline[k - 1] is None and (kline[k] is None or CORNER_OWN == "2") and CORNER_OWN != "0":
+                    # a corner between two curves: the arriving one's end by
+                    # its own weight where it is the lighter, not by the
+                    # leaving one's (γ: the arm's lower edge, moved at the
+                    # crotch by the descender's stem weight, hooked back into
+                    # a step; the person, 2026-11-02). Where it is the
+                    # heavier, as before: γ's loop, so moved, met its stem in
+                    # a notch
+                    if kc[first[k] - 1] < kk or CORNER_OWN == "2":
+                        ka, va = kc[first[k] - 1], kv[first[k] - 1]
                 kb, vb = (kk, vv) if kline[k] is None else (kline[k], vline[k])
                 if nd["corner"]:
                     a, b = self.move(p, nd["tin"], ka, sign, va), self.move(p, nd["tout"], kb, sign, vb)
@@ -688,6 +800,19 @@ class Strokes:
                     if not convex and lines[k - 1] and lines[k]:
                         # a crotch between two lines: where they meet, if on both
                         m = self.meet(a, nd["tin"], b, nd["tout"], segs[k - 1][0][0], segs[(k + 1) % L][0][0])
+                    elif not convex and CORNER_MEET and not (
+                            # (not a crotch's short line, γ's below its loop:
+                            # its two corners are one crotch, as before)
+                            (lines[k - 1] and np.linalg.norm(p - segs[k - 1][0][0]) < self.ax / 3)
+                            or (lines[k] and np.linalg.norm(segs[(k + 1) % L][0][0] - p) < self.ax / 3)):
+                        # a crotch with a curve: its two moved sides run on
+                        # (or back) to where they cross, a curve trimmed to
+                        # it below (γ's arm and descender, &'s bowl and stem:
+                        # joined by a step)
+                        got = self.crossing(a, b, nd, None if lines[k - 1] else moved[k - 1],
+                                            None if lines[k] else moved[k])
+                        if got is not None:
+                            m, trims[k] = got[0], got[1:]
                     ends.append((m, m) if m is not None else (a, b))
                 elif kline[k - 1] is not None or kline[k] is not None:
                     t = unit(nd["tin"] + nd["tout"])
@@ -695,6 +820,41 @@ class Strokes:
                     ends.append((q, q))
                 else:
                     ends.append((moved[k][0], moved[k][0]))
+            # a crotch drawn as a short line between two curves (the
+            # crotches above, ξ's middle, γ's below its loop): the curves
+            # meet where they cross, the line gone to a point (each corner
+            # by itself left the heavier side standing past the other, an
+            # outcrop)
+            # (or the line running on smoothly into the curve after it, ξ's:
+            # the line and that curve one side)
+            braced = {(k + m) % L for k, n in whole for m in range(n + 1)}
+            for k in range(L):
+                j = (k + 1) % L
+                if (not CORNER_MEET or not lines[k] or lines[k - 1] or lines[j] or L < 4
+                        or not nodes[k]["corner"] or k in braced or j in braced
+                        or np.linalg.norm(segs[j][0][0] - segs[k][0][0]) >= self.ax / 3
+                        or sign * (nodes[k]["tin"][0] * nodes[j]["tout"][1]
+                                   - nodes[k]["tin"][1] * nodes[j]["tout"][0]) >= 0):
+                    continue
+                nd = {"tin": nodes[k]["tin"], "tout": nodes[j]["tout"]}
+                if nodes[j]["corner"]:
+                    got = self.crossing(ends[k][0], ends[j][1], nd, moved[k - 1], moved[j])
+                else:
+                    on = [ends[k][1]] + list(moved[j])
+                    got = self.crossing(ends[k][0], ends[k][1], nd, moved[k - 1], on)
+                if got is None:
+                    continue
+                m, na, nb = got
+                ends[k], ends[j] = (m, m), (m, m)
+                trims[k] = (na, None)
+                if nodes[j]["corner"]:
+                    trims[j] = (None, nb)
+                else:
+                    # (the line's moved start dropped: the curve runs on
+                    # from the meeting point, sampled below)
+                    moved[j] = on[nb - 1:] if nb and nb > 1 else [m] + list(moved[j])
+                    nodes[j]["corner"] = True  # (its tangent from its curve now)
+                    trims[j] = (None, None)
             # a bracket moved whole: by the shift D of its sides' corner (D
             # on both sides' moved lines)
             shifts = {}
@@ -717,6 +877,49 @@ class Strokes:
                     ends[q] = (p + D, p + D)
                     if m < n:
                         moved[q] = [p + D for p, _t in segs[q]]
+            # a crotch's curves trimmed to where they cross
+            for k, (na, nb) in trims.items():
+                if k in shifts:
+                    continue
+                if na is not None:
+                    moved[k - 1] = moved[k - 1][:na]
+                if nb is not None:
+                    moved[k] = moved[k][:1] + moved[k][nb:]
+                # a side run on straight to the meeting point: that run
+                # sampled too, its fit following it (ξ's bowl, run on to
+                # its hairline: one cubic over the gap drew it in, a waist)
+                m = ends[k][0]
+                if not lines[k - 1] and len(moved[k - 1]) > 1:
+                    gap = np.linalg.norm(m - moved[k - 1][-1])
+                    if gap > 2 * STEP:
+                        n = int(gap / STEP)
+                        moved[k - 1] = moved[k - 1] + [moved[k - 1][-1] + (m - moved[k - 1][-1]) * (i / n)
+                                                       for i in range(1, n)]
+                if not lines[k] and len(moved[k]) > 1:
+                    gap = np.linalg.norm(moved[k][1] - m)
+                    if gap > 2 * STEP:
+                        n = int(gap / STEP)
+                        moved[k] = moved[k][:1] + [m + (moved[k][1] - m) * (i / n) for i in range(1, n)] + moved[k][1:]
+            # a corner whose sides meet past their moved ends: the samples
+            # beyond the meeting point dropped (they ran back from it, a hook)
+            if CORNER_MEET:
+                for k in range(L):
+                    if (not nodes[k]["corner"] or k in shifts or k in trims
+                            or not np.allclose(ends[k][0], ends[k][1])):
+                        continue
+                    m = ends[k][0]
+                    if not lines[k - 1]:
+                        prev = moved[k - 1]
+                        n = len(prev)
+                        while n > 4 and float((prev[n - 1] - m) @ nodes[k]["tin"]) > 0:
+                            n -= 1
+                        moved[k - 1] = prev[:n]
+                    if not lines[k]:
+                        here = moved[k]
+                        n = 1
+                        while len(here) - n > 4 and float((m - here[n]) @ nodes[k]["tout"]) > 0:
+                            n += 1
+                        moved[k] = here[:1] + here[n:]
             # each node's tangents on the moved outline (arriving, leaving)
             tans = []
             for k in range(L):
@@ -757,8 +960,14 @@ class Strokes:
                 if lines[k] or fits[k][1] is None:
                     rec.lineTo(tuple(ends[j][0]))
                 else:
-                    ctrl = fits[k][1]
-                    rec.curveTo(tuple(ctrl[1]), tuple(ctrl[2]), tuple(ctrl[3]))
+                    # (only a curve running into a crotch's meeting point: run on
+                    # or trimmed there, one cubic does not follow it; split
+                    # all round, ξ's and q.sc's bowls went faceted)
+                    crotch = k in trims or j in trims
+                    parts = self.split_fit(fits[k][0], fits[k][1]) if self.split and crotch else [fits[k][1]]
+                    anchors += [ctrl[3] for ctrl in parts[:-1]]  # (kept by the cleaning, as nodes are)
+                    for ctrl in parts:
+                        rec.curveTo(tuple(ctrl[1]), tuple(ctrl[2]), tuple(ctrl[3]))
                 if j and not np.allclose(ends[j][0], ends[j][1]):
                     rec.lineTo(tuple(ends[j][1]))
             if not np.allclose(ends[0][0], ends[0][1]):
@@ -1322,12 +1531,79 @@ def stroked(strokes, flat, sliver):
     return out, kept
 
 
-def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0, log=None):
+def smooth_counter(glyph, sigma):
+    """glyph (a ufoLib2 Glyph, upright frame) with its smallest contour, a
+    small counter, refitted smooth: its outline smoothed over sigma units
+    (Gaussian, the window narrowing to its corner), then one cubic between
+    each two of its extremes, kept horizontal and vertical; its one corner,
+    the sharpest turn, kept (q.sc's loop: the tail's weight changing fast
+    along it left its inside edgy, the corner where the tail's diagonal
+    meets its bottom as Q's). Unchanged with fewer than two contours."""
+    from ufoLib2.objects import Contour, Point
+
+    if len(glyph.contours) < 2:
+        return glyph
+
+    def area(c):
+        q = np.array([(p.x, p.y) for p in c.points])
+        return abs(np.sum(q[:, 0] * np.roll(q[:, 1], -1) - np.roll(q[:, 0], -1) * q[:, 1])) / 2
+    ci = min(range(len(glyph.contours)), key=lambda i: area(glyph.contours[i]))
+    pts = [(np.array((p.x, p.y), float), p.type) for p in glyph.contours[ci].points]
+    first = next(i for i, (_, t) in enumerate(pts) if t)
+    pts = pts[first + 1:] + pts[:first + 1]  # ends on an on-curve point
+    dense, cur, off = [], pts[-1][0], []
+    for q, t in pts:
+        if t is None:
+            off.append(q)
+            continue
+        u = np.linspace(0, 1, 60, endpoint=False)
+        dense.extend(bez([cur] + off + [q], u) if len(off) == 2 else cur + np.outer(u, q - cur))
+        cur, off = q, []
+    dense = np.array(dense)
+    ring = np.vstack([dense, dense[:1]])
+    d = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(ring, axis=0), axis=1))])
+    s = np.linspace(0, d[-1], max(int(d[-1] / 2), 16), endpoint=False)  # every 2 units
+    P = np.column_stack([np.interp(s, d, ring[:, 0]), np.interp(s, d, ring[:, 1])])
+    k = 6  # the corner: the largest turn over 12 units either side
+    a, b = P - np.roll(P, k, 0), np.roll(P, -k, 0) - P
+    turn = np.abs(np.arctan2(a[:, 0] * b[:, 1] - a[:, 1] * b[:, 0], (a * b).sum(1)))
+    run = np.roll(P, -int(np.argmax(turn)), 0)
+    run = np.vstack([run, run[:1]])
+    m, idx = len(run), np.arange(len(run))
+    sm = run.copy()
+    for i in range(1, m - 1):
+        w = np.exp(-0.5 * ((idx - i) / (sigma / 2)) ** 2)
+        w[np.abs(idx - i) > min(i, m - 1 - i)] = 0  # symmetric: the corner stays put
+        sm[i] = (w[:, None] * run).sum(0) / w.sum()
+    ext = {0, m - 1}
+    for axis in (0, 1):
+        v = sm[3:m - 3, axis]
+        ext |= {e for e in (int(np.argmin(v)) + 3, int(np.argmax(v)) + 3) if 3 < e < m - 4}
+    ext = sorted(ext)
+
+    def tangent(i, j):
+        t = sm[j] - sm[i] if j > i else sm[i] - sm[j]
+        t = t / np.linalg.norm(t)
+        big = int(np.argmax(np.abs(t)))
+        if abs(t[big]) > 0.97:  # at an extreme: exactly level or upright
+            t = np.where(np.arange(2) == big, np.sign(t), 0.0)
+        return t
+    new = Contour()
+    for j, (a, b) in enumerate(zip(ext, ext[1:])):
+        ctrl, _ = fit_cubic(sm[a:b + 1], tangent(a, min(m - 1, a + 3)), tangent(b, max(0, b - 3)))
+        for q in ctrl[1:3]:
+            new.points.append(Point(float(q[0]), float(q[1])))
+        new.points.append(Point(float(ctrl[3][0]), float(ctrl[3][1]), type="curve", smooth=j < len(ext) - 2))
+    glyph.contours[ci] = new
+    return glyph
+
+
+def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0, split=False, free=0.0, log=None):
     """rec (a RecordingPen, upright frame) emboldened by its strokes, as a
     ufoLib2 Glyph, cleaned (contours under sliver units' area dropped);
-    not shifted (the caller moves it by ax / 2); root: Strokes'; log, a
+    not shifted (the caller moves it by ax / 2); root, split, free: Strokes'; log, a
     list: given, the blend's verdict is added to it"""
-    strokes = Strokes(ax, ay, thin, thick, hair, slant, root)
+    strokes = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
     flat = tidy(merged_glyph(rec))
     if not flat.contours:
         return ufoLib2.objects.Glyph()
@@ -1338,7 +1614,7 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
     if knees:
         # a knee left in the outline: stroked again, its curve blended into
         # its line too, and judged by the knee's step
-        again = Strokes(ax, ay, thin, thick, hair, slant, root)
+        again = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
         again.knees = knees
         out, kept = stroked(again, flat, sliver)
         strokes, turn = again, KNEE_TURN
@@ -1348,7 +1624,7 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
         # worse, each matched to its own; and where it keeps what it must
         # (guarded: the outline away from the blend, contours, bounds, the
         # strokes' widths and the white between them); else as reviewed
-        plain = Strokes(ax, ay, thin, thick, hair, slant, root)
+        plain = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
         plain.blending = False
         before, was = stroked(plain, flat, sliver)
         fixed, stepped = compared(steps(was, turn), steps(kept, turn))
