@@ -6,6 +6,7 @@ Hook smooth 1                    # в bump filled; crumbs (a curve's end split o
 Horn wobble 1                    # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 558,328 4 degrees; 556,349 94 degrees
 J zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 OE extreme 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 869,32 6 units past; 977,1256 6 units past
+Oslashacute accent 1             # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 Psi wobble 1                     # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1713,1159 9 degrees; 1615,1255 15 degrees
 R zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 S stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 249 against 306 (0.82, lighter)
@@ -110,6 +111,7 @@ oe.sc extreme 2                  # contrast-aware Bold (emboldened by stroke wei
 omicron stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 218 against 261 (0.83, lighter)
 ordfeminine wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 454,1028 3 degrees; 322,1125 81 degrees
 oslash zone 2                    # 2026-10-16 known at the start (quality checks added): bottom -26 from 0; top +26 from 884
+oslashacute.sc accent 1          # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 period width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 phi extreme 1                    # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 603,-15 9 units past
 phi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 261 (0.80, lighter)

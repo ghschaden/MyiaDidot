@@ -20,6 +20,26 @@ from upright_aleph import add_extrema, fair_joins
 
 DATA = Path(__file__).parent / "data" / "oldstyle-italic"
 FIGURES = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+NAMES_KEY = "public.postscriptNames"
+
+
+def production_name(name):
+    """the compiled font's name of an old-style figure (one.osf, one.osf.tf,
+    zero.osf.zero); None for any other glyph. Its source name, oneoldstyle,
+    is the Adobe Glyph List's for U+F731: a PDF reader naming text by glyph
+    gets the private-use character, one.osf reads as 1 (the figures are not
+    encoded, onum reaches them; the person, 2026-11-03)"""
+    base, dot, rest = name.partition(".")
+    if base.endswith("oldstyle") and base.removesuffix("oldstyle") in FIGURES:
+        return base.removesuffix("oldstyle") + ".osf" + dot + rest
+    return None
+
+
+def production_names(font):
+    """{source name: compiled name} for font's old-style figures, as the
+    UFO's public.postscriptNames (ufo2ft keeps every glyph it does not
+    list under its own name)"""
+    return {g.name: production_name(g.name) for g in sorted(font, key=lambda g: g.name) if production_name(g.name)}
 
 
 def finish(font):

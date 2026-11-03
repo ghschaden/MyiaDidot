@@ -1398,14 +1398,17 @@ def finalize(font, smooth=True, separate_stacks=False, plain=()):
     refit_horns(font)
 
 
-def write(font, path, smooth=True, separate_stacks=False, plain=()):
+def write(font, path, smooth=True, separate_stacks=False, plain=(), kept=None):
     """font finalized and saved to path, the person's acceptances of the
-    style saved there before carried over (accepted.py)."""
+    style saved there before carried over (accepted.py), and the glyphs
+    kept as drawn (drawn.py: kept, as saved) put back as they were."""
     from accepted import acceptances, carry
+    from drawn import restore
     from ufo_io import save_font
 
     finalize(font, smooth=smooth, separate_stacks=separate_stacks, plain=plain)
     carry(acceptances(ufoLib2.Font.open(path)) if Path(path).exists() else {}, font)
+    restore(kept or {}, font)
     save_font(font, path)
 
 SMALL_SUFFIXES = ("superior", "inferior", ".numr", ".dnom", ".sups", ".subs")
@@ -2004,6 +2007,11 @@ def main():
     ap.add_argument("bold", nargs="?", default=str(ROOT / "sources/MyiaDidot-Bold.ufo"))
     args = ap.parse_args()
     global SLANT, AX, THIN, THICK
+    from drawn import restore, saved
+
+    # the glyphs kept as drawn (drawn.py), as last saved: put back before
+    # anything is derived from them, and again at the end
+    kept = saved(args.bold)
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
     kern_clear.undo(font)  # the source's loosened pairs: this style finds its own
@@ -2268,10 +2276,13 @@ def main():
 
         fair_bold_stem(font)
     whole = {}
+    restore(kept, font)
     # (Ⱳ by strokes keeps its W; joined to it, the curl's join tangled)
-    followed = follow_bases(regular, font, italic, whole=whole, skip=ITALIC_BOLD_UNJOINED if italic else ())
+    followed = follow_bases(regular, font, italic, whole=whole,
+                            skip=set(ITALIC_BOLD_UNJOINED if italic else ()) | set(kept))
     followed += attached_small(regular, font, italic)
     followed += rederive(regular, font, italic, whole)
+    restore(kept, font)
     if italic:
         # the joins the Italic faired, faired again (emboldened whole or
         # made again by the recipe)
@@ -2280,7 +2291,7 @@ def main():
 
         cmap = {g.unicode: g.name for g in font if g.unicode is not None}
         for ch, band in ITALIC_JOINS.items():
-            if ord(ch) in cmap:
+            if ord(ch) in cmap and cmap[ord(ch)] not in kept:
                 fair_joins(font[cmap[ord(ch)]], *band)
     font.lib[WHOLE_KEY] = {n: why for n, why in sorted(whole.items()) if n not in followed}
 
@@ -2315,7 +2326,7 @@ def main():
     stack_anchors(font, log)
     bold_builder = Builder(font)
     rebuilt = 0
-    for name in sorted(rule_made):
+    for name in sorted(rule_made - set(kept)):
         g = font[name]
         r = bold_builder.recipe(g.unicode)
         r.name = name
@@ -2333,7 +2344,7 @@ def main():
     for g in list(font):
         if g.unicode is None or not g.contours or g.components or f"U+{g.unicode:04X}" in exceptions:
             continue
-        if g.name in SPECIAL:  # upstream's deliberate designs stay as drawn (Ǻ)
+        if g.name in SPECIAL or g.name in kept:  # upstream's deliberate designs (Ǻ), ours (drawn.py)
             continue
         if len(unicodedata.normalize("NFD", chr(g.unicode))) < 2:
             continue
@@ -2366,7 +2377,7 @@ def main():
         redraw_cyrillic_signs(font)
         finish_contours(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
-    write(font, Path(args.bold), separate_stacks=True)
+    write(font, Path(args.bold), separate_stacks=True, kept=kept)
     if parted:
         print("  serifs kept apart:", " ".join(parted))
     if unstroked:

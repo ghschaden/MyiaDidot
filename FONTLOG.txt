@@ -26,6 +26,27 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-03 No Private Use code points; Bold and Bold Italic glyphs kept as drawn
+
+    * The 53 Private Use code points (Theano's, after Adobe's old
+      convention) are gone from all four styles: the old-style figures
+      U+F730-F739 (reached by onum), the capital accents Acute Grave
+      Circumflex ... and the Cyrillic and double-grave ones (components of
+      the accented capitals), the Greek letters with marks Unicode has no
+      character for (U+E1A9-E1CF, ligatures in ccmp).
+    * The old-style figures are named one.osf, one.osf.tf, zero.osf.zero
+      in the compiled fonts (public.postscriptNames,
+      oldstyle_figures.production_name): their source names (oneoldstyle)
+      are the Adobe Glyph List's for U+F731, and LuaLaTeX gave the
+      tabular old-style figures as those. tests/test_text_extraction.py
+      sets old-style, tabular old-style, small caps and ligatures in
+      LuaLaTeX for each style and reads them back with pdftotext.
+    * scripts/drawn.py marks a finished Bold or Bold Italic glyph drawn:
+      make_bold.py and smallcaps.py keep it as saved and build what is
+      derived from it from it. A fault in one letter is fixed in that
+      letter; the generators' shared machinery only for faults many
+      letters share (the person's decision).
+
 2026-11-03 Italic and Bold Italic W and Ⱳ rebuilt; Bold Italic Ɽ
 
     * W (make_italic.redraw_w, two narrowed Vs): the thick stems take the

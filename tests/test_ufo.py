@@ -109,6 +109,8 @@ def test_names_and_code_points_agree(ufo):
         if "." in g.name or "_" in g.name:
             continue
         ch = agl.toUnicode(g.name)
+        if len(ch) == 1 and 0xE000 <= ord(ch) <= 0xF8FF:
+            continue  # Adobe's private-use names (Acute, oneoldstyle): left unencoded
         if len(ch) == 1 and ord(ch) not in g.unicodes:
             wrong.append(f"{g.name} -> {[f'U+{u:04X}' for u in g.unicodes]}")
     assert not wrong, f"glyph names and code points disagree: {wrong}"

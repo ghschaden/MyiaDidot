@@ -685,6 +685,9 @@ def main():
 
     font = ufoLib2.Font.open(args.ufo)
     accepted = acceptances(font)  # the person's, kept for the glyphs made anew
+    from drawn import restore, saved
+
+    kept = saved(args.ufo)  # a generated style's glyphs kept as drawn (drawn.py)
     if args.height:
         font.lib[HEIGHT_KEY] = args.height
     configure(font.lib.get(HEIGHT_KEY, DEFAULT_HEIGHT))
@@ -703,6 +706,7 @@ def main():
     scale_kerning(font, log)
     write_features(font, log)
     carry(accepted, font)
+    restore(kept, font)
     font.save()
 
     kinds = {}

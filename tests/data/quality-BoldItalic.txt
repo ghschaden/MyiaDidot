@@ -22,6 +22,7 @@ M zone 1                         # 2026-10-16 Bold Italic: first generated (make
 Mu zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
 N stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 191 against 307 (0.62, lighter)
 Ogonek extreme 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 247,-274 8 units past; 234,-530 8 units past
+Oslashacute accent 1             # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 P smooth 1                       # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 485,121 3.1 degrees
 Psi zone 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
 R zone 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
@@ -31,6 +32,7 @@ Sigma stroke 1                   # stroke weights against the kind's (scripts/qu
 T step 1                         # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 747,1352 4 units aside
 Tbar step 1                      # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 747,1352 4 units aside
 Theta stroke 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: uc 544 against 304 (1.79, darker)
+Upsilondieresis accent 1         # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 V stroke 1                       # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: uc 261 against 292 (0.89, lighter)
 X extreme 2                      # 2026-10-21 Italic reweighted and tightened: 862,1357 10 units past; 1055,69 17 units past
 Xi extreme 2                     # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 228,237 7 units past; 1174,201 7 units past
@@ -138,6 +140,7 @@ omega.sc stroke 1                # stroke weights against the kind's (scripts/qu
 omega.sc zone 1                  # 2026-10-21 Italic reweighted and tightened: top +28 from 1040
 oogonek zone 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: bottom +14 from -462
 ordfeminine wobble 1             # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed by the person in proofs (γ & ξ ү q.sc), new findings proofed: 2 against 0: 651,899 1
+oslashacute.sc accent 1          # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 p.sc kink 1                      # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 396,105 2.7 degrees
 phi.sc kink 1                    # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 692,100 3.7 degrees
 phisymbolgreek wobble 1          # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed by the person in proofs (γ & ξ ү q.sc), new findings proofed: 1 against 0: 490,-434
@@ -576,6 +579,8 @@ uni1FCF extreme 2                # 2026-10-16 Bold Italic: first generated (make
 uni1FDD extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 376,1197 6 units past; 478,1000 9 units past
 uni1FDE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 427,1169 9 units past; 458,973 13 units past
 uni1FDF extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 647,941 7 units past
+uni1FE8 accent 1                 # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
+uni1FE9 accent 1                 # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 uni1FFE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 565,1209 7 units past; 683,987 10 units past
 uni2042 smooth 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 491,749 2.4 degrees
 uni207F wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 667,603 10 degrees; 666,1015 16 degrees; 338,972 28 degrees

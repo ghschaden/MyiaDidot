@@ -9,6 +9,14 @@ Moved from CLAUDE.md (its ground rules apply).
   into build/reproduce/ and lists whatever would change; run it before
   committing changes to the generated styles. Hand-drawn exceptions in the
   Italic are marked "drawn" (org.myiadidot.italicSource), which a run keeps.
+  In the Bold and Bold Italic a glyph marked with `scripts/drawn.py`
+  (lib org.myiadidot.drawn: date, why, its source letter's fingerprint) is
+  put back as saved by make_bold (before the derived letters are built
+  from it, and after finishing) and by smallcaps; `drawn.py UFO` lists them
+  and flags those whose Italic or Regular letter changed since. Use it for
+  a finished letter whose remaining fault is its own (the person,
+  2026-11-03: global repairs of the stroker moved hundreds of letters to
+  fix a few); leave faults many letters share to the generator.
 - **Bold** (`sources/MyiaDidot-Bold.ufo`) is generated from the Regular by
   `scripts/make_bold.py` (then `smallcaps.py` on it, `make normalize`):
   rerun it after changes to the Regular until the Bold has reviewed edits
