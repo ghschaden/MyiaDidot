@@ -14,7 +14,7 @@ jobs:
       # no FontForge: the generators read its conversion and drafts from
       # sources/ (scripts/fontforge_inputs.py) and stop on a stale one
       - run: uv sync --frozen --python 3.12
-      - run: make reproduce
+      - run: make reproduce JOBS=6
 
   comparison:
     runs-on: ubuntu-latest
