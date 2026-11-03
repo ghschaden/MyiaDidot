@@ -276,9 +276,10 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   weight and CLEAR of the white in front) took over as the counter
   narrowed: lifted within 300 units of its crotch (make_bold
   ITALIC_BOLD_CAP_FREE). For every letter that broke the oldstyle 2 and
-  filled q's crotch; a larger CLEAR alone left an S. Still open: &'s stem
-  foot bends 19 units (the Italic's 7); q.sc's small loop keeps the
-  Italic draft's corner on its right.
+  filled q's crotch; a larger CLEAR alone left an S. &'s stem foot: 9
+  units (was 19, the Italic's 7), the glyph kept as drawn (drawn.py,
+  2026-11-03); q.sc's small loop keeps its point where the tail crosses
+  itself, as the Italic's.
 - Bold Italic: keep_bends is on (2026-10-27); still to try the Bold's two
   other repairs (make_bold: keep_smooth for the rounder way, runs_on by
   weight; keep_smooth adds inflections there, Codex's study). Tried

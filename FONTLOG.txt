@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-03 Bold Italic &: the stem's foot straight
+
+    * The counter's corner where the bowl's tail leaves the stem moved 10
+      units onto the stem's line: the stem's inner edge bent in 19 units
+      above the join (the Italic's 7), now 9. The first glyph kept as
+      drawn (scripts/drawn.py). q.sc's small loop keeps its point where
+      the tail crosses itself, as the Italic's.
+
 2026-11-03 No Private Use code points; Bold and Bold Italic glyphs kept as drawn
 
     * The 53 Private Use code points (Theano's, after Adobe's old
