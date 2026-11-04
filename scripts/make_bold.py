@@ -54,6 +54,7 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import case_forms
 import kern_clear
+import stroke_cache
 from built_from import KEY as BUILT_KEY
 from composites import SPECIAL, STACK_GAP_LC, Builder, stack_anchors
 from derive import embolden, embolden_by_weight, embolden_simple, rezone
@@ -1076,9 +1077,20 @@ def part_serifs(wide, bold, make):
     return bold, 0
 
 
+FAULTS = {}  # faults' counts by outline, for the run (each letter asks up to five times)
+
+
 def faults(g, font):
     """How many notches (a slit between parts that come close), slivers and
-    twists (an outline crossing itself at a tight terminal) g's contours have."""
+    twists (an outline crossing itself at a tight terminal) g's contours have
+    (only the contours: font does not change it)."""
+    key = repr([[(p.x, p.y, p.type, p.smooth) for p in c.points] for c in g.contours])
+    if key not in FAULTS:
+        FAULTS[key] = _faults(g, font)
+    return FAULTS[key]
+
+
+def _faults(g, font):
     from glyph_lint import notch_findings, vector_findings
 
     p = pathops.Path()
@@ -2158,6 +2170,7 @@ def main():
                                 name in ITALIC_BOLD_SPLIT, ITALIC_BOLD_CAP_FREE.get(name, 0.0)))
 
     stroked, unstroked = {}, []
+    cache = stroke_cache.Cache() if italic else None
     if italic:
         from concurrent.futures import ProcessPoolExecutor
 
@@ -2167,13 +2180,31 @@ def main():
                 wide = RecordingPen()
                 contours_only(g).replay(TransformPen(TransformPen(wide, (KX, 0, 0, 1, 0, 0)), up))
                 jobs.append(strokes_job(g.name, wide, small_scale if g.name in small else 1.0))
-        with ProcessPoolExecutor(JOBS) as pool:
-            done = dict(pool.map(emboldened, jobs, chunksize=8))
+        # those stroked before with the same outline, arguments and code
+        # come from the cache (stroke_cache: 9 of make generate's 11 minutes)
+        done = cache.get(jobs)
+        todo = [job for job in jobs if job[0] not in done]
+        if todo:
+            with ProcessPoolExecutor(JOBS) as pool:
+                new = dict(pool.map(emboldened, todo, chunksize=8))
+            cache.put(todo, new)
+            done.update(new)
+        if cache.db is not None:
+            print(f"  emboldened by strokes: {len(jobs) - len(todo)} from the cache, {len(todo)} stroked")
         stroked = {repr(job[1]): done[job[0]] for job in jobs}
 
     def by_strokes(w, sc, name):
         """w (name's) emboldened by its strokes, a ufoLib2 Glyph (None: failed)"""
-        value = stroked[repr(w.value)] if repr(w.value) in stroked else emboldened(strokes_job(name, w, sc))[1]
+        if repr(w.value) in stroked:
+            value = stroked[repr(w.value)]
+        else:
+            job = strokes_job(name, w, sc)
+            kept = cache.get([job])
+            if name in kept:
+                value = kept[name]
+            else:
+                value = emboldened(job)[1]
+                cache.put([job], {name: value})
         if value is None:
             return None
         glyph = ufoLib2.objects.Glyph()

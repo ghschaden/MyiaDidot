@@ -312,15 +312,28 @@ def unstep(path, ledges=False):
 
 
 def _grow(mask, r):
-    """Binary dilation by a disc of radius r pixels."""
-    out = mask.copy()
+    """Binary dilation by a disc of radius r pixels (the offsets dx² + dy² <= r²):
+    each row of the disc a run of half-width a = isqrt(r² - dy²), so the mask
+    is widened by each a (the widest built on the narrower) and shifted by
+    dy, the same pixels in fewer passes (2026-11-04: a third of make_bold's time
+    in glyph_lint went here)."""
     h, w = mask.shape
-    for dy in range(-r, r + 1):
-        for dx in range(-r, r + 1):
-            if dx * dx + dy * dy > r * r or (dx == 0 and dy == 0):
-                continue
-            src = mask[max(0, -dy):h - max(0, dy), max(0, -dx):w - max(0, dx)]
-            out[max(0, dy):h - max(0, -dy), max(0, dx):w - max(0, -dx)] |= src
+    widened = {}
+    row = mask.copy()
+    reach = 0
+    for a in sorted({math.isqrt(r * r - dy * dy) for dy in range(-r, r + 1)}):
+        while reach < a:  # one pixel further each way
+            step = row.copy()
+            step[:, 1:] |= row[:, :-1]
+            step[:, :-1] |= row[:, 1:]
+            row = step
+            reach += 1
+        widened[a] = row
+    out = widened[r].copy()
+    for dy in range(1, r + 1):
+        src = widened[math.isqrt(r * r - dy * dy)]
+        out[dy:] |= src[:h - dy]
+        out[:h - dy] |= src[dy:]
     return out
 
 

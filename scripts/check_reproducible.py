@@ -97,9 +97,16 @@ def reproduce(work, sources):
         shutil.copytree(sources / f"MyiaDidot-{style}.ufo", work / f"MyiaDidot-{style}.ufo")
     regular = sources / "MyiaDidot-Regular.ufo"
     italic, bold, bold_italic = (work / f"MyiaDidot-{s}.ufo" for s in ("Italic", "Bold", "BoldItalic"))
-    run(ROOT / "scripts/make_italic.py", regular, italic)
-    run(ROOT / "scripts/make_bold.py", regular, bold)
-    run(ROOT / "scripts/smallcaps.py", bold)
+    # the Italic and the Bold side by side: both read only the Regular (a
+    # core each, as make generate runs them)
+    italic_run = subprocess.Popen([PY, "-I", str(ROOT / "scripts/make_italic.py"), str(regular), str(italic)],
+                                  stdout=subprocess.DEVNULL)
+    try:
+        run(ROOT / "scripts/make_bold.py", regular, bold)
+        run(ROOT / "scripts/smallcaps.py", bold)
+    finally:
+        if italic_run.wait():
+            raise subprocess.CalledProcessError(italic_run.returncode, italic_run.args)
     # the Bold Italic from the snapshot Italic: each generator on its own input
     run(ROOT / "scripts/make_bold.py", sources / "MyiaDidot-Italic.ufo", bold_italic)
     run(ROOT / "scripts/smallcaps.py", bold_italic)

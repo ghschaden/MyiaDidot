@@ -301,12 +301,18 @@ class Builder:
         tops = [c for c, s in zip(r.components[1:], sides, strict=True) if s == "top"]
         if not horns or not tops:
             return
-        horn = self.outline_points(horns[0].glyph, horns[0].dx, horns[0].dy)
-        marks = [pt for c in tops for pt in self.outline_points(c.glyph, c.dx, c.dy)]
+        import numpy as np
+
+        horn = np.array(self.outline_points(horns[0].glyph, horns[0].dx, horns[0].dy), dtype=float)
+        marks = np.array([pt for c in tops for pt in self.outline_points(c.glyph, c.dx, c.dy)], dtype=float)
         shift = 0
-        while shift < 400 and min((hx - mx + shift) ** 2 + (hy - my) ** 2
-                                  for hx, hy in horn for mx, my in marks) < HORN_GAP ** 2:
-            shift += 2
+        if len(horn) and len(marks):
+            # every horn point against every mark point, as floats in the
+            # same order of operations as one at a time
+            across = horn[:, None, 0] - marks[None, :, 0]
+            up = (horn[:, None, 1] - marks[None, :, 1]) ** 2
+            while shift < 400 and ((across + shift) ** 2 + up).min() < HORN_GAP ** 2:
+                shift += 2
         for c in tops:
             c.dx -= shift
 

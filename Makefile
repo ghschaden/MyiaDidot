@@ -230,10 +230,14 @@ strokes:
 
 # regenerate the Italic, Bold and Bold Italic from the Regular, in order, then
 # normalize and look for files the sync client renamed ("conflicted")
+# the Italic and the Bold side by side (both read only the Regular, a core
+# each; the Italic's report after the Bold's), then the Bold Italic
 generate:
-	$(PY) scripts/make_italic.py
-	$(PY) scripts/make_bold.py
-	$(PY) scripts/smallcaps.py sources/$(FAMILY)-Bold.ufo
+	@mkdir -p build
+	$(PY) scripts/make_italic.py > build/make-italic.log 2>&1 & italic=$$!; \
+	$(PY) scripts/make_bold.py && $(PY) scripts/smallcaps.py sources/$(FAMILY)-Bold.ufo; bold=$$?; \
+	wait $$italic; status=$$?; cat build/make-italic.log; \
+	[ $$status -eq 0 ] || { echo "make_italic.py failed"; exit 1; }; [ $$bold -eq 0 ]
 	$(PY) scripts/make_bold.py sources/$(FAMILY)-Italic.ufo sources/$(FAMILY)-BoldItalic.ufo
 	$(PY) scripts/smallcaps.py sources/$(FAMILY)-BoldItalic.ufo
 	$(MAKE) normalize

@@ -71,7 +71,11 @@ Moved from CLAUDE.md (its ground rules apply).
   angle). Rerun it after changes to the Italic. Its own tweaks:
   ITALIC_SIDEBEARINGS / ITALIC_ANCHOR_NUDGE in make_bold.py. Its letters
   are emboldened by their strokes, not by weight (`stroke_bold.py`,
-  2026-10-28, the person's review): each stroke section's weight, smoothed
+  2026-10-28, the person's review; the results kept from run to run by
+  `stroke_cache.py`, keyed by the outline, the arguments, the source of
+  stroke_bold and all it imports, the packages and MYIA_* settings, in
+  ~/.cache/myiadidot: about 9 of make generate's 11 minutes otherwise;
+  MYIA_STROKE_CACHE=0 strokes everything afresh): each stroke section's weight, smoothed
   along the outline between crotches, moves it out (ITALIC_AX across a
   stem, ITALIC_HAIR across a hairline, AY up and down; a shallow diagonal,
   z's spine, weighed nearer the horizontal and gaining up and down too,

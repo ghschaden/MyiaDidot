@@ -7,7 +7,7 @@ Moved from CLAUDE.md (its ground rules apply).
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
 | `make lint` | ruff, lint only (no formatter: the recipe tables are aligned by hand); pre-commit and CI run it |
-| `make generate` | regenerate Italic, Bold, Bold Italic from the Regular (then normalize, check for sync conflicts) |
+| `make generate` | regenerate Italic, Bold, Bold Italic from the Regular (then normalize, check for sync conflicts); the Bold Italic's stroking is cached (`scripts/stroke_cache.py`; `MYIA_STROKE_CACHE=0` for a run without) |
 | `make reproduce` | do the generated styles come out of their generators as the current UFOs specify? |
 | `make strokes` | `build/quality/strokes-STYLE.pdf`: glyphs darker or lighter than their kind, each between its references, for review |
 | `make proof` | `build/proofs/`: `charset.pdf` (new glyphs in red), `proof.pdf`, `samples.pdf` (running text, many languages, sizes), `textpages.pdf` (full book pages, mixed styles), `smallcaps.pdf`, `smallcaps-review.pdf` (every small cap over guide lines, drafts not yet accepted first), `drafts-review.pdf` (other drafted letters not yet accepted, by kind); the same two as `-Italic`, `-Bold`, `-BoldItalic` |
