@@ -547,8 +547,12 @@ RECIPES = [
                                  ("curl", {"at": ("pt", 576, -250, 164), "dir": 270, "turn": "ccw",
                                            "r": (140, 120), "sweep": 150, "ball": 66,
                                            "t": (164, 52)}, (0, 0), (1, 1, 0, 0))])),
-    # (r's top serif cut, its foot slab kept, as the Italic's: the person, 2026-11-04)
-    ("ɾ", "attach", "r", ("x", [(-BIG, 780, 226, BIG)], [])),
+    # ɾ: r's stem and foot slab under f's hook brought down onto the
+    # x-height, f taken from above its crossbar (884) where its stem still
+    # runs straight (its curve begins at 954; f's stem 4 right of r's): no
+    # stem above the hook, the turn thinning as f's (the person, 2026-11-04:
+    # r without its entry serif was too like r)
+    ("ɾ", "attach", "r", ("x", [(-BIG, 308, BIG, BIG)], [("f", (-BIG, 920, BIG, BIG), (0, 0), (1, 1, -4, -612))])),
     ("ᵳ", "midtilde", "ɾ", ("x",)),
     # raised arrows, superscript and subscript signs
     ("ꜛ", "superior", "uni2191", None),

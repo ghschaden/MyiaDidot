@@ -113,7 +113,6 @@ WHOLE_KEY = "org.myiadidot.emboldenedWhole"
 BOLD_KEEP_WHOLE = {
     "uni044A.loclBGR": "Bulgarian ъ: a step where the raised arm's stem meets l's",
     "uni0265": "ɥ: a stub of the foot serif at the cut",
-    "uni027E": "ɾ: the top serif's cut, placed for the Regular, bites into the stem (it leans)",
     "uni0261": "ɡ: a stub of the ear at the cut",
     "uni028B": "ʋ: a stub of the foot serif at the cut",
     "uni01AE": "Ʈ: the hook thin, a step where it meets the stem",
@@ -137,6 +136,7 @@ BOLD_REBUILD = {
     "uni0291": "ʑ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni0255": "ɕ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
+    "uni027E": "ɾ: its own recipe (BOLD_RECIPES), the Bold r's stem and foot slab under the Bold f's hook",
 }
 # Bold Italic recipes made again whole from the Bold Italic's final bases,
 # every letter they make: the modifier letters (ʰ ʷ ʸ ᵘ ⁿ ⁱ ᶤ ᶶ ...),
@@ -236,7 +236,30 @@ BOLD_RECIPES = {
                           [("curl", {"at": ("pt", 400, 821, 156), "dir": 180, "turn": "ccw",
                                      "r": (250, 375.5), "sweep": 180, "ball": 70, "t": (230, 156)},
                             (0, 0), (1, 1, 0, 0))])),
+    # ɾ: the Regular's, the Bold r's stem under the Bold f's hook, placed
+    # by their own stems and tops (by the Regular's numbers f's stem stood
+    # off r's; emboldened whole, its stem's right edge wobbled under r's
+    # shoulder: the person, 2026-11-04)
+    "ɾ": ("attach", "r", lambda up: fishhook_band(up)),
 }
+
+
+def fishhook_band(font):
+    """the Regular's ɾ recipe (derive.RECIPES) placed on font's r and f:
+    f taken from just above its crossbar up, brought down until its top is
+    r's, onto r's stem cut there"""
+    import derive
+
+    top = lambda n: max(p.y for c in font[n].contours for p in c.points)  # noqa: E731
+    dy = top("r") - top("f")
+    # above f's crossbar, where its stem still runs straight (920 in the Regular)
+    bar = max(p.y for c in font["f"].contours for p in c.points if p.type and p.y <= 1.02 * font.info.xHeight)
+    hook = bar + 36
+    f0, r0 = derive.stems_at(font, "f", hook - 200)[0][0], derive.stems_at(font, "r", hook + dy - 200)[0][0]
+    return ("x", [(-10000, hook + dy, 10000, 10000)],
+            [("f", (-10000, hook, 10000, 10000), (0, 0), (1, 1, r0 - f0, dy))])
+
+
 # the Bold Italic's curls over the top (ITALIC_BOLD_RECIPES): radii, turn and ball
 CURL_CAP = {"r": (205, 185), "sweep": 190, "ball": 105}
 CURL_LOW = {"r": (185, 165), "sweep": 190, "ball": 90}
@@ -453,7 +476,7 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni019D": "Ɲ: crumbs of the foot serif at the cut",
     "uni0191": "Ƒ: the tail far lighter than the stem",
     "uni0256": "ɖ: the tail thin where it meets the stem",
-    "uni027E": "ɾ: a stub of the foot serif at the cut",
+    "uni027E": "ɾ: the Italic's fishhook (r's stem under f's hook) emboldened whole, as the Italic built it",
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
     "uni026E": "ɮ: a notch where l's stem meets ʒ",
@@ -1875,6 +1898,8 @@ def rederive(source, font, italic, whole):
         own = ch in (ITALIC_BOLD_RECIPES if italic else BOLD_RECIPES)
         if own:
             op, base, band = (ITALIC_BOLD_RECIPES if italic else BOLD_RECIPES)[ch]
+            if callable(band):  # placed on the Bold's own glyphs
+                band = band(up)
         up.lib[derive.STROKE_KEY] = (1, 1) if own else scale
         if name in keep:
             whole[name] = f"{op}: emboldened whole, made again from the Bold it misses ({keep[name]})"

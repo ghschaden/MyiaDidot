@@ -994,8 +994,10 @@ def tidy(glyph):
                 i = ons[k - 1]
                 if P[j].type == "line" and math.hypot(P[j].x - P[i].x, P[j].y - P[i].y) < TINY and len(ons) > 2:
                     P[i].smooth = P[j].smooth
-                    if i < j or j:
-                        del P[j]
+                    # (the contour's first point too, the closing line's
+                    # end: kept, the loop found it again for ever, the
+                    # Italic ɾ's emboldening hung, 2026-11-04)
+                    del P[j]
                     break
             else:
                 break

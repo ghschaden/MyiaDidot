@@ -170,3 +170,20 @@ def test_compared_finding_by_finding():
     assert compared(old, [("kink", 100, 200, 9.0)]) == (old, [("kink", 100, 200, 9.0)])
     # two new ones at one old: only the nearer is it, the other is new
     assert compared(old[:1], [("wobble", 101, 200, 9.0), ("wobble", 110, 200, 9.0)])[1] == [("wobble", 110, 200, 9.0)]
+
+
+def test_tidy_ends_on_a_near_zero_line_at_the_start():
+    """a contour whose first point is the copy a unit from the last one:
+    the copy goes (it was kept, and tidy looped for ever on the Italic ɾ)"""
+    from stroke_bold import TINY, tidy
+
+    g = ufoLib2.objects.Glyph("t")
+    pen = g.getPen()
+    pen.moveTo((0, 0))
+    pen.lineTo((100, 0))
+    pen.lineTo((100, 100))
+    pen.lineTo((0, TINY / 2))
+    pen.closePath()
+    tidy(g)
+    assert [(p.x, p.y) for p in g.contours[0].points if p.type] in (
+        [(100, 0), (100, 100), (0, TINY / 2)], [(0, 0), (100, 0), (100, 100)])

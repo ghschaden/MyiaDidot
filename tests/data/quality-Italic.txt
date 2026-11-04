@@ -380,7 +380,7 @@ uni0279 zone 1                   # 2026-10-16 known at the start (quality checks
 uni027A kink 1                   # 2026-10-16 known at the start (quality checks added): 531,850 2.5 degrees
 uni027A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni027D.sc kink 3                # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 970,787 4.4 degrees; 653,107 6.1 degrees; 820,817 5.6 degrees
-uni027E base 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 59% of r kept (attach)
+uni027E kink 3                   # reviewed by the person 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 274,218 1.1 degrees; 115,219 1.3 degrees; 144,
 uni027E step 2                   # reviewed by the person 2026-11-04: ɾ's foot slab ends, designed (the slab in every style): 210,50 70 units aside; 0,50 67 units aside
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0280 kink 4                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 861,675 4.4 degrees; 595,105 5.6 degrees; 294,99 4.5 degre
@@ -628,6 +628,7 @@ uni1D6E stroke 1                 # stroke weights against the kind's (scripts/qu
 uni1D6F smooth 1                 # 2026-10-16 known at the start (quality checks added): 789,628 2.7 degrees
 uni1D72 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 185 (1.13, darker)
 uni1D72 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
+uni1D73 kink 1                   # reviewed by the person 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 204,219 1.3 degrees
 uni1D73 step 2                   # reviewed by the person 2026-11-04: ᵳ's foot slab ends, as ɾ's: 300,50 70 units aside; 90,50 67 units aside
 uni1D73 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D74 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 174,196 4.6 degrees

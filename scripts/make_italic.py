@@ -625,8 +625,9 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # stem (the Regular's numbers run past the narrower italics)
                   "₸": ("lines", "T", ("c", 64, [(118, 1498, 1205, 1562)])),
                   "₫": ("lines", "dcroat", ("x", 64, [(120, -330, 940, -266)])),
-                  # r without its entry stroke, on a foot serif
-                  "ɾ": ("attach", "r", ("x", [(-BIG, 442, 297, BIG)], [("rect", (213, 0, 493, 50), (0, 0), (1, 1, 0, 0))])),
+                  # f's hook brought down onto the x-height, on a foot serif
+                  # (fishhook; as the Regular's, the person 2026-11-04)
+                  "ɾ": ("fishhook", "f", ("r", (213, 0, 493, 50))),
                   "ɸ": ("stem", "o", None),  # o with a stem as heavy as l's through it
                   "ɯ": ("turn", "m", "x"),  # the turned m it is named after
                   # ɯ with its last stem running down into ɥ's descender
@@ -1206,6 +1207,85 @@ def exit_face(glyph):
     return best
 
 
+def heavier_stem(up, name, r, foot):
+    """up[name]'s stem (f's, lighter than r's: 145 against 159-178) made as
+    heavy as r's where its turn begins, its right edge leaning out from the
+    foot serif's top (foot) as r's widens into its shoulder; the turn's
+    first handle turned with the edge (the person, 2026-11-04)"""
+    import derive
+
+    pts = up[name].contours[0].points
+    right = lambda y: derive.stems_at(up, name, y)[0][1]  # noqa: E731
+    edge = [i for i, p in enumerate(pts) if p.type and foot < p.y < 0.6 * XH and abs(p.x - right(p.y)) < 3]
+    if not edge:
+        raise ValueError(f"{name}: no stem edge")
+    top = max(edge, key=lambda i: pts[i].y)
+    yt = pts[top].y
+    (a, b), (c, d) = derive.stems_at(up, r, yt)[0], derive.stems_at(up, name, yt)[0]
+    gain = (b - a) - (d - c)
+    if gain <= 0:
+        return
+    turn = math.atan2(gain, yt - foot)
+    for i in edge:
+        pts[i].x += gain * (pts[i].y - foot) / (yt - foot)
+    n = len(pts)
+    for j in ((top + 1) % n, (top - 1) % n):
+        h = pts[j]
+        if h.type is None and h.y > yt - 1:
+            dx, dy = h.x - (pts[top].x - gain), h.y - yt
+            co, si = math.cos(-turn), math.sin(-turn)
+            h.x, h.y = pts[top].x + dx * co - dy * si, yt + dx * si + dy * co
+
+
+def fishhook(up, source, band, name):
+    """ɾ in up[name] (upright frame): f (source) brought down until its top
+    is r's, its crossbar and all under the baseline cut away, on the foot
+    serif band gives (r, (x0, y0, x1, y1): the rectangle as placed under
+    r's stem), moved under f's stem; the stem as heavy as r's
+    (heavier_stem); the slab where it was, the ball as far from the
+    advance as r's."""
+    import derive
+
+    r, (x0, y0, x1, y1) = band
+    pts = lambda g: [p for c in up[g].contours for p in c.points]  # noqa: E731
+    dy = max(p.y for p in pts(r)) - max(p.y for p in pts(source))
+    # the crossbar: f's level lines about the x-height, beside the stem
+    bar = [p.y for p in pts(source) if p.type and 0.85 * XH < p.y < 1.02 * XH]
+    b0, b1 = min(bar) - 20, max(bar) + 20
+    rec = RecordingPen()
+    up[source].draw(TransformPen(rec, (1, 0, 0, 1, 0, dy)))
+    out = derive.to_path(None, rec=rec)
+    # the crossbar's band cut across, the stem through it drawn again from
+    # its edges under and over the band (boxes beside the stem, upright,
+    # notched its sloping edges)
+    cut = derive.path_op(derive.rect_path(-BIG, -BIG, BIG, 0), derive.rect_path(-BIG, b0 + dy, BIG, b1 + dy), "UNION")
+    out = derive.path_op(out, cut, "DIFFERENCE")
+    (u0, u1), (v0, v1) = derive.stems_at(up, source, b0)[0], derive.stems_at(up, source, b1)[0]
+    stem = RecordingPen()
+    stem.moveTo((u0, b0 + dy - 1))
+    stem.lineTo((u1, b0 + dy - 1))
+    stem.lineTo((v1, b1 + dy + 1))
+    stem.lineTo((v0, b1 + dy + 1))
+    stem.closePath()
+    out = derive.path_op(out, derive.to_path(None, rec=stem), "UNION")
+    (r0, r1), (n0, n1) = derive.stems_at(up, r, y1 + 20)[0], derive.stems_at(up, source, y1 + 20 - dy)[0]
+    out = derive.path_op(out, derive.rect_path(n0 - (r0 - x0), y0, n1 + (x1 - r1), y1), "UNION")
+    g = up[name] if name in up else up.newGlyph(name)
+    g.clearContours()
+    g.clearComponents()
+    g.clearAnchors()
+    draw_path(up, up[source], g, out)
+    heavier_stem(up, name, r, y1)
+    # the slab's left end where the old recipe put it under r
+    dx = x0 - (n0 - (r0 - x0))
+    g.move((dx, 0))
+    # the ball as far from the advance as r's (their tops alike)
+    right = lambda gl: max(p.x for c in gl.contours for p in c.points if p.y > 0.6 * XH)  # noqa: E731
+    g.width = round(right(g) + up[r].width - right(up[r]))
+    for a in up[r].anchors:
+        g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+
+
 def srb_ge(up, source, name):
     """Serbian г (ī) in up[name] (upright frame): ū's first stem from
     up[source] (п.loclSRB) with its bar, the right stem cut away and the
@@ -1280,6 +1360,9 @@ def build_own(up, ch, op, source, band, name, resolve):
         return True
     if op == "srb_ge":
         srb_ge(up, source, name)
+        return True
+    if op == "fishhook":
+        fishhook(up, source, band, name)
         return True
     if op not in ("rhotic", "glottal"):
         return False

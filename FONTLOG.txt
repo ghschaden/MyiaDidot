@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-04 ɾ a fishhook: r's stem cut at f's hook
+
+    * ɾ and ᵳ in every style: r's stem and foot slab with f's hook brought
+      down onto the x-height, everything of r's stem above the hook gone,
+      so ɾ reads apart from r (derive.py; the Bold's placed on its own r
+      and f, make_bold fishhook_band; the Italic's make_italic fishhook,
+      its stem, f's, made as heavy as r's). Spaced and kerned as r.
+    * The Bold Italic's emboldening (stroke_bold tidy) looped for ever on
+      a contour whose first point was the overlap removal's near-zero
+      line; the line now goes there too (no other glyph changed).
+
 2026-11-04 ɾ with r's foot slab; Serbian italic г from ū
 
     * ɾ and ᵳ keep r's foot slab in every style (derive.py: the Regular's

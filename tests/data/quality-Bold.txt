@@ -311,7 +311,7 @@ uni027D smooth 1                 # 2026-10-26 rederived hooks: cut above the Bol
 uni027D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 601,764 23 degrees; 605,795 19 degrees; 513,-291 6 degrees; 510,-259 17 degrees
 uni027D.sc kink 1                # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 580,-134 3.0 degrees
 uni027D.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 600,-225 6 degrees; 596,-188 17 degrees; 712,739 4 degrees
-uni027E extreme 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 670,785 8 units past; 473,699 9 units past
+uni027E base 1                   # reviewed by the person 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 52% of r kept (attach)
 uni027E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 542,764 23 degrees; 546,796 17 degrees
 uni0280 extreme 2                # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 888,164 7 units past; 547,501 5 units past
 uni0280 wobble 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 1 against 0: 607,629 5 degrees
@@ -470,7 +470,7 @@ uni1D72 extreme 1                # 2026-10-27 Bold: the rounder way keeps smooth
 uni1D72 kink 6                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 544,0 1.1 degrees; 634,836 3.7 degrees; 558,871 3.9 degrees; 79,884 2.2 degrees; 194,689 4.3 degrees; 194,103
 uni1D72 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 652,798 16 degrees; 649,767 17 degrees; 559,872 4 degrees
 uni1D73 kink 3                   # 2026-11-04: ɾ keeps r's foot slab in every style (the person); ᵳ follows it, its tilde joined as ᵲ's (the same kinks and wobble): 548,0 1.2 degrees; 635,836 3.4 degrees; 194,202 2.3 degrees
-uni1D73 smooth 2                 # 2026-11-04: ɾ keeps r's foot slab in every style (the person); ᵳ follows it, its tilde joined as ᵲ's (the same kinks and wobble): 669,623 2.5 degrees; 592,885 2.2 degrees
+uni1D73 smooth 1                 # reviewed by the person 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 615,844 2.8 degrees
 uni1D73 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 534,798 16 degrees; 531,763 17 degrees
 uni1D74 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni1D74 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 1: 781,373 6 degrees; 598,855 16 degrees; 571,857 46 degrees; 97,615 3 degrees; 103,586 14

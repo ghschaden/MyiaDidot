@@ -253,7 +253,7 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   redrawn round instead (k kept as drawn).
 - Step candidates (checks.py `step`, in `tests/data/quality-*.txt`):
   reviewed 2026-11-04 those named as likely faults: ʝ's crossbar end and
-  Bold ɝ's hook join designed; ɾ ᵳ keep r's foot slab in every style;
+  Bold ɝ's hook join designed; ɾ ᵳ keep r's foot slab in every style (and since 2026-11-04 end at f's hook, r's stem above it cut away, the person: to read apart from r);
   Serbian г made from ū's first stem (its stem had bent where ı met ū);
   Bold Italic п т's short bar overhang taken as is. The rest still marked
   "a candidate to review" (₿ ǥ ɉ bar ends, ₡ ₹ ₮, ꞁ ɑ.sc ⱦ.sc ...).
