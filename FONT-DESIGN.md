@@ -260,7 +260,33 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 - Bold middle-tilde letters (ᵬ ᵭ ᵮ ᵯ ᵰ ᵱ ᵲ ᵳ): the left end of the
   foot serif cut at a slant, and the stem's left edge swelling about 8
   units at the tilde (seen 2026-11-04 on ᵲ ᵳ ᵰ); the Bold Italic's are
-  drawn by strokes and do not have it.
+  drawn by strokes and do not have it. Done 2026-11-04: the tilde drawn
+  on the Bold's own base (BOLD_REBUILD, as the Bold Italic's), the
+  stems now the base's to a unit outside the tilde; ᵲ ᵳ (and ɍ) made of
+  r once its inner stem is faired (fair_bold_stem had not run before
+  the derived letters: the style not yet named Bold, its points not
+  yet rounded); ᵰ's notches under the tilde's ends filled along the
+  stem (make_bold.fill_stem_notches), not cleaned as ledges that
+  pulled the stem aside. The tilde the Bold's own, likely lighter than
+  emboldened: to review. Its right end now near ɉ's bar: kern_clear's
+  guard loosened the b group + ɉ from −44 to +21 (and gave ᵬ + j 21).
+- Bold curves into a straight stem (2026-11-04): emboldened by weight, a
+  curve running into a vertical stem had a handle past the stem's edge,
+  a dent in the stem (n 24 units, m 32; the Regular none): arches into
+  n m h ŋ ħ's stem, u ų ɯ ɰ ɥ ц щ's bowls at the foot, the hooks of J ȷ
+  ʃ ɉ ɽ ɳ, Œ's counter into E's stem, ®; 49 glyphs and those made of
+  them. scripts/stem_handles.py (make_bold before the derived letters
+  and finalization after rounding) puts the stem's handle back on the
+  edge and shortens the far one along its own direction to it. The
+  hooks' inner corners (J ȷ ɽ ɳ, Œ) turn a little tighter: to review.
+- kern_clear.guard: a guarded right letter's exception to a left group
+  (ɉ against b o p ...) is measured over every member, also one guarded
+  on the left with an exception of its own that wins anyway (ᵬ), so one
+  member's accent or tilde loosens the whole group. Done in order (left
+  letters first, those with their own exception not measured), about
+  850 pairs in Bold, Italic and Bold Italic tighten to GUARD (Bold U+ǎ
+  −29 → −92, Italic V+ǒ −151 → −186): tried 2026-11-04, set aside for
+  the person's decision and a visual sweep.
 - Bold Italic, seen in print (2026-10-27), reviewed 2026-11-02: ʋ (its
   own recipe) and Ɯ (U twinned) done 2026-10-29; ʷ ʸ ʰ ʲ ⁱ ᶤ ᶶ and the
   other modifier letters the Italic derives are made small from the Bold

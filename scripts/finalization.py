@@ -36,6 +36,7 @@ PASSES = (
     Pass("oldstyle_figures", "finish", ALL,
          ("final lining figures", "reviewed oldstyle GLIFs"), ("oldstyle figures", "zerooldstyle.zero")),
     Pass("r_hook", "fair_bold_stem", ("Bold",), ("final r",), ("r", "uni027D")),
+    Pass("stem_handles", "finish", ("Bold",), ("final r", "rounded outlines"), ("curves into stems",)),
     Pass("r_hook", "finish_shoulders", ITALIC, ("final italic r family",), ("r family shoulders",)),
     Pass("r_hook", "finish_turned_r_top", BI, ("r family shoulders", "final l"), ("uni027A",)),
     Pass("r_hook", "finish", ITALIC, ("final same-style r",), ("uni027D",)),

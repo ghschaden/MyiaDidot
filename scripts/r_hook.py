@@ -170,28 +170,33 @@ def finish(font):
     _finish_geometry(glyph, lambda x, y: y < 130)
 
 
-def fair_bold_stem(font):
+def fair_bold_stem(font, bold=None):
     """Keep the roman inner stem monotonic as it enters the shoulder.
 
     The weighted return had a control point left of the straight stem,
     making an inward bump. Shorten that handle along the incoming tangent.
+    Found by its rounded heights: make_bold runs it before the derived
+    letters are made of r, the font not yet named Bold (bold=True), and
+    again once rounded (finalization). Built from the r not yet faired
+    (at 698.8, and the style still named Regular), ᵲ ᵳ kept the bump
+    (2026-11-04).
     """
-    if font.info.styleName != "Bold":
+    if not (font.info.styleName == "Bold" if bold is None else bold):
         return
     for name in ("r", "uni027D"):
         for contour in font[name].contours:
             points = contour.points
             for i, node in enumerate(points):
-                if node.type == "curve" and node.y == 699:
+                if node.type == "curve" and round(node.y) == 699:
                     handle, lower, end = points[i + 1:i + 4]
-                    if end.type == "curve" and end.y != 412 and len(points) > i + 6:
+                    if end.type == "curve" and round(end.y) != 412 and len(points) > i + 6:
                         # ɽ remade from its recipe (make_bold.rederive): the
                         # union split the return in two; one curve again
                         after = points[i + 6]
-                        if after.type == "curve" and after.y == 412:
+                        if after.type == "curve" and round(after.y) == 412:
                             del points[i + 3:i + 6]
                             handle, lower, end = points[i + 1:i + 4]
                             lower.y = 513
-                    if end.type == "curve" and end.y == 412:
+                    if end.type == "curve" and round(end.y) == 412:
                         handle.x, handle.y = end.x, 667
                         lower.x = end.x

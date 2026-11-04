@@ -137,6 +137,14 @@ BOLD_REBUILD = {
     "uni0255": "ɕ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
     "uni027E": "ɾ: its own recipe (BOLD_RECIPES), the Bold r's stem and foot slab under the Bold f's hook",
+    # the middle tildes on the Bold's own base, as the Bold Italic's
+    # (ITALIC_BOLD_REBUILD): emboldened whole and joined to the base, the
+    # foot serif's left end was cut at a slant, the stem's left edge swelled
+    # about 8 units at the tilde, and ᵲ ᵳ kept the inward bump at the
+    # shoulder that fair_bold_stem takes out of r (2026-11-04)
+    **{name: f"{ch}: the tilde on the Bold's {base}" for name, ch, base in (
+        ("uni1D6C", "ᵬ", "b"), ("uni1D6D", "ᵭ", "d"), ("uni1D6E", "ᵮ", "f"), ("uni1D6F", "ᵯ", "m"),
+        ("uni1D70", "ᵰ", "n"), ("uni1D71", "ᵱ", "p"), ("uni1D72", "ᵲ", "r"), ("uni1D73", "ᵳ", "ɾ"))},
 }
 # Bold Italic recipes made again whole from the Bold Italic's final bases,
 # every letter they make: the modifier letters (ʰ ʷ ʸ ᵘ ⁿ ⁱ ᶤ ᶶ ...),
@@ -1750,6 +1758,41 @@ def small_cap_stems(up, glyph):
         a.x = round(a.x + ax / 2)
 
 
+def fill_stem_notches(glyph, most=12):
+    """glyph (in place) with the notches beside its vertical stems filled:
+    a short straight run leaving the stem's edge back the way the edge came
+    (a middle tilde whose underside dips below its join with the stem, ᵰ:
+    9 units out, 21 down) closed along the edge, the stem running on to the
+    run's far end. glyph_lint cleans it as a ledge, shrunk to its middle,
+    and so pulled the stem's node aside (ᵰ's left stem leaned 5 units,
+    2026-11-04). most: the furthest out the run reaches."""
+    from glyph_lint import LEDGE
+
+    for contour in glyph.contours:
+        points = contour.points
+        i = 0
+        while i < len(points):
+            n = len(points)
+            a, prev = points[i], points[i - 1]
+            j = next(k for k in range(i + 1, i + n) if points[k % n].type)
+            b = points[j % n]
+            run = [points[k % n] for k in range(i + 1, j)]
+            # the run straight: its handles on the line from a to b
+            straight = all(abs((q.x - a.x) * (b.y - a.y) - (q.y - a.y) * (b.x - a.x))
+                           <= math.dist((a.x, a.y), (b.x, b.y)) for q in run)
+            up = (a.y - prev.y) if prev.type and abs(prev.x - a.x) < 0.5 else 0
+            if (a.type == "line" and up and straight and 0 < abs(b.x - a.x) <= most
+                    and math.dist((a.x, a.y), (b.x, b.y)) < LEDGE and (b.y - a.y) * up < 0
+                    and abs(b.y - a.y) > abs(b.x - a.x)):
+                a.y = b.y
+                b.x = a.x
+                for k in sorted(range(i + 1, j + 1), reverse=True):
+                    del points[k % n]
+                i = 0
+                continue
+            i += 1
+
+
 def drop_specks(glyph):
     """glyph (in place) without the specks a recipe's cut leaves apart from
     the letter (a corner of the Bold's wider serif outside the cut box, Ɲ's
@@ -1940,6 +1983,8 @@ def rederive(source, font, italic, whole):
                 small_cap_stems(up, new)
         drop_specks(new)
         fill_pinholes(new, up[name], up)
+        if op == "midtilde" and not italic:
+            fill_stem_notches(new)
         # the steps and ledges where the recipe's piece meets the base, a
         # unit or two off: cleaned as the font is after (fix), not counted
         # as faults (the stroked bases, 2026-10-28: Ƴ ʄ ҳ)
@@ -2299,7 +2344,10 @@ def main():
     else:
         from r_hook import fair_bold_stem
 
-        fair_bold_stem(font)
+        fair_bold_stem(font, bold=True)  # (the font still named Regular)
+        from stem_handles import fair
+
+        fair(font, bold=True)  # curves into a stem kept off its edge (n m u J Œ ...)
     whole = {}
     restore(kept, font, spaced=True)
     # (Ⱳ by strokes keeps its W; joined to it, the curl's join tangled)
