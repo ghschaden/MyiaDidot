@@ -44,3 +44,16 @@ def test_stale_when_the_source_changed():
     assert not stale(font, source)
     source["H"].width += 1
     assert list(stale(font, source)) == ["H"]
+
+
+def test_restored_on_the_spacing_still_to_come():
+    """before the derived letters are made (make_bold), a drawn glyph comes
+    back on the side bearings the glyph made anew has then: its spacing
+    still to come would otherwise space the finished glyph twice"""
+    kept = {"H": square("H", 3)}  # ink 3..103, advance 203: final spacing
+    made = ufoLib2.Font()
+    made.layers.defaultLayer.insertGlyph(square("H", 27), "H")  # ink 27..127, advance 227
+    restore(kept, made, spaced=True)
+    assert made["H"].contours[0][0].x == 27 and made["H"].width == 227
+    restore(kept, made)
+    assert made["H"].contours[0][0].x == 3 and made["H"].width == 203

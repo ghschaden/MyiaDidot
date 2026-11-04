@@ -248,8 +248,9 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   pins numpy and OpenBLAS to AVX2, and the solve uses no sine, cosine,
   exponential or logarithm (the C library's differ between systems), runs
   until settled with central differences, kinks rounded off, ties broken
-  alike. Next: k's upper arm, a thin wedge where it leaves the stem (the
-  person: thicker in the beginning; not CLEAR, tried).
+  alike. k's upper arm (51 units across at the bar, 67 above): thicker
+  roots tried 2026-11-04, no difference seen; its turn into the ball
+  redrawn round instead (k kept as drawn).
 - Review the step candidates (checks.py `step`, 2026-10-27, in
   `tests/data/quality-*.txt`): a short straight jog between edges running
   on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar

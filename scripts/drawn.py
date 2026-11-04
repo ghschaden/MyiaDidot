@@ -41,10 +41,22 @@ def saved(path):
     return {g.name: copy.deepcopy(g) for g in font if KEY in g.lib}
 
 
-def restore(kept, font):
-    """the drawn glyphs put back into font, as saved; their names"""
+def restore(kept, font, spaced=False):
+    """the drawn glyphs put back into font, as saved; their names.
+    spaced: put back on the side bearings the glyph made anew has in font
+    now (make_bold before the derived letters are built: its spacing still
+    to come would otherwise space the saved, finished glyph a second time,
+    and its accented forms and ligatures with it, Bold Italic k 2026-11-04)"""
     for name, g in kept.items():
-        font.layers.defaultLayer.insertGlyph(copy.deepcopy(g), name, overwrite=True)
+        g = copy.deepcopy(g)
+        made = font[name] if spaced and name in font else None
+        layer = font.layers.defaultLayer
+        mb, gb = (made.getBounds(layer) if made is not None else None), g.getBounds(layer)
+        if mb is not None and gb is not None:
+            dx = round(mb.xMin - gb.xMin)
+            g.move((dx, 0))
+            g.width = round(gb.xMax + dx + made.width - mb.xMax)
+        font.layers.defaultLayer.insertGlyph(g, name, overwrite=True)
     return sorted(kept)
 
 

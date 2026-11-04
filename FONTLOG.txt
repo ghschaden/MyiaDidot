@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-04 Bold Italic k: a round turn into the ball
+
+    * The counter between k's arm and its ball ended in a pinched hook (a
+      handle past its node, a doubled point); redrawn as a round turn, as
+      the Italic's, its top where it was (797). k kept as drawn; f_k, f_f_k,
+      longs_k and ƙ follow it. A thicker root of the arm (51 units across
+      at the bar, 67 above) was tried and not seen in print: left.
+    * scripts/drawn.py: a drawn glyph put back before the derived letters
+      are made now takes the side bearings the glyph made anew has then;
+      the spacing still to come spaced the finished glyph twice (k's
+      accented forms and ligatures 24 units off).
+
 2026-11-03 Bold Italic &: the stem's foot straight
 
     * The counter's corner where the bowl's tail leaves the stem moved 10

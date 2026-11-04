@@ -109,7 +109,6 @@ iogonek.dotless extreme 1        # 2026-11-03: crotches meet where the strokes c
 iota zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 j accent 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above dotaccent gap 346, usually 194
 j.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
-k extreme 1                      # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed by the person in proofs (γ & ξ ү q.sc), new findings proofed: 756,773 6 units past
 k weight 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): at 442 stem 499 against 291
 k wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 751,763 42 degrees; 760,781 49 degrees; 683,127 30 degrees; 676,95 24 degrees
 kappa stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 239 against 279 (0.86, lighter)
@@ -119,7 +118,6 @@ l stroke 1                       # stroke weights against the kind's (scripts/qu
 lambda.sc kink 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 336,214 5.2 degrees
 longs stroke 1                   # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: lc 242 against 269 (0.90, lighter)
 longs_i wobble 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 3 against 1: 540,1003 12 degrees; 834,175 18 degrees; 832,172 5 degrees
-longs_k wobble 1                 # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed by the person in proofs (γ & ξ ү q.sc), new findings proofed: 2 against 1: 1277,777
 longs_l wobble 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 2 against 1: 852,261 7 degrees; 540,1003 12 degrees
 longs_longs_i wobble 1           # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 2 against 1: 1349,175 18 degrees; 1347,172 5 degrees
 longs_longs_l wobble 1           # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed by the person in proofs (γ & ξ ү q.sc), new findings proofed: 4 against 2: 1349,246
@@ -216,6 +214,7 @@ uni0194 zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni0198 kink 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 1512,858 6.9 degrees
 uni0198 wobble 1                 # italic curl balls: 1 against 0: 1515,860 7 degrees
 uni0199 kink 1                   # 2026-10-21 Italic reweighted and tightened: 273,983 7.5 degrees
+uni0199 wobble 1                 # 2026-11-04: Bold Italic k's counter turn into the ball redrawn round (k drawn); ƙ follows it: the round turn reads as a wobble (as in k), and its rebuilt leg leaves 1-3 unit pieces; reviewed by the pe
 uni0199 zone 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: top +14 from 1434
 uni0199.sc kink 1                # baseline: 1118,608 5.8 degrees
 uni019A stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 239 against 267 (0.89, lighter)

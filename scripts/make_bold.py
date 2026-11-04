@@ -2276,13 +2276,13 @@ def main():
 
         fair_bold_stem(font)
     whole = {}
-    restore(kept, font)
+    restore(kept, font, spaced=True)
     # (Ⱳ by strokes keeps its W; joined to it, the curl's join tangled)
     followed = follow_bases(regular, font, italic, whole=whole,
                             skip=set(ITALIC_BOLD_UNJOINED if italic else ()) | set(kept))
     followed += attached_small(regular, font, italic)
     followed += rederive(regular, font, italic, whole)
-    restore(kept, font)
+    restore(kept, font, spaced=True)
     if italic:
         # the joins the Italic faired, faired again (emboldened whole or
         # made again by the recipe)
