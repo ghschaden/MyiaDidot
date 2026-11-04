@@ -269,7 +269,7 @@ uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni025B.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 179 against 273 (0.65, lighter)
 uni025B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +16 from 1040
 uni025C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 176 against 261 (0.67, lighter)
-uni025D step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 714,619 37 units aside
+uni025D step 1                   # reviewed by the person 2026-11-04: ɝ's hook join, drawn so in the Regular: 714,619 37 units aside
 uni025D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 186 against 261 (0.71, lighter)
 uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 43% of uni025C kept (attach)
 uni025E stroke 1                 # Bold ɞ: own recipe at the Bold's weight (make_bold.py BOLD_RECIPES), counters open, advance that of ɜ as in the Regular: lc 225 against 261 (0.86, lighter)
@@ -469,6 +469,8 @@ uni1D70 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni1D72 extreme 1                # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 174,430 10 units past
 uni1D72 kink 6                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 544,0 1.1 degrees; 634,836 3.7 degrees; 558,871 3.9 degrees; 79,884 2.2 degrees; 194,689 4.3 degrees; 194,103
 uni1D72 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 652,798 16 degrees; 649,767 17 degrees; 559,872 4 degrees
+uni1D73 kink 3                   # 2026-11-04: ɾ keeps r's foot slab in every style (the person); ᵳ follows it, its tilde joined as ᵲ's (the same kinks and wobble): 548,0 1.2 degrees; 635,836 3.4 degrees; 194,202 2.3 degrees
+uni1D73 smooth 2                 # 2026-11-04: ɾ keeps r's foot slab in every style (the person); ᵳ follows it, its tilde joined as ᵲ's (the same kinks and wobble): 669,623 2.5 degrees; 592,885 2.2 degrees
 uni1D73 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 534,798 16 degrees; 531,763 17 degrees
 uni1D74 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni1D74 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 1: 781,373 6 degrees; 598,855 16 degrees; 571,857 46 degrees; 97,615 3 degrees; 103,586 14

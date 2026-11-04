@@ -547,7 +547,8 @@ RECIPES = [
                                  ("curl", {"at": ("pt", 576, -250, 164), "dir": 270, "turn": "ccw",
                                            "r": (140, 120), "sweep": 150, "ball": 66,
                                            "t": (164, 52)}, (0, 0), (1, 1, 0, 0))])),
-    ("ɾ", "attach", "r", ("x", [(-BIG, -BIG, 226, 60), (390, -BIG, BIG, 60), (-BIG, 780, 226, BIG)], [])),
+    # (r's top serif cut, its foot slab kept, as the Italic's: the person, 2026-11-04)
+    ("ɾ", "attach", "r", ("x", [(-BIG, 780, 226, BIG)], [])),
     ("ᵳ", "midtilde", "ɾ", ("x",)),
     # raised arrows, superscript and subscript signs
     ("ꜛ", "superior", "uni2191", None),
@@ -720,10 +721,11 @@ RECIPES = [
 # Most hooks were counted into the advance (ɗ ɖ ɳ ʐ); ƴ's curl and the
 # hooks of Ɓ Ɗ Ƥ ran into their neighbours. ƴ: not to the median (+355 left
 # a hole in ƴaƴa) but +160, its ball clear of the a (chosen from renders).
+# ɾ: none since it keeps r's foot slab (2026-11-04; -120 for the cut foot).
 SPACING = {
     "ɗ": (0, -270), "ɖ": (0, -175), "ɭ": (0, -205), "ɳ": (0, -195), "ɠ": (0, -305), "ʐ": (0, -440),
     "ʈ": (0, -130), "ƭ": (0, -140), "ʄ": (0, -195), "ʝ": (0, -110), "ʑ": (0, -125), "ɕ": (0, -75),
-    "ɚ": (0, -110), "ʂ": (-55, 0), "ɾ": (-120, 0), "ʃ": (-145, -140), "ʒ": (145, 0), "ƴ": (0, 160),
+    "ɚ": (0, -110), "ʂ": (-55, 0), "ʃ": (-145, -140), "ʒ": (145, 0), "ƴ": (0, 160),
     "Ɓ": (340, 0), "Ɗ": (340, 0), "Ƥ": (340, 0), "Ƭ": (-235, 0), "Ƈ": (0, -125), "Ƙ": (0, -105),
     "Ʀ": (0, -85), "Ʋ": (0, -80),
     "Қ": (0, -125), "қ": (0, -95), "Җ": (0, -125), "җ": (0, -100), "Ҳ": (0, -130), "ҳ": (0, -115),

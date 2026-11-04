@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-04 ɾ with r's foot slab; Serbian italic г from ū
+
+    * ɾ and ᵳ keep r's foot slab in every style (derive.py: the Regular's
+      recipe cut it off, the Italic's added one); spaced as r (844, the
+      -120 for the cut foot dropped). The Bold's ɾ stays emboldened whole:
+      the top serif's cut, placed for the Regular, leaned its stem.
+    * Serbian and Macedonian italic г (ī): made from ū's first stem with
+      its bar, its hairline ended as ı's exit (make_italic srb_ge); made of
+      ı, its stem bent where ı's, leaning further, met ū's. Spaced as п.
+    * Step candidates reviewed: ʝ's crossbar end and the Bold ɝ's hook join
+      designed, Bold Italic п's short bar overhang taken as is (as т).
+
 2026-11-04 Bold Italic k: a round turn into the ball
 
     * The counter between k's arm and its ball ended in a pinched hook (a

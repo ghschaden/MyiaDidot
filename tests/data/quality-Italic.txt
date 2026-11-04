@@ -381,7 +381,7 @@ uni027A kink 1                   # 2026-10-16 known at the start (quality checks
 uni027A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni027D.sc kink 3                # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 970,787 4.4 degrees; 653,107 6.1 degrees; 820,817 5.6 degrees
 uni027E base 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 59% of r kept (attach)
-uni027E step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 210,50 70 units aside; 0,50 67 units aside
+uni027E step 2                   # reviewed by the person 2026-11-04: ɾ's foot slab ends, designed (the slab in every style): 210,50 70 units aside; 0,50 67 units aside
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0280 kink 4                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 861,675 4.4 degrees; 595,105 5.6 degrees; 294,99 4.5 degre
 uni0280 smooth 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 318,798 2.4 degrees
@@ -441,7 +441,7 @@ uni0299 kink 3                   # 2026-11-01 IPA small capitals redrawn at the 
 uni0299 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni029B zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -7 from -23
 uni029C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni029D step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: -271,-371 65 units aside
+uni029D step 1                   # reviewed by the person 2026-11-04: ʝ's crossbar end, designed: -271,-371 65 units aside
 uni029D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 183 (0.85, lighter)
 uni029D.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni029F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
@@ -510,7 +510,6 @@ uni0431.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 8
 uni0431.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 296,931 2.5 degrees
 uni0432.loclBGR smooth 1         # 2026-10-21 Italic reweighted and tightened: 126,359 2.3 degrees
 uni0433 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
-uni0433.loclSRB kink 1           # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 255,645 6.7 degrees
 uni0434.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 486,813 2.5 degrees
 uni0436 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
 uni0436.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -20 from 0; top +22 from 1040
@@ -629,7 +628,7 @@ uni1D6E stroke 1                 # stroke weights against the kind's (scripts/qu
 uni1D6F smooth 1                 # 2026-10-16 known at the start (quality checks added): 789,628 2.7 degrees
 uni1D72 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 185 (1.13, darker)
 uni1D72 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni1D73 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 300,50 70 units aside; 90,50 67 units aside
+uni1D73 step 2                   # reviewed by the person 2026-11-04: ᵳ's foot slab ends, as ɾ's: 300,50 70 units aside; 90,50 67 units aside
 uni1D73 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D74 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 174,196 4.6 degrees
 uni1D75 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 150 against 183 (0.82, lighter)

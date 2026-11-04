@@ -113,7 +113,7 @@ WHOLE_KEY = "org.myiadidot.emboldenedWhole"
 BOLD_KEEP_WHOLE = {
     "uni044A.loclBGR": "Bulgarian ъ: a step where the raised arm's stem meets l's",
     "uni0265": "ɥ: a stub of the foot serif at the cut",
-    "uni027E": "ɾ: a stub of the foot serif at the cut",
+    "uni027E": "ɾ: the top serif's cut, placed for the Regular, bites into the stem (it leans)",
     "uni0261": "ɡ: a stub of the ear at the cut",
     "uni028B": "ʋ: a stub of the foot serif at the cut",
     "uni01AE": "Ʈ: the hook thin, a step where it meets the stem",

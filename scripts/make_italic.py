@@ -931,12 +931,9 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # wave arm raised to the ascender, left of the stem
                   "ъ.loclBGR": ("attach", "ь.loclBGR", ("x", [], [("uni044A", (-BIG, 620, 300, BIG), (300, 884),
                                                                     (1, 1, 270, 1434))])),
-                  # г is ī: ı without its entry hook, below where its stem
-                  # is as wide as ū's (650), under the top of ū's first stem
-                  # with its bar, which overhangs the stem equally each side
-                  "г.loclSRB": ("attach", "dotlessi", ("x", [(-BIG, 650, BIG, BIG), (-BIG, 400, 240, BIG)],
-                                                        [("uni043F.loclSRB", (-BIG, 645, 497, BIG), (0, 0),
-                                                          (1, 1, 82, 0))]))}
+                  # г is ī: ū's first stem with its bar, its hairline ended
+                  # as ı's exit (srb_ge; ı's stem leans further than ū's)
+                  "г.loclSRB": ("srb_ge", "uni043F.loclSRB", None)}
 # Old Standard's own Serbian italic п and т (ū and ш with the bar above)
 OS_LOCL = {"uni043F.loclSRB": "afii10831", "uni0442.loclSRB": "afii10832"}
 # aliases of a plain letter in the Regular that the Italic makes itself
@@ -1189,6 +1186,77 @@ def enlarged(font, up, ch, op, source, band, name):
         reweight(up, name, w)
 
 
+def exit_face(glyph):
+    """((x, y), (dx, dy)): the end face of the italic exit stroke rightmost
+    in glyph, the short line dropping to the right at about x-height / 2.5
+    (ı u a п: 42 units, from 353 down 12)"""
+    best = None
+    for c in glyph.contours:
+        pts = c.points
+        for i, p in enumerate(pts):
+            q = pts[(i + 1) % len(pts)]
+            if not (p.type and q.type == "line"):
+                continue
+            dx, dy = q.x - p.x, q.y - p.y
+            if 20 < math.hypot(dx, dy) < 100 and dx > 0 and -dx < dy < 0 and 0.25 * XH < p.y < 0.6 * XH:
+                if best is None or p.x > best[0][0]:
+                    best = ((p.x, p.y), (dx, dy))
+    if best is None:
+        raise ValueError(f"{glyph.name}: no exit face")
+    return best
+
+
+def srb_ge(up, source, name):
+    """Serbian г (ī) in up[name] (upright frame): ū's first stem from
+    up[source] (п.loclSRB) with its bar, the right stem cut away and the
+    hairline rising from the bowl ended as the italic exits end (ı u a:
+    their end face, dropping to the right, exit_face); the bar
+    overhangs the stem as much on the right as on the left. Made of ı, the
+    stem leaned as ı's below its cut and as ū's above, bent where they met
+    (the person, 2026-11-04)."""
+    import derive
+
+    runs = lambda y: derive.stems_at(up, source, y)  # noqa: E731
+    # between the hairline and the right stem, where both stand apart
+    # (and the right stem's exit, the last run), down to below the bowls
+    gap = [((r[-3][1] + r[-2][0]) / 2, y) for y in (60, 100, 200, 300, 350) for r in [runs(y)]]
+    right = [(gap[0][0], -BIG), *gap, (BIG, gap[-1][1]), (BIG, -BIG)]
+    # the exit's end face, the italic's (п's own, ending its right stem's
+    # exit: the short line dropping to the right there), put on the
+    # hairline's left edge at the face's top
+    (fx, fy), face = exit_face(up[source])
+    x0 = runs(fy)[1][0]
+    k = face[1] / face[0]
+    stem = runs(XH * 0.75)[0]
+    xl = stem[1] + 20
+    top = XH * 0.8
+    end = [(xl, fy + k * (xl - x0)), (BIG, fy + k * (BIG - x0)), (BIG, top), (xl, top)]
+    # the bar's left end: the first run from the x-height down that is
+    # far wider than the stem (the bar lies just under the x-height)
+    bar = next(r[0][0] for y in range(XH, round(top), -5) for r in [runs(y)]
+               if r and r[0][1] - r[0][0] > 3 * (stem[1] - stem[0]))
+    cut = derive.rect_path(stem[1] + (stem[0] - bar), top, BIG, BIG)
+    for poly in (right, end):
+        rec = RecordingPen()
+        rec.moveTo(poly[0])
+        for p in poly[1:]:
+            rec.lineTo(p)
+        rec.closePath()
+        cut = derive.path_op(cut, derive.to_path(None, rec=rec), "UNION")
+    out = derive.path_op(derive.to_path(up, up[source]), cut, "DIFFERENCE")
+    g = up[name] if name in up else up.newGlyph(name)
+    g.clearContours()
+    g.clearComponents()
+    g.clearAnchors()
+    draw_path(up, up[source], g, out)
+    # as far from the advance as п's own exit, face top to face top
+    g.width = round(up[source].width - (fx - x0))
+    # the marks over the stem, where ı has them over its own
+    (i0, i1), (s0, s1) = derive.stems_at(up, "dotlessi", XH / 2)[0], runs(XH / 2)[0]
+    for a in up["dotlessi"].anchors:
+        g.appendAnchor({"name": a.name, "x": a.x + (s0 + s1 - i0 - i1) / 2, "y": a.y})
+
+
 def build_own(up, ch, op, source, band, name, resolve):
     """The Italic's own constructions, which derive.build does not know:
     ɗ, the rhotic ɚ ɝ, the glottal ʔ, made in up[name] (in the upright
@@ -1209,6 +1277,9 @@ def build_own(up, ch, op, source, band, name, resolve):
         derive.build(up, ch, "attach", source, (
             "x", [(-BIG, DHOOK_CUT, BIG, BIG)],
             [(hooked, (-BIG, DHOOK_CUT - 20, BIG, BIG), (b0, 0), ((a1 - a0) / (b1 - b0), 1, a0, 0))]), name)
+        return True
+    if op == "srb_ge":
+        srb_ge(up, source, name)
         return True
     if op not in ("rhotic", "glottal"):
         return False
@@ -1461,14 +1532,13 @@ ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
                    ("public.kern1.uni046B", "public.kern2.uni0431"), ("public.kern1.uni043E", "public.kern2.uni0475")}
 # ß's left side looser: with the heavier stems it stood tight against the
 # letter before it (measured, scripts/quality/colour.py)
-# г's ī: its bar starts where ı's entry hook did not (ITALIC_RECIPES)
 # ʼ ʻ: the Regular's, sloped about half the x-height, stood far right for
 # glyphs this high (ʼl touched): as far from l and i as ’ ‘, upright
 # the derived letters whose hook, tail or curl set them otherwise beside
 # their neighbours than the references set them against their base
 # (scripts/quality/derived_spacing.py Italic, to the references' median;
 # the Regular's are derive.SPACING): ɠ ʂ ʐ ʃ Ƭ ɻ ҷ қ Ƈ ң Ƴ ƭ ɮ ʄ Ƙ ɳ Ʋ ɱ ɧ Ҳ ʝ ɾ
-ITALIC_SIDEBEARINGS = {"germandbls": (25, 0), "uni0433.loclSRB": (-80, 0),
+ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
                        "uni02BC": (-145, 145), "uni02BB": (-130, 130),
                        "uni0260": (0, -380), "uni0282": (-265, 0), "uni0290": (0, -275), "uni0283": (-215, -135),
                        "uni01AC": (-215, 0), "uni027B": (0, -170), "uni04B7": (0, -145), "uni049B": (0, -125),

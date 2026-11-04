@@ -251,11 +251,16 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   alike. k's upper arm (51 units across at the bar, 67 above): thicker
   roots tried 2026-11-04, no difference seen; its turn into the ball
   redrawn round instead (k kept as drawn).
-- Review the step candidates (checks.py `step`, 2026-10-27, in
-  `tests/data/quality-*.txt`): a short straight jog between edges running
-  on the same way, as Bold Italic ʈ ɳ ɚ ɝ had. Some are designed (ǥ ɉ bar
-  ends, ₿); others look like faults (Ƈ Ɠ ƴ hook tops, ɾ, ʝ, Serbian г п,
-  Regular ɝ, ʋ).
+- Step candidates (checks.py `step`, in `tests/data/quality-*.txt`):
+  reviewed 2026-11-04 those named as likely faults: ʝ's crossbar end and
+  Bold ɝ's hook join designed; ɾ ᵳ keep r's foot slab in every style;
+  Serbian г made from ū's first stem (its stem had bent where ı met ū);
+  Bold Italic п т's short bar overhang taken as is. The rest still marked
+  "a candidate to review" (₿ ǥ ɉ bar ends, ₡ ₹ ₮, ꞁ ɑ.sc ⱦ.sc ...).
+- Bold middle-tilde letters (ᵬ ᵭ ᵮ ᵯ ᵰ ᵱ ᵲ ᵳ): the left end of the
+  foot serif cut at a slant, and the stem's left edge swelling about 8
+  units at the tilde (seen 2026-11-04 on ᵲ ᵳ ᵰ); the Bold Italic's are
+  drawn by strokes and do not have it.
 - Bold Italic, seen in print (2026-10-27), reviewed 2026-11-02: ʋ (its
   own recipe) and Ɯ (U twinned) done 2026-10-29; ʷ ʸ ʰ ʲ ⁱ ᶤ ᶶ and the
   other modifier letters the Italic derives are made small from the Bold
