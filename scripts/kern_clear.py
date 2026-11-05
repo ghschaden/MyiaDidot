@@ -41,6 +41,16 @@ LIMIT = 600  # no pair needs more: a sign that something else is wrong
 KEY = "org.myiadidot.kernCleared"
 GUARD_KEY = "org.myiadidot.kernGuarded"  # {letter: [side, ...]}, by kern_groups.py
 GUARD = MIN_GAP  # units of white a guarded letter keeps (kern_groups' measure)
+# letters guarded against only these left entries, not in all their pairs
+# (GUARD_KEY's): the accented round letters before ſ and ſſ, kerned -60
+# (Bold Italic -80) so that ſ's hook overhangs them (the person, ſc too
+# wide, 2026-11-05), the accent then under the hook; their other pairs
+# left as they were (the person: A.sc ö.sc kept at -78)
+GUARDED_AGAINST = {
+    **{name: ("longs", "longs_longs") for name in (
+        "ccaron", "ebreve", "ecaron", "edieresis", "emacron", "obreve", "odieresis", "omacron", "otilde",
+        "uni01ED", "uni1E15", "uni1E17", "uni1E21", "uni1E4D", "uni1E51", "uni1E53", "uni1EBD", "uni1EE1")},
+}
 
 OGONEK = ("aogonek", "eogonek", "iogonek", "uogonek", "uni01EB", "uni01ED",
           "Aogonek", "Eogonek", "Iogonek", "Uogonek", "uni01EA", "uni01EC")
@@ -194,10 +204,16 @@ def guard(font, record, log=None):
     _, entry = kern_lookup(font)
     prof = Profiles(font)
     added = {}
-    for name, s, group in guarded(font):
+    full = list(guarded(font))
+    held = {(n, s) for n, s, _ in full}
+    only = [(n, 2, group, against) for n, (group, against) in sorted(
+        (n, (g, a)) for n, a in GUARDED_AGAINST.items()
+        for g in [next((k for k, m in font.groups.items() if k.startswith("public.kern2.") and n in m), None)]
+        if g is not None and (n, 2) not in held)]
+    for name, s, group, against in [(*t, None) for t in full] + only:
         for (left, right), v in list(font.kerning.items()):
             mine, other = (left, right) if s == 1 else (right, left)
-            if mine != group or v >= 0:
+            if mine != group or v >= 0 or (against is not None and other not in against):
                 continue
             key = (name, other) if s == 1 else (other, name)
             if key in font.kerning or key in added:

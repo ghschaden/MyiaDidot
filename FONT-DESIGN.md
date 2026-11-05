@@ -279,6 +279,31 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   and finalization after rounding) puts the stem's handle back on the
   edge and shortens the far one along its own direction to it. The
   hooks' inner corners (J ȷ ɽ ɳ, Œ) turn a little tighter: to review.
+- Italic small caps stand taller at their rounds (the person, samples.pdf
+  BOXKÄMPFER, 2026-11-05): FontForge's drafts (make_italic
+  smallcaps_stage) keep the capitals' overshoot in units, 39 past 0 and
+  1040 (3.7 %; the Italic's capitals 2.7 %, the Regular's small caps
+  2.2 %). Scaling it with the letter (o.sc 1077 → 1067) was tried and
+  set aside: the small caps derived from them by recipes moved (ɦ.sc's
+  H 20 units, steps of 65 and 45 units at ƈ.sc's and ɦ.sc's hooks, the
+  IPA small capitals ɢ ɪ ʟ ʀ ʙ rescaled by o.sc's extent), about 25 new
+  quality findings. To do as its own change, the derived ones checked
+  one by one (the patch tried: after weight_thick in smallcaps_stage, a
+  contour whose top or bottom lies within 60 units past the zone has its
+  points past it brought nearer by smallcaps.SCALE; tails further out
+  left alone).
+- Bold Italic small caps: the round sides stand 30-60 units tighter
+  against the straight ones than in the Regular and the references
+  (b.sc h.sc 0.94 of h.sc h.sc against 1.12-1.23, h.sc o.sc 1.02 against
+  1.05-1.24, e.sc's right 0.87 against 0.93-1.34; 2026-11-05, measured
+  with capsc_pairs.Font's gap): b.sc o.sc in BOXKÄMPFER packed. To sweep
+  all small caps' sides against the references, after the overshoot.
+- ſ ſſ before the round letters (c d e o g q œ and their accents) kerned
+  −60, the Bold Italic −80 (the person, from proofs, 2026-11-05); the
+  accented ones guarded against ſ only (kern_clear.GUARDED_AGAINST). The
+  full guard would also loosen 12 other pairs (A.sc before ö.sc ō.sc õ.sc
+  ǭ.sc č.sc ḡ.sc ..., −78 → −13 for ö.sc; F ỡ; V Y ě): left as they
+  were (the person), the dieresis near A.sc's apex without touching.
 - kern_clear.guard: a guarded right letter's exception to a left group
   (ɉ against b o p ...) is measured over every member, also one guarded
   on the left with an exception of its own that wins anyway (ᵬ), so one

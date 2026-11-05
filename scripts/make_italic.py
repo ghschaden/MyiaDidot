@@ -1612,7 +1612,15 @@ ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
                    ("uni0434", "public.kern2.uni0443"), ("public.kern1.uni0443", "public.kern2.uni0434"),
                    ("public.kern1.uni0443", "public.kern2.uni0435"), ("public.kern1.uni0443", "public.kern2.uni043B"),
                    ("public.kern1.uni0443", "public.kern2.uni046B"), ("public.kern1.uni044A", "public.kern2.uni0443"),
-                   ("public.kern1.uni046B", "public.kern2.uni0431"), ("public.kern1.uni043E", "public.kern2.uni0475")}
+                   ("public.kern1.uni046B", "public.kern2.uni0431"), ("public.kern1.uni043E", "public.kern2.uni0475"),
+                   # ΔΥ ΟΥ (and their small caps, copied from them): the
+                   # Regular's -206 and -148 made for the upright Δ's open
+                   # upper right; the italic Δ's right side is a sloped
+                   # stem, Δ ran into Υ (Δ.sc into Υ.sc, the Bold Italic's
+                   # overlapping), below every Greek reference; unkerned in
+                   # range (greek_pairs refs, capitals and small caps, the
+                   # person's samples.pdf review 2026-11-04)
+                   ("public.kern1.Deltagreek", "public.kern2.Upsilon"), ("public.kern1.Omicron", "public.kern2.Upsilon")}
 # ß's left side looser: with the heavier stems it stood tight against the
 # letter before it (measured, scripts/quality/colour.py)
 # ʼ ʻ: the Regular's, sloped about half the x-height, stood far right for

@@ -676,6 +676,11 @@ ITALIC_ANCHOR_NUDGE = {("u", "Horn"): 45}
 # Most pairs had no source pair adjustment. va overrides its inherited class
 # pair; fr is made 33 units looser relative to the references' range.
 ITALIC_BOLD_KERNING = {
+    # ſ ſſ before the round letters tighter than the Regular's -60 (the
+    # person, from a proof at 0 to -80, 2026-11-05: ſc too wide); the
+    # accented ones kept clear by kern_clear.GUARDED_AGAINST
+    **{(left, right): -80 for left in ("longs", "longs_longs")
+       for right in ("public.kern2.c", "public.kern2.egrave", "public.kern2.g", "q")},
     # Greek against Greek references, as the Bold Italic's Latin sets them
     # (scripts/quality/greek_pairs.py)
     ("public.kern1.delta", "public.kern2.iota"): 78,  # δι
