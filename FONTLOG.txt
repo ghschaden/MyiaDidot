@@ -26,6 +26,27 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-05 Bold and Bold Italic lining figures tabular again
+
+    * Emboldening widened each figure by its own strokes: after the figure
+      cut the Bold's stood 1202-1231 units wide, the Bold Italic's
+      1199-1240, the figure space and dash wider still (1232; 1240, 1244),
+      where the Regular's figures share 1152 and the Italic's 1148, so
+      columns of figures no longer lined up. make_bold tabular_figures,
+      after the figure cut: the ten lining figures take the mean of their
+      widths (Bold 1216, Bold Italic 1226), the difference split evenly
+      between the sides (each figure's fit as emboldened, moved whole);
+      the figure space and figure dash the same width.
+    * Moved with them: the tabular old-style figures (.tf, the zero's
+      width) and the proportional lining figures (.pf), whose side space
+      is the tabular zero's white: 4 units looser in the Bold, 6-7 in the
+      Bold Italic (its slashed zero.zero.pf one unit wider than zero.pf
+      by rounding).
+    * Baselines (the person accepted the reviewed reports): shaping golden
+      and digest of the Bold (f51ac0ea) and Bold Italic (90886d3a), 31285
+      of 2119735 strings each, the only change the advances of the ten
+      figures, uni2007 and figuredash; no substitution or mark moved.
+
 2026-11-05 Bold Italic counters of the closed rounds from the Italic
 
     * The stroked counters were unround (the person: o's inner outline

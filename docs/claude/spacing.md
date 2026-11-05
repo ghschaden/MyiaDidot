@@ -28,7 +28,8 @@ Moved from CLAUDE.md (its ground rules apply).
   undoes the Regular's in memory (it is tuned on the old spacing) and
   applies the Italic's; derive.py too builds on the uncut spacing and cuts
   again. It leaves kerning alone. The Bold's figures have a cut of their
-  own (make_bold.py BOLD_FIGURE_CUT). The Italic's letters are made at Old
+  own (make_bold.py BOLD_FIGURE_CUT), then share their mean width
+  (tabular_figures; the figure space and dash too). The Italic's letters are made at Old
   Standard's weight and their thick strokes made heavier at the end
   (make_italic.py WEIGHT, weight_thick):
   recipe widths are for the weight before that; derived letters that keep

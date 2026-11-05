@@ -283,10 +283,10 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   capitals still read tight against H H (OO/HH 0.79, references
   0.87-0.95; scripts/quality/sc_sides.py BoldItalic --caps): H H is the
   loose one, its serifs short (HH/nn 1.42, the references' top); a decision
-  about H, not the rounds. Still outside the references' range: the lining
-  figures are not tabular in the Bold Italic (1199-1240 wide, the Italic's
-  all 1148), and Bold n.sc stands about 50 units tight on each side
-  (side bearings 6 / -38, the Regular's 54 / 14).
+  about H, not the rounds. Still outside the references' range: Bold n.sc
+  stands about 50 units tight on each side (side bearings 6 / -38, the
+  Regular's 54 / 14). The lining figures are tabular again in both bold
+  styles (2026-11-05, FONTLOG).
 - Italic small caps at their capitals' weight (as_capitals, 2026-11-05):
   s.sc n.sc є.sc ϟ.sc made from their capitals (done 2026-11-05, FONTLOG).
   Bold Italic s.sc stands 0.82 of h.sc (S 0.91), accepted; the Bold Italic
