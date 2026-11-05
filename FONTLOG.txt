@@ -26,6 +26,48 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-05 Italic small caps at their capitals' weight; Bold Italic rounds' sides
+
+    * The italic small caps' curves and diagonals stood lighter than their
+      stems (BOXKÄMPFER: "ox" lighter than "mpfer", b.sc strange; the
+      person): FontForge's drafts bring the stems to weight, not the rest
+      (Italic o.sc 0.84 of h.sc where O is 1.07 of H, x.sc 0.62 against
+      0.85; C G Q S Z N alike; the straight E P R U K Y as their capitals).
+      make_italic.as_capitals weights each drafted small cap's thick strokes
+      (weight_thick) until its main stroke stands to h.sc's as its
+      capital's to H's, at most 1.10 of h.sc (З's 1.19 made з.sc black),
+      side bearings kept, the extremes split again. A weighting that does
+      not reach the main stroke is undone (s.sc's near-level spine, n.sc,
+      є.sc, ϟ.sc: as drafted, FONT-DESIGN.md). Italic o.sc 166 -> 205, x.sc
+      150 -> 202; Bold Italic o.sc 267 -> 310, x.sc 270 -> 301-341, b.sc's
+      upper bowl 195 -> 213, against stems of 298 (Bodoni Moda's o and x
+      heavier than its stems too). 53 Italic outlines, 127 advances.
+    * Bold Italic: a letter's side whose stroked ink stands further out than
+      by weight gets that white back (make_bold STROKE_OUT, letters only,
+      gains of 4 units or more), added with the side bearings after the
+      recipes have drawn (Ƈ's hook had moved 9 units onto C) and carried to
+      the composites set off for their accent (Έ Ἐ Ῥ, NFC as NFD). The
+      strokes had made the rounds heavier outward too: O O 0.75 of H H
+      (references 0.87-0.95), o.sc o.sc 0.76 of h.sc h.sc (0.82-1.02).
+      Round sides now lose what straight ones do (O -16/-6, H -14/-5).
+      Measured with scripts/quality/sc_sides.py (new: each small cap's
+      sides beside h.sc and o.sc against the references; --caps the
+      capitals): small-cap sides outside the references 24 -> 13 (Italic
+      5 -> 4), capitals 48 -> 34, Greek pairs 5 -> 3, lowercase 5 -> 4.
+      kern_clear's guard keeps its clearance (ſ ö -25 -> -32, A.sc before
+      accented small caps). ɸ ʈ.sc only moved, accepted again (the person).
+    * Bold Italic x.sc: its fixed drawing of 2026-11-01 no longer fits the
+      heavier Italic x.sc; by its strokes the knees came back where arm and
+      leg run into their serifs, now each bracket one fillet tangent to
+      both (sc_feet.fillets, the person: "remove the knees"), 76 -> 52
+      points.
+    * Italic ȼ.sc: its own recipe, the slash's top at 0.78 of the box (c.sc
+      40 wider: at 0.8 it met the terminal in a notch).
+    * Quality findings recorded after review of the sheets (Italic 23 new,
+      22 gone; Bold Italic 25 new, 15 gone): joins and kinks of 1-7 degrees
+      where the weighting moved curves; v.sc w.sc ɐ.sc ⱳ.sc є.sc ϟ.sc
+      flagged lighter (as drafted, or at their capitals' proportion).
+
 2026-11-05 Bold Italic ǥ.sc on its g.sc; the overshoot change reviewed
 
     * Bold Italic ǥ.sc: the bar drawn on the Bold Italic's g.sc

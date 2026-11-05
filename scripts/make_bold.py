@@ -705,6 +705,13 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
 # fit. Keep their established advances/anchors before rebuilding the belts
 # on this style's final base letters.
 ITALIC_FIT_CORRECTIONS = {"uni026C": (-3, 0), "uniA7AD": (-2, 0)}
+# by strokes, a letter's side whose ink stands further out than by weight
+# gets that white back (letters only: figures, punctuation, signs as fitted) (MYIA_STROKE_OUT=0 to compare; MYIA_STROKE_OUT_LOG=FILE lists them)
+STROKE_OUT = os.environ.get("MYIA_STROKE_OUT", "1") != "0"
+STROKE_OUT_LOG = os.environ.get("MYIA_STROKE_OUT_LOG")
+# gains under this are the measure's noise (1-3 units, most at straight sides:
+# H's, m's; the finished letters' side bearings are held within a unit)
+STROKE_OUT_MIN = 4
 # the horn on u right, so that its outer edge runs on from the stem's as in
 # the Italic (the stem top 840-981, the horn there 883-984): the heavier
 # stem's top reached 1089, the horn's edge 1044, a shelf beside it
@@ -2258,6 +2265,8 @@ def main():
         rec.replay(glyph.getPen())
         return glyph
 
+    is_letter = classifier(font, 1, 1)  # the letters respace cuts (STROKE_OUT's)
+    stroke_out = {}
     for g in font:
         is_mark = g.name in marks
         if g.contours:
@@ -2351,6 +2360,19 @@ def main():
                     weighted = bridge(rezone(embolden_by_weight(wide, AX * sc, AY, THIN * sc, THICK * sc,
                                                                 keep_bends=g.name not in fit_as_is), AY))
                     d = optical_fit(bold_rec(ref), bold_rec(weighted), band_height(regular, g.name))
+                    # but never closer than by weight: where the strokes put
+                    # ink further out (the rounds, 5-9 % heavier, gained
+                    # outward too: O O 0.75 of H H, references 0.87-0.95,
+                    # 2026-11-05), that side gets it back; thinner ends,
+                    # which leave white, keep the by-weight side. Added with
+                    # the other side bearings once the letters made of these
+                    # are drawn: the recipes cut and attach at fixed points of
+                    # their base's frame (Ƈ's hook moved 9 units onto C)
+                    if d and STROKE_OUT and is_letter(g.name):
+                        out = optical_fit(bold_rec(weighted), bold_rec(bold), band_height(regular, g.name))
+                        out = out and tuple(b if b >= STROKE_OUT_MIN else 0 for b in out)
+                        if out and any(out):
+                            stroke_out[g.name] = out
                 if d:
                     if italic and g.name in ITALIC_FIT_CORRECTIONS:
                         adjustment = ITALIC_FIT_CORRECTIONS[g.name]
@@ -2514,7 +2536,24 @@ def main():
     respace(font, classifier(font, cut, greek_cut))
     respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf, the .pf rebuilt)
-    sidebearings(font, extra)
+    # a composite follows its base (sidebearings), as the letters made of one;
+    # also one set off for its accent (Έ Ἐ Ῥ: the letter at an offset, the
+    # mark before it), else it would stand narrower than its NFD
+    stroke_out = {n: v for n, v in stroke_out.items() if n in font and not font[n].components}
+    grown = True
+    while grown:
+        grown = False
+        for g in font:
+            if g.name in stroke_out or g.contours or not g.components:
+                continue
+            bases = [c.baseGlyph for c in g.components if c.baseGlyph in stroke_out]
+            if len(bases) == 1 and all(c.baseGlyph in stroke_out or c.baseGlyph in marks for c in g.components):
+                stroke_out[g.name] = stroke_out[bases[0]]
+                grown = True
+    if STROKE_OUT_LOG is not None:
+        Path(os.environ["MYIA_STROKE_OUT_LOG"]).write_text("".join(f"{n} {a} {b}\n" for n, (a, b) in stroke_out.items()))
+    sidebearings(font, {n: tuple(a + b for a, b in zip(extra.get(n, (0, 0)), stroke_out.get(n, (0, 0))))
+                        for n in set(extra) | set(stroke_out)})
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + cut,
                          "greekLower": round(done["greekLower"] * KX) + greek_cut}

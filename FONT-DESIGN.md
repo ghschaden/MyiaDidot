@@ -279,12 +279,17 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   and finalization after rounding) puts the stem's handle back on the
   edge and shortens the far one along its own direction to it. The
   hooks' inner corners (J ȷ ɽ ɳ, Œ) turn a little tighter: to review.
-- Bold Italic small caps: the round sides stand 30-60 units tighter
-  against the straight ones than in the Regular and the references
-  (b.sc h.sc 0.94 of h.sc h.sc against 1.12-1.23, h.sc o.sc 1.02 against
-  1.05-1.24, e.sc's right 0.87 against 0.93-1.34; 2026-11-05, measured
-  with capsc_pairs.Font's gap): b.sc o.sc in BOXKÄMPFER packed. To sweep
-  all small caps' sides against the references, the overshoot now done (FONTLOG 2026-11-05).
+- Bold Italic spacing after the round sides' fix (2026-11-05, FONTLOG): the
+  capitals still read tight against H H (OO/HH 0.79, references
+  0.87-0.95; scripts/quality/sc_sides.py BoldItalic --caps): H H is the
+  loose one, its serifs short (HH/nn 1.42, the references' top); a decision
+  about H, not the rounds. Still outside the references' range: the lining
+  figures are not tabular in the Bold Italic (1199-1240 wide, the Italic's
+  all 1148), and Bold n.sc stands about 50 units tight on each side
+  (side bearings 6 / -38, the Regular's 54 / 14).
+- Italic small caps at their capitals' weight (as_capitals, 2026-11-05):
+  left as drafted where the weighting does not reach the main stroke (s.sc
+  0.65 of h.sc against S's 0.99, n.sc, є.sc, ϟ.sc): to draw at the weight.
 - ſ ſſ before the round letters (c d e o g q œ and their accents) kerned
   −60, the Bold Italic −80 (the person, from proofs, 2026-11-05); the
   accented ones guarded against ſ only (kern_clear.GUARDED_AGAINST). The

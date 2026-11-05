@@ -612,6 +612,10 @@ ZH_DX = 150
 OWN_RECIPE = {"ʀ", "ɑ"}
 KEPT_SLOPED = {"ʌ", "ɐ", "ᵃ", "a.ipa"}
 ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
+                  # ȼ.sc: c.sc at its capital's weight (as_capitals) is about
+                  # 40 wider; at 0.8 of its box the slash's top met the
+                  # terminal in a notch, at 0.78 it stands where it stood
+                  "ȼ.sc": ("slash", "c.sc", ("s", "box", 0.25, -90, 0.78, 1130)),
                   "ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "ɑ": ("alias", "a", None),
                   # ₩: the bars from 20 to 20 past the uncrossed W's
@@ -1569,7 +1573,85 @@ def smallcaps_stage(font, later=(), redraft=False):
         g.clearContours()
         weight_thick(rec, WEIGHT).draw(g.getPen())
         overshoot_scaled(g, height, sc.SCALE)
+    as_capitals(font, made, height)
     return made
+
+
+# a small cap's main stroke against h.sc's stem may fall this far short of
+# its capital's against H's before it is weighted up to it
+SC_STROKE_SHORT = 0.02
+# a weighting that raises the main stroke by less than this share of what it
+# adds is undone
+SC_STROKE_REACH = 0.5
+# and none heavier than this share of h.sc's stem
+SC_STROKE_MAX = 1.10
+
+
+def as_capitals(font, made, height):
+    """FontForge brings the drafts' stems to the small caps' stem but leaves
+    their curves and diagonals lighter than their capitals' own proportion
+    (o.sc 0.84 of h.sc where O is 1.07 of H, x.sc 0.62 against 0.85, c.sc s.sc
+    z.sc n.sc alike; BOXKÄMPFER's "ox" lighter than its "mpfer", the person,
+    2026-11-05): each drafted small cap's thick strokes made heavier
+    (weight_thick) until its main stroke stands to h.sc's as its capital's
+    to H's (strokes.main_stroke, upright, across the stroke)."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
+    import derive
+    import pathops
+    from derived import Outline
+    from italic_geometry import EXTREME_PAST
+    from strokes import main_stroke
+
+    def weight(name, top):
+        p = pathops.Path()
+        rec = DecomposingRecordingPen(font)
+        font[name].draw(rec)
+        rec.replay(TransformPen(p.getPen(), (1, 0, -SLANT, 1, 0, 0)))
+        return main_stroke(Outline(None, None, path=pathops.simplify(p)), top)[0]
+
+    names = {g.unicode: g.name for g in font if g.unicode is not None}
+    stem_uc, stem_sc = weight("H", CAP), weight("h.sc", height)
+    for name in made:
+        base = font[name.split(".")[0]] if name.split(".")[0] in font else None
+        upper = chr(base.unicode).upper() if base is not None and base.unicode else ""
+        cap = len(upper) == 1 and names.get(ord(upper))
+        if not cap or name == "h.sc":
+            continue
+        want = weight(cap, CAP)
+        if not want:
+            continue
+        # at most as heavy as the rounds come out (O 1.04-1.07 of H): З's
+        # 1.19 made з.sc black beside its neighbours (1.26 in the Bold Italic)
+        want = min(want * stem_sc / stem_uc, SC_STROKE_MAX * stem_sc)
+        for _ in range(2):
+            have = weight(name, height)
+            if not have or have >= want * (1 - SC_STROKE_SHORT):
+                break
+            g = font[name]
+            was = copy.deepcopy(g)
+            rec = RecordingPen()
+            for c in g.contours:
+                c.draw(rec)
+            g.clearContours()
+            ax = want - have
+            # its side bearings kept, as make_bold.small_cap_stems keeps them
+            # and split again where its curves now run past their points
+            # (put() split them so before the weighting moved them)
+            heavier = RecordingPen()
+            weight_thick(rec, ax).draw(TransformPen(heavier, (1, 0, 0, 1, ax / 2, 0)))
+            derive.with_extremes(heavier, g.getPen(), round_points=False, past=EXTREME_PAST)
+            for a in g.anchors:
+                a.x += ax / 2
+            g.width = round(g.width + ax)
+            # a main stroke the weighting does not reach (s.sc's spine, near
+            # level: its bowls grew 116 units, the spine hardly): as drafted
+            if (weight(name, height) or 0) - have < SC_STROKE_REACH * ax:
+                g.clearContours()
+                for c in was.contours:
+                    c.drawPoints(g.getPointPen())
+                g.anchors = was.anchors
+                g.width = was.width
+                break
 
 
 # a small cap's round past its zone by at most this much is an overshoot
