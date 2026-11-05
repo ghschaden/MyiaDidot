@@ -26,6 +26,44 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-05 Italic s.sc n.sc є.sc ϟ.sc from their capitals
+
+    * The four small caps as_capitals could not bring to weight (drafted,
+      their main stroke lighter than their capital's: s.sc's spine 0.65 of
+      h.sc against S's 0.99, n.sc's diagonal 0.63 against N's 0.84, є.sc
+      0.83 against Є's 1.07, ϟ.sc's bar 0.91) made from S N Є Ϟ
+      (make_italic ITALIC_SC_RECIPES, enlarge, as g.sc), in the late pass,
+      at the draft's side bearings and anchors (SC_DRAFT_SIDES: drafted all
+      the same, the spacing and kerning kept). Enlarged, a leaning stroke
+      still gains only by its lean: s.sc's and n.sc's thick strokes made
+      heavier until the main stroke stands to h.sc's as the capital's to
+      H's (level_gain: s.sc up and down, its overshoots put back after;
+      n.sc sideways, up and down its top serif grew heavy). The
+      enlargement's emboldening pushed n.sc's crotch under the diagonal
+      past the stem into a loop: outlines uncrossed (pathops) before and
+      after. Italic s.sc 0.99, n.sc 0.84, є.sc 1.02, ϟ.sc 1.21 (Ϟ 1.42 of H;
+      accepted, the person); s.sc's 4, є.sc's 4, ϟ.sc's 5 kinks gone.
+    * Bold Italic n.sc and ɴ: stroked from the new Italic n.sc (and with
+      ITALIC_BOLD_HEAVIER's 1.32 of 2026-11-01, for the light draft) the
+      diagonal stood 1.28 of h.sc against N's 0.77, the left foot lost its
+      bracket, the right stem's top wobbled (the person: "look at the
+      stems"). Now made from the Bold Italic's N, ɴ from that n.sc
+      (ITALIC_BOLD_REBUILD), uncrossed and brought to weight as the
+      Italic's, then condensed until its ink stands to h.sc's as N's to H's
+      (capital_width: the gain widened the thick serif ends, 1.06); n.sc's
+      1.32 dropped. n.sc 0.77, its width 1.01 of h.sc.
+    * ɴ (both italics): fitted from its vertex at -21, so its feet stand on
+      the line (from 0 they stood 23 above once n.sc's vertex went to -25).
+    * Kerning: S.sc's group before ǎ.sc ȁ.sc ẫ.sc ằ.sc ẵ.sc -40 -> -44
+      (Italic), -38 (Bold Italic): kern_clear's accent guard on the new s.sc.
+    * Baselines: shaping golden and digest of both italics accepted from
+      their reviewed reports (2924 strings each, advances and positions of
+      the letters above and the marks on them only; Italic 163a0a0b, Bold
+      Italic c8528bfc). Quality findings (the person, from the sheets):
+      Italic 8 gone, 4 new (n.sc's 3.8-degree kink; ϟ.sc's slant, two
+      smooth joins, 1.16 of the round's reference), Bold Italic 4 gone,
+      ɴ's two wobbles new; the zone findings of n.sc ν.sc ɴ gone.
+
 2026-11-05 Italic small caps at their capitals' weight; Bold Italic rounds' sides
 
     * The italic small caps' curves and diagonals stood lighter than their

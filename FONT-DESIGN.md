@@ -288,8 +288,14 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   all 1148), and Bold n.sc stands about 50 units tight on each side
   (side bearings 6 / -38, the Regular's 54 / 14).
 - Italic small caps at their capitals' weight (as_capitals, 2026-11-05):
-  left as drafted where the weighting does not reach the main stroke (s.sc
-  0.65 of h.sc against S's 0.99, n.sc, є.sc, ϟ.sc): to draw at the weight.
+  s.sc n.sc є.sc ϟ.sc made from their capitals (done 2026-11-05, FONTLOG).
+  Bold Italic s.sc stands 0.82 of h.sc (S 0.91), accepted; the Bold Italic
+  n.sc and ɴ keep small wobbles where their brackets meet the stems, as
+  the Bold Italic N's node clusters there.
+- Bold Italic rounds' counters (the person, 2026-11-05: o's inner outline
+  "very unround", o.sc worse): o's counter runs nearly straight with tight
+  turns top right and bottom left, o.sc's a rounded rectangle; the oval
+  refit (make_bold `oval`) runs in the Bold only. Next.
 - ſ ſſ before the round letters (c d e o g q œ and their accents) kerned
   −60, the Bold Italic −80 (the person, from proofs, 2026-11-05); the
   accented ones guarded against ſ only (kern_clear.GUARDED_AGAINST). The

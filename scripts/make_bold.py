@@ -87,9 +87,11 @@ JOBS = int(os.environ.get("MYIA_JOBS", "4"))  # processes at most (the project's
 ITALIC_BOLD_HEAVIER = {"z": 1.15,
                        # the small caps the Italic's drafts leave light against h.sc,
                        # o.sc 0.86 and x.sc 0.75 where the Bold's are 1.07 and 0.87
-                       # (the person, samples.pdf, 2026-11-01)
+                       # (the person, samples.pdf, 2026-11-01); n.sc's 1.32 dropped
+                       # once the Italic made it from N at weight (2026-11-05: its
+                       # diagonal stood 1.28 of h.sc, N's 0.77)
                        "o.sc": 1.15, "c.sc": 1.15, "g.sc": 1.15, "q.sc": 1.15,
-                       "x.sc": 1.6, "n.sc": 1.32, "z.sc": 1.32}
+                       "x.sc": 1.6, "z.sc": 1.32}
 # Bold Italic derived letters by strokes not joined to their base after
 # (follow_bases): the same Italic strokes give the same base, the join
 # tangles where they part
@@ -181,6 +183,14 @@ ITALIC_BOLD_REBUILD = {
     # to g.sc again, the two outlines nearly one, the union left 3 short
     # wobbles in the bowl by the bar and 27 nodes more: the person, 2026-11-05)
     "uni01E5.sc": "ǥ.sc: the bar on the Bold Italic's g.sc",
+    # n.sc: made from the Bold Italic's N as the Italic's from its N
+    # (make_italic ITALIC_SC_RECIPES); stroked from the Italic's, the
+    # diagonal stood 1.21 of h.sc (N's 0.77), the left foot lost its
+    # bracket and the right stem's top bracket wobbled (the person, 2026-11-05)
+    "n.sc": "n.sc: the Bold Italic's N enlarged",
+    # ɴ, n.sc enlarged (derive.RECIPES): stroked from the Italic's, its
+    # diagonal and feet came out as n.sc's did
+    "uni0274": "ɴ: the Bold Italic's n.sc enlarged",
     # ʉ, the bar on u: u's knees drawn as the Italic turns (stroke_bold
     # KNEE_QUARTER); by strokes its own, the bar cutting the stem, its knee
     # stayed and its union with u left scraps (2026-10-29); its own recipe
@@ -2043,7 +2053,20 @@ def rederive(source, font, italic, whole):
 
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
-            if op == "enlarge" and name.endswith(".sc"):
+            from make_italic import SC_DRAFT_SIDES, SC_LEVEL_GAIN, capital_width, level_gain, uncrossed
+
+            if name in SC_DRAFT_SIDES:
+                # as the Italic makes them: uncrossed, the main stroke brought
+                # to the capital's proportion (small_cap_stems took n.sc's
+                # straight diagonal for a stem)
+                uncrossed(up, tmp)
+                # and its ink to h.sc's as the capital's to H's: the gain
+                # widens the Bold Italic's serif ends too (thick here); twice,
+                # so weight and width both settle
+                for _ in range(2 if name in SC_LEVEL_GAIN else 0):
+                    level_gain(up, tmp, *SC_LEVEL_GAIN[name])
+                    capital_width(up, tmp, SC_LEVEL_GAIN[name][0])
+            elif op == "enlarge" and name.endswith(".sc"):
                 small_cap_stems(up, new)
         drop_specks(new)
         fill_pinholes(new, up[name], up)

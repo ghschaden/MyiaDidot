@@ -564,10 +564,30 @@ SC_DRAFTED = {"ɑ.sc", "ɂ.sc", "ʒ.sc", "ʊ.sc", "ʋ.sc", "ꞵ.sc", "ƭ.sc", "�
 # draft was faulty, before derive.py's recipes (those made of them follow:
 # ǥ.sc, ɢ): g.sc's counter ran straight down its left side into a corner
 # (G's is round); ɦ.sc (ITALIC_RECIPES) notched where its hook met the stem
-ITALIC_SC_RECIPES = [("g.sc", "enlarge", "G", ("O", "o.sc"))]
+# s.sc n.sc є.sc ϟ.sc: as_capitals could not bring the draft's main stroke
+# to its capital's weight (s.sc's spine 0.65 of h.sc against S's 0.99,
+# n.sc's diagonal 0.63 against N's 0.84, є.sc 0.83 against Є's 1.07, ϟ.sc's
+# bar 0.91; the weighting thickened their bowls and serifs, not that
+# stroke): made from the capital, which has it, at the draft's side bearings
+ITALIC_SC_RECIPES = [("g.sc", "enlarge", "G", ("O", "o.sc")),
+                     ("s.sc", "enlarge", "S", ("O", "o.sc")),
+                     ("n.sc", "enlarge", "N", ("O", "o.sc")),
+                     ("є.sc", "enlarge", "Є", ("O", "o.sc")),
+                     ("ϟ.sc", "enlarge", "Ϟ", ("O", "o.sc"))]
 # made in the late pass, after the small caps are drafted: measured
 # against the Italic's own o.sc and h.sc, not the Regular's sloped
-SC_LATE = {"g.sc", "ɦ.sc"}
+SC_LATE = {"g.sc", "ɦ.sc", "s.sc", "n.sc", "є.sc", "ϟ.sc"}
+# made from their capitals, s.sc's spine and n.sc's diagonal still stood
+# light (0.81 and 0.69 of h.sc): enlarge's emboldening thickens strokes by
+# their lean (a level stroke by the hairlines' amount), so their thick
+# strokes are made heavier (level_gain) until the main stroke stands to
+# h.sc's as the capital's to H's: s.sc's up and down (its spine near
+# level), n.sc's sideways (its diagonal steep; up and down its top serif
+# grew heavy and its vertex dropped)
+SC_LEVEL_GAIN = {"s.sc": ("S", True), "n.sc": ("N", False)}
+# of those, drafted all the same and remade at the draft's side bearings
+# (its spacing and kerning kept), its anchors moved with its ink
+SC_DRAFT_SIDES = {"s.sc", "n.sc", "uni0454.sc", "uni03DF.sc"}
 # the Italic's own letters already have the shape: Old Standard's g is ɡ,
 # its h turned is ɥ (the Regular's is u and a descender, its h's serifs
 # would turn)
@@ -612,6 +632,10 @@ ZH_DX = 150
 OWN_RECIPE = {"ʀ", "ɑ"}
 KEPT_SLOPED = {"ʌ", "ɐ", "ᵃ", "a.ipa"}
 ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
+                  # ɴ: n.sc's ink fitted from its vertex, 25 below the line
+                  # (21 at ɴ's size), so its feet stand on it (from 0 they
+                  # stood 23 above, 2026-11-05)
+                  "ɴ": ("enlarge", "n.sc", ("o.sc", "o", -21, 884, "i.sc", "n")),
                   # ȼ.sc: c.sc at its capital's weight (as_capitals) is about
                   # 40 wider; at 0.8 of its box the slash's top met the
                   # terminal in a notch, at 0.78 it stands where it stood
@@ -1430,7 +1454,8 @@ def derive_stage(font, regular, late=False, kept=()):
             continue
         op, source, band = ITALIC_RECIPES.get(ch, (op, source, band))
         name = resolve(ch)
-        if name not in font or font[name].lib.get(SOURCE_KEY) != "sloped roman":
+        if name not in font or (font[name].lib.get(SOURCE_KEY) != "sloped roman"
+                                and not (late and name in SC_DRAFT_SIDES)):
             continue
         up.lib[derive.STROKE_KEY] = recipe_scale(o_stem, o_hair, case_weight(font, font[name]))
         if len(source) == 1 or (derive.variant(source) and not source[0].isascii()):
@@ -1494,12 +1519,155 @@ def derive_stage(font, regular, late=False, kept=()):
             up.layers.defaultLayer.insertGlyph(old, name, overwrite=True)
             failed.append(f"{ch} ({op}): {e!r}")
             continue
+        if name in SC_DRAFT_SIDES:
+            # enlarge's emboldening pushes n.sc's crotch under the diagonal
+            # past the stem into a loop (the contour crossed itself, the
+            # Bold Italic's strokes then measured across it: its stems
+            # bulged and notched, the person)
+            uncrossed(up, name)
+        if name in SC_LEVEL_GAIN:
+            level_gain(up, name, *SC_LEVEL_GAIN[name])
+        if name in SC_DRAFT_SIDES and old.contours:
+            draft_sides(up, name, old)
         if ch in ITALIC_JOINS:
             derive.fair_joins(up[name], *ITALIC_JOINS[ch])
         up[name].lib[DRAFT_KEY] = True
         put(font, up, name, "derived")
         made.append(ch)
     return made, failed, later
+
+
+def weight_thick_level(rec, ay):
+    """rec with its thick strokes ay heavier up and down (weight_thick on
+    the outline mirrored across the diagonal, mirrored back)"""
+    swap = (0, 1, 1, 0, 0, 0)
+    mirrored = RecordingPen()
+    rec.replay(TransformPen(mirrored, swap))
+    out = RecordingPen()
+    weight_thick(mirrored, ay).draw(TransformPen(out, swap))
+    return out
+
+
+def uncrossed(up, name, rec=None):
+    """up[name] (or rec, drawn into it) with no contour crossing itself or
+    another (pathops), its curves split again at their extremes"""
+    import derive
+    import pathops
+    from italic_geometry import EXTREME_PAST
+
+    g = up[name]
+    if rec is None:
+        rec = RecordingPen()
+        for c in g.contours:
+            c.draw(rec)
+    path = pathops.Path()
+    rec.replay(path.getPen())
+    clean = RecordingPen()
+    pathops.simplify(path, clockwise=False).draw(clean)
+    g.clearContours()
+    derive.with_extremes(clean, g.getPen(), round_points=False, past=EXTREME_PAST)
+
+
+def capital_width(up, name, cap):
+    """up[name] condensed or widened across (about its ink's left edge)
+    until its ink stands to h.sc's as cap's to H's: in the Bold Italic
+    level_gain counts the serifs as thick strokes and widens their ends
+    (n.sc's ink 1.06 of h.sc's, N's 1.01 of H's)"""
+    from smallcaps import ink_bounds
+
+    def wide(n):
+        x0, _, x1, _ = ink_bounds(up, n)
+        return x1 - x0
+
+    k = wide("h.sc") * wide(cap) / wide("H") / wide(name)
+    g = up[name]
+    x0, _, x1, _ = ink_bounds(up, name)
+    rec = RecordingPen()
+    for c in g.contours:
+        c.draw(rec)
+    g.clearContours()
+    rec.replay(TransformPen(g.getPen(), (k, 0, 0, 1, x0 * (1 - k), 0)))
+    g.width = round(g.width - (x1 - x0) * (1 - k))
+    for a in g.anchors:
+        a.x = round(x0 + (a.x - x0) * k)
+
+
+def level_gain(up, name, cap, level):
+    """up[name]'s thick strokes made heavier (level: up and down, else
+    sideways) until its main stroke stands to h.sc's as cap's to H's (at
+    most SC_STROKE_MAX of h.sc's), its side bearings kept"""
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
+    import derive
+    from derived import Outline
+    from strokes import main_stroke
+
+    height = up.lib.get("org.myiadidot.smallcapHeight", 1040)
+
+    def weight(n, top):
+        return main_stroke(Outline(up, n, (1, 0, 0, 1, 0, 0)), top)[0]
+
+    sc = weight("h.sc", height)
+    want = min(weight(cap, CAP) / weight("H", CAP) * sc, SC_STROKE_MAX * sc)
+    g = up[name]
+    rec = RecordingPen()
+    for c in g.contours:
+        c.draw(rec)
+    x0 = derive.ink_bounds(up, name)[0]
+    width = g.width - (derive.ink_bounds(up, name)[2] - x0)
+    ys = [p.y for c in g.contours for p in c.points]
+    before = (min(ys), max(ys))
+    lo, hi = 0.0, 3 * max(0.0, want - weight(name, height))
+    for _ in range(8):  # the gain that brings it to want
+        ay = (lo + hi) / 2
+        g.clearContours()
+        heavier = RecordingPen()
+        (weight_thick_level(rec, ay) if level else weight_thick(rec, ay)).draw(heavier)
+        uncrossed(up, name, heavier)
+        lo, hi = (ay, hi) if weight(name, height) < want else (lo, ay)
+    if level:
+        # the gain up and down took the bottom and top past their overshoots
+        # (s.sc's bottom to -35, the capitals'; the small caps' -25): the
+        # points past the zones brought back to where they stood before it
+        zone_back(g, height, before)
+    b = derive.ink_bounds(up, name)
+    dx = x0 - b[0]
+    for c in g.contours:
+        c.move((dx, 0))
+    g.width = round(width + b[2] - b[0])
+
+
+def zone_back(g, height, before):
+    """g's points below the baseline and above height scaled toward the
+    zone until its lowest and highest stand as in before (ymin, ymax)"""
+    ys = [p.y for c in g.contours for p in c.points]
+    lo, hi = min(ys), max(ys)
+    for c in g.contours:
+        for p in c.points:
+            if p.y < 0 and lo < before[0] < 0:
+                p.y *= before[0] / lo
+            elif p.y > height and hi > before[1] > height:
+                p.y = height + (p.y - height) * (before[1] - height) / (hi - height)
+
+
+def draft_sides(up, name, draft):
+    """up[name] at the side bearings of draft (upright), its anchors the
+    draft's, moved as far as the middle of its ink moved"""
+    from smallcaps import ink_bounds
+
+    g = up[name]
+    x0, _, x1, _ = ink_bounds(up, name)
+    tmp = up.newGlyph("_draft_sides")
+    draft.drawPoints(tmp.getPointPen())
+    tmp.width = draft.width
+    d0, _, d1, _ = ink_bounds(up, "_draft_sides")
+    del up["_draft_sides"]
+    dx = d0 - x0
+    g.move((dx, 0))
+    g.width = round(d0 + (x1 - x0) + (draft.width - d1))
+    shift = (d0 + d0 + x1 - x0) / 2 - (d0 + d1) / 2
+    g.clearAnchors()
+    for a in draft.anchors:
+        g.appendAnchor({"name": a.name, "x": round(a.x + shift), "y": a.y})
 
 
 def figures_stage(font, regular):
@@ -1546,7 +1714,8 @@ def smallcaps_stage(font, later=(), redraft=False):
     from fontforge_inputs import drafts as fontforge_drafts
 
     for g in font:
-        if ".sc" in g.name and g.lib.get(SOURCE_KEY) == "sloped roman" and g.name not in later:
+        if (".sc" in g.name and g.lib.get(SOURCE_KEY) == "sloped roman"
+                and (g.name not in later or g.name in SC_DRAFT_SIDES)):
             g.lib[SMALLCAP_DRAFT_KEY] = True  # to be replaced
             g.lib.pop("org.myiadidot.derived", None)  # the Regular's ɠ.sc is derived; this one is drafted
     up = upright(font)
