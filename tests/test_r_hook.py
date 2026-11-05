@@ -11,9 +11,14 @@ from r_hook import finish, round_shoulder
 
 
 def restore(glyph, filename):
+    """The recorded outline before the hook; the glyph's own lib kept (its
+    acceptance, made after the recording)."""
+    lib = deepcopy(dict(glyph.lib))
     glyph.clearContours()
     readGlyphFromString((DATA / filename).read_text(),
                        glyphObject=glyph, pointPen=glyph.getPointPen())
+    glyph.lib.clear()
+    glyph.lib.update(lib)
 
 
 @pytest.mark.parametrize("style", ["Italic", "BoldItalic"])

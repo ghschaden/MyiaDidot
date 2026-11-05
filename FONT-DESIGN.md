@@ -360,11 +360,17 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   (2026-10-26), the rederived Bold Italic letters too (2026-10-27); none
   left runs more than about 20 units past (Bold Ʒ ℓ, Bold Italic ѫ ® л @).
 - Accept, or send back, the drafts not yet accepted: `scripts/accepted.py
-  UFO --drafts` (about 350 in each italic weight, ₸ ct st in the Romans).
-  Acceptance is recorded with accepted.py, not by clearing draft flags
+  UFO --drafts`. Acceptance is recorded with accepted.py, not by clearing draft flags
   (docs/claude/quality.md). `make proof` writes the review sheets of
   exactly those (drafts-review-STYLE.pdf, smallcaps-review-STYLE.pdf):
-  the next step is the person's pass through them. Bold and Bold Italic
+  the next step is the person's pass through them. 2026-11-05: the
+  Regular's and the Italic's drafts sheets accepted but for these, sent
+  back: Ƭ (the right turn into the hook uneven) and ʂ (the turn into its
+  hook still not good) in the Regular, the italic ɉ (its bar not
+  centred); the Regular's ɹ ɺ ɻ to be rebuilt as r turned, as in the
+  italics (the person: the drawn hook looks very different from r's).
+  Still to review: the small-caps sheets of all four styles, the Bold's
+  and Bold Italic's drafts sheets, and a.ipa (on no sheet). Bold and Bold Italic
   old-style figures (not drafts, so not on the sheets) have no recorded
   acceptance; Regular old-style 3 and 5 changed after theirs.
 
