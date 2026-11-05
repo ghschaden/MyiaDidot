@@ -292,10 +292,10 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   Bold Italic s.sc stands 0.82 of h.sc (S 0.91), accepted; the Bold Italic
   n.sc and ɴ keep small wobbles where their brackets meet the stems, as
   the Bold Italic N's node clusters there.
-- Bold Italic rounds' counters (the person, 2026-11-05: o's inner outline
-  "very unround", o.sc worse): o's counter runs nearly straight with tight
-  turns top right and bottom left, o.sc's a rounded rectangle; the oval
-  refit (make_bold `oval`) runs in the Bold only. Next.
+- Bold Italic rounds' counters: done 2026-11-05 (the Italic's counter,
+  make_bold italic_counter; FONTLOG). o's counter is as round as the
+  Italic's, narrow with fairly straight sides: rounder only if the Italic's
+  o changes. The open rounds (c e ɔ є ...) keep their stroked insides.
 - ſ ſſ before the round letters (c d e o g q œ and their accents) kerned
   −60, the Bold Italic −80 (the person, from proofs, 2026-11-05); the
   accented ones guarded against ſ only (kern_clear.GUARDED_AGAINST). The

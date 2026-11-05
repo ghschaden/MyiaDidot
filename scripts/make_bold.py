@@ -813,10 +813,16 @@ ANCHOR_NUDGE = {("u", "Horn"): -10}
 # closed rounds, outer oval and counter: emboldened by the weight of the
 # stroke at each node, the counter's shoulders come out boxy on one diagonal
 # and flat on the other (the Bold Italic o, an egg); refitted from the
-# lighter style's own curves (oval); in the Bold only, the Bold Italic's
+# lighter style's own curves (oval); in the Bold only: the Bold Italic's
 # are drawn with the Italic's curves (stroke_bold), and refitted to its
-# area the counter's handles overshoot into cusps
+# area the counter's handles overshoot into cusps; its counters instead
+# take the Italic's whole (ITALIC_OVALS, italic_counter)
 OVALS = {"o", "O", "zero"}
+# the Bold Italic's closed rounds: the stroked counter ran nearly straight
+# with tight turns (o, top right and bottom left), o.sc's a rounded
+# rectangle (the person, 2026-11-05: "very unround"); the Italic's counter
+# put in its place (italic_counter); their slashed forms through their ring
+ITALIC_OVALS = OVALS | {"o.sc"}
 # slashed rounds, drawn whole in the lighter style: emboldened whole, the
 # ring swelled where the slash crosses it (Ø not O with a stroke through);
 # the ring is the round's own, the slash emboldened apart (slashed)
@@ -825,7 +831,7 @@ SLASHED = {"Oslash": "O", "oslash": "o", "oslash.sc": "o.sc"}
 
 def slashed(wide, ring, make, refit, bar):
     """wide (a slashed round) as its round emboldened as the round itself is
-    (make, oval if refit) joined to its slash (what it has beyond ring, the
+    (make, then refit: oval, italic_counter or None) joined to its slash (what it has beyond ring, the
     round's own wide outline: slivers where the two rings differ left out)
     emboldened apart (bar: by weight; by strokes its hairline edge runs on
     along the counter and the union leaves crumbs of curve there)."""
@@ -881,7 +887,7 @@ def slashed(wide, ring, make, refit, bar):
     slash.closePath()
     whole = make(ring)
     if refit:
-        whole = oval(ring, whole)
+        whole = refit(ring, whole)
     before, rec = RecordingPen(), RecordingPen()
     (whole.replay if hasattr(whole, "replay") else whole.draw)(before)
     pathops.op(path(whole), path(bar(slash)), pathops.PathOp.UNION).draw(rec)
@@ -892,6 +898,58 @@ def slashed(wide, ring, make, refit, bar):
         pen = ReverseContourPen(pen)
     rec.replay(pen)
     return glyph
+
+
+def italic_counter(wide, bold):
+    """bold (a two-contour round, the Bold Italic's, upright frame) with its
+    counter replaced by wide's (the Italic's) mapped onto the stroked
+    counter's box, then scaled about its middle to that counter's area: an
+    affine image keeps the Italic's curves as smooth as they are (the
+    oval's handle tension, matching the area, drove them into cusps here),
+    the ink and its weight stay as stroked."""
+    def contours(path):
+        rec, out = RecordingPen(), []
+        (path.replay if hasattr(path, "replay") else path.draw)(rec)
+        for op, pts in rec.value:
+            if op == "moveTo":
+                out.append([])
+            out[-1].append((op, pts))
+        return out
+
+    def area(c):
+        pen = AreaPen()
+        for op, pts in c:
+            getattr(pen, op)(*pts)
+        return pen.value
+
+    def bounds(c):
+        pen = BoundsPen(None)
+        for op, pts in c:
+            getattr(pen, op)(*pts)
+        return pen.bounds
+
+    def moved(c, t):
+        a, d, e, f = t
+        return [(op, tuple((a * x + e, d * y + f) for x, y in pts)) for op, pts in c]
+
+    old, new = contours(wide), contours(bold)
+    if len(old) != 2 or len(new) != 2:
+        raise ValueError("italic_counter: two contours each")
+    old.sort(key=lambda c: abs(area(c)))
+    new.sort(key=lambda c: abs(area(c)))
+    (x0, y0, x1, y1), (u0, v0, u1, v1) = bounds(old[0]), bounds(new[0])
+    sx, sy = (u1 - u0) / (x1 - x0), (v1 - v0) / (y1 - y0)
+    c = moved(old[0], (sx, sy, u0 - x0 * sx, v0 - y0 * sy))
+    k = math.sqrt(abs(area(new[0])) / abs(area(c)))
+    cx, cy = (u0 + u1) / 2, (v0 + v1) / 2
+    c = moved(c, (k, k, cx * (1 - k), cy * (1 - k)))
+    out = RecordingPen()
+    for op, pts in new[1]:
+        getattr(out, op)(*pts)
+    pen = out if (area(c) > 0) == (area(new[0]) > 0) else ReverseContourPen(out)
+    for op, pts in c:
+        getattr(pen, op)(*pts)
+    return out
 
 
 def oval(wide, bold):
@@ -2349,13 +2407,16 @@ def main():
                 bold, n = part_serifs(wide, bold, make)
                 if n:
                     parted.append(g.name)
-                if g.name in OVALS and not italic:
-                    bold = oval(wide, bold)
+                refit = (italic_counter if italic else oval) if g.name in (ITALIC_OVALS if italic else OVALS) else None
+                if refit:
+                    bold = refit(wide, bold)
                 if g.name in SLASHED:
                     ring = RecordingPen()
                     contours_only(regular[SLASHED[g.name]]).replay(
                         TransformPen(TransformPen(ring, (KX, 0, 0, 1, 0, 0)), up))
-                    bold = slashed(wide, ring, make, SLASHED[g.name] in OVALS and not italic,
+                    round_ = SLASHED[g.name]
+                    bold = slashed(wide, ring, make,
+                                   (italic_counter if italic else oval) if round_ in (ITALIC_OVALS if italic else OVALS) else None,
                                    functools.partial(make, strokes=False))
                 # each side's ink grew by the weight of the stroke there, not
                 # as the earlier emboldening grew it (every side AX / 2, its

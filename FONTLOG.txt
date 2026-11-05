@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-05 Bold Italic counters of the closed rounds from the Italic
+
+    * The stroked counters were unround (the person: o's inner outline
+      "very unround", o.sc worse): o's ran nearly straight with tight turns
+      at the top right and bottom left, o.sc's a rounded rectangle with a
+      flat right side (9 nodes). The Bold's oval refit (handle tension to
+      the area) drove them into cusps here. Now each takes the Italic's
+      counter, mapped onto the stroked counter's box in the upright frame
+      and scaled about its middle to the stroked area (make_bold
+      italic_counter, ITALIC_OVALS: o o.sc O zero, and through their ring
+      Ø ø ø.sc): as smooth as the Italic's, the ink and the weight as
+      stroked (strokes.py unchanged). o.sc 4 nodes.
+    * Moved with o: what is made of o and O (ʘ Ө ɸ ᵒ 0 with a dot inside),
+      and the letters the Bold Italic rebuilds by recipe at the scale of
+      o's measured strokes (its hairline 55 -> 48: ʰ ʲ ʷ ʸ ˀ ˁ ƥ ƈ.sc ...,
+      2-11 units); n.sc and ɴ (enlarged against O and o.sc) only at their
+      serif ends, weight and width kept. U.sc before ǎ.sc ằ.sc one unit.
+    * Baselines (the person, from the sheets): shaping golden and digest
+      accepted from the reviewed report (11684 strings, advances and
+      positions of the changed letters and the marks on them only;
+      3dd4f99f); quality 13 new (o.sc ø.sc 2-degree joins inherited with
+      the Italic's counter, kinks of 2.5-6.3 degrees on ƙ.sc ƴ.sc ɞ ʘ Ө),
+      11 gone; ᵍ's notch where its ear joins (32 px, as drawn before) now
+      over lint's threshold; G Ɠ Ǥ off their TrueType bottom zone at 3
+      sizes instead of 4.
+
 2026-11-05 Italic s.sc n.sc є.sc ϟ.sc from their capitals
 
     * The four small caps as_capitals could not bring to weight (drafted,
