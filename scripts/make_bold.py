@@ -207,7 +207,7 @@ ITALIC_BOLD_REBUILD = {
     "uni01AD.sc": "ƭ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni01B4.sc": "ƴ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni0260.sc": "ɠ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
-    "uni0266.sc": "ɦ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni0266.sc": "ɦ.sc: its own curl on the Bold Italic h.sc (ITALIC_BOLD_RECIPES); emboldened from the Italic's draft, its curl closed on the ball",
     "uni028B.sc": "ʋ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni049A": "Қ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the curl notched",
     "uni0496": "Җ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the ball ran into the descender",
@@ -336,6 +336,34 @@ ITALIC_BOLD_RECIPES = {
     # running on in its own direction; Ʋ: U's right stem
     "Ƙ": ("curl", "K", ("c", [(870, 1130, 10000, 10000)],  # (at 1150 a step, ƙ.sc's ledges)
                         {"at": ("y", 1130, "last"), "dir": 51.6, "turn": "cw", **CURL_CAP, "t": (132, 67)})),
+    # Ɓ Ɗ Ƥ: the Italic's recipe (the stem rising through the top serif and
+    # curling over to the left), the serif cut from 1290 a unit inside the
+    # stem's left edge, 290 here (266 once spaced): the Italic's cut at 300
+    # took 11 units off the stem, a step where the curl begins (the person,
+    # 2026-11-05, on ɦ)
+    **{ch: ("curl", base, ("c", [(-10000, 1290, 291, 10000)],
+                           {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
+                            "sweep": 200, "ball": None, "t": (166, 60)}))
+       for ch, base in (("Ɓ", "B"), ("Ɗ", "D"), ("Ƥ", "P"))},
+    # Ɦ: as the Bold Italic's Ɓ (the Italic's recipe for Ɓ Ɗ Ƥ): the stem
+    # rising to its top at its own weight, the curl leaving it on the left;
+    # only the serif cut, left of the stem and right of it: from 1290 (the
+    # bracket begins at 1297) a unit inside the stem's edges, 290 and 577 in
+    # the frame the recipes are drawn in here (553 once the Bold Italic is
+    # spaced; cut at 553, the step left in the stem was cleaned into an
+    # edge leaning 5 degrees in). The Italic's Ɦ curls the whole stem over: at
+    # the Italic's 164 it stepped 45 units in on both sides of the Bold
+    # Italic's 287 stem (ɦ.sc alike), at 287 it closed its eye (the
+    # person, 2026-11-05)
+    "Ɦ": ("curl", "H", ("c", [(-10000, 1290, 291, 10000), (576, 1290, 880, 10000)],
+                        {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
+                         "sweep": 200, "ball": None, "t": (166, 60)})),
+    # ɦ.sc: as Ɦ, drawn on h.sc at the small caps' size (its stem's edges
+    # 199 and 494 here, 175 and 470 once spaced; the curl's radii a little larger than
+    # Ɦ's scaled, 0.725: Ɦ enlarged, its eye closed to a pinhole, as ƥ.sc's)
+    "ɦ.sc": ("curl", "h.sc", ("c", [(-10000, 915, 200, 10000), (493, 915, 684, 10000)],
+                              {"at": ("y", 940, "first"), "dir": 90, "turn": "ccw", "r": (165, 125),
+                               "sweep": 200, "ball": None, "t": (120, 48)})),
     "Ʋ": ("curl", "U", ("c", [(950, 1200, 10000, 10000)],
                         {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", **CURL_CAP, "t": (139, 59)})),
     "Ƴ": ("curl", "Y", ("c", [(800, 1100, 10000, 10000)],
@@ -548,12 +576,6 @@ ITALIC_BOLD_SPLIT = {"xi"}
 # bowl, its counter narrowing into the crotch over the tail's loop, bent in
 # above it (2026-11-03; for every letter it broke the oldstyle 2 and filled q)
 ITALIC_BOLD_CAP_FREE = {"q.sc": 300}
-# Bold Italic small caps made from their capital whose stems small_cap_stems
-# leaves as enlarge makes them: emboldened across whole, ɦ.sc's curl closes
-# on its ball (2026-11-05: its stem, 258 against h.sc's 300, passed as
-# straight once the small caps' overshoot was scaled and its hairlines
-# gained less; before, the same stem was judged not straight and kept)
-ITALIC_BOLD_SC_STEMS_KEEP = {"uni0266.sc"}
 # Bold Italic letters whose smallest counter is refitted smooth over this
 # many units after stroking (stroke_bold.smooth_counter), its one corner
 # kept: q.sc's loop, the tail's weight changing fast along it, left with a
@@ -667,7 +689,10 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
                        # references (derived_spacing.py BoldItalic, to the median; Ƴ Ƈ again for their own curls, 2026-10-27): ɖ Ƴ ƈ ɚ ҳ Қ Ƙ Җ ƥ җ Ҷ
                        "uni0256": (0, -140), "uni01B3": (0, 56), "uni0188": (0, -85), "uni0187": (0, 85), "uni025A": (0, -100),
                        "uni04B3": (0, -65), "uni049A": (0, -60), "uni0198": (0, -70), "uni0496": (0, -55),
-                       "uni01A5": (-60, 0), "uni0497": (0, -50), "uni04B6": (0, -45)}
+                       "uni01A5": (-60, 0), "uni0497": (0, -50), "uni04B6": (0, -45),
+                       # ɦ.sc (its own curl on h.sc): the least white before its hook as
+                       # h.sc h.sc's (119); on h.sc's advance the hook came within 8
+                       "uni0266.sc": (149, 0)}  # (with the Italic's -38, taken in as it is rebuilt)
 # Joining the light belts changes the temporary weighted shape's optical
 # fit. Keep their established advances/anchors before rebuilding the belts
 # on this style's final base letters.
@@ -2003,7 +2028,7 @@ def rederive(source, font, italic, whole):
 
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
-            if op == "enlarge" and name.endswith(".sc") and name not in ITALIC_BOLD_SC_STEMS_KEEP:
+            if op == "enlarge" and name.endswith(".sc"):
                 small_cap_stems(up, new)
         drop_specks(new)
         fill_pinholes(new, up[name], up)

@@ -556,10 +556,18 @@ DHOOK_CUT = 1000
 # heavier than the small caps beside it (ⱳ.sc not: drafted from the
 # uncrossed Ⱳ, its narrow diagonals came out light, as w.sc's)
 SC_DRAFTED = {"ɑ.sc", "ɂ.sc", "ʒ.sc", "ʊ.sc", "ʋ.sc", "ꞵ.sc", "ƭ.sc", "ƙ.sc",
-              "ɲ.sc", "ʝ.sc", "ϗ.sc", "ƴ.sc", "ƈ.sc", "ɠ.sc", "ƥ.sc", "ɦ.sc",
+              "ɲ.sc", "ʝ.sc", "ϗ.sc", "ƴ.sc", "ƈ.sc", "ɠ.sc", "ƥ.sc",
               # ƒ.sc: the Regular's hook recipe takes ȷ's tail, a swash here,
               # scaled to f.sc's stem a crescent under the letter before
               "ƒ.sc"}
+# small caps the Italic makes from its own capitals where FontForge's
+# draft was faulty, before derive.py's recipes (those made of them follow:
+# ǥ.sc, ɢ): g.sc's counter ran straight down its left side into a corner
+# (G's is round); ɦ.sc (ITALIC_RECIPES) notched where its hook met the stem
+ITALIC_SC_RECIPES = [("g.sc", "enlarge", "G", ("O", "o.sc"))]
+# made in the late pass, after the small caps are drafted: measured
+# against the Italic's own o.sc and h.sc, not the Regular's sloped
+SC_LATE = {"g.sc", "ɦ.sc"}
 # the Italic's own letters already have the shape: Old Standard's g is ɡ,
 # its h turned is ɥ (the Regular's is u and a descender, its h's serifs
 # would turn)
@@ -628,6 +636,9 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # f's hook brought down onto the x-height, on a foot serif
                   # (fishhook; as the Regular's, the person 2026-11-04)
                   "ɾ": ("fishhook", "f", ("r", (213, 0, 493, 50))),
+                  # ɦ.sc: Ɦ made small, H's stems brought to h.sc's (by o.sc's
+                  # round alone they came out 152 against h.sc's 194)
+                  "ɦ.sc": ("enlarge", "uniA7AA", ("O", "o.sc", "H", "h.sc")),
                   "ɸ": ("stem", "o", None),  # o with a stem as heavy as l's through it
                   "ɯ": ("turn", "m", "x"),  # the turned m it is named after
                   # ɯ with its last stem running down into ɥ's descender
@@ -1408,7 +1419,7 @@ def derive_stage(font, regular, late=False, kept=()):
     draw_path(up, bar, bar, derive.rect_path(256 - w / 2, -520, 256 + w / 2, CAP))
 
     made, failed, later = [], [], []
-    for ch, op, source, band in derive.RECIPES:
+    for ch, op, source, band in ITALIC_SC_RECIPES + derive.RECIPES:
         if ch in SC_DRAFTED:
             continue
         if ch in KEPT_SLOPED:
@@ -1420,7 +1431,7 @@ def derive_stage(font, regular, late=False, kept=()):
         up.lib[derive.STROKE_KEY] = recipe_scale(o_stem, o_hair, case_weight(font, font[name]))
         if len(source) == 1 or (derive.variant(source) and not source[0].isascii()):
             source = resolve(source)
-        if source.endswith(".sc") != late:
+        if (source.endswith(".sc") or ch in SC_LATE) != late:
             if not late:
                 later.append(name)
             continue
@@ -1665,7 +1676,10 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
                        "uni029D": (0, -55), "uni027E": (-90, 0),
                        # ɗ: the hook overhangs, the advance 32 past d's as in the
                        # Regular (Charis 35); set by the hook, ɗa stood 150 looser than da
-                       "uni0257": (0, -119)}
+                       "uni0257": (0, -119),
+                       # ɦ.sc (from Ɦ): the least white before its hook as h.sc h.sc's
+                       # (107; Ɦ's advance kept, it stood 145, the draft's -19)
+                       "uni0266.sc": (-38, 0)}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}

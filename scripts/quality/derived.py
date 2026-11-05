@@ -211,7 +211,7 @@ def recipes(italic):
     import make_italic
 
     out = []
-    for ch, op, source, band in derive.RECIPES:
+    for ch, op, source, band in make_italic.ITALIC_SC_RECIPES + derive.RECIPES:
         op, source, band = make_italic.ITALIC_RECIPES.get(ch, (op, source, band))
         if ch == "ɗ":  # the italic d with ɓ's top (make_italic.derive_stage)
             op = "attach"

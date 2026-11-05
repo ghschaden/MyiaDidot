@@ -26,6 +26,35 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-05 Italic g.sc and ɦ.sc from their capitals; Bold Italic Ɦ as its Ɓ
+
+    * g.sc in both italics made from G (make_italic ITALIC_SC_RECIPES,
+      enlarge): FontForge's draft ran the counter's left side straight down
+      into a corner (the person); G's is round. Its weight is the draft's
+      (164 against 166); ǥ.sc and ɢ follow it, 28-33 units narrower.
+    * Bold Italic Ɦ: the stem rising to its top at its own weight and the
+      curl leaving it on the left, as its Ɓ Ɗ Ƥ (make_bold
+      ITALIC_BOLD_RECIPES). The Italic's recipe curls the whole stem over:
+      drawn at the Italic's 164 on the Bold Italic's 287 stem, it stepped 45
+      units in on both sides under the curl (the person: steps before the
+      hook); at 287 its eye closed. The recipe's cuts are in the frame the
+      rebuilt letters are drawn in, 24 units right of the spaced font.
+    * Bold Italic Ɓ Ɗ Ƥ (and Ɦ ɦ.sc): the serif cut a unit inside the left
+      stem's edge (291 in that frame); the Italic's cut at 300 took 11 units
+      off the Bold Italic's stem, a step where the curl begins (the person,
+      on ɦ). Their own recipes, the Italic's numbers otherwise.
+    * Accepted by the person, 2026-11-05 (G; ɦ.sc Ɦ and the hooked stems).
+    * ɦ.sc: the Italic's from Ɦ (enlarge, H's stems brought to h.sc's; the
+      draft notched where the hook met the stem); the Bold Italic's its own
+      curl on h.sc at the small caps' size (Ɦ enlarged closed its eye to a
+      pinhole, as ƥ.sc's is). Both spaced so the least white before the
+      hook is h.sc h.sc's (Italic 107, the draft overlapped at -19; Bold
+      Italic 119, on h.sc's advance 8). ITALIC_BOLD_SC_STEMS_KEEP dropped.
+    * Quality: Ɦ's and ɦ.sc's steps gone, g.sc ǥ.sc ɢ kinks 5/5/4 -> 2/2/1;
+      new: joins of 1-2.6 degrees, three short wobbles by the Bold Italic
+      ǥ.sc's bar. Shaping: ɢ's advance and the marks on it, small-cap
+      advances; no glyph sequence changed.
+
 2026-11-05 Italic small caps: their overshoot scaled with the letter
 
     * FontForge's small-cap drafts kept the capitals' overshoot in units

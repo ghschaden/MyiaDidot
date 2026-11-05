@@ -25,8 +25,8 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
     case's ball (about 72; its curls too small for its drawn c's 94); the
     Bold Italic's drawn at its weight, wider (balls 80-126 for its c's
     121, J's 143: more closed the counters). Its ⱳ.sc, emboldened from
-    the Italic's draft, still has kinks and a wobble at the curl; ɦ.sc a
-    step where Ɦ's top serif is cut (both in quality-BoldItalic.txt).
+    the Italic's draft, still has kinks and a wobble at the curl (in
+    quality-BoldItalic.txt; ɦ.sc's steps done 2026-11-05, FONTLOG).
     Left: whether the person wants the capitals' curls larger still, to
     carry balls as large as J's; Ⱳ keeps its number (its curl run on
     straight from W's arm, 2026-11-03); Bold Italic a's ball does not grow (68 -> 66).
@@ -283,7 +283,9 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   BOXKÄMPFER, 2026-11-05): FontForge's drafts kept the capitals'
   overshoot in units. Done 2026-11-05 (FONTLOG), the derived small caps
   checked; to review by eye: the rounds' top and bottom hairlines are 9-10
-  units thinner (o.sc 74/67 -> 65/59, o 64/62, O 78/70); the IPA small
+  units thinner (o.sc 74/67 -> 65/59, o 64/62, O 78/70); g.sc and ɦ.sc made
+  from their capitals since (accepted, FONTLOG); the Bold Italic ǥ.sc's
+  three short wobbles by the bar still to look at; the IPA small
   capitals' serifs 9 heavier; the tip hint shift (v.sc w.sc ѵ.sc ⱳ.sc)
   at 30/32 ppem, now at -25, with or without it audit-clean; the small
   new quality entries (ɪ ʙ ʟ ʏ 2.2-2.4 degree joins, ɴ's 3.5 degree kink,
