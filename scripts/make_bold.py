@@ -177,6 +177,10 @@ ITALIC_BOLD_REBUILD = {
     # third stem's edge unioned with U's crossed it in a step; the person,
     # 2026-10-29)
     "uni019C": "Ɯ: the twin of the Bold Italic's U",
+    # ǥ.sc: the bar on the Bold Italic's g.sc (emboldened whole and joined
+    # to g.sc again, the two outlines nearly one, the union left 3 short
+    # wobbles in the bowl by the bar and 27 nodes more: the person, 2026-11-05)
+    "uni01E5.sc": "ǥ.sc: the bar on the Bold Italic's g.sc",
     # ʉ, the bar on u: u's knees drawn as the Italic turns (stroke_bold
     # KNEE_QUARTER); by strokes its own, the bar cutting the stem, its knee
     # stayed and its union with u left scraps (2026-10-29); its own recipe
@@ -277,6 +281,10 @@ ITALIC_BOLD_RECIPES = {
     # long as emboldened, as ɨ's: the Italic's 56 and AY, its overhang
     # less by about half of AX (the stems are wider)
     "ʉ": ("bar", "u", ("x", None, None, 143, 56 + AY)),
+    # ǥ.sc: the bar on the Bold Italic's g.sc (ITALIC_BOLD_REBUILD) at the
+    # Italic's 60 and AY, as heavy as emboldened (69; at 60 it stood lighter
+    # than g.sc's own bar, 64, as Ǥ's does not: 76 against G's 73)
+    "ǥ.sc": ("bar", "g.sc", ("s", 190, "last", None, 60 + AY)),
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
     # At y=600 the upright ɟ stem spans about 335..586. The light recipe's

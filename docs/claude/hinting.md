@@ -19,7 +19,9 @@ Moved from CLAUDE.md (its ground rules apply).
   font with overlaps.
 
 
-- Accepted Italic v.sc/w.sc/ѵ.sc/ⱳ.sc tip correction: `smallcap_tip_lines`
-  discovers on-curve points at o.sc's bottom (O's before 2026-11-05) and raises them half a pixel
-  at 30/32 ppem only. It applies to Italic, excluding Bold Italic. Review:
-  `docs/italic-smallcap-tip-hinting-review-2026-10-26.md`.
+- The Italic v.sc/w.sc/ѵ.sc/ⱳ.sc tip correction (half a pixel at 30/32
+  ppem, accepted 2026-10-26 for tips at -35) was dropped on 2026-11-05: with
+  the small caps' overshoot scaled (tips at -25) they sit on h.sc's and
+  o.sc's baseline row at 24-32 ppem without it; with it they stopped a
+  pixel above the line at 30/32 ppem.
+  Review: `docs/italic-smallcap-tip-hinting-review-2026-10-26.md`.

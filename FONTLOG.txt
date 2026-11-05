@@ -26,6 +26,30 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-05 Bold Italic ǥ.sc on its g.sc; the overshoot change reviewed
+
+    * Bold Italic ǥ.sc: the bar drawn on the Bold Italic's g.sc
+      (ITALIC_BOLD_REBUILD, its own recipe at the Italic's bar and AY, 68,
+      as heavy as emboldened). Emboldened whole and joined to g.sc again,
+      the two outlines nearly one, the union left three short wobbles in
+      the bowl by the bar and 27 nodes more (the person). Now g.sc's nodes
+      and the bar's: 125 -> 76 points, the wobbles gone.
+    * The overshoot change against the references (per 1000 units; Bodoni
+      Moda, Charis, EB Garamond, Libertinus italics with small caps): the
+      small caps' round hairline against o's 0.67-1.09, against O's
+      0.83-1.00, their overshoot 10-14. Myia Italic before 1.16 / 0.95 / 17,
+      now 1.03 / 0.84 / 12; Bold Italic before 1.23 / 1.02 / 18, now
+      1.07 / 0.88 / 12 (the references' bold italics 0.52-1.02 / 0.67-0.95).
+      The thinner hairlines bring them into range. The IPA small capitals'
+      serifs (ɪ's foot against i.sc's and o's hairline: Charis 0.93 / 0.83,
+      Libertinus 1.00 / 0.74): Myia before 0.67 / 0.67, now 0.80 / 0.80.
+    * The Italic small-cap tip hinting (v.sc w.sc ѵ.sc ⱳ.sc, half a pixel at
+      30/32 ppem, accepted 2026-10-26 for tips at -35) dropped: at -25 the
+      tips reach the baseline row with h.sc's feet and o.sc at 24-32 ppem
+      in v35 and v40 without it; with it they stopped a pixel above the
+      line at 30/32 ppem (rendered with FreeType,
+      hint_control with and without the rule; the audit clean both ways).
+
 2026-11-05 Italic g.sc and ɦ.sc from their capitals; Bold Italic Ɦ as its Ɓ
 
     * g.sc in both italics made from G (make_italic ITALIC_SC_RECIPES,
