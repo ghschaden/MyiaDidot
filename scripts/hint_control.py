@@ -175,9 +175,11 @@ def smallcap_tip_lines(tt):
     lines = []
     for name in ("v.sc", "w.sc", "uni0475.sc", "uni2C73.sc"):
         coords, _, flags = glyf[name].getCoordinates(glyf)
-        indices = [i for i, (_, y) in enumerate(coords) if y == glyf["O"].yMin and flags[i] & 1]
+        # the tips at the small caps' round bottom (o.sc's: their overshoot
+        # scaled with the letter since 2026-11-05, before it was O's)
+        indices = [i for i, (_, y) in enumerate(coords) if y == glyf["o.sc"].yMin and flags[i] & 1]
         if not indices:
-            raise ValueError(f"{name}: approved small-cap tip no longer meets O's bottom zone")
+            raise ValueError(f"{name}: approved small-cap tip no longer meets o.sc's bottom zone")
         lines.append(f"{name} touch {', '.join(map(str, indices))} yshift 0.5 @ 30, 32")
     return lines
 

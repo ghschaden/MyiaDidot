@@ -1557,7 +1557,33 @@ def smallcaps_stage(font, later=(), redraft=False):
             c.draw(rec)
         g.clearContours()
         weight_thick(rec, WEIGHT).draw(g.getPen())
+        overshoot_scaled(g, height, sc.SCALE)
     return made
+
+
+# a small cap's round past its zone by at most this much is an overshoot
+OVERSHOOT_NEAR = 60
+
+
+def overshoot_scaled(g, height, scale):
+    """FontForge's drafts keep the capitals' overshoot in units (39 past 0
+    and the small-cap height, 3.7 %; the Italic's capitals 2.7 %): a
+    contour whose top or bottom lies within OVERSHOOT_NEAR past its zone
+    has the points past it brought nearer by scale, along the slant (the
+    glyph is slanted); tails reaching further are left as they are."""
+    for c in g.contours:
+        ys = [p.y for p in c.points]
+        top = max(ys) if height < max(ys) <= height + OVERSHOOT_NEAR else None
+        bottom = min(ys) if -OVERSHOOT_NEAR <= min(ys) < 0 else None
+        for p in c.points:
+            if top is not None and p.y > height:
+                y = height + (p.y - height) * scale
+            elif bottom is not None and p.y < 0:
+                y = p.y * scale
+            else:
+                continue
+            p.x += (y - p.y) * SLANT
+            p.y = y
 
 
 # the Italic's own kerning over the Regular's (measured against italics):

@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-05 Italic small caps: their overshoot scaled with the letter
+
+    * FontForge's small-cap drafts kept the capitals' overshoot in units
+      (39 past 0 and 1040, 3.7 %; the Italic's capitals 2.7 %): the rounds
+      stood taller than the flat letters (the person, BOXKÄMPFER). A
+      contour whose top or bottom lies within 60 units past its zone has
+      the points past it brought nearer by the small caps' scale, along
+      the slant (make_italic overshoot_scaled): o.sc 1077 -> 1067, -35 ->
+      -25; pointed tips alike (v.sc w.sc -35 -> -25, a.sc 1051 -> 1048);
+      tails and hooks reaching further left as they are. Both italics.
+    * The rounds' top and bottom hairlines 9-10 units thinner (o.sc 74/67
+      -> 65/59, o 64/62; o.sc/O 0.83, the Regular's 0.87): to review.
+    * The IPA small capitals (ɢ ɪ ɴ ʀ ʏ ʙ ʜ ʟ) take o.sc's hairline as
+      their small caps' serifs': it now matches i.sc's, so their serifs
+      come out 9 units heavier (40/45 -> 49/54), nearer the lowercase's,
+      as the Regular's are; 2-8 units narrower.
+    * Bold Italic ɦ.sc kept as it was (ITALIC_BOLD_SC_STEMS_KEEP): its
+      stem, now judged straight, would have been widened whole by
+      small_cap_stems, closing its curl. ǥ.sc's bar on g.sc: Skia's union
+      failed on coinciding curves at every nudge but one to the left,
+      added (no other letter reaches it).
+    * Hinting: the approved Italic tip shift (v.sc w.sc ѵ.sc ⱳ.sc, 30/32
+      ppem) finds its points at o.sc's bottom; without it the audit is
+      also clean. 11 TrueType and 6 CFF hint findings gone (r.sc ж.sc
+      к.sc я.sc ɍ.sc bottoms, œ.sc ɶ, ɴ).
+
 2026-11-04 ɾ a fishhook: r's stem cut at f's hook
 
     * ɾ and ᵳ in every style: r's stem and foot slab with f's hook brought

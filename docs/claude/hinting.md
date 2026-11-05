@@ -20,6 +20,6 @@ Moved from CLAUDE.md (its ground rules apply).
 
 
 - Accepted Italic v.sc/w.sc/ѵ.sc/ⱳ.sc tip correction: `smallcap_tip_lines`
-  discovers on-curve points at O's bottom zone and raises them half a pixel
+  discovers on-curve points at o.sc's bottom (O's before 2026-11-05) and raises them half a pixel
   at 30/32 ppem only. It applies to Italic, excluding Bold Italic. Review:
   `docs/italic-smallcap-tip-hinting-review-2026-10-26.md`.

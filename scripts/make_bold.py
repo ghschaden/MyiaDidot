@@ -548,6 +548,12 @@ ITALIC_BOLD_SPLIT = {"xi"}
 # bowl, its counter narrowing into the crotch over the tail's loop, bent in
 # above it (2026-11-03; for every letter it broke the oldstyle 2 and filled q)
 ITALIC_BOLD_CAP_FREE = {"q.sc": 300}
+# Bold Italic small caps made from their capital whose stems small_cap_stems
+# leaves as enlarge makes them: emboldened across whole, ɦ.sc's curl closes
+# on its ball (2026-11-05: its stem, 258 against h.sc's 300, passed as
+# straight once the small caps' overshoot was scaled and its hairlines
+# gained less; before, the same stem was judged not straight and kept)
+ITALIC_BOLD_SC_STEMS_KEEP = {"uni0266.sc"}
 # Bold Italic letters whose smallest counter is refitted smooth over this
 # many units after stroking (stroke_bold.smooth_counter), its one corner
 # kept: q.sc's loop, the tail's weight changing fast along it, left with a
@@ -1629,9 +1635,10 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             # the union holds all of both, row by row, or it failed (curves
             # that coincide): then tried with the base a hair lower, higher
             # (ⱥ.sc: a.sc's foot a third of a unit above the letter's) or
-            # aside, which parts the curves (rounded away on saving), else
+            # aside, either way (ǥ.sc's bar on g.sc, 2026-11-05: only to the
+            # left), which parts the curves (rounded away on saving), else
             # the letter is left as emboldened
-            for nudge in (0, (0, -0.25), (0, 0.25), (0.25, 0)):
+            for nudge in (0, (0, -0.25), (0, 0.25), (0.25, 0), (-0.25, 0)):
                 b = pathops.simplify(placed)
                 if nudge:
                     b = pathops.Path()
@@ -1996,7 +2003,7 @@ def rederive(source, font, italic, whole):
 
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
-            if op == "enlarge" and name.endswith(".sc"):
+            if op == "enlarge" and name.endswith(".sc") and name not in ITALIC_BOLD_SC_STEMS_KEEP:
                 small_cap_stems(up, new)
         drop_specks(new)
         fill_pinholes(new, up[name], up)

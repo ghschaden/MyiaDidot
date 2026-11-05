@@ -279,19 +279,15 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   and finalization after rounding) puts the stem's handle back on the
   edge and shortens the far one along its own direction to it. The
   hooks' inner corners (J ȷ ɽ ɳ, Œ) turn a little tighter: to review.
-- Italic small caps stand taller at their rounds (the person, samples.pdf
-  BOXKÄMPFER, 2026-11-05): FontForge's drafts (make_italic
-  smallcaps_stage) keep the capitals' overshoot in units, 39 past 0 and
-  1040 (3.7 %; the Italic's capitals 2.7 %, the Regular's small caps
-  2.2 %). Scaling it with the letter (o.sc 1077 → 1067) was tried and
-  set aside: the small caps derived from them by recipes moved (ɦ.sc's
-  H 20 units, steps of 65 and 45 units at ƈ.sc's and ɦ.sc's hooks, the
-  IPA small capitals ɢ ɪ ʟ ʀ ʙ rescaled by o.sc's extent), about 25 new
-  quality findings. To do as its own change, the derived ones checked
-  one by one (the patch tried: after weight_thick in smallcaps_stage, a
-  contour whose top or bottom lies within 60 units past the zone has its
-  points past it brought nearer by smallcaps.SCALE; tails further out
-  left alone).
+- Italic small caps stood taller at their rounds (the person, samples.pdf
+  BOXKÄMPFER, 2026-11-05): FontForge's drafts kept the capitals'
+  overshoot in units. Done 2026-11-05 (FONTLOG), the derived small caps
+  checked; to review by eye: the rounds' top and bottom hairlines are 9-10
+  units thinner (o.sc 74/67 -> 65/59, o 64/62, O 78/70); the IPA small
+  capitals' serifs 9 heavier; the tip hint shift (v.sc w.sc ѵ.sc ⱳ.sc)
+  at 30/32 ppem, now at -25, with or without it audit-clean; the small
+  new quality entries (ɪ ʙ ʟ ʏ 2.2-2.4 degree joins, ɴ's 3.5 degree kink,
+  Bold Italic ƴ.sc л.sc wobbles).
 - Bold Italic small caps: the round sides stand 30-60 units tighter
   against the straight ones than in the Regular and the references
   (b.sc h.sc 0.94 of h.sc h.sc against 1.12-1.23, h.sc o.sc 1.02 against
