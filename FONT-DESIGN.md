@@ -295,7 +295,8 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
 - Bold Italic rounds' counters: done 2026-11-05 (the Italic's counter,
   make_bold italic_counter; FONTLOG). o's counter is as round as the
   Italic's, narrow with fairly straight sides: rounder only if the Italic's
-  o changes. The open rounds (c e ɔ є ...) keep their stroked insides.
+  o changes. The open rounds c C G c.sc g.sc take the Italic's inside
+  (italic_inside, 2026-11-06); e ɔ є and the others keep their stroked ones.
 - ſ ſſ before the round letters (c d e o g q œ and their accents) kerned
   −60, the Bold Italic −80 (the person, from proofs, 2026-11-05); the
   accented ones guarded against ſ only (kern_clear.GUARDED_AGAINST). The
@@ -371,9 +372,10 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   italics (the person: the drawn hook looks very different from r's).
   2026-11-06: those reworked and accepted (FONTLOG), the Regular
   small-caps sheet accepted, ƈ.sc ɠ.sc redrawn (curls on c.sc g.sc) and
-  accepted in the Regular, Italic and Bold, Ƭ in the Regular. To look at
-  again: the Bold Ƭ (from the bar's weight), the italics' Ƭ ƭ.sc (left arm
-  lengthened to 0.8 of the right), the Bold Italic ƈ.sc ɠ.sc (open curls).
+  accepted in the Regular, Italic and Bold, Ƭ in the Regular and Bold. To
+  look at again: the italics' Ƭ ƭ.sc (left arm 0.65 of the right), the
+  Bold Italic c C G g c.sc g.sc (insides from the Italic's, italic_inside)
+  and what is made of them, its ƈ.sc ɠ.sc (flatter curls).
   ʛ is ɠ.sc's alias, so at the small caps'
   height (1060), where ɢ and the other IPA small capitals stand at the
   x-height (884, 2026-11-01): the person to say whether ʛ follows them.

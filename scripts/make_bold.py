@@ -47,6 +47,7 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import arithmetic  # noqa: F401  (first: one thread, AVX2 at most, before numpy loads)
 import case_forms
+import italic_inside
 import kern_clear
 import stroke_cache
 from built_from import KEY as BUILT_KEY
@@ -348,21 +349,27 @@ ITALIC_BOLD_RECIPES = {
     # and its ball as large as the curl takes with no notch (80-90 at 180-200
     # degrees; the case's, 96, notched it): the Italic's smaller one (65)
     # scaled up would close the curl
-    # The bar run on 320 units left at the curl's weight before it curls, as
-    # the Italic's (the person, 2026-11-06: the left arm short against the
-    # right, 196 against 641; now about 0.8 of it, the Regular's 0.85)
-    "Ƭ": ("attach", "T", ("c", [(-10000, 800, 420, 10000)],
-                          [("line", ((440, 1398), (100, 1398), 92), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 100, 1398, 92), "dir": 180, "turn": "ccw",
-                                     "r": (135, 125), "sweep": 190, "ball": 90, "t": (133, 92),
-                                     "lead": 10, "cuts": [(100, 1300, 10000, 10000)]}, (0, 0), (1, 1, 0, 0))])),
+    # The bar run on 220 units left before it curls, as the Italic's (the
+    # person, 2026-11-06: the left arm short against the right, 196 against
+    # 641; at 0.8 too long, now about 0.65): the T's own bar (1352-1434, 82)
+    # from the stem, the stub of its top-left serif under it cut away (to
+    # 662, where the underside runs level): left there, the edge sank along
+    # the bar and climbed the stub again, a wobble (the person)
+    "Ƭ": ("attach", "T", ("c", [(-10000, 800, 420, 10000), (420, 1000, 662, 1352)],
+                          [("line", ((680, 1393), (200, 1393), 82), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 200, 1393, 82), "dir": 180, "turn": "ccw",
+                                     "r": (135, 125), "sweep": 190, "ball": 90, "t": (133, 82),
+                                     "lead": 10, "cuts": [(200, 1300, 10000, 10000)]}, (0, 0), (1, 1, 0, 0))])),
     # ƈ.sc ɠ.sc: derive's curl on c.sc g.sc, its ring at this weight as Ƈ's
     # (thin, 45 across its top) with a smaller ball (75): at the scaled
     # stroke and the case's ball the hook's inside closed to a straight
-    # slant (the person, 2026-11-06: "not very round")
-    **{ch: ("curl", base, ("s", [(797, 530, 10000, 10000)],
-                           {"at": ("x", 782), "dir": 70, "turn": "cw", "r": (155, 140),
-                            "sweep": 160, "ball": 75, "t": (100, 45)}))
+    # slant (the person, 2026-11-06: "not very round"). It leaves the top
+    # stroke further left (720) and flatter (35 degrees), turning further:
+    # from 782 at 70 degrees it rose off the stroke with a dip outside and
+    # a cusp inside ("badly attached", the person)
+    **{ch: ("curl", base, ("s", [(735, 530, 10000, 10000)],
+                           {"at": ("x", 720), "dir": 35, "turn": "cw", "r": (165, 140),
+                            "sweep": 195, "ball": 75, "t": (100, 45)}))
        for ch, base in (("ƈ.sc", "c.sc"), ("ɠ.sc", "g.sc"))},
     # Ƙ Ƴ: the arm cut below its flare into the serif (its own width there),
     # running on in its own direction; Ʋ: U's right stem
@@ -852,8 +859,11 @@ OVALS = {"o", "O", "zero"}
 # the Bold Italic's closed rounds: the stroked counter ran nearly straight
 # with tight turns (o, top right and bottom left), o.sc's a rounded
 # rectangle (the person, 2026-11-05: "very unround"); the Italic's counter
-# put in its place (italic_counter); their slashed forms through their ring
-ITALIC_OVALS = OVALS | {"o.sc"}
+# put in its place (italic_counter); their slashed forms through their ring.
+# g's bowl too: stroked it came to a point at the bottom left, where the
+# Italic's is round (the person, 2026-11-06: c g C G unround inside); the
+# open rounds' insides from the Italic's run (italic_inside)
+ITALIC_OVALS = OVALS | {"o.sc", "g"}
 # slashed rounds, drawn whole in the lighter style: emboldened whole, the
 # ring swelled where the slash crosses it (Ø not O with a stroke through);
 # the ring is the round's own, the slash emboldened apart (slashed)
@@ -980,6 +990,22 @@ def italic_counter(wide, bold):
     pen = out if (area(c) > 0) == (area(new[0]) > 0) else ReverseContourPen(out)
     for op, pts in c:
         getattr(pen, op)(*pts)
+    return out
+
+
+def inside_from(wide, bold, name):
+    """bold (an open round, upright frame) with the run facing its bowl
+    redrawn from wide's (italic_inside); as it was where they do not match"""
+    w, b = ufoLib2.objects.Glyph(), ufoLib2.objects.Glyph()
+    for path, glyph in ((wide, w), (bold, b)):
+        (path.replay if hasattr(path, "replay") else path.draw)(glyph.getPen())
+    try:
+        italic_inside.replace(w, b, *italic_inside.RUNS[name])
+    except ValueError as e:
+        print(f"  {name}: inside kept as stroked ({e})")
+        return bold
+    out = RecordingPen()
+    b.draw(out)
     return out
 
 
@@ -2441,6 +2467,8 @@ def main():
                 refit = (italic_counter if italic else oval) if g.name in (ITALIC_OVALS if italic else OVALS) else None
                 if refit:
                     bold = refit(wide, bold)
+                if italic and g.name in italic_inside.RUNS:
+                    bold = inside_from(wide, bold, g.name)
                 if g.name in SLASHED:
                     ring = RecordingPen()
                     contours_only(regular[SLASHED[g.name]]).replay(

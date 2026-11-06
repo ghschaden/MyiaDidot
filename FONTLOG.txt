@@ -26,6 +26,39 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-06 Bold Italic open rounds' insides from the Italic's; Ƭ again
+
+    * The person: the Bold Italic c.sc g.sc (and ƈ.sc ɠ.sc made of them)
+      unround inside, g.sc stepping just before its bar; also c g C G.
+      Emboldened by strokes, an open round's inside ran uneven where the
+      Italic's is smooth (c's left side bent twice, c.sc dented, C G flat
+      with tight turns, g.sc's jaw jogged into the bar). The closed rounds
+      took the Italic's counter on 2026-11-05 (italic_counter); g's bowl now
+      too (ITALIC_OVALS: it came to a point at the bottom left). The open
+      ones have no counter contour: scripts/italic_inside.py replaces the
+      run of the outline facing the bowl (c: inner top to inner bottom;
+      c.sc C: from the beak's inner corner; G g.sc: on to the far end of the
+      bar's underside) with the Italic's, mapped piece by piece between the
+      extremes they share, each piece scaled on its own so its ends land on
+      the stroked run's; its nodes turning less than a corner made smooth.
+      The ink outside the run, the weight and the advances stay as stroked.
+      What is made of them follows (ƈ.sc ɠ.sc ɠ ɔ.sc ȼ.sc Ɠ Ǥ ₲ ₡ ₵ ...).
+    * ƈ.sc ɠ.sc (Bold Italic): the curl leaves the top stroke further left
+      (720) and flatter (35 degrees), turning 195: from 782 at 70 degrees it
+      rose off the stroke with a dip outside and a cusp inside ("badly
+      attached").
+    * Ƭ: the Bold approved (accepted). The italics' left arm at 0.8 of the
+      right too long (the person, also in ƭ.sc): now about 0.65 (the bar run
+      on 220 units, not 320), the left side as much narrower (Italic 1439 ->
+      1339, Bold Italic 1525 -> 1425). The Bold Italic's arm wobbled: the
+      stub of the italic T's top-left serif stood under the added bar (to
+      662), the edge sinking along it and climbing the stub; the stub is cut
+      away and the bar is the T's own (1352-1434).
+    * Baselines: quality lists (Bold Italic 21 findings gone, 12 new, the
+      new ones small kinks in what is made of G C g: candidates). Shaping
+      golden and digest of the Italic (c117be01: Ƭ 100 narrower) and Bold
+      Italic (a522a555: Ƭ 100 narrower, Ɠ 1); Regular and Bold unchanged.
+
 2026-11-06 Sent-back drafts reworked; Regular small-caps sheet accepted
 
     * ɹ ɺ ɻ: r turned, as in the italics, Charis and Libertinus (derive.py

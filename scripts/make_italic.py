@@ -777,15 +777,15 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # toward the serif), so they meet without a ledge
                   # (its ball less than the case's 86: that nearly filled the
                   # curl, its small cap's draft closed to a slit)
-                  # the bar run on 320 units left at the curl's weight first: it
+                  # the bar run on 220 units left at the curl's weight first: it
                   # stood 197 against the right arm's 648 (the T's own 377; the
-                  # person, 2026-11-06: short against the other styles'), now 0.8
-                  # of it (the Regular's 0.85)
+                  # person, 2026-11-06: short against the other styles'; at 0.8
+                  # of it, as the Regular's 0.85, too long), now about 0.65
                   "Ƭ": ("attach", "T", ("c", [(-BIG, 800, 420, BIG)],
-                                        [("line", ((440, 1398), (100, 1398), 62), (0, 0), (1, 1, 0, 0)),
-                                         ("curl", {"at": ("pt", 100, 1398, 62), "dir": 180, "turn": "ccw",
+                                        [("line", ((440, 1398), (200, 1398), 62), (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 200, 1398, 62), "dir": 180, "turn": "ccw",
                                                    "r": (135, 125), "sweep": 200, "ball": 65, "t": (90, 62),
-                                                   "lead": 10, "cuts": [(100, 1300, BIG, BIG)]}, (0, 0), (1, 1, 0, 0))])),
+                                                   "lead": 10, "cuts": [(200, 1300, BIG, BIG)]}, (0, 0), (1, 1, 0, 0))])),
                   # the top hairline rising from where its ball was into a hook
                   # to the right (as Charis and Libertinus)
                   "ƈ": ("attach", "c", ("x", [(540, 450, BIG, BIG), (470, 450, 545, 800)],
@@ -1930,7 +1930,7 @@ ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
 ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
                        "uni02BC": (-145, 145), "uni02BB": (-130, 130),
                        "uni0260": (0, -380), "uni0282": (-265, 0), "uni0290": (0, -275), "uni0283": (-215, -135),
-                       "uni01AC": (105, 0), "uni027B": (0, -170), "uni04B7": (0, -145), "uni049B": (0, -125),
+                       "uni01AC": (5, 0), "uni027B": (0, -170), "uni04B7": (0, -145), "uni049B": (0, -125),
                        "uni0187": (0, -165), "uni04A3": (0, -145), "uni01B3": (0, -235), "uni01AD": (0, -105),
                        "uni026E": (0, -85), "uni0284": (-130, 0), "uni0198": (0, -180), "uni0273": (0, -130),
                        "uni01B2": (0, -80), "uni0271": (0, -100), "uni0267": (0, -100), "uni04B2": (0, -65),
