@@ -14,7 +14,22 @@ jobs:
       # no FontForge: the generators read its conversion and drafts from
       # sources/ (scripts/fontforge_inputs.py) and stop on a stale one
       - run: uv sync --frozen --python 3.12
+      # which machine: the generators' arithmetic is pinned to AVX2
+      # (scripts/arithmetic.py), but some runners still made Bold Italic
+      # glyphs a unit apart (2026-11-05)
+      - name: machine
+        run: |
+          LC_ALL=C lscpu | grep -E "Model name|Vendor ID"
+          grep -owE "avx512[a-z_]*|avx2|fma" /proc/cpuinfo | sort -u | tr '\n' ' '; echo
+          .venv/bin/python -I -c "import numpy; numpy.show_runtime()"
       - run: make reproduce
+        env:
+          MYIA_REPRODUCE_KEEP: build/reproduce
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: reproduce-rerun
+          path: build/reproduce/
 
   comparison:
     runs-on: ubuntu-latest

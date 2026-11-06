@@ -88,9 +88,17 @@
 	<anchor name="Bottom" x="456" y="0"/>
 	<anchor name="DotBelow" x="450" y="-20"/>
 	<anchor name="Cedilla" x="456" y="0"/>
-	<anchor name="Horn" x="1035" y="967"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-06</string>
+				<key>glyph</key>
+				<string>b4f1243d7e1c</string>
+				<key>review</key>
+				<string>the person, from a proof of the reworked drafts</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>
 			<key>org.myiadidot.smallcapDraft</key>

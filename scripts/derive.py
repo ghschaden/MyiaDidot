@@ -126,19 +126,9 @@ RECIPES = [
                           [("q", (-BIG, -BIG, BIG, -100), (0, 0), (1, 1, 16, 0)),
                            ("rect", (782, -120, 946, 100), (0, 0), (1, 1, 0, 0))])),
     ("ɯ", "twin", "u", 600),
-    # r's stem turned to the right: its own top serif and foot, the arm
-    # and ball turned below
-    # ɹ: r's stem turned to the right, its top serif and the right half of its
-    # foot; the arm drawn as a Didot terminal: a hairline leaving the stem low,
-    # turning down to the left, upright and thick into a ball on the baseline
-    # (r's own ear turned upside down hangs as a hairline)
-    ("ɹ", "attach", "space", ("x", [],
-                              [("rect", (494, 30, 658, 860), (0, 0), (1, 1, 0, 0)),
-                               ("r", (-BIG, 700, 390, BIG), (0, 0), (1, 1, 268, 0)),
-                               ("r", (226, -BIG, BIG, 60), (0, 0), (1, 1, 268, 0)),
-                               ("curl", {"at": ("pt", 540, 330, 56), "dir": 180, "turn": "ccw",
-                                         "r": (230, 250), "sweep": 100, "ball": None,
-                                         "t": (160, 56)}, (0, 0), (1, 1, 0, 0))], 884)),
+    # ɹ: r turned, as in the italics, Charis and Libertinus (the person,
+    # 2026-11-05: the Didot terminal drawn here before looked very unlike r's)
+    ("ɹ", "turn", "r", "x"),
     ("ʌ", "turn", "v", "x"),
     ("ʍ", "turn", "w", "x"),
     ("ʎ", "turn", "y", "x"),
@@ -398,12 +388,16 @@ RECIPES = [
                          "sweep": 145, "ball": None})),
     # more hooks, curls and loops drawn on
     # ʂ: s's bottom stroke turns down at the left into an upright stem below
-    # the baseline, which hooks to the right, as ʈ's (and Charis's ʂ)
-    ("ʂ", "attach", "s", ("x", [(-BIG, -BIG, 300, 360)],
-                          [("curl", {"at": ("pt", 320, 38, 76), "dir": 180, "turn": "ccw",
-                                     "r": (100, 100), "sweep": 90, "ball": 40, "t": (140, 76)},
+    # the baseline, which hooks to the right, as ʈ's (and Charis's ʂ). The
+    # turn leaves s where its bottom stroke runs level (x 420: -16..32) at
+    # its weight, the stem starting where the turn stands upright (the
+    # person, 2026-11-05: the turn into the hook "still not great"; from
+    # x 320 it stood 44 units above s's stroke, a bump and a notch)
+    ("ʂ", "attach", "s", ("x", [(-BIG, -BIG, 420, 360)],
+                          [("curl", {"at": ("pt", 420, 8, 48), "dir": 180, "turn": "ccw",
+                                     "r": (200, 100), "sweep": 90, "ball": 40, "t": (140, 48)},
                             (0, 0), (1, 1, 0, 0)),
-                           ("line", ((220, -50), (220, -300), 140), (0, 0), (1, 1, 0, 0)),
+                           ("line", ((220, -92), (220, -300), 140), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 220, -300, 140), "dir": 270, "turn": "ccw",
                                      "r": (140, 120), "sweep": 150, "ball": None, "t": (140, 52)},
                             (0, 0), (1, 1, 0, 0))])),
@@ -431,8 +425,11 @@ RECIPES = [
                                      "r": (120, 150), "sweep": 270, "ball": 40, "t": (110, 56)},
                             (0, 0), (1, 1, 0, 0)),
                            ("line", ((480, 200), (480, -330), 110), (0, 0), (1, 1, 0, 0))])),
+    # Ƭ: the bar cut where the curl leaves it (cut at 420, the curl from 440
+    # had the bar's corner stand 1.6 units under the ring's inner edge, a
+    # 30-degree kink once faired: "the right transition uneven", the person)
     ("Ƭ", "curl", "T", ("c", [(-BIG, 600, 420, BIG)],
-                        {"at": ("x", 440), "dir": 180, "turn": "ccw", "r": 150,
+                        {"at": ("x", 420), "dir": 180, "turn": "ccw", "r": 150,
                          "sweep": 150, "ball": None})),
     ("ⱳ", "curl", "w", ("x", [(1150, 700, BIG, BIG)],
                         {"at": ("y", 700, "last"), "dir": 71, "turn": "cw", "r": 160,
@@ -705,8 +702,18 @@ RECIPES = [
     ("ꞌ.sc", "attach", "space", ("s", [], [("quotesingle", (-BIG, -BIG, BIG, BIG), (0, 0),
                                               (1, 1, 0, 1040 - 1518))], 528)),
     ("ƴ.sc", "enlarge", "Ƴ", ("O", "o.sc")),
-    ("ƈ.sc", "enlarge", "Ƈ", ("O", "o.sc")),
-    ("ɠ.sc", "enlarge", "Ɠ", ("O", "o.sc")),
+    # ƈ.sc ɠ.sc: Ƈ Ɠ's curl drawn on c.sc g.sc (its place scaled as o.sc
+    # from O, 0.73), at radius 150 (Ƈ 170, ƈ 130): enlarged from the
+    # capitals their hooks stood smaller than ƈ's (the person, 2026-11-06).
+    # The cut from 530: the italics' c.sc g.sc hang their ball to 575 (cut
+    # from 657, its foot stood alone in the Bold Italic's rebuild); the
+    # uprights have no ink right of 797 between 500 and 700
+    ("ƈ.sc", "curl", "c.sc", ("s", [(797, 530, BIG, BIG)],
+                              {"at": ("x", 782), "dir": 70, "turn": "cw", "r": 150,
+                               "sweep": 145, "ball": None})),
+    ("ɠ.sc", "curl", "g.sc", ("s", [(797, 530, BIG, BIG)],
+                              {"at": ("x", 782), "dir": 70, "turn": "cw", "r": 150,
+                               "sweep": 145, "ball": None})),
     ("ƥ.sc", "enlarge", "Ƥ", ("O", "o.sc")),
     ("ɦ.sc", "enlarge", "Ɦ", ("O", "o.sc")),
     ("ɥ.sc", "alias", "uni0447.sc", None),
@@ -730,7 +737,7 @@ SPACING = {
     "ɗ": (0, -270), "ɖ": (0, -175), "ɭ": (0, -205), "ɳ": (0, -195), "ɠ": (0, -305), "ʐ": (0, -440),
     "ʈ": (0, -130), "ƭ": (0, -140), "ʄ": (0, -195), "ʝ": (0, -110), "ʑ": (0, -125), "ɕ": (0, -75),
     "ɚ": (0, -110), "ʂ": (-55, 0), "ʃ": (-145, -140), "ʒ": (145, 0), "ƴ": (0, 160),
-    "Ɓ": (340, 0), "Ɗ": (340, 0), "Ƥ": (340, 0), "Ƭ": (-235, 0), "Ƈ": (0, -125), "Ƙ": (0, -105),
+    "Ɓ": (340, 0), "Ɗ": (340, 0), "Ƥ": (340, 0), "Ƭ": (-235, 0), "Ƈ": (0, -125), "ƈ.sc": (0, -85), "Ƙ": (0, -105),
     "Ʀ": (0, -85), "Ʋ": (0, -80),
     "Қ": (0, -125), "қ": (0, -95), "Җ": (0, -125), "җ": (0, -100), "Ҳ": (0, -130), "ҳ": (0, -115),
 }
@@ -1929,6 +1936,67 @@ HOOK_BOTTOM = {"x": -628, "c": -628, "s": -500}
 HOOK_BOTTOM_RETROFLEX = {"x": -420, "c": -420, "s": -360}
 
 
+def smooth_curves(glyph, y0, y1, max_turn=10, tiny=16):
+    """glyph (in place) with the shallow kinks between two curves made
+    smooth between heights y0 and y1, where fair_joins (corners between
+    on-curve points) sees none: a curve shorter than tiny is merged into
+    the one after it (the first's handle out, the second's in), then each
+    on-curve point there between two curves that turns by at most max_turn
+    degrees gets both handles on the bisecting direction, their lengths
+    kept (Ƭ: the ring's inner edge split into two curves 3 degrees apart
+    where it leaves the bar). Returns how many points changed."""
+    changed = 0
+    for contour in glyph.contours:
+        pts = contour.points
+        # merge the short curves: a curve's end P (on-curve) and the next
+        # curve's end Q, P within tiny of the curve's start: drop P and its
+        # two handles nearest it
+        k = 0
+        while k < len(pts):
+            p = pts[k]
+            n = len(pts)
+            if (p.type == "curve" and y0 <= p.y <= y1 and pts[(k + 3) % n].type == "curve"
+                    and pts[(k - 1) % n].type is None and pts[(k + 1) % n].type is None):
+                start = next(pts[(k - j) % n] for j in range(1, 4) if pts[(k - j) % n].type)
+                if math.dist((start.x, start.y), (p.x, p.y)) < tiny:
+                    # the merged curve leaves start in its handle's direction,
+                    # a third of its span out (the short curve's own handle
+                    # was a few units long)
+                    h, q = pts[(k - 2) % n], pts[(k + 3) % n]
+                    d = math.dist((start.x, start.y), (h.x, h.y)) or 1
+                    reach = math.dist((start.x, start.y), (q.x, q.y)) / 3
+                    h.x = round(start.x + (h.x - start.x) / d * reach)
+                    h.y = round(start.y + (h.y - start.y) / d * reach)
+                    for i in sorted({(k - 1) % n, k, (k + 1) % n}, reverse=True):
+                        del pts[i]
+                    changed += 1
+                    k = 0
+                    continue
+            k += 1
+        n = len(pts)
+        for k, p in enumerate(pts):
+            a, b = pts[(k - 1) % n], pts[(k + 1) % n]
+            if p.type != "curve" or a.type is not None or b.type is not None or not y0 <= p.y <= y1:
+                continue
+            ain = math.atan2(p.y - a.y, p.x - a.x)
+            aout = math.atan2(b.y - p.y, b.x - p.x)
+            turn = (math.degrees(aout - ain) + 180) % 360 - 180
+            if not 0 < abs(turn) <= max_turn:
+                continue
+            mid = ain + math.radians(turn) / 2
+            la, lb = math.dist((a.x, a.y), (p.x, p.y)), math.dist((b.x, b.y), (p.x, p.y))
+            a.x, a.y = round(p.x - la * math.cos(mid)), round(p.y - la * math.sin(mid))
+            b.x, b.y = round(p.x + lb * math.cos(mid)), round(p.y + lb * math.sin(mid))
+            p.smooth = True
+            changed += 1
+    return changed
+
+
+# the derived letters whose curves are made smooth between these heights
+# after they are built (smooth_curves)
+SMOOTH_CURVES = {"Ƭ": (1300, 1400)}
+
+
 def fair_joins(glyph, y0, y1, max_turn=25, tiny=16):
     """glyph (in place) with the shallow corners between y0 and y1 faired:
     where an added piece meets a stroke that runs on at another angle (an
@@ -2700,6 +2768,8 @@ def build(font, ch, op, source, band, name=None):
                             "y": a.y + (rise if a.y > 0 else 0)})
     else:
         raise ValueError(op)
+    if ch in SMOOTH_CURVES:
+        smooth_curves(g, *SMOOTH_CURVES[ch])
     if small_cap:
         # reviewed with the small caps; smallcaps.py never redrafts it
         g.lib[SMALLCAP_DRAFT_KEY] = True

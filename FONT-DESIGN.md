@@ -369,7 +369,15 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   hook still not good) in the Regular, the italic ɉ (its bar not
   centred); the Regular's ɹ ɺ ɻ to be rebuilt as r turned, as in the
   italics (the person: the drawn hook looks very different from r's).
-  Still to review: the small-caps sheets of all four styles, the Bold's
+  2026-11-06: those reworked and accepted (FONTLOG), the Regular
+  small-caps sheet accepted, ƈ.sc ɠ.sc redrawn (curls on c.sc g.sc) and
+  accepted in the Regular, Italic and Bold, Ƭ in the Regular. To look at
+  again: the Bold Ƭ (from the bar's weight), the italics' Ƭ ƭ.sc (left arm
+  lengthened to 0.8 of the right), the Bold Italic ƈ.sc ɠ.sc (open curls).
+  ʛ is ɠ.sc's alias, so at the small caps'
+  height (1060), where ɢ and the other IPA small capitals stand at the
+  x-height (884, 2026-11-01): the person to say whether ʛ follows them.
+  Still to review: the small-caps sheets of the Italic, Bold and Bold Italic, the Bold's
   and Bold Italic's drafts sheets, and a.ipa (on no sheet). Bold and Bold Italic
   old-style figures (not drafts, so not on the sheets) have no recorded
   acceptance; Regular old-style 3 and 5 changed after theirs.

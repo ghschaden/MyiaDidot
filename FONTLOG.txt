@@ -26,6 +26,52 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-06 Sent-back drafts reworked; Regular small-caps sheet accepted
+
+    * ɹ ɺ ɻ: r turned, as in the italics, Charis and Libertinus (derive.py
+      "turn"), not the Didot terminal drawn before (the person: very unlike
+      r's). In the Bold they carry the Bold r's own ball extreme and wobble.
+    * ʂ: the turn leaves s where its bottom stroke runs level (x 420) at
+      its weight, the stem from where the turn stands upright; from x 320
+      it stood 44 units above s's stroke, a bump and a notch.
+    * Ƭ: the bar cut where the curl leaves it (420), the two curves of the
+      ring's inner edge there made smooth (derive.smooth_curves): the
+      bar's corner had stood 1.6 units under the ring, a kink once faired.
+      The Bold's its own recipe (make_bold BOLD_RECIPES): from the
+      Regular's the ring took the stroke where the bracket under the bar
+      swells (124 units, the bar 60) and thickened toward the ball (the
+      person); now the bracket is cut away there and the ring leaves the bar
+      at 60, its upright side 110. The italics' left arm was short against
+      the right (197 and 196 against 648 and 641; their T's own 377 and
+      374; the uprights' 0.85): the bar runs on 320 units at the curl's
+      weight before it curls (make_italic ITALIC_RECIPES, make_bold
+      ITALIC_BOLD_RECIPES), now 0.8 of the right arm; ƭ.sc follows. Its
+      left side the wider by the arm (ITALIC_SIDEBEARINGS −215 → +105:
+      the ring as far left of T's top corner as before, Italic 1119 →
+      1439 units, Bold Italic 1203 → 1525; derived_spacing: the Italic's
+      left side −0.01 of T's, references −0.12..+0.18; the Bold Italic's
+      −0.07, references −0.04..+0.03).
+    * Italic ɉ: the bar centred on the stem (92 each side; derive's bar
+      stopped at the ink, 169 left, 14 right). Bold Italic j_bar.py: both
+      arms 1.25 of the bar's thickness past the stem (the left one had come
+      to 68, the right 80).
+    * ƈ.sc ɠ.sc: Ƈ Ɠ's curl drawn on c.sc g.sc at radius 150 (enlarged from
+      the capitals their hooks stood smaller than ƈ's, the person); ʛ, an
+      alias of ɠ.sc, takes its width (1170 -> 1142). Cut from 530, below
+      the italics' c.sc g.sc ball (575): in the Bold Italic both are made
+      again from its own c.sc g.sc, not emboldened whole, with their own
+      curl (ITALIC_BOLD_RECIPES): at the scaled stroke and the case's ball
+      the hook's inside closed to a straight slant (the person: "not very
+      round"); now a thin ring (45 across its top) and a ball of 75, as Ƈ's.
+    * Accepted by the person (scripts/accepted.py, 2026-11-06): ɹ ɺ ɻ ʂ,
+      the Italic ɉ, from smallcaps-review.pdf ƙ.sc ƭ.sc ƴ.sc ʋ.sc ⱳ.sc, and
+      from a proof Ƭ ƈ.sc ɠ.sc in the Regular, ƈ.sc ɠ.sc in the Italic and
+      Bold. The Italic Ƭ's acceptance withdrawn (its arm redrawn); the
+      Bold's Ƭ and the Bold Italic's Ƭ ƈ.sc ɠ.sc to look at again.
+    * The generators' CPU pins (one thread, AVX2 at most) moved into
+      scripts/arithmetic.py, imported first by make_italic, make_bold and
+      smallcaps; CI prints the machine and keeps a differing rerun.
+
 2026-11-05 Regular and Italic drafts accepted from their sheets
 
     * The person's pass through drafts-review.pdf and

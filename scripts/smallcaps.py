@@ -30,6 +30,7 @@ from fontTools.pens.basePen import BasePen
 from fontTools.pens.boundsPen import BoundsPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import arithmetic  # noqa: F401  (first: AVX2 at most, before numpy loads)
 from accepted import acceptances, carry
 from composites import SPECIAL, Builder
 

@@ -265,7 +265,8 @@ uni01AC zone 1                   # derived hooks/curls rebuilt at Old Standard's
 uni01AD kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 273,900 1.9 degrees
 uni01AD stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.83, lighter)
 uni01AD zone 1                   # 2026-10-16 known at the start (quality checks added): top +3 from 1434
-uni01AD.sc kink 1                # italic curl balls: 523,97 3.2 degrees
+uni01AD.sc kink 2                # 2026-11-06 the person's second look: Bold Ƭ from the bar's weight, the italics' Ƭ ƭ.sc left arm lengthened, Bold Italic ƈ.sc ɠ.sc open curls: candidates for review: 747,940 6.8 degrees; 523,97 3.1 deg
+uni01AD.sc smooth 1              # 2026-11-06 the person's second look: Bold Ƭ from the bar's weight, the italics' Ƭ ƭ.sc left arm lengthened, Bold Italic ƈ.sc ɠ.sc open curls: candidates for review: 159,905 2.2 degrees
 uni01AE kink 2                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 825,-231 6.8 degrees; 972,1307 3.9 degrees
 uni01B1 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1100,1213 2.1 degrees
 uni01B2 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 425,409 2.3 degrees
@@ -302,7 +303,6 @@ uni0242.sc stroke 1              # stroke weights against the kind's (scripts/qu
 uni0244 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 425,409 2.5 degrees
 uni0245 kink 2                   # 2026-10-16 known at the start (quality checks added): 282,218 4.2 degrees; 1158,158 6.4 degrees
 uni0248 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 255 against 222 (1.15, darker)
-uni0249 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 488,470 15 units aside; 487,414 16 units aside
 uni0249 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni0249.sc kink 2                # 2026-10-21 Italic reweighted and tightened: -31,152 4.3 degrees; 199,229 6.6 degrees
 uni0249.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +4 from 1040

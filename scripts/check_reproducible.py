@@ -13,6 +13,7 @@ Exit status 1 if anything would.
 """
 
 import difflib
+import os
 import shutil
 import subprocess
 import sys
@@ -119,6 +120,12 @@ def reproduce(work, sources):
             print("  " + line)
         if len(lines) > 60:
             print(f"  ... {len(lines) - 60} more")
+    # MYIA_REPRODUCE_KEEP=DIR keeps the rerun's styles when they differ (CI
+    # uploads them, to tell which machine's arithmetic made what)
+    if found and (keep := os.environ.get("MYIA_REPRODUCE_KEEP")):
+        for path in (italic, bold, bold_italic):
+            shutil.copytree(path, Path(keep) / path.name, dirs_exist_ok=True)
+        print(f"rerun's styles kept in {keep}")
     return 1 if found else 0
 
 

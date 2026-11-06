@@ -1,29 +1,34 @@
-"""Give Bold Italic ɉ a visible right bar arm at its own weight."""
+"""Give Bold Italic ɉ a visible bar arm on both sides, at its own weight."""
 
 
 def finish(font):
-    """Extend the bar by 1.25 of its thickness beyond the right stem edge.
+    """Both bar arms 1.25 of the bar's thickness past the stem's edges.
 
-    The four line corners at the right join survive whole emboldening,
-    but its two terminal corners end inside the heavier stem. Keep the
-    stem corners and the rest of the glyph; align the terminal to the
-    existing bar's top and bottom, with a slanted end.
+    Emboldened, the stem eats into the Italic's arms: the right one
+    ended inside the heavier stem (the person, 2026-10-24: too short), and
+    with the Italic's bar centred (2026-11-06) the left one came to 68
+    against the right one's 80. The stem corners and the rest of the glyph
+    stay; each terminal keeps the bar's top and bottom and its slanted end.
     """
     if font.info.styleName != "Bold Italic" or "uni0249" not in font:
         return
     glyph = font["uni0249"]
     for contour in glyph.contours:
         points = contour.points
-        for i in range(len(points) - 3):
-            top, end_top, end_bottom, bottom = points[i:i + 4]
-            if not all(p.type == "line" for p in (top, end_top, end_bottom, bottom)):
+        n = len(points)
+        for i in range(n):
+            a, b, c, d = (points[(i + k) % n] for k in range(4))
+            if not all(p.type == "line" for p in (a, b, c, d)):
                 continue
-            if not (450 < top.y < 490 and 390 < bottom.y < 430):
+            if abs(b.y - a.y) > 4 or abs(c.y - d.y) > 4:
                 continue
-            if abs(end_top.y - top.y) > 4 or abs(end_bottom.y - bottom.y) > 4:
-                continue
-            thickness = top.y - bottom.y
-            extension = round(1.25 * thickness)
-            end_top.x, end_top.y = top.x + extension, top.y
-            end_bottom.x, end_bottom.y = bottom.x + extension, bottom.y
-            return
+            # the right arm: stem top, end top, end bottom, stem bottom
+            if 450 < a.y < 490 and 390 < d.y < 430 and b.x > a.x and c.x > d.x:
+                extension = round(1.25 * (a.y - d.y))
+                b.x, b.y = a.x + extension, a.y
+                c.x, c.y = d.x + extension, d.y
+            # the left arm: stem bottom, end bottom, end top, stem top
+            elif 390 < a.y < 430 and 450 < d.y < 490 and b.x < a.x and c.x < d.x:
+                extension = round(1.25 * (d.y - a.y))
+                b.x, b.y = a.x - extension, a.y
+                c.x, c.y = d.x - extension, d.y

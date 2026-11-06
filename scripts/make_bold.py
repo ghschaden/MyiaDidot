@@ -36,13 +36,6 @@ import sys
 import unicodedata
 from pathlib import Path
 
-# one thread per process (a pool of JOBS does the stroking; numpy's
-# OpenBLAS would take every core for fair_arcs' small solves); and the
-# same arithmetic on any x86 machine, AVX2 at most: fair_arcs' solves
-# came out otherwise on GitHub's AVX-512 runners (68 Bold Italic glyphs)
-os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
-os.environ.setdefault("OPENBLAS_CORETYPE", "Haswell")
-os.environ.setdefault("NPY_DISABLE_CPU_FEATURES", "X86_V4 AVX512F AVX512_SKX AVX512_ICL AVX512_SPR")
 import pathops
 import ufoLib2
 from fontTools.pens.areaPen import AreaPen
@@ -52,6 +45,7 @@ from fontTools.pens.reverseContourPen import ReverseContourPen
 from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import arithmetic  # noqa: F401  (first: one thread, AVX2 at most, before numpy loads)
 import case_forms
 import kern_clear
 import stroke_cache
@@ -215,12 +209,12 @@ ITALIC_BOLD_REBUILD = {
     "uni028B": "ʋ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
     "uni2C73": "ⱳ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
     "uni01AC": "Ƭ: its own recipe (ITALIC_BOLD_RECIPES); the Italic's ball scaled up closed the curl",
-    "uni0188.sc": "ƈ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni0188.sc": "ƈ.sc: its own curl on the Bold Italic ƈ.sc (ITALIC_BOLD_RECIPES); emboldened from the Italic's draft, its curl closed on the ball",
     "uni0199.sc": "ƙ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni01A5.sc": "ƥ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni01AD.sc": "ƭ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni01B4.sc": "ƴ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
-    "uni0260.sc": "ɠ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni0260.sc": "ɠ.sc: its own curl on the Bold Italic ɠ.sc (ITALIC_BOLD_RECIPES); emboldened from the Italic's draft, its curl closed on the ball",
     "uni0266.sc": "ɦ.sc: its own curl on the Bold Italic h.sc (ITALIC_BOLD_RECIPES); emboldened from the Italic's draft, its curl closed on the ball",
     "uni028B.sc": "ʋ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni049A": "Қ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the curl notched",
@@ -239,6 +233,14 @@ ITALIC_BOLD_REBUILD = {
 # loop's counter closes, its turn too tight for a stroke twice as heavy):
 # used as given, nothing scaled
 BOLD_RECIPES = {
+    # Ƭ: the Regular's curl, but leaving the bar at the bar's own weight (60)
+    # with the bracket under it cut away (420-560): from the Regular's
+    # recipe the ring took the stroke where the bracket swells (124 at 420),
+    # so it thickened toward the ball (the person, 2026-11-06); the upright
+    # part of the ring thick (110), as the Bold Italic's
+    "Ƭ": ("curl", "T", ("c", [(-10000, 600, 420, 10000), (420, 1250, 560, 1374)],
+                        {"at": ("pt", 420, 1404, 60), "dir": 180, "turn": "ccw", "r": (150, 150),
+                         "sweep": 150, "ball": None, "t": (110, 60), "lead": 10})),
     # ʑ, ɕ: the Regular's, the loop 0.55 of o's stem (as there), wider and
     # rounder so its counter stays open; the base cut at the tail, the loop
     # alone the bottom (overshooting as o does), so no edge of the bar steps
@@ -346,10 +348,22 @@ ITALIC_BOLD_RECIPES = {
     # and its ball as large as the curl takes with no notch (80-90 at 180-200
     # degrees; the case's, 96, notched it): the Italic's smaller one (65)
     # scaled up would close the curl
+    # The bar run on 320 units left at the curl's weight before it curls, as
+    # the Italic's (the person, 2026-11-06: the left arm short against the
+    # right, 196 against 641; now about 0.8 of it, the Regular's 0.85)
     "Ƭ": ("attach", "T", ("c", [(-10000, 800, 420, 10000)],
-                          [("curl", {"at": ("pt", 420, 1398, 92), "dir": 180, "turn": "ccw",
+                          [("line", ((440, 1398), (100, 1398), 92), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 100, 1398, 92), "dir": 180, "turn": "ccw",
                                      "r": (135, 125), "sweep": 190, "ball": 90, "t": (133, 92),
-                                     "lead": 10, "cuts": [(420, 1300, 10000, 10000)]}, (0, 0), (1, 1, 0, 0))])),
+                                     "lead": 10, "cuts": [(100, 1300, 10000, 10000)]}, (0, 0), (1, 1, 0, 0))])),
+    # ƈ.sc ɠ.sc: derive's curl on c.sc g.sc, its ring at this weight as Ƈ's
+    # (thin, 45 across its top) with a smaller ball (75): at the scaled
+    # stroke and the case's ball the hook's inside closed to a straight
+    # slant (the person, 2026-11-06: "not very round")
+    **{ch: ("curl", base, ("s", [(797, 530, 10000, 10000)],
+                           {"at": ("x", 782), "dir": 70, "turn": "cw", "r": (155, 140),
+                            "sweep": 160, "ball": 75, "t": (100, 45)}))
+       for ch, base in (("ƈ.sc", "c.sc"), ("ɠ.sc", "g.sc"))},
     # Ƙ Ƴ: the arm cut below its flare into the serif (its own width there),
     # running on in its own direction; Ʋ: U's right stem
     "Ƙ": ("curl", "K", ("c", [(870, 1130, 10000, 10000)],  # (at 1150 a step, ƙ.sc's ledges)

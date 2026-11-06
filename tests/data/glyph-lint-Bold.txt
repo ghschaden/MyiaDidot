@@ -1,5 +1,4 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
 dcaron notch 1                   # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (1059,1413 43 px)
 uni0249 ledge 2                  # reviewed 2026-10-24: intentional right bar terminal, preserved by LEDGE_KEEP; 465,410 11 units; 476,472 11 units
-uni027B notch 1                  # reviewed 2026-10-15, leave: emboldening leaves a slit at the join (507,176 51 px)
 uni02C0 notch 1                  # reviewed 2026-10-25: inherited open ball-terminal/bowl cusp; curves rebuilt from final Bold base; 223,1096 52 px
