@@ -375,14 +375,34 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   accepted in the Regular, Italic and Bold, Ƭ in the Regular and Bold; the
   italics' Ƭ ƭ.sc (left arm 0.65 of the right) and the Bold Italic c C G g
   c.sc g.sc ƈ.sc ɠ.sc Ǥ ɔ.sc (insides from the Italic's, italic_inside)
-  accepted from proofs. **To do:** the Bold Italic Ɠ and ɠ, the person not
-  a fan of them (2026-11-06; both made from the new G and g, Ɠ by its own
-  recipe ITALIC_BOLD_RECIPES, ɠ derived from g): what to change not yet said.
+  accepted from proofs. The Bold Italic Ɠ, ɠ and revised ɠ.sc also
+  accepted (2026-11-06): Ɠ's hook thicker and joined without the ledge,
+  ɠ's inner downstroke a continuous curve, ɠ.sc's hook rising as the
+  capital's. Marked drawn and accepted. See
+  [G-hook review](docs/g-hooks-review-2026-11-06.md).
   ʛ is ɠ.sc's alias, so at the small caps'
   height (1060), where ɢ and the other IPA small capitals stand at the
   x-height (884, 2026-11-01): the person to say whether ʛ follows them.
   Still to review: the small-caps sheets of the Italic, Bold and Bold Italic, the Bold's
-  and Bold Italic's drafts sheets, and a.ipa (on no sheet). Bold and Bold Italic
+  and Bold Italic's drafts sheets. The Italic's 26 basic Latin small caps
+  are accepted unchanged (2026-11-06):
+  [Italic Latin small-cap review](docs/italic-smallcaps-latin-review-2026-11-06.md).
+  The next 46 extended Latin Italic small caps have a two-page proof.
+  Sent back after the person's review: uni0280.sc has a torn bowl and
+  detached leg (the lower recipe cuts through the bowl); uni0253.sc and
+  uni0257.sc have oversized, low hooks unlike their capitals. Those three
+  are now locally reconstructed and accepted (2026-11-06), including
+  smoothing the small nodges on both sides of the hook stems:
+  [small-cap repairs](docs/italic-smallcap-repairs-2026-11-06.md).
+  Bold Italic follow-up: the hooked b/d small caps' lower serif joins and
+  upper stem transitions are locally redrawn and both are accepted. The b's
+  approved upper counter is rounder like its lower counter:
+  [Bold Italic hook stems](docs/bold-italic-hook-stems-review-2026-11-06.md).
+  The other 43 glyphs in this batch still await acceptance:
+  [extended Latin small-cap review](docs/italic-smallcaps-extended-latin-review-2026-11-06.md).
+  a.ipa, formerly on no sheet, now has
+  a focused four-style review and proofs: [IPA a review](docs/ipa-a-review-2026-11-06.md).
+  Accepted unchanged in all four styles (2026-11-06). Bold and Bold Italic
   old-style figures (not drafts, so not on the sheets) have no recorded
   acceptance; Regular old-style 3 and 5 changed after theirs.
 
