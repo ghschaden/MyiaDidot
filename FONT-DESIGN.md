@@ -372,10 +372,12 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   italics (the person: the drawn hook looks very different from r's).
   2026-11-06: those reworked and accepted (FONTLOG), the Regular
   small-caps sheet accepted, ƈ.sc ɠ.sc redrawn (curls on c.sc g.sc) and
-  accepted in the Regular, Italic and Bold, Ƭ in the Regular and Bold. To
-  look at again: the italics' Ƭ ƭ.sc (left arm 0.65 of the right), the
-  Bold Italic c C G g c.sc g.sc (insides from the Italic's, italic_inside)
-  and what is made of them, its ƈ.sc ɠ.sc (flatter curls).
+  accepted in the Regular, Italic and Bold, Ƭ in the Regular and Bold; the
+  italics' Ƭ ƭ.sc (left arm 0.65 of the right) and the Bold Italic c C G g
+  c.sc g.sc ƈ.sc ɠ.sc Ǥ ɔ.sc (insides from the Italic's, italic_inside)
+  accepted from proofs. **To do:** the Bold Italic Ɠ and ɠ, the person not
+  a fan of them (2026-11-06; both made from the new G and g, Ɠ by its own
+  recipe ITALIC_BOLD_RECIPES, ɠ derived from g): what to change not yet said.
   ʛ is ɠ.sc's alias, so at the small caps'
   height (1060), where ɢ and the other IPA small capitals stand at the
   x-height (884, 2026-11-01): the person to say whether ʛ follows them.
