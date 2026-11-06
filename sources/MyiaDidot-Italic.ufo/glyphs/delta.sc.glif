@@ -3,24 +3,33 @@
 	<advance width="1049"/>
 	<outline>
 		<contour>
-			<point x="20" y="89" type="line"/>
-			<point x="669" y="89" type="line"/>
-			<point x="884" y="874" type="line"/>
+			<point x="14" y="89" type="line"/>
+			<point x="631" y="89" type="line"/>
+			<point x="847" y="874" type="line"/>
 		</contour>
 		<contour>
 			<point x="-117" y="0" type="line"/>
 			<point x="-98" y="62" type="line"/>
-			<point x="1066" y="1073" type="line"/>
-			<point x="1119" y="1073" type="line"/>
-			<point x="835" y="0" type="line"/>
+			<point x="1023" y="1073" type="line"/>
+			<point x="1073" y="1073" type="line"/>
+			<point x="788" y="0" type="line"/>
 		</contour>
 	</outline>
-	<anchor name="Bottom" x="389" y="0"/>
-	<anchor name="DotBelow" x="383" y="-20"/>
+	<anchor name="Bottom" x="364" y="0"/>
+	<anchor name="DotBelow" x="358" y="-20"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-06</string>
+				<key>glyph</key>
+				<string>197c365d3833</string>
+				<key>review</key>
+				<string>docs/italic-smallcaps-greek-review-2026-11-06.md</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>small cap draft</string>
+			<string>drawn</string>
 			<key>org.myiadidot.smallcapDraft</key>
 			<true/>
 		</dict>

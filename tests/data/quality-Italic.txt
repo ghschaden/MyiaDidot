@@ -208,7 +208,7 @@ tbar stroke 1                    # stroke weights against the kind's (scripts/qu
 tbar.sc kink 1                   # 2026-10-16 known at the start (quality checks added): 718,946 1.6 degrees
 tbar.sc smooth 1                 # 2026-10-16 known at the start (quality checks added): 535,944 2.1 degrees
 theta zone 1                     # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: bottom +7 from -23
-theta.sc kink 3                  # 2026-10-21 Italic reweighted and tightened: 94,346 5.9 degrees; 958,653 6.0 degrees; 306,658 2.9 degrees
+theta.sc kink 2                  # 2026-11-06 approved counter repair removes one inner kink; two existing outer joins remain: 93,345 5.8 degrees; 1015,652 5.7 degrees
 theta.sc smooth 1                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet, the person: 747,345 2.6 degrees
 thorn zone 1                     # 2026-10-16 known at the start (quality checks added): bottom +11 from -461
 thorn.sc kink 4                  # 2026-10-21 Italic reweighted and tightened: 704,835 5.4 degrees; 946,591 6.5 degrees; 743,426 6.5 degrees; 797,610 6.2 degrees
@@ -542,8 +542,6 @@ uni044C.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 8
 uni044C.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 326,931 2.4 degrees
 uni044D.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 52,214 5.6 degrees; 288,287 4.0 degrees; 572,152 6.9 degrees; 888,672 6.2 degrees; 719,177 6.0 degrees
 uni044E.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 479,645 3.4 degrees
-uni044E.sc extreme 1             # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet, the person: 305,98 5 units past
-uni044E.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 743,655 3.4 degrees; 1396,654 5.8 degrees
 uni044F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni044F.sc kink 4                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet, the person: 424,701 5.0 degrees; -39,89 2.9 degre
 uni044F.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 238,732 2.6 degrees

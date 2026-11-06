@@ -383,7 +383,7 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   ʛ is ɠ.sc's alias, so at the small caps'
   height (1060), where ɢ and the other IPA small capitals stand at the
   x-height (884, 2026-11-01): the person to say whether ʛ follows them.
-  Still to review: the small-caps sheets of the Italic, Bold and Bold Italic, the Bold's
+  Still to review: the small-caps sheets of the Bold and Bold Italic, the Bold's
   and Bold Italic's drafts sheets. The Italic's 26 basic Latin small caps
   are accepted unchanged (2026-11-06):
   [Italic Latin small-cap review](docs/italic-smallcaps-latin-review-2026-11-06.md).
@@ -405,6 +405,18 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   and finished with its spacing retained; its fuller hook and smooth stem
   transition are also accepted (2026-11-06):
   [ƥ join review](docs/italic-p-hook-join-review-2026-11-06.md).
+  The next 15 Latin/phonetic Italic small caps are accepted unchanged
+  (2026-11-06), including omega.sc shared with Greek:
+  [Latin/phonetic small-cap review](docs/italic-smallcaps-phonetic-review-2026-11-06.md).
+  The next 17 Greek forms are accepted: 14 unchanged, delta.sc and
+  lambda.sc after matching their capitals' diagonal angles, theta.sc
+  after rounding its counter from o.sc. Bold Italic regenerated:
+  [Greek small-cap review](docs/italic-smallcaps-greek-review-2026-11-06.md).
+  The final 40 Italic small-cap drafts, all Cyrillic, are accepted: 39
+  unchanged, Ю.sc (uni044E.sc) after rebuilding from i.sc/o.sc with a
+  lighter stem, fuller bowl and smooth lower-right join. This completes
+  the Italic small-cap review:
+  [Cyrillic small-cap review](docs/italic-smallcaps-cyrillic-review-2026-11-06.md).
   a.ipa, formerly on no sheet, now has
   a focused four-style review and proofs: [IPA a review](docs/ipa-a-review-2026-11-06.md).
   Accepted unchanged in all four styles (2026-11-06). Bold and Bold Italic
