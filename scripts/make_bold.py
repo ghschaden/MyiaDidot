@@ -353,9 +353,11 @@ ITALIC_BOLD_RECIPES = {
     # person, 2026-11-06: the left arm short against the right, 196 against
     # 641; at 0.8 too long, now about 0.65): the T's own bar (1352-1434, 82)
     # from the stem, the stub of its top-left serif under it cut away (to
-    # 662, where the underside runs level): left there, the edge sank along
-    # the bar and climbed the stub again, a wobble (the person)
-    "Ƭ": ("attach", "T", ("c", [(-10000, 800, 420, 10000), (420, 1000, 662, 1352)],
+    # 495, where the underside runs level; these numbers are the recipe's
+    # frame, the T as rederive meets it, 172 units left of the saved T's):
+    # left there, the edge sank along the bar and climbed the stub again, a
+    # wobble (the person). Cut to 662 it took the stem's left side, a step
+    "Ƭ": ("attach", "T", ("c", [(-10000, 800, 420, 10000), (420, 1150, 495, 1352)],
                           [("line", ((680, 1393), (200, 1393), 82), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 200, 1393, 82), "dir": 180, "turn": "ccw",
                                      "r": (135, 125), "sweep": 190, "ball": 90, "t": (133, 82),
