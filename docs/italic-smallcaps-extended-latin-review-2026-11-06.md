@@ -15,7 +15,19 @@ initial batch was not accepted. See the resolution and focused findings below. B
 Subsequent resolution: those three Italic glyphs were repaired and
 approved on 2026-11-06, including cleanup of the two hook stems. See
 [small-cap repairs](italic-smallcap-repairs-2026-11-06.md). The other
-43 glyphs in this batch remain unaccepted.
+43 glyphs in this batch were subsequently approved unchanged on 2026-11-06.
+
+After commit `6e0fba21` was pushed to main, the remaining 43 were given
+a refreshed two-page sheet:
+`build/glyph-review/italic-smallcaps-extended-latin-remaining/review.pdf`
+(rendered as `review-1.png` and `review-2.png` alongside). Both refreshed
+pages were visually inspected. Their fingerprints match the original
+43 drawings exactly; no sources changed for this refresh. All 86 smcp/c2sc
+checks pass, and outline lint has no findings. The three corrected,
+accepted forms are excluded. The person approved this remaining batch
+unchanged; all 43 acceptance fingerprints are recorded in the Italic UFO.
+The accepted sheet is retained as
+`proofs/italic-smallcaps-extended-latin-2026-11-06.pdf`.
 The sheet shows the full capital, small cap and lowercase at the same em
 scale, with baseline/x-height/small-cap/cap-height guides, then n/small-cap/n
 and H/small-cap/H contexts. Hook counters remain open, the bars remain
@@ -57,7 +69,8 @@ uni0269.sc uni026F.sc uni0272.sc uni0280.sc uni0288.sc uni0289.sc
 uni028A.sc uni028B.sc uni028C.sc uni0292.sc uni2C65.sc uni2C66.sc uogonek.sc
 ```
 
-Awaiting visual acceptance of these 46 Italic small caps.
+All 46 Italic small caps in this batch are accepted: the three corrected
+forms separately, and the remaining 43 unchanged from the refreshed sheet.
 
 ## Follow-up: three glyphs sent back
 

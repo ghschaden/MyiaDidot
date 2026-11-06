@@ -398,8 +398,13 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   upper stem transitions are locally redrawn and both are accepted. The b's
   approved upper counter is rounder like its lower counter:
   [Bold Italic hook stems](docs/bold-italic-hook-stems-review-2026-11-06.md).
-  The other 43 glyphs in this batch still await acceptance:
+  The other 43 glyphs in this batch are accepted unchanged (2026-11-06):
   [extended Latin small-cap review](docs/italic-smallcaps-extended-latin-review-2026-11-06.md).
+  Italic ƥ (uni01A5) reopened by the person: swelling at the hook/stem
+  join removed locally and accepted (2026-11-06). Bold Italic regenerated
+  and finished with its spacing retained; its fuller hook and smooth stem
+  transition are also accepted (2026-11-06):
+  [ƥ join review](docs/italic-p-hook-join-review-2026-11-06.md).
   a.ipa, formerly on no sheet, now has
   a focused four-style review and proofs: [IPA a review](docs/ipa-a-review-2026-11-06.md).
   Accepted unchanged in all four styles (2026-11-06). Bold and Bold Italic
