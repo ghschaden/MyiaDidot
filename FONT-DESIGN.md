@@ -383,8 +383,12 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   ʛ is ɠ.sc's alias, so at the small caps'
   height (1060), where ɢ and the other IPA small capitals stand at the
   x-height (884, 2026-11-01): the person to say whether ʛ follows them.
-  Still to review: the small-caps sheets of the Bold and Bold Italic, the Bold's
-  and Bold Italic's drafts sheets. The Italic's 26 basic Latin small caps
+  Still to review: the Bold's small-caps sheet, the Bold's and Bold Italic's
+  other drafts sheets, and Bold Italic u.sc.horn. The Bold Italic's remaining
+  72 phonetic, Greek and Cyrillic small caps and lowercase қ/ҳ/ҷ repairs are
+  accepted (2026-11-07), including the final straight inner қ leg:
+  [completed Bold Italic review](docs/bold-italic-smallcaps-completion-2026-11-07.md).
+  The Italic's 26 basic Latin small caps
   are accepted unchanged (2026-11-06):
   [Italic Latin small-cap review](docs/italic-smallcaps-latin-review-2026-11-06.md).
   The next 46 extended Latin Italic small caps have a two-page proof.
