@@ -34,8 +34,8 @@
 			<point x="218" y="732" type="curve"/>
 			<point x="89" y="732" type="line"/>
 			<point x="89" y="1040" type="line"/>
-			<point x="616" y="1040" type="line"/>
-			<point x="616" y="912" type="line"/>
+			<point x="579" y="1040" type="line"/>
+			<point x="579" y="912" type="line"/>
 			<point x="518" y="830"/>
 			<point x="499" y="854"/>
 			<point x="440" y="773" type="curve" smooth="yes"/>
@@ -53,8 +53,8 @@
 			<point x="768" y="773" type="curve" smooth="yes"/>
 			<point x="708" y="854"/>
 			<point x="689" y="830"/>
-			<point x="591" y="912" type="curve"/>
-			<point x="591" y="1040" type="line"/>
+			<point x="629" y="912" type="curve"/>
+			<point x="629" y="1040" type="line"/>
 		</contour>
 	</outline>
 	<anchor name="Top" x="603" y="1156"/>
@@ -67,8 +67,26 @@
 	<anchor name="Horn" x="917" y="917"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-07</string>
+				<key>glyph</key>
+				<string>575304df9a9e</string>
+				<key>review</key>
+				<string>docs/bold-extended-latin-smallcaps-review-2026-11-07.md</string>
+			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-07</string>
+				<key>source</key>
+				<string>fc2a4c727fa1</string>
+				<key>why</key>
+				<string>Approved local Bold drawing; docs/bold-extended-latin-smallcaps-review-2026-11-07.md</string>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

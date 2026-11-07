@@ -3,57 +3,52 @@
 	<advance width="1253"/>
 	<outline>
 		<contour>
-			<point x="110" y="0" type="line"/>
-			<point x="110" y="52" type="line"/>
-			<point x="212" y="50" type="line"/>
-			<point x="210" y="588" type="line"/>
-			<point x="260" y="687"/>
-			<point x="259" y="792"/>
-			<point x="314" y="876" type="curve" smooth="yes"/>
-			<point x="384" y="983"/>
-			<point x="533" y="1060"/>
-			<point x="645" y="1060" type="curve" smooth="yes"/>
-			<point x="683" y="1060"/>
-			<point x="735" y="1053"/>
-			<point x="755" y="1040" type="curve"/>
-			<point x="1177" y="1040" type="line"/>
-			<point x="1177" y="987" type="line"/>
-			<point x="1077" y="990" type="line"/>
-			<point x="1077" y="49" type="line"/>
-			<point x="1177" y="52" type="line"/>
-			<point x="1177" y="0" type="line"/>
-			<point x="702" y="0" type="line"/>
-			<point x="702" y="52" type="line"/>
-			<point x="806" y="50" type="line"/>
-			<point x="812" y="519" type="line"/>
 			<point x="475" y="519" type="line"/>
-			<point x="482" y="50" type="line"/>
-			<point x="587" y="52" type="line"/>
-			<point x="587" y="0" type="line"/>
-		</contour>
-		<contour>
-			<point x="802" y="815" type="line"/>
-			<point x="825" y="780"/>
-			<point x="789" y="763"/>
-			<point x="755" y="763" type="curve" smooth="yes"/>
-			<point x="713" y="763"/>
-			<point x="623" y="782"/>
-			<point x="623" y="834" type="curve" smooth="yes"/>
-			<point x="623" y="851"/>
-			<point x="628" y="871"/>
-			<point x="633" y="891" type="curve"/>
-			<point x="639" y="911"/>
-			<point x="640" y="924"/>
-			<point x="640" y="937" type="curve" smooth="yes"/>
-			<point x="640" y="941" type="line" smooth="yes"/>
-			<point x="640" y="972"/>
-			<point x="685" y="1001"/>
-			<point x="621" y="1001" type="curve" smooth="yes"/>
+			<point x="812" y="519" type="line"/>
+			<point x="806" y="50" type="line"/>
+			<point x="702" y="52" type="line"/>
+			<point x="702" y="0" type="line"/>
+			<point x="1177" y="0" type="line"/>
+			<point x="1177" y="52" type="line"/>
+			<point x="1077" y="49" type="line"/>
+			<point x="1077" y="990" type="line"/>
+			<point x="1177" y="987" type="line"/>
+			<point x="1177" y="1040" type="line"/>
+			<point x="800" y="1040" type="line"/>
+			<point x="803" y="987" type="line"/>
+			<point x="806" y="569" type="line"/>
+			<point x="475" y="569" type="line"/>
+			<point x="475" y="850"/>
 			<point x="524" y="1001"/>
-			<point x="449" y="887"/>
-			<point x="486" y="637" type="curve"/>
-			<point x="449" y="570" type="line"/>
-			<point x="823" y="569" type="line"/>
+			<point x="621" y="1001" type="curve" smooth="yes"/>
+			<point x="642" y="1001"/>
+			<point x="651" y="1001"/>
+			<point x="651" y="982" type="curve" smooth="yes"/>
+			<point x="651" y="966"/>
+			<point x="620" y="938"/>
+			<point x="620" y="903" type="curve" smooth="yes"/>
+			<point x="620" y="875"/>
+			<point x="645" y="853"/>
+			<point x="680" y="853" type="curve" smooth="yes"/>
+			<point x="715" y="853"/>
+			<point x="740" y="887"/>
+			<point x="740" y="937" type="curve" smooth="yes"/>
+			<point x="740" y="1000"/>
+			<point x="725" y="1060"/>
+			<point x="645" y="1060" type="curve" smooth="yes"/>
+			<point x="533" y="1060"/>
+			<point x="384" y="983"/>
+			<point x="314" y="876" type="curve" smooth="yes"/>
+			<point x="259" y="792"/>
+			<point x="210" y="720"/>
+			<point x="210" y="588" type="curve" smooth="yes"/>
+			<point x="210" y="519" type="line"/>
+			<point x="212" y="50" type="line"/>
+			<point x="110" y="52" type="line"/>
+			<point x="110" y="0" type="line"/>
+			<point x="587" y="0" type="line"/>
+			<point x="587" y="52" type="line"/>
+			<point x="482" y="50" type="line"/>
 		</contour>
 	</outline>
 	<anchor name="Top" x="644" y="1156"/>
@@ -66,8 +61,26 @@
 	<anchor name="Horn" x="976" y="917"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-07</string>
+				<key>glyph</key>
+				<string>2a8a8c775fb7</string>
+				<key>review</key>
+				<string>docs/bold-phonetic-smallcaps-review-2026-11-07.md</string>
+			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-07</string>
+				<key>source</key>
+				<string>de0b57e1ff60</string>
+				<key>why</key>
+				<string>Approved local Bold aperture repair; docs/bold-phonetic-smallcaps-review-2026-11-07.md</string>
+			</dict>
 		</dict>
 	</lib>
 </glyph>
