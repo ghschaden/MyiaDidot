@@ -10,6 +10,24 @@ from fontTools.pens.areaPen import AreaPen
 from italic_geometry import SLANT, shear
 
 
+def test_barred_d_keeps_the_final_bold_smallcap_base():
+    import derive
+    from built_from import fingerprint
+    from drawn import KEY
+    from italic_geometry import upright
+
+    font = ufoLib2.Font.open(SOURCES / "MyiaDidot-BoldItalic.ufo")
+    assert font["uniA7C8.sc"].lib[KEY]["bases"]["d.sc"] == fingerprint(font, "d.sc")
+    up = upright(font)
+    # Clear of the added bar: the stem and round side remain its final D,
+    # allowing the two-unit rounding of the intersection operation.
+    for y in (150, 300, 700, 900):
+        base, derived = (derive.stems_at(up, n, y) for n in ("d.sc", "uniA7C8.sc"))
+        assert len(base) == len(derived)
+        assert all(abs(a - b) < 2 for row_a, row_b in zip(base, derived, strict=True)
+                   for a, b in zip(row_a, row_b, strict=True))
+
+
 @pytest.mark.parametrize("style", ["Italic", "BoldItalic"])
 def test_lowered_r_smallcap_has_one_outer_and_one_counter(style):
     ufo = ufoLib2.Font.open(SOURCES / f"MyiaDidot-{style}.ufo")

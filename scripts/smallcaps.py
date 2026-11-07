@@ -102,6 +102,30 @@ CAP_SC_KERNING = {
     },
 }
 
+# Reviewed local small-cap pairs, applied after copying the capitals' pairs.
+# The italic Florin tails need room at a preceding foot serif or Q/R tail
+# (approved 2026-11-07, docs/hook-reference-reset-review-2026-11-07.md).
+# Final values: first whole-unit separation plus 16 units of clearance.
+SMALLCAP_KERNING = {
+    "Italic": {
+        ("q.sc", "florin.sc"): 73,
+        ("r.sc", "florin.sc"): 29,
+    },
+    "BoldItalic": {
+        ("a.sc", "florin.sc"): 116,
+        ("e.sc", "florin.sc"): 54,
+        ("h.sc", "florin.sc"): 52,
+        ("i.sc", "florin.sc"): 52,
+        ("k.sc", "florin.sc"): 101,
+        ("l.sc", "florin.sc"): 72,
+        ("m.sc", "florin.sc"): 56,
+        ("q.sc", "florin.sc"): 44,
+        ("r.sc", "florin.sc"): 56,
+        ("x.sc", "florin.sc"): 86,
+        ("z.sc", "florin.sc"): 31,
+    },
+}
+
 # Set by configure() from the UFO's small-cap height.
 SC_HEIGHT = SCALE = TOP = TOPCAP = None
 
@@ -483,6 +507,9 @@ def scale_kerning(font, log):
             raise SystemExit(f"CAP_SC_KERNING {style}: no group {left} or {right}")
         font.kerning[(left, right)] = value
     log.append(f"kerning: {len(CAP_SC_KERNING.get(style, {}))} capital + small cap pairs")
+    local = SMALLCAP_KERNING.get(style, {})
+    font.kerning.update(local)
+    log.append(f"kerning: {len(local)} local small cap pairs")
     import kern_clear
 
     kern_clear.clear(font, log)  # the small caps' pairs whose inks would meet

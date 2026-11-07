@@ -195,6 +195,8 @@
 		</dict>
 		<key>a.sc</key>
 		<dict>
+			<key>florin.sc</key>
+			<integer>116</integer>
 			<key>uni0233.sc</key>
 			<integer>-223</integer>
 			<key>y.sc</key>
@@ -333,6 +335,11 @@
 			<key>Psi</key>
 			<integer>-469</integer>
 		</dict>
+		<key>e.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>54</integer>
+		</dict>
 		<key>eogonek</key>
 		<dict>
 			<key>public.kern2.j</key>
@@ -384,10 +391,20 @@
 			<key>h</key>
 			<integer>43</integer>
 		</dict>
+		<key>h.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>52</integer>
+		</dict>
 		<key>i</key>
 		<dict>
 			<key>f</key>
 			<integer>75</integer>
+		</dict>
+		<key>i.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>52</integer>
 		</dict>
 		<key>iogonek</key>
 		<dict>
@@ -401,8 +418,15 @@
 			<key>atilde.sc</key>
 			<integer>-97</integer>
 		</dict>
+		<key>k.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>101</integer>
+		</dict>
 		<key>l.sc</key>
 		<dict>
+			<key>florin.sc</key>
+			<integer>72</integer>
 			<key>periodcentered</key>
 			<integer>-425</integer>
 		</dict>
@@ -502,6 +526,11 @@
 			<integer>-53</integer>
 			<key>uni1EE1</key>
 			<integer>139</integer>
+		</dict>
+		<key>m.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>56</integer>
 		</dict>
 		<key>parenleft</key>
 		<dict>
@@ -3159,6 +3188,16 @@
 			<key>uni1FF8</key>
 			<integer>3</integer>
 		</dict>
+		<key>q.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>44</integer>
+		</dict>
+		<key>r.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>56</integer>
+		</dict>
 		<key>u</key>
 		<dict>
 			<key>f</key>
@@ -3433,6 +3472,11 @@
 			<key>a</key>
 			<integer>57</integer>
 		</dict>
+		<key>x.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>86</integer>
+		</dict>
 		<key>y.sc</key>
 		<dict>
 			<key>j.sc</key>
@@ -3453,6 +3497,11 @@
 			<integer>-170</integer>
 			<key>jcircumflex.sc</key>
 			<integer>-170</integer>
+		</dict>
+		<key>z.sc</key>
+		<dict>
+			<key>florin.sc</key>
+			<integer>31</integer>
 		</dict>
 		<key>zeta</key>
 		<dict>

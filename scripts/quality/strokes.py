@@ -32,7 +32,9 @@ from pathlib import Path
 
 import ufoLib2
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from case_reference import case_reference
 from derived import Outline
 
 TOL = 0.10
@@ -128,6 +130,16 @@ def strokes(font, only=None):
         # stem's weight to the round's (a diagonal at stem weight is right)
         stem, bowl = refs[kind]
         lo, hi = (stem, stem) if straight else (min(stem, bowl), max(stem, bowl))
+        capital = case_reference(font, g) if kind == "sc" else None
+        if capital is not None:
+            # A gamma's thin ribbon is intentional in its full capital too.
+            # Keep the diagnostic relative to that same-style capital/H
+            # proportion, rather than expecting a generic small-cap stem.
+            capital_weight = measure(capital.name, "uc")[0]
+            if not capital_weight or "uc" not in refs or not refs["uc"][0]:
+                raise ValueError(f"{g.name}: capital reference has no measurable stroke")
+            proportion = capital_weight / refs["uc"][0]
+            lo, hi = lo * proportion, hi * proportion
         ref = min(max(weight, lo), hi)
         ratio = weight / ref
         measures[g.name] = (round(weight), round(ratio, 3), kind, "stem" if straight else "round")

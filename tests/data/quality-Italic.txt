@@ -115,8 +115,6 @@ fl stroke 1                      # stroke weights against the kind's (scripts/qu
 fl zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 florin smooth 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 512,912 9.7 degrees
 florin stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 156 against 183 (0.85, lighter)
-florin.sc kink 2                 # italic curl balls: 329,109 1.3 degrees; 36,-108 4.5 degrees
-florin.sc zone 1                 # italic curl balls: top +9 from 1040
 four kink 2                      # 2026-10-16 known at the start (quality checks added): 580,850 6.0 degrees; 804,1009 3.1 degrees
 g.sc kink 1                      # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet, the person: 900,390 5.9 degrees
 g.sc slant 1                     # 2026-10-16 known at the start (quality checks added): 11.2 degrees, not 15.2

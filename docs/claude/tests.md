@@ -39,6 +39,13 @@ Moved from CLAUDE.md (its ground rules apply).
   make; `glyph_lint.py UFO --fix` does it for drawn glyphs.
 - Exception lists in `tests/data/*.txt` only shrink: a test fails when an
   entry is no longer needed. Fixing an entry = deleting its line.
+- A small cap drawn to its capital's distinctive stroke profile may carry
+  `org.myiadidot.caseReference` (currently ɣ.sc → Ɣ in the two italics).
+  The reference must be its actual Unicode capital. Stroke diagnostics
+  compare the capital/H proportion at small-cap weight; zone diagnostics
+  inherit the capital's relative overshoot. The tag records construction,
+  not a diagnostic exemption: wrong weights/heights still fail, as held by
+  `tests/test_case_reference.py`.
 - When a test fails: find the cause first (`make regress` diffs shaping
   against HEAD; `scripts/nfd_debug.py UFO CHARS` shows NFC vs NFD). Only for
   an intended change, regenerate baselines with

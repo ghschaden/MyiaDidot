@@ -48,14 +48,11 @@
 			<point x="760" y="199"/>
 			<point x="811" y="525"/>
 			<point x="811" y="608" type="curve" smooth="yes"/>
-			<point x="811" y="636"/>
-			<point x="805" y="697"/>
-			<point x="804" y="707" type="curve" smooth="yes"/>
-			<point x="789" y="867"/>
-			<point x="846" y="1000"/>
+			<point x="811" y="868"/>
+			<point x="811" y="1000"/>
 			<point x="697" y="1000" type="curve" smooth="yes"/>
-			<point x="367" y="1000"/>
-			<point x="380" y="571"/>
+			<point x="567" y="1000"/>
+			<point x="381" y="630"/>
 			<point x="381" y="379" type="curve" smooth="yes"/>
 			<point x="381" y="336"/>
 			<point x="380" y="314"/>
@@ -83,6 +80,24 @@
 	<anchor name="DotBelow" x="276" y="-20"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-06</string>
+				<key>glyph</key>
+				<string>1b22d70c5b73</string>
+				<key>review</key>
+				<string>docs/bold-italic-smallcaps-latin-review-2026-11-06.md</string>
+			</dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-06</string>
+				<key>source</key>
+				<string>221288cef425</string>
+				<key>why</key>
+				<string>Local small-cap counter and stem repairs</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>
 			<key>org.myiadidot.smallcapDraft</key>

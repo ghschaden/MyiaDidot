@@ -26,6 +26,36 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-07 Florin and hooked-P small caps accepted
+
+    * Rebuilt the Italic and Bold Italic capital/small-cap Florin tails
+      from each style's finished lowercase florin, with a continuous
+      descending swing and optically reduced terminal. Bold Italic ƥ.sc
+      takes its head from the approved hooked-B small cap on the final
+      p.sc body. The original Italic ƥ.sc is retained. All five drawings
+      approved; local drawn records preserve them through regeneration.
+    * Thirteen reviewed small-cap kern pairs clear the longer tails;
+      their owner is smallcaps.py after capital-pair scaling. All 110
+      tested Florin pairs are clear. Evidence:
+      docs/hook-reference-reset-review-2026-11-07.md.
+    * The remaining Bold Italic extended Latin small caps are accepted.
+      Gamma small caps in both italic weights now follow Ɣ's descending
+      loop and relative stroke weight; glottal small caps have rounder
+      inner arcs. Gamma advances retain the original side bearings around
+      the wider shape. Case-reference metadata records Ɣ as the gamma
+      small cap's optical reference for stroke and overshoot diagnostics.
+
+2026-11-06 Bold Italic basic Latin small caps accepted
+
+    * Accepted the 24 remaining basic Latin small caps; c.sc/g.sc were
+      accepted previously. b.sc's upper counter rounded from its lower
+      counter, q.sc's from the approved o.sc's upper oval. b.sc/d.sc's
+      stem sides and head/foot brackets locally redrawn to remove the
+      narrowing before their serifs. Advances, anchors and kerning retained.
+      The three drawings are marked drawn and accepted. Evidence:
+      docs/bold-italic-smallcaps-latin-review-2026-11-06.md and
+      proofs/bold-italic-b-d-q-smallcap-repairs-2026-11-06.svg.
+
 2026-11-06 Italic Latin/phonetic and Greek small-cap reviews accepted
 
     * Accepted the next 15 Latin/phonetic small caps unchanged, including

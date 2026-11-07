@@ -417,6 +417,18 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   lighter stem, fuller bowl and smooth lower-right join. This completes
   the Italic small-cap review:
   [Cyrillic small-cap review](docs/italic-smallcaps-cyrillic-review-2026-11-06.md).
+  Bold Italic a.sc–z.sc are now accepted (2026-11-06): b.sc/q.sc's upper
+  counters rounded, b.sc/d.sc's stems and serif brackets straightened
+  locally; the rest unchanged:
+  [Bold Italic Latin small-cap review](docs/bold-italic-smallcaps-latin-review-2026-11-06.md).
+  The next 42 extended Latin forms are accepted: 38 unchanged, gamma and
+  glottal small caps after paired Italic repairs, then Florin and ƥ.sc
+  after the same-style reference reconstruction (2026-11-07):
+  [Bold Italic extended Latin review](docs/bold-italic-smallcaps-extended-latin-review-2026-11-06.md).
+  Both italic weights' full capital/small-cap Florin hooks and the Bold
+  Italic ƥ.sc are approved, with local spacing corrections; Italic ƥ.sc
+  retains its earlier approved drawing:
+  [Astra hook review](docs/hook-reference-reset-review-2026-11-07.md).
   a.ipa, formerly on no sheet, now has
   a focused four-style review and proofs: [IPA a review](docs/ipa-a-review-2026-11-06.md).
   Accepted unchanged in all four styles (2026-11-06). Bold and Bold Italic

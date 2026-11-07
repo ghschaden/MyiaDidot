@@ -66,6 +66,8 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from case_reference import reference_top
+
 KINDS = ("smooth", "kink", "extreme", "step", "wobble", "grid", "zone", "weight", "slant", "accent", "width",
          "base", "stem", "advance", "style", "stroke")
 DERIVED = ("base", "stem", "advance", "style")
@@ -218,7 +220,13 @@ def zones(font, shapes):
         if not b:
             continue
         for y, which in ((b[1], "bottom"), (b[3], "top")):
-            near = [(abs(y - f), f, o) for f, o in flat_over[kind] if f is not None]
+            levels = flat_over[kind]
+            if kind == "sc" and which == "top":
+                inherited_top = reference_top(font, g)
+                if inherited_top is not None:
+                    levels = [(f, inherited_top) if f == font.lib.get("org.myiadidot.smallcapHeight", 1040)
+                              else (f, o) for f, o in levels]
+            near = [(abs(y - f), f, o) for f, o in levels if f is not None]
             d, f, o = min(near)
             if d > 30:
                 continue
