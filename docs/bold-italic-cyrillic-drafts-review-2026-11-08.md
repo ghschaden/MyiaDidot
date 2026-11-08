@@ -12,7 +12,7 @@ The Bold Italic's Ҳ is the only letter there with tail_step's sloped fill
 foot serif (1595,69) to the tail's corner (1730,30), where Ң's and Ҷ's
 run level with their serifs out to a sharp corner. The corner is now on
 the serif's top at (1742,70) and the outer edge at Ң's slant; kept as drawn
-(org.myiadidot.drawn). Pending the person's review.
+(org.myiadidot.drawn). Approved by the person on 2026-11-08.
 
 ## Serbian italic forms (both italics)
 
