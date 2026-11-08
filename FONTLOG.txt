@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Italic capital curls as large as Ƈ Ɠ's
+  Ƙ Ƴ ended in a small tight curl (radius 110/100), Ʋ in a middling one
+  (140/120), beside Ƈ Ɠ's hooks and J's ball. Now 1.25 times (Ƙ Ƴ
+  140/120, Ʋ 175/150; make_italic ITALIC_RECIPES), the balls growing with
+  them; ƙ.sc ƴ.sc ʋ.sc follow, and in the Bold Italic Ʋ and the small caps
+  (its Ƙ Ƴ, drawn at its weight, were already as large). Accepted from a
+  proof. This settles FONT-DESIGN's open question on the capitals' curls.
+
 2026-11-08 Bold N and n.sc spaced as the Regular's
   The Bold's N and n.sc stood tight against H and h.sc (H N 0.86 of H H,
   N H 0.83; h.sc n.sc 0.81, n.sc h.sc 0.79; the Regular 0.95 0.94 and

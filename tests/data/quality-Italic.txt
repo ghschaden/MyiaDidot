@@ -253,6 +253,7 @@ uni0199 kink 1                   # Italic weighted as its letters are taken, der
 uni0199 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 376,1177 2.3 degrees
 uni0199 zone 1                   # 2026-10-21 Italic reweighted and tightened: top +16 from 1434
 uni0199.sc kink 1                # italic curl balls: 913,902 6.4 degrees
+uni0199.sc smooth 1              # 2026-11-08 italic Ƙ Ƴ Ʋ curls 1.25 times, as Ƈ Ɠ: 868,118 2.1 degrees
 uni019A stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.83, lighter)
 uni019A.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 326,931 2.3 degrees
 uni019C smooth 2                 # 2026-10-21 Italic reweighted and tightened: 425,409 2.3 degrees; 1069,461 2.0 degrees
@@ -272,7 +273,8 @@ uni01B2 smooth 1                 # Italic saved with smooth rounding (make_itali
 uni01B3 kink 5                   # 2026-10-21 Italic reweighted and tightened: 455,1271 3.1 degrees; 635,1264 7.9 degrees; 1189,1200 7.2 degrees; 1270,1200 7.0 degrees; 653,112 4.0 degrees
 uni01B4 slant 1                  # 2026-10-16 known at the start (quality checks added): 17.8 degrees, not 15.2
 uni01B4 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 337,649 2.9 degrees
-uni01B4.sc kink 1                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 872,866 6.5 degrees
+uni01B4.sc kink 2                # 2026-11-08 italic Ƙ Ƴ Ʋ curls 1.25 times, as Ƈ Ɠ: 1057,702 6.5 degrees; 493,95 6.7 degrees
+uni01B4.sc smooth 1              # 2026-11-08 italic Ƙ Ƴ Ʋ curls 1.25 times, as Ƈ Ɠ: 305,95 2.3 degrees
 uni01B9 slant 1                  # 2026-10-21 Italic reweighted and tightened: 13.1 degrees, not 15.2
 uni01B9 smooth 1                 # 2026-10-16 known at the start (quality checks added): 570,714 2.2 degrees
 uni01B9 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 107 against 183 (0.59, lighter)

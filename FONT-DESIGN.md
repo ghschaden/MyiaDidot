@@ -26,8 +26,8 @@ evidence (a raster or a proof).
     121, J's 143: more closed the counters). Its ⱳ.sc, emboldened from
     the Italic's draft, still has kinks and a wobble at the curl (in
     quality-BoldItalic.txt; ɦ.sc's steps done 2026-11-05, FONTLOG).
-    Left open: whether the capitals' curls should grow larger still, to
-    carry balls as large as J's; Ⱳ keeps its number (its curl run on
+    The Italic's Ƙ Ƴ Ʋ curls 1.25 times larger, as Ƈ Ɠ's (2026-11-08,
+    FONTLOG); Ⱳ keeps its number (its curl run on
     straight from W's arm, 2026-11-03); Bold Italic a's ball does not grow (68 -> 66).
   - Dots: in the Bold and Bold Italic they are widened three times as
     much as heightened (period about 1.36:1, ⸁ ⸄ ⸅ ⸇ ⸈ 271x182, Bold Italic

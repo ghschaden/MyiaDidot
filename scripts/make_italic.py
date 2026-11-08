@@ -911,14 +911,16 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                      for ch, base in (("Ɓ", "B"), ("Ɗ", "D"), ("Ƥ", "P"))},
                   # the arm or stem itself curling over at the top (its serif
                   # cut away), at its own weight
+                  # Ƙ Ƴ Ʋ: curls 1.25 times what they were, as large as Ƈ Ɠ's
+                  # (their balls growing with them; 2026-11-08)
                   "Ƙ": ("curl", "K", ("c", [(850, 1250, BIG, BIG)],
-                                      {"at": ("y", 1250, "last"), "dir": 51, "turn": "cw", "r": (110, 100),
+                                      {"at": ("y", 1250, "last"), "dir": 51, "turn": "cw", "r": (140, 120),
                                        "sweep": 210, "ball": None, "t": (89, 45)})),
                   "Ʋ": ("curl", "U", ("c", [(930, 1200, BIG, BIG)],
-                                      {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", "r": (140, 120),
+                                      {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", "r": (175, 150),
                                        "sweep": 200, "ball": None, "t": (64, 40)})),
                   "Ƴ": ("curl", "Y", ("c", [(780, 1200, BIG, BIG)],
-                                      {"at": ("y", 1200, "last"), "dir": 62, "turn": "cw", "r": (110, 100),
+                                      {"at": ("y", 1200, "last"), "dir": 62, "turn": "cw", "r": (140, 120),
                                        "sweep": 210, "ball": None, "t": (68, 40)})),
                   "ƴ": ("curl", "y", ("x", [(700, 760, BIG, BIG)],
                                       {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", "r": (100, 90),
