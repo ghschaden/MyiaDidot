@@ -396,6 +396,14 @@ ITALIC_BOLD_RECIPES = {
     # the Italic's 164 it stepped 45 units in on both sides of the Bold
     # Italic's 287 stem (ɦ.sc alike), at 287 it closed its eye (the
     # person, 2026-11-05)
+    # Ꞵ: B's stem running on down at its own weight (the Italic's 166-unit
+    # descender stood 120 units lighter than the Bold Italic's 288 stem,
+    # the person, 2026-11-08): the stem's edges 294 and 582 in the recipe
+    # frame (150-438 upright), cut a unit inside below the foot's bracket;
+    # the foot serif as B's own, 67 tall, overhanging the stem 167 a side
+    "Ꞵ": ("attach", "B", ("c", [(-10000, -10000, 295, 120)],
+                          [("rect", (294, -413, 582, 130), (0, 0), (1, 1, 0, 0)),
+                           ("rect", (127, -480, 749, -413), (0, 0), (1, 1, 0, 0))])),
     "Ɦ": ("curl", "H", ("c", [(-10000, 1290, 291, 10000), (576, 1290, 880, 10000)],
                         {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
                          "sweep": 200, "ball": None, "t": (166, 60)})),
@@ -426,11 +434,13 @@ ITALIC_BOLD_RECIPES = {
                          "ball": 95, "t": (251, 62)})),
     # ⱳ: the Italic's, on the Bold Italic's arm, cut below where it flares
     # (1312-1404 at 600) and narrowing to the curl's stroke (a straight
-    # stroke at the curl's width stepped 36 units aside of the arm at 645)
+    # stroke at the curl's width stepped 36 units aside of the arm at 645);
+    # the ball 95, as the other x-height curl (80 stood thin: the person,
+    # 2026-11-08). The finished ⱳ is drawn (its arm evened by hand, kept)
     "ⱳ": ("attach", "w", ("x", [(1000, 600, 10000, 10000)],
                           [("poly", [(1314, 595), (1405, 595), (1378, 770), (1298, 770)], (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 1338, 770, 80), "dir": 92, "turn": "cw", "r": (165, 150),
-                                     "sweep": 200, "ball": 80, "t": (80, 53), "lead": 6}, (0, 0), (1, 1, 0, 0))])),
+                                     "sweep": 200, "ball": 95, "t": (80, 53), "lead": 6}, (0, 0), (1, 1, 0, 0))])),
     # Қ Җ җ қ: the Italic's (make_italic.descender), on the Bold Italic's
     # leg (its centre and weight at 200, where it is cut), the exit stroke
     # cut away, the ball half the stroke (as there, so the curl's end has no

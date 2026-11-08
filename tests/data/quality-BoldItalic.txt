@@ -601,7 +601,6 @@ uniA78C stroke 1                 # stroke weights against the kind's (scripts/qu
 uniA78C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 226 against 273 (0.83, lighter)
 uniA7AA kink 1                   # g.sc made from G, ɦ.sc from Ɦ (Italic) and its own curl on h.sc (Bold Italic), Bold Italic Ɦ as its Ɓ: 782,1290 1.3 degrees
 uniA7AD extreme 2                # brackets kept where emboldening overran them (derive.keep_brackets): Bold Italic serif hooks and G jaw gone: 517,60 6 units past; 473,1367 8 units past
-uniA7B4 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 291,0 3.9 degrees
 uniA7B5.sc kink 2                # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 82,98 1.9 degrees; 64,19 1.9 degrees
 uniA7B5.sc step 2                # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 267,-288 63 units aside; -81,-288 64 units aside
 uniA7B6 stroke 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: uc 340 against 300 (1.13, darker)
