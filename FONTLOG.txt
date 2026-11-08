@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Ligatures tt, ſſb ſſh ſſk ſſt ſj ſſj; U+FB05 U+FB06
+  tt (dlig): two t's on one crossbar, the second as near as th's h, in
+  all four styles. The long-s set completed: ſſ before b h k t, ſj ſſj,
+  made as the others from their ff- and f-ligatures without the crossbars;
+  in the italics the j's ball and dot, which fell in the region cleared
+  for the ſ, put back from fj ffj. The encoded ligature characters U+FB05
+  ſt and U+FB06 st now map to the shapes the font had. italic_ligatures'
+  put() keeps a rebuilt ligature's code points and acceptance; the Bold's
+  side spacing judges a ligature as the unencoded ones whatever its code
+  point (FB05 FB06 had moved ſt st 9 units). sp Qu ch ck tz ſs remain
+  (FONT-DESIGN.md). Accepted from build/proofs/ligatures-new.pdf.
+
 2026-11-08 Discretionary ligatures Th and th
   New in dlig beside ct st, in all four styles, each built from the
   style's own final T t h. Th (as Linux Libertine's): the T's crossbar

@@ -1392,7 +1392,9 @@ def band_height(font, name):
     lowercase, the small caps' for small caps, the cap height for the rest."""
     if name.split(".")[1:2] == ["sc"]:
         return font.lib.get("org.myiadidot.smallcapHeight", 1040)
-    ch = chr(font[name].unicode) if font[name].unicode else ""
+    # a ligature is judged as the unencoded ones are, whatever its code
+    # point (U+FB05 U+FB06 on ſt st moved them 9 units, 2026-11-08)
+    ch = chr(font[name].unicode) if font[name].unicode and "_" not in name else ""
     if ch and unicodedata.category(ch) == "Ll":
         return font.info.xHeight or 884
     return font.info.capHeight or 1434

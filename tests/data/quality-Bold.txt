@@ -90,8 +90,16 @@ longs_k kink 1                   # 2026-10-16 known at the start (quality checks
 longs_longs kink 1               # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 700,1312 3.0 degrees
 longs_longs smooth 1             # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1294,1298 2.4 degrees
 longs_longs wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1306,1335 18 degrees; 708,1341 23 degrees
+longs_longs_b extreme 1          # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 818,1145 9 units past
+longs_longs_b kink 2             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 195,974 4.5 degrees; 1383,1246 5.6 degrees
+longs_longs_h extreme 2          # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1659,673 13 units past; 818,1145 9 units past
+longs_longs_h kink 3             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 195,974 4.5 degrees; 1988,642 7.2 degrees; 1383,1246 5.6 degrees
+longs_longs_h smooth 1           # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1646,412 2.7 degrees
+longs_longs_k kink 1             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1388,1246 6.4 degrees
 longs_longs_l extreme 1          # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 818,1145 9 units past; 678,1456 8 units past
 longs_longs_l kink 1             # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 195,974 4.5 degrees
+longs_longs_t extreme 2          # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 818,1145 9 units past; 1644,192 6 units past
+longs_longs_t kink 1             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 195,974 4.5 degrees
 m.sc step 1                      # 2026-10-27 step check added (checks.py step): a candidate to review: 1318,988 60 units aside
 m.sc zone 1                      # baseline: bottom -7 from 1
 mugreek.sc zone 1                # baseline: bottom -7 from 1

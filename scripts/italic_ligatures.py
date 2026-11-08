@@ -4,7 +4,7 @@ import math
 from copy import deepcopy
 
 from derive import BIG, draw_path, path_op, rect_path, stems_at, to_path
-from draft_ligatures import arch, th_ligature
+from draft_ligatures import arch, t_t_ligature, th_ligature
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 from italic_geometry import SLANT, XH, shear, upright
@@ -29,8 +29,14 @@ LONGS = (
     ("longs_longs", "ff"),
     ("longs_longs_i", "ffi"),
     ("longs_longs_l", "ffl"),
+    ("longs_longs_b", "f_f_b"),
+    ("longs_longs_h", "f_f_h"),
+    ("longs_longs_k", "f_f_k"),
+    ("longs_longs_t", "f_f_t"),
+    ("longs_j", "f_j"),
+    ("longs_longs_j", "f_f_j"),
 )
-NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "T_h", "t_h")
+NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "T_h", "t_h", "t_t")
 
 
 ITALIC_TH_CLOSER = 100  # th: the h this much nearer than after t (chosen 2026-11-08 from 140 100 60)
@@ -152,16 +158,23 @@ def make(font):
             la, lb = stems_at(up, "longs", cut)[0]
             dx = (ca + cb - la - lb) / 2
             right = b + 230
-            if name == "longs_t":
+            if name in ("longs_t", "longs_longs_t"):
                 # not into t's own crossbar arm (where f_t set t: lx - t's
                 # stem): the Bold Italic's wider f stem cut it to a stub
-                t_dx = stems_at(up, "fl", 1000)[-1][0] - stems_at(up, "t", 1000)[0][0]
+                fl = "fl" if name == "longs_t" else "ffl"
+                t_dx = stems_at(up, fl, 1000)[-1][0] - stems_at(up, "t", 1000)[0][0]
                 arm = min(p.x for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900)
                 right = min(right, t_dx + arm)
             region = rect_path(a - 220, -BIG, right, cut)
             path = path_op(path, region, "DIFFERENCE")
             stem = path_op(to_path(up, up["longs"]), rect_path(-BIG, cut, BIG, BIG), "DIFFERENCE")
             path = path_op(path, shift(stem, dx), "UNION")
+        if name.endswith("_j"):
+            # the j's ball curls back under the f's stem, its dot near the
+            # f's hook: both fell in the region cleared for the ſ (cut off in
+            # the Bold Italic, 2026-11-08); the j's part of fj ffj put back
+            f_part = to_path(up, up["f" if base == "f_j" else "ff"])
+            path = path_op(path, path_op(to_path(up, up[base]), f_part, "DIFFERENCE"), "UNION")
         put(name, path, up[base].width, [a.x for a in font[base].anchors if a.name.startswith("caret_")])
     for first in ("c", "s"):
         dx = up[first].width - 70
@@ -186,4 +199,6 @@ def make(font):
     # into the h's stem at its full width; the h's sloped top serif cut
     # away, the h ITALIC_TH_CLOSER nearer than set after t
     put("t_h", *italic_th(up), [up["t"].width - ITALIC_TH_CLOSER])
+    # tt: two t's on one crossbar, the second as near as th's h
+    put("t_t", *t_t_ligature(up, ITALIC_TH_CLOSER), [up["t"].width - ITALIC_TH_CLOSER])
     return made

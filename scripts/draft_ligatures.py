@@ -1,4 +1,4 @@
-"""Draft the discretionary ligatures ct st Th th (feature dlig), the
+"""Draft the discretionary ligatures ct st Th th tt (feature dlig), the
 f-ligatures fb fh fk ft ffb ffh ffk fft (liga) and the long-s ligatures
 ſb ſh ſk ſt ſi ſl ſſ ſſi ſſl (liga, own lookup).
 
@@ -188,11 +188,22 @@ def t_h_ligature(font):
     return out, shift + font["h"].width
 
 
+def t_t_ligature(font, closer=TH_CLOSER):
+    """tt: two t's on one crossbar, the second as near as th's h."""
+    bar = sorted({p.y for c in font["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
+    xs = [p.x for c in font["t"].contours for p in c.points if p.type and bar[0] <= p.y <= bar[-1]]
+    shift = font["t"].width - closer
+    t = to_path(font, font["t"])
+    out = path_op(t, shifted(t, shift), "UNION")
+    out = path_op(out, rect_path(max(xs) - 10, bar[0], min(xs) + shift + 10, bar[-1]), "UNION")
+    return out, shift + font["t"].width
+
+
 def finish(font):
     """The Bold's Th th made again from its own final T t h (finalization):
     emboldened whole from the Regular's, the T's and the h's foot serifs
     grew into each other. Their review records are kept."""
-    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature)):
+    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature), ("t_t", t_t_ligature)):
         if name not in font:
             continue
         out, width = make(font)
@@ -212,7 +223,13 @@ LONGS_LIGATURES = [
     ("longs_b", "f_b"), ("longs_h", "f_h"), ("longs_k", "f_k"), ("longs_t", "f_t"),
     ("longs_i", "fi"), ("longs_l", "fl"), ("longs_longs", "ff"),
     ("longs_longs_i", "ffi"), ("longs_longs_l", "ffl"),
+    # completing the set (2026-11-08): ſſ before b h k t, ſj ſſj
+    ("longs_longs_b", "f_f_b"), ("longs_longs_h", "f_f_h"), ("longs_longs_k", "f_f_k"),
+    ("longs_longs_t", "f_f_t"), ("longs_j", "f_j"), ("longs_longs_j", "f_f_j"),
 ]
+# the encoded ligature characters (Alphabetic Presentation Forms) for
+# shapes the font has: ſt st
+ENCODED = {"longs_t": 0xFB05, "s_t": 0xFB06}
 # right-side kerning of the ligature = that of its last letter
 KERN1 = {"b": "public.kern1.b", "k": "public.kern1.k"}
 
@@ -251,7 +268,7 @@ def main():
     for name, first, cut, left, base, peak, t_left, t_top, clip, closer in LIGATURES:
         if wanted(name):
             put(name, *build(font, name, first, cut, left, base, peak, t_left, t_top, clip, closer))
-    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature)):
+    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature), ("t_t", t_t_ligature)):
         if wanted(name):
             put(name, *make(font))
     for name, base, letter in F_LIGATURES:
@@ -262,6 +279,10 @@ def main():
             n_f = src.count("f") if "_" not in src else src.split("_").count("f")
             stems = [a for a, _ in stems_at(font, src, 300)][:n_f]
             put(name, without_crossbars(font, to_path(font, font[src]), stems), font[src].width)
+    for name, code in ENCODED.items():
+        if name in font and code not in font[name].unicodes:
+            font[name].unicodes = [*font[name].unicodes, code]
+            made.append(f"{name}=U+{code:04X}")
     font.save()
     print("drafted:", " ".join(made) or "nothing")
 

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="longs_j" format="2">
+	<advance width="1112"/>
+	<outline>
+		<contour>
+			<point x="210" y="48" type="line"/>
+			<point x="210" y="954" type="line" smooth="yes"/>
+			<point x="210" y="1215"/>
+			<point x="374" y="1512"/>
+			<point x="689" y="1512" type="curve" smooth="yes"/>
+			<point x="854" y="1512"/>
+			<point x="962" y="1423"/>
+			<point x="962" y="1308" type="curve" smooth="yes"/>
+			<point x="962" y="1206"/>
+			<point x="904" y="1177"/>
+			<point x="840" y="1177" type="curve" smooth="yes"/>
+			<point x="797" y="1177"/>
+			<point x="766" y="1205"/>
+			<point x="766" y="1256" type="curve" smooth="yes"/>
+			<point x="766" y="1272"/>
+			<point x="774" y="1310"/>
+			<point x="779" y="1331" type="curve" smooth="yes"/>
+			<point x="785" y="1354"/>
+			<point x="788" y="1370"/>
+			<point x="788" y="1386" type="curve" smooth="yes"/>
+			<point x="788" y="1436"/>
+			<point x="745" y="1464"/>
+			<point x="679" y="1464" type="curve" smooth="yes"/>
+			<point x="471" y="1464"/>
+			<point x="374" y="1271"/>
+			<point x="374" y="990" type="curve" smooth="yes"/>
+			<point x="374" y="48" type="line"/>
+			<point x="516" y="48" type="line"/>
+			<point x="516" y="0" type="line"/>
+			<point x="68" y="0" type="line"/>
+			<point x="68" y="48" type="line"/>
+		</contour>
+		<contour>
+			<point x="439" y="-404" type="curve" smooth="yes"/>
+			<point x="439" y="-318"/>
+			<point x="486" y="-279"/>
+			<point x="538" y="-279" type="curve" smooth="yes"/>
+			<point x="581" y="-279"/>
+			<point x="614" y="-302"/>
+			<point x="614" y="-353" type="curve" smooth="yes"/>
+			<point x="614" y="-369"/>
+			<point x="610" y="-396"/>
+			<point x="605" y="-417" type="curve" smooth="yes"/>
+			<point x="600" y="-439"/>
+			<point x="595" y="-471"/>
+			<point x="595" y="-488" type="curve" smooth="yes"/>
+			<point x="595" y="-541"/>
+			<point x="619" y="-582"/>
+			<point x="681" y="-582" type="curve" smooth="yes"/>
+			<point x="771" y="-582"/>
+			<point x="791" y="-477"/>
+			<point x="791" y="-329" type="curve" smooth="yes"/>
+			<point x="791" y="836" type="line"/>
+			<point x="649" y="836" type="line"/>
+			<point x="649" y="884" type="line"/>
+			<point x="955" y="884" type="line"/>
+			<point x="955" y="-159" type="line" smooth="yes"/>
+			<point x="955" y="-454"/>
+			<point x="841" y="-628"/>
+			<point x="664" y="-628" type="curve" smooth="yes"/>
+			<point x="546" y="-628"/>
+			<point x="439" y="-540"/>
+		</contour>
+	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>glyph</key>
+				<string>c8b466fadfde</string>
+				<key>review</key>
+				<string>build/proofs/ligatures-new.pdf</string>
+			</dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
+</glyph>

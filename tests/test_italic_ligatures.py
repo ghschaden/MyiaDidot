@@ -43,9 +43,9 @@ def test_ligatures_follow_their_final_base(ufo):
             if point.x > 600 and point.y < 800:
                 point.x += 20
     make(trial)
-    for name in ("f_b", "f_f_b", "longs_b"):
+    for name in ("f_b", "f_f_b", "longs_b", "longs_longs_b"):
         assert outline(trial[name]) != outline(ufo[name]), name
-    for name in set(NAMES) - {"f_b", "f_f_b", "longs_b"}:
+    for name in set(NAMES) - {"f_b", "f_f_b", "longs_b", "longs_longs_b"}:
         assert trial[name] == ufo[name], name
 
 

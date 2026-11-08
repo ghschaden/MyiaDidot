@@ -146,6 +146,7 @@ l.sc smooth 1                    # Italic weighted as its letters are taken, der
 lambda.sc kink 1                 # 2026-10-21 Italic reweighted and tightened: 229,119 4.9 degrees
 lambda.sc stroke 1               # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 173 against 194 (0.89, lighter)
 longs stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 158 against 183 (0.86, lighter)
+longs_t stroke 1                 # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: lc 144 against 167 (0.86, lighter)
 lslash stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 153 against 183 (0.84, lighter)
 lslash.sc kink 1                 # 2026-10-21 Italic reweighted and tightened: 326,930 1.8 degrees
 m slant 1                        # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
@@ -192,6 +193,7 @@ s kink 2                         # 2026-10-16 known at the start (quality checks
 s smooth 1                       # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 174,196 2.7 degrees
 s stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 135 against 183 (0.74, lighter)
 s.sc slant 1                     # 2026-10-21 Italic reweighted and tightened: 12.7 degrees, not 15.2
+s_t stroke 1                     # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: lc 143 against 167 (0.85, lighter)
 seven extreme 1                  # 2026-10-16 known at the start (quality checks added): 461,1413 7 units past
 seven stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 151 against 209 (0.72, lighter)
 sevenoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 58 against 183 (0.32, lighter)

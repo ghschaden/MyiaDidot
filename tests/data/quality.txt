@@ -38,6 +38,9 @@ kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks
 longs_b kink 1                   # 2026-10-16 known at the start (quality checks added): 772,1250 6.0 degrees
 longs_h kink 1                   # 2026-10-16 known at the start (quality checks added): 772,1250 6.0 degrees
 longs_k kink 1                   # 2026-10-16 known at the start (quality checks added): 772,1250 6.0 degrees
+longs_longs_b kink 1             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1352,1250 6.0 degrees
+longs_longs_h kink 1             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1352,1250 6.0 degrees
+longs_longs_k kink 1             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1352,1250 6.0 degrees
 nine smooth 1                    # 2026-10-16 known at the start (quality checks added): 365,183 2.1 degrees
 nu zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 oe stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 219 against 182 (1.20, darker)

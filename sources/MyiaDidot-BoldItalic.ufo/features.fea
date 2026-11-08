@@ -4942,6 +4942,12 @@ lookup ligaStandardLigaturesforLatin {
 # long s (typed only in historical text): its ligatures in every language
 lookup ligaLongS {
   lookupflag 0;
+    sub \longs \longs \b  by \longs_longs_b;
+    sub \longs \longs \h  by \longs_longs_h;
+    sub \longs \longs \k  by \longs_longs_k;
+    sub \longs \longs \t  by \longs_longs_t;
+    sub \longs \longs \j  by \longs_longs_j;
+    sub \longs \j  by \longs_j;
     sub \longs \longs \l  by \longs_longs_l;
     sub \longs \longs  by \longs_longs;
     sub \longs \b  by \longs_b;
@@ -4968,13 +4974,14 @@ lookup ligaStandardLigaturesforLatinexceptTurkish {
     sub \f \j  by \f_j;
 } ligaStandardLigaturesforLatinexceptTurkish;
 
-# ct st Th th only: æ œ are letters of their own, typed (dlig made Michæl, dœs)
+# ct st Th th tt only: æ œ are letters of their own, typed (dlig made Michæl, dœs)
 lookup dligDiscretionaryLigaturesforLatin {
   lookupflag 0;
     sub \c \t  by \c_t;
     sub \s \t  by \s_t;
     sub \T \h  by \T_h;
     sub \t \h  by \t_h;
+    sub \t \t  by \t_t;
 } dligDiscretionaryLigaturesforLatin;
 
 lookup dligDiscretionaryLigaturesforGerman {

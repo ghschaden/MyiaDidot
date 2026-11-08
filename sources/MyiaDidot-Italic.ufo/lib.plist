@@ -3440,6 +3440,13 @@
 			<string>zerooldstyle.zero</string>
 			<string>T_h</string>
 			<string>t_h</string>
+			<string>t_t</string>
+			<string>longs_longs_b</string>
+			<string>longs_longs_h</string>
+			<string>longs_longs_k</string>
+			<string>longs_longs_t</string>
+			<string>longs_j</string>
+			<string>longs_longs_j</string>
 			<string>zerooldstyle.tf</string>
 			<string>oneoldstyle.tf</string>
 			<string>twooldstyle.tf</string>
@@ -4544,15 +4551,27 @@
 			<string>ligature</string>
 			<key>longs_i</key>
 			<string>ligature</string>
+			<key>longs_j</key>
+			<string>ligature</string>
 			<key>longs_k</key>
 			<string>ligature</string>
 			<key>longs_l</key>
 			<string>ligature</string>
 			<key>longs_longs</key>
 			<string>ligature</string>
+			<key>longs_longs_b</key>
+			<string>ligature</string>
+			<key>longs_longs_h</key>
+			<string>ligature</string>
 			<key>longs_longs_i</key>
 			<string>ligature</string>
+			<key>longs_longs_j</key>
+			<string>ligature</string>
+			<key>longs_longs_k</key>
+			<string>ligature</string>
 			<key>longs_longs_l</key>
+			<string>ligature</string>
+			<key>longs_longs_t</key>
 			<string>ligature</string>
 			<key>longs_t</key>
 			<string>ligature</string>
@@ -4949,6 +4968,8 @@
 			<key>t.sc</key>
 			<string>base</string>
 			<key>t_h</key>
+			<string>ligature</string>
+			<key>t_t</key>
 			<string>ligature</string>
 			<key>tau</key>
 			<string>base</string>
