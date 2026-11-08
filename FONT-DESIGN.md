@@ -19,14 +19,14 @@ evidence (a raster or a proof).
     the Regular and Bold (2026-10-27, derive.ball_for; ʋ ɻ keep theirs:
     no room in the Bold). The italic tails off a stem (retroflex,
     descender: ɳ ʈ ɭ ɖ Ɽ ң қ ...) keep their ball at half the hook's
-    stroke, flush with the curl's end (the person's decision, 2026-10-27).
+    stroke, flush with the curl's end (decided 2026-10-27).
     The italics' curls over the top (2026-10-27): the Italic's take the
     case's ball (about 72; its curls too small for its drawn c's 94); the
     Bold Italic's drawn at its weight, wider (balls 80-126 for its c's
     121, J's 143: more closed the counters). Its ⱳ.sc, emboldened from
     the Italic's draft, still has kinks and a wobble at the curl (in
     quality-BoldItalic.txt; ɦ.sc's steps done 2026-11-05, FONTLOG).
-    Left: whether the person wants the capitals' curls larger still, to
+    Left open: whether the capitals' curls should grow larger still, to
     carry balls as large as J's; Ⱳ keeps its number (its curl run on
     straight from W's arm, 2026-11-03); Bold Italic a's ball does not grow (68 -> 66).
   - Dots: in the Bold and Bold Italic they are widened three times as
@@ -49,15 +49,15 @@ evidence (a raster or a proof).
   kept directions (the guard's fitted and plain handles both bend in
   most). Shortening the handles takes out a third (365 -> 238 glyphs,
   Bold 142 -> 80) but changes Ⱳ's approved curl: not committed.
-- **Bold Italic from strokes (next, the person's choice 2026-10-27).**
-  The person's verdict: the Italic reads as drawn with a pen, the Bold
+- **Bold Italic from strokes (next, the choice made 2026-10-27).**
+  The verdict: the Italic reads as drawn with a pen, the Bold
   Italic as pieced together, its curves unround. Cause: it offsets the
   Italic's nodes, each by the weight measured there, and patches the
   symptoms (keep_bends, oval, recipes). Tried 2026-10-27, not enough:
   - Thin ends (scripts/pilot/thin-ends.patch): a stroke's cut end (n's
     exit) is weighed across its length, a stem's weight, a wedge; left
     out of the measure, 320 Bold Italic glyphs change (n u i up to 28
-    narrower), ℵ kept as it was; the ends thin, but the person: "still
+    narrower), ℵ kept as it was; the ends thin, but review: "still
     edgy, not smooth". In the Bold the same rule moves 212 glyphs
     (parentheses) and breaks ℵ's repair.
   - Runs redrawn (scripts/pilot/fair_runs.py): each run between corners
@@ -69,7 +69,7 @@ evidence (a raster or a proof).
     every 2 units, each section's weight (ray to the facing side) shared
     by both its sides and smoothed along the outline (sigma 45), moved by
     make_bold's gain (AX*k across, AY up/down), mitred at corners,
-    cleaned (pathops) and refitted. The person: n's right downstroke
+    cleaned (pathops) and refitted. Review: n's right downstroke
     "definitely much better"; e and г no different. Its faults: about a
     third more nodes, kinks (г's spine, e's bar join, n's stem under the
     crotch), o's counter keeps its slight S, n a up to 8 % lighter (ends
@@ -80,12 +80,12 @@ evidence (a raster or a proof).
   outline with as many curves as the Italic glyph has, its nodes where
   the Italic's fall along each stroke (mapped by arc length per stroke
   side), tangents from the target outline, extremes kept, so the curves
-  are as few and as smooth as the Italic's; (3) settle with the person
+  are as few and as smooth as the Italic's; (3) settle in review
   what hairlines and ends gain; (4) a sheet of about 20 lowercase (n m h
   u a e c o s г ...) against the Italic and today's Bold Italic before
   anything goes into make_bold; then a full sweep and baselines.
-  Render with node views (Italic | now | pilot); the person judges
-  smoothness by eye, the reversal count is only a check.
+  Render with node views (Italic | now | pilot); smoothness is judged
+  by eye, the reversal count is only a check.
   Step (2) done as a study (2026-10-28, scripts/pilot/strokes_fit.py,
   sheets by scripts/pilot/node_sheet.py): every sample keeps the Italic
   segment it came from, so each Italic curve is redrawn as one cubic and
@@ -98,7 +98,7 @@ evidence (a raster or a proof).
   (a crotch's pair becomes its one meeting point: a 20/23), reversals 2
   (today's Bold Italic 38, the pilot 16), weight within 1 % of the
   pilot's, so 0-10 % lighter than today's Bold Italic (n u r 9 %): the
-  hairlines and ends of step (3) are still to settle with the person.
+  hairlines and ends of step (3) are still to be settled in review.
   Seen, still to look at: r's ball join keeps a small hook.
   Step (3), measured (2026-10-28, horizontal cuts at 0.3 and 0.8 x-height,
   per 1000 units): the lightness is in the entry and exit hairlines,
@@ -107,9 +107,9 @@ evidence (a raster or a proof).
   x1.6), Libre Bodoni's a quarter (25 -> 31, stems x1.3); the fit 23 -> 24,
   stems x1.6 as today. strokes_fit's HAIR (env) adds a hairline gain
   across fading into AX: 0 / 12 / 24 give hairlines 24 / 30 / 36 and
-  0.96 / 0.98 / 1.00 of today's weight. The person chose +12 (Libre
+  0.96 / 0.98 / 1.00 of today's weight. +12 was chosen (Libre
   Bodoni's quarter), now HAIR's default. The ends as the strokes give
-  them (the person, 2026-10-28): raising a cut end's weight (at least 0.5
+  them (2026-10-28): raising a cut end's weight (at least 0.5
   or 0.8, falling off over 60 or 160 units) made a knob with a waist
   behind it, not today's straight wedge; tried and dropped.
   r's ball-join hook: the Italic rounds the join with a 12-unit curve of
@@ -117,7 +117,7 @@ evidence (a raster or a proof).
   moved; such a round is now drawn as a line between corners and the
   cleaning cuts a crotch (s's, radius 34 against 35, is left a curve).
   Step (4), the review sheet (Italic | today | fit, the 20 lowercase,
-  hairlines +12): the person, "looks better, continue" (2026-10-28).
+  hairlines +12): approved, "looks better, continue" (2026-10-28).
   In make_bold (2026-10-28, scripts/stroke_bold.py, the study's code made
   exact and fast: about 90 s for the style on 6 cores). Found in the sweep
   and fixed: the capitals' serif brackets (radius 40-65, under the stem's
@@ -132,7 +132,7 @@ evidence (a raster or a proof).
   Still to do: the tests holding the by-weight outlines' coordinates (Ⱦ Ɉ
   ɸ repairs, ɬ Ꞁ belts, accepted glyphs), the new steps, К's kink, Ⱥ's
   notch, the shaping and hinting baselines (advances shift a few units).
-  The person's choices after the sweep (2026-10-28): г's spine had a knee
+  The choices after the sweep (2026-10-28): г's spine had a knee
   where the weight rose within one curve: SIGMA 45 -> 90; z s г too light
   beside the stems: a shallow diagonal is weighed by its width nearer the
   horizontal (ACROSS 0.6, faded out below 20 degrees so serifs and bars
@@ -143,14 +143,14 @@ evidence (a raster or a proof).
   +11-13 % on today's ink, rounds +5-9 %, stems -3 %. Tried and dropped:
   the slashed letters (Ⱥ Ȼ Ⱦ ...) as base plus bar like ø (the derived
   letter's base is not exactly its glyph: the "bar" took half the letter).
-  Then (the person: z s still light; 2 7 kinked; κ's leg not joined):
+  Then (review: z s still light; 2 7 kinked; κ's leg not joined):
   FULL 0.75, ACROSS 0.45, the gain up and down for shallow strokes only
   (SHALLOW: under about 33 degrees, so κ's 45-degree arm pulls no waist
   where its hairline leg leaves it) and fading out within ZONE_NEAR of the
   zones (else v w y z α ... rose past their overshoots); 2's and 7's kinks
   were 3-unit lines the overlap removal leaves (TINY 4). z s г 2 now
   +11-15 % on today's ink, o +7 %, stems -5 %. z's bottom loop closes to a
-  slit. Then (the person: "minimum noticeably blacker"; z's loop to stay
+  slit. Then (review: "minimum noticeably blacker"; z's loop to stay
   open): the blackness was the spacing, not the ink (n m 5 % lighter than
   today's): fitted to the stroked letter's own white, the thinner entries
   and exits drew every letter about 23 units closer; now spaced as by
@@ -158,11 +158,11 @@ evidence (a raster or a proof).
   today's do; advances as today's but 65 glyphs). z's loop: no side moves
   more than CLEAR (a quarter) of the white in front of it, and hairline
   curls are not weighed as diagonals; z needs no exception. z still light
-  (the person): its waves are shallow and near the zones, so gain little;
+ : its waves are shallow and near the zones, so gain little;
   ITALIC_BOLD_HEAVIER gives it 1.15 of the gain (+15 % on today's ink,
   ʐ ʑ ž follow). Letting the zone-facing fade spare inner edges added
   only 2 % to z and pulled counters off their zones: dropped.
-  Derived letters (the person: the problem is in the letters put together):
+  Derived letters (review: the problem is in the letters put together):
   the slashed ones (Ⱥ ⱥ Ȼ ȼ Ⱦ and ⱥ ȼ ⱦ .sc) rebuilt by their recipe on the
   stroked base (Ȼ 51 -> 28 nodes); a rebuilt letter is cleaned
   (glyph_lint.fix) before it is judged, so Ƴ ʄ ҳ, steps of 1-3 units where
@@ -171,15 +171,15 @@ evidence (a raster or a proof).
   foot counter, larger now, closed by t_slash.py (limits widened); Greek
   ωρ ωμ ρω γα αδ and Cyrillic шт ін corrected in ITALIC_BOLD_KERNING.
   The middle tildes (ɫ Ɫ ᵬ-ᵶ, ɫ.sc) rebuilt by their recipe too: the tilde
-  at the slashes' weight, lighter (the person preferred the new slashes),
+  at the slashes' weight, lighter (preferred the new slashes),
   ᵭ's upper counter round again (emboldened whole, small and tight, it
   came out a triangle). The Bold Italic spaced 10 units a side looser
   ("a bit narrow"; BOLD_ITALIC_CUT, Greek alike): aleph.py's repair finds
   its points at any offset; Cyrillic ин лн back in range.
-  For the person's review before the baselines: the accepted glyphs that
+  For the review before the baselines: the accepted glyphs that
   changed (I ɬ ɸ ʈ.sc Ɽ Ⱳ Ꞁ) and the lint candidates (Ɠ's curl notch, Ƙ
-  ᵭ steps of 1-2 units, the slash wedges of Ⱥ ⱥ.sc, ⊗'s cross wedges). The person
-  and Codex agree on the order: exit weight, derived letters, a G2 trial
+  ᵭ steps of 1-2 units, the slash wedges of Ⱥ ⱥ.sc, ⊗'s cross wedges). The order is
+  agreed with Codex: exit weight, derived letters, a G2 trial
   in the fitter, paired fitting of a stroke's two sides where thickness
   problems remain.
   The G2 trial (2026-10-28, stroke_bold.py; on in the build since, MYIA_G2=0 to compare):
@@ -219,8 +219,8 @@ evidence (a raster or a proof).
   moved the change elsewhere); without the one-way rule the transitions
   bent back (S-bends). Kept: the change of log |k| (scale-free), curves
   may not bend back, a curve next to a line split in two and only fading
-  towards it (else a swell before n's outer stem). The person compared
-  combs (today | faired) and found the faired better; at 72 and 260 px per
+  towards it (else a swell before n's outer stem). Combs compared
+  (today | faired): the faired found better; at 72 and 260 px per
   em they cannot be told apart. Bold Italic: curve joins over 1/250 1236
   -> 860; curves leaving lines over 1/250, brackets aside, 826 -> 585 (the
   rest mostly capital serif curves over 120 units, refused: straight ends
@@ -252,7 +252,7 @@ evidence (a raster or a proof).
   redrawn round instead (k kept as drawn).
 - Step candidates (checks.py `step`, in `tests/data/quality-*.txt`):
   reviewed 2026-11-04 those named as likely faults: ʝ's crossbar end and
-  Bold ɝ's hook join designed; ɾ ᵳ keep r's foot slab in every style (and since 2026-11-04 end at f's hook, r's stem above it cut away, the person: to read apart from r);
+  Bold ɝ's hook join designed; ɾ ᵳ keep r's foot slab in every style (and since 2026-11-04 end at f's hook, r's stem above it cut away, review: to read apart from r);
   Serbian г made from ū's first stem (its stem had bent where ı met ū);
   Bold Italic п т's short bar overhang taken as is. The rest still marked
   "a candidate to review" (₿ ǥ ɉ bar ends, ₡ ₹ ₮, ꞁ ɑ.sc ⱦ.sc ...).
@@ -297,11 +297,11 @@ evidence (a raster or a proof).
   o changes. The open rounds c C G c.sc g.sc take the Italic's inside
   (italic_inside, 2026-11-06); e ɔ є and the others keep their stroked ones.
 - ſ ſſ before the round letters (c d e o g q œ and their accents) kerned
-  −60, the Bold Italic −80 (the person, from proofs, 2026-11-05); the
+  −60, the Bold Italic −80 (from proofs, 2026-11-05); the
   accented ones guarded against ſ only (kern_clear.GUARDED_AGAINST). The
   full guard would also loosen 12 other pairs (A.sc before ö.sc ō.sc õ.sc
   ǭ.sc č.sc ḡ.sc ..., −78 → −13 for ö.sc; F ỡ; V Y ě): left as they
-  were (the person), the dieresis near A.sc's apex without touching.
+  were, the dieresis near A.sc's apex without touching.
 - kern_clear.guard: a guarded right letter's exception to a left group
   (ɉ against b o p ...) is measured over every member, also one guarded
   on the left with an exception of its own that wins anyway (ᵬ), so one
@@ -309,7 +309,7 @@ evidence (a raster or a proof).
   letters first, those with their own exception not measured), about
   850 pairs in Bold, Italic and Bold Italic tighten to GUARD (Bold U+ǎ
   −29 → −92, Italic V+ǒ −151 → −186): tried 2026-11-04, set aside for
-  the person's decision and a visual sweep.
+  the decision and a visual sweep.
 - Bold Italic, seen in print (2026-10-27), reviewed 2026-11-02: ʋ (its
   own recipe) and Ɯ (U twinned) done 2026-10-29; ʷ ʸ ʰ ʲ ⁱ ᶤ ᶶ and the
   other modifier letters the Italic derives are made small from the Bold
@@ -318,7 +318,7 @@ evidence (a raster or a proof).
   own). Still open: ᵘ ⁿ, refused by the gate (made small, n's arch crotch
   is a notch at that size), keep their 32 degree corner; г's inner curves
   stand upright from the stroking itself (the fit follows its samples
-  within 2 units; s з 3 2 alike), not a fault of г's; the person to say
+  within 2 units; s з 3 2 alike), not a fault of г's; still to decide
   whether the counters should keep rounder. A sweep of Bold Italic
   corners where the Italic is smooth found about 190 candidates (many
   designed: crotches, ligature joins, ⁂), not yet reviewed. Limiting the
@@ -363,12 +363,12 @@ evidence (a raster or a proof).
   UFO --drafts`. Acceptance is recorded with accepted.py, not by clearing draft flags
   (docs/claude/quality.md). `make proof` writes the review sheets of
   exactly those (drafts-review-STYLE.pdf, smallcaps-review-STYLE.pdf):
-  the next step is the person's pass through them. 2026-11-05: the
+  the next step is the pass through them. 2026-11-05: the
   Regular's and the Italic's drafts sheets accepted but for these, sent
   back: Ƭ (the right turn into the hook uneven) and ʂ (the turn into its
   hook still not good) in the Regular, the italic ɉ (its bar not
   centred); the Regular's ɹ ɺ ɻ to be rebuilt as r turned, as in the
-  italics (the person: the drawn hook looks very different from r's).
+  italics (review: the drawn hook looks very different from r's).
   2026-11-06: those reworked and accepted (FONTLOG), the Regular
   small-caps sheet accepted, ƈ.sc ɠ.sc redrawn (curls on c.sc g.sc) and
   accepted in the Regular, Italic and Bold, Ƭ in the Regular and Bold; the
@@ -381,7 +381,8 @@ evidence (a raster or a proof).
   [G-hook review](docs/g-hooks-review-2026-11-06.md).
   ʛ is ɠ.sc's alias, so at the small caps'
   height (1060), where ɢ and the other IPA small capitals stand at the
-  x-height (884, 2026-11-01): the person to say whether ʛ follows them.
+  x-height (884, 2026-11-01). Decided 2026-11-08: ʛ follows them (ɠ.sc
+  scaled as ɢ from g.sc), a draft to review.
   2026-11-08: Bold small caps and all remaining Bold drafts accepted, with
   local drawing repairs and retained proofs (docs/bold-*-review-2026-11-07.md).
   Bold Italic's 39 extended Latin drafts through U+024F are accepted:
@@ -407,7 +408,7 @@ evidence (a raster or a proof).
   are accepted unchanged (2026-11-06):
   [Italic Latin small-cap review](docs/italic-smallcaps-latin-review-2026-11-06.md).
   The next 46 extended Latin Italic small caps have a two-page proof.
-  Sent back after the person's review: uni0280.sc has a torn bowl and
+  Sent back after the review: uni0280.sc has a torn bowl and
   detached leg (the lower recipe cuts through the bowl); uni0253.sc and
   uni0257.sc have oversized, low hooks unlike their capitals. Those three
   are now locally reconstructed and accepted (2026-11-06), including
@@ -419,7 +420,7 @@ evidence (a raster or a proof).
   [Bold Italic hook stems](docs/bold-italic-hook-stems-review-2026-11-06.md).
   The other 43 glyphs in this batch are accepted unchanged (2026-11-06):
   [extended Latin small-cap review](docs/italic-smallcaps-extended-latin-review-2026-11-06.md).
-  Italic ƥ (uni01A5) reopened by the person: swelling at the hook/stem
+  Italic ƥ (uni01A5) reopened by review: swelling at the hook/stem
   join removed locally and accepted (2026-11-06). Bold Italic regenerated
   and finished with its spacing retained; its fuller hook and smooth stem
   transition are also accepted (2026-11-06):

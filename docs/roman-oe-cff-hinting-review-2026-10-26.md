@@ -23,7 +23,7 @@ alignment failure. The inspected bowl remains continuous and visually
 compatible with O; Œ's stem and serifs remain compatible with E.
 
 Recommendation: retain the current hints and four exception entries.
-No correction trial or production change is proposed. The person approved retention on 2026-10-26.
+No correction trial or production change is proposed. Retention was approved on 2026-10-26.
 
 The old explanation that only E's stems receive hints was incomplete.
 Decompiled Œ charstrings contain horizontal hints for both the O-like bowl

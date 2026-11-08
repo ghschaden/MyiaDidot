@@ -12,7 +12,7 @@ matching the clearance above ż in each weight.
 
 The existing tighter gap is inherited from the Roman placement. Matching
 ż gives a more even separation without altering t or the dot drawing.
-The person approved the proposal and requested continuation on 2026-10-25.
+The review approved the proposal and requested continuation on 2026-10-25.
 The Regular master now has the higher dot and corrected Dotaccent anchors
 on t and its five below-mark composites; Bold inherits these through its
 normal generator. Exactly seven glyph objects change per Roman style;

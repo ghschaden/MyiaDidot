@@ -1,4 +1,4 @@
-"""Accepted glyphs are as the person accepted them.
+"""Accepted glyphs are as the review accepted them.
 
 scripts/accepted.py records a visual acceptance in the glyph's lib (date,
 review, fingerprint) without freezing the glyph: the generators make it

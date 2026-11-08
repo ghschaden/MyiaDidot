@@ -1,6 +1,6 @@
 # Bold Italic extended Latin drafts
 
-The person reviewed 39 extended Latin drafts, approved 37 unchanged, then
+The review reviewed 39 extended Latin drafts, approved 37 unchanged, then
 approved reconstructed uni0187 and uni0188 on 2026-11-08. All 39 now carry
 acceptance records in production. The two local drawings are marked drawn
 and tied to their Italic source fingerprints.
@@ -26,7 +26,7 @@ build/glyph-review/bold-italic-c-hooks-2026-11-08/.
 The original 39-form sheet and fingerprints are under
 build/glyph-review/bold-italic-extended-latin-drafts-2026-11-07/.
 All 39 direct latn/en shaping checks passed. Both repaired outlines pass
-lint. The person also approved the existing small step in uni0198 and the
+lint. The review also approved the existing small step in uni0198 and the
 notch in uni023A; no exception lists were enlarged for those findings.
 Source-outline proofs were visually inspected; they do not establish
 hinted rendering quality.

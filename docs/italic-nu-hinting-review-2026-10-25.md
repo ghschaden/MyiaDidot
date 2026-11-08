@@ -31,7 +31,7 @@ alignment. A lower report count alone does not establish an improvement.
 Recommendation: retain the production hints and current exception keys.
 A future repair needs coherent curve/segment handling and a fresh visual
 comparison, rather than a larger delta to this one point. This review
-records the person's acceptance of the current production hints on
+records the acceptance of the current production hints on
 2026-10-25. The isolated-point trial is rejected.
 
 Verification against the current production TTFs:

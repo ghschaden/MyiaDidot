@@ -75,7 +75,7 @@ export function judgeBash(command: string): Verdict | undefined {
   if (/\bmake\b[^;&|]*\breimport\b/.test(c) || /\b(postprocess_import|sfd_export)\.py\b/.test(c)) {
     return {
       decision: 'deny',
-      reason: `${PREFIX}: re-importing from the upstream SFD overwrites the master UFO and every edit since. Only the person runs that, themselves.`,
+      reason: `${PREFIX}: re-importing from the upstream SFD overwrites the master UFO and every edit since. Only the designer runs that, by hand.`,
     }
   }
   if (/\bsources\/upstream\b/.test(c) && /(\bsed\b[^|;&]*\s-i|\brm\b|\bmv\b|\bcp\b|\btee\b|>{1,2}|\btruncate\b|\bgit (rm|mv|checkout)\b)/.test(c)) {

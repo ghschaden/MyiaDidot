@@ -8,7 +8,7 @@ capitals. The exact list and outline fingerprints are in
 and remaining phonetic forms are outside this batch.
 
 Initial recommendation withdrawn for uni0280.sc, uni0253.sc and uni0257.sc
-after the person's closer review. Those three required correction; the
+after the closer review. Those three required correction; the
 initial batch was not accepted. See the resolution and focused findings below. Both pages of
 `review.pdf` were rendered and inspected.
 
@@ -24,7 +24,7 @@ a refreshed two-page sheet:
 pages were visually inspected. Their fingerprints match the original
 43 drawings exactly; no sources changed for this refresh. All 86 smcp/c2sc
 checks pass, and outline lint has no findings. The three corrected,
-accepted forms are excluded. The person approved this remaining batch
+accepted forms are excluded. The review approved this remaining batch
 unchanged; all 43 acceptance fingerprints are recorded in the Italic UFO.
 The accepted sheet is retained as
 `proofs/italic-smallcaps-extended-latin-2026-11-06.pdf`.
@@ -74,7 +74,7 @@ forms separately, and the remaining 43 unchanged from the refreshed sheet.
 
 ## Follow-up: three glyphs sent back
 
-The person identified uni0280.sc's defect and questioned the large, low
+The review identified uni0280.sc's defect and questioned the large, low
 hooks of uni0253.sc and uni0257.sc. The focused source proofs confirm both
 concerns. No production drawings were changed during this investigation.
 

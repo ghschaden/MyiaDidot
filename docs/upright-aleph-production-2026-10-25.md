@@ -1,6 +1,6 @@
 # Upright aleph integrated, 2026-10-25
 
-The person accepted the vertically fitted upright italic drawings and
+The review accepted the vertically fitted upright italic drawings and
 requested production integration. Regular and Bold ℵ now use those
 drawings. The [production proof](../proofs/upright-aleph-production-comparison-2026-10-25.pdf)
 shows the replaced romans, final outlines and retained smaller forms.

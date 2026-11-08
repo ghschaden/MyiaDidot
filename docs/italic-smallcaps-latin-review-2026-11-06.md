@@ -6,7 +6,7 @@ of the extended Latin, Greek or Cyrillic small caps. Reference:
 `3d692354` plus the subsequently approved G-hook drawings and a.ipa
 acceptance metadata; neither changes these 26 drawings.
 
-The person accepted all 26 drawings unchanged on 2026-11-06. Acceptance
+The review accepted all 26 drawings unchanged on 2026-11-06. Acceptance
 fingerprints are recorded in the Italic UFO. The one-page sheet shows each full capital, small
 capital and lowercase at the same em scale, with baseline, x-height,
 small-cap and cap-height guides, then n/small-cap/n and H/small-cap/H

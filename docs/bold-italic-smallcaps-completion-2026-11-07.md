@@ -1,6 +1,6 @@
 # Bold Italic phonetic, Greek and Cyrillic small caps
 
-Reference: `4fd217498c688aae1155924743684021da54876b`. The person approved
+Reference: `4fd217498c688aae1155924743684021da54876b`. The review approved
 the remaining 15 Latin/phonetic, 17 Greek and 40 Cyrillic small caps, plus
 the accompanying lowercase қ, ҳ and ҷ repairs, on 2026-11-07. All 75
 acceptances are recorded by glyph fingerprint in the production Bold Italic
@@ -63,7 +63,7 @@ directories: `bold-italic-phonetic-repairs-2026-11-07/`,
 `bold-italic-smallcaps-greek-2026-11-07/`,
 `bold-italic-smallcaps-cyrillic-2026-11-07/` and
 `bold-italic-cyrillic-repairs-2026-11-07/`. Its `candidate-v4.ufo` was followed
-by `bold-italic-fita-counter-2026-11-07/candidate.ufo` after the person reopened
+by `bold-italic-fita-counter-2026-11-07/candidate.ufo` after the review reopened
 and then approved Fita. The whole font was installed after checking
 that exactly the eleven named drawings differed from production. Installation
 and baseline reports are under
@@ -88,7 +88,7 @@ Retained final sheets:
 - [Reopened Fita counter](../proofs/bold-italic-fita-counter-2026-11-07.pdf)
 
 Integration removes seven resolved quality entries and the obsolete
-whole-emboldening exception/metadata for drawn uni04B7. The person explicitly
+whole-emboldening exception/metadata for drawn uni04B7. The review explicitly
 authorized one new quality exception for the approved lighter uni049B leg
 (235 versus the 269-unit reference, ratio 0.87), overriding the shrink-only
 exception rule for this drawing. Its shape is not changed to silence that

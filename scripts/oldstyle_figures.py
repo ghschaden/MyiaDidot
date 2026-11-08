@@ -28,7 +28,7 @@ def production_name(name):
     zero.osf.zero); None for any other glyph. Its source name, oneoldstyle,
     is the Adobe Glyph List's for U+F731: a PDF reader naming text by glyph
     gets the private-use character, one.osf reads as 1 (the figures are not
-    encoded, onum reaches them; the person, 2026-11-03)"""
+    encoded, onum reaches them; 2026-11-03)"""
     base, dot, rest = name.partition(".")
     if base.endswith("oldstyle") and base.removesuffix("oldstyle") in FIGURES:
         return base.removesuffix("oldstyle") + ".osf" + dot + rest

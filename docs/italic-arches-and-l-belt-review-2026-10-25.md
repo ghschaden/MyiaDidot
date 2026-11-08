@@ -41,7 +41,7 @@ small caps remain unchanged; no shaping baseline updates are intended.
 
 ## Reference check requested after the drawing review
 
-The person asked whether the empty space was deliberate and requested a
+The review asked whether the empty space was deliberate and requested a
 Charis/Libertinus comparison. The [actual-outline reference sheet](../proofs/l-belt-charis-libertinus-comparison-2026-10-25.pdf)
 places the installed reference fonts beside Myia's original and joined
 versions at equal em sizes.
@@ -59,8 +59,8 @@ The existing Myia Italic uses the Regular attachment recipes for both
 characters; there is no Italic-specific override specifying a gap. Those
 fixed piece positions no longer overlap the lighter italic stem. This is
 additional evidence for a placement mismatch, not proof of the original
-person's aesthetic intent. After reviewing the reference comparison, the
-person explicitly accepted the connected belts: “lets stay with connected
+aesthetic intent. After the reference comparison, the review explicitly
+accepted the connected belts: “lets stay with connected
 belts then” (2026-10-25). This accepts ɬ and Ɬ in the two italic weights;
 the separate arch-family retention recommendations are unchanged.
 

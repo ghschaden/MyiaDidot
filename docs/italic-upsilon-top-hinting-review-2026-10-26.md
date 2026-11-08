@@ -29,7 +29,7 @@ Recommendation: retain the current hints and four exception entries.
 The small-size displacement is real, but this inspection does not establish
 that flattening or shifting the hook would improve its readability. Moving
 only the original highest points would target points already aligned to H.
-No correction trial is proposed or integrated. The person approved retaining these hints on 2026-10-26.
+No correction trial is proposed or integrated. Retaining these hints was approved on 2026-10-26.
 
 ## Scope and checks
 

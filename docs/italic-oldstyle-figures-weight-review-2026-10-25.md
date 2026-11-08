@@ -42,7 +42,7 @@ hinting checks, and final font builds.
 
 ## 9 distinguished from g
 
-The person found the proposed 9 too similar to g. The inherited rounded
+The review found the proposed 9 too similar to g. The inherited rounded
 bowl and long curled ball-terminal descender make the resemblance clear
 in a direct g/9 comparison. [Revised 9 proof](../proofs/italic-nine-open-tail-2026-10-25.pdf)
 retains the lighter bowl and upper descender, replacing the lower curl

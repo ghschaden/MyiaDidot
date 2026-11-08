@@ -52,5 +52,5 @@ Moved from CLAUDE.md (its ground rules apply).
   `scripts/update_test_data.py` (review the complete JSON report and
   pass its SHA-256 to `--accept-report`; the plugin may ask for approval) and
   say in the commit what changed and why.
-- Never commit with `--no-verify` unless the person asked for it.
+- Never commit with `--no-verify` unless explicitly asked to.
 

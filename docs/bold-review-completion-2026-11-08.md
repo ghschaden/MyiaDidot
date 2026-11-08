@@ -1,6 +1,6 @@
 # Approved Bold drawings and Bold Italic C hooks
 
-The person approved all Bold small-cap and remaining draft review batches,
+The review approved all Bold small-cap and remaining draft review batches,
 and the first 39 Bold Italic extended Latin drafts. This change installs
 those drawings, records 178 new Bold and 39 new Bold Italic acceptances,
 and retains the final PDF proofs and individual review documents.

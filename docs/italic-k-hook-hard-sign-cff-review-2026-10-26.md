@@ -22,7 +22,7 @@ In context, ƙ.sc retains its k construction and hook without a conspicuous
 height jump. The tiny hard-sign flag remains continuous with its stem;
 the bowl stays compatible with ь. Recommendation: retain current hints and
 the two existing exception entries. No trial, outline repair or font hint
-adjustment is proposed. The person approved retaining these hints on 2026-10-26.
+adjustment is proposed. Retaining these hints was approved on 2026-10-26.
 
 ## Scope and verification
 

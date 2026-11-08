@@ -5,7 +5,7 @@ def finish(font):
     """Both bar arms 1.25 of the bar's thickness past the stem's edges.
 
     Emboldened, the stem eats into the Italic's arms: the right one
-    ended inside the heavier stem (the person, 2026-10-24: too short), and
+    ended inside the heavier stem (2026-10-24: too short), and
     with the Italic's bar centred (2026-11-06) the left one came to 68
     against the right one's 80. The stem corners and the rest of the glyph
     stay; each terminal keeps the bar's top and bottom and its slanted end.

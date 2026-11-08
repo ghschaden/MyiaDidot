@@ -96,7 +96,7 @@ uni0198 smooth 1                 # 2026-10-16 known at the start (quality checks
 uni019D kink 2                   # 2026-10-16 known at the start (quality checks added): 280,80 1.1 degrees; 344,60 2.3 degrees
 uni019D smooth 1                 # 2026-10-16 known at the start (quality checks added): 338,-75 2.5 degrees
 uni01A4 smooth 1                 # 2026-10-16 known at the start (quality checks added): -56,1236 2.4 degrees
-uni01AD.sc smooth 1              # 2026-11-06 sent-back drafts reworked (ɹ ɺ ɻ r turned, inheriting r's ball; ƈ.sc ɠ.sc curls on c.sc g.sc, ʛ with ɠ.sc; ƭ.sc as accepted): candidates for the person's review: 163,769 2.1 degrees
+uni01AD.sc smooth 1              # 2026-11-06 sent-back drafts reworked (ɹ ɺ ɻ r turned, inheriting r's ball; ƈ.sc ɠ.sc curls on c.sc g.sc, ʛ with ɠ.sc; ƭ.sc as accepted): candidates for the review: 163,769 2.1 degrees
 uni01AE kink 2                   # 2026-10-27 hook balls sized from the case's stem (derive.ball_for), redrafted: 1112,-247 6.2 degrees; 688,-162 6.8 degrees
 uni01B3 kink 1                   # 2026-10-27 hook balls sized from the case's stem (derive.ball_for), redrafted: 1061,1150 4.8 degrees
 uni01B4 smooth 1                 # 2026-10-16 known at the start (quality checks added): 735,700 2.3 degrees
@@ -158,7 +158,7 @@ uni0272.sc kink 2                # 2026-10-16 known at the start (quality checks
 uni0272.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 300,-51 2.3 degrees
 uni0276 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni027D.sc kink 2                # 2026-10-16 known at the start (quality checks added): 207,48 5.1 degrees; 588,-132 3.5 degrees
-uni027E base 1                   # reviewed by the person 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 54% of r kept (attach)
+uni027E base 1                   # reviewed 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 54% of r kept (attach)
 uni0288.sc kink 1                # 2026-10-16 known at the start (quality checks added): 881,-132 3.5 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni028A kink 1                   # 2026-10-16 known at the start (quality checks added): 158,730 5.0 degrees
@@ -173,7 +173,8 @@ uni0294 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni0295 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)
 uni0298 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 207 against 182 (1.14, darker)
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -28 from 0
-uni029B zone 1                   # 2026-11-06 sent-back drafts reworked (ɹ ɺ ɻ r turned, inheriting r's ball; ƈ.sc ɠ.sc curls on c.sc g.sc, ʛ with ɠ.sc; ƭ.sc as accepted): candidates for the person's review: bottom -24 from 0
+uni029B smooth 1                 # 2026-11-08 ʛ at the x-height, made from ɠ.sc as ɢ from g.sc: ɢ's own findings (G's spur, curl slant): 710,23 2.6 degrees
+uni029B step 1                   # 2026-11-08 ʛ at the x-height, made from ɠ.sc as ɢ from g.sc: ɢ's own findings (G's spur, curl slant): 701,304 67 units aside
 uni029D.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 585,191 2.7 degrees
 uni02A1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)
 uni02A2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)

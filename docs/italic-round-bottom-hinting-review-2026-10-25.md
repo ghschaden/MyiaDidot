@@ -25,7 +25,7 @@ audited sizes, not the whole-row displacement described in older notes.
 Raster coverage can consequently differ on the row below the baseline.
 
 The current rasters retain continuous curves. Recommendation: keep the
-existing hints and exceptions, pending the person's visual verdict on
+existing hints and exceptions, pending the visual verdict on
 this proof. There is no demonstrated curve-preserving correction here;
 no trial or production adjustment is proposed. In particular, the
 isolated-point ν trial does not provide a suitable recipe for these

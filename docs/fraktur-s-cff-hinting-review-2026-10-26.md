@@ -29,7 +29,7 @@ The inspected 𝔖 terminal remains continuous and recognizably part of its
 Fraktur construction beside 𝔐/𝔓. These very small sizes simplify its detail,
 but the small raised top does not establish a repair need. Recommendation:
 retain current hints and the two existing exception entries. No delta trial,
-outline modification or hint-program change is proposed. The person approved retaining these hints on 2026-10-26.
+outline modification or hint-program change is proposed. Retaining these hints was approved on 2026-10-26.
 
 The imported Libertinus Math outlines were adapted to the family's height
 and weight; their distinct Fraktur construction is intentional. This review

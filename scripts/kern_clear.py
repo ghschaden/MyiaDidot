@@ -43,9 +43,9 @@ GUARD_KEY = "org.myiadidot.kernGuarded"  # {letter: [side, ...]}, by kern_groups
 GUARD = MIN_GAP  # units of white a guarded letter keeps (kern_groups' measure)
 # letters guarded against only these left entries, not in all their pairs
 # (GUARD_KEY's): the accented round letters before ſ and ſſ, kerned -60
-# (Bold Italic -80) so that ſ's hook overhangs them (the person, ſc too
+# (Bold Italic -80) so that ſ's hook overhangs them (ſc too
 # wide, 2026-11-05), the accent then under the hook; their other pairs
-# left as they were (the person: A.sc ö.sc kept at -78)
+# left as they were (review: A.sc ö.sc kept at -78)
 GUARDED_AGAINST = {
     **{name: ("longs", "longs_longs") for name in (
         "ccaron", "ebreve", "ecaron", "edieresis", "emacron", "obreve", "odieresis", "omacron", "otilde",

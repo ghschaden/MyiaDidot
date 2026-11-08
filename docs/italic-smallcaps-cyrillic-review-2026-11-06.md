@@ -2,7 +2,7 @@
 
 Reference: `f471c107` with approved Latin/phonetic and Greek small-cap
 reviews integrated. This batch contains the remaining 40 unaccepted
-Italic small-cap drafts, all Cyrillic. The person approved 39 unchanged
+Italic small-cap drafts, all Cyrillic. The review approved 39 unchanged
 and sent back uni044E.sc on 2026-11-06. Those 39 acceptance fingerprints
 are recorded in the Italic UFO. The reviewed sheet is retained as
 `proofs/italic-smallcaps-cyrillic-partial-2026-11-06.pdf`.
@@ -15,7 +15,7 @@ contexts. The main letters, extended Cyrillic, historical forms and
 descender variants are included. No broken construction is apparent in
 these specimens. Barred round forms such as uni0473.sc and uni04E9.sc
 merit close inspection beside their capitals after the Greek theta.sc
-counter repair. No redraw is proposed before the person's review.
+counter repair. No redraw is proposed before the review.
 
 `glyphs.txt` and `checks.json` in the proof directory contain the exact
 names, fingerprints, lint and mappings. All 80 explicit smcp/c2sc mappings
@@ -27,7 +27,7 @@ The proof has an explicit page break after five rows.
 
 ## Ю.sc sent back
 
-The person found the bowl lighter than the stem, the stem too fat and
+The review found the bowl lighter than the stem, the stem too fat and
 a small bump on the bowl's lower-right side. Upright horizontal cuts
 confirm a 200–205-unit stem against sides around 150–175 units.
 
@@ -47,7 +47,7 @@ lower-right side runs smoothly through its former corner.
 `checks.json` confirms only uni044E.sc differs geometrically; all advances,
 features, kerning, groups and accepted fingerprints are retained. Both
 explicit Cyrillic smcp/c2sc mappings pass, and outline lint reports no
-findings. The person approved the revision on 2026-11-06. It is installed
+findings. The review approved the revision on 2026-11-06. It is installed
 in the Italic, marked drawn and accepted; all 40 forms in this batch and
 all remaining Italic small-cap drafts are now accepted. The approved proof
 is retained as `proofs/italic-yu-smallcap-repair-2026-11-06.svg`.

@@ -1,6 +1,6 @@
 # Italic ƥ hook/stem join — 2026-11-06
 
-The person reported a slight swelling where lowercase ƥ's hook meets the
+The review reported a slight swelling where lowercase ƥ's hook meets the
 stem and clarified that the style was Italic. Reference: `6e0fba21`, with
 the subsequent acceptance metadata for 43 extended Latin small caps.
 Before snapshots are under `build/glyph-review/p-hook-join/`.
@@ -37,19 +37,19 @@ The final full suite passed: 369 passed, 7 skipped. Outline lint found no
 issues in either revised glyph; Ruff and the source sync check also passed.
 Final `make reproduce`: Italic, Bold and Bold Italic all as generated.
 
-The person accepted the new Italic ƥ on 2026-11-06 (“new p is accepted”);
+The review accepted the new Italic ƥ on 2026-11-06 (“new p is accepted”);
 its acceptance stamp refers to this review. The dependent Bold Italic
 was subsequently accepted after the weight follow-up below. The 43 small-cap approvals are recorded
 separately in the extended Latin review; their drawings did not change.
 
 ## Bold Italic weight follow-up
 
-The person found the hook lighter than the p stem and authorized either
+The review found the hook lighter than the p stem and authorized either
 smoothing the transition or thickening the hook. The rising stroke is now
 about 218–220 units wide (formerly about 174–176) and its outer edge runs
 continuously from the p stem. The short shoulder at y=698 is removed.
 The curl ball, bowl counter, advance, anchors and overall bounds are
-retained. The accepted Italic remains unchanged. The person approved this
+retained. The accepted Italic remains unchanged. The review approved this
 Bold Italic revision on 2026-11-06; its acceptance stamp refers to this review.
 
 [Updated before/after with same-style p](../build/glyph-review/p-hook-join/bold-italic-weight.png)

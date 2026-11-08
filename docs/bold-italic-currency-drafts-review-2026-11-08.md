@@ -1,6 +1,6 @@
 # Bold Italic currency-sign drafts
 
-The person reviewed the 20 Bold Italic currency-sign drafts on 2026-11-08
+The review reviewed the 20 Bold Italic currency-sign drafts on 2026-11-08
 and approved 18 unchanged. Sheet:
 build/glyph-review/bold-italic-currency-drafts-2026-11-08/review.pdf.
 
@@ -25,7 +25,7 @@ Italic's T and S at the emboldened bars' weight:
   75 thick; advance 1411 to 1467 (side bearings about 45 by the bar's thin
   end, 54 on the right as before).
 
-The person approved both on 2026-11-08; all 20 currency signs are accepted.
+The review approved both on 2026-11-08; all 20 currency signs are accepted.
 Shaping of the full corpus (2,119,735 strings) changes in 5,706, all the
 two advances alone; baselines accepted from that exact report.
 Retained proof: proofs/bold-italic-currency-drafts-2026-11-08.pdf (sheet,

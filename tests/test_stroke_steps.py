@@ -24,7 +24,7 @@ CONTROLS = ["n", "h", "v", "w", "o"]
 # KNEE_TURN), and и ш щ џ ų with it, ц too once its tail was left as drawn;
 # ƴ's curl met its ball in a dent (21: the ball a few units wider than the
 # curl's end; a cap touching both its edges now, derive.curl "end"), and
-# ʋ's (15); the person, 2026-10-29: each
+# ʋ's (15); 2026-10-29: each
 # before the fix (tests/data/*-before-*), the turn it is found at, and the
 # fixed letters checked at that turn too
 KNEED = ["u", "uni0438", "uni0446", "uni0448", "uni0449", "uni045F", "uogonek"]
@@ -71,8 +71,8 @@ def test_no_knee_or_dent(bold_italic, name):
 def test_knee_turns_one_way(bold_italic, name):
     """the knee drawn as the Italic turns (stroke_bold.KNEE_QUARTER): from
     the line to upright and round into the counter, no bend (blended only,
-    it went inward first: two bends, 355,223 and 341,170 upright; the
-    person, 2026-10-29); ш щ's middle stem too"""
+    it went inward first: two bends, 355,223 and 341,170 upright;
+    2026-10-29); ш щ's middle stem too"""
     knees = [(345, 195)] + ([(830, 215)] if name in ("uni0448", "uni0449") else [])
     found = bends(upright(bold_italic[name], bold_italic.info.italicAngle))
     assert not [f for f in found if any(math.dist(f[1:3], k) < 100 for k in knees)], found

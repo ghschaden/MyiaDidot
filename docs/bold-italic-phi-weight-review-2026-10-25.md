@@ -43,7 +43,7 @@ quality/shaping and hinting checks, and production rebuilds.
 
 ## Requested refinement
 
-The person selected the third option with a bowl 5% wider, retaining the
+The review selected the third option with a bowl 5% wider, retaining the
 black stroke thickness and putting the extra width into the white middle.
 [Refined comparison](../proofs/bold-italic-phi-wider-counters-2026-10-25.pdf)
 shows that proposal against the previous third option.
@@ -63,7 +63,7 @@ prepared for visual review; production integration and checks remain.
 
 ## Inner-curve smoothing
 
-The person identified bumps in the upper left and lower right inner
+The review identified bumps in the upper left and lower right inner
 curves. Each affected return had an extra segment that flattened before
 turning into the stem, creating an uneven curve. Each is now replaced
 by one convex cubic, following the adjacent curve's direction and opening
@@ -79,7 +79,7 @@ This remains a review drawing awaiting production integration.
 
 ## Approved and integrated
 
-The person approved the smoothed drawing and requested the next task.
+The review approved the smoothed drawing and requested the next task.
 `scripts/phi_drawing.py` now rebuilds it from final Bold Italic o/l in the
 style writer. Outer and inner bowl widths expand equally; the two approved
 convex inner returns are retained. Whole-unit rounding, true extrema and

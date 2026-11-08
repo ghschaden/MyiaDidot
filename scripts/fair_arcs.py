@@ -19,7 +19,7 @@ one; one holding a cubic too short to bend or doubling back (the
 cleaning's leftovers) is left as it is, and a short run of curves between two
 lines (a serif's bracket) and a curve at a slit are held as drawn.
 
-The person's review (2026-10-28, combs today | faired): FONT-DESIGN.md.
+The review (2026-10-28, combs today | faired): FONT-DESIGN.md.
 Run from stroke_bold (the Bold Italic) on the cleaned outline; as a study
 on a UFO's glyphs:
 

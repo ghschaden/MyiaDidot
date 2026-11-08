@@ -1,8 +1,8 @@
 # Italic ligatures, 2026-10-25
 
-The person requested the missing Italic ligatures after the earlier work
+The review requested the missing Italic ligatures after the earlier work
 was committed and pushed as `c5ea04cf`. The new drawings are installed in
-the local Italic and Bold Italic masters and rebuilt fonts. The person accepted all these drawings and requested commit/push on
+the local Italic and Bold Italic masters and rebuilt fonts. The review accepted all these drawings and requested commit/push on
 2026-10-25. Draft metadata is cleared in the generator and both masters.
 
 [Four-page review proof](../proofs/italic-ligatures-review-2026-10-25.pdf)

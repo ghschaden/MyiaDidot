@@ -71,7 +71,7 @@ OS_XH, OS_CAP = 456, 712
 # Regular's (+44) gave a contrast of 4.6 where italics have 3.1-4.2 and a
 # colour twice as uneven as Old Standard's (letters of thick strokes, a b g q,
 # and the capitals dark, hairline ones light), hard to read on a full page;
-# chosen by the person from full pages of variants (2026-10-21)
+# chosen from full pages of variants (2026-10-21)
 AX, AY = 0, 0
 WEIGHT = 10
 CAP_WEIGHT = 0
@@ -91,8 +91,8 @@ def recipe_scale(stem, hair, weight=WEIGHT):
     return (stem - WEIGHT + weight) / (stem - WEIGHT - AX + TUNED_AX), hair / (hair - AY + TUNED_AY)
 # off each side of a letter: Old Standard's spacing, scaled, is loose for
 # its narrow letters (side space 0.180 of the x-height at a cut of 3, Bodoni
-# Moda's and Libre Bodoni's italics 0.172 and 0.162); 13 more chosen by the
-# person from full pages cut 10, 13 and 16 more (2026-10-21)
+# Moda's and Libre Bodoni's italics 0.172 and 0.162); 13 more chosen
+# from full pages cut 10, 13 and 16 more (2026-10-21)
 ITALIC_CUT = 16
 # the Greek lowercase tighter: Old Standard's Greek, so cut, stood 0.07 of an
 # n n gap looser than the Italic's Latin against Greek references
@@ -187,8 +187,8 @@ def sloped(t_y0):
 
 
 
-# Old Standard's letters that stood out in running text, redrawn (chosen by
-# the person from previews in words, 2026-10-21): W crossed and very wide
+# Old Standard's letters that stood out in running text, redrawn (chosen
+# from previews in words, 2026-10-21): W crossed and very wide
 # (1.47 cap heights, Bodoni Moda 1.28): two Vs narrowed to ITALIC_W_NARROW
 # across, their strokes brought back to V's, meeting at the top (1.20);
 # a's bowl as heavy as its stem, the counter small (0.407 of the x-height,
@@ -201,12 +201,12 @@ ITALIC_A_BOWL = -40
 # the Bold Italic deepened it; the first V's thin arm runs on straight into
 # the next V's thick stem, ITALIC_W_RUN_ON past where their left edges meet,
 # without its own serif and flare (in the Bold Italic a bulge on the second
-# stem's left; the person, 2026-11-03: the join a plain angle)
+# stem's left; 2026-11-03: the join a plain angle)
 ITALIC_W_BRACKET = (60, 58, 0.58, 0.7)
 ITALIC_W_RUN_ON = 80
 # and its serifs this share of V's gap apart at the least, their inner tips
 # cut back (W's 102-114 in the Italic, w.sc's 51-64, the Bold Italic's
-# emboldening closed them to 64-78 and to one bar: the person, 2026-11-03)
+# emboldening closed them to 64-78 and to one bar: 2026-11-03)
 ITALIC_W_SERIF_GAP = 0.75
 
 
@@ -621,7 +621,7 @@ ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
 # back of ж's right c it meets rises at 2, a kink with a swelling above it
-# (the person, 2026-11-08). Not fair_joins: one curve from the descender's
+# (2026-11-08). Not fair_joins: one curve from the descender's
 # foot to the c would bend the whole edge (as it thinned ⱳ's arm).
 ITALIC_CORNERS = {"җ": (200, 120)}
 
@@ -631,7 +631,7 @@ ITALIC_CORNERS = {"җ": (200, 120)}
 # line below, one curve tangent at both ends (straighten_run). җ's inner
 # edge left the crossbar leaning as the descender does, dropped upright down
 # the c's lower inside, then leaned again: a kink at the cut in the Italic,
-# a swelling above it in the Bold Italic (the person, 2026-11-08)
+# a swelling above it in the Bold Italic (2026-11-08)
 ITALIC_RUNS = {"җ": (417, 50)}
 
 
@@ -783,7 +783,7 @@ def round_corner(glyph, y, reach, turns=(3, 30)):
 # ɮ: how far right of l's stem its ʒ stands (ITALIC_RECIPES)
 ZH_DX = 150
 # the roman's own, sloped, not remade on the italic letter: ʌ turned from the
-# italic v rounds its apex and reads as a (the person, 2026-11-01)
+# italic v rounds its apex and reads as a (2026-11-01)
 # Old Standard has it, but derive.py's recipe matches the IPA small capitals
 # around it (Old Standard's ʀ stood lower and lighter)
 # ɑ is the italic's one-storey a (Old Standard's ɑ is its α), ɒ that turned
@@ -817,14 +817,14 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   "ǥ": ("bar", "g", ("x", -130, "all", (200, 70))),
                   # ɉ: the bar centred on the stem, its length as before
                   # (derive's bar stops at the ink, j's stem on the right:
-                  # 169 left, 14 right; "not centred", the person 2026-11-05)
+                  # 169 left, 14 right; "not centred", 2026-11-05)
                   "ɉ": ("bar", "j", ("x", None, "all", (92, 92))),
                   # ₸'s line across the T's top bar, ₫'s under the bowl and
                   # stem (the Regular's numbers run past the narrower italics)
                   "₸": ("lines", "T", ("c", 64, [(118, 1498, 1205, 1562)])),
                   "₫": ("lines", "dcroat", ("x", 64, [(120, -330, 940, -266)])),
                   # f's hook brought down onto the x-height, on a foot serif
-                  # (fishhook; as the Regular's, the person 2026-11-04)
+                  # (fishhook; as the Regular's, 2026-11-04)
                   "ɾ": ("fishhook", "f", ("r", (213, 0, 493, 50))),
                   # ɦ.sc: Ɦ made small, H's stems brought to h.sc's (by o.sc's
                   # round alone they came out 152 against h.sc's 194)
@@ -935,8 +935,8 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # (its ball less than the case's 86: that nearly filled the
                   # curl, its small cap's draft closed to a slit)
                   # the bar run on 220 units left at the curl's weight first: it
-                  # stood 197 against the right arm's 648 (the T's own 377; the
-                  # person, 2026-11-06: short against the other styles'; at 0.8
+                  # stood 197 against the right arm's 648 (the T's own 377;
+                  # 2026-11-06: short against the other styles'; at 0.8
                   # of it, as the Regular's 0.85, too long), now about 0.65
                   "Ƭ": ("attach", "T", ("c", [(-BIG, 800, 420, BIG)],
                                         [("line", ((440, 1398), (200, 1398), 62), (0, 0), (1, 1, 0, 0)),
@@ -1080,7 +1080,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # 900, 1414.5 at 1000; 77 across) to 1150, where the
                   # curl leaves it at its own slant: cut at 1150, the
                   # flare's upright bend stayed under the curl, a bump on
-                  # its outer edge (the person, 2026-11-03)
+                  # its outer edge (2026-11-03)
                   "Ⱳ": ("attach", "W", ("c", [(1255, 990, BIG, BIG)],
                                         [("line", ((1386.5, 900), (1459.9, 1162), 77), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 1456.5, 1150, 77), "dir": 74.4, "turn": "cw",
@@ -1093,7 +1093,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # back is Old Standard's д, ∂; д is g; ѓ is ī with the
                   # acute over its bar, as Charis and Libertinus stack them
                   # (serbian_gje: the acute added once the letters are
-                  # spaced; the person, 2026-11-08)
+                  # spaced; 2026-11-08)
                   "б.loclSRB": ("alias", "uni0434", None),
                   "д.loclSRB": ("alias", "g", None),
                   "ѓ.loclSRB": ("alias", "imacron", None),
@@ -1116,7 +1116,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                                        [("l", (-BIG, 645, BIG, BIG), (0, 0), (1, 1, 122, 0))])),
                   # ж: l's ascender on the stem (ж's own left half is the
                   # right c mirrored, 41 left of Old Standard's: mirror_zhe;
-                  # the person, 2026-11-08)
+                  # 2026-11-08)
                   "ж.loclBGR": ("attach", "uni0436", ("x", [(639, 800, 939, BIG)],
                                                        [("l", (-BIG, 790, BIG, BIG), (0, 0), (1, 1, 553, 0))])),
                   # в: b with β's loop above, as in the Regular: the loop (its
@@ -1145,13 +1145,13 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   "ъ.loclBGR": ("attach", "ь.loclBGR", ("x", [], [("uni044A", (-BIG, 620, 300, BIG), (300, 884),
                                                                     (1, 1, 270, 1434))])),
                   # г is ī, the bar free above ı as Charis and Libertinus
-                  # draw it (the person, 2026-11-08; ū's first stem with its
+                  # draw it (2026-11-08; ū's first stem with its
                   # bar, srb_ge, kept too little of the bar to read)
                   "г.loclSRB": ("alias", "imacron", None),
                   # п and т are и and ш with the bar free above them, as
                   # Charis and Libertinus draw them (serbian_bars; Old
                   # Standard's own, afii10831/2, had it fused onto the
-                  # stems: the person, 2026-11-08)
+                  # stems: 2026-11-08)
                   "п.loclSRB": ("alias", "uni0438", None),
                   "т.loclSRB": ("alias", "uni0448", None)}
 # Old Standard's own localized forms taken as they are (none now)
@@ -1395,6 +1395,8 @@ def enlarged(font, up, ch, op, source, band, name):
     import derive
 
     refs = {source, *(n for n in band if isinstance(n, str))}
+    if derive.ENLARGE_LIKE.get(ch):  # the letter it is scaled like (ʛ as ɢ from g.sc)
+        refs.add(derive.ENLARGE_LIKE[ch])
     saved = {n: copy.deepcopy(up[n]) for n in refs if weight_of(font, n) and n in up}
     try:
         for n in saved:
@@ -1432,7 +1434,7 @@ def heavier_stem(up, name, r, foot):
     """up[name]'s stem (f's, lighter than r's: 145 against 159-178) made as
     heavy as r's where its turn begins, its right edge leaning out from the
     foot serif's top (foot) as r's widens into its shoulder; the turn's
-    first handle turned with the edge (the person, 2026-11-04)"""
+    first handle turned with the edge (2026-11-04)"""
     import derive
 
     pts = up[name].contours[0].points
@@ -1510,7 +1512,7 @@ def fishhook(up, source, band, name):
 def mirror_zhe(font, name="uni0436"):
     """Old Standard's ж with its left half the right c mirrored about the
     stem's middle (its ball at the top left), not the c turned (its ball at
-    the bottom; the person, 2026-11-08). In the upright frame: the stem the
+    the bottom; 2026-11-08). In the upright frame: the stem the
     run through the glyph's middle at 0.68 x-height; left of it cut away and
     the right half mirrored, the stem itself untouched (below); slanted back; moved 41 left and the advance 41 less, as the mirrored
     half reaches less far left (its left side bearing back to the old 28).
@@ -1621,7 +1623,7 @@ def srb_ge(up, source, name):
     their end face, dropping to the right, exit_face); the bar
     overhangs the stem as much on the right as on the left. Made of ı, the
     stem leaned as ı's below its cut and as ū's above, bent where they met
-    (the person, 2026-11-04)."""
+    (2026-11-04)."""
     import derive
 
     runs = lambda y: derive.stems_at(up, source, y)  # noqa: E731
@@ -1812,7 +1814,7 @@ def derive_stage(font, regular, late=False, kept=()):
             # enlarge's emboldening pushes n.sc's crotch under the diagonal
             # past the stem into a loop (the contour crossed itself, the
             # Bold Italic's strokes then measured across it: its stems
-            # bulged and notched, the person)
+            # bulged and notched)
             uncrossed(up, name)
         if name in SC_LEVEL_GAIN:
             level_gain(up, name, *SC_LEVEL_GAIN[name])
@@ -2053,7 +2055,7 @@ def as_capitals(font, made, height):
     """FontForge brings the drafts' stems to the small caps' stem but leaves
     their curves and diagonals lighter than their capitals' own proportion
     (o.sc 0.84 of h.sc where O is 1.07 of H, x.sc 0.62 against 0.85, c.sc s.sc
-    z.sc n.sc alike; BOXKÄMPFER's "ox" lighter than its "mpfer", the person,
+    z.sc n.sc alike; BOXKÄMPFER's "ox" lighter than its "mpfer",
     2026-11-05): each drafted small cap's thick strokes made heavier
     (weight_thick) until its main stroke stands to h.sc's as its capital's
     to H's (strokes.main_stroke, upright, across the stroke)."""
@@ -2199,8 +2201,8 @@ ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
                    # upper right; the italic Δ's right side is a sloped
                    # stem, Δ ran into Υ (Δ.sc into Υ.sc, the Bold Italic's
                    # overlapping), below every Greek reference; unkerned in
-                   # range (greek_pairs refs, capitals and small caps, the
-                   # person's samples.pdf review 2026-11-04)
+                   # range (greek_pairs refs, capitals and small caps,
+                   # samples.pdf review 2026-11-04)
                    ("public.kern1.Deltagreek", "public.kern2.Upsilon"), ("public.kern1.Omicron", "public.kern2.Upsilon")}
 # ß's left side looser: with the heavier stems it stood tight against the
 # letter before it (measured, scripts/quality/colour.py)

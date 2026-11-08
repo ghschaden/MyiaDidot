@@ -1,8 +1,8 @@
 # Bold Italic hooked-b small-cap upper counter
 
-The person approved uni0257.sc and requested the inside of uni0253.sc's
+The review approved uni0257.sc and requested the inside of uni0253.sc's
 upper loop a little rounder, like its lower loop. Only uni0253.sc's upper
-counter is redrawn. The person approved it on 2026-11-06, and its
+counter is redrawn. The review approved it on 2026-11-06, and its
 acceptance fingerprint is recorded in the Bold Italic UFO.
 
 `scripts/italic_smallcap_repairs.py --round-b-counter` fits the round side

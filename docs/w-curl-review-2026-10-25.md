@@ -23,7 +23,7 @@ integration. Source/candidate: `build/w-curl-review/trial.py`, `Trial.ufo`.
 
 ## Approved and integrated
 
-The person approved the proposal (“go ahead”). `scripts/w_curl.py` now
+The review approved the proposal (“go ahead”). `scripts/w_curl.py` now
 applies the same repair in the Bold style writer after rounding. It
 recognizes the two ledges and replaces only their approaches; a second
 pass leaves the finished drawing unchanged. The production outline equals

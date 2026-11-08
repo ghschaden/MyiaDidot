@@ -712,7 +712,7 @@ def main():
     args = ap.parse_args()
 
     font = ufoLib2.Font.open(args.ufo)
-    accepted = acceptances(font)  # the person's, kept for the glyphs made anew
+    accepted = acceptances(font)  # the, kept for the glyphs made anew
     from drawn import restore, saved
 
     kept = saved(args.ufo)  # a generated style's glyphs kept as drawn (drawn.py)

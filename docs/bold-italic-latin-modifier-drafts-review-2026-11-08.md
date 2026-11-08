@@ -1,6 +1,6 @@
 # Bold Italic Latin and modifier-letter drafts
 
-The person reviewed 49 Bold Italic drafts (Latin letters and modifier
+The review reviewed 49 Bold Italic drafts (Latin letters and modifier
 letters, neither Cyrillic nor currency signs) on 2026-11-08 and approved
 47 unchanged. Sheet: build/glyph-review/bold-italic-latin-modifier-drafts-2026-11-08/review.pdf.
 
@@ -17,7 +17,7 @@ Two repairs requested:
   Italic's join (590-700), refitted the arm's whole outer edge from the curl
   down to the foot. The outer edge is redrawn: one curve from the curl,
   tangent to it, to w's own outer edge at y 480, and w's curve below. The arm
-  now runs 75-95. On the person's second look, the inner edge's corner
+  now runs 75-95. On the second look, the inner edge's corner
   at 595 (w's hairline leaning left into the straight piece leaning right,
   about 30 degrees) is faired: one curve from w's edge at 554 to the curl at
   775, tangent to both. On the third look the arm still grew toward its
@@ -31,7 +31,7 @@ Two repairs requested:
   reapplied by their scripts (w_inner.py, w_even.py). Marked drawn
   (org.myiadidot.drawn), so make_bold keeps it.
 
-Both repairs approved by the person on 2026-11-08; all 49 forms are
+Both repairs approved on 2026-11-08; all 49 forms are
 accepted. Ꞵ's old kink at the join (quality list) is gone. Shaping of the
 full corpus (2,119,735 strings) is unchanged. Retained proof:
 proofs/bold-italic-latin-modifier-drafts-2026-11-08.pdf (the review sheet,

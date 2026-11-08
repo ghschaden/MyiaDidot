@@ -21,7 +21,7 @@ splits at smooth nodes are joined again. Last, each whole arc of the
 cleaned outline is refitted fair (fair_arcs: curvature continuous and
 changing gently, rising from nothing where a curve leaves a line).
 
-The person's review, the study and its choices: FONT-DESIGN.md (Bold
+The review, the study and its choices: FONT-DESIGN.md (Bold
 Italic from strokes), scripts/pilot/strokes_fit.py.
 """
 import math
@@ -45,14 +45,14 @@ CORNER = 28.0       # degrees: a turn this sharp at a node is a corner
 TIGHT = 2.0
 # a heavy stroke gains this share of its offset up and down too (0: across
 # only, z s г spines lighter than the stems; 1, as by weight: rounds dark;
-# the person, 2026-10-28)
+# 2026-10-28)
 FULL = 0.75
 ZONES = ZONE_TOPS + ZONE_BOTTOMS
 CLEAR = 0.25  # of the white in front, the most a side may move into it
 ROOT = 160  # units from a crotch over which a hairline's root weight fades (make_bold.ITALIC_BOLD_ROOTS)
 ZONE_NEAR = 100  # units
 SHALLOW = 0.55  # (about 33 degrees from level, fading to 44)
-ACROSS = 0.45  # (z's spine, 25° from level, read as a hairline at 1: the person, 2026-10-28)
+ACROSS = 0.45  # (z's spine, 25° from level, read as a hairline at 1: 2026-10-28)
 OPEN = 1e9  # (smooth's length of a run that does not close)
 TINY = 4  # units: a line this short left by the overlap removal is dropped (7: 3)
 SLIVER = 800        # area under which a cleaned contour is a crotch's crossing sides
@@ -70,7 +70,7 @@ STEP_TURN = 20
 # a knee: a curve beside a line whose fit bends back though the source's
 # turns one way (Strokes.draw), with a step of KNEE_TURN degrees or more left
 # within KNEE_NEAR units of it in the stroked outline (u's inner stem into its
-# bowl, 10 here, 18 finished; none in n h m v w a b d p q r: the person,
+# bowl, 10 here, 18 finished; none in n h m v w a b d p q r:
 # 2026-10-29): blended into its line whatever its curve's length, over
 # KNEE_BLEND units
 KNEE_BLEND = float(os.environ.get("MYIA_KNEE_BLEND", 240))  # (120 kinked u at its line once rounded, 500 a little below; 200-300 clean)
@@ -79,7 +79,7 @@ KNEE_NEAR = 20
 # a knee taken (or found beside one taken: ш's middle stem) is then drawn as
 # the Italic turns there, seen slanted: the edge from its line to upright,
 # then round into the counter's bottom, ending on the bowl's own curve
-# (the person, 2026-10-29: blended, it still went inward before turning,
+# (2026-10-29: blended, it still went inward before turning,
 # and turned too tight); the quarter KNEE_QUARTER times the downstroke
 # weight wide (46 units at 160; 30 and 38 tried), KNEE_RATIO times that
 # high, the upright KNEE_CLEAR times it right of the line, handles as the
@@ -111,7 +111,7 @@ LEFTOVER = 8  # units (fair_arcs.SHORT): a piece of the cleaned outline shorter 
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
 # curvature continuous at the smooth joins of curves (G2; MYIA_G2=0: tangents
 # only), a curve kept as fitted where that would move it over G2_ERR units
-# (the person, 2026-10-28)
+# (2026-10-28)
 G2 = os.environ.get("MYIA_G2", "1") == "1"
 G2_ERR = float(os.environ.get("MYIA_G2_ERR", 3))
 # and (MYIA_G2_LINES=1) where a curve runs on smoothly from a line: its end
@@ -121,7 +121,7 @@ G2_LINES = os.environ.get("MYIA_G2_LINES") == "1"
 G2_LINE_ERR = float(os.environ.get("MYIA_G2_LINE_ERR", G2_ERR))  # (a curve straight at one end)
 TS_G2 = np.linspace(0, 1, 80)  # (its distances, measured coarser)
 # then each whole arc refitted fair (fair_arcs; MYIA_FAIR=0: as fitted;
-# the person, 2026-10-28)
+# 2026-10-28)
 FAIR = os.environ.get("MYIA_FAIR", "1") == "1"
 CORNER_OWN = os.environ.get("MYIA_CORNER_OWN", "2")  # (Strokes.draw: 0 off, 1 the lighter only, 2 always)
 CORNER_MEET = os.environ.get("MYIA_CORNER_MEET", "1") == "1"  # (Strokes.draw: 0 to compare)
@@ -448,7 +448,7 @@ class Strokes:
                 capv = np.maximum(capv, free)
             if self.root and cuts:
                 # a hairline springing from a crotch heavier at its root
-                # (k's arm, the person: thicker in the beginning), both its
+                # (k's arm, review: thicker in the beginning), both its
                 # sides: by the distance from the crotch, not along the outline
                 d = np.min(np.linalg.norm(P[:, None] - P[cuts][None], axis=2), axis=1)
                 sm = np.maximum(sm, self.root * np.clip(1 - d / ROOT, 0, 1) ** 2)
@@ -787,7 +787,7 @@ class Strokes:
                     # its own weight where it is the lighter, not by the
                     # leaving one's (γ: the arm's lower edge, moved at the
                     # crotch by the descender's stem weight, hooked back into
-                    # a step; the person, 2026-11-02). Where it is the
+                    # a step; 2026-11-02). Where it is the
                     # heavier, as before: γ's loop, so moved, met its stem in
                     # a notch
                     if kc[first[k] - 1] < kk or CORNER_OWN == "2":

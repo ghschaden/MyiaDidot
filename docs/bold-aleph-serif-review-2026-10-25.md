@@ -84,5 +84,5 @@ Working proof, snapshot and comparison logs are in
 
 Next review: Regular acute counters in M/Mu and their Cyrillic/accented
 relatives, trademark and №. Existing design annotations do not record
-the person's final acceptance. Bold ˀ curve/weight and spacing, dollar
+the final acceptance. Bold ˀ curve/weight and spacing, dollar
 drawing, and ɸ optical weight remain open separately.

@@ -16,6 +16,6 @@ Report:
 1. One line per style: how many measured, how many findings.
 2. A table of the findings that matter (at most ~25 rows, the strongest first): glyph or pair, the measure, the reference, the ratio or offset. Group repeats (accented forms of one letter) into one row.
 3. If asked for proposals (e.g. kerning values): the values the script computes, as a ready-to-paste list, with the measurement that justifies each.
-4. Paths of the full outputs and of any sheet (PDF) produced, so the person can look.
+4. Paths of the full outputs and of any sheet (PDF) produced, so they can be looked at.
 For make diffenator: you are told what the change was meant to do; sort every item of the summary (tables, glyphs, word scripts, pairs) into expected or not, and list the unexpected ones first with their words. Pairs come only from the tool's word lists: say which intended pairs did not show up rather than calling them unchanged.
 No design judgements beyond what the numbers say; mark anything that looks like a measuring artefact as such.

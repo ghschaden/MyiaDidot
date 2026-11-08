@@ -1,6 +1,6 @@
 # Roman upper-left joins and Bold Italic trademark, 2026-10-25
 
-The person rejected the thin white slits in Regular №, M and Cyrillic м,
+The review rejected the thin white slits in Regular №, M and Cyrillic м,
 identified the low middle M tip, and requested improvement of the complete
 upper-left joins. They also identified Bold Italic ™'s bulging T stem and
 unequal outer M stroke angles, clarifying that only the leftmost and
@@ -10,7 +10,7 @@ The [three-page before/after proof](../proofs/symbol-joins-before-after-2026-10-
 shows the complete Regular forms and enlarged upper-left serif joins,
 Bold Italic trademark details, and both roman weights against baseline
 guides. This supersedes the earlier recommendation to retain the Regular
-counter tips. The person accepted the proposal on 2026-10-25 ("proposal accepted").
+counter tips. The review accepted the proposal on 2026-10-25 ("proposal accepted").
 
 ## Upper-left joins and baseline tips
 

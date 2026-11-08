@@ -26,12 +26,21 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 ʛ at the x-height; README for users; wording
+  ʛ is no longer ɠ.sc's alias, which stood at the small caps' height
+  (1060) beside ɢ ɪ ʙ at the x-height: derive.py makes it from ɠ.sc
+  scaled and placed as ɢ from g.sc (ENLARGE_LIKE), its curl above; in all
+  four styles, a draft to review. README.md rewritten for users
+  (installation, scripts, features, limitations, credits); building,
+  tests and tooling moved to CONTRIBUTING.md. Decisions in the records
+  and comments are now given by date, not by who made them.
+
 2026-11-08 Last pending CFF hinting findings retained
   Italic 𝔖, Bold Italic ƈ.sc and ѣ: hinted tops 0.08-0.47 px above their
   reference letters' rows (O, o.sc, x) at a few sizes; the extra pixel row
   carries at most 50/255 ink (ѣ at 17 ppem, whose three round tops have
   no flat edge for the zone), nothing seen in the raster proofs. Kept as
-  they are (the person); no PENDING REVIEW entries remain in
+  they are; no PENDING REVIEW entries remain in
   tests/data/hint-zones-cff-*.txt.
 
 2026-11-08 Bold Italic review complete; italic ж mirrored
@@ -75,14 +84,14 @@ ChangeLog
   docs/bold-italic-phonetic-drafts-review-2026-11-08.md.
 
 2026-11-08 Bold review completed and Bold Italic extended Latin drafts accepted
-  The person approved Bold basic Latin, extended Latin, phonetic, Greek and
+  The review approved Bold basic Latin, extended Latin, phonetic, Greek and
   Cyrillic small caps, plus the remaining Bold draft forms. Local repairs:
   J's small-cap hook; open omega/upsilon forms; hooked-H, C/c/G hooks;
   iota connections, hooked-N stems, retroflex T, hooked Y and rounder
   lowercase theta; heavier koppa diagonals. Drawings are preserved locally
   by the generators and acceptance fingerprints recorded. The enlarged
   Bold capital C-hook advances 96 units farther; other advances retained.
-  The person also approved 39 Bold Italic extended Latin drafts, including
+  The review also approved 39 Bold Italic extended Latin drafts, including
   the reconstructed C/c hooks. Proofs and review records accompany them.
 
 2026-11-07 Bold Italic phonetic, Greek and Cyrillic small caps accepted
@@ -137,7 +146,7 @@ ChangeLog
       omega.sc shared with Greek, and 14 further Greek forms unchanged.
     * Matched delta.sc and lambda.sc's diagonal angles to their capitals;
       rounded theta.sc's counter from the approved o.sc, retaining its
-      outside and crossbar. The person approved all three repairs.
+      outside and crossbar. The review approved all three repairs.
       Bold Italic regenerated, with its existing advances retained.
       Evidence: docs/italic-smallcaps-phonetic-review-2026-11-06.md and
       docs/italic-smallcaps-greek-review-2026-11-06.md; accepted proofs
@@ -151,16 +160,16 @@ ChangeLog
 2026-11-06 Italic and Bold Italic lowercase ƥ joins accepted
 
     * Removed the slight swelling where uni01A5's hook meets its stem;
-      the person accepted the revision. Its advance and bowl counter
+      the review accepted the revision. Its advance and bowl counter
       are retained. Bold Italic regenerated with local finishing and
       original spacing/anchors retained. Its hook strengthened to match
-      the p stem and the transition smoothed, also approved by the person.
+      the p stem and the transition smoothed, also approved.
       Evidence: docs/italic-p-hook-join-review-2026-11-06.md and
       proofs/italic-p-hook-join-2026-11-06.pdf.
 
 2026-11-06 Italic extended Latin small-cap review complete
 
-    * The person approved the remaining 43 glyphs unchanged from the
+    * The review approved the remaining 43 glyphs unchanged from the
       refreshed sheet; acceptance recorded. With the three separately
       repaired forms, all 46 in this batch are accepted. Evidence:
       docs/italic-smallcaps-extended-latin-review-2026-11-06.md and
@@ -168,7 +177,7 @@ ChangeLog
 
 2026-11-06 Bold Italic hooked b/d small caps accepted
 
-    * The person approved uni0253.sc and uni0257.sc after the upper stem transitions
+    * The review approved uni0253.sc and uni0257.sc after the upper stem transitions
       and both lower serif joins were rounded locally. Existing spacing
       retained; kept as drawn. The b's upper counter made rounder from
       the lower counter's curve, also approved. Evidence:
@@ -182,14 +191,14 @@ ChangeLog
       cut through the bowl. Ɓ Ɗ small caps given compact upright curls,
       replacing the oversized, low f hooks; the small nodges on both
       upper stem edges smoothed. Local drawings on the accepted r.sc,
-      b.sc and d.sc, kept as drawn. The person approved the corrected
+      b.sc and d.sc, kept as drawn. The review approved the corrected
       Italic drawings. Bold Italic follows through regeneration, with
       local finishing and the original spacing retained. Evidence:
       docs/italic-smallcap-repairs-2026-11-06.md.
 
 2026-11-06 Italic basic Latin small caps accepted
 
-    * The person accepted a.sc-z.sc, 26 drawings unchanged, from the
+    * The review accepted a.sc-z.sc, 26 drawings unchanged, from the
       focused capital/small-cap/lowercase sheet and word proofs.
       Acceptance recorded. Extended Latin, Greek and Cyrillic small
       caps remain to review. Evidence:
@@ -198,7 +207,7 @@ ChangeLog
 
 2026-11-06 IPA a accepted in all four styles
 
-    * The person accepted a.ipa unchanged from the focused four-style
+    * The review accepted a.ipa unchanged from the focused four-style
       review: the Roman styles' two-storey a, and the sloped Roman form
       in the italics, distinct from ɑ. Acceptance recorded in each UFO.
       Evidence: docs/ipa-a-review-2026-11-06.md and proofs/ipa-a-*.svg.
@@ -208,13 +217,13 @@ ChangeLog
     * Ɠ's hook thickened and attached without the old ledge; ɠ's inner
       downstroke redrawn as one continuous curve; ɠ.sc given a rising
       hook like the capital and Italic. Local drawings, kept as drawn.
-      The person approved all three from the before/after proofs;
+      The review approved all three from the before/after proofs;
       acceptance recorded. Advances unchanged. Evidence:
       docs/g-hooks-review-2026-11-06.md and proofs/bold-italic-g-hooks-*.svg.
 
 2026-11-06 Bold Italic open rounds' insides from the Italic's; Ƭ again
 
-    * The person: the Bold Italic c.sc g.sc (and ƈ.sc ɠ.sc made of them)
+    * Decided: the Bold Italic c.sc g.sc (and ƈ.sc ɠ.sc made of them)
       unround inside, g.sc stepping just before its bar; also c g C G.
       Emboldened by strokes, an open round's inside ran uneven where the
       Italic's is smooth (c's left side bent twice, c.sc dented, C G flat
@@ -234,15 +243,15 @@ ChangeLog
       rose off the stroke with a dip outside and a cusp inside ("badly
       attached").
     * Ƭ: the Bold approved (accepted). The italics' left arm at 0.8 of the
-      right too long (the person, also in ƭ.sc): now about 0.65 (the bar run
+      right too long (also in ƭ.sc): now about 0.65 (the bar run
       on 220 units, not 320), the left side as much narrower (Italic 1439 ->
       1339, Bold Italic 1525 -> 1425). The Bold Italic's arm wobbled: the
       stub of the italic T's top-left serif stood under the added bar, the
       edge sinking along it and climbing the stub; the stub is cut away (in
       the recipe's frame, the T as make_bold.rederive meets it, 172 units
       left of the saved T: cut by the saved T's numbers it took the stem's
-      left side, a step, the person) and the bar is the T's own (1352-1434).
-    * Accepted by the person from proofs: the italics' Ƭ ƭ.sc, the Bold
+      left side, a step) and the bar is the T's own (1352-1434).
+    * Accepted from proofs: the italics' Ƭ ƭ.sc, the Bold
       Italic c C G g c.sc g.sc ƈ.sc ɠ.sc Ǥ ɔ.sc. Not the Bold Italic Ɠ and ɠ
       (FONT-DESIGN.md, to do).
     * Baselines: quality lists (Bold Italic 21 findings gone, 12 new, the
@@ -253,7 +262,7 @@ ChangeLog
 2026-11-06 Sent-back drafts reworked; Regular small-caps sheet accepted
 
     * ɹ ɺ ɻ: r turned, as in the italics, Charis and Libertinus (derive.py
-      "turn"), not the Didot terminal drawn before (the person: very unlike
+      "turn"), not the Didot terminal drawn before (review: very unlike
       r's). In the Bold they carry the Bold r's own ball extreme and wobble.
     * ʂ: the turn leaves s where its bottom stroke runs level (x 420) at
       its weight, the stem from where the turn stands upright; from x 320
@@ -263,8 +272,7 @@ ChangeLog
       bar's corner had stood 1.6 units under the ring, a kink once faired.
       The Bold's its own recipe (make_bold BOLD_RECIPES): from the
       Regular's the ring took the stroke where the bracket under the bar
-      swells (124 units, the bar 60) and thickened toward the ball (the
-      person); now the bracket is cut away there and the ring leaves the bar
+      swells (124 units, the bar 60) and thickened toward the ball; now the bracket is cut away there and the ring leaves the bar
       at 60, its upright side 110. The italics' left arm was short against
       the right (197 and 196 against 648 and 641; their T's own 377 and
       374; the uprights' 0.85): the bar runs on 320 units at the curl's
@@ -280,14 +288,14 @@ ChangeLog
       arms 1.25 of the bar's thickness past the stem (the left one had come
       to 68, the right 80).
     * ƈ.sc ɠ.sc: Ƈ Ɠ's curl drawn on c.sc g.sc at radius 150 (enlarged from
-      the capitals their hooks stood smaller than ƈ's, the person); ʛ, an
+      the capitals their hooks stood smaller than ƈ's); ʛ, an
       alias of ɠ.sc, takes its width (1170 -> 1142). Cut from 530, below
       the italics' c.sc g.sc ball (575): in the Bold Italic both are made
       again from its own c.sc g.sc, not emboldened whole, with their own
       curl (ITALIC_BOLD_RECIPES): at the scaled stroke and the case's ball
-      the hook's inside closed to a straight slant (the person: "not very
+      the hook's inside closed to a straight slant (review: "not very
       round"); now a thin ring (45 across its top) and a ball of 75, as Ƈ's.
-    * Accepted by the person (scripts/accepted.py, 2026-11-06): ɹ ɺ ɻ ʂ,
+    * Accepted (scripts/accepted.py, 2026-11-06): ɹ ɺ ɻ ʂ,
       the Italic ɉ, from smallcaps-review.pdf ƙ.sc ƭ.sc ƴ.sc ʋ.sc ⱳ.sc, and
       from a proof Ƭ ƈ.sc ɠ.sc in the Regular, ƈ.sc ɠ.sc in the Italic and
       Bold. The Italic Ƭ's acceptance withdrawn (its arm redrawn); the
@@ -298,7 +306,7 @@ ChangeLog
 
 2026-11-05 Regular and Italic drafts accepted from their sheets
 
-    * The person's pass through drafts-review.pdf and
+    * The pass through drafts-review.pdf and
       drafts-review-Italic.pdf: accepted (scripts/accepted.py) all the
       drafts shown there, 18 in the Regular, 209 in the Italic, but for
       Ƭ, ʂ and the italic ɉ, sent back (FONT-DESIGN.md), and the
@@ -321,14 +329,14 @@ ChangeLog
       is the tabular zero's white: 4 units looser in the Bold, 6-7 in the
       Bold Italic (its slashed zero.zero.pf one unit wider than zero.pf
       by rounding).
-    * Baselines (the person accepted the reviewed reports): shaping golden
+    * Baselines (accepted the reviewed reports): shaping golden
       and digest of the Bold (f51ac0ea) and Bold Italic (90886d3a), 31285
       of 2119735 strings each, the only change the advances of the ten
       figures, uni2007 and figuredash; no substitution or mark moved.
 
 2026-11-05 Bold Italic counters of the closed rounds from the Italic
 
-    * The stroked counters were unround (the person: o's inner outline
+    * The stroked counters were unround (review: o's inner outline
       "very unround", o.sc worse): o's ran nearly straight with tight turns
       at the top right and bottom left, o.sc's a rounded rectangle with a
       flat right side (9 nodes). The Bold's oval refit (handle tension to
@@ -343,7 +351,7 @@ ChangeLog
       o's measured strokes (its hairline 55 -> 48: ʰ ʲ ʷ ʸ ˀ ˁ ƥ ƈ.sc ...,
       2-11 units); n.sc and ɴ (enlarged against O and o.sc) only at their
       serif ends, weight and width kept. U.sc before ǎ.sc ằ.sc one unit.
-    * Baselines (the person, from the sheets): shaping golden and digest
+    * Baselines (from the sheets): shaping golden and digest
       accepted from the reviewed report (11684 strings, advances and
       positions of the changed letters and the marks on them only;
       3dd4f99f); quality 13 new (o.sc ø.sc 2-degree joins inherited with
@@ -368,11 +376,11 @@ ChangeLog
       enlargement's emboldening pushed n.sc's crotch under the diagonal
       past the stem into a loop: outlines uncrossed (pathops) before and
       after. Italic s.sc 0.99, n.sc 0.84, є.sc 1.02, ϟ.sc 1.21 (Ϟ 1.42 of H;
-      accepted, the person); s.sc's 4, є.sc's 4, ϟ.sc's 5 kinks gone.
+      accepted); s.sc's 4, є.sc's 4, ϟ.sc's 5 kinks gone.
     * Bold Italic n.sc and ɴ: stroked from the new Italic n.sc (and with
       ITALIC_BOLD_HEAVIER's 1.32 of 2026-11-01, for the light draft) the
       diagonal stood 1.28 of h.sc against N's 0.77, the left foot lost its
-      bracket, the right stem's top wobbled (the person: "look at the
+      bracket, the right stem's top wobbled (review: "look at the
       stems"). Now made from the Bold Italic's N, ɴ from that n.sc
       (ITALIC_BOLD_REBUILD), uncrossed and brought to weight as the
       Italic's, then condensed until its ink stands to h.sc's as N's to H's
@@ -385,7 +393,7 @@ ChangeLog
     * Baselines: shaping golden and digest of both italics accepted from
       their reviewed reports (2924 strings each, advances and positions of
       the letters above and the marks on them only; Italic 163a0a0b, Bold
-      Italic c8528bfc). Quality findings (the person, from the sheets):
+      Italic c8528bfc). Quality findings (from the sheets):
       Italic 8 gone, 4 new (n.sc's 3.8-degree kink; ϟ.sc's slant, two
       smooth joins, 1.16 of the round's reference), Bold Italic 4 gone,
       ɴ's two wobbles new; the zone findings of n.sc ν.sc ɴ gone.
@@ -393,8 +401,8 @@ ChangeLog
 2026-11-05 Italic small caps at their capitals' weight; Bold Italic rounds' sides
 
     * The italic small caps' curves and diagonals stood lighter than their
-      stems (BOXKÄMPFER: "ox" lighter than "mpfer", b.sc strange; the
-      person): FontForge's drafts bring the stems to weight, not the rest
+      stems (BOXKÄMPFER: "ox" lighter than "mpfer", b.sc strange):
+      FontForge's drafts bring the stems to weight, not the rest
       (Italic o.sc 0.84 of h.sc where O is 1.07 of H, x.sc 0.62 against
       0.85; C G Q S Z N alike; the straight E P R U K Y as their capitals).
       make_italic.as_capitals weights each drafted small cap's thick strokes
@@ -419,11 +427,11 @@ ChangeLog
       capitals): small-cap sides outside the references 24 -> 13 (Italic
       5 -> 4), capitals 48 -> 34, Greek pairs 5 -> 3, lowercase 5 -> 4.
       kern_clear's guard keeps its clearance (ſ ö -25 -> -32, A.sc before
-      accented small caps). ɸ ʈ.sc only moved, accepted again (the person).
+      accented small caps). ɸ ʈ.sc only moved, accepted again.
     * Bold Italic x.sc: its fixed drawing of 2026-11-01 no longer fits the
       heavier Italic x.sc; by its strokes the knees came back where arm and
       leg run into their serifs, now each bracket one fillet tangent to
-      both (sc_feet.fillets, the person: "remove the knees"), 76 -> 52
+      both (sc_feet.fillets, review: "remove the knees"), 76 -> 52
       points.
     * Italic ȼ.sc: its own recipe, the slash's top at 0.78 of the box (c.sc
       40 wider: at 0.8 it met the terminal in a notch).
@@ -438,7 +446,7 @@ ChangeLog
       (ITALIC_BOLD_REBUILD, its own recipe at the Italic's bar and AY, 68,
       as heavy as emboldened). Emboldened whole and joined to g.sc again,
       the two outlines nearly one, the union left three short wobbles in
-      the bowl by the bar and 27 nodes more (the person). Now g.sc's nodes
+      the bowl by the bar and 27 nodes more. Now g.sc's nodes
       and the bar's: 125 -> 76 points, the wobbles gone.
     * The overshoot change against the references (per 1000 units; Bodoni
       Moda, Charis, EB Garamond, Libertinus italics with small caps): the
@@ -460,20 +468,20 @@ ChangeLog
 
     * g.sc in both italics made from G (make_italic ITALIC_SC_RECIPES,
       enlarge): FontForge's draft ran the counter's left side straight down
-      into a corner (the person); G's is round. Its weight is the draft's
+      into a corner; G's is round. Its weight is the draft's
       (164 against 166); ǥ.sc and ɢ follow it, 28-33 units narrower.
     * Bold Italic Ɦ: the stem rising to its top at its own weight and the
       curl leaving it on the left, as its Ɓ Ɗ Ƥ (make_bold
       ITALIC_BOLD_RECIPES). The Italic's recipe curls the whole stem over:
       drawn at the Italic's 164 on the Bold Italic's 287 stem, it stepped 45
-      units in on both sides under the curl (the person: steps before the
+      units in on both sides under the curl (review: steps before the
       hook); at 287 its eye closed. The recipe's cuts are in the frame the
       rebuilt letters are drawn in, 24 units right of the spaced font.
     * Bold Italic Ɓ Ɗ Ƥ (and Ɦ ɦ.sc): the serif cut a unit inside the left
       stem's edge (291 in that frame); the Italic's cut at 300 took 11 units
-      off the Bold Italic's stem, a step where the curl begins (the person,
+      off the Bold Italic's stem, a step where the curl begins (
       on ɦ). Their own recipes, the Italic's numbers otherwise.
-    * Accepted by the person, 2026-11-05 (G; ɦ.sc Ɦ and the hooked stems).
+    * Accepted 2026-11-05 (G; ɦ.sc Ɦ and the hooked stems).
     * ɦ.sc: the Italic's from Ɦ (enlarge, H's stems brought to h.sc's; the
       draft notched where the hook met the stem); the Bold Italic's its own
       curl on h.sc at the small caps' size (Ɦ enlarged closed its eye to a
@@ -489,7 +497,7 @@ ChangeLog
 
     * FontForge's small-cap drafts kept the capitals' overshoot in units
       (39 past 0 and 1040, 3.7 %; the Italic's capitals 2.7 %): the rounds
-      stood taller than the flat letters (the person, BOXKÄMPFER). A
+      stood taller than the flat letters (BOXKÄMPFER). A
       contour whose top or bottom lies within 60 units past its zone has
       the points past it brought nearer by the small caps' scale, along
       the slant (make_italic overshoot_scaled): o.sc 1077 -> 1067, -35 ->
@@ -573,7 +581,7 @@ ChangeLog
       make_bold.py and smallcaps.py keep it as saved and build what is
       derived from it from it. A fault in one letter is fixed in that
       letter; the generators' shared machinery only for faults many
-      letters share (the person's decision).
+      letters share (decided).
 
 2026-11-03 Italic and Bold Italic W and Ⱳ rebuilt; Bold Italic Ɽ
 
@@ -733,8 +741,8 @@ ChangeLog
       (the drawn c y 92-94: the curls' radii leave no room for more). Ⱳ
       keeps its number (the approved Bold Italic connection, w_curl.py),
       Ƭ 65 for 50 (the case's 86 nearly filled its curl, ƭ.sc's draft
-      closed to a slit); the tails off a stem keep half their stroke (the
-      person's decision).
+      closed to a slit); the tails off a stem keep half their stroke
+      (decided).
     * The Bold Italic took those curls at the Italic's radii with strokes
       twice as heavy: the balls closed them into blobs. Its own recipes
       now (ITALIC_BOLD_RECIPES): Ƈ Ɠ ƈ Ƙ Ʋ Ƴ ƴ ʋ ⱳ Ƭ, curls wider and
@@ -884,7 +892,7 @@ ChangeLog
     * In the Italic, a draft flag means "made anew by the generator":
       clearing it froze the glyph (make_italic.reviewed), so accepted work
       (old-style figures, I, Ɽ ...) kept its flag and the flags no longer
-      said what was accepted. scripts/accepted.py records the person's
+      said what was accepted. scripts/accepted.py records the
       acceptance in lib org.myiadidot.accepted (date, review, the glyph's
       fingerprint) without freezing; make_bold.write and smallcaps.py carry
       it over to the glyph made anew (a style's own only: the Bold begins
@@ -1182,7 +1190,7 @@ ChangeLog
 
     * Both weights have identical top deltas versus O, 0.078–0.203 px at
       13–32 ppem. Inspect CFF/TTF rasters beside H/S/O and lowercase ß.
-      Retention approved by the person on 2026-10-26. No font changes
+      Retention approved on 2026-10-26. No font changes
       or glyph acceptance/draft metadata changes.
     * Complete production CFF audits match current exceptions in both
       weights. Earlier regenerated italic CFF tests cover unchanged inputs;
@@ -1195,7 +1203,7 @@ ChangeLog
     * Audit 8–32 ppem: ƙ.sc top is 0.094 px above h.sc at 10 ppem; ъ's
       flag is 0.172 px above x at 8 ppem. Inspect CFF/TTF rasters with
       same-style small-cap and lowercase controls. Recommend retention;
-      retention approved by the person on 2026-10-26. Correct the old
+      retention approved on 2026-10-26. Correct the old
       0.3 px annotation.
     * Complete production Italic CFF audit matches all four existing
       exception keys/counts. Earlier regenerated italic CFF checks cover
@@ -1208,7 +1216,7 @@ ChangeLog
     * Audit all styles at 8–32 ppem. Italic 𝔖 tops 0.188/0.313 px above O
       at 10/11 ppem; Bold Italic adds 0.094 px at 9 and measures 0.203/0.313
       at 10/11. Inspect against 𝔐/𝔓 and S/O, including TTF controls.
-      Retention approved by the person on 2026-10-26.
+      Retention approved on 2026-10-26.
     * Both regenerated italic CFF hint-zone tests pass with helper-socket
       access. Clarify two exception comments without changing keys/counts.
       No font changes. Review: docs/fraktur-s-cff-hinting-review-2026-10-26.md;
@@ -1219,7 +1227,7 @@ ChangeLog
     * Audit Regular/Bold Œ across 8–32 ppem. Both weights have top deltas
       +0.078–0.172 px versus O at 15–32 ppem and bottom deltas -0.078–0.094
       px at 22–32. Inspect native/enlarged CFF rasters against O/E and TTF
-      controls. Retention approved by the person on 2026-10-26.
+      controls. Retention approved on 2026-10-26.
     * Clarify four exception comments without changing keys/counts. The
       charstrings contain bowl/body hints and masks; the older explanation
       that the bowl lacks hints was incomplete. Both regenerated roman
@@ -1234,7 +1242,7 @@ ChangeLog
       against the baseline because the audit mistakes their names for letter
       sequences. All 24 encoded WITH HORN characters, including tone-accented
       forms, have no alignment reports across 8–32 ppem in v35/v40.
-    * Retaining font hints accepted by the person on 2026-10-26. Clarify
+    * Retaining font hints accepted on 2026-10-26. Clarify
       four exception comments without changing keys/counts; record separate
       audit-classification follow-up in DEVELOPMENT.md. All four regenerated
       TrueType hint-zone tests pass. No font changes.
@@ -1246,7 +1254,7 @@ ChangeLog
     * Inspect both italic weights in v35/v40 across 8–32 ppem. Only 8/9
       ppem report a raised curved hook: about 0.6 px in v35 and 1 px in
       v40 above H. Original top points already align. Recommend retention,
-      accepted by the person on 2026-10-26; no production changes.
+      accepted on 2026-10-26; no production changes.
     * Both regenerated italic TrueType hint-zone tests pass. Clarify four
       exception comments without changing keys/counts. Preserve
       native-size and enlarged proof:
@@ -1259,7 +1267,7 @@ ChangeLog
       All five bottoms are -0.5 px versus reference o at 0 px at 29–32 ppem
       in v35; v40 has no mismatch across 8–32 ppem. Inspect native-size and
       enlarged rasters with same-style small-cap controls. Recommend current
-      hints; the person approved retention on 2026-10-26.
+      hints; retention was approved on 2026-10-26.
     * Clarify ten exception comments, preserving keys/counts. No font,
       generator, hint program or shaping baseline changes. Both regenerated
       italic TrueType hint-zone tests pass. Review and preserved proof:
@@ -1401,7 +1409,7 @@ ChangeLog
     * Narrow the diagonal waist about 20%; redraw compact ball terminals
       with continuous entrances, removing the old backward neck curves.
     * Keep the previously corrected straight bars, advance and anchors.
-      The generator applies both passes independently. The person approved
+      The generator applies both passes independently. The review approved
       this drawing on 2026-10-25.
     * Proof: proofs/bold-italic-dollar-drawing-before-after-2026-10-25.pdf.
 
@@ -1562,7 +1570,7 @@ ChangeLog
       other outlines stay unchanged. Small caps are outside this pass.
     * Removed resolved outline, quality and whole-emboldening exceptions,
       plus the Bold Italic hard sign's fixed CFF alignment exception.
-      Shaping baselines are unchanged. The person accepted the comparison;
+      Shaping baselines are unchanged. The review accepted the comparison;
       a later 2026-10-23 reproduction run confirmed all three styles
       unchanged, resolving the earlier small-cap blocker.
 
@@ -1579,8 +1587,8 @@ ChangeLog
       of their kind).
     * The italic a's bowl was as heavy as its stem, its counter small
       (0.407 of the x-height, references 0.41-0.46): its thick stroke is
-      40 units lighter (ITALIC_A_BOWL; counter 0.429). Both chosen by the
-      person from previews set in words.
+      40 units lighter (ITALIC_A_BOWL; counter 0.429). Both chosen from
+      previews set in words.
 
 2026-10-21 Version 0.100 (development), Phase 3: a lighter, more even Italic
 
@@ -2209,7 +2217,7 @@ ChangeLog
       Project Authors), adapted: scaled to Myia's cap height and x-height,
       the vertical strokes brought to Myia's stems, the hairlines made a
       little finer, and the hairline ends given Myia's ball in place of the
-      pen's tip (draft_letterlike.py; chosen by the person over drafts
+      pen's tip (draft_letterlike.py; chosen over drafts
       after Unger's classicist Fraktur).
       Credited in OFL.txt and the copyright notice. With these the Phase 1
       coverage target of Regular is complete.
@@ -2221,7 +2229,7 @@ ChangeLog
       top right, two uprights, a bar beneath), ₹ (two bars, the bowl of P,
       a diagonal leg), ₪ (two interlocked arches cut from O); metrical ⏖
       (two shorts joined) and ⏗ ⏘ ⏙ (a bar with uprights). Drafts.
-    * Ʒ stays below the baseline (the person's choice).
+    * Ʒ stays below the baseline (chosen).
 
 2026-10-14 Version 0.100 (development), Phase 1: 16 more IPA and Latin letters
 

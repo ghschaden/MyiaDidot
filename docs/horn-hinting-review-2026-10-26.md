@@ -36,7 +36,7 @@ forms were audited numerically, not individually included in this proof.
 Attached horns remain connected in the inspected samples.
 
 Recommendation: retain current font hints. Do not move construction tails
-to the baseline to satisfy this comparison. The person accepted retaining these hints on 2026-10-26. A separate development follow-up should refine the audit's letter
+to the baseline to satisfy this comparison. Retaining these hints was accepted on 2026-10-26. A separate development follow-up should refine the audit's letter
 classification and verify that valid unencoded letters and ligatures remain
 covered; merely relying on GDEF mark class would not exclude these shapes.
 

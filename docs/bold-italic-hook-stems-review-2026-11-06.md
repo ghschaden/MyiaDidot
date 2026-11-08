@@ -1,6 +1,6 @@
 # Bold Italic hooked b/d small-cap stems
 
-Scope: uni0253.sc and uni0257.sc in Bold Italic. The person clarified that
+Scope: uni0253.sc and uni0257.sc in Bold Italic. The review clarified that
 the concern was the small caps for hooked b and d, not h, and especially
 the bottom of the main stroke toward the lower serif; the top could also
 need attention. The approved Italic drawings are unchanged. This Bold
@@ -49,11 +49,11 @@ deprecation warning. `make reproduce`: Italic, Bold and Bold Italic all
 geometrically; all advances, kerning, features and groups are unchanged.
 Previously accepted glyph fingerprints remain valid in all four styles.
 
-The person approved Bold Italic uni0257.sc on 2026-11-06; its acceptance
+The review approved Bold Italic uni0257.sc on 2026-11-06; its acceptance
 fingerprint is recorded. Approved evidence is retained as
 `proofs/bold-italic-hook-stems-2026-11-06.svg` and
 `proofs/bold-italic-hook-feet-2026-11-06.svg`.
 
-For uni0253.sc, the person requested a rounder upper counter, like its
+For uni0253.sc, the review requested a rounder upper counter, like its
 lower one, and subsequently approved it. That follow-up is recorded in
 [upper-counter review](bold-italic-b-upper-counter-review-2026-11-06.md).

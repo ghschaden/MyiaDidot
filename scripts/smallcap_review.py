@@ -103,7 +103,7 @@ UNENCODED = {
 
 
 def to_review(g, keys=("org.myiadidot.draft",)):
-    """a draft the person has not accepted yet"""
+    """a draft not accepted yet"""
     return any(g.lib.get(k) for k in keys) and ACCEPTED_KEY not in g.lib
 
 

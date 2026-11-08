@@ -14,7 +14,7 @@ Moved from CLAUDE.md (its ground rules apply).
   put back as saved by make_bold (before the derived letters are built
   from it, and after finishing) and by smallcaps; `drawn.py UFO` lists them
   and flags those whose Italic or Regular letter changed since. Use it for
-  a finished letter whose remaining fault is its own (the person,
+  a finished letter whose remaining fault is its own (
   2026-11-03: global repairs of the stroker moved hundreds of letters to
   fix a few); leave faults many letters share to the generator.
 - **Bold** (`sources/MyiaDidot-Bold.ufo`) is generated from the Regular by
@@ -71,7 +71,7 @@ Moved from CLAUDE.md (its ground rules apply).
   angle). Rerun it after changes to the Italic. Its own tweaks:
   ITALIC_SIDEBEARINGS / ITALIC_ANCHOR_NUDGE in make_bold.py. Its letters
   are emboldened by their strokes, not by weight (`stroke_bold.py`,
-  2026-10-28, the person's review; the results kept from run to run by
+  2026-10-28, the review; the results kept from run to run by
   `stroke_cache.py`, keyed by the outline, the arguments, the source of
   stroke_bold and all it imports, the packages and MYIA_* settings, in
   ~/.cache/myiadidot: about 9 of make generate's 11 minutes otherwise;
@@ -126,7 +126,7 @@ Moved from CLAUDE.md (its ground rules apply).
   the finished letters, the knees and dents too, against what they were
   but for the changes declared there (y's DotBelow, Ɯ's advance and
   joint). A knee (KNEE_TURN, 2026-10-29,
-  the person's review: u's inner stem ran into its bowl with a shoulder,
+  the review: u's inner stem ran into its bowl with a shoulder,
   18 degrees finished, и ш щ џ ų with it): a curve beside a line whose
   fit bends back though the source's turns one way (Strokes.draw finds
   them), where a step of KNEE_TURN (8) degrees is left within KNEE_NEAR
@@ -140,14 +140,14 @@ Moved from CLAUDE.md (its ground rules apply).
   units instead of 11, and the gate refused its knee; ш щ's middle feet
   back as before the knee). Each knee taken (and one found beside it:
   ш щ's middle stem) is then drawn as the Italic turns there
-  (`knee_turned`, KNEE_QUARTER, 2026-10-29, the person's review: blended
+  (`knee_turned`, KNEE_QUARTER, 2026-10-29, the review: blended
   only, the edge still went inward before turning, and turned too
   tight): seen slanted, from the line's end to upright, then a quarter
   46 units wide (at a downstroke of 160; 30 and 38 tried) and 1.48 times
   that high round onto the bowl's own curve, a level node at the
   counter's bottom, the rest of the bowl as it was. Last,
   each whole arc of the cleaned outline (corner to corner) is refitted
-  fair (`fair_arcs.py`, 2026-10-28, the person's review; MYIA_FAIR=0 to
+  fair (`fair_arcs.py`, 2026-10-28, the review; MYIA_FAIR=0 to
   compare): curvature continuous, changing gently (by its relative change,
   so tight inner turns stay tight), rising from nothing out of a line (the
   curve next to it split in two, only fading towards the line), no new
@@ -155,7 +155,7 @@ Moved from CLAUDE.md (its ground rules apply).
   lines) held as drawn; an arc taken only within LIMIT (6) units; the
   cleaning's leftover curves under 8 units merged first (`rejoined`).
   ITALIC_BOLD_ROOTS: letters whose hairline leaves its crotch heavier
-  (k 0.7, the person's choice: its arm was a thin wedge at the stem).
+  (k 0.7, the choice made: its arm was a thin wedge at the stem).
   make_bold pins numpy and OpenBLAS to AVX2 (the solves the same on CI).
   Run in
   a pool of JOBS processes. Spaced as by weight (that letter's optical

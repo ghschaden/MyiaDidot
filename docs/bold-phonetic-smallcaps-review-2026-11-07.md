@@ -1,6 +1,6 @@
 # Bold phonetic and additional Latin small caps
 
-The person reviewed the 15-form sheet at
+The review reviewed the 15-form sheet at
 build/glyph-review/bold-smallcaps-phonetic-2026-11-07/review.pdf and approved
 13 unchanged forms, then the omega uppercase/sc and capital uniA7AA
 aperture repairs, followed by the smoothed uni0266.sc hook. All 15 small

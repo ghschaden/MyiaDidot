@@ -1,7 +1,7 @@
 # Paired Italic extended small-cap repairs
 
 Reference: `7eb071e0` with the approved Bold Italic basic Latin repairs
-installed. The person sent back Bold Italic Ƒ, florin.sc, uni01A5.sc,
+installed. The review sent back Bold Italic Ƒ, florin.sc, uni01A5.sc,
 uni0263.sc and uni0242.sc, and requested consistent non-bold Italic
 counterparts. uni0263.sc explicitly means the middle small-cap form in
 the review row, not lowercase ɣ or uppercase Ɣ.
@@ -14,7 +14,7 @@ changes. These are outline/shaping candidates, not hinted raster proofs.
 
 ## Approved glottal small caps
 
-The person approved uni0242.sc in Italic and Bold Italic on 2026-11-06.
+The review approved uni0242.sc in Italic and Bold Italic on 2026-11-06.
 The inner arc is fitted from the same-style full capital's inner arc,
 with a rounder right side and open head. The outside, stem and terminal
 are retained, as are the advance and anchors. Both drawings are installed,
@@ -24,7 +24,7 @@ marked drawn and accepted. Proofs were rendered and visually inspected:
 
 ## Approved gamma small caps
 
-The person approved uni0263.sc in both italic styles on 2026-11-06.
+The review approved uni0263.sc in both italic styles on 2026-11-06.
 The new construction scales the same-style Ɣ to small-cap height, keeping
 its loop below the baseline (about −364/−365 rather than zero). Its main
 stroke is fitted to the same proportion of h.sc as Ɣ has to H; the old
@@ -53,11 +53,11 @@ stem and elliptical curl, the terminal ball half the stem's width.
 uni01A5.sc is rebuilt from the final same-style p.sc with a compact curl
 leaving the left part of its head; the right part continues into P's bowl.
 An initial whole-stem curl left a gap at P's head and was discarded.
-The hook candidates are not installed or accepted yet. The person found
+The hook candidates are not installed or accepted yet. The review found
 the Italic Florin tails only "ok-ish" and preferred the old Italic ƥ.sc;
 that already accepted production drawing remains unchanged and is
 excluded from further Italic repair candidates. Bold Italic ƥ.sc remains
-in review. Consistency does not override the person's preferred drawing.
+in review. Consistency does not override the preferred drawing.
 
 ## Hook refinements, 2026-11-07
 

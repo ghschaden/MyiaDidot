@@ -66,9 +66,9 @@ Moved from CLAUDE.md (its ground rules apply).
   composites point at other versions. Regenerate whole styles. (Enforced:
   aliases are as wide as their glyph, tests/test_built_from.py,
   `alias-widths*.txt`.)
-- The tools find candidates; the person's eye decides. Make review sheets
+- The tools find candidates; the designer's eye decides. Make review sheets
   (`make strokes`, `make proof`), and put designed exceptions (ξ, 7) on the
-  known lists rather than "fixing" them. Record the person's acceptance of
+  known lists rather than "fixing" them. Record the acceptance of
   a glyph with `scripts/accepted.py UFO GLYPH --date --review DOC` (lib
   `org.myiadidot.accepted`, with the glyph's fingerprint): it freezes
   nothing, the generators carry it over (make_bold.write, smallcaps.py),

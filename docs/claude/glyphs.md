@@ -23,7 +23,7 @@ Moved from CLAUDE.md (its ground rules apply).
   overwrites outlines. Drafts from `smallcaps_draft.py` carry lib key
   `org.myiadidot.smallcapDraft`; clear it once a glyph is reviewed. Other
   drafted glyphs (ẞ) carry `org.myiadidot.draft`. Small-cap height is
-  1040 (lib `org.myiadidot.smallcapHeight`, chosen by the person after
+  1040 (lib `org.myiadidot.smallcapHeight`, chosen after
   comparing 960/1000/1040); small caps take the `.cap` accents at TopCap =
   height + 146. A capital before a small cap is kerned only where a style
   falls outside the references (CAP_SC_KERNING there, final values per

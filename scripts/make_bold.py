@@ -71,18 +71,18 @@ THIN, THICK = 60, 160
 ITALIC_THIN, ITALIC_THICK = 60, 160
 # the Bold Italic is emboldened by its strokes (stroke_bold), its hairlines
 # gaining this across (both sides), fading into ITALIC_AX as a stroke
-# thickens: Libre Bodoni's quarter, hairlines 23 -> 30 per 1000 (the
-# person's choice, 2026-10-28; Bodoni Moda's gain nothing)
+# thickens: Libre Bodoni's quarter, hairlines 23 -> 30 per 1000
+# (chosen 2026-10-28; Bodoni Moda's gain nothing)
 ITALIC_HAIR = 12
-JOBS = int(os.environ.get("MYIA_JOBS", "4"))  # processes at most (the project's limit: 4, the person 2026-11-03)
+JOBS = int(os.environ.get("MYIA_JOBS", "4"))  # processes at most (the project's limit: 4, 2026-11-03)
 # Bold Italic letters gaining more than their strokes give (ITALIC_AX and
 # ITALIC_HAIR times this): z, its top and bottom waves shallow, gains little
 # across and near the zones nothing up and down; still light beside n
-# (the person, 2026-10-28)
+# (2026-10-28)
 ITALIC_BOLD_HEAVIER = {"z": 1.15,
                        # the small caps the Italic's drafts leave light against h.sc,
                        # o.sc 0.86 and x.sc 0.75 where the Bold's are 1.07 and 0.87
-                       # (the person, samples.pdf, 2026-11-01); n.sc's 1.32 dropped
+                       # (samples.pdf, 2026-11-01); n.sc's 1.32 dropped
                        # once the Italic made it from N at weight (2026-11-05: its
                        # diagonal stood 1.28 of h.sc, N's 0.77)
                        "o.sc": 1.15, "c.sc": 1.15, "g.sc": 1.15, "q.sc": 1.15,
@@ -149,7 +149,7 @@ BOLD_REBUILD = {
 # its w y u n i at the superior figures' size and weight, as the Italic
 # makes them of its own. Stroked at their scale from the Italic's, the
 # entry hook's inner curl was squeezed into a corner (32 degrees: the
-# strokes gain 34 across, 4 up and down; the person, 2026-11-02). Set with
+# strokes gain 34 across, 4 up and down; 2026-11-02). Set with
 # the side bearings their optical fit gave them; only those the Italic
 # derived so, and only where the gate takes them (ᵘ ⁿ: the arch's crotch a
 # notch at that size, kept as stroked)
@@ -157,12 +157,12 @@ ITALIC_BOLD_REBUILD_OPS = {"superior": "a modifier letter: the Bold Italic's let
 ITALIC_BOLD_REBUILD = {
     # the slashed letters: the slash drawn on the stroked base at the Bold
     # Italic's weight (emboldened whole, it left a slit by the diagonal it
-    # crosses and redrew the brackets beside it: Ⱥ; the person, 2026-10-28)
+    # crosses and redrew the brackets beside it: Ⱥ; 2026-10-28)
     "uni023A": "Ⱥ: the slash on the Bold Italic's A", "uni2C65": "ⱥ: the slash on the Bold Italic's a",
     "uni023B": "Ȼ: the slash on the Bold Italic's C", "uni023C": "ȼ: the slash on the Bold Italic's c",
     "uni023E": "Ⱦ: the slash on the Bold Italic's T", "uni2C65.sc": "ⱥ.sc: the slash on a.sc",
     "uni023C.sc": "ȼ.sc: the slash on c.sc", "uni2C66.sc": "ⱦ.sc: the slash on t.sc",
-    # and the middle tildes, at the slashes' weight (the person, 2026-10-28:
+    # and the middle tildes, at the slashes' weight (2026-10-28:
     # emboldened whole the tilde was heavier than the slashes, and ᵭ's upper
     # counter, small and tight, came out a triangle)
     **{name: f"{ch}: the tilde on the Bold Italic's {base}" for name, ch, base in (
@@ -171,17 +171,17 @@ ITALIC_BOLD_REBUILD = {
         ("uni1D72", "ᵲ", "r"), ("uni1D73", "ᵳ", "ɾ"), ("uni1D74", "ᵴ", "s"), ("uni1D75", "ᵵ", "t"),
         ("uni1D76", "ᵶ", "z"), ("uni026B.sc", "ɫ.sc", "l.sc"))},
     # Ɯ, U twinned: its stems the Bold Italic U's (by strokes its own, its
-    # third stem's edge unioned with U's crossed it in a step; the person,
+    # third stem's edge unioned with U's crossed it in a step;
     # 2026-10-29)
     "uni019C": "Ɯ: the twin of the Bold Italic's U",
     # ǥ.sc: the bar on the Bold Italic's g.sc (emboldened whole and joined
     # to g.sc again, the two outlines nearly one, the union left 3 short
-    # wobbles in the bowl by the bar and 27 nodes more: the person, 2026-11-05)
+    # wobbles in the bowl by the bar and 27 nodes more: 2026-11-05)
     "uni01E5.sc": "ǥ.sc: the bar on the Bold Italic's g.sc",
     # n.sc: made from the Bold Italic's N as the Italic's from its N
     # (make_italic ITALIC_SC_RECIPES); stroked from the Italic's, the
     # diagonal stood 1.21 of h.sc (N's 0.77), the left foot lost its
-    # bracket and the right stem's top bracket wobbled (the person, 2026-11-05)
+    # bracket and the right stem's top bracket wobbled (2026-11-05)
     "n.sc": "n.sc: the Bold Italic's N enlarged",
     # ɴ, n.sc enlarged (derive.RECIPES): stroked from the Italic's, its
     # diagonal and feet came out as n.sc's did
@@ -228,7 +228,7 @@ ITALIC_BOLD_REBUILD = {
     "uni01AE": "Ʈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
     "uni027D.sc": "ɽ.sc: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
     "uni0288.sc": "ʈ.sc: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
-    # the currency bars on the Bold Italic's own letters (the person,
+    # the currency bars on the Bold Italic's own letters (
     # 2026-11-08): emboldened whole, the stem and the S grew over the bars'
     # left ends, which no longer showed
     "uni20AE": "₮: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the bars hidden left of the stem",
@@ -243,7 +243,7 @@ BOLD_RECIPES = {
     # Ƭ: the Regular's curl, but leaving the bar at the bar's own weight (60)
     # with the bracket under it cut away (420-560): from the Regular's
     # recipe the ring took the stroke where the bracket swells (124 at 420),
-    # so it thickened toward the ball (the person, 2026-11-06); the upright
+    # so it thickened toward the ball (2026-11-06); the upright
     # part of the ring thick (110), as the Bold Italic's
     "Ƭ": ("curl", "T", ("c", [(-10000, 600, 420, 10000), (420, 1250, 560, 1374)],
                         {"at": ("pt", 420, 1404, 60), "dir": 180, "turn": "ccw", "r": (150, 150),
@@ -271,7 +271,7 @@ BOLD_RECIPES = {
     # ɾ: the Regular's, the Bold r's stem under the Bold f's hook, placed
     # by their own stems and tops (by the Regular's numbers f's stem stood
     # off r's; emboldened whole, its stem's right edge wobbled under r's
-    # shoulder: the person, 2026-11-04)
+    # shoulder: 2026-11-04)
     "ɾ": ("attach", "r", lambda up: fishhook_band(up)),
 }
 
@@ -355,14 +355,14 @@ ITALIC_BOLD_RECIPES = {
     # and its ball as large as the curl takes with no notch (80-90 at 180-200
     # degrees; the case's, 96, notched it): the Italic's smaller one (65)
     # scaled up would close the curl
-    # The bar run on 220 units left before it curls, as the Italic's (the
-    # person, 2026-11-06: the left arm short against the right, 196 against
+    # The bar run on 220 units left before it curls, as the Italic's
+    # (2026-11-06: the left arm short against the right, 196 against
     # 641; at 0.8 too long, now about 0.65): the T's own bar (1352-1434, 82)
     # from the stem, the stub of its top-left serif under it cut away (to
     # 495, where the underside runs level; these numbers are the recipe's
     # frame, the T as rederive meets it, 172 units left of the saved T's):
     # left there, the edge sank along the bar and climbed the stub again, a
-    # wobble (the person). Cut to 662 it took the stem's left side, a step
+    # wobble. Cut to 662 it took the stem's left side, a step
     "Ƭ": ("attach", "T", ("c", [(-10000, 800, 420, 10000), (420, 1150, 495, 1352)],
                           [("line", ((680, 1393), (200, 1393), 82), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 200, 1393, 82), "dir": 180, "turn": "ccw",
@@ -371,10 +371,10 @@ ITALIC_BOLD_RECIPES = {
     # ƈ.sc ɠ.sc: derive's curl on c.sc g.sc, its ring at this weight as Ƈ's
     # (thin, 45 across its top) with a smaller ball (75): at the scaled
     # stroke and the case's ball the hook's inside closed to a straight
-    # slant (the person, 2026-11-06: "not very round"). It leaves the top
+    # slant (2026-11-06: "not very round"). It leaves the top
     # stroke further left (720) and flatter (35 degrees), turning further:
     # from 782 at 70 degrees it rose off the stroke with a dip outside and
-    # a cusp inside ("badly attached", the person)
+    # a cusp inside ("badly attached")
     **{ch: ("curl", base, ("s", [(735, 530, 10000, 10000)],
                            {"at": ("x", 720), "dir": 35, "turn": "cw", "r": (165, 140),
                             "sweep": 195, "ball": 75, "t": (100, 45)}))
@@ -386,7 +386,7 @@ ITALIC_BOLD_RECIPES = {
     # Ɓ Ɗ Ƥ: the Italic's recipe (the stem rising through the top serif and
     # curling over to the left), the serif cut from 1290 a unit inside the
     # stem's left edge, 290 here (266 once spaced): the Italic's cut at 300
-    # took 11 units off the stem, a step where the curl begins (the person,
+    # took 11 units off the stem, a step where the curl begins (
     # 2026-11-05, on ɦ)
     **{ch: ("curl", base, ("c", [(-10000, 1290, 291, 10000)],
                            {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
@@ -400,18 +400,18 @@ ITALIC_BOLD_RECIPES = {
     # spaced; cut at 553, the step left in the stem was cleaned into an
     # edge leaning 5 degrees in). The Italic's Ɦ curls the whole stem over: at
     # the Italic's 164 it stepped 45 units in on both sides of the Bold
-    # Italic's 287 stem (ɦ.sc alike), at 287 it closed its eye (the
-    # person, 2026-11-05)
+    # Italic's 287 stem (ɦ.sc alike), at 287 it closed its eye
+    # (2026-11-05)
     # Ꞵ: B's stem running on down at its own weight (the Italic's 166-unit
     # descender stood 120 units lighter than the Bold Italic's 288 stem,
-    # the person, 2026-11-08): the stem's edges 294 and 582 in the recipe
+    # 2026-11-08): the stem's edges 294 and 582 in the recipe
     # frame (150-438 upright), cut a unit inside below the foot's bracket;
     # the foot serif as B's own, 67 tall, overhanging the stem 167 a side
     # Bulgarian ж: the Bold Italic ж's stem (715-949 where this runs,
     # before the letters are spaced; the mirrored ж, make_italic.mirror_zhe)
     # run up into l's (144-380: centred on it, 570 right) by a piece
     # widening from the one to the other, l's top above it (the Italic's
-    # cut and place left a notch at the stem's right edge; the person,
+    # cut and place left a notch at the stem's right edge;
     # 2026-11-08)
     "ж.loclBGR": ("attach", "uni0436", ("x", [],
                                          [("poly", [(715, 790), (949, 790), (950, 1110), (714, 1110)], (0, 0), (1, 1, 0, 0)),
@@ -448,12 +448,12 @@ ITALIC_BOLD_RECIPES = {
     # as thick, so it ends in a round cap touching both its edges ("end";
     # 90 left 60 units of the end's face standing beside it; half the
     # stroke, 124 and 126, stood a few units into the counter in a dent:
-    # the person, 2026-10-29)
+    # 2026-10-29)
     "ƴ": ("curl", "y", ("x", [(705, 760, 10000, 10000)],
                         {"at": ("y", 760, "last"), "dir": 90, "turn": "cw", **CURL_LOW, "ball": "end",
                          "t": (246, 62)})),
     # ʋ: a short hook over the stem, ending in a ball hanging from its outer
-    # edge, as on r (the person, 2026-10-29: curling on, 190 degrees, the
+    # edge, as on r (2026-10-29: curling on, 190 degrees, the
     # ring lay on the left stem's hook and closed the top; narrower, its
     # eye closed to a slit; the stem tapered into it, a dead end)
     "ʋ": ("curl", "u", ("x", [(705, 700, 10000, 10000)],
@@ -462,7 +462,7 @@ ITALIC_BOLD_RECIPES = {
     # ⱳ: the Italic's, on the Bold Italic's arm, cut below where it flares
     # (1312-1404 at 600) and narrowing to the curl's stroke (a straight
     # stroke at the curl's width stepped 36 units aside of the arm at 645);
-    # the ball 95, as the other x-height curl (80 stood thin: the person,
+    # the ball 95, as the other x-height curl (80 stood thin:
     # 2026-11-08). The finished ⱳ is drawn (its arm evened by hand, kept)
     "ⱳ": ("attach", "w", ("x", [(1000, 600, 10000, 10000)],
                           [("poly", [(1314, 595), (1405, 595), (1378, 770), (1298, 770)], (0, 0), (1, 1, 0, 0)),
@@ -515,7 +515,7 @@ ITALIC_BOLD_RECIPES = {
     # the stroke (as there, so the curl's end has no step): emboldened
     # whole, the tail stood left of the stem and heavier than it
     # (Ɽ's stem is 298 at its cut: the tail at R's 290 stood 9
-    # units in from its right edge, a step at 120, the person 2026-11-03)
+    # units in from its right edge, a step at 120, 2026-11-03)
     "Ɽ": ("attach", "R", ("c", [(-10000, -10000, 950, 120)],
                           [("line", ((429, 160), (429, -150), 309), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 429, -150, 309), "dir": 270, "turn": "ccw", "r": (195, 170),
@@ -639,7 +639,7 @@ BOLD_ROUNDER = {
 }
 # Bold Italic letters whose hairline leaves its crotch heavier, the
 # weight there (0..1, a stem's 1) fading over stroke_bold.ROOT units (k's
-# arm a thin wedge where it left the stem; the person chose 0.7 of 0.3, 0.5,
+# arm a thin wedge where it left the stem; chosen: 0.7 of 0.3, 0.5,
 # 0.7, k only, 2026-10-28); &'s bowl tail at its stem, where the crotch,
 # moved by the hairline only, drew the stem's foot into a knee (19 units
 # aside, 29 without; 1.0 bracketed the diagonal's crotch, 2026-11-02)
@@ -657,7 +657,7 @@ ITALIC_BOLD_CAP_FREE = {"q.sc": 300}
 # Bold Italic letters whose smallest counter is refitted smooth over this
 # many units after stroking (stroke_bold.smooth_counter), its one corner
 # kept: q.sc's loop, the tail's weight changing fast along it, left with a
-# flat slanted side and a double kink (the person, 2026-11-03)
+# flat slanted side and a double kink (2026-11-03)
 ITALIC_BOLD_SMOOTH_COUNTER = {"q.sc": 16}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
@@ -689,7 +689,7 @@ BOLD_CUT, BOLD_CUT_GREEK = 19, 15
 # against Greek references (scripts/quality/greek_pairs.py)
 BOLD_ITALIC_CUT_GREEK = BOLD_CUT_GREEK + 16
 # the Bold Italic's letters by strokes a little looser than the Bold's
-# ("a bit narrow", the person, 2026-10-28): ITALIC_LOOSER units less cut a
+# ("a bit narrow", 2026-10-28): ITALIC_LOOSER units less cut a
 # side, its Greek lowercase alike (the Greek pairs are judged against n n);
 # tighter than the Bold's since 2026-11-01: lowercase +8.6 % of the Italic,
 # as the Bold of the Regular (the name stays: a negative looseness)
@@ -809,8 +809,8 @@ ITALIC_ANCHOR_NUDGE = {("u", "Horn"): 45}
 # Most pairs had no source pair adjustment. va overrides its inherited class
 # pair; fr is made 33 units looser relative to the references' range.
 ITALIC_BOLD_KERNING = {
-    # ſ ſſ before the round letters tighter than the Regular's -60 (the
-    # person, from a proof at 0 to -80, 2026-11-05: ſc too wide); the
+    # ſ ſſ before the round letters tighter than the Regular's -60
+    # (from a proof at 0 to -80, 2026-11-05: ſc too wide); the
     # accented ones kept clear by kern_clear.GUARDED_AGAINST
     **{(left, right): -80 for left in ("longs", "longs_longs")
        for right in ("public.kern2.c", "public.kern2.egrave", "public.kern2.g", "q")},
@@ -873,7 +873,7 @@ ITALIC_BOLD_KERNING = {
     ("u", "f"): 92,
     ("R", "e"): 39,
     ("f", "t"): -66,
-    # small caps close against their neighbours in a word (the person, ZWÖLF
+    # small caps close against their neighbours in a word (ZWÖLF
     # BOXKÄMPFER, 2026-11-01): the white of B O 232 and E R 291 against the
     # 350-375 around them; the Bold's 282 and 317
     ("public.kern1.B.sc", "public.kern2.O.sc"): 40,
@@ -897,10 +897,10 @@ ANCHOR_NUDGE = {("u", "Horn"): -10}
 OVALS = {"o", "O", "zero"}
 # the Bold Italic's closed rounds: the stroked counter ran nearly straight
 # with tight turns (o, top right and bottom left), o.sc's a rounded
-# rectangle (the person, 2026-11-05: "very unround"); the Italic's counter
+# rectangle (2026-11-05: "very unround"); the Italic's counter
 # put in its place (italic_counter); their slashed forms through their ring.
 # g's bowl too: stroked it came to a point at the bottom left, where the
-# Italic's is round (the person, 2026-11-06: c g C G unround inside); the
+# Italic's is round (2026-11-06: c g C G unround inside); the
 # open rounds' insides from the Italic's run (italic_inside)
 ITALIC_OVALS = OVALS | {"o.sc", "g"}
 # slashed rounds, drawn whole in the lighter style: emboldened whole, the
@@ -1657,7 +1657,7 @@ def finalize(font, smooth=True, separate_stacks=False, plain=()):
 
 
 def write(font, path, smooth=True, separate_stacks=False, plain=(), kept=None):
-    """font finalized and saved to path, the person's acceptances of the
+    """font finalized and saved to path, the acceptances of the
     style saved there before carried over (accepted.py), and the glyphs
     kept as drawn (drawn.py: kept, as saved) put back as they were."""
     from accepted import acceptances, carry
@@ -2544,7 +2544,7 @@ def main():
                     # by strokes spaced as by weight (the stems stand where it
                     # put them): fitted to the stroked letter's own white, the
                     # thinner entries and exits drew the letters some 23 units
-                    # closer, minimum blacker (the person, 2026-10-28)
+                    # closer, minimum blacker (2026-10-28)
                     weighted = bridge(rezone(embolden_by_weight(wide, AX * sc, AY, THIN * sc, THICK * sc,
                                                                 keep_bends=g.name not in fit_as_is), AY))
                     d = optical_fit(bold_rec(ref), bold_rec(weighted), band_height(regular, g.name))

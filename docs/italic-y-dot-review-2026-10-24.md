@@ -4,7 +4,7 @@
 compares the original collision, the first beside-descender trial and the
 closer placement requested after review.
 
-The person accepted placing the dot beside the descender and asked to move
+The review accepted placing the dot beside the descender and asked to move
 it a little left. The horizontal clearance is now 25 font units rather than
 the first trial's 50. The dot's height is unchanged. Rounding makes the
 revised position 24 units left of the original trial in Italic and 25 in

@@ -1,10 +1,10 @@
 # Remaining Bold draft forms
 
-The person reviewed the 22-form sheet under
+The review reviewed the 22-form sheet under
 build/glyph-review/bold-remaining-drafts-2026-11-07/ and accepted 19 forms
 unchanged. Their fingerprints were verified and acceptance recorded in
-Bold. The unaccepted drafts are uni0187, uni0188 and uni0193. The person
-also reopened lowercase uni01AD (not the now-approved uni01AD.sc).
+Bold. The unaccepted drafts are uni0187, uni0188 and uni0193. Lowercase
+uni01AD was also reopened (not the now-approved uni01AD.sc).
 
 Requested proposals are under build/glyph-review/bold-hook-size-2026-11-07/.
 The hooks on capital Ƈ and Ɠ are enlarged by 25%, and lowercase ƈ by 30%,

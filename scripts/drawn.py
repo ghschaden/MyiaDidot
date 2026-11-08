@@ -10,7 +10,7 @@ smallcaps.py then keep it as saved (outline, components, anchors, width,
 lib) instead of making it anew, and build what is derived from it (its
 accented forms, its small cap) from it. The generators still make every
 other glyph, so a change meant for many letters goes into them; a fault in
-one finished letter is fixed in that letter (the person, 2026-11-03: the
+one finished letter is fixed in that letter (2026-11-03: the
 global repairs of the stroked Bold Italic moved hundreds of letters to fix
 a few). The Italic's own mark is make_italic's "drawn" source.
 

@@ -12,7 +12,7 @@ four subsequently repaired forms (last approval 2026-11-07).
 Proof: `review.pdf` in that directory, two pages. Both pages were rendered
 as `review-1.png` and `review-2.png` and visually inspected. Each cell shows
 capital, small cap and lowercase at the same em scale over height guides,
-then n/H contexts at text size. No redraw is proposed before the person's
+then n/H contexts at text size. No redraw is proposed before the
 review. Of particular interest: uni2C65.sc (ⱥ.sc) has a notch finding at
 297,207 (65 pixels in the lint raster), where the slash meets the letter.
 The existing lint inventory records this as an accepted tapered lower
@@ -29,7 +29,7 @@ overflow warnings do not obscure specimens or labels. These are source
 outline and shaping specimens, not screen-hinting proofs. No drawings,
 spacing, baselines or acceptance records changed for this batch.
 
-The person approved 38 unchanged forms, then approved the repaired
+The review approved 38 unchanged forms, then approved the repaired
 uni0242.sc and uni0263.sc on 2026-11-06. Their records are installed.
 florin.sc and uni01A5.sc were subsequently approved on 2026-11-07,
 together with full capital Ƒ (uni0191), after Astra's reconstruction

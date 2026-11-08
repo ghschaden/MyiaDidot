@@ -3,7 +3,7 @@ Bold's k.sc join drawn and the Bold Italic's x.sc brackets as fillets.
 
 The pointed feet overshoot by 18 to 35 units. Heavier they end
 flat and broad, and a flat foot that deep hangs under its neighbours (ZWÖLF,
-BOXKÄMPFER, the person, 2026-11-01): 6 units, the same for each foot. w's
+BOXKÄMPFER, 2026-11-01): 6 units, the same for each foot. w's
 and v's serifs stood 9 units over the height of their neighbours, and w
 looked the larger for it.
 
@@ -56,7 +56,7 @@ def fillets(glyph):
     as far from it as the bracket's farther end was, its handles FILLET of
     the way to the corner. By its strokes the Bold Italic's x.sc had two or
     three curves there that bent back: a knee where each arm and leg ran
-    into its serif (the person, 2026-11-01 and 2026-11-05; the Italic's are
+    into its serif (2026-11-01 and 2026-11-05; the Italic's are
     one curve)."""
     from ufoLib2.objects.point import Point
 
@@ -159,7 +159,7 @@ def finish(font):
     # the Bold Italic's x.sc was drawn here (2026-11-01, its arm and leg
     # into their serifs) until the italic small caps took their capitals'
     # weight (make_italic.as_capitals, 2026-11-05): by its strokes, its
-    # brackets made fillets (the person, 2026-11-05: the knees removed)
+    # brackets made fillets (2026-11-05: the knees removed)
     if font.info.styleName == "Bold":
         k_sc(font)
     else:

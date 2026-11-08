@@ -1,7 +1,7 @@
 # Florin and P-hook reference reset — accepted 2026-11-07
 
 The new drawings replace the rejected ellipse-and-ball construction with
-curves taken from finished letters in the same style. The person accepted
+curves taken from finished letters in the same style. The review accepted
 the final proposals and requested commit/push on 2026-11-07. The five drawings
 and 13 local small-cap kerning values are installed, marked drawn and accepted.
 Reference: working sources on `7eb071e0`, including the

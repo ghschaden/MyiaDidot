@@ -1,10 +1,10 @@
-"""Which glyphs the person has accepted, and whether they have changed since.
+"""Which glyphs have been accepted in review, and whether they have changed since.
 
     python scripts/accepted.py UFO                              # accepted glyphs changed since
     python scripts/accepted.py UFO GLYPH ... --date D --review DOC
     python scripts/accepted.py UFO --drafts                     # drafts not accepted
 
-A glyph's lib KEY records the person's visual acceptance: the date, the
+A glyph's lib KEY records the visual acceptance: the date, the
 review it was given in (a doc or proof) and the fingerprint of the glyph
 accepted (built_from.fingerprint: outline, width, anchors). It does not
 freeze anything: unlike clearing an Italic draft's flag (make_italic.reviewed),

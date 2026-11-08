@@ -4,10 +4,10 @@ Sheet: build/glyph-review/bold-italic-final-drafts-2026-11-08/sheet.pdf
 (old-style figures; U.horn, u.sc.horn; the Bulgarian forms; each beside
 the Italic's).
 
-The person approved the 10 old-style figures on 2026-11-08. U.horn,
+The review approved the 10 old-style figures on 2026-11-08. U.horn,
 u.sc.horn and the 12 Bulgarian forms remain to be reviewed.
 
-The person approved 11 of the 12 Bulgarian forms on 2026-11-08. Requested:
+The review approved 11 of the 12 Bulgarian forms on 2026-11-08. Requested:
 - u.sc.horn: uneven at the horn. The stem below it had a kink on its outer
   edge (u.sc's cut serif bracket) and a bulge on its inner bracket; now the
   outer edge runs straight at the stem's slant to the top corner and the
@@ -16,7 +16,7 @@ The person approved 11 of the 12 Bulgarian forms on 2026-11-08. Requested:
 - uni0436.loclBGR (Bulgarian ж): the c on the left the mirror image of the c
   on the right.
 
-ж (both italics, at the person's request 2026-11-08): the left half is
+ж (both italics, at the request 2026-11-08): the left half is
 now the right c mirrored about the stem (ball at the top left), not Old
 Standard's c turned (ball at the bottom). Made in make_italic.mirror_zhe on
 Old Standard's ж before anything is made of it, and moved 41 left (the
@@ -29,12 +29,12 @@ the Italic, about 37/2 in the Bold Italic, lint clean. A first attempt
 mirrored only the Bulgarian forms and left them 32-52 units off the stem
 (a step in the Italic's stem, the Bold Italic leaning): replaced.
 Reopened: the Italic's Bulgarian ж and җ approvals (2026-11-05) and the
-Bold Italic's җ (2026-11-08). Pending the person's review, with
+Bold Italic's җ (2026-11-08). Pending the review, with
 u.sc.horn (U.horn and u.sc.horn are the horn's bases: the horn is a
 separate mark in Ư and the small-cap ư). Proof:
 build/glyph-review/italic-zhe-mirror-2026-11-08/zhe-final.pdf.
 
-The person approved ж (both italics), the Bulgarian ж (both), u.sc.horn
+The review approved ж (both italics), the Bulgarian ж (both), u.sc.horn
 and U.horn on 2026-11-08. җ: a slight swelling/kink on the descender's
 inner edge. Its inner edge left the crossbar leaning as the descender
 does, dropped upright down the c's lower inside, then leaned again: a 13°
@@ -43,7 +43,7 @@ Italic. Now one curve from the crossbar's corner to the descender line
 (make_italic ITALIC_RUNS, straighten_run), and the outer edge's 12° corner
 at the cut rounded (ITALIC_CORNERS, round_corner); both generators apply
 them. The descender now 132-136 wide in the Italic and 214-217 in the Bold
-Italic, no corner over 1.5° in that stretch. Approved by the person on
+Italic, no corner over 1.5° in that stretch. Approved on
 2026-11-08. Proof:
 build/glyph-review/zhe-descender-2026-11-08/zhe-descender.pdf.
 

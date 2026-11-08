@@ -27,7 +27,7 @@ master or production font.
 
 Recommendation: retain the existing `uni02C0 notch 1` key and its open
 counter. Refreshed the comment and measurement only. This records a
-review recommendation, not the person's final visual acceptance.
+review recommendation, not the final visual acceptance.
 
 ## Separate drawing candidate remains open
 

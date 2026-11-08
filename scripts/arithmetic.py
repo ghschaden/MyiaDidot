@@ -4,7 +4,7 @@ One thread per process (make_bold's pool of JOBS does the stroking; numpy's
 OpenBLAS would take every core for fair_arcs' small solves), and AVX2 at
 most: fair_arcs' Levenberg-Marquardt solves end a little apart when the
 arithmetic differs in its last bits, and GitHub's runners may have AVX-512
-(numpy's X86_V4 paths, OpenBLAS's SkylakeX kernels) where the person's
+(numpy's X86_V4 paths, OpenBLAS's SkylakeX kernels) where the
 machine has AVX2 (68 Bold Italic glyphs otherwise, 2026-10-28). OpenBLAS
 reads OPENBLAS_CORETYPE (checked 2026-11-05: Prescott gives its Katmai
 kernels); numpy names its AVX-512 targets X86_V4, AVX512_ICL, AVX512_SPR.

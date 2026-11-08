@@ -29,7 +29,7 @@ No ẞ alignment reports occur at 8–12 ppem or on its bottom in this range.
 The inspected curved top stays continuous and compatible with S/O; the
 small excess does not produce a conspicuous height jump. Recommendation:
 retain the current hints and two exception entries. No trial, outline repair
-or hint-program change is proposed. The person approved retaining these hints on 2026-10-26.
+or hint-program change is proposed. Retaining these hints was approved on 2026-10-26.
 This concerns hinting only; it does not change drawing/draft metadata.
 
 ## Scope and verification

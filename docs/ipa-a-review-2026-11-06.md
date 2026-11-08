@@ -3,10 +3,10 @@
 Reference: `3d692354`, plus the approved Bold Italic G-hook drawings (which
 do not affect this review). Scope: `a.ipa` in Regular, Italic, Bold and
 Bold Italic, compared with each style's `a`, `uni0251` (ɑ), `n` and `o`.
-No drawings changed. The person accepted a.ipa in all four styles on
+No drawings changed. The review accepted a.ipa in all four styles on
 2026-11-06; the acceptance fingerprints are recorded in the UFOs.
 
-Decision: retain the current drawings, as accepted by the person.
+Decision: retain the current drawings, as accepted.
 The Roman styles' a.ipa is an exact component alias
 of their ordinary two-storey a, with the same advance. In both italics,
 a.ipa is the sloped Roman two-storey form; ordinary a and ɑ use the

@@ -27,7 +27,7 @@ setup:
 	@echo "git hooks installed (tools/git-hooks: pre-commit runs the tests, post-commit rebuilds the proofs)"
 
 # one test or validation run at a time across all working copies
-# (worktrees), at most JOBS cores each (the person: 4, 2026-11-03)
+# (worktrees), at most JOBS cores each (review: 4, 2026-11-03)
 JOBS ?= 4
 export MYIA_JOBS = $(JOBS)
 VALIDATE_LOCK = $(shell cd "$$(git rev-parse --git-common-dir)" && pwd)/myia-validate.lock

@@ -1,6 +1,6 @@
 # Italic Þ hinting and counter-zone audit, 2026-10-25
 
-The person accepted this review and correction on 2026-10-25, after
+The review accepted this review and correction on 2026-10-25, after
 clarifying that the red dashed line illustrates the mistaken counter
 reference. A true outside alignment guide belongs on the outside edge.
 

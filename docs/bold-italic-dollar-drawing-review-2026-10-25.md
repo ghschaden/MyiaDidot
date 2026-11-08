@@ -1,11 +1,11 @@
 # Bold Italic dollar drawing proposal, 2026-10-25
 
-After the person accepted the roman joins and trademark proposal, work
+After the review accepted the roman joins and trademark proposal, work
 continued to the requested dollar drawing pass. The earlier straight-bar
 repair had left a broad waist and swollen terminal entrances. The
 [two-page proof](../proofs/bold-italic-dollar-drawing-before-after-2026-10-25.pdf)
 shows the new drawing at display and text sizes, beside figures, and with
-enlarged waist/terminal details. The person approved this dollar drawing on 2026-10-25, after the earlier
+enlarged waist/terminal details. The review approved this dollar drawing on 2026-10-25, after the earlier
 separate symbol-join/trademark acceptance.
 
 `scripts/dollar_drawing.py` runs after the existing straight-bar correction

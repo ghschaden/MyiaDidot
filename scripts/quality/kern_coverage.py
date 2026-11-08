@@ -16,7 +16,7 @@ Read from the UFO (groups are a source decision, not a build result):
    capital has one. (A capital before a small cap is mostly left unkerned,
    as in most references: scripts/quality/capsc_pairs.py measures it.)
 3. Letter sides in no group and no pair whose shape is alike a group's
-   with kerning on that side (for a person to judge); those reviewed and
+   with kerning on that side (to be judged by eye); those reviewed and
    left out (KEPT_OUT) are counted, not listed.
 
 Writes the full report to build/quality/kern-coverage-STYLE.txt and prints

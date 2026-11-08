@@ -1,6 +1,6 @@
 # Italic old-style figure redesign proposal, 2026-10-25
 
-The person requested a redesign closer to other old-style sets after
+The review requested a redesign closer to other old-style sets after
 finding the height difference between 3 and 9 distracting, 4 huge and 6
 too fat. [Redesign proof](../proofs/italic-oldstyle-redesign-2026-10-25.pdf)
 shows the complete current and proposed sets, Libertinus Serif Italic
@@ -54,7 +54,7 @@ reproduction, quality/shaping/hinting checks and builds.
 
 ## Original 9 restored in the redesigned set
 
-The person disliked the open-tail 9 and requested the old drawing back.
+The review disliked the open-tail 9 and requested the old drawing back.
 [Updated full-set proposal](../proofs/italic-oldstyle-redesign-restored-nine-2026-10-25.pdf)
 restores the original curled ball-terminal 9, fitted to the new −380..905
 band and 95% horizontal width, with its thick stroke adjusted to the new
@@ -67,7 +67,7 @@ candidate: `Restored-nine.ufo` in that directory.
 
 ## Approved and integrated in the italic weights
 
-The person approved the restored-nine whole-set proposal and requested
+The review approved the restored-nine whole-set proposal and requested
 continuation. The ten approved proportional Italic drawings and advances
 are now fixed design inputs in `scripts/data/oldstyle-italic/`, loaded by
 `scripts/oldstyle_figures.py` in the shared generated-style writer.
@@ -97,7 +97,7 @@ fine 8 (137 against the 167-unit reference). Existing style contrast
 findings remain; construction and lint findings for the figure family
 are clear. No new lint exceptions are introduced.
 
-The person then asked about Regular. It and Bold have not been changed;
+The Regular was asked about next. It and Bold have not been changed;
 the matching Roman proposal is documented in
 `docs/roman-oldstyle-redesign-2026-10-25.md`.
 

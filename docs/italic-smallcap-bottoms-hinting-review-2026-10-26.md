@@ -30,7 +30,7 @@ the round reference extended below it.
 Recommendation: retain the current hints and the existing ten exception
 entries (five per weight). This review does not demonstrate a visual defect
 requiring a correction, and does not propose an isolated-point delta.
-The person approved retaining the current hints on 2026-10-26.
+The review approved retaining the current hints on 2026-10-26.
 
 ## Scope and validation
 

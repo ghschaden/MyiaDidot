@@ -1,6 +1,6 @@
 # Italic small-cap Ʀ, Ɓ and Ɗ repairs
 
-The person approved the corrected Italic uni0280.sc, uni0253.sc and
+The review approved the corrected Italic uni0280.sc, uni0253.sc and
 uni0257.sc, including the cleanup of both upper stem edges on the two
 hooked letters, on 2026-11-06. Their acceptance fingerprints are recorded
 in the Italic UFO. The other 43 glyphs in the extended Latin batch have
@@ -27,7 +27,7 @@ them. Shared construction and emboldening machinery are unchanged.
 - **Both hook stem edges:** short reversing curves from the old serif
   are removed. The outer straight stem flows tangentially into the curl;
   the counter's head bracket flows tangentially onto its straight side.
-  This addresses the small nodges the person identified in the first
+  This addresses the small nodges the review identified in the first
   compact-hook trial. The hook size and placement stay unchanged.
 
 Bold Italic is regenerated from the repaired Italic. Local finishing
@@ -66,7 +66,7 @@ that only these three glyphs changed geometrically in each italic weight;
 advances, features, kerning and groups were unchanged and acceptance
 fingerprints remained valid.
 
-The person subsequently identified the old lower stem-to-serif shape in
+A later review identified the old lower stem-to-serif shape in
 the Bold Italic hooked b/d small caps, and questioned the upper joins too.
 The separate local follow-up is recorded in
 [Bold Italic hook stems](bold-italic-hook-stems-review-2026-11-06.md).

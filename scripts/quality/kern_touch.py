@@ -8,7 +8,7 @@ that keep apart, χ Υ, are not found), with the letters it decides.
 Printed: the entry, its value, how many of its pairs touch, the worst, and
 the value kern_clear.py would give it. The sheet shows each entry's worst
 pairs (up to --show) as kerned, ink in common red, ink nearer than CLEAR
-orange, and beside them at kern_clear's value; a person decides which are
+orange, and beside them at kern_clear's value; which are
 collisions (add the entry to kern_clear.PAIRS) and which are meant.
 """
 

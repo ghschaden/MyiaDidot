@@ -2,7 +2,7 @@
 
 Reference: 26eca0dd with the subsequently approved Bold basic Latin small
 caps and J-hook repair installed. The two-page sheet covers the same 46
-extended Latin forms as the prior Italic review. The person approved 43
+extended Latin forms as the prior Italic review. The review approved 43
 small caps unchanged and subsequently approved all nine proposed case
 repairs on 2026-11-07. All 46 small caps are now approved.
 

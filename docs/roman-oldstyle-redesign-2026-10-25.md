@@ -1,6 +1,6 @@
 # Roman old-style figure redesign proposal, 2026-10-25
 
-The person asked whether Regular was adapted along with the approved
+The review asked whether Regular was adapted along with the approved
 Italic set. It was not: the approved proof was Italic, with Bold Italic
 inheritance. Regular and Bold production drawings still have the earlier
 historical proportions.
@@ -31,7 +31,7 @@ reports and SVG/PNG rendering are alongside it.
 
 ## Accepted and integrated
 
-The person accepted this proposal and requested commit and push.
+The review accepted this proposal and requested commit and push.
 The reviewed Regular outlines and advances are now fixed design inputs in
 `scripts/data/oldstyle-regular/`. The shared old-style helper loads them
 when Regular figure spacing is rebuilt, preserving their approved fit,

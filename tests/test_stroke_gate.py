@@ -28,14 +28,14 @@ from test_stroke_steps import FIXED
 
 BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "uni01B4", "uni019C"]
 # what the repair changed in the finished letters, reviewed and accepted
-# by the person (10ddbcdc): y's DotBelow 5 units right; Ɯ, U twinned, 36
+# (10ddbcdc): y's DotBelow 5 units right; Ɯ, U twinned, 36
 # narrower, a 1.9 degree joint under its middle serif
 WIDTHS = {"uni019C": (2446, 2410)}
 ANCHORS = {"y": {"DotBelow": (5, 0)}}
 # ų: its stem's foot, a crotch drawn as a short line, now meets as one
 # point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it
 # draws the stem's inside a little bowed, a wobble the size of a unit, not
-# seen in text (proofed to the person with γ & ξ q.sc)
+# seen in text (proofed with γ & ξ q.sc)
 FINDINGS = {"uni019C": [("kink", 1212, 1355)], "uogonek": [("wobble", 873, 136)]}
 
 
@@ -203,8 +203,8 @@ def found(glyph):
 
 
 # ʋ redrawn since (a short hook and a ball, its top open: one contour, not
-# two; the person, 2026-10-29), ʲ made small from the Bold Italic's j
-# (make_bold.ITALIC_BOLD_REBUILD_OPS, the person, 2026-11-02: 11 narrower):
+# two; 2026-10-29), ʲ made small from the Bold Italic's j
+# (make_bold.ITALIC_BOLD_REBUILD_OPS, 2026-11-02: 11 narrower):
 # not held to what they were
 REDRAWN = {"uni028B", "uni02B2"}
 

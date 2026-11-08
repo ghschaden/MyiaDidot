@@ -52,9 +52,9 @@ from strokes_pilot import (
 # advances as today's Bold Italic (spacing is not this study's)
 bold = ufoLib2.Font.open("sources/MyiaDidot-BoldItalic.ufo")
 # what a hairline gains across (units, both sides together), fading into
-# the stem's AX as the stroke thickens (step 3, the person's choice);
+# the stem's AX as the stroke thickens (step 3, the choice made);
 # references: Bodoni Moda's hairlines gain nothing, Libre Bodoni's a quarter
-HAIR = float(os.environ.get("HAIR", 12))  # the person's choice 2026-10-28
+HAIR = float(os.environ.get("HAIR", 12))  # the choice made 2026-10-28
 UPRIGHT = unit(np.array([-SLANT, 1.0]))  # the slanted frame's vertical, deslanted
 
 

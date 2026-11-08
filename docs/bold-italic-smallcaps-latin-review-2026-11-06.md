@@ -3,7 +3,7 @@
 Reference: `7eb071e0`. Current-design review of a.sc–z.sc; no drawings,
 spacing, baselines or acceptance records changed. Of the 26 forms, c.sc
 and g.sc are already accepted and are included as references; the other
-24 await the person's review.
+24 await the review.
 
 Proof: `build/glyph-review/bold-italic-smallcaps-latin/review.pdf`, two
 pages. Both pages were rendered as `review-1.png` and `review-2.png` and
@@ -26,7 +26,7 @@ proof generation alone.
 
 ## Approval and three local repairs
 
-The person approved the other forms, sent back b.sc and q.sc for their
+The review approved the other forms, sent back b.sc and q.sc for their
 upper counters, and then identified narrowing before the stem serifs of
 b.sc and d.sc. d.sc's initial acceptance was withdrawn for that repair.
 The final three revisions were approved on 2026-11-06. All 26 basic

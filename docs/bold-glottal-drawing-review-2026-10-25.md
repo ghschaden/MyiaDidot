@@ -1,10 +1,10 @@
 # Bold modifier glottal stop drawing proposal, 2026-10-25
 
-After approving the dollar, the person requested the next task: Bold ˀ's
+After the dollar was approved, the review requested the next task: Bold ˀ's
 angular outer bowl/terminal and uneven inner edge. The
 [before/after proof](../proofs/bold-glottal-drawing-before-after-2026-10-25.pdf)
 shows the actual outlines at equal size, enlarged upper curves, the Regular
-reference and modifier-letter text. The person accepted this drawing on
+reference and modifier-letter text. The review accepted this drawing on
 2026-10-25 and requested commit and push. The earlier dollar approval is
 recorded separately.
 

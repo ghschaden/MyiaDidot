@@ -2,7 +2,7 @@
 
 [Before/after proof](../proofs/bold-italic-j-bar-before-after-2026-10-24.pdf).
 
-The person found the Bold Italic bar too short in the four-style review.
+The review found the Bold Italic bar too short in the four-style review.
 That correction supersedes the recommendation to retain this style's
 bar in `j-bar-ledges-review-2026-10-24.md`. The Roman and light Italic
 drawings are unchanged.

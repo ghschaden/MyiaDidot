@@ -17,7 +17,7 @@ Proof: `build/glyph-review/italic-smallcaps-greek/review.pdf`, one page,
 rendered as `review.png` and visually inspected. Each cell shows capital,
 small cap and lowercase over height guides, followed by text-size n/H
 contexts. The bowls and strokes appear connected in these specimens;
-archaic forms and the short bars of xi.sc warrant the person's closer
+archaic forms and the short bars of xi.sc warrant the closer
 inspection beside their capitals. No redraw is proposed from this initial
 inspection. Minor TeX overflow warnings do not obscure specimens or labels.
 
@@ -30,7 +30,7 @@ outlines, spacing or baselines changed during the initial review.
 
 ## Three forms sent back
 
-The person found delta.sc and lambda.sc more slanted than their capitals
+The review found delta.sc and lambda.sc more slanted than their capitals
 and theta.sc's inside unround. The two diagonal forms now have a local
 candidate mapping both long outside diagonals to their capitals' exact
 directions; after integer rounding the slopes differ by less than 0.001.
@@ -53,7 +53,7 @@ advances and accepted fingerprints are retained, features/kerning/groups
 are unchanged, lint is clear, and six explicit Greek smcp/c2sc mappings
 pass. This remains an outline/shaping proof, not a hinting proof.
 
-The person subsequently approved all three repairs on 2026-11-06. They
+A later review approved all three repairs on 2026-11-06. They
 are installed in the Italic, marked drawn and accepted; all 17 forms in
 this Greek batch are now accepted. The focused approved proof is retained
 as `proofs/italic-greek-smallcap-repairs-2026-11-06.svg`.

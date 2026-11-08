@@ -2,8 +2,8 @@
 
 Fork of Theano Didot (akryukov/theano) aiming at full Latin-script, Greek and
 basic Cyrillic coverage in Regular/Italic/Bold/Bold Italic with real small
-caps. Phases and the coverage target: README.md, FONTLOG.txt,
-`scripts/coverage.py` (`TARGET`).
+caps. Status and phases: README.md, FONTLOG.txt; build and tests:
+CONTRIBUTING.md; coverage target: `scripts/coverage.py` (`TARGET`).
 
 Details by topic, read the one the task touches:
 
@@ -22,8 +22,8 @@ Details by topic, read the one the task touches:
 - **`sources/*.ufo` is the master.** Never run `make reimport` or the import
   scripts (`sfd_export.py`, `postprocess_import.py`); they overwrite every
   edit since the import. `sources/upstream/` is read-only reference.
-- Change glyphs with scripts (ufoLib2) where possible; the person may edit the
-  same UFO in FontForge or Fontra. After any UFO change: `make normalize`.
+- Change glyphs with scripts (ufoLib2) where possible; the same UFO may also be
+  edited by hand in FontForge or Fontra. After any UFO change: `make normalize`.
 - **Italic, Bold and Bold Italic are generated** (`make_italic.py`,
   `make_bold.py`): change them only through the Regular or their generators
   (a recipe, a constant), never by editing the generated UFO, or the next run
@@ -32,7 +32,7 @@ Details by topic, read the one the task touches:
   (org.myiadidot.italicSource); in the Bold and Bold Italic,
   `scripts/drawn.py UFO GLYPH --date --why` (org.myiadidot.drawn), which
   make_bold and smallcaps keep as saved.
-- **Fix finished letters locally** (the person, 2026-11-03): a change to
+- **Fix finished letters locally** (2026-11-03): a change to
   the generators' shared machinery (stroke_bold, global constants) only
   for a fault that a whole family of letters shares; a fault in one
   letter goes into its recipe or construction, or the letter is fixed by
@@ -43,7 +43,7 @@ Details by topic, read the one the task touches:
   rerun the script, never hand-edit their output.
 - Codex works on the shape grammar at the same time, in its own worktree
   `~/src/MyiaDidot-shapes` on branch `shape-grammar` (AGENTS.md): stay on
-  `main` here, never write there, and leave merging it to the person.
+  `main` here, never write there, and leave merging it to the designer.
   `make test` / `make reproduce` and the commit checks share one lock across
   both working copies (4 cores at most: `JOBS`/`MYIA_JOBS`; your own parallel runs too).
 - The working copy is in a synced folder: after big generation runs check
@@ -66,7 +66,7 @@ Details by topic, read the one the task touches:
 - Metadata fails silently: categories, glyph and lookup order, code points.
 - Verify geometry operations; regenerate whole styles, never copy glyphs
   between UFOs.
-- The tools find candidates; the person's eye decides.
+- The tools find candidates; the designer's eye decides.
 
 ## Tests
 
@@ -79,7 +79,7 @@ Details by topic, read the one the task touches:
   `scripts/nfd_debug.py`). Only for an intended change regenerate baselines
   with `scripts/update_test_data.py`; review the full JSON report and pass its
   digest with `--accept-report` and say in the commit what and why.
-- Never commit with `--no-verify` unless the person asked for it.
+- Never commit with `--no-verify` unless explicitly asked to.
 
 ## Working economically
 

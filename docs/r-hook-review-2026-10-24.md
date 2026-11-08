@@ -30,7 +30,7 @@ hook. The glyph's own advance, anchors, Unicode and metadata are retained.
 The corresponding roman UFO is a generator input; `make generate` already
 builds Bold before Bold Italic.
 
-The person subsequently identified an inward bump on the right side of
+A later review identified an inward bump on the right side of
 the Bold r and ɽ stems, and an uneven left shoulder in Bold Italic. The
 Bold correction shortens the outgoing shoulder handle along its tangent
 so the inner edge approaches the straight stem monotonically. It changes

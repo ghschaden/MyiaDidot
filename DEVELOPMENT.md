@@ -9,9 +9,8 @@ belong in [FONT-DESIGN.md](FONT-DESIGN.md). Record completed work in
 These are proposals from the repository-structure review, not implemented
 features or prerequisites already agreed for a particular distribution.
 
-- Lead README with the font, specimen, downloads, installation, script and
-  feature support, and known limitations. Move detailed tooling/plugin
-  instructions into linked development documentation.
+- A specimen image for README.md (from `make proof-svg`), and its download
+  link once the first release is published.
 - Add human-facing contributor documentation for source authority,
   generated styles, regeneration, checks and visual acceptance. Have agent
   instructions reference the same maintained rules.

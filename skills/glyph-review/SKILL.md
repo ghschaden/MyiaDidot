@@ -5,7 +5,7 @@ description: Review Myia Didot glyph designs or proposed glyph changes with focu
 
 # Glyph review
 
-Produce evidence the person can use to judge a glyph in context. Distinguish
+Produce evidence for judging a glyph in context. Distinguish
 source geometry, compiled shaping and rendered hinting; a clean outline lint
 result does not establish a good drawing.
 
@@ -18,14 +18,14 @@ workflow; adapt its depth to the requested review.
 ## Establish what is being reviewed
 
 Identify the glyph names/code points, styles, intended change and comparison
-state. Use the person's requested reference; otherwise use `HEAD` for a review
+state. Use the requested reference; otherwise use `HEAD` for a review
 of uncommitted changes. For a review of the current design without a proposed
 change, compare with its same-style bases and peers. Preserve unrelated working
 changes. Save a before snapshot before an authorized edit if `HEAD` would not
 represent the actual before state.
 
 Review requests authorize inspection, measurements and proof generation. Change
-drawings only when the person also requests a fix or design work. Work through
+drawings only when a fix or design work is also requested. Work through
 the Regular or the appropriate generator/design input for generated styles;
 regenerate whole styles instead of transplanting individual glyphs. See
 `docs/claude/styles.md` and `docs/claude/glyphs.md` when source ownership is unclear.
@@ -82,8 +82,8 @@ features, anchors or spacing could affect other glyphs. Do not rerun expensive
 checks without a new change, failure or unresolved concern.
 
 Do not update exception lists, shaping snapshots, draft/acceptance metadata or
-the `proofs-approved` tag merely to make checks pass. Honor any acceptance the
-person has already given. For an authorized shaping-baseline update, review the
+the `proofs-approved` tag merely to make checks pass. Honor any acceptance
+already given. For an authorized shaping-baseline update, review the
 complete JSON report and accept its digest as documented by
 `scripts/update_test_data.py --help`.
 
@@ -93,7 +93,7 @@ Lead with the finding or recommendation. Identify each affected glyph/style,
 describe the visible issue or improvement, and link to the relevant proof and
 full report. Include measurements only when they explain the judgement.
 State unexpected changes and validation limits, including missing references
-or uninspected images. Distinguish a proposed drawing from one the person has
+or uninspected images. Distinguish a proposed drawing from one that has been
 accepted; a review alone does not authorize commit, push or publication.
 
 For a substantial review, record its reference revision/source state, scope,

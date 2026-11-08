@@ -1,8 +1,8 @@
 # Bold Italic Ɠ, ɠ and ɠ.sc
 
-Reference: `3d692354`. The person requested a thicker, correctly attached
+Reference: `3d692354`. The review requested a thicker, correctly attached
 Ɠ hook, a smoother ɠ downstroke, and a ɠ.sc hook resembling the uppercase
-and Italic forms. The person approved all three revised drawings on
+and Italic forms. The review approved all three revised drawings on
 2026-11-06; their acceptance fingerprints are recorded in the UFO.
 
 `scripts/g_hook_review.py` makes local drawings on the final same-style

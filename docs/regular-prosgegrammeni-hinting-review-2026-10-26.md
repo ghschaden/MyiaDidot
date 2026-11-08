@@ -27,7 +27,7 @@ TTF and otherwise uses the production control file.
 The trial removes all eight v35 reports with no new findings in either
 interpreter across 8–32 ppem. The inspected v35 glyph has steadier alignment
 beside x while retaining its serifed-I construction. Recommendation: adopt
-the trial. The person accepted this recommendation on 2026-10-26;
+the trial. The review accepted this recommendation on 2026-10-26;
 production integration is recorded below.
 
 The glyph's v35 raster changes at every audited size 8–32, including sizes

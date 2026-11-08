@@ -20,10 +20,10 @@ If you are in `~/src/MyiaDidot` (branch `main`), stop and work in
   inputs. Do not change `sources/*.ufo`, `sources/upstream/`, the
   generators (`scripts/make_*.py`, `derive.py`, ...) or test baselines in
   `tests/data/`. Write outputs under `build/` only.
-- Bringing work into `main` is the person's decision: they merge, or ask
+- Bringing work into `main` is the decision: they merge, or ask
   Claude to. To pick up new work from `main`, `git merge main` on your
   branch (not rebase of shared history).
-- At most 4 CPU cores (the person, 2026-11-03), for both agents together. Run the suite with
+- At most 4 CPU cores (2026-11-03), for both agents together. Run the suite with
   `make test` and reproduction with `make reproduce`: both take a lock
   shared by both working copies, so only one runs at a time, on 4
   workers. Do not run `pytest -n auto`, or several test runs at once.
@@ -31,6 +31,6 @@ If you are in `~/src/MyiaDidot` (branch `main`), stop and work in
   lock, and may wait for a run in the other working copy. Do not commit
   with `--no-verify`.
 - `.venv` is shared with `~/src/MyiaDidot` (a link): do not install,
-  upgrade or remove packages in it; ask the person.
+  upgrade or remove packages in it; ask first.
 - Project rules otherwise as in `CLAUDE.md` and `docs/claude/` (Python as
   `.venv/bin/python -I`, `make normalize` after any UFO change).

@@ -2,7 +2,7 @@
 
 Emboldened by strokes, the inside of an open round comes out uneven where
 the Italic's is smooth: c's left side bends twice, c.sc's dents, C and G run
-flat and turn tight, g.sc steps where its jaw meets the bar (the person,
+flat and turn tight, g.sc steps where its jaw meets the bar (
 2026-11-06). The closed rounds take the Italic's counter whole
 (make_bold.italic_counter); an open round has no counter contour, so here
 the run of its one outline that faces the bowl is replaced: from where it

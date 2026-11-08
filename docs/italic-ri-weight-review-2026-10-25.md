@@ -14,7 +14,7 @@ columns. Only scratch r and I outlines differ.
 The old TODO suggested these letters might still be too heavy after the
 Italic reweighting. The assistant initially recommended retention, using
 the reference ratios to argue that thinning I would make it weak beside
-H. The person found the lighter trial I acceptable and approved it.
+H. The review found the lighter trial I acceptable and approved it.
 That visual judgment supersedes the numerical recommendation: a reference
 ratio is diagnostic, not a design veto. Feedback concerned I; r is retained.
 

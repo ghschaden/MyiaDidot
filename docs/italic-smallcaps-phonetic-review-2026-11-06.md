@@ -1,7 +1,7 @@
 # Italic remaining Latin and phonetic small caps
 
 Reference: `f471c107`. Current-design review; no production sources changed.
-The person approved all 15 forms unchanged on 2026-11-06. Acceptance
+The review approved all 15 forms unchanged on 2026-11-06. Acceptance
 fingerprints are recorded in the Italic UFO. The accepted sheet is retained
 as `proofs/italic-smallcaps-phonetic-2026-11-06.pdf`.
 
@@ -18,7 +18,7 @@ capital, small cap and lowercase at the same em scale, with height guides,
 followed by n/small-cap/n and H/small-cap/H text contexts. A dash denotes
 the absent capital for ɤ. Its small-cap form retains the lowercase design.
 The strokes, bowls and attachments appear connected in these specimens;
-the hooked and barred forms merit the person's close inspection. No
+the hooked and barred forms merit the close inspection. No
 redrawing is proposed from this initial inspection.
 
 All 51 explicit smcp/c2sc mappings pass using a font compiled from the

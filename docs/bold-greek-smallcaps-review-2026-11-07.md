@@ -1,6 +1,6 @@
 # Bold Greek small caps
 
-The person approved 16 unchanged Greek small caps and the regenerated
+The review approved 16 unchanged Greek small caps and the regenerated
 Latin capital upsilon (uni01B1), then approved the rounder lowercase theta
 and stronger koppa capital/small cap (uni03DE and uni03DF.sc).
 All 17 Greek small caps in this batch are now approved (2026-11-07).

@@ -126,7 +126,7 @@ RECIPES = [
                           [("q", (-BIG, -BIG, BIG, -100), (0, 0), (1, 1, 16, 0)),
                            ("rect", (782, -120, 946, 100), (0, 0), (1, 1, 0, 0))])),
     ("ɯ", "twin", "u", 600),
-    # ɹ: r turned, as in the italics, Charis and Libertinus (the person,
+    # ɹ: r turned, as in the italics, Charis and Libertinus (
     # 2026-11-05: the Didot terminal drawn here before looked very unlike r's)
     ("ɹ", "turn", "r", "x"),
     ("ʌ", "turn", "v", "x"),
@@ -390,8 +390,8 @@ RECIPES = [
     # ʂ: s's bottom stroke turns down at the left into an upright stem below
     # the baseline, which hooks to the right, as ʈ's (and Charis's ʂ). The
     # turn leaves s where its bottom stroke runs level (x 420: -16..32) at
-    # its weight, the stem starting where the turn stands upright (the
-    # person, 2026-11-05: the turn into the hook "still not great"; from
+    # its weight, the stem starting where the turn stands upright
+    # (2026-11-05: the turn into the hook "still not great"; from
     # x 320 it stood 44 units above s's stroke, a bump and a notch)
     ("ʂ", "attach", "s", ("x", [(-BIG, -BIG, 420, 360)],
                           [("curl", {"at": ("pt", 420, 8, 48), "dir": 180, "turn": "ccw",
@@ -427,7 +427,7 @@ RECIPES = [
                            ("line", ((480, 200), (480, -330), 110), (0, 0), (1, 1, 0, 0))])),
     # Ƭ: the bar cut where the curl leaves it (cut at 420, the curl from 440
     # had the bar's corner stand 1.6 units under the ring's inner edge, a
-    # 30-degree kink once faired: "the right transition uneven", the person)
+    # 30-degree kink once faired: "the right transition uneven")
     ("Ƭ", "curl", "T", ("c", [(-BIG, 600, 420, BIG)],
                         {"at": ("x", 420), "dir": 180, "turn": "ccw", "r": 150,
                          "sweep": 150, "ball": None})),
@@ -524,7 +524,6 @@ RECIPES = [
     ("Ɦ", "hook", "H", ("c", "up-right", "first", 1100, 300, 200)),
     ("Ɥ", "alias", "uni0427", None),  # a turned h at cap height is Ч, serifs and all
     ("ʄ", "hook", "ɟ", ("x", "up-right", "first", 830, 300, 0)),
-    ("ʛ", "alias", "ɠ.sc", None),
     ("Ƃ", "alias", "uni0411", None),  # B with topbar is Б
     ("ƃ", "lines", "b", ("x", 56, [(222, 1440, 720, 1496)])),
     ("ǂ", "attach", "bar", ("x", [(-BIG, -BIG, BIG, 0)],
@@ -547,7 +546,7 @@ RECIPES = [
     # ɾ: r's stem and foot slab under f's hook brought down onto the
     # x-height, f taken from above its crossbar (884) where its stem still
     # runs straight (its curve begins at 954; f's stem 4 right of r's): no
-    # stem above the hook, the turn thinning as f's (the person, 2026-11-04:
+    # stem above the hook, the turn thinning as f's (2026-11-04:
     # r without its entry serif was too like r)
     ("ɾ", "attach", "r", ("x", [(-BIG, 308, BIG, BIG)], [("f", (-BIG, 920, BIG, BIG), (0, 0), (1, 1, -4, -612))])),
     ("ᵳ", "midtilde", "ɾ", ("x",)),
@@ -704,7 +703,7 @@ RECIPES = [
     ("ƴ.sc", "enlarge", "Ƴ", ("O", "o.sc")),
     # ƈ.sc ɠ.sc: Ƈ Ɠ's curl drawn on c.sc g.sc (its place scaled as o.sc
     # from O, 0.73), at radius 150 (Ƈ 170, ƈ 130): enlarged from the
-    # capitals their hooks stood smaller than ƈ's (the person, 2026-11-06).
+    # capitals their hooks stood smaller than ƈ's (2026-11-06).
     # The cut from 530: the italics' c.sc g.sc hang their ball to 575 (cut
     # from 657, its foot stood alone in the Bold Italic's rebuild); the
     # uprights have no ink right of 797 between 500 and 700
@@ -714,6 +713,10 @@ RECIPES = [
     ("ɠ.sc", "curl", "g.sc", ("s", [(797, 530, BIG, BIG)],
                               {"at": ("x", 782), "dir": 70, "turn": "cw", "r": 150,
                                "sweep": 145, "ball": None})),
+    # ʛ: ɠ.sc scaled and placed as ɢ from g.sc (ENLARGE_LIKE), its curl
+    # above; as ɠ.sc's alias it stood at the small caps' height (1060), a
+    # size above ɢ ɪ ʙ (2026-11-08)
+    ("ʛ", "enlarge", "ɠ.sc", ("o.sc", "o", -20, 884, "o.sc", "o")),
     ("ƥ.sc", "enlarge", "Ƥ", ("O", "o.sc")),
     ("ɦ.sc", "enlarge", "Ɦ", ("O", "o.sc")),
     ("ɥ.sc", "alias", "uni0447.sc", None),
@@ -1837,13 +1840,15 @@ def embolden_simple(rec, ax, ay, weighted=False, thin=60, thick=160, keep_smooth
     return glyph
 
 
-def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False, stems=None):
+def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False, stems=None, like=None):
     """The source scaled so that src_ref's strokes and height become
     dst_ref's (ə -> Ә with o -> O): scaled uniformly, then the stems and
     hairlines brought to dst_ref's weight; sidebearings of dst_ref. With
     fit (y0, y1) the source's ink is scaled into that band instead (γ with
     its loop on the baseline for Ɣ). With stems (two letters with a straight
-    stem) the first's stem becomes the second's, in place of the round ones."""
+    stem) the first's stem becomes the second's, in place of the round ones.
+    With like, the scale and the band are like's (the source like it with a
+    part beyond it), its ink's bottom on fit's."""
     (b0, s0, h0), (b1, s1, h1) = strokes(font, src_ref), strokes(font, dst_ref)
     if stems:
         s0, s1 = (straight_stem(font, name) for name in stems)
@@ -1855,7 +1860,7 @@ def enlarge(font, source, src_ref, dst_ref, fit=None, stretch=False, stems=None)
     if on_baseline:
         k = font.lib.get("org.myiadidot.smallcapHeight", 1040) / (font.info.capHeight or 1434)
     if fit:
-        sb = ink_bounds(font, source)
+        sb = ink_bounds(font, like or source)
         k = (fit[1] - fit[0]) / (sb[3] - sb[1])
         if stems:  # the finished letter in the band, hairlines brought to weight
             k = (fit[1] - fit[0] - h1) / (sb[3] - sb[1] - h0)
@@ -1995,6 +2000,9 @@ def smooth_curves(glyph, y0, y1, max_turn=10, tiny=16):
 # the derived letters whose curves are made smooth between these heights
 # after they are built (smooth_curves)
 SMOOTH_CURVES = {"Ƭ": (1300, 1400)}
+# an enlarged letter with a part beyond its body (ʛ's curl over ɢ's top):
+# scaled into the fit band as the plain letter would be, not by its own ink
+ENLARGE_LIKE = {"ʛ": "g.sc"}
 
 
 def fair_joins(glyph, y0, y1, max_turn=25, tiny=16):
@@ -2756,7 +2764,7 @@ def build(font, ch, op, source, band, name=None):
         fit = tuple(v for v in rest if not isinstance(v, str)) or None
         stems = tuple(v for v in rest if isinstance(v, str)) or None
         out, g.width = enlarge(font, source, src_ref, dst_ref, fit,
-                               stretch=op == "stretch", stems=stems)
+                               stretch=op == "stretch", stems=stems, like=ENLARGE_LIKE.get(ch))
         draw_path(font, src, g, out)
         ref = font[dst_ref]
         # a letter taller than dst_ref (ʒ.sc on the baseline, from Ʒ with its

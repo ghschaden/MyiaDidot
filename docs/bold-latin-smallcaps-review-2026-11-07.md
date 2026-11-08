@@ -1,12 +1,12 @@
 # Bold basic Latin small caps
 
-Reference: 26eca0dd170ff7bae3c7f28cbe1d0ba5727132c4. The person approved
+Reference: 26eca0dd170ff7bae3c7f28cbe1d0ba5727132c4. The review approved
 25 forms from a.sc through z.sc unchanged on 2026-11-07, requesting a
 little more white space inside j.sc's bottom hook. That request concerns
 the drawing, not the vertical layout of the proof.
 
 The other 25 acceptances are recorded with their reviewed fingerprints.
-The person subsequently approved the j.sc proposal. All 26 forms are now
+A later review approved the j.sc proposal. All 26 forms are now
 accepted, with j.sc marked drawn against its Regular source fingerprint.
 The original one-page A4 proof and all 26
 fingerprints are under build/glyph-review/bold-smallcaps-latin-2026-11-07/.

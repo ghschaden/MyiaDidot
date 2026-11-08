@@ -10,7 +10,7 @@ all four comparison rows; no specimens are clipped.
 
 ## Recommendation
 
-The person accepted the half-pixel tip adjustment on 2026-10-26. At 30/32 ppem
+The review accepted the half-pixel tip adjustment on 2026-10-26. At 30/32 ppem
 the trial gives the pointed bottoms a steadier baseline beside h.sc/o.sc
 while retaining their continuous diagonal construction. Production
 integration is recorded below.

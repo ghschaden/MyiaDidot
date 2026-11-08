@@ -41,7 +41,7 @@ are identical. Other styles are unchanged.
 
 ## Upper-right join follow-up
 
-The person accepted the central and lower-left drawing and identified a
+The review accepted the central and lower-left drawing and identified a
 remaining fault where the lower edge of the upper-right terminal joins
 the stem. The [follow-up proof](../proofs/bold-italic-aleph-upper-join-before-after-2026-10-24.pdf)
 compares this local correction against the already repaired lower-tip

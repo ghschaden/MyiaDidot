@@ -1,6 +1,6 @@
 # ɉ bar ledges reviewed, 2026-10-24
 
-**Superseded for Bold Italic:** the person found its bar too short.
+**Superseded for Bold Italic:** the review found its bar too short.
 See [the implemented extension](j-bar-extension-review-2026-10-24.md)
 and its before/after proof. The other three styles retain their drawings.
 
