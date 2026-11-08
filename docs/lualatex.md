@@ -132,6 +132,32 @@ need it placed by word parts are better typed with ſ directly.
 Greek small capitals drop their accents and breathings, as Greek
 typography wants: `\textsc{Λόγος}` gives ΛΟΓΟΣ in small caps.
 
+## Ligatures
+
+**Standard ligatures** are on without asking: fi fl ff ffi ffl, and for
+words like *Aufbau, Hofhund, Kafka, Schaft* also fb fh fj fk ft and ffb
+ffh ffj ffk fft.
+
+**Long-s ligatures** (ſt ſſ ſi ſl ſh ſk ſb ſſi ſſl) appear wherever the
+text has a long s: type ſ (U+017F) yourself, or let the font put it in
+with `Style = Historic` (*Wiſſenſchaft, Unſinn*). They are part of the
+standard ligatures, so nothing else is needed.
+
+**The decorative ligatures** ct and st, with a curl joining the two
+letters, are discretionary: switch them on with `Ligatures = Rare`, for a
+passage or the whole document:
+
+```latex
+{\addfontfeatures{Ligatures=Rare} the strict act}   % passage
+\setmainfont{Myia Didot}[Ligatures = Rare]          % everywhere
+```
+
+To switch the standard ligatures off, use `Ligatures = NoCommon`; it can
+be combined with the decorative ones, `Ligatures = {Rare, NoCommon}`.
+To break a single ligature, put `\/` or `\kern0pt` between the letters
+(`Auf\/lage`); in German with babel, the shorthand `"|` does the same
+(`Auf"|lage`).
+
 ## A complete example
 
 ```latex
