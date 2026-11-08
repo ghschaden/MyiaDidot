@@ -232,6 +232,7 @@ ITALIC_BOLD_REBUILD = {
     # 2026-11-08): emboldened whole, the stem and the S grew over the bars'
     # left ends, which no longer showed
     "uni20AE": "₮: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the bars hidden left of the stem",
+    "uni0436.loclBGR": "ж.loclBGR: its own recipe (ITALIC_BOLD_RECIPES); the Italic's left a notch where l meets the stem",
     "uni20B4": "₴: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the bars hidden left of the S",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
@@ -406,6 +407,15 @@ ITALIC_BOLD_RECIPES = {
     # the person, 2026-11-08): the stem's edges 294 and 582 in the recipe
     # frame (150-438 upright), cut a unit inside below the foot's bracket;
     # the foot serif as B's own, 67 tall, overhanging the stem 167 a side
+    # Bulgarian ж: the Bold Italic ж's stem (715-949 where this runs,
+    # before the letters are spaced; the mirrored ж, make_italic.mirror_zhe)
+    # run up into l's (144-380: centred on it, 570 right) by a piece
+    # widening from the one to the other, l's top above it (the Italic's
+    # cut and place left a notch at the stem's right edge; the person,
+    # 2026-11-08)
+    "ж.loclBGR": ("attach", "uni0436", ("x", [],
+                                         [("poly", [(715, 790), (949, 790), (950, 1110), (714, 1110)], (0, 0), (1, 1, 0, 0)),
+                                          ("l", (-10000, 1100, 10000, 10000), (0, 0), (1, 1, 570, 0))])),
     # ₮: the bars centred on the Bold Italic T's stem (541-828 here) and
     # standing out 150 a side at their middles, rising as the Regular's
     # (0.48), as heavy as emboldened (104 across)
@@ -470,9 +480,9 @@ ITALIC_BOLD_RECIPES = {
                                 [("line", ((1664, 210), (1669, -150), 318), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 1669, -150, 318), "dir": 270, "turn": "cw", "r": (205, 175),
                                            "sweep": 155, "ball": 134, "t": (318, 60)}, (0, 0), (1, 1, 0, 0))])),
-    "җ": ("attach", "uni0436", ("x", [(1025, -10000, 10000, 200), (1440, -10000, 10000, 450)],
-                                [("line", ((1140, 210), (1152, -150), 215), (0, 0), (1, 1, 0, 0)),
-                                 ("curl", {"at": ("pt", 1152, -150, 215), "dir": 272, "turn": "cw", "r": (150, 130),
+    "җ": ("attach", "uni0436", ("x", [(975, -10000, 10000, 200), (1390, -10000, 10000, 450)],
+                                [("line", ((1090, 210), (1102, -150), 215), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 1102, -150, 215), "dir": 272, "turn": "cw", "r": (150, 130),
                                            "sweep": 170, "ball": 103, "t": (215, 55)}, (0, 0), (1, 1, 0, 0))])),
     "қ": ("attach", "uni043A", ("x", [(630, -10000, 10000, 200), (960, -10000, 10000, 450)],
                                 [("line", ((765, 210), (771, -150), 255), (0, 0), (1, 1, 0, 0)),
@@ -2197,6 +2207,12 @@ def rederive(source, font, italic, whole):
 
             if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *ITALIC_JOINS[ch])
+            from make_italic import ITALIC_CORNERS, ITALIC_RUNS, round_corner, straighten_run
+
+            if ch in ITALIC_RUNS:  # as the Italic's (җ's descender into its c)
+                straighten_run(new, *ITALIC_RUNS[ch])
+            if ch in ITALIC_CORNERS:
+                round_corner(new, *ITALIC_CORNERS[ch])
             from make_italic import SC_DRAFT_SIDES, SC_LEVEL_GAIN, capital_width, level_gain, uncrossed
 
             if name in SC_DRAFT_SIDES:

@@ -396,8 +396,11 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   14 Cyrillic letters and the Serbian italic forms (both italics, the bar
   free above as in Charis and Libertinus) are accepted (2026-11-08):
   [Cyrillic review](docs/bold-italic-cyrillic-drafts-review-2026-11-08.md).
-  Ҳ (tail unified with Ң Ҷ) accepted. Still to review: Bulgarian forms,
-  old-style figures, U.horn and u.sc.horn. The Bold Italic's remaining
+  Ҳ (tail unified with Ң Ҷ) accepted. The last drafts (old-style figures,
+  U.horn, u.sc.horn, Bulgarian forms) are accepted, and the italics' ж has
+  its left c mirrored (2026-11-08):
+  [final review](docs/bold-italic-final-drafts-review-2026-11-08.md).
+  No Italic or Bold Italic drafts remain unaccepted. The Bold Italic's remaining
   72 phonetic, Greek and Cyrillic small caps and lowercase қ/ҳ/ҷ repairs are
   accepted (2026-11-07), including the final straight inner қ leg:
   [completed Bold Italic review](docs/bold-italic-smallcaps-completion-2026-11-07.md).

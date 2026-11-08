@@ -617,6 +617,163 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 # piece is straight in the upright frame, the stroke is not, and the edges
 # broke there by 5-20 degrees (seen in print)
 ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190, 460), "ⱳ": (590, 700)}
+# corners rounded off where a descender's straight edge meets the curve of
+# the letter it hangs from (round_corner: at that height, a curve tangent to
+# both reaching that far either way): җ's descender leans 14 degrees, the
+# back of ж's right c it meets rises at 2, a kink with a swelling above it
+# (the person, 2026-11-08). Not fair_joins: one curve from the descender's
+# foot to the c would bend the whole edge (as it thinned ⱳ's arm).
+ITALIC_CORNERS = {"җ": (200, 120)}
+
+
+# an edge run straight between two heights: from the rightmost on-curve
+# point at the first (within 6 units) going down, to the second on the
+# line below, one curve tangent at both ends (straighten_run). җ's inner
+# edge left the crossbar leaning as the descender does, dropped upright down
+# the c's lower inside, then leaned again: a kink at the cut in the Italic,
+# a swelling above it in the Bold Italic (the person, 2026-11-08)
+ITALIC_RUNS = {"җ": (417, 50)}
+
+
+def straighten_run(glyph, y_from, y_to):
+    """glyph (in place): see ITALIC_RUNS. Returns whether it changed."""
+    import math
+
+    from ufoLib2.objects import Point
+
+    for contour in glyph.contours:
+        pts = contour.points
+        n = len(pts)
+        cand = [i for i, p in enumerate(pts) if p.type and abs(p.y - y_from) <= 6
+                and pts[(i + 1) % n].y < p.y - 5]
+        if not cand:
+            continue
+        i = max(cand, key=lambda k: pts[k].x)
+        P = (pts[i].x, pts[i].y)
+        first = (pts[(i + 1) % n].x, pts[(i + 1) % n].y)
+        # down the edge to the line segment that crosses y_to
+        j = (i + 1) % n
+        while True:
+            p = pts[j]
+            prev = pts[j - 1]
+            if p.type == "line" and prev.type and min(p.y, prev.y) <= y_to <= max(p.y, prev.y):
+                break
+            j = (j + 1) % n
+            if j == i:
+                return False
+        a, b = pts[j - 1], pts[j]
+        t = (y_to - a.y) / (b.y - a.y)
+        A = (a.x + (b.x - a.x) * t, y_to)
+        u = (first[0] - P[0], first[1] - P[1])
+        m = math.hypot(*u) or 1
+        u = (u[0] / m, u[1] / m)
+        v = (a.x - b.x, a.y - b.y)
+        m = math.hypot(*v) or 1
+        v = (v[0] / m, v[1] / m)
+        k = math.dist(P, A) / 3
+        new = [Point(P[0] + u[0] * k, P[1] + u[1] * k), Point(A[0] + v[0] * k, A[1] + v[1] * k),
+               Point(*A, "curve", smooth=True), Point(b.x, b.y, "line")]
+        if j > i:
+            pts[i + 1:j + 1] = new
+        else:
+            del pts[i + 1:]
+            del pts[:j + 1]
+            pts.extend(new)
+        return True
+    return False
+
+
+def round_corner(glyph, y, reach, turns=(3, 30)):
+    """glyph (in place): each join of two segments at height y (within 15
+    units; a segment shorter than 20 there taken in) whose directions
+    differ by turns degrees, rounded off by a curve from reach back along
+    the one to reach along the other (curves split there), tangent to both.
+    Returns how many were rounded."""
+    import math
+
+    from fontTools.misc.bezierTools import splitCubicAtT
+    from ufoLib2.objects import Point
+
+    def segments(contour):
+        pts = contour.points
+        start = next(i for i, p in enumerate(pts) if p.type)
+        order = pts[start + 1:] + pts[:start + 1]
+        segs, cur, hs = [], (pts[start].x, pts[start].y), []
+        for p in order:
+            if p.type is None:
+                hs.append((p.x, p.y))
+                continue
+            end = (p.x, p.y)
+            segs.append([cur, *hs, end] if hs else [cur, end])
+            cur, hs = end, []
+        return segs
+
+    def length(seg):
+        return math.dist(seg[0], seg[-1])
+
+    def split(seg, t):
+        if len(seg) == 2:
+            m = (seg[0][0] + (seg[1][0] - seg[0][0]) * t, seg[0][1] + (seg[1][1] - seg[0][1]) * t)
+            return [seg[0], m], [m, seg[1]]
+        a, b = splitCubicAtT(*seg, t)
+        return list(a), list(b)
+
+    def unit(p, q):
+        d = math.dist(p, q) or 1
+        return ((q[0] - p[0]) / d, (q[1] - p[1]) / d)
+
+    done = 0
+    for contour in glyph.contours:
+        segs = segments(contour)
+        changed = True
+        while changed:
+            changed = False
+            n = len(segs)
+            for k in range(n):
+                s0, s1 = segs[k], segs[(k + 1) % n]
+                if abs(s0[-1][1] - y) > 15:
+                    continue
+                # a short segment at the join: taken into the one before it
+                if length(s1) < 20 and n > 3:
+                    s0 = [s0[0], *s0[1:-1], s1[-1]] if len(s0) == 2 else [*s0[:-1], s1[-1]]
+                    s1 = segs[(k + 2) % n]
+                    skip = 2
+                else:
+                    skip = 1
+                din = unit(s0[-2], s0[-1])
+                dout = unit(s1[0], s1[1])
+                ang = abs(math.degrees(math.atan2(din[0] * dout[1] - din[1] * dout[0], din[0] * dout[0] + din[1] * dout[1])))
+                if not turns[0] <= ang <= turns[1] or length(s0) < 2 * reach or length(s1) < 2 * reach:
+                    continue
+                keep0, _ = split(s0, 1 - reach / length(s0))
+                _, keep1 = split(s1, reach / length(s1))
+                A, B, C = keep0[-1], keep1[0], s0[-1]
+                u, v = unit(keep0[-2], A), unit(B, keep1[1])
+                ka, kb = 0.55 * math.dist(A, C), 0.55 * math.dist(C, B)
+                blend = [A, (A[0] + u[0] * ka, A[1] + u[1] * ka), (B[0] - v[0] * kb, B[1] - v[1] * kb), B]
+                idx = [(k + j) % n for j in range(skip + 1)]
+                new = [keep0, blend, keep1]
+                rest = [segs[i] for i in range(n) if i not in idx]
+                pos = min(idx) if max(idx) - min(idx) == skip else 0
+                if pos == 0 and max(idx) - min(idx) != skip:  # the join wraps the start
+                    rest = [segs[i] for i in range(n) if i not in idx]
+                    segs = new + rest
+                else:
+                    segs = segs[:pos] + new + segs[pos + skip + 1:]
+                done += 1
+                changed = True
+                break
+        pts = []
+        for seg in segs:
+            for h in seg[1:-1]:
+                pts.append(Point(*h))
+            pts.append(Point(*seg[-1], "curve" if len(seg) == 4 else "line"))
+        for p in pts:
+            if p.type and abs(p.y - y) <= reach + 5:
+                p.smooth = True
+        contour.points[:] = pts
+    return done
+
 
 # the curls over the top end in a ball as the case draws them ("ball":
 # None, derive.ball_for, 2026-10-27; the Bold Italic draws its own at its
@@ -852,8 +1009,9 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                               descender(761.5, 300, 761.5, -150, 117, 270, (105, 95), 40))),
                   "қ": ("attach", "uni043A", ("x", [(640, -BIG, BIG, 200), (900, -BIG, BIG, 450)],
                                               descender(730, 250, 735, -150, 125, 270, (105, 95), 40))),
-                  "җ": ("attach", "uni0436", ("x", [(1000, -BIG, BIG, 200), (1350, -BIG, BIG, 450)],
-                                              descender(1088, 210, 1100, -150, 112, 272, (100, 90), 40))),
+                  # (ж 41 left of Old Standard's: mirror_zhe)
+                  "җ": ("attach", "uni0436", ("x", [(959, -BIG, BIG, 200), (1309, -BIG, BIG, 450)],
+                                              descender(1047, 210, 1059, -150, 112, 272, (100, 90), 40))),
                   # the capitals as the lowercase: the leg's exit stroke cut
                   # away, a descender in its place (not Ц's tail under it)
                   "Қ": ("attach", "uni041A", ("c", [(895, -BIG, BIG, 200), (1215, -BIG, BIG, 450)],
@@ -956,8 +1114,11 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                                        [("b", (-BIG, 595, 320, BIG), (0, 0), (1, 1, 107, 0))])),
                   "ю.loclBGR": ("attach", "uni044E", ("x", [(-BIG, 650, 470, BIG), (-BIG, 540, 230, BIG)],
                                                        [("l", (-BIG, 645, BIG, BIG), (0, 0), (1, 1, 122, 0))])),
-                  "ж.loclBGR": ("attach", "uni0436", ("x", [(680, 800, 980, BIG)],
-                                                       [("l", (-BIG, 790, BIG, BIG), (0, 0), (1, 1, 594, 0))])),
+                  # ж: l's ascender on the stem (ж's own left half is the
+                  # right c mirrored, 41 left of Old Standard's: mirror_zhe;
+                  # the person, 2026-11-08)
+                  "ж.loclBGR": ("attach", "uni0436", ("x", [(639, 800, 939, BIG)],
+                                                       [("l", (-BIG, 790, BIG, BIG), (0, 0), (1, 1, 553, 0))])),
                   # в: b with β's loop above, as in the Regular: the loop (its
                   # left side lighter than b's stem) over the stem's top, the
                   # stem cut where the loop's curve rounds it off; the ball on
@@ -1346,6 +1507,56 @@ def fishhook(up, source, band, name):
         g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
 
 
+def mirror_zhe(font, name="uni0436"):
+    """Old Standard's ж with its left half the right c mirrored about the
+    stem's middle (its ball at the top left), not the c turned (its ball at
+    the bottom; the person, 2026-11-08). In the upright frame: the stem the
+    run through the glyph's middle at 0.68 x-height; left of it cut away and
+    the right half mirrored, the stem itself untouched (below); slanted back; moved 41 left and the advance 41 less, as the mirrored
+    half reaches less far left (its left side bearing back to the old 28).
+    Before anything is made of it (җ, Bulgarian ж follow)."""
+    import derive
+    from fontTools.pens.transformPen import TransformPen
+
+    if name not in font:
+        return
+    g = font[name]
+    up = ufoLib2.objects.Glyph()
+    rec = DecomposingRecordingPen(font)
+    g.draw(rec)
+    rec.replay(up.getPen())
+    shear(up, -SLANT)
+    path = derive.to_path(None, rec=(lambda r: (up.draw(r), r)[1])(RecordingPen()))
+    b = path.bounds
+    middle = (b[0] + b[2]) / 2
+    cut = derive.rect_path(-BIG, XH * 0.68 - 0.5, BIG, XH * 0.68 + 0.5)
+    runs = sorted((c.bounds[0], c.bounds[2]) for c in derive.path_op(path, cut, "INTERSECTION").contours)
+    s0, s1 = min(runs, key=lambda r: abs((r[0] + r[1]) / 2 - middle))
+    axis = s0 + s1
+    # the stem left as it is: cut 6 left of it, the half taken from 3 right
+    # of it (from inside, its right edge mirrored bent the left one, and
+    # emboldened that bend wobbled); the crossbar's halves overlap by 3
+    left = derive.path_op(path, derive.rect_path(-BIG, -BIG, s0 - 6, BIG), "DIFFERENCE")
+    right = derive.path_op(path, derive.rect_path(s1 + 3, -BIG, BIG, BIG), "INTERSECTION")
+    mirrored = RecordingPen()
+    right.draw(TransformPen(mirrored, (-1, 0, 0, 1, axis, 0)))
+    out = derive.path_op(left, derive.to_path(None, rec=mirrored), "UNION")
+    new = ufoLib2.objects.Glyph()
+    out.draw(new.getPen())
+    shear(new, SLANT)
+    g.clearContours()
+    for c in new.contours:
+        for p in c.points:
+            p.x -= ZHE_SHIFT
+        g.contours.append(c)
+    for a in g.anchors:
+        a.x -= ZHE_SHIFT
+    g.width -= ZHE_SHIFT
+
+
+ZHE_SHIFT = 41
+
+
 def serbian_bars(font):
     """Serbian and Macedonian italic п and т (loclSRB): и and ш with the bar
     free above, as ū has its macron over u (и is u here): п is ū's parts
@@ -1609,6 +1820,10 @@ def derive_stage(font, regular, late=False, kept=()):
             draft_sides(up, name, old)
         if ch in ITALIC_JOINS:
             derive.fair_joins(up[name], *ITALIC_JOINS[ch])
+        if ch in ITALIC_RUNS:
+            straighten_run(up[name], *ITALIC_RUNS[ch])
+        if ch in ITALIC_CORNERS:
+            round_corner(up[name], *ITALIC_CORNERS[ch])
         up[name].lib[DRAFT_KEY] = True
         put(font, up, name, "derived")
         made.append(ch)
@@ -2407,6 +2622,7 @@ def main():
     # Old Standard's W and a, redrawn (before anything is made of them)
     redraw_w(font)
     lighten_a(font)
+    mirror_zhe(font)
     # what was reviewed or drawn in the Italic stays
     # (and the Italic's own, reviewed: ʀ.sc, drafted from its Ʀ, is not in the Regular)
     # (drafts made at other weights come back as drafts, drawn ones stay)
