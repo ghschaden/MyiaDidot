@@ -734,7 +734,12 @@ BOLD_SIDEBEARINGS = {"t": (0, -40), "uni0433": (0, 34), "uni0454": (0, 30), "uni
                      # (ɞ and ʈ too, but their width then strays from the Regular's: to review)
                      "uni018A": (-80, 0), "uni027D": (-65, 0),
                      "uni2C72": (0, -85), "uni01A4": (-80, 0), "uni028B": (0, -45), "uni0272": (-50, 0),
-                     "uni04AF": (-45, 0), "uni01B4": (0, 50)}
+                     "uni04AF": (-45, 0), "uni01B4": (0, 50),
+                     # N and n.sc: their hairline uprights, emboldened by AY, not
+                     # AX, left them tight against H (H N 0.86 of H H, N H 0.83;
+                     # h.sc n.sc 0.81, n.sc h.sc 0.79): brought back to the
+                     # Regular's ratios (0.95 0.94; 0.95 0.93; sc_sides.py, 2026-11-08)
+                     "N": (37, 45), "n.sc": (39, 40)}
 # Pair-level corrections measured after the Bold's global kerning scale.
 BOLD_KERNING = {
     # ƴ: its hook sets its right side; the diagonal under it stood far

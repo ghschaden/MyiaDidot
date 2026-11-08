@@ -282,9 +282,8 @@ evidence (a raster or a proof).
   range (H H / n n 1.00); the rounds and bowls were tight (O O 0.80 of
   H H, references 0.87-0.95). Given the Italic's white per side
   (make_bold ITALIC_CAPITAL_ROUNDS: O Q C G D B P S); left as the Italic
-  has them: B against H, C and R against O. Still outside the references' range: Bold n.sc
-  stands about 50 units tight on each side (side bearings 6 / -38, the
-  Regular's 54 / 14). The lining figures are tabular again in both bold
+  has them: B against H, C and R against O. Bold N and n.sc spaced as the Regular's (2026-11-08,
+  FONTLOG). The lining figures are tabular again in both bold
   styles (2026-11-05, FONTLOG).
 - Italic small caps at their capitals' weight (as_capitals, 2026-11-05):
   s.sc n.sc є.sc ϟ.sc made from their capitals (done 2026-11-05, FONTLOG).

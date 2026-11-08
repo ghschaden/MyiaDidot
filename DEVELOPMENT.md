@@ -19,6 +19,14 @@ features or prerequisites already agreed for a particular distribution.
 - Add `sources/README.md` describing incorporated upstream materials,
   revisions, credits and licenses, distinguishing comparison-only inputs.
 
+- CI's `make reproduce` fails since cb9b7dac (2026-11-08) while it passes
+  locally: on GitHub's runner the Bold Italic rerun rounds 12 glyphs a unit
+  or a segment otherwise (K Κ Ķ Ǩ Ḱ Ḳ Ḵ at (1193, 1170); ae.sc, ǽ.sc, ǣ.sc
+  one segment more; fl, ſl). Make that step deterministic across machines
+  (the rounding where K's point lands on .5, the segment split) or accept a
+  one-unit tolerance in scripts/check_reproducible.py; CI green before the
+  0.900 release.
+
 ## Optional tooling follow-up
 
 The earlier suggestion of a formatter/type checker was exploratory. Ruff

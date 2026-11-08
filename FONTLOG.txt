@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Bold N and n.sc spaced as the Regular's
+  The Bold's N and n.sc stood tight against H and h.sc (H N 0.86 of H H,
+  N H 0.83; h.sc n.sc 0.81, n.sc h.sc 0.79; the Regular 0.95 0.94 and
+  0.95 0.93): their hairline uprights take the hairlines' weight, not the
+  stems', and the optical fit left them close. BOLD_SIDEBEARINGS now gives
+  N 37 / 45 and n.sc 39 / 40 back (the Regular's ratios), passed on to
+  Ñ Ń Ň Ņ Ǹ Ṅ Ṇ Ṉ Ṋ and Greek Ν; n.sc accepted again (outline unchanged).
+
 2026-11-08 Italic Λ and Δ lean as A
   Old Standard Italic leans Λ about 30 degrees and Δ 34 (its A 18.5):
   the right leg drawn as an upright stroke slanted, the left flatter

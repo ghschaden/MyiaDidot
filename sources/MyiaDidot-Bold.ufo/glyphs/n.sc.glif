@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="n.sc" format="2">
-	<advance width="1092"/>
+	<advance width="1171"/>
 	<outline>
 		<contour>
-			<point x="6" y="1" type="line"/>
-			<point x="6" y="51" type="line"/>
-			<point x="195" y="52" type="line"/>
-			<point x="195" y="988" type="line"/>
-			<point x="6" y="989" type="line"/>
-			<point x="6" y="1039" type="line"/>
-			<point x="470" y="1040" type="line"/>
-			<point x="885" y="390" type="line"/>
-			<point x="885" y="988" type="line"/>
-			<point x="696" y="989" type="line"/>
-			<point x="696" y="1039" type="line"/>
-			<point x="1130" y="1039" type="line"/>
-			<point x="1130" y="989" type="line"/>
-			<point x="941" y="988" type="line"/>
-			<point x="941" y="-20" type="line"/>
-			<point x="845" y="-20" type="line"/>
-			<point x="231" y="947" type="line" smooth="yes"/>
-			<point x="223" y="960"/>
-			<point x="230" y="979"/>
-			<point x="230" y="988" type="curve"/>
-			<point x="251" y="988" type="line"/>
-			<point x="251" y="52" type="line"/>
-			<point x="440" y="51" type="line"/>
-			<point x="440" y="1" type="line"/>
+			<point x="45" y="1" type="line"/>
+			<point x="45" y="51" type="line"/>
+			<point x="234" y="52" type="line"/>
+			<point x="234" y="988" type="line"/>
+			<point x="45" y="989" type="line"/>
+			<point x="45" y="1039" type="line"/>
+			<point x="509" y="1040" type="line"/>
+			<point x="924" y="390" type="line"/>
+			<point x="924" y="988" type="line"/>
+			<point x="735" y="989" type="line"/>
+			<point x="735" y="1039" type="line"/>
+			<point x="1169" y="1039" type="line"/>
+			<point x="1169" y="989" type="line"/>
+			<point x="980" y="988" type="line"/>
+			<point x="980" y="-20" type="line"/>
+			<point x="884" y="-20" type="line"/>
+			<point x="270" y="947" type="line" smooth="yes"/>
+			<point x="262" y="960"/>
+			<point x="269" y="979"/>
+			<point x="269" y="988" type="curve"/>
+			<point x="290" y="988" type="line"/>
+			<point x="290" y="52" type="line"/>
+			<point x="479" y="51" type="line"/>
+			<point x="479" y="1" type="line"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="590" y="1156"/>
-	<anchor name="Acute" x="590" y="1136"/>
-	<anchor name="Grave" x="590" y="1136"/>
-	<anchor name="Dotaccent" x="590" y="1176"/>
-	<anchor name="TopCap" x="590" y="1186"/>
-	<anchor name="Bottom" x="576" y="0"/>
-	<anchor name="DotBelow" x="576" y="-20"/>
+	<anchor name="Top" x="629" y="1156"/>
+	<anchor name="Acute" x="629" y="1136"/>
+	<anchor name="Grave" x="629" y="1136"/>
+	<anchor name="Dotaccent" x="629" y="1176"/>
+	<anchor name="TopCap" x="629" y="1186"/>
+	<anchor name="Bottom" x="615" y="0"/>
+	<anchor name="DotBelow" x="615" y="-20"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-07</string>
+				<string>2026-11-08</string>
 				<key>glyph</key>
-				<string>18b59ce0d175</string>
+				<string>1f6d213e0d37</string>
 				<key>review</key>
-				<string>docs/bold-latin-smallcaps-review-2026-11-07.md</string>
+				<string>outline as accepted; side bearings brought to the Regular's ratio against h.sc (approved from a proof, 2026-11-08)</string>
 			</dict>
 		</dict>
 	</lib>
