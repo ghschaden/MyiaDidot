@@ -519,7 +519,6 @@ uni043C.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni043D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 156 against 183 (0.86, lighter)
 uni043F slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni0442 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
-uni0442.loclSRB smooth 1         # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 1199,733 2.0 degrees
 uni0443.sc kink 2                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet, the person: 112,152 5.5 degrees; 425,217 5.3 degr
 uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni0444 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1140,1264 7.3 degrees

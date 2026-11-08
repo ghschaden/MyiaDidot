@@ -435,9 +435,6 @@ uni043B.sc wobble 1              # small caps' overshoot scaled with the letter:
 uni043C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 uni043C.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
 uni043F slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
-uni043F.loclSRB step 1           # reviewed by the person 2026-11-04: п's bar overhang, taken as is (as т): 1046,799 46 units aside
-uni0442.loclSRB step 1           # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed by the person on OLD|NEW sheets, taken as is: 1548,799 57 units aside
-uni0442.loclSRB wobble 1         # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 7 against 0: 149,354 15 degrees; 1293,158 23 degrees; 1279,89 14 degrees; 353,238 6 degrees; 341,206
 uni0443.sc kink 1                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet, the person: 523,221 7.8 degrees
 uni0443.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 uni0444.sc kink 2                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet, the person: 634,929 5.6 degrees; 690,100 4.4 degr

@@ -2737,6 +2737,16 @@ def main():
 
         redraw_cyrillic_signs(font)
         finish_contours(font)
+        # Serbian ѓ: its acute stacked over ī's bar as this style's ḗ,
+        # rebuilt from anchors above, stacks it (carried along from the
+        # Italic, it kept the Italic's step)
+        from make_italic import serbian_bars, serbian_gje
+
+        if "uni0453.loclSRB" in font and "uni0453.loclSRB" not in kept:
+            serbian_gje(font)
+        # п т: their bars over и ш as this style's ū has its own
+        if not {"uni043F.loclSRB", "uni0442.loclSRB"} & set(kept):
+            serbian_bars(font)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold), separate_stacks=True, kept=kept)
     if parted:

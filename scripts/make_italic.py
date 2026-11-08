@@ -932,11 +932,13 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   "ү": ("descend", "v", ("x", "p")),
                   # Serbian and Macedonian italic (locl SRB, MKD; the
                   # Regular's are its plain letters, ITALIC_LOCL): б leaning
-                  # back is Old Standard's д, ∂; д is g; ѓ is ı with the
-                  # acute alone, as í
+                  # back is Old Standard's д, ∂; д is g; ѓ is ī with the
+                  # acute over its bar, as Charis and Libertinus stack them
+                  # (serbian_gje: the acute added once the letters are
+                  # spaced; the person, 2026-11-08)
                   "б.loclSRB": ("alias", "uni0434", None),
                   "д.loclSRB": ("alias", "g", None),
-                  "ѓ.loclSRB": ("alias", "iacute", None),
+                  "ѓ.loclSRB": ("alias", "imacron", None),
                   # Bulgarian: the italic's own и п т ц ш щ have the shapes
                   # the upright takes from Latin (u n m)
                   "и.loclBGR": ("alias", "uni0438", None),
@@ -981,11 +983,20 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # wave arm raised to the ascender, left of the stem
                   "ъ.loclBGR": ("attach", "ь.loclBGR", ("x", [], [("uni044A", (-BIG, 620, 300, BIG), (300, 884),
                                                                     (1, 1, 270, 1434))])),
-                  # г is ī: ū's first stem with its bar, its hairline ended
-                  # as ı's exit (srb_ge; ı's stem leans further than ū's)
-                  "г.loclSRB": ("srb_ge", "uni043F.loclSRB", None)}
-# Old Standard's own Serbian italic п and т (ū and ш with the bar above)
-OS_LOCL = {"uni043F.loclSRB": "afii10831", "uni0442.loclSRB": "afii10832"}
+                  # г is ī, the bar free above ı as Charis and Libertinus
+                  # draw it (the person, 2026-11-08; ū's first stem with its
+                  # bar, srb_ge, kept too little of the bar to read)
+                  "г.loclSRB": ("alias", "imacron", None),
+                  # п and т are и and ш with the bar free above them, as
+                  # Charis and Libertinus draw them (serbian_bars; Old
+                  # Standard's own, afii10831/2, had it fused onto the
+                  # stems: the person, 2026-11-08)
+                  "п.loclSRB": ("alias", "uni0438", None),
+                  "т.loclSRB": ("alias", "uni0448", None)}
+# Old Standard's own localized forms taken as they are (none now)
+OS_LOCL = {}
+# т's bar against п's (ū's macron): Charis 1.85, Libertinus 1.84
+SRB_TE_BAR = 1.84
 # aliases of a plain letter in the Regular that the Italic makes itself
 ITALIC_LOCL = {"uni0433.loclSRB", "uni0434.loclSRB", "uni0453.loclSRB",
                "uni0438.loclBGR", "uni043F.loclBGR", "uni0442.loclBGR", "uni0448.loclBGR"}
@@ -1333,6 +1344,63 @@ def fishhook(up, source, band, name):
     g.width = round(right(g) + up[r].width - right(up[r]))
     for a in up[r].anchors:
         g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+
+
+def serbian_bars(font):
+    """Serbian and Macedonian italic п and т (loclSRB): и and ш with the bar
+    free above, as ū has its macron over u (и is u here): п is ū's parts
+    on и; т's bar is the macron stretched SRB_TE_BAR times, standing over
+    ш as ū's over u (its ink centre as far right of the letter's)."""
+    um = font["umacron"]
+    m = next(c for c in um.components if c.baseGlyph == "macron")
+    mx, my = m.transformation[4], m.transformation[5]
+    mb, ub = font["macron"].getBounds(font), font["u"].getBounds(font)
+    shift = (mb.xMin + mb.xMax) / 2 + mx - (ub.xMin + ub.xMax) / 2
+    for name, letter, sx in (("uni043F.loclSRB", "uni0438", 1), ("uni0442.loclSRB", "uni0448", SRB_TE_BAR)):
+        if name not in font:
+            continue
+        lb = font[letter].getBounds(font)
+        dx = (lb.xMin + lb.xMax) / 2 + shift - sx * (mb.xMin + mb.xMax) / 2
+        g = font[name]
+        g.clearContours()
+        g.clearComponents()
+        g.clearAnchors()
+        pen = g.getPen()
+        pen.addComponent(letter, (1, 0, 0, 1, 0, 0))
+        pen.addComponent("macron", (sx, 0, 0, 1, round(dx), round(my)))
+        g.width = font[letter].width
+        for anchor in font[letter].anchors:
+            if anchor.name in ("Bottom", "DotBelow", "Cedilla"):
+                g.appendAnchor({"name": anchor.name, "x": anchor.x, "y": anchor.y})
+
+
+def serbian_gje(font):
+    """Serbian and Macedonian italic ѓ (uni0453.loclSRB): ī (ı and macron.i,
+    as imacron) with the acute over the bar, stacked as ḗ stacks its acute
+    over its macron: the step between the two marks ḗ's, the acute moved
+    by the difference between the macrons (their ink centres, their tops,
+    along the slant). In the final font, its letters spaced."""
+    g, im, ref = font["uni0453.loclSRB"], font["imacron"], font["uni1E17"]
+
+    def comp(glyph, name):
+        return next(c for c in glyph.components if c.baseGlyph == name)
+
+    mi, rm, ra = comp(im, "macron.i"), comp(ref, "macron"), comp(ref, "acute")
+    a, b = font["macron.i"].getBounds(font), font["macron"].getBounds(font)
+    lower = a.yMax - b.yMax
+    dx = (mi.transformation[4] + ((a.xMin + a.xMax) - (b.xMin + b.xMax)) / 2
+          + ra.transformation[4] - rm.transformation[4] + lower * SLANT)
+    dy = mi.transformation[5] + lower + ra.transformation[5] - rm.transformation[5]
+    g.clearContours()
+    g.clearComponents()
+    g.clearAnchors()
+    pen = g.getPen()
+    for c in im.components:
+        pen.addComponent(c.baseGlyph, tuple(c.transformation))
+    pen.addComponent("acute", (1, 0, 0, 1, round(dx), round(dy)))
+    g.width = im.width
+    for anchor in im.anchors:
+        g.appendAnchor({"name": anchor.name, "x": anchor.x, "y": anchor.y})
 
 
 def srb_ge(up, source, name):
@@ -2488,6 +2556,10 @@ def main():
         if (g.lib.get(SOURCE_KEY) == "derived" and g.name not in kept and len(g.components) == 1
                 and not g.contours and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
             g.width = font[g.components[0].baseGlyph].width
+    if "uni0453.loclSRB" not in kept:
+        serbian_gje(font)
+    if not {"uni043F.loclSRB", "uni0442.loclSRB"} & set(kept):
+        serbian_bars(font)
     # the kept ones as they were (the side bearings above, respace carrying
     # composites along, moved them again each run: г.loclSRB -80 a run);
     # an alias still as wide as its letter

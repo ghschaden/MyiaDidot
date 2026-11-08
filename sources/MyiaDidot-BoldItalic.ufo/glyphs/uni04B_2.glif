@@ -47,9 +47,7 @@
 			<point x="1405" y="71"/>
 			<point x="1404" y="70"/>
 			<point x="1450" y="70" type="curve" smooth="yes"/>
-			<point x="1595" y="69" type="line"/>
-			<point x="1730" y="30" type="line"/>
-			<point x="1730" y="30" type="line"/>
+			<point x="1742" y="70" type="line"/>
 			<point x="1600" y="-438" type="line"/>
 			<point x="1503" y="-438" type="line"/>
 			<point x="1513" y="-392"/>
@@ -83,6 +81,15 @@
 		<dict>
 			<key>org.myiadidot.draft</key>
 			<true/>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>source</key>
+				<string>6138bee1962b</string>
+				<key>why</key>
+				<string>Tail's top level with X's foot serif out to its corner, the outer edge at Ң's slant (tail_step had sloped it from 1595,69 to 1730,30); unified with Ң Ҷ; docs/bold-italic-cyrillic-drafts-review-2026-11-08.md</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

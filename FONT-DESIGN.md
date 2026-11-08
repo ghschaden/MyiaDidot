@@ -393,7 +393,10 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   [Latin and modifier review](docs/bold-italic-latin-modifier-drafts-review-2026-11-08.md).
   The 20 currency signs are accepted (2026-11-08):
   [currency review](docs/bold-italic-currency-drafts-review-2026-11-08.md).
-  Still to review: the Bold Italic's Cyrillic letters and BGR/SRB forms,
+  14 Cyrillic letters and the Serbian italic forms (both italics, the bar
+  free above as in Charis and Libertinus) are accepted (2026-11-08):
+  [Cyrillic review](docs/bold-italic-cyrillic-drafts-review-2026-11-08.md).
+  Still to review: the Bold Italic's Ҳ (tail unified), Bulgarian forms,
   old-style figures, U.horn and u.sc.horn. The Bold Italic's remaining
   72 phonetic, Greek and Cyrillic small caps and lowercase қ/ҳ/ҷ repairs are
   accepted (2026-11-07), including the final straight inner қ leg:

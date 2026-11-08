@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Bold Italic Cyrillic letters accepted; Serbian italic forms redrawn
+  14 Bold Italic Cyrillic drafts accepted (Ғ ғ Җ җ Қ Ң ң ү Ұ ұ Ҷ Һ Ө ө).
+  Serbian italic г ѓ п т in both italics now have the bar free above
+  (ī, ī with acute, и and ш with bars), as Charis and Libertinus draw them,
+  instead of Old Standard's fused bars; approved. Ҳ's tail top made level
+  with its serif as Ң's and Ҷ's (pending review). Review in
+  docs/bold-italic-cyrillic-drafts-review-2026-11-08.md.
+
 2026-11-08 Bold Italic currency signs accepted
   All 20 currency-sign drafts accepted. ₮ and ₴ get their own Bold Italic
   recipes so their bars show on both sides of the stem and the S (₮
