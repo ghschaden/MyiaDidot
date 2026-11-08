@@ -10,7 +10,7 @@ It is free software under the [SIL Open Font License](OFL.txt): you may
 use it for any purpose, embed it in documents and web pages, and modify
 and redistribute it under the same license.
 
-> **Status:** in development, version 0.100. Every glyph in all four
+> **Status:** in development, version 0.900. Every glyph in all four
 > styles has been drawn and reviewed, and the fonts are complete for the
 > scripts below. Spacing, hinting and details of the derived styles are
 > still being refined before a first release.

@@ -6,7 +6,7 @@ Writes OUT_DIR/MyiaDidot-VERSION.zip (default build/release), its one
 folder holding the fonts by format (otf, ttf, webfonts), OFL.txt,
 FONTLOG.txt, INSTALL.txt, the specimen (build/proofs/samples.pdf, from
 `make proof`, when built) and SHA256SUMS over all of them. VERSION is the
-fonts' own (fontinfo versionMajor.versionMinor, 0.100), and every style's
+fonts' own (fontinfo versionMajor.versionMinor, 0.900), and every style's
 UFO and built font must state the same, or nothing is written. The archive
 is reproducible: entries sorted, timestamps fixed (SOURCE_DATE_EPOCH, or
 the newest source's).

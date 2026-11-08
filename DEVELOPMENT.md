@@ -16,10 +16,6 @@ features or prerequisites already agreed for a particular distribution.
   instructions reference the same maintained rules.
 - Group dated reviews and historical proof PDFs separately from general
   documentation and specimen sources, with an index and updated links.
-- Define the relationship between Python project version `0.1.0`, font
-  version `0.100` and release tags. `make release` already names the
-  archive after the font version and refuses styles or built fonts that
-  disagree on it.
 - Add `sources/README.md` describing incorporated upstream materials,
   revisions, credits and licenses, distinguishing comparison-only inputs.
 
