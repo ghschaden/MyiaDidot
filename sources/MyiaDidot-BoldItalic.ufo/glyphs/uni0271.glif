@@ -34,8 +34,8 @@
 			<point x="1519" y="575" type="curve" smooth="yes"/>
 			<point x="1513" y="536"/>
 			<point x="1499" y="507"/>
-			<point x="1486" y="480" type="curve"/>
-			<point x="1388" y="297"/>
+			<point x="1486" y="480" type="curve" smooth="yes"/>
+			<point x="1398" y="297"/>
 			<point x="1335" y="104"/>
 			<point x="1283" y="-85" type="curve" smooth="yes"/>
 			<point x="1236" y="-252"/>
@@ -52,7 +52,7 @@
 			<point x="945" y="-255" type="curve" smooth="yes"/>
 			<point x="944" y="-302"/>
 			<point x="918" y="-315"/>
-			<point x="883" y="-333" type="curve"/>
+			<point x="883" y="-333" type="curve" smooth="yes"/>
 			<point x="881" y="-334"/>
 			<point x="878" y="-336"/>
 			<point x="875" y="-338" type="curve"/>
@@ -72,8 +72,8 @@
 			<point x="1047" y="-143"/>
 			<point x="1056" y="-74"/>
 			<point x="1067" y="-37" type="curve" smooth="yes"/>
-			<point x="1125" y="183"/>
-			<point x="1180" y="406"/>
+			<point x="1104" y="100"/>
+			<point x="1192" y="430"/>
 			<point x="1276" y="623" type="curve" smooth="yes"/>
 			<point x="1281" y="634"/>
 			<point x="1290" y="653"/>
@@ -97,14 +97,8 @@
 			<point x="846" y="0" type="line"/>
 			<point x="604" y="0" type="line"/>
 			<point x="769" y="598" type="line" smooth="yes"/>
-			<point x="770" y="599"/>
-			<point x="782" y="622"/>
-			<point x="784" y="628" type="curve"/>
-			<point x="787" y="636"/>
-			<point x="790" y="644"/>
-			<point x="793" y="651" type="curve" smooth="yes"/>
-			<point x="808" y="693"/>
-			<point x="824" y="735"/>
+			<point x="789" y="669"/>
+			<point x="824" y="725"/>
 			<point x="824" y="776" type="curve" smooth="yes"/>
 			<point x="824" y="785"/>
 			<point x="823" y="819"/>
@@ -141,8 +135,26 @@
 	<anchor name="DotBelow" x="711" y="-20"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>glyph</key>
+				<string>ad687ebc85cc</string>
+				<key>review</key>
+				<string>docs/bold-italic-phonetic-drafts-review-2026-11-08.md</string>
+			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>source</key>
+				<string>b008ef321f30</string>
+				<key>why</key>
+				<string>Approved local phonetic drawing; docs/bold-italic-phonetic-drafts-review-2026-11-08.md</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

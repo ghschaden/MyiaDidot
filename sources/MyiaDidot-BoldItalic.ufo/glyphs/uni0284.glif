@@ -113,8 +113,26 @@
 	<anchor name="Acute" x="372" y="980"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>glyph</key>
+				<string>aa7dae3c6dd4</string>
+				<key>review</key>
+				<string>docs/bold-italic-phonetic-drafts-review-2026-11-08.md</string>
+			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>source</key>
+				<string>96b3e26afaa9</string>
+				<key>why</key>
+				<string>Retain approved ʄ independently of the newly centered ɟ bar; docs/bold-italic-phonetic-drafts-review-2026-11-08.md</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>derived</string>
 		</dict>

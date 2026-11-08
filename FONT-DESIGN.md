@@ -387,6 +387,8 @@ split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
   local drawing repairs and retained proofs (docs/bold-*-review-2026-11-07.md).
   Bold Italic's 39 extended Latin drafts through U+024F are accepted:
   [extended Latin draft review](docs/bold-italic-extended-latin-drafts-review-2026-11-08.md).
+  The next 57 Bold Italic phonetic drafts are accepted (2026-11-08):
+  [phonetic review](docs/bold-italic-phonetic-drafts-review-2026-11-08.md).
   Still to review: the remaining Bold Italic drafts and u.sc.horn. The Bold Italic's remaining
   72 phonetic, Greek and Cyrillic small caps and lowercase қ/ҳ/ҷ repairs are
   accepted (2026-11-07), including the final straight inner қ leg:
