@@ -1,8 +1,9 @@
 # Using Myia Didot with LuaLaTeX
 
-Everything here was tested with LuaLaTeX (TeX Live 2026), `fontspec` and
-`babel`, with the OpenType (`.otf`) fonts. XeLaTeX works the same way for
-the font setup; the language part below is written for LuaLaTeX.
+Everything here was tested with LuaLaTeX (TeX Live 2026), `fontspec`,
+and `babel` or `polyglossia`, with the OpenType (`.otf`) fonts. XeLaTeX
+works the same way for the font setup; the language parts below are
+written for LuaLaTeX.
 
 ## Loading the font
 
@@ -70,6 +71,36 @@ The last language in the list is the main one. Switch with
 Load the languages this way, not with babel's older options alone
 (`\usepackage[bulgarian,russian]{babel}`): with those, Bulgarian next to
 Russian fails to compile, and the font is not told the language.
+
+## Several languages: polyglossia
+
+polyglossia works as well; use it or babel, not both. Set the font with
+`\setmainfont` as above; polyglossia tells it each passage's language
+itself, so the same localized forms appear:
+
+```latex
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage[variant=polytonic]{greek}
+\setotherlanguages{russian, bulgarian, dutch, catalan, romanian}
+\setotherlanguage[script=cyrillic]{serbian}
+\setmainfont{Myia Didot}   % or with Path = ... as above
+```
+
+Each language then has its command and environment:
+
+```latex
+\textgreek{Ἐν ἀρχῇ ἦν ὁ λόγος}
+\textbulgarian{\textit{вдигнете ръце}}   % Bulgarian forms
+\textserbian{\textit{бгдпт}}             % Serbian forms
+\begin{catalan} col·legi \end{catalan}  % ŀl
+```
+
+Serbian's option is `script=cyrillic`, in lowercase (Cyrillic is also its
+default); `script=Cyrillic` is not recognized. polyglossia shapes the
+text with HarfBuzz, so copying text out of the PDF gives what you typed
+(`l·l`, `ÍJ`), not the forms drawn.
 
 ## Features
 

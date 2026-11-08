@@ -63,7 +63,8 @@ The features work in applications that support them, such as LibreOffice,
 Adobe InDesign, LuaLaTeX and XeLaTeX (`fontspec`), and web browsers
 (`font-feature-settings`).
 For LaTeX, see [Using Myia Didot with LuaLaTeX](docs/lualatex.md): loading
-the fonts, languages with babel, and the fontspec name of each feature.
+the fonts, languages with babel or polyglossia, and the fontspec name of
+each feature.
 
 | Feature | What it does |
 |---|---|
