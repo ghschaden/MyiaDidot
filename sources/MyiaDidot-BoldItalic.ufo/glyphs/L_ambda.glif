@@ -1,53 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="Lambda" format="2">
 	<unicode hex="039B"/>
-	<advance width="1514"/>
+	<advance width="1518"/>
 	<outline>
 		<contour>
-			<point x="-98" y="0" type="line"/>
-			<point x="-77" y="71" type="line"/>
-			<point x="29" y="71" type="line" smooth="yes"/>
-			<point x="108" y="71"/>
-			<point x="226" y="151"/>
-			<point x="284" y="214" type="curve" smooth="yes"/>
-			<point x="1434" y="1464" type="line"/>
-			<point x="1558" y="1464" type="line"/>
-			<point x="1204" y="121" type="line" smooth="yes"/>
-			<point x="1195" y="85"/>
-			<point x="1208" y="69"/>
-			<point x="1243" y="69" type="curve" smooth="yes"/>
-			<point x="1370" y="69" type="line"/>
-			<point x="1353" y="0" type="line"/>
-			<point x="707" y="0" type="line"/>
-			<point x="725" y="69" type="line"/>
-			<point x="856" y="69" type="line" smooth="yes"/>
-			<point x="891" y="69"/>
-			<point x="916" y="85"/>
-			<point x="926" y="121" type="curve" smooth="yes"/>
-			<point x="1159" y="982" type="line"/>
-			<point x="494" y="270" type="line" smooth="yes"/>
-			<point x="475" y="250"/>
-			<point x="468" y="242"/>
-			<point x="462" y="235" type="curve" smooth="yes"/>
-			<point x="454" y="225"/>
-			<point x="426" y="190"/>
-			<point x="426" y="150" type="curve" smooth="yes"/>
-			<point x="426" y="99"/>
-			<point x="470" y="81"/>
-			<point x="482" y="77" type="curve" smooth="yes"/>
-			<point x="500" y="71"/>
-			<point x="517" y="71"/>
-			<point x="529" y="71" type="curve" smooth="yes"/>
-			<point x="617" y="71" type="line"/>
-			<point x="596" y="0" type="line"/>
+			<point x="-96" y="0" type="line"/>
+			<point x="-93" y="70" type="line"/>
+			<point x="13" y="70" type="line" smooth="yes"/>
+			<point x="103" y="70"/>
+			<point x="180" y="139"/>
+			<point x="229" y="213" type="curve" smooth="yes"/>
+			<point x="1065" y="1464" type="line"/>
+			<point x="1191" y="1464" type="line"/>
+			<point x="1173" y="121" type="line" smooth="yes"/>
+			<point x="1173" y="86"/>
+			<point x="1191" y="70"/>
+			<point x="1227" y="70" type="curve" smooth="yes"/>
+			<point x="1343" y="70" type="line"/>
+			<point x="1343" y="0" type="line"/>
+			<point x="713" y="0" type="line"/>
+			<point x="713" y="69" type="line"/>
+			<point x="840" y="69" type="line" smooth="yes"/>
+			<point x="876" y="69"/>
+			<point x="896" y="85"/>
+			<point x="896" y="121" type="curve" smooth="yes"/>
+			<point x="913" y="979" type="line"/>
+			<point x="430" y="271" type="line" smooth="yes"/>
+			<point x="417" y="252"/>
+			<point x="403" y="232"/>
+			<point x="395" y="207" type="curve" smooth="yes"/>
+			<point x="388" y="185"/>
+			<point x="387" y="164"/>
+			<point x="390" y="147" type="curve" smooth="yes"/>
+			<point x="394" y="123"/>
+			<point x="405" y="103"/>
+			<point x="426" y="89" type="curve" smooth="yes"/>
+			<point x="453" y="71"/>
+			<point x="483" y="71"/>
+			<point x="503" y="71" type="curve" smooth="yes"/>
+			<point x="591" y="71" type="line"/>
+			<point x="588" y="0" type="line"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="664" y="-20"/>
+	<anchor name="DotBelow" x="669" y="-20"/>
 	<anchor name="Bottom" x="670" y="0"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>glyph</key>
+				<string>4e66d1d82cfa</string>
+				<key>review</key>
+				<string>from a proof beside A V a.sc, leaning as A after the shear (2026-11-08)</string>
+			</dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>derived</string>
 		</dict>
 	</lib>
 </glyph>

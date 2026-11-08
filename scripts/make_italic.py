@@ -1509,6 +1509,37 @@ def fishhook(up, source, band, name):
         g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
 
 
+# Old Standard leans Λ and Δ about 30 and 34 degrees (A 18.5): their right
+# leg drawn as an upright stroke slanted, the left one flatter still, a
+# right-angled triangle where the references' lean as their A (2026-11-08)
+LEAN_AS = {"Lambda": "A", "Deltagreek": "A"}
+
+
+def axis(font, name):
+    """Degrees from upright of the line from the middle of the glyph's foot
+    (its lowest 8 %) to the middle of its top (its highest 8 %)."""
+    pts = [(p.x, p.y) for c in font[name].contours for p in c.points if p.type]
+    ys = [y for _, y in pts]
+    y0, y1 = min(ys), max(ys)
+    h = y1 - y0
+    bot = [x for x, y in pts if y < y0 + 0.08 * h]
+    top = [x for x, y in pts if y > y1 - 0.08 * h]
+    return math.degrees(math.atan2((min(top) + max(top)) / 2 - (min(bot) + max(bot)) / 2, h))
+
+
+def lean_as(font, lean=LEAN_AS):
+    """Each letter sheared about the baseline until it leans as its model
+    (its foot, serifs and base stay; the apex moves; the advance kept).
+    A draft until reviewed."""
+    for name, model in lean.items():
+        if name not in font or model not in font:
+            continue
+        s = math.tan(math.radians(axis(font, model))) - math.tan(math.radians(axis(font, name)))
+        shear(font[name], s, y0=0, extremes=True)
+        font[name].lib[SOURCE_KEY] = "derived"
+        font[name].lib[DRAFT_KEY] = True
+
+
 def mirror_zhe(font, name="uni0436"):
     """Old Standard's ж with its left half the right c mirrored about the
     stem's middle (its ball at the top left), not the c turned (its ball at
@@ -2625,6 +2656,7 @@ def main():
     redraw_w(font)
     lighten_a(font)
     mirror_zhe(font)
+    lean_as(font)
     # what was reviewed or drawn in the Italic stays
     # (and the Italic's own, reviewed: ʀ.sc, drafted from its Ʀ, is not in the Regular)
     # (drafts made at other weights come back as drafts, drawn ones stay)

@@ -5,6 +5,7 @@ Aringacute extreme 1             # 2026-10-28: Bold Italic emboldened by strokes
 C slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
 Cedilla extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 455,-198 7 units past; 258,-604 7 units past
 Cedilla wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 421,-169 115 degrees
+Deltagreek stroke 1              # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: uc 261 against 292 (0.90, lighter)
 Deltagreek zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +30 from 1434
 Eng stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 199 against 307 (0.65, lighter)
 Euro step 4                      # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed in proofs (γ & ξ ү q.sc), new findings proofed: 129,619 38 units aside
@@ -69,6 +70,7 @@ d extreme 1                      # 2026-10-21 Italic reweighted and tightened: 7
 d wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 795,148 25 degrees; 783,87 14 degrees
 dcroat extreme 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 902,1334 7 units past
 dcroat wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 795,148 24 degrees; 783,84 16 degrees
+delta.sc stroke 1                # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 264 against 300 (0.88, lighter)
 dotlessi slant 1                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
 eight stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 248 against 307 (0.81, lighter)
 eightoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 207 against 279 (0.74, lighter)
@@ -112,6 +114,7 @@ kgreenlandic extreme 1           # 2026-10-28: Bold Italic emboldened by strokes
 kgreenlandic wobble 1            # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 8 against 0: 870,764 47 degrees; 878,781 53 degrees; 801,127 27 degrees; 794,96 22 degrees; 302,609 3
 l stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 245 against 289 (0.85, lighter)
 lambda.sc kink 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 336,214 5.2 degrees
+lambda.sc stroke 1               # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 262 against 300 (0.88, lighter)
 longs stroke 1                   # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: lc 242 against 269 (0.90, lighter)
 longs_i wobble 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 3 against 1: 540,1003 12 degrees; 834,175 18 degrees; 832,172 5 degrees
 longs_l wobble 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 2 against 1: 852,261 7 degrees; 540,1003 12 degrees

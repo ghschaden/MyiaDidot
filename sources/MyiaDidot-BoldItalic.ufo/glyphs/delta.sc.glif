@@ -4,38 +4,38 @@
 	<outline>
 		<contour>
 			<point x="-137" y="0" type="line"/>
-			<point x="-124" y="42" type="line"/>
-			<point x="1061" y="1073" type="line"/>
-			<point x="1171" y="1073" type="line"/>
+			<point x="-138" y="42" type="line"/>
+			<point x="696" y="1073" type="line"/>
+			<point x="806" y="1073" type="line"/>
 			<point x="886" y="0" type="line"/>
 		</contour>
 		<contour>
-			<point x="52" y="105" type="line"/>
-			<point x="633" y="105" type="line"/>
-			<point x="826" y="809" type="line"/>
+			<point x="16" y="105" type="line"/>
+			<point x="597" y="105" type="line"/>
+			<point x="551" y="809" type="line"/>
 		</contour>
 	</outline>
 	<anchor name="Bottom" x="394" y="0"/>
-	<anchor name="DotBelow" x="388" y="-20"/>
+	<anchor name="DotBelow" x="395" y="-20"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-07</string>
+				<string>2026-11-08</string>
 				<key>glyph</key>
-				<string>bec307c1cace</string>
+				<string>1acf6f686e3f</string>
 				<key>review</key>
-				<string>docs/bold-italic-smallcaps-completion-2026-11-07.md</string>
+				<string>from a proof beside A V a.sc, leaning as A after the shear (2026-11-08)</string>
 			</dict>
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-06</string>
+				<string>2026-11-08</string>
 				<key>source</key>
-				<string>197c365d3833</string>
+				<string>3f0e481bd3cf</string>
 				<key>why</key>
-				<string>Retain spacing after the approved Italic Greek small-cap slant repair</string>
+				<string>sheared about the baseline to lean as a.sc (Old Standard's Λ Δ leaned 30-34 degrees)</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>

@@ -4,24 +4,35 @@
 	<advance width="1390"/>
 	<outline>
 		<contour>
-			<point x="67" y="89" type="line"/>
-			<point x="970" y="89" type="line"/>
-			<point x="1267" y="1172" type="line"/>
+			<point x="37" y="89" type="line"/>
+			<point x="940" y="89" type="line"/>
+			<point x="868" y="1172" type="line"/>
 		</contour>
 		<contour>
 			<point x="-103" y="0" type="line"/>
-			<point x="-85" y="62" type="line"/>
-			<point x="1469" y="1464" type="line"/>
-			<point x="1517" y="1464" type="line"/>
+			<point x="-106" y="62" type="line"/>
+			<point x="970" y="1464" type="line"/>
+			<point x="1018" y="1464" type="line"/>
 			<point x="1128" y="0" type="line"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="549" y="-20"/>
+	<anchor name="DotBelow" x="556" y="-20"/>
 	<anchor name="Bottom" x="554" y="0"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-08</string>
+				<key>glyph</key>
+				<string>a1423e87864b</string>
+				<key>review</key>
+				<string>from a proof beside A V a.sc, leaning as A after the shear (2026-11-08)</string>
+			</dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>derived</string>
 		</dict>
 	</lib>
 </glyph>

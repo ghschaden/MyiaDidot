@@ -4,61 +4,61 @@
 	<outline>
 		<contour>
 			<point x="-114" y="0" type="line"/>
-			<point x="-89" y="71" type="line"/>
-			<point x="-8" y="71" type="line" smooth="yes"/>
-			<point x="47" y="71"/>
-			<point x="143" y="132"/>
-			<point x="182" y="174" type="curve" smooth="yes"/>
-			<point x="1005" y="1068" type="line"/>
-			<point x="1119" y="1068" type="line"/>
-			<point x="867" y="107" type="line" smooth="yes"/>
-			<point x="861" y="84"/>
-			<point x="878" y="69"/>
-			<point x="889" y="69" type="curve" smooth="yes"/>
-			<point x="975" y="69" type="line"/>
+			<point x="-106" y="71" type="line"/>
+			<point x="-25" y="71" type="line" smooth="yes"/>
+			<point x="30" y="71"/>
+			<point x="111" y="132"/>
+			<point x="140" y="174" type="curve" smooth="yes"/>
+			<point x="748" y="1068" type="line"/>
+			<point x="862" y="1068" type="line"/>
+			<point x="841" y="107" type="line" smooth="yes"/>
+			<point x="841" y="84"/>
+			<point x="861" y="69"/>
+			<point x="872" y="69" type="curve" smooth="yes"/>
+			<point x="958" y="69" type="line"/>
 			<point x="955" y="0" type="line"/>
 			<point x="438" y="0" type="line"/>
-			<point x="460" y="69" type="line"/>
-			<point x="551" y="69" type="line" smooth="yes"/>
-			<point x="579" y="69"/>
-			<point x="588" y="82"/>
-			<point x="595" y="107" type="curve" smooth="yes"/>
-			<point x="764" y="730" type="line"/>
-			<point x="302" y="214" type="line"/>
-			<point x="283" y="195"/>
-			<point x="261" y="157"/>
-			<point x="260" y="128" type="curve" smooth="yes"/>
-			<point x="259" y="108"/>
-			<point x="266" y="92"/>
-			<point x="281" y="82" type="curve" smooth="yes"/>
-			<point x="296" y="72"/>
-			<point x="317" y="71"/>
-			<point x="335" y="71" type="curve" smooth="yes"/>
-			<point x="409" y="71" type="line"/>
+			<point x="443" y="69" type="line"/>
+			<point x="534" y="69" type="line" smooth="yes"/>
+			<point x="562" y="69"/>
+			<point x="568" y="82"/>
+			<point x="569" y="107" type="curve" smooth="yes"/>
+			<point x="588" y="730" type="line"/>
+			<point x="251" y="214" type="line"/>
+			<point x="236" y="195"/>
+			<point x="223" y="157"/>
+			<point x="229" y="128" type="curve" smooth="yes"/>
+			<point x="233" y="108"/>
+			<point x="244" y="92"/>
+			<point x="261" y="82" type="curve" smooth="yes"/>
+			<point x="279" y="72"/>
+			<point x="300" y="71"/>
+			<point x="318" y="71" type="curve" smooth="yes"/>
+			<point x="392" y="71" type="line"/>
 			<point x="387" y="0" type="line"/>
 		</contour>
 	</outline>
 	<anchor name="Bottom" x="450" y="0"/>
-	<anchor name="DotBelow" x="444" y="-20"/>
+	<anchor name="DotBelow" x="449" y="-20"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-07</string>
+				<string>2026-11-08</string>
 				<key>glyph</key>
-				<string>dc12529c6590</string>
+				<string>726505cec6cc</string>
 				<key>review</key>
-				<string>docs/bold-italic-smallcaps-completion-2026-11-07.md</string>
+				<string>from a proof beside A V a.sc, leaning as A after the shear (2026-11-08)</string>
 			</dict>
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-06</string>
+				<string>2026-11-08</string>
 				<key>source</key>
-				<string>ffc0724220d4</string>
+				<string>314d0d308357</string>
 				<key>why</key>
-				<string>Retain spacing after the approved Italic Greek small-cap slant repair</string>
+				<string>sheared about the baseline to lean as a.sc (Old Standard's Λ Δ leaned 30-34 degrees)</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>

@@ -84,6 +84,7 @@ cyrbreve extreme 2               # 2026-10-16 known at the start (quality checks
 cyrflex extreme 1                # 2026-10-16 known at the start (quality checks added): 819,1394 7 units past
 d weight 1                       # 2026-10-16 known at the start (quality checks added): at 442 stem 171 against 195
 d.sc kink 4                      # 2026-10-21 Italic reweighted and tightened: 1049,637 4.9 degrees; 885,208 5.9 degrees; 803,263 4.8 degrees; 899,701 6.8 degrees
+delta.sc stroke 1                # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 169 against 194 (0.87, lighter)
 dollar smooth 1                  # 2026-10-21 Italic reweighted and tightened: 762,535 2.3 degrees
 dotlessi slant 1                 # 2026-10-16 known at the start (quality checks added): 23.5 degrees, not 15.2
 e.sc smooth 1                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
@@ -143,6 +144,7 @@ l stroke 1                       # stroke weights against the kind's (scripts/qu
 l weight 1                       # 2026-10-16 known at the start (quality checks added): at 442 stem 149 against 195
 l.sc smooth 1                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 326,931 2.4 degrees
 lambda.sc kink 1                 # 2026-10-21 Italic reweighted and tightened: 229,119 4.9 degrees
+lambda.sc stroke 1               # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 173 against 194 (0.89, lighter)
 longs stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 158 against 183 (0.86, lighter)
 lslash stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 153 against 183 (0.84, lighter)
 lslash.sc kink 1                 # 2026-10-21 Italic reweighted and tightened: 326,930 1.8 degrees

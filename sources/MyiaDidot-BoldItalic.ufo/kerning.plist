@@ -815,8 +815,6 @@
 		</dict>
 		<key>public.kern1.Deltagreek</key>
 		<dict>
-			<key>Omicrontonos</key>
-			<integer>72</integer>
 			<key>public.kern2.Omicron</key>
 			<integer>-92</integer>
 			<key>public.kern2.Phi</key>
@@ -827,20 +825,6 @@
 			<integer>-92</integer>
 			<key>public.kern2.quoteright</key>
 			<integer>-196</integer>
-			<key>uni1F48</key>
-			<integer>18</integer>
-			<key>uni1F49</key>
-			<integer>20</integer>
-			<key>uni1F4A</key>
-			<integer>212</integer>
-			<key>uni1F4B</key>
-			<integer>216</integer>
-			<key>uni1F4C</key>
-			<integer>104</integer>
-			<key>uni1F4D</key>
-			<integer>123</integer>
-			<key>uni1FF8</key>
-			<integer>107</integer>
 		</dict>
 		<key>public.kern1.Deltagreek.sc</key>
 		<dict>
@@ -1047,8 +1031,6 @@
 		</dict>
 		<key>public.kern1.Lambda</key>
 		<dict>
-			<key>Omicrontonos</key>
-			<integer>-23</integer>
 			<key>public.kern2.Omicron</key>
 			<integer>-112</integer>
 			<key>public.kern2.Phi</key>
@@ -1075,28 +1057,6 @@
 			<integer>-187</integer>
 			<key>public.kern2.uni03F9</key>
 			<integer>-100</integer>
-			<key>uni1F48</key>
-			<integer>-78</integer>
-			<key>uni1F49</key>
-			<integer>-76</integer>
-			<key>uni1F4A</key>
-			<integer>116</integer>
-			<key>uni1F4B</key>
-			<integer>120</integer>
-			<key>uni1F4C</key>
-			<integer>8</integer>
-			<key>uni1F4D</key>
-			<integer>27</integer>
-			<key>uni1F5B</key>
-			<integer>-53</integer>
-			<key>uni1F5D</key>
-			<integer>-150</integer>
-			<key>uni1F5F</key>
-			<integer>-97</integer>
-			<key>uni1FEA</key>
-			<integer>-161</integer>
-			<key>uni1FF8</key>
-			<integer>11</integer>
 		</dict>
 		<key>public.kern1.Lambda.sc</key>
 		<dict>
@@ -3427,9 +3387,9 @@
 			<key>public.kern2.Chi</key>
 			<integer>-441</integer>
 			<key>public.kern2.Deltagreek</key>
-			<integer>-297</integer>
+			<integer>-309</integer>
 			<key>public.kern2.Lambda</key>
-			<integer>-330</integer>
+			<integer>-331</integer>
 			<key>public.kern2.Psi</key>
 			<integer>-231</integer>
 			<key>public.kern2.Sigma</key>

@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Italic Λ and Δ lean as A
+  Old Standard Italic leans Λ about 30 degrees and Δ 34 (its A 18.5):
+  the right leg drawn as an upright stroke slanted, the left flatter
+  still, a right-angled triangle where the references' Λ Δ lean as their
+  A. make_italic now shears them about the baseline until they lean as
+  A (lean_as, LEAN_AS: the right leg upright as A's, the apex about 350
+  units left; feet, base and advance kept); ∆ and the Bold Italic follow.
+  The hand-drawn λ.sc δ.sc, matched to the capitals on 2026-11-06, sheared
+  once the same way to lean as a.sc, in both italics. All accepted from
+  a proof beside A V a.sc. Their main strokes weigh as A's and v.sc's.
+
 2026-11-08 Bold Italic capital rounds spaced as the Italic's
   The Bold Italic's round and bowled capitals stood tight against H (O O
   0.80 of H H, the Italic 0.89, references 0.87-0.95; H O 1.04, the
