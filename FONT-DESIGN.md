@@ -278,11 +278,11 @@ evidence (a raster or a proof).
   and finalization after rounding) puts the stem's handle back on the
   edge and shortens the far one along its own direction to it. The
   hooks' inner corners (J ȷ ɽ ɳ, Œ) turn a little tighter: to review.
-- Bold Italic spacing after the round sides' fix (2026-11-05, FONTLOG): the
-  capitals still read tight against H H (OO/HH 0.79, references
-  0.87-0.95; scripts/quality/sc_sides.py BoldItalic --caps): H H is the
-  loose one, its serifs short (HH/nn 1.42, the references' top); a decision
-  about H, not the rounds. Still outside the references' range: Bold n.sc
+- Bold Italic capitals against H (2026-11-08): H H is in the references'
+  range (H H / n n 1.00); the rounds and bowls were tight (O O 0.80 of
+  H H, references 0.87-0.95). Given the Italic's white per side
+  (make_bold ITALIC_CAPITAL_ROUNDS: O Q C G D B P S); left as the Italic
+  has them: B against H, C and R against O. Still outside the references' range: Bold n.sc
   stands about 50 units tight on each side (side bearings 6 / -38, the
   Regular's 54 / 14). The lining figures are tabular again in both bold
   styles (2026-11-05, FONTLOG).

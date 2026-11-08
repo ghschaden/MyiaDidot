@@ -774,6 +774,15 @@ BOLD_KERNING = {
     ("a", "g"): -56,
     ("x", "t"): -77,
 }
+# the Bold Italic's capital rounds and bowls: STROKE_OUT gave them back
+# part of the white the strokes took (O O 0.75 of H H to 0.80), the
+# Italic's 0.89 and the references' 0.87-0.95 not reached; each side
+# brought to the Italic's ratio against H (scripts/quality/sc_sides.py
+# Italic|BoldItalic --caps: the difference times H H's 456 units). R's
+# right side (9) left; C's open right and G's spur side as measured.
+# Added to the strokes' own and passed on to what is made of them (Ö Ç С)
+ITALIC_CAPITAL_ROUNDS = {"O": (41, 41), "Q": (41, 41), "C": (41, 23), "G": (41, 32),
+                         "D": (0, 41), "B": (0, 36), "P": (0, 46), "S": (36, 32)}
 # the Bold Italic's own (from the Italic)
 ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (ITALIC_BOLD_RECIPES)
                        # Ж/ж contour finishing moves the optical fit's rounded
@@ -2728,6 +2737,10 @@ def main():
     # a composite follows its base (sidebearings), as the letters made of one;
     # also one set off for its accent (Έ Ἐ Ῥ: the letter at an offset, the
     # mark before it), else it would stand narrower than its NFD
+    if italic and STROKE_OUT:
+        # the capital rounds' white beyond what the strokes gave back (2026-11-08)
+        for n, side in ITALIC_CAPITAL_ROUNDS.items():
+            stroke_out[n] = tuple(a + b for a, b in zip(stroke_out.get(n, (0, 0)), side))
     stroke_out = {n: v for n, v in stroke_out.items() if n in font and not font[n].components}
     grown = True
     while grown:

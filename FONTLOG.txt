@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Bold Italic capital rounds spaced as the Italic's
+  The Bold Italic's round and bowled capitals stood tight against H (O O
+  0.80 of H H, the Italic 0.89, references 0.87-0.95; H O 1.04, the
+  Italic 1.13): the strokes spend the white beside a round, and STROKE_OUT
+  gave back only part of it. Each side of O Q C G D B P S now gets the
+  Italic's ratio against H back (make_bold ITALIC_CAPITAL_ROUNDS, 23-46
+  units), passed on to the letters made of them (Ö Ç Ș, Cyrillic С О,
+  Greek Ο Ρ ...). sc_sides.py BoldItalic --caps: the round letters' sides
+  outside the references 12 -> 3 (those the Italic has too), all
+  capitals 34 -> 24. kern_clear's guards against them recomputed (Ρ's
+  against the breathing-marked vowels 46 less, the same distance).
+
 2026-11-08 Version 0.900; ʛ accepted
   Font version 0.900 in all four styles (three decimals: versionMinor 900,
   head 0.900, "Version 0.900"); the Python project mirrors it as 0.9.0 and
