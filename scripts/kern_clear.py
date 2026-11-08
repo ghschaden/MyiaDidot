@@ -210,7 +210,12 @@ def guard(font, record, log=None):
         (n, (g, a)) for n, a in GUARDED_AGAINST.items()
         for g in [next((k for k, m in font.groups.items() if k.startswith("public.kern2.") and n in m), None)]
         if g is not None and (n, 2) not in held)]
-    for name, s, group, against in [(*t, None) for t in full] + only:
+    # the letters guarded on the left first, each one's exceptions in the
+    # kerning before the next is measured: a member of a right group with
+    # an exception of its own (ᵬ against ɉ) then answers by it and is not
+    # measured for its group, so one member's accent no longer loosens the
+    # whole group (b o p ... before ɉ; tried 2026-11-04, rebuilt 2026-11-08)
+    for name, s, group, against in sorted([(*t, None) for t in full] + only, key=lambda t: t[1]):
         for (left, right), v in list(font.kerning.items()):
             mine, other = (left, right) if s == 1 else (right, left)
             if mine != group or v >= 0 or (against is not None and other not in against):
@@ -241,6 +246,8 @@ def guard(font, record, log=None):
                 for o in members(font, right):
                     if (group, o) in font.kerning and (name, o) not in added and (name, o) not in font.kerning:
                         added[(name, o)] = font.kerning[(group, o)]
+        for key, v in added.items():
+            font.kerning[key] = v
     for key, v in added.items():
         font.kerning[key] = v
         record[f"{key[0]} {key[1]}"] = "added"

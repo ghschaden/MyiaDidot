@@ -9,8 +9,8 @@ belong in [FONT-DESIGN.md](FONT-DESIGN.md). Record completed work in
 These are proposals from the repository-structure review, not implemented
 features or prerequisites already agreed for a particular distribution.
 
-- A specimen image for README.md (from `make proof-svg`), and its download
-  link once the first release is published.
+- README.md's download link, once the first release is published (the
+  specimen: docs/specimen.svg, remade by scripts/specimen.py).
 - Add human-facing contributor documentation for source authority,
   generated styles, regeneration, checks and visual acceptance. Have agent
   instructions reference the same maintained rules.
@@ -26,6 +26,18 @@ features or prerequisites already agreed for a particular distribution.
   (the rounding where K's point lands on .5, the segment split) or accept a
   one-unit tolerance in scripts/check_reproducible.py; CI green before the
   0.900 release.
+
+## Shape-grammar studies (branch `shape-grammar`, not merged)
+
+Codex's research branch (6 commits to f963d62e, about 15,000 lines of
+studies, previews and tests; worktree `~/src/MyiaDidot-shapes`) changes no
+glyph and is not part of a release (decided 2026-11-08). It stays
+unmerged. Its handoff, docs/shape-grammar-handoff-2026-10-31.md, names
+the one production step worth taking after 0.900: the generators writing a
+construction manifest (base, transform and operations per derived
+letter), U→Ɯ and u→ʉ first, built on `main` rather than merged from the
+branch. Its studies are pinned to the sources of 2026-10-31 and must be
+rerun before they say anything about later ones.
 
 ## Optional tooling follow-up
 

@@ -301,14 +301,7 @@ evidence (a raster or a proof).
   full guard would also loosen 12 other pairs (A.sc before ö.sc ō.sc õ.sc
   ǭ.sc č.sc ḡ.sc ..., −78 → −13 for ö.sc; F ỡ; V Y ě): left as they
   were, the dieresis near A.sc's apex without touching.
-- kern_clear.guard: a guarded right letter's exception to a left group
-  (ɉ against b o p ...) is measured over every member, also one guarded
-  on the left with an exception of its own that wins anyway (ᵬ), so one
-  member's accent or tilde loosens the whole group. Done in order (left
-  letters first, those with their own exception not measured), about
-  850 pairs in Bold, Italic and Bold Italic tighten to GUARD (Bold U+ǎ
-  −29 → −92, Italic V+ǒ −151 → −186): tried 2026-11-04, set aside for
-  the decision and a visual sweep.
+- kern_clear.guard by member: done 2026-11-08 (FONTLOG).
 - Bold Italic, seen in print (2026-10-27), reviewed 2026-11-02: ʋ (its
   own recipe) and Ɯ (U twinned) done 2026-10-29; ʷ ʸ ʰ ʲ ⁱ ᶤ ᶶ and the
   other modifier letters the Italic derives are made small from the Bold

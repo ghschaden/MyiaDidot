@@ -6,6 +6,8 @@ small capitals. It extends Alexey Kryukov's
 [Theano Didot](https://github.com/akryukov/theano), whose Regular it
 continues. The italics are adapted from his Old Standard Italic.
 
+![Myia Didot in its four styles: Latin, polytonic Greek, Cyrillic, small capitals and old-style figures](docs/specimen.svg)
+
 It is free software under the [SIL Open Font License](OFL.txt): you may
 use it for any purpose, embed it in documents and web pages, and modify
 and redistribute it under the same license.
@@ -60,6 +62,8 @@ In all, there are about 1,560 characters in each style.
 The features work in applications that support them, such as LibreOffice,
 Adobe InDesign, LuaLaTeX and XeLaTeX (`fontspec`), and web browsers
 (`font-feature-settings`).
+For LaTeX, see [Using Myia Didot with LuaLaTeX](docs/lualatex.md): loading
+the fonts, languages with babel, and the fontspec name of each feature.
 
 | Feature | What it does |
 |---|---|
@@ -108,11 +112,22 @@ These localized forms are available:
 
 The full history of changes is in [FONTLOG.txt](FONTLOG.txt).
 
+## The name
+
+Alexey Kryukov named his Theano Classical Fonts after Theano, the
+ancient Greek philosopher who was first a student of Pythagoras and, by
+tradition, became his wife (see his FONTLOG in `sources/upstream/`).
+Myia (Μυῖα), according to the same tradition, was their daughter, a
+Pythagorean herself: a letter on the care of a newborn child, addressed
+to a woman named Phyllis, has come down under her name. A font derived from Theano Didot may not carry the name
+"Theano", a Reserved Font Name under its license, so this one is named
+after her daughter.
+
 ## License
 
 SIL Open Font License 1.1, see [OFL.txt](OFL.txt). "Theano" is a Reserved
 Font Name of the upstream fonts, which is why this derivative has its own
-name.
+name (see above).
 
 ## Contributing
 

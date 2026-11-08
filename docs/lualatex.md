@@ -1,0 +1,121 @@
+# Using Myia Didot with LuaLaTeX
+
+Everything here was tested with LuaLaTeX (TeX Live 2026), `fontspec` and
+`babel`, with the OpenType (`.otf`) fonts. XeLaTeX works the same way for
+the font setup; the language part below is written for LuaLaTeX.
+
+## Loading the font
+
+If the fonts are installed on your system (see [README](../README.md)),
+load them by name:
+
+```latex
+\usepackage{fontspec}
+\setmainfont{Myia Didot}
+```
+
+fontspec finds the four styles itself, so `\textit`, `\textbf` and
+`\textbf{\textit{…}}` work at once.
+
+Without installing them, point fontspec at the files, for example in a
+`fonts/` folder next to your document:
+
+```latex
+\usepackage{fontspec}
+\setmainfont{MyiaDidot}[
+  Path           = ./fonts/,
+  Extension      = .otf,
+  UprightFont    = *-Regular,
+  ItalicFont     = *-Italic,
+  BoldFont       = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]
+```
+
+Options for the whole document go into the same brackets, for example
+`Numbers = OldStyle` for old-style figures throughout.
+
+## Several languages: babel
+
+For Greek, Cyrillic or other languages with their own forms, let babel
+load the languages from its `.ini` files (`provide*=*`) and give the font
+with `\babelfont` instead of `\setmainfont`. Babel then tells the font
+which language each passage is in, which switches on its localized forms
+(Bulgarian and Serbian letters, Romanian ș ț, Dutch ÍJ, Catalan ŀl):
+
+```latex
+\usepackage{fontspec}
+\usepackage[polytonicgreek, russian, bulgarian, serbian-cyrillic,
+            english, provide*=*]{babel}
+\babelfont{rm}[
+  Path           = ./fonts/,
+  Extension      = .otf,
+  UprightFont    = *-Regular,
+  ItalicFont     = *-Italic,
+  BoldFont       = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{MyiaDidot}
+% installed fonts: \babelfont{rm}{Myia Didot}
+```
+
+The last language in the list is the main one. Switch with
+`\foreignlanguage{bulgarian}{…}` or the `otherlanguage` environment:
+
+```latex
+\foreignlanguage{polytonicgreek}{Ἐν ἀρχῇ ἦν ὁ λόγος}
+\foreignlanguage{bulgarian}{\textit{вдигнете ръце}}   % Bulgarian forms
+\foreignlanguage{serbian-cyrillic}{\textit{бгдпт}}    % Serbian italic forms
+```
+
+Load the languages this way, not with babel's older options alone
+(`\usepackage[bulgarian,russian]{babel}`): with those, Bulgarian next to
+Russian fails to compile, and the font is not told the language.
+
+## Features
+
+All features can be set for the whole font (in the brackets of
+`\setmainfont` or `\babelfont`) or for a passage with
+`{\addfontfeatures{…} text}`.
+
+| What | fontspec | Feature |
+|---|---|---|
+| Small capitals | `\textsc{Text}` | `smcp` |
+| Capitals as small caps | `Letters = UppercaseSmallCaps` | `c2sc` |
+| Old-style / lining figures | `Numbers = OldStyle` / `Numbers = Lining` | `onum` / `lnum` |
+| Tabular / proportional figures | `Numbers = Monospaced` / `Numbers = Proportional` | `tnum` / `pnum` |
+| Slashed zero | `Numbers = SlashedZero` | `zero` |
+| Fractions (1/2 → ½) | `Fractions = On` | `frac` |
+| Superior / inferior figures | `VerticalPosition = Superior` / `= Inferior` | `sups` / `sinf` |
+| Discretionary ligatures ct st | `Ligatures = Rare` | `dlig` |
+| Long s (ſ, with its ligatures ſt ſſ …) | `Style = Historic` | `hist` |
+| Romanian ș ț without the language | `StylisticSet = 1` | `ss01` |
+| SS for ß in small caps | `StylisticSet = 2` | `ss02` |
+| Greek initial and medial theta | `StylisticSet = 11` | `ss11` |
+
+The standard ligatures (fi ff fl …), kerning and the case-sensitive forms
+are on by default. Note that long s is `Style = Historic`, not
+`Ligatures = Historic` (that is `hlig`, which this font does not use).
+Long s is set by a simple rule (s before a letter); German texts that
+need it placed by word parts are better typed with ſ directly.
+
+Greek small capitals drop their accents and breathings, as Greek
+typography wants: `\textsc{Λόγος}` gives ΛΟΓΟΣ in small caps.
+
+## A complete example
+
+```latex
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[polytonicgreek, russian, english, provide*=*]{babel}
+\babelfont{rm}[Numbers = OldStyle]{Myia Didot}
+
+\begin{document}
+\section{On Myia}
+A \textbf{letter} to Phyllis \textit{(on the care of a newborn)} has
+come down under Myia's name, beginning
+\foreignlanguage{polytonicgreek}{Μυῖα Φυλλίδι χαίρειν}; it is printed
+in \textsc{Thesleff}'s edition of 1965.
+\end{document}
+```
+
+Compile with `lualatex document.tex`.

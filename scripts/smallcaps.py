@@ -295,10 +295,16 @@ def build_aliases(font, log):
         sx = ref.width / font[c.baseGlyph].width
         width = round(ref.width + (g.width - font[c.baseGlyph].width) * sx)
         anchors = [(a.name, a.x, a.y) for a in ref.anchors]
-        # the capital's own anchors win (Greek/Cyrillic capitals may differ)
-        own = sc_anchors(g, sx)
-        if own:
-            anchors = own
+        # the capital's own anchors win where they differ from its letter's
+        # (Greek/Cyrillic capitals may); else the small cap's letter's, as
+        # placed there (sc_anchors scales across but does not slant: the
+        # italics' ο.sc о.sc stood 44-76 off o.sc's, 2026-11-08)
+        mine = {a.name: (a.x, a.y) for a in g.anchors}
+        theirs = {a.name: (a.x, a.y) for a in font[c.baseGlyph].anchors}
+        if any(mine[k] != theirs[k] for k in mine.keys() & theirs.keys()):
+            own = sc_anchors(g, sx)
+            if own:
+                anchors = own
         new_glyph(font, name, width, [(base_sc, 0, 0)], anchors)
         log.append(f"alias {name} -> {base_sc}")
 

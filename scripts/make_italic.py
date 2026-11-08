@@ -2714,10 +2714,13 @@ def main():
                 and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
             src = font[g.components[0].baseGlyph]
             g.width = src.width
-            if {a.name for a in g.anchors} <= {a.name for a in src.anchors} or not g.anchors:
-                g.clearAnchors()
-                for a in src.anchors:
-                    g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+            # the anchors it shares with the letter, the letter's (sloped);
+            # its own besides stay (Ο's GreekCap: kept, it stood upright
+            # with the Regular's TopCap and Bottom, 2026-11-08)
+            own = [a for a in g.anchors if a.name not in {s.name for s in src.anchors}]
+            g.clearAnchors()
+            for a in list(src.anchors) + own:
+                g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
 
     # letters Old Standard draws with their accent in one outline (Ť): made
     # from base and mark like the decomposed text (not upstream's specials)

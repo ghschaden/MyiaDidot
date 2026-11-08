@@ -26,6 +26,23 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 kern_clear guard by member; italic alias anchors
+  kern_clear's guard measured every member of a group against a guarded
+  letter, so one member's accent (ö's dieresis against ǰ's caron)
+  loosened the whole group. Now the letters guarded on the left go first,
+  each one's exceptions in the kerning before the next is measured, and a
+  member with its own exception is not measured for its group (tried
+  2026-11-04, accepted from a proof): about 980 letter pairs tighten in the
+  four styles, all keeping the guard's white (b o p ɔ before ǰ ɉ ʝ ϳ by
+  35-100 units; italic A before ễ ỗ, V W before ǒ ẵ ĭ ǐ ȁ; Bold U
+  before ẵ ẫ ằ ǎ). Italic and Bold Italic aliases (Greek Α Ε Η Ι Ο Ρ ...,
+  ο.sc о.sc ...) kept the Regular's upright anchors where they had one
+  of their own (GreekCap), and alias small caps took their capital's,
+  scaled but not slanted: now the letter's anchors (make_italic, smallcaps.py);
+  marks on Greek capitals sit as on their Latin twins (Α̣ as Ạ, Ᾰ as Ă,
+  the breve 223 units right), о́.sc's accent as ó.sc's. sources/README.md
+  added; the shape-grammar branch recorded as not part of a release.
+
 2026-11-08 Italic capital curls as large as Ƈ Ɠ's
   Ƙ Ƴ ended in a small tight curl (radius 110/100), Ʋ in a middling one
   (140/120), beside Ƈ Ɠ's hooks and J's ball. Now 1.25 times (Ƙ Ƴ
