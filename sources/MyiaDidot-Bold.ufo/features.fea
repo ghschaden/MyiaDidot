@@ -4968,11 +4968,13 @@ lookup ligaStandardLigaturesforLatinexceptTurkish {
     sub \f \j  by \f_j;
 } ligaStandardLigaturesforLatinexceptTurkish;
 
-# ct st only: æ œ are letters of their own, typed (dlig made Michæl, dœs)
+# ct st Th th only: æ œ are letters of their own, typed (dlig made Michæl, dœs)
 lookup dligDiscretionaryLigaturesforLatin {
   lookupflag 0;
     sub \c \t  by \c_t;
     sub \s \t  by \s_t;
+    sub \T \h  by \T_h;
+    sub \t \h  by \t_h;
 } dligDiscretionaryLigaturesforLatin;
 
 lookup dligDiscretionaryLigaturesforGerman {

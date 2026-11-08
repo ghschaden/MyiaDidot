@@ -4,7 +4,7 @@ import math
 from copy import deepcopy
 
 from derive import BIG, draw_path, path_op, rect_path, stems_at, to_path
-from draft_ligatures import arch
+from draft_ligatures import arch, th_ligature
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 from italic_geometry import SLANT, XH, shear, upright
@@ -30,7 +30,36 @@ LONGS = (
     ("longs_longs_i", "ffi"),
     ("longs_longs_l", "ffl"),
 )
-NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t")
+NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "T_h", "t_h")
+
+
+ITALIC_TH_CLOSER = 100  # th: the h this much nearer than after t (chosen 2026-11-08 from 140 100 60)
+TH_PEAK = 1600  # th: the arch's top, above the ascender (1434) and below the accents
+
+
+def italic_th(up, closer=ITALIC_TH_CLOSER, peak=TH_PEAK):
+    """The italics' th in the upright frame: (path, width)."""
+    bar = sorted({p.y for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
+    hair = (bar[-1] - bar[0]) * 0.7
+    top = max(p.y for c in up["t"].contours for p in c.points)
+    dx = up["t"].width - closer
+    ta, tb = stems_at(up, "t", 1000)[0]
+    xe = tb - hair  # the hairline's left edge, on the t's top
+    y_l = top - 0.6 * (tb - ta)
+    scoop = RecordingPen()
+    scoop.moveTo((ta - 40, y_l))
+    scoop.lineTo((ta, y_l))
+    scoop.curveTo((ta + 0.55 * (xe - ta), y_l), (xe, top - 0.55 * (top - y_l)), (xe, top))
+    scoop.lineTo((xe, top + 40))
+    scoop.lineTo((ta - 40, top + 40))
+    scoop.closePath()
+    tee = path_op(to_path(up, up["t"]), to_path(None, rec=scoop), "DIFFERENCE")
+    # the h below its serif; the arch's leg on its stem as measured there
+    h = path_op(to_path(up, up["h"]), rect_path(-BIG, top - 80, BIG, BIG), "DIFFERENCE")
+    ja, jb = stems_at(up, "h", top - 60)[0]
+    bow = arch(xe, dx + jb, top - 81, peak, hair, jb - ja, hair, top - 82)
+    out = path_op(path_op(tee, shift(h, dx), "UNION"), bow, "UNION")
+    return out, dx + up["h"].width
 
 
 def make(font):
@@ -41,6 +70,9 @@ def make(font):
     made = []
 
     def put(name, path, width, carets=()):
+        # what the glyph made before carries over: its code points (ſt st:
+        # U+FB05 U+FB06) and its acceptance (accepted.py compares outlines)
+        before = font[name] if name in font else None
         g = Glyph(name=name)
         g.width = round(width)
         draw_path(up, up["f"], g, path)
@@ -73,6 +105,10 @@ def make(font):
         fair_joins(final)
         final.width = round(width)
         final.lib["org.myiadidot.italicSource"] = "ligature"
+        if before is not None:
+            final.unicodes = list(before.unicodes)
+            if "org.myiadidot.accepted" in before.lib:
+                final.lib["org.myiadidot.accepted"] = before.lib["org.myiadidot.accepted"]
         for i, x in enumerate(carets, 1):
             final.appendAnchor({"name": f"caret_{i}", "x": round(x), "y": 0})
         font.layers.defaultLayer.insertGlyph(final, name, overwrite=True)
@@ -137,4 +173,17 @@ def make(font):
         bow = arch(300, dx + tx1, 790, 1434, hair, tx1 - tx0, hair, 810)
         out = path_op(path_op(a, shift(part, dx), "UNION"), bow, "UNION")
         put(f"{first}_t", out, dx + up["t"].width, [dx])
+    # Th as the Regular's (draft_ligatures.th_ligature), on this style's T and h
+    # the italic T's arm is short: the h 0.8 of a T stem further out
+    # (chosen 2026-11-08 from 0, 0.5, 1)
+    ta, tb = stems_at(up, "T", 700)[0]
+    out, width = th_ligature(up, reach=0.8 * (tb - ta))
+    put("T_h", out, width, [width - up["h"].width + stems_at(up, "h", 700)[0][0]])
+    # th (accepted 2026-11-08): an arch from the t's top to the h's, as the
+    # ct st arches: a hairline rising from the t's top, its stem's top a
+    # concave scoop as the Regular t's (leaving the stem's left edge level,
+    # arriving upright at the hairline), over the top as a hairline and down
+    # into the h's stem at its full width; the h's sloped top serif cut
+    # away, the h ITALIC_TH_CLOSER nearer than set after t
+    put("t_h", *italic_th(up), [up["t"].width - ITALIC_TH_CLOSER])
     return made

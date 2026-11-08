@@ -4,6 +4,7 @@ G stroke 1                       # stroke weights against the kind's (scripts/qu
 J zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 R zone 1                         # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 Sigma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 122 against 208 (0.59, lighter)
+T_h smooth 1                     # 2026-11-08 Th th discretionary ligatures (Th: T's bar run on to h; th: crossbar upright, arch in the italics): 1278,1329 2.3 degrees
 Xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 62 against 208 (0.30, lighter)
 alpha stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 143 against 164 (0.87, lighter)
 asterisk smooth 4                # 2026-10-16 known at the start (quality checks added): 495,1329 2.3 degrees; 609,1329 2.3 degrees; 609,805 2.3 degrees; 495,805 2.3 degrees

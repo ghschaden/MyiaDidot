@@ -41,6 +41,7 @@ PASSES = (
     Pass("r_hook", "finish_turned_r_top", BI, ("r family shoulders", "final l"), ("uni027A",)),
     Pass("r_hook", "finish", ITALIC, ("final same-style r",), ("uni027D",)),
     Pass("l_belt", "finish", ("Italic",), ("final l", "final L"), ("uni026C", "uniA7AD")),
+    Pass("draft_ligatures", "finish", ("Bold",), ("final T", "final t", "final h"), ("T_h", "t_h")),
     Pass("italic_ligatures", "make", ITALIC,
          ("final f", "final ſ", "final partner letters"), ("accepted italic ligatures",)),
 )

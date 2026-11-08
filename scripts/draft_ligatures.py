@@ -1,4 +1,4 @@
-"""Draft the discretionary ligatures ct and st (feature dlig), the
+"""Draft the discretionary ligatures ct st Th th (feature dlig), the
 f-ligatures fb fh fk ft ffb ffh ffk fft (liga) and the long-s ligatures
 ſb ſh ſk ſt ſi ſl ſſ ſſi ſſl (liga, own lookup).
 
@@ -115,6 +115,94 @@ def without_crossbars(font, path, stems):
     return path
 
 
+TH_FLOW = 0.33  # Th: the T's right bracket at this size flowing into the h's stem (chosen 2026-11-08 from 1, 0.5, 0.33)
+TH_CLOSER = 140  # th: t's width (730) - TH_SHIFT: the h this much nearer than set after t
+TH_SHIFT = 590  # th: the h this far from the t (its foot serif 44 clear of t's tail; chosen 2026-11-08 from 620 560 520)
+
+
+def shifted(path, dx):
+    rec = RecordingPen()
+    path.draw(TransformPen(rec, (1, 0, 0, 1, dx, 0)))
+    return to_path(None, rec=rec)
+
+
+def th_ligature(font, s=TH_FLOW, reach=0):
+    """Th: the T's crossbar runs on to the h's stem, standing where the
+    T's right arm ended; the arm's bracket (the curve from the bar's
+    underside into its serif), scaled by s about the arm's end, flows from
+    the bar into the stem. The T's foot serif whole, the h cut at the bar's
+    underside (no top serif). Measured on the font's own T and h (the
+    italics: italic_ligatures.py, upright frame). reach: the h this much
+    further right than the arm's end, the crossbar run on to it (the
+    italics' T has a short arm: under it the h's stem stood tight against
+    the T's, 2026-11-08)."""
+    T = font["T"]
+    top = max(p.y for c in T.contours for p in c.points)
+    stem = stems_at(font, "T", 700)[0][1]
+    under = max(p.y for c in T.contours for p in c.points if p.type and p.x > stem + 50 and p.y < top)
+    arm = rect_path(stem + 1, under / 2, BIG, under)  # below the bar, above the foot serif
+    tee = to_path(font, T)
+    core = path_op(tee, arm, "DIFFERENCE")
+    bracket = path_op(tee, arm, "INTERSECTION")
+    x0, y0, x1, _ = bracket.bounds
+    foot_in = min(x for c in to_glif(bracket) for x, y in c if y < y0 + 20)
+    sa, sb = stems_at(font, "h", 700)[0]
+    dx = x1 - sb + reach
+    rec = RecordingPen()
+    # about (x1, under), then its inner foot 8 units into the stem
+    move = x1 * (1 - s) + (sa + dx - (x1 - (x1 - foot_in) * s)) + 8
+    bracket.draw(TransformPen(rec, (s, 0, 0, s, move, under * (1 - s))))
+    h = path_op(to_path(font, font["h"]), rect_path(-BIG, under, BIG, BIG), "DIFFERENCE")
+    out = path_op(path_op(core, shifted(h, dx), "UNION"), to_path(None, rec=rec), "UNION")
+    # the bar out to the h's stem as it is just below it (the Bold's widens
+    # toward its top: run to its mid-height edge, the stem's corner stood
+    # 46 units out under the bar's end)
+    top_b = max(sb, stems_at(font, "h", under - 60)[0][1])
+    out = path_op(out, rect_path(stem, under, top_b + dx, top), "UNION")
+    return out, dx + font["h"].width
+
+
+def to_glif(path):
+    """The on-curve points of a path, per contour."""
+    rec = RecordingPen()
+    path.draw(rec)
+    out, cur = [], []
+    for op, args in rec.value:
+        if op == "moveTo":
+            cur = [args[0]]
+            out.append(cur)
+        elif op in ("lineTo", "curveTo", "qCurveTo"):
+            cur.append(args[-1])
+    return out
+
+
+def t_h_ligature(font):
+    """th: the t's crossbar run on into the h's stem."""
+    bar = sorted({p.y for c in font["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
+    shift = font["t"].width - TH_CLOSER  # TH_SHIFT in the Regular
+    h = shifted(to_path(font, font["h"]), shift)
+    t = to_path(font, font["t"])
+    t_bar_end = max(p.x for c in font["t"].contours for p in c.points if p.type and p.y == bar[-1])
+    h_stem = stems_at(font, "h", 700)[0][0] + shift
+    out = path_op(path_op(t, h, "UNION"), rect_path(t_bar_end - 10, bar[0], h_stem + 10, bar[-1]), "UNION")
+    return out, shift + font["h"].width
+
+
+def finish(font):
+    """The Bold's Th th made again from its own final T t h (finalization):
+    emboldened whole from the Regular's, the T's and the h's foot serifs
+    grew into each other. Their review records are kept."""
+    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature)):
+        if name not in font:
+            continue
+        out, width = make(font)
+        g = font[name]
+        g.clearContours()
+        g.clearComponents()
+        draw_path(font, font["t"], g, out)
+        g.width = round(width)
+
+
 # name, the fl it is built on, the letter; long-s ones: name, f-ligature
 F_LIGATURES = [
     ("f_b", "fl", "b"), ("f_h", "fl", "h"), ("f_k", "fl", "k"), ("f_t", "fl", "t"),
@@ -140,7 +228,9 @@ def main():
 
     def wanted(name):
         if name in font:
-            if not (args.redraft and font[name].lib.get(DRAFT_KEY)):
+            # an accepted ligature is not redrafted (acceptance does not
+            # clear the draft flag: docs/claude/quality.md)
+            if not (args.redraft and font[name].lib.get(DRAFT_KEY)) or "org.myiadidot.accepted" in font[name].lib:
                 return False
             del font[name]
         return True
@@ -161,6 +251,9 @@ def main():
     for name, first, cut, left, base, peak, t_left, t_top, clip, closer in LIGATURES:
         if wanted(name):
             put(name, *build(font, name, first, cut, left, base, peak, t_left, t_top, clip, closer))
+    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature)):
+        if wanted(name):
+            put(name, *make(font))
     for name, base, letter in F_LIGATURES:
         if wanted(name):
             put(name, *f_ligature(font, base, letter))

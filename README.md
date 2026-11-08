@@ -74,7 +74,7 @@ each feature.
 | `sups`, `subs`, `sinf`, `numr`, `dnom`, `frac`, `ordn` | Superiors, inferiors, fractions and ordinals |
 | `zero` | Slashed zero |
 | `case`, `cpsp` | Case-sensitive punctuation and capital spacing for all-caps text |
-| `liga`, `dlig` | Standard f-ligatures; discretionary ligatures (ct, st) |
+| `liga`, `dlig` | Standard f-ligatures; discretionary ligatures (ct, st, Th, th) |
 | `hist` | Long s (ſ) and its ligatures |
 | `locl` | Localized forms. The language tag must be set in the application. |
 | `ss01` | Romanian comma-below Ș ș Ț ț in place of the cedilla forms |

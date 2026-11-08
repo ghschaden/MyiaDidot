@@ -26,6 +26,24 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Discretionary ligatures Th and th
+  New in dlig beside ct st, in all four styles, each built from the
+  style's own final T t h. Th (as Linux Libertine's): the T's crossbar
+  runs on to the h, whose stem stands under its end and is cut at the
+  bar (no top serif); the T's right bracket, at a third of its size, flows
+  from the bar into the h's stem; the T's foot serif whole. In the italics
+  the T's arm is short: the h 0.8 of a T stem further out. th, upright:
+  the t's crossbar runs on into the h's stem, the h 140 nearer than set
+  after t; italic: an arch as ct st's, from the t's top (a concave scoop
+  as the Regular t's, arriving upright at the hairline) over the top as a
+  hairline (peak 1600) down into the h's stem, the h's sloped serif cut
+  away, the h 100 nearer. Builders: draft_ligatures.py (th_ligature,
+  t_h_ligature; the Bold's made again from its own letters in
+  finalization: emboldened whole, the T's and h's foot serifs had run
+  together), italic_ligatures.py (italic_th). draft_ligatures --redraft
+  no longer redraws accepted ligatures. German texts get them too with
+  dlig on, as ct st. All accepted from proofs (build/proofs/th-*.pdf).
+
 2026-11-08 kern_clear guard by member; italic alias anchors
   kern_clear's guard measured every member of a group against a guarded
   letter, so one member's accent (ö's dieresis against ǰ's caron)
