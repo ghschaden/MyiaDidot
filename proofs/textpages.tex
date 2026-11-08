@@ -1,5 +1,6 @@
 % Full pages of running text, mostly Regular with some italic, bold and small
-% caps, set as a book would be: no headings, no paragraph breaks.
+% caps, set as a book would be: no headings, no paragraph breaks; with the
+% discretionary ligatures ct and st (Ligatures=Rare, dlig) throughout.
 %   lualatex --output-directory=build/proofs proofs/textpages.tex   (or make proof)
 \documentclass[10.5pt]{article}
 \usepackage[paperwidth=148mm,paperheight=210mm,textwidth=104mm,textheight=166mm,
@@ -7,7 +8,7 @@
 \usepackage[french,ngerman,english]{babel}
 \usepackage{fontspec}
 \usepackage{microtype}
-\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz, Numbers=OldStyle,
+\setmainfont{MyiaDidot-Regular.otf}[Path=../fonts/otf/, Renderer=HarfBuzz, Numbers=OldStyle, Ligatures=Rare,
   BoldFont=MyiaDidot-Bold.otf, ItalicFont=MyiaDidot-Italic.otf, BoldItalicFont=MyiaDidot-BoldItalic.otf]
 \newcommand\smc[1]{{\addfontfeature{Letters=SmallCaps}#1}}
 \newcommand\allsc[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1}}
