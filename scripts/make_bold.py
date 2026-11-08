@@ -228,6 +228,11 @@ ITALIC_BOLD_REBUILD = {
     "uni01AE": "Ʈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
     "uni027D.sc": "ɽ.sc: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
     "uni0288.sc": "ʈ.sc: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the tail left of the stem and heavier",
+    # the currency bars on the Bold Italic's own letters (the person,
+    # 2026-11-08): emboldened whole, the stem and the S grew over the bars'
+    # left ends, which no longer showed
+    "uni20AE": "₮: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the bars hidden left of the stem",
+    "uni20B4": "₴: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the bars hidden left of the S",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
 # frame), where the source's recipe scaled up does not fit (a hook's or a
@@ -401,6 +406,18 @@ ITALIC_BOLD_RECIPES = {
     # the person, 2026-11-08): the stem's edges 294 and 582 in the recipe
     # frame (150-438 upright), cut a unit inside below the foot's bracket;
     # the foot serif as B's own, 67 tall, overhanging the stem 167 a side
+    # ₮: the bars centred on the Bold Italic T's stem (541-828 here) and
+    # standing out 150 a side at their middles, rising as the Regular's
+    # (0.48), as heavy as emboldened (104 across)
+    "₮": ("lines", "T", ("c", 104, [((380, 354), (990, 646)), ((380, 674), (990, 966))])),
+    # ₴: Ƨ (the Bold Italic's S mirrored) with its bars standing out on
+    # both sides: the S's outer edges at the bars are 158 and 210 on the
+    # left here, the bars stand out about 140-150 on both sides, 75 thick as
+    # emboldened; all moved 57 right and the advance set (1467) for side
+    # bearings of about 45 by the bar's thin end and the old 54 on the right
+    "₴": ("attach", "space", ("c", [], [("S", (-10000, -10000, 10000, 10000), (0, 0), (-1, 1, 1329, 0)),
+                                        ("rect", (77, 520, 1317, 595), (0, 0), (1, 1, 0, 0)),
+                                        ("rect", (117, 851, 1282, 926), (0, 0), (1, 1, 0, 0))], 1467)),
     "Ꞵ": ("attach", "B", ("c", [(-10000, -10000, 295, 120)],
                           [("rect", (294, -413, 582, 130), (0, 0), (1, 1, 0, 0)),
                            ("rect", (127, -480, 749, -413), (0, 0), (1, 1, 0, 0))])),
