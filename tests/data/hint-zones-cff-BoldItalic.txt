@@ -1,5 +1,5 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
 cff OE:bot-35 11                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs); ᶻ's curl squared (a 35 px slit) and OE's CFF bottom at 11 sizes accepted by the person; ѵ
 cff OE:top1473 23                # 2026-10-28: whole arcs faired (fair_arcs); OE oe.sc ɶ CFF tops/bottoms 0.08-0.27 px off O's row, accepted by the person
-cff uni0188.sc:top1067 5         # PENDING REVIEW 2026-11-06: the Bold Italic ƈ.sc's open curl (ITALIC_BOLD_RECIPES); its top at c.sc's 1067 hinted 5 sizes off the small caps' zone, c.sc not: not yet seen by the person
-cff uni0463:top884 4             # PENDING REVIEW 2026-10-28: new with the Bold Italic by strokes; ѣ top 4 units off the x-height zone, not yet seen by the person
+cff uni0188.sc:top1067 5         # retention accepted 2026-11-08: ƈ.sc's open curl (ITALIC_BOLD_RECIPES) 0.08-0.09 px above o.sc at 13-17 ppem, the extra row at most 5/255
+cff uni0463:top884 4             # retention accepted 2026-11-08: ѣ's three round tops at 884, no flat for the zone; 0.08-0.42 px above x at 8/13/14/17 ppem, the extra row at most 50/255 (17 ppem)

@@ -1,4 +1,4 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
-cff u1D516:top1473 5             # PENDING REVIEW 2026-10-26: extremes split on the slant; 𝔖 top 0.08-0.48 px above O at 8-11 and 24 ppem (was up to 0.31)
+cff u1D516:top1473 5             # retention accepted 2026-11-08: extremes split on the slant; 𝔖 top 0.08-0.47 px above O at 8-11 and 24 ppem, the extra row at most 28/255 (11 ppem)
 cff uni044A:top884 1             # retention accepted 2026-10-26: ъ flag 0.172 px above x at 8 ppem
 cff uni1E9E:top1473 20           # retention accepted 2026-10-26: ẞ top 0.078–0.203 px above O at 13–32 ppem

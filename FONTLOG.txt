@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-08 Last pending CFF hinting findings retained
+  Italic 𝔖, Bold Italic ƈ.sc and ѣ: hinted tops 0.08-0.47 px above their
+  reference letters' rows (O, o.sc, x) at a few sizes; the extra pixel row
+  carries at most 50/255 ink (ѣ at 17 ppem, whose three round tops have
+  no flat edge for the zone), nothing seen in the raster proofs. Kept as
+  they are (the person); no PENDING REVIEW entries remain in
+  tests/data/hint-zones-cff-*.txt.
+
 2026-11-08 Bold Italic review complete; italic ж mirrored
   The last 24 Bold Italic drafts accepted: the old-style figures, U.horn
   and u.sc.horn (its stem evened under the horn), the 12 Bulgarian forms.

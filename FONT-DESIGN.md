@@ -7,9 +7,8 @@ A diagnostic finding is a candidate for review, not proof of a design fault.
 The exception files in `tests/data/` are the current inventories; do not copy
 counts here, where they quickly become stale. Every entry in
 `hint-zones*.txt` and `glyph-lint-*.txt` carries a dated verdict
-(2026-10-26); reopen one only on new evidence (a raster or a proof).
-One awaits it: Fraktur 𝔖's CFF top in both italics after its curves were
-split at their extremes (marked PENDING REVIEW in hint-zones-cff-*.txt).
+(2026-10-26, the last pending ones 2026-11-08); reopen one only on new
+evidence (a raster or a proof).
 
 ## Construction and optical quality
 
