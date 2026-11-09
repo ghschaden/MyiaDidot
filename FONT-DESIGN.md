@@ -449,11 +449,9 @@ evidence (a raster or a proof).
 
 ## Ligatures still to make (2026-11-08)
 
-Attested ligatures the font does not have yet, in the order agreed:
-
-- ch ck tz (dlig or hlig): from Fraktur, used in some 19th-century German
-  Antiqua and in Linux Libertine.
-- ſs (hist): the long s before s, the source of ß; rarely needed.
+None. Dropped 2026-11-09 after drafts: ch ck tz (from Fraktur, as in
+Linux Libertine) and ſs. Reproducing Fraktur ligatures in a Didot did not
+seem useful.
 
 Done 2026-11-08 (FONTLOG): Th th tt, ſſb ſſh ſſk ſſt ſj ſſj, U+FB05
 U+FB06; 2026-11-09: sp, Qu.
