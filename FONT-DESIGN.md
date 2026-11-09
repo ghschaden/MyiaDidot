@@ -312,8 +312,9 @@ evidence (a raster or a proof).
   stand upright from the stroking itself (the fit follows its samples
   within 2 units; s з 3 2 alike), not a fault of г's; still to decide
   whether the counters should keep rounder. A sweep of Bold Italic
-  corners where the Italic is smooth found about 190 candidates (many
-  designed: crotches, ligature joins, ⁂), not yet reviewed. Limiting the
+  corners where the Italic is smooth (scripts/quality/corners.py) was
+  reviewed from its sheet and the flagged ones smoothed (2026-11-09,
+  smooth_joins.py; FONTLOG). Limiting the
   stroke gain on tight inner turns (tried 2026-11-02) only moved the bend
   and added corners (k r c W J): the strokes gain 34 across but 4 up and
   down, so a curl's upright side moves in far more than its top.
@@ -443,9 +444,10 @@ evidence (a raster or a proof).
   [Astra hook review](docs/hook-reference-reset-review-2026-11-07.md).
   a.ipa, formerly on no sheet, now has
   a focused four-style review and proofs: [IPA a review](docs/ipa-a-review-2026-11-06.md).
-  Accepted unchanged in all four styles (2026-11-06). Bold and Bold Italic
-  old-style figures (not drafts, so not on the sheets) have no recorded
-  acceptance; Regular old-style 3 and 5 changed after theirs.
+  Accepted unchanged in all four styles (2026-11-06). The old-style
+  figures now all have a recorded acceptance: the Bold Italic's
+  2026-11-08, the Regular's 3 5 and the Bold's ten 2026-11-09 (the Bold
+  4s' stems made upright: [old-style figures review](docs/oldstyle-figures-review-2026-11-09.md)).
 
 ## Ligatures still to make (2026-11-08)
 

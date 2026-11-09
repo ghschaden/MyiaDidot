@@ -25,8 +25,8 @@
 			<point x="98" y="-79" type="curve"/>
 			<point x="395" y="-79" type="line"/>
 			<point x="395" y="310" type="line"/>
-			<point x="558" y="402" type="line"/>
-			<point x="639" y="402" type="line"/>
+			<point x="578" y="402" type="line"/>
+			<point x="659" y="402" type="line"/>
 			<point x="659" y="-79" type="line"/>
 			<point x="785" y="-79" type="line"/>
 			<point x="785" y="-121" type="line"/>
@@ -36,4 +36,26 @@
 			<point x="395" y="-121" type="line"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>glyph</key>
+				<string>71cd5714e9c1</string>
+				<key>review</key>
+				<string>docs/oldstyle-figures-review-2026-11-09.md</string>
+			</dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>source</key>
+				<string>378a652df933</string>
+				<key>why</key>
+				<string>stem's right edge upright as the Regular's: the emboldening leaned it 20 units above the crossbar; the stem's top moved out by that</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>
