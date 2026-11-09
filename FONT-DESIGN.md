@@ -467,7 +467,10 @@ Verdicts given on the sheets; the fixes still to make:
   candidates in build/glyph-review/bold-tilde/.
 - Steps: Regular 𝑙 (U+1D459) to smooth; ɉ's bar too short on the right;
   ɝ's hook badly attached; Italic Ⱦ not flat on top; ₮'s bars too short
-  on the right, off centre; ⱦ.sc a step on top.
+  on the right, off centre; ⱦ.sc a step on top. Bold: ɉ's bar off
+  centre; 𝑙 to smooth; ǥ's bar too short; ₿'s bars unequal, the right
+  one odd at its top and bottom. Bold Italic: 𝑙 to smooth. 𝑙 in every
+  style (draft_letterlike.py italic_l), ɉ in the Regular and Bold.
 Seen and settled (2026-11-09): the Bold's serifs (ﬀb ﬀh ﬀt ſſl, Щ, m.sc
 ɦ.sc, N M U against H) but for the f-ligatures; the Bold's hooks after
 stem_handles (J ȷ ɽ ɳ Œ) and its middle tildes but for ᵰ ᵭ; the other
