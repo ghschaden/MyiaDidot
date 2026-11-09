@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="t_h" format="2">
-	<advance width="1840"/>
+	<advance width="1870"/>
 	<outline>
 		<contour>
-			<point x="666" y="1" type="line"/>
-			<point x="666" y="55" type="line"/>
-			<point x="807" y="55" type="line"/>
-			<point x="807" y="829" type="line"/>
+			<point x="696" y="1" type="line"/>
+			<point x="696" y="55" type="line"/>
+			<point x="837" y="55" type="line"/>
+			<point x="837" y="829" type="line"/>
 			<point x="455" y="829" type="line"/>
 			<point x="455" y="192" type="line" smooth="yes"/>
 			<point x="455" y="191"/>
@@ -39,40 +39,40 @@
 			<point x="441" y="1066"/>
 			<point x="432" y="984"/>
 			<point x="432" y="884" type="curve"/>
-			<point x="807" y="884" type="line"/>
-			<point x="807" y="1440" type="line"/>
-			<point x="666" y="1441" type="line"/>
-			<point x="666" y="1495" type="line"/>
-			<point x="1068" y="1496" type="line"/>
-			<point x="1068" y="767" type="line"/>
-			<point x="1141" y="852"/>
-			<point x="1248" y="900"/>
-			<point x="1360" y="900" type="curve" smooth="yes"/>
-			<point x="1447" y="900"/>
-			<point x="1542" y="871"/>
-			<point x="1591" y="814" type="curve" smooth="yes"/>
-			<point x="1646" y="750"/>
-			<point x="1671" y="679"/>
-			<point x="1671" y="607" type="curve" smooth="yes"/>
-			<point x="1671" y="55" type="line"/>
-			<point x="1812" y="55" type="line"/>
-			<point x="1812" y="1" type="line"/>
-			<point x="1269" y="1" type="line"/>
-			<point x="1269" y="55" type="line"/>
-			<point x="1410" y="55" type="line"/>
-			<point x="1410" y="642" type="line" smooth="yes"/>
-			<point x="1410" y="735"/>
-			<point x="1410" y="821"/>
-			<point x="1285" y="821" type="curve" smooth="yes"/>
-			<point x="1188" y="821"/>
-			<point x="1130" y="747"/>
-			<point x="1091" y="673" type="curve" smooth="yes"/>
-			<point x="1068" y="628"/>
-			<point x="1068" y="513"/>
-			<point x="1068" y="412" type="curve" smooth="yes"/>
-			<point x="1068" y="55" type="line"/>
-			<point x="1208" y="55" type="line"/>
-			<point x="1208" y="1" type="line"/>
+			<point x="837" y="884" type="line"/>
+			<point x="837" y="1440" type="line"/>
+			<point x="696" y="1441" type="line"/>
+			<point x="696" y="1495" type="line"/>
+			<point x="1098" y="1496" type="line"/>
+			<point x="1098" y="767" type="line"/>
+			<point x="1171" y="852"/>
+			<point x="1278" y="900"/>
+			<point x="1390" y="900" type="curve" smooth="yes"/>
+			<point x="1477" y="900"/>
+			<point x="1572" y="871"/>
+			<point x="1621" y="814" type="curve" smooth="yes"/>
+			<point x="1676" y="750"/>
+			<point x="1701" y="679"/>
+			<point x="1701" y="607" type="curve" smooth="yes"/>
+			<point x="1701" y="55" type="line"/>
+			<point x="1842" y="55" type="line"/>
+			<point x="1842" y="1" type="line"/>
+			<point x="1299" y="1" type="line"/>
+			<point x="1299" y="55" type="line"/>
+			<point x="1440" y="55" type="line"/>
+			<point x="1440" y="642" type="line" smooth="yes"/>
+			<point x="1440" y="735"/>
+			<point x="1440" y="821"/>
+			<point x="1315" y="821" type="curve" smooth="yes"/>
+			<point x="1218" y="821"/>
+			<point x="1160" y="747"/>
+			<point x="1121" y="673" type="curve" smooth="yes"/>
+			<point x="1098" y="628"/>
+			<point x="1098" y="513"/>
+			<point x="1098" y="412" type="curve" smooth="yes"/>
+			<point x="1098" y="55" type="line"/>
+			<point x="1238" y="55" type="line"/>
+			<point x="1238" y="1" type="line"/>
 		</contour>
 	</outline>
 	<lib>
@@ -80,11 +80,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-08</string>
+				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>f9be77d86c6f</string>
+				<string>2fb77815b5f2</string>
 				<key>review</key>
-				<string>build/proofs/th-ligatures.pdf: Th with the T's bracket flowing into h (0.33), th with the crossbar run on (590)</string>
+				<string>th widened on request (Regular 620, Italic 70; tt unchanged), 2026-11-09</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

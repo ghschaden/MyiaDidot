@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="t_h" format="2">
-	<advance width="1716"/>
+	<advance width="1746"/>
 	<outline>
 		<contour>
-			<point x="648" y="0" type="line"/>
-			<point x="648" y="48" type="line"/>
-			<point x="790" y="48" type="line"/>
-			<point x="790" y="836" type="line"/>
+			<point x="678" y="0" type="line"/>
+			<point x="678" y="48" type="line"/>
+			<point x="820" y="48" type="line"/>
+			<point x="820" y="836" type="line"/>
 			<point x="372" y="836" type="line"/>
 			<point x="372" y="190" type="line" smooth="yes"/>
 			<point x="372" y="94"/>
@@ -36,41 +36,41 @@
 			<point x="381" y="1076"/>
 			<point x="372" y="989"/>
 			<point x="372" y="884" type="curve"/>
-			<point x="790" y="884" type="line"/>
-			<point x="790" y="1448" type="line"/>
-			<point x="648" y="1448" type="line"/>
-			<point x="648" y="1496" type="line"/>
-			<point x="954" y="1496" type="line"/>
-			<point x="954" y="674" type="line"/>
-			<point x="966" y="671" type="line"/>
-			<point x="1030" y="822"/>
-			<point x="1142" y="900"/>
-			<point x="1278" y="900" type="curve" smooth="yes"/>
-			<point x="1368" y="900"/>
-			<point x="1428" y="868"/>
-			<point x="1471" y="815" type="curve" smooth="yes"/>
-			<point x="1518" y="757"/>
-			<point x="1534" y="676"/>
-			<point x="1534" y="608" type="curve" smooth="yes"/>
-			<point x="1534" y="48" type="line"/>
-			<point x="1676" y="48" type="line"/>
-			<point x="1676" y="0" type="line"/>
-			<point x="1228" y="0" type="line"/>
-			<point x="1228" y="48" type="line"/>
-			<point x="1370" y="48" type="line"/>
-			<point x="1370" y="644" type="line" smooth="yes"/>
-			<point x="1370" y="744"/>
-			<point x="1333" y="828"/>
-			<point x="1206" y="828" type="curve" smooth="yes"/>
-			<point x="1114" y="828"/>
-			<point x="1048" y="753"/>
-			<point x="1010" y="677" type="curve" smooth="yes"/>
-			<point x="963" y="584"/>
-			<point x="954" y="515"/>
-			<point x="954" y="412" type="curve" smooth="yes"/>
-			<point x="954" y="48" type="line"/>
-			<point x="1096" y="48" type="line"/>
-			<point x="1096" y="0" type="line"/>
+			<point x="820" y="884" type="line"/>
+			<point x="820" y="1448" type="line"/>
+			<point x="678" y="1448" type="line"/>
+			<point x="678" y="1496" type="line"/>
+			<point x="984" y="1496" type="line"/>
+			<point x="984" y="674" type="line"/>
+			<point x="996" y="671" type="line"/>
+			<point x="1060" y="822"/>
+			<point x="1172" y="900"/>
+			<point x="1308" y="900" type="curve" smooth="yes"/>
+			<point x="1398" y="900"/>
+			<point x="1458" y="868"/>
+			<point x="1501" y="815" type="curve" smooth="yes"/>
+			<point x="1548" y="757"/>
+			<point x="1564" y="676"/>
+			<point x="1564" y="608" type="curve" smooth="yes"/>
+			<point x="1564" y="48" type="line"/>
+			<point x="1706" y="48" type="line"/>
+			<point x="1706" y="0" type="line"/>
+			<point x="1258" y="0" type="line"/>
+			<point x="1258" y="48" type="line"/>
+			<point x="1400" y="48" type="line"/>
+			<point x="1400" y="644" type="line" smooth="yes"/>
+			<point x="1400" y="744"/>
+			<point x="1363" y="828"/>
+			<point x="1236" y="828" type="curve" smooth="yes"/>
+			<point x="1144" y="828"/>
+			<point x="1078" y="753"/>
+			<point x="1040" y="677" type="curve" smooth="yes"/>
+			<point x="993" y="584"/>
+			<point x="984" y="515"/>
+			<point x="984" y="412" type="curve" smooth="yes"/>
+			<point x="984" y="48" type="line"/>
+			<point x="1126" y="48" type="line"/>
+			<point x="1126" y="0" type="line"/>
 		</contour>
 	</outline>
 	<lib>
@@ -78,11 +78,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-08</string>
+				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>47e44fb567d6</string>
+				<string>2aa5ae8a6a94</string>
 				<key>review</key>
-				<string>build/proofs/th-ligatures.pdf: Th with the T's bracket flowing into h (0.33), th with the crossbar run on (590)</string>
+				<string>th widened to 620 on request (build/proofs th sheet, 2026-11-09)</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

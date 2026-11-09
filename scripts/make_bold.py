@@ -304,6 +304,14 @@ ITALIC_BOLD_RECIPES = {
     # Italic's 60 and AY, as heavy as emboldened (69; at 60 it stood lighter
     # than g.sc's own bar, 64, as Ǥ's does not: 76 against G's 73)
     "ǥ.sc": ("bar", "g.sc", ("s", 190, "last", None, 60 + AY)),
+    # Ⱦ ⱦ.sc: the slash hid in the T's arm and stem, only its ends showing
+    # ("the bar is not very visible", 2026-11-09): wider (0.15 of the ink's
+    # width further out each side) and 60 lower, flatter, so it crosses the
+    # white under the arm and beside the stem, a quarter heavier than the
+    # Regular's (chosen 2026-11-09 from heavier x1.5, x2); its top at the
+    # top line as before (40 higher, its square end stood a peak on it)
+    "Ⱦ": ("slash", "T", ("c", "box", 0.10, -140, 0.90, 1434, 96)),
+    "ⱦ.sc": ("slash", "t.sc", ("s", "box", 0.10, -120, 0.90, 1040, 83)),
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
     # At y=600 the upright ɟ stem spans about 335..586. The light recipe's

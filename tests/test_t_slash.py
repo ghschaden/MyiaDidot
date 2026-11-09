@@ -37,7 +37,9 @@ def test_t_slash_counter_repair():
     assert pathops.op(after, before, pathops.PathOp.DIFFERENCE).area > 300
     assert pathops.op(before, after, pathops.PathOp.DIFFERENCE).area == 0
     assert glyph == expected  # All other contours, metadata and anchors survive.
-    assert len(glyph.contours) == 2  # Outer outline and upper opening.
+    # Outer outline, upper opening and, the slash longer (2026-11-09), the
+    # white it closes above the foot serif left of the stem, as the Italic's
+    assert len(glyph.contours) == 3
     assert not lint(font, [glyph.name])
     finish(font)
     assert glyph == expected

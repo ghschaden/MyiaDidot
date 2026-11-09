@@ -26,6 +26,20 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 th wider; Bold Italic Ⱦ ⱦ.sc slash visible
+  th ("a bit tight"): the h 620 after the t in the upright styles (was
+  590; the Bold rebuilt from its own letters), 70 nearer than after t in
+  the italics (was 100); tt keeps its spacing (TT_CLOSER, ITALIC_TT_CLOSER:
+  it had followed th's). Bold Italic Ⱦ ⱦ.sc: the slash hid in the T's arm
+  and stem, only its ends showing; now its own recipe (make_bold
+  ITALIC_BOLD_RECIPES): 0.15 of the ink's width further out each side and
+  60 lower, flatter, so it crosses the white under the arm and beside the
+  stem, a quarter heavier than the Regular's, ending level at the top line
+  (derive.slash_shape: a box slash's own thickness, cut there). It closes
+  the white above the foot serif, as the Italic's; the tops no longer
+  stand over the cap line. Chosen from sheets (heavier x1.5, x2; th 620
+  650, 70 40).
+
 2026-11-09 Bold Italic: corners smoothed, serif brackets redrawn
   From the corners sheet (build/corners/bolditalic-letters.pdf: joins the
   Italic has smooth, turning 11-33 degrees in the Bold Italic). A new last

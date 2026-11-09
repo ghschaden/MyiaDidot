@@ -139,8 +139,9 @@ def without_crossbars(font, path, stems):
 
 
 TH_FLOW = 0.33  # Th: the T's right bracket at this size flowing into the h's stem (chosen 2026-11-08 from 1, 0.5, 0.33)
-TH_CLOSER = 140  # th: t's width (730) - TH_SHIFT: the h this much nearer than set after t
-TH_SHIFT = 590  # th: the h this far from the t (its foot serif 44 clear of t's tail; chosen 2026-11-08 from 620 560 520)
+TH_CLOSER = 110  # th: t's width (730) - TH_SHIFT: the h this much nearer than set after t
+TH_SHIFT = 620  # th: the h this far from the t (590 chosen 2026-11-08 from 620 560 520; "a bit tight", 620 chosen 2026-11-09 from 620 650)
+TT_CLOSER = 140  # tt: the second t as near as th's h was (590 after the t), kept so 2026-11-09
 
 
 def shifted(path, dx):
@@ -211,7 +212,7 @@ def t_h_ligature(font):
     return out, shift + font["h"].width
 
 
-def t_t_ligature(font, closer=TH_CLOSER):
+def t_t_ligature(font, closer=TT_CLOSER):
     """tt: two t's on one crossbar, the second as near as th's h."""
     bar = sorted({p.y for c in font["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
     xs = [p.x for c in font["t"].contours for p in c.points if p.type and bar[0] <= p.y <= bar[-1]]

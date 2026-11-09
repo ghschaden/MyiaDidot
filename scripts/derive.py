@@ -926,16 +926,41 @@ def bar_shape(font, source, band, arg):
 
 
 def slash_shape(font, source, band, arg):
-    """arg ('box', fx0, y0, fx1, y1): from (x0 + fx0*w, y0) to (x0 + fx1*w,
-    y1) in the ink box, like Ø; or ('short', y, length, angle, which): a
-    stroke of that length centred on a stem at height y, like ł."""
+    """arg ('box', fx0, y0, fx1, y1[, thickness]): from (x0 + fx0*w, y0) to
+    (x0 + fx1*w, y1) in the ink box, like Ø, a heavier style's own
+    thickness if given (the Bold Italic's Ⱦ ⱦ.sc); or ('short', y, length,
+    angle, which): a stroke of that length centred on a stem at height y,
+    like ł."""
     t = SLASH[band]
     rec = RecordingPen()
     if arg[0] == "box":
-        _, fx0, y0, fx1, y1 = arg
+        _, fx0, y0, fx1, y1, *own = arg
+        t = own[0] if own else t
         x0, _, x1, _ = ink_bounds(font, source)
         w = x1 - x0
-        stroke(rec, (x0 + fx0 * w, y0), (x0 + fx1 * w, y1), t)
+        p0, p1 = (x0 + fx0 * w, y0), (x0 + fx1 * w, y1)
+        if not own:
+            stroke(rec, p0, p1, t)
+            return rec
+        # a heavier style's own slash ends level at y1, flush in the top
+        # line (its square end stood a corner over it): run on, cut level,
+        # its corners in stroke's order (so it winds as stroke draws it)
+        n = math.dist(p0, p1)
+        ux, uy = (p1[0] - p0[0]) / n, (p1[1] - p0[1]) / n
+        q = (p1[0] + ux * t, p1[1] + uy * t)
+        ox, oy = -uy * t / 2, ux * t / 2
+        corners = [(p0[0] + ox, p0[1] + oy), (q[0] + ox, q[1] + oy), (q[0] - ox, q[1] - oy), (p0[0] - ox, p0[1] - oy)]
+        kept = []
+        for a, b in zip(corners, corners[1:] + corners[:1]):
+            if a[1] <= y1:
+                kept.append(a)
+            if (a[1] - y1) * (b[1] - y1) < 0:
+                k = (y1 - a[1]) / (b[1] - a[1])
+                kept.append((a[0] + k * (b[0] - a[0]), y1))
+        rec.moveTo(kept[0])
+        for pt in kept[1:]:
+            rec.lineTo(pt)
+        rec.closePath()
     else:
         _, y, length, angle, which = arg
         stems = stems_at(font, source, y)

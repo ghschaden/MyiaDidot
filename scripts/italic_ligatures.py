@@ -39,7 +39,8 @@ LONGS = (
 NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "s_p", "T_h", "t_h", "t_t")
 
 
-ITALIC_TH_CLOSER = 100  # th: the h this much nearer than after t (chosen 2026-11-08 from 140 100 60)
+ITALIC_TH_CLOSER = 70  # th: the h this much nearer than after t (100 chosen 2026-11-08 from 140 100 60; "a bit tight", 70 chosen 2026-11-09 from 70 40)
+ITALIC_TT_CLOSER = 100  # tt: the second t as near as th's h was, kept so 2026-11-09
 TH_PEAK = 1600  # th: the arch's top, above the ascender (1434) and below the accents
 
 
@@ -224,5 +225,5 @@ def make(font):
     # away, the h ITALIC_TH_CLOSER nearer than set after t
     put("t_h", *italic_th(up), [up["t"].width - ITALIC_TH_CLOSER])
     # tt: two t's on one crossbar, the second as near as th's h
-    put("t_t", *t_t_ligature(up, ITALIC_TH_CLOSER), [up["t"].width - ITALIC_TH_CLOSER])
+    put("t_t", *t_t_ligature(up, ITALIC_TT_CLOSER), [up["t"].width - ITALIC_TT_CLOSER])
     return made
