@@ -2270,6 +2270,11 @@ HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}
 # italic's (ơ: 19 % of o's ink, EB Garamond 22, Libertinus 34, Charis 24):
 # scaled about its tip (where it attaches), the Bold Italic's with it
 ITALIC_HORN = {"horn": 1.2, "Horn": 1.2}
+# the lowercase dot smaller than the Regular's, about its centre (the Bold
+# Italic follows): 1.52 of the stem as the Regular's, Bodoni's italic 1.44,
+# Old Standard's 1.32 (its roman 1.45); 0.948 (236 across) chosen
+# 2026-11-09 from 0.948 and 0.867 ("a bit fat for the italics")
+ITALIC_MARK_SCALE = {"dotaccent": 0.948}
 
 
 def swapped_sidebearings(font):
@@ -2350,7 +2355,11 @@ ANCHOR_NUDGE = {("c", "Cedilla"): (0, -4), ("e", "Cedilla"): (0, -10),
                 # The Roman t dot rose 59 units after the italic family was
                 # reviewed. Retain its recipe anchor for hooked/tailed t;
                 # t_dot_anchor sets the plain italic t independently below.
-                ("t", "Dotaccent"): (-59 * SLANT, -59)}
+                ("t", "Dotaccent"): (-59 * SLANT, -59),
+                # ė ż: the dot 90 further left (it stood right of the
+                # letter, 2026-11-09, chosen from 30 60 90); the Bold Italic
+                # keeps its own (make_bold ITALIC_ANCHOR_NUDGE)
+                ("e", "Dotaccent"): (-90, 0), ("z", "Dotaccent"): (-90, 0)}
 
 
 def roman_anchor(roman, a, width_it):
@@ -2610,6 +2619,13 @@ def main():
             if g.name in ITALIC_HORN:
                 k = ITALIC_HORN[g.name]
                 t = (k, 0, SLANT * k, k, 440 * (1 - k), 0)  # scaled about (440, 0), then sloped
+            if g.name in ITALIC_MARK_SCALE:
+                k = ITALIC_MARK_SCALE[g.name]
+                (x0, y0), (x1, y1) = ((min(p.x for c in g.contours for p in c.points), min(p.y for c in g.contours for p in c.points)),
+                                      (max(p.x for c in g.contours for p in c.points), max(p.y for c in g.contours for p in c.points)))
+                cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+                # scaled about its centre, then sloped
+                t = (k, 0, SLANT * k, k, cx * (1 - k) + SLANT * cy * (1 - k), cy * (1 - k))
             if g.contours:
                 rec = RecordingPen()
                 for c in g.contours:

@@ -26,6 +26,22 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 The italics' dots
+  The Italic's dot was the Regular's (1.52 of the i stem; Old Standard's
+  italic 1.32, Bodoni's 1.44): now 0.948 of it, 236 across (make_italic
+  ITALIC_MARK_SCALE), in every dotted letter and the combining dots; the
+  Bold Italic follows. The Italic made ɨ ɉ ʝ ⁱ ʲ ᶤ from i and j before
+  their dots were set from the anchors, so theirs stood 84-113 units right
+  of i's and j's: a finishing pass (i_bar_dot.py) gives them their base's
+  dot (the superscripts', scaled as their body). ɨ in the Bold Italic,
+  emboldened whole, now has i's dot (its own was 368 x 279 against 288 x
+  256), where i has it. ė ż: the Italic's dot 90 further left (its anchor;
+  ɘ ʐ ʑ ᵶ е and the others made of e and z with it); the Bold Italic's dots
+  stay as they were. ʝ ʲ in the Bold Italic now always rebuilt on its own j
+  (the rebuild had stopped being taken). ʲ ᶤ in the Bold Italic take the
+  Italic's new side bearings (+7, +1); the kerns before ϳ are 7 tighter in
+  the Italic; y's dot below keeps its gap to the descender.
+
 2026-11-09 Bold Italic ɉ and Bold ɮ on their own bases
   ɉ: emboldened whole, its dot came out larger than j's; now the bar on
   the Bold Italic's j (its dot j's), centred as the Italic's and as heavy

@@ -28,10 +28,11 @@ from test_stroke_steps import FIXED
 
 BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "uni01B4", "uni019C"]
 # what the repair changed in the finished letters, reviewed and accepted
-# (10ddbcdc): y's DotBelow 5 units right; Ɯ, U twinned, 36
-# narrower, a 1.9 degree joint under its middle serif
+# (10ddbcdc): y's DotBelow 5 units right, and 10 left with the italics'
+# smaller dot (2026-11-09: y_dot.py keeps the dot's left edge at its gap);
+# Ɯ, U twinned, 36 narrower, a 1.9 degree joint under its middle serif
 WIDTHS = {"uni019C": (2446, 2410)}
-ANCHORS = {"y": {"DotBelow": (5, 0)}}
+ANCHORS = {"y": {"DotBelow": (-5, 0)}}
 # ų: its stem's foot, a crotch drawn as a short line, now meets as one
 # point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it
 # draws the stem's inside a little bowed, a wobble the size of a unit, not

@@ -166,6 +166,11 @@ ITALIC_BOLD_REBUILD = {
     # ɉ: emboldened whole its dot came out larger than j's (2026-11-09); the
     # bar on the Bold Italic's j, its arms then lengthened by j_bar.py
     "uni0249": "ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_RECIPES)",
+    # ʝ ʲ: made on the Bold Italic's own j whatever the Italic's (its dot
+    # set as j's, 2026-11-09, the rebuild was no longer taken and the
+    # emboldened Italic letter came back, its spacing 19 and 11 wider)
+    "uni029D": "ʝ: the crossed tail on the Bold Italic's j",
+    "uni02B2": "ʲ: the Bold Italic's j made small",
     # ʊ: Ʊ made small, emboldened whole from the Italic's: its top-left
     # flag ran into the bowl and closed the counter (2026-11-09); made
     # small from the Bold Italic's Ʊ, which keeps the gap
@@ -638,7 +643,7 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni026E": "ɮ: a notch where l's stem meets ʒ",
     "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",
-    "uni0268": "ɨ: Old Standard's own ɨ (its dot not i's); the recipe's i with a bar is another letter",
+    "uni0268": "ɨ: Old Standard's own ɨ (its dot set as i's by i_bar_dot.py); the recipe's i with a bar is another letter",
     "uni026D": "ɭ: a step on the stem at the cut",
     "uni027B": "ɻ: a step on the stem's right side at the cut",
     "uni04B7": "ҷ: a notch at the tail, the stem shifted below the cut",
@@ -857,7 +862,13 @@ STROKE_OUT_MIN = 4
 # the horn on u right, so that its outer edge runs on from the stem's as in
 # the Italic (the stem top 840-981, the horn there 883-984): the heavier
 # stem's top reached 1089, the horn's edge 1044, a shelf beside it
-ITALIC_ANCHOR_NUDGE = {("u", "Horn"): 45}
+# ė ż: the Italic's dot 90 further left (make_italic ANCHOR_NUDGE); the
+# Bold Italic's stays where it was ("ok as is", 2026-11-09): 90 * KX back
+ITALIC_ANCHOR_NUDGE = {("u", "Horn"): 45, ("e", "Dotaccent"): 93, ("z", "Dotaccent"): 94,
+                       # and the letters made of e and z, which took the
+                       # Italic's anchor with them (ɘ turned: the other way)
+                       ("uni0258", "Dotaccent"): -94, ("uni0291", "Dotaccent"): 94,
+                       ("uni0435", "Dotaccent"): 93, ("uni1D76", "Dotaccent"): 94}
 # Bold Italic optical-pair corrections from the pinned-reference spacing
 # comparison (scripts/quality/pairs.py). Values are final Bold Italic kern
 # values in font units; they are applied after the source kerning is scaled.
