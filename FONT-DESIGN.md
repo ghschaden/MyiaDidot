@@ -448,6 +448,31 @@ evidence (a raster or a proof).
   2026-11-08, the Regular's 3 5 and the Bold's ten 2026-11-09 (the Bold
   4s' stems made upright: [old-style figures review](docs/oldstyle-figures-review-2026-11-09.md)).
 
+## Review of the open items, 2026-11-09 (sheets in build/glyph-review/open-items/)
+
+Verdicts given on the sheets; the fixes still to make:
+- Bold Italic entry strokes: the inner turn of the entry hook into the
+  left downstroke reverses its curvature, one shape in every letter
+  that has it: u v w y ı ц ш щ и at (342, 685) only in the Bold Italic
+  (the stroking's), n m r ŋ п т ɲ near (291-315, 600-665), doubling
+  Old Standard's own at (314, 609). A fault of the family: in
+  stroke_bold, not letter by letter. k accepted as it is.
+- Bold f-ligatures (ff fi fl ffi ffl and those made of them, ﬀb ﬀh ...):
+  "the fs are drawn not well, especially over the bar"; the stem after
+  the arch leans (wider at its foot); ﬀh's shoulder kinked. Cause: the
+  Regular's drawn ligatures emboldened whole. Proposed: made from the
+  Bold's own f (draft_ligatures), drafts for review.
+- Bold middle tilde on ᵰ ᵭ: its ends "should turn a bit more on the
+  sides" (stretched across two stems, 1.72-1.86 times, they flatten);
+  candidates in build/glyph-review/bold-tilde/.
+- Steps: Regular 𝑙 (U+1D459) to smooth; ɉ's bar too short on the right;
+  ɝ's hook badly attached; Italic Ⱦ not flat on top; ₮'s bars too short
+  on the right, off centre; ⱦ.sc a step on top.
+Seen and settled (2026-11-09): the Bold's serifs (ﬀb ﬀh ﬀt ſſl, Щ, m.sc
+ɦ.sc, N M U against H) but for the f-ligatures; the Bold's hooks after
+stem_handles (J ȷ ɽ ɳ Œ) and its middle tildes but for ᵰ ᵭ; the other
+step candidates.
+
 ## Coverage: the end aim (2026-11-09)
 
 Full IPA (with extIPA and the phonetic blocks) and Latin as wide as
