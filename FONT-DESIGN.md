@@ -471,6 +471,8 @@ Verdicts given on the sheets; the fixes still to make:
   with c = -min(0.4, 1 - 1.2/sx) where sx > 1.2 (ᵭ's ends 1.20, its middle
   2.52; ɫ ᵮ ᵲ ᵵ, unstretched, unchanged). ᵯ: check its inner stems for
   spikes. All four styles follow; show the Regular's and the italics'.
+  Also asked (2026-11-09): the ends thinner, tapering to their tips;
+  drafted with "more" for review.
 - Steps: Regular 𝑙 (U+1D459) to smooth; ɉ's bar too short on the right;
   ɝ's hook badly attached; Italic Ⱦ not flat on top; ₮'s bars too short
   on the right, off centre; ⱦ.sc a step on top. Bold: ɉ's bar off
