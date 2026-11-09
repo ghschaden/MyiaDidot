@@ -25,6 +25,10 @@ part of a 2 hanging from the centre of the O's bottom, down its neck to a
 sharp point, back up nearly along it and away under the Q and the u as a
 gently waving swash; in the italics (QU_TAIL_LOOP) the 2's head loops in
 the O first.
+
+In the Bold, finish() and finish_f() (finalization passes) make Th th tt Qu
+and the f- and long-s ligatures (ff fi fl ffi ffl fj ffj too) again from
+its own final letters.
 """
 
 import argparse
@@ -115,31 +119,41 @@ F_STEM = (230, 394)
 L_STEM = 220  # left of the l's stem, and of b h k
 
 
-def f_ligature(font, base, letter):
-    """base (fl or ffl) with letter in place of the l."""
+def f_ligature(font, base, letter, bar=None):
+    """base (fl or ffl) with letter in place of the l. bar: the f's
+    crossbar as measured (f_bar; the Bold), the letter then set by its own
+    stem and the cut kept off the crossbar; None: the Regular's F_BAR and
+    L_STEM."""
     lx = stems_at(font, base, 300)[-1][0]
-    dx = lx - L_STEM
+    fx = stems_at(font, base, 300)[-2][0]
+    dx = lx - (L_STEM if bar is None else stems_at(font, letter, 1100)[0][0])
+    bar = bar or F_BAR
     if letter == "t":
         dx = lx - stems_at(font, "t", 300)[0][0]
-        keep = path_op(to_path(font, font[base]), rect_path(lx - 160, -BIG, BIG, 884), "DIFFERENCE")
-        part = path_op(to_path(font, font["t"]), rect_path(-BIG, 884, BIG, BIG), "DIFFERENCE")
+        keep = path_op(to_path(font, font[base]), rect_path(lx - 160, -BIG, BIG, bar[3]), "DIFFERENCE")
+        part = path_op(to_path(font, font["t"]), rect_path(-BIG, bar[3], BIG, BIG), "DIFFERENCE")
         # the f's crossbar (ending 610 after its last stem) runs on into the t's
-        fx = stems_at(font, base, 300)[-2][0]
-        keep = path_op(keep, rect_path(fx + F_BAR[2] - 20, 836, dx + 100, 884), "UNION")
+        keep = path_op(keep, rect_path(fx + bar[2] - 20, bar[1], dx + 100, bar[3]), "UNION")
     else:
-        keep = path_op(to_path(font, font[base]), rect_path(lx - 160, -BIG, BIG, 1250), "DIFFERENCE")
+        # the l's stem and foot cut away below 1250, not the f's crossbar
+        cut = path_op(rect_path(lx - 160, -BIG, BIG, bar[1] - 1),
+                      rect_path(max(lx - 160, fx + bar[2] + 1), bar[1] - 2, BIG, 1250), "UNION")
+        keep = path_op(to_path(font, font[base]), cut, "DIFFERENCE")
         part = path_op(to_path(font, font[letter]), rect_path(-BIG, 1300, BIG, BIG), "DIFFERENCE")
     rec = RecordingPen()
     part.draw(TransformPen(rec, (1, 0, 0, 1, dx, 0)))
     return path_op(keep, to_path(None, rec=rec), "UNION"), dx + font[letter].width
 
 
-def without_crossbars(font, path, stems):
-    """ſ from f: each f's crossbar removed, its stem kept."""
+def without_crossbars(font, path, stems, bar=None):
+    """ſ from f: each f's crossbar removed, its stem kept. bar: as
+    f_ligature's."""
+    stem = F_STEM[1] - F_STEM[0] if bar is None else bar[4]
+    bar = bar or F_BAR
     for sx in stems:
-        bar = rect_path(sx + F_BAR[0], F_BAR[1], sx + F_BAR[2], F_BAR[3])
-        bar = path_op(bar, rect_path(sx, -BIG, sx + F_STEM[1] - F_STEM[0], BIG), "DIFFERENCE")
-        path = path_op(path, bar, "DIFFERENCE")
+        cut = rect_path(sx + bar[0], bar[1], sx + bar[2], bar[3])
+        cut = path_op(cut, rect_path(sx, -BIG, sx + stem, BIG), "DIFFERENCE")
+        path = path_op(path, cut, "DIFFERENCE")
     return path
 
 
@@ -368,6 +382,137 @@ def finish(font):
         g.clearComponents()
         draw_path(font, font["t"], g, out)
         g.width = round(width)
+
+
+# The Bold's fl: from the f's top (its outer apex, and the inner one) the
+# arch over into the l's straight stem, as the Regular's fl emboldened
+# (2026-11-09) but for its stem, which leaned: offsets from the l's stem
+# (left edge), heights absolute.
+FL_ARCH = {
+    "out_h1": 99,  # the outer curve's first handle, after the f's apex
+    "out_h2": (42, 1462),
+    "meet": (71, 1428),  # where the outer curve meets the wedge up to the stem's top
+    "wedge": 148,  # the wedge's top
+    "in_foot": 1168,  # where the stem's inner edge stops being straight
+    "in_h": 1321,
+}
+
+
+def f_bar(font):
+    """The f's crossbar from its stem's left: (left, bottom, right, top,
+    stem width)."""
+    f = font["f"]
+    sa, sb = stems_at(font, "f", 300)[0]
+    pts = [p for c in f.contours for p in c.points if p.type]
+    low = min(p.y for p in pts if 700 < p.y < 1000)
+    top = min(p.y for p in pts if low < p.y < 1000)
+    xs = [p.x for p in pts if p.y == low]
+    return (min(xs) - sa, low, max(xs) - sa, top, sb - sa)
+
+
+def fl_shape(font, dx):
+    """fl: the f's contour with its ball replaced, from its outer apex to
+    its inner one, by FL_ARCH over into the l's straight stem (at dx),
+    spliced in so that both apexes stay smooth; the l below 1110."""
+    from fontTools.pens.pointPen import PointToSegmentPen
+
+    (contour,) = font["f"].contours
+    pts = [(p.x, p.y, p.type) for p in contour.points]
+    on = [i for i, p in enumerate(pts) if p[2]]
+    top = max(pts[i][1] for i in on)
+    apex = next(i for i in on if pts[i][1] == top)  # the outer apex
+    inner = max((i for i in on if pts[i][1] < top - 20 and pts[i][0] < pts[apex][0]), key=lambda i: pts[i][1])
+    ax, iy = pts[apex][0], pts[inner][1]
+    sl, sr = (x + dx for x in stems_at(font, "l", 300)[0])
+    a = FL_ARCH
+    arch = [(ax + a["out_h1"], top, None), (sl + a["out_h2"][0], a["out_h2"][1], None),
+            (sl + a["meet"][0], a["meet"][1], "curve"), (sl + a["wedge"], top, "line"), (sr, top, "line"),
+            (sr, 1100, "line"), (sl, 1100, "line"), (sl, a["in_foot"], "line"),
+            (sl, a["in_h"], None), (sl, iy, None)]
+    spliced = pts[:apex + 1] + arch + pts[inner:]
+    rec = RecordingPen()
+    pen = PointToSegmentPen(rec)
+    pen.beginPath()
+    for x, y, t in spliced:
+        pen.addPoint((x, y), segmentType=t)
+    pen.endPath()
+    l = path_op(to_path(font, font["l"]), rect_path(-BIG, 1110, BIG, BIG), "DIFFERENCE")
+    return path_op(to_path(None, rec=rec), shifted(l, dx), "UNION")
+
+
+def bar_join(font, end, letter, dx, bar):
+    """The f's crossbar (ending at end) run on into the top serif of
+    letter (ı ȷ, set at dx), as the old emboldened fi fj had it (their
+    gap, 58 in the Regular, closed): from 20 inside the bar to 20 inside
+    the serif, its top sloping to the serif's if they differ by a unit."""
+    pts = [p for c in font[letter].contours for p in c.points if p.type and bar[1] - 20 < p.y < bar[3] + 20]
+    left = min(p.x for p in pts)
+    top = max(p.y for p in pts if p.x == left)
+    low = min(p.y for p in pts if p.x == left)
+    rec = RecordingPen()
+    rec.moveTo((end - 20, bar[1]))
+    rec.lineTo((end - 20, bar[3]))
+    rec.lineTo((left + dx + 20, top))
+    rec.lineTo((left + dx + 20, low))
+    rec.closePath()
+    return to_path(None, rec=rec)
+
+
+def offset(font, lig, k, letter):
+    """Where lig's k-th stem (at 300) puts letter."""
+    return stems_at(font, lig, 300)[k][0] - stems_at(font, letter, 300)[0][0]
+
+
+def finish_f(font):
+    """The Bold's f-ligatures made again from its own final f
+    (finalization; decided 2026-11-09): emboldened whole from the
+    Regular's, their fs came out badly drawn over the crossbar, fl's
+    stem leaning, ﬀh's shoulder kinked. ff fi fj: the f beside the f, ı, ȷ;
+    fl: fl_shape; ffi ffl ffj: the f beside those; before b h k t:
+    f_ligature on fl ffl; the long-s ones: without_crossbars. Each keeps
+    its stems where the emboldened one had them and its advance width
+    (the Bold's spacing), and is marked a draft for review."""
+    if "f" not in font or "ff" not in font:
+        return
+    f = to_path(font, font["f"])
+    bar = f_bar(font)
+    shapes = {}
+    dff = offset(font, "ff", 1, "f")
+    shapes["ff"] = path_op(f, shifted(f, dff), "UNION")
+    unjoined = {}  # fi fj ffi ffj before the crossbar's join: their long-s forms
+    fx = stems_at(font, "f", 300)[0][0]
+    for name, letter in (("fi", "dotlessi"), ("f_j", "uni0237")):
+        if name in font:
+            dx = offset(font, name, 1, letter)
+            unjoined[name] = path_op(f, shifted(to_path(font, font[letter]), dx), "UNION")
+            shapes[name] = path_op(unjoined[name], bar_join(font, fx + bar[2], letter, dx, bar), "UNION")
+    shapes["fl"] = fl_shape(font, offset(font, "fl", 1, "l"))
+    for name, two in (("ffi", "fi"), ("ffl", "fl"), ("f_f_j", "f_j")):
+        if name in font and two in shapes:
+            shapes[name] = path_op(f, shifted(shapes[two], dff), "UNION")
+            if two in unjoined:
+                unjoined[name] = path_op(f, shifted(unjoined[two], dff), "UNION")
+
+    def put(name, out):
+        g = font[name]
+        width = g.width
+        g.clearContours()
+        g.clearComponents()
+        draw_path(font, font["f"], g, out)
+        g.width = width
+        g.lib[DRAFT_KEY] = True
+
+    for name, out in shapes.items():
+        put(name, out)
+    for name, base, letter in F_LIGATURES:
+        if name in font:
+            put(name, f_ligature(font, base, letter, bar)[0])
+    for name, src in LONGS_LIGATURES:
+        if name in font and src in font:
+            n_f = src.count("f") if "_" not in src else src.split("_").count("f")
+            stems = [a for a, _ in stems_at(font, src, 300)][:n_f]
+            path = unjoined.get(src) or to_path(font, font[src])
+            put(name, without_crossbars(font, path, stems, bar))
 
 
 # name, the fl it is built on, the letter; long-s ones: name, f-ligature

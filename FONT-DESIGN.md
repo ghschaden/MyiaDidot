@@ -464,7 +464,9 @@ Verdicts given on the sheets; the fixes still to make:
   Regular's drawn ligatures emboldened whole. Decided 2026-11-09: drafted
   from the Bold's own f (draft_ligatures): ff fi ffi the Bold f side by
   side, fl ffl its arch at the Bold's weight into a straight stem, those
-  before b h k t by f_ligature, the long-s ones as now; drafts for review.
+  before b h k t by f_ligature, the long-s ones as now; drafted 2026-11-09
+  (FONTLOG), for review; fi fj ffi ffj's crossbar joined to the serif in
+  the Regular and Bold (2026-11-09).
 - Steps: Regular 𝑙 (U+1D459) to smooth; ɉ's bar too short on the right;
   ɝ's hook badly attached; Italic Ⱦ not flat on top; ₮'s bars too short
   on the right, off centre; ⱦ.sc a step on top. Bold: ɉ's bar off

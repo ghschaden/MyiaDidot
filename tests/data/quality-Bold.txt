@@ -41,26 +41,20 @@ exclamdown smooth 2              # contrast-aware Bold (emboldened by stroke wei
 exclamdown width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 f extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 665,1383 9 units past
 f wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 663,1365 18 degrees; 666,1396 15 degrees
-f_b kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-f_f_b extreme 2                  # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 818,1145 9 units past; 678,1456 8 units past
-f_f_b kink 2                     # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1383,1246 5.6 degrees; 1059,1060 5.7 degrees
-f_f_h extreme 3                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 818,1145 11 units past; 757,1374 11 units past; 678,1456 8 units past
-f_f_h kink 3                     # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1988,642 7.2 degrees; 1383,1246 5.6 degrees; 1059,1060 5.7 degrees
-f_f_h smooth 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1646,412 2.7 degrees
+f_f_b wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
+f_f_h wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 f_f_j kink 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1240,884 2.6 degrees; 1262,883 2.7 degrees
-f_f_k kink 1                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1388,1246 6.1 degrees
-f_f_t extreme 3                  # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1644,192 6 units past; 818,1145 9 units past; 678,1456 8 units past
-f_f_t kink 1                     # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1385,1168 4.4 degrees
-f_h kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
+f_f_j wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18 
+f_f_k wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
+f_f_t wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 f_j kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.5 degrees; 659,883 2.6 degrees
-f_k kink 1                       # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-ff kink 1                        # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 698,1312 3.0 degrees
-ff smooth 1                      # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1292,1298 2.4 degrees
+f_j wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 ff wobble 1                      # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1304,1335 18 degrees; 706,1341 23 degrees
 ffi kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1239,884 2.6 degrees; 1261,883 2.7 degrees
-ffl extreme 2                    # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 820,1145 9 units past; 680,1456 8 units past
-ffl kink 1                       # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 1061,1060 5.7 degrees
+ffi wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18 
+ffl wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 fi kink 2                        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.6 degrees; 658,883 2.7 degrees
+fi wobble 1                      # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 fiveoldstyle stroke 1            # accepted Roman old-style set: modest Bold weight increase preserves figure contrast; lc 218 against 261 (0.83, lighter)
 florin extreme 1                 # 2026-10-27 Bold: a fitted curve keeps its source's bends (derive.embolden keep_bends): 24,-466 8 units past
 florin stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 227 against 261 (0.87, lighter)
@@ -84,22 +78,16 @@ kappa zone 1                     # 2026-10-16 known at the start (quality checks
 kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 longs extreme 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 668,1383 9 units past
 longs wobble 1                   # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 666,1365 18 degrees; 669,1396 15 degrees
-longs_b kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-longs_h kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-longs_k kink 1                   # 2026-10-16 known at the start (quality checks added): 784,1246 6.5 degrees
-longs_longs kink 1               # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 700,1312 3.0 degrees
-longs_longs smooth 1             # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 1294,1298 2.4 degrees
+longs_i wobble 1                 # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
+longs_j wobble 1                 # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 longs_longs wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1306,1335 18 degrees; 708,1341 23 degrees
-longs_longs_b extreme 1          # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 818,1145 9 units past
-longs_longs_b kink 2             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 195,974 4.5 degrees; 1383,1246 5.6 degrees
-longs_longs_h extreme 2          # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1659,673 13 units past; 818,1145 9 units past
-longs_longs_h kink 3             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 195,974 4.5 degrees; 1988,642 7.2 degrees; 1383,1246 5.6 degrees
-longs_longs_h smooth 1           # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1646,412 2.7 degrees
-longs_longs_k kink 1             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 1388,1246 6.4 degrees
-longs_longs_l extreme 1          # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 818,1145 9 units past; 678,1456 8 units past
-longs_longs_l kink 1             # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 195,974 4.5 degrees
-longs_longs_t extreme 2          # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 818,1145 9 units past; 1644,192 6 units past
-longs_longs_t kink 1             # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: 195,974 4.5 degrees
+longs_longs_b wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
+longs_longs_h wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
+longs_longs_i wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18 
+longs_longs_j wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18 
+longs_longs_k wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
+longs_longs_l wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
+longs_longs_t wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 m.sc step 1                      # 2026-10-27 step check added (checks.py step): a candidate to review: 1318,988 60 units aside
 m.sc zone 1                      # baseline: bottom -7 from 1
 mugreek.sc zone 1                # baseline: bottom -7 from 1

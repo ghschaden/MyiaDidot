@@ -44,6 +44,8 @@ PASSES = (
     Pass("l_belt", "finish", ("Italic",), ("final l", "final L"), ("uni026C", "uniA7AD")),
     Pass("draft_ligatures", "finish", ("Bold",), ("final T", "final t", "final h", "final O", "final u"),
          ("T_h", "t_h", "t_t", "Q_u")),
+    Pass("draft_ligatures", "finish_f", ("Bold",), ("final f", "final ı ȷ l b h k t"),
+         ("ff fi fl ffi ffl fj ffj", "f- and ff-ligatures before b h k t", "long-s ligatures")),
     Pass("italic_ligatures", "make", ITALIC,
          ("final f", "final ſ", "final partner letters"), ("accepted italic ligatures",)),
     Pass("smooth_joins", "finish", BI, ("finished outlines",), ("named joins and brackets",)),

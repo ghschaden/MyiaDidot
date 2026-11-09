@@ -26,6 +26,30 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Bold f-ligatures made from the Bold's own f (drafts); fi fj joined
+  The Bold's f-ligatures were the Regular's emboldened whole: their fs
+  badly drawn over the crossbar, fl's and ffl's stem leaning (wider at its
+  foot), ﬀh's shoulder kinked. Now made again from the final Bold letters
+  (finalization pass draft_ligatures.finish_f, as decided 2026-11-09): ff
+  the Bold f beside the f (the ball into the second f's arch, as in the
+  Regular); fi fj the f beside the ı and ȷ, the crossbar run on into
+  their serif (bar_join); fl the f's contour with its ball replaced, from
+  its apex over into the l's straight stem (FL_ARCH, spliced so both
+  apexes stay smooth); ffi ffl ffj the f beside those; fb fh fk ft and
+  ffb ... fft by f_ligature on fl and ffl (the letter on its own stem, the
+  cut kept off the Bold's crossbar, ft's crossbars joined at the Bold's
+  height); all the long-s ligatures those without their crossbars (f_bar:
+  the Bold's crossbar and stem as measured; ſi ſj without the join).
+  Stems stay where they were, advance widths as spaced; ſſ needs fewer
+  collision kerns against accented e and o. All marked drafts; the
+  acceptance of ſj ſſb ſſh ſſj ſſk ſſt (2026-11-08) withdrawn for a new
+  look. Quality: 30 findings of the emboldened forms gone; the Bold f's
+  ear wobble now also in the ligatures built on it.
+  Regular: fi fj ffi ffj's crossbar run on into the ı/ȷ serif as well
+  (the 58-unit gap from Theano closed; the old Bold had closed its
+  smaller one in emboldening). Review:
+  build/glyph-review/bold-flig/bold-f-ligatures-review.pdf.
+
 2026-11-09 Middle tilde: rounder, tapered ends; the Bold's all on their bases
   Stretched across two stems (ᵰ ᵭ, 1.72-1.86 times), the middle tilde's
   ends flattened. The stretch is now spread unevenly
