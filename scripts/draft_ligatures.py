@@ -1,4 +1,4 @@
-"""Draft the discretionary ligatures ct st sp Th th tt (feature dlig), the
+"""Draft the discretionary ligatures ct st sp Qu Th th tt (feature dlig), the
 f-ligatures fb fh fk ft ffb ffh ffk fft (liga) and the long-s ligatures
 ſb ſh ſk ſt ſi ſl ſſ ſſi ſſl (liga, own lookup).
 
@@ -19,7 +19,12 @@ where fl's stem takes over; the t loses its wedge, its stem rises into
 fl's, and the two crossbars are joined). The long-s ligatures are the
 f-ligatures without the f's crossbars, as ſ is f without its crossbar.
 sp is st's arch landing on the p's stem: the p's top serif cut away, its
-stem running up into the arch's right leg (sp_ligature).
+stem running up into the arch's right leg (sp_ligature). Qu is O and u
+with a drawn tail (qu_ligature): in the upright styles (QU_TAIL) the lower
+part of a 2 hanging from the centre of the O's bottom, down its neck to a
+sharp point, back up nearly along it and away under the Q and the u as a
+gently waving swash; in the italics (QU_TAIL_LOOP) the 2's head loops in
+the O first.
 """
 
 import argparse
@@ -138,6 +143,132 @@ def without_crossbars(font, path, stems):
     return path
 
 
+# Qu: the tail drawn as one outline in the Regular's units (2026-11-09,
+# after the designer's sketch Bildschirmfoto_20261109_120154 and review):
+# the "2" out of the O (from a root in the bowl's lower-left stroke, a
+# hairline lift over a hairline apex, one full stroke through the bowl's
+# bottom down its neck), a sharp point at the bottom left, back up nearly
+# along the neck from a crotch and away as a swash waving like a flattened
+# tilde, to a sharp point under the u's right stem. (start, [(h1, h2, end)])
+# The italics' (QU_TAIL_LOOP); the upright styles take QU_TAIL below.
+QU_TAIL_LOOP = ((505, 118), [
+    ((600, 178), (745, 214), (880, 214)),        # head top: from the root in the bowl's stroke to the apex
+    ((1015, 214), (1135, 170), (1135, 85)),      # over the right shoulder, to its extreme
+    ((1135, 0), (1040, -175), (930, -285)),      # the outer edge, one stroke through the bowl's bottom, full to the crotch
+    ((1060, -235), (1240, -205), (1440, -205)),  # the swash's top edge (a corner at the crotch), to its crest
+    ((1640, -205), (1840, -327), (2040, -327)),  # down into the trough
+    ((2215, -327), (2375, -275), (2445, -150)),  # rising to the point
+    ((2395, -275), (2130, -432), (1880, -432)),  # the bottom edge back (a point at the end), under the trough
+    ((1660, -432), (1420, -320), (1170, -322)),  # rising under the crest
+    ((960, -325), (790, -398), (690, -460)),     # down to the sharp point at the bottom left
+    ((800, -300), (1000, 30), (1000, 128)),      # the inner edge, one stroke up through the bowl, arriving upright
+    ((1000, 165), (950, 178), (850, 178)),       # under the head: the 2's hook
+    ((720, 178), (610, 120), (525, 72)),         # back to the root
+])
+# the upright styles' (chosen 2026-11-09 over the loop): only the 2's lower
+# part, its neck hanging from the centre of the O's bottom (the loop's
+# neck and hairpin 207 to the left, the swash stretched to keep its end)
+QU_TAIL = ((744, 8), [
+    ((794, 8), (842, 8), (892, 8)),              # the neck's top, inside the bowl's bottom stroke
+    ((892, -90), (828, -195), (723, -285)),      # the outer edge, down to the crotch
+    ((871, -235), (1075, -205), (1303, -205)),   # the swash's top edge (a corner at the crotch), to its crest
+    ((1530, -205), (1757, -327), (1985, -327)),  # down into the trough
+    ((2184, -327), (2365, -275), (2445, -150)),  # rising to the point
+    ((2388, -275), (2087, -432), (1803, -432)),  # the bottom edge back (a point at the end), under the trough
+    ((1553, -432), (1280, -320), (996, -322)),   # rising under the crest
+    ((757, -325), (583, -398), (483, -460)),     # down to the sharp point at the bottom left
+    ((578, -330), (735, -110), (744, 8)),        # the neck's inner edge, up into the bowl
+])
+# the Regular's measures QU_TAIL was drawn at: O's ink, its round stem and
+# hairline, the centre of u's right stem; the end's offset from that centre
+QU_DRAWN = {"o_ink": (126, 1502), "o_width": 1578, "stem": 184, "hair": 48, "u_stem": 835, "end": 2445}
+
+
+def _weighted(rec, k_stem, k_hair, thin=32):
+    """the tail at another weight: each node (with its handles) moved out
+    by half what its stroke gains there, the stroke's thickness at the node
+    measured inward along its normal: a hairline thin units thick at k_hair,
+    the rest at k_stem (points, nearly nothing thick, stay sharp)"""
+    import math
+
+    if k_stem == 1 and k_hair == 1:
+        return rec
+    path = to_path(None, rec=rec)
+    start = rec.value[0][1][0]
+    segs = [pts for op, pts in rec.value[1:] if op == "curveTo"]
+    nodes = [start] + [s[2] for s in segs]
+    n = len(segs)
+    moves = []
+    for i in range(n):
+        p = nodes[i]
+        before = segs[i - 1][1] if i else segs[-1][1]  # the handle into p
+        after = segs[i][0]  # the handle out of p
+        tx, ty = after[0] - before[0], after[1] - before[1]
+        length = math.hypot(tx, ty) or 1
+        nx, ny = -ty / length, tx / length
+        if path.contains((p[0] + 2 * nx, p[1] + 2 * ny)):
+            nx, ny = -nx, -ny  # (nx, ny) points out of the stroke
+        t = next((s for s in range(1, 400) if not path.contains((p[0] - s * nx, p[1] - s * ny))), 0)
+        gain = (min(t, thin) * (k_hair - 1) + max(t - thin, 0) * (k_stem - 1)) / 2
+        moves.append((nx * gain, ny * gain))
+    out = RecordingPen()
+    dx, dy = moves[0]
+    out.moveTo((start[0] + dx, start[1] + dy))
+    for i, (h1, h2, end) in enumerate(segs):
+        a, b = moves[i], moves[(i + 1) % n]
+        out.curveTo((h1[0] + a[0], h1[1] + a[1]), (h2[0] + b[0], h2[1] + b[1]), (end[0] + b[0], end[1] + b[1]))
+    out.closePath()
+    return out
+
+
+def qu_ligature(font, tail=None):
+    """Qu: O, the drawn tail (QU_TAIL) and u set after O as after Q, in this
+    style: the tail's x mapped onto its O and to its u's right stem, its
+    weight moved to its stem and hairline (the Regular's are QU_DRAWN)."""
+    import derive
+    from fontTools.pens.areaPen import AreaPen
+    from fontTools.pens.reverseContourPen import ReverseContourPen
+    from italic_geometry import EXTREME_PAST
+
+    o_width = font["O"].width
+    ox0, ox1 = (round(v) for v in derive.ink_bounds(font, "O")[::2])
+    runs = derive.stems_at(font, "u", 300)
+    u_stem = max(runs[1:], key=lambda r: r[1] - r[0])
+    (dx0, dx1), end_was = QU_DRAWN["o_ink"], QU_DRAWN["end"]
+    end_is = o_width + round((u_stem[0] + u_stem[1]) / 2) + end_was - QU_DRAWN["o_width"] - QU_DRAWN["u_stem"]
+
+    def mapped(pt):
+        x, y = pt
+        if x <= dx1:
+            return (ox0 + (x - dx0) * (ox1 - ox0) / (dx1 - dx0), y)
+        return (ox1 + (x - dx1) * (end_is - ox1) / (end_was - dx1), y)
+
+    start, segs = tail or QU_TAIL
+    rec = RecordingPen()
+    rec.moveTo(mapped(start))
+    for seg in segs:
+        rec.curveTo(*(mapped(pt) for pt in seg))
+    rec.closePath()
+    # (to three places: the Regular measures 183.9998 and 48.0004)
+    _, stem, hair = derive.strokes(font, "o")
+    rec = _weighted(rec, round(stem / QU_DRAWN["stem"], 3), round(hair / QU_DRAWN["hair"], 3))
+    area = AreaPen()
+    rec.replay(area)
+    if area.value > 0:  # wound as the O's outer contour
+        flipped = RecordingPen()
+        rec.replay(ReverseContourPen(flipped))
+        rec = flipped
+    out = to_path(font, font["O"])
+    for part in (to_path(None, rec=rec), shifted(to_path(font, font["u"]), o_width)):
+        out = path_op(out, part, "UNION")
+    # nodes at the extremes
+    rec = RecordingPen()
+    out.draw(rec)
+    split = RecordingPen()
+    derive.with_extremes(rec, split, past=EXTREME_PAST)
+    return to_path(None, rec=split), o_width + font["u"].width
+
+
 TH_FLOW = 0.33  # Th: the T's right bracket at this size flowing into the h's stem (chosen 2026-11-08 from 1, 0.5, 0.33)
 TH_CLOSER = 110  # th: t's width (730) - TH_SHIFT: the h this much nearer than set after t
 TH_SHIFT = 620  # th: the h this far from the t (590 chosen 2026-11-08 from 620 560 520; "a bit tight", 620 chosen 2026-11-09 from 620 650)
@@ -224,10 +355,11 @@ def t_t_ligature(font, closer=TT_CLOSER):
 
 
 def finish(font):
-    """The Bold's Th th made again from its own final T t h (finalization):
-    emboldened whole from the Regular's, the T's and the h's foot serifs
-    grew into each other. Their review records are kept."""
-    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature), ("t_t", t_t_ligature)):
+    """The Bold's Th th tt Qu made again from its own final letters
+    (finalization): emboldened whole from the Regular's, the T's and the h's
+    foot serifs grew into each other, Qu's tail stayed light. Their review
+    records are kept."""
+    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature), ("t_t", t_t_ligature), ("Q_u", qu_ligature)):
         if name not in font:
             continue
         out, width = make(font)
@@ -287,12 +419,18 @@ def main():
         group = KERN1.get(name.split("_")[-1])
         if group and name not in font.groups[group]:
             font.groups[group] = [*font.groups[group], name]
+        # on its left, the ligature kerns as its first letter (Qu: as O, Q's group)
+        first = name.split("_")[0]
+        left = next((g for g, m in font.groups.items() if g.startswith("public.kern2.") and first in m), None)
+        if left and name not in font.groups[left]:
+            font.groups[left] = [*font.groups[left], name]
         made.append(name)
 
     for name, first, cut, left, base, peak, t_left, t_top, clip, closer in LIGATURES:
         if wanted(name):
             put(name, *build(font, name, first, cut, left, base, peak, t_left, t_top, clip, closer))
-    for name, make in (("s_p", sp_ligature), ("T_h", th_ligature), ("t_h", t_h_ligature), ("t_t", t_t_ligature)):
+    for name, make in (("s_p", sp_ligature), ("Q_u", qu_ligature), ("T_h", th_ligature),
+                       ("t_h", t_h_ligature), ("t_t", t_t_ligature)):
         if wanted(name):
             put(name, *make(font))
     for name, base, letter in F_LIGATURES:

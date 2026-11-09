@@ -117,7 +117,7 @@ All features can be set for the whole font (in the brackets of
 | Slashed zero | `Numbers = SlashedZero` | `zero` |
 | Fractions (1/2 → ½) | `Fractions = On` | `frac` |
 | Superior / inferior figures | `VerticalPosition = Superior` / `= Inferior` | `sups` / `sinf` |
-| Discretionary ligatures ct st sp Th th tt | `Ligatures = Rare` | `dlig` |
+| Discretionary ligatures ct st sp Qu Th th tt | `Ligatures = Rare` | `dlig` |
 | Long s (ſ, with its ligatures ſt ſſ …) | `Style = Historic` | `hist` |
 | Romanian ș ț without the language | `StylisticSet = 1` | `ss01` |
 | SS for ß in small caps | `StylisticSet = 2` | `ss02` |
@@ -144,7 +144,8 @@ with `Style = Historic` (*Wiſſenſchaft, Unſinn*). They are part of the
 standard ligatures, so nothing else is needed.
 
 **The decorative ligatures** are discretionary: ct, st and sp, with a
-curl joining the two letters; Th, the T's crossbar running on to the h; and
+curl joining the two letters; Qu, the Q's tail drawn out of its bowl and
+under the u as a swash; Th, the T's crossbar running on to the h; and
 th, joined by the t's crossbar in the upright styles and by an arch from
 the t's top to the h's in the italics; and tt, two t's on one crossbar. Switch them on with
 `Ligatures = Rare`, for a passage or the whole document:

@@ -26,6 +26,26 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Discretionary ligature Qu
+  New in dlig, in all four styles: O and u with a drawn tail, after the
+  designer's sketch. Upright: the lower part of a 2 hanging from the
+  centre of the O's bottom, one full stroke down its neck to a sharp point
+  at the bottom left, back up nearly along the neck from a crotch, and away
+  under the Q and the u as a swash waving like a flattened tilde, to a
+  sharp point under the u's right stem. Italic: the same with the 2's head
+  first, out of the bowl's inner bottom-left as a hairline lift over a
+  hairline apex and through the bowl's bottom into the neck. Drawn as
+  outlines in the Regular's units (draft_ligatures QU_TAIL, QU_TAIL_LOOP;
+  qu_ligature); each style builds it on its own O and u, the tail's x
+  mapped onto its O and to its u's right stem, its weight moved to its
+  stem and hairline node by node (the Bold in finalization, the italics in
+  italic_ligatures, upright then slanted). Kerns on its left as Q (as O);
+  a ligature drafted now kerns on its left as its first letter. Reviewed
+  from sheets: the Libertinus manner, the Italic Q's tail drawn back, then
+  the sketch (its loop smaller, the lower part as the 2's, the wave), the
+  pen-stroke drawing redrawn as an outline (a sharp turn, a pointed end,
+  one stroke through the bowl), and for the uprights the loop left out.
+
 2026-11-09 Bold Italic ν's bottom as the Italic's
   Its point ended in a cut face twice the Italic's (83 units against 41),
   blunt, the left stroke leaving it at an angle; now 1.2 times the

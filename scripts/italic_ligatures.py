@@ -4,7 +4,7 @@ import math
 from copy import deepcopy
 
 from derive import BIG, draw_path, path_op, rect_path, stems_at, to_path
-from draft_ligatures import arch, t_t_ligature, th_ligature
+from draft_ligatures import QU_TAIL_LOOP, arch, qu_ligature, t_t_ligature, th_ligature
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 from italic_geometry import SLANT, XH, shear, upright
@@ -36,7 +36,7 @@ LONGS = (
     ("longs_j", "f_j"),
     ("longs_longs_j", "f_f_j"),
 )
-NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "s_p", "T_h", "t_h", "t_t")
+NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "s_p", "Q_u", "T_h", "t_h", "t_t")
 
 
 ITALIC_TH_CLOSER = 70  # th: the h this much nearer than after t (100 chosen 2026-11-08 from 140 100 60; "a bit tight", 70 chosen 2026-11-09 from 70 40)
@@ -224,6 +224,10 @@ def make(font):
     # into the h's stem at its full width; the h's sloped top serif cut
     # away, the h ITALIC_TH_CLOSER nearer than set after t
     put("t_h", *italic_th(up), [up["t"].width - ITALIC_TH_CLOSER])
+    # Qu: the tail with the 2's head looping in the O (the upright styles
+    # hang only its lower part from the O), on this style's O and u (mapped
+    # onto the O, at this style's stem and hairline), upright then slanted
+    put("Q_u", *qu_ligature(up, QU_TAIL_LOOP), [up["O"].width])
     # tt: two t's on one crossbar, the second as near as th's h
     put("t_t", *t_t_ligature(up, ITALIC_TT_CLOSER), [up["t"].width - ITALIC_TT_CLOSER])
     return made

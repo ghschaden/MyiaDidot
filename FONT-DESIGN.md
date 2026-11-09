@@ -451,14 +451,12 @@ evidence (a raster or a proof).
 
 Attested ligatures the font does not have yet, in the order agreed:
 
-- Qu (dlig): the Q's tail running under the u (Caslon, Baskerville): a
-  drawing, not an assembly.
 - ch ck tz (dlig or hlig): from Fraktur, used in some 19th-century German
   Antiqua and in Linux Libertine.
 - ſs (hist): the long s before s, the source of ß; rarely needed.
 
 Done 2026-11-08 (FONTLOG): Th th tt, ſſb ſſh ſſk ſſt ſj ſſj, U+FB05
-U+FB06; 2026-11-09: sp.
+U+FB06; 2026-11-09: sp, Qu.
 
 ## Spacing: revisit only if specimens warrant it
 
