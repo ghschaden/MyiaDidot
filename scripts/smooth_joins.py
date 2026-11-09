@@ -13,6 +13,9 @@ designer's list from build/corners/bolditalic-letters.pdf, 2026-11-09):
   takes the line's direction (between two curves, both the mean of theirs),
   at least a third of its curve's chord long (1-2 unit handles rounded back
   where they were).
+- a gap closed to a slit (ʊ's between its flags: Ʊ made small and brought
+  to the lowercase's weight, 2026-11-09): GAPS, cut open again to a width,
+  a channel upright in the unslanted letter.
 - a serif's bracket collapsed into a short curve or two bending back (ψ.sc's
   feet and top, я.sc's top): FILLETS, redrawn as one curve tangent to the
   serif's flat and the stroke (sc_feet.fillets, as the Bold Italic's x.sc),
@@ -27,6 +30,10 @@ instead; ℵ's join is put in line in aleph.py, whose repairs the tests rerun.
 import math
 
 import sc_feet
+from derive import path_op, rect_path, to_path
+from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.transformPen import TransformPen
+from italic_geometry import SLANT, XH
 
 CRUMB = 12
 
@@ -52,6 +59,18 @@ FILLETS = {
     # bracket, the handles at odds (aligned, the join bent back)
     "eng.sc": [(263, 170, 0)],
     "eth.sc": [(88, 101, 35), (613, 928, 30)],
+    # 2026-11-09, the second list: Ѫ's inner right leg's feet, ꞵ.sc's stem
+    # (under its top serif the bracket turned the wrong way, a notch)
+    "uni046A": [(1835, 121, 35), (1570, 110, 0)],
+    "uniA7B5.sc": [(390, 101, 35), (316, 945, 30)],
+}
+
+
+# glyph: (centre x and bottom y of the channel in the unslanted letter, width)
+GAPS = {
+    # ʊ: 19 units between the flags, the Italic's 97 (90 chosen 2026-11-09
+    # from 60, 90); the bowl's top at 625
+    "uni028A": (554, 625, 90),
 }
 
 
@@ -129,7 +148,23 @@ def fillet(glyph, x, y, reach=0, near=60):
     sc_feet.fillets(glyph, near=(x, y, near), reach=reach)
 
 
+def gap(glyph, cx, y0, width):
+    """a channel width wide, upright in the unslanted letter, cut from y0 up"""
+    channel = rect_path(cx - width / 2, y0, cx + width / 2, 4000)
+    rec = RecordingPen()
+    channel.draw(TransformPen(rec, (1, 0, SLANT, 1, -SLANT * XH / 2, 0)))
+    out = path_op(to_path(None, glyph), to_path(None, rec=rec), "DIFFERENCE")
+    glyph.clearContours()
+    pen = glyph.getPen()
+    rounded = RecordingPen()
+    out.draw(rounded)
+    for op, pts in rounded.value:
+        getattr(pen, op)(*[(round(x), round(y)) for x, y in pts])
+
+
 def finish(font):
+    for name, (cx, y0, width) in GAPS.items():
+        gap(font[name], cx, y0, width)
     for name, spots in FILLETS.items():
         for x, y, reach in spots:
             fillet(font[name], x, y, reach)

@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Bold Italic Ѫ ꞵ.sc brackets, ʊ open; Italic ѳ.sc round
+  From the corners sheet's second part. Bold Italic: Ѫ's inner right leg's
+  two foot brackets and ꞵ.sc's (above the foot; under the top serif,
+  where the bracket turned the wrong way, a notch) redrawn as fillets
+  (smooth_joins). ʊ: Ʊ made small closed the gap between its flags to a
+  slit (19 units, the Italic's 97: the strokes brought to the lowercase's
+  weight eat it); now made from the Bold Italic's own Ʊ
+  (ITALIC_BOLD_REBUILD, its advance 1091 -> 1077, its marks follow its
+  anchors) and the gap cut open to 90 (smooth_joins GAPS; chosen from
+  60, 90). Italic ѳ.sc: its counters lumpy beside the bar (the Regular's
+  wave bar's ends); made from the Italic's Ѳ, Old Standard's, as g.sc
+  є.sc (ITALIC_SC_RECIPES), at the draft's sides. Accepted again.
+
 2026-11-09 th wider; Bold Italic Ⱦ ⱦ.sc slash visible
   th ("a bit tight"): the h 620 after the t in the upright styles (was
   590; the Bold rebuilt from its own letters), 70 nearer than after t in

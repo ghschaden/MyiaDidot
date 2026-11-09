@@ -574,10 +574,14 @@ ITALIC_SC_RECIPES = [("g.sc", "enlarge", "G", ("O", "o.sc")),
                      ("s.sc", "enlarge", "S", ("O", "o.sc")),
                      ("n.sc", "enlarge", "N", ("O", "o.sc")),
                      ("є.sc", "enlarge", "Є", ("O", "o.sc")),
-                     ("ϟ.sc", "enlarge", "Ϟ", ("O", "o.sc"))]
+                     ("ϟ.sc", "enlarge", "Ϟ", ("O", "o.sc")),
+                     # ѳ.sc: the draft's counters ran lumpy beside the bar
+                     # (the Regular's wave bar's ends, 2026-11-09); Ѳ's are
+                     # Old Standard's, round
+                     ("ѳ.sc", "enlarge", "Ѳ", ("O", "o.sc"))]
 # made in the late pass, after the small caps are drafted: measured
 # against the Italic's own o.sc and h.sc, not the Regular's sloped
-SC_LATE = {"g.sc", "ɦ.sc", "s.sc", "n.sc", "є.sc", "ϟ.sc"}
+SC_LATE = {"g.sc", "ɦ.sc", "s.sc", "n.sc", "є.sc", "ϟ.sc", "ѳ.sc"}
 # made from their capitals, s.sc's spine and n.sc's diagonal still stood
 # light (0.81 and 0.69 of h.sc): enlarge's emboldening thickens strokes by
 # their lean (a level stroke by the hairlines' amount), so their thick
@@ -588,7 +592,7 @@ SC_LATE = {"g.sc", "ɦ.sc", "s.sc", "n.sc", "є.sc", "ϟ.sc"}
 SC_LEVEL_GAIN = {"s.sc": ("S", True), "n.sc": ("N", False)}
 # of those, drafted all the same and remade at the draft's side bearings
 # (its spacing and kerning kept), its anchors moved with its ink
-SC_DRAFT_SIDES = {"s.sc", "n.sc", "uni0454.sc", "uni03DF.sc"}
+SC_DRAFT_SIDES = {"s.sc", "n.sc", "uni0454.sc", "uni03DF.sc", "uni0473.sc"}
 # the Italic's own letters already have the shape: Old Standard's g is ɡ,
 # its h turned is ɥ (the Regular's is u and a descender, its h's serifs
 # would turn)

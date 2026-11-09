@@ -162,6 +162,10 @@ ITALIC_BOLD_REBUILD = {
     "uni023B": "Ȼ: the slash on the Bold Italic's C", "uni023C": "ȼ: the slash on the Bold Italic's c",
     "uni023E": "Ⱦ: the slash on the Bold Italic's T", "uni2C65.sc": "ⱥ.sc: the slash on a.sc",
     "uni023C.sc": "ȼ.sc: the slash on c.sc", "uni2C66.sc": "ⱦ.sc: the slash on t.sc",
+    # ʊ: Ʊ made small, emboldened whole from the Italic's: its top-left
+    # flag ran into the bowl and closed the counter (2026-11-09); made
+    # small from the Bold Italic's Ʊ, which keeps the gap
+    "uni028A": "ʊ: the Bold Italic's Ʊ made small",
     # and the middle tildes, at the slashes' weight (2026-10-28:
     # emboldened whole the tilde was heavier than the slashes, and ᵭ's upper
     # counter, small and tight, came out a triangle)

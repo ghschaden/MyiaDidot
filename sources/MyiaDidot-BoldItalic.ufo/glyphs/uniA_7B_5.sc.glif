@@ -4,16 +4,10 @@
 	<outline>
 		<contour>
 			<point x="81" y="98" type="line"/>
-			<point x="300" y="927" type="line"/>
-			<point x="307" y="926"/>
-			<point x="313" y="930"/>
-			<point x="316" y="933" type="curve" smooth="yes"/>
-			<point x="320" y="938"/>
-			<point x="320" y="945"/>
-			<point x="320" y="948" type="curve" smooth="yes"/>
-			<point x="320" y="953"/>
-			<point x="327" y="960"/>
-			<point x="332" y="962" type="curve"/>
+			<point x="300" y="927" type="line" smooth="yes"/>
+			<point x="305" y="946"/>
+			<point x="293" y="962"/>
+			<point x="273" y="962" type="curve" smooth="yes"/>
 			<point x="190" y="962" type="line"/>
 			<point x="216" y="1040" type="line"/>
 			<point x="788" y="1040" type="line" smooth="yes"/>
@@ -45,16 +39,10 @@
 			<point x="64" y="19" type="line"/>
 		</contour>
 		<contour>
-			<point x="390" y="101" type="line"/>
-			<point x="382" y="103"/>
-			<point x="375" y="103"/>
-			<point x="372" y="99" type="curve" smooth="yes"/>
-			<point x="370" y="97"/>
-			<point x="370" y="94"/>
-			<point x="370" y="88" type="curve" smooth="yes"/>
-			<point x="370" y="79"/>
-			<point x="370" y="74"/>
-			<point x="359" y="69" type="curve"/>
+			<point x="390" y="103" type="line" smooth="yes"/>
+			<point x="385" y="84"/>
+			<point x="397" y="69"/>
+			<point x="416" y="69" type="curve" smooth="yes"/>
 			<point x="603" y="69" type="line" smooth="yes"/>
 			<point x="728" y="69"/>
 			<point x="780" y="217"/>
@@ -72,14 +60,14 @@
 			<point x="881" y="692" type="curve" smooth="yes"/>
 			<point x="881" y="733"/>
 			<point x="868" y="786"/>
-			<point x="867" y="792" type="curve" smooth="yes"/>
+			<point x="867" y="792" type="curve"/>
 			<point x="846" y="875"/>
 			<point x="878" y="960"/>
 			<point x="753" y="960" type="curve" smooth="yes"/>
 			<point x="596" y="960" type="line"/>
 			<point x="598" y="957"/>
 			<point x="600" y="947"/>
-			<point x="599" y="935" type="curve" smooth="yes"/>
+			<point x="599" y="935" type="curve"/>
 			<point x="599" y="930"/>
 			<point x="611" y="933"/>
 			<point x="610" y="928" type="curve" smooth="yes"/>
@@ -98,11 +86,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-07</string>
+				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>f15966550e34</string>
+				<string>3ee68266cba8</string>
 				<key>review</key>
-				<string>docs/bold-italic-smallcaps-completion-2026-11-07.md</string>
+				<string>ʊ gap cut to 90 (chosen from 60/90), ꞵ.sc brackets redrawn; on request 2026-11-09</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>
