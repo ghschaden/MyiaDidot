@@ -465,8 +465,12 @@ Verdicts given on the sheets; the fixes still to make:
   side, fl ffl its arch at the Bold's weight into a straight stem, those
   before b h k t by f_ligature, the long-s ones as now; drafts for review.
 - Bold middle tilde on ᵰ ᵭ: its ends "should turn a bit more on the
-  sides" (stretched across two stems, 1.72-1.86 times, they flatten);
-  candidates in build/glyph-review/bold-tilde/.
+  sides" (stretched across two stems, 1.72-1.86 times, they flatten).
+  Chosen 2026-11-09 ("more", from tilde-plain.pdf): the stretch spread
+  unevenly in derive.midtilde_shape, x mapped by u + c sin(2 pi u)/(2 pi)
+  with c = -min(0.4, 1 - 1.2/sx) where sx > 1.2 (ᵭ's ends 1.20, its middle
+  2.52; ɫ ᵮ ᵲ ᵵ, unstretched, unchanged). ᵯ: check its inner stems for
+  spikes. All four styles follow; show the Regular's and the italics'.
 - Steps: Regular 𝑙 (U+1D459) to smooth; ɉ's bar too short on the right;
   ɝ's hook badly attached; Italic Ⱦ not flat on top; ₮'s bars too short
   on the right, off centre; ⱦ.sc a step on top. Bold: ɉ's bar off
