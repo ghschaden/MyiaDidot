@@ -26,6 +26,15 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Bold Italic ⱦ's slash at its weight
+  Emboldened whole, ⱦ's slash kept the Regular's thickness (55) and looked
+  too light. It is drawn on the Bold Italic's own t now (make_bold
+  ITALIC_BOLD_RECIPES), where the Italic's runs, a quarter heavier (69),
+  as Ⱦ's and ⱦ.sc's (chosen from 69 and 83, each also lower and longer).
+  Its advance is the t's (658, was 645), as in the Italic. A 4-unit
+  crumb where the slash's lower edge meets the stem's inner curve is
+  merged (smooth_joins.py).
+
 2026-11-09 Bold 4s upright; the last old-style figures accepted
   The Bold's lining and old-style 4 leaned out on the stem's right edge
   above the crossbar (31 and 20 units, from the emboldening; the

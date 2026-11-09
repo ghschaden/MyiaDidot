@@ -162,6 +162,7 @@ ITALIC_BOLD_REBUILD = {
     "uni023B": "Ȼ: the slash on the Bold Italic's C", "uni023C": "ȼ: the slash on the Bold Italic's c",
     "uni023E": "Ⱦ: the slash on the Bold Italic's T", "uni2C65.sc": "ⱥ.sc: the slash on a.sc",
     "uni023C.sc": "ȼ.sc: the slash on c.sc", "uni2C66.sc": "ⱦ.sc: the slash on t.sc",
+    "uni2C66": "ⱦ: the slash on the Bold Italic's t (ITALIC_BOLD_RECIPES)",
     # ʊ: Ʊ made small, emboldened whole from the Italic's: its top-left
     # flag ran into the bowl and closed the counter (2026-11-09); made
     # small from the Bold Italic's Ʊ, which keeps the gap
@@ -316,6 +317,10 @@ ITALIC_BOLD_RECIPES = {
     # top line as before (40 higher, its square end stood a peak on it)
     "Ⱦ": ("slash", "T", ("c", "box", 0.10, -140, 0.90, 1434, 96)),
     "ⱦ.sc": ("slash", "t.sc", ("s", "box", 0.10, -120, 0.90, 1040, 83)),
+    # ⱦ: emboldened whole its slash kept the Regular's thickness, too light
+    # (55): a quarter heavier, as Ⱦ ⱦ.sc's, where the Italic's runs (chosen
+    # 2026-11-09 from 69 / 83, each also lower and longer)
+    "ⱦ": ("slash", "t", ("x", "box", 0.05, -80, 0.95, 960, 69)),
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
     # At y=600 the upright ɟ stem spans about 335..586. The light recipe's
@@ -605,7 +610,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni0256": "ɖ: the tail thin where it meets the stem",
     "uni027E": "ɾ: the Italic's fishhook (r's stem under f's hook) emboldened whole, as the Italic built it",
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
-    "uni2C66": "ⱦ: the slash at the Regular's thickness, too light",
     "uni026E": "ɮ: a notch where l's stem meets ʒ",
     "uni0249": "ɉ: the bar ends at the stem, no right arm for j_bar.py to extend",
     "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",

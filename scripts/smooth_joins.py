@@ -49,6 +49,9 @@ JOINS = {
     "uni01B4": [(1181, 759), (810, 752)],
     "ordfeminine": [(649, 865)],
     "uni044F.sc": [(465, 195)],
+    # ⱦ: the slash's lower edge into the stem's inner curve, a 4-unit crumb
+    # there (2026-11-09, its slash drawn at this weight)
+    "uni2C66": [(278, 167)],
 }
 # glyph: (x, y, reach) of the brackets redrawn as fillets
 FILLETS = {
