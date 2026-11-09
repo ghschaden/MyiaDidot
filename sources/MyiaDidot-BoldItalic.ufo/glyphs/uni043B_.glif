@@ -33,18 +33,18 @@
 			<point x="388" y="807" type="line"/>
 			<point x="404" y="861" type="line"/>
 			<point x="981" y="861" type="line"/>
-			<point x="812" y="272" type="line" smooth="yes"/>
-			<point x="806" y="252"/>
-			<point x="800" y="231"/>
-			<point x="786" y="200" type="curve" smooth="yes"/>
-			<point x="779" y="184"/>
-			<point x="758" y="137"/>
-			<point x="758" y="75" type="curve" smooth="yes"/>
-			<point x="758" y="53"/>
-			<point x="761" y="51"/>
-			<point x="771" y="51" type="curve" smooth="yes"/>
-			<point x="862" y="51"/>
-			<point x="960" y="297"/>
+			<point x="811" y="269" type="line" smooth="yes"/>
+			<point x="802" y="238"/>
+			<point x="787" y="185"/>
+			<point x="781" y="161" type="curve" smooth="yes"/>
+			<point x="777" y="145"/>
+			<point x="768" y="112"/>
+			<point x="768" y="76" type="curve" smooth="yes"/>
+			<point x="768" y="55"/>
+			<point x="771" y="51"/>
+			<point x="782" y="51" type="curve" smooth="yes"/>
+			<point x="867" y="51"/>
+			<point x="962" y="304"/>
 			<point x="982" y="360" type="curve"/>
 			<point x="1034" y="345" type="line"/>
 			<point x="988" y="219"/>
@@ -76,6 +76,15 @@
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>glyph</key>
+				<string>f951913e01fd</string>
+				<key>review</key>
+				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>Old Standard</string>
 		</dict>

@@ -39,11 +39,10 @@ CRUMB = 12
 
 # glyph: nodes (x, y) whose handles are put in line
 JOINS = {
-    "dotlessi": [(343, 688)],
-    "uni028B": [(697, 889)],
+    "uni028B": [(697, 889), (888, 168)],  # (the second: the one-way foot, below)
     "m": [(770, 598)],
     "uni0442": [(770, 598)],
-    "uni026F": [(900, 286)],
+    "uni026F": [(900, 286), (1354, 194)],  # (the second: the one-way foot, below)
     "uni0496": [(1016, -314), (926, -237), (1776, 307), (1447, 268)],
     "u1D510": [(1838, 92)],
     "uni01B4": [(1181, 759), (810, 752)],
@@ -52,6 +51,17 @@ JOINS = {
     # ⱦ: the slash's lower edge into the stem's inner curve, a 4-unit crumb
     # there (2026-11-09, its slash drawn at this weight)
     "uni2C66": [(278, 167)],
+    # the entry strokes and feet kept turning one way (stroke_bold.one_way,
+    # 2026-11-09): fair_arcs' split or the cleaning leaves a short handle
+    # or a crumb at their node, rounded off its course (11-26 degrees;
+    # ʋ ɯ's above);
+    # ı's entry, here before, has no corner left
+    "n": [(316, 690)],
+    "uni043F": [(316, 690)],
+    "uni1D6F": [(316, 690)],
+    "uni0289": [(888, 168)],
+    "uni1D43": [(422, 1046)],
+    "uni1DA4": [(383, 633)],
 }
 # glyph: (x, y, reach) of the brackets redrawn as fillets
 FILLETS = {

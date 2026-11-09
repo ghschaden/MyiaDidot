@@ -67,26 +67,41 @@
 			<point x="-24" y="50"/>
 		</contour>
 		<contour>
-			<point x="771" y="120" type="curve" smooth="yes"/>
-			<point x="771" y="56"/>
-			<point x="806" y="31"/>
-			<point x="868" y="31" type="curve" smooth="yes"/>
-			<point x="1015" y="31"/>
-			<point x="1059" y="346"/>
-			<point x="1059" y="432" type="curve" smooth="yes"/>
-			<point x="1059" y="452"/>
-			<point x="1057" y="512"/>
-			<point x="991" y="512" type="curve" smooth="yes"/>
-			<point x="921" y="512"/>
-			<point x="852" y="446"/>
-			<point x="838" y="396" type="curve" smooth="yes"/>
-			<point x="806" y="278" type="line" smooth="yes"/>
-			<point x="792" y="226"/>
-			<point x="771" y="170"/>
+			<point x="777" y="125" type="curve" smooth="yes"/>
+			<point x="777" y="64"/>
+			<point x="795" y="31"/>
+			<point x="856" y="31" type="curve" smooth="yes"/>
+			<point x="1034" y="31"/>
+			<point x="1063" y="343"/>
+			<point x="1062" y="438" type="curve" smooth="yes"/>
+			<point x="1062" y="465"/>
+			<point x="1060" y="512"/>
+			<point x="995" y="512" type="curve" smooth="yes"/>
+			<point x="926" y="512"/>
+			<point x="878" y="459"/>
+			<point x="867" y="446" type="curve" smooth="yes"/>
+			<point x="845" y="420"/>
+			<point x="838" y="394"/>
+			<point x="835" y="383" type="curve" smooth="yes"/>
+			<point x="808" y="285" type="line" smooth="yes"/>
+			<point x="795" y="240"/>
+			<point x="790" y="222"/>
+			<point x="788" y="212" type="curve" smooth="yes"/>
+			<point x="785" y="197"/>
+			<point x="777" y="166"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>glyph</key>
+				<string>14cf7fcab50a</string>
+				<key>review</key>
+				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>Old Standard</string>
 		</dict>

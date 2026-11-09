@@ -40,19 +40,18 @@
 			<point x="466" y="428"/>
 			<point x="413" y="359"/>
 			<point x="335" y="352" type="curve"/>
-			<point x="313" y="273" type="line" smooth="yes"/>
-			<point x="302" y="231"/>
-			<point x="290" y="202"/>
-			<point x="287" y="197" type="curve"/>
-			<point x="287" y="197" type="line"/>
-			<point x="281" y="183"/>
-			<point x="262" y="137"/>
-			<point x="262" y="74" type="curve" smooth="yes"/>
-			<point x="262" y="53"/>
-			<point x="264" y="51"/>
-			<point x="274" y="51" type="curve" smooth="yes"/>
-			<point x="369" y="51"/>
-			<point x="463" y="295"/>
+			<point x="312" y="270" type="line" smooth="yes"/>
+			<point x="301" y="228"/>
+			<point x="288" y="176"/>
+			<point x="283" y="159" type="curve" smooth="yes"/>
+			<point x="277" y="138"/>
+			<point x="269" y="109"/>
+			<point x="269" y="75" type="curve" smooth="yes"/>
+			<point x="269" y="54"/>
+			<point x="273" y="51"/>
+			<point x="283" y="51" type="curve" smooth="yes"/>
+			<point x="368" y="51"/>
+			<point x="466" y="301"/>
 			<point x="486" y="360" type="curve"/>
 			<point x="539" y="345" type="line"/>
 			<point x="491" y="218"/>
@@ -75,9 +74,9 @@
 				<key>date</key>
 				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>ac12ffd49768</string>
+				<string>df671d5a8795</string>
 				<key>review</key>
-				<string>the middle tilde stretched less at its ends, more in its middle, its ends tapered to 0.4 (derive.midtilde_shape); approved from build/glyph-review/bold-tilde/taper40-all-styles.pdf 2026-11-09</string>
+				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

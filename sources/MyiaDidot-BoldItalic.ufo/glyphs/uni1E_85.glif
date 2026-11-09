@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni1E85" format="2">
 	<unicode hex="1E85"/>
-	<advance width="1463"/>
+	<advance width="1466"/>
 	<outline>
 		<component base="w"/>
 		<component base="dieresis" xOffset="223"/>
 	</outline>
 	<anchor name="DotBelow" x="667" y="-20"/>
 	<anchor name="Bottom" x="673" y="0"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>glyph</key>
+				<string>c98fd4f01d34</string>
+				<key>review</key>
+				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

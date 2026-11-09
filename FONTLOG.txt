@@ -26,6 +26,27 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Bold Italic entry strokes turn one way into their hooks
+  Emboldened by its strokes, the Bold Italic's entry hooks (u v w y ı ц ш
+  щ и, n m r ŋ п т ɲ and their family) reversed their curvature where the
+  inner edge leaves the left downstroke: the weight, fading from stem to
+  hairline, tilted the edge back faster than the Italic's curve turns, and
+  the curve's first point stood 3.7 units aside of the line's moved end.
+  stroke_bold.Strokes.one_way (MYIA_ONE_WAY=0 to compare): an arc leaving
+  an upright stem's line (within 30 degrees) into a hook, whose moved points
+  turn back by 1-10 degrees, kept turning one way from the line's end (at
+  least half the source's turn; 0.8 and 1 pinched the hook's counter), the
+  shift given back where the edge runs along it (the hook's top, a foot's
+  flat bottom; by the turning it folded a foot into a cusp, eased along the
+  arc it bent back), only where it turns back nowhere new, its curve fitted
+  bending one way (handles 12 units or more, at most twice as sharp); the
+  knees are found first and keep their own repair. The feet's exit hooks
+  (the same fade, mirrored) follow. smooth_joins: ı's entry no longer has a
+  corner (entry dropped); n п ᵯ ʉ ʋ ɯ ᵃ ᶤ's nodes there put in line
+  (fair_arcs' short handles and the cleaning's crumbs rounded into
+  11-26 degree corners). 108 Bold Italic glyphs; corners (corners.py)
+  432 -> 427. Accepted 2026-11-09 but for ſh ɯ ᵯ ɰ (to do).
+
 2026-11-09 Bold f-ligatures made from the Bold's own f (drafts); fi fj joined
   The Bold's f-ligatures were the Regular's emboldened whole: their fs
   badly drawn over the crossbar, fl's and ffl's stem leaning (wider at its

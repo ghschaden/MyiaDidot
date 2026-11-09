@@ -128,6 +128,34 @@ CORNER_MEET = os.environ.get("MYIA_CORNER_MEET", "1") == "1"  # (Strokes.draw: 0
 SPLIT = os.environ.get("MYIA_SPLIT", "1") == "1"  # (Strokes.split_fit: 0 to compare)
 SPLIT_ERR = 3.0  # units a moved side's one cubic may stray from its points (split: make_bold.ITALIC_BOLD_SPLIT)
 BLENDS = os.environ.get("MYIA_BLEND", "1") == "1"  # (Strokes.blend; 0 to compare)
+# an arc leaving a line that turns one way in the source (its first curve
+# turning back by ONE_WAY_TOL degrees at most: Old Standard's n) but whose
+# moved points turn back by over ONE_WAY_DIP degrees there, its weight
+# fading along it faster than it turns (the Bold Italic's entry strokes
+# into their left downstroke, u n and their families: 2026-11-09 review):
+# the moved edge kept turning one way from the line's moved end, at least
+# ONE_WAY_SHARE of the source's turn (more pinched the hook's counter, 0.8
+# and 1 tried), and what that shifts it given back further on where the
+# edge runs along the shift (sliding on itself, the hook's top; given back
+# by the turning a foot's tight turn folded into a cusp, eased along the
+# arc it bent back again), so the arc's far end stays; taken only where it
+# then turns back nowhere new, its curve fitted bending one way too
+# (one_way_fit). The knees are found first, on the outline as moved, and
+# left to their own repair (Strokes.one_way; MYIA_ONE_WAY=0 to compare)
+ONE_WAY = os.environ.get("MYIA_ONE_WAY", "1") == "1"
+ONE_WAY_TOL = 3.0
+ONE_WAY_DIP = 1.0
+ONE_WAY_MAX = 10.0  # (more: not the fade's, a crotch's 20 to 25)
+ONE_WAY_SHARE = float(os.environ.get("MYIA_ONE_WAY_SHARE", 0.5))
+# (only a stem fading into a hook: its weight at the line ONE_WAY_STEM or
+# more, at the curve's end ONE_WAY_HOOK or more and ONE_WAY_FADE less)
+ONE_WAY_STEM, ONE_WAY_HOOK, ONE_WAY_FADE = 0.7, 0.3, 0.2
+ONE_WAY_UPRIGHT = 30  # degrees: its line at most this far from upright, a stem (s S ʂ's spines, 55: accepted as they are)
+ONE_WAY_GIVE = 20.0  # degrees the rest of the arc must turn to take it back
+ONE_WAY_LIMIT = 4.0  # units: its fit made to bend one way within this of its points
+ONE_WAY_SCALES = np.linspace(0.1, 1.6, 31)  # (the handle lengths tried, times the fit's)
+ONE_WAY_SHARP = 2.0  # (its curvature at most this times the fit's sharpest: a short handle spikes)
+ONE_WAY_HANDLE = 12  # units, its handles at least (a short one rounds off its course: 3.6 units by 15 degrees; 12, 2.4 at most)
 
 
 def unit(v):
@@ -292,6 +320,8 @@ class Strokes:
         # moved samples; knees: those blend then takes on whatever their
         # length, over KNEE_BLEND units)
         self.knees, self.found = set(), {}
+        self.turned = []  # (contour, curve, way, degrees): kept turning one way (one_way)
+        self.turning, self.untouched = ONE_WAY, set()  # (one_way: asked for; the knees it leaves)
 
     def offset(self, k):
         return (self.hair + (self.ax - self.hair) * k) / 2
@@ -465,6 +495,116 @@ class Strokes:
         near = min(abs(p[1] - z) for z in ZONES) / ZONE_NEAR
         up = FULL * self.offset(kv) * min(1.0, near)
         return p + np.array([nrm[0] * self.offset(k), nrm[1] * max(self.ay / 2, up)])
+
+    def one_way(self, segs, lines, nodes, moved, ci, kc, first_at, kline, vline, sign):
+        """each arc leaving a line (either way round) whose first curve
+        turns one way in the source but back in its moved points: those
+        kept turning one way from the line's direction, the shift given
+        back along the rest of the arc by its turning (ONE_WAY); moved
+        changed in place"""
+        L = len(segs)
+        for k in range(L):
+            for step in (1, -1):
+                line, first = ((k - 1) % L, k) if step == 1 else ((k + 1) % L, k)
+                if (not lines[line] or lines[first] or L < 3 or (ci, first) in self.untouched
+                        or nodes[k if step == 1 else (k + 1) % L]["corner"]):
+                    continue  # (a smooth run from the line only)
+                if abs(segs[line][0][1][0]) > math.sin(math.radians(ONE_WAY_UPRIGHT)):
+                    continue  # (a stem's line only: not s's spine)
+                back, sense = against(segs[first])
+                if back > ONE_WAY_TOL:
+                    continue
+                # the arc: from the line through smooth nodes to a corner or line
+                run, seg = [], first
+                while not lines[seg % L] and len(run) < L:
+                    run.append(seg % L)
+                    end = (seg + 1) % L if step == 1 else seg % L
+                    if nodes[end]["corner"]:
+                        break
+                    seg += step
+                if len(run) < 2:
+                    continue
+                if step == -1:
+                    sense = -sense  # (the source followed backwards)
+                pts = [np.asarray(q, float) for m in run for q in (moved[m] if step == 1 else moved[m][::-1])]
+                src = [t * step for m in run for _p, t in (segs[m] if step == 1 else segs[m][::-1])]
+                n0 = len(moved[first])
+                # (a stem fading into a hook: from the line's weight to part
+                # of it at the curve's end, the rest of the fade further on)
+                fw = kc[first_at[first]:first_at[first + 1]]
+                w0, w1 = (float(fw[0]), float(fw[-1])) if step == 1 else (float(fw[-1]), float(fw[0]))
+                if w0 < ONE_WAY_STEM or not ONE_WAY_HOOK <= w1 <= w0 - ONE_WAY_FADE:
+                    continue
+                P = np.array(pts)
+                # (from the line's moved end, as the nodes are drawn: the
+                # curve's first point, moved by its own weight, stands aside
+                # of it and its fit swings over; the run shifted onto it)
+                nd = nodes[k if step == 1 else (k + 1) % L]
+                aside = self.move(segs[k if step == 1 else (k + 1) % L][0][0], unit(nd["tin"] + nd["tout"]),
+                                  kline[line], sign, vline[line]) - P[0]
+                d = np.diff(P, axis=0)
+                ln = np.linalg.norm(d, axis=1)
+                if len(ln) < 4 or (ln < 1e-9).any():
+                    continue
+                phi = np.unwrap(np.arctan2(d[:, 1], d[:, 0])) * sense
+                lt = segs[line][0][1] * step
+                base = math.atan2(lt[1], lt[0]) * sense
+                base += 2 * math.pi * round((phi[0] - base) / (2 * math.pi))
+                # (a first difference off the line's course by much is the
+                # junction's, not the curve's)
+                start = 0
+                st = np.array(src)
+                tw = np.arctan2(st[:-1, 0] * st[1:, 1] - st[:-1, 1] * st[1:, 0], np.sum(st[:-1] * st[1:], axis=1)) * sense
+                # (turning at least ONE_WAY_SHARE of the source's own turn)
+                head, prev = [], base
+                for i in range(start, n0 - 1):
+                    prev = max(float(phi[i]), prev + ONE_WAY_SHARE * max(0.0, float(tw[i - 1]) if i else 0.0))
+                    head.append(prev)
+                head = np.array(head)
+                dip = float((np.maximum.accumulate(np.concatenate([[base], phi[start:n0 - 1]]))[1:] - phi[start:n0 - 1]).max()) if len(head) else 0.0
+                if not ONE_WAY_DIP < math.degrees(dip) <= ONE_WAY_MAX:
+                    continue
+                # the rest of the arc turns the same way enough to take it back
+                rest = np.clip(tw[n0 - 1:], 0, None)
+                if len(rest) < 2 or math.degrees(rest.sum()) < ONE_WAY_GIVE:
+                    continue
+                new = phi.copy()
+                new[start:n0 - 1] = np.maximum(head, phi[start:n0 - 1])
+                ang = new * sense
+                Q = np.vstack([P[:1], P[0] + np.cumsum(ln[:, None] * np.stack([np.cos(ang), np.sin(ang)], axis=1), axis=0)])
+                D = Q - P
+                D[n0:] = D[n0 - 1]  # (beyond the first curve as moved, shifted only)
+                D += aside
+                # given back where the edge runs along the shift (sliding on
+                # itself: the hook's top; given back across it, it bends the
+                # edge back, and in a tight turn folds it)
+                way = D[-1] / max(float(np.linalg.norm(D[-1])), 1e-9)
+                along = np.abs(d[n0 - 1:] @ way) ** 2 / np.maximum(ln[n0 - 1:], 1e-9)
+                if along.sum() < 1e-6:
+                    continue
+                w = np.zeros(len(P))
+                share = np.concatenate([[0], np.cumsum(along)])
+                w[n0 - 1:] = share / share[-1]
+                Q = P + D * (1 - w)[:, None]
+                # (taken only where it turns back nowhere the moved points
+                # did not: given back over too tight a turn, a foot's, it
+                # folds into a cusp)
+                dq = np.diff(Q, axis=0)
+                if (np.linalg.norm(dq, axis=1) < 1e-9).any():
+                    continue
+                tq = np.diff(np.unwrap(np.arctan2(dq[:, 1], dq[:, 0]))) * sense
+                tp = np.diff(phi)
+                bad = tq[n0 - 1:] - np.minimum(tp[n0 - 1:], 0)
+                if (bad < -math.radians(ONE_WAY_DIP)).any():
+                    continue
+                # back into moved, segment by segment
+                at = 0
+                for m in run:
+                    cnt = len(moved[m])
+                    part = [Q[at + i] for i in range(cnt)]
+                    moved[m] = part if step == 1 else part[::-1]
+                    at += cnt
+                self.turned.append((ci, first, step, round(math.degrees(dip), 1)))
 
     def mitre(self, p1, t1, p2, t2):
         den = t1[0] * t2[1] - t1[1] * t2[0]
@@ -757,6 +897,8 @@ class Strokes:
                 moved.append([self.move(p, t, kc[q + s], sign, kv[q + s]) for s, (p, t) in enumerate(seg)])
                 q += len(seg)
             L = len(segs)
+            if self.turning:
+                self.one_way(segs, lines, nodes, moved, ci, kc, first, kline, vline, sign)
             # an extreme moves along the outline (the offset is wider across
             # than up and down): its node slides to where the moved outline's
             # tangent is the extreme's, within a third of either segment
@@ -954,6 +1096,13 @@ class Strokes:
                 if (not lines[k] and fits[k][1] is not None and (lines[k - 1] or lines[(k + 1) % L])
                         and inflections(fits[k][1]) and one_way(segs[k])):
                     self.found[(ci, k)] = fits[k][0]
+            # (a curve kept turning one way, its fit too: the nearest
+            # handle lengths that bend one way)
+            for _c, k, _w, _d in (t for t in self.turned if t[0] == ci):
+                if fits[k] is not None and fits[k][1] is not None and inflections(fits[k][1]):
+                    refit = one_way_fit(*fits[k])
+                    if refit is not None:
+                        fits[k] = (fits[k][0], refit)
             rec.moveTo(tuple(ends[0][1]))
             for k in range(L):
                 j = (k + 1) % L
@@ -1153,6 +1302,47 @@ def one_way(seg):
     turn = t[:-1, 0] * t[1:, 1] - t[:-1, 1] * t[1:, 0]
     turn = turn[np.abs(turn) > 1e-4]
     return bool(len(turn)) and bool((np.sign(turn) == np.sign(turn[0])).all())
+
+
+def against(seg):
+    """degrees a source segment's samples [(point, tangent)] turn against
+    their main sense, and that sense (+1, -1; 0: no turn)"""
+    t = np.array([q for _p, q in seg])
+    turn = np.arctan2(t[:-1, 0] * t[1:, 1] - t[:-1, 1] * t[1:, 0], np.sum(t[:-1] * t[1:], axis=1))
+    total = float(turn.sum())
+    if abs(total) < 1e-4:
+        return math.inf, 0
+    sense = 1 if total > 0 else -1
+    return math.degrees(-float(turn[np.sign(turn) == -sense].sum()) * sense), sense
+
+
+def one_way_fit(pts, ctrl):
+    """the cubic ctrl (its end tangents kept) with the handle lengths
+    nearest its fit to pts that bend one way, within ONE_WAY_LIMIT units of
+    pts (both ways: apart); None where none do"""
+    P0, P1, P2, P3 = (np.asarray(p, float) for p in ctrl)
+    la, lb = np.linalg.norm(P1 - P0), np.linalg.norm(P3 - P2)
+    if la < 1e-9 or lb < 1e-9:
+        return None
+    t0, t1 = (P1 - P0) / la, (P3 - P2) / lb
+
+    def sharpest(sg):
+        d, dd = dbez(sg, TS_G2), ddbez(sg, TS_G2)
+        sp = np.linalg.norm(d, axis=1)
+        return float(np.max(np.abs(d[:, 0] * dd[:, 1] - d[:, 1] * dd[:, 0]) / np.maximum(sp, 1e-9) ** 3))
+    # (no sharper than the fit itself turns: a short handle spikes)
+    limit = ONE_WAY_SHARP * sharpest([P0, P1, P2, P3])
+    best = None
+    for a in ONE_WAY_SCALES:
+        for b in ONE_WAY_SCALES:
+            cand = [P0, P0 + a * la * t0, P3 - b * lb * t1, P3]
+            if (min(a * la, b * lb) < ONE_WAY_HANDLE
+                    or inflections(cand) or sharpest(cand) > limit):
+                continue
+            d = apart(pts, cand)
+            if d <= ONE_WAY_LIMIT and (best is None or d < best[0]):
+                best = (d, cand)
+    return best and best[1]
 
 
 def inflections(sg):
@@ -1609,17 +1799,20 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
     flat = tidy(merged_glyph(rec))
     if not flat.contours:
         return ufoLib2.objects.Glyph()
+    strokes.turning = False  # (the knees found on the outline as moved)
     out, kept = stroked(strokes, flat, sliver)
     turn = STEP_TURN
     knees = {key for key, pts in strokes.found.items()
-             if any(near(pts, [f[1:3]], KNEE_NEAR).any() for f in steps(kept, KNEE_TURN))} if strokes.blending else ()
-    if knees:
+             if any(near(pts, [f[1:3]], KNEE_NEAR).any() for f in steps(kept, KNEE_TURN))} if strokes.blending else set()
+    if knees or ONE_WAY:
         # a knee left in the outline: stroked again, its curve blended into
-        # its line too, and judged by the knee's step
+        # its line too, and judged by the knee's step; the arcs leaving a
+        # line kept turning one way (ONE_WAY), but for the knees
         again = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
         again.knees = knees
+        again.untouched = set(knees)
         out, kept = stroked(again, flat, sliver)
-        strokes, turn = again, KNEE_TURN
+        strokes, turn = again, (KNEE_TURN if knees else STEP_TURN)
     if strokes.blended:
         # a blended curve taken only where it removes a step and leaves no
         # step, bend or quality finding (slanted back and rounded) new or
@@ -1628,6 +1821,7 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
         # strokes' widths and the white between them); else as reviewed
         plain = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
         plain.blending = False
+        plain.untouched = set(knees)
         before, was = stroked(plain, flat, sliver)
         fixed, stepped = compared(steps(was, turn), steps(kept, turn))
         bent = compared(bends(was), bends(kept), BEND_NEAR)[1]

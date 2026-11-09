@@ -457,7 +457,13 @@ Verdicts given on the sheets; the fixes still to make:
   (the stroking's), n m r ŋ п т ɲ near (291-315, 600-665), doubling
   Old Standard's own at (314, 609). A fault of the family: in
   stroke_bold, not letter by letter. k q s z y (but for the entry) and
-  г accepted as they are (2026-11-09).
+  г accepted as they are (2026-11-09). Done 2026-11-09 (FONTLOG):
+  stroke_bold.one_way, the edge kept turning one way from the stem's
+  line; the feet's exit hooks with it. Accepted from
+  build/glyph-review/entry-strokes/family-plain.pdf and flagged-plain.pdf
+  ("massive improvement"), but for: ſh (longs_h, not sure about the trace
+  of the ball), ɯ ᵯ ɰ (uni026F uni1D6F uni0270: need further smoothing),
+  their acceptance withdrawn. To do next (2026-11-10): those four.
 - Bold f-ligatures (ff fi fl ffi ffl and those made of them, ﬀb ﬀh ...):
   "the fs are drawn not well, especially over the bar"; the stem after
   the arch leans (wider at its foot); ﬀh's shoulder kinked. Cause: the

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni1E89" format="2">
 	<unicode hex="1E89"/>
-	<advance width="1463"/>
+	<advance width="1466"/>
 	<outline>
 		<component base="w"/>
 		<component base="dotaccent" xOffset="-176" yOffset="-1502"/>
@@ -10,4 +10,17 @@
 	<anchor name="Grave" x="930" y="980"/>
 	<anchor name="Acute" x="930" y="980"/>
 	<anchor name="Top" x="935" y="1000"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>glyph</key>
+				<string>59aa88e343cc</string>
+				<key>review</key>
+				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

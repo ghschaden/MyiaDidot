@@ -145,7 +145,12 @@ Moved from CLAUDE.md (its ground rules apply).
   tight): seen slanted, from the line's end to upright, then a quarter
   46 units wide (at a downstroke of 160; 30 and 38 tried) and 1.48 times
   that high round onto the bowl's own curve, a level node at the
-  counter's bottom, the rest of the bowl as it was. Last,
+  counter's bottom, the rest of the bowl as it was. An arc leaving an
+  upright stem's line into a hook whose weight fades faster than it turns
+  (the entry strokes, u n and their families, and the feet's exit hooks,
+  2026-11-09) is kept turning one way from the line's end, its shift given
+  back where the edge runs along it (`Strokes.one_way`, ONE_WAY_*;
+  MYIA_ONE_WAY=0 to compare); the knees, found first, are left out. Last,
   each whole arc of the cleaned outline (corner to corner) is refitted
   fair (`fair_arcs.py`, 2026-10-28, the review; MYIA_FAIR=0 to
   compare): curvature continuous, changing gently (by its relative change,

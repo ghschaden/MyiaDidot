@@ -30,14 +30,14 @@
 			<point x="417" y="281"/>
 			<point x="449" y="392" type="curve" smooth="yes"/>
 			<point x="498" y="569" type="line" smooth="yes"/>
-			<point x="514" y="624"/>
-			<point x="542" y="673"/>
-			<point x="542" y="729" type="curve" smooth="yes"/>
-			<point x="542" y="783"/>
-			<point x="520" y="829"/>
-			<point x="456" y="829" type="curve" smooth="yes"/>
-			<point x="332" y="829"/>
-			<point x="217" y="653"/>
+			<point x="513" y="620"/>
+			<point x="528" y="683"/>
+			<point x="528" y="730" type="curve" smooth="yes"/>
+			<point x="528" y="784"/>
+			<point x="508" y="829"/>
+			<point x="448" y="829" type="curve" smooth="yes"/>
+			<point x="328" y="829"/>
+			<point x="215" y="648"/>
 			<point x="173" y="553" type="curve"/>
 			<point x="120" y="570" type="line"/>
 			<point x="179" y="711"/>
@@ -77,14 +77,14 @@
 			<point x="750" y="577"/>
 			<point x="720" y="469" type="curve" smooth="yes"/>
 			<point x="671" y="292" type="line" smooth="yes"/>
-			<point x="656" y="237"/>
-			<point x="628" y="187"/>
-			<point x="628" y="131" type="curve" smooth="yes"/>
-			<point x="628" y="76"/>
-			<point x="651" y="31"/>
-			<point x="713" y="31" type="curve" smooth="yes"/>
-			<point x="837" y="31"/>
-			<point x="952" y="207"/>
+			<point x="657" y="241"/>
+			<point x="643" y="177"/>
+			<point x="643" y="131" type="curve" smooth="yes"/>
+			<point x="643" y="81"/>
+			<point x="660" y="31"/>
+			<point x="723" y="31" type="curve" smooth="yes"/>
+			<point x="842" y="31"/>
+			<point x="955" y="213"/>
 			<point x="995" y="307" type="curve"/>
 			<point x="1050" y="291" type="line"/>
 			<point x="989" y="147"/>
@@ -111,6 +111,15 @@
 	<anchor name="Top" x="727" y="1000"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>glyph</key>
+				<string>8e5dc130f31d</string>
+				<key>review</key>
+				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>Old Standard</string>
 		</dict>
