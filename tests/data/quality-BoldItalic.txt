@@ -156,6 +156,7 @@ ring extreme 4                   # 2026-10-16 Bold Italic: first generated (make
 s stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 197 against 279 (0.71, lighter)
 s.sc slant 1                     # 2026-10-21 Italic reweighted and tightened: 12.7 degrees, not 15.2
 s.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 163 against 273 (0.60, lighter)
+s_p wobble 1                     # 2026-11-09 sp (dlig): the italic rebuild's round trip (the plain p through italic_ligatures.put gets it too): 1 against 0: 1211,512 3 degrees
 s_t stroke 1                     # 2026-11-08 ligatures: tt (dlig), ſſb ſſh ſſk ſſt ſj ſſj (inherited from their ff- and f- bases), U+FB05 U+FB06: lc 238 against 269 (0.89, lighter)
 section extreme 2                # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 729,227 9 units past; 539,773 8 units past
 section kink 3                   # 2026-10-21 Italic reweighted and tightened: 337,287 6.7 degrees; 938,712 6.9 degrees; 547,766 3.4 degrees

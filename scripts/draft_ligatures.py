@@ -1,4 +1,4 @@
-"""Draft the discretionary ligatures ct st Th th tt (feature dlig), the
+"""Draft the discretionary ligatures ct st sp Th th tt (feature dlig), the
 f-ligatures fb fh fk ft ffb ffh ffk fft (liga) and the long-s ligatures
 ſb ſh ſk ſt ſi ſl ſſ ſſi ſſl (liga, own lookup).
 
@@ -18,6 +18,8 @@ letter put in its place, stem on the l's stem (b h k are cut above 1250,
 where fl's stem takes over; the t loses its wedge, its stem rises into
 fl's, and the two crossbars are joined). The long-s ligatures are the
 f-ligatures without the f's crossbars, as ſ is f without its crossbar.
+sp is st's arch landing on the p's stem: the p's top serif cut away, its
+stem running up into the arch's right leg (sp_ligature).
 """
 
 import argparse
@@ -80,6 +82,27 @@ def build(font, name, first, cut, left, base, peak, t_left, t_top, clip, closer)
     bow = arch(left, w1 + sb, base, peak, t_left, sb - sa, t_top, clip)
     out = path_op(path_op(a, t, "UNION"), bow, "UNION")
     return out, w1 + font["t"].width
+
+
+SP_JOIN = 850  # sp: where the arch meets the p's stem (st's arch is cut there)
+SP_CLOSER = 30  # sp: the p's stem as far from the s as st's t stem (st: 50; t's stem 210, p's 190)
+
+
+def sp_ligature(font, closer=SP_CLOSER):
+    """sp: the s whole, the p without its top serif and the top of its stem
+    (cut at SP_JOIN), and st's arch from the s's top over into the p's
+    stem, its right leg the stem's width there (measured above the bowl's
+    crotch: lower the stem widens into it). The arch springs at SP_JOIN, so
+    its legs leave the s and the stem upright (st's springs 50 lower and is
+    cut there, 3 degrees off upright, hidden in the t's stem)."""
+    w1 = font["s"].width - closer
+    sa, sb = stems_at(font, "p", 800)[0]
+    foot = min(p.y for c in font["p"].contours for p in c.points if p.x < sa - 20 and p.y > 600)
+    p = path_op(to_path(font, font["p"]), rect_path(-BIG, foot - 6, sa, BIG), "DIFFERENCE")
+    p = path_op(p, rect_path(-BIG, SP_JOIN, sb + 20, BIG), "DIFFERENCE")
+    bow = arch(400, w1 + sb, SP_JOIN, 1380, 50, sb - sa, 40, SP_JOIN)
+    out = path_op(path_op(to_path(font, font["s"]), shifted(p, w1), "UNION"), bow, "UNION")
+    return out, w1 + font["p"].width
 
 
 F_BAR = (84 - 230, 836, 610 - 230, 884)  # the f's crossbar, from its stem
@@ -268,7 +291,7 @@ def main():
     for name, first, cut, left, base, peak, t_left, t_top, clip, closer in LIGATURES:
         if wanted(name):
             put(name, *build(font, name, first, cut, left, base, peak, t_left, t_top, clip, closer))
-    for name, make in (("T_h", th_ligature), ("t_h", t_h_ligature), ("t_t", t_t_ligature)):
+    for name, make in (("s_p", sp_ligature), ("T_h", th_ligature), ("t_h", t_h_ligature), ("t_t", t_t_ligature)):
         if wanted(name):
             put(name, *make(font))
     for name, base, letter in F_LIGATURES:

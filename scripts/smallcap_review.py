@@ -97,6 +97,7 @@ LOCL_LANGUAGES = {"loclSRB": "Serbian", "loclBGR": "Bulgarian"}
 UNENCODED = {
     "c_t": (r"{\addfontfeatures{Ligatures=Rare}ct}", r"{\addfontfeatures{Ligatures=Rare}acta}"),
     "s_t": (r"{\addfontfeatures{Ligatures=Rare}st}", r"{\addfontfeatures{Ligatures=Rare}esta}"),
+    "s_p": (r"{\addfontfeatures{Ligatures=Rare}sp}", r"{\addfontfeatures{Ligatures=Rare}aspa}"),
     "U.horn": ("Ư", "Ứ Ừ Ự"),
     "u.sc.horn": (r"{\smallcapfont ư}", r"{\smallcapfont ứ ừ ự}"),
 }

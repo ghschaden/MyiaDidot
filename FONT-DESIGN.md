@@ -451,9 +451,6 @@ evidence (a raster or a proof).
 
 Attested ligatures the font does not have yet, in the order agreed:
 
-- sp (dlig): the third classic discretionary ligature beside ct st; the
-  p has no ascender, so the arch springs from the s and lands on the p's
-  stem top (a new arch shape, not st's).
 - Qu (dlig): the Q's tail running under the u (Caslon, Baskerville): a
   drawing, not an assembly.
 - ch ck tz (dlig or hlig): from Fraktur, used in some 19th-century German
@@ -461,7 +458,7 @@ Attested ligatures the font does not have yet, in the order agreed:
 - ſs (hist): the long s before s, the source of ß; rarely needed.
 
 Done 2026-11-08 (FONTLOG): Th th tt, ſſb ſſh ſſk ſſt ſj ſſj, U+FB05
-U+FB06.
+U+FB06; 2026-11-09: sp.
 
 ## Spacing: revisit only if specimens warrant it
 

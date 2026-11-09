@@ -36,7 +36,7 @@ LONGS = (
     ("longs_j", "f_j"),
     ("longs_longs_j", "f_f_j"),
 )
-NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "T_h", "t_h", "t_t")
+NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "s_p", "T_h", "t_h", "t_t")
 
 
 ITALIC_TH_CLOSER = 100  # th: the h this much nearer than after t (chosen 2026-11-08 from 140 100 60)
@@ -186,6 +186,30 @@ def make(font):
         bow = arch(300, dx + tx1, 790, 1434, hair, tx1 - tx0, hair, 810)
         out = path_op(path_op(a, shift(part, dx), "UNION"), bow, "UNION")
         put(f"{first}_t", out, dx + up["t"].width, [dx])
+    # sp: st's arch landing on the p's stem, its stem where st's t stem
+    # stands; the p's entry hook (all left of the stem) cut away and the
+    # stem's top above the bowl's crotch (above it the stem narrows into the
+    # hook, both edges leaning), the stem carried on upright from there, its
+    # left edge where it is clean (400), its right where the bowl leaves it,
+    # into the arch's right leg
+    ta = stems_at(up, "t", 700)[0][0]
+    pa, pb0 = stems_at(up, "p", 400)[0]
+    dx = up["s"].width - 70 - (pa - ta)
+    mid = (pa + pb0) / 2
+
+    def split(y):  # the bowl's inside opens beside the stem
+        runs = stems_at(up, "p", y)
+        stem = next(r for r in runs if r[0] <= mid <= r[1])
+        return any(0 <= a - stem[1] < 25 for a, _ in runs)
+
+    crotch = next(y for y in range(550, 800, 2) if split(y))
+    pb = next(b for a, b in stems_at(up, "p", crotch) if a <= mid <= b)
+    part = path_op(to_path(up, up["p"]), rect_path(-BIG, 400, pa, BIG), "DIFFERENCE")
+    part = path_op(part, rect_path(-BIG, crotch, pb, BIG), "DIFFERENCE")
+    part = path_op(part, rect_path(pa, 400, pb, 815), "UNION")
+    bow = arch(300, dx + pb, 790, 1434, hair, pb - pa, hair, 810)
+    out = path_op(path_op(to_path(up, up["s"]), shift(part, dx), "UNION"), bow, "UNION")
+    put("s_p", out, dx + up["p"].width, [dx])
     # Th as the Regular's (draft_ligatures.th_ligature), on this style's T and h
     # the italic T's arm is short: the h 0.8 of a T stem further out
     # (chosen 2026-11-08 from 0, 0.5, 1)

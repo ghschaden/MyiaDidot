@@ -26,6 +26,20 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Discretionary ligature sp
+  New in dlig beside ct st, in all four styles: st's arch from the s's
+  top landing on the p's stem, whose top serif (Regular) or entry hook
+  (italics) is cut away; the p's stem stands where st's t stem stands
+  (Regular 30 nearer than set after s; italics by the stems measured).
+  The arch springs upright from the stem: in the Regular at 850, the
+  stem measured above the bowl's crotch and cut there; in the italics the
+  stem carried on upright from the crotch, where both its edges begin to
+  lean into the hook. Builders: draft_ligatures.py (sp_ligature; the Bold
+  emboldened from it as st), italic_ligatures.py. The arch kept at st's
+  height (1380; 1250 and 1150 compared, and Minion's and Spectral's sp,
+  whose p rises to an ascender). Accepted from the drafts review sheets
+  and a four-style sheet. README and the LuaLaTeX howto list sp and tt.
+
 2026-11-08 Ligatures tt, ſſb ſſh ſſk ſſt ſj ſſj; U+FB05 U+FB06
   tt (dlig): two t's on one crossbar, the second as near as th's h, in
   all four styles. The long-s set completed: ſſ before b h k t, ſj ſſj,

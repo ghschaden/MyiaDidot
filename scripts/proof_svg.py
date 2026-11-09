@@ -23,7 +23,7 @@ ROW_HEIGHT = 104
 SAMPLES = [
     ("Latin text and punctuation", "AVATAR. To Wa: kerning, fi ffi fl.", {}, None, None),
     ("Kerning review pairs", "Th Gr uf ga if Re va gh wa ay ut fr", {}, "latn", "en"),
-    ("Discretionary ligatures", "ct st", {"dlig": True}, None, None),
+    ("Discretionary ligatures", "ct st sp", {"dlig": True}, None, None),
     ("Old-style figures", "0123456789 · 1789", {"onum": True}, None, None),
     ("Tabular figures", "0123456789 · 1789", {"tnum": True}, None, None),
     ("Proportional lining figures", "0123456789 · 1789 · 1711", {"pnum": True}, None, None),
