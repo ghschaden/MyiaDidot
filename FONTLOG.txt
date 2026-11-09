@@ -26,6 +26,32 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Middle tilde: rounder, tapered ends; the Bold's all on their bases
+  Stretched across two stems (ᵰ ᵭ, 1.72-1.86 times), the middle tilde's
+  ends flattened. The stretch is now spread unevenly
+  (derive.midtilde_shape): x mapped by u + c sin(2 pi u)/(2 pi), c =
+  -min(0.4, 1 - 1.2/sx) where sx > 1.2, so ᵭ's ends stretch 1.20 times and
+  its middle 2.52; tildes stretched less (ɫ ᵮ ᵲ ᵵ) keep their shape. The
+  ends taper to their tips: the spacing tilde's end faces narrowed to 0.4
+  about their middles before the stretch, the handles next to them moving
+  half as far (MIDTILDE_TAPER, chosen from drafts at 1, 0.6 and 0.4). All
+  14 middle-tilde letters in the four styles (ɫ Ɫ ɫ.sc ᵬ-ᵶ ᵳ); ᵯ's inner
+  stems clean.
+    * Italic ᵶ: tapered, the tilde's right end stopped just short of the
+      spine (a sliver, a notch in the Bold Italic) and its left end touched
+      it: both ends 60 longer, visible and clear of the stem (the recipe's
+      new right/left arguments; chosen from drafts at 0-80). The Bold
+      Italic follows; its ᵶ keeps two small reversals of the stroking at
+      the top curl and the foot (accepted).
+    * Bold ᵴ ᵵ ᵶ ɫ Ɫ ɫ.sc on their own Bold bases, as ᵬ-ᵳ (BOLD_REBUILD),
+      no longer the Regular's emboldened whole (ᵶ's foot had a kink): 13
+      quality findings gone. ᵴ's tilde 30 higher (472, BOLD_RECIPES): on
+      the Bold's s its tapered left tip hung 5-8 units over the foot serif.
+    * Advances follow the ink: Bold ɫ +10, ᵵ +8, Ɫ +5, ᵴ +3, ᵶ +2; Bold
+      Italic ᵮ ᵴ ᵵ +4. ᵬ's kern_clear guard against the j group 7-23 units
+      tighter (its right end thinner). Marks on them move 1-6 units; on the
+      Bold ᵰ they now sit as on n (+16).
+
 2026-11-09 Round dots in the bold styles
   Emboldening widened a dot three times as much as it heightened it: the
   Bold's period 357 x 262 (1.36:1) of the Regular's 256 round, i's dot

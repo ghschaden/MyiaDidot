@@ -8,14 +8,14 @@
 			<point x="114" y="295"/>
 			<point x="115" y="326"/>
 			<point x="125" y="359" type="curve" smooth="yes"/>
-			<point x="144" y="426" type="line"/>
-			<point x="100" y="412"/>
-			<point x="77" y="379"/>
-			<point x="56" y="346" type="curve"/>
-			<point x="-10" y="353" type="line"/>
-			<point x="27" y="423"/>
-			<point x="85" y="478"/>
-			<point x="166" y="507" type="curve"/>
+			<point x="146" y="433" type="line"/>
+			<point x="86" y="425"/>
+			<point x="55" y="387"/>
+			<point x="25" y="348" type="curve"/>
+			<point x="4" y="351" type="line"/>
+			<point x="35" y="429"/>
+			<point x="85" y="488"/>
+			<point x="168" y="514" type="curve"/>
 			<point x="387" y="1335" type="line" smooth="yes"/>
 			<point x="397" y="1372"/>
 			<point x="392" y="1382"/>
@@ -31,18 +31,18 @@
 			<point x="801" y="884"/>
 			<point x="873" y="735"/>
 			<point x="872" y="601" type="curve" smooth="yes"/>
-			<point x="872" y="556"/>
-			<point x="864" y="507"/>
-			<point x="849" y="458" type="curve"/>
-			<point x="893" y="473"/>
-			<point x="916" y="505"/>
-			<point x="937" y="538" type="curve"/>
-			<point x="1003" y="531" type="line"/>
-			<point x="965" y="459"/>
-			<point x="905" y="403"/>
-			<point x="821" y="375" type="curve"/>
-			<point x="777" y="266"/>
-			<point x="710" y="163"/>
+			<point x="872" y="554"/>
+			<point x="864" y="503"/>
+			<point x="847" y="451" type="curve"/>
+			<point x="907" y="459"/>
+			<point x="938" y="497"/>
+			<point x="968" y="536" type="curve"/>
+			<point x="988" y="533" type="line"/>
+			<point x="956" y="453"/>
+			<point x="905" y="393"/>
+			<point x="818" y="368" type="curve"/>
+			<point x="774" y="261"/>
+			<point x="709" y="161"/>
 			<point x="649" y="101" type="curve" smooth="yes"/>
 			<point x="568" y="19"/>
 			<point x="479" y="-23"/>
@@ -56,39 +56,39 @@
 			<point x="257" y="23"/>
 			<point x="384" y="23" type="curve" smooth="yes"/>
 			<point x="485" y="23"/>
-			<point x="552" y="146"/>
+			<point x="554" y="147"/>
 			<point x="599" y="233" type="curve" smooth="yes"/>
-			<point x="620" y="272"/>
-			<point x="640" y="312"/>
-			<point x="656" y="355" type="curve"/>
-			<point x="573" y="359"/>
-			<point x="498" y="378"/>
-			<point x="432" y="396" type="curve" smooth="yes"/>
-			<point x="388" y="408"/>
-			<point x="347" y="418"/>
-			<point x="304" y="426" type="curve"/>
-			<point x="278" y="349"/>
-			<point x="262" y="272"/>
+			<point x="620" y="273"/>
+			<point x="640" y="313"/>
+			<point x="657" y="357" type="curve"/>
+			<point x="575" y="363"/>
+			<point x="493" y="380"/>
+			<point x="420" y="396" type="curve" smooth="yes"/>
+			<point x="379" y="405"/>
+			<point x="340" y="414"/>
+			<point x="301" y="421" type="curve"/>
+			<point x="278" y="346"/>
+			<point x="262" y="270"/>
 		</contour>
 		<contour>
-			<point x="343" y="529" type="curve"/>
-			<point x="422" y="524"/>
-			<point x="497" y="505"/>
-			<point x="561" y="488" type="curve" smooth="yes"/>
-			<point x="605" y="477"/>
-			<point x="646" y="466"/>
-			<point x="689" y="458" type="curve"/>
-			<point x="708" y="528"/>
-			<point x="720" y="602"/>
+			<point x="342" y="527" type="curve"/>
+			<point x="422" y="520"/>
+			<point x="502" y="503"/>
+			<point x="573" y="488" type="curve" smooth="yes"/>
+			<point x="614" y="479"/>
+			<point x="653" y="470"/>
+			<point x="691" y="463" type="curve"/>
+			<point x="709" y="532"/>
+			<point x="720" y="604"/>
 			<point x="720" y="677" type="curve" smooth="yes"/>
-			<point x="720" y="741"/>
+			<point x="719" y="741"/>
 			<point x="699" y="837"/>
 			<point x="637" y="837" type="curve" smooth="yes"/>
 			<point x="545" y="837"/>
 			<point x="450" y="744"/>
 			<point x="372" y="593" type="curve" smooth="yes"/>
 			<point x="362" y="572"/>
-			<point x="352" y="551"/>
+			<point x="351" y="550"/>
 		</contour>
 	</outline>
 	<anchor name="DotBelow" x="367" y="-20"/>
@@ -102,11 +102,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-05</string>
+				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>5fcbb47f3816</string>
+				<string>2739ffe04793</string>
 				<key>review</key>
-				<string>drafts-review-Italic.pdf</string>
+				<string>the middle tilde stretched less at its ends, more in its middle, its ends tapered to 0.4 (derive.midtilde_shape); approved from build/glyph-review/bold-tilde/taper40-all-styles.pdf 2026-11-09</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

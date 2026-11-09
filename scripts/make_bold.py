@@ -142,7 +142,11 @@ BOLD_REBUILD = {
     # shoulder that fair_bold_stem takes out of r (2026-11-04)
     **{name: f"{ch}: the tilde on the Bold's {base}" for name, ch, base in (
         ("uni1D6C", "ᵬ", "b"), ("uni1D6D", "ᵭ", "d"), ("uni1D6E", "ᵮ", "f"), ("uni1D6F", "ᵯ", "m"),
-        ("uni1D70", "ᵰ", "n"), ("uni1D71", "ᵱ", "p"), ("uni1D72", "ᵲ", "r"), ("uni1D73", "ᵳ", "ɾ"))},
+        ("uni1D70", "ᵰ", "n"), ("uni1D71", "ᵱ", "p"), ("uni1D72", "ᵲ", "r"), ("uni1D73", "ᵳ", "ɾ"),
+        # and the rest (2026-11-09): emboldened whole, the tapered tilde
+        # moved ᵶ's node at the foot's right edge up to 24 (a 2-degree kink)
+        ("uni1D74", "ᵴ", "s"), ("uni1D75", "ᵵ", "t"), ("uni1D76", "ᵶ", "z"),
+        ("uni026B", "ɫ", "l"), ("uni2C62", "Ɫ", "L"), ("uni026B.sc", "ɫ.sc", "l.sc"))},
 }
 # Bold Italic recipes made again whole from the Bold Italic's final bases,
 # every letter they make: the modifier letters (ʰ ʷ ʸ ᵘ ⁿ ⁱ ᶤ ᶶ ...),
@@ -253,6 +257,10 @@ ITALIC_BOLD_REBUILD = {
 # loop's counter closes, its turn too tight for a stroke twice as heavy):
 # used as given, nothing scaled
 BOLD_RECIPES = {
+    # ᵴ: on the Bold's s (2026-11-09) the tapered tilde's left tip hung
+    # 5-8 units over the foot serif's top, a notch; 30 higher it stands clear
+    # (from 487 its right end crowds the top serif)
+    "ᵴ": ("midtilde", "s", ("x", 472)),
     # Ƭ: the Regular's curl, but leaving the bar at the bar's own weight (60)
     # with the bracket under it cut away (420-560): from the Regular's
     # recipe the ring took the stroke where the bracket swells (124 at 420),

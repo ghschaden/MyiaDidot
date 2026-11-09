@@ -975,21 +975,79 @@ def slash_shape(font, source, band, arg):
 
 def midtilde_shape(font, source, band, arg):
     """The spacing tilde squeezed to 85% height, centred at the bar height
-    and stretched across the ink there plus a bit (arg: (y or None, which))."""
-    y, which = (arg + (None, None))[:2]
+    and stretched across the ink there plus a bit (arg: (y or None, which,
+    right, left): right and left move its ends outward, in units)."""
+    y, which, right, left = (arg + (None, None, None, None))[:4]
     y = bar_y(font, band, y)
     stems = stems_at(font, source, y)
     if which == "first":
         stems = stems[:1]
     over = BARS[band][1] * 0.8
-    x0, x1 = stems[0][0] - over, stems[-1][1] + over
+    x0, x1 = stems[0][0] - over - (left or 0), stems[-1][1] + over + (right or 0)
     tx0, ty0, tx1, ty1 = ink_bounds(font, "tilde")
     sx = (x1 - x0) / (tx1 - tx0)
     sy = 0.85 * (1 if band != "s" else 0.9)
+    own = RecordingPen()
+    font["tilde"].draw(own)
+    own = tapered_ends(own, MIDTILDE_TAPER)
     rec = RecordingPen()
     tp = TransformPen(rec, (sx, 0, 0, sy, x0 - tx0 * sx, y - (ty0 + ty1) / 2 * sy))
-    font["tilde"].draw(tp)
+    own.replay(tp)
+    # stretched across two stems (1.7-1.9 times) its ends flatten: the
+    # stretch spread unevenly, less at the ends, more in the middle (chosen
+    # 2026-11-09, "more": ᵭ's ends 1.20, its middle 2.52); a tilde stretched
+    # 1.2 times or less (ɫ ᵮ ᵲ ᵵ) as it was
+    c = -min(0.4, 1 - 1.2 / sx) if sx > 1.2 else 0
+    if c:
+        width = x1 - x0
+
+        def warp(x):
+            u = (x - x0) / width
+            return x0 + width * (u + c * math.sin(2 * math.pi * u) / (2 * math.pi))
+
+        rec.value = [(op, tuple((warp(px), py) for px, py in args)) for op, args in rec.value]
     return rec
+
+
+# the middle tilde's end faces narrowed to this share of the spacing tilde's,
+# about their middles, the curves into them following: the ends taper to
+# their tips (asked 2026-11-09, chosen 0.4 for all styles; 1: the
+# tilde's own ends)
+MIDTILDE_TAPER = 0.4
+
+
+def tapered_ends(rec, share):
+    """The tilde's end faces (its two lines) narrowed to share of their length
+    about their middles; the handles next to them move half as far."""
+    if share == 1:
+        return rec
+    value = [(op, list(args)) for op, args in rec.value]
+    start = 0
+    for end, (op, _) in enumerate(value):
+        if op not in ("closePath", "endPath"):
+            continue
+        segs = list(range(start, end))  # moveTo, then the segments
+        faces = [(i - 1, i) for i in segs[1:] if value[i][0] == "lineTo"]
+        if value[segs[-1]][1][-1] != value[segs[0]][1][0]:
+            faces.append((segs[-1], segs[0]))  # the closing line
+        for a, b in faces:
+            (ax, ay), (bx, by) = value[a][1][-1], value[b][1][-1]
+            mx, my = (ax + bx) / 2, (ay + by) / 2
+            da = ((mx - ax) * (1 - share), (my - ay) * (1 - share))
+            db = ((mx - bx) * (1 - share), (my - by) * (1 - share))
+            value[a][1][-1] = (ax + da[0], ay + da[1])
+            value[b][1][-1] = (bx + db[0], by + db[1])
+            if value[a][0] == "curveTo":  # the handle into the face
+                hx, hy = value[a][1][1]
+                value[a][1][1] = (hx + da[0] / 2, hy + da[1] / 2)
+            after = b + 1 if b + 1 < end else start + 1
+            if value[after][0] == "curveTo":  # the handle out of it
+                hx, hy = value[after][1][0]
+                value[after][1][0] = (hx + db[0] / 2, hy + db[1] / 2)
+        start = end + 1
+    out = RecordingPen()
+    out.value = [(op, tuple(args)) for op, args in value]
+    return out
 
 
 def merged(font, src, extra):

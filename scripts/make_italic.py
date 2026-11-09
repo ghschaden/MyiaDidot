@@ -802,6 +802,12 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # 40 wider; at 0.8 of its box the slash's top met the
                   # terminal in a notch, at 0.78 it stands where it stood
                   "ȼ.sc": ("slash", "c.sc", ("s", "box", 0.25, -90, 0.78, 1130)),
+                  # ᵶ: the tilde's right end, tapered (2026-11-09), stopped
+                  # just short of the spine, a sliver of white between them
+                  # (a notch once emboldened), and its left end touched the
+                  # spine; both 60 longer they stand clear, visible, not in
+                  # the stem (chosen 2026-11-09 from drafts at 0-80)
+                  "ᵶ": ("midtilde", "z", ("x", None, None, 60, 60)),
                   "ɡ": ("alias", "g", None), "ɥ": ("turn", "h", "x"),
                   "ɑ": ("alias", "a", None),
                   # ₩: the bars from 20 to 20 past the uncrossed W's

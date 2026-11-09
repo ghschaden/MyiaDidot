@@ -514,15 +514,14 @@ uni1D43 wobble 1                 # 2026-11-02 italic IPA a: ɑ the italic's one-
 uni1D4D wobble 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni1D58 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 368,599 16 degrees; 696,641 24 degrees; 357,981 36 degrees; 367,1015 14 degrees
 uni1D6C wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 978,563 9 degrees; 594,207 5 degrees
-uni1D6F stroke 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: lc 304 against 273 (1.11, darker)
 uni1D72 zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +24 from -23
 uni1D73 kink 4                   # reviewed 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 360,220 1.9 degrees; 95,221 1.6 degrees; 124,3
 uni1D73 step 2                   # reviewed 2026-11-04: ᵳ's foot slab ends, as ɾ's: 137,57 49 units aside; 459,57 66 units aside
 uni1D73 zone 1                   # reviewed 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: bottom +23 from -23
 uni1D75 stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: lc 240 against 269 (0.89, lighter)
 uni1D75 wobble 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 1 against 0: 490,345 11 degrees
-uni1D76 step 2                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 763,534 42 units aside; 155,350 41 units aside
 uni1D76 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 130 against 279 (0.47, lighter)
+uni1D76 wobble 1                 # reviewed 2026-11-09: ᵶ's tilde ends 60 longer (the Italic's recipe), the stroking's, away from the tilde, accepted: 2 against 0: 691,735 230 degrees; 165,136 214 degrees
 uni1D7B zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom +23 from -23
 uni1D7D kink 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 454,15 7.6 degrees
 uni1D7D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 333,702 26 degrees; 349,777 12 degrees; 710,213 4 degrees; 845,710 5 degrees
