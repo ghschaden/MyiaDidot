@@ -460,8 +460,10 @@ Verdicts given on the sheets; the fixes still to make:
 - Bold f-ligatures (ff fi fl ffi ffl and those made of them, ﬀb ﬀh ...):
   "the fs are drawn not well, especially over the bar"; the stem after
   the arch leans (wider at its foot); ﬀh's shoulder kinked. Cause: the
-  Regular's drawn ligatures emboldened whole. Proposed: made from the
-  Bold's own f (draft_ligatures), drafts for review.
+  Regular's drawn ligatures emboldened whole. Decided 2026-11-09: drafted
+  from the Bold's own f (draft_ligatures): ff fi ffi the Bold f side by
+  side, fl ffl its arch at the Bold's weight into a straight stem, those
+  before b h k t by f_ligature, the long-s ones as now; drafts for review.
 - Bold middle tilde on ᵰ ᵭ: its ends "should turn a bit more on the
   sides" (stretched across two stems, 1.72-1.86 times, they flatten);
   candidates in build/glyph-review/bold-tilde/.
