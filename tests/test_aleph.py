@@ -70,7 +70,12 @@ def test_aleph_upper_join_preserves_accepted_drawing():
     start = next(i for i, p in enumerate(old) if (p.x, p.y, p.type) == (978, 588, 'curve'))
     end = next(i for i, p in enumerate(old) if (p.x, p.y, p.type) == (850, 478, 'curve'))
     assert new[:start + 1] == old[:start + 1]
-    assert new[start + 6:] == old[end:]
+    # after the join as it was, but for the join under the upper arm, whose
+    # two handles finish puts in line (2026-11-09: a 12-degree corner)
+    rest, was = new[start + 6:], old[end:]
+    assert len(rest) == len(was)
+    moved = [i for i, (a, b) in enumerate(zip(rest, was, strict=True)) if a != b]
+    assert len(moved) <= 2 and all(rest[i].type is None for i in moved)
     assert [(p.x, p.y, p.type) for p in new[start:start + 7]] == [
         (978, 588, 'curve'), (951, 588, None), (941, 606, None), (929, 606, 'curve'),
         (830, 606, None), (864, 514, None), (850, 478, 'curve'),

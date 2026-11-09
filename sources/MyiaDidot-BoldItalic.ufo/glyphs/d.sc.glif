@@ -4,6 +4,7 @@
 	<outline>
 		<contour>
 			<point x="-58" y="0" type="line"/>
+			<point x="-36" y="69" type="line"/>
 			<point x="45" y="69" type="line"/>
 			<point x="63" y="69"/>
 			<point x="82" y="84"/>
@@ -61,20 +62,20 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-06</string>
+				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>e9d3174382b1</string>
+				<string>93c363c85bee</string>
 				<key>review</key>
-				<string>docs/bold-italic-smallcaps-latin-review-2026-11-06.md</string>
+				<string>corner and serif fixes asked for from build/corners/bolditalic-letters.pdf (smooth_joins.py)</string>
 			</dict>
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-06</string>
+				<string>2026-11-09</string>
 				<key>source</key>
 				<string>edcd418d0cc9</string>
 				<key>why</key>
-				<string>Local small-cap counter and stem repairs</string>
+				<string>Local small-cap counter and stem repairs; foot serif's flat restored (lost in the repair: a wedge from tip to bracket), 2026-11-09</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>

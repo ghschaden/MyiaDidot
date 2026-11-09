@@ -3,25 +3,6 @@
 	<advance width="1441"/>
 	<outline>
 		<contour>
-			<point x="82" y="897" type="curve" smooth="yes"/>
-			<point x="76" y="1021"/>
-			<point x="245" y="1059"/>
-			<point x="341" y="1059" type="curve" smooth="yes"/>
-			<point x="423" y="1059"/>
-			<point x="519" y="1031"/>
-			<point x="516" y="940" type="curve" smooth="yes"/>
-			<point x="513" y="868"/>
-			<point x="478" y="808"/>
-			<point x="440" y="741" type="curve" smooth="yes"/>
-			<point x="437" y="736"/>
-			<point x="434" y="731"/>
-			<point x="431" y="726" type="curve" smooth="yes"/>
-			<point x="389" y="663"/>
-			<point x="383" y="576"/>
-			<point x="391" y="521" type="curve" smooth="yes"/>
-			<point x="403" y="430"/>
-			<point x="451" y="426"/>
-			<point x="542" y="414" type="curve"/>
 			<point x="669" y="923" type="line" smooth="yes"/>
 			<point x="674" y="945"/>
 			<point x="679" y="963"/>
@@ -44,7 +25,7 @@
 			<point x="1287" y="829" type="curve" smooth="yes"/>
 			<point x="1285" y="871"/>
 			<point x="1302" y="891"/>
-			<point x="1311" y="901" type="curve"/>
+			<point x="1311" y="901" type="curve" smooth="yes"/>
 			<point x="1319" y="910"/>
 			<point x="1321" y="922"/>
 			<point x="1325" y="941" type="curve" smooth="yes"/>
@@ -67,13 +48,10 @@
 			<point x="964" y="320"/>
 			<point x="873" y="320" type="curve" smooth="yes"/>
 			<point x="814" y="320" type="line"/>
-			<point x="753" y="100" type="line"/>
-			<point x="751" y="101"/>
-			<point x="742" y="100"/>
-			<point x="741" y="98" type="curve" smooth="yes"/>
-			<point x="735" y="83"/>
-			<point x="719" y="69"/>
-			<point x="726" y="69" type="curve" smooth="yes"/>
+			<point x="754" y="103" type="line" smooth="yes"/>
+			<point x="749" y="84"/>
+			<point x="760" y="69"/>
+			<point x="779" y="69" type="curve" smooth="yes"/>
 			<point x="903" y="69" type="line"/>
 			<point x="882" y="0" type="line"/>
 			<point x="275" y="0" type="line"/>
@@ -92,7 +70,7 @@
 			<point x="281" y="728" type="curve" smooth="yes"/>
 			<point x="291" y="736"/>
 			<point x="298" y="742"/>
-			<point x="302" y="745" type="curve" smooth="yes"/>
+			<point x="302" y="745" type="curve"/>
 			<point x="368" y="801"/>
 			<point x="417" y="846"/>
 			<point x="407" y="906" type="curve" smooth="yes"/>
@@ -107,13 +85,31 @@
 			<point x="211" y="806" type="curve" smooth="yes"/>
 			<point x="152" y="806"/>
 			<point x="85" y="842"/>
+			<point x="82" y="897" type="curve" smooth="yes"/>
+			<point x="76" y="1021"/>
+			<point x="245" y="1059"/>
+			<point x="341" y="1059" type="curve" smooth="yes"/>
+			<point x="423" y="1059"/>
+			<point x="519" y="1031"/>
+			<point x="516" y="940" type="curve" smooth="yes"/>
+			<point x="513" y="868"/>
+			<point x="478" y="808"/>
+			<point x="440" y="741" type="curve" smooth="yes"/>
+			<point x="437" y="736"/>
+			<point x="434" y="731"/>
+			<point x="431" y="726" type="curve" smooth="yes"/>
+			<point x="389" y="663"/>
+			<point x="383" y="576"/>
+			<point x="391" y="521" type="curve" smooth="yes"/>
+			<point x="403" y="430"/>
+			<point x="451" y="426"/>
+			<point x="542" y="414" type="curve"/>
 		</contour>
 		<contour>
-			<point x="1133" y="963" type="curve"/>
-			<point x="961" y="963" type="line" smooth="yes"/>
-			<point x="952" y="963"/>
-			<point x="973" y="930"/>
-			<point x="973" y="928" type="curve"/>
+			<point x="1018" y="963" type="line" smooth="yes"/>
+			<point x="998" y="963"/>
+			<point x="978" y="947"/>
+			<point x="973" y="928" type="curve" smooth="yes"/>
 			<point x="844" y="415" type="line"/>
 			<point x="926" y="425"/>
 			<point x="967" y="432"/>
@@ -123,6 +119,7 @@
 			<point x="1101" y="735" type="curve" smooth="yes"/>
 			<point x="1101" y="806"/>
 			<point x="1089" y="878"/>
+			<point x="1133" y="963" type="curve"/>
 		</contour>
 	</outline>
 	<anchor name="Bottom" x="590" y="0"/>
@@ -132,11 +129,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-07</string>
+				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>a5e1614bed0a</string>
+				<string>6333241d3f73</string>
 				<key>review</key>
-				<string>docs/bold-italic-smallcaps-completion-2026-11-07.md</string>
+				<string>corner and serif fixes asked for from build/corners/bolditalic-letters.pdf (smooth_joins.py)</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>

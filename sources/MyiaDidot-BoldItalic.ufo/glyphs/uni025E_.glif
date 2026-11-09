@@ -79,9 +79,9 @@
 			<point x="591" y="359"/>
 			<point x="591" y="332" type="curve" smooth="yes"/>
 			<point x="591" y="282"/>
-			<point x="568" y="228"/>
+			<point x="573" y="241"/>
 			<point x="547" y="204" type="curve"/>
-			<point x="510" y="135"/>
+			<point x="502" y="140"/>
 			<point x="460" y="24"/>
 		</contour>
 	</outline>
@@ -91,22 +91,22 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-08</string>
+				<string>2026-11-09</string>
 				<key>glyph</key>
-				<string>09c39a23738c</string>
+				<string>297c8ec66443</string>
 				<key>review</key>
-				<string>docs/bold-italic-phonetic-drafts-review-2026-11-08.md</string>
+				<string>corner and serif fixes asked for from build/corners/bolditalic-letters.pdf (smooth_joins.py)</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-08</string>
+				<string>2026-11-09</string>
 				<key>source</key>
 				<string>b6e3d8b1de87</string>
 				<key>why</key>
-				<string>Approved local phonetic drawing; docs/bold-italic-phonetic-drafts-review-2026-11-08.md</string>
+				<string>Approved local phonetic drawing; docs/bold-italic-phonetic-drafts-review-2026-11-08.md; a near-smooth join's handles put in line (smooth_joins.align), 2026-11-09</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>

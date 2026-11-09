@@ -26,6 +26,22 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Bold Italic: corners smoothed, serif brackets redrawn
+  From the corners sheet (build/corners/bolditalic-letters.pdf: joins the
+  Italic has smooth, turning 11-33 degrees in the Bold Italic). A new last
+  finishing pass, scripts/smooth_joins.py, names each spot: crumbs at the
+  node dropped (ƴ had zero-length segments stacked there), then the
+  curve's handles put in line, at least a third of their chord long (m т ɯ
+  ı ʋ Җ 𝔐 ƴ ª я.sc); collapsed serif brackets redrawn as one tangent
+  curve, reaching as far as the Italic's (ψ.sc foot and top, я.sc top
+  right, ɴ, ð.sc foot and top, eng.sc foot; sc_feet.fillets, as x.sc's,
+  now also for a named spot). ℵ's join is put in line in aleph.py's
+  repair. Drawn glyphs fixed in place and marked again: b.sc d.sc (the
+  foot serif's flat, lost in their 2026-11-06 repair, restored: a wedge
+  from tip to bracket), ɞ ɖ (handles in line); ꟈ.sc keeps its own foot,
+  its record of d.sc renewed. The locl forms on ı and т follow. ª's
+  wobble gone with its corner. Accepted again on the request.
+
 2026-11-09 Discretionary ligature sp
   New in dlig beside ct st, in all four styles: st's arch from the s's
   top landing on the p's stem, whose top serif (Regular) or entry hook

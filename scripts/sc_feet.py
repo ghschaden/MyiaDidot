@@ -49,7 +49,7 @@ def k_sc(font):
         del points[[(p.x, p.y) for p in points].index(key)]
 
 
-def fillets(glyph):
+def fillets(glyph, near=None, reach=0):
     """Each bracket between a serif's flat and a long straight stroke (the
     arm or leg) as one curve, tangent to both: the stroke run on meets the
     serif's line at a corner; the curve leaves the flat and joins the stroke
@@ -57,8 +57,16 @@ def fillets(glyph):
     the way to the corner. By its strokes the Bold Italic's x.sc had two or
     three curves there that bent back: a knee where each arm and leg ran
     into its serif (2026-11-01 and 2026-11-05; the Italic's are
-    one curve)."""
+    one curve).
+
+    near (x, y, r): only the brackets with a point within r of (x, y), a
+    single curve too (smooth_joins: ψ.sc's, я.sc's collapsed brackets);
+    reach: the fillet at least so far from the corner along both."""
     from ufoLib2.objects.point import Point
+
+    def close(seq, j, m):
+        x, y, r = near
+        return any(math.dist((seq[k % len(seq)].x, seq[k % len(seq)].y), (x, y)) < r for k in range(j - 1, m + 1))
 
     for contour in glyph.contours:
         P = contour.points
@@ -81,8 +89,9 @@ def fillets(glyph):
             m = j
             while m < n and seq[m].type == "curve":
                 m += 1
-            if m - j >= 2 and seq[j - 1].type == "line" and seq[m % n].type == "line":
-                got = _fillet(seq[j - 2], seq[j - 1], seq[m - 1], seq[m % n])
+            if ((m - j >= 2 if near is None else close(seq, j, m))
+                    and seq[j - 1].type == "line" and seq[m % n].type == "line"):
+                got = _fillet(seq[j - 2], seq[j - 1], seq[m - 1], seq[m % n], reach)
                 if got:
                     t0, h1, h2, t3 = got
                     moved[(j - 1) % n], moved[m - 1] = t0, t3
@@ -115,7 +124,7 @@ def fillets(glyph):
     derive.with_extremes(rec, glyph.getPen(), past=EXTREME_PAST)
 
 
-def _fillet(a, p0, p3, b):
+def _fillet(a, p0, p3, b, reach=0):
     """For a bracket from p0 to p3 between the lines a-p0 and p3-b, one a
     serif's flat and the other a stroke DIAGONAL long or more: (new p0, h1,
     h2, new p3), rounded, or None"""
@@ -137,7 +146,7 @@ def _fillet(a, p0, p3, b):
     r = math.dist((cx, flat_y), (stroke_end.x, stroke_end.y))
     if (flat_end.x - cx) * side > 0:
         r = max(r, abs(flat_end.x - cx))
-    r = min(r, 0.8 * abs(flat_far.x - cx), 0.8 * ls)
+    r = min(max(r, reach), 0.8 * abs(flat_far.x - cx), 0.8 * ls)
     tf = (cx + side * r, flat_y)
     ts = (cx + r * us[0], flat_y + r * us[1])
     hf = (tf[0] + FILLET * (cx - tf[0]), flat_y)

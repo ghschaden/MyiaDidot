@@ -98,3 +98,15 @@ def finish(font):
     elif font.info.styleName == "Bold Italic":
         _lower_return(font["uni2135"])
         _upper_join(font["uni2135"])
+        # the join under the upper arm, a 12-degree corner where the
+        # Italic is smooth: its handles in line (2026-11-09; smooth_joins),
+        # placed from the repaired upper join (878, 424 at its offset -5)
+        from smooth_joins import align
+
+        glyph = font["uni2135"]
+        for contour in glyph.contours:
+            signature = tuple((p.x, p.y, p.type) for p in contour.points)
+            dx = next((d for i in range(len(signature)) if (d := _at(signature, i, _UPPER_AFTER)) is not None), None)
+            if dx is not None:
+                align(glyph, 883 + dx, 424)
+                break

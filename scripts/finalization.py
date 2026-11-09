@@ -44,6 +44,7 @@ PASSES = (
     Pass("draft_ligatures", "finish", ("Bold",), ("final T", "final t", "final h"), ("T_h", "t_h")),
     Pass("italic_ligatures", "make", ITALIC,
          ("final f", "final ſ", "final partner letters"), ("accepted italic ligatures",)),
+    Pass("smooth_joins", "finish", BI, ("finished outlines",), ("named joins and brackets",)),
 )
 
 
