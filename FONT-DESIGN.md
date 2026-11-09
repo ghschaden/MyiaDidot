@@ -29,10 +29,9 @@ evidence (a raster or a proof).
     The Italic's Ƙ Ƴ Ʋ curls 1.25 times larger, as Ƈ Ɠ's (2026-11-08,
     FONTLOG); Ⱳ keeps its number (its curl run on
     straight from W's arm, 2026-11-03); Bold Italic a's ball does not grow (68 -> 66).
-  - Dots: in the Bold and Bold Italic they are widened three times as
-    much as heightened (period about 1.36:1, ⸁ ⸄ ⸅ ⸇ ⸈ 271x182, Bold Italic
-    ※ ⁜ ⸓ ⸖ 323x207); ※ ⁜ ⸓ ⸖ take the accent dot (248), not the
-    period's (256), and in the Italic their dots differ within a glyph.
+  - Dots: done 2026-11-09, round in both bold styles (bold_dots.py; FONTLOG).
+    The Italic's ※ ⁜ ⸓ ⸖ dots still differ within a glyph (216 x 201-219),
+    and those four take the accent dot (248), not the period's (256).
   - Serifs: consistent but where make_bold.part_serifs shortens them, also
     those with no neighbour: Bold ﬀb ﬀh ﬀt ﬄ ſſl reach 103 (f 141); Щ, Bold
     Italic Ш; Bold m.sc ɦ.sc ƭ.sc ʝ.sc, Bold Italic ƙ.sc ϗ.sc ы.sc about 100
@@ -49,7 +48,7 @@ evidence (a raster or a proof).
   kept directions (the guard's fitted and plain handles both bend in
   most). Shortening the handles takes out a third (365 -> 238 glyphs,
   Bold 142 -> 80) but changes Ⱳ's approved curl: not committed.
-- **Bold Italic from strokes (next, the choice made 2026-10-27).**
+- **Bold Italic from strokes (chosen 2026-10-27; in make_bold since 2026-10-28, scripts/stroke_bold.py).**
   The verdict: the Italic reads as drawn with a pen, the Bold
   Italic as pieced together, its curves unround. Cause: it offsets the
   Italic's nodes, each by the weight measured there, and patches the
@@ -448,6 +447,18 @@ evidence (a raster or a proof).
   figures now all have a recorded acceptance: the Bold Italic's
   2026-11-08, the Regular's 3 5 and the Bold's ten 2026-11-09 (the Bold
   4s' stems made upright: [old-style figures review](docs/oldstyle-figures-review-2026-11-09.md)).
+
+## Coverage: the end aim (2026-11-09)
+
+Full IPA (with extIPA and the phonetic blocks) and Latin as wide as
+Charis SIL's: then 980 Latin code points against Myia's 654, IPA and
+phonetic 368 against 133 (Greek stays ahead: 333 against 23). First the
+open review work above on what the font has; then the letters that
+compose from existing glyphs (the Irish dotted Ḃ ḃ Ḟ ḟ Ṁ ṁ Ṗ ṗ, Ǆ ǅ ǆ
+Ǉ-ǌ, ḁ ḉ ḝ), those derived like ɢ ʙ (the Uralic small capitals ᴀ ᴄ ᴆ ᴇ
+...), and last the medievalist and Germanist blocks (Latin Extended-D,
+-E), which need new drawing. `scripts/coverage.py` holds the current
+target (TARGET); a new set goes in there when it is taken up.
 
 ## Ligatures still to make (2026-11-08)
 

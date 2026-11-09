@@ -2745,6 +2745,12 @@ def main():
     # bold, italic and regular bits from styleMapStyleName
     info.openTypeOS2Selection = list(info.openTypeOS2Selection or [])
 
+    # the dots round again, as the source style's (emboldening widens them
+    # three times as much as it heightens them); before y's dot below is
+    # placed and the composites and recipes take them
+    from bold_dots import finish as round_dots
+
+    round_dots(font)
     if italic:
         from y_dot import y_dot_anchor
 

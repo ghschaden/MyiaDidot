@@ -26,6 +26,30 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Round dots in the bold styles
+  Emboldening widened a dot three times as much as it heightened it: the
+  Bold's period 357 x 262 (1.36:1) of the Regular's 256 round, i's dot
+  278 x 256, the Bold Italic's period 366 x 272; the references' bold dots
+  are round (1.00-1.05). Each dot is now its source style's (the Regular's,
+  the Italic's) scaled evenly to the emboldened dot's area (chosen over the
+  same width): scripts/bold_dots.py in make_bold, before y's dot below is
+  placed and the composites and recipes read the dots. A dot on the
+  baseline keeps its bottom (. ! ? ⋮), dots above the x-height their top
+  (i's on 1496, the accents), the rest their centre (※ ⸓). The capitals'
+  dieresis is 204 high (the lowercase's 211): a pixel at 10 ppem is 204.8,
+  and over it the CFF hinting set ä.sc ë.sc ... 0.8 px above the 1434 zone.
+  The colon's upper dot now reaches 949 in the Bold (906), ⋮'s gaps 92
+  (138): accepted as they are. ſ ſſ f kern 5-6 tighter before ë ö ï; the
+  Bold Italic y's dot below 3 units left. Bold ṫ, Bold Italic ɨ ɉ ʝ ⁱ ʲ ᶤ
+  accepted again. Review: docs/bold-round-dots-review-2026-11-09.md.
+
+2026-11-09 IPA ɶ and ᴅ at the x-height
+  As aliases of oe.sc and d.sc they stood at the small caps' height, a
+  size above ɢ ɪ ʙ ʀ; now made as those (derive.py enlarge, stems at n's):
+  flat edges on 0 and 884, ɶ's round side overshooting as o's (Regular ɶ
+  1551 -> 1360, ᴅ 1035). Accepted in all four styles. Review:
+  docs/ipa-oe-d-smallcaps-review-2026-11-09.md.
+
 2026-11-09 The Bold's ɨ ɉ ʝ ⁱ ʲ ᶤ dots
   Emboldened whole, the Bold's ɨ ɉ ʝ had a dot 347 wide against i's and
   j's 278, set 4 units lower; ⁱ ʲ ᶤ theirs 229 x 155. The finishing pass

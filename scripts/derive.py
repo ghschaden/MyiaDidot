@@ -113,8 +113,10 @@ RECIPES = [
     ("ʏ", "enlarge", "y.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
     ("ʙ", "enlarge", "b.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
     ("ʜ", "enlarge", "h.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
-    ("ᴅ", "alias", "d.sc", None),
-    ("ɶ", "alias", "oe.sc", None),
+    # ᴅ ɶ: as aliases of d.sc oe.sc they stood at the small caps' height
+    # (1040), a size above ɪ ʙ ʀ (2026-11-09); ɶ's round side overshoots as o
+    ("ᴅ", "enlarge", "d.sc", ("o.sc", "o", 0, 884, "i.sc", "n")),
+    ("ɶ", "enlarge", "oe.sc", ("o.sc", "o", -20, 904, "i.sc", "n")),
     ("ʁ", "flip", "r.sc", "s"),
     # turned
     ("ɐ", "turn", "a", "x"),

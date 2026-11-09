@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni1D05" format="2">
 	<unicode hex="1D05"/>
-	<advance width="1150"/>
+	<advance width="1035"/>
 	<outline>
-		<component base="d.sc"/>
+		<contour>
+			<point x="76" y="0" type="line"/>
+			<point x="76" y="47" type="line"/>
+			<point x="193" y="47" type="line"/>
+			<point x="193" y="837" type="line"/>
+			<point x="76" y="837" type="line"/>
+			<point x="76" y="884" type="line"/>
+			<point x="546" y="884" type="line" smooth="yes"/>
+			<point x="740" y="884"/>
+			<point x="959" y="734"/>
+			<point x="959" y="439" type="curve" smooth="yes"/>
+			<point x="959" y="143"/>
+			<point x="740" y="0"/>
+			<point x="546" y="0" type="curve" smooth="yes"/>
+		</contour>
+		<contour>
+			<point x="357" y="47" type="line"/>
+			<point x="515" y="47" type="line" smooth="yes"/>
+			<point x="717" y="47"/>
+			<point x="777" y="230"/>
+			<point x="777" y="439" type="curve" smooth="yes"/>
+			<point x="777" y="648"/>
+			<point x="717" y="837"/>
+			<point x="515" y="837" type="curve" smooth="yes"/>
+			<point x="357" y="837" type="line"/>
+		</contour>
 	</outline>
-	<anchor name="Top" x="475" y="1156"/>
-	<anchor name="Acute" x="475" y="1136"/>
-	<anchor name="Grave" x="475" y="1136"/>
-	<anchor name="Dotaccent" x="475" y="1176"/>
-	<anchor name="TopCap" x="475" y="1186"/>
-	<anchor name="Bottom" x="475" y="0"/>
-	<anchor name="DotBelow" x="475" y="-20"/>
+	<anchor name="Top" x="518" y="1000"/>
+	<anchor name="Acute" x="518" y="980"/>
+	<anchor name="Grave" x="518" y="980"/>
+	<anchor name="Dotaccent" x="518" y="1020"/>
+	<anchor name="Bottom" x="518" y="0"/>
+	<anchor name="DotBelow" x="518" y="-20"/>
+	<anchor name="Horn" x="789" y="774"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.accepted</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-09</string>
+				<key>glyph</key>
+				<string>358185ff9b57</string>
+				<key>review</key>
+				<string>docs/ipa-oe-d-smallcaps-review-2026-11-09.md</string>
+			</dict>
+			<key>org.myiadidot.builtFrom</key>
+			<dict>
+				<key>d.sc</key>
+				<string>e94b69350bb7</string>
+				<key>i.sc</key>
+				<string>eb71fe5a1011</string>
+				<key>n</key>
+				<string>b5dd67de5ea2</string>
+				<key>o</key>
+				<string>bd1ee14c1fea</string>
+				<key>o.sc</key>
+				<string>e14453ef9c8a</string>
+			</dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+		</dict>
+	</lib>
 </glyph>
