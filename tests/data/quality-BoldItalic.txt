@@ -257,6 +257,7 @@ uni0242.sc stroke 1              # stroke weights against the kind's (scripts/qu
 uni0245 stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: uc 261 against 292 (0.89, lighter)
 uni0248 smooth 1                 # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 808,1356 2.6 degrees
 uni0248 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 838,1313 9 degrees
+uni0249 stroke 1                 # 2026-11-09 ɉ rebuilt on the Bold Italic's j (inherits ȷ's stroke weight): lc 242 against 269 (0.90, lighter)
 uni0249 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: -23,-349 60 degrees; -41,-379 6 degrees; 164,-172 7 degrees; 381,652 3 degrees; 403,712
 uni0249.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: top +4 from 1040
 uni024C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0

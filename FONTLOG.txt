@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 Bold Italic ɉ and Bold ɮ on their own bases
+  ɉ: emboldened whole, its dot came out larger than j's; now the bar on
+  the Bold Italic's j (its dot j's), centred as the Italic's and as heavy
+  as before (64), its arms set by j_bar.py as before; its advance is j's
+  (680, was 611), as in the Regular and the Bold (the Italic's stands 65
+  narrower than j). ɮ (Bold): by the Regular's numbers the ʒ's spur stood
+  inside the heavier stem, its leaning edge the stem's right edge; now
+  the Regular's construction on the Bold's l and ʒ (make_bold lezh_band):
+  the ʒ where its spur leaves the stem at its right edge at 600, the l's
+  foot serif cut right of its stem, advance 1276 -> 1283. Both off the
+  emboldened-whole lists.
+
 2026-11-09 Bold Italic ⱦ's slash at its weight
   Emboldened whole, ⱦ's slash kept the Regular's thickness (55) and looked
   too light. It is drawn on the Bold Italic's own t now (make_bold

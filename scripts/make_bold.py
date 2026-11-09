@@ -122,7 +122,6 @@ BOLD_KEEP_WHOLE = {
     "uniA7B2": "Ʝ: a step at the foot of the stem",
     "uni01C2": "ǂ: the bars at the Regular's length, 0.85 of its advance",
     "uni01B4": "ƴ: y's arms thinner than the Bold y's under the curl's cut",
-    "uni026E": "ɮ: ʒ placed by the Regular's numbers, apart from l's stem",
     "uni027A": "ɺ: l's stem at the Regular's width, a step where it meets ɹ's",
     "uni0432.loclBGR": "Bulgarian в: a ledge where β's loop meets the stem",
 }
@@ -130,6 +129,7 @@ BOLD_KEEP_WHOLE = {
 # more than rederive allows: the difference is the point (reviewed)
 BOLD_REBUILD = {
     "uni0290": "ʐ: the foot at the Bold's weight; emboldened whole it was much too fat",
+    "uni026E": "ɮ: its own recipe (BOLD_RECIPES); by the Regular's numbers the ʒ's spur stood inside the stem",
     "uni0260": "ɠ: the hook at the Bold's weight overhangs 5 % further than emboldened (derive.SPACING)",
     "uni0291": "ʑ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni0255": "ɕ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
@@ -163,6 +163,9 @@ ITALIC_BOLD_REBUILD = {
     "uni023E": "Ⱦ: the slash on the Bold Italic's T", "uni2C65.sc": "ⱥ.sc: the slash on a.sc",
     "uni023C.sc": "ȼ.sc: the slash on c.sc", "uni2C66.sc": "ⱦ.sc: the slash on t.sc",
     "uni2C66": "ⱦ: the slash on the Bold Italic's t (ITALIC_BOLD_RECIPES)",
+    # ɉ: emboldened whole its dot came out larger than j's (2026-11-09); the
+    # bar on the Bold Italic's j, its arms then lengthened by j_bar.py
+    "uni0249": "ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_RECIPES)",
     # ʊ: Ʊ made small, emboldened whole from the Italic's: its top-left
     # flag ran into the bowl and closed the counter (2026-11-09); made
     # small from the Bold Italic's Ʊ, which keeps the gap
@@ -278,7 +281,26 @@ BOLD_RECIPES = {
     # off r's; emboldened whole, its stem's right edge wobbled under r's
     # shoulder: 2026-11-04)
     "ɾ": ("attach", "r", lambda up: fishhook_band(up)),
+    # ɮ: the Regular's, placed on the Bold's l and ʒ by their own stems
+    # (by the Regular's numbers the ʒ's spur stood inside the heavier stem,
+    # its leaning edge the stem's right edge, 2026-11-09)
+    "ɮ": ("attach", "l", lambda up: lezh_band(up)),
 }
+
+
+def lezh_band(font):
+    """the Regular's ɮ recipe (derive.RECIPES) on font's l and ʒ: the ʒ
+    where its spur leaves the l's stem at its right edge at 600 (as in the
+    Regular, 107 units right), the l's foot serif cut right of its stem"""
+    import derive
+    from derive import BIG
+
+    stem = derive.stems_at(font, "l", 700)[0][1]
+    spur = derive.stems_at(font, "uni0292", 600)[0][1]
+    dx = round(stem - spur)
+    foot = max(p.y for c in font["l"].contours for p in c.points if p.y < 200)
+    return ("x", [(stem + 20, -BIG, BIG, foot)],
+            [("uni0292", (-BIG, -BIG, BIG, BIG), (0, 0), (1, 1, dx, 0))], dx + font["uni0292"].width)
 
 
 def fishhook_band(font):
@@ -321,6 +343,10 @@ ITALIC_BOLD_RECIPES = {
     # (55): a quarter heavier, as Ⱦ ⱦ.sc's, where the Italic's runs (chosen
     # 2026-11-09 from 69 / 83, each also lower and longer)
     "ⱦ": ("slash", "t", ("x", "box", 0.05, -80, 0.95, 960, 69)),
+    # ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_REBUILD), centred as
+    # the Italic's, as heavy as emboldened (the Italic's 56 and AY, as ʉ's;
+    # at the stroke scale it came to 56); j_bar.py then sets its arms
+    "ɉ": ("bar", "j", ("x", None, "all", (92, 92), 56 + AY)),
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
     # At y=600 the upright ɟ stem spans about 335..586. The light recipe's
@@ -611,7 +637,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni027E": "ɾ: the Italic's fishhook (r's stem under f's hook) emboldened whole, as the Italic built it",
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni026E": "ɮ: a notch where l's stem meets ʒ",
-    "uni0249": "ɉ: the bar ends at the stem, no right arm for j_bar.py to extend",
     "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",
     "uni0268": "ɨ: Old Standard's own ɨ (its dot not i's); the recipe's i with a bar is another letter",
     "uni026D": "ɭ: a step on the stem at the cut",
