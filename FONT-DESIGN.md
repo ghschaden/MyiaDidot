@@ -472,7 +472,8 @@ Verdicts given on the sheets; the fixes still to make:
   side, fl ffl its arch at the Bold's weight into a straight stem, those
   before b h k t by f_ligature, the long-s ones as now; drafted 2026-11-09
   (FONTLOG), for review; fi fj ffi ffj's crossbar joined to the serif in
-  the Regular and Bold (2026-11-09).
+  the Regular and Bold (2026-11-09). All 30, the f- and long-s
+  ligatures, approved 2026-11-09 (accepted.py).
 - Steps: Regular 𝑙 (U+1D459) to smooth; ɉ's bar too short on the right;
   ɝ's hook badly attached; Italic Ⱦ not flat on top; ₮'s bars too short
   on the right, off centre; ⱦ.sc a step on top. Bold: ɉ's bar off
