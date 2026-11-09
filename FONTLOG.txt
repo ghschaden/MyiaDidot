@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-09 The Bold's ɨ ɉ ʝ ⁱ ʲ ᶤ dots
+  Emboldened whole, the Bold's ɨ ɉ ʝ had a dot 347 wide against i's and
+  j's 278, set 4 units lower; ⁱ ʲ ᶤ theirs 229 x 155. The finishing pass
+  i_bar_dot.py now runs in the Bold too: ɨ ɉ ʝ take i's and j's dot as it
+  stands, ⁱ ʲ ᶤ i's made small as the Regular makes the superscripts' dot
+  (162 x 147 of 248), 181 x 151, about the centre theirs had. Approved
+  from the before/after sheet 2026-11-09.
+
 2026-11-09 The italics' dots
   The Italic's dot was the Regular's (1.52 of the i stem; Old Standard's
   italic 1.32, Bodoni's 1.44): now 0.948 of it, 236 across (make_italic

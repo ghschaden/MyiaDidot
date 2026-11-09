@@ -27,7 +27,7 @@ PASSES = (
     Pass("t_slash", "finish", BI, ("weighted uni023E",), ("uni023E",)),
     Pass("sc_feet", "finish", BOLD, ("weighted m.sc", "weighted v.sc", "weighted w.sc"), ("m.sc", "v.sc", "w.sc", "k.sc", "x.sc")),
     Pass("j_bar", "finish", BI, ("weighted uni0249",), ("uni0249",)),
-    Pass("i_bar_dot", "finish", ITALIC, ("final uni0268 body", "final i"), ("uni0268",)),
+    Pass("i_bar_dot", "finish", ("Bold", *ITALIC), ("final i j", "their derivatives"), ("uni0268", "uni0249", "uni029D", "uni2071", "uni02B2", "uni1DA4")),
     Pass("dollar_bars", "finish", BI, ("weighted dollar",), ("dollar",)),
     Pass("dollar_drawing", "finish", BI, ("dollar after bar correction",), ("dollar",)),
     Pass("aleph", "finish", BOLD, ("weighted uni2135",), ("uni2135",)),
