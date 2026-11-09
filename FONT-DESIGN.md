@@ -228,7 +228,7 @@ evidence (a raster or a proof).
   leftovers (1-unit cubics, a handle doubling back: d k r z) are left as
   they are, faults for later. Ɠ's hook stroke now starts at 1310 (from
   1320 it left a notch on the faired G and the recipe was refused).
-  Still to do: k's arm (12 units), q's tail, s, y's tail refused at 6.
+  k's arm, q's tail, s, y's tail: accepted as they are (2026-11-09).
   The cleaning's leftovers (2026-10-28, stroke_bold.rejoined): curves under
   8 units merged into their neighbours, at the piece's sharper end (a
   crotch stays where the cleaning cut it) or at a line's end (€'s bar
@@ -456,7 +456,8 @@ Verdicts given on the sheets; the fixes still to make:
   that has it: u v w y ı ц ш щ и at (342, 685) only in the Bold Italic
   (the stroking's), n m r ŋ п т ɲ near (291-315, 600-665), doubling
   Old Standard's own at (314, 609). A fault of the family: in
-  stroke_bold, not letter by letter. k accepted as it is.
+  stroke_bold, not letter by letter. k q s z y (but for the entry) and
+  г accepted as they are (2026-11-09).
 - Bold f-ligatures (ff fi fl ffi ffl and those made of them, ﬀb ﬀh ...):
   "the fs are drawn not well, especially over the bar"; the stem after
   the arch leans (wider at its foot); ﬀh's shoulder kinked. Cause: the
