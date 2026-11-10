@@ -13,6 +13,7 @@ Details by topic, read the one the task touches:
 | `docs/claude/styles.md` | how the Bold, Bold Italic and Italic are generated |
 | `docs/claude/spacing.md` | spacing, kerning, Greek/Cyrillic pairs, figures, cpsp, case |
 | `docs/claude/hinting.md` | TTF and CFF hinting and their tests |
+| `docs/claude/redraw.md` | redrawing a core letter onto clean nodes (phases 5-8): method, gate, batches |
 | `docs/claude/quality.md` | the quality principles in full, with what enforces each |
 | `docs/claude/tests.md` | what the tests hold, hooks, proofs after commit |
 | `docs/claude/commands.md` | handy commands, the Claude Code plugin |
@@ -66,6 +67,10 @@ Details by topic, read the one the task touches:
 - Metadata fails silently: categories, glyph and lookup order, code points.
 - Verify geometry operations; regenerate whole styles, never copy glyphs
   between UFOs.
+- A straight stem is one thickness from top to bottom and never steps in
+  at its serif (`scripts/quality/stem_retreats.py`).
+- A bowl's inside (D and its kind) is two clean curves
+  (`scripts/bowl_counters.py`).
 - The tools find candidates; the designer's eye decides.
 
 ## Tests

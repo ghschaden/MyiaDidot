@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni044C.sc" format="2">
-	<advance width="1069"/>
+	<advance width="1070"/>
 	<outline>
 		<contour>
 			<point x="-56" y="0" type="line"/>
@@ -22,19 +22,13 @@
 			<point x="606" y="950"/>
 			<point x="599" y="923" type="curve" smooth="yes"/>
 			<point x="513" y="567" type="line"/>
-			<point x="686" y="567" type="line" smooth="yes"/>
-			<point x="769" y="567"/>
-			<point x="846" y="561"/>
-			<point x="910" y="515" type="curve" smooth="yes"/>
-			<point x="955" y="482"/>
-			<point x="1008" y="420"/>
-			<point x="1002" y="323" type="curve" smooth="yes"/>
-			<point x="997" y="224"/>
-			<point x="931" y="129"/>
-			<point x="842" y="73" type="curve" smooth="yes"/>
-			<point x="752" y="17"/>
-			<point x="642" y="0"/>
-			<point x="536" y="0" type="curve" smooth="yes"/>
+			<point x="687" y="567" type="line" smooth="yes"/>
+			<point x="884" y="567"/>
+			<point x="1003" y="502"/>
+			<point x="1003" y="294" type="curve" smooth="yes"/>
+			<point x="1004" y="90"/>
+			<point x="691" y="0"/>
+			<point x="538" y="0" type="curve" smooth="yes"/>
 		</contour>
 		<contour>
 			<point x="384" y="106" type="line" smooth="yes"/>
@@ -42,11 +36,11 @@
 			<point x="396" y="70"/>
 			<point x="409" y="70" type="curve" smooth="yes"/>
 			<point x="551" y="70" type="line" smooth="yes"/>
-			<point x="681" y="70"/>
-			<point x="771" y="213"/>
-			<point x="755" y="319" type="curve" smooth="yes"/>
-			<point x="743" y="405"/>
-			<point x="764" y="493"/>
+			<point x="682" y="70"/>
+			<point x="756" y="198"/>
+			<point x="756" y="306" type="curve" smooth="yes"/>
+			<point x="756" y="397"/>
+			<point x="756" y="493"/>
 			<point x="642" y="493" type="curve" smooth="yes"/>
 			<point x="488" y="493" type="line"/>
 		</contour>
@@ -63,11 +57,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-07</string>
+				<string>2026-11-10</string>
 				<key>glyph</key>
-				<string>b08a99c4f36b</string>
+				<string>a7544465499b</string>
 				<key>review</key>
-				<string>docs/bold-italic-smallcaps-completion-2026-11-07.md</string>
+				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>

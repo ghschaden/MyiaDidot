@@ -26,6 +26,74 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-10 Stems straight into their serifs; the bowls' insides redone
+  Two rules from the designer, on the Bold Italic's small-cap D at the
+  x-height: a straight stem is one thickness from top to bottom and never
+  steps in where it meets its serif; and the inside of a bowl is a clean
+  curve. Where a letter had been brought to weight, the stem's edge stood
+  outside its bracket's nodes: the outline went up to 27 units into the
+  ink before running out along the serif (Bold Italic: 57 joins in 39
+  glyphs, ы.sc at all eight; Italic 13 in 12; none in the Regular and
+  Bold). Each such join is now one fillet, the edge run on straight
+  (scripts/stem_joins.py, a finishing pass of the generated styles;
+  tests/test_stem_joins.py holds all four styles to none).
+  The counters of D Ь Ы Ъ Б Þ P Φ and their small caps, in the Italic
+  and Bold Italic, ran through shoulders, corners and straight runs
+  (FontForge's drafts, then their strokes): redone as two curves between
+  their flats, upright at the widest point (scripts/bowl_counters.py;
+  1-11 units from where they were); a bowl's outside too where it was
+  broken (ы.sc's came to a point at its widest; the Italic's small-cap
+  bowls had corners). The drawn glyphs among them (d.sc, b.sc, ʙ, ꟈ.sc
+  ...) changed in place. To review:
+  proofs/bold-italic-stems-counters-2026-11-10.pdf and
+  proofs/italic-stems-counters-2026-11-10.pdf.
+
+2026-11-10 Italic n a e o s g redrawn onto clean nodes (phase 5's pilot)
+  The six letters' shapes kept, their nodes rebuilt on extremes, corners
+  and line ends (scripts/redraw.py; accepted on
+  proofs/italic-redraw-pilot-2026-11-10.pdf): 126 nodes to 113, within
+  3.1 units of Old Standard's outlines, the kinks and curvature jumps
+  gone, the crotches' short lines closed. Marked drawn, the redraw
+  recorded in their lib (org.myiadidot.redrawn). The method, its gate and
+  what the pilot found: docs/claude/redraw.md.
+  What followed, and was mended in the generators: a kept letter stands
+  uncut through make_italic's stages (30 derived letters had come 32
+  narrower, the cut taken twice); a redrawn letter is still weighted as
+  the Old Standard letter it was (Ꞷ had come 87 narrower); ɳ's descender
+  runs into the stem by its recipe, not by a kink n no longer has; ȩ's
+  cedilla 2 units lower on a Cedilla anchor of e. The fitter draws no
+  curve that bends back at one end (n's counter top had one of 1 degree:
+  the Bold Italic's stroke stepped aside there).
+  scripts/redraw_sweep.py measures what moved in a style since a
+  revision. Still to accept, on proofs/bold-italic-after-redraw-2026-11-10.pdf
+  and the two "followers" sheets: the Bold Italic's six (n's crotch 49
+  units shallower) and the derived letters that moved; baselines after
+  that.
+
+2026-11-10 Bold Italic m redrawn: a straight middle stroke; ɯ ᵯ ɰ ɱ т on it
+  The m (drawn, scripts/drawn.py): the middle stroke's right edge one line
+  from the foot (slope 0.27 against the left edge's 0.278), straight up to
+  280 below arch 2 (its inner curve left the stroke from 200, a long
+  swelling) and from 640 into arch 1's shoulder, a circle's arc from the
+  shoulder's extreme (1028,710; was 1016,733, a hump: the shoulder fell
+  vertically and tucked 38 units left of the stroke's line); arch 2's
+  crotch where its hairline meets that line, at 590 (was 476: the white
+  6-10 units wider than arch 1's); arch 1's top in arch 2's handle
+  proportions (its right handle was 38 units against arch 2's 122); the
+  left edge out of the stem's line in one curve into arch 1's inner
+  extreme, moved 19 left to 805 (was a knee at 784,628 bending back 4
+  degrees, then an S: the extreme stood right of the stem's line). т, m's
+  outline in the Italic too, the same. Made again from it: ɯ (turned), ᵯ,
+  ɰ, and ɱ but for its leg and hook approved 2026-11-08 (released, the leg
+  took back the knee they had smoothed). ɰ had never been built on ɯ: the
+  rebuild was taken, but the Italic's join band (make_italic.ITALIC_JOINS,
+  250-350) refitted ɯ's own nodes in it (the first stroke at 310, the last
+  hairline at 256 and where it meets the descender), the hairline 41-45
+  against ɯ's 62-64; make_bold.ITALIC_BOLD_JOINS gives the Bold Italic's
+  seam its own band (290-305). Wobbles gone in ɯ ɰ ᵯ (quality list -3);
+  advances unchanged. ſh unchanged, approved as it is. All approved
+  2026-11-10 (proofs/bold-italic-m-family-2026-11-10.pdf).
+
 2026-11-09 Bold Italic entry strokes turn one way into their hooks
   Emboldened by its strokes, the Bold Italic's entry hooks (u v w y ı ц ш
   щ и, n m r ŋ п т ɲ and their family) reversed their curvature where the

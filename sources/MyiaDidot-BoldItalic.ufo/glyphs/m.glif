@@ -17,14 +17,15 @@
 			<point x="532" y="606"/>
 			<point x="679" y="884"/>
 			<point x="816" y="884" type="curve" smooth="yes"/>
-			<point x="854" y="884"/>
-			<point x="1015" y="864"/>
-			<point x="1016" y="733" type="curve" smooth="yes"/>
-			<point x="1016" y="649"/>
-			<point x="954" y="560"/>
-			<point x="940" y="476" type="curve"/>
-			<point x="1026" y="627"/>
-			<point x="1159" y="884"/>
+			<point x="957" y="884"/>
+			<point x="1028" y="802"/>
+			<point x="1028" y="710" type="curve" smooth="yes"/>
+			<point x="1028" y="686"/>
+			<point x="1025" y="663"/>
+			<point x="1019" y="640" type="curve" smooth="yes"/>
+			<point x="1005" y="590" type="line"/>
+			<point x="1089" y="730"/>
+			<point x="1201" y="884"/>
 			<point x="1346" y="884" type="curve" smooth="yes"/>
 			<point x="1468" y="884"/>
 			<point x="1529" y="782"/>
@@ -74,23 +75,17 @@
 			<point x="1210" y="820"/>
 			<point x="1111" y="665"/>
 			<point x="1076" y="606" type="curve" smooth="yes"/>
-			<point x="1034" y="533"/>
-			<point x="1002" y="460"/>
-			<point x="969" y="368" type="curve" smooth="yes"/>
-			<point x="939" y="287"/>
-			<point x="910" y="198"/>
-			<point x="889" y="131" type="curve" smooth="yes"/>
+			<point x="1004" y="481"/>
+			<point x="950" y="384"/>
+			<point x="922" y="280" type="curve" smooth="yes"/>
 			<point x="846" y="0" type="line"/>
 			<point x="604" y="0" type="line"/>
 			<point x="770" y="598" type="line" smooth="yes"/>
-			<point x="773" y="609"/>
-			<point x="782" y="622"/>
-			<point x="784" y="628" type="curve" smooth="yes"/>
-			<point x="802" y="678"/>
-			<point x="824" y="727"/>
-			<point x="824" y="776" type="curve" smooth="yes"/>
-			<point x="824" y="785"/>
-			<point x="823" y="819"/>
+			<point x="794" y="685"/>
+			<point x="805" y="749"/>
+			<point x="805" y="776" type="curve" smooth="yes"/>
+			<point x="805" y="785"/>
+			<point x="804" y="819"/>
 			<point x="788" y="819" type="curve" smooth="yes"/>
 			<point x="643" y="819"/>
 			<point x="439" y="235"/>
@@ -123,11 +118,20 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-09</string>
+				<string>2026-11-10</string>
 				<key>glyph</key>
-				<string>97ac45f35273</string>
+				<string>0e22ce1d5788</string>
 				<key>review</key>
-				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+				<string>proofs/bold-italic-m-family-2026-11-10.pdf</string>
+			</dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-10</string>
+				<key>source</key>
+				<string>59e407870706</string>
+				<key>why</key>
+				<string>the middle stroke straight, both edges turning one way: its right edge one line from the foot (slope 0.27, the left edge's 0.278) up to 280 below arch 2 and from 640 into arch 1's shoulder, a circle's arc from the shoulder's extreme (1028,710; was 1016,733); arch 2's crotch on it at 590 (was 476); arch 1's top in arch 2's handle proportions; the knee out of the left edge's line one curve into arch 1's inner extreme, moved 19 left to 805 (was an S); variant F of build/glyph-review/bi-four/stem/ef.pdf, chosen 2026-11-10</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>Old Standard</string>

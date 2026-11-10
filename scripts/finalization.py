@@ -49,6 +49,12 @@ PASSES = (
     Pass("italic_ligatures", "make", ITALIC,
          ("final f", "final ſ", "final partner letters"), ("accepted italic ligatures",)),
     Pass("smooth_joins", "finish", BI, ("finished outlines",), ("named joins and brackets",)),
+    # the designer's rule of 2026-11-10: no stem steps in at its serif
+    Pass("stem_joins", "finish", ("Italic", "Bold", "Bold Italic"), ("finished outlines",),
+         ("every bracket a stem's edge stood outside of",)),
+    # the designer, 2026-11-10: a bowl's inside two curves (D Ь Ы and
+    # their small caps), in the styles made from Old Standard's italic
+    Pass("bowl_counters", "finish", ITALIC, ("finished outlines", "mended stem joins"), ("bowls' insides",)),
 )
 
 

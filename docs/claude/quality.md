@@ -78,3 +78,30 @@ Moved from CLAUDE.md (its ground rules apply).
   not clear them to record acceptance. `accepted.py UFO --drafts` lists the
   drafts not yet accepted.
 
+- A straight stem is one thickness from top to bottom and never steps in
+  where it meets its serif (the designer, 2026-11-10, on the Bold Italic
+  ᴅ: "not in D, not ever"; B D T and every letter with such a stem). A
+  bracket may only widen the stem. Wherever a letter is brought to weight
+  the stem's edge moves and the bracket's nodes stay (derive.embolden,
+  enlarge, small_cap_stems, the strokes): so the generated styles' last
+  finishing pass redraws every such join as one fillet
+  (`scripts/stem_joins.py`, sc_feet.fillets); a glyph kept as drawn is
+  mended where it is drawn. `scripts/quality/stem_retreats.py UFO`
+  lists them; tests/test_stem_joins.py holds all four styles to none.
+- A bowl's inside between two flats (D Ь Ы Ъ Б, their small caps) is
+  two curves: level out of the flats, upright through its widest point
+  (the designer, 2026-11-10: "the insides of curves, e.g. in D, are not
+  good"; the small-cap D's ran into a tight shoulder, straight down to a
+  corner, and out in a diagonal). The italic small caps are FontForge's
+  drafts and the Bold Italic's their strokes: neither draws a counter,
+  and a refit within a tolerance keeps the fault. `scripts/bowl_counters.py`
+  redoes them, the last finishing pass of the Italic and Bold Italic;
+  drawn glyphs by name; a bowl's outside too, but only where it is
+  broken (a corner between two curves, a curve bending back). Д's kind (a counter 15 units and more from any
+  two curves) it leaves and names.
+- A base letter kept as drawn stands in the generator's stages as the
+  generated one would at that stage: uncut where the others are uncut,
+  known as carrying its weight (make_italic's `origin`, the kept glyphs
+  around `respace`; 2026-11-10: the first drawn bases came with 30
+  derived letters cut twice). After marking a base drawn, sweep
+  (`scripts/redraw_sweep.py`).

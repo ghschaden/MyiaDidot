@@ -16,11 +16,11 @@
 			<point x="976" y="629"/>
 			<point x="1139" y="648"/>
 			<point x="1259" y="707" type="curve" smooth="yes"/>
-			<point x="1298" y="725"/>
-			<point x="1335" y="750"/>
-			<point x="1368" y="780" type="curve" smooth="yes"/>
-			<point x="1443" y="842"/>
-			<point x="1497" y="926"/>
+			<point x="1299" y="726"/>
+			<point x="1337" y="751"/>
+			<point x="1370" y="782" type="curve"/>
+			<point x="1445" y="844"/>
+			<point x="1497" y="927"/>
 			<point x="1507" y="1038" type="curve"/>
 			<point x="1633" y="1038" type="line"/>
 			<point x="1652" y="1110" type="line"/>
@@ -60,47 +60,41 @@
 		<contour>
 			<point x="675" y="702" type="line"/>
 			<point x="761" y="1038" type="line"/>
-			<point x="1206" y="1038" type="line"/>
-			<point x="1205" y="1034"/>
-			<point x="1204" y="1030"/>
-			<point x="1204" y="1026" type="curve"/>
-			<point x="1192" y="961"/>
-			<point x="1166" y="894"/>
-			<point x="1140" y="849" type="curve"/>
-			<point x="1138" y="845"/>
-			<point x="1136" y="842"/>
-			<point x="1134" y="838" type="curve"/>
-			<point x="1106" y="798"/>
-			<point x="1071" y="766"/>
-			<point x="1035" y="743" type="curve" smooth="yes"/>
-			<point x="975" y="704"/>
-			<point x="922" y="702"/>
-			<point x="901" y="702" type="curve" smooth="yes"/>
-			<point x="900" y="702"/>
-			<point x="899" y="702"/>
-			<point x="899" y="702" type="curve"/>
+			<point x="1203" y="1038" type="line"/>
+			<point x="1188" y="945"/>
+			<point x="1151" y="843"/>
+			<point x="1082" y="776" type="curve" smooth="yes"/>
+			<point x="1067" y="762"/>
+			<point x="1051" y="750"/>
+			<point x="1033" y="739" type="curve" smooth="yes"/>
+			<point x="971" y="702"/>
+			<point x="918" y="702"/>
+			<point x="899" y="702" type="curve" smooth="yes"/>
 		</contour>
 		<contour>
 			<point x="1211" y="1110" type="curve"/>
 			<point x="778" y="1110" type="line"/>
 			<point x="803" y="1208" type="line"/>
-			<point x="1204" y="1208" type="line"/>
-			<point x="1208" y="1184"/>
-			<point x="1211" y="1155"/>
-			<point x="1211" y="1119" type="curve" smooth="yes"/>
-			<point x="1211" y="1116"/>
-			<point x="1211" y="1113"/>
+			<point x="1203" y="1208" type="line"/>
+			<point x="1209" y="1183"/>
+			<point x="1211" y="1157"/>
+			<point x="1211" y="1135" type="curve" smooth="yes"/>
+			<point x="1211" y="1127"/>
+			<point x="1211" y="1118"/>
 		</contour>
 		<contour>
-			<point x="1180" y="1286" type="curve"/>
+			<point x="1175" y="1286" type="curve"/>
 			<point x="823" y="1286" type="line"/>
 			<point x="826" y="1296" type="line"/>
 			<point x="835" y="1334"/>
 			<point x="855" y="1354"/>
 			<point x="895" y="1354" type="curve" smooth="yes"/>
-			<point x="1040" y="1354" type="line" smooth="yes"/>
-			<point x="1126" y="1354"/>
-			<point x="1163" y="1318"/>
+			<point x="1059" y="1354" type="line" smooth="yes"/>
+			<point x="1068" y="1354"/>
+			<point x="1081" y="1354"/>
+			<point x="1097" y="1350" type="curve" smooth="yes"/>
+			<point x="1131" y="1341"/>
+			<point x="1157" y="1317"/>
 		</contour>
 	</outline>
 	<anchor name="TopCap" x="976" y="1580"/>
@@ -111,11 +105,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-08</string>
+				<string>2026-11-10</string>
 				<key>glyph</key>
-				<string>f98fc4c1a09f</string>
+				<string>6aaac517b9e5</string>
 				<key>review</key>
-				<string>docs/bold-italic-currency-drafts-review-2026-11-08.md</string>
+				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

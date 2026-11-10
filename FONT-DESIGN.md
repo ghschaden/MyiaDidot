@@ -463,7 +463,16 @@ Verdicts given on the sheets; the fixes still to make:
   build/glyph-review/entry-strokes/family-plain.pdf and flagged-plain.pdf
   ("massive improvement"), but for: ſh (longs_h, not sure about the trace
   of the ball), ɯ ᵯ ɰ (uni026F uni1D6F uni0270: need further smoothing),
-  their acceptance withdrawn. To do next (2026-11-10): those four.
+  their acceptance withdrawn. Done 2026-11-10 (FONTLOG): ſh looked ok as
+  it was; ɰ was the stroked Italic ɰ (its rebuild from ɯ thinned by the
+  Italic's join band), now built on ɯ; the m's own faults behind ɯ ᵯ
+  ("a strange knee on the middle downstroke", "the whitespace leading to
+  the second arch too big", a hump and a slight thickening of the middle
+  stroke, the center arch not as round on top) drawn out of the m by hand
+  (variant F of build/glyph-review/bi-four/stem/ef.pdf): the middle
+  stroke straight, arch 2's crotch on it at 590, arch 1 rounder; т as m;
+  ɯ ᵯ ɰ ɱ (its approved leg kept) made again from it. All approved
+  2026-11-10: proofs/bold-italic-m-family-2026-11-10.pdf.
 - Bold f-ligatures (ff fi fl ffi ffl and those made of them, ﬀb ﬀh ...):
   "the fs are drawn not well, especially over the bar"; the stem after
   the arch leans (wider at its foot); ﬀh's shoulder kinked. Cause: the

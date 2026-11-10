@@ -128,9 +128,10 @@ def _fillet(a, p0, p3, b, reach=0):
     """For a bracket from p0 to p3 between the lines a-p0 and p3-b, one a
     serif's flat and the other a stroke DIAGONAL long or more: (new p0, h1,
     h2, new p3), rounded, or None"""
-    if a.y == p0.y and b.y != p3.y and math.dist((b.x, b.y), (p3.x, p3.y)) >= DIAGONAL:
+    # (a flat a unit off level is one: ы.sc's tops, 964 to 965)
+    if abs(a.y - p0.y) <= 1 and abs(b.y - p3.y) > 1 and math.dist((b.x, b.y), (p3.x, p3.y)) >= DIAGONAL:
         flat_far, flat_y, stroke_end, stroke_far, flat_first = a, p0.y, p3, b, True
-    elif b.y == p3.y and a.y != p0.y and math.dist((a.x, a.y), (p0.x, p0.y)) >= DIAGONAL:
+    elif abs(b.y - p3.y) <= 1 and abs(a.y - p0.y) > 1 and math.dist((a.x, a.y), (p0.x, p0.y)) >= DIAGONAL:
         flat_far, flat_y, stroke_end, stroke_far, flat_first = b, p3.y, p0, a, False
     else:
         return None

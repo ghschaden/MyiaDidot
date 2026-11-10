@@ -104,6 +104,7 @@ ITALIC_CUT_GREEK = ITALIC_CUT + 11
 MADE_WITH_KEY = "org.myiadidot.italicMadeWith"
 MADE_WITH = {"weight": [AX, AY, WEIGHT, CAP_WEIGHT], "cut": [ITALIC_CUT, ITALIC_CUT_GREEK]}
 SOURCE_KEY = "org.myiadidot.italicSource"
+REDRAWN_KEY = "org.myiadidot.redrawn"  # redraw.py's record: date, review, from, source, tol
 DRAFT_KEY = "org.myiadidot.draft"
 SMALLCAP_DRAFT_KEY = "org.myiadidot.smallcapDraft"
 FIGURES = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
@@ -116,6 +117,16 @@ def capital(font, g):
         base = g.name.split(".")[0]
         u = font[base].unicode if base in font else None
     return u is not None and unicodedata.category(chr(u)) in ("Lu", "Lt")
+
+
+def origin(g):
+    """Where a glyph's outline came from: its source mark; for a letter
+    redrawn onto new nodes (redraw.py: marked drawn, its shape and weight
+    kept) the mark it had before."""
+    src = g.lib.get(SOURCE_KEY)
+    if src == "drawn":
+        return g.lib.get(REDRAWN_KEY, {}).get("source") or src
+    return src
 
 
 def reviewed(g):
@@ -621,6 +632,12 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 # piece is straight in the upright frame, the stroke is not, and the edges
 # broke there by 5-20 degrees (seen in print)
 ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190, 460), "ⱳ": (590, 700)}
+# those whose join runs on through the letter's own smooth node in the band
+# (fair_joins' min_turn 0), up the stem's straight edge to its top: ɳ's
+# did only because n had a kink of 1.3 degrees at that node (682,361);
+# with n redrawn smooth there (2026-11-10) the curve ended at it, the
+# whole turn of 10 degrees in its last 40 units
+ITALIC_JOINS_THROUGH = {"ɳ"}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
@@ -1382,17 +1399,36 @@ def weight_of(font, name):
     """The weight added to a glyph's thick strokes: Old Standard's letters'
     as they are taken (WEIGHT, the capitals CAP_WEIGHT), and that of all
     made of them."""
-    if name not in font or font[name].lib.get(SOURCE_KEY) not in ("Old Standard", "derived", "small cap draft"):
+    if name not in font or origin(font[name]) not in ("Old Standard", "derived", "small cap draft"):
         return 0
     return case_weight(font, font[name])
 
 
-def reweight(up, name, w):
-    """up[name] (decomposed) with its thick strokes w heavier (weight_thick)"""
+def halved(rec):
+    """rec with each curve split at its middle"""
+    from fontTools.misc.bezierTools import splitCubicAtT
+
+    out, cur = RecordingPen(), None
+    for op, args in rec.value:
+        if op == "curveTo":
+            for seg in splitCubicAtT(cur, *args, 0.5):
+                out.curveTo(*seg[1:])
+        else:
+            getattr(out, op)(*args)
+        cur = args[-1] if args else cur
+    return out
+
+
+def reweight(up, name, w, fine=False):
+    """up[name] (decomposed) with its thick strokes w heavier (weight_thick).
+    fine: its curves halved first. weight_thick moves nodes, a round
+    between them follows: o redrawn onto its extremes lost 8.2 of its 10
+    at mid height where Old Standard's nodes lost 9.6 (stem 164.8 against
+    162.9, Ꞷ 1 % narrower for it); halved, 163.3 and 162.6."""
     g = up[name]
     rec = DecomposingRecordingPen(up)
     g.draw(rec)
-    out = weight_thick(rec, w)
+    out = weight_thick(halved(rec) if fine else rec, w)
     g.clearContours()
     g.clearComponents()
     out.draw(g.getPen())
@@ -1412,7 +1448,8 @@ def enlarged(font, up, ch, op, source, band, name):
     saved = {n: copy.deepcopy(up[n]) for n in refs if weight_of(font, n) and n in up}
     try:
         for n in saved:
-            reweight(up, n, -weight_of(font, n))
+            # a redrawn letter read for its measures only: see reweight
+            reweight(up, n, -weight_of(font, n), fine=n != source and REDRAWN_KEY in font[n].lib)
         derive.build(up, ch, op, source, band, name)
     finally:
         for n, g in saved.items():
@@ -1864,7 +1901,7 @@ def derive_stage(font, regular, late=False, kept=()):
         if name in SC_DRAFT_SIDES and old.contours:
             draft_sides(up, name, old)
         if ch in ITALIC_JOINS:
-            derive.fair_joins(up[name], *ITALIC_JOINS[ch])
+            derive.fair_joins(up[name], *ITALIC_JOINS[ch], min_turn=0 if ch in ITALIC_JOINS_THROUGH else 1)
         if ch in ITALIC_RUNS:
             straighten_run(up[name], *ITALIC_RUNS[ch])
         if ch in ITALIC_CORNERS:
@@ -2694,6 +2731,13 @@ def main():
             and (g.name in font or g.name.endswith(".sc"))]
     for name in kept:
         font.layers.defaultLayer.insertGlyph(copy.deepcopy(previous[name]), name, overwrite=True)
+    # a kept glyph is saved as spaced (the cut taken), everything else here
+    # stands uncut until respace below: the kept ones too until then, so
+    # that what is built on one is cut once with the rest (ɲ ʂ ɠ ɸ came 2
+    # cuts narrow when n s g o were first marked drawn, 2026-11-10). They
+    # are put back as saved after it.
+    kept_cut = classifier(font, ITALIC_CUT, ITALIC_CUT_GREEK)
+    respace(font, lambda n: -kept_cut(n) if n in kept else 0, kept)
     from italic_contours import finish_bases
 
     finish_bases(font, skip=kept)
@@ -2815,22 +2859,27 @@ def main():
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)
     letter_cut = classifier(font, ITALIC_CUT, ITALIC_CUT_GREEK)
-    # what is made only of kept glyphs (their aliases, accented forms) has
-    # the cut through them: not cut again; the kept ones not touched at all
-    settled = set(kept)
-    grew = True
-    while grew:
-        grew = False
-        for g in font:
-            if (g.name not in settled and g.components and not g.contours
-                    and all(c.baseGlyph in settled or c.baseGlyph in marks for c in g.components)
-                    and any(c.baseGlyph in settled for c in g.components)):
-                settled.add(g.name)
-                grew = True
-    respace(font, lambda n: 0 if n in settled else letter_cut(n), [g.name for g in font if g.name not in kept])
+    # the kept ones stand uncut (above) and are put back as saved below:
+    # counted as cut here, so that their composites' parts move with them
+    respace(font, letter_cut, [g.name for g in font if g.name not in kept])
     space_figures(font)  # the old-style figures spaced by their shapes (their .tf, the .pf rebuilt)
+
+    def restore_kept():
+        # as saved; an alias still as wide as its letter
+        for name in kept:
+            g = copy.deepcopy(previous[name])
+            if (len(g.components) == 1 and not g.contours
+                    and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
+                g.width = font[g.components[0].baseGlyph].width
+            font.layers.defaultLayer.insertGlyph(g, name, overwrite=True)
+
+    # the kept ones as saved, cut: ɘ takes its sides from e's below
+    restore_kept()
     sidebearings(font, swapped_sidebearings(font))
     sidebearings(font, ITALIC_SIDEBEARINGS)
+    # and again (the side bearings above, carrying composites along, moved
+    # them again each run: г.loclSRB -80 a run)
+    restore_kept()
     # an alias a recipe made (Serbian д of g) follows its letter's final width,
     # as derive.py's do in the Regular
     for g in font:
@@ -2841,14 +2890,6 @@ def main():
         serbian_gje(font)
     if not {"uni043F.loclSRB", "uni0442.loclSRB"} & set(kept):
         serbian_bars(font)
-    # the kept ones as they were (the side bearings above, respace carrying
-    # composites along, moved them again each run: г.loclSRB -80 a run);
-    # an alias still as wide as its letter
-    for name in kept:
-        g = copy.deepcopy(previous[name])
-        if len(g.components) == 1 and not g.contours and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0):
-            g.width = font[g.components[0].baseGlyph].width
-        font.layers.defaultLayer.insertGlyph(g, name, overwrite=True)
     font.lib[CUT_KEY] ={"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     anchored = missing_anchors(font, regular, marks)
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths

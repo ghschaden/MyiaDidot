@@ -14,11 +14,8 @@
 			<point x="553" y="1434" type="line"/>
 			<point x="329" y="600" type="line"/>
 			<point x="260" y="350" type="line"/>
-			<point x="125" y="-149" type="line"/>
-			<point x="125" y="-149"/>
-			<point x="125" y="-150"/>
-			<point x="125" y="-150" type="curve"/>
-			<point x="114" y="-191"/>
+			<point x="125" y="-149" type="line" smooth="yes"/>
+			<point x="114" y="-190"/>
 			<point x="124" y="-225"/>
 			<point x="147" y="-225" type="curve" smooth="yes"/>
 			<point x="169" y="-225"/>
@@ -36,7 +33,7 @@
 			<point x="338" y="-170"/>
 			<point x="337" y="-171"/>
 			<point x="337" y="-172" type="curve"/>
-			<point x="335" y="-178"/>
+			<point x="335" y="-177"/>
 			<point x="331" y="-183"/>
 			<point x="327" y="-187" type="curve"/>
 			<point x="291" y="-238"/>
@@ -58,11 +55,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-05</string>
+				<string>2026-11-10</string>
 				<key>glyph</key>
-				<string>fcb1932f3dc8</string>
+				<string>ad98248be240</string>
 				<key>review</key>
-				<string>drafts-review-Italic.pdf</string>
+				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

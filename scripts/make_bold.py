@@ -91,6 +91,13 @@ ITALIC_BOLD_HEAVIER = {"z": 1.15,
 # (follow_bases): the same Italic strokes give the same base, the join
 # tangles where they part
 ITALIC_BOLD_UNJOINED = {"uni2C72": "Ⱳ: the curl's join tangled (53 nodes)"}
+# the Italic's joins faired (make_italic.ITALIC_JOINS) in the bands of the
+# Bold Italic's own recipes: ɰ's seam where ɥ's descender meets ɯ's last
+# stem (the cut's top, 300); the Italic's band (250-350) also took ɯ's own
+# nodes there, the first stroke's at 310 and the last hairline's at 256
+# and where it meets the descender (276), each refitted in one curve to
+# the next node: the hairline 41-45 against ɯ's 62-64 (2026-11-10)
+ITALIC_BOLD_JOINS = {"ɰ": (290, 305)}
 # Bold Italic letters still emboldened by weight: a repair after matches
 # that outline's points (to redo on the stroked outline)
 ITALIC_BOLD_BY_POINTS = {
@@ -2281,8 +2288,9 @@ def rederive(source, font, italic, whole):
         if italic:
             from make_italic import ITALIC_JOINS
 
-            if ch in ITALIC_JOINS:  # as the Italic's, before it is judged
-                derive.fair_joins(new, *ITALIC_JOINS[ch])
+            joins = {**ITALIC_JOINS, **ITALIC_BOLD_JOINS}
+            if ch in joins:  # as the Italic's, before it is judged
+                derive.fair_joins(new, *joins[ch])
             from make_italic import ITALIC_CORNERS, ITALIC_RUNS, round_corner, straighten_run
 
             if ch in ITALIC_RUNS:  # as the Italic's (җ's descender into its c)
@@ -2725,7 +2733,7 @@ def main():
         from make_italic import ITALIC_JOINS
 
         cmap = {g.unicode: g.name for g in font if g.unicode is not None}
-        for ch, band in ITALIC_JOINS.items():
+        for ch, band in {**ITALIC_JOINS, **ITALIC_BOLD_JOINS}.items():
             if ord(ch) in cmap and cmap[ord(ch)] not in kept:
                 fair_joins(font[cmap[ord(ch)]], *band)
     font.lib[WHOLE_KEY] = {n: why for n, why in sorted(whole.items()) if n not in followed}

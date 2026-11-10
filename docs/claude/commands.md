@@ -20,6 +20,10 @@ Moved from CLAUDE.md (its ground rules apply).
 | `python scripts/composites.py UFO --check` | composites vs rules |
 | `python scripts/glyph_lint.py UFO [GLYPH ...]` | outlines gone wrong: where, what |
 | `python scripts/quality/pair_summary.py [STYLE ...]` | Latin, Greek, Cyrillic pairs outside the references, one table (built fonts) |
+| `python scripts/redraw.py SRC.ufo OUT.ufo GLYPH ...` | a glyph redrawn onto extremes, corners and line ends, as a candidate with its gate verdict (`docs/claude/redraw.md`); `scripts/redraw_sheet.py` for the review sheet |
+| `python scripts/redraw_sweep.py UFO [--rev REV]` | what moved in a style since a revision, in units: outline distance, advance, anchors, kerning, by kind (redrawn, composite, other); after a redraw's `make generate` |
+| `python scripts/quality/stem_retreats.py UFO ...` | stems that step into the ink before their serif (`scripts/stem_joins.py`; none allowed) |
+| `python scripts/bowl_counters.py UFO [GLYPH ...] [--out OUT.ufo]` | the bowls' insides that are not two clean curves, and what redoing them moves; candidates to OUT.ufo |
 | `python scripts/sync_check.py` | sync conflict copies and lost glyph files in the UFOs |
 
 Run Python as `.venv/bin/python -I`. Run

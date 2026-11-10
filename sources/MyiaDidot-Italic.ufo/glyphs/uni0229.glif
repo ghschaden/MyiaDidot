@@ -4,7 +4,7 @@
 	<advance width="780"/>
 	<outline>
 		<component base="e"/>
-		<component base="cedilla" xOffset="-66" yOffset="110"/>
+		<component base="cedilla" xOffset="-66" yOffset="108"/>
 	</outline>
 	<anchor name="DotBelow" x="339" y="-20"/>
 	<anchor name="Bottom" x="344" y="0"/>
@@ -12,4 +12,5 @@
 	<anchor name="Grave" x="597" y="980"/>
 	<anchor name="Acute" x="597" y="980"/>
 	<anchor name="Top" x="603" y="1000"/>
+	<anchor name="Cedilla" x="344" y="-2"/>
 </glyph>

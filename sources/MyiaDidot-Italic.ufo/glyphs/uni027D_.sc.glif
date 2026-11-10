@@ -14,7 +14,7 @@
 			<point x="248" y="-226"/>
 			<point x="263" y="-203"/>
 			<point x="274" y="-170" type="curve"/>
-			<point x="275" y="-166"/>
+			<point x="275" y="-165"/>
 			<point x="275" y="-161"/>
 			<point x="277" y="-155" type="curve" smooth="yes"/>
 			<point x="292" y="-99"/>
@@ -25,7 +25,7 @@
 			<point x="482" y="-155" type="curve" smooth="yes"/>
 			<point x="480" y="-160"/>
 			<point x="479" y="-165"/>
-			<point x="477" y="-170" type="curve"/>
+			<point x="477" y="-169" type="curve"/>
 			<point x="476" y="-171"/>
 			<point x="476" y="-172"/>
 			<point x="475" y="-173" type="curve"/>
@@ -89,11 +89,11 @@
 		<contour>
 			<point x="428" y="554" type="line"/>
 			<point x="593" y="554" type="line" smooth="yes"/>
-			<point x="739" y="554"/>
-			<point x="842" y="643"/>
-			<point x="820" y="817" type="curve"/>
-			<point x="817" y="922"/>
-			<point x="774" y="972"/>
+			<point x="732" y="554"/>
+			<point x="823" y="632"/>
+			<point x="823" y="775" type="curve" smooth="yes"/>
+			<point x="823" y="885"/>
+			<point x="803" y="972"/>
 			<point x="677" y="972" type="curve" smooth="yes"/>
 			<point x="561" y="972" type="line" smooth="yes"/>
 			<point x="533" y="972"/>
@@ -113,11 +113,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-06</string>
+				<string>2026-11-10</string>
 				<key>glyph</key>
-				<string>28a399818d45</string>
+				<string>ecff169ccf4c</string>
 				<key>review</key>
-				<string>docs/italic-smallcaps-phonetic-review-2026-11-06.md</string>
+				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>

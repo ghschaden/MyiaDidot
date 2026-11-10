@@ -2090,7 +2090,7 @@ SMOOTH_CURVES = {"Ƭ": (1300, 1400)}
 ENLARGE_LIKE = {"ʛ": "g.sc"}
 
 
-def fair_joins(glyph, y0, y1, max_turn=25, tiny=16):
+def fair_joins(glyph, y0, y1, max_turn=25, tiny=16, min_turn=1):
     """glyph (in place) with the shallow corners between y0 and y1 faired:
     where an added piece meets a stroke that runs on at another angle (an
     italic leg leaning into a straight descender, a cut's stub left in
@@ -2099,6 +2099,8 @@ def fair_joins(glyph, y0, y1, max_turn=25, tiny=16):
     after, tangent to the outline at both. A side that was a curve keeps its
     handle, a straight one gets a third of the span. Bits shorter than tiny
     (a cut's stubs) go first; corners turning further (serifs, crotches) stay.
+    With min_turn 0 a smooth node in the band belongs to the run as well, so
+    the curve runs on through it to the next node outside the band.
     Returns how many runs were faired."""
 
     def turn(a, p, b):
@@ -2146,7 +2148,7 @@ def fair_joins(glyph, y0, y1, max_turn=25, tiny=16):
                 continue
             k += 1
         n = len(segs)
-        bad = [inside(segs[k][0]) and 1 <= abs(turn(into(segs, k), segs[k][0], out_of(segs, k))) <= max_turn
+        bad = [inside(segs[k][0]) and min_turn <= abs(turn(into(segs, k), segs[k][0], out_of(segs, k))) <= max_turn
                for k in range(n)]
         if any(bad) and not all(bad):
             first = next(k for k in range(n) if not bad[k])

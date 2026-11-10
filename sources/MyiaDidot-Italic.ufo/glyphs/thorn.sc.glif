@@ -23,11 +23,11 @@
 			<point x="516" y="936" type="curve" smooth="yes"/>
 			<point x="494" y="835" type="line"/>
 			<point x="701" y="835" type="line"/>
-			<point x="838" y="848"/>
-			<point x="944" y="748"/>
-			<point x="943" y="591" type="curve"/>
-			<point x="960" y="423"/>
-			<point x="772" y="268"/>
+			<point x="872" y="835"/>
+			<point x="944" y="736"/>
+			<point x="944" y="570" type="curve" smooth="yes"/>
+			<point x="944" y="366"/>
+			<point x="692" y="268"/>
 			<point x="513" y="268" type="curve" smooth="yes"/>
 			<point x="341" y="268" type="line"/>
 			<point x="293" y="96" type="line" smooth="yes"/>
@@ -40,14 +40,11 @@
 		<contour>
 			<point x="361" y="330" type="line"/>
 			<point x="548" y="330" type="line" smooth="yes"/>
-			<point x="621" y="330"/>
-			<point x="693" y="365"/>
-			<point x="739" y="425" type="curve"/>
-			<point x="788" y="475"/>
-			<point x="802" y="547"/>
-			<point x="794" y="611" type="curve"/>
-			<point x="792" y="723"/>
-			<point x="733" y="767"/>
+			<point x="680" y="330"/>
+			<point x="796" y="443"/>
+			<point x="796" y="578" type="curve" smooth="yes"/>
+			<point x="796" y="669"/>
+			<point x="774" y="767"/>
 			<point x="664" y="767" type="curve" smooth="yes"/>
 			<point x="509" y="767" type="line" smooth="yes"/>
 			<point x="482" y="767"/>
@@ -60,11 +57,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-06</string>
+				<string>2026-11-10</string>
 				<key>glyph</key>
-				<string>b3baefe14785</string>
+				<string>2c6380f1780c</string>
 				<key>review</key>
-				<string>docs/italic-smallcaps-extended-latin-review-2026-11-06.md</string>
+				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>
