@@ -122,36 +122,53 @@ the other models. One item per session.
       yet cover while the model that wrote it is still there; and the
       Italic against the Regular measured for phase 6's sheet.
 
-Budget (2026-11-10): F1 took rather more than half of what Fable had
-left, mostly in its review rounds. What remains goes to F2 and F3 only,
-in that order:
+Budget (2026-11-11): F1 to F3 are done; F1 took more than half of what
+Fable had then, mostly in its review rounds. The limits now:
 
-- F2 first, about 60 % of the remainder, with a hard stop. Cut to: the
-  measure, the prototype script with its test, the rule in
-  docs/claude/spacing.md, the list of hand exceptions; one sheet and
-  one review round.
-- F3 second, about 30 %. docs/claude/stroking.md and T4 decided switch
-  by switch; reading and writing only, no experiments.
-- About 10 % in reserve: a second review round for F2 if it is needed,
-  otherwise F4 as one page specifying its measures (no script, no
-  trial).
+- The week's Fable allowance: 31 % on the meter, read as 31 % left (the
+  tighter reading), lapsing Sunday 2026-11-15 10:00.
+- The weekly limit over all models: 14 % left.
+- One full reset of the 5-hour and weekly limits, to be taken before
+  2026-12-10. Its wording does not mention the Fable allowance, which
+  is taken not to refill.
 
-Not done on Fable any more: F4's script and trial (Opus, from that
-page or from the description above); F5 (the tolerance alone, the
-split glyphs listed as known); F6 (written by Opus from this file's
-descriptions); F7 (the batches on Sonnet by docs/claude/redraw.md,
-Opus where it refuses a letter).
+The reset is taken this week, at the moment the weekly limit stops the
+work and not before, so that the Fable allowance does not lapse unused.
+What that allowance goes to, in this order:
 
-How the two sessions are run, so that they do not go the way of F1's:
+- Before Fable starts, off Fable: F4's measuring script (Opus, from
+  F4's description above), its table Regular | Bold | Old Standard Bold
+  by font-measure, and an Explore agent's summary in one file of what
+  make_bold does per family today. Fable reads these, not the sources.
+- F4, in full, with a hard stop at about 80 % of the allowance. In this
+  order, each committed before the next: what the Bold should change
+  per family, as numbers; the family rules proposed for make_bold; how
+  the measures carry to the Bold Italic; then the trial on a e s g n o,
+  one sheet, one review round. If it runs short, the trial is what goes
+  to Opus.
+- With what remains: F6's page for T2 only (the dependency closure from
+  builtFrom, the state a partial run may not touch, the equivalence
+  test).
+
+Not done on Fable any more: F5 (Opus with the runner, or the tolerance
+alone and the split glyphs listed as known); F6's pages for T5, T6 and
+phase 1's sweep (Opus, from this file's descriptions); F7 (the batches
+on Sonnet by docs/claude/redraw.md, Opus where it refuses a letter);
+the points F3 left open for T4's session. If the Fable allowance turns
+out larger than read here, the order after T2's page is: F6's page for
+phase 1's sweep, then F7's first batch (the rest of a-z), stopped when
+it no longer finds cases redraw.md lacks.
+
+How these sessions are run, so that they do not go the way of F1's:
 
 1. Files before sheets: the rule and the script are written and
    committed before a sheet is rendered, so that a session that runs
    out leaves the mechanism behind.
 2. The loops off Fable: pair measurements, the reference fonts'
    numbers, rendering the sheets, `make test` and `make reproduce` go
-   to font-measure and font-runner. Before F3 an Explore agent gathers
-   FONT-DESIGN.md's record of the constants' changes into one file,
-   and Fable reads that instead of the history.
+   to font-measure and font-runner. Before a session an Explore agent
+   gathers what it needs from the sources and the history into one
+   file, and Fable reads that.
 3. One review round per item: what is rejected after it is written
    down as an open point for Opus, not worked through on Fable.
 
