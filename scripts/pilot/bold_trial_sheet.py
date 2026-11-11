@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The review sheet for F4's trial (docs/claude/bold.md, bold_trial.py):
 today's Bold, the trial Bolds and Old Standard Bold under each other at
-144 pt, then a paragraph of each at 12 pt.
+144 pt (less where more than five rows share the page), then a paragraph of each at 12 pt.
 
     .venv/bin/python -I scripts/pilot/bold_trial_sheet.py OUT.pdf "label=PATH" ...
 
@@ -20,7 +20,7 @@ from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
 
-BIG = ("naegso mhur", "vwxk HOXK r")
+BIG = ("naegso mhur", "vwxk HOXK r", "OCGQ rare for")
 SIZE, TEXT = 144, 12
 PARAGRAPH = ("In the morning the engineers examined a thousand numbers, human and humane; "
              "noon sun on linen, a minimum of room, hammer and anvil. Have we any oxen now? "
@@ -89,12 +89,13 @@ def main():
     faces = [(lab, Face(path)) for lab, path in (f.split("=", 1) for f in args.faces)]
     pages = []
     step = (H - 50) / len(faces)
+    size = round(min(SIZE, step * 0.95))
     for text in BIG:
-        body = [label(30, 22, f"F4's trial: the upright Bold, {SIZE} pt, no kerning", 10)]
+        body = [label(30, 22, f"F4's trial: the upright Bold, {size} pt, no kerning", 10)]
         for i, (lab, face) in enumerate(faces):
             y = 40 + step * i
             body.append(label(30, y + 4, lab))
-            body.append(face.line(text, 30, y + step * 0.78, min(SIZE, step * 0.95))[0])
+            body.append(face.line(text, 30, y + step * 0.78, size)[0])
         pages.append(svg(body))
     body = [label(30, 22, f"F4's trial: the upright Bold, {TEXT} pt, no kerning", 10)]
     cols = 3

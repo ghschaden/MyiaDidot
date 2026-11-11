@@ -136,11 +136,54 @@ def gap_serifs(wide, bold, make, original=mb.part_serifs):
     return out, n + len(todo)
 
 
+BALL_OF_STEM = 1.04  # B4: r's ball over the stem, the references' lowest share
+ROUNDS = ("O", "C", "G", "Q")
+
+
+def tolerant_finish(font):
+    """finalization.finish_glyphs for another KX: the passes that mend a glyph
+    at fixed coordinates refuse the changed outline (k.sc, numero); the
+    trial skips them and says so."""
+    from importlib import import_module
+
+    import finalization
+    for stage in finalization.PASSES:
+        if font.info.styleName in stage.styles:
+            try:
+                getattr(import_module(stage.module), stage.entry)(font)
+            except ValueError as e:
+                print(f"trial: pass {stage.module}.{stage.entry} skipped ({e})")
+
+
+def grow_ball(font):
+    """B4: r's ball (the terminal's nodes, the top's on-curve to the neck's
+    inner one) scaled from the neck's inner edge and the top until its
+    diameter is BALL_OF_STEM of n's stem; the advance follows the ink."""
+    sys.path.insert(0, str(ROOT / "scripts" / "quality"))
+    import bold_measures as bm
+    src = bm.Source(font.path)
+    k = BALL_OF_STEM * bm.measure(src, "n")["stem"] / bm.measure(src, "r")["ball"]
+    g = font["r"]
+    pts = max(g.contours, key=len).points
+    if len(pts) != 39:
+        sys.exit("r's outline is not the one the trial knows")
+    x0, y0 = pts[20].x, pts[11].y
+    right = max(p.x for p in pts)
+    for p in pts[11:21]:
+        p.x, p.y = round(x0 + (p.x - x0) * k), round(y0 + (p.y - y0) * k)
+    g.width += max(p.x for p in pts) - right
+    print(f"r's ball times {k:.3f}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("out")
     ap.add_argument("--kx", type=float, default=mb.KX)
     ap.add_argument("--gaps", action="store_true")
+    ap.add_argument("--base", help="an earlier trial's UFO to start from instead of running make_bold")
+    ap.add_argument("--ball", action="store_true", help="B4: r's ball at the stem's weight")
+    ap.add_argument("--rounds", help="B3: O C G Q taken from this trial UFO (made with a KX "
+                    "that keeps the Regular's advance, about 0.943)")
     args = ap.parse_args()
     out = Path(args.out).resolve()
     if ROOT / "sources" in out.parents:
@@ -148,20 +191,30 @@ def main():
     if out.exists():
         shutil.rmtree(out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(ROOT / "sources" / "MyiaDidot-Bold.ufo", out)
-    if args.kx != mb.KX:
-        # sc_feet mends k.sc's join at fixed coordinates and refuses another outline:
-        # the trial's small caps are not on the sheet
-        import sc_feet
-        sc_feet.k_sc = lambda font: None
-    mb.KX = args.kx
-    if args.gaps:
-        mb.part_serifs = gap_serifs
-    sys.argv = ["make_bold.py", str(ROOT / "sources" / "MyiaDidot-Regular.ufo"), str(out)]
-    mb.main()
-    for s, before, after, want in LOG:
-        print(f"gaps: serifs -{s}: {before} > {after} (wanted {want})")
-    print(f"{out}: KX {args.kx}, gaps {'kept' if args.gaps else 'as today'}, {len(LOG)} glyphs' serifs shortened")
+    shutil.copytree(args.base or ROOT / "sources" / "MyiaDidot-Bold.ufo", out)
+    if not args.base:
+        if args.kx != mb.KX:
+            import finalization
+            finalization.finish_glyphs = tolerant_finish
+        mb.KX = args.kx
+        if args.gaps:
+            mb.part_serifs = gap_serifs
+        sys.argv = ["make_bold.py", str(ROOT / "sources" / "MyiaDidot-Regular.ufo"), str(out)]
+        mb.main()
+        for s, before, after, want in LOG:
+            print(f"gaps: serifs -{s}: {before} > {after} (wanted {want})")
+        print(f"{out}: KX {args.kx}, gaps {'kept' if args.gaps else 'as today'}, {len(LOG)} glyphs' serifs shortened")
+    if args.ball or args.rounds:
+        font = ufoLib2.Font.open(out)
+        if args.rounds:
+            other = ufoLib2.Font.open(args.rounds)
+            for name in ROUNDS:
+                font[name].clearContours()
+                other[name].draw(font[name].getPen())
+                font[name].width = other[name].width
+        if args.ball:
+            grow_ball(font)
+        font.save()
 
 
 if __name__ == "__main__":

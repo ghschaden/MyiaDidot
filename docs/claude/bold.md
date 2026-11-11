@@ -178,9 +178,9 @@ generated into `build/`, never into `sources/`. One sheet as PDF, today's
 Bold | trial | Old Standard Bold, at 144 and 12 pt; one review round.
 
 Made 2026-11-11, awaiting that round: `proofs/bold-trial-2026-11-11.pdf`
-(`scripts/pilot/bold_trial.py`, `bold_trial_sheet.py`), four rows: today's
-Bold; B1 at KX 1.04; B1 with KX 1.00; Old Standard Bold. No kerning in
-any row.
+(`scripts/pilot/bold_trial.py`, `bold_trial_sheet.py`), six rows, each
+adding one rule: today's Bold; B1; B1 and B4; with B3; with B2 (KX
+1.00); Old Standard Bold. At 125 and 12 pt, no kerning in any row.
 
 - B1 as tried (`gap_serifs`, in place of `part_serifs` for the run): for
   part_serifs' own pairs of facing tips, the gap's share of the white
@@ -202,7 +202,17 @@ any row.
   coordinates; switched off in the trial) and numero's optical fit
   ("review its placement"). A changed KX therefore means respacing the
   Bold and revisiting both, which is part of B2's cost.
-- B3 beyond KX 1.00 and B4 are not on the sheet.
+- B4 as tried (`grow_ball`): the ten nodes of r's terminal scaled by
+  1.147 from the neck's inner edge and the top, so that both joins stay
+  smooth: the ball 116 > 137 (1.04 stems, wanted 133; the measure is the
+  largest disc), the advance 453 > 472 with the ink. In the generator
+  this belongs beside `r_hook.fair_bold_stem`.
+- B3 as tried: O C G Q taken from a run at KX 0.943, which keeps the
+  Regular's ink width: O's advance 822 > 746 (the Regular's 771 less the
+  Bold's cut of the side space), its counter 417 > 374, C 755 > 685,
+  G 792 > 718. Against the stem the counter is then 2.5, still above the
+  references (1.7 to 2.3). In the generator a KX per family, in `make()`
+  and where the advance is set.
 
 ## How this carries to the Bold Italic (phase 8)
 
