@@ -128,6 +128,12 @@ the other models. One item per session.
       one key, the migration of the three present marks, what the
       generators read), phase 1's sweep (the pair sets, the measure of
       white, the list's format).
+      T2's page written 2026-11-11: `docs/claude/only.md` (the
+      closure from six sources, builtFrom being one and only in the
+      Regular; measures such as o refused; the state; the check each
+      run makes; the tests in tiers). Read from the code, nothing run:
+      the timing it asks for first was not taken. T5, T6 and phase
+      1's sweep are still to write (Opus, as below).
 - [ ] F7. If sessions remain: phase 5's first two batches done on Fable
       (the rest of a-z, then A-Z), to find the cases redraw.md does not
       yet cover while the model that wrote it is still there; and the
@@ -342,6 +348,11 @@ alongside, each when the phase that needs it comes up.
 - [ ] T2. A fast loop for single glyphs: `make_bold.py` and
       `make_italic.py` take whole UFOs only (the Bold Italic about 5 min
       40 s).
+      Specified 2026-11-11 (F6): `docs/claude/only.md`, to carry out
+      in its order. Its step 0 comes first: the runs timed with the
+      stroke cache warm, which this figure predates; under a minute
+      each, `--out` (the whole run into scratch) and the sheet are all
+      of T2, and the closure below is not built.
       - [ ] `--only GLYPH ...`: those glyphs and what is built from them
             (lib `org.myiadidot.builtFrom` names the dependencies),
             written to a scratch UFO under `build/`, never to
