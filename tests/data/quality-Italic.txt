@@ -65,7 +65,7 @@ aringacute.sc kink 7             # Italic weighted as its letters are taken, der
 asterisk kink 4                  # 2026-10-21 Italic reweighted and tightened: 337,1202 3.7 degrees; 1029,1202 3.7 degrees; 1029,748 3.9 degrees; 337,748 3.9 degrees
 at extreme 2                     # 2026-10-16 known at the start (quality checks added): 1146,500 17 units past; 1067,817 12 units past
 b weight 1                       # 2026-10-21 Italic reweighted and tightened: at 442 stem 161 against 191
-b.sc kink 2                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+b.sc kink 2                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 beta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 204 against 185 (1.10, darker)
 betasymbolgreek zone 1           # 2026-10-16 known at the start (quality checks added): top +9 from 1434
 braceleft smooth 1               # 2026-10-16 known at the start (quality checks added): 675,930 2.2 degrees
@@ -102,16 +102,11 @@ eth smooth 1                     # Italic weighted as its letters are taken, der
 f stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
 f.sc smooth 1                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
 ff stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
-ff zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
-ffi zone 1                       # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 ffl stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
-ffl zone 1                       # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 fi slant 1                       # 2026-10-21 Italic reweighted and tightened: 17.2 degrees, not 15.2
-fi zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 fivesuperior extreme 1           # 2026-10-21 Italic reweighted and tightened: 412,1275 6 units past
 fivesuperior kink 1              # 2026-10-16 known at the start (quality checks added): 420,1279 3.9 degrees
 fl stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
-fl zone 1                        # 2026-10-16 known at the start (quality checks added): bottom -8 from -461
 florin smooth 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 512,912 9.7 degrees
 florin stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 156 against 183 (0.85, lighter)
 four kink 2                      # 2026-10-16 known at the start (quality checks added): 580,850 6.0 degrees; 804,1009 3.1 degrees
@@ -135,6 +130,7 @@ iota zone 1                      # 2026-10-16 known at the start (quality checks
 j accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 350, usually 198
 j.sc kink 2                      # 2026-10-21 Italic reweighted and tightened: -31,152 4.3 degrees; 199,229 6.6 degrees
 j.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +4 from 1040
+k stroke 1                       # the Italic's b-z redrawn, f's hook, followers (2026-11-11): lc 150 against 167 (0.90, lighter)
 k weight 1                       # 2026-10-16 known at the start (quality checks added): at 442 stem 162 against 195
 k.sc smooth 1                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
 kappa stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 131 against 183 (0.72, lighter)
@@ -171,8 +167,8 @@ omega.sc zone 1                  # 2026-10-21 Italic reweighted and tightened: t
 oogonek.sc kink 6                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: 345,650 3.3 degrees; 93,347 5.7 degre
 oslash.sc kink 3                 # 2026-10-21 Italic reweighted and tightened: 97,356 6.7 degrees; 955,642 6.1 degrees; 304,650 2.9 degrees
 p weight 1                       # 2026-10-21 Italic reweighted and tightened: at 442 stem 168 against 191
-p.sc kink 1                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-phi.sc kink 2                    # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+p.sc kink 1                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
+phi.sc kink 2                    # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 pi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 161 against 183 (0.88, lighter)
 pi.sc kink 1                     # 2026-10-16 known at the start (quality checks added): 863,87 5.5 degrees
 pi.sc smooth 1                   # 2026-10-16 known at the start (quality checks added): 332,944 3.1 degrees
@@ -184,7 +180,7 @@ q.sc kink 6                      # 2026-11-05 italic small caps at their capital
 question kink 1                  # 2026-10-21 Italic reweighted and tightened: 495,628 3.5 degrees
 questiondown kink 1              # 2026-10-16 known at the start (quality checks added): 472,230 3.5 degrees
 r zone 1                         # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-r.sc kink 3                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+r.sc kink 3                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 r.sc zone 1                      # 2026-10-16 known at the start (quality checks added): bottom -20 from 0
 ring extreme 4                   # 2026-10-16 known at the start (quality checks added): 844,1488 9 units past; 719,1028 9 units past; 608,1258 7 units past; 956,1258 6 units past
 s stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 135 against 183 (0.74, lighter)
@@ -235,7 +231,7 @@ uni0186 slant 1                  # 2026-10-16 known at the start (quality checks
 uni0187 kink 1                   # 2026-10-16 known at the start (quality checks added): 1354,1330 2.2 degrees
 uni0187 slant 1                  # 2026-10-16 known at the start (quality checks added): 10.8 degrees, not 15.2
 uni0188 slant 1                  # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 24.6 degrees, not 15.2
-uni0188.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0188.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0188.sc slant 1               # 2026-10-16 known at the start (quality checks added): 10.8 degrees, not 15.2
 uni018A kink 1                   # 2026-10-21 Italic reweighted and tightened: 516,1300 1.4 degrees
 uni0190 slant 1                  # 2026-10-16 known at the start (quality checks added): 12.3 degrees, not 15.2
@@ -247,7 +243,6 @@ uni0194 zone 1                   # 2026-10-16 known at the start (quality checks
 uni0197 stem 1                   # 2026-10-25 lighter I approved in text; retain independent barred-I drawing: at 358 180 against I's 165
 uni0198 kink 1                   # 2026-10-16 known at the start (quality checks added): 1259,1252 6.4 degrees
 uni0199 kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 292,987 5.0 degrees
-uni0199 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 376,1177 2.3 degrees
 uni0199 zone 1                   # 2026-10-21 Italic reweighted and tightened: top +16 from 1434
 uni0199.sc kink 1                # italic curl balls: 913,902 6.4 degrees
 uni0199.sc smooth 1              # 2026-11-08 italic Ƙ Ƴ Ʋ curls 1.25 times, as Ƈ Ɠ: 868,118 2.1 degrees
@@ -257,19 +252,19 @@ uni019C smooth 2                 # 2026-10-21 Italic reweighted and tightened: 4
 uni019D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 163 against 209 (0.78, lighter)
 uni01A4 kink 2                   # 2026-10-21 Italic reweighted and tightened: 516,1300 1.4 degrees; 378,114 4.7 degrees
 uni01A5 kink 2                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 342,700 7.6 degrees; 837,1076 7.3 degrees
-uni01A5.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni01A5.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni01AC kink 2                   # 2026-10-21 Italic reweighted and tightened: 972,1307 3.9 degrees; 653,114 2.1 degrees
 uni01AC zone 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: top +2 from 1434
-uni01AD kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 273,900 1.9 degrees
+uni01AD kink 2                   # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 272,900 4.6 degrees; 413,900 2.7 degrees
 uni01AD stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.83, lighter)
 uni01AD zone 1                   # 2026-10-16 known at the start (quality checks added): top +3 from 1434
-uni01AD.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni01AD.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni01AE kink 2                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 825,-231 6.8 degrees; 972,1307 3.9 degrees
 uni01B1 smooth 1                 # 2026-10-16 known at the start (quality checks added): 1100,1213 2.1 degrees
 uni01B2 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 425,409 2.3 degrees
 uni01B3 kink 5                   # 2026-10-21 Italic reweighted and tightened: 455,1271 3.1 degrees; 635,1264 7.9 degrees; 1189,1200 7.2 degrees; 1270,1200 7.0 degrees; 653,112 4.0 degrees
+uni01B4 kink 2                   # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 775,628 2.5 degrees; 948,760 7.5 degrees
 uni01B4 slant 1                  # 2026-10-16 known at the start (quality checks added): 17.8 degrees, not 15.2
-uni01B4 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 337,649 2.9 degrees
 uni01B4.sc kink 2                # 2026-11-08 italic Ƙ Ƴ Ʋ curls 1.25 times, as Ƈ Ɠ: 1057,702 6.5 degrees; 493,95 6.7 degrees
 uni01B4.sc smooth 1              # 2026-11-08 italic Ƙ Ƴ Ʋ curls 1.25 times, as Ƈ Ɠ: 305,95 2.3 degrees
 uni01B9 slant 1                  # 2026-10-21 Italic reweighted and tightened: 13.1 degrees, not 15.2
@@ -295,7 +290,7 @@ uni023E smooth 1                 # 2026-10-21 Italic reweighted and tightened: 6
 uni023E step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 248,0 54 units aside
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +6 from 1434
 uni0242 kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 396,390 4.4 degrees
-uni0242 smooth 1                 # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0242 smooth 1                 # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0242 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 131 against 183 (0.72, lighter)
 uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 109 against 178 (0.61, lighter)
 uni0244 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 425,409 2.5 degrees
@@ -307,7 +302,7 @@ uni0249.sc zone 1                # italic small caps derived after the italic sm
 uni024C kink 1                   # 2026-10-21 Italic reweighted and tightened: 378,114 2.9 degrees
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -23 from 0
 uni024D zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni024D.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni024D.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -14 from 0
 uni0250 zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
 uni0250.sc kink 3                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 291,922 5.5 degrees; 475,918 5.7 degrees; 913,934 4.9 degrees
@@ -318,16 +313,15 @@ uni0251.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni0252 zone 2                   # 2026-11-02 ɑ drawn from d (was α), ɒ turned ɑ; in the italics ɑ and æ the roman's sloped, with its overshoots: bottom +7 from -23; top +16 from 884
 uni0253 kink 1                   # 2026-10-16 known at the start (quality checks added): 298,988 4.4 degrees
 uni0253 zone 1                   # 2026-10-16 known at the start (quality checks added): top +16 from 1434
-uni0253.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0253.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0254.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 843,351 4.0 degrees; 806,760 4.9 degrees; 653,280 4.0 degrees
 uni0254.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 19.8 degrees, not 15.2
 uni0255 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 413,-18 2.0 degrees
 uni0257 zone 1                   # fixed hooked-d italic outline: bottom +7 from -23
 uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +7 from -23
 uni025F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
-uni0260 kink 1                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-uni0260 smooth 1                 # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-uni0260.sc kink 4                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0260 kink 1                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
+uni0260.sc kink 4                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0260.sc slant 1               # 2026-10-16 known at the start (quality checks added): 11.0 degrees, not 15.2
 uni0262 slant 1                  # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 9.8 degrees, not 15.2
 uni0262 smooth 1                 # g.sc made from G, ɦ.sc from Ɦ (Italic) and its own curl on h.sc (Bold Italic), Bold Italic Ɦ as its Ɓ: 584,82 2.4 degrees
@@ -335,9 +329,11 @@ uni0264 zone 1                   # 2026-10-21 Italic reweighted and tightened: b
 uni0265 zone 1                   # 2026-10-16 known at the start (quality checks added): top +23 from 884
 uni0266 kink 1                   # 2026-10-21 Italic reweighted and tightened: 297,1000 4.0 degrees
 uni0266 slant 1                  # 2026-10-16 known at the start (quality checks added): 17.5 degrees, not 15.2
+uni0266 zone 1                   # the Italic's b-z redrawn, f's hook, followers (2026-11-11): top +16 from 1434
 uni0266.sc smooth 2              # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: 1223,943 2.0 degrees; 805,86 2.2 degr
 uni0267 kink 1                   # 2026-10-21 Italic reweighted and tightened: 297,1000 4.0 degrees
-uni0268 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 315,211 2.0 degrees
+uni0267 smooth 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 236,-258 2.0 degrees
+uni0267 zone 1                   # the Italic's b-z redrawn, f's hook, followers (2026-11-11): top +16 from 1434
 uni0268.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.3 degrees
 uni0269 zone 1                   # 2026-10-16 known at the start (quality checks added): top -24 from 884
 uni0269.sc zone 1                # small caps' overshoot scaled with the letter: top -5 from 1040
@@ -356,38 +352,33 @@ uni026F.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni0270 kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 1336,600 1.2 degrees
 uni0270 slant 1                  # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 17.4 degrees, not 15.2
 uni0270 zone 1                   # 2026-10-16 known at the start (quality checks added): top +23 from 884
-uni0271 kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1377,500 5.2 degrees
-uni0271 slant 1                  # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 17.2 degrees, not 15.2
 uni0272 slant 1                  # 2026-10-16 known at the start (quality checks added): 19.6 degrees, not 15.2
 uni0272.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 121 against 178 (0.68, lighter)
 uni0272.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni0274 stroke 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: lc 96 against 167 (0.57, lighter)
-uni0276 kink 3                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0276 kink 3                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0276 zone 1                   # 2026-11-09 ɶ ᴅ at the x-height from oe.sc d.sc (derive enlarge), accepted with the letters: docs/ipa-oe-d-smallcaps-review-2026-11-09.md: top +20 from 884
 uni0278 style 1                  # 2026-10-21 Italic reweighted and tightened: closer to the Regular's uni0278 (0.63) than to o (0.49)
 uni0279 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni027A kink 1                   # 2026-10-16 known at the start (quality checks added): 531,850 2.5 degrees
 uni027A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni027D.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-uni027E kink 3                   # reviewed 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 274,218 1.1 degrees; 115,219 1.3 degrees; 144,
+uni027D.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni027E step 2                   # reviewed 2026-11-04: ɾ's foot slab ends, designed (the slab in every style): 210,50 70 units aside; 0,50 67 units aside
 uni027E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni0280 kink 3                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0280 kink 3                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0280 zone 1                   # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: bottom +23 from -23
-uni0280.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-uni0281 kink 3                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0280.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
+uni0281 kink 3                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0281 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 196 against 167 (1.17, darker)
 uni0281 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0282 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 123 against 183 (0.68, lighter)
 uni0283 kink 3                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 423,900 1.2 degrees; 279,900 1.5 degrees; 285,920 1.4 degrees
 uni0283 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 12,-80 2.4 degrees
 uni0283 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
-uni0284 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: -218,-380 2.3 degrees
 uni0284 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni0288 kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 220,-156 7.2 degrees
 uni0288 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.83, lighter)
 uni0288.sc kink 1                # 2026-10-26 Italic/Bold Italic retroflex tails (ɽ.sc ʈ.sc Ɽ Ʈ own recipes): 728,931 4.8 degrees
-uni0289 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 337,649 3.0 degrees
 uni0289.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 996,839 2.6 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni028A zone 1                   # 2026-10-16 known at the start (quality checks added): top -21 from 884
@@ -395,11 +386,10 @@ uni028A.sc kink 9                # 2026-10-21 Italic reweighted and tightened: 8
 uni028A.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +10 from 1040
 uni028B kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 929,700 4.5 degrees
 uni028B slant 1                  # 2026-10-16 known at the start (quality checks added): 20.0 degrees, not 15.2
-uni028B smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 337,649 2.9 degrees
 uni028B.sc kink 1                # 2026-10-21 Italic reweighted and tightened: 328,300 2.9 degrees
 uni028B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni028C zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
-uni028C.sc kink 4                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni028C.sc kink 4                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni028C.sc zone 1                # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: bottom -4 from 0
 uni028D slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni028D zone 2                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23; top +23 from 884
@@ -421,11 +411,11 @@ uni0295 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni0295 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni0298 smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 444,901 2.1 degrees
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -12 from -23
-uni0299 kink 2                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0299 kink 2                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0299 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni029B kink 4                   # 2026-11-08 ʛ at the x-height, made from ɠ.sc as ɢ from g.sc: ɢ's own findings (G's spur, curl slant): 84,292 5.6 degrees; 853,798 3.2 degrees; 330,631 3.2 degrees; 241,231 5.7 degrees
 uni029B slant 1                  # 2026-11-08 ʛ at the x-height, made from ɠ.sc as ɢ from g.sc: ɢ's own findings (G's spur, curl slant): 10.3 degrees, not 15.2
-uni029B smooth 2                 # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni029B smooth 2                 # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni029C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni029D step 1                   # reviewed 2026-11-04: ʝ's crossbar end, designed: -271,-371 65 units aside
 uni029D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 155 against 183 (0.85, lighter)
@@ -436,7 +426,9 @@ uni02A1 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni02A1 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni02A2 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 120 against 167 (0.72, lighter)
 uni02A2 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni02B2 kink 2                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 344,922 1.5 degrees; 447,908 4.9 degrees
+uni02B0 kink 1                   # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 550,1010 5.2 degrees
+uni02B2 smooth 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 446,908 2.1 degrees
+uni02B7 smooth 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 864,952 2.2 degrees
 uni02BB extreme 1                # 2026-10-16 known at the start (quality checks added): 496,988 8 units past
 uni02BC extreme 1                # 2026-10-16 known at the start (quality checks added): 603,1512 8 units past
 uni02C1 kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 365,1068 4.0 degrees
@@ -495,7 +487,6 @@ uni042F zone 1                   # 2026-10-16 known at the start (quality checks
 uni0430.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +5 from 1040
 uni0431 zone 1                   # 2026-10-16 known at the start (quality checks added): top +13 from 1434
 uni0431.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 296,931 2.5 degrees
-uni0432.loclBGR smooth 1         # 2026-10-21 Italic reweighted and tightened: 126,359 2.3 degrees
 uni0433 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni0434.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 486,813 2.5 degrees
 uni0436 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
@@ -517,10 +508,10 @@ uni043D stroke 1                 # stroke weights against the kind's (scripts/qu
 uni043F slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni0442 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
 uni0443.sc kink 2                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: 112,152 5.5 degrees; 425,217 5.3 degr
-uni0443.sc smooth 1              # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0443.sc smooth 1              # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni0444 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1140,1264 7.3 degrees
-uni0444.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni0444.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0446 slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni0446 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 888,-180 2.2 degrees
 uni0446.sc smooth 1              # 2026-10-21 Italic reweighted and tightened: 933,930 2.8 degrees
@@ -535,7 +526,7 @@ uni044C.sc smooth 1              # Italic weighted as its letters are taken, der
 uni044D.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 52,214 5.6 degrees; 288,287 4.0 degrees; 572,152 6.9 degrees; 888,672 6.2 degrees; 719,177 6.0 degrees
 uni044E.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 479,645 3.4 degrees
 uni044F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
-uni044F.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni044F.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni044F.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 238,732 2.6 degrees
 uni044F.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -20 from 0
 uni0452 kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 744,1264 7.3 degrees
@@ -577,19 +568,14 @@ uni049A zone 1                   # 2026-10-16 known at the start (quality checks
 uni049B.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
 uni04A3 kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 693,-162 7.4 degrees
 uni04A3 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
-uni04AF kink 1                   # 2026-10-21 Italic reweighted and tightened: 747,675 2.6 degrees
 uni04AF slant 1                  # 2026-10-16 known at the start (quality checks added): 19.6 degrees, not 15.2
-uni04AF smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 337,649 2.9 degrees
 uni04B0 kink 4                   # 2026-10-21 Italic reweighted and tightened: 455,1271 3.1 degrees; 635,1264 7.9 degrees; 1283,1208 2.9 degrees; 653,112 3.9 degrees
-uni04B1 kink 1                   # 2026-10-21 Italic reweighted and tightened: 747,675 2.6 degrees
 uni04B1 slant 1                  # 2026-10-16 known at the start (quality checks added): 23.5 degrees, not 15.2
-uni04B1 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 337,649 2.9 degrees
 uni04B1.sc kink 3                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 284,906 3.3 degrees; 877,913 7.6 degrees; 494,97 3.3 degrees
 uni04B1.sc smooth 1              # 2026-10-21 Italic reweighted and tightened: 940,861 2.4 degrees
 uni04B2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 184 against 209 (0.88, lighter)
-uni04B3 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1029,841 2.5 degrees
-uni04B3.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-uni04B3.sc smooth 2              # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uni04B3.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
+uni04B3.sc smooth 2              # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni04B3.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 141 against 178 (0.79, lighter)
 uni04B6 smooth 1                 # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1022,143 2.1 degrees
 uni04B7 kink 2                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 650,-162 7.6 degrees; 440,-154 4.3 degrees
@@ -601,18 +587,15 @@ uni04E9.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 9
 uni1D05 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D4B smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 509,990 2.1 degrees
 uni1D6E stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 163 against 183 (0.89, lighter)
-uni1D6F smooth 1                 # 2026-10-16 known at the start (quality checks added): 789,628 2.7 degrees
 uni1D72 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 185 (1.13, darker)
 uni1D72 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni1D73 kink 1                   # reviewed 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 204,219 1.3 degrees
 uni1D73 step 2                   # reviewed 2026-11-04: ᵳ's foot slab ends, as ɾ's: 300,50 70 units aside; 90,50 67 units aside
 uni1D73 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni1D75 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 150 against 183 (0.82, lighter)
 uni1D76 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 79 against 183 (0.43, lighter)
 uni1D7B zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni1D7D.sc kink 1                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-uni1DBB kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 482,1021 6.1 degrees
-uni1DBB smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 615,1029 2.5 degrees
+uni1D7D.sc kink 1                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
+uni1DBB smooth 2                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 130,582 2.1 degrees; 233,572 2.5 degrees
 uni1E9E stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 299 against 222 (1.35, darker)
 uni1FBE smooth 3                 # 2026-10-21 Italic reweighted and tightened: 87,105 2.5 degrees; 237,651 2.5 degrees; 239,105 2.4 degrees
 uni1FBE zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
@@ -626,6 +609,7 @@ uni1FDE extreme 2                # 2026-10-16 known at the start (quality checks
 uni1FDF extreme 1                # 2026-10-16 known at the start (quality checks added): 637,946 7 units past
 uni1FFE extreme 1                # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 675,992 9 units past
 uni2042 kink 12                  # 2026-10-16 known at the start (quality checks added): 271,864 3.7 degrees; 333,864 3.7 degrees; 333,576 3.7 degrees; 271,576 3.7 degrees; 771,864 3.7 degrees; 833,864 3.7 degrees; 833,576 3.7 degrees;
+uni2071 smooth 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 215,645 2.7 degrees
 uni20A1 step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 1340,1455 46 units aside
 uni20A9 kink 1                   # W rebuilt (thick stems' brackets as I's, thin arm run on into the next stem), Ⱳ's curl run on straight from the arm; Ɽ's tail as wide as its stem (2026-11-03): 1740,1208 3.4 degrees
 uni20AD smooth 1                 # 2026-10-21 Italic reweighted and tightened: 209,114 2.7 degrees
@@ -651,7 +635,7 @@ uni2144 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 2
 uni2C63 kink 1                   # 2026-10-16 known at the start (quality checks added): 405,112 3.2 degrees
 uni2C64 kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 551,-231 7.4 degrees
 uni2C65.sc kink 2                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 825,118 6.8 degrees; 641,122 6.7 degrees
-uni2C66 smooth 2                 # 2026-10-21 Italic reweighted and tightened: 223,209 2.5 degrees; 310,60 2.6 degrees
+uni2C66 smooth 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 104,299 2.3 degrees
 uni2C66 step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 608,806 51 units aside
 uni2C66.sc kink 1                # 2026-10-21 Italic reweighted and tightened: 732,930 7.2 degrees
 uni2C66.sc step 3                # 2026-10-27 step check added (checks.py step): a candidate to review: 129,62 66 units aside; 122,-48 58 units aside; 154,0 45 units aside
@@ -674,7 +658,7 @@ uniA7AD extreme 2                # 2026-10-21 Italic reweighted and tightened: 2
 uniA7AD smooth 1                 # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: 516,1311 2.5 degrees
 uniA7B2 kink 1                   # 2026-10-21 Italic reweighted and tightened: 588,-262 6.7 degrees
 uniA7B4 kink 1                   # 2026-10-21 Italic reweighted and tightened: 174,0 1.9 degrees
-uniA7B5.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+uniA7B5.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uniA7B6 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 245 against 222 (1.10, darker)
 uniA7B7.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 261 against 184 (1.41, darker)
 uniA7CB kink 1                   # 2026-10-16 known at the start (quality checks added): 1088,1372 4.4 degrees
@@ -686,7 +670,7 @@ upsilon.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 1
 upsilon.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 494,98 3.6 degrees
 upsilon.sc zone 1                # 2026-10-21 Italic reweighted and tightened: top +28 from 1040
 v slant 1                        # 2026-10-16 known at the start (quality checks added): 23.5 degrees, not 15.2
-v.sc kink 4                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+v.sc kink 4                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 v.sc zone 1                      # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 w slant 1                        # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 w.sc kink 3                      # W rebuilt (thick stems' brackets as I's, thin arm run on into the next stem), Ⱳ's curl run on straight from the arm; Ɽ's tail as wide as its stem (2026-11-03): 1174,756 2.7 degrees; 1213,9

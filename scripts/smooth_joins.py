@@ -25,6 +25,8 @@ Each entry names a node by its position in the finished glyph; an entry
 that finds none fails (the generator moved it: look again). Glyphs kept as
 drawn (drawn.py) are put back after finishing and are fixed in place
 instead; ℵ's join is put in line in aleph.py, whose repairs the tests rerun.
+The Italic has a few of its own (ITALIC_JOINS), put in line the same way;
+the Bold Italic made from it takes them with its letters.
 """
 
 import math
@@ -62,6 +64,13 @@ JOINS = {
     "uni0289": [(888, 168)],
     "uni1D43": [(422, 1046)],
     "uni1DA4": [(383, 633)],
+}
+# the Italic's, the same way (its node made smooth too): ɱ's hook, its
+# inner edge running into m's leg, a zero-length line stacked on the node
+# there since ȷ was redrawn (a spike of two nodes on one point, 0.3 degrees
+# between the curves; 2026-11-11)
+ITALIC_JOINS = {
+    "uni0271": [(1069, 45)],
 }
 # glyph: (x, y, reach) of the brackets redrawn as fillets
 FILLETS = {
@@ -176,6 +185,14 @@ def gap(glyph, cx, y0, width):
 
 
 def finish(font):
+    if font.info.styleName == "Italic":
+        for name, spots in ITALIC_JOINS.items():
+            for x, y in spots:
+                align(font[name], x, y)
+                node = min((p for c in font[name].contours for p in c.points if p.type),
+                           key=lambda p: math.dist((p.x, p.y), (x, y)))
+                node.smooth = True
+        return
     for name, (cx, y0, width) in GAPS.items():
         gap(font[name], cx, y0, width)
     for name, spots in FILLETS.items():

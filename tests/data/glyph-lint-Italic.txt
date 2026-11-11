@@ -1,10 +1,6 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
-m notch 1                        # accepted 2026-10-26: source m open arch crotch; same outline as Cyrillic т, 427,478 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
-uni026F notch 1                  # accepted 2026-10-26: turned-m open arch crotch, 1135,408 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
 uni0442 notch 1                  # accepted 2026-10-26: same open arch crotch and outline as m, 427,478 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
 uni0442.loclBGR notch 1          # accepted 2026-10-26: alias of Cyrillic т/m; open arch crotch, 427,478 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
 uni0442.loclSRB notch 1          # accepted 2026-10-26: Old Standard Serbian т open arch crotch, 1094,382 32 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
 uni0448 notch 1                  # accepted 2026-10-26: Old Standard ш open arch crotch, 1158,384 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
 uni0448.loclBGR notch 1          # accepted 2026-10-26: alias of ш; open arch crotch, 1158,384 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
-uni1E3F notch 1                  # accepted 2026-10-26: m component; inherited open arch crotch, 427,478 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md
-uni1E43 notch 1                  # accepted 2026-10-26: m component; inherited open arch crotch, 427,478 30 px; docs/italic-arches-and-l-belt-review-2026-10-25.md

@@ -32,8 +32,15 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # smaller dot (2026-11-09: y_dot.py keeps the dot's left edge at its gap),
 # 3 more left with the Bold Italic's round dot (bold_dots.py, 2026-11-09);
 # Ɯ, U twinned, 36 narrower, a 1.9 degree joint under its middle serif
-WIDTHS = {"uni019C": (2446, 2410)}
-ANCHORS = {"y": {"DotBelow": (-8, 0)}}
+# their Italic letters redrawn onto clean nodes (2026-11-11): y and what is
+# made of it (ʎ ƴ) a unit narrower, y's anchors a unit left (its dot below
+# 6 more, y_dot on the new outline), u's too; ƴ, derived from the redrawn
+# y, takes y's dot below beside the descender (436 -> 957)
+WIDTHS = {"uni019C": (2446, 2410), "y": (1070, 1069), "uni028E": (1070, 1069), "uni01B4": (1442, 1441)}
+_ANCHOR_NAMES = ("Top", "Bottom", "DotBelow", "Grave", "Acute", "Horn", "Dotaccent", "Ogonek", "Hook")
+ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
+           "u": {a: (-1, 0) for a in _ANCHOR_NAMES},
+           "uni01B4": {"DotBelow": (521, 0)}}
 # ų: its stem's foot, a crotch drawn as a short line, now meets as one
 # point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it
 # draws the stem's inside a little bowed, a wobble the size of a unit, not
@@ -156,12 +163,24 @@ def verdict(name):
     return log
 
 
-@pytest.mark.parametrize("name", ["n", "h", "v", "w", "o"])
+@pytest.mark.parametrize("name", ["n", "h", "o"])
 def test_controls_not_blended(name):
     """the repair leaves the letters without a curve split short before
     its line, nor a knee, as they were: the blend does not even start on
     them"""
     assert verdict(name) == []
+
+
+def test_redrawn_v_w_judged_by_the_gate():
+    """v and w, controls until their Italic letters were redrawn onto clean
+    nodes (2026-11-11): the blend starts on both now. v's takes two steps
+    away (121,650 and 313,204) and adds nothing, w's removes none and w is
+    as drawn; both approved so on the Bold Italic's sheet of 2026-11-11"""
+    [v] = verdict("v")
+    assert v.startswith("blended") and "('step', 121, 650" in v and "('step', 313, 204" in v, v
+    assert "steps new or worse []; bends new []; findings new or worse []; guarded kept" in v, v
+    assert verdict("w") == [("as drawn: steps gone [], steps new or worse []; bends new []; "
+                             "findings new or worse []; guarded not reached")]
 
 
 def test_refused_where_it_adds_a_fault():

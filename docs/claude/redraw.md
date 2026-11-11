@@ -402,7 +402,7 @@ the order is the one to keep for the next such wish:
    p q before f; phase 1's sweep); the Bold Italic's ſſ ligatures are
    50 wider with their ff.
 
-## After the batch of 2026-11-11: what the tests found (open)
+## After the batch of 2026-11-11: what the tests found
 
 Twenty letters at once met what the pilot's six did not. `make test`
 after the fourth run: 27 failing (`build/redraw/g4-failures.txt`). Sort
@@ -415,36 +415,70 @@ test_glyph_lint Italic (four `notch` lines to delete: m ɯ ḿ ṃ),
 test_stroke_gate's fixtures for u y ƴ ʎ (advances and anchors by a
 unit), test_hinting's zones.
 
-Faults, each to find and mend in its place:
+Faults, each found and mended in its place (2026-11-11, Opus):
 
 - **A drawn Bold Italic letter whose Italic letter moved** (k, drawn
   before; x, drawn 2026-11-11): make_bold puts it back on the new
   letter's side bearings before the derived letters are built
   (`drawn.restore(spaced=True)`), so its aliases, composites and
-  ligatures take that width (k 1021, x 1165), and `write` then puts it
-  back as saved (1022, 1167). Failing: test_built_from aliases,
-  test_composites (ẋ), test_nfc_and_nfd (ǩ ḱ ḳ ḵ, ẋ),
-  test_italic_ligatures (f_k, ſk by a unit). To try: `write` restoring
-  spaced as well (the saved outline on the bearings the font has for
-  it at the end); in the steady state that changes nothing, check with
-  `make reproduce` and an empty diff of the Bold.
+  ligatures took that width (k 1021, x 1165), and `write` then put it
+  back as saved (1022, 1167). `write` restoring spaced as well was
+  tried and refused: in a scratch run 40-odd drawn glyphs lost their
+  saved spacing (Ƈ +90, ƈ +178, ɟ +106: a drawn shape is not the made
+  one, its bounds give other bearings). Mended locally: k and x saved
+  on the bearings their derived letters have (k a unit narrower on the
+  right, x moved a unit left with its anchors, m a unit narrower on the
+  right for ḿ ṃ, found on the next run; outlines otherwise as they
+  were), so the two restores agree again. The next drawn letter
+  whose Italic letter is redrawn needs the same: after the run, compare
+  its width with its alias's (test_aliases_as_wide_as_their_glyph).
 - **A kept Italic letter's composite a unit off** (ỵ: dotaccent at 53,
-  the rules give 54): the kept letters stand uncut while the composites
-  are placed and are put back as saved after `respace`; half a cut
-  rounds one way going and the other coming back. The pilot's six did
-  not show it.
-- **Repair scripts that know their letter by fixed points** (TODO T7):
-  y_dot (the Bold Italic's ỵ: its dot 21 units into the tail,
-  test_y_dot; with it test_composites and test_nfc_and_nfd for ỵ),
-  l_belt (ɬ in the Italic: the test's own rebuild differs from the
-  generated one), r_hook (the Bold Italic: a unit of width). Each
-  against the redrawn letter's nodes.
-- **The stroking's guards on letters that moved**:
-  test_stroke_steps[u] (two bends new at 331,173 and 329,162, the
-  Bold Italic's u, approved on the sheet as it is: see whether the
-  bends are the approved shape or a fault under it),
-  test_controls_not_blended[v] and [w] (the control letters' expected
-  behaviour changed with their outlines: docs/claude/stroking.md).
+  the rules give 54): make_italic's `y_dot_anchor` ran on the kept y
+  while it stood uncut and gave 912 for the saved 897 + 16; ỵ was built
+  on that, y then put back as saved. Mended: a kept y keeps its anchor
+  as saved (y_dot skipped for it). ý ÿ ŷ ỳ ỷ ỹ ȳ's own DotBelow anchor
+  follows y's again (897, was 896). The same in the Bold Italic was this
+  one: the Italic's ỵ off its rule, make_bold did not count it as made
+  by the rules and never rebuilt it (its dot 47 units into the tail,
+  test_y_dot); with the Italic's mended, it is rebuilt (157).
+- **Repair scripts' fixtures** (TODO T7): l_belt's fixture for ɬ
+  recorded again from the generated outline before `l_belt.finish`
+  (it comes from the redrawn l); r_hook's Bold Italic fixture only a
+  unit wider (ɽ 885 now; the outline the same). ɽ reaches r_hook in the
+  Bold Italic already hooked (from the Italic's finished one), so that
+  fixture cannot be recorded by the same probe.
+- **u's knee in the Bold Italic** (test_knee_turns_one_way, two bends at
+  331,173 and 329,162 upright): a fault under the approved shape, the
+  Italic's u is clean there. The redrawn Italic u's knee gives the
+  stroker no step of KNEE_TURN, so the knee was not found and
+  knee_turned did not run; the stroked knee kept a 52-unit curve with
+  both handles on its end and the next curve's handles in an S. Mended
+  by hand, marked drawn (only u of the kneed letters met it): the first
+  curve taken into the stem's line, the next one's handles set to turn
+  one way (within a unit of the approved shape). Its entry's first
+  curve had the same S (a 2-unit handle off the line's direction, a
+  wobble of 9 degrees at 312,634): its handles set one way, 0.3 units
+  from where it was. When и ц ш щ џ are
+  redrawn, look for the same before the sheet: if they meet it too,
+  it is a family fault and the knee's detection (a bend as well as a
+  step) is what to change.
+- **The controls v and w** (test_controls_not_blended): with their
+  Italic letters redrawn the blend starts on both; v's takes two steps
+  away and adds nothing, w stays as drawn. Both approved so: v and w
+  left the controls (n h o remain), their verdicts pinned in
+  `test_redrawn_v_w_judged_by_the_gate`.
+- **ɱ** ("a kind of kink" in the right downstroke): in
+  `ITALIC_JOINS_THROUGH` with its band to 520, its inner edge is one
+  curve from 1094,153 to the leg's top at 1272,649, turning one way.
+  The two nodes on one point at 1069,45 were ȷ's (there with or without
+  the run through): put in line by `smooth_joins.ITALIC_JOINS`, the
+  pass now run for the Italic too. The Bold Italic's ɱ has two such
+  pairs of its own (1045,-155 and 1309,683), older than this batch:
+  open.
+- **ƴ's dot below** (test_finished_letter_keeps_what_it_was): derived
+  from the redrawn y, it takes y's anchor beside the descender (Italic
+  396 -> 897, Bold Italic 436 -> 957), declared in the test's ANCHORS.
+  No precomposed letter uses it; for the designer to confirm.
 
 The lesson for the next batch: run `make test` on the first generated
 state, before the second sheet is made, and sort the failures like

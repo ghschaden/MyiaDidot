@@ -17,12 +17,9 @@
 			<point x="541" y="538"/>
 			<point x="530" y="512"/>
 			<point x="523" y="496" type="curve" smooth="yes"/>
-			<point x="396" y="214" type="line" smooth="yes"/>
-			<point x="375" y="166"/>
-			<point x="376" y="168"/>
-			<point x="375" y="166" type="curve" smooth="yes"/>
-			<point x="366" y="145"/>
-			<point x="350" y="111"/>
+			<point x="375" y="166" type="line" smooth="yes"/>
+			<point x="362" y="137"/>
+			<point x="350" y="108"/>
 			<point x="350" y="70" type="curve" smooth="yes"/>
 			<point x="350" y="44"/>
 			<point x="357" y="42"/>
@@ -74,8 +71,8 @@
 			<point x="186" y="354"/>
 			<point x="196" y="377" type="curve" smooth="yes"/>
 			<point x="302" y="613" type="line" smooth="yes"/>
-			<point x="303" y="615"/>
-			<point x="310" y="635"/>
+			<point x="311" y="633"/>
+			<point x="321" y="653"/>
 			<point x="337" y="679" type="curve" smooth="yes"/>
 			<point x="345" y="692"/>
 			<point x="374" y="744"/>
@@ -100,11 +97,20 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-09</string>
+				<string>2026-11-11</string>
 				<key>glyph</key>
-				<string>b9f2ced0acaf</string>
+				<string>fcf51dffed7b</string>
 				<key>review</key>
-				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+				<string>proofs/bold-italic-after-redraw-az-2026-11-11.pdf</string>
+			</dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-11</string>
+				<key>source</key>
+				<string>a2988f95ff3e</string>
+				<key>why</key>
+				<string>the knee turning one way: its first curve taken into the stem's line (523,496 to 375,166; the stroker had left a curve of 52 units with both handles on its end) and the next curve's handles set one way (362,137 on the line, 350,108 on the upright; was 366,145 and 350,111, an S): two bends at 331,173 and 329,162 upright gone (test_knee_turns_one_way). The redrawn Italic u's knee showed no step, so knee_turned did not run. The entry's first curve the same way (handles 311,633 and 321,653 on the line's and the next curve's directions; was 303,615 and 310,635, a wobble of 9 degrees at 312,634), 0.3 units from where it was. Shape as approved on proofs/bold-italic-after-redraw-az-2026-11-11.pdf, within a unit</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>

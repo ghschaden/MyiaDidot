@@ -48,7 +48,7 @@ PASSES = (
          ("ff fi fl ffi ffl fj ffj", "f- and ff-ligatures before b h k t", "long-s ligatures")),
     Pass("italic_ligatures", "make", ITALIC,
          ("final f", "final ſ", "final partner letters"), ("accepted italic ligatures",)),
-    Pass("smooth_joins", "finish", BI, ("finished outlines",), ("named joins and brackets",)),
+    Pass("smooth_joins", "finish", ITALIC, ("finished outlines",), ("named joins and brackets",)),
     # the designer's rule of 2026-11-10: no stem steps in at its serif
     Pass("stem_joins", "finish", ("Italic", "Bold", "Bold Italic"), ("finished outlines",),
          ("every bracket a stem's edge stood outside of",)),

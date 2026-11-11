@@ -640,9 +640,12 @@ ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 520), "ɳ": (190
 # did only because n had a kink of 1.3 degrees at that node (682,361);
 # with n redrawn smooth there (2026-11-10) the curve ended at it, the
 # whole turn of 10 degrees in its last 40 units
-# (not ɱ: tried 2026-11-11, the run through left a spike of two nodes on
-# one point at the hook's inner edge)
-ITALIC_JOINS_THROUGH = {"ɳ"}
+# ɱ's too (2026-11-11, with its band to 520): its inner edge bent at
+# 1146,361 where m's leg ran into the descender ("a kind of kink" on the
+# sheet); run through, one curve from 1094,153 to the leg's top at 1272,649,
+# turning one way. (The spike of two nodes on one point at 1069,45, first
+# blamed on this, is ȷ's, there with or without it: smooth_joins.ITALIC_JOINS.)
+ITALIC_JOINS_THROUGH = {"ɳ", "ɱ"}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
@@ -2802,7 +2805,11 @@ def main():
     t_dot_anchor(font)
     from y_dot import y_dot_anchor
 
-    y_dot_anchor(font)
+    # a kept y has its dot's anchor as saved: placed here on it uncut, it
+    # came a unit off (912 for the saved 897 + 16), ỵ was built on that and
+    # y then put back as saved (the redrawn y, 2026-11-11)
+    if "y" not in kept:
+        y_dot_anchor(font)
     log = []
     stack_anchors(font, log)
     b = Builder(font)
