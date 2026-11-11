@@ -40,7 +40,9 @@ Moved from CLAUDE.md (its ground rules apply).
   pinholes filled where the emboldened letter has ink (fill_pinholes). The paragraphos ⸏ ⸐ ⸑ are emboldened as marks.
   Neighbouring serifs that emboldening brings into a partial join (a notch
   over a hair-thin joint: the Bold Italic's v.sc w.sc Π Ш, ʌ.sc's feet)
-  are kept apart, their tips shortened in the source (part_serifs); serifs
+  are kept apart, their tips shortened in the source (part_serifs); in the
+  upright Bold serifs facing each other across a counter keep the gap's
+  share of it (keep_gaps: `docs/claude/bold.md`, B1); serifs
   joined over their whole height (x.sc's inner feet, by bridge) stay joined.
   Letters are emboldened by stroke weight (`derive.embolden_by_weight`:
   thick strokes +AX across in any direction, hairlines only AY; a node's

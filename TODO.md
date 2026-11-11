@@ -97,7 +97,7 @@ the other models. One item per session.
       though its comment argues for 1 (γ's loop to be looked at), the
       first stroking pass that only finds knees, the stroking's work
       of 2026-10-29 missing from FONT-DESIGN.md and FONTLOG.txt.
-- [ ] F4. Phase 7's analysis, ahead of its drawing: the core set
+- [x] F4. Phase 7's analysis, ahead of its drawing: the core set
       measured Regular | Bold | Old Standard Bold (counter area,
       aperture, join thickness, ball size, width gain), and from it
       what the Bold should change, per family, as numbers and as a
@@ -114,8 +114,8 @@ the other models. One item per session.
       thinned. The Bold Italic's arches are the reverse: counters 24 %
       narrow. The trial sheet is made (B1 at KX 1.04, B1 with KX
       1.00, beside today's and Old Standard Bold):
-      `proofs/bold-trial-2026-11-11.pdf`; left: its one review round,
-      and from it which of B1 to B4 go to Opus for make_bold.
+      `proofs/bold-trial-2026-11-11.pdf`. Reviewed 2026-11-11: B1
+      taken and carried out (make_bold.keep_gaps); B2, B3, B4 not.
 - [ ] F5. T3's cause: why the runner splits ae.sc ǽ.sc ǣ.sc fl ſl
       otherwise and lands K's point on the other side of .5; the fix
       made, or specified to the line if it needs a run on the runner to

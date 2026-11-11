@@ -37,6 +37,12 @@ evidence (a raster or a proof).
     Italic Ш; Bold m.sc ɦ.sc ƭ.sc ʝ.sc, Bold Italic ƙ.sc ϗ.sc ы.sc about 100
     (135-152). Bold ɫ.sc's top serif has a 1-unit end face. At hairline
     stems (N M U) the Bold's serifs reach 250 against 196.
+    Since 2026-11-11 the upright Bold's serifs that face each other
+    across a counter are shorter on the inside than on the outside
+    (make_bold.keep_gaps, B1 of docs/claude/bold.md, approved on
+    proofs/bold-trial-2026-11-11.pdf): the gap keeps 0.9 of its share of
+    the counter, as the reference bolds' does: n m h H 20 to 24 units a
+    tip, the gap between n’s feet 61 > 101. 122 glyphs; not M’s vertex.
 - Wobbles (checks.py `wobble`, 2026-10-27): the emboldening puts short
   reversals into curves its source glyph has not. In the Bold a fitted
   curve now keeps its source's bends (keep_bends: 169 -> 130 glyphs);

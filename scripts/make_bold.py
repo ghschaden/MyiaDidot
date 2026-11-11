@@ -1266,35 +1266,62 @@ def bridge(glyph, maxgap=24, overlap=8):
 PART_GAP = 300  # serifs nearer than this (units) may meet when emboldened
 PART_KEEP = 0.5  # of the source's gap that stays open where they would only touch
 PART_STEP = 8
+GAP_SHARE = 0.9  # of the share the source's gap has of the white between the strokes (keep_gaps)
+GAP_AT = 221  # units into the letter from the serifs' edge where that white is measured: a quarter of the x-height
+GAP_MIN_WHITE = 120  # a white narrower than this between the strokes is no counter
+GAP_STEP = 4
 
 
-def part_serifs(wide, bold, make):
-    """bold (wide emboldened by make) with neighbouring serifs kept apart
-    where emboldening brings their tips together only partly: the italics'
-    v.sc w.sc y.sc tops and ʌ.sc's feet, 125 units apart in the Italic,
-    meet in a notch over a joint a few units thick.  Serifs joined over their
-    whole height (x.sc's inner feet, by bridge; ш.sc's base) and serifs that
-    stay apart are left alone.  Both tips of such a pair are shortened in the
-    source by the same amount, in steps, until PART_KEEP of the source's gap
-    stays open.  Returns (glyph, number of pairs parted)."""
-    src = ufoLib2.objects.Glyph()
-    wide.replay(src.getPen())
+def _ink(p, box):
+    r = pathops.Path()
+    pen = r.getPen()
+    x0, y0, x1, y1 = box
+    pen.moveTo((x0, y0))
+    pen.lineTo((x1, y0))
+    pen.lineTo((x1, y1))
+    pen.lineTo((x0, y1))
+    pen.closePath()
+    out = pathops.op(p, r, pathops.PathOp.INTERSECTION)
+    return abs(out.area) if out.contours else 0
+
+
+def _simple_path(g):
+    p = pathops.Path()
+    for c in g.contours:
+        c.draw(p.getPen())
+    return pathops.simplify(p)
+
+
+def _shortened(wide, pairs, s):
+    """wide with both tips of each pair moved s apart: each point with its
+    handles, so a smooth join stays smooth"""
+    moved = ufoLib2.objects.Glyph()
+    wide.replay(moved.getPen())
+    for ta, tb, *_ in pairs:
+        for tips, dx in ((ta, -s), (tb, s)):
+            for ci, i in tips:
+                pts = moved.contours[ci].points
+                near = {i}
+                for step in (-1, 1):
+                    j = (i + step) % len(pts)
+                    if pts[j].type is None:
+                        near.add(j)
+                for j in near:
+                    pts[j].x += dx
+    rec = RecordingPen()
+    moved.draw(rec)
+    return rec
+
+
+def serif_pairs(src):
+    """The serif tips that face each other across less than PART_GAP in src:
+    [(tips a, tips b, mid x, gap, band, shortest edge, ink above)]; band is
+    the serifs' height at the gap, ink above says on which side of the flat
+    edge the letter lies."""
     path = pathops.Path()
     for c in src.contours:
         c.draw(path.getPen())
-
-    def ink(p, box):
-        r = pathops.Path()
-        pen = r.getPen()
-        x0, y0, x1, y1 = box
-        pen.moveTo((x0, y0))
-        pen.lineTo((x1, y0))
-        pen.lineTo((x1, y1))
-        pen.lineTo((x0, y1))
-        pen.closePath()
-        out = pathops.op(p, r, pathops.PathOp.INTERSECTION)
-        return abs(out.area) if out.contours else 0
-
+    ink = _ink
     # flat edges: (contour, start index, end index, y, xmin, xmax, ink above)
     edges = []
     for ci, c in enumerate(src.contours):
@@ -1332,13 +1359,23 @@ def part_serifs(wide, bold, make):
             t = min(h for h in (ha, hb) if h) if (ha or hb) else 40
             gap = b[4] - a[5]
             band = (a[3], a[3] + t) if a[6] else (a[3] - t, a[3])
-            pairs.append((ta, tb, (a[5] + b[4]) / 2, gap, band, min(a[5] - a[4], b[5] - b[4])))
+            pairs.append((ta, tb, (a[5] + b[4]) / 2, gap, band, min(a[5] - a[4], b[5] - b[4]), a[6]))
+    return pairs
 
-    def bold_path(g):
-        p = pathops.Path()
-        for c in g.contours:
-            c.draw(p.getPen())
-        return pathops.simplify(p)
+
+def part_serifs(wide, bold, make):
+    """bold (wide emboldened by make) with neighbouring serifs kept apart
+    where emboldening brings their tips together only partly: the italics'
+    v.sc w.sc y.sc tops and ʌ.sc's feet, 125 units apart in the Italic,
+    meet in a notch over a joint a few units thick.  Serifs joined over their
+    whole height (x.sc's inner feet, by bridge; ш.sc's base) and serifs that
+    stay apart are left alone.  Both tips of such a pair are shortened in the
+    source by the same amount, in steps, until PART_KEEP of the source's gap
+    stays open.  Returns (glyph, number of pairs parted)."""
+    src = ufoLib2.objects.Glyph()
+    wide.replay(src.getPen())
+    pairs = serif_pairs(src)
+    ink, bold_path = _ink, _simple_path
 
     def partly(p, mid, band):
         h = ink(p, (mid - 1, band[0], mid + 1, band[1])) / 2
@@ -1349,27 +1386,71 @@ def part_serifs(wide, bold, make):
     if not bad:
         return bold, 0
     for s in range(PART_STEP, int(min(pr[5] for pr in bad)) - 20, PART_STEP):
-        moved = ufoLib2.objects.Glyph()
-        wide.replay(moved.getPen())
-        for ta, tb, *_ in bad:
-            for tips, dx in ((ta, -s), (tb, s)):
-                for ci, i in tips:
-                    # the point with its handles, so a smooth join stays smooth
-                    pts = moved.contours[ci].points
-                    near = {i}
-                    for step in (-1, 1):
-                        j = (i + step) % len(pts)
-                        if pts[j].type is None:
-                            near.add(j)
-                    for j in near:
-                        pts[j].x += dx
-        rec = RecordingPen()
-        moved.draw(rec)
-        out = make(rec)
+        out = make(_shortened(wide, bad, s))
         op = bold_path(out)
         if all(ink(op, (mid - gap * PART_KEEP / 2, band[0], mid + gap * PART_KEEP / 2, band[1])) == 0
-               for _, _, mid, gap, band, _ in bad):
+               for _, _, mid, gap, band, _, _ in bad):
             return out, len(bad)
+    return bold, 0
+
+
+def _white(path, x, y):
+    """The white run across through (x, y): its width; 0 where there is ink,
+    or no ink on one of the sides."""
+    reach = 900
+    strip = pathops.Path()
+    pen = strip.getPen()
+    pen.moveTo((x - reach, y - 1))
+    pen.lineTo((x + reach, y - 1))
+    pen.lineTo((x + reach, y + 1))
+    pen.lineTo((x - reach, y + 1))
+    pen.closePath()
+    left = right = None
+    for c in pathops.op(path, strip, pathops.PathOp.INTERSECTION).contours:
+        x0, _, x1, _ = c.bounds
+        if x0 <= x <= x1:
+            return 0
+        if x1 < x and (left is None or x1 > left):
+            left = x1
+        if x0 > x and (right is None or x0 < right):
+            right = x0
+    return right - left if left is not None and right is not None else 0
+
+
+def keep_gaps(wide, bold, make):
+    """bold (wide emboldened by make) with the gaps between facing serifs
+    kept in proportion (the upright Bold; docs/claude/bold.md, B1, approved
+    2026-11-11).  The stems grow toward each other and the serifs keep their
+    reach, so the gap between n's feet fell to 0.39 of the Regular's while
+    the counter kept 0.82; the reference bolds keep the gap's share of the
+    counter (0.89 to 0.91).  For part_serifs' pairs: where the gap's share
+    of the white between the strokes, measured GAP_AT into the letter, is
+    below GAP_SHARE of the source's, both tips are shortened in the source
+    in steps of GAP_STEP until it is.  A glyph where that is not reached
+    within the serifs' length stays as it is.  The far tip of a diagonal's
+    serif follows by a few units: embolden_by_weight weighs a serif's edge
+    at its middle, which the shortening moves.  Returns (glyph, pairs)."""
+    src = ufoLib2.objects.Glyph()
+    wide.replay(src.getPen())
+    sp, bp = _simple_path(src), _simple_path(bold)
+    todo = []
+    for pair in serif_pairs(src):
+        ta, tb, mid, gap, band, _, above = pair
+        if len(ta) < 2 or len(tb) < 2:
+            continue  # no serif's end but a stroke's flat foot (M's vertex): shortening it would thin the stroke
+        y, side = (band[0], 1) if above else (band[1], -1)
+        w_src, w_bold = _white(sp, mid, y + side * GAP_AT), _white(bp, mid, y + side * GAP_AT)
+        g_bold = _white(bp, mid, y + side * 6)
+        if w_src >= max(GAP_MIN_WHITE, gap) and w_bold >= GAP_MIN_WHITE and g_bold \
+                and g_bold < GAP_SHARE * gap / w_src * w_bold - 2:
+            todo.append((*pair, y + side * 6, y + side * GAP_AT, GAP_SHARE * gap / w_src))
+    if not todo:
+        return bold, 0
+    for s in range(GAP_STEP, int(min(t[5] for t in todo)) - 20, GAP_STEP):
+        out = make(_shortened(wide, todo, s))
+        op = _simple_path(out)
+        if all(_white(op, t[2], t[7]) >= t[9] * _white(op, t[2], t[8]) - 2 for t in todo):
+            return out, len(todo)
     return bold, 0
 
 
@@ -2476,6 +2557,7 @@ def main():
     small, small_scale = small_glyphs(regular, italic)
     fit = {}  # glyph: (left, right) side space to change, after emboldening by weight
     parted = []  # serifs kept apart (part_serifs)
+    gapped = []  # gaps between facing serifs kept in proportion (keep_gaps)
     simple = []  # emboldened the rounder way (a slit otherwise)
     from make_italic import POINT_REPAIRS, SOURCE_KEY
 
@@ -2593,6 +2675,10 @@ def main():
                 bold, n = part_serifs(wide, bold, make)
                 if n:
                     parted.append(g.name)
+                elif not italic:
+                    bold, n = keep_gaps(wide, bold, make)
+                    if n:
+                        gapped.append(g.name)
                 refit = (italic_counter if italic else oval) if g.name in (ITALIC_OVALS if italic else OVALS) else None
                 if refit:
                     bold = refit(wide, bold)
@@ -2861,6 +2947,8 @@ def main():
     write(font, Path(args.bold), separate_stacks=True, kept=kept)
     if parted:
         print("  serifs kept apart:", " ".join(parted))
+    if gapped:
+        print("  serif gaps kept in proportion:", " ".join(gapped))
     if unstroked:
         print("  emboldened by weight (by strokes failed):", " ".join(sorted(set(unstroked))))
     if simple:

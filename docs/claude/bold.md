@@ -169,6 +169,32 @@ Bold agrees point for point with the Regular, k and eight entered as
 exceptions that may only go; and the ball's roundness measured (finding
 4) before any ball is judged on the sheet.
 
+## Carried out
+
+**B1, 2026-11-11** (approved on the sheet below; B2, B3 and B4 not taken:
+B4 keeps the Regular's own share of ball to stem, B3 as tried went
+past the Regular's width, B2 would mean respacing the Bold).
+`make_bold.keep_gaps`, after `part_serifs` and only where that parted
+nothing, the upright Bold only; the two share `serif_pairs`. Constants
+`GAP_SHARE` 0.9, `GAP_AT` 221, `GAP_MIN_WHITE` 120, `GAP_STEP` 4.
+
+- 122 glyphs. Straight stems (n m h H and their kind): the inner tips 20
+  or 24 font units shorter each, nothing else moved.
+- Diagonals (A V W X Y K v w x y): the thin stroke's serif also comes in
+  5 to 8 on its far side, the two inner tips by unequal amounts (V 12 and
+  20): `embolden_by_weight` weighs a serif's edge at its middle, which
+  the shortening moves. Left so.
+- Only true serif ends are shortened (a tip of two corners): the first
+  run narrowed the flat foot of M's vertex by 31 and thinned its
+  diagonal. The trial sheet's rows 2 to 5 still show that M.
+- Beside the outlines: 69 advances by one unit (the optical fit; ⱳ +6),
+  46 kerning values by up to 8 (kern_clear's exceptions follow the far
+  tips: V and Y before ĭ ì ǎ ..., two exceptions no longer needed, Ɐ J
+  and ɐ.sc J.sc), no substitution, order or group changed; the Italic
+  and Bold Italic as generated. 45 accepted glyphs (small caps, the
+  h-ligatures, ⱳ ...) changed by the rule and carry it in their
+  acceptance.
+
 ## The trial
 
 a e s g n o carry B2 only (of the six, n alone has serifs facing each
