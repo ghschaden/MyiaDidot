@@ -72,6 +72,7 @@ JUMP = 0.5        # the gate's remark for a curvature jump at a smooth node (see
 S_TURN = 3.0      # degrees: a curve turning less than this the other way at one end bends twice by accident
 K_FLAT = 1 / 1500  # curvature under which an edge counts as flat (radius over 1500 units)
 FAIR_ROOM = 0.5   # of its tolerance: how much further a curve may go for one curvature at its ends
+FAIR_SPAN = 1.5    # how much longer or shorter than its plain fit the fairing may make a handle
 G2_WEIGHT = 10.0  # what a curvature jump of 1 costs, in units of deviation along both curves
 KEY = "org.myiadidot.redrawn"
 ITALIC_SOURCE_KEY = "org.myiadidot.italicSource"
@@ -635,6 +636,9 @@ def fair(out, tol, notes=None):
         x0[slot[i]], x0[slot[i] + 1] = np.linalg.norm(ctrl[1] - ctrl[0]), np.linalg.norm(ctrl[3] - ctrl[2])
     lows = np.concatenate([[geo[i][4], geo[i][4]] for i in curves])
     highs = np.concatenate([[geo[i][5], geo[i][6]] for i in curves])
+    # no handle further than FAIR_SPAN from its plain fit: a curve's own
+    # shape is not given up for the joint's curvature
+    lows, highs = np.maximum(lows, x0 / FAIR_SPAN), np.minimum(highs, x0 * FAIR_SPAN)
     limit = {i: max(span_tol(out[i][3], tol) * (1 + FAIR_ROOM), deviation(out[i][2], out[i][3])[0] + 0.25)
              for i in curves}
     rows = np.cumsum([0] + [2 * len(out[i][3]) for i in curves])

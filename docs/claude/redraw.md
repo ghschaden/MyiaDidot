@@ -48,7 +48,9 @@ Regular's node count is used as a yardstick only.
 - Then all handle lengths of a contour are found together so that two
   curves meeting smoothly share one curvature (`fair`), as far as each
   curve stays within one and a half times its tolerance; where that is
-  not possible the joint keeps a jump and the report says so. The
+  not possible the joint keeps a jump and the report says so. No handle
+  is made more than half longer or shorter than its plain fit for it
+  (`FAIR_SPAN` 1.5). The
   Regular's own plain letters have jumps of 0.0-0.45 (o: 0.01); the
   Italic's as they are 0.6-0.8.
 - Nodes and handles are on whole units. A handle off the axes is rounded
@@ -170,6 +172,10 @@ Measured on the pilot (n a e o s g; `build/redraw/sweep-*.txt`).
   If the old one: `"keep": [[416, 452]]` in the spec leaves the short
   line open, the sides' directions as they were (tried on n: 67.5 and
   60.6 degrees as before, 27 nodes).
+- Anchors altogether: a derived letter or an alias takes a kept base's
+  anchors as that base was saved, with what later stages set on it
+  (Cyrillic у: DotBelow 396 -> 897, y's own; ʈ ƭ: t's Dotaccent; ʉ ʋ).
+  Flagged as "anchors N"; check the base's own anchor is the one meant.
 - Horn anchors: a derived letter copies its base's anchors when it is
   built; from a kept o it gets o's own Horn (744,759), found on the
   Italic's outline, not the Regular's sloped one (763,774) that stood
@@ -346,10 +352,103 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   glyph, and the counter refused what named the outer contour. Fixed in
   the tool (`spec_by_contour`: each point goes to the contour nearest
   to it). The pilot never met it: none of its six needed a spec.
+- **A small quarter-turn come out square** (2026-11-11, found only
+  after the install: f's inner hook, the exit tips of h m u w, ȷ's
+  hook, z, k): one handle at the corner its two directions make, the
+  other 3-8 units long. Inside the tolerance, passing the gate; the
+  only sign was the remark "curvature jump 1.0 (the target's worst
+  0.74)". The fairing had given the curve's shape up to meet a flat
+  neighbour's curvature of nought. Fixed in the tool (`FAIR_SPAN`). A
+  jump that comes out *higher* than the target's is never a remark to
+  pass on: look at that curve's handles before the sheet is made. What
+  found it was a recipe (ɾ, made of f's hook) moving 25 units in the
+  sweep.
 - **Hint zones**: the Bold Italic's G and Ɠ sit 4/64 px off their bottom
   zone at 35 ppem though neither outline moved (test_hint_zones). The
   cause is not traced yet (`scripts/quality/hint_zones.py FONT`): do
   that before `--hinting`.
+
+## A letter given another shape: f's hook (2026-11-11)
+
+Asked for on the first batch's sheet: the Italic's f with a hook below
+"like other italic fs" (Old Standard's ends in a flat cut), in the
+f-ligatures too, ſ as it is. Not a redraw, but done with its tools, and
+the order is the one to keep for the next such wish:
+
+1. The new shape is made of what the style has, by a script that says
+   how (`scripts/f_hook.py`: each flat foot replaced by ȷ's descender,
+   its ends set on the f's stem edges), into a scratch UFO; the result
+   fitted by redraw.py like any letter (the "target" is the
+   construction). Sheet, review, then `--install` (marked drawn; lib
+   org.myiadidot.redrawn has "hook").
+2. The model letter first: ȷ was in the same batch, so the hook is the
+   redrawn ȷ's. The script is run after the batch's install, not before.
+3. Then everything that is made of the letter, each looked at in the
+   sweep: the made ligatures (f_b ... from fl ffl) and ᵮ took the hook
+   by themselves; the long-s ligatures are made of the f-ligatures with
+   ſ's stem set in, and had to clear the hook (italic_ligatures.py:
+   by its measured reach, all clearings before the stems are set, the
+   j's part taken from its own ink contour). ʃ ɾ and the hooks over the
+   top take only f's top.
+4. The Bold Italic has less room than the Italic. In ff ffi ffl ffj the
+   second hook's ball stood 36 units from the first f's tail; emboldened
+   they closed on each other, a white island between the stems (and the
+   long-s ligature read that island as part of the j). Decided by the
+   designer: the second f 50 units further right in the Bold Italic
+   (`make_bold.part_ff`, before the emboldening). Whenever a shape
+   reaches under or over its neighbour, measure the white in the Bold
+   Italic (`derive.stems_at` at a few heights) before its sheet.
+5. Open after it: f's kerning was set for a stem without a hook (g j y
+   p q before f; phase 1's sweep); the Bold Italic's ſſ ligatures are
+   50 wider with their ff.
+
+## After the batch of 2026-11-11: what the tests found (open)
+
+Twenty letters at once met what the pilot's six did not. `make test`
+after the fourth run: 27 failing (`build/redraw/g4-failures.txt`). Sort
+them so before touching a baseline:
+
+Accept with their reports, once the faults below are mended (the
+changes are the approved ones): test_accepted (both italics),
+test_quality (both), test_regression golden and digest (both),
+test_glyph_lint Italic (four `notch` lines to delete: m ɯ ḿ ṃ),
+test_stroke_gate's fixtures for u y ƴ ʎ (advances and anchors by a
+unit), test_hinting's zones.
+
+Faults, each to find and mend in its place:
+
+- **A drawn Bold Italic letter whose Italic letter moved** (k, drawn
+  before; x, drawn 2026-11-11): make_bold puts it back on the new
+  letter's side bearings before the derived letters are built
+  (`drawn.restore(spaced=True)`), so its aliases, composites and
+  ligatures take that width (k 1021, x 1165), and `write` then puts it
+  back as saved (1022, 1167). Failing: test_built_from aliases,
+  test_composites (ẋ), test_nfc_and_nfd (ǩ ḱ ḳ ḵ, ẋ),
+  test_italic_ligatures (f_k, ſk by a unit). To try: `write` restoring
+  spaced as well (the saved outline on the bearings the font has for
+  it at the end); in the steady state that changes nothing, check with
+  `make reproduce` and an empty diff of the Bold.
+- **A kept Italic letter's composite a unit off** (ỵ: dotaccent at 53,
+  the rules give 54): the kept letters stand uncut while the composites
+  are placed and are put back as saved after `respace`; half a cut
+  rounds one way going and the other coming back. The pilot's six did
+  not show it.
+- **Repair scripts that know their letter by fixed points** (TODO T7):
+  y_dot (the Bold Italic's ỵ: its dot 21 units into the tail,
+  test_y_dot; with it test_composites and test_nfc_and_nfd for ỵ),
+  l_belt (ɬ in the Italic: the test's own rebuild differs from the
+  generated one), r_hook (the Bold Italic: a unit of width). Each
+  against the redrawn letter's nodes.
+- **The stroking's guards on letters that moved**:
+  test_stroke_steps[u] (two bends new at 331,173 and 329,162, the
+  Bold Italic's u, approved on the sheet as it is: see whether the
+  bends are the approved shape or a fault under it),
+  test_controls_not_blended[v] and [w] (the control letters' expected
+  behaviour changed with their outlines: docs/claude/stroking.md).
+
+The lesson for the next batch: run `make test` on the first generated
+state, before the second sheet is made, and sort the failures like
+this; the sheet then shows what the mended generators give.
 
 ## Hand back to the designer rather than fit
 

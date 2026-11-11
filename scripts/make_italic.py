@@ -631,12 +631,17 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 # curl), the join faired between these heights (derive.fair_joins): the
 # piece is straight in the upright frame, the stroke is not, and the edges
 # broke there by 5-20 degrees (seen in print)
-ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 460), "ɳ": (190, 460), "ⱳ": (590, 700)}
+# (ɱ's band up to 520, 2026-11-11: the outer edge's node where the m's
+# shoulder runs into the descender stands at 500 and kept a corner of 4
+# degrees, "a kind of kink" in the downstroke on the sheet)
+ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 520), "ɳ": (190, 460), "ⱳ": (590, 700)}
 # those whose join runs on through the letter's own smooth node in the band
 # (fair_joins' min_turn 0), up the stem's straight edge to its top: ɳ's
 # did only because n had a kink of 1.3 degrees at that node (682,361);
 # with n redrawn smooth there (2026-11-10) the curve ended at it, the
 # whole turn of 10 degrees in its last 40 units
+# (not ɱ: tried 2026-11-11, the run through left a spike of two nodes on
+# one point at the hook's inner edge)
 ITALIC_JOINS_THROUGH = {"ɳ"}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to

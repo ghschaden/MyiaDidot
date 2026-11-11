@@ -5,6 +5,8 @@ from copy import deepcopy
 
 from derive import BIG, draw_path, path_op, rect_path, stems_at, to_path
 from draft_ligatures import QU_TAIL_LOOP, arch, qu_ligature, t_t_ligature, th_ligature
+from fontTools.pens.areaPen import AreaPen
+from fontTools.pens.pointPen import PointToSegmentPen
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 from italic_geometry import SLANT, XH, shear, upright
@@ -16,6 +18,12 @@ def shift(path, dx):
     rec = RecordingPen()
     path.draw(TransformPen(rec, (1, 0, 0, 1, dx, 0)))
     return to_path(None, rec=rec)
+
+
+def signed_area(contour):
+    pen = AreaPen()
+    contour.drawPoints(PointToSegmentPen(pen))
+    return pen.value
 
 
 F_LIGATURES = tuple(f"{prefix}_{letter}" for prefix in ("f", "f_f") for letter in ("b", "h", "k", "t"))
@@ -41,6 +49,9 @@ NAMES = (*F_LIGATURES, *(name for name, _ in LONGS), "c_t", "s_t", "s_p", "Q_u",
 
 ITALIC_TH_CLOSER = 70  # th: the h this much nearer than after t (100 chosen 2026-11-08 from 140 100 60; "a bit tight", 70 chosen 2026-11-09 from 70 40)
 ITALIC_TT_CLOSER = 100  # tt: the second t as near as th's h was, kept so 2026-11-09
+HOOK_MARGIN = 40  # ſ ligatures: the f's hook below is cleared this much further left of the stem than it reaches
+HOOK_TOP = -120  # and under this height (the hook leaves the stem's edge by more than the crossbar's 220 below -180)
+J_BELOW = 1100  # fj ffj: a contour ending under this is the j's (x-height 884, the f's top 1451)
 TH_PEAK = 1600  # th: the arch's top, above the ascender (1434) and below the accents
 
 
@@ -149,10 +160,14 @@ def make(font):
                 [a.x for a in font[base].anchors if a.name.startswith("caret_")],
             )
     # Replace the crossbar region with the same-style long s; keep joined heads.
+    # how far left of its stem the f's hook reaches in this style (upright)
+    reach = HOOK_MARGIN + stems_at(up, "f", 700)[0][0] - min(
+        p.x for c in up["f"].contours for p in c.points if p.y < HOOK_TOP)
     for name, base in LONGS:
         path = to_path(up, up[base])
         count = 2 if "longs_longs" in name else 1
         stem_pairs = stems_at(up, base, 700)[:count]
+        stems = []
         for i, (a, b) in enumerate(stem_pairs):
             cut = 1000
             ca, cb = stems_at(up, base, cut)[i]
@@ -168,14 +183,31 @@ def make(font):
                 right = min(right, t_dx + arm)
             region = rect_path(a - 220, -BIG, right, cut)
             path = path_op(path, region, "DIFFERENCE")
+            # the f's hook below (2026-11-11) reaches further left than its
+            # crossbar: cleared too, the ſ keeps its flat foot
+            path = path_op(path, rect_path(a - reach, -BIG, right, HOOK_TOP), "DIFFERENCE")
             stem = path_op(to_path(up, up["longs"]), rect_path(-BIG, cut, BIG, BIG), "DIFFERENCE")
-            path = path_op(path, shift(stem, dx), "UNION")
+            stems.append(shift(stem, dx))
+        # the stems after every clearing: the second f's hook lies under the
+        # first, and clearing it would cut the first ſ's foot
+        for stem in stems:
+            path = path_op(path, stem, "UNION")
         if name.endswith("_j"):
             # the j's ball curls back under the f's stem, its dot near the
             # f's hook: both fell in the region cleared for the ſ (cut off in
-            # the Bold Italic, 2026-11-08); the j's part of fj ffj put back
-            f_part = to_path(up, up["f" if base == "f_j" else "ff"])
-            path = path_op(path, path_op(to_path(up, up[base]), f_part, "DIFFERENCE"), "UNION")
+            # the Bold Italic, 2026-11-08); the j's part of fj ffj put back:
+            # the contours that end at the x-height (the f's rise above it)
+            # (ink only: where the Bold Italic's second hook closes on the
+            # first f's tail, the white between the stems is a contour too)
+            j_part = Glyph(name="j_part")
+            turn = {id(c): signed_area(c) for c in up[base].contours}
+            ink = max(turn.values(), key=abs) > 0
+            for contour in up[base].contours:
+                if max(p.y for p in contour.points) < J_BELOW and (turn[id(contour)] > 0) == ink:
+                    j_part.appendContour(deepcopy(contour))
+            if not j_part.contours:
+                raise ValueError(f"{base}: no contour of its own for the j")
+            path = path_op(path, to_path(None, j_part), "UNION")
         put(name, path, up[base].width, [a.x for a in font[base].anchors if a.name.startswith("caret_")])
     for first in ("c", "s"):
         dx = up[first].width - 70

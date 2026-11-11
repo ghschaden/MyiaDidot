@@ -142,6 +142,41 @@ the other models. One item per session.
       (the rest of a-z, then A-Z), to find the cases redraw.md does not
       yet cover while the model that wrote it is still there; and the
       Italic against the Regular measured for phase 6's sheet.
+      First batch 2026-11-11, installed and generated, NOT committed
+      (the tests are not through; the working tree holds it, `make
+      reproduce` passes on it as it stands):
+      - b c d h ı ȷ k l m p q r t u v w x y z redrawn and installed
+        (approved on `proofs/italic-redraw-az-2026-11-11.pdf`), q with
+        `line`, z with one node by the spec.
+      - f with a hook below, asked for on that sheet, and its ligatures
+        (`scripts/f_hook.py`; approved on
+        `proofs/italic-f-hook-2026-11-11.pdf` and
+        `...-f-hook-ligatures-...pdf`); ſ as it is. In the Bold Italic
+        the second f of ff ffi ffl ffj 100 further right
+        (`make_bold.part_ff`: at 50 the hooks still touched; at 100
+        the least white is 23 against the Italic's 36): not yet seen
+        by the designer at 100.
+      - The fit corrected after the first install (`FAIR_SPAN`: small
+        quarter-turns had come out square) and everything installed
+        again from the committed outlines.
+      - Approved on the second sheets (`proofs/bold-italic-after-
+        redraw-az`, `bold-italic-followers-az`, `italic-followers-az`,
+        all -2026-11-11, rendered from the second of four runs): all
+        but the Bold Italic's x (put back as it was and marked drawn),
+        ſſj (was broken, mended: to show again) and the Italic's ɱ
+        ("a kind of kink" in the right downstroke: the outer edge's
+        corner at 1377,500 is gone with the band to 520; the inner
+        edge still bends at 1146,361 where the m's leg runs into the
+        descender. To try: ɱ in `ITALIC_JOINS_THROUGH` together with
+        the band to 520; and two nodes on one point at 1069,45, there
+        with or without it since ȷ was redrawn).
+      - What the tests say (`build/redraw/g4-failures.txt`, 27
+        failing), sorted in docs/claude/redraw.md, "After the batch of
+        2026-11-11": baselines and lists to accept with their reports;
+        and faults to mend first (Opus: they are in the generators'
+        handling of kept letters and in three repair scripts).
+      - Then: the five sheets rendered anew, accepted.py, FONTLOG, the
+        commit; the staged first sheet and spec go with it.
 
 Budget (2026-11-11): F1 to F3 are done; F1 took more than half of what
 Fable had then, mostly in its review rounds. The limits now:

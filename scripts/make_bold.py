@@ -339,6 +339,53 @@ def fishhook_band(font):
             [("f", (-10000, hook, 10000, 10000), (0, 0), (1, 1, r0 - f0, dy))])
 
 
+# the Bold Italic's ff ffi ffl ffj: the second f this much further right
+# than the Italic sets it. Both fs have the hook below (2026-11-11); the
+# Italic leaves 36 units between the second's ball and the first's tail,
+# and at the Bold Italic's weight the two closed on each other (a white
+# island between the stems). Chosen by the designer, 2026-11-11, over one
+# hook only and over leaving them joined.
+ITALIC_BOLD_FF_APART = 100
+FF_LIGATURES = ("ff", "ffi", "ffl", "f_f_j")
+FF_STRETCH = 0.6  # of the way between the stems the arch is stretched over; the head's join to the second stem moves whole
+
+
+def part_ff(font, apart=ITALIC_BOLD_FF_APART):
+    """font's (the Italic's, before it is emboldened) ff-ligatures with the
+    second f and all after it moved apart to the right: above the baseline
+    the white between the two stems stretched (lines stay lines, the first
+    f's arch a little wider), below it the first f with its hook where it
+    is and the second with its hook moved whole. Advance, anchors and
+    carets with them."""
+    import derive
+
+    for name in FF_LIGATURES:
+        g = font[name]
+        (_, b1), (a2, _) = derive.stems_at(font, name, 700)[:2]
+        # upright by the stem's own slant (the Italic's f leans 15.7 degrees,
+        # the font 15.2: over the descender the difference is the white
+        # between the hooks)
+        slant = (b1 - derive.stems_at(font, name, 200)[0][1]) / 500
+        b1, a2 = b1 - slant * 700, a2 - slant * 700
+        m = b1 + FF_STRETCH * (a2 - b1)
+        low = [p.x - slant * p.y for c in g.contours for p in c.points if p.type and p.y < -20]
+        if any(b1 + 1 < x < b1 + 8 for x in low):
+            raise ValueError(f"{name}: the two hooks are not apart at the first stem's edge")
+
+        def moved(x, y, b1=b1, m=m, slant=slant):
+            u = x - slant * y
+            if y < -20:
+                return apart if u > b1 + 8 else 0
+            return apart * min(1.0, max(0.0, (u - b1) / (m - b1)))
+
+        for c in g.contours:
+            for pt in c.points:
+                pt.x = round(pt.x + moved(pt.x, pt.y))
+        for a in g.anchors:
+            a.x = round(a.x + moved(a.x, a.y))
+        g.width += apart
+
+
 # the Bold Italic's curls over the top (ITALIC_BOLD_RECIPES): radii, turn and ball
 CURL_CAP = {"r": (205, 185), "sweep": 190, "ball": 105}
 CURL_LOW = {"r": (185, 165), "sweep": 190, "ball": 90}
@@ -2502,6 +2549,7 @@ def main():
     italic = bool(angle)
     if italic:
         AX, THIN, THICK = ITALIC_AX, ITALIC_THIN, ITALIC_THICK
+        part_ff(font)
     nudge, extra = (ITALIC_ANCHOR_NUDGE, ITALIC_SIDEBEARINGS) if italic else (ANCHOR_NUDGE, BOLD_SIDEBEARINGS)
     by_weight = ITALIC_BOLD_BY_WEIGHT if italic else BOLD_BY_WEIGHT
     rounder_ones = ITALIC_BOLD_ROUNDER if italic else BOLD_ROUNDER
