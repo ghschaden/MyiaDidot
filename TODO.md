@@ -62,13 +62,24 @@ the other models. One item per session.
       though neither outline did; taken into the baseline, the cause
       not traced. The node counts quoted under phases 5-8 include
       handles, see redraw.md.
-- [ ] F2. Phase 3's mechanism: italic kerning from the white the italic
+- [x] F2. Phase 3's mechanism: italic kerning from the white the italic
       shapes leave. The measure (which heights, how overhangs and
       entries count), the prototype, the sheet of 30-40 pairs against
       today's and the references, the decision. Left behind: the script,
       its test, the rule in docs/claude/spacing.md, and the list of
       what stays a hand exception and why.
-- [ ] F3. A map of the stroking for those who change it later:
+      Done 2026-11-11: measure, rule, prototype and test
+      (`scripts/italic_kerning.py`, tests/test_italic_kerning.py); the
+      rule, the count against the references and the hand exceptions
+      in docs/claude/spacing.md ("The italics' Latin kerning"). The
+      computed values approved by the designer on
+      `proofs/italic-kerning-2026-11-11.pdf`
+      (`scripts/italic_kerning_sheet.py`), nothing tightened past the
+      upright; one wish: K y slightly tighter in the italics, a hand
+      exception (spacing.md says why the rule cannot give it). Left for
+      phase 3 (Opus): the rule into the generators as spacing.md
+      describes, K y on its sheet, the Latin pairs test.
+- [x] F3. A map of the stroking for those who change it later:
       `docs/claude/stroking.md` on `stroke_bold.py` and `fair_arcs.py`:
       the stages in order, what each constant does and what moved when
       it was changed (from FONT-DESIGN.md's record), the invariants a
@@ -76,6 +87,16 @@ the other models. One item per session.
       the known dead ends not to try again. With it T4 decided switch
       by switch (settled or experiment), so that carrying it out is
       Opus work.
+      Done 2026-11-11, reading and writing only (nothing run, no
+      source changed): `docs/claude/stroking.md`. T4 decided there:
+      ten switches settled (deleted, their values constants; with them
+      make_bold's `MYIA_STROKE_OUT`, which T4's list left out), two
+      kept as diagnostic arguments (the fairing, one way), the logs as
+      environment; the order of carrying out and its proofs. Open
+      points left there for T4's session: why `CORNER_OWN` ships at 2
+      though its comment argues for 1 (γ's loop to be looked at), the
+      first stroking pass that only finds knees, the stroking's work
+      of 2026-10-29 missing from FONT-DESIGN.md and FONTLOG.txt.
 - [ ] F4. Phase 7's analysis, ahead of its drawing: the core set
       measured Regular | Bold | Old Standard Bold (counter area,
       aperture, join thickness, ball size, width gain), and from it
@@ -101,10 +122,38 @@ the other models. One item per session.
       yet cover while the model that wrote it is still there; and the
       Italic against the Regular measured for phase 6's sheet.
 
-If time runs out earlier: F1, F2, F3 are the ones that cannot be made up
-for; F4 loses its trial but keeps its measures; F5 falls back to the
-tolerance alone (the split glyphs listed as known); F6 is written by
-Opus from this file's descriptions.
+Budget (2026-11-10): F1 took rather more than half of what Fable had
+left, mostly in its review rounds. What remains goes to F2 and F3 only,
+in that order:
+
+- F2 first, about 60 % of the remainder, with a hard stop. Cut to: the
+  measure, the prototype script with its test, the rule in
+  docs/claude/spacing.md, the list of hand exceptions; one sheet and
+  one review round.
+- F3 second, about 30 %. docs/claude/stroking.md and T4 decided switch
+  by switch; reading and writing only, no experiments.
+- About 10 % in reserve: a second review round for F2 if it is needed,
+  otherwise F4 as one page specifying its measures (no script, no
+  trial).
+
+Not done on Fable any more: F4's script and trial (Opus, from that
+page or from the description above); F5 (the tolerance alone, the
+split glyphs listed as known); F6 (written by Opus from this file's
+descriptions); F7 (the batches on Sonnet by docs/claude/redraw.md,
+Opus where it refuses a letter).
+
+How the two sessions are run, so that they do not go the way of F1's:
+
+1. Files before sheets: the rule and the script are written and
+   committed before a sheet is rendered, so that a session that runs
+   out leaves the mechanism behind.
+2. The loops off Fable: pair measurements, the reference fonts'
+   numbers, rendering the sheets, `make test` and `make reproduce` go
+   to font-measure and font-runner. Before F3 an Explore agent gathers
+   FONT-DESIGN.md's record of the constants' changes into one file,
+   and Fable reads that instead of the history.
+3. One review round per item: what is rejected after it is written
+   down as an open point for Opus, not worked through on Fable.
 
 ### Which model after that
 
@@ -204,7 +253,9 @@ and Cyrillic are already measured per style; Latin is not.
 - [ ] Measure: `scripts/quality/pairs.py Italic` and `BoldItalic`
       calibrated by each style's own n n / H H, as `greek_pairs.py` does;
       list the Latin pairs outside the references' range.
-- [ ] Decide the mechanism before the values (one source of truth): the
+- [x] Decide the mechanism before the values (one source of truth;
+      decided 2026-11-11, F2: docs/claude/spacing.md; to carry out:
+      the rule into make_italic.py and make_bold.py, K y by hand): the
       Regular's kerning scaled per pair by the white the italic shapes
       actually leave (computed), with `ITALIC_KERNING` and
       `ITALIC_BOLD_KERNING` holding only reviewed exceptions. A design
@@ -284,7 +335,9 @@ alongside, each when the phase that needs it comes up.
       environment reads: `MYIA_G2`, `MYIA_G2_LINES`, `MYIA_FAIR`,
       `MYIA_ONE_WAY`, `MYIA_BLEND`, `MYIA_SPLIT`, `MYIA_CORNER_*` ...):
       a variable left set in a shell changes the generated font
-      silently.
+      silently. Decided switch by switch 2026-11-11 (F3):
+      `docs/claude/stroking.md`, "T4: the switches, decided", with
+      the code change for each and the order; to carry out as written.
       - [ ] each one: settled (delete the switch and the dead branch)
             or still an experiment (an explicit argument of the
             function, set by a pilot script);

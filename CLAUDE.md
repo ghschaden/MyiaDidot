@@ -11,6 +11,7 @@ Details by topic, read the one the task touches:
 |---|---|
 | `docs/claude/glyphs.md` | composites, accents, NFD, small caps, derived letters and drafts, locl forms |
 | `docs/claude/styles.md` | how the Bold, Bold Italic and Italic are generated |
+| `docs/claude/stroking.md` | the Bold Italic's stroker (stroke_bold, fair_arcs): stages, constants, invariants, tests, dead ends, T4's switches |
 | `docs/claude/spacing.md` | spacing, kerning, Greek/Cyrillic pairs, figures, cpsp, case |
 | `docs/claude/hinting.md` | TTF and CFF hinting and their tests |
 | `docs/claude/redraw.md` | redrawing a core letter onto clean nodes (phases 5-8): method, gate, batches |

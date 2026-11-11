@@ -49,7 +49,10 @@ Moved from CLAUDE.md (its ground rules apply).
 ## The italics' Latin kerning (TODO.md F2 / phase 3)
 
 State 2026-11-11: measure, rule and prototype are there
-(`scripts/italic_kerning.py`, tests/test_italic_kerning.py); the
+(`scripts/italic_kerning.py`, tests/test_italic_kerning.py), and the
+computed values were approved on the sheet
+(`proofs/italic-kerning-2026-11-11.pdf`, by `scripts/italic_kerning_sheet.py`)
+with nothing tightened past the upright and one wish, K y (below); the
 generators do not use it yet. Today the Italic carries the Regular's
 values, the Bold Italic the Bold's, with the hand tables over them.
 
@@ -108,6 +111,7 @@ applied after the computed values):
 | ſ ſſ before c e g q (-80, Bold Italic) | tighter than the Bold's -62; from a proof (2026-11-05) |
 | u t, w a, g h, g a, i f, G r, a f, a y, v a, u f, R e (positive), f r, f t (Bold Italic) | no pair in the Bold, or a sign the rule does not turn (a y, v a: it gives 0); phase 3's re-proof decides each |
 | small caps (B.sc O.sc ...) | not computed; smallcaps.py |
+| K before y, slightly tighter (to add; the review of 2026-11-11, on "Kyoto") | unkerned in all four styles, and the rule would not kern the italics even if the Regular did: the upright K y is the looser one (share 1.69 and 1.75 against the italics' 1.34; the reference italics 1.36-1.98), so a Regular pair goes by its sign. A hand value for both italics, about -30 to start from (the inks are 321 and 333 apart), set on a sheet with K v and K w, which leave the same white |
 
 Entries the rule makes needless (delete them when it is in the
 generators, if the review accepts its values): a before v (-44, the rule
