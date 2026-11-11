@@ -42,3 +42,22 @@ def test_edt_is_exact():
     rows, cols = np.indices(feature.shape)
     want = np.sqrt(((rows[..., None] - ys) ** 2 + (cols[..., None] - xs) ** 2).min(axis=2))
     assert np.allclose(got, want)
+
+
+def test_targets_position_and_scale():
+    """bold_targets: a value's place against the references' range, and a
+    letter's measures over the style's own stem and zone."""
+    import bold_targets as bt
+
+    assert bt.position(5, [4, 6]) == 0
+    assert bt.position(3, [4, 6]) == pytest.approx(-0.25)
+    assert bt.position(9, [4, 6]) == pytest.approx(0.5)
+    style = {"xHeight": 400, "capHeight": 700, "chars": {
+        "n": {"advance": 500, "ink": 450, "stem": 100, "white": 40000, "joins": {"0R top": 30},
+              "counters": [{"area": 40000, "width": 150, "aperture": 60}]},
+        "o": {"advance": 480, "ink": 420, "white": 50000, "counters": [{"area": 50000, "width": 200, "aperture": 0}]},
+    }}
+    n, o = bt.ratios(style, "n"), bt.ratios(style, "o")
+    assert n["counter width/stem"] == 1.5 and n["aperture/counter width"] == 0.4
+    assert n["join/stem top"] == 0.3 and n["advance/zone"] == 1.25
+    assert o["round stroke/stem"] == pytest.approx(1.1) and "aperture/stem" not in o

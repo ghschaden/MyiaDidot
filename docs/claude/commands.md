@@ -24,6 +24,7 @@ Moved from CLAUDE.md (its ground rules apply).
 | `python scripts/redraw_sweep.py UFO [--rev REV]` | what moved in a style since a revision, in units: outline distance, advance, anchors, kerning, by kind (redrawn, composite, other); after a redraw's `make generate` |
 | `python scripts/quality/stem_retreats.py UFO ...` | stems that step into the ink before their serif (`scripts/stem_joins.py`; none allowed) |
 | `python scripts/quality/bold_measures.py [--range] [--italic]` | phase 7 (F4): the Bold's gain over the Regular per letter and family (counter area, width and aperture, joins, balls, stem, widths) beside Old Standard's (`--range`: Bodoni Moda, Libre Bodoni too; `--italic`: the Bold Italic over the Italic), from the UFOs, into `build/quality/bold-measures*.md/.json`, about 1.5 min |
+| `python scripts/quality/bold_targets.py [--italic]` | from bold_measures' JSON (`--range`, `--italic`): each measure on the font's own scale (over the stem, the zone) and where Myia's Regular and Bold lie against the references' range, per family, into `build/quality/bold-targets[-italic].md`; reading: `docs/claude/bold.md` |
 | `python scripts/bowl_counters.py UFO [GLYPH ...] [--out OUT.ufo]` | the bowls' insides that are not two clean curves, and what redoing them moves; candidates to OUT.ufo |
 | `python scripts/sync_check.py` | sync conflict copies and lost glyph files in the UFOs |
 

@@ -105,6 +105,15 @@ the other models. One item per session.
       script, the table, the family rules proposed for make_bold, and
       in the same document how those measures carry to the Bold Italic
       (phase 8's fourth step), which cannot be tried until then.
+      Written 2026-11-11, the trial open: `docs/claude/bold.md`
+      (`scripts/quality/bold_targets.py`). The Bold lies inside the
+      references' range in most measures and on the open side where
+      it leaves it: proposed are B1 (serif gaps keep their share of
+      the counter: n m h v w X Y K M), B2 (KX 1.04 | 1.02 | 1.00 to be
+      seen), B3 (capital rounds inward), B4 (r's ball); joins not
+      thinned. The Bold Italic's arches are the reverse: counters 24 %
+      narrow. Left: the trial sheet (a e s g n o with m h u r v w H O
+      X), one review round.
 - [ ] F5. T3's cause: why the runner splits ae.sc ǽ.sc ǣ.sc fl ſl
       otherwise and lands K's point on the other side of .5; the fix
       made, or specified to the line if it needs a run on the runner to
