@@ -177,6 +177,33 @@ B4. `make_bold.py REGULAR OUT.ufo` writes to any path, so a trial is
 generated into `build/`, never into `sources/`. One sheet as PDF, today's
 Bold | trial | Old Standard Bold, at 144 and 12 pt; one review round.
 
+Made 2026-11-11, awaiting that round: `proofs/bold-trial-2026-11-11.pdf`
+(`scripts/pilot/bold_trial.py`, `bold_trial_sheet.py`), four rows: today's
+Bold; B1 at KX 1.04; B1 with KX 1.00; Old Standard Bold. No kerning in
+any row.
+
+- B1 as tried (`gap_serifs`, in place of `part_serifs` for the run): for
+  part_serifs' own pairs of facing tips, the gap's share of the white
+  between the strokes, measured a quarter of the x-height into the
+  letter, stays at 0.9 of the source's; both tips shortened in steps of
+  4 font units. 122 glyphs' serifs come out shorter, mostly by 8 or 12
+  font units a tip (n m h H: 12); the gap between n's feet 26 > 50, m's
+  14 > 38, w's tops 22 > 46. Nothing else moves in those letters; with
+  the letters built from them 223 glyphs differ from today's Bold. A pair whose target is not reached within the
+  serifs' length is left as it is (one glyph, a small cap).
+- KX 1.00: n's advance 599 > 577, its counter 166 > 158, its stem 128 >
+  124 (the stem is weighed after the widening); o 528 > 509, O 822 > 791,
+  as computed above.
+- What the KX 1.00 row shows wrongly: its side space. `BOLD_CUT`,
+  `BOLD_SIDEBEARINGS` and `BOLD_KERNING` were set for KX 1.04, so x and
+  k stand too close there; the row is for the letters' proportions, not
+  their fit. Two guards also tie the generator to today's KX and were
+  why a KX 1.02 row is missing: `sc_feet.k_sc` (mends k.sc at fixed
+  coordinates; switched off in the trial) and numero's optical fit
+  ("review its placement"). A changed KX therefore means respacing the
+  Bold and revisiting both, which is part of B2's cost.
+- B3 beyond KX 1.00 and B4 are not on the sheet.
+
 ## How this carries to the Bold Italic (phase 8)
 
 The Bold Italic is stroked (`docs/claude/stroking.md`), not offset, and
