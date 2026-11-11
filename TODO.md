@@ -134,6 +134,10 @@ the other models. One item per session.
       run makes; the tests in tiers). Read from the code, nothing run:
       the timing it asks for first was not taken. T5, T6 and phase
       1's sweep are still to write (Opus, as below).
+      Phase 1's sweep written 2026-11-11: `docs/claude/collisions.md`
+      (the pair sets taken from the font, white measured as kern_clear
+      measures it, the list's format and its test, the order). Read
+      from the code, nothing run. T5 and T6 are still to write.
 - [ ] F7. If sessions remain: phase 5's first two batches done on Fable
       (the rest of a-z, then A-Z), to find the cases redraw.md does not
       yet cover while the model that wrote it is still there; and the
@@ -229,6 +233,8 @@ Bold); `(j` touches (Regular, Bold); `[j` collides (both italics); `(f)`
 very tight. None of them is kerned, so `make kerntouch` (kerned entries
 only) does not see them.
 
+      Specified 2026-11-11 (F6): `docs/claude/collisions.md`, for the
+      first, second and last step below.
 - [ ] Extend the collision sweep to unkerned pairs: a mode of
       `scripts/quality/kern_touch.py` (or a sibling using its outline
       intersection) that sets every letter, figure and small cap
