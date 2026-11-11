@@ -253,3 +253,25 @@ def test_spec_keeps_a_crotch_line():
     kept, rep = R.redraw(g, spec={"keep": [[242, 603]]})
     assert any("closed" in n for n in closed["notes"]) and not any("closed" in n for n in rep["notes"])
     assert {(242, 603), (240, 600)} <= {(x, y) for _, x, y, *_ in kinds(kept)}
+
+
+def test_spec_points_go_to_their_own_contour():
+    """a spec's point names a place on one contour of the glyph; the others
+    do not look for it (q's extra was refused by its counter, 57 units off)"""
+    g = oval()
+    inner = oval(rx=200, ry=250)
+    g.contours.append(inner.contours[0])
+    _, rep = R.redraw(g, spec={"extra": [[500 - 283 + 86, 430 + 318]]})
+    assert rep["extras"].count("spec") == 1
+
+
+def test_spec_takes_a_straight_curve_as_a_line():
+    """a stem's edge drawn as a curve within the tolerance of its chord
+    becomes a line by the spec (the Italic's q); a real curve is refused"""
+    g = stem_and_arch()
+    lined, rep = R.redraw(g, spec={"line": [[240, 600]]})
+    assert any("taken as a line" in n for n in rep["notes"])
+    foot = next(p for c in lined.contours for p in c.points if (p.x, p.y) == (240, 0))
+    assert foot.type == "line"
+    with pytest.raises(ValueError):
+        R.redraw(g, spec={"line": [[560, 600]]})

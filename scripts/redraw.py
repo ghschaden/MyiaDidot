@@ -41,7 +41,10 @@ scripts/data/redraw-STYLE.json is read by default):
 extra: a node at the target's point nearest to it; drop: the structure's
 node nearest to it goes (within NEAR units); corner / smooth: the old node
 nearest to it is taken as that, whatever its turn; keep: the short line
-ending there (within 3 units) is not closed; tol: this glyph's tolerance.
+ending there (within 3 units) is not closed; line: the curve leaving the
+old node nearest to it is taken as the line between its ends (only
+within TOL of it); tol: this glyph's tolerance. In a glyph of several
+contours each point goes to the contour nearest to it.
 """
 
 import argparse
@@ -143,12 +146,33 @@ def length(seg, t0=0.0, t1=1.0):
     return float(np.linalg.norm(np.diff(pts, axis=0), axis=1).sum())
 
 
-def cleaned(segs, notes, keep=()):
+def chord_dev(seg):
+    """how far a curve leaves the line between its ends"""
+    d = unit(seg[-1] - seg[0])
+    off = [point(seg, t) - seg[0] for t in np.linspace(0, 1, 65)]
+    return max(abs(float(d[0] * v[1] - d[1] * v[0])) for v in off)
+
+
+def cleaned(segs, notes, keep=(), lines=()):
     """segs without empty segments and without the short lines between two
     curves (their ends drawn together to the middle, on whole units); a
-    line with an end within 3 units of a point in keep (the spec's) stays"""
+    line with an end within 3 units of a point in keep (the spec's) stays.
+    lines (the spec's): the curve leaving the old node nearest to each
+    point is taken as the line between its ends, if it lies within TOL of
+    it (a stem's edge drawn as a curve: Old Standard's italic q)"""
     keep = [np.array(xy, float) for xy in keep]
     segs = [s.copy() for s in segs if np.linalg.norm(s[-1] - s[0]) > 1e-6 or len(s) == 4 and length(s) > 1e-6]
+    for xy in lines:
+        k = min(range(len(segs)), key=lambda k: np.linalg.norm(segs[k][0] - np.array(xy, float)))
+        if np.linalg.norm(segs[k][0] - np.array(xy, float)) > NEAR:
+            raise ValueError(f"spec line {xy}: no node within {NEAR:.0f} units")
+        if len(segs[k]) == 4:
+            off = chord_dev(segs[k])
+            if off > TOL:
+                raise ValueError(f"spec line {xy}: the curve leaves its chord by {off:.1f} units, no line")
+            notes.append(f"curve from {segs[k][0][0]:.0f},{segs[k][0][1]:.0f} to {segs[k][3][0]:.0f},{segs[k][3][1]:.0f} "
+                         f"taken as a line by the spec ({off:.1f} units off its chord)")
+            segs[k] = np.array([segs[k][0], segs[k][3]])
     while True:
         n = len(segs)
         for k, s in enumerate(segs):
@@ -727,7 +751,7 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
     whole-unit points)], and what was done in report"""
     report = report if report is not None else {}
     notes = report.setdefault("notes", [])
-    tg = Target(cleaned(segs, notes, (spec or {}).get("keep", ())), spec)
+    tg = Target(cleaned(segs, notes, (spec or {}).get("keep", ()), (spec or {}).get("line", ())), spec)
     breaks = tg.structure(spec, notes)
     if len(breaks) < 2:
         raise ValueError("fewer than two nodes found")
@@ -841,6 +865,21 @@ def bent_back(glyph):
     return out
 
 
+def spec_by_contour(all_segs, spec):
+    """the spec's points shared out: each to the contour whose outline is
+    nearest to it, so that a point naming a place on one contour is not
+    looked for (and refused as too far away) on the others"""
+    spec = spec or {}
+    out = [{k: v for k, v in spec.items() if k == "tol"} for _ in all_segs]
+    for name in ("extra", "drop", "corner", "smooth", "keep", "line"):
+        for xy in spec.get(name, []):
+            p = np.array(xy, float)
+            d = [min(float(np.linalg.norm(point(seg, t) - p)) for seg in segs for t in np.linspace(0, 1, 33))
+                 for segs in all_segs]
+            out[int(np.argmin(d))].setdefault(name, []).append(xy)
+    return out
+
+
 def redraw_at(glyph, tol, spec):
     from ufoLib2.objects import Contour, Glyph, Point
 
@@ -851,8 +890,9 @@ def redraw_at(glyph, tol, spec):
     new.anchors = [type(a)(a.x, a.y, a.name, a.color, a.identifier) for a in glyph.anchors]
     new.lib.update(json.loads(json.dumps(dict(glyph.lib), default=str)) if glyph.lib else {})
     report = {"glyph": glyph.name, "tol": tol, "nodes_before": node_count(glyph)}
-    for c in glyph.contours:
-        segs = redraw_contour(segments(c), tol, spec, report)
+    all_segs = [segments(c) for c in glyph.contours]
+    for target, own in zip(all_segs, spec_by_contour(all_segs, spec)):
+        segs = redraw_contour(target, tol, own, report)
         pts = []
         for i, (kind, ctrl) in enumerate(segs):
             before = segs[i - 1][1]

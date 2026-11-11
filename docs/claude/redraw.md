@@ -81,7 +81,7 @@ One style, about 20 letters, nothing written to `sources/` before step 6.
 3. Correct the structure where needed in
    `scripts/data/redraw-STYLE.json` (read by default; the format is in
    redraw.py's docstring: `extra`, `drop`, `corner`, `smooth`, `keep`,
-   `tol` per glyph name) and fit again. The spec is the record of every decision
+   `line`, `tol` per glyph name) and fit again. The spec is the record of every decision
    that is not the rules': keep it in the repository.
 4. Sheet (PDF, for the designer):
 
@@ -258,8 +258,9 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   handle shortened; 51 pass. q is refused: its stem's right edge is one
   curve of 617 units from 419,-364 to 582,229 whose end directions and
   chord allow no curve of one bend (the start leaves 0.4 degrees outside
-  the chord: Old Standard's own S). For the batch: an `extra` node where
-  the straight run ends (about 575,190), so the run is fitted by itself.
+  the chord: Old Standard's own S). The `extra` node proposed here for
+  the batch did not do it; what did is under "Faults seen" (a stem's
+  edge drawn as a curve).
 - With a remark for the count or the tolerance: v K O Q T X (one or two
   nodes more: extremes that had none, O Q's flanks), A S V Y Z (tolerance
   widened). O and Q are the ones to look at first: Old Standard's italic
@@ -328,6 +329,23 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   lower (344,-2). Look for the same wherever a composite's mark is sunk
   into its letter (ç ş ţ, ogoneks, horns): `glyph_lint.py UFO` on the
   composites of the batch.
+- **A stem's edge drawn as a curve** (q, 2026-11-11: the left edge
+  below the bowl, 419,-364 to 582,227, one cubic with its first handle
+  on the node, 0.9 units off its chord; refused, no curve of one bend).
+  An `extra` node where the run seems to end leaves a curve of 580 units
+  that is straight but for a degree, and that one bends the other way
+  first (gate: `bent_back`). It is a line: `"line": [[419, -364]]` in
+  the spec takes the curve leaving that node as the line between its
+  ends, and refuses if the curve is more than the tolerance (2 units)
+  off it. The bracket then runs into the line's direction; the crotch's
+  4-unit line stays (between a line and a curve, as a's chamfer). Look
+  for the same in the descenders of Greek and Cyrillic (ρ φ р ф) before
+  trying anything else on a "refused: no curve of one bend".
+- **A spec's point refused as "the outline is 57 units away"** though
+  it lies on the outline: the spec was given to every contour of the
+  glyph, and the counter refused what named the outer contour. Fixed in
+  the tool (`spec_by_contour`: each point goes to the contour nearest
+  to it). The pilot never met it: none of its six needed a spec.
 - **Hint zones**: the Bold Italic's G and Ɠ sit 4/64 px off their bottom
   zone at 35 ppem though neither outline moved (test_hint_zones). The
   cause is not traced yet (`scripts/quality/hint_zones.py FONT`): do
