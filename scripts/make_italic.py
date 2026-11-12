@@ -590,9 +590,15 @@ ITALIC_SC_RECIPES = [("g.sc", "enlarge", "G", ("O", "o.sc")),
                      # (the Regular's wave bar's ends, 2026-11-09); Ѳ's are
                      # Old Standard's, round
                      ("ѳ.sc", "enlarge", "Ѳ", ("O", "o.sc"))]
-# made in the late pass, after the small caps are drafted: measured
-# against the Italic's own o.sc and h.sc, not the Regular's sloped
-SC_LATE = {"g.sc", "ɦ.sc", "s.sc", "n.sc", "є.sc", "ϟ.sc", "ѳ.sc"}
+def sc_late(source, band):
+    """Made in the late pass, after the small caps are drafted: a recipe
+    built from a small cap or measured against one (o.sc, h.sc in its
+    band), so against the Italic's own, not the Regular's sloped. Listed
+    by hand until 2026-11-12, ɛ.sc ɩ.sc ꞷ.sc ɤ.sc ә.sc were left out and
+    measured a stand-in o.sc (1230 wide, hairline 45 for the draft's 59);
+    it showed when o.sc was kept and stood there early."""
+    return source.endswith(".sc") or (isinstance(band, tuple) and any(
+        isinstance(n, str) and n.endswith(".sc") for n in band))
 # made from their capitals, s.sc's spine and n.sc's diagonal still stood
 # light (0.81 and 0.69 of h.sc): enlarge's emboldening thickens strokes by
 # their lean (a level stroke by the hairlines' amount), so their thick
@@ -1847,7 +1853,7 @@ def derive_stage(font, regular, late=False, kept=()):
         up.lib[derive.STROKE_KEY] = recipe_scale(o_stem, o_hair, case_weight(font, font[name]))
         if len(source) == 1 or (derive.variant(source) and not source[0].isascii()):
             source = resolve(source)
-        if (source.endswith(".sc") or ch in SC_LATE) != late:
+        if sc_late(source, band) != late:
             if not late:
                 later.append(name)
             continue

@@ -595,6 +595,77 @@ Open, for the designer and the next batch:
   R 8 wider (1495 -> 1503), U 4 (its outline moved 2.7), the others a
   unit or two.
 
+## O and Q drawn (2026-11-12)
+
+`scripts/draw_oq.py`, for the Italic's O and Q only, which the fit could
+not take (above: the round stem lost 3 units). Not a fit within a
+tolerance but a construction with the measures held:
+
+- O: four extremes a contour, today's nodes (bounds, overshoots kept).
+  Each curve is the nearest one to today's outline that passes through it
+  at mid height (the round stems, both sides, and the counter's width) and
+  at the middle of the width (the hairlines, where `derive.strokes` takes
+  them), to 0.15 units. Result: 10 -> 8 nodes, round stem 199.97 ->
+  200.04, top hairline 78.28 -> 78.37, 3.9 units from today's at its
+  worst (the counter's upper left flank, 479,1009), ink area -0.42 %,
+  jumps 0.47 at most (today's 0.51).
+- Q: its bowl is that O's curves, cut where the tail's corners meet them
+  (the corners moved by 3 units at most: 463,74 to 461,71); the tail and
+  its loop are redraw.py's candidate for today's Q. Today's Q had a bowl
+  of its own (the right extreme at 893 for O's 897, the stem 3 units
+  lighter at its mid height): 27 -> 26 nodes, 4.4 units from today's.
+- Approved on `proofs/italic-O-Q-drawn-2026-11-12.pdf` and installed
+  2026-11-12 (`--install`). The script refuses once O or Q is marked
+  drawn (it builds from Old Standard's outlines only). It has no test yet.
+- **What followed, and is not finished** (working copy uncommitted,
+  tests failing until the designer's review; reports in
+  `build/redraw/sweep-*.txt`, `oq-late-sweep-*.txt`, `test-OQ*.txt`):
+  - The capitals' followers moved as little as meant: Italic Ɵ Ө ʘ 4.5,
+    Ɩ Ꞷ Ɣ about 1, the accented O 3.9; Bold Italic O and its composites
+    6.2, Q 7.8, Ø 6.3.
+  - FontForge drafts o.sc and q.sc 30 units lighter from the new outlines
+    (main stroke 120 for 152: fewer nodes), and `as_capitals` then adds
+    the weight outward: o.sc 24 wider, n.sc and all measured against o.sc
+    after it. Decided by the designer: the Italic's o.sc and q.sc kept as
+    accepted, as reviewed drafts (org.myiadidot.smallcapDraft removed,
+    the reason in org.myiadidot.keptDraft). They stand on the old O and Q.
+  - Still moving after that: the Italic's ꞷ.sc 21.5, ɤ.sc 18.3, ɛ.sc
+    18.0, ә.sc/ə.sc 16.4, ɩ.sc 15.3 (advances +8 to +20); the Bold
+    Italic's ƭ.sc 54.6, ɛ.sc 40.2, n.sc and its composites 32.6 (at
+    537,61, advance -1), ɴ 26.8, ꞷ.sc 26.6, Ɣ 24.0, ə.sc 18.7, ɩ.sc 17.7.
+    Traced 2026-11-12, two causes:
+    - **The Italic's five: a stand-in o.sc.** Their recipes (`("o",
+      "o.sc")` in the band, Ɤ's `("O", "o.sc")`) ran in derive_stage's
+      early pass, before the small caps are drafted, and measured the
+      Regular's o.sc sloped (1230 wide, stem 198, hairline 45) for the
+      draft's (1092, 205, 59). Kept, o.sc stood there early and they were
+      built from the real one. Not the FontForge drafts (`make generate
+      KEEP_DRAFTS=1` with the store as committed: the same result) and
+      not `SC_STROKE_SHORT` (Ɛ Ə's targets unchanged to 0.1). Fixed in
+      the generator: `make_italic.sc_late` sends every recipe with a
+      small cap in its band to the late pass (the hand list `SC_LATE`
+      had g.sc s.sc n.sc є.sc ϟ.sc ѳ.sc ɦ.sc and missed these). With it
+      the result is the same whether o.sc is kept or drafted.
+    - **The Bold Italic's O: the stroker reads its nodes.** The Italic
+      O's measures are unchanged (above); the Bold Italic's, stroked from
+      8 nodes for 10, are stem 308.90 -> 312.71 and hairline 84.15 ->
+      78.29. ƭ.sc, n.sc (and ɴ from it), Ɣ take O into their enlarge
+      bands and follow it. A stroker matter (T4), not this redraw's.
+    - The drafts store records the held drafts as made from the new
+      capitals (`fontforge_inputs.drafts`, keep), so later runs need no
+      `KEEP_DRAFTS`.
+  - Sheets of the first run, before o.sc was kept (so they overstate):
+    `proofs/italic-O-Q-followers-2026-11-12.pdf`,
+    `proofs/bold-italic-O-Q-followers-2026-11-12.pdf`. HEAD against now,
+    after the fix: `proofs/italic-O-Q-smallcaps-late-2026-11-12.pdf`,
+    `proofs/bold-italic-O-Q-followers-late-2026-11-12.pdf`; waiting for
+    the designer.
+  - The lesson for the gate: a measure letter's redraw is tried through
+    `make generate` in a scratch copy before the designer sees its sheet,
+    and a capital's redraw is judged with its small cap's draft beside it.
+- For another measure letter the same holds: constrain where
+  `derive.strokes` measures, then fit what is left free.
+
 ## Hand back to the designer rather than fit
 
 - A glyph with components is refused: redraw its parts (i j: `dotlessi`

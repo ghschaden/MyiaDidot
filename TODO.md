@@ -165,43 +165,59 @@ the other models. One item per session.
       The Bold Italic's hooks of Ƙ Ƴ Ʋ (and ƙ.sc ƴ.sc ʋ.sc) done
       2026-11-12, chosen on proofs/bold-italic-hook-arms-2026-11-12.pdf:
       Ƙ Ƴ version C, Ʋ version D (make_bold.CURL_ARM).
+      O and Q drawn 2026-11-12 (`scripts/draw_oq.py`), approved and
+      installed; not committed: small caps moved after it, the causes
+      traced and the Italic's mended in the generator (`sc_late`,
+      docs/claude/redraw.md, "O and Q drawn"); waiting for the
+      designer's review of the late sheets, then baselines and commit.
 
-Budget (2026-11-11): F1 to F3 are done; F1 took more than half of what
-Fable had then, mostly in its review rounds. The limits now:
+Budget (2026-11-12): F1 to F4 are done, of F6 the pages for T2 and
+phase 1's sweep, of F7 both batches. The limits now:
 
-- The week's Fable allowance: 31 % on the meter, read as 31 % left (the
-  tighter reading), lapsing Sunday 2026-11-15 10:00.
-- The weekly limit over all models: 14 % left.
-- One full reset of the 5-hour and weekly limits, to be taken before
-  2026-12-10. Its wording does not mention the Fable allowance, which
-  is taken not to refill.
+- The week's Fable allowance: 91 % used, 9 % left, renewed Sunday
+  2026-11-15 10:00. After the renewal there is one 5-hour window on
+  Fable, on that Sunday, and then access ends.
+- The weekly limit over all models: 49 % used; the 51 % left lapse on
+  Sunday 10:00.
+- The full reset is taken and used.
 
-The reset is taken this week, at the moment the weekly limit stops the
-work and not before, so that the Fable allowance does not lapse unused.
-What that allowance goes to, in this order:
+So the plan has three parts.
 
-- Before Fable starts, off Fable: F4's measuring script (Opus, from
-  F4's description above), its table Regular | Bold | Old Standard Bold
-  by font-measure, and an Explore agent's summary in one file of what
-  make_bold does per family today. Fable reads these, not the sources.
-- F4, in full, with a hard stop at about 80 % of the allowance. In this
-  order, each committed before the next: what the Bold should change
-  per family, as numbers; the family rules proposed for make_bold; how
-  the measures carry to the Bold Italic; then the trial on a e s g n o,
-  one sheet, one review round. If it runs short, the trial is what goes
-  to Opus.
-- With what remains: F6's page for T2 only (the dependency closure from
-  builtFrom, the state a partial run may not touch, the equivalence
-  test).
+Thursday to Saturday, on Opus and Sonnet: what Fable wrote is carried
+out, to find where its specifications and methods fail while Fable can
+still mend them. Each session writes its gaps to
+`docs/claude/open-for-fable.md`: the case, what the document said,
+what was missing. In this order:
 
-Not done on Fable any more: F5 (Opus with the runner, or the tolerance
-alone and the split glyphs listed as known); F6's pages for T5, T6 and
-phase 1's sweep (Opus, from this file's descriptions); F7 (the batches
-on Sonnet by docs/claude/redraw.md, Opus where it refuses a letter);
-the points F3 left open for T4's session. If the Fable allowance turns
-out larger than read here, the order after T2's page is: F6's page for
-phase 1's sweep, then F7's first batch (the rest of a-z), stopped when
-it no longer finds cases redraw.md lacks.
+- Sonnet: one batch of phase 5 outside a-z and A-Z (Greek or Cyrillic
+  italics, where no Regular counterpart gives the node structure), by
+  `docs/claude/redraw.md`. The test of whether a batch is a Sonnet
+  session.
+- Opus: phase 3, the rule into the generators as
+  `docs/claude/spacing.md` describes, K y, the Latin pairs test.
+- Opus: T4 by `docs/claude/stroking.md`, with its three open points.
+- Opus: T2 by `docs/claude/only.md` or phase 1's sweep by
+  `docs/claude/collisions.md`; both were read from the code with
+  nothing run, so they are the likeliest to be wrong somewhere.
+- Opus, after these: F5 (with the runner, or the tolerance alone and
+  the split glyphs listed as known), F6's pages for T5 and T6. Neither
+  needs Fable.
+
+Before Sunday, the designer's review of what is open under F7, since
+what is rejected after Sunday goes to Opus: the two sheets of mended
+followers of 2026-11-12, the Bold Italic's ff-ligatures at 100, ſſj,
+ƴ's dot below, and whether O and Q are drawn by hand or by Fable.
+
+On Fable:
+
+- With the 9 % of this week, one item at most, reading and writing
+  only, nothing run and no sheet: the specification of phase 6's
+  measure (the Italic against the Regular: what is measured, the
+  sheet, the gate), the last part of F7 and the only method still
+  without a document. Opus writes the script from it.
+- The window on Sunday, in this order: the methods mended from
+  `docs/claude/open-for-fable.md`; what the designer's review
+  rejected; O and Q, if they are Fable's.
 
 How these sessions are run, so that they do not go the way of F1's:
 

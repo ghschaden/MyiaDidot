@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0196" format="2">
 	<unicode hex="0196"/>
-	<advance width="880"/>
+	<advance width="881"/>
 	<outline>
 		<contour>
 			<point x="76" y="202" type="curve" smooth="yes"/>
 			<point x="76" y="278"/>
 			<point x="114" y="438"/>
 			<point x="127" y="486" type="curve" smooth="yes"/>
-			<point x="393" y="1434" type="line"/>
-			<point x="562" y="1434" type="line"/>
+			<point x="392" y="1435" type="line"/>
+			<point x="562" y="1435" type="line"/>
 			<point x="256" y="327" type="line" smooth="yes"/>
-			<point x="246" y="291"/>
-			<point x="234" y="240"/>
-			<point x="234" y="199" type="curve" smooth="yes"/>
+			<point x="245" y="291"/>
+			<point x="233" y="240"/>
+			<point x="233" y="199" type="curve" smooth="yes"/>
 			<point x="233" y="142"/>
-			<point x="242" y="73"/>
+			<point x="241" y="73"/>
 			<point x="359" y="73" type="curve" smooth="yes"/>
-			<point x="522" y="73"/>
-			<point x="646" y="285"/>
-			<point x="754" y="486" type="curve"/>
-			<point x="648" y="280"/>
-			<point x="474" y="-35"/>
+			<point x="521" y="73"/>
+			<point x="645" y="284"/>
+			<point x="754" y="485" type="curve"/>
+			<point x="647" y="278"/>
+			<point x="473" y="-35"/>
 			<point x="268" y="-35" type="curve" smooth="yes"/>
 			<point x="137" y="-35"/>
 			<point x="76" y="77"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="334" y="-20"/>
-	<anchor name="Bottom" x="340" y="0"/>
-	<anchor name="TopCap" x="734" y="1580"/>
-	<anchor name="Horn" x="923" y="1269"/>
+	<anchor name="DotBelow" x="335" y="-20"/>
+	<anchor name="Bottom" x="341" y="0"/>
+	<anchor name="TopCap" x="735" y="1580"/>
+	<anchor name="Horn" x="862" y="1278"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-10</string>
+				<string>2026-11-12</string>
 				<key>glyph</key>
-				<string>2ecdce5b5a46</string>
+				<string>670b07e0455c</string>
 				<key>review</key>
-				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
+				<string>docs/claude/redraw.md</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>
