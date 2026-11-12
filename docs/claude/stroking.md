@@ -410,6 +410,12 @@ blind:
   the Bold Italic γ's loop at its stem on a sheet when the comment is
   rewritten; if the notch is there it is γ's own fault (drawn, or its
   recipe), not a reason to bring the mode back.
+  Closed 2026-11-12: on a sheet (`scripts/redraw_sheet.py`, Italic |
+  Bold Italic, overlaid, words) the Bold Italic γ has no notch: the
+  crotch's inner corner is one point, the stem's outer corners into the
+  loop where the Italic has them, the loop's curves running on without a
+  step. The comment described the state before mode 2; agreed by the
+  designer.
 - With one_way on, every letter is stroked twice even without a knee
   (the first pass only finds knees). Finding the knees needs the fits,
   not the cleaning and fairing; skipping those in the first pass would
