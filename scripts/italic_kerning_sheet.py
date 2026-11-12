@@ -2,7 +2,10 @@
 in the italic as it is kerned today, and in the italic with the computed
 kerning; one page a weight, then both italics at text size.
 
-    python scripts/italic_kerning_sheet.py OUT.pdf [--words "AVATAR Table ..."]
+    python scripts/italic_kerning_sheet.py OUT.pdf [--words "AVATAR Table ..."] [--before REV]
+
+--before REV: the italic at a git revision beside the italic in sources/ as
+it is now (after the rule went into the generators: what a run changed).
 
 Set from the UFOs (outlines, advances, kerning by glyph and group; no
 features, so no ligatures): the third column differs from the second only
@@ -135,10 +138,28 @@ def computed_kerning(upright, italic, skip=()):
     return k
 
 
+def at_revision(rev, style):
+    """The style's UFO as committed at rev (read whole into memory)."""
+    import tarfile
+    import tempfile
+
+    name = f"sources/MyiaDidot-{style}.ufo"
+    with tempfile.TemporaryDirectory() as tmp:
+        archive = subprocess.run(["git", "-C", str(ROOT), "archive", rev, name],
+                                 check=True, capture_output=True).stdout
+        tar = Path(tmp) / "a.tar"
+        tar.write_bytes(archive)
+        with tarfile.open(tar) as t:
+            t.extractall(tmp, filter="data")
+        font = ufoLib2.Font.open(Path(tmp) / name, lazy=False)
+    return font
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("out")
     ap.add_argument("--words", default=" ".join(WORDS))
+    ap.add_argument("--before", metavar="REV", help="the italics at REV | as now, in place of today | computed")
     a = ap.parse_args()
     words = a.words.split()
     out = Path(a.out)
@@ -149,8 +170,12 @@ def main():
     for up, it, skip in (("Regular", "Italic", ()), ("Bold", "BoldItalic", set(BOLD_KERNING))):
         upright = ufoLib2.Font.open(src / f"MyiaDidot-{up}.ufo")
         italic = ufoLib2.Font.open(src / f"MyiaDidot-{it}.ufo")
-        cols = [(up, Setter(upright)), (f"{it}, today", Setter(italic)),
-                (f"{it}, computed", Setter(italic, computed_kerning(upright, italic, skip)))]
+        if a.before:
+            cols = [(up, Setter(upright)), (f"{it} at {a.before}", Setter(at_revision(a.before, it))),
+                    (f"{it}, now", Setter(italic))]
+        else:
+            cols = [(up, Setter(upright)), (f"{it}, today", Setter(italic)),
+                    (f"{it}, computed", Setter(italic, computed_kerning(upright, italic, skip)))]
         for i in range(0, len(words), PAIRS_PER_PAGE):
             pages.append(page(f"Italic kerning from the white the shapes leave: {it} ({SIZE} pt)",
                               cols, words[i:i + PAIRS_PER_PAGE], len(pages) + 1))

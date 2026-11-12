@@ -218,7 +218,10 @@ def guard(font, record, log=None):
     for name, s, group, against in sorted([(*t, None) for t in full] + only, key=lambda t: t[1]):
         for (left, right), v in list(font.kerning.items()):
             mine, other = (left, right) if s == 1 else (right, left)
-            if mine != group or v >= 0 or (against is not None and other not in against):
+            # a pair at 0 too: the italics keep the upright's pairs they set
+            # plain at 0 (italic_kerning.apply), and a member's accent may
+            # still reach the other letter there
+            if mine != group or v > 0 or (against is not None and other not in against):
                 continue
             key = (name, other) if s == 1 else (other, name)
             if key in font.kerning or key in added:

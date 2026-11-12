@@ -194,7 +194,9 @@ what was missing. In this order:
   `docs/claude/redraw.md`. The test of whether a batch is a Sonnet
   session.
 - Opus: phase 3, the rule into the generators as
-  `docs/claude/spacing.md` describes, K y, the Latin pairs test.
+  `docs/claude/spacing.md` describes, K y, the Latin pairs test (done
+  2026-11-12; the gap found, the guard lost with a dropped pair, in
+  spacing.md and open-for-fable.md).
 - Opus: T4 by `docs/claude/stroking.md`, with its three open points.
 - Opus: T2 by `docs/claude/only.md` or phase 1's sweep by
   `docs/claude/collisions.md`; both were read from the code with
@@ -334,7 +336,9 @@ and Cyrillic are already measured per style; Latin is not.
       list the Latin pairs outside the references' range.
 - [x] Decide the mechanism before the values (one source of truth;
       decided 2026-11-11, F2: docs/claude/spacing.md; to carry out:
-      the rule into make_italic.py and make_bold.py, K y by hand): the
+      the rule into make_italic.py and make_bold.py, K y by hand; done
+      2026-11-12, K y -30, approved on
+      proofs/italic-kerning-in-generators-2026-11-12.pdf): the
       Regular's kerning scaled per pair by the white the italic shapes
       actually leave (computed), with `ITALIC_KERNING` and
       `ITALIC_BOLD_KERNING` holding only reviewed exceptions. A design
@@ -345,8 +349,11 @@ and Cyrillic are already measured per style; Latin is not.
       gap in "Größe"; look also at `g a` +89, `u f` +92, `i f` +75,
       `a y` +67, `a f` +66, `w a` +57, `v a` +50. Delete those the stroked
       letters no longer need.
-- [ ] Add a Latin pairs test like tests/test_greek_pairs.py: a listed
-      pair may not get further off.
+- [x] Add a Latin pairs test like tests/test_greek_pairs.py: a listed
+      pair may not get further off. Done 2026-11-12:
+      tests/test_latin_pairs.py, the italics against five reference
+      italics (italic_kerning.outside), lists latin-pairs-Italic.txt and
+      -BoldItalic.txt (all too tight; `update_test_data.py --latin`).
 - [ ] Sheets, `make diffenator`, baselines.
 
 ## Phase 4: figures
@@ -479,9 +486,10 @@ alongside, each when the phase that needs it comes up.
 ### Tools the phases need (made in their phase, listed here to see them together)
 
 - [ ] Collision sweep over unkerned pairs, with its test: phase 1.
-- [ ] Latin pairs test per style, as Greek and Cyrillic have: phase 3.
-- [ ] Italic kerning computed from the white the italic shapes leave:
-      phase 3.
+- [x] Latin pairs test per style, as Greek and Cyrillic have: phase 3
+      (the italics; 2026-11-12).
+- [x] Italic kerning computed from the white the italic shapes leave:
+      phase 3 (2026-11-12).
 - [ ] The fitter that redraws an outline onto a given node structure:
       phase 5's pilot.
 - [ ] Node-economy check for the core sets: a core letter's node count

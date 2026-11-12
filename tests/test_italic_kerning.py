@@ -107,3 +107,17 @@ def test_white_needs_facing_rows():
     u.kerning[("quote", "n")] = -40
     row = K.compute(u, f)[("quote", "n")]
     assert row["value"] is None and row["note"] == "no rows"
+
+
+def test_apply_sets_drops_and_skips():
+    # the generators' step: a computed pair set, one come to 0 kept at 0,
+    # one not computed (no rows) and one skipped kept as the italic had them
+    u = family()
+    box(u, "quote", 100, 300, 400, code="'").contours[0].move((0, 1000))
+    u.kerning.update({("o", "v"): -50, ("n", "o"): -50, ("quote", "n"): -40, ("v", "o"): -50})
+    i = family(o_right=20)  # o v 80 nearer already: sign, 0
+    box(i, "quote", 100, 300, 400, code="'").contours[0].move((0, 1000))
+    i.kerning.update({("o", "v"): -50, ("quote", "n"): -40, ("v", "o"): -7})
+    assert K.apply(u, i, skip={("v", "o")}) == (1, 1)
+    assert i.kerning[("o", "v")] == 0
+    assert i.kerning[("n", "o")] == -50 and i.kerning[("quote", "n")] == -40 and i.kerning[("v", "o")] == -7

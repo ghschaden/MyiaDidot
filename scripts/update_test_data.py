@@ -35,7 +35,9 @@ rewrites the style's compiled lookup order (lookups.txt, lookups-Italic.txt
 where Charis and Libertinus agree against the style (greek-pairs.txt ...,
 tests/test_greek_pairs.py), each with how far off it is now. --cyrillic:
 the Cyrillic pairs outside the references' whole range (cyrillic-pairs.txt
-..., tests/test_cyrillic_pairs.py).
+..., tests/test_cyrillic_pairs.py). --latin: the italics' Latin pairs
+outside the reference italics' range (latin-pairs-Italic.txt ...,
+tests/test_latin_pairs.py), off in shares of the rhythm.
 """
 
 import argparse
@@ -153,6 +155,7 @@ def main():
     ap.add_argument("--lookups", action="store_true")
     ap.add_argument("--greek", action="store_true")
     ap.add_argument("--cyrillic", action="store_true")
+    ap.add_argument("--latin", action="store_true")
     ap.add_argument("--reason", default="baseline")
     ap.add_argument("--expect-changes", type=int, metavar="N",
                     help="strings shaped otherwise than by HEAD's font, as read (--golden, --digest)")
@@ -212,7 +215,8 @@ def main():
         outputs[path] = "".join(lines)
         print(f"{path.name}: {len(found)} findings, {len(set(found) - set(listed))} new, "
               f"{len(set(listed) - set(found))} gone")
-    shaping = (args.golden, args.digest, args.cmap, args.exceptions, args.lookups, args.greek, args.cyrillic)
+    shaping = (args.golden, args.digest, args.cmap, args.exceptions, args.lookups, args.greek, args.cyrillic,
+               args.latin)
     if lists and not any(shaping):
         publish()
         return
@@ -250,6 +254,11 @@ def main():
 
             pair_lists.append(("cyrillic", "cyrillic-pairs.txt", cyrillic_findings,
                                "Cyrillic pairs outside the references' whole range"))
+        if args.latin:
+            from test_latin_pairs import latin_findings
+
+            pair_lists.append(("latin", "latin-pairs.txt", latin_findings,
+                               "The italics' Latin pairs outside the reference italics' range"))
         for flag, name, findings, what in pair_lists:
             path = style_data(name, args.ufo)
             listed = read_list(path.name)

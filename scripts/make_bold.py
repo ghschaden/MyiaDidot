@@ -981,7 +981,8 @@ ITALIC_ANCHOR_NUDGE = {("u", "Horn"): 45, ("e", "Dotaccent"): 93, ("z", "Dotacce
                        ("uni0435", "Dotaccent"): 93, ("uni1D76", "Dotaccent"): 94}
 # Bold Italic optical-pair corrections from the pinned-reference spacing
 # comparison (scripts/quality/pairs.py). Values are final Bold Italic kern
-# values in font units; they are applied after the source kerning is scaled.
+# values in font units; they are applied after the source kerning is scaled
+# and the Latin pairs computed (italic_kerning.py), over both.
 # Most pairs had no source pair adjustment. va overrides its inherited class
 # pair; fr is made 33 units looser relative to the references' range.
 ITALIC_BOLD_KERNING = {
@@ -2924,9 +2925,7 @@ def main():
     font.lib[WHOLE_KEY] = {n: why for n, why in sorted(whole.items()) if n not in followed}
 
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}
-    if italic:
-        font.kerning.update(ITALIC_BOLD_KERNING)
-    else:
+    if not italic:  # the Bold Italic's after its Latin pairs are computed (below)
         font.kerning.update(BOLD_KERNING)
     # hand-set positioning (room for the accents of Greek capitals, ...):
     # horizontal placement and advance scale with the outlines
@@ -3042,6 +3041,17 @@ def main():
         # п т: their bars over и ш as this style's ū has its own
         if not {"uni043F.loclSRB", "uni0442.loclSRB"} & set(kept):
             serbian_bars(font)
+        # the Latin pairs from the white the finished shapes leave, against
+        # the Bold as the Italic's against the Regular (italic_kerning.py,
+        # docs/claude/spacing.md), without the Bold's own exceptions; the
+        # others stay the Italic's scaled; then the reviewed exceptions
+        from italic_kerning import apply as italic_kerning
+
+        # beside the Italic read (make generate: sources/; check_reproducible: its snapshot)
+        upright = Path(args.regular).with_name(Path(args.regular).name.replace("Italic", "Bold"))
+        kerned = italic_kerning(ufoLib2.Font.open(upright), font, skip=set(BOLD_KERNING))
+        print(f"{args.bold}: {kerned[0]} Latin pairs computed against {upright.name} ({kerned[1]} set plain, at 0)")
+        font.kerning.update(ITALIC_BOLD_KERNING)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold), separate_stacks=True, kept=kept)
     if parted:

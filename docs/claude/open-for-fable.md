@@ -27,3 +27,18 @@ Fit of 25 letters: 14 candidates at once, 5 more after one spec entry each,
 - alpha and lambda pass only with the tolerance widened by the tool itself
   (2.8): the doc says not to raise `tol` for one glyph, yet the tool does
   it unasked and reports it only as a remark.
+
+## Phase 3: the italic kerning rule into the generators (Opus, 2026-11-12)
+
+Carried out as spacing.md said; the values came out as the prototype's
+(A V -124, A T -37, P Y -15). One gap:
+
+- **A dropped pair took kern_clear's guards with it.** spacing.md said the
+  accented members are kern_clear's "afterwards, as now", but the guard
+  only looks at group pairs that are kerned (negative): where the rule
+  removed b v, b j, o j, ᵬ ổ ồ lost their exceptions and met v w y, ǰ
+  (to 48 units of overlap). Mended by keeping such pairs at 0 and guarding
+  at 0 too (italic_kerning.apply, kern_clear.guard). Found only by reading
+  the shaping report for tightenings, not by any test: worth a rule that
+  a generator's kerning change is checked with the guard's measure over
+  every member, kerned or not (phase 1's sweep).

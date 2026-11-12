@@ -174,6 +174,28 @@ def compute(upright, italic, only=None):
     return out
 
 
+def apply(upright, italic, skip=()):
+    """The computed values into italic.kerning (the generators' step, on
+    the finished outlines, before their hand exceptions and kern_clear):
+    a computed pair is set, and one that comes to 0 is kept at 0: the
+    italic sets plain what the upright kerns, and kern_clear's guard still
+    holds the accented members of its groups clear (ᵬ's tilde ran into v
+    when b v was dropped, 2026-11-12). Pairs not computed (no rows, Greek,
+    Cyrillic, small caps) keep what the italic has. skip: the upright's
+    pairs not to carry (the Bold's own exceptions). Returns (set, unkerned)."""
+    rows = compute(upright, italic)
+    done = plain = 0
+    for pair, row in rows.items():
+        if pair in skip or row["value"] is None:
+            continue
+        italic.kerning[pair] = row["value"]
+        if row["value"]:
+            done += 1
+        else:
+            plain += 1
+    return done, plain
+
+
 class Built:
     """A built font (Myia's or a reference) as Profiles and white() read a
     UFO: glyphs by name, drawn at 2048 units to the em."""
@@ -240,6 +262,53 @@ class Built:
         cases = tuple("lower" if unicodedata.category(c) == "Ll" else "upper" for c in text)
         w, r = set_white(text), set_white("".join(RHYTHM[cases]))
         return None if w is None or not r else w / r
+
+
+UPRIGHT = {"Italic": "Regular", "BoldItalic": "Bold"}
+REFERENCES = ("BodoniModa-11-{}.ttf", "LibreBodoni-{}.ttf", "EBGaramond-{}.ttf",
+              "LibertinusSerif-{}.otf", "CharisSIL-{}.ttf")
+
+
+def references(style):
+    """The five reference italics the rule was counted against (spacing.md)."""
+    paths = [ROOT / "build" / "refs" / n.format(style) for n in REFERENCES]
+    if missing := [p.name for p in paths if not p.exists()]:
+        raise FileNotFoundError("references missing (scripts/quality/fetch_refs.py): " + ", ".join(missing))
+    return paths
+
+
+def latin_pairs(upright):
+    """The upright's kerned Latin pairs as text (each key's name-giving
+    glyphs), the set the rule is applied to."""
+    out = set()
+    for left, right in upright_kerning(upright):
+        a, b = representative(upright, left), representative(upright, right)
+        if a is None or b is None or None in (kind(upright, a), kind(upright, b)):
+            continue
+        ua, ub = upright[a].unicodes, upright[b].unicodes
+        if ua and ub:
+            out.add(chr(ua[0]) + chr(ub[0]))
+    return sorted(out)
+
+
+def outside(style, otf, upright=None):
+    """{pair: off} for the Latin pairs whose share (white as set over the
+    rhythm, kerning on) in the built italic lies outside the references'
+    range: off the distance past it, + too loose, - too tight. Pairs that
+    fewer than three references set are not judged."""
+    upright = upright or ufoLib2.Font.open(ROOT / "sources" / f"MyiaDidot-{UPRIGHT[style]}.ufo")
+    refs = [Built(str(p)) for p in references(style)]
+    myia = Built(str(otf))
+    found = {}
+    for text in latin_pairs(upright):
+        s = myia.share(text)
+        got = [x for x in (f.share(text) for f in refs) if x is not None]
+        if s is None or len(got) < 3:
+            continue
+        off = s - max(got) if s > max(got) else s - min(got) if s < min(got) else 0
+        if off:
+            found[text] = round(off, 3)
+    return found
 
 
 def main():

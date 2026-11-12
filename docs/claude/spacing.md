@@ -48,13 +48,16 @@ Moved from CLAUDE.md (its ground rules apply).
 
 ## The italics' Latin kerning (TODO.md F2 / phase 3)
 
-State 2026-11-11: measure, rule and prototype are there
-(`scripts/italic_kerning.py`, tests/test_italic_kerning.py), and the
-computed values were approved on the sheet
-(`proofs/italic-kerning-2026-11-11.pdf`, by `scripts/italic_kerning_sheet.py`)
-with nothing tightened past the upright and one wish, K y (below); the
-generators do not use it yet. Today the Italic carries the Regular's
-values, the Bold Italic the Bold's, with the hand tables over them.
+State 2026-11-12: in the generators. make_italic.py and make_bold.py (the
+Bold Italic, against the Bold) call `italic_kerning.apply` on the finished
+outlines, just before kern_clear; the hand tables go over it. The measure,
+rule and prototype: `scripts/italic_kerning.py`, tests/test_italic_kerning.py;
+the values approved on `proofs/italic-kerning-2026-11-11.pdf`
+(`scripts/italic_kerning_sheet.py`; `--before REV` sets an italic at a
+revision beside the one in sources/) with nothing tightened past the
+upright and one wish, K y (below). The pairs left outside the reference
+italics' range are held by tests/test_latin_pairs.py
+(tests/data/latin-pairs-Italic.txt, -BoldItalic.txt; only shrink).
 
 **The rule.** An upright pair's kerning says how much white that pair is to
 have against the style's plain rhythm; the italic of the same weight
@@ -111,28 +114,36 @@ applied after the computed values):
 | ſ ſſ before c e g q (-80, Bold Italic) | tighter than the Bold's -62; from a proof (2026-11-05) |
 | u t, w a, g h, g a, i f, G r, a f, a y, v a, u f, R e (positive), f r, f t (Bold Italic) | no pair in the Bold, or a sign the rule does not turn (a y, v a: it gives 0); phase 3's re-proof decides each |
 | small caps (B.sc O.sc ...) | not computed; smallcaps.py |
-| K before y, slightly tighter (to add; the review of 2026-11-11, on "Kyoto") | unkerned in all four styles, and the rule would not kern the italics even if the Regular did: the upright K y is the looser one (share 1.69 and 1.75 against the italics' 1.34; the reference italics 1.36-1.98), so a Regular pair goes by its sign. A hand value for both italics, about -30 to start from (the inks are 321 and 333 apart), set on a sheet with K v and K w, which leave the same white |
+| K before y, slightly tighter (the review of 2026-11-11, on "Kyoto"; -30 in ITALIC_KERNING since 2026-11-12, the Bold Italic's -31 by KX, to be confirmed on the sheet) | unkerned in all four styles, and the rule would not kern the italics even if the Regular did: the upright K y is the looser one (share 1.69 and 1.75 against the italics' 1.34; the reference italics 1.36-1.98), so a Regular pair goes by its sign. A hand value for both italics, about -30 to start from (the inks are 321 and 333 apart), set on a sheet with K v and K w, which leave the same white |
 
-Entries the rule makes needless (delete them when it is in the
-generators, if the review accepts its values): a before v (-44, the rule
--19), v y before c (-10, the rule 0), and ITALIC_UNKERNED's t t and t f
-(the rule drops them by sign).
+Deleted when the rule went in (2026-11-12), as it makes them needless: a
+before v (-44, the rule -19), v y before c (-10, the rule 0), and
+ITALIC_UNKERNED's t t and t f (the rule drops them by sign).
 
 Not carried into the Bold Italic, as today: the Bold's own exceptions
 (BOLD_KERNING's Latin: n t, a t, a s, a u, k t, z t, f s, S m, t r, a g,
 x t), made for the upright bold shapes. The prototype's table lists them
 with a value; the generator is to leave them out.
 
-**To put it into the generators** (Opus; after the sheet's review):
-make_italic.py where it now does `font.kerning.update(ITALIC_KERNING)`,
-on the finished outlines: the computed values over the Regular's for the
-pairs `compute()` returns with a value, then ITALIC_KERNING,
-ITALIC_UNKERNED, kern_clear as now. make_bold.py for the Bold Italic: in
-place of `round(v * KX)` for those pairs, computed from the Bold's
-kerning less BOLD_KERNING's keys; the Greek, Cyrillic and small-cap pairs
-keep their present path. Then `make regress`, a sheet, the shaping
-baselines with the report's digest, and a Latin pairs test per style
-like tests/test_greek_pairs.py.
+**In the generators** (2026-11-12). make_italic.py: after
+`install_italic_i`, the computed values over the Regular's (opened as saved,
+not the respace-undone copy the run reads its offsets from), then
+ITALIC_KERNING, ITALIC_UNKERNED, kern_clear. make_bold.py for the Bold
+Italic: the Italic's kerning scaled by KX as before, then at the same point
+the values computed against the Bold beside the Italic it reads
+(`sources/MyiaDidot-Bold.ufo`; check_reproducible.py's snapshot), leaving
+out BOLD_KERNING's keys, then ITALIC_BOLD_KERNING (moved there from after
+the scaling), kern_clear. So the Bold must be generated before the Bold
+Italic, as `make generate` does. Greek, Cyrillic and small-cap pairs keep
+their path; the small caps follow the capitals' new values (smallcaps.py).
+Pairs the rule does not compute (no rows) keep the Italic's, scaled.
+A pair the rule sets plain stays in the kerning at 0, and kern_clear's
+guard holds the guarded letters clear under a 0 as under a negative value:
+removed, the guard went with it, and the accented members its group pair
+had held met their neighbours (ᵬ's tilde 10-14 units into v w y, the Bold
+Italic's ổ 48 into ǰ, ồ ǰ and ᵬ ϳ within 8-18; found in the shaping
+report, 2026-11-12). Phase 1's sweep is what finds such pairs where no
+group pair was ever kerned.
 
 **Open.** The quantile and the depth are set by reasoning and by the
 count above, not tuned. Pairs that do not face each other (’ before s)

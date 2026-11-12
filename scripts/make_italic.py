@@ -2245,9 +2245,10 @@ def overshoot_scaled(g, height, scale):
             p.y = y
 
 
-# the Italic's own kerning over the Regular's (measured against italics):
-# v w y before round letters less tight (the Regular's -50 left them
-# crowded), and f, its top hanging over, closer to the letters with a stem
+# the Italic's own kerning, over the Latin pairs computed from the Regular's
+# (italic_kerning.py) and the Regular's others; the reviewed exceptions
+# (docs/claude/spacing.md, "What stays a hand exception"): f, its top
+# hanging over, closer to the letters with a stem
 ITALIC_KERNING = {
     # ƴ: its hook sets its right side; the diagonal under it stood far
     # from a, o, e (kerned until the hook comes near a's terminal)
@@ -2255,10 +2256,10 @@ ITALIC_KERNING = {
     ("uni01B4", "public.kern2.agrave"): -120,
     ("uni01B4", "public.kern2.c"): -120,
     ("uni01B4", "public.kern2.egrave"): -120,
-    ("public.kern1.v", "public.kern2.c"): -10, ("public.kern1.y", "public.kern2.c"): -10,
     ("f", "public.kern2.i"): -60, ("f", "public.kern2.u"): -60, ("f", "m"): -60, ("f", "p"): -60, ("f", "r"): -60,
-    # a's exit stroke rises to the right: before v w less kerning than the Regular's -124
-    ("public.kern1.a", "public.kern2.v"): -44,
+    # K y slightly tighter ("Kyoto", review of 2026-11-11): unkerned in the
+    # Regular, so the rule cannot give it; to be set on a sheet with K v K w
+    ("public.kern1.K", "public.kern2.y"): -30,
     # Greek (Old Standard's letters) against Greek references, as the
     # Italic's Latin sets them (scripts/quality/greek_pairs.py)
     ("public.kern1.chi", "public.kern2.epsilontonos"): -47,  # χε (the Regular's -158)
@@ -2289,12 +2290,10 @@ ITALIC_KERNING = {
     ("public.kern1.uni0433", "public.kern2.uni043B"): -72,  # гл (-156)
     ("public.kern1.uni0430", "public.kern2.uni0475"): -32,  # аѵ (-124)
 }
-# the Regular's pairs the Italic does without: tt tf were tightened for the
-# roman t (pair review); the italic t's frequent pairs were in range without;
-# Cyrillic pairs made for upright forms, in range unkerned in the Italic
-# (ду уд уе ул уѫ ъу ѫб оѵ; greek_pairs.py --script cyrillic)
-ITALIC_UNKERNED = {("t", "t"), ("t", "f"),
-                   ("uni0434", "public.kern2.uni0443"), ("public.kern1.uni0443", "public.kern2.uni0434"),
+# the Regular's pairs the Italic does without (the Latin ones the rule
+# drops itself): Cyrillic pairs made for upright forms, in range unkerned
+# in the Italic (ду уд уе ул уѫ ъу ѫб оѵ; greek_pairs.py --script cyrillic)
+ITALIC_UNKERNED = {("uni0434", "public.kern2.uni0443"), ("public.kern1.uni0443", "public.kern2.uni0434"),
                    ("public.kern1.uni0443", "public.kern2.uni0435"), ("public.kern1.uni0443", "public.kern2.uni043B"),
                    ("public.kern1.uni0443", "public.kern2.uni046B"), ("public.kern1.uni044A", "public.kern2.uni0443"),
                    ("public.kern1.uni046B", "public.kern2.uni0431"), ("public.kern1.uni043E", "public.kern2.uni0475"),
@@ -2796,10 +2795,7 @@ def main():
     failed += failed_late
     horn_stage(font, kept)
     from italic_ligatures import NAMES as LIGATURE_NAMES
-    font.kerning.update(ITALIC_KERNING)
-    for pair in ITALIC_UNKERNED:
-        font.kerning.pop(pair, None)
-    still = sorted(g.name for g in font if g.lib.get(SOURCE_KEY) == "sloped roman"
+    still =sorted(g.name for g in font if g.lib.get(SOURCE_KEY) == "sloped roman"
                    and g.name not in LIGATURE_NAMES)
 
     # aliases (one letter, unmoved: Cyrillic Е is E) show the Italic letter:
@@ -2931,6 +2927,15 @@ def main():
     from italic_i import install as install_italic_i
 
     install_italic_i(font)
+    # the Latin pairs from the white the finished italic shapes leave
+    # (italic_kerning.py, docs/claude/spacing.md), then the reviewed exceptions
+    from italic_kerning import apply as italic_kerning
+
+    # against the Regular as saved (the one above has respace undone)
+    kerned = italic_kerning(ufoLib2.Font.open(args.regular), font)
+    font.kerning.update(ITALIC_KERNING)
+    for pair in ITALIC_UNKERNED:
+        font.kerning.pop(pair, None)
     kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.italic), plain=ROUND_PLAIN)
     # the accented small caps and the smcp/c2sc features, from the new drafts
@@ -2938,7 +2943,7 @@ def main():
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "
           f"{upright_signs} signs upright, {len(derived)} derived, {len(figures)} figures, "
           f"{len(small_caps)} small caps drafted, {len(LIGATURE_NAMES)} italic ligatures built, {rebuilt} composites rebuilt, "
-          f"{len(cleaned)} cleaned, "
+          f"{len(cleaned)} cleaned, {kerned[0]} Latin pairs computed ({kerned[1]} set plain, at 0), "
           f"{len(anchored)} given the Regular's anchors they lacked; "
           f"{len(still)} still sloped roman (of {kept_roman}); Greek capitals' marks nearer: "
           + " ".join(f"{n} {d}" for n, d in greek_shift.items()))
