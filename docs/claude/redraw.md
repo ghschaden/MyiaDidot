@@ -484,6 +484,118 @@ The lesson for the next batch: run `make test` on the first generated
 state, before the second sheet is made, and sort the failures like
 this; the sheet then shows what the mended generators give.
 
+## After the capitals' batch of 2026-11-11: what the first run found
+
+A-Z fitted, all 26 candidates, approved on
+`proofs/italic-redraw-caps-2026-11-11.pdf`; 23 stay installed. What the
+first `make generate` and its sweep showed, before any test was read:
+
+- **FontForge's small caps follow a capital's nodes, not its shape.** 65
+  stored drafts were made anew from capitals that had moved by 1-2 units
+  and came out otherwise: e.sc 28 wider (E's arms), l.sc t.sc f.sc 12-14
+  wider, d.sc's bowl 46 units off, 323 flags in the Italic's sweep.
+  Mended in the generators: `make generate KEEP_DRAFTS=1`
+  (`make_italic.py --keep-drafts`, `fontforge_inputs.drafts(keep=True)`)
+  keeps the stored drafts and records them as made from the capitals as
+  they are now; `make reproduce` then agrees without the switch. Step 7
+  for a batch with capitals in it: put `sources/drafts/` back as
+  committed if a run without the switch has already drafted, then
+  generate with it. Never for a capital given another shape. Flags after
+  it: 82.
+- **I is not redrawn.** `italic_i.install` puts the Italic's I in at the
+  very end (its stem 165, an exception to the capitals' 180-184); until
+  then the run holds Old Standard's I, and that one is read as the
+  capitals' stem: `derive.ball_for` (the balls of the curls on Ɓ Ɗ Ƥ Ɦ Ʋ
+  Ƙ Ƴ: 93.7, from the finished I 85.8, the ball 12 units smaller) and
+  `greek_cap_room` (Ί and its kind 7 narrower: the finished I stands 7
+  further right). Marked drawn, the finished I is there from the start.
+  Its redraw gave the same nodes anyway: left as it was. The same
+  holds for every letter a late pass installs (`TARGET_SOURCES` in
+  italic_contours.py, italic_i.py): look there before a batch.
+- **O and Q are not redrawn.** Within the gate (2.8 units), the fit took
+  3 units off O's stem at mid height (200.0 -> 197.0: Old Standard's
+  flank swells there, two curves a side do not hold it), and O is the
+  measure of every enlarged letter: about 40 followed, and Ɩ's tail came
+  120 units shorter (its hairline thinned past nothing). Held to the stem
+  (tolerance 0.7) O needs 14 nodes for the 10 it has, Q 31 for 27: the
+  shape does not want the structure. For the designer: O and Q want
+  drawing, not fitting. The gate now needs a line for it: a measure
+  letter's stroke (`derive.strokes`) within half a unit (not built).
+- The Bold Italic moves more than the Italic, as in the pilot (X 32
+  units at its crossing, S 24, G 22): on the second sheet.
+
+`make test` on the third run: 16 failing (`build/redraw/caps3-failures.txt`);
+after the mends 11, all of the kind accepted with their reports once the
+sheets are seen (test_accepted, test_quality, golden and digest, lookups
+of both italics; the Bold Italic's hint zone of Ǥ, 4 units with G's
+foot). The faults, 2026-11-12:
+
+- **A redrawn letter is not hand-drawn in the Bold Italic.** The
+  Italic's mark `drawn` comes over with the glyph's lib, and the
+  finishing passes left the stroked letter alone: X's stem stepped 3.3
+  units in at its serif. `stem_joins.hand_drawn`: with redraw.py's record
+  beside the mark, the bold styles finish the letter like any other
+  (stem_joins, bowl_counters). Side effect, on the sheet: P's bowl redone
+  (Ρ Р Ṕ with it), half a unit further from what it was.
+- **Thresholds a unit from tipping.** ʁ is r.sc flipped but for its
+  bowl's inside (redone in the Italic; r.sc's stands as drafted): 0.985
+  of r.sc's spans its own, 0.978 once r.sc moved a unit, under
+  follow_bases' 0.98, so the Bold Italic's ʁ was emboldened whole. Its
+  own threshold (`make_bold.MOVED_EXACT_FOR`). ө.sc's bar on o.sc: the
+  union failed with all four nudges once o.sc stood a unit wider; six
+  more tried after them (both ways at once, 0.4 up and down), which only
+  a letter that failed the first four reaches.
+- **Fixtures and declared changes**: l_belt's Ɬ fixture recorded again
+  from the outline `l_belt.finish` is given (L redrawn; the probe: a
+  wrapper that runs make_italic.py with `l_belt.finish` wrapped to write
+  the glyph out first, the Italic the same after it); test_stroke_gate's
+  Ɯ 4 wider on the right with U, which it twins (`WIDTHS`, `BEARINGS`,
+  new); the lint line `uni0198 step 1` gone.
+
+The second sheets, seen 2026-11-12: the 23 Bold Italic capitals accepted
+as they are; of the followers, these mended (the rest approved). Most
+were not the redraw's doing: the sheet showed at 144 pt what had stood so
+before, a unit of movement only tipped it.
+
+- **g.sc in the Bold Italic "too fat"**: the Italic's g.sc is G made small
+  (ITALIC_SC_RECIPES), so it took the redrawn G's nodes; stroked from
+  those, the counter's right side was not moved at all and the spur stood
+  303 wide for 246. Made from the Bold Italic's G instead (as n.sc is) it
+  stood 293: the capital's spur is as heavy as its bowl, the small cap's
+  was not. The former outline put back and marked drawn. The stroker's
+  fault on that outline is not found.
+- **₵'s bump on C's back, its line bent 15 units**: it was emboldened
+  whole (the rounder way). Its own recipe on the Bold Italic's C now
+  (`ITALIC_BOLD_RECIPES`), with the bearings it had.
+- **₿**: the stubs only outside the B (they stood 65 units into the
+  counters under the Italic B's thin bars), nearer each other (Italic 116
+  apart for 176, Bold Italic 104 for 154), the Bold Italic's on its own B.
+  The Regular's and Bold's are as they were.
+- **ы.sc's parts touching, psi.sc's serif on its arms** (Bold Italic):
+  `scripts/sc_clearance.py`, a finishing pass; 45 units of white each
+  (`tests/test_sc_clearance.py`).
+- **у.sc's hook** (Bold Italic): the ball 0.88 of its size, 72 units from
+  the stem for 26; by hand, marked drawn.
+
+Not done, each wants candidates on a sheet as ⱳ's arm had: the arms into
+the hooks of Ƙ Ƴ (the Bold Italic's curl begins 24 units right of the
+arm's upper edge and 14 degrees steeper: a step and a bend at the cut);
+Ʋ's thickening where the curl leaves the stem (two short curves at
+1410,1195 and 1537,1190); Λ's left leg (which glyph and where: asked).
+
+Open, for the designer and the next batch:
+
+- Small caps moved a unit or two though their drafts were kept (o.sc a
+  unit wider, c.sc 2, g.sc 3.7), and Ἐ Ἠ's room a unit more than Ἰ's
+  (the lookups' failure: Epsilon Eta 187, Iota 186, one value before).
+  `as_capitals` weighs each small cap by its capital's main stroke (C
+  195.9 -> 196.6, G 199.9 -> 198.5, S 182.9 -> 183.8, R, B, D, P by half
+  a unit); o.sc, whose O did not move, is not explained by it: not
+  traced. H's and O's measures are as before.
+- The Bold Italic's optical fit answers a small move with a larger one:
+  R 8 wider (1495 -> 1503), U 4 (its outline moved 2.7), the others a
+  unit or two.
+
 ## Hand back to the designer rather than fit
 
 - A glyph with components is refused: redraw its parts (i j: `dotlessi`

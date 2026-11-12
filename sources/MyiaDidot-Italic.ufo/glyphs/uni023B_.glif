@@ -4,66 +4,69 @@
 	<advance width="1295"/>
 	<outline>
 		<contour>
-			<point x="167" y="489" type="curve" smooth="yes"/>
-			<point x="166" y="948"/>
-			<point x="546" y="1473"/>
-			<point x="922" y="1473" type="curve" smooth="yes"/>
-			<point x="1021" y="1473"/>
-			<point x="1089" y="1425"/>
+			<point x="166" y="489" type="curve" smooth="yes"/>
+			<point x="166" y="772"/>
+			<point x="305" y="1071"/>
+			<point x="503" y="1268" type="curve" smooth="yes"/>
+			<point x="615" y="1379"/>
+			<point x="760" y="1473"/>
+			<point x="923" y="1473" type="curve" smooth="yes"/>
+			<point x="1007" y="1473"/>
+			<point x="1070" y="1446"/>
 			<point x="1129" y="1388" type="curve"/>
 			<point x="1256" y="1593" type="line"/>
 			<point x="1322" y="1567" type="line"/>
 			<point x="1178" y="1335" type="line"/>
 			<point x="1178" y="1335" type="line"/>
-			<point x="1202" y="1309"/>
-			<point x="1214" y="1299"/>
-			<point x="1236" y="1299" type="curve" smooth="yes"/>
-			<point x="1293" y="1299"/>
-			<point x="1319" y="1413"/>
+			<point x="1193" y="1319"/>
+			<point x="1212" y="1299"/>
+			<point x="1235" y="1299" type="curve" smooth="yes"/>
+			<point x="1292" y="1299"/>
+			<point x="1319" y="1412"/>
 			<point x="1324" y="1455" type="curve"/>
 			<point x="1370" y="1455" type="line"/>
 			<point x="1243" y="806" type="line"/>
 			<point x="1198" y="806" type="line"/>
-			<point x="1199" y="845"/>
-			<point x="1200" y="884"/>
-			<point x="1199" y="933" type="curve" smooth="yes"/>
-			<point x="1199" y="988"/>
-			<point x="1190" y="1151"/>
+			<point x="1204" y="931"/>
+			<point x="1202" y="1129"/>
 			<point x="1133" y="1263" type="curve"/>
 			<point x="419" y="111" type="line"/>
-			<point x="473" y="38"/>
-			<point x="551" y="27"/>
-			<point x="619" y="27" type="curve" smooth="yes"/>
-			<point x="851" y="27"/>
-			<point x="1053" y="244"/>
+			<point x="459" y="59"/>
+			<point x="521" y="27"/>
+			<point x="620" y="27" type="curve" smooth="yes"/>
+			<point x="867" y="27"/>
+			<point x="1058" y="259"/>
 			<point x="1134" y="469" type="curve"/>
 			<point x="1196" y="448" type="line"/>
-			<point x="1113" y="205"/>
-			<point x="918" y="-35"/>
-			<point x="585" y="-35" type="curve" smooth="yes"/>
-			<point x="515" y="-35"/>
-			<point x="438" y="-14"/>
-			<point x="371" y="32" type="curve"/>
-			<point x="269" y="-133" type="line"/>
+			<point x="1102" y="172"/>
+			<point x="890" y="-35"/>
+			<point x="586" y="-35" type="curve" smooth="yes"/>
+			<point x="511" y="-35"/>
+			<point x="440" y="-20"/>
+			<point x="369" y="31" type="curve"/>
+			<point x="268" y="-133" type="line"/>
 			<point x="203" y="-107" type="line"/>
-			<point x="317" y="76" type="line"/>
-			<point x="229" y="159"/>
-			<point x="166" y="294"/>
+			<point x="315" y="75" type="line"/>
+			<point x="315" y="77"/>
+			<point x="313" y="78"/>
+			<point x="312" y="79" type="curve"/>
+			<point x="202" y="188"/>
+			<point x="166" y="340"/>
 		</contour>
 		<contour>
-			<point x="383" y="183" type="curve"/>
+			<point x="382" y="183" type="curve"/>
 			<point x="1090" y="1326" type="line"/>
-			<point x="1041" y="1380"/>
-			<point x="982" y="1404"/>
-			<point x="914" y="1404" type="curve" smooth="yes"/>
-			<point x="766" y="1404"/>
-			<point x="641" y="1322"/>
+			<point x="1049" y="1374"/>
+			<point x="992" y="1404"/>
+			<point x="915" y="1404" type="curve" smooth="yes"/>
+			<point x="715" y="1404"/>
+			<point x="593" y="1223"/>
 			<point x="511" y="1056" type="curve" smooth="yes"/>
-			<point x="430" y="890"/>
-			<point x="357" y="640"/>
+			<point x="410" y="851"/>
+			<point x="356" y="605"/>
 			<point x="356" y="380" type="curve" smooth="yes"/>
-			<point x="356" y="296"/>
-			<point x="366" y="232"/>
+			<point x="356" y="309"/>
+			<point x="361" y="240"/>
 		</contour>
 	</outline>
 	<anchor name="DotBelow" x="584" y="-20"/>
@@ -75,11 +78,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-05</string>
+				<string>2026-11-12</string>
 				<key>glyph</key>
-				<string>1b09a0606993</string>
+				<string>b345219a9c04</string>
 				<key>review</key>
-				<string>drafts-review-Italic.pdf</string>
+				<string>docs/claude/redraw.md</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

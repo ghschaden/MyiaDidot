@@ -18,6 +18,7 @@ input changed:
 import hashlib
 import shutil
 import subprocess
+import sys
 import tempfile
 import unicodedata
 from pathlib import Path
@@ -88,11 +89,18 @@ def input_key(glyphs, params):
     return h.hexdigest()
 
 
-def drafts(up, height, stem, redraft=False):
+def drafts(up, height, stem, redraft=False, keep=False):
     """{small cap name: draft} for up (the Italic in the upright frame):
     the stored drafts whose input is unchanged, the others drafted anew by
     FontForge and stored; other small caps up has, as they are (FontForge
-    passes them through as well)."""
+    passes them through as well).
+    keep: the stored drafts stay though their capitals changed, and are
+    recorded as made from the capitals as they are now. For the run after
+    capitals were redrawn onto new nodes (redraw.py: the shape kept within
+    its gate): FontForge's small caps follow a capital's nodes, not its
+    shape, and came 28 units wider (e.sc) or 46 units off in a bowl (d.sc)
+    from capitals that had moved by 1-2 (the Italic's A-Z, 2026-11-11).
+    Never for a capital given another shape."""
     import smallcaps as sc
 
     b = sc.Builder(up)
@@ -104,7 +112,13 @@ def drafts(up, height, stem, redraft=False):
     keys = {name: input_key([up[c] for c in caps], params) for name, caps in wanted.items()}
     # each name's input, also where FontForge made no draft of it
     stored = store.lib.get(INPUT_KEY, {})
-    stale = [name for name in wanted if redraft or stored.get(name) != keys[name]]
+    changed = [name for name in wanted if redraft or stored.get(name) != keys[name]]
+    # kept: only what has a stored input (a draft, or FontForge made none of it)
+    held = [name for name in changed if keep and not redraft and name in stored]
+    stale = [name for name in changed if name not in held]
+    if held:
+        sys.stderr.write(f"{len(held)} small-cap drafts kept though their capitals changed (--keep-drafts): "
+                         + " ".join(sorted(held)) + "\n")
     if stale:
         if not shutil.which("fontforge"):
             names = " ".join(stale[:12]) + (" ..." if len(stale) > 12 else "")
@@ -132,6 +146,9 @@ def drafts(up, height, stem, redraft=False):
         store.lib[CONVERTED_KEY] = {"fontforge": fontforge_version()}
         store.glyphOrder = sorted(store.keys())
         DRAFTS_UFO.parent.mkdir(parents=True, exist_ok=True)
+        store.save(DRAFTS_UFO, overwrite=True)
+    elif held:
+        store.lib[INPUT_KEY] = {name: keys[name] for name in sorted(wanted)}
         store.save(DRAFTS_UFO, overwrite=True)
     out = {g.name: g for g in up if g.name.endswith(".sc")}
     out.update({name: store[name] for name in wanted if name in store})

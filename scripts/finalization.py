@@ -55,6 +55,10 @@ PASSES = (
     # the designer, 2026-11-10: a bowl's inside two curves (D Ь Ы and
     # their small caps), in the styles made from Old Standard's italic
     Pass("bowl_counters", "finish", ITALIC, ("finished outlines", "mended stem joins"), ("bowls' insides",)),
+    # the designer, 2026-11-12: ы.sc's two parts and psi.sc's serif and arms do not touch
+    # the designer, 2026-11-12: Ʌ's thin leg straight down to its foot, as Λ's
+    Pass("turned_v", "finish", ITALIC, ("final V", "uni0245 turned from it"), ("uni0245",)),
+    Pass("sc_clearance", "finish", BI, ("finished small caps",), ("uni044B.sc", "psi.sc")),
 )
 
 

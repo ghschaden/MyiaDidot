@@ -118,6 +118,21 @@ def mend(glyph, reach=0):
     return [f for f in done if (f[0], f[1]) not in left]
 
 
+def hand_drawn(font, glyph):
+    """A glyph the finishing passes leave: drawn by hand in this style. The
+    Italic's mark comes into the bold styles with the glyph's lib and says
+    there how the Italic's letter was made: a letter redrawn onto new nodes
+    (redraw.py's record beside it) is stroked anew in the Bold Italic like
+    any other and finished like any other (X's stem stepped 3.3 units in
+    at its serif, unmended, after the capitals' redraw of 2026-11-11)."""
+    if "org.myiadidot.drawn" in glyph.lib:
+        return True
+    if glyph.lib.get("org.myiadidot.italicSource") != "drawn":
+        return False
+    bold = (font.info.openTypeOS2WeightClass or 400) >= 600
+    return not (bold and "org.myiadidot.redrawn" in glyph.lib)
+
+
 def finish(font):
     """finalization, last: every stem of the generated style into its
     serif without a step. Glyphs drawn by hand are left (the Italic's
@@ -125,8 +140,7 @@ def finish(font):
     passes): those are mended where they are drawn."""
     mended = {}
     for glyph in font:
-        if (not glyph.contours or glyph.lib.get("org.myiadidot.italicSource") == "drawn"
-                or "org.myiadidot.drawn" in glyph.lib):
+        if not glyph.contours or hand_drawn(font, glyph):
             continue
         done = mend(glyph)
         if done:

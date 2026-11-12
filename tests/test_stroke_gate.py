@@ -35,8 +35,12 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # their Italic letters redrawn onto clean nodes (2026-11-11): y and what is
 # made of it (ʎ ƴ) a unit narrower, y's anchors a unit left (its dot below
 # 6 more, y_dot on the new outline), u's too; ƴ, derived from the redrawn
-# y, takes y's dot below beside the descender (436 -> 957)
-WIDTHS = {"uni019C": (2446, 2410), "y": (1070, 1069), "uni028E": (1070, 1069), "uni01B4": (1442, 1441)}
+# y, takes y's dot below beside the descender (436 -> 957); the capitals
+# redrawn (2026-11-11): Ɯ 4 wider with U, which it twins (U 1603 -> 1607)
+WIDTHS = {"uni019C": (2446, 2414), "y": (1070, 1069), "uni028E": (1070, 1069), "uni01B4": (1442, 1441)}
+# side bearings moved (left, right): Ɯ's right 4 wider, as U's in the Bold
+# Italic's optical fit after the capitals' redraw (U -224 -> -219)
+BEARINGS = {"uni019C": (0, 4)}
 _ANCHOR_NAMES = ("Top", "Bottom", "DotBelow", "Grave", "Acute", "Horn", "Dotaccent", "Ogonek", "Hook")
 ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
            "u": {a: (-1, 0) for a in _ANCHOR_NAMES},
@@ -245,7 +249,8 @@ def test_finished_letter_keeps_what_it_was(bold_italic, name):
     was = {a.name: (a.x + moved.get(a.name, (0, 0))[0], a.y + moved.get(a.name, (0, 0))[1]) for a in old.anchors}
     assert was == {a.name: (a.x, a.y) for a in new.anchors}
     bo, bn = old.getBounds(), new.getBounds()
-    assert abs(bo.xMin - bn.xMin) <= 1 and abs((old.width - bo.xMax) - (new.width - bn.xMax)) <= 1
+    left, right = BEARINGS.get(name, (0, 0))
+    assert abs(bn.xMin - bo.xMin - left) <= 1 and abs((new.width - bn.xMax) - (old.width - bo.xMax) - right) <= 1
     assert (bo.yMin, bo.yMax) == pytest.approx((bn.yMin, bn.yMax), abs=1)
     rec = RecordingPen()
     new.draw(rec)

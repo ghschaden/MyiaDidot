@@ -1,6 +1,7 @@
 # Known scripts/quality/hint_zones.py findings (interpreter glyph:zone sizes); fixing one = deleting its line.
-v35 G:bot-35 4                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
-v35 uni0193:bot-35 4             # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of 
+v35 G:bot-35 4                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
+v35 uni0193:bot-35 4             # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
+v35 uni01E4:bot-35 4             # Ǥ's foot with the redrawn G
 v35 uni0404:bot-35 4             # current hints accepted 2026-10-26: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32)
 v35 uni0417:bot-35 4             # current hints accepted 2026-10-26: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32)
 v35 uni042D:bot-35 4             # current hints accepted 2026-10-26: bottom 0 vs O -0.5 px at 29–32 ppem (Italic G family 30–32)

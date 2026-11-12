@@ -91,6 +91,17 @@ ITALIC_BOLD_HEAVIER = {"z": 1.15,
 # (follow_bases): the same Italic strokes give the same base, the join
 # tangles where they part
 ITALIC_BOLD_UNJOINED = {"uni2C72": "Ⱳ: the curl's join tangled (53 nodes)"}
+# a turned, mirrored or flipped letter is its base moved when this share of
+# the base's spans is its own (follow_bases); for one letter, less: the
+# Italic's ʁ has its bowl's inside redone (bowl_counters), r.sc's stands as
+# drafted (the slant makes the two no mirror of each other), 6 to 10 units
+# apart over 50 units of height: 0.985 until r.sc moved a unit with R's
+# redraw (2026-11-11), 0.978 since, and ʁ was left emboldened whole
+MOVED_EXACT = 0.98
+# Ʌ: V turned, but for its thin leg's inner edge by the foot, drawn straight
+# as Λ's in both italics (turned_v.py, 2026-11-12: up to 60 units over 230
+# of its height)
+MOVED_EXACT_FOR = {"uni0281": 0.97, "uni0245": 0.85}
 # the Italic's joins faired (make_italic.ITALIC_JOINS) in the bands of the
 # Bold Italic's own recipes: ɰ's seam where ɥ's descender meets ɯ's last
 # stem (the cut's top, 300); the Italic's band (250-350) also took ɯ's own
@@ -258,6 +269,11 @@ ITALIC_BOLD_REBUILD = {
     "uni20AE": "₮: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the bars hidden left of the stem",
     "uni0436.loclBGR": "ж.loclBGR: its own recipe (ITALIC_BOLD_RECIPES); the Italic's left a notch where l meets the stem",
     "uni20B4": "₴: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the bars hidden left of the S",
+    # ₵ ₿ (2026-11-12, on the sheet after the capitals' redraw): emboldened
+    # whole (₵ the rounder way), ₵'s line bent 15 units and C's back got a
+    # bump; ₿'s stubs grew into the stem's bracket and the bars
+    "uni20B5": "₵: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the line bent and C's back bumped",
+    "uni20BF": "₿: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the stubs ran into the stem and the bars",
 }
 # recipes drawn at the Bold's weight (in the Bold Italic, in its upright
 # frame), where the source's recipe scaled up does not fit (a hook's or a
@@ -530,6 +546,14 @@ ITALIC_BOLD_RECIPES = {
     # standing out 150 a side at their middles, rising as the Regular's
     # (0.48), as heavy as emboldened (104 across)
     "₮": ("lines", "T", ("c", 104, [((380, 354), (990, 646)), ((380, 674), (990, 966))])),
+    # ₵: the line 98 across as ₲'s comes out, straight, its middle 64 right
+    # of the Bold Italic C's (138-1320 here), as the Italic's stands to its C
+    "₵": ("lines", "C", ("c", 98, [(744, -180, 842, 1640)])),
+    # ₿: the stubs 96 across as emboldened, 104 apart (were 154: "closer")
+    # and clear of the stem's bracket; only outside the B, 34 into its bars
+    # ("not impact the thickness of the outline of the B", 2026-11-12)
+    "₿": ("lines", "B", ("c", 96, [(636, 1400, 732, 1634), (836, 1400, 932, 1634),
+                                    (636, -200, 732, 34), (836, -200, 932, 34)])),
     # ₴: Ƨ (the Bold Italic's S mirrored) with its bars standing out on
     # both sides: the S's outer edges at the bars are 158 and 210 on the
     # left here, the bars stand out about 140-150 on both sides, 75 thick as
@@ -775,7 +799,6 @@ ITALIC_BOLD_ROUNDER = {
     "section": "§: kept the rounder way",
     "oneoldstyle": "oldstyle 1: kept the rounder way",
     "uni02B0": "ʰ: kept the rounder way",
-    "uni20B5": "₵: kept the rounder way",
 }
 # The reviewed body choices above must retain their previous rounder
 # optical-spacing reference; body weighting and spacing are independent.
@@ -902,6 +925,9 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
                        # Bulgarian ж origin one unit left; retain its reviewed
                        # ink/anchor position and advance.
                        "uni0436.loclBGR": (1, 0),
+                       # ₵ ₿ on the Bold Italic's C and B (ITALIC_BOLD_RECIPES, 2026-11-12):
+                       # the side bearings they had emboldened whole (10 and 261, 9 and 200)
+                       "uni20B5": (16, 3), "uni20BF": (16, 14),
                        # derived letters still set otherwise against their base than the
                        # references (derived_spacing.py BoldItalic, to the median; Ƴ Ƈ again for their own curls, 2026-10-27): ɖ Ƴ ƈ ɚ ҳ Қ Ƙ Җ ƥ җ Ҷ
                        "uni0256": (0, -140), "uni01B3": (0, 56), "uni0188": (0, -85), "uni0187": (0, 85), "uni025A": (0, -100),
@@ -2006,7 +2032,7 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             a, _, _, d, e, f = {"turn": (-1, 0, 0, -1, w, 2 * cy), "mirror": (-1, 0, 0, 1, w, 0),
                                 "flip": (1, 0, 0, -1, 0, 2 * cy)}[op]
             shares, _, _ = compare(Outline(source, base, (a, 0, -a * slant, d, e, f)), mine)
-            if shares["exact"] < 0.98:
+            if shares["exact"] < MOVED_EXACT_FOR.get(name, MOVED_EXACT):
                 whole[name] = f"{op}: not exactly its base so moved"
                 continue
             # the same move of the Bold base, in the upright frame the Italic
@@ -2053,7 +2079,10 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             # aside, either way (ǥ.sc's bar on g.sc, 2026-11-05: only to the
             # left), which parts the curves (rounded away on saving), else
             # the letter is left as emboldened
-            for nudge in (0, (0, -0.25), (0, 0.25), (0.25, 0), (-0.25, 0)):
+            # (ө.sc's bar on o.sc failed all four once o.sc stood a unit
+            # wider, 2026-11-11: then both ways at once, and a little further)
+            for nudge in (0, (0, -0.25), (0, 0.25), (0.25, 0), (-0.25, 0),
+                          (0.25, 0.25), (-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0, -0.4), (0, 0.4)):
                 b = pathops.simplify(placed)
                 if nudge:
                     b = pathops.Path()

@@ -838,6 +838,14 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # ₩: the bars from 20 to 20 past the uncrossed W's
                   # advance (redraw_w), as the Regular's across its W
                   "₩": ("lines", "W", ("c", 64, [(20, 528, 1807, 592), (20, 842, 1807, 906)])),
+                  # ₿: the Regular's stubs (538 and 778, from 1300 and to 120)
+                  # stood 65 units into the Italic B's counters under its
+                  # thinner bars and by the stem's bracket: only outside
+                  # the B, 30 into its bars, and nearer each other (116
+                  # apart for 176; "closer, higher, leave the B-form as
+                  # is", 2026-11-12)
+                  "₿": ("lines", "B", ("c", 64, [(568, 1404, 632, 1634), (748, 1404, 812, 1634),
+                                                  (568, -200, 632, 30), (748, -200, 812, 30)])),
                   # ⱳ.sc: w.sc (made of v.sc as W of V) with Ⱳ's curl at
                   # the small caps' 0.725, the cut between the middle serif
                   # and the right one (all of it); enlarged from that Ⱳ, its
@@ -2087,7 +2095,7 @@ def figures_stage(font, regular):
     return made
 
 
-def smallcaps_stage(font, later=(), redraft=False):
+def smallcaps_stage(font, later=(), redraft=False, keep=False):
     """Small caps still sloped roman: FontForge's drafts of the Italic's
     capitals (stored: fontforge_inputs.drafts), imported (with their
     anchors) in the upright frame; not those derive_stage makes from them
@@ -2111,7 +2119,7 @@ def smallcaps_stage(font, later=(), redraft=False):
     # lighter than their kind)
     lc, uc = lc[1] - lc[0] - WEIGHT, uc[1] - uc[0] - CAP_WEIGHT
     stem = lc + (height - XH) / (CAP - XH) * (uc - lc)
-    drafts = fontforge_drafts(up, height, f"{stem:.0f}/{uc:.0f}", redraft=redraft)
+    drafts = fontforge_drafts(up, height, f"{stem:.0f}/{uc:.0f}", redraft=redraft, keep=keep)
     sc.configure(height)
     log = []
     sc.import_drafts(up, drafts, log, redraft=True)
@@ -2609,6 +2617,9 @@ def main():
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("italic", nargs="?", default=str(ROOT / "sources/MyiaDidot-Italic.ufo"))
     ap.add_argument("--redraft", action="store_true", help="draft every small cap anew with FontForge")
+    ap.add_argument("--keep-drafts", action="store_true",
+                    help="keep the stored small-cap drafts though their capitals changed "
+                         "(after capitals were redrawn onto new nodes: fontforge_inputs.drafts)")
     args = ap.parse_args()
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
@@ -2762,7 +2773,7 @@ def main():
             upright_signs += 1
     derived, failed, later = derive_stage(font, regular, kept=kept)
     figures = figures_stage(font, regular)
-    small_caps = smallcaps_stage(font, later, redraft=args.redraft)
+    small_caps = smallcaps_stage(font, later, redraft=args.redraft, keep=args.keep_drafts)
     if "w.sc" in small_caps:
         redraw_w(font, "w.sc", "v.sc")  # as W of V
     # a small cap the Regular lacks (ʀ.sc, drafted from the Italic's own Ʀ):

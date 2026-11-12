@@ -7,53 +7,50 @@
 			<point x="194" y="0" type="line"/>
 			<point x="210" y="62" type="line"/>
 			<point x="408" y="62" type="line" smooth="yes"/>
-			<point x="444" y="62"/>
-			<point x="463" y="78"/>
+			<point x="443" y="62"/>
+			<point x="464" y="79"/>
 			<point x="473" y="112" type="curve" smooth="yes"/>
-			<point x="532" y="328" type="line"/>
-			<point x="312" y="328" type="line"/>
-			<point x="329" y="392" type="line"/>
+			<point x="533" y="328" type="line"/>
+			<point x="313" y="328" type="line"/>
+			<point x="330" y="392" type="line"/>
 			<point x="550" y="392" type="line"/>
-			<point x="611" y="616" type="line"/>
-			<point x="455" y="1271" type="line"/>
-			<point x="434" y="1342"/>
-			<point x="410" y="1365"/>
+			<point x="612" y="616" type="line"/>
+			<point x="455" y="1271" type="line" smooth="yes"/>
+			<point x="442" y="1326"/>
+			<point x="416" y="1365"/>
 			<point x="356" y="1365" type="curve" smooth="yes"/>
 			<point x="210" y="1365" type="line"/>
 			<point x="226" y="1434" type="line"/>
-			<point x="852" y="1434" type="line"/>
-			<point x="836" y="1365" type="line"/>
+			<point x="851" y="1434" type="line"/>
+			<point x="835" y="1365" type="line"/>
 			<point x="719" y="1365" type="line" smooth="yes"/>
-			<point x="651" y="1365"/>
-			<point x="618" y="1309"/>
-			<point x="635" y="1264" type="curve"/>
+			<point x="662" y="1365"/>
+			<point x="621" y="1326"/>
+			<point x="635" y="1264" type="curve" smooth="yes"/>
 			<point x="766" y="688" type="line"/>
-			<point x="1107" y="1092" type="line"/>
-			<point x="1108" y="1095"/>
-			<point x="1111" y="1097"/>
-			<point x="1113" y="1100" type="curve"/>
-			<point x="1151" y="1147"/>
-			<point x="1205" y="1216"/>
+			<point x="1107" y="1092" type="line" smooth="yes"/>
+			<point x="1150" y="1143"/>
+			<point x="1206" y="1212"/>
 			<point x="1206" y="1281" type="curve" smooth="yes"/>
-			<point x="1206" y="1324"/>
-			<point x="1188" y="1365"/>
+			<point x="1206" y="1339"/>
+			<point x="1168" y="1365"/>
 			<point x="1111" y="1365" type="curve" smooth="yes"/>
-			<point x="1026" y="1365" type="line"/>
-			<point x="1042" y="1434" type="line"/>
-			<point x="1628" y="1434" type="line"/>
+			<point x="1025" y="1365" type="line"/>
+			<point x="1041" y="1434" type="line"/>
+			<point x="1627" y="1434" type="line"/>
 			<point x="1612" y="1365" type="line"/>
-			<point x="1519" y="1365" type="line" smooth="yes"/>
+			<point x="1518" y="1365" type="line" smooth="yes"/>
 			<point x="1418" y="1365"/>
-			<point x="1336" y="1277"/>
-			<point x="1283" y="1208" type="curve"/>
+			<point x="1343" y="1278"/>
+			<point x="1283" y="1208" type="curve" smooth="yes"/>
 			<point x="798" y="638" type="line"/>
 			<point x="730" y="392" type="line"/>
 			<point x="950" y="392" type="line"/>
 			<point x="933" y="328" type="line"/>
 			<point x="713" y="328" type="line"/>
-			<point x="653" y="112" type="line"/>
-			<point x="641" y="78"/>
-			<point x="653" y="62"/>
+			<point x="653" y="112" type="line" smooth="yes"/>
+			<point x="644" y="79"/>
+			<point x="649" y="62"/>
 			<point x="689" y="62" type="curve" smooth="yes"/>
 			<point x="887" y="62" type="line"/>
 			<point x="871" y="0" type="line"/>
@@ -67,11 +64,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-05</string>
+				<string>2026-11-12</string>
 				<key>glyph</key>
-				<string>07dad1d0d1d7</string>
+				<string>d312e51a0ed4</string>
 				<key>review</key>
-				<string>drafts-review-Italic.pdf</string>
+				<string>docs/claude/redraw.md</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

@@ -154,8 +154,17 @@ the other models. One item per session.
       descender as y's; 73 Italic and 76 Bold Italic glyphs accepted as
       followers of the redrawn letters without a sheet of their own (lists
       in the commit); the Bold Italic's ɱ's two doubled nodes (older).
-      Next: A-Z, by redraw.md, with `make test` on the first generated
-      state before the second sheet.
+      Second batch (A-Z) done 2026-11-12 and committed: 23 capitals
+      redrawn (I O Q not: redraw.md), ⱳ's arm, the Bold Italic's capitals
+      accepted, the followers' faults mended (redraw.md, "The second
+      sheets, seen 2026-11-12"). Open from it, for the designer: the
+      mends as rendered (proofs/bold-italic-followers-mended-2026-11-12.pdf,
+      proofs/italic-followers-mended-2026-11-12.pdf: g.sc ǥ.sc ₵ ₿ ы.sc
+      psi.sc у.sc Ʌ; their accepted marks withdrawn until seen); O and Q
+      want drawing.
+      Next, as its own job with candidates on a sheet as ⱳ's arm had: the
+      arms into the hooks of the Bold Italic's Ƙ Ƴ (and the other hooks
+      with an arm), Ʋ's thickening where the curl leaves the stem.
 
 Budget (2026-11-11): F1 to F3 are done; F1 took more than half of what
 Fable had then, mostly in its review rounds. The limits now:

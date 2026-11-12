@@ -234,7 +234,7 @@ strokes:
 # each; the Italic's report after the Bold's), then the Bold Italic
 generate:
 	@mkdir -p build
-	$(PY) scripts/make_italic.py > build/make-italic.log 2>&1 & italic=$$!; \
+	$(PY) scripts/make_italic.py $(if $(KEEP_DRAFTS),--keep-drafts) > build/make-italic.log 2>&1 & italic=$$!; \
 	$(PY) scripts/make_bold.py && $(PY) scripts/smallcaps.py sources/$(FAMILY)-Bold.ufo; bold=$$?; \
 	wait $$italic; status=$$?; cat build/make-italic.log; \
 	[ $$status -eq 0 ] || { echo "make_italic.py failed"; exit 1; }; [ $$bold -eq 0 ]

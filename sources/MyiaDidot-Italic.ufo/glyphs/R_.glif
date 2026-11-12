@@ -7,51 +7,50 @@
 			<point x="-36" y="0" type="line"/>
 			<point x="-20" y="62" type="line"/>
 			<point x="131" y="62" type="line" smooth="yes"/>
-			<point x="168" y="62"/>
-			<point x="188" y="79"/>
+			<point x="167" y="62"/>
+			<point x="189" y="80"/>
 			<point x="198" y="114" type="curve" smooth="yes"/>
 			<point x="517" y="1307" type="line" smooth="yes"/>
-			<point x="527" y="1350"/>
-			<point x="515" y="1365"/>
+			<point x="527" y="1344"/>
+			<point x="518" y="1365"/>
 			<point x="479" y="1365" type="curve" smooth="yes"/>
 			<point x="329" y="1365" type="line"/>
 			<point x="344" y="1434" type="line"/>
 			<point x="960" y="1434" type="line" smooth="yes"/>
-			<point x="1182" y="1434"/>
-			<point x="1315" y="1318"/>
+			<point x="1191" y="1434"/>
+			<point x="1315" y="1306"/>
 			<point x="1315" y="1086" type="curve" smooth="yes"/>
-			<point x="1315" y="897"/>
-			<point x="1128" y="750"/>
-			<point x="934" y="715" type="curve"/>
-			<point x="932" y="708" type="line"/>
-			<point x="994" y="679"/>
-			<point x="1113" y="611"/>
+			<point x="1315" y="872"/>
+			<point x="1099" y="744"/>
+			<point x="933" y="712" type="curve"/>
+			<point x="1049" y="649"/>
+			<point x="1113" y="566"/>
 			<point x="1113" y="426" type="curve" smooth="yes"/>
-			<point x="1113" y="335"/>
-			<point x="1069" y="213"/>
+			<point x="1113" y="310"/>
+			<point x="1069" y="232"/>
 			<point x="1069" y="140" type="curve" smooth="yes"/>
-			<point x="1069" y="109"/>
-			<point x="1083" y="78"/>
+			<point x="1069" y="117"/>
+			<point x="1075" y="78"/>
 			<point x="1124" y="78" type="curve" smooth="yes"/>
-			<point x="1235" y="78"/>
-			<point x="1285" y="233"/>
+			<point x="1234" y="78"/>
+			<point x="1284" y="229"/>
 			<point x="1309" y="314" type="curve"/>
 			<point x="1358" y="300" type="line"/>
-			<point x="1330" y="207"/>
-			<point x="1273" y="-23"/>
+			<point x="1313" y="151"/>
+			<point x="1253" y="-23"/>
 			<point x="1065" y="-23" type="curve" smooth="yes"/>
-			<point x="972" y="-23"/>
-			<point x="883" y="16"/>
+			<point x="961" y="-23"/>
+			<point x="883" y="29"/>
 			<point x="883" y="157" type="curve" smooth="yes"/>
-			<point x="883" y="291"/>
-			<point x="954" y="444"/>
+			<point x="883" y="281"/>
+			<point x="954" y="438"/>
 			<point x="954" y="537" type="curve" smooth="yes"/>
-			<point x="954" y="644"/>
-			<point x="887" y="690"/>
+			<point x="954" y="616"/>
+			<point x="910" y="690"/>
 			<point x="804" y="690" type="curve" smooth="yes"/>
 			<point x="536" y="690" type="line"/>
-			<point x="378" y="114" type="line"/>
-			<point x="370" y="78"/>
+			<point x="378" y="114" type="line" smooth="yes"/>
+			<point x="369" y="81"/>
 			<point x="380" y="62"/>
 			<point x="416" y="62" type="curve" smooth="yes"/>
 			<point x="614" y="62" type="line"/>
@@ -60,15 +59,15 @@
 		<contour>
 			<point x="554" y="752" type="line"/>
 			<point x="796" y="752" type="line" smooth="yes"/>
-			<point x="994" y="752"/>
-			<point x="1124" y="882"/>
+			<point x="1029" y="752"/>
+			<point x="1124" y="927"/>
 			<point x="1124" y="1138" type="curve" smooth="yes"/>
-			<point x="1124" y="1292"/>
-			<point x="1051" y="1365"/>
+			<point x="1124" y="1272"/>
+			<point x="1075" y="1365"/>
 			<point x="923" y="1365" type="curve" smooth="yes"/>
 			<point x="764" y="1365" type="line" smooth="yes"/>
-			<point x="728" y="1365"/>
-			<point x="707" y="1348"/>
+			<point x="724" y="1365"/>
+			<point x="706" y="1342"/>
 			<point x="697" y="1307" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
@@ -78,7 +77,20 @@
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-11</string>
+				<key>from</key>
+				<string>15507b6c5f55</string>
+				<key>review</key>
+				<string>proofs/italic-redraw-caps-2026-11-11.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

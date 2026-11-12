@@ -213,12 +213,13 @@ def redo(glyph):
 def finish(font, names=None):
     """every bowl's inside of the font redone, but in glyphs drawn by hand
     (the Italic's marked drawn, the bold styles' drawn.py): {glyph: redo's}"""
+    from stem_joins import hand_drawn  # a redrawn letter is not hand-drawn in the bold styles
+
     out = {}
     for glyph in font:
         if names is not None and glyph.name not in names:
             continue
-        if (not glyph.contours or glyph.lib.get("org.myiadidot.italicSource") == "drawn"
-                or "org.myiadidot.drawn" in glyph.lib) and names is None:
+        if (not glyph.contours or hand_drawn(font, glyph)) and names is None:
             continue
         done = redo(glyph)
         if done:

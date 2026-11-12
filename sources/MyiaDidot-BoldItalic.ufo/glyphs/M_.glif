@@ -7,8 +7,8 @@
 			<point x="-63" y="0" type="line"/>
 			<point x="-45" y="71" type="line"/>
 			<point x="74" y="71" type="line" smooth="yes"/>
-			<point x="147" y="71"/>
-			<point x="226" y="187"/>
+			<point x="148" y="71"/>
+			<point x="225" y="186"/>
 			<point x="241" y="246" type="curve" smooth="yes"/>
 			<point x="522" y="1303" type="line" smooth="yes"/>
 			<point x="529" y="1328"/>
@@ -23,30 +23,30 @@
 			<point x="1966" y="1355" type="line"/>
 			<point x="1838" y="1355" type="line" smooth="yes"/>
 			<point x="1798" y="1355"/>
-			<point x="1779" y="1336"/>
+			<point x="1780" y="1336"/>
 			<point x="1769" y="1297" type="curve" smooth="yes"/>
 			<point x="1455" y="121" type="line" smooth="yes"/>
 			<point x="1445" y="83"/>
-			<point x="1464" y="69"/>
+			<point x="1463" y="69"/>
 			<point x="1499" y="69" type="curve" smooth="yes"/>
 			<point x="1623" y="69" type="line"/>
 			<point x="1606" y="0" type="line"/>
 			<point x="955" y="0" type="line"/>
 			<point x="973" y="69" type="line"/>
 			<point x="1108" y="69" type="line" smooth="yes"/>
-			<point x="1144" y="69"/>
-			<point x="1167" y="85"/>
+			<point x="1143" y="69"/>
+			<point x="1168" y="85"/>
 			<point x="1177" y="121" type="curve" smooth="yes"/>
 			<point x="1484" y="1277" type="line"/>
 			<point x="760" y="-23" type="line"/>
 			<point x="656" y="-23" type="line"/>
 			<point x="639" y="1311" type="line"/>
 			<point x="353" y="246" type="line" smooth="yes"/>
-			<point x="350" y="235"/>
-			<point x="350" y="197"/>
-			<point x="350" y="189" type="curve" smooth="yes"/>
-			<point x="350" y="132"/>
-			<point x="364" y="71"/>
+			<point x="350" y="234"/>
+			<point x="349" y="197"/>
+			<point x="349" y="188" type="curve" smooth="yes"/>
+			<point x="350" y="131"/>
+			<point x="365" y="71"/>
 			<point x="432" y="71" type="curve" smooth="yes"/>
 			<point x="551" y="71" type="line"/>
 			<point x="533" y="0" type="line"/>
@@ -58,7 +58,20 @@
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-11</string>
+				<key>from</key>
+				<string>e377eb016ddc</string>
+				<key>review</key>
+				<string>proofs/italic-redraw-caps-2026-11-11.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

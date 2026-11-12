@@ -5,30 +5,27 @@
 	<outline>
 		<contour>
 			<point x="-13" y="230" type="curve" smooth="yes"/>
-			<point x="-13" y="380"/>
-			<point x="128" y="430"/>
-			<point x="213" y="430" type="curve" smooth="yes"/>
-			<point x="278" y="430"/>
-			<point x="397" y="401"/>
-			<point x="398" y="305" type="curve" smooth="yes"/>
-			<point x="398" y="218"/>
-			<point x="298" y="162"/>
-			<point x="215" y="162" type="curve" smooth="yes"/>
-			<point x="196" y="162"/>
-			<point x="210" y="137"/>
-			<point x="210" y="119" type="curve" smooth="yes"/>
-			<point x="210" y="51"/>
-			<point x="268" y="37"/>
-			<point x="332" y="37" type="curve" smooth="yes"/>
-			<point x="458" y="37"/>
-			<point x="530" y="168"/>
+			<point x="-13" y="351"/>
+			<point x="97" y="429"/>
+			<point x="213" y="429" type="curve" smooth="yes"/>
+			<point x="289" y="429"/>
+			<point x="397" y="395"/>
+			<point x="398" y="304" type="curve" smooth="yes"/>
+			<point x="398" y="213"/>
+			<point x="292" y="160"/>
+			<point x="209" y="160" type="curve" smooth="yes"/>
+			<point x="191" y="160"/>
+			<point x="211" y="134"/>
+			<point x="211" y="117" type="curve" smooth="yes"/>
+			<point x="211" y="52"/>
+			<point x="283" y="35"/>
+			<point x="331" y="35" type="curve" smooth="yes"/>
+			<point x="465" y="35"/>
+			<point x="530" y="166"/>
 			<point x="557" y="271" type="curve" smooth="yes"/>
 			<point x="829" y="1298" type="line" smooth="yes"/>
-			<point x="832" y="1306"/>
-			<point x="833" y="1315"/>
-			<point x="833" y="1324" type="curve" smooth="yes"/>
-			<point x="833" y="1348"/>
-			<point x="814" y="1356"/>
+			<point x="839" y="1335"/>
+			<point x="829" y="1356"/>
 			<point x="790" y="1356" type="curve" smooth="yes"/>
 			<point x="591" y="1356" type="line"/>
 			<point x="610" y="1434" type="line"/>
@@ -39,11 +36,11 @@
 			<point x="1128" y="1335"/>
 			<point x="1118" y="1297" type="curve" smooth="yes"/>
 			<point x="869" y="360" type="line" smooth="yes"/>
-			<point x="803" y="108"/>
-			<point x="551" y="-35"/>
+			<point x="803" y="111"/>
+			<point x="550" y="-35"/>
 			<point x="314" y="-35" type="curve" smooth="yes"/>
-			<point x="150" y="-35"/>
-			<point x="-12" y="69"/>
+			<point x="147" y="-35"/>
+			<point x="-12" y="61"/>
 		</contour>
 	</outline>
 	<anchor name="DotBelow" x="358" y="-20"/>
@@ -54,14 +51,27 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-09</string>
+				<string>2026-11-12</string>
 				<key>glyph</key>
-				<string>e27f55a1ab03</string>
+				<string>6fea1b0a82bd</string>
 				<key>review</key>
-				<string>build/glyph-review/entry-strokes/family-plain.pdf, flagged-plain.pdf: entry strokes kept turning one way (stroke_bold.one_way)</string>
+				<string>proofs/bold-italic-after-redraw-caps-2026-11-11.pdf</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-11</string>
+				<key>from</key>
+				<string>d1054cd44107</string>
+				<key>review</key>
+				<string>proofs/italic-redraw-caps-2026-11-11.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>
