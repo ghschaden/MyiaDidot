@@ -798,6 +798,16 @@ ITALIC_BOLD_SPLIT = {"xi"}
 # bowl, its counter narrowing into the crotch over the tail's loop, bent in
 # above it (2026-11-03; for every letter it broke the oldstyle 2 and filled q)
 ITALIC_BOLD_CAP_FREE = {"q.sc": 300}
+# Bold Italic knees the blend's gate cannot find, by their curves' keys
+# (contour, segment) in the Italic's outline: the stem's line running into
+# the counter's bottom as u's (stroke_bold.knee_turned). Since и ц ш щ took
+# u's knee in the Italic's redraw (2026-11-12), the stroked outline leaves
+# there not a step but a curve with both handles on its end, a bend (u's
+# was mended by hand, drawn 2026-11-11); ш щ's middle stem too (not м's
+# right stem into its foot: turned as a knee, its foot's inner edge came
+# out a straight diagonal, 2026-11-12)
+ITALIC_BOLD_KNEES = {"uni0438": ((0, 4),), "uni0446": ((0, 4),), "uni0448": ((0, 4), (0, 11)),
+                     "uni0449": ((0, 4), (0, 11))}
 # Bold Italic letters whose smallest counter is refitted smooth over this
 # many units after stroking (stroke_bold.smooth_counter), its one corner
 # kept: q.sc's loop, the tail's weight changing fast along it, left with a
@@ -2657,7 +2667,7 @@ def main():
         gain = sc * ITALIC_BOLD_HEAVIER.get(name, 1.0)
         return (name, w.value, (ITALIC_AX * gain, AY, ITALIC_THIN * sc, ITALIC_THICK * sc,
                                 ITALIC_HAIR * (sc if name in ITALIC_BOLD_HAIR_KEPT else gain), SLANT, SLIVER * sc * sc, ITALIC_BOLD_ROOTS.get(name, 0.0),
-                                name in ITALIC_BOLD_SPLIT, ITALIC_BOLD_CAP_FREE.get(name, 0.0)))
+                                name in ITALIC_BOLD_SPLIT, ITALIC_BOLD_CAP_FREE.get(name, 0.0), ITALIC_BOLD_KNEES.get(name, ())))
 
     stroked, unstroked = {}, []
     cache = stroke_cache.Cache() if italic else None

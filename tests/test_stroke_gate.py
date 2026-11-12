@@ -37,19 +37,27 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # 6 more, y_dot on the new outline), u's too; ƴ, derived from the redrawn
 # y, takes y's dot below beside the descender (436 -> 957); the capitals
 # redrawn (2026-11-11): Ɯ 4 wider with U, which it twins (U 1603 -> 1607)
-WIDTHS = {"uni019C": (2446, 2414), "y": (1070, 1069), "uni028E": (1070, 1069), "uni01B4": (1442, 1441)}
+# и ц ш щ redrawn in the Italic with u's knee (2026-11-12; their knees
+# named, make_bold.ITALIC_BOLD_KNEES): ц ш a unit narrower, щ 3 wider, и's
+# anchors a unit left; ц 2 right and its right side 3 nearer, щ 2 right;
+# ц's tail past its extreme 13 units (11 before the redraw), щ's 12, and
+# two wobbles of ц's, 7 degrees (on the sheet of 2026-11-12)
+WIDTHS = {"uni019C": (2446, 2414), "y": (1070, 1069), "uni028E": (1070, 1069), "uni01B4": (1442, 1441),
+          "uni0446": (1188, 1187), "uni0448": (1670, 1669), "uni0449": (1666, 1669)}
 # side bearings moved (left, right): Ɯ's right 4 wider, as U's in the Bold
 # Italic's optical fit after the capitals' redraw (U -224 -> -219)
-BEARINGS = {"uni019C": (0, 4)}
+BEARINGS = {"uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0)}
 _ANCHOR_NAMES = ("Top", "Bottom", "DotBelow", "Grave", "Acute", "Horn", "Dotaccent", "Ogonek", "Hook")
 ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
            "u": {a: (-1, 0) for a in _ANCHOR_NAMES},
-           "uni01B4": {"DotBelow": (521, 0)}}
+           "uni01B4": {"DotBelow": (521, 0)}, "uni0438": {a: (-1, 0) for a in _ANCHOR_NAMES}}
 # ų: its stem's foot, a crotch drawn as a short line, now meets as one
 # point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it
 # draws the stem's inside a little bowed, a wobble the size of a unit, not
 # seen in text (proofed with γ & ξ q.sc)
-FINDINGS = {"uni019C": [("kink", 1212, 1355)], "uogonek": [("wobble", 873, 136)]}
+FINDINGS = {"uni019C": [("kink", 1212, 1355)], "uogonek": [("wobble", 873, 136)],
+            "uni0446": [("extreme", 995, 63), ("wobble", 843, -44), ("wobble", 346, 704)],
+            "uni0449": [("extreme", 1478, 63)]}
 
 
 def p(x, y):

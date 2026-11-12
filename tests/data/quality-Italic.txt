@@ -98,6 +98,7 @@ florin smooth 1                  # Italic weighted as its letters are taken, der
 florin stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 156 against 183 (0.85, lighter)
 four kink 2                      # 2026-10-16 known at the start (quality checks added): 580,850 6.0 degrees; 804,1009 3.1 degrees
 g.sc slant 1                     # 2026-10-16 known at the start (quality checks added): 11.2 degrees, not 15.2
+gamma slant 1                    # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 12.4 degrees, not 15.2
 gamma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 85 against 183 (0.46, lighter)
 gamma.sc smooth 1                # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.2 degrees
 germandbls.sc kink 5             # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1068,378 5.0 degrees; 358,148 4.8 degrees; 605,223 4.6 degrees; 498,98 7.7 degr
@@ -176,7 +177,6 @@ seven stroke 1                   # stroke weights against the kind's (scripts/qu
 sevenoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 58 against 183 (0.32, lighter)
 sevensuperior extreme 1          # 2026-10-16 known at the start (quality checks added): 474,797 6 units past
 sigma.sc stroke 1                # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 70 against 178 (0.39, lighter)
-sigma1 kink 1                    # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 638,677 4.4 degrees
 sigma1 stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 64 against 183 (0.35, lighter)
 sigmalunatesymbolgreek.sc kink 3 # 2026-10-21 Italic reweighted and tightened: 90,351 5.8 degrees; 350,760 4.1 degrees; 241,280 6.2 degrees
 six stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 262 against 222 (1.18, darker)
@@ -223,6 +223,7 @@ uni0190 slant 1                  # 2026-10-16 known at the start (quality checks
 uni0190 stroke 1                 # 2026-10-21 Italic reweighted and tightened: uc 218 against 197 (1.11, darker)
 uni0193 kink 1                   # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 1390,1330 3.6 degrees
 uni0193 slant 1                  # 2026-10-16 known at the start (quality checks added): 11.7 degrees, not 15.2
+uni0194 slant 1                  # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 12.6 degrees, not 15.2
 uni0194 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 86 against 209 (0.41, lighter)
 uni0194 zone 1                   # 2026-10-16 known at the start (quality checks added): top +10 from 1434
 uni0197 stem 1                   # 2026-10-25 lighter I approved in text; retain independent barred-I drawing: at 358 180 against I's 165
@@ -294,7 +295,7 @@ uni0254.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 8
 uni0254.sc slant 1               # italic small caps derived after the italic small caps, not from the Regular's (make_italic.py); derived checks: stem guard 25, no style test for twin: 19.8 degrees, not 15.2
 uni0255 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 413,-18 2.0 degrees
 uni0257 zone 1                   # fixed hooked-d italic outline: bottom +7 from -23
-uni025B.sc kink 1                # O and Q drawn in the Italic; small caps measured against the real o.sc (sc_late); reviewed on proofs/*-late-2026-11-12.pdf: 729,884 3.4 degrees
+uni025B.sc smooth 1              # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 727,883 2.1 degrees
 uni025E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +7 from -23
 uni025F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni0260 kink 1                   # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
@@ -311,6 +312,7 @@ uni0267 smooth 1                 # the Italic's b-z redrawn, f's hook, followers
 uni0267 zone 1                   # the Italic's b-z redrawn, f's hook, followers (2026-11-11): top +16 from 1434
 uni0268.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.3 degrees
 uni0269 zone 1                   # 2026-10-16 known at the start (quality checks added): top -24 from 884
+uni0269.sc smooth 1              # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 192,149 2.7 degrees
 uni026A smooth 1                 # O and Q drawn in the Italic; small caps measured against the real o.sc (sc_late); reviewed on proofs/*-late-2026-11-12.pdf: 319,793 2.2 degrees
 uni026A zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
 uni026B stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
@@ -470,8 +472,8 @@ uni0437.sc stroke 1              # stroke weights against the kind's (scripts/qu
 uni0438 slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uni0438.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 953,930 3.0 degrees; 732,99 3.4 degrees; 298,99 7.4 degrees
 uni0438.sc smooth 1              # 2026-10-21 Italic reweighted and tightened: 1144,930 3.0 degrees
+uni043A stroke 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: lc 148 against 167 (0.88, lighte
 uni043A.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -20 from 0; top +22 from 1040
-uni043B smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 499,754 2.3 degrees
 uni043B stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
 uni043B zone 1                   # 2026-10-16 known at the start (quality checks added): top -24 from 884
 uni043B.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): -40,115 2.3 degrees
@@ -483,21 +485,17 @@ uni043F slant 1                  # 2026-10-16 known at the start (quality checks
 uni0442 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
 uni0443.sc kink 3                # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 950,789 4.6 degrees; 112,152 5.5 degrees; 426,217 4.2 degrees
 uni0443.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
-uni0444 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1140,1264 7.3 degrees
 uni0444.sc extreme 1             # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 631,938 5 units past
 uni0444.sc kink 2                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni0446 slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
-uni0446 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 888,-180 2.2 degrees
 uni0446.sc smooth 1              # 2026-10-21 Italic reweighted and tightened: 933,930 2.8 degrees
 uni0447 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 163 against 183 (0.89, lighter)
 uni0448 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
 uni0448.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
 uni0449 slant 1                  # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2
-uni0449 smooth 1                 # 2026-10-21 Italic reweighted and tightened: 1351,-180 2.2 degrees
 uni0449.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
 uni044B.sc smooth 1              # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 1165,931 2.4 degrees
 uni044D.sc kink 5                # 2026-10-21 Italic reweighted and tightened: 52,214 5.6 degrees; 288,287 4.0 degrees; 572,152 6.9 degrees; 888,672 6.2 degrees; 719,177 6.0 degrees
-uni044E.loclBGR kink 1           # Bulgarian locl: в г ж ъ ь ю (drafts): joints of the drafted Bulgarian letters, for review: 479,645 3.4 degrees
 uni044F stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 154 against 183 (0.84, lighter)
 uni044F.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uni044F.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 238,732 2.6 degrees
@@ -537,6 +535,7 @@ uni0496 zone 1                   # 2026-10-16 known at the start (quality checks
 uni0497 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 151 against 183 (0.82, lighter)
 uni0497.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +24 from 1040
 uni049A zone 1                   # 2026-10-16 known at the start (quality checks added): top +26 from 1434
+uni049B stroke 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: lc 148 against 167 (0.88, lighte
 uni049B.sc smooth 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
 uni04A3 kink 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: 693,-162 7.4 degrees
 uni04A3 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 157 against 183 (0.86, lighter)
@@ -555,7 +554,6 @@ uni04B7.sc smooth 1              # Italic saved with smooth rounding (make_itali
 uni04BB.sc smooth 1              # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 118,109 2.4 degrees
 uni04E9.sc kink 2                # 2026-10-21 Italic reweighted and tightened: 94,346 5.9 degrees; 958,653 6.0 degrees
 uni1D05 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
-uni1D4B smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 509,990 2.1 degrees
 uni1D6E stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 163 against 183 (0.89, lighter)
 uni1D72 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 209 against 185 (1.13, darker)
 uni1D72 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom +23 from -23
@@ -617,8 +615,6 @@ uniA7B4 kink 1                   # 2026-10-21 Italic reweighted and tightened: 1
 uniA7B5.sc kink 3                # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 uniA7B6 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 245 against 222 (1.10, darker)
 uniA7B7.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 261 against 184 (1.41, darker)
-uniA7CB kink 1                   # 2026-10-16 known at the start (quality checks added): 1088,1372 4.4 degrees
-uniA7CB smooth 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 1099,1060 2.0 degrees
 uogonek slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2
 uogonek.sc kink 3                # 2026-10-21 Italic reweighted and tightened: 456,-192 6.1 degrees; 633,-256 6.6 degrees; 362,-253 5.3 degrees
 uogonek.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
@@ -636,7 +632,6 @@ w.sc zone 1                      # 2026-10-16 known at the start (quality checks
 x.sc kink 1                      # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 881,909 5.9 degrees
 x.sc smooth 2                    # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 266,165 2.8 degrees; 1006,894 2.6 degrees
 x.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 141 against 178 (0.79, lighter)
-xi kink 1                        # 2026-10-16 known at the start (quality checks added): 486,-10 3.1 degrees
 xi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 49 against 183 (0.27, lighter)
 xi.sc kink 3                     # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 371,1092 3.6 degrees; 1042,1045 3.8 degrees; 791,624 2.1 degrees
 xi.sc smooth 1                   # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain): 443,623 3.3 degrees
@@ -650,5 +645,4 @@ z.sc kink 1                      # 2026-10-21 Italic reweighted and tightened: 2
 z.sc slant 1                     # 2026-10-16 known at the start (quality checks added): 18.3 degrees, not 15.2
 z.sc stroke 1                    # 2026-10-21 Italic reweighted and tightened: sc 154 against 197 (0.78, lighter)
 zero stroke 1                    # 2026-10-21 Italic reweighted and tightened: uc 226 against 197 (1.14, darker)
-zeta kink 2                      # 2026-10-16 known at the start (quality checks added): 438,143 4.5 degrees; 441,-12 4.5 degrees
 zeta stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 60 against 183 (0.33, lighter)

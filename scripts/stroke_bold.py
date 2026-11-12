@@ -1790,11 +1790,29 @@ def smooth_counter(glyph, sigma):
     return glyph
 
 
-def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0, split=False, free=0.0, log=None):
+def turned_knees(strokes, kept):
+    """kept (segment contours, upright frame) with each of strokes' knees
+    drawn as the Italic turns there (KNEE_QUARTER), a new list (looked for
+    in every contour: the source's numbering is not the cleaned outline's)"""
+    kept = list(kept)
+    for key in sorted(strokes.knees & set(strokes.found)):
+        for n, c in enumerate(kept):
+            turned = knee_turned(c, strokes.found[key], strokes.slant, KNEE_QUARTER * strokes.thick)
+            if turned:
+                kept[n] = turned
+                break
+    return kept
+
+
+def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0, split=False, free=0.0,
+                        knees=(), log=None):
     """rec (a RecordingPen, upright frame) emboldened by its strokes, as a
     ufoLib2 Glyph, cleaned (contours under sliver units' area dropped);
-    not shifted (the caller moves it by ax / 2); root, split, free: Strokes'; log, a
-    list: given, the blend's verdict is added to it"""
+    not shifted (the caller moves it by ax / 2); root, split, free: Strokes';
+    knees: keys (contour, segment) of curves taken as knees though the
+    stroked outline leaves no step there to find them by (the gate then
+    asks no step gone of them, and judges the bends with the knees turned);
+    log, a list: given, the blend's verdict is added to it"""
     strokes = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
     flat = tidy(merged_glyph(rec))
     if not flat.contours:
@@ -1802,8 +1820,10 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
     strokes.turning = False  # (the knees found on the outline as moved)
     out, kept = stroked(strokes, flat, sliver)
     turn = STEP_TURN
+    forced = {tuple(k) for k in knees} & set(strokes.found) if strokes.blending else set()
     knees = {key for key, pts in strokes.found.items()
              if any(near(pts, [f[1:3]], KNEE_NEAR).any() for f in steps(kept, KNEE_TURN))} if strokes.blending else set()
+    knees |= forced
     if knees or ONE_WAY:
         # a knee left in the outline: stroked again, its curve blended into
         # its line too, and judged by the knee's step; the arcs leaving a
@@ -1824,12 +1844,20 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
         plain.untouched = set(knees)
         before, was = stroked(plain, flat, sliver)
         fixed, stepped = compared(steps(was, turn), steps(kept, turn))
-        bent = compared(bends(was), bends(kept), BEND_NEAR)[1]
+        bent = compared(bends(was), bends(turned_knees(strokes, kept) if forced else kept), BEND_NEAR)[1]
+        if forced:
+            # knees named: the bends judged as they will be drawn (the knees
+            # turned) and at the knees (elsewhere the blend may move a bend
+            # by a few units, guarded holds the outline: ш's hook, 2.9 units,
+            # its bend 67 units further up, 2026-11-12)
+            bent = [b for b in bent if any(near(strokes.found[key], [b[1:3]], BEND_NEAR).any() for key in forced)]
         worse = compared(findings(before, slant), findings(out, slant))[1]
-        broken = guarded(was, kept, strokes.region, REGION * ax) if fixed and not (stepped or bent or worse) else None
+        broken = (guarded(was, kept, strokes.region, REGION * ax)
+                  if (fixed or forced) and not (stepped or bent or worse) else None)
         taken = broken == []
         if log is not None:
             log.append(f"{'blended' if taken else 'as drawn'}: {'knees ' + str(sorted(strokes.knees)) + '; ' if strokes.knees else ''}"
+                       f"{'named ' + str(sorted(forced)) + '; ' if forced else ''}"
                        f"steps gone {fixed}, steps new or worse {stepped}; "
                        f"bends new {bent}; findings new or worse {worse}; "
                        f"guarded {'not reached' if broken is None else broken or 'kept'}")
@@ -1837,14 +1865,7 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
             out = before
         elif strokes.knees:
             # each knee then drawn as the Italic turns there (KNEE_QUARTER)
-            # (looked for in every contour: the source's numbering is not
-            # the cleaned outline's)
-            for key in sorted(strokes.knees & set(strokes.found)):
-                for n, c in enumerate(kept):
-                    turned = knee_turned(c, strokes.found[key], strokes.slant, KNEE_QUARTER * thick)
-                    if turned:
-                        kept[n] = turned
-                        break
+            kept = turned_knees(strokes, kept)
             out = ufoLib2.objects.Glyph()
             draw(out.getPen(), kept)
     return out

@@ -50,7 +50,9 @@ def test_reviewed_contours_are_finished_and_stable(style):
         measured = strokes(font, {"uni049B"})[1]["uni049B"]
         original = strokes(before, {"uni049B"})[1]["uni049B"]
         assert measured[0] >= original[0]
-        assert measured[1] >= 0.9
+        # (0.88 since к was redrawn onto clean nodes: 151 -> 148, the old
+        # outline's bulge not kept; accepted by the designer 2026-11-12)
+        assert measured[1] >= 0.88
     settled = copy.deepcopy(font)
     finish(font, smooth=style == "BoldItalic")
     assert all(glyph == settled[glyph.name] for glyph in font)

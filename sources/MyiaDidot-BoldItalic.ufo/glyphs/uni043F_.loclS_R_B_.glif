@@ -3,20 +3,20 @@
 	<advance width="1188"/>
 	<outline>
 		<component base="uni0438"/>
-		<component base="macron"/>
+		<component base="macron" xOffset="-1"/>
 	</outline>
-	<anchor name="DotBelow" x="539" y="-20"/>
-	<anchor name="Bottom" x="545" y="0"/>
+	<anchor name="DotBelow" x="538" y="-20"/>
+	<anchor name="Bottom" x="544" y="0"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-09</string>
+				<string>2026-11-12</string>
 				<key>glyph</key>
-				<string>1bf0258a94fd</string>
+				<string>f457ee8159a8</string>
 				<key>review</key>
-				<string>follow their bases, accepted from build/glyph-review/entry-strokes/family-plain.pdf (stroke_bold.one_way)</string>
+				<string>proofs/bold-italic-cyrillic-followers-2026-11-12.pdf</string>
 			</dict>
 		</dict>
 	</lib>

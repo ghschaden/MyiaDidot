@@ -38,12 +38,23 @@ FOLLOWERS = {"uni0436.loclBGR": "derived", "uni0436.sc": "small cap draft", "uni
 TARGET_SOURCES = {**dict.fromkeys(REGIONS, "derived"), **dict.fromkeys(BASES, "Old Standard"), **FOLLOWERS}
 
 
+def _source(g):
+    """g's source mark, for a letter redrawn onto new nodes the one it had
+    (make_italic.origin): the Bold Italic's ж к, stroked from the redrawn
+    Italic letters, finished as before (2026-11-12: skipped, ж kept a
+    1.8 degree kink at its leg's foot); the Italic keeps its drawn ones
+    (skip)"""
+    from make_italic import origin
+
+    return origin(g)
+
+
 def finish_bases(font, skip=()):
     """Align the reviewed Cyrillic base joins before derivation, without rounding."""
     for name in BASES:
         if name not in font or name in skip:
             continue
-        if font[name].lib.get("org.myiadidot.italicSource") != "Old Standard":
+        if _source(font[name]) != "Old Standard":
             continue
         for contour in font[name].contours:
             _align_handles(contour.points, lambda x, y, name=name: _base_region(name, y))
@@ -196,7 +207,7 @@ def finish(font, skip=(), smooth=True):
 
     slant = math.tan(math.radians(-(font.info.italicAngle or 0)))
     names = [name for name, source in TARGET_SOURCES.items() if name not in skip and name in font
-             and font[name].lib.get("org.myiadidot.italicSource") == source]
+             and _source(font[name]) == source]
     if not names:
         return
     for name in names:

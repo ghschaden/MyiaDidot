@@ -367,6 +367,40 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   zone at 35 ppem though neither outline moved (test_hint_zones). The
   cause is not traced yet (`scripts/quality/hint_zones.py FONT`): do
   that before `--hinting`.
+- **A knee the Bold Italic's gate no longer finds** (2026-11-12, и ц ш
+  щ): redrawn, they took u's knee exactly, and the stroked outline there
+  is no longer a step (what the gate finds a knee by) but a curve with
+  both handles on its end: a bend, and the knee repair refused for "no
+  step gone" (u's had been mended by hand, drawn 2026-11-11). Fixed in
+  the recipe: `make_bold.ITALIC_BOLD_KNEES` names the knee curves
+  (contour, segment of the Italic's outline: `strokes.found`'s keys);
+  for them the gate asks no step gone and judges bends at the knee, after
+  the knee is turned. Not for a foot that is no u-knee: м's right stem
+  turned so came out a straight diagonal.
+- **A curve's handles made long by the redraw** (м's right stem into its
+  foot, 53 units for 23): within the tolerance, smooth, one way; the
+  stroked edge then bends there and the gate refused the blend that took
+  away м's two steps. Mended in the Italic: the handles shortened on the
+  same directions (850,218 and 859,251). A handle rounded to the
+  shallower side of the line it meets bends back (0.12 degrees): put it
+  on the steeper side.
+- **A `line` in the spec that changes the Bold Italic's weight** (λ: the
+  leg's line run on to 551,1022 as a line): the Italic unchanged, the
+  Bold Italic's leg 10-28 units lighter on its outer edge, increasingly
+  upward (stroke weight 246 -> 236, 0.88); in the stroker's own output,
+  why not traced. Mended in the Italic: the short line made a
+  curve again, its handles on the line's and the next curve's
+  directions (546,987 and 549,1008): 246 again. A `line` entry that runs
+  on from a long stroke: compare the Bold Italic's weight before | after.
+- **A redrawn base no longer finished in the Bold Italic** (ж к):
+  `italic_contours` finished only letters marked "Old Standard", and the
+  redraw marks them drawn; the Bold Italic's ж kept a 1.8 degree kink at
+  its leg's foot. Fixed: the mark read through `make_italic.origin`.
+- **Seen in the Greek and Cyrillic batch, cause not traced**: Ɩ's tail tip
+  moved 87 units (sweep, Italic 754,485; Bold Italic 90); the Bold
+  Italic's γ 23 and ρ 11 units wider; the tool's own gaps
+  (`bent_back` at an inflection node it made, a spec point on a handle
+  crashing) are in `open-for-fable.md`.
 
 ## A letter given another shape: f's hook (2026-11-11)
 

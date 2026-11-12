@@ -4,61 +4,60 @@
 	<outline>
 		<contour>
 			<point x="32" y="244" type="curve" smooth="yes"/>
-			<point x="32" y="430"/>
-			<point x="257" y="538"/>
-			<point x="376" y="557" type="curve"/>
-			<point x="380" y="564" type="line"/>
-			<point x="328" y="580"/>
-			<point x="194" y="655"/>
-			<point x="194" y="786" type="curve" smooth="yes"/>
-			<point x="194" y="983"/>
-			<point x="408" y="1067"/>
+			<point x="33" y="429"/>
+			<point x="248" y="536"/>
+			<point x="371" y="560" type="curve"/>
+			<point x="298" y="589"/>
+			<point x="194" y="668"/>
+			<point x="194" y="785" type="curve" smooth="yes"/>
+			<point x="195" y="1014"/>
+			<point x="471" y="1067"/>
 			<point x="590" y="1067" type="curve" smooth="yes"/>
-			<point x="762" y="1067"/>
-			<point x="900" y="939"/>
+			<point x="779" y="1067"/>
+			<point x="900" y="927"/>
 			<point x="900" y="840" type="curve" smooth="yes"/>
-			<point x="900" y="803"/>
-			<point x="888" y="769"/>
+			<point x="900" y="801"/>
+			<point x="885" y="769"/>
 			<point x="827" y="769" type="curve" smooth="yes"/>
-			<point x="761" y="769"/>
-			<point x="742" y="823"/>
-			<point x="729" y="884" type="curve"/>
-			<point x="698" y="996"/>
-			<point x="601" y="1008"/>
-			<point x="570" y="1008" type="curve" smooth="yes"/>
-			<point x="482" y="1008"/>
-			<point x="387" y="935"/>
+			<point x="746" y="769"/>
+			<point x="736" y="850"/>
+			<point x="727" y="883" type="curve" smooth="yes"/>
+			<point x="709" y="960"/>
+			<point x="649" y="1007"/>
+			<point x="572" y="1007" type="curve" smooth="yes"/>
+			<point x="437" y="1007"/>
+			<point x="387" y="870"/>
 			<point x="387" y="747" type="curve" smooth="yes"/>
-			<point x="387" y="684"/>
-			<point x="398" y="611"/>
-			<point x="452" y="583" type="curve"/>
-			<point x="496" y="602"/>
-			<point x="540" y="620"/>
-			<point x="613" y="620" type="curve" smooth="yes"/>
-			<point x="683" y="620"/>
-			<point x="757" y="597"/>
-			<point x="757" y="536" type="curve" smooth="yes"/>
-			<point x="757" y="483"/>
-			<point x="713" y="454"/>
+			<point x="386" y="687"/>
+			<point x="396" y="612"/>
+			<point x="453" y="583" type="curve"/>
+			<point x="502" y="604"/>
+			<point x="554" y="620"/>
+			<point x="614" y="620" type="curve" smooth="yes"/>
+			<point x="670" y="620"/>
+			<point x="758" y="606"/>
+			<point x="758" y="535" type="curve" smooth="yes"/>
+			<point x="758" y="466"/>
+			<point x="676" y="454"/>
 			<point x="632" y="454" type="curve" smooth="yes"/>
-			<point x="570" y="454"/>
-			<point x="503" y="483"/>
-			<point x="435" y="519" type="curve"/>
-			<point x="298" y="477"/>
-			<point x="244" y="350"/>
-			<point x="244" y="254" type="curve" smooth="yes"/>
-			<point x="244" y="92"/>
-			<point x="369" y="53"/>
-			<point x="457" y="53" type="curve" smooth="yes"/>
-			<point x="624" y="53"/>
-			<point x="733" y="167"/>
-			<point x="795" y="263" type="curve"/>
+			<point x="562" y="454"/>
+			<point x="498" y="485"/>
+			<point x="436" y="519" type="curve"/>
+			<point x="321" y="484"/>
+			<point x="244" y="375"/>
+			<point x="244" y="253" type="curve" smooth="yes"/>
+			<point x="244" y="125"/>
+			<point x="326" y="53"/>
+			<point x="458" y="53" type="curve" smooth="yes"/>
+			<point x="604" y="53"/>
+			<point x="718" y="143"/>
+			<point x="795" y="262" type="curve"/>
 			<point x="828" y="238" type="line"/>
-			<point x="757" y="112"/>
-			<point x="618" y="-25"/>
+			<point x="747" y="92"/>
+			<point x="608" y="-25"/>
 			<point x="428" y="-25" type="curve" smooth="yes"/>
-			<point x="265" y="-25"/>
-			<point x="32" y="40"/>
+			<point x="321" y="-25"/>
+			<point x="32" y="19"/>
 		</contour>
 	</outline>
 	<anchor name="Top" x="661" y="1156"/>
@@ -76,9 +75,9 @@
 				<key>date</key>
 				<string>2026-11-12</string>
 				<key>glyph</key>
-				<string>ab892245d7cc</string>
+				<string>64cd45485c6f</string>
 				<key>review</key>
-				<string>docs/claude/redraw.md</string>
+				<string>proofs/bold-italic-cyrillic-followers-2026-11-12.pdf</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>
