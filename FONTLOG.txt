@@ -1105,6 +1105,27 @@ ChangeLog
       for its uneven colour, and thinner capital hairlines alone would
       unbalance capitals against lowercase the other way. Kept as is.
 
+2026-10-29 Bold Italic: curves run into their lines without a step; knees
+
+    (Entered 2026-11-12; the record is in the commits 10ddbcdc, 960a90fa,
+    cef605f8, docs/claude/styles.md and docs/claude/stroking.md.)
+    * y's inner descender stood in a sideways step where its curve met
+      its straight edge: the line moved by its mean weight, lowered by
+      the crotch above, the short curve before it by its own. Such a
+      curve now takes on the line's weight towards it (Strokes.blend);
+      a letter takes the blend only where a gate finds a step gone and
+      no step, bend or quality finding new or worse, matched one by one
+      by place, and the outline unmoved outside the blend. It lands in
+      y ʎ ʲ Џ м, the old-style 7, ƴ and the accented y's.
+    * u's inner stem ran into its bowl with a shoulder (a knee, 18
+      degrees; и ш щ џ ų ц with it): the knee is blended into its line,
+      then drawn as the Italic turns there, seen slanted: upright from
+      the line's end, then a quarter round onto the bowl's own curve
+      (knee_turned). ƴ's and ʋ's dents went with a cap touching both
+      edges of the curl's end.
+    * Ɯ is the twin of the Bold Italic's U (advance 2476 -> 2440); ʉ is
+      the bar on its u, as the Italic builds both.
+
 2026-10-28 Bold Italic: curves meet with continuous curvature (G2)
 
     * Where two curves of the stroked Bold Italic meet smoothly, both now

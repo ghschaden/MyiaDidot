@@ -9,7 +9,9 @@ a script the generators do not run, is lost at their next run. This reruns
 them on copies (in an isolated workspace, each starting from the current UFO,
 so reviewed glyphs are kept as the generators keep them) and lists every
 glyph, kerning pair, feature line and glyph-order entry that would change.
-Exit status 1 if anything would.
+Exit status 1 if anything would. It refuses to run (status 2) with a
+MYIA_* variable set that the project does not read (stroke_cache.KNOWN):
+an experiment's switch left in a shell is told, not ignored.
 """
 
 import difflib
@@ -22,6 +24,9 @@ from pathlib import Path
 
 import ufoLib2
 from fontTools.pens.recordingPen import DecomposingRecordingPen
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from stroke_cache import unknown  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "sources"
@@ -130,6 +135,10 @@ def reproduce(work, sources):
 
 
 def main():
+    if stray := unknown():
+        print(f"check_reproducible: unknown variable(s) set: {', '.join(stray)} (the project reads none "
+              "of them, stroke_cache.KNOWN; unset them: docs/claude/stroking.md, T4)", file=sys.stderr)
+        raise SystemExit(2)
     # Freeze all source UFOs before running any generator. Each invocation owns
     # its scratch tree, including the Regular and the Bold Italic's input.
     with tempfile.TemporaryDirectory(prefix="myia-reproduce-") as temporary:

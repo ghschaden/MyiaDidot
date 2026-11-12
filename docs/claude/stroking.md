@@ -81,7 +81,7 @@ One stroking (`stroked` → `Strokes.draw`) runs, per contour:
 | f | every sample moved: across by its weight, up and down by ay (FULL, ZONE_NEAR) | `move` | FULL, ZONE_NEAR |
 | g | arcs leaving a stem into a hook kept turning one way | `Strokes.one_way` | ONE_WAY_* |
 | h | extreme nodes slid to where the moved outline is level or upright again | (in `draw`) | |
-| i | node positions: a line parallel by its mean weight; convex corners mitred; a crotch of two lines where they meet; a crotch with a curve where the moved sides cross, each side by its own weight; a short-line crotch to one point; brackets shifted whole | `mitre`, `meet`, `crossing` | (CORNER_OWN, CORNER_MEET: T4) |
+| i | node positions: a line parallel by its mean weight; convex corners mitred; a crotch of two lines where they meet; a crotch with a curve where the moved sides cross, each side by its own weight; a short-line crotch to one point; brackets shifted whole | `mitre`, `meet`, `crossing` | (each side by its own weight to a corner, and the crossings: fixed since T4) |
 | j | one cubic per source curve through the moved samples, tangents from the moved outline, extremes exact | `fit_cubic` | TS |
 | k | smooth joins of two curves given one curvature | `join_curvature`, `fit_g2` | G2_ERR, TS_G2 |
 | l | knees noted (a curve beside a line whose fit bends back); one-way curves refitted to bend one way | `one_way_fit` | ONE_WAY_LIMIT, _SCALES, _SHARP, _HANDLE |
@@ -238,7 +238,8 @@ leaving lines 826 → 585, n m h 8-11 nodes more, the style 3 min 10 s →
    (68, then 49 glyphs before it was done).
 7. **Everything that steers the result is an argument or source.** No
    environment, no file read at run time: the cache's key and
-   reproduction both rest on it (T4).
+   reproduction both rest on it (T4, done 2026-11-12: `check_reproducible.py`
+   refuses a `MYIA_*` variable outside `stroke_cache.KNOWN`).
 8. **No silent fallbacks added.** A new exception type in a job is
    caught as failure and the letter goes by weight; compare the list of
    stroked letters before and after.
@@ -278,7 +279,8 @@ weights, γ ξ & q.sc for crotches).
    anew (it has moved at nearly every stroking commit: Ɽ Ⱳ ɬ ɸ ʈ.sc).
 
 To find which stage makes a fault, stroke the one letter with stages
-off (today by environment, after T4 by argument: below) in this order:
+off (by argument, `embolden_by_strokes(fair=False)` or `one_way=False`,
+called from a pilot past the cache) in this order:
 fairing off (is it in the fitted outline?), one_way off, then the
 gate's verdict from the log (blended or plain?). If it is in none, it
 comes after the stroker (first section's last paragraph).
@@ -338,7 +340,12 @@ the Bold Italic (each letter needs review: FONT-DESIGN.md); the exits'
 weight at text size (phase 8). Known leftovers: k's hook where arm
 meets leg, z's bottom-left curl, leftovers in arcs of d k r z.
 
-## T4: the switches, decided (2026-11-11)
+## T4: the switches, decided (2026-11-11), carried out (2026-11-12)
+
+Done as below, the settled ones and the diagnostics in one commit (the
+deletions each proved by `make reproduce` reporting nothing), the list of
+known variables and the refusal with them; `tests/test_stroke_switches.py`.
+The table is kept as the record of what each switch was.
 
 Rule (TODO.md): nothing that changes an outline or a side bearing is
 read from the environment. Three classes:

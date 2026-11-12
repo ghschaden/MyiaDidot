@@ -197,7 +197,8 @@ what was missing. In this order:
   `docs/claude/spacing.md` describes, K y, the Latin pairs test (done
   2026-11-12; the gap found, the guard lost with a dropped pair, in
   spacing.md and open-for-fable.md).
-- Opus: T4 by `docs/claude/stroking.md`, with its three open points.
+- Opus: T4 by `docs/claude/stroking.md`, with its three open points
+  (done 2026-11-12: the open points answered there).
 - Opus: T2 by `docs/claude/only.md` or phase 1's sweep by
   `docs/claude/collisions.md`; both were read from the code with
   nothing run, so they are the likeliest to be wrong somewhere.
@@ -422,20 +423,24 @@ alongside, each when the phase that needs it comes up.
       cover a differing node count. The alternative, the generators in
       a pinned container locally and in CI, only if the tolerance
       hides a real difference.
-- [ ] T4. The experiment switches out of `scripts/stroke_bold.py` (14
+- [x] T4. The experiment switches out of `scripts/stroke_bold.py` (14
       environment reads: `MYIA_G2`, `MYIA_G2_LINES`, `MYIA_FAIR`,
       `MYIA_ONE_WAY`, `MYIA_BLEND`, `MYIA_SPLIT`, `MYIA_CORNER_*` ...):
       a variable left set in a shell changes the generated font
       silently. Decided switch by switch 2026-11-11 (F3):
       `docs/claude/stroking.md`, "T4: the switches, decided", with
       the code change for each and the order; to carry out as written.
-      - [ ] each one: settled (delete the switch and the dead branch)
+      - [x] each one: settled (delete the switch and the dead branch)
             or still an experiment (an explicit argument of the
             function, set by a pilot script);
-      - [ ] kept as environment: only what does not change outlines
+      - [x] kept as environment: only what does not change outlines
             (`MYIA_JOBS`, `MYIA_STROKE_CACHE`, the logs);
-      - [ ] `check_reproducible.py` refuses to run with an unknown
+      - [x] `check_reproducible.py` refuses to run with an unknown
             `MYIA_*` variable set.
+      Done 2026-11-12: ten switches and make_bold's `MYIA_STROKE_OUT`
+      deleted, `fair` and `one_way` keyword-only arguments of
+      `embolden_by_strokes`, `stroke_cache.KNOWN` the one list, `make
+      reproduce` unchanged; `tests/test_stroke_switches.py`.
 
 ### Alongside the phases
 

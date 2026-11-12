@@ -31,7 +31,7 @@ import numpy as np
 import pathops
 import ufoLib2
 from derive import ZONE_BOTTOMS, ZONE_TOPS, merged_glyph
-from fair_arcs import LIMIT, arcs, draw, fair_contour, segments
+from fair_arcs import LIMIT, SHORT, arcs, draw, fair_contour, segments
 from fontTools.pens.recordingPen import RecordingPen
 
 STEP = 2.0          # units between samples
@@ -73,7 +73,7 @@ STEP_TURN = 20
 # bowl, 10 here, 18 finished; none in n h m v w a b d p q r:
 # 2026-10-29): blended into its line whatever its curve's length, over
 # KNEE_BLEND units
-KNEE_BLEND = float(os.environ.get("MYIA_KNEE_BLEND", 240))  # (120 kinked u at its line once rounded, 500 a little below; 200-300 clean)
+KNEE_BLEND = 240.0  # (120 kinked u at its line once rounded, 500 a little below; 200-300 clean)
 KNEE_TURN = 8
 KNEE_NEAR = 20
 # a knee taken (or found beside one taken: ш's middle stem) is then drawn as
@@ -107,27 +107,17 @@ BEND_NEAR = 40  # (an inflection on a nearly straight stretch slides along it: �
 REGION = 1.0
 OUTSIDE = 1.0
 WIDTH = 3.0
-LEFTOVER = 8  # units (fair_arcs.SHORT): a piece of the cleaned outline shorter is merged into its neighbours
+LEFTOVER = SHORT  # units (fair_arcs's, the same by design): a piece of the cleaned outline shorter is merged into its neighbours
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
-# curvature continuous at the smooth joins of curves (G2; MYIA_G2=0: tangents
-# only), a curve kept as fitted where that would move it over G2_ERR units
-# (2026-10-28)
-G2 = os.environ.get("MYIA_G2", "1") == "1"
-G2_ERR = float(os.environ.get("MYIA_G2_ERR", 3))
-# and (MYIA_G2_LINES=1) where a curve runs on smoothly from a line: its end
-# straight there too (curvature 0); tried and dropped: one cubic then raises
-# its curvature all at once, a spike past n's stem (FONT-DESIGN.md)
-G2_LINES = os.environ.get("MYIA_G2_LINES") == "1"
-G2_LINE_ERR = float(os.environ.get("MYIA_G2_LINE_ERR", G2_ERR))  # (a curve straight at one end)
+# curvature continuous at the smooth joins of curves (G2), a curve kept as
+# fitted where that would move it over G2_ERR units (2026-10-28); not where
+# a curve runs on from a line (its end straight there too: a dead end,
+# docs/claude/stroking.md)
+G2_ERR = 3.0
 TS_G2 = np.linspace(0, 1, 80)  # (its distances, measured coarser)
-# then each whole arc refitted fair (fair_arcs; MYIA_FAIR=0: as fitted;
-# 2026-10-28)
-FAIR = os.environ.get("MYIA_FAIR", "1") == "1"
-CORNER_OWN = os.environ.get("MYIA_CORNER_OWN", "2")  # (Strokes.draw: 0 off, 1 the lighter only, 2 always)
-CORNER_MEET = os.environ.get("MYIA_CORNER_MEET", "1") == "1"  # (Strokes.draw: 0 to compare)
-SPLIT = os.environ.get("MYIA_SPLIT", "1") == "1"  # (Strokes.split_fit: 0 to compare)
+# then each whole arc refitted fair (fair_arcs, 2026-10-28;
+# embolden_by_strokes(fair=False): as fitted)
 SPLIT_ERR = 3.0  # units a moved side's one cubic may stray from its points (split: make_bold.ITALIC_BOLD_SPLIT)
-BLENDS = os.environ.get("MYIA_BLEND", "1") == "1"  # (Strokes.blend; 0 to compare)
 # an arc leaving a line that turns one way in the source (its first curve
 # turning back by ONE_WAY_TOL degrees at most: Old Standard's n) but whose
 # moved points turn back by over ONE_WAY_DIP degrees there, its weight
@@ -141,12 +131,12 @@ BLENDS = os.environ.get("MYIA_BLEND", "1") == "1"  # (Strokes.blend; 0 to compar
 # arc it bent back again), so the arc's far end stays; taken only where it
 # then turns back nowhere new, its curve fitted bending one way too
 # (one_way_fit). The knees are found first, on the outline as moved, and
-# left to their own repair (Strokes.one_way; MYIA_ONE_WAY=0 to compare)
-ONE_WAY = os.environ.get("MYIA_ONE_WAY", "1") == "1"
+# left to their own repair (Strokes.one_way; embolden_by_strokes(one_way=False)
+# to compare)
 ONE_WAY_TOL = 3.0
 ONE_WAY_DIP = 1.0
 ONE_WAY_MAX = 10.0  # (more: not the fade's, a crotch's 20 to 25)
-ONE_WAY_SHARE = float(os.environ.get("MYIA_ONE_WAY_SHARE", 0.5))
+ONE_WAY_SHARE = 0.5
 # (only a stem fading into a hook: its weight at the line ONE_WAY_STEM or
 # more, at the curve's end ONE_WAY_HOOK or more and ONE_WAY_FADE less)
 ONE_WAY_STEM, ONE_WAY_HOOK, ONE_WAY_FADE = 0.7, 0.3, 0.2
@@ -313,7 +303,7 @@ class Strokes:
         self.root, self.split, self.free = root, split, free
         self.upright = unit(np.array([-slant, 1.0]))
         self.slant = slant
-        self.blending, self.blended = BLENDS, False  # (blend: asked for, done)
+        self.blending, self.blended = True, False  # (blend: asked for, done)
         self.region = []  # where blend changed the source's weights, and rejoined(short=) the outline
         # (contour, segment): a curve beside a line whose fit bends back
         # where the source's turns one way (draw finds them, with their
@@ -321,7 +311,7 @@ class Strokes:
         # length, over KNEE_BLEND units)
         self.knees, self.found = set(), {}
         self.turned = []  # (contour, curve, way, degrees): kept turning one way (one_way)
-        self.turning, self.untouched = ONE_WAY, set()  # (one_way: asked for; the knees it leaves)
+        self.turning, self.untouched = True, set()  # (one_way: asked for; the knees it leaves)
 
     def offset(self, k):
         return (self.hair + (self.ax - self.hair) * k) / 2
@@ -500,7 +490,7 @@ class Strokes:
         """each arc leaving a line (either way round) whose first curve
         turns one way in the source but back in its moved points: those
         kept turning one way from the line's direction, the shift given
-        back along the rest of the arc by its turning (ONE_WAY); moved
+        back along the rest of the arc by its turning (ONE_WAY_*); moved
         changed in place"""
         L = len(segs)
         for k in range(L):
@@ -700,7 +690,7 @@ class Strokes:
             (a, ea), (b, eb) = pieces(p[:i + 1], first, depth - 1), pieces(p[i:], second, depth - 1)
             return (a + b, max(ea, eb)) if max(ea, eb) < 0.8 * e else ([c], e)
 
-        if ctrl is None or not SPLIT:
+        if ctrl is None:
             return [ctrl]
         return pieces(pts, ctrl, depth)[0]
 
@@ -767,7 +757,7 @@ class Strokes:
             found.append((k, n))
         return found
 
-    def join_curvature(self, fits, nodes, inner, braced):
+    def join_curvature(self, fits, nodes, inner):
         """fits (each curve's samples and cubic, None for a line) refitted so
         that at each smooth node between two curves both have one curvature
         (G2): each node's, between its two curves' own, where the larger of
@@ -785,11 +775,8 @@ class Strokes:
         own = [curvatures(g) if c else None for g, c in zip(g1, curve)]
         joins = [k for k in range(L) if curve[k - 1] and curve[k] and not nodes[k]["corner"] and k not in inner]
         target = [None] * L  # at node k, between curve k - 1 and curve k
-        # a curve running on from a line (not a bracket's): straight there
-        straight = [k for k in range(L) if G2_LINES and not nodes[k]["corner"] and k not in braced
-                    and (fits[k - 1] is None) != (fits[k] is None) and (curve[k - 1] or curve[k])]
-        for k in straight:
-            target[k] = 0.0
+        # (a curve running on from a line is not made straight there: a dead
+        # end, docs/claude/stroking.md)
 
         def refit(k, t0, t1):
             """curve k with end curvatures t0 t1: (cubic, its extra distance)"""
@@ -810,14 +797,10 @@ class Strokes:
                 lam = (best[1] - ka) / (kb - ka) if abs(kb - ka) > 1e-12 else 0.5
                 best = min([best] + [worst(min(1, max(0, lam + d))) for d in (-0.125, 0.125)])
                 target[k] = best[1] if best[0] <= G2_ERR else None
-            for k in straight:
-                c = k if curve[k] else k - 1
-                target[k] = 0.0  # (tried with it)
-                target[k] = 0.0 if refit(c, target[c], target[(c + 1) % L])[1] <= G2_LINE_ERR else None
         for k in range(L):
             if curve[k]:
                 c, extra = refit(k, target[k], target[(k + 1) % L])
-                if c is not None and extra <= (G2_LINE_ERR if 0.0 in (target[k], target[(k + 1) % L]) else G2_ERR):
+                if c is not None and extra <= G2_ERR:
                     fits[k] = (fits[k][0], c)
 
     def blend(self, segs, lines, nodes, kc, kv, kline, vline, ci=0):
@@ -924,16 +907,13 @@ class Strokes:
                 p = segs[k][0][0]
                 kk, vv = kc[first[k]], kv[first[k]]
                 ka, va = (kk, vv) if kline[k - 1] is None else (kline[k - 1], vline[k - 1])
-                if nd["corner"] and kline[k - 1] is None and (kline[k] is None or CORNER_OWN == "2") and CORNER_OWN != "0":
-                    # a corner between two curves: the arriving one's end by
-                    # its own weight where it is the lighter, not by the
-                    # leaving one's (γ: the arm's lower edge, moved at the
-                    # crotch by the descender's stem weight, hooked back into
-                    # a step; 2026-11-02). Where it is the
-                    # heavier, as before: γ's loop, so moved, met its stem in
-                    # a notch
-                    if kc[first[k] - 1] < kk or CORNER_OWN == "2":
-                        ka, va = kc[first[k] - 1], kv[first[k] - 1]
+                if nd["corner"] and kline[k - 1] is None:
+                    # a corner arriving from a curve: the curve's end by its
+                    # own weight, not by the leaving side's, lighter or
+                    # heavier (γ: the arm's lower edge, moved at the crotch
+                    # by the descender's stem weight, hooked back into a
+                    # step; 2026-11-02, taken for the heavier too 2026-11-03)
+                    ka, va = kc[first[k] - 1], kv[first[k] - 1]
                 kb, vb = (kk, vv) if kline[k] is None else (kline[k], vline[k])
                 if nd["corner"]:
                     a, b = self.move(p, nd["tin"], ka, sign, va), self.move(p, nd["tout"], kb, sign, vb)
@@ -942,7 +922,7 @@ class Strokes:
                     if not convex and lines[k - 1] and lines[k]:
                         # a crotch between two lines: where they meet, if on both
                         m = self.meet(a, nd["tin"], b, nd["tout"], segs[k - 1][0][0], segs[(k + 1) % L][0][0])
-                    elif not convex and CORNER_MEET and not (
+                    elif not convex and not (
                             # (not a crotch's short line, γ's below its loop:
                             # its two corners are one crotch, as before)
                             (lines[k - 1] and np.linalg.norm(p - segs[k - 1][0][0]) < self.ax / 3)
@@ -972,7 +952,7 @@ class Strokes:
             braced = {(k + m) % L for k, n in whole for m in range(n + 1)}
             for k in range(L):
                 j = (k + 1) % L
-                if (not CORNER_MEET or not lines[k] or lines[k - 1] or lines[j] or L < 4
+                if (not lines[k] or lines[k - 1] or lines[j] or L < 4
                         or not nodes[k]["corner"] or k in braced or j in braced
                         or np.linalg.norm(segs[j][0][0] - segs[k][0][0]) >= self.ax / 3
                         or sign * (nodes[k]["tin"][0] * nodes[j]["tout"][1]
@@ -1044,24 +1024,23 @@ class Strokes:
                         moved[k] = moved[k][:1] + [m + (moved[k][1] - m) * (i / n) for i in range(1, n)] + moved[k][1:]
             # a corner whose sides meet past their moved ends: the samples
             # beyond the meeting point dropped (they ran back from it, a hook)
-            if CORNER_MEET:
-                for k in range(L):
-                    if (not nodes[k]["corner"] or k in shifts or k in trims
-                            or not np.allclose(ends[k][0], ends[k][1])):
-                        continue
-                    m = ends[k][0]
-                    if not lines[k - 1]:
-                        prev = moved[k - 1]
-                        n = len(prev)
-                        while n > 4 and float((prev[n - 1] - m) @ nodes[k]["tin"]) > 0:
-                            n -= 1
-                        moved[k - 1] = prev[:n]
-                    if not lines[k]:
-                        here = moved[k]
-                        n = 1
-                        while len(here) - n > 4 and float((m - here[n]) @ nodes[k]["tout"]) > 0:
-                            n += 1
-                        moved[k] = here[:1] + here[n:]
+            for k in range(L):
+                if (not nodes[k]["corner"] or k in shifts or k in trims
+                        or not np.allclose(ends[k][0], ends[k][1])):
+                    continue
+                m = ends[k][0]
+                if not lines[k - 1]:
+                    prev = moved[k - 1]
+                    n = len(prev)
+                    while n > 4 and float((prev[n - 1] - m) @ nodes[k]["tin"]) > 0:
+                        n -= 1
+                    moved[k - 1] = prev[:n]
+                if not lines[k]:
+                    here = moved[k]
+                    n = 1
+                    while len(here) - n > 4 and float((m - here[n]) @ nodes[k]["tout"]) > 0:
+                        n += 1
+                    moved[k] = here[:1] + here[n:]
             # each node's tangents on the moved outline (arriving, leaving)
             tans = []
             for k in range(L):
@@ -1090,8 +1069,7 @@ class Strokes:
                     j = (k + 1) % L
                     pts = np.array([ends[k][1]] + moved[k][1:] + [ends[j][0]])
                     fits[k] = (pts, fit_cubic(pts, tans[k][1], tans[j][0])[0])
-            if G2:
-                self.join_curvature(fits, nodes, inner, {(k + m) % L for k, n in whole for m in range(n + 1)})
+            self.join_curvature(fits, nodes, inner)
             for k in range(L):
                 if (not lines[k] and fits[k][1] is not None and (lines[k - 1] or lines[(k + 1) % L])
                         and inflections(fits[k][1]) and one_way(segs[k])):
@@ -1276,21 +1254,19 @@ def rejoined(contour, anchors, short=False, acted=None):
         pts = np.concatenate([bez(sg, ts) for sg in run] + [run[-1][-1][None]])
         t0, t1 = unit(run[0][1] - run[0][0]), unit(run[-1][-1] - run[-1][-2])
         ctrl, _err = fit_cubic(pts, t0, t1)
-        if G2:
-            # the run's own curvature at its ends where it runs on smoothly
-            # into a curve (a corner's end is free)
-            # (straight where it runs on from a line, G2_LINES)
-            before, after = segs[(a - 1) % len(segs)], segs[b % len(segs)]
-            on = math.cos(math.radians(2))
-            k0 = k1 = None
-            if len(run[0]) == 4 and float(unit(before[-1] - before[-2]) @ t0) > on:
-                k0 = curvatures(run[0])[0] if len(before) == 4 else 0.0 if G2_LINES else None
-            if len(run[-1]) == 4 and float(t1 @ unit(after[1] - after[0])) > on:
-                k1 = curvatures(run[-1])[1] if len(after) == 4 else 0.0 if G2_LINES else None
-            ls = (np.linalg.norm(ctrl[1] - ctrl[0]), np.linalg.norm(ctrl[3] - ctrl[2]))
-            got = fit_g2(pts[::3], t0, t1, k0, k1, ls) if k0 is not None or k1 is not None else None
-            if got is not None and got[1] <= G2_ERR:
-                ctrl = got[0]
+        # the run's own curvature at its ends where it runs on smoothly into
+        # a curve (a corner's end is free, and one running on from a line)
+        before, after = segs[(a - 1) % len(segs)], segs[b % len(segs)]
+        on = math.cos(math.radians(2))
+        k0 = k1 = None
+        if len(run[0]) == 4 and len(before) == 4 and float(unit(before[-1] - before[-2]) @ t0) > on:
+            k0 = curvatures(run[0])[0]
+        if len(run[-1]) == 4 and len(after) == 4 and float(t1 @ unit(after[1] - after[0])) > on:
+            k1 = curvatures(run[-1])[1]
+        ls = (np.linalg.norm(ctrl[1] - ctrl[0]), np.linalg.norm(ctrl[3] - ctrl[2]))
+        got = fit_g2(pts[::3], t0, t1, k0, k1, ls) if k0 is not None or k1 is not None else None
+        if got is not None and got[1] <= G2_ERR:
+            ctrl = got[0]
         rec.curveTo(*(tuple(q) for q in ctrl[1:]))
     rec.closePath()
     return rec
@@ -1691,7 +1667,7 @@ def guarded(was, kept, region, r):
     return found + evenness(was, kept, where)
 
 
-def stroked(strokes, flat, sliver):
+def stroked(strokes, flat, sliver, fair=True):
     """flat emboldened by strokes: (glyph, its contours as segment arrays)"""
     out = ufoLib2.objects.Glyph()
     anchors = []
@@ -1708,7 +1684,7 @@ def stroked(strokes, flat, sliver):
             continue
         rec = rejoined(c, anchors, short=strokes.blended and (list(blended), REGION * strokes.ax),
                        acted=strokes.region)
-        segs = segments(rec.value) if FAIR else None
+        segs = segments(rec.value) if fair else None
         if segs:
             faired = [fair_contour(sg, strokes.upright)[0] for sg in segs]
             # (one crossing itself where the fitted one did not, a twist
@@ -1805,33 +1781,37 @@ def turned_knees(strokes, kept):
 
 
 def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, root=0.0, split=False, free=0.0,
-                        knees=(), log=None):
+                        knees=(), log=None, *, fair=True, one_way=True):
     """rec (a RecordingPen, upright frame) emboldened by its strokes, as a
     ufoLib2 Glyph, cleaned (contours under sliver units' area dropped);
     not shifted (the caller moves it by ax / 2); root, split, free: Strokes';
     knees: keys (contour, segment) of curves taken as knees though the
     stroked outline leaves no step there to find them by (the gate then
     asks no step gone of them, and judges the bends with the knees turned);
-    log, a list: given, the blend's verdict is added to it"""
+    log, a list: given, the blend's verdict is added to it; fair, one_way:
+    two stages, off only to find which stage makes a fault (a pilot calls
+    this itself, past the cache: make_bold's jobs pass the rest
+    positionally and cannot set them; docs/claude/stroking.md)"""
     strokes = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
     flat = tidy(merged_glyph(rec))
     if not flat.contours:
         return ufoLib2.objects.Glyph()
     strokes.turning = False  # (the knees found on the outline as moved)
-    out, kept = stroked(strokes, flat, sliver)
+    out, kept = stroked(strokes, flat, sliver, fair)
     turn = STEP_TURN
     forced = {tuple(k) for k in knees} & set(strokes.found) if strokes.blending else set()
     knees = {key for key, pts in strokes.found.items()
              if any(near(pts, [f[1:3]], KNEE_NEAR).any() for f in steps(kept, KNEE_TURN))} if strokes.blending else set()
     knees |= forced
-    if knees or ONE_WAY:
+    if knees or one_way:
         # a knee left in the outline: stroked again, its curve blended into
         # its line too, and judged by the knee's step; the arcs leaving a
-        # line kept turning one way (ONE_WAY), but for the knees
+        # line kept turning one way (one_way), but for the knees
         again = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
         again.knees = knees
         again.untouched = set(knees)
-        out, kept = stroked(again, flat, sliver)
+        again.turning = one_way
+        out, kept = stroked(again, flat, sliver, fair)
         strokes, turn = again, (KNEE_TURN if knees else STEP_TURN)
     if strokes.blended:
         # a blended curve taken only where it removes a step and leaves no
@@ -1840,9 +1820,9 @@ def embolden_by_strokes(rec, ax, ay, thin, thick, hair, slant, sliver=SLIVER, ro
         # (guarded: the outline away from the blend, contours, bounds, the
         # strokes' widths and the white between them); else as reviewed
         plain = Strokes(ax, ay, thin, thick, hair, slant, root, split, free)
-        plain.blending = False
+        plain.blending, plain.turning = False, one_way
         plain.untouched = set(knees)
-        before, was = stroked(plain, flat, sliver)
+        before, was = stroked(plain, flat, sliver, fair)
         fixed, stepped = compared(steps(was, turn), steps(kept, turn))
         bent = compared(bends(was), bends(turned_knees(strokes, kept) if forced else kept), BEND_NEAR)[1]
         if forced:

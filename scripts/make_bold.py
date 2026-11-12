@@ -932,7 +932,7 @@ BOLD_KERNING = {
     ("a", "g"): -56,
     ("x", "t"): -77,
 }
-# the Bold Italic's capital rounds and bowls: STROKE_OUT gave them back
+# the Bold Italic's capital rounds and bowls: stroke_out gave them back
 # part of the white the strokes took (O O 0.75 of H H to 0.80), the
 # Italic's 0.89 and the references' 0.87-0.95 not reached; each side
 # brought to the Italic's ratio against H (scripts/quality/sc_sides.py
@@ -963,8 +963,7 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
 # on this style's final base letters.
 ITALIC_FIT_CORRECTIONS = {"uni026C": (-3, 0), "uniA7AD": (-2, 0)}
 # by strokes, a letter's side whose ink stands further out than by weight
-# gets that white back (letters only: figures, punctuation, signs as fitted) (MYIA_STROKE_OUT=0 to compare; MYIA_STROKE_OUT_LOG=FILE lists them)
-STROKE_OUT = os.environ.get("MYIA_STROKE_OUT", "1") != "0"
+# gets that white back (letters only: figures, punctuation, signs as fitted) (MYIA_STROKE_OUT_LOG=FILE lists them)
 STROKE_OUT_LOG = os.environ.get("MYIA_STROKE_OUT_LOG")
 # gains under this are the measure's noise (1-3 units, most at straight sides:
 # H's, m's; the finished letters' side bearings are held within a unit)
@@ -2714,7 +2713,7 @@ def main():
         rec.replay(glyph.getPen())
         return glyph
 
-    is_letter = classifier(font, 1, 1)  # the letters respace cuts (STROKE_OUT's)
+    is_letter = classifier(font, 1, 1)  # the letters respace cuts (stroke_out's)
     stroke_out = {}
     for g in font:
         is_mark = g.name in marks
@@ -2826,7 +2825,7 @@ def main():
                     # the other side bearings once the letters made of these
                     # are drawn: the recipes cut and attach at fixed points of
                     # their base's frame (Ƈ's hook moved 9 units onto C)
-                    if d and STROKE_OUT and is_letter(g.name):
+                    if d and is_letter(g.name):
                         out = optical_fit(bold_rec(weighted), bold_rec(bold), band_height(regular, g.name))
                         out = out and tuple(b if b >= STROKE_OUT_MIN else 0 for b in out)
                         if out and any(out):
@@ -3002,7 +3001,7 @@ def main():
     # a composite follows its base (sidebearings), as the letters made of one;
     # also one set off for its accent (Έ Ἐ Ῥ: the letter at an offset, the
     # mark before it), else it would stand narrower than its NFD
-    if italic and STROKE_OUT:
+    if italic:
         # the capital rounds' white beyond what the strokes gave back (2026-11-08)
         for n, side in ITALIC_CAPITAL_ROUNDS.items():
             stroke_out[n] = tuple(a + b for a, b in zip(stroke_out.get(n, (0, 0)), side))
@@ -3018,7 +3017,7 @@ def main():
                 stroke_out[g.name] = stroke_out[bases[0]]
                 grown = True
     if STROKE_OUT_LOG is not None:
-        Path(os.environ["MYIA_STROKE_OUT_LOG"]).write_text("".join(f"{n} {a} {b}\n" for n, (a, b) in stroke_out.items()))
+        Path(STROKE_OUT_LOG).write_text("".join(f"{n} {a} {b}\n" for n, (a, b) in stroke_out.items()))
     sidebearings(font, {n: tuple(a + b for a, b in zip(extra.get(n, (0, 0)), stroke_out.get(n, (0, 0))))
                         for n in set(extra) | set(stroke_out)})
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})

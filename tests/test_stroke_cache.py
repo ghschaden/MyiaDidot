@@ -29,10 +29,10 @@ def test_round_trip_and_keys(tmp_path, monkeypatch):
     cache.put([other], {"a": None})  # a failure is kept as one
     assert cache.get([other]) == {"a": None}
     code = cache.code
-    monkeypatch.setenv("MYIA_G2_ERR", "4")  # stroke_bold reads it
+    monkeypatch.setenv("MYIA_SOMETHING_NEW", "4")  # outside STEERING: keyed
     assert stroke_cache.code_key() != code
     monkeypatch.setenv("MYIA_JOBS", "1")  # only steers the run
-    monkeypatch.delenv("MYIA_G2_ERR")
+    monkeypatch.delenv("MYIA_SOMETHING_NEW")
     assert stroke_cache.code_key() == code
     cache.close()
 

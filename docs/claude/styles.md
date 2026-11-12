@@ -114,8 +114,8 @@ Moved from CLAUDE.md (its ground rules apply).
   ink meeting a facing side) the ink no narrower or wider than without
   by over WIDTH units, its width rising and falling no more often, no
   less white in front; nothing to measure there is a failure. Else it
-  stays exactly as drawn without (MYIA_BLEND=0 to compare;
-  MYIA_BLEND_LOG=file lists the verdicts and why). Findings are compared
+  stays exactly as drawn without (MYIA_BLEND_LOG=file lists the
+  verdicts and why). Findings are compared
   one by one (`compared`: by kind and place, each the other's nearest
   within NEAR units, bends BEND_NEAR, not by node), so a wobble taken
   away cannot pay for a kink added; one matched ambiguously counts as
@@ -152,10 +152,10 @@ Moved from CLAUDE.md (its ground rules apply).
   (the entry strokes, u n and their families, and the feet's exit hooks,
   2026-11-09) is kept turning one way from the line's end, its shift given
   back where the edge runs along it (`Strokes.one_way`, ONE_WAY_*;
-  MYIA_ONE_WAY=0 to compare); the knees, found first, are left out. Last,
+  `embolden_by_strokes(one_way=False)` to compare); the knees, found first, are left out. Last,
   each whole arc of the cleaned outline (corner to corner) is refitted
-  fair (`fair_arcs.py`, 2026-10-28, the review; MYIA_FAIR=0 to
-  compare): curvature continuous, changing gently (by its relative change,
+  fair (`fair_arcs.py`, 2026-10-28, the review;
+  `embolden_by_strokes(fair=False)` to compare): curvature continuous, changing gently (by its relative change,
   so tight inner turns stay tight), rising from nothing out of a line (the
   curve next to it split in two, only fading towards the line), no new
   bends; serif brackets (up to three curves under 120 units between

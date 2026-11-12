@@ -9,8 +9,10 @@ so its result is kept, keyed by:
 - the source of stroke_bold.py and every project module it imports, at
   any depth (any edit to them starts afresh);
 - the versions of Python and every installed package;
-- the MYIA_* variables of the environment (stroke_bold reads several),
-  but for those that only steer the run (MYIA_JOBS ...).
+- the MYIA_* variables of the environment but for those that only steer
+  the run (STEERING): none changes an outline any more (T4, 2026-11-12),
+  and check_reproducible refuses to run with one outside KNOWN, but a
+  variable added later and set by make generate still keys the cache.
 
 The cache is a SQLite file outside the synced working copy
 ($XDG_CACHE_HOME/myiadidot/strokes.sqlite, ~/.cache by default), shared by
@@ -37,6 +39,15 @@ ENTRY = "stroke_bold"
 PRUNE_DAYS = 30
 # variables that change how a run goes, not what it makes
 STEERING = {"MYIA_JOBS", "MYIA_RECHECK", "MYIA_STROKE_CACHE", "MYIA_BLEND_LOG"}
+# every MYIA_* variable the project reads (one list: check_reproducible
+# refuses any other, so that a stale switch left set in a shell is told);
+# none of them changes an outline or a side bearing (docs/claude/stroking.md)
+KNOWN = STEERING | {"MYIA_STROKE_OUT_LOG", "MYIA_REPRODUCE_KEEP", "MYIA_SOURCES", "MYIA_REQUIRE_REFERENCES"}
+
+
+def unknown(environ=None):
+    """the MYIA_* variables set in environ (os.environ) outside KNOWN"""
+    return sorted(k for k in (os.environ if environ is None else environ) if k.startswith("MYIA_") and k not in KNOWN)
 
 
 def modules(entry=ENTRY):
