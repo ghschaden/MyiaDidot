@@ -162,9 +162,9 @@ the other models. One item per session.
       proofs/italic-followers-mended-2026-11-12.pdf: g.sc ǥ.sc ₵ ₿ ы.sc
       psi.sc у.sc Ʌ; their accepted marks withdrawn until seen); O and Q
       want drawing.
-      Next, as its own job with candidates on a sheet as ⱳ's arm had: the
-      arms into the hooks of the Bold Italic's Ƙ Ƴ (and the other hooks
-      with an arm), Ʋ's thickening where the curl leaves the stem.
+      The Bold Italic's hooks of Ƙ Ƴ Ʋ (and ƙ.sc ƴ.sc ʋ.sc) done
+      2026-11-12, chosen on proofs/bold-italic-hook-arms-2026-11-12.pdf:
+      Ƙ Ƴ version C, Ʋ version D (make_bold.CURL_ARM).
 
 Budget (2026-11-11): F1 to F3 are done; F1 took more than half of what
 Fable had then, mostly in its review rounds. The limits now:

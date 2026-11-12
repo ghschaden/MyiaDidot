@@ -404,6 +404,7 @@ def part_ff(font, apart=ITALIC_BOLD_FF_APART):
 
 # the Bold Italic's curls over the top (ITALIC_BOLD_RECIPES): radii, turn and ball
 CURL_CAP = {"r": (205, 185), "sweep": 190, "ball": 105}
+CURL_ARM = {"r": (215, 195), "sweep": 190, "ball": 122}
 CURL_LOW = {"r": (185, 165), "sweep": 190, "ball": 90}
 ITALIC_BOLD_RECIPES = {
     # ʉ: the bar on the Bold Italic's u (ITALIC_BOLD_REBUILD) as heavy and
@@ -506,9 +507,20 @@ ITALIC_BOLD_RECIPES = {
                             "sweep": 195, "ball": 75, "t": (100, 45)}))
        for ch, base in (("ƈ.sc", "c.sc"), ("ɠ.sc", "g.sc"))},
     # Ƙ Ƴ: the arm cut below its flare into the serif (its own width there),
-    # running on in its own direction; Ʋ: U's right stem
+    # running on in its own direction; Ʋ: U's right stem.
+    # 2026-11-12 ("the arm leading to the hook is not good"; version C of
+    # proofs/bold-italic-hook-arms-2026-11-12.pdf, for Ʋ version D): Ƙ Ƴ's
+    # hook at the arm's own thickness all round, as the Italic's ⱳ (it was
+    # 132 and 103 on the sides, 67 and 59 on top, on an arm of about 98);
+    # the curl begun 14 degrees back in the arm ("lead"): the arm is cut
+    # level, the curl starts square to its direction, and the wedge between
+    # was missing on the upper side (a ledge of 24 units, 72 at the arm's
+    # thickness); a larger curl and ball (CURL_ARM). Ʋ: 100 on the sides
+    # for 139 where the curl leaves the thin stem (a thickening there), 80
+    # on top: at the stem's own thickness its top stood too tight and
+    # closed the eye; no lead (on an upright stem a jog of 7 units)
     "Ƙ": ("curl", "K", ("c", [(870, 1130, 10000, 10000)],  # (at 1150 a step, ƙ.sc's ledges)
-                        {"at": ("y", 1130, "last"), "dir": 51.6, "turn": "cw", **CURL_CAP, "t": (132, 67)})),
+                        {"at": ("y", 1130, "last"), "dir": 51.6, "turn": "cw", **CURL_ARM, "lead": 14})),
     # Ɓ Ɗ Ƥ: the Italic's recipe (the stem rising through the top serif and
     # curling over to the left), the serif cut from 1290 a unit inside the
     # stem's left edge, 290 here (266 once spaced): the Italic's cut at 300
@@ -575,9 +587,9 @@ ITALIC_BOLD_RECIPES = {
                               {"at": ("y", 940, "first"), "dir": 90, "turn": "ccw", "r": (165, 125),
                                "sweep": 200, "ball": None, "t": (120, 48)})),
     "Ʋ": ("curl", "U", ("c", [(950, 1200, 10000, 10000)],
-                        {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", **CURL_CAP, "t": (139, 59)})),
+                        {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", **CURL_ARM, "t": (100, 80)})),
     "Ƴ": ("curl", "Y", ("c", [(800, 1100, 10000, 10000)],
-                        {"at": ("y", 1100, "last"), "dir": 68.5, "turn": "cw", **CURL_CAP, "t": (103, 59)})),
+                        {"at": ("y", 1100, "last"), "dir": 68.5, "turn": "cw", **CURL_ARM, "lead": 14})),
     # ƴ (and ʋ before): the thick right stroke (246, 251) curling over; it ends upright,
     # as thick, so it ends in a round cap touching both its edges ("end";
     # 90 left 60 units of the end's face standing beside it; half the

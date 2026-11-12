@@ -577,11 +577,10 @@ before, a unit of movement only tipped it.
 - **у.sc's hook** (Bold Italic): the ball 0.88 of its size, 72 units from
   the stem for 26; by hand, marked drawn.
 
-Not done, each wants candidates on a sheet as ⱳ's arm had: the arms into
-the hooks of Ƙ Ƴ (the Bold Italic's curl begins 24 units right of the
-arm's upper edge and 14 degrees steeper: a step and a bend at the cut);
-Ʋ's thickening where the curl leaves the stem (two short curves at
-1410,1195 and 1537,1190); Λ's left leg (which glyph and where: asked).
+Then, in their own commits: Ʌ's thin leg (scripts/turned_v.py); the arms
+into the hooks of the Bold Italic's Ƙ Ƴ and Ʋ's thickening, chosen from
+candidates (proofs/bold-italic-hook-arms-2026-11-12.pdf; the reasons at
+make_bold's recipes, CURL_ARM).
 
 Open, for the designer and the next batch:
 
