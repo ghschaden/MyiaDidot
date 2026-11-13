@@ -332,19 +332,16 @@ only) does not see them.
       ! ? 60, other closers 40; kern_clear.clearance, chosen on running
       text). The superiors the same day: superior figures 60 after a
       letter or figure, ª º 20 (chosen on running text); the lists empty.
-- [ ] The Regular's y, seen on the running-text proofs 2026-11-13: its
-      right arm does not read straight, and there is a kink. Measured:
-      the arm's edges are one straight line (the inner edge above the
-      crotch, extended, meets the arm below the thick stroke within 1
-      unit), so the bend is optical: the hairline disappears into the
-      thick stroke for about 235 units (crotch at 216 to the baseline)
-      and its lower part seems shifted (Poggendorff); to be offset by
-      eye on a sheet of candidates. The kink: where the thick stroke's
-      left edge (slope 0.407) turns into the arm (0.345) at (486, -19),
-      about 3 degrees on the outside; the arm into the tail's curve at
-      (353, -405) is 0.4 degrees. The arm is also 54 units thick
-      against the hairlines' 48. Fix in y itself (recipe or drawn), the
-      Bold and derived letters follow.
+- [x] The Regular's y, seen on the running-text proofs 2026-11-13: its
+      right arm did not read straight, with a kink at the baseline. The
+      arm's edges are one straight line; the kink was the V where the
+      thick stroke's left edge (up and left) meets the arm's (up and
+      right) at (486, -19), a turn of about 41 degrees. Done 2026-11-13:
+      that corner rounded (radius 120, a node at its extreme), chosen as
+      B on proofs/y-arm-candidates-2026-11-13.pdf over the arm shifted
+      either way; ƴ ʎ ʸ rebuilt from it (derive.py), the Bold and the
+      composites follow. Still open: the arm is 54 units thick against
+      the hairlines' 48 (not asked for).
 - [ ] Sheet for review (before | after, all four styles); then
       `make regress`, read the report, accept the shaping baselines with
       its digest.

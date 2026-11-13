@@ -23,7 +23,13 @@
 			<point x="169" y="343"/>
 			<point x="191" y="385"/>
 			<point x="207" y="433" type="curve" smooth="yes"/>
-			<point x="279" y="645" type="line"/>
+			<point x="259" y="584" type="line" smooth="yes"/>
+			<point x="264" y="599"/>
+			<point x="266" y="619"/>
+			<point x="266" y="639" type="curve" smooth="yes"/>
+			<point x="266" y="663"/>
+			<point x="263" y="688"/>
+			<point x="256" y="705" type="curve" smooth="yes"/>
 			<point x="91" y="1113" type="line"/>
 			<point x="22" y="1113" type="line"/>
 			<point x="22" y="1149" type="line"/>
@@ -50,7 +56,7 @@
 			<key>org.myiadidot.builtFrom</key>
 			<dict>
 				<key>y</key>
-				<string>787d35e829c8</string>
+				<string>49e3476430cd</string>
 				<key>zero</key>
 				<string>cd54e9b4c79b</string>
 				<key>zerosuperior</key>

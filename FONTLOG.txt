@@ -26,6 +26,12 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-13 Regular y: the join at the baseline rounded
+  Where the thick stroke ends against the hairline arm, the sharp V on
+  the outside is rounded (chosen on proofs/y-arm-candidates-2026-11-13.pdf);
+  it read as a kink and made the arm look bent. ƴ ʎ ʸ rebuilt from the new
+  y; the Bold's y and the accented y's and у follow.
+
 2026-11-13 Collision sweep: letters and figures meeting the signs beside them
   scripts/quality/collisions.py (make collisions) sets every letter and
   figure before ? ! ) ] } ” “ ’ * : ; and the superiors, after ( [ { „ “
