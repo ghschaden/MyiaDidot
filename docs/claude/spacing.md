@@ -36,7 +36,9 @@ Moved from CLAUDE.md (its ground rules apply).
   capitals. A sign keeps more white than CLEAR (kern_clear.clearance,
   chosen on running text 2026-11-13): OPEN_CLEAR 100 after an opening
   sign, MARK_CLEAR 60 before ! ?, CLOSE_CLEAR 40 before the other
-  closers; letters against letters and the superiors keep CLEAR (20). A
+  closers, SUPERIOR_CLEAR 60 before a superior figure (a note's number;
+  proofs/superior-clearance-text-2026-11-13.pdf); ª º after a letter and
+  letters against letters keep CLEAR (20). A
   guarded member that a group entry decides gets its own exception where
   the group's value leaves it touching (the Bold's (ɉ, ąɉ). The italics'
   [j (j {j are looser by hand besides (make_italic.ITALIC_KERNING +60). make_bold.py adds the Bold's own cut, make_italic.py

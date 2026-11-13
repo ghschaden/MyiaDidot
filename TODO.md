@@ -330,8 +330,8 @@ only) does not see them.
       [j loosened, „ loosened by kern_clear. Then, the same day, every
       sign beside every letter at a sign's own clearance (openers 100,
       ! ? 60, other closers 40; kern_clear.clearance, chosen on running
-      text). Left: the superiors after f, the hooks and stacked accents
-      (still at 20, not reviewed).
+      text). The superiors the same day: superior figures 60 after a
+      letter or figure, ª º 20 (chosen on running text); the lists empty.
 - [ ] The Regular's y, seen on the running-text proofs 2026-11-13: its
       right arm does not read straight, and there is a kink. Measured:
       the arm's edges are one straight line (the inner edge above the

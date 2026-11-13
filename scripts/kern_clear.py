@@ -49,6 +49,11 @@ CLEAR = 20  # units of white the inks keep, measured across
 OPEN_CLEAR = 100
 MARK_CLEAR = 60
 CLOSE_CLEAR = 40
+# a superior figure (a note's number) after a letter or figure: 60; ª º
+# after one keep CLEAR (chosen on proofs/superior-clearance-text-2026-11-13.pdf)
+SUPERIOR_CLEAR = 60
+SUPERIOR_FIGURES = {f + "superior" for f in (
+    "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")}
 MARKS = ("exclam", "question")
 ROW_MARGIN = 20  # rows 10 units apart may miss ink between them: two rows either way
 STEP = 2
@@ -156,7 +161,7 @@ def sets(font):
 
 def entries(font):
     """PAIRS and the glyph pairs of a sign and a letter or figure: every
-    opening sign before one, every closing sign after one, and the case
+    opening sign before one, every closing sign and superior after one, and the case
     forms beside the capitals (reviewed 2026-11-13). Each glyph pair its
     own entry, so that one member's overhang does not loosen its group;
     kern_clear adds one only where the inks come nearer than clearance()."""
@@ -164,7 +169,7 @@ def entries(font):
     words = s["LETTERS"] + s["FIGURES"]
     out = list(PAIRS)
     out += [(o, b) for o in s["OPENERS"] for b in words]
-    out += [(a, c) for a in words for c in s["CLOSERS"]]
+    out += [(a, c) for a in words for c in s["CLOSERS"] + s["SUPERIORS"]]
     out += [(o + ".case", b) for o in s["OPENERS"] if o + ".case" in font for b in s["CAPITALS"]]
     out += [(a, c + ".case") for c in s["CLOSERS"] if c + ".case" in font for a in s["CAPITALS"]]
     return list(dict.fromkeys(out))
@@ -185,7 +190,7 @@ def sign_names():
 def clearance(left, right):
     """The white a pair keeps across: a sign's own (OPEN_CLEAR before a
     letter, MARK_CLEAR for ! ? after one, CLOSE_CLEAR for the other
-    closing signs), else CLEAR. left and right are glyph names or kerning
+    closing signs, SUPERIOR_CLEAR for a superior figure), else CLEAR. left and right are glyph names or kerning
     keys; “ ‘ open before a letter and close after one."""
     a, b = (n.removesuffix(".case") for n in (left, right))
     if not SIGN_NAMES:
@@ -194,6 +199,8 @@ def clearance(left, right):
         return OPEN_CLEAR
     if b in MARKS:
         return MARK_CLEAR
+    if b in SUPERIOR_FIGURES:
+        return SUPERIOR_CLEAR
     if b in SIGN_NAMES["close"]:
         return CLOSE_CLEAR
     return CLEAR

@@ -183,10 +183,40 @@
 			<key>Upsilondieresis</key>
 			<integer>-159</integer>
 		</dict>
+		<key>Psi</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>8</integer>
+			<key>zerosuperior</key>
+			<integer>8</integer>
+		</dict>
 		<key>R</key>
 		<dict>
 			<key>e</key>
 			<integer>39</integer>
+		</dict>
+		<key>Upsilon</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>12</integer>
+			<key>zerosuperior</key>
+			<integer>30</integer>
+		</dict>
+		<key>Upsilondieresis</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>12</integer>
+			<key>zerosuperior</key>
+			<integer>30</integer>
+		</dict>
+		<key>Upsilontonos</key>
+		<dict>
+			<key>ninesuperior</key>
+			<integer>10</integer>
+			<key>ordfeminine</key>
+			<integer>32</integer>
+			<key>zerosuperior</key>
+			<integer>48</integer>
 		</dict>
 		<key>Y</key>
 		<dict>
@@ -978,8 +1008,12 @@
 		<dict>
 			<key>colon</key>
 			<integer>2</integer>
+			<key>ordfeminine</key>
+			<integer>6</integer>
 			<key>semicolon</key>
 			<integer>2</integer>
+			<key>zerosuperior</key>
+			<integer>38</integer>
 		</dict>
 		<key>eightoldstyle</key>
 		<dict>
@@ -987,6 +1021,13 @@
 			<integer>30</integer>
 			<key>semicolon</key>
 			<integer>30</integer>
+			<key>zerosuperior</key>
+			<integer>42</integer>
+		</dict>
+		<key>eng.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>6</integer>
 		</dict>
 		<key>eogonek</key>
 		<dict>
@@ -1217,6 +1258,8 @@
 		<dict>
 			<key>bracketright</key>
 			<integer>20</integer>
+			<key>eightsuperior</key>
+			<integer>54</integer>
 			<key>ibreve</key>
 			<integer>103</integer>
 			<key>icircumflex</key>
@@ -1231,6 +1274,12 @@
 			<integer>109</integer>
 			<key>m</key>
 			<integer>-62</integer>
+			<key>ninesuperior</key>
+			<integer>72</integer>
+			<key>ordfeminine</key>
+			<integer>92</integer>
+			<key>ordmasculine</key>
+			<integer>34</integer>
 			<key>p</key>
 			<integer>-62</integer>
 			<key>public.kern2.i</key>
@@ -1245,8 +1294,16 @@
 			<integer>18</integer>
 			<key>r</key>
 			<integer>-95</integer>
+			<key>sevensuperior</key>
+			<integer>28</integer>
+			<key>sixsuperior</key>
+			<integer>20</integer>
 			<key>t</key>
 			<integer>-66</integer>
+			<key>threesuperior</key>
+			<integer>46</integer>
+			<key>twosuperior</key>
+			<integer>66</integer>
 			<key>uni01D0</key>
 			<integer>60</integer>
 			<key>uni0209</key>
@@ -1259,17 +1316,42 @@
 			<integer>138</integer>
 			<key>uni1EC9</key>
 			<integer>-11</integer>
+			<key>zerosuperior</key>
+			<integer>82</integer>
 		</dict>
 		<key>ff</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>22</integer>
+			<key>eightsuperior</key>
+			<integer>54</integer>
+			<key>ninesuperior</key>
+			<integer>72</integer>
+			<key>ordfeminine</key>
+			<integer>92</integer>
+			<key>ordmasculine</key>
+			<integer>34</integer>
 			<key>question</key>
 			<integer>30</integer>
 			<key>quotedblright</key>
 			<integer>18</integer>
 			<key>quoteright</key>
 			<integer>18</integer>
+			<key>sevensuperior</key>
+			<integer>28</integer>
+			<key>sixsuperior</key>
+			<integer>20</integer>
+			<key>threesuperior</key>
+			<integer>46</integer>
+			<key>twosuperior</key>
+			<integer>66</integer>
+			<key>zerosuperior</key>
+			<integer>82</integer>
+		</dict>
+		<key>five.pf</key>
+		<dict>
+			<key>twosuperior</key>
+			<integer>40</integer>
 		</dict>
 		<key>fouroldstyle</key>
 		<dict>
@@ -1302,8 +1384,22 @@
 		</dict>
 		<key>icircumflex.sc</key>
 		<dict>
+			<key>eightsuperior</key>
+			<integer>18</integer>
+			<key>ninesuperior</key>
+			<integer>48</integer>
+			<key>ordfeminine</key>
+			<integer>70</integer>
+			<key>ordmasculine</key>
+			<integer>16</integer>
 			<key>question</key>
 			<integer>18</integer>
+			<key>sixsuperior</key>
+			<integer>6</integer>
+			<key>twosuperior</key>
+			<integer>30</integer>
+			<key>zerosuperior</key>
+			<integer>68</integer>
 		</dict>
 		<key>iogonek</key>
 		<dict>
@@ -1316,13 +1412,33 @@
 		<dict>
 			<key>bracketright</key>
 			<integer>24</integer>
+			<key>ninesuperior</key>
+			<integer>30</integer>
+			<key>ordfeminine</key>
+			<integer>52</integer>
+			<key>ordmasculine</key>
+			<integer>4</integer>
 			<key>question</key>
 			<integer>6</integer>
+			<key>sixsuperior</key>
+			<integer>18</integer>
+			<key>zerosuperior</key>
+			<integer>78</integer>
+		</dict>
+		<key>iotadieresistonos</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
 		</dict>
 		<key>itilde.sc</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>18</integer>
+		</dict>
+		<key>jcircumflex</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>2</integer>
 		</dict>
 		<key>jcircumflex.sc</key>
 		<dict>
@@ -1330,8 +1446,22 @@
 			<integer>-57</integer>
 			<key>atilde.sc</key>
 			<integer>-63</integer>
+			<key>eightsuperior</key>
+			<integer>26</integer>
+			<key>ninesuperior</key>
+			<integer>56</integer>
+			<key>ordfeminine</key>
+			<integer>78</integer>
+			<key>ordmasculine</key>
+			<integer>24</integer>
 			<key>question</key>
 			<integer>26</integer>
+			<key>sixsuperior</key>
+			<integer>14</integer>
+			<key>twosuperior</key>
+			<integer>38</integer>
+			<key>zerosuperior</key>
+			<integer>76</integer>
 		</dict>
 		<key>k.sc</key>
 		<dict>
@@ -1349,6 +1479,18 @@
 		<dict>
 			<key>colon</key>
 			<integer>126</integer>
+			<key>eightsuperior</key>
+			<integer>80</integer>
+			<key>fivesuperior</key>
+			<integer>40</integer>
+			<key>foursuperior</key>
+			<integer>84</integer>
+			<key>ninesuperior</key>
+			<integer>90</integer>
+			<key>ordfeminine</key>
+			<integer>116</integer>
+			<key>ordmasculine</key>
+			<integer>66</integer>
 			<key>public.kern2.U.sc</key>
 			<integer>15</integer>
 			<key>public.kern2.V.sc</key>
@@ -1361,13 +1503,41 @@
 			<integer>20</integer>
 			<key>semicolon</key>
 			<integer>126</integer>
+			<key>sixsuperior</key>
+			<integer>96</integer>
+			<key>threesuperior</key>
+			<integer>76</integer>
+			<key>twosuperior</key>
+			<integer>10</integer>
+			<key>zerosuperior</key>
+			<integer>156</integer>
 		</dict>
 		<key>ldot</key>
 		<dict>
 			<key>colon</key>
 			<integer>80</integer>
+			<key>eightsuperior</key>
+			<integer>68</integer>
+			<key>fivesuperior</key>
+			<integer>58</integer>
+			<key>foursuperior</key>
+			<integer>74</integer>
+			<key>ninesuperior</key>
+			<integer>20</integer>
+			<key>ordfeminine</key>
+			<integer>24</integer>
+			<key>ordmasculine</key>
+			<integer>28</integer>
 			<key>semicolon</key>
 			<integer>80</integer>
+			<key>sixsuperior</key>
+			<integer>28</integer>
+			<key>threesuperior</key>
+			<integer>86</integer>
+			<key>twosuperior</key>
+			<integer>70</integer>
+			<key>zerosuperior</key>
+			<integer>76</integer>
 		</dict>
 		<key>longs</key>
 		<dict>
@@ -1377,12 +1547,20 @@
 			<integer>20</integer>
 			<key>edieresis</key>
 			<integer>-32</integer>
+			<key>eightsuperior</key>
+			<integer>54</integer>
 			<key>emacron</key>
 			<integer>-35</integer>
+			<key>ninesuperior</key>
+			<integer>74</integer>
 			<key>odieresis</key>
 			<integer>-38</integer>
 			<key>omacron</key>
 			<integer>-41</integer>
+			<key>ordfeminine</key>
+			<integer>94</integer>
+			<key>ordmasculine</key>
+			<integer>34</integer>
 			<key>otilde</key>
 			<integer>-58</integer>
 			<key>public.kern2.c</key>
@@ -1399,6 +1577,14 @@
 			<integer>18</integer>
 			<key>quoteright</key>
 			<integer>18</integer>
+			<key>sevensuperior</key>
+			<integer>30</integer>
+			<key>sixsuperior</key>
+			<integer>22</integer>
+			<key>threesuperior</key>
+			<integer>46</integer>
+			<key>twosuperior</key>
+			<integer>68</integer>
 			<key>uni01ED</key>
 			<integer>-42</integer>
 			<key>uni0205</key>
@@ -1421,6 +1607,8 @@
 			<integer>-52</integer>
 			<key>uni1EE1</key>
 			<integer>140</integer>
+			<key>zerosuperior</key>
+			<integer>84</integer>
 		</dict>
 		<key>longs_longs</key>
 		<dict>
@@ -1428,12 +1616,20 @@
 			<integer>22</integer>
 			<key>edieresis</key>
 			<integer>-33</integer>
+			<key>eightsuperior</key>
+			<integer>54</integer>
 			<key>emacron</key>
 			<integer>-35</integer>
+			<key>ninesuperior</key>
+			<integer>72</integer>
 			<key>odieresis</key>
 			<integer>-39</integer>
 			<key>omacron</key>
 			<integer>-41</integer>
+			<key>ordfeminine</key>
+			<integer>92</integer>
+			<key>ordmasculine</key>
+			<integer>34</integer>
 			<key>otilde</key>
 			<integer>-58</integer>
 			<key>public.kern2.c</key>
@@ -1450,6 +1646,14 @@
 			<integer>18</integer>
 			<key>quoteright</key>
 			<integer>18</integer>
+			<key>sevensuperior</key>
+			<integer>28</integer>
+			<key>sixsuperior</key>
+			<integer>20</integer>
+			<key>threesuperior</key>
+			<integer>46</integer>
+			<key>twosuperior</key>
+			<integer>68</integer>
 			<key>uni01ED</key>
 			<integer>-42</integer>
 			<key>uni0205</key>
@@ -1472,6 +1676,8 @@
 			<integer>-52</integer>
 			<key>uni1EE1</key>
 			<integer>140</integer>
+			<key>zerosuperior</key>
+			<integer>82</integer>
 		</dict>
 		<key>m.sc</key>
 		<dict>
@@ -1482,7 +1688,17 @@
 		<dict>
 			<key>colon</key>
 			<integer>34</integer>
+			<key>eightsuperior</key>
+			<integer>10</integer>
+			<key>foursuperior</key>
+			<integer>18</integer>
 			<key>semicolon</key>
+			<integer>34</integer>
+			<key>threesuperior</key>
+			<integer>26</integer>
+			<key>twosuperior</key>
+			<integer>26</integer>
+			<key>zerosuperior</key>
 			<integer>34</integer>
 		</dict>
 		<key>parenleft</key>
@@ -1881,6 +2097,8 @@
 			<integer>12</integer>
 			<key>semicolon</key>
 			<integer>14</integer>
+			<key>zerosuperior</key>
+			<integer>22</integer>
 		</dict>
 		<key>public.kern1.A</key>
 		<dict>
@@ -7540,8 +7758,18 @@
 			<integer>58</integer>
 			<key>bracketright</key>
 			<integer>36</integer>
+			<key>eightsuperior</key>
+			<integer>96</integer>
 			<key>exclam</key>
 			<integer>30</integer>
+			<key>ninesuperior</key>
+			<integer>120</integer>
+			<key>onesuperior</key>
+			<integer>4</integer>
+			<key>ordfeminine</key>
+			<integer>140</integer>
+			<key>ordmasculine</key>
+			<integer>86</integer>
 			<key>question</key>
 			<integer>88</integer>
 			<key>quotedblleft</key>
@@ -7550,13 +7778,48 @@
 			<integer>54</integer>
 			<key>quoteright</key>
 			<integer>54</integer>
+			<key>sevensuperior</key>
+			<integer>70</integer>
+			<key>sixsuperior</key>
+			<integer>76</integer>
+			<key>threesuperior</key>
+			<integer>86</integer>
+			<key>twosuperior</key>
+			<integer>110</integer>
+			<key>zerosuperior</key>
+			<integer>138</integer>
 		</dict>
 		<key>sevenoldstyle</key>
 		<dict>
 			<key>colon</key>
 			<integer>88</integer>
+			<key>eightsuperior</key>
+			<integer>70</integer>
+			<key>fivesuperior</key>
+			<integer>52</integer>
+			<key>foursuperior</key>
+			<integer>78</integer>
+			<key>ninesuperior</key>
+			<integer>8</integer>
+			<key>ordfeminine</key>
+			<integer>20</integer>
+			<key>ordmasculine</key>
+			<integer>24</integer>
 			<key>semicolon</key>
 			<integer>90</integer>
+			<key>sixsuperior</key>
+			<integer>34</integer>
+			<key>threesuperior</key>
+			<integer>84</integer>
+			<key>twosuperior</key>
+			<integer>56</integer>
+			<key>zerosuperior</key>
+			<integer>84</integer>
+		</dict>
+		<key>six.pf</key>
+		<dict>
+			<key>twosuperior</key>
+			<integer>16</integer>
 		</dict>
 		<key>t</key>
 		<dict>
@@ -7565,14 +7828,45 @@
 			<key>t</key>
 			<integer>0</integer>
 		</dict>
+		<key>three.pf</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>14</integer>
+			<key>zerosuperior</key>
+			<integer>46</integer>
+		</dict>
+		<key>threeoldstyle</key>
+		<dict>
+			<key>twosuperior</key>
+			<integer>16</integer>
+		</dict>
 		<key>two.pf</key>
 		<dict>
 			<key>colon</key>
 			<integer>56</integer>
+			<key>eightsuperior</key>
+			<integer>8</integer>
+			<key>foursuperior</key>
+			<integer>8</integer>
+			<key>ninesuperior</key>
+			<integer>26</integer>
+			<key>ordfeminine</key>
+			<integer>50</integer>
 			<key>question</key>
 			<integer>2</integer>
 			<key>semicolon</key>
 			<integer>58</integer>
+			<key>sixsuperior</key>
+			<integer>30</integer>
+			<key>zerosuperior</key>
+			<integer>90</integer>
+		</dict>
+		<key>twooldstyle</key>
+		<dict>
+			<key>threesuperior</key>
+			<integer>4</integer>
+			<key>twosuperior</key>
+			<integer>34</integer>
 		</dict>
 		<key>u</key>
 		<dict>
@@ -7581,10 +7875,54 @@
 			<key>t</key>
 			<integer>41</integer>
 		</dict>
+		<key>u.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
 		<key>u1D459</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>26</integer>
+			<key>ordfeminine</key>
+			<integer>8</integer>
+			<key>zerosuperior</key>
+			<integer>10</integer>
+		</dict>
+		<key>uacute.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>ubreve.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>ucircumflex.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>udieresis.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>ugrave.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>uhungarumlaut.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>umacron.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
 		</dict>
 		<key>uni0187</key>
 		<dict>
@@ -7597,8 +7935,20 @@
 		<dict>
 			<key>colon</key>
 			<integer>204</integer>
+			<key>eightsuperior</key>
+			<integer>144</integer>
 			<key>exclam</key>
 			<integer>68</integer>
+			<key>fivesuperior</key>
+			<integer>132</integer>
+			<key>foursuperior</key>
+			<integer>130</integer>
+			<key>ninesuperior</key>
+			<integer>180</integer>
+			<key>ordfeminine</key>
+			<integer>206</integer>
+			<key>ordmasculine</key>
+			<integer>158</integer>
 			<key>question</key>
 			<integer>150</integer>
 			<key>quotedblleft</key>
@@ -7609,6 +7959,14 @@
 			<integer>12</integer>
 			<key>semicolon</key>
 			<integer>204</integer>
+			<key>sixsuperior</key>
+			<integer>190</integer>
+			<key>threesuperior</key>
+			<integer>98</integer>
+			<key>twosuperior</key>
+			<integer>70</integer>
+			<key>zerosuperior</key>
+			<integer>248</integer>
 		</dict>
 		<key>uni0193</key>
 		<dict>
@@ -7625,10 +7983,22 @@
 			<integer>26</integer>
 			<key>colon</key>
 			<integer>108</integer>
+			<key>eightsuperior</key>
+			<integer>60</integer>
 			<key>exclam</key>
 			<integer>24</integer>
+			<key>fivesuperior</key>
+			<integer>44</integer>
+			<key>foursuperior</key>
+			<integer>32</integer>
 			<key>l</key>
 			<integer>50</integer>
+			<key>ninesuperior</key>
+			<integer>126</integer>
+			<key>ordfeminine</key>
+			<integer>148</integer>
+			<key>ordmasculine</key>
+			<integer>100</integer>
 			<key>parenright.case</key>
 			<integer>2</integer>
 			<key>question</key>
@@ -7637,11 +8007,28 @@
 			<integer>48</integer>
 			<key>semicolon</key>
 			<integer>110</integer>
+			<key>sevensuperior</key>
+			<integer>54</integer>
+			<key>sixsuperior</key>
+			<integer>114</integer>
+			<key>threesuperior</key>
+			<integer>22</integer>
+			<key>twosuperior</key>
+			<integer>74</integer>
+			<key>zerosuperior</key>
+			<integer>174</integer>
 		</dict>
 		<key>uni0199.sc</key>
 		<dict>
 			<key>h.sc</key>
 			<integer>99</integer>
+		</dict>
+		<key>uni01A1</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>2</integer>
+			<key>zerosuperior</key>
+			<integer>8</integer>
 		</dict>
 		<key>uni01A6</key>
 		<dict>
@@ -7652,17 +8039,29 @@
 		<dict>
 			<key>b</key>
 			<integer>66</integer>
+			<key>eightsuperior</key>
+			<integer>6</integer>
 			<key>h</key>
 			<integer>68</integer>
 			<key>k</key>
 			<integer>68</integer>
 			<key>l</key>
 			<integer>72</integer>
+			<key>ninesuperior</key>
+			<integer>24</integer>
+			<key>ordfeminine</key>
+			<integer>46</integer>
+			<key>twosuperior</key>
+			<integer>18</integer>
+			<key>zerosuperior</key>
+			<integer>34</integer>
 		</dict>
 		<key>uni01B0.sc</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>44</integer>
+			<key>ordfeminine</key>
+			<integer>12</integer>
 			<key>parenright</key>
 			<integer>10</integer>
 			<key>quotedblright</key>
@@ -7676,12 +8075,32 @@
 			<integer>20</integer>
 			<key>colon</key>
 			<integer>78</integer>
+			<key>eightsuperior</key>
+			<integer>54</integer>
+			<key>fivesuperior</key>
+			<integer>20</integer>
+			<key>ninesuperior</key>
+			<integer>112</integer>
+			<key>ordfeminine</key>
+			<integer>134</integer>
+			<key>ordmasculine</key>
+			<integer>86</integer>
 			<key>question</key>
 			<integer>92</integer>
 			<key>quotedblleft</key>
 			<integer>34</integer>
 			<key>semicolon</key>
 			<integer>80</integer>
+			<key>sevensuperior</key>
+			<integer>46</integer>
+			<key>sixsuperior</key>
+			<integer>98</integer>
+			<key>threesuperior</key>
+			<integer>14</integer>
+			<key>twosuperior</key>
+			<integer>66</integer>
+			<key>zerosuperior</key>
+			<integer>158</integer>
 		</dict>
 		<key>uni01B4</key>
 		<dict>
@@ -7693,6 +8112,21 @@
 			<integer>-125</integer>
 			<key>public.kern2.egrave</key>
 			<integer>-125</integer>
+		</dict>
+		<key>uni01D4.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>uni01D8.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>uni0215.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
 		</dict>
 		<key>uni0232</key>
 		<dict>
@@ -7707,11 +8141,23 @@
 			<integer>-170</integer>
 			<key>jcircumflex.sc</key>
 			<integer>-170</integer>
+			<key>zerosuperior</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni0241</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>14</integer>
 		</dict>
 		<key>uni0244</key>
 		<dict>
 			<key>public.kern2.O.sc</key>
 			<integer>-2</integer>
+		</dict>
+		<key>uni0250.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>22</integer>
 		</dict>
 		<key>uni0257</key>
 		<dict>
@@ -7721,6 +8167,8 @@
 			<integer>162</integer>
 			<key>bracketright</key>
 			<integer>62</integer>
+			<key>eightsuperior</key>
+			<integer>94</integer>
 			<key>exclam</key>
 			<integer>30</integer>
 			<key>h</key>
@@ -7729,6 +8177,12 @@
 			<integer>164</integer>
 			<key>l</key>
 			<integer>168</integer>
+			<key>ninesuperior</key>
+			<integer>112</integer>
+			<key>ordfeminine</key>
+			<integer>134</integer>
+			<key>ordmasculine</key>
+			<integer>74</integer>
 			<key>question</key>
 			<integer>70</integer>
 			<key>quotedblleft</key>
@@ -7737,6 +8191,21 @@
 			<integer>58</integer>
 			<key>quoteright</key>
 			<integer>58</integer>
+			<key>sevensuperior</key>
+			<integer>68</integer>
+			<key>sixsuperior</key>
+			<integer>60</integer>
+			<key>threesuperior</key>
+			<integer>86</integer>
+			<key>twosuperior</key>
+			<integer>108</integer>
+			<key>zerosuperior</key>
+			<integer>122</integer>
+		</dict>
+		<key>uni025A</key>
+		<dict>
+			<key>twosuperior</key>
+			<integer>2</integer>
 		</dict>
 		<key>uni0260</key>
 		<dict>
@@ -7746,14 +8215,28 @@
 			<integer>252</integer>
 			<key>bracketright</key>
 			<integer>152</integer>
+			<key>eightsuperior</key>
+			<integer>230</integer>
 			<key>exclam</key>
 			<integer>156</integer>
+			<key>fivesuperior</key>
+			<integer>124</integer>
+			<key>foursuperior</key>
+			<integer>10</integer>
 			<key>h</key>
 			<integer>254</integer>
 			<key>k</key>
 			<integer>254</integer>
 			<key>l</key>
 			<integer>258</integer>
+			<key>ninesuperior</key>
+			<integer>260</integer>
+			<key>onesuperior</key>
+			<integer>140</integer>
+			<key>ordfeminine</key>
+			<integer>280</integer>
+			<key>ordmasculine</key>
+			<integer>228</integer>
 			<key>parenright</key>
 			<integer>70</integer>
 			<key>question</key>
@@ -7764,11 +8247,46 @@
 			<integer>162</integer>
 			<key>quoteright</key>
 			<integer>162</integer>
+			<key>sevensuperior</key>
+			<integer>204</integer>
+			<key>sixsuperior</key>
+			<integer>220</integer>
+			<key>threesuperior</key>
+			<integer>214</integer>
+			<key>twosuperior</key>
+			<integer>244</integer>
+			<key>zerosuperior</key>
+			<integer>284</integer>
 		</dict>
 		<key>uni0260.sc</key>
 		<dict>
+			<key>ninesuperior</key>
+			<integer>36</integer>
+			<key>ordfeminine</key>
+			<integer>58</integer>
+			<key>ordmasculine</key>
+			<integer>8</integer>
 			<key>question</key>
 			<integer>16</integer>
+			<key>sixsuperior</key>
+			<integer>10</integer>
+			<key>zerosuperior</key>
+			<integer>72</integer>
+		</dict>
+		<key>uni026F.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>10</integer>
+		</dict>
+		<key>uni0272.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>6</integer>
+		</dict>
+		<key>uni027D</key>
+		<dict>
+			<key>threesuperior</key>
+			<integer>8</integer>
 		</dict>
 		<key>uni0281</key>
 		<dict>
@@ -7776,6 +8294,8 @@
 			<integer>4</integer>
 			<key>semicolon</key>
 			<integer>4</integer>
+			<key>zerosuperior</key>
+			<integer>30</integer>
 		</dict>
 		<key>uni0283</key>
 		<dict>
@@ -7783,8 +8303,16 @@
 			<integer>32</integer>
 			<key>bracketright</key>
 			<integer>54</integer>
+			<key>eightsuperior</key>
+			<integer>86</integer>
 			<key>exclam</key>
 			<integer>24</integer>
+			<key>ninesuperior</key>
+			<integer>104</integer>
+			<key>ordfeminine</key>
+			<integer>126</integer>
+			<key>ordmasculine</key>
+			<integer>66</integer>
 			<key>question</key>
 			<integer>62</integer>
 			<key>quotedblleft</key>
@@ -7793,11 +8321,40 @@
 			<integer>50</integer>
 			<key>quoteright</key>
 			<integer>50</integer>
+			<key>sevensuperior</key>
+			<integer>60</integer>
+			<key>sixsuperior</key>
+			<integer>52</integer>
+			<key>threesuperior</key>
+			<integer>78</integer>
+			<key>twosuperior</key>
+			<integer>100</integer>
+			<key>zerosuperior</key>
+			<integer>114</integer>
 		</dict>
 		<key>uni0284</key>
 		<dict>
+			<key>eightsuperior</key>
+			<integer>18</integer>
+			<key>ninesuperior</key>
+			<integer>52</integer>
+			<key>ordfeminine</key>
+			<integer>74</integer>
+			<key>ordmasculine</key>
+			<integer>22</integer>
 			<key>question</key>
 			<integer>28</integer>
+			<key>sixsuperior</key>
+			<integer>16</integer>
+			<key>twosuperior</key>
+			<integer>30</integer>
+			<key>zerosuperior</key>
+			<integer>78</integer>
+		</dict>
+		<key>uni0289.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
 		</dict>
 		<key>uni0290</key>
 		<dict>
@@ -7805,6 +8362,21 @@
 			<integer>126</integer>
 			<key>parenright</key>
 			<integer>98</integer>
+		</dict>
+		<key>uni0294</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>14</integer>
+		</dict>
+		<key>uni02A1</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>18</integer>
+		</dict>
+		<key>uni03DB.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>8</integer>
 		</dict>
 		<key>uni03E1</key>
 		<dict>
@@ -7853,6 +8425,11 @@
 			<key>public.kern2.uni0433</key>
 			<integer>-20</integer>
 		</dict>
+		<key>uni0443.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>6</integer>
+		</dict>
 		<key>uni0448</key>
 		<dict>
 			<key>public.kern2.uni0442</key>
@@ -7875,6 +8452,26 @@
 			<key>public.kern2.uni0433</key>
 			<integer>-68</integer>
 		</dict>
+		<key>uni045E.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>6</integer>
+		</dict>
+		<key>uni04AF.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni04B1.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni04EF.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>6</integer>
+		</dict>
 		<key>uni1D6C</key>
 		<dict>
 			<key>public.kern2.j</key>
@@ -7883,17 +8480,62 @@
 			<integer>55</integer>
 			<key>public.kern2.y</key>
 			<integer>55</integer>
+			<key>twosuperior</key>
+			<integer>10</integer>
 		</dict>
 		<key>uni1D6E</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>18</integer>
+			<key>eightsuperior</key>
+			<integer>50</integer>
+			<key>ninesuperior</key>
+			<integer>68</integer>
+			<key>ordfeminine</key>
+			<integer>90</integer>
+			<key>ordmasculine</key>
+			<integer>30</integer>
 			<key>question</key>
 			<integer>26</integer>
 			<key>quotedblright</key>
 			<integer>14</integer>
 			<key>quoteright</key>
 			<integer>14</integer>
+			<key>sevensuperior</key>
+			<integer>24</integer>
+			<key>sixsuperior</key>
+			<integer>16</integer>
+			<key>threesuperior</key>
+			<integer>42</integer>
+			<key>twosuperior</key>
+			<integer>64</integer>
+			<key>zerosuperior</key>
+			<integer>78</integer>
+		</dict>
+		<key>uni1D71</key>
+		<dict>
+			<key>twosuperior</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni1D7E</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>uni1E73.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>uni1E75.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>uni1E79.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
 		</dict>
 		<key>uni1EA6</key>
 		<dict>
@@ -7906,8 +8548,18 @@
 			<integer>14</integer>
 			<key>bracketright</key>
 			<integer>214</integer>
+			<key>eightsuperior</key>
+			<integer>124</integer>
 			<key>exclam</key>
 			<integer>88</integer>
+			<key>fivesuperior</key>
+			<integer>110</integer>
+			<key>ninesuperior</key>
+			<integer>118</integer>
+			<key>ordfeminine</key>
+			<integer>152</integer>
+			<key>ordmasculine</key>
+			<integer>70</integer>
 			<key>parenright</key>
 			<integer>128</integer>
 			<key>question</key>
@@ -7918,6 +8570,16 @@
 			<integer>186</integer>
 			<key>quoteright</key>
 			<integer>186</integer>
+			<key>sevensuperior</key>
+			<integer>162</integer>
+			<key>sixsuperior</key>
+			<integer>52</integer>
+			<key>threesuperior</key>
+			<integer>126</integer>
+			<key>twosuperior</key>
+			<integer>132</integer>
+			<key>zerosuperior</key>
+			<integer>110</integer>
 		</dict>
 		<key>uni1EA9.sc</key>
 		<dict>
@@ -7945,8 +8607,18 @@
 		<dict>
 			<key>bracketright</key>
 			<integer>112</integer>
+			<key>eightsuperior</key>
+			<integer>120</integer>
 			<key>exclam</key>
 			<integer>62</integer>
+			<key>fivesuperior</key>
+			<integer>18</integer>
+			<key>ninesuperior</key>
+			<integer>132</integer>
+			<key>ordfeminine</key>
+			<integer>154</integer>
+			<key>ordmasculine</key>
+			<integer>88</integer>
 			<key>parenright</key>
 			<integer>58</integer>
 			<key>question</key>
@@ -7957,19 +8629,49 @@
 			<integer>88</integer>
 			<key>quoteright</key>
 			<integer>88</integer>
+			<key>sevensuperior</key>
+			<integer>98</integer>
+			<key>sixsuperior</key>
+			<integer>72</integer>
+			<key>threesuperior</key>
+			<integer>116</integer>
+			<key>twosuperior</key>
+			<integer>132</integer>
+			<key>zerosuperior</key>
+			<integer>134</integer>
 		</dict>
 		<key>uni1EC1.sc</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>166</integer>
+			<key>eightsuperior</key>
+			<integer>76</integer>
 			<key>exclam</key>
 			<integer>40</integer>
+			<key>fivesuperior</key>
+			<integer>62</integer>
+			<key>ninesuperior</key>
+			<integer>70</integer>
+			<key>ordfeminine</key>
+			<integer>104</integer>
+			<key>ordmasculine</key>
+			<integer>22</integer>
 			<key>parenright</key>
 			<integer>80</integer>
 			<key>quotedblright</key>
 			<integer>138</integer>
 			<key>quoteright</key>
 			<integer>138</integer>
+			<key>sevensuperior</key>
+			<integer>114</integer>
+			<key>sixsuperior</key>
+			<integer>4</integer>
+			<key>threesuperior</key>
+			<integer>78</integer>
+			<key>twosuperior</key>
+			<integer>84</integer>
+			<key>zerosuperior</key>
+			<integer>62</integer>
 		</dict>
 		<key>uni1EC3</key>
 		<dict>
@@ -7977,7 +8679,17 @@
 			<integer>50</integer>
 			<key>bracketright</key>
 			<integer>192</integer>
+			<key>eightsuperior</key>
+			<integer>122</integer>
 			<key>exclam</key>
+			<integer>78</integer>
+			<key>fivesuperior</key>
+			<integer>96</integer>
+			<key>ninesuperior</key>
+			<integer>126</integer>
+			<key>ordfeminine</key>
+			<integer>150</integer>
+			<key>ordmasculine</key>
 			<integer>78</integer>
 			<key>parenright</key>
 			<integer>158</integer>
@@ -7989,29 +8701,74 @@
 			<integer>164</integer>
 			<key>quoteright</key>
 			<integer>164</integer>
+			<key>sevensuperior</key>
+			<integer>138</integer>
+			<key>sixsuperior</key>
+			<integer>60</integer>
+			<key>threesuperior</key>
+			<integer>122</integer>
+			<key>twosuperior</key>
+			<integer>132</integer>
+			<key>zerosuperior</key>
+			<integer>122</integer>
 		</dict>
 		<key>uni1EC3.sc</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>8</integer>
 		</dict>
+		<key>uni1ED3</key>
+		<dict>
+			<key>ninesuperior</key>
+			<integer>12</integer>
+			<key>ordfeminine</key>
+			<integer>34</integer>
+			<key>twosuperior</key>
+			<integer>12</integer>
+			<key>zerosuperior</key>
+			<integer>14</integer>
+		</dict>
 		<key>uni1ED3.sc</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>146</integer>
+			<key>eightsuperior</key>
+			<integer>56</integer>
 			<key>exclam</key>
 			<integer>20</integer>
+			<key>fivesuperior</key>
+			<integer>42</integer>
+			<key>ninesuperior</key>
+			<integer>50</integer>
+			<key>ordfeminine</key>
+			<integer>84</integer>
+			<key>ordmasculine</key>
+			<integer>2</integer>
 			<key>parenright</key>
 			<integer>60</integer>
 			<key>quotedblright</key>
 			<integer>118</integer>
 			<key>quoteright</key>
 			<integer>118</integer>
+			<key>sevensuperior</key>
+			<integer>94</integer>
+			<key>threesuperior</key>
+			<integer>58</integer>
+			<key>twosuperior</key>
+			<integer>64</integer>
+			<key>zerosuperior</key>
+			<integer>42</integer>
 		</dict>
 		<key>uni1ED5</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>72</integer>
+			<key>eightsuperior</key>
+			<integer>2</integer>
+			<key>ninesuperior</key>
+			<integer>6</integer>
+			<key>ordfeminine</key>
+			<integer>30</integer>
 			<key>parenright</key>
 			<integer>38</integer>
 			<key>public.kern2.j</key>
@@ -8020,16 +8777,71 @@
 			<integer>44</integer>
 			<key>quoteright</key>
 			<integer>44</integer>
+			<key>sevensuperior</key>
+			<integer>18</integer>
+			<key>threesuperior</key>
+			<integer>2</integer>
+			<key>twosuperior</key>
+			<integer>12</integer>
+			<key>zerosuperior</key>
+			<integer>2</integer>
 		</dict>
 		<key>uni1ED5.sc</key>
 		<dict>
 			<key>public.kern2.A.sc</key>
 			<integer>-104</integer>
 		</dict>
+		<key>uni1EDB</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>2</integer>
+			<key>zerosuperior</key>
+			<integer>8</integer>
+		</dict>
+		<key>uni1EDD</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>2</integer>
+			<key>zerosuperior</key>
+			<integer>8</integer>
+		</dict>
+		<key>uni1EDF</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>2</integer>
+			<key>zerosuperior</key>
+			<integer>8</integer>
+		</dict>
+		<key>uni1EE1</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>2</integer>
+			<key>zerosuperior</key>
+			<integer>8</integer>
+		</dict>
+		<key>uni1EE3</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>2</integer>
+			<key>zerosuperior</key>
+			<integer>8</integer>
+		</dict>
+		<key>uni1EE5.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>uni1EE7.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
 		<key>uni1EE9.sc</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>44</integer>
+			<key>ordfeminine</key>
+			<integer>12</integer>
 			<key>parenright</key>
 			<integer>10</integer>
 			<key>quotedblright</key>
@@ -8041,6 +8853,8 @@
 		<dict>
 			<key>bracketright</key>
 			<integer>44</integer>
+			<key>ordfeminine</key>
+			<integer>12</integer>
 			<key>parenright</key>
 			<integer>10</integer>
 			<key>quotedblright</key>
@@ -8052,6 +8866,8 @@
 		<dict>
 			<key>bracketright</key>
 			<integer>44</integer>
+			<key>ordfeminine</key>
+			<integer>12</integer>
 			<key>parenright</key>
 			<integer>10</integer>
 			<key>quotedblright</key>
@@ -8063,6 +8879,8 @@
 		<dict>
 			<key>bracketright</key>
 			<integer>44</integer>
+			<key>ordfeminine</key>
+			<integer>12</integer>
 			<key>parenright</key>
 			<integer>10</integer>
 			<key>quotedblright</key>
@@ -8074,6 +8892,8 @@
 		<dict>
 			<key>bracketright</key>
 			<integer>44</integer>
+			<key>ordfeminine</key>
+			<integer>12</integer>
 			<key>parenright</key>
 			<integer>10</integer>
 			<key>quotedblright</key>
@@ -8081,12 +8901,32 @@
 			<key>quoteright</key>
 			<integer>14</integer>
 		</dict>
+		<key>uni1EF3.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
+		</dict>
 		<key>uni1EF5</key>
 		<dict>
 			<key>bracketright</key>
 			<integer>146</integer>
 			<key>parenright</key>
 			<integer>116</integer>
+		</dict>
+		<key>uni1EF5.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni1EF7.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
+		</dict>
+		<key>uni1EF9.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
 		</dict>
 		<key>uni1F20</key>
 		<dict>
@@ -8143,6 +8983,42 @@
 			<integer>68</integer>
 			<key>parenright</key>
 			<integer>28</integer>
+		</dict>
+		<key>uni1F59</key>
+		<dict>
+			<key>ninesuperior</key>
+			<integer>8</integer>
+			<key>ordfeminine</key>
+			<integer>30</integer>
+			<key>zerosuperior</key>
+			<integer>48</integer>
+		</dict>
+		<key>uni1F5B</key>
+		<dict>
+			<key>ninesuperior</key>
+			<integer>8</integer>
+			<key>ordfeminine</key>
+			<integer>30</integer>
+			<key>zerosuperior</key>
+			<integer>48</integer>
+		</dict>
+		<key>uni1F5D</key>
+		<dict>
+			<key>ninesuperior</key>
+			<integer>10</integer>
+			<key>ordfeminine</key>
+			<integer>32</integer>
+			<key>zerosuperior</key>
+			<integer>48</integer>
+		</dict>
+		<key>uni1F5F</key>
+		<dict>
+			<key>ninesuperior</key>
+			<integer>10</integer>
+			<key>ordfeminine</key>
+			<integer>32</integer>
+			<key>zerosuperior</key>
+			<integer>48</integer>
 		</dict>
 		<key>uni1F74</key>
 		<dict>
@@ -8242,6 +9118,29 @@
 			<key>parenright</key>
 			<integer>28</integer>
 		</dict>
+		<key>uni1FE8</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>12</integer>
+			<key>zerosuperior</key>
+			<integer>30</integer>
+		</dict>
+		<key>uni1FE9</key>
+		<dict>
+			<key>ordfeminine</key>
+			<integer>12</integer>
+			<key>zerosuperior</key>
+			<integer>30</integer>
+		</dict>
+		<key>uni1FEA</key>
+		<dict>
+			<key>ninesuperior</key>
+			<integer>8</integer>
+			<key>ordfeminine</key>
+			<integer>30</integer>
+			<key>zerosuperior</key>
+			<integer>48</integer>
+		</dict>
 		<key>uni2C6F</key>
 		<dict>
 			<key>public.kern2.a</key>
@@ -8287,12 +9186,19 @@
 			<key>uni03F3</key>
 			<integer>86</integer>
 		</dict>
+		<key>uogonek.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>10</integer>
+		</dict>
 		<key>upsilon.sc</key>
 		<dict>
 			<key>colon</key>
 			<integer>6</integer>
 			<key>semicolon</key>
 			<integer>8</integer>
+			<key>zerosuperior</key>
+			<integer>6</integer>
 		</dict>
 		<key>upsilondieresis.sc</key>
 		<dict>
@@ -8300,6 +9206,18 @@
 			<integer>6</integer>
 			<key>semicolon</key>
 			<integer>8</integer>
+			<key>zerosuperior</key>
+			<integer>6</integer>
+		</dict>
+		<key>uring.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
+		</dict>
+		<key>utilde.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>12</integer>
 		</dict>
 		<key>v</key>
 		<dict>
@@ -8322,6 +9240,8 @@
 			<integer>-170</integer>
 			<key>jcircumflex.sc</key>
 			<integer>-170</integer>
+			<key>zerosuperior</key>
+			<integer>4</integer>
 		</dict>
 		<key>yacute.sc</key>
 		<dict>
@@ -8329,6 +9249,13 @@
 			<integer>-170</integer>
 			<key>jcircumflex.sc</key>
 			<integer>-170</integer>
+			<key>zerosuperior</key>
+			<integer>4</integer>
+		</dict>
+		<key>ycircumflex.sc</key>
+		<dict>
+			<key>zerosuperior</key>
+			<integer>4</integer>
 		</dict>
 		<key>ydieresis.sc</key>
 		<dict>
@@ -8336,6 +9263,8 @@
 			<integer>-170</integer>
 			<key>jcircumflex.sc</key>
 			<integer>-170</integer>
+			<key>zerosuperior</key>
+			<integer>4</integer>
 		</dict>
 		<key>z.sc</key>
 		<dict>
@@ -8346,15 +9275,35 @@
 		<dict>
 			<key>colon</key>
 			<integer>26</integer>
+			<key>eightsuperior</key>
+			<integer>8</integer>
+			<key>foursuperior</key>
+			<integer>16</integer>
 			<key>semicolon</key>
 			<integer>26</integer>
+			<key>threesuperior</key>
+			<integer>24</integer>
+			<key>twosuperior</key>
+			<integer>36</integer>
+			<key>zerosuperior</key>
+			<integer>22</integer>
 		</dict>
 		<key>zero.zero.pf</key>
 		<dict>
 			<key>colon</key>
 			<integer>26</integer>
+			<key>eightsuperior</key>
+			<integer>8</integer>
+			<key>foursuperior</key>
+			<integer>16</integer>
 			<key>semicolon</key>
 			<integer>26</integer>
+			<key>threesuperior</key>
+			<integer>24</integer>
+			<key>twosuperior</key>
+			<integer>36</integer>
+			<key>zerosuperior</key>
+			<integer>22</integer>
 		</dict>
 		<key>zeta</key>
 		<dict>

@@ -212,8 +212,9 @@ floor against ink meeting. Chosen on running text
 `-open-close-`, `-exclam-question-`): 100 after an opening sign, 60
 before ! ?, 40 before the other closers (kern_clear.clearance), and
 every sign beside every letter cleared, not only the families below; the
-sweep measures each pair against the same clearance. What follows was
-the first step, at 20. Carried out in `kern_clear.entries()`
+sweep measures each pair against the same clearance. The superiors
+after: superior figures 60, ª º 20 (`proofs/superior-clearance-text-2026-11-13.pdf`),
+and with them the lists are empty. What follows was the first step, at 20. Carried out in `kern_clear.entries()`
 (spacing.md says which pairs), the italics' [j by hand at +60 (of
 `proofs/italic-bracket-j-candidates-2026-11-13.pdf`). The sets moved
 from this script into `kern_clear.sets()`, one definition for the sweep
