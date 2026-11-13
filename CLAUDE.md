@@ -20,6 +20,7 @@ Details by topic, read the one the task touches:
 | `docs/claude/tests.md` | what the tests hold, hooks, proofs after commit |
 | `docs/claude/collisions.md` | the sweep for letters meeting signs (phase 1's specification; built 2026-11-13: `make collisions`, tests/test_collisions.py) |
 | `docs/claude/drawn.md` | one mark for "drawn and kept" in the three generated styles (T6's specification, not built yet) |
+| `docs/claude/tables.md` | the generators' tables into data modules per style (T5's specification, not built yet) |
 | `docs/claude/only.md` | `--only` and `--out`: one glyph made again into a scratch UFO (T2's specification, not built yet) |
 | `docs/claude/commands.md` | handy commands, the Claude Code plugin |
 

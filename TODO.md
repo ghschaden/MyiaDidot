@@ -120,7 +120,7 @@ the other models. One item per session.
       otherwise and lands K's point on the other side of .5; the fix
       made, or specified to the line if it needs a run on the runner to
       confirm.
-- [ ] F6. Specifications for the engineering Opus will do, one page
+- [x] F6. Specifications for the engineering Opus will do, one page
       each in DEVELOPMENT.md or beside the code: T2 (`--only`: how the
       dependency closure is taken from builtFrom, what state a partial
       run may not touch, the equivalence test), T5 (which tables move
@@ -143,7 +143,13 @@ the other models. One item per session.
       provenance only, draft flags review status only, make_bold
       stripping the source's marks, the four commits and the
       equivalence check). Read from the code and the UFOs, nothing
-      changed. T5 is still to write.
+      changed.
+      T5's page written 2026-11-13: `docs/claude/tables.md` (four data
+      modules by style, what moves by kind and what stays, the
+      generators re-exporting for the pilots and shape-grammar, the
+      four commits, each proven by every line moved, every value equal
+      and `make reproduce`). Read from the code, nothing changed.
+      With it F6 is complete.
 - [ ] F7. If sessions remain: phase 5's first two batches done on Fable
       (the rest of a-z, then A-Z), to find the cases redraw.md does not
       yet cover while the model that wrote it is still there; and the
@@ -431,6 +437,10 @@ alongside, each when the phase that needs it comes up.
       commit that `make reproduce` shows changes nothing. Before
       phase 3 for the kerning tables, before phase 7 for make_bold's
       recipes.
+      Specified 2026-11-13 (F6): `docs/claude/tables.md`, to carry out
+      in its order (after T6, whose page cites these files by line).
+      Left by it for later: the cycle of functions between make_italic
+      and make_bold (a module of what both use, its own proof).
 - [ ] T6. One mark for "drawn and kept": today the Italic's
       `org.myiadidot.italicSource` = "drawn", the bolds'
       `org.myiadidot.drawn`, and a cleared draft flag freezes an Italic
