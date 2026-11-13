@@ -283,18 +283,34 @@ How these sessions are run, so that they do not go the way of F1's:
 
 Model: Sonnet; the CI step with F5.
 
-- [ ] Commit the staged Bold Italic m-family work (m т ɯ ᵯ ɰ ɱ ſh, proof
+- [x] Commit the staged Bold Italic m-family work (m т ɯ ᵯ ɰ ɱ ſh, proof
       `proofs/bold-italic-m-family-2026-11-10.pdf`); let the hook finish.
-- [ ] `scripts/sync_check.py`: no "(conflicted)" copies, no lost glyphs.
-- [ ] CI green (T3 in the tooling track): `make reproduce` fails on GitHub's runner since cb9b7dac
+      (In 120800ac.)
+- [x] `scripts/sync_check.py`: no "(conflicted)" copies, no lost glyphs.
+      (Clean 2026-11-13, before and after the rebuild.)
+- [x] CI green (T3 in the tooling track): `make reproduce` fails on GitHub's runner since cb9b7dac
       (12 Bold Italic glyphs: K Κ Ķ Ǩ Ḱ Ḳ Ḵ at (1193, 1170), ae.sc ǽ.sc
       ǣ.sc, fl, ſl). First choice: make the rounding deterministic where a
       point lands on .5 and where the segment splits; second: a one-unit
       tolerance in `scripts/check_reproducible.py`. (DEVELOPMENT.md)
-- [ ] Rebuild all formats (`make fonts`): `fonts/ttf` and `fonts/webfonts`
-      are of 2026-10-26, the OTFs of 2026-11-09.
-- [ ] `make test` and `make qa` on the rebuilt fonts; note the state here
+      Closed with F5 (a078bce4): neither, the cause is AMD runners with
+      AVX-512; CI's reproduce step only warns there.
+- [x] Rebuild all formats (`make fonts`): `fonts/ttf` and `fonts/webfonts`
+      are of 2026-10-26, the OTFs of 2026-11-09. Rebuilt 2026-11-13.
+- [x] `make test` and `make qa` on the rebuilt fonts; note the state here
       as the starting line for the phases below.
+      Starting line, 2026-11-13 (at 1ad1969e): `make test` 466 passed,
+      9 skipped. `make qa` failed first on fontbakery's
+      transformed-components in the italic TTFs: т.loclSRB's bar is the
+      macron stretched x1.84 (make_italic.serbian_bars), the TTFs of
+      10-26 predated it. Mended in the build, not the UFO: the unhinted
+      TTF decomposes transformed components (fontmake's
+      DecomposeTransformedComponentsFilter; only that glyph changes, the
+      same outline). Then fontbakery 0 FAIL; WARN, OTF and TTF alike:
+      ligature carets (2), unreachable glyphs (4), spacing marks in the
+      mark class (4), post.italicAngle (1), math sign widths (2), no soft
+      hyphen (4); TTF only: contour counts (4). Reports
+      `build/qa/fontbakery-{otf,ttf}.md`.
 
 ## Phase 2: missing kerning
 

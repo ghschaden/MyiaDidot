@@ -40,7 +40,9 @@ def build(kind, source, destination, *, run=subprocess.run):
         if kind in ("otf", "unhinted", "compare"):
             command(Path(sys.executable).parent / "fontmake", "-u", source,
                     "-o", "ttf" if kind == "unhinted" else "otf",
-                    *(["--flatten-components"] if kind == "unhinted" else
+                    *(["--flatten-components", "--filter",
+                       "DecomposeTransformedComponentsFilter(pre=True)"]
+                      if kind == "unhinted" else
                       ["--no-production-names"] if kind == "compare" else []),
                     "--output-path", temporary)
             if kind == "otf":
