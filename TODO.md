@@ -472,7 +472,7 @@ alongside, each when the phase that needs it comes up.
 
 ### Alongside the phases
 
-- [ ] T5. Data apart from machinery in `derive.py`, `make_italic.py`,
+- [x] T5. Data apart from machinery in `derive.py`, `make_italic.py`,
       `make_bold.py` (about 2,900 lines each; make_bold 62 module-level
       tables beside 40 functions, a dozen imports inside functions
       around circular dependencies). Recipes, kerning tables,
@@ -486,6 +486,19 @@ alongside, each when the phase that needs it comes up.
       in its order (after T6, whose page cites these files by line).
       Left by it for later: the cycle of functions between make_italic
       and make_bold (a module of what both use, its own proof).
+      Done 2026-11-13 in four commits (make_bold, derive, make_italic,
+      the imports and pointers): `scripts/data_regular.py`,
+      `data_italic.py`, `data_bold.py`, `data_bold_italic.py`, each move
+      proven by every line moved, every value equal and `make reproduce`;
+      `tests/test_data_modules.py`. derive went before make_italic (its
+      BIG); what else differed is at the end of tables.md.
+- [ ] T5b. The cycle of functions between the generators: make_italic's
+      top-level import of make_bold's `mark_like`, `redraw`, `write`,
+      `WHOLE_KEY`, make_bold's function-local imports of make_italic's
+      functions (`round_corner`, `straighten_run`, `build_own`,
+      `level_gain`, `capital_width`, `uncrossed`, `recipe_scale`,
+      `serbian_bars`, `serbian_gje`). A module of what both use, a
+      machinery move with its own proof (docs/claude/tables.md).
 - [x] T6. One mark for "drawn and kept": today the Italic's
       `org.myiadidot.italicSource` = "drawn", the bolds'
       `org.myiadidot.drawn`, and a cleared draft flag freezes an Italic

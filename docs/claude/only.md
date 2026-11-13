@@ -75,7 +75,7 @@ it on should not be read so:
 - it records what `derive.py`'s recipes read, and `space_figures`' and
   `oldstyle_figures`' slashed zeros; not components (1236 composites),
   small caps, figures' sets, case forms, ligatures, or what a generator
-  reads by name (`make_bold.SLASHED`: Ø from O, and Ø has no builtFrom).
+  reads by name (`data_bold.SLASHED`: Ø from O, and Ø has no builtFrom).
 
 So the graph is put together in a new `scripts/only.py`, from six
 sources, as `reads(source, regular, generator) -> {glyph: set of glyphs}`
@@ -90,7 +90,7 @@ added.
 3. **Recipes:** for each `(ch, op, base, band)` of
    `derived.recipes(italic)` (make_bold: `follow_bases`,
    `attached_small`, `rederive`), and of `ITALIC_SC_RECIPES +
-   derive.RECIPES` with `ITALIC_RECIPES`' replacements (make_italic:
+   data_regular.RECIPES` with `ITALIC_RECIPES`' replacements (data_italic; make_italic:
    `derive_stage`): glyph of `ch` reads glyph of `base`, resolved with
    `derive.resolve` as those functions do.
 4. **Names:** `a_b` and `a_b.sfx` read `a` and `b`; `x.sfx` reads `x`
@@ -104,7 +104,7 @@ added.
    function that reads it. Known from this reading; to be completed by
    grepping `font["` and `regular["` in every function the two `main`s
    call:
-   `make_bold.SLASHED` (name ← ring); `make_italic.redraw_w` (W ← V,
+   `data_bold.SLASHED` (name ← ring); `make_italic.redraw_w` (W ← V,
    w.sc ← v.sc); `swapped_sidebearings` (the pairs it returns: ɘ ← e);
    `serbian_gje`, `serbian_bars` (their `.loclSRB` glyphs ← и ш ī's bar
    as read there); `y_dot.y_dot_anchor` (y, dotbelowcomb);

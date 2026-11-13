@@ -251,3 +251,30 @@ re-exports).
 - Touch `sources/`, a baseline or an exception list: if any check
   differs, the move is wrong, and the commit waits.
 - Write in `~/src/MyiaDidot-shapes`.
+
+## Carried out (2026-11-13)
+
+Commits eefb70b6 (make_bold), 945258a1 (derive), f9d71e2a (make_italic),
+then the imports and pointers. What differed from the page:
+
+- derive before make_italic: data_italic needs `BIG` from data_regular
+  (decision 5), which did not exist until derive's move.
+- ruff's isort merges a second `from data_x import ... # noqa: F401`
+  into the first, the noqa then covering every name; the re-exports
+  not read in the generator carry the noqa on their own line instead.
+- Decided by the rule, not named here: moved MOVED_EXACT_FOR, SLASHED,
+  ITALIC_BOLD_REBUILD_OPS (with the comment it shares with
+  ITALIC_BOLD_REBUILD), SMOOTH_CURVES, and make_italic's tables keyed by
+  glyph or character (MATH_SIGNS ROMAN_SIGNS ROMAN_GLYPHS LETTERS
+  LETTER_JOIN NO_TRANSPLANT TRANSPLANT SC_DRAFTED ITALIC_JOINS_THROUGH
+  OWN_RECIPE KEPT_SLOPED OS_LOCL ITALIC_LOCL LEAN_AS ITALIC_UNKERNED
+  HORN_NUDGE ITALIC_HORN ITALIC_MARK_SCALE ANCHOR_SOURCES
+  GREEK_CAP_SAMPLES ROUND_PLAIN); kept RESHAPES (op names) and
+  ITALIC_A_BOWL (with the ITALIC_W_* numbers it is described with).
+- The code readers of moved tables (quality/derived, derived_spacing,
+  r_hook, smallcap_review, the repair scripts' `derive.BIG`, two tests)
+  still read through the generators; only comments and docs point to the
+  data modules. A string inside a table that names a table
+  (BOLD_REBUILD's `derive.SPACING`) is a value and stays.
+- `tests/test_data_modules.py` also checks that each generator
+  re-exports every name of its data modules as the same object.

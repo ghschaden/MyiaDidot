@@ -72,7 +72,7 @@ Moved from CLAUDE.md (its ground rules apply).
   sources/MyiaDidot-BoldItalic.ufo` (then `smallcaps.py` on it, `make
   normalize`); it works in the upright frame (deslanted by the italic
   angle). Rerun it after changes to the Italic. Its own tweaks:
-  ITALIC_SIDEBEARINGS / ITALIC_ANCHOR_NUDGE in make_bold.py. Its letters
+  ITALIC_SIDEBEARINGS / ITALIC_ANCHOR_NUDGE in data_bold_italic.py. Its letters
   are emboldened by their strokes, not by weight (`stroke_bold.py`,
   2026-10-28, the review; the results kept from run to run by
   `stroke_cache.py`, keyed by the outline, the arguments, the source of

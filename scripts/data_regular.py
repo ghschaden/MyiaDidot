@@ -162,7 +162,7 @@ RECIPES = [
     ("Ə", "alias", "Ә", None),
     # Serbian and Macedonian (locl SRB, MKD): б with its ascender leaning
     # back, ∂ set upright; the others differ only in the italic
-    # (make_italic.ITALIC_RECIPES) and are the plain letters here
+    # (data_italic.ITALIC_RECIPES) and are the plain letters here
     ("б.loclSRB", "upright", "partialdiff", (13, "uni0431")),
     ("г.loclSRB", "alias", "uni0433", None),
     ("д.loclSRB", "alias", "uni0434", None),
@@ -173,7 +173,7 @@ RECIPES = [
     # of Latin shape: д ɡ, и u, к k, л ʌ, п n, т m, ш ɯ, ц щ with Ц's tail
     # (з stays: Bulgarian typographers differ on it)
     # (й ѝ are и with their mark, in the features); the italic keeps its
-    # own (make_italic.ITALIC_RECIPES)
+    # own (data_italic.ITALIC_RECIPES)
     ("д.loclBGR", "alias", "uni0261", None),
     ("и.loclBGR", "alias", "u", None),
     ("к.loclBGR", "alias", "k", None),

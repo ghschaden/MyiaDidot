@@ -372,7 +372,7 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   is no longer a step (what the gate finds a knee by) but a curve with
   both handles on its end: a bend, and the knee repair refused for "no
   step gone" (u's had been mended by hand, drawn 2026-11-11). Fixed in
-  the recipe: `make_bold.ITALIC_BOLD_KNEES` names the knee curves
+  the recipe: `data_bold_italic.ITALIC_BOLD_KNEES` names the knee curves
   (contour, segment of the Italic's outline: `strokes.found`'s keys);
   for them the gate asks no step gone and judges bends at the knee, after
   the knee is turned. Not for a foot that is no u-knee: м's right stem
@@ -575,7 +575,7 @@ foot). The faults, 2026-11-12:
   bowl's inside (redone in the Italic; r.sc's stands as drafted): 0.985
   of r.sc's spans its own, 0.978 once r.sc moved a unit, under
   follow_bases' 0.98, so the Bold Italic's ʁ was emboldened whole. Its
-  own threshold (`make_bold.MOVED_EXACT_FOR`). ө.sc's bar on o.sc: the
+  own threshold (`data_bold.MOVED_EXACT_FOR`). ө.sc's bar on o.sc: the
   union failed with all four nudges once o.sc stood a unit wider; six
   more tried after them (both ways at once, 0.4 up and down), which only
   a letter that failed the first four reaches.
@@ -614,7 +614,7 @@ before, a unit of movement only tipped it.
 Then, in their own commits: Ʌ's thin leg (scripts/turned_v.py); the arms
 into the hooks of the Bold Italic's Ƙ Ƴ and Ʋ's thickening, chosen from
 candidates (proofs/bold-italic-hook-arms-2026-11-12.pdf; the reasons at
-make_bold's recipes, CURL_ARM).
+data_bold_italic.py's recipes, CURL_ARM).
 
 Open, for the designer and the next batch:
 

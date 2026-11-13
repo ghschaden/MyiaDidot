@@ -84,7 +84,7 @@ PAIRS = [
     ("Aogonek", "Y"),
     # the horn reaches over a small cap's accent (the Bold Italic's Ư ỗ.sc)
     *((h, "public.kern2.O.sc") for h in HORN),
-    # hooks and tails that overhang their advance (derive.SPACING; found by
+    # hooks and tails that overhang their advance (data_regular.SPACING; found by
     # scripts/quality/derived_spacing.py): ɗ ɠ ʄ over a tall letter, ʐ's
     # tail under ) ], the descenders' tails at a foot serif, the opening
     # bracket over a hook below

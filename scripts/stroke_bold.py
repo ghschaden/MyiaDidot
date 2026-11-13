@@ -49,7 +49,7 @@ TIGHT = 2.0
 FULL = 0.75
 ZONES = ZONE_TOPS + ZONE_BOTTOMS
 CLEAR = 0.25  # of the white in front, the most a side may move into it
-ROOT = 160  # units from a crotch over which a hairline's root weight fades (make_bold.ITALIC_BOLD_ROOTS)
+ROOT = 160  # units from a crotch over which a hairline's root weight fades (data_bold_italic.ITALIC_BOLD_ROOTS)
 ZONE_NEAR = 100  # units
 SHALLOW = 0.55  # (about 33 degrees from level, fading to 44)
 ACROSS = 0.45  # (z's spine, 25° from level, read as a hairline at 1: 2026-10-28)
@@ -117,7 +117,7 @@ G2_ERR = 3.0
 TS_G2 = np.linspace(0, 1, 80)  # (its distances, measured coarser)
 # then each whole arc refitted fair (fair_arcs, 2026-10-28;
 # embolden_by_strokes(fair=False): as fitted)
-SPLIT_ERR = 3.0  # units a moved side's one cubic may stray from its points (split: make_bold.ITALIC_BOLD_SPLIT)
+SPLIT_ERR = 3.0  # units a moved side's one cubic may stray from its points (split: data_bold_italic.ITALIC_BOLD_SPLIT)
 # an arc leaving a line that turns one way in the source (its first curve
 # turning back by ONE_WAY_TOL degrees at most: Old Standard's n) but whose
 # moved points turn back by over ONE_WAY_DIP degrees there, its weight

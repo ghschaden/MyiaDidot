@@ -7,7 +7,7 @@ italic_geometry and the standard library (tests/test_data_modules.py).
 
 from data_bold import AY, BOLD_CUT, BOLD_CUT_GREEK, OVALS
 
-# the Bold Italic's, from the Italic's lighter stems (make_italic.WEIGHT 10):
+# the Bold Italic's, from the Italic's lighter stems (data_italic.WEIGHT 10):
 # its stems 0.96 of the Bold's, as the Italic's of the Regular's (reference
 # bold italics 0.95-0.98; AX gave 0.92, the heavier Italic of before 1.01)
 ITALIC_AX = 102
@@ -36,7 +36,7 @@ ITALIC_BOLD_HEAVIER = {"z": 1.15,
 # tangles where they part
 ITALIC_BOLD_UNJOINED = {"uni2C72": "Ⱳ: the curl's join tangled (53 nodes)"}
 
-# the Italic's joins faired (make_italic.ITALIC_JOINS) in the bands of the
+# the Italic's joins faired (data_italic.ITALIC_JOINS) in the bands of the
 # Bold Italic's own recipes: ɰ's seam where ɥ's descender meets ɯ's last
 # stem (the cut's top, 300); the Italic's band (250-350) also took ɯ's own
 # nodes there, the first stroke's at 310 and the last hairline's at 256
@@ -106,7 +106,7 @@ ITALIC_BOLD_REBUILD = {
     # diagonal stood 1.21 of h.sc (N's 0.77), the left foot lost its
     # bracket and the right stem's top bracket wobbled (2026-11-05)
     "n.sc": "n.sc: the Bold Italic's N enlarged",
-    # ɴ, n.sc enlarged (derive.RECIPES): stroked from the Italic's, its
+    # ɴ, n.sc enlarged (data_regular.RECIPES): stroked from the Italic's, its
     # diagonal and feet came out as n.sc's did
     "uni0274": "ɴ: the Bold Italic's n.sc enlarged",
     # ʉ, the bar on u: u's knees drawn as the Italic turns (stroke_bold
@@ -376,7 +376,7 @@ ITALIC_BOLD_RECIPES = {
                           [("poly", [(1314, 595), (1405, 595), (1378, 770), (1298, 770)], (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 1338, 770, 80), "dir": 92, "turn": "cw", "r": (165, 150),
                                      "sweep": 200, "ball": 95, "t": (80, 53), "lead": 6}, (0, 0), (1, 1, 0, 0))])),
-    # Қ Җ җ қ: the Italic's (make_italic.descender), on the Bold Italic's
+    # Қ Җ җ қ: the Italic's (data_italic.descender), on the Bold Italic's
     # leg (its centre and weight at 200, where it is cut), the exit stroke
     # cut away, the ball half the stroke (as there, so the curl's end has no
     # step): emboldened whole, the curls closed on their strokes
@@ -408,7 +408,7 @@ ITALIC_BOLD_RECIPES = {
     # Italic's ɰ, it was notched at the knees where ɯ is whole
     "ɰ": ("attach", "uni026F", ("x", [(1205, -10000, 10000, 300), (1445, -10000, 10000, 600)],
                                 [("uni0265", (717, -10000, 10000, 300), (0, 0), (0.92, 1, 554, 0))], 1620)),
-    # ɳ: the Italic's (make_italic.retroflex), on the Bold Italic's leg (its
+    # ɳ: the Italic's (data_italic.retroflex), on the Bold Italic's leg (its
     # centre 836, 229 thick at the cut): emboldened whole, the descender took
     # only part of the weight (its stroke under the thick threshold) and the
     # leg pinched at the join; the ball half the stroke, as the Italic's and
@@ -417,7 +417,7 @@ ITALIC_BOLD_RECIPES = {
                           [("line", ((836, 210), (836, -150), 229), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 836, -150, 229), "dir": 270, "turn": "ccw", "r": (150, 130),
                                      "sweep": 170, "ball": 115, "t": (229, 55)}, (0, 0), (1, 1, 0, 0))])),
-    # Ɽ Ʈ ɽ.sc ʈ.sc: the Italic's (make_italic.retroflex: the foot serif cut
+    # Ɽ Ʈ ɽ.sc ʈ.sc: the Italic's (data_italic.retroflex: the foot serif cut
     # away, the stem run on and curled right), on the Bold Italic's stem
     # (its centre and weight, 290 or 299 thick at the cut), the ball half
     # the stroke (as there, so the curl's end has no step): emboldened

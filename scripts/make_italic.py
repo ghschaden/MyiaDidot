@@ -50,6 +50,7 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import arithmetic  # noqa: F401  (first: one thread, AVX2 at most, before numpy loads)
 import case_forms
+import derive
 import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from data_italic import (
@@ -293,7 +294,6 @@ def redraw_w(font, w_name="W", v_name="V"):
     anchors moved with the ink. w.sc of v.sc likewise (FontForge's draft
     of the narrow W came out light, 0.73 of its kind). The thick stems'
     brackets and the first thin arm's join: ITALIC_W_BRACKET, _RUN_ON."""
-    import derive
 
     up = ufoLib2.Font()
     v = copy.deepcopy(font[v_name])
@@ -514,7 +514,6 @@ def weight_thick(rec, ax, thin=80, thick=120):
 
 def put(font, up, name, source):
     """A glyph made in the upright frame, slanted into the Italic."""
-    import derive
     from glyph_lint import (
         FIXED,
         LEDGE_KEEP,
@@ -740,7 +739,6 @@ def transplant(up, regular, name, source, curl=False):
     Italic's source, found where the added part meets the letter, and
     scaled about the join as much as that stroke is lighter in the Italic. A part that
     does not touch the letter (the dot of ʘ) is centred as in the Regular."""
-    import derive
     from derive import path_op, to_path
 
     rs, rt = to_path(regular, regular[source]), to_path(regular, regular[name])
@@ -866,7 +864,6 @@ def transplant(up, regular, name, source, curl=False):
 def rhotic(up, source, y):
     """The letter with the rhotic hook (˞) rising from its right side at y:
     the hook's start (its left end) a little inside the stroke."""
-    import derive
 
     ink = ink_bounds(up, "uni02DE")
     sx = ink[0] + 12
@@ -890,7 +887,6 @@ def rhotic(up, source, y):
 def glottal(up, source):
     """ʔ from the italic ?: its stroke cut across where it heads down to the
     left, before it curls, and turned down into a stem to the baseline."""
-    import derive
     from fontTools.pens.recordingPen import RecordingPen
 
     px, py, d = 525, 740, math.radians(213)  # on the stroke, its direction
@@ -962,7 +958,6 @@ def enlarged(font, up, ch, op, source, band, name):
     amount, which the added weight (WEIGHT on the thick strokes, none on
     the thin) does not scale with: Ɩ's tail thinned to a sliver. So made of
     the glyphs without it, the letter then given the weight of its case."""
-    import derive
 
     refs = {source, *(n for n in band if isinstance(n, str))}
     if derive.ENLARGE_LIKE.get(ch):  # the letter it is scaled like (ʛ as ɢ from g.sc)
@@ -1006,7 +1001,6 @@ def heavier_stem(up, name, r, foot):
     heavy as r's where its turn begins, its right edge leaning out from the
     foot serif's top (foot) as r's widens into its shoulder; the turn's
     first handle turned with the edge (2026-11-04)"""
-    import derive
 
     pts = up[name].contours[0].points
     right = lambda y: derive.stems_at(up, name, y)[0][1]  # noqa: E731
@@ -1038,7 +1032,6 @@ def fishhook(up, source, band, name):
     r's stem), moved under f's stem; the stem as heavy as r's
     (heavier_stem); the slab where it was, the ball as far from the
     advance as r's."""
-    import derive
 
     r, (x0, y0, x1, y1) = band
     pts = lambda g: [p for c in up[g].contours for p in c.points]  # noqa: E731
@@ -1115,7 +1108,6 @@ def mirror_zhe(font, name="uni0436"):
     the right half mirrored, the stem itself untouched (below); slanted back; moved 41 left and the advance 41 less, as the mirrored
     half reaches less far left (its left side bearing back to the old 28).
     Before anything is made of it (җ, Bulgarian ж follow)."""
-    import derive
     from fontTools.pens.transformPen import TransformPen
 
     if name not in font:
@@ -1222,7 +1214,6 @@ def srb_ge(up, source, name):
     overhangs the stem as much on the right as on the left. Made of ı, the
     stem leaned as ı's below its cut and as ū's above, bent where they met
     (2026-11-04)."""
-    import derive
 
     runs = lambda y: derive.stems_at(up, source, y)  # noqa: E731
     # between the hairline and the right stem, where both stand apart
@@ -1270,7 +1261,6 @@ def build_own(up, ch, op, source, band, name, resolve):
     ɗ, the rhotic ɚ ɝ, the glottal ʔ, made in up[name] (in the upright
     frame) from up's glyphs; so also the Bold Italic's from its own
     (make_bold.rederive). Returns whether ch is one of them."""
-    import derive
 
     if ch == "ɗ":
         # the italic d (its bowl, its exit stroke) with ɓ's top: the
@@ -1315,7 +1305,6 @@ def derive_stage(font, regular, late=False, kept=()):
     small caps (smallcaps_stage), late: before it, their sources are the
     Regular's small caps, sloped. Returns what was made, what failed, and
     the names left for the late pass."""
-    import derive
 
     up = upright(font)
     cmap = {u: g.name for g in up for u in g.unicodes}
@@ -1444,7 +1433,6 @@ def weight_thick_level(rec, ay):
 def uncrossed(up, name, rec=None):
     """up[name] (or rec, drawn into it) with no contour crossing itself or
     another (pathops), its curves split again at their extremes"""
-    import derive
     import pathops
     from italic_geometry import EXTREME_PAST
 
@@ -1490,7 +1478,6 @@ def level_gain(up, name, cap, level):
     sideways) until its main stroke stands to h.sc's as cap's to H's (at
     most SC_STROKE_MAX of h.sc's), its side bearings kept"""
     sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
-    import derive
     from derived import Outline
     from strokes import main_stroke
 
@@ -1566,7 +1553,6 @@ def draft_sides(up, name, draft):
 def figures_stage(font, regular):
     """Old-style figures: the lining ones fitted into the band of the
     Regular's, the stems halfway to the lining weight, hairlines kept."""
-    import derive
     from smallcaps import ink_bounds
 
     up = upright(font)
@@ -1602,7 +1588,6 @@ def smallcaps_stage(font, later=(), redraft=False, keep=False):
     capitals (stored: fontforge_inputs.drafts), imported (with their
     anchors) in the upright frame; not those derive_stage makes from them
     afterwards (later). redraft: all drafted anew."""
-    import derive
     import smallcaps as sc
     from fontforge_inputs import drafts as fontforge_drafts
 
@@ -1658,7 +1643,6 @@ def as_capitals(font, made, height):
     (weight_thick) until its main stroke stands to h.sc's as its capital's
     to H's (strokes.main_stroke, upright, across the stroke)."""
     sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
-    import derive
     import pathops
     from derived import Outline
     from italic_geometry import EXTREME_PAST
@@ -1750,7 +1734,6 @@ def swapped_sidebearings(font):
     respaced (Ʊ, turned from Ω before the Greek cut widened it) keeps
     the old spacing otherwise. Returns {glyph: (left, right)} deltas for
     sidebearings()."""
-    import derive
 
     cmap = {u: g.name for g in font for u in g.unicodes}
 

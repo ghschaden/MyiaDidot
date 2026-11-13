@@ -47,6 +47,7 @@ from fontTools.pens.transformPen import TransformPen
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import arithmetic  # noqa: F401  (first: one thread, AVX2 at most, before numpy loads)
 import case_forms
+import derive
 import italic_inside
 import kern_clear
 import stroke_cache
@@ -114,8 +115,11 @@ from data_bold_italic import (
     ITALIC_THICK,
     ITALIC_THIN,
 )
+from data_italic import ITALIC_CORNERS, ITALIC_JOINS, ITALIC_RUNS, POINT_REPAIRS, SC_DRAFT_SIDES, SC_LEVEL_GAIN
+from data_italic import ITALIC_SIDEBEARINGS as SOURCE_SPACING
 from derive import embolden, embolden_by_weight, embolden_simple, rezone
 from glyph_lint import fix
+from italic_geometry import XH, shear
 from respace import CUT_KEY, classifier, respace, sidebearings
 from space_figures import space as space_figures
 from stroke_bold import SLIVER, emboldened, smooth_counter
@@ -135,10 +139,9 @@ WHOLE_KEY = "org.myiadidot.emboldenedWhole"
 
 
 def lezh_band(font):
-    """the Regular's ɮ recipe (derive.RECIPES) on font's l and ʒ: the ʒ
+    """the Regular's ɮ recipe (data_regular.RECIPES) on font's l and ʒ: the ʒ
     where its spur leaves the l's stem at its right edge at 600 (as in the
     Regular, 107 units right), the l's foot serif cut right of its stem"""
-    import derive
     from derive import BIG
 
     stem = derive.stems_at(font, "l", 700)[0][1]
@@ -150,10 +153,9 @@ def lezh_band(font):
 
 
 def fishhook_band(font):
-    """the Regular's ɾ recipe (derive.RECIPES) placed on font's r and f:
+    """the Regular's ɾ recipe (data_regular.RECIPES) placed on font's r and f:
     f taken from just above its crossbar up, brought down until its top is
     r's, onto r's stem cut there"""
-    import derive
 
     top = lambda n: max(p.y for c in font[n].contours for p in c.points)  # noqa: E731
     dy = top("r") - top("f")
@@ -183,7 +185,6 @@ def part_ff(font, apart=ITALIC_BOLD_FF_APART):
     f's arch a little wider), below it the first f with its hook where it
     is and the second with its hook moved whole. Advance, anchors and
     carets with them."""
-    import derive
 
     for name in FF_LIGATURES:
         g = font[name]
@@ -1095,7 +1096,6 @@ def small_glyphs(regular, italic):
     and their scale, the superior zero's round stem against the zero's.
     Emboldened by weight at full size their stems (about 100) would gain a
     fraction of AX; as a letter at that scale, they gain AX times it."""
-    import derive
     from derived import recipes
 
     scale = derive.strokes(regular, "zerosuperior")[1] / derive.strokes(regular, "zero")[1]
@@ -1145,7 +1145,6 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
     a dict that gets the letters left emboldened whole, with the reason.
     Returns the names changed."""
     sys.path.insert(0, str(ROOT / "scripts" / "quality"))
-    import derive
     from derived import KEEPS, TRANSFORMS, Outline, compare, recipes
     from fontTools.pens.recordingPen import DecomposingRecordingPen
 
@@ -1182,7 +1181,6 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             # same cut of this font's base, found in the upright frame and
             # made in the font's own (pathops splits curves at the extremes
             # of the frame it cuts in)
-            from make_italic import XH, shear
 
             work = ufoLib2.Font()
             piece = work.newGlyph(base)
@@ -1220,7 +1218,6 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             # x-height, where the frames agree); about the baseline, a
             # mirrored or turned letter's ink moved right by twice the slant
             # times its height (ɘ ɐ against the next letter)
-            from make_italic import XH
 
             y0 = XH / 2
             bw = font[base].width
@@ -1310,7 +1307,6 @@ def attached_small(source, font, italic):
     sign scaled would be. Recipes that cut the base (Ɲ) stay as they are.
     Returns the names changed."""
     sys.path.insert(0, str(ROOT / "scripts" / "quality"))
-    import derive
     from derived import Outline, compare, recipes
     from fontTools.pens.recordingPen import DecomposingRecordingPen
 
@@ -1501,7 +1497,6 @@ def serif_top(font, name, pick):
     """Where the foot serif under a letter's first or last stem ends: the
     lowest height at which that stem is no wider than above (None: no foot
     serif)."""
-    import derive
 
     stems = derive.stems_at(font, name, 300)
     if not stems:
@@ -1528,7 +1523,6 @@ def rederive(source, font, italic, whole):
     sys.path.insert(0, str(ROOT / "scripts" / "quality"))
     import copy
 
-    import derive
     from derived import Outline, _best_iou, recipes
     from fontTools.pens.recordingPen import DecomposingRecordingPen
     from glyph_lint import lint_glyph
@@ -1537,7 +1531,6 @@ def rederive(source, font, italic, whole):
     keep = ITALIC_BOLD_KEEP_WHOLE if italic else BOLD_KEEP_WHOLE
     up = copy.deepcopy(font)
     if italic:
-        from make_italic import XH, shear
 
         for g in up:
             shear(g, -SLANT)
@@ -1623,18 +1616,17 @@ def rederive(source, font, italic, whole):
             up.glyphOrder = order
             up.lib["public.openTypeCategories"] = cats
         if italic:
-            from make_italic import ITALIC_JOINS
 
             joins = {**ITALIC_JOINS, **ITALIC_BOLD_JOINS}
             if ch in joins:  # as the Italic's, before it is judged
                 derive.fair_joins(new, *joins[ch])
-            from make_italic import ITALIC_CORNERS, ITALIC_RUNS, round_corner, straighten_run
+            from make_italic import round_corner, straighten_run
 
             if ch in ITALIC_RUNS:  # as the Italic's (җ's descender into its c)
                 straighten_run(new, *ITALIC_RUNS[ch])
             if ch in ITALIC_CORNERS:
                 round_corner(new, *ITALIC_CORNERS[ch])
-            from make_italic import SC_DRAFT_SIDES, SC_LEVEL_GAIN, capital_width, level_gain, uncrossed
+            from make_italic import capital_width, level_gain, uncrossed
 
             if name in SC_DRAFT_SIDES:
                 # as the Italic makes them: uncrossed, the main stroke brought
@@ -1658,10 +1650,9 @@ def rederive(source, font, italic, whole):
         # as faults (the stroked bases, 2026-10-28: Ƴ ʄ ҳ)
         fix(up, [tmp])
         # the side bearings the source style gave the letter after its recipe
-        # (the Regular's derive.SPACING, the Italic's ITALIC_SIDEBEARINGS):
+        # (the Regular's data_regular.SPACING, the Italic's ITALIC_SIDEBEARINGS):
         # the recipe's width alone has its hook counted in again
         if italic:
-            from make_italic import ITALIC_SIDEBEARINGS as SOURCE_SPACING
 
             delta = SOURCE_SPACING.get(name)
         else:
@@ -1709,7 +1700,6 @@ def rederive(source, font, italic, whole):
         # its curves split where the slant sets them past their points, as
         # the emboldened letters' are (ɓ.sc's hook ran 80 units past)
         y0 = XH / 2 if italic else 0
-        from make_italic import POINT_REPAIRS
 
         slant_back(new, glyph.getPen(), [(1, 0, SLANT, 1, -SLANT * y0, 0)],
                    italic and name not in POINT_REPAIRS)
@@ -1825,7 +1815,7 @@ def main():
     parted = []  # serifs kept apart (part_serifs)
     gapped = []  # gaps between facing serifs kept in proportion (keep_gaps)
     simple = []  # emboldened the rounder way (a slit otherwise)
-    from make_italic import POINT_REPAIRS, SOURCE_KEY
+    from make_italic import SOURCE_KEY
 
     # the Bold Italic's letters emboldened by their strokes, all at once in
     # a pool (each about half a second); a glyph's own outline is looked up,
@@ -2082,7 +2072,6 @@ def main():
         # the joins the Italic faired, faired again (emboldened whole or
         # made again by the recipe)
         from derive import fair_joins
-        from make_italic import ITALIC_JOINS
 
         cmap = {g.unicode: g.name for g in font if g.unicode is not None}
         for ch, band in {**ITALIC_JOINS, **ITALIC_BOLD_JOINS}.items():

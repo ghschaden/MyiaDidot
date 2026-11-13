@@ -47,7 +47,7 @@ Moved from CLAUDE.md (its ground rules apply).
   sized as the drawn balls (derive.ball_for: 0.52 of the case's stem, at
   most 0.77 of the curl's radius; the Italic's curls over the top too,
   its tails off a stem keep half their stroke). The Bold Italic draws its
-  curls over the top at its weight (make_bold ITALIC_BOLD_RECIPES,
+  curls over the top at its weight (data_bold_italic.py ITALIC_BOLD_RECIPES,
   CURL_CAP/CURL_LOW: wider curls, balls as large as leave the counter
   open; ƴ ends in a round cap touching both the curl's edges, ball
   "end", the ring cut between where it touches: a ball half the stroke
@@ -58,12 +58,12 @@ Moved from CLAUDE.md (its ground rules apply).
   German (locale), which has no f-ligatures: pass `--language=en`.
 - IPA (languagesystem latn IPPH, BCP 47 und-fonipa): locl takes a to
   a.ipa (an alias of a; in the italics the roman's two-storey a, sloped:
-  make_italic ROMAN_GLYPHS) and the accented a's apart onto it, so a stays
+  data_italic.py ROMAN_GLYPHS) and the accented a's apart onto it, so a stays
   apart from ɑ, the italic's one-storey a. ɐ ᵃ æ θ are the roman's, sloped,
   in the italics (ROMAN_SIGNS).
 - Localized forms (locl): recipes in derive.py name them "б.loclSRB" (a
   character and its suffix; derive.variant/resolve), aliases of the plain
-  letter where only the italic differs (make_italic ITALIC_RECIPES,
+  letter where only the italic differs (data_italic.py ITALIC_RECIPES,
   ITALIC_LOCL, OS_LOCL: Old Standard's own), so all styles share one
   glyph set and features.fea. Cyrillic locl lookups stand after the small
   caps block (smcp sees the plain letters); Dutch's before ccmp (it adds

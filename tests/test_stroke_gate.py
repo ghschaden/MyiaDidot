@@ -38,7 +38,7 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # y, takes y's dot below beside the descender (436 -> 957); the capitals
 # redrawn (2026-11-11): Ɯ 4 wider with U, which it twins (U 1603 -> 1607)
 # и ц ш щ redrawn in the Italic with u's knee (2026-11-12; their knees
-# named, make_bold.ITALIC_BOLD_KNEES): ц ш a unit narrower, щ 3 wider, и's
+# named, data_bold_italic.ITALIC_BOLD_KNEES): ц ш a unit narrower, щ 3 wider, и's
 # anchors a unit left; ц 2 right and its right side 3 nearer, щ 2 right;
 # ц's tail past its extreme 13 units (11 before the redraw), щ's 12, and
 # two wobbles of ц's, 7 degrees (on the sheet of 2026-11-12)
@@ -237,7 +237,7 @@ def found(glyph):
 
 # ʋ redrawn since (a short hook and a ball, its top open: one contour, not
 # two; 2026-10-29), ʲ made small from the Bold Italic's j
-# (make_bold.ITALIC_BOLD_REBUILD_OPS, 2026-11-02: 11 narrower):
+# (data_bold_italic.ITALIC_BOLD_REBUILD_OPS, 2026-11-02: 11 narrower):
 # not held to what they were
 REDRAWN = {"uni028B", "uni02B2"}
 

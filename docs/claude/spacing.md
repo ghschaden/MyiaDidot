@@ -8,8 +8,8 @@ Moved from CLAUDE.md (its ground rules apply).
   refuses). Greek spacing and kerning are measured against Greek references
   (GFS Didot, EB Garamond, Libertinus, Charis), calibrated by each style's
   own Latin: `scripts/quality/greek_pairs.py STYLE`; the italics' Greek
-  cuts are ITALIC_CUT_GREEK (make_italic.py) and BOLD_ITALIC_CUT_GREEK
-  (make_bold.py), their Greek pairs in ITALIC_KERNING, BOLD_KERNING and
+  cuts are ITALIC_CUT_GREEK (data_italic.py) and BOLD_ITALIC_CUT_GREEK
+  (data_bold_italic.py), their Greek pairs in ITALIC_KERNING, BOLD_KERNING and
   ITALIC_BOLD_KERNING. Cyrillic likewise (`greek_pairs.py STYLE --script
   cyrillic`, against Old Standard, EB Garamond, Libertinus, Charis); the
   Regular's pairs made for the upright д л ѵ are dropped in the italics
@@ -41,14 +41,14 @@ Moved from CLAUDE.md (its ground rules apply).
   letters against letters keep CLEAR (20). A
   guarded member that a group entry decides gets its own exception where
   the group's value leaves it touching (the Bold's (ɉ, ąɉ). The italics'
-  [j (j {j are looser by hand besides (make_italic.ITALIC_KERNING +60). make_bold.py adds the Bold's own cut, make_italic.py
+  [j (j {j are looser by hand besides (data_italic.ITALIC_KERNING +60). make_bold.py adds the Bold's own cut, make_italic.py
   undoes the Regular's in memory (it is tuned on the old spacing) and
   applies the Italic's; derive.py too builds on the uncut spacing and cuts
   again. It leaves kerning alone. The Bold's figures have a cut of their
-  own (make_bold.py BOLD_FIGURE_CUT), then share their mean width
+  own (data_bold.py BOLD_FIGURE_CUT), then share their mean width
   (tabular_figures; the figure space and dash too). The Italic's letters are made at Old
   Standard's weight and their thick strokes made heavier at the end
-  (make_italic.py WEIGHT, weight_thick):
+  (data_italic.py WEIGHT, make_italic.weight_thick):
   recipe widths are for the weight before that; derived letters that keep
   their whole base are then made of the weighted base (make_bold's
   follow_bases, as in the Bold). Emboldening (derive.embolden)
@@ -59,8 +59,8 @@ Moved from CLAUDE.md (its ground rules apply).
   lnum/pnum/tnum/zero block). Capital spacing (cpsp): `scripts/cpsp.py` on
   the Regular. Case-sensitive punctuation (case, `.case` glyphs):
   `scripts/case_forms.py`, run by make_bold.py/make_italic.py on what they
-  make. Per-style spacing tweaks: make_bold.py BOLD_SIDEBEARINGS,
-  make_italic.py ITALIC_SIDEBEARINGS and ITALIC_KERNING; one-off sidebearing
+  make. Per-style spacing tweaks: data_bold.py BOLD_SIDEBEARINGS,
+  data_italic.py ITALIC_SIDEBEARINGS and ITALIC_KERNING; one-off sidebearing
   changes with respace.sidebearings() (it carries composites along).
 
 ## The italics' Latin kerning (TODO.md F2 / phase 3)

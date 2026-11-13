@@ -79,3 +79,17 @@ Carried out as `docs/claude/only.md` said; three gaps:
   after kern_clear's cache, spread over whole-font passes (slit check
   19 s, smallcaps.py 22 s, write 12 s); stage B would not remove those
   for a glyph that is read by many. Left to the designer.
+
+## T5, the tables into data modules (Opus, 2026-11-13)
+
+Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
+
+- **The order could not be kept.** make_italic's ITALIC_RECIPES are
+  written with derive's `BIG`, so data_italic.py could not import it
+  without importing derive (decision 5) before BIG was itself in a data
+  module. derive went second, make_italic third.
+- **"Text" and "value" look alike to a pointer sweep.** BOLD_REBUILD's
+  reason strings name `derive.SPACING`; repointed as if a comment, the
+  table's value changed. Proof (b) caught it; the strings stay as written.
+  The page's rule for pointers should say "comments and docs, never a
+  string in a table".

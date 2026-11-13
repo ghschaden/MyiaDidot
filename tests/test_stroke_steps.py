@@ -16,7 +16,7 @@ from fair_arcs import segments
 from stroke_bold import bends, compared, steps
 
 # where a curve split short before its line met it in a step (Strokes.blend),
-# ƴ, made of y, and Ɯ, U twinned (make_bold.ITALIC_BOLD_REBUILD)
+# ƴ, made of y, and Ɯ, U twinned (data_bold_italic.ITALIC_BOLD_REBUILD)
 BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "uni01B4", "uni019C"]
 CONTROLS = ["n", "h", "v", "w", "o"]
 # u's inner stem ran into its bowl in a knee (18 degrees finished: the

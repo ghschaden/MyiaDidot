@@ -166,7 +166,7 @@ ITALIC_RUNS = {"җ": (417, 50)}
 
 # the curls over the top end in a ball as the case draws them ("ball":
 # None, derive.ball_for, 2026-10-27; the Bold Italic draws its own at its
-# weight, make_bold.ITALIC_BOLD_RECIPES); tails off a stem (retroflex,
+# weight, data_bold_italic.ITALIC_BOLD_RECIPES); tails off a stem (retroflex,
 # descender) keep a ball half their stroke, flush with the curl's end;
 # Ⱳ keeps its number (its ball 50, the curl run on straight from W's arm)
 # ɮ: how far right of l's stem its ʒ stands (ITALIC_RECIPES)
@@ -644,7 +644,7 @@ ITALIC_UNKERNED = {("uni0434", "public.kern2.uni0443"), ("public.kern1.uni0443",
 # the derived letters whose hook, tail or curl set them otherwise beside
 # their neighbours than the references set them against their base
 # (scripts/quality/derived_spacing.py Italic, to the references' median;
-# the Regular's are derive.SPACING): ɠ ʂ ʐ ʃ Ƭ ɻ ҷ қ Ƈ ң Ƴ ƭ ɮ ʄ Ƙ ɳ Ʋ ɱ ɧ Ҳ ʝ ɾ
+# the Regular's are data_regular.SPACING): ɠ ʂ ʐ ʃ Ƭ ɻ ҷ қ Ƈ ң Ƴ ƭ ɮ ʄ Ƙ ɳ Ʋ ɱ ɧ Ҳ ʝ ɾ
 ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
                        "uni02BC": (-145, 145), "uni02BB": (-130, 130),
                        "uni0260": (0, -380), "uni0282": (-265, 0), "uni0290": (0, -275), "uni0283": (-215, -135),
