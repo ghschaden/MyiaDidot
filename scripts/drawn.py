@@ -1,18 +1,23 @@
-"""Glyphs of a generated Bold or Bold Italic kept as drawn.
+"""Glyphs of a generated style (Italic, Bold, Bold Italic) kept as drawn.
 
     python scripts/drawn.py UFO                                  # list them
     python scripts/drawn.py UFO GLYPH ... --date D --why TEXT    # mark
     python scripts/drawn.py UFO GLYPH ... --release              # unmark
 
-A finished letter of the Bold or Bold Italic, fixed by hand (Fontra,
-FontForge) or by a one-off script, is marked here; make_bold.py and
-smallcaps.py then keep it as saved (outline, components, anchors, width,
+A finished letter of a generated style, fixed by hand (Fontra, FontForge)
+or by a one-off script, is marked here (`org.myiadidot.drawn`, the one
+mark: docs/claude/drawn.md); make_italic.py, make_bold.py and smallcaps.py
+then keep it as saved (outline, components, anchors, width,
 lib) instead of making it anew, and build what is derived from it (its
 accented forms, its small cap) from it. The generators still make every
 other glyph, so a change meant for many letters goes into them; a fault in
 one finished letter is fixed in that letter (2026-11-03: the
 global repairs of the stroked Bold Italic moved hundreds of letters to fix
-a few). The Italic's own mark is make_italic's "drawn" source.
+a few). In the Italic, marking also sets the provenance
+`org.myiadidot.italicSource` to "drawn" (read by the generators to decide
+how a glyph is finished, never whether it is kept); releasing leaves it,
+and the next make_italic run writes it anew. A style's mark never travels
+to the style made from it (`strip`).
 
 A drawn glyph no longer follows the style it is made from: when its Italic
 (or Regular) letter changes, `drawn.py UFO` lists it with the source's
@@ -22,6 +27,7 @@ change (built_from.fingerprint at marking) so it can be looked at again.
 import argparse
 import copy
 import sys
+from datetime import date as _date
 from pathlib import Path
 
 import ufoLib2
@@ -30,6 +36,65 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from built_from import fingerprint
 
 KEY = "org.myiadidot.drawn"
+SOURCE_KEY = "org.myiadidot.italicSource"
+
+
+def is_drawn(glyph):
+    """the glyph is kept as saved by the generators of its style"""
+    return KEY in glyph.lib
+
+
+def light_italic(font):
+    """the font is the (light) Italic, whose provenance key goes with the mark"""
+    return bool(font.info.italicAngle) and (font.info.openTypeOS2WeightClass or 400) < 600
+
+
+def mark(font, name, date, why, source_font=None):
+    """name marked drawn in font, against its letter in source_font (the
+    style it is made from; by default the UFO beside font's path,
+    source_of, or none for an unsaved font)"""
+    if source_font is None:
+        source_font = _beside(font)
+    font[name].lib[KEY] = {"date": date, "why": why,
+                           "source": fingerprint(source_font, name) if name in source_font else ""}
+    if light_italic(font):
+        font[name].lib[SOURCE_KEY] = "drawn"
+
+
+def mark_by_script(font, name, script):
+    """a one-off repair script's mark (T7 retires them): in the Italic the
+    one mark, dated today; in a bold style the Italic's provenance as these
+    scripts always wrote it (stem_joins.hand_drawn reads it there)"""
+    if light_italic(font):
+        mark(font, name, _date.today().isoformat(), f"made by {script}")
+    else:
+        font[name].lib[SOURCE_KEY] = "drawn"
+
+
+_SOURCES = {}
+
+
+def _beside(font):
+    path = source_of(font.path) if getattr(font, "path", None) else None
+    if path is None or not path.exists():
+        return ufoLib2.Font()
+    if path not in _SOURCES:
+        _SOURCES[path] = ufoLib2.Font.open(path)
+    return _SOURCES[path]
+
+
+def release(font, name):
+    """the mark off name (its provenance left: the next run writes it anew)"""
+    font[name].lib.pop(KEY, None)
+
+
+def strip(font):
+    """the mark off every glyph: a source style's glyphs taken into the style
+    made from them (make_bold) are that style's to keep or not; the names"""
+    out = [g.name for g in font if KEY in g.lib]
+    for name in out:
+        del font[name].lib[KEY]
+    return out
 
 
 def saved(path):
@@ -38,7 +103,7 @@ def saved(path):
     if not Path(path).exists():
         return {}
     font = ufoLib2.Font.open(path)
-    return {g.name: copy.deepcopy(g) for g in font if KEY in g.lib}
+    return {g.name: copy.deepcopy(g) for g in font if is_drawn(g)}
 
 
 def restore(kept, font, spaced=False):
@@ -72,9 +137,12 @@ def stale(font, source):
 
 
 def source_of(path):
-    """the UFO a generated style is made from"""
+    """the UFO a generated style is made from: Italic and Bold from the
+    Regular, Bold Italic from the Italic"""
     p = Path(path)
-    return p.with_name(p.name.replace("BoldItalic", "Italic").replace("Bold", "Regular"))
+    if "BoldItalic" in p.name:
+        return p.with_name(p.name.replace("BoldItalic", "Italic"))
+    return p.with_name(p.name.replace("Italic", "Regular").replace("Bold", "Regular"))
 
 
 def main():
@@ -85,25 +153,24 @@ def main():
     ap.add_argument("--why")
     ap.add_argument("--release", action="store_true")
     args = ap.parse_args()
-    if "Bold" not in Path(args.ufo).name:
-        raise SystemExit("only the generated Bold and Bold Italic (the Italic: make_italic's 'drawn')")
+    if not any(k in Path(args.ufo).name for k in ("Bold", "Italic")):
+        raise SystemExit("only the generated styles (Italic, Bold, Bold Italic): the Regular is the master")
     font = ufoLib2.Font.open(args.ufo)
     source = ufoLib2.Font.open(source_of(args.ufo))
     if not args.glyphs:
         old = stale(font, source)
         for g in font:
-            if KEY in g.lib:
+            if is_drawn(g):
                 note = "  (its source letter changed since)" if g.name in old else ""
                 print(f"{g.name}: {g.lib[KEY]['date']} {g.lib[KEY]['why']}{note}")
         return
     for name in args.glyphs:
         if args.release:
-            font[name].lib.pop(KEY, None)
+            release(font, name)
         else:
             if not (args.date and args.why):
                 raise SystemExit("--date and --why are needed to mark a glyph drawn")
-            font[name].lib[KEY] = {"date": args.date, "why": args.why,
-                                   "source": fingerprint(source, name) if name in source else ""}
+            mark(font, name, args.date, args.why, source)
     font.save()
     print(f"{'released' if args.release else 'drawn'}: {len(args.glyphs)}")
 

@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from built_from import fingerprint
 from derive import with_extremes
 from drawn import KEY as DRAWN_KEY
+from drawn import mark_by_script
 from italic_geometry import SLANT, shear
 from make_bold import round_smoothly
 
@@ -52,7 +53,7 @@ def repair(font):
         round_smoothly(contour.points)
     # Preserve the bowl's counter exactly, and replace only the outer path.
     font["uni01A5"].contours[0].points[:] = copy.deepcopy(glyph.contours[0].points)
-    font["uni01A5"].lib["org.myiadidot.italicSource"] = "drawn"
+    mark_by_script(font, "uni01A5", "scripts/p_hook_join.py")
     font["uni01A5"].lib.pop("org.myiadidot.accepted", None)
 
 

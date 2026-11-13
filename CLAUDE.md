@@ -35,10 +35,10 @@ Details by topic, read the one the task touches:
   `make_bold.py`): change them only through the Regular or their generators
   (a recipe, a constant), never by editing the generated UFO, or the next run
   undoes it. `make reproduce` lists what would change; run it before
-  committing. Hand-drawn Italic exceptions are marked "drawn"
-  (org.myiadidot.italicSource); in the Bold and Bold Italic,
-  `scripts/drawn.py UFO GLYPH --date --why` (org.myiadidot.drawn), which
-  make_bold and smallcaps keep as saved.
+  committing. A hand-drawn exception in any generated style is marked with
+  `scripts/drawn.py UFO GLYPH --date --why` (org.myiadidot.drawn, the one
+  mark: `docs/claude/drawn.md`), which make_italic, make_bold and smallcaps
+  keep as saved.
 - **Fix finished letters locally** (2026-11-03): a change to
   the generators' shared machinery (stroke_bold, global constants) only
   for a fault that a whole family of letters shares; a fault in one

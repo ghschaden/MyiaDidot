@@ -15,6 +15,7 @@ import derive
 from built_from import fingerprint
 from case_reference import KEY as CASE_REFERENCE_KEY
 from drawn import KEY as DRAWN_KEY
+from drawn import mark_by_script
 from italic_geometry import SLANT, redraw, shear, upright
 from make_bold import round_smoothly
 
@@ -131,7 +132,7 @@ def main():
         for key in ("org.myiadidot.accepted", "org.myiadidot.derived", "org.myiadidot.builtFrom"):
             font[name].lib.pop(key, None)
         if italic is None:
-            font[name].lib["org.myiadidot.italicSource"] = "drawn"
+            mark_by_script(font, name, "scripts/italic_gamma_glottal_smallcaps.py")
         else:
             font[name].lib[DRAWN_KEY] = {
                 "date": "2026-11-06", "why": "Paired gamma and glottal small-cap repairs",

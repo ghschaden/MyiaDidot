@@ -1,5 +1,8 @@
 # One mark for "drawn and kept" (T6's specification)
 
+Carried out 2026-11-13, steps 1-4 in one commit (see "As carried out" at
+the end).
+
 Written 2026-11-13 (F6) from a reading of the code at 840665d7 and a count
 of the four UFOs at that commit (nothing changed, no generator run). For
 the session that carries it out (Opus). Line numbers are those of
@@ -214,3 +217,26 @@ before step 2 (the Italic would keep nothing).
 - `accepted` merged into `drawn`: one says "looked at and approved, still
   generated", the other "no longer generated"; both are wanted.
 - The Regular's draft flags: the Regular is edited, not generated.
+
+## As carried out (2026-11-13)
+
+As written, with these differences:
+
+- The skip lists and `hand_drawn` were not "the same 110": the four glyphs
+  of rule 3 (o.sc q.sc zero.zero zerooldstyle.zero) now carry the key, so
+  `missing_anchors`, make_italic's `fix` and stem_joins' finishing passes
+  leave them too. They were kept as saved before, and `make reproduce`
+  showed nothing moved in the Italic.
+- `drawn.mark` takes the source font as optional: by default the UFO
+  beside the font's path (`source_of`), none for an unsaved font, so
+  redraw.install and its callers need no new argument.
+- The one-off scripts go through `drawn.mark_by_script`: in the Italic
+  the key (dated the day they run, why "made by scripts/..."), in a bold
+  style italicSource "drawn" as they always wrote it.
+  bold_italic_b_q_smallcaps writes the key directly and is unchanged.
+- make_italic's keep list is `kept_names(previous, font)`, so that rule 3
+  has a unit test.
+- The Bold Italic's o.sc lost the keptDraft it had inherited from the
+  Italic (its only change in the reproduction run).
+- test_italic_contours was left as it was: italic_contours reads the
+  provenance (`origin`), not the mark.

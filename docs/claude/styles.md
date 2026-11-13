@@ -7,13 +7,14 @@ Moved from CLAUDE.md (its ground rules apply).
   make_bold.py), never by editing or scripting the generated UFO alone, or
   the next run undoes it. `make reproduce` (≈40 s) reruns the generators
   into build/reproduce/ and lists whatever would change; run it before
-  committing changes to the generated styles. Hand-drawn exceptions in the
-  Italic are marked "drawn" (org.myiadidot.italicSource), which a run keeps.
-  In the Bold and Bold Italic a glyph marked with `scripts/drawn.py`
-  (lib org.myiadidot.drawn: date, why, its source letter's fingerprint) is
-  put back as saved by make_bold (before the derived letters are built
-  from it, and after finishing) and by smallcaps; `drawn.py UFO` lists them
-  and flags those whose Italic or Regular letter changed since. Use it for
+  committing changes to the generated styles. In the Italic, the Bold and
+  the Bold Italic a glyph marked with `scripts/drawn.py` (lib
+  org.myiadidot.drawn: date, why, its source letter's fingerprint; the one
+  mark, docs/claude/drawn.md) is put back as saved by make_italic, by
+  make_bold (before the derived letters are built from it, and after
+  finishing) and by smallcaps; `drawn.py UFO` lists them and flags those
+  whose Regular or Italic letter changed since. A style's marks never pass
+  to the style made from it (make_bold strips the Italic's). Use it for
   a finished letter whose remaining fault is its own (
   2026-11-03: global repairs of the stroker moved hundreds of letters to
   fix a few); leave faults many letters share to the generator.
@@ -217,9 +218,10 @@ Moved from CLAUDE.md (its ground rules apply).
   when it slants back (make_bold.slant_back, also its rederived letters);
   POINT_REPAIRS (ℵ ɬ Ɬ) keep
   their points for their repairs. Lib
-  `org.myiadidot.italicSource` says where each glyph came from; a rerun
-  keeps "drawn" glyphs (set it after hand-editing one) and reviewed drafts
-  (draft key cleared). Then `make normalize`. Review sheets:
+  `org.myiadidot.italicSource` says where each glyph came from
+  (provenance only; marking a glyph drawn with drawn.py sets it to
+  "drawn"); a rerun keeps the glyphs marked drawn and nothing else: a
+  cleared draft flag is review status only. Then `make normalize`. Review sheets:
   `drafts-review-Italic.pdf`, `smallcaps-review-Italic.pdf` (and
   `-BoldItalic`), listing the drafts not yet accepted. A style's own
   fontbakery allowances: `tests/data/fontbakery-allow-Italic.txt`.

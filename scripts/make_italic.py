@@ -24,11 +24,12 @@ geometric shapes and circled letters stay upright, the Regular's. What is left i
 sloped. Then smallcaps.py runs on the Italic (accented small caps,
 features). Afterwards: make normalize.
 
-Each glyph's lib key org.myiadidot.italicSource says where it came from.
-A rerun keeps what was reviewed: glyphs marked "drawn" (hand-edited: set
-it after editing any glyph), and drafts ("derived", "figure draft",
-"small cap draft") whose draft key has been cleared, as long as the
-weights and cuts (MADE_WITH) are those they were made with.
+Each glyph's lib key org.myiadidot.italicSource says where it came from
+(provenance: how a glyph is finished, never whether it is kept). A rerun
+keeps exactly the glyphs marked drawn (org.myiadidot.drawn, set with
+scripts/drawn.py after editing a glyph: docs/claude/drawn.md); a draft's
+cleared flag is review status only and keeps nothing. When the weights or
+cuts (MADE_WITH) changed, the kept glyphs are listed to be looked at again.
 """
 
 import argparse
@@ -52,6 +53,7 @@ import case_forms
 import kern_clear
 from composites import SPECIAL, Builder, stack_anchors
 from derive import BIG, draw_path, embolden, rezone
+from drawn import is_drawn
 from fontforge_inputs import source_font
 from italic_geometry import ANGLE, CAP, SLANT, XH, shear, upright
 from make_bold import WHOLE_KEY, mark_like, redraw, write
@@ -98,9 +100,9 @@ ITALIC_CUT = 16
 # n n gap looser than the Italic's Latin against Greek references
 # (scripts/quality/greek_pairs.py)
 ITALIC_CUT_GREEK = ITALIC_CUT + 11
-# the weights and cuts the reviewed drafts were made with (font lib): a
-# rerun with others keeps none of them (kept glyphs are neither weighted nor
-# respaced again), they come back as drafts to review
+# the weights and cuts the Italic was made with (font lib): a rerun with
+# others still keeps the drawn glyphs (they are neither weighted nor
+# respaced again) and lists them to be looked at again
 MADE_WITH_KEY = "org.myiadidot.italicMadeWith"
 MADE_WITH = {"weight": [AX, AY, WEIGHT, CAP_WEIGHT], "cut": [ITALIC_CUT, ITALIC_CUT_GREEK]}
 SOURCE_KEY = "org.myiadidot.italicSource"
@@ -127,15 +129,6 @@ def origin(g):
     if src == "drawn":
         return g.lib.get(REDRAWN_KEY, {}).get("source") or src
     return src
-
-
-def reviewed(g):
-    """A glyph a rerun must keep: hand-drawn, or a draft that was reviewed."""
-    src = g.lib.get(SOURCE_KEY)
-    if src == "drawn":
-        return True
-    return (src in ("derived", "figure draft", "small cap draft")
-            and not g.lib.get(DRAFT_KEY) and not g.lib.get(SMALLCAP_DRAFT_KEY))
 
 
 # signs Old Standard draws for mathematics, far larger than Myia's (+ is
@@ -2438,6 +2431,13 @@ def roman_anchor(roman, a, width_it):
     return a.x * width_it / (roman.width or 1) + (a.y - XH / 2) * SLANT
 
 
+def kept_names(previous, font):
+    """the glyphs of the last run a rerun keeps as saved: those marked drawn
+    (drawn.py) that font still makes, and the Italic's own small caps"""
+    return [g.name for g in (previous or []) if is_drawn(g)
+            and (g.name in font or g.name.endswith(".sc"))]
+
+
 def missing_anchors(font, regular, marks):
     """The anchors the Regular's glyph has and the Italic's lacks (a turned
     letter takes none from its source, a drafted small cap only its
@@ -2445,7 +2445,7 @@ def missing_anchors(font, regular, marks):
     as drawn. Returns the names given anchors."""
     given = []
     for g in font:
-        if g.name in marks or g.name not in regular or not g.width or g.lib.get(SOURCE_KEY) == "drawn":
+        if g.name in marks or g.name not in regular or not g.width or is_drawn(g):
             continue
         have = {a.name for a in g.anchors}
         roman = regular[g.name]
@@ -2758,13 +2758,11 @@ def main():
     lighten_a(font)
     mirror_zhe(font)
     lean_as(font)
-    # what was reviewed or drawn in the Italic stays
-    # (and the Italic's own, reviewed: ʀ.sc, drafted from its Ʀ, is not in the Regular)
-    # (drafts made at other weights come back as drafts, drawn ones stay)
-    same_settings = previous is not None and previous.lib.get(MADE_WITH_KEY) == MADE_WITH
-    kept = [g.name for g in (previous or []) if reviewed(g)
-            and (same_settings or g.lib.get(SOURCE_KEY) == "drawn")
-            and (g.name in font or g.name.endswith(".sc"))]
+    # what was drawn in the Italic stays (drawn.py), whatever the settings
+    # (and the Italic's own: ʀ.sc, drafted from its Ʀ, is not in the Regular)
+    kept = kept_names(previous, font)
+    if previous is not None and kept and previous.lib.get(MADE_WITH_KEY) != MADE_WITH:
+        print(f"{args.italic}: kept though the weights or cuts changed, look again: {' '.join(kept)}")
     for name in kept:
         font.layers.defaultLayer.insertGlyph(copy.deepcopy(previous[name]), name, overwrite=True)
     # a kept glyph is saved as spaced (the cut taken), everything else here
@@ -2892,7 +2890,7 @@ def main():
     # those kept from the last run were weighted as they were then
     last = previous.lib.get(WHOLE_KEY, {}) if previous else {}
     font.lib[WHOLE_KEY] = dict(sorted((n, why) for n, why in last.items() if n in kept and n in font))
-    cleaned = fix(font, [g.name for g in font if g.lib.get(SOURCE_KEY) != "drawn"])
+    cleaned = fix(font, [g.name for g in font if not is_drawn(g)])
     # the letters spaced tighter (scripts/respace.py), not those kept from the
     # last run, which were (what comes from the Regular has its cut too)
     letter_cut = classifier(font, ITALIC_CUT, ITALIC_CUT_GREEK)
@@ -2952,7 +2950,7 @@ def main():
     write(font, Path(args.italic), plain=ROUND_PLAIN)
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)
-    print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as reviewed, "
+    print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as drawn, "
           f"{upright_signs} signs upright, {len(derived)} derived, {len(figures)} figures, "
           f"{len(small_caps)} small caps drafted, {len(LIGATURE_NAMES)} italic ligatures built, {rebuilt} composites rebuilt, "
           f"{len(cleaned)} cleaned, {kerned[0]} Latin pairs computed ({kerned[1]} set plain, at 0), "

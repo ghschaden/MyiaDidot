@@ -30,6 +30,7 @@ from ufoLib2.objects import Contour, Point
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import redraw  # noqa: E402
+from drawn import is_drawn  # noqa: E402
 
 STEM = 0.15  # units the outline may leave the old one by where the strokes are measured
 TS = np.linspace(0, 1, 201)
@@ -246,7 +247,7 @@ def main():
     if a.install and not (a.date and a.review):
         ap.error("--install needs --date and --review")
     font = ufoLib2.Font.open(a.src)
-    if "drawn" in (font["O"].lib.get(redraw.ITALIC_SOURCE_KEY), font["Q"].lib.get(redraw.ITALIC_SOURCE_KEY)):
+    if is_drawn(font["O"]) or is_drawn(font["Q"]):
         sys.exit("O or Q is drawn already: this builds them from Old Standard's outlines only")
     notes = []
     o = draw_o(font["O"], notes)

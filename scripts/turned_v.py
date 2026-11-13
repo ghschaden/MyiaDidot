@@ -42,10 +42,12 @@ def leg(glyph):
 
 
 def finish(font):
+    from drawn import is_drawn
+
     if font.info.styleName not in ("Italic", "Bold Italic") or "uni0245" not in font:
         return {}
     glyph = font["uni0245"]
-    if "org.myiadidot.drawn" in glyph.lib or len(glyph.contours) != 1:
+    if is_drawn(glyph) or len(glyph.contours) != 1:
         return {}
     found = leg(glyph)
     if found is None:

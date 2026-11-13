@@ -17,6 +17,7 @@ from ufoLib2.objects import Point
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import derive
+from drawn import mark_by_script
 from italic_geometry import SLANT, redraw, shear, upright
 from make_bold import round_smoothly
 
@@ -46,7 +47,7 @@ def finish(font, name, made):
     for key in ("org.myiadidot.accepted", "org.myiadidot.derived",
                 "org.myiadidot.builtFrom", "org.myiadidot.drawn"):
         font[name].lib.pop(key, None)
-    font[name].lib["org.myiadidot.italicSource"] = "drawn"
+    mark_by_script(font, name, "scripts/hook_reference_candidates.py")
 
 
 def florin(font, up, name, base, depth):
@@ -198,9 +199,9 @@ def install(source, bold):
                 "why": "Approved local Florin/P-hook drawing from final same-style references",
                 "source": fingerprint(italic, name),
             }
-        else:
-            glyph.lib["org.myiadidot.italicSource"] = "drawn"
         font.layers.defaultLayer.insertGlyph(glyph, name, overwrite=True)
+        if not bold:
+            mark_by_script(font, name, "scripts/hook_reference_candidates.py")
         stamp(font, name, "2026-11-07", REVIEW)
     font.kerning.update(SMALLCAP_KERNING[style])
     font.save()

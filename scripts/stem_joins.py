@@ -119,18 +119,23 @@ def mend(glyph, reach=0):
 
 
 def hand_drawn(font, glyph):
-    """A glyph the finishing passes leave: drawn by hand in this style. The
-    Italic's mark comes into the bold styles with the glyph's lib and says
-    there how the Italic's letter was made: a letter redrawn onto new nodes
-    (redraw.py's record beside it) is stroked anew in the Bold Italic like
-    any other and finished like any other (X's stem stepped 3.3 units in
-    at its serif, unmended, after the capitals' redraw of 2026-11-11)."""
-    if "org.myiadidot.drawn" in glyph.lib:
+    """A glyph the finishing passes leave: drawn by hand in this style, its
+    mark org.myiadidot.drawn (drawn.is_drawn; in the Italic nothing else).
+    In the bold styles also the Italic's provenance, which comes with the
+    glyph's lib and says how the Italic's letter was made: italicSource
+    "drawn" for a letter drawn in the Italic and stroked from it unmended
+    since; but a letter redrawn onto new nodes (redraw.py's record beside
+    it) is stroked anew in the Bold Italic like any other and finished like
+    any other (X's stem stepped 3.3 units in at its serif, unmended, after
+    the capitals' redraw of 2026-11-11)."""
+    from drawn import is_drawn
+
+    if is_drawn(glyph):
         return True
-    if glyph.lib.get("org.myiadidot.italicSource") != "drawn":
-        return False
     bold = (font.info.openTypeOS2WeightClass or 400) >= 600
-    return not (bold and "org.myiadidot.redrawn" in glyph.lib)
+    if not bold or glyph.lib.get("org.myiadidot.italicSource") != "drawn":
+        return False
+    return "org.myiadidot.redrawn" not in glyph.lib
 
 
 def finish(font):

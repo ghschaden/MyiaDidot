@@ -997,10 +997,13 @@ def spec_for(ufo, path=None):
     return json.loads(p.read_text()) if p.exists() else {}
 
 
-def install(font, name, new, date, review, report):
-    """new's contours into font[name], kept from now on: the Italic's
-    glyph marked drawn (make_italic keeps it), the redraw recorded"""
+def install(font, name, new, date, review, report, source_font=None):
+    """new's contours into font[name], kept from now on: the glyph marked
+    drawn (drawn.mark: make_italic keeps it), the redraw recorded.
+    source_font: the style font is made from, for the mark's fingerprint
+    (by default the one beside font's path, drawn.source_of)"""
     from built_from import fingerprint
+    from drawn import mark
 
     g = font[name]
     was = fingerprint(font, name)
@@ -1013,8 +1016,7 @@ def install(font, name, new, date, review, report):
     if source == "drawn":
         source = g.lib.get(KEY, {}).get("source") or source
     g.lib[KEY] = {"date": date, "review": review, "from": was, "source": source, "tol": report["tol"]}
-    if ITALIC_SOURCE_KEY in g.lib:
-        g.lib[ITALIC_SOURCE_KEY] = "drawn"
+    mark(font, name, date, "redrawn onto clean nodes, " + review, source_font)
 
 
 def main():

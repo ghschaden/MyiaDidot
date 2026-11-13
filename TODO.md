@@ -486,14 +486,17 @@ alongside, each when the phase that needs it comes up.
       in its order (after T6, whose page cites these files by line).
       Left by it for later: the cycle of functions between make_italic
       and make_bold (a module of what both use, its own proof).
-- [ ] T6. One mark for "drawn and kept": today the Italic's
+- [x] T6. One mark for "drawn and kept": today the Italic's
       `org.myiadidot.italicSource` = "drawn", the bolds'
       `org.myiadidot.drawn`, and a cleared draft flag freezes an Italic
       glyph too. With about 250 drawn core glyphs a style: one key, one
       tool (`scripts/drawn.py` for all three styles, date and reason),
       the generators reading only that; docs/claude/quality.md and
       CLAUDE.md follow. Before phase 5's first batch is marked.
-      Specified 2026-11-13: `docs/claude/drawn.md`.
+      Specified 2026-11-13: `docs/claude/drawn.md`. Done 2026-11-13:
+      the Italic's 114 kept glyphs carry `org.myiadidot.drawn`,
+      make_bold strips the source's marks, every reader goes through
+      `drawn.is_drawn`; what differed from the page is at its end.
 - [ ] T7. The repair scripts retired as their glyphs are drawn: about
       25 scripts patch single generated glyphs at fixed points
       (`dollar_bars` `dollar_drawing` `j_bar` `l_belt` `t_slash`

@@ -42,7 +42,9 @@ def _rows(font, contours, slope, y0, y1, step=8):
 
 
 def _drawn(glyph):
-    return "org.myiadidot.drawn" in glyph.lib
+    from drawn import is_drawn
+
+    return is_drawn(glyph)
 
 
 def yeru(font, slope):

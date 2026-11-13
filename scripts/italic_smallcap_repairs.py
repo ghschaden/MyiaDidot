@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import derive
 from built_from import fingerprint
 from drawn import KEY as DRAWN_KEY
+from drawn import mark_by_script
 from italic_geometry import SLANT, redraw, shear, upright
 from make_bold import round_smoothly
 
@@ -90,7 +91,7 @@ def repair(font):
         for contour in made.contours:
             round_smoothly(contour.points)
         redraw(font[name], made)
-        font[name].lib["org.myiadidot.italicSource"] = "drawn"
+        mark_by_script(font, name, "scripts/italic_smallcap_repairs.py")
         for key in ("org.myiadidot.accepted", "org.myiadidot.derived", "org.myiadidot.builtFrom"):
             font[name].lib.pop(key, None)
 

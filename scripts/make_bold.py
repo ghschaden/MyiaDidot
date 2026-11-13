@@ -2593,13 +2593,16 @@ def main():
 
         args.bold = str(prepare(args.bold, args.out))
     global SLANT, AX, THIN, THICK
-    from drawn import restore, saved
+    from drawn import restore, saved, strip
 
     # the glyphs kept as drawn (drawn.py), as last saved: put back before
     # anything is derived from them, and again at the end
     kept = saved(args.bold)
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
+    # the source style's drawn marks are its own: this style keeps only
+    # what it marked itself (kept, above; docs/claude/drawn.md, rule 5)
+    strip(font)
     kern_clear.undo(font)  # the source's loosened pairs: this style finds its own
     angle = -(regular.info.italicAngle or 0)
     SLANT = math.tan(math.radians(angle))

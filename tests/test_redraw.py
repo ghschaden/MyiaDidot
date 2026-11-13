@@ -134,14 +134,18 @@ def test_gate_names_the_failures():
 
 
 def test_install_marks_the_italic_glyph_drawn(tmp_path):
+    from drawn import is_drawn
+
     font = ufoLib2.Font()
+    font.info.italicAngle, font.info.openTypeOS2WeightClass = -15.2, 400
     g = oval()
     g.lib[R.ITALIC_SOURCE_KEY] = "Old Standard"
     font.layers.defaultLayer.insertGlyph(g, "o")
     new, rep = R.redraw(font["o"])
     R.install(font, "o", new, "2026-11-10", "proofs/sheet.pdf", rep)
     assert R.node_count(font["o"]) == 4 and font["o"].width == 1000
-    assert font["o"].lib[R.ITALIC_SOURCE_KEY] == "drawn"
+    assert font["o"].lib[R.ITALIC_SOURCE_KEY] == "drawn" and is_drawn(font["o"])
+    assert font["o"].lib["org.myiadidot.drawn"]["why"] == "redrawn onto clean nodes, proofs/sheet.pdf"
     assert font["o"].lib[R.KEY]["source"] == "Old Standard" and font["o"].lib[R.KEY]["review"] == "proofs/sheet.pdf"
     font.save(tmp_path / "x.ufo")
     assert R.node_count(ufoLib2.Font.open(tmp_path / "x.ufo")["o"]) == 4

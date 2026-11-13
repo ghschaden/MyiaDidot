@@ -661,8 +661,9 @@ tolerance but a construction with the measures held:
     (main stroke 120 for 152: fewer nodes), and `as_capitals` then adds
     the weight outward: o.sc 24 wider, n.sc and all measured against o.sc
     after it. Decided by the designer: the Italic's o.sc and q.sc kept as
-    accepted, as reviewed drafts (org.myiadidot.smallcapDraft removed,
-    the reason in org.myiadidot.keptDraft). They stand on the old O and Q.
+    accepted, as reviewed drafts (org.myiadidot.smallcapDraft removed;
+    since T6, 2026-11-13, marked drawn with the reason in
+    org.myiadidot.drawn). They stand on the old O and Q.
   - Still moving after that: the Italic's ꞷ.sc 21.5, ɤ.sc 18.3, ɛ.sc
     18.0, ә.sc/ə.sc 16.4, ɩ.sc 15.3 (advances +8 to +20); the Bold
     Italic's ƭ.sc 54.6, ɛ.sc 40.2, n.sc and its composites 32.6 (at
