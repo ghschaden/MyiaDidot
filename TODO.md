@@ -128,9 +128,14 @@ the other models. One item per session.
       pins; OpenBLAS (or its libgfortran) the likeliest, the stroking's
       numbers pass through it. A tolerance would not cover it (w 3 units,
       segment counts). `scripts/arith_probe.py` and the by-hand workflow
-      probe.yml compare 15 stroking jobs under five pin settings, should
-      anyone take it up again. Known state: CI's reproduce is only
-      meaningful on non-AMD-AVX-512 runners.
+      probe.yml compare 15 stroking jobs under five pin settings. Its run
+      of 2026-11-13 (43431515933): on the Intel runners and the 7763 all
+      four pinned settings match this machine 15/15; on the 9V74 and 9V45
+      every setting 1/15, OpenBLAS's generic kernels, numpy at its
+      baseline and glibc without AVX-512 included. So no environment pin
+      can fix it; what is left (libgfortran, OpenBLAS's LAPACK, the
+      hardware itself) is not worth the chase. Known state: CI's
+      reproduce is only meaningful on non-AMD-AVX-512 runners.
 - [x] F6. Specifications for the engineering Opus will do, one page
       each in DEVELOPMENT.md or beside the code: T2 (`--only`: how the
       dependency closure is taken from builtFrom, what state a partial

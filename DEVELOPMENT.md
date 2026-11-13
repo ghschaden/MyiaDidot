@@ -26,9 +26,9 @@ features or prerequisites already agreed for a particular distribution.
   AMD runners with AVX-512 (EPYC 9V74, 9V45) make it otherwise, Intel's
   with AVX-512 and AMD's without never; a library's own CPU dispatch past
   scripts/arithmetic.py's pins (OpenBLAS the likeliest). Not pursued
-  further; a tolerance would not cover it. Before 0.900: either the
-  reproduce step reports without failing on those runners, or the probe
-  (scripts/arith_probe.py, workflow probe.yml) finds the missing pin.
+  further: the probe (scripts/arith_probe.py, workflow probe.yml) found no
+  environment pin that helps, and a tolerance would not cover it. Before
+  0.900: the reproduce step reports without failing on those runners.
 
 ## Shape-grammar studies (branch `shape-grammar`, not merged)
 
