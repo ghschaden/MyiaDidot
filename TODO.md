@@ -319,25 +319,49 @@ Model: Sonnet, the measuring by font-measure.
 Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
 `L“` `7.` `’s` `Kr` `Ra` `Gi` `»W`. `Ty` `Tw` `A“` leave visible holes.
 
-- [ ] Inventory: `scripts/quality/kern_coverage.py` for each UFO, and
-      `make pairs` against the Latin references; from the pairs report
-      take the frequent pairs where Charis and Libertinus agree and Myia
-      stands outside their range (the reference-font rule).
-- [ ] Expected families, to confirm from that report rather than assume:
-      - T V W Y F P before the lowercase without ascender (only some are
-        kerned: `To` yes, `Ty` `Tw` no);
-      - quotes and apostrophe against A L and the round letters, both
-        sides; apostrophe before s t;
-      - figures against period and comma (7 1 4), and 1 among figures
-        under `pnum`;
-      - K R X before lowercase rounds and v w y;
-      - guillemets against V W T Y A.
-- [ ] Set them in the Regular by group (`kern_groups.py`), then
-      `kern_clear.py`, `smallcaps.py`; small caps and accented letters
-      follow through their groups.
-- [ ] Sheet of words per family, four styles; `make diffenator` for side
-      effects; `make regress`, read the report, accept the shaping
-      baselines with its digest.
+- [x] Inventory (2026-11-13): 336 requested pairs measured against Charis
+      and Libertinus (gap over n n, a scratch script after pairs.py:
+      build/quality/pairs-requested-Regular.txt) and again with
+      italic_kerning's share (white over the case's own rhythm, the
+      measure of the italic rule and test_latin_pairs). The two disagree
+      in direction for R v w y, R O Q, A“ A", 7. 1. 1, and W v w: no pair
+      was set on one measure alone.
+- [~] Set in the Regular by group (2026-11-13), absolute values, where both
+      measures and the references agree: A ’ ” -272 to -132; V a -160 to
+      -112, V o c e d -192 to -162 (V à V è with them), V v w -40 (new);
+      W given its own left group (public.kern1.W, split from V's, V's pairs
+      copied): W a -20, W o c e d -60, W à 0, W è -36, W u -22, W g -80;
+      Y v w -170 to -110, Y y -152 to -105. The italics follow by the rule,
+      no hand exception needed. Left open for the designer (sheet:
+      `proofs/kerning-phase2-2026-11-13.pdf`, last pages of each style):
+      - spacing, not pairs: ' and ” are loose before every stem capital
+        (H B D E N P, by about 0.1 of the rhythm), G is tight before every
+        lowercase (n o a e i): sidebearings of ' ” and G, not D or i pairs;
+      - the measures disagree: R v w y, R O Q, A“ A", L“ “A, 7. 1. 1,
+        W v w p q m (gap measure: too loose; share: in range or tight);
+      - T y w v (T's x-height serif on its right arm), T u p z m n r (the
+        gap measure asks +250 to +400, which is T's bar, not the pair);
+      - guillemets: «A »W T» «T «V »V «Y »Y (Charis and Libertinus differ);
+      - W before capitals and punctuation, measured for the first time
+        once W had its own group: W, WA WJ WO WÆ Wj tight in the Regular
+        and the italics (tests/data/latin-pairs-*.txt list them); the share
+        asks 140-340 units, too much to set unseen;
+      - 41 pairs without shared ink height (quote before or after a round
+        lowercase, ’ s): need an ink-to-ink measure;
+      - K R X before rounds and v w y beyond the R ones: not set.
+- [x] Sheet of words per family, four styles:
+      `proofs/kerning-phase2-2026-11-13.pdf`; `make diffenator` and
+      `make regress` read, shaping baselines accepted with the report's
+      digest (2026-11-13).
+
+- [ ] `Üb` (the designer, 2026-11-13, on the pangram page of samples.pdf,
+      "Falsches Üben von Xylophonmusik"): looks bad in almost any style;
+      the diaeresis touches the b's ascender in the italics, and it is not
+      good in the Regular and Bold either. Look at Ü and the other
+      capitals with diaeresis, acute and the like before an ascender
+      (Üb Üd Üf Üh Ük Ül Ó… and the Greek and Cyrillic kin), by
+      `make collisions`' measure and by eye, in all four styles; mend
+      through the guard/kern_clear route, not by hand in a generated style.
 
 ## Phase 3: the italics' own kerning
 

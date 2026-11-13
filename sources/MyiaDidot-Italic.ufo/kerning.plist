@@ -2379,7 +2379,7 @@
 			<key>public.kern2.egrave</key>
 			<integer>-37</integer>
 			<key>public.kern2.quoteright</key>
-			<integer>-145</integer>
+			<integer>0</integer>
 			<key>public.kern2.v</key>
 			<integer>0</integer>
 			<key>public.kern2.y</key>
@@ -3695,15 +3695,15 @@
 			<key>public.kern2.O</key>
 			<integer>-116</integer>
 			<key>public.kern2.a</key>
-			<integer>-160</integer>
+			<integer>-112</integer>
 			<key>public.kern2.agrave</key>
-			<integer>-136</integer>
+			<integer>-88</integer>
 			<key>public.kern2.c</key>
-			<integer>-192</integer>
+			<integer>-162</integer>
 			<key>public.kern2.comma</key>
 			<integer>-320</integer>
 			<key>public.kern2.egrave</key>
-			<integer>-168</integer>
+			<integer>-138</integer>
 			<key>public.kern2.g</key>
 			<integer>-160</integer>
 			<key>public.kern2.i</key>
@@ -3712,12 +3712,12 @@
 			<integer>-64</integer>
 			<key>public.kern2.u</key>
 			<integer>-94</integer>
+			<key>public.kern2.v</key>
+			<integer>0</integer>
 			<key>public.kern2.y</key>
 			<integer>-49</integer>
 			<key>uni01D0</key>
 			<integer>-8</integer>
-			<key>uni01D2</key>
-			<integer>-186</integer>
 			<key>uni01F0</key>
 			<integer>-59</integer>
 			<key>uni0201</key>
@@ -3743,6 +3743,60 @@
 			<integer>-161</integer>
 			<key>public.kern2.O.sc</key>
 			<integer>-84</integer>
+		</dict>
+		<key>public.kern1.W</key>
+		<dict>
+			<key>ibreve</key>
+			<integer>-7</integer>
+			<key>public.kern2.A</key>
+			<integer>-252</integer>
+			<key>public.kern2.AE</key>
+			<integer>-430</integer>
+			<key>public.kern2.C</key>
+			<integer>-122</integer>
+			<key>public.kern2.J</key>
+			<integer>-222</integer>
+			<key>public.kern2.O</key>
+			<integer>-122</integer>
+			<key>public.kern2.a</key>
+			<integer>-20</integer>
+			<key>public.kern2.agrave</key>
+			<integer>-79</integer>
+			<key>public.kern2.c</key>
+			<integer>-60</integer>
+			<key>public.kern2.comma</key>
+			<integer>-320</integer>
+			<key>public.kern2.egrave</key>
+			<integer>-36</integer>
+			<key>public.kern2.g</key>
+			<integer>-80</integer>
+			<key>public.kern2.i</key>
+			<integer>-64</integer>
+			<key>public.kern2.j</key>
+			<integer>-64</integer>
+			<key>public.kern2.u</key>
+			<integer>-8</integer>
+			<key>public.kern2.y</key>
+			<integer>-51</integer>
+			<key>uni01D0</key>
+			<integer>-9</integer>
+			<key>uni01F0</key>
+			<integer>-60</integer>
+			<key>uni0209</key>
+			<integer>109</integer>
+		</dict>
+		<key>public.kern1.W.sc</key>
+		<dict>
+			<key>public.kern2.A.sc</key>
+			<integer>-183</integer>
+			<key>public.kern2.AE.sc</key>
+			<integer>-312</integer>
+			<key>public.kern2.C.sc</key>
+			<integer>-88</integer>
+			<key>public.kern2.J.sc</key>
+			<integer>-161</integer>
+			<key>public.kern2.O.sc</key>
+			<integer>-88</integer>
 		</dict>
 		<key>public.kern1.X</key>
 		<dict>
@@ -3795,9 +3849,9 @@
 			<key>public.kern2.u</key>
 			<integer>-148</integer>
 			<key>public.kern2.v</key>
-			<integer>-138</integer>
+			<integer>-77</integer>
 			<key>public.kern2.y</key>
-			<integer>-115</integer>
+			<integer>-67</integer>
 			<key>uni01D0</key>
 			<integer>7</integer>
 			<key>uni01D2</key>
@@ -9323,8 +9377,6 @@
 			<integer>-51</integer>
 			<key>public.kern2.c</key>
 			<integer>-31</integer>
-			<key>public.kern2.egrave</key>
-			<integer>-148</integer>
 			<key>public.kern2.i</key>
 			<integer>143</integer>
 			<key>public.kern2.j</key>

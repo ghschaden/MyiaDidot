@@ -93,3 +93,36 @@ Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
   table's value changed. Proof (b) caught it; the strings stay as written.
   The page's rule for pointers should say "comments and docs, never a
   string in a table".
+
+## Phase 2, the Regular's missing kerning (Opus, 2026-11-13)
+
+- **Two pair measures, no rule which one decides.** TODO's phase 2 says
+  "make pairs against the Latin references" (gap over n n, the whole
+  x-height band); the italic rule and tests/test_latin_pairs.py use
+  italic_kerning's share (white over the case's own rhythm: H n for a
+  capital before a lowercase). On the same fonts they disagree in
+  direction for R v w y, R O Q, A“ A", 7. 1. 1, W v w (the gap measure
+  calls Myia too loose, the share in range or too tight), and in size
+  everywhere (the share moves 2-3 times as far per unit). One measure for
+  upright kerning is missing (one source of truth); the round set only
+  pairs on which both agree.
+- **Spacing or pair?** A fault shared by all the partners of one letter
+  (' and ” loose before every stem capital, G tight before every
+  lowercase) is the letter's sidebearing, not a pair; the phase lists
+  them as pairs ('D, Gi) and no step says how to tell the two apart or
+  who changes a sidebearing across the generated styles.
+- **The italic test sees only a group's name-giving glyph.** W's pairs
+  were never measured while W stood in V's group; splitting it made old
+  faults (W, WA WJ WO WÆ Wj) appear as new, which the "lists only
+  shrink" rule has no case for (they were listed with that reason).
+  Members whose shape differs from the representative go unmeasured.
+- **Increments compound on shared keys.** A script that adds to the
+  resolved value per glyph pair adds several times where the pairs share
+  one group key (W o, W e, W c in kern2.c: -192 became +138). The phase
+  should say: set absolute values per group key, and check that no two
+  requested pairs land on one key.
+- **Accented right groups (kern2.agrave, kern2.egrave) do not follow
+  their base pair.** Loosening V a or W o leaves V à W è at the old,
+  now tighter value; nothing (kern_groups, kern_clear, a test) carries
+  or checks it. Set by hand here (same delta, never tighter than the
+  base).

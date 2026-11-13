@@ -77,8 +77,10 @@ CAP_SC_KERNING = {
         ("public.kern1.S", "public.kern2.Y.sc"): -47,  # Sy
         ("public.kern1.F", "public.kern2.A.sc"): -55,  # Fa
         ("public.kern1.V", "public.kern2.J.sc"): -56,  # Vj
+        ("public.kern1.W", "public.kern2.J.sc"): -56,  # Wj (W split from V's group 2026-11-13)
         ("public.kern1.A", "public.kern2.T.sc"): -59,  # At
         ("public.kern1.V", "public.kern2.A.sc"): -59,  # Va
+        ("public.kern1.W", "public.kern2.A.sc"): -59,  # Wa
         ("public.kern1.R", "public.kern2.Y.sc"): -60,  # Ry
         ("public.kern1.Y", "public.kern2.J.sc"): -65,  # Yĵ
         ("public.kern1.T", "public.kern2.A.sc"): -71,  # Ta
@@ -98,6 +100,7 @@ CAP_SC_KERNING = {
         ("public.kern1.N", "public.kern2.A.sc"): -52,  # Na
         ("public.kern1.C", "public.kern2.AE.sc"): -52,  # Cæ
         ("public.kern1.V", "public.kern2.A.sc"): -84,  # Va
+        ("public.kern1.W", "public.kern2.A.sc"): -84,  # Wa
         ("public.kern1.Y", "public.kern2.J.sc"): -137,  # Yĵ
     },
 }
