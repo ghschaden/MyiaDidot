@@ -2585,7 +2585,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("bold", nargs="?", default=str(ROOT / "sources/MyiaDidot-Bold.ufo"))
+    ap.add_argument("--out", metavar="UFO", help="the whole run into a copy of BOLD, which stays as it is "
+                    "(scratch_out.py; then smallcaps.py on it)")
     args = ap.parse_args()
+    if args.out:
+        from scratch_out import prepare
+
+        args.bold = str(prepare(args.bold, args.out))
     global SLANT, AX, THIN, THICK
     from drawn import restore, saved
 
@@ -3048,6 +3054,11 @@ def main():
 
         # beside the Italic read (make generate: sources/; check_reproducible: its snapshot)
         upright = Path(args.regular).with_name(Path(args.regular).name.replace("Italic", "Bold"))
+        if args.out and not upright.exists():
+            # a trial Italic in scratch with no trial Bold beside it: the
+            # committed Bold (make only STYLE=BoldItalic SOURCE=...)
+            upright = ROOT / "sources" / upright.name
+            print(f"{args.bold}: no Bold beside {args.regular}, kerned against {upright}")
         kerned = italic_kerning(ufoLib2.Font.open(upright), font, skip=set(BOLD_KERNING))
         print(f"{args.bold}: {kerned[0]} Latin pairs computed against {upright.name} ({kerned[1]} set plain, at 0)")
         font.kerning.update(ITALIC_BOLD_KERNING)

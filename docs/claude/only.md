@@ -6,6 +6,15 @@ at 3bc787ee. Nothing was run or timed for it. To be carried out as written;
 where the code turns out otherwise, the tests of the last section decide,
 not this page.
 
+**Carried out 2026-11-13: step 0 and stage A** (`scripts/scratch_out.py`,
+`scripts/only_sheet.py`, `make only`, tests/test_only.py); the timings and
+the profile in TODO.md under T2. Stage B not built. Found in carrying out:
+make_bold reads the Bold beside its SOURCE for the Bold Italic's kerning
+(`italic_kerning`), so a trial Italic in scratch with no Bold beside it is
+kerned against the committed Bold (said in the run's output); the drafts
+store is made read-only by `fontforge_inputs.READ_ONLY`, set by `--out`
+already in stage A, not only under `--only`.
+
 ## What it is for
 
 One or a few glyphs of a generated style, made again after an edit to their

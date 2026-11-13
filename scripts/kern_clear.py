@@ -35,7 +35,6 @@ from pathlib import Path
 import pathops
 import ufoLib2
 from fontTools.pens.recordingPen import DecomposingRecordingPen
-from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
@@ -235,13 +234,15 @@ class Ink:
         self._rec = {}
 
     def path(self, name, dx):
+        """the glyph's ink, decomposed, moved by dx (drawn once per glyph,
+        then only moved: the same points, a fraction of the time)"""
         if name not in self._rec:
             rec = DecomposingRecordingPen(self.font)
             self.font[name].draw(rec)
-            self._rec[name] = rec
-        p = pathops.Path()
-        self._rec[name].replay(TransformPen(p.getPen(), (1, 0, 0, 1, dx, 0)))
-        return p
+            p = pathops.Path()
+            rec.replay(p.getPen())
+            self._rec[name] = p
+        return self._rec[name] if dx == 0 else self._rec[name].transform(1, 0, 0, 1, dx, 0)
 
     def touch(self, a, b, kern, clear=CLEAR):
         """Do a's ink and b's, set after it with kern, come within clear

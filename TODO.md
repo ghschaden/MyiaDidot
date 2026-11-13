@@ -389,6 +389,31 @@ alongside, each when the phase that needs it comes up.
       stroke cache warm, which this figure predates; under a minute
       each, `--out` (the whole run into scratch) and the sheet are all
       of T2, and the closure below is not built.
+      Step 0 and stage A done 2026-11-13. Timed on copies, cache warm,
+      with the validation lock held (seconds; "changed": one node of n
+      moved in the Regular and the Italic):
+
+      | run | warm | changed |
+      |---|---|---|
+      | make_italic (with its smallcaps.py) | 58 | 59 |
+      | make_bold Regular → Bold, smallcaps.py | 40 + 5 | 40 + 5 |
+      | make_bold Italic → Bold Italic, smallcaps.py | 65 + 22 | 71 + 22 |
+
+      The Bold Italic over a minute, so profiled (cProfile, 95 s
+      under it): `kern_clear.clear` 30 s (16 of them redrawing each
+      glyph's path for every pair), make_bold's slit check
+      (`glyph_lint.notch_findings`) 19 s, `write` 12 s, `optical_fit`
+      7 s, `space_figures` 6.5 s, `rederive` 6 s; no stroking (cached).
+      kern_clear now draws each glyph once and only moves it:
+      20 → 12 s in each italic generator, the kerning and its record
+      identical in all four styles to HEAD's. Stage A built: `--out`,
+      `make only`, `scripts/only_sheet.py`, tests/test_only.py; `make
+      only STYLE=Bold` 45 s and the Bold Italic's run, both 0
+      differences from sources/. Stage B (the closure) not begun: the
+      Bold Italic's ~80 s are a whole-font pass each (the slit check,
+      smallcaps.py's 22 s, write), not one glyph's work, so caching
+      those passes is likely the smaller step; for the designer to
+      decide whether 80 s is fast enough.
       - [ ] `--only GLYPH ...`: those glyphs and what is built from them
             (lib `org.myiadidot.builtFrom` names the dependencies),
             written to a scratch UFO under `build/`, never to

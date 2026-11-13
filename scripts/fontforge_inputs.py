@@ -32,6 +32,9 @@ DRAFTS_UFO = ROOT / "sources/drafts/Italic-smallcaps.ufo"
 DRAFT_SCRIPT = ROOT / "scripts/smallcaps_draft.py"
 CONVERTED_KEY = "org.myiadidot.convertedFrom"
 INPUT_KEY = "org.myiadidot.draftInputs"
+# set by scratch_out.prepare (a run with --out): the drafts store is only
+# read, a draft it lacks ends the run instead of FontForge writing sources/
+READ_ONLY = False
 
 
 def sha256(path):
@@ -119,6 +122,10 @@ def drafts(up, height, stem, redraft=False, keep=False):
     if held:
         sys.stderr.write(f"{len(held)} small-cap drafts kept though their capitals changed (--keep-drafts): "
                          + " ".join(sorted(held)) + "\n")
+    if stale and READ_ONLY:
+        names = " ".join(stale[:12]) + (" ..." if len(stale) > 12 else "")
+        raise SystemExit(f"{len(stale)} small-cap drafts to make again ({names}): a scratch run (--out) "
+                         f"does not write {DRAFTS_UFO.relative_to(ROOT)}; run make generate")
     if stale:
         if not shutil.which("fontforge"):
             names = " ".join(stale[:12]) + (" ..." if len(stale) > 12 else "")
@@ -147,7 +154,7 @@ def drafts(up, height, stem, redraft=False, keep=False):
         store.glyphOrder = sorted(store.keys())
         DRAFTS_UFO.parent.mkdir(parents=True, exist_ok=True)
         store.save(DRAFTS_UFO, overwrite=True)
-    elif held:
+    elif held and not READ_ONLY:
         store.lib[INPUT_KEY] = {name: keys[name] for name in sorted(wanted)}
         store.save(DRAFTS_UFO, overwrite=True)
     out = {g.name: g for g in up if g.name.endswith(".sc")}

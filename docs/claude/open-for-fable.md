@@ -59,3 +59,23 @@ out; two gaps, both in what it assumed rather than in the method:
   ascenders against brackets) did not foresee it. Whether `„` before a
   slanted foot is fixed by kern_clear's measure across (it would loosen
   `„A` by 208) or by a narrower `„` in the italics is a design question.
+
+## T2's step 0 and stage A (Opus, 2026-11-13)
+
+Carried out as `docs/claude/only.md` said; three gaps:
+
+- **The Bold Italic reads a third UFO.** make_bold's italic kerning reads
+  the Bold beside SOURCE (`Path(args.regular).with_name(...)`); the page's
+  State table lists only SOURCE and TARGET. With a trial Italic in
+  `build/only/` and no Bold there, the run would have stopped; it now
+  falls back to the committed Bold and says so.
+- **The drafts store is written by a whole run too**, not only under
+  `--only`: `fontforge_inputs.drafts` saves `sources/drafts` when a
+  draft is stale or held. Stage A's "no change beyond the argument" would
+  have let `make only STYLE=Italic` write under sources/; `--out` makes it
+  read-only.
+- **Step 0's rule had no case for "one generator just over a minute,
+  and no single pass holding most of it".** The Bold Italic is ~80 s
+  after kern_clear's cache, spread over whole-font passes (slit check
+  19 s, smallcaps.py 22 s, write 12 s); stage B would not remove those
+  for a glyph that is read by many. Left to the designer.

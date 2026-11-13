@@ -2631,7 +2631,13 @@ def main():
     ap.add_argument("--keep-drafts", action="store_true",
                     help="keep the stored small-cap drafts though their capitals changed "
                          "(after capitals were redrawn onto new nodes: fontforge_inputs.drafts)")
+    ap.add_argument("--out", metavar="UFO", help="the whole run into a copy of ITALIC, which stays as it is "
+                    "(scratch_out.py; smallcaps.py runs on the copy)")
     args = ap.parse_args()
+    if args.out:
+        from scratch_out import prepare
+
+        args.italic = str(prepare(args.italic, args.out))
     regular = ufoLib2.Font.open(args.regular)
     font = ufoLib2.Font.open(args.regular)
     # the Regular as it was spaced before respace.py: the offsets and widths

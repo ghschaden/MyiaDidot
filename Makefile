@@ -17,7 +17,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch collisions generate visual visual-approve diffenator
+.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch collisions generate visual visual-approve diffenator only
 
 all: fonts
 
@@ -258,6 +258,23 @@ oldstand:
 	$(PY) -c "import sys; sys.path.insert(0, 'scripts'); import fontforge_inputs; fontforge_inputs.convert_source()"
 
 # the generated styles as their generators make them (scripts/check_reproducible.py)
+# a generated style's whole run into build/only, beside sources/, and its
+# sheet (T2, docs/claude/only.md); sources/ untouched:
+#   make only STYLE=BoldItalic GLYPHS="n m" [SOURCE=build/only/MyiaDidot-Italic.ufo]
+ONLY_SOURCE = $(or $(SOURCE),sources/$(FAMILY)-$(if $(filter BoldItalic,$(STYLE)),Italic,Regular).ufo)
+ONLY_OUT = build/only/$(FAMILY)-$(STYLE).ufo
+only:
+	@case "$(STYLE)" in Italic|Bold|BoldItalic) ;; *) echo 'make only STYLE=Italic|Bold|BoldItalic GLYPHS="n m"'; exit 2;; esac
+	@test -n "$(GLYPHS)" || { echo 'make only STYLE=$(STYLE) GLYPHS="n m"'; exit 2; }
+	@mkdir -p build/only
+	flock build/only/.lock $(MAKE) --no-print-directory _only
+
+.PHONY: _only
+_only:
+	$(PY) scripts/$(if $(filter Italic,$(STYLE)),make_italic.py,make_bold.py) $(ONLY_SOURCE) sources/$(FAMILY)-$(STYLE).ufo --out $(ONLY_OUT)
+	$(if $(filter Italic,$(STYLE)),,$(PY) scripts/smallcaps.py $(ONLY_OUT))
+	$(PY) scripts/only_sheet.py $(STYLE) $(GLYPHS) --source $(ONLY_SOURCE) --new $(ONLY_OUT)
+
 reproduce:
 	flock $(VALIDATE_LOCK) $(PY) scripts/check_reproducible.py
 
