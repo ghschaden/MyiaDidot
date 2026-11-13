@@ -173,3 +173,56 @@ which.
    where `kern_clear` refuses an entry because its members take
    different kernings ("take [...]" in `clear`) needs the entry split by
    those values, not a hand-set kern in a style.
+
+## Built 2026-11-13 (Opus): what came out against the above
+
+Steps 1-4 carried out as written; `make reproduce` is untouched (only
+`Ink.touch` got its parameter). Where it differs or adds:
+
+- **Cost.** 3 s a style with the row filter, 6 s with `--exact`
+  (pathops is fast), so the filter test runs in the normal suite, not a
+  slow tier; the whole test file takes about 16 s on four workers.
+- **Swept**: 53 847 pairs a style. Listed at the start: Regular 383
+  (289 touching), Italic 1798 (1543), Bold 306 (266), Bold Italic 1665
+  (1478); the lists are `tests/data/collisions*.txt`, every line "known
+  at the start". The invariant holds in all four styles: no pair that
+  `kern_clear.PAIRS` decides is listed, and with `kern_clear.undo` the
+  Regular lists `( ɲ` again (both in the test).
+- **Step 2's check against the renderings** held for the Regular (`f?`
+  -12, `f!` -30, `[j` -30, `(j` 16) and the Bold (`f!` -60, `f?` -50,
+  `(j` -10, `[j` -6), not for the italics: their `f?` (32 and 30 units
+  of white across), `f!` (100, 70) and `[j` (56, 64) are clear, both
+  today and at 30f20e1a, before F7's redraw. What the renderings showed
+  in the italics' `[j` is j's ball coming near the bracket's foot on the
+  diagonal, which the measure across does not see by design: a question
+  for the designer (TODO.md, phase 1), not a fault in the sets. The
+  redrawn italic f instead now runs into `(` and `[` (`(f` -102, `[f`
+  -132; clear at 30f20e1a), which the renderings called "very tight".
+- **The sheet** groups by sign (the glyph on the other side of a letter
+  or figure), the case forms after the plain signs; each pair as set and
+  beside it loosened to CLEAR, six to a row, `--show` a block.
+
+## The first fixes, 2026-11-13
+
+Reviewed on `proofs/collisions-review-2026-11-13.pdf`: all three shown
+taken as faults, to be loosened. Then, on the before | after sheet, 20
+units still read as touching: a sign beside a letter wants more than the
+floor against ink meeting. Chosen on running text
+(`proofs/sign-clearance-text-2026-11-13.pdf`,
+`-open-close-`, `-exclam-question-`): 100 after an opening sign, 60
+before ! ?, 40 before the other closers (kern_clear.clearance), and
+every sign beside every letter cleared, not only the families below; the
+sweep measures each pair against the same clearance. What follows was
+the first step, at 20. Carried out in `kern_clear.entries()`
+(spacing.md says which pairs), the italics' [j by hand at +60 (of
+`proofs/italic-bracket-j-candidates-2026-11-13.pdf`). The sets moved
+from this script into `kern_clear.sets()`, one definition for the sweep
+and the repair. Found on the way: guarded members were left out of a
+group entry's value but took it, so the Bold's (ɉ stayed 2 units short
+and the ogonek letters before ɉ ʝ ϳ were never cleared (letter pairs, not
+swept); mended in kern_clear. After: Regular 313 pairs (from 383),
+Italic 938 (1798), Bold 240 (306), Bold Italic 795 (1665); before | after
+on `proofs/collisions-loosened-2026-11-13.pdf`. Left for phase 1's
+Sonnet sessions: superiors after f and the hooks, accented small caps
+before closers and superiors, the Greek capitals with breathings after
+the openers, ) ] after η's group, and the rest of the lists.

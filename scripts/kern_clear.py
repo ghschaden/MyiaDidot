@@ -5,7 +5,9 @@ into each other are loosened just enough to leave CLEAR units between them.
 
 Run on the Regular; make_italic.py and make_bold.py apply it to the styles
 they make (after their own kerning), and smallcaps.py again after the small
-caps' kerning, so the values follow each style's outlines. Only the entries in PAIRS are touched (reviewed collisions):
+caps' kerning, so the values follow each style's outlines. Only the entries
+of entries() are touched (reviewed collisions: PAIRS, and the sign pairs
+found by scripts/quality/collisions.py, glyph by glyph):
 an entry already in the kerning is only ever loosened; one that is not
 (a letter's exception to its group's pair) is added where its letters
 would come too close at the kerning they take now, and left out where
@@ -19,12 +21,15 @@ accent too near (lib GUARD_KEY: Ά Ǎ ǐ Ľ ...; and their small caps) are
 guarded: each of the group's pairs that would leave less than GUARD units
 of white between their ink and the other letter's (kern_coverage's gap)
 gets an exception for that letter, as tight as GUARD allows (looser than
-unkerned where even that is too near). Idempotent.
+unkerned where even that is too near). A guarded member that an entry's
+group decides gets its own exception where the group's value leaves it
+touching. Idempotent.
 """
 
 import argparse
 import math
 import sys
+import unicodedata
 from pathlib import Path
 
 import pathops
@@ -32,10 +37,20 @@ import ufoLib2
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.pens.transformPen import TransformPen
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
+import respace
 from kern_coverage import MIN_GAP, Profiles
 
 CLEAR = 20  # units of white the inks keep, measured across
+# a sign beside a letter keeps more (chosen on running text,
+# proofs/sign-clearance-*-2026-11-13.pdf): the opening signs before a
+# letter, ! ? after one, the other closing signs after one
+OPEN_CLEAR = 100
+MARK_CLEAR = 60
+CLOSE_CLEAR = 40
+MARKS = ("exclam", "question")
+ROW_MARGIN = 20  # rows 10 units apart may miss ink between them: two rows either way
 STEP = 2
 LIMIT = 600  # no pair needs more: a sign that something else is wrong
 KEY = "org.myiadidot.kernCleared"
@@ -74,7 +89,114 @@ PAIRS = [
     *((a, b) for a in ("uni049B", "uni0497", "uni04B3") for b in ("l", "h", "k", "b")),
     *((a, b) for a in ("uni049A", "uni0496", "uni04B2", "uni0198") for b in ("l", "H")),
     *((a, b) for a in ("parenleft", "bracketleft") for b in ("uni0272", "uni0191", "uni0283")),
+    # the opening signs over j's hook (Regular, Bold: [j (j; found by
+    # scripts/quality/collisions.py, 2026-11-13)
+    *((o, "public.kern2.j") for o in ("parenleft", "bracketleft", "braceleft", "exclamdown", "questiondown")),
 ]
+
+# The signs set beside letters, by character (scripts/quality/collisions.py
+# sweeps them; sets() takes the letters and figures from the font)
+CLOSERS = "?!)]}”“’*:;"
+OPENERS = "([{„“‘¿¡"
+NOTE_LETTERS = ("ordfeminine", "ordmasculine")  # ª º: set after a word, as the superiors
+FIGURE_SUFFIXES = {"pf", "tf", "zero"}
+F_FAMILY = ("f", "longs", "ff", "fi", "fl", "ffi", "ffl")  # f ſ and their ligatures (f_b, longs_t ...)
+
+
+def sets(font):
+    """{name: [glyph names]} for LETTERS FIGURES CAPITALS CLOSERS OPENERS
+    SUPERIORS F_FAMILY, as docs/claude/collisions.md defines them: taken
+    from the font, so a new letter is in them the day it is added."""
+    from make_bold import LINING_FIGURES, SMALL_SUFFIXES
+
+    cut_for = respace.classifier(font, 1, 1)
+    superiors = [f + SMALL_SUFFIXES[0] for f in LINING_FIGURES if f + SMALL_SUFFIXES[0] in font]
+    superiors += [n for n in NOTE_LETTERS if n in font]
+    letters = sorted(g.name for g in font if g.width and cut_for(g.name) and g.name not in superiors)
+    oldstyle = tuple(f + "oldstyle" for f in LINING_FIGURES)
+    figures, lining = [], []
+    for g in font:
+        base, *suffixes = g.name.split(".")
+        if base in LINING_FIGURES + oldstyle and set(suffixes) <= FIGURE_SUFFIXES:
+            figures.append(g.name)
+            if base in LINING_FIGURES:
+                lining.append(g.name)
+
+    def first_char(name):
+        base = name.split(".")[0].split("_")[0]
+        if "." not in name and "_" not in name and font[name].unicode is not None:
+            return chr(font[name].unicode)
+        g = font[base] if base in font else None
+        if g is not None and g.unicode is not None:
+            return chr(g.unicode)
+        return respace.NAMES.get(base) or respace.agl.toUnicode(base)[:1]
+
+    def small(name):
+        return name.partition(".")[2].split(".")[0] in ("sc", "c2sc")
+
+    def capital(name):
+        c = first_char(name)
+        return not small(name) and bool(c) and unicodedata.category(c) == "Lu"
+
+    def by_char(chars):
+        cmap = {g.unicode: g.name for g in font if g.unicode is not None}
+        return [cmap[ord(c)] for c in chars if ord(c) in cmap]
+
+    return {
+        "LETTERS": letters,
+        "FIGURES": sorted(figures),
+        "CAPITALS": sorted([n for n in letters if capital(n)] + lining),
+        "CLOSERS": by_char(CLOSERS),
+        "OPENERS": by_char(OPENERS),
+        "SUPERIORS": superiors,
+        "F_FAMILY": [n for n in letters if not small(n) and (
+            n.split(".")[0] in F_FAMILY or n.split(".")[0].split("_")[0] in ("f", "longs"))],
+    }
+
+
+def entries(font):
+    """PAIRS and the glyph pairs of a sign and a letter or figure: every
+    opening sign before one, every closing sign after one, and the case
+    forms beside the capitals (reviewed 2026-11-13). Each glyph pair its
+    own entry, so that one member's overhang does not loosen its group;
+    kern_clear adds one only where the inks come nearer than clearance()."""
+    s = sets(font)
+    words = s["LETTERS"] + s["FIGURES"]
+    out = list(PAIRS)
+    out += [(o, b) for o in s["OPENERS"] for b in words]
+    out += [(a, c) for a in words for c in s["CLOSERS"]]
+    out += [(o + ".case", b) for o in s["OPENERS"] if o + ".case" in font for b in s["CAPITALS"]]
+    out += [(a, c + ".case") for c in s["CLOSERS"] if c + ".case" in font for a in s["CAPITALS"]]
+    return list(dict.fromkeys(out))
+
+
+SIGN_NAMES = {}
+
+
+def sign_names():
+    """{"open": names, "close": names} of the signs, by the characters
+    (the AGL names; a font without one has no pair with it)."""
+    from fontTools import agl
+
+    return {k: {agl.UV2AGL.get(ord(c), f"uni{ord(c):04X}") for c in chars}
+            for k, chars in (("open", OPENERS), ("close", CLOSERS))}
+
+
+def clearance(left, right):
+    """The white a pair keeps across: a sign's own (OPEN_CLEAR before a
+    letter, MARK_CLEAR for ! ? after one, CLOSE_CLEAR for the other
+    closing signs), else CLEAR. left and right are glyph names or kerning
+    keys; “ ‘ open before a letter and close after one."""
+    a, b = (n.removesuffix(".case") for n in (left, right))
+    if not SIGN_NAMES:
+        SIGN_NAMES.update(sign_names())
+    if a in SIGN_NAMES["open"]:
+        return OPEN_CLEAR
+    if b in MARKS:
+        return MARK_CLEAR
+    if b in SIGN_NAMES["close"]:
+        return CLOSE_CLEAR
+    return CLEAR
 
 
 def kern_lookup(font):
@@ -114,17 +236,20 @@ class Ink:
         self._rec[name].replay(TransformPen(p.getPen(), (1, 0, 0, 1, dx, 0)))
         return p
 
-    def touch(self, a, b, kern):
-        """Do a's ink and b's, set after it with kern, come within CLEAR?"""
-        dx = self.font[a].width + kern - CLEAR
+    def touch(self, a, b, kern, clear=CLEAR):
+        """Do a's ink and b's, set after it with kern, come within clear
+        units (CLEAR unless given; scripts/quality/collisions.py asks
+        for less to measure the white left)?"""
+        dx = self.font[a].width + kern - clear
         both = pathops.op(self.path(a, 0), self.path(b, dx), pathops.PathOp.INTERSECTION)
         return abs(both.area) > 1
 
 
-def needed(ink, pairs, kern):
-    """The kerning, from kern up, at which no pair touches (None: kern does)."""
+def needed(ink, pairs, kern, clear=CLEAR):
+    """The kerning, from kern up, at which no pair comes within clear
+    (None: kern does)."""
     v = kern
-    while any(ink.touch(a, b, v) for a, b in pairs):
+    while any(ink.touch(a, b, v, clear=clear) for a, b in pairs):
         v += STEP
         if v - kern > LIMIT:
             raise SystemExit(f"kern_clear: {pairs[0]} still touch at {v}")
@@ -146,11 +271,12 @@ def clear(font, log=None):
     undo(font)
     keys, entry = kern_lookup(font)
     ink = Ink(font)
+    prof = Profiles(font)
     record = {}
     # the guarded letters have exceptions of their own (guard()): they do
     # not loosen their group's pairs
     held = {s: {n for n, side, _ in guarded(font) if side == s} for s in (1, 2)}
-    for left, right in PAIRS:
+    for left, right in entries(font):
         if left not in font.groups and left not in font or right not in font.groups and right not in font:
             continue
         # the glyph pairs this entry decides: those with no entry as specific
@@ -171,13 +297,37 @@ def clear(font, log=None):
             kern = now.pop() if now else 0
         else:
             kern = was
-        v = needed(ink, pairs, kern) if pairs else None
+        c = clearance(left, right)
+        # cheap first: the rows show which pairs cannot come within c
+        pairs = [(a, b) for a, b in pairs if (g := prof.gap(a, b, kern)) is not None and g < c + ROW_MARGIN]
+        v = needed(ink, pairs, kern, clear=c) if pairs else None
         if v is not None:
             font.kerning[(left, right)] = v
             record[f"{left} {right}"] = "added" if was is None else was
             if log is not None:
                 log.append(f"kern_clear: {left} {right} {kern} -> {v}")
     guard(font, record, log)
+    # a guarded member was left out of its group's entry above (its accent
+    # must not loosen the group) but takes the entry's value all the same,
+    # unless guard() gave it an exception: where that value leaves it
+    # touching, an exception of its own (the Bold's ( ɉ, 2026-11-13)
+    _, entry = kern_lookup(font)
+    for left, right in entries(font):
+        if (left, right) not in font.kerning:
+            continue
+        own = {}
+        for a in members(font, left):
+            for b in members(font, right):
+                mine = (a, right) if a in held[1] and left != a else (left, b) if b in held[2] and right != b else None
+                if mine is not None and mine not in font.kerning and entry(a, b) == (left, right):
+                    own.setdefault(mine, []).append((a, b))
+        for mine, its in own.items():
+            v = needed(ink, its, font.kerning[(left, right)], clear=clearance(left, right))
+            if v is not None:
+                font.kerning[mine] = v
+                record[f"{mine[0]} {mine[1]}"] = "added"
+                if log is not None:
+                    log.append(f"kern_clear: {mine[0]} {mine[1]} (guarded) -> {v}")
     if record:
         font.lib[KEY] = record
     return record

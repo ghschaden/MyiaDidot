@@ -17,7 +17,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch generate visual visual-approve diffenator
+.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch collisions generate visual visual-approve diffenator
 
 all: fonts
 
@@ -220,6 +220,15 @@ kerntouch:
 	    $(PY) scripts/quality/kern_touch.py sources/$(FAMILY)-$$s.ufo --sheet build/quality/kern-touch-$$s.pdf > build/quality/kern-touch-$$s.txt || exit 1; \
 	done
 	@echo "sheets: build/quality/kern-touch-*.pdf"
+
+# letters and figures meeting the signs beside them, unkerned too
+# (scripts/quality/collisions.py; held by tests/test_collisions.py)
+collisions:
+	@mkdir -p build/quality
+	for s in Regular Italic Bold BoldItalic; do \
+	    $(PY) scripts/quality/collisions.py sources/$(FAMILY)-$$s.ufo --out build/quality/collisions-$$s.txt --sheet build/quality/collisions-$$s.pdf > /dev/null || exit 1; \
+	done
+	@echo "lists and sheets: build/quality/collisions-*.{txt,pdf}"
 
 # glyphs darker or lighter than their kind, drawn for review (scripts/quality/strokes.py)
 strokes:

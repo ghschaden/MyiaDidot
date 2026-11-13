@@ -42,3 +42,20 @@ Carried out as spacing.md said; the values came out as the prototype's
   the shaping report for tightenings, not by any test: worth a rule that
   a generator's kerning change is checked with the guard's measure over
   every member, kerned or not (phase 1's sweep).
+
+## Phase 1's collision sweep (Opus, 2026-11-13)
+
+Built as `docs/claude/collisions.md` said, nothing in it wrong to carry
+out; two gaps, both in what it assumed rather than in the method:
+
+- **Step 2 checked the measure against renderings of 2026-11-09**, two
+  redraws old for the italics. Their `f?` `f!` `[j` are clear across
+  (and were before the redraw too); the italics' `[j` looks tight only on
+  the diagonal, which the doc rules out of the measure. A check against
+  pictures wants pictures of the same state, or a pair measured by hand.
+- **The italics' `„`** (799 and 812 pairs: `„A` -188, `„s` -34, `„D`,
+  `„I`, the Greek capitals) is the largest family by far and was not in
+  the renderings' list; the doc's families (f ſ, j, overhanging f,
+  ascenders against brackets) did not foresee it. Whether `„` before a
+  slanted foot is fixed by kern_clear's measure across (it would loosen
+  `„A` by 208) or by a narrower `„` in the italics is a design question.

@@ -2260,6 +2260,12 @@ ITALIC_KERNING = {
     # K y slightly tighter ("Kyoto", review of 2026-11-11): unkerned in the
     # Regular, so the rule cannot give it; to be set on a sheet with K v K w
     ("public.kern1.K", "public.kern2.y"): -30,
+    # [j (j {j looser: j's ball tucks under the bracket's foot, near on
+    # the diagonal though 56 units clear across, so kern_clear leaves it
+    # (chosen +60 of +20..+80 on
+    # proofs/italic-bracket-j-candidates-2026-11-13.pdf, 2026-11-13;
+    # the Bold Italic takes it scaled)
+    **{(o, "public.kern2.j"): 60 for o in ("parenleft", "bracketleft", "braceleft")},
     # Greek (Old Standard's letters) against Greek references, as the
     # Italic's Latin sets them (scripts/quality/greek_pairs.py)
     ("public.kern1.chi", "public.kern2.epsilontonos"): -47,  # χε (the Regular's -158)

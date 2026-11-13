@@ -18,7 +18,7 @@ Details by topic, read the one the task touches:
 | `docs/claude/redraw.md` | redrawing a core letter onto clean nodes (phases 5-8): method, gate, batches |
 | `docs/claude/quality.md` | the quality principles in full, with what enforces each |
 | `docs/claude/tests.md` | what the tests hold, hooks, proofs after commit |
-| `docs/claude/collisions.md` | the sweep for letters meeting signs (phase 1's specification, not built yet) |
+| `docs/claude/collisions.md` | the sweep for letters meeting signs (phase 1's specification; built 2026-11-13: `make collisions`, tests/test_collisions.py) |
 | `docs/claude/only.md` | `--only` and `--out`: one glyph made again into a scratch UFO (T2's specification, not built yet) |
 | `docs/claude/commands.md` | handy commands, the Claude Code plugin |
 

@@ -26,6 +26,27 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-13 Collision sweep: letters and figures meeting the signs beside them
+  scripts/quality/collisions.py (make collisions) sets every letter and
+  figure before ? ! ) ] } ” “ ’ * : ; and the superiors, after ( [ { „ “
+  ‘ ¿ ¡, and the capitals beside the case forms, kerned or not, and lists
+  the pairs with less than kern_clear's 20 units of white across, by
+  kern_clear's own measure. No font changed: the pairs found are held in
+  tests/data/collisions*.txt (tests/test_collisions.py) as known at the
+  start, for phase 1's fixes by family (TODO.md).
+  The first families loosened the same day (scripts/kern_clear.py, all
+  four styles): „ before letters and figures (the italics' „A „s „f),
+  the opening brackets before f ſ and their ligatures (the italics' (f
+  [f) and before j and its kind ([j (j in the uprights; the italics' by
+  hand, +60), f ſ and their ligatures before ? ! ) ] } ’ ” * : ;, and the
+  ogonek letters and brackets before ɉ ʝ ϳ. Then every sign beside every
+  letter and figure kept apart by a sign's own white (after an opening
+  sign 100 units, before ! ? 60, before the other closing signs 40),
+  chosen on running text. Reviewed on
+  proofs/collisions-review-2026-11-13.pdf and
+  proofs/italic-bracket-j-candidates-2026-11-13.pdf; before and after on
+  proofs/collisions-loosened-2026-11-13.pdf.
+
 2026-11-12 Italic Greek and Cyrillic lowercase redrawn onto clean nodes
   The Italic's Greek lowercase (18 letters; β η φ χ ψ μ not yet, κ π
   as they were) and Cyrillic lowercase (22) redrawn onto clean nodes

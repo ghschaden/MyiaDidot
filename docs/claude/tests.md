@@ -37,6 +37,12 @@ Moved from CLAUDE.md (its ground rules apply).
   with `update_test_data.py --lint`). derive.py, make_italic.py and
   make_bold.py clean specks, twists, pinholes, steps and ledges from what they
   make; `glyph_lint.py UFO --fix` does it for drawn glyphs.
+- Letters and figures meeting the signs beside them
+  (`tests/test_collisions.py`, `scripts/quality/collisions.py`): every
+  pair with less than kern_clear.CLEAR of white across, kerned or not,
+  against `collisions*.txt` ("left right white  # date reason"); a new
+  pair fails, a fixed one fails until its line is deleted, one more than
+  4 units worse fails. A line is added by hand with a dated reason.
 - Exception lists in `tests/data/*.txt` only shrink: a test fails when an
   entry is no longer needed. Fixing an entry = deleting its line.
 - A small cap drawn to its capital's distinctive stroke profile may carry

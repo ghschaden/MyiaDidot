@@ -26,6 +26,7 @@ Moved from CLAUDE.md (its ground rules apply).
 | `python scripts/quality/bold_measures.py [--range] [--italic]` | phase 7 (F4): the Bold's gain over the Regular per letter and family (counter area, width and aperture, joins, balls, stem, widths) beside Old Standard's (`--range`: Bodoni Moda, Libre Bodoni too; `--italic`: the Bold Italic over the Italic), from the UFOs, into `build/quality/bold-measures*.md/.json`, about 1.5 min |
 | `python scripts/quality/bold_targets.py [--italic]` | from bold_measures' JSON (`--range`, `--italic`): each measure on the font's own scale (over the stem, the zone) and where Myia's Regular and Bold lie against the references' range, per family, into `build/quality/bold-targets[-italic].md`; reading: `docs/claude/bold.md` |
 | `python scripts/bowl_counters.py UFO [GLYPH ...] [--out OUT.ufo]` | the bowls' insides that are not two clean curves, and what redoing them moves; candidates to OUT.ufo |
+| `make collisions` | `build/quality/collisions-STYLE.{txt,pdf}`: letters and figures meeting the signs beside them (`? ! ) ] „ ¡` superiors, case forms), kerned or not, worst first and by sign; `scripts/quality/collisions.py UFO` for one style, 3 s (`docs/claude/collisions.md`) |
 | `python scripts/sync_check.py` | sync conflict copies and lost glyph files in the UFOs |
 
 Run Python as `.venv/bin/python -I`. Run

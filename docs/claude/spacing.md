@@ -24,7 +24,22 @@ Moved from CLAUDE.md (its ground rules apply).
   Reviewed collisions (ą į ų before j, the Bold Italic's AY) are
   loosened to CLEAR units of white by `scripts/kern_clear.py` (PAIRS),
   per style: the generators undo the source's (lib
-  `org.myiadidot.kernCleared`) and find their own. make_bold.py adds the Bold's own cut, make_italic.py
+  `org.myiadidot.kernCleared`) and find their own. Pairs for PAIRS are
+  found by `scripts/quality/collisions.py` (`make collisions`): every
+  letter and figure beside the closing and opening signs, superiors and
+  case forms, kerned or not, by kern_clear's own measure; what is left is
+  listed in `tests/data/collisions*.txt` (docs/claude/collisions.md).
+  Besides PAIRS, kern_clear.entries() takes every sign beside every
+  letter and figure, glyph by glyph so one member's overhang does not
+  loosen its group: the opening signs ( [ { „ “ ‘ ¡ ¿ before one, the
+  closing ? ! ) ] } ’ ” “ * : ; after one, the case forms beside the
+  capitals. A sign keeps more white than CLEAR (kern_clear.clearance,
+  chosen on running text 2026-11-13): OPEN_CLEAR 100 after an opening
+  sign, MARK_CLEAR 60 before ! ?, CLOSE_CLEAR 40 before the other
+  closers; letters against letters and the superiors keep CLEAR (20). A
+  guarded member that a group entry decides gets its own exception where
+  the group's value leaves it touching (the Bold's (ɉ, ąɉ). The italics'
+  [j (j {j are looser by hand besides (make_italic.ITALIC_KERNING +60). make_bold.py adds the Bold's own cut, make_italic.py
   undoes the Regular's in memory (it is tuned on the old spacing) and
   applies the Italic's; derive.py too builds on the uncut spacing and cuts
   again. It leaves kerning alone. The Bold's figures have a cut of their
