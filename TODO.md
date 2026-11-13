@@ -120,6 +120,17 @@ the other models. One item per session.
       otherwise and lands K's point on the other side of .5; the fix
       made, or specified to the line if it needs a run on the runner to
       confirm.
+      Narrowed 2026-11-13, then stopped by the designer (not worth more
+      time): it is not rounding at .5 nor our code. The rerun differs on
+      every AMD runner with AVX-512 visible (EPYC 9V74, 9V45: 20 of 20)
+      and on no other (EPYC 7763, Intel Xeons with AVX-512: 22 of 22), so
+      a library picks its code by vendor and AVX-512 past arithmetic.py's
+      pins; OpenBLAS (or its libgfortran) the likeliest, the stroking's
+      numbers pass through it. A tolerance would not cover it (w 3 units,
+      segment counts). `scripts/arith_probe.py` and the by-hand workflow
+      probe.yml compare 15 stroking jobs under five pin settings, should
+      anyone take it up again. Known state: CI's reproduce is only
+      meaningful on non-AMD-AVX-512 runners.
 - [x] F6. Specifications for the engineering Opus will do, one page
       each in DEVELOPMENT.md or beside the code: T2 (`--only`: how the
       dependency closure is taken from builtFrom, what state a partial

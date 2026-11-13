@@ -22,10 +22,13 @@ features or prerequisites already agreed for a particular distribution.
 - CI's `make reproduce` fails since cb9b7dac (2026-11-08) while it passes
   locally: on GitHub's runner the Bold Italic rerun rounds 12 glyphs a unit
   or a segment otherwise (K Κ Ķ Ǩ Ḱ Ḳ Ḵ at (1193, 1170); ae.sc, ǽ.sc, ǣ.sc
-  one segment more; fl, ſl). Make that step deterministic across machines
-  (the rounding where K's point lands on .5, the segment split) or accept a
-  one-unit tolerance in scripts/check_reproducible.py; CI green before the
-  0.900 release.
+  one segment more; fl, ſl). Cause narrowed 2026-11-13 (TODO.md, F5): only
+  AMD runners with AVX-512 (EPYC 9V74, 9V45) make it otherwise, Intel's
+  with AVX-512 and AMD's without never; a library's own CPU dispatch past
+  scripts/arithmetic.py's pins (OpenBLAS the likeliest). Not pursued
+  further; a tolerance would not cover it. Before 0.900: either the
+  reproduce step reports without failing on those runners, or the probe
+  (scripts/arith_probe.py, workflow probe.yml) finds the missing pin.
 
 ## Shape-grammar studies (branch `shape-grammar`, not merged)
 
