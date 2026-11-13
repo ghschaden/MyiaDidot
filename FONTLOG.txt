@@ -30,7 +30,8 @@ ChangeLog
   Where the thick stroke ends against the hairline arm, the sharp V on
   the outside is rounded (chosen on proofs/y-arm-candidates-2026-11-13.pdf);
   it read as a kink and made the arm look bent. ƴ ʎ ʸ rebuilt from the new
-  y; the Bold's y and the accented y's and у follow.
+  y; the Bold's y and the accented y's and у follow. Left as it was: the
+  arm is 54 units thick against the hairlines' 48.
 
 2026-11-13 Collision sweep: letters and figures meeting the signs beside them
   scripts/quality/collisions.py (make collisions) sets every letter and
@@ -51,7 +52,11 @@ ChangeLog
   before a superior figure 60, before ª º 20), chosen on running text. Reviewed on
   proofs/collisions-review-2026-11-13.pdf and
   proofs/italic-bracket-j-candidates-2026-11-13.pdf; before and after on
-  proofs/collisions-loosened-2026-11-13.pdf.
+  proofs/collisions-loosened-2026-11-13.pdf. The whole of it against the
+  state before the sweep (67953460), four styles, running text and the
+  pairs by family: proofs/phase1-before-after-2026-11-13.pdf, approved.
+  make regress (Regular, from 67953460): 462 strings differ, every one
+  a pair loosened; no glyph, mark or tighter pair. Phase 1 closed.
 
 2026-11-12 Italic Greek and Cyrillic lowercase redrawn onto clean nodes
   The Italic's Greek lowercase (18 letters; β η φ χ ψ μ not yet, κ π

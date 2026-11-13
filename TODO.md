@@ -267,89 +267,6 @@ Model: Sonnet; the CI step with F5.
 - [ ] `make test` and `make qa` on the rebuilt fonts; note the state here
       as the starting line for the phases below.
 
-## Phase 1: collisions
-
-Model: Opus for the sweep and its test (specified in F6), Sonnet for the fixes by family.
-
-Found in the renderings: `f?` `f!` touch or overlap (Regular, Italic,
-Bold); `(j` touches (Regular, Bold); `[j` collides (both italics); `(f)`
-very tight. None of them is kerned, so `make kerntouch` (kerned entries
-only) does not see them.
-
-      Specified 2026-11-11 (F6): `docs/claude/collisions.md`, for the
-      first, second and last step below.
-- [x] Extend the collision sweep to unkerned pairs: a mode of
-      `scripts/quality/kern_touch.py` (or a sibling using its outline
-      intersection) that sets every letter, figure and small cap
-      - before `? ! ) ] } ” “ ’ * : ;` and the superiors,
-      - after `( [ { „ “ ‘ ¿ ¡`,
-      and lists those with less than `kern_clear.CLEAR` of white, per
-      style, with a PDF sheet (touching red, near orange, as now).
-      Done 2026-11-13: `scripts/quality/collisions.py`, `make
-      collisions` (docs/claude/collisions.md, "Built 2026-11-13").
-- [x] Run it for all four styles (font-measure); read the lists for
-      families (f ſ and their ligatures; j ȷ ɉ and the descending hooks;
-      the italics' overhanging f, ascenders against brackets).
-      Done 2026-11-13. Pairs within CLEAR (touching): Regular 383 (289),
-      Italic 1798 (1543), Bold 306 (266), Bold Italic 1665 (1478), of
-      53 847 swept a style. By family, the upright styles (Regular |
-      Bold):
-      - superiors and ª º after a letter reaching up on the right: f ſ
-        and their ligatures (60 | 56: f² -84, ff² -92), hooks ɠ ɗ ʄ
-        (27 | 35: ɠ² -194), accented small caps and capitals with
-        stacked marks (53 | 33: ề.sc³ -160, Ê² Ầ²), ĵ î ĩ;
-      - closers after the same letters (40 | 34 f ſ: f! -30, f? -12;
-        37 | 21 accented small caps: ề.sc! -128, ’ ” after ɠ ɗ ʄ);
-      - openers before j and its kind (30 | 30: [j -30, (j 16, ¡j ¿j {j,
-        each a whole key pair `bracketleft public.kern2.j` and so on) and
-        before the hooks below and ɓ.sc ɗ.sc (¡ɓ.sc -122);
-      - ʐ; (-274), and a handful of plain letters (l; 16).
-      The italics (Italic | Bold Italic) besides those:
-      - `„` before nearly everything with a slanted foot (799 | 812:
-        „A -188, „D -120, „I -114, „s -34, Greek, Cyrillic, small
-        caps): the largest family and not in the renderings;
-      - openers before the Greek capitals with breathings and accents
-        (309 | 238: [Ἂ -292) and the same with case forms (147 | 113);
-      - the redrawn f against `(` and `[` (88 | 88 with ligatures: (f
-        -102, [f -132; clear before F7's batch);
-      - ) ] after η's group (24 each, `public.kern1.eta`).
-      Not found: the italics' f? f! [j (clear across: 32 | 30, 100 | 70,
-      56 | 64 units). Question for the designer: the italics' [j, where
-      j's ball comes near the bracket's foot on the diagonal, which the
-      measure across leaves out by design (collisions.md); and whether
-      the italics' „ before a slanted foot is loosened (kern_clear: „A by
-      208) or wants a narrower „.
-- [ ] Fix by family, one source of truth: pairs in `kern_clear.PAIRS` /
-      guarded letters, not hand-set kerns per style. Where the Regular
-      gets a pair, the generators find their own.
-      First families done 2026-11-13 (kern_clear.entries(): „ before
-      letters, ( [ { before the f family, the f family before closers,
-      openers before j; the italics' [j +60 by hand; guarded members of
-      a group entry cleared): lists down to 313 | 938 | 240 | 795
-      (collisions.md, "The first fixes"). Both questions above answered:
-      [j loosened, „ loosened by kern_clear. Then, the same day, every
-      sign beside every letter at a sign's own clearance (openers 100,
-      ! ? 60, other closers 40; kern_clear.clearance, chosen on running
-      text). The superiors the same day: superior figures 60 after a
-      letter or figure, ª º 20 (chosen on running text); the lists empty.
-- [x] The Regular's y, seen on the running-text proofs 2026-11-13: its
-      right arm did not read straight, with a kink at the baseline. The
-      arm's edges are one straight line; the kink was the V where the
-      thick stroke's left edge (up and left) meets the arm's (up and
-      right) at (486, -19), a turn of about 41 degrees. Done 2026-11-13:
-      that corner rounded (radius 120, a node at its extreme), chosen as
-      B on proofs/y-arm-candidates-2026-11-13.pdf over the arm shifted
-      either way; ƴ ʎ ʸ rebuilt from it (derive.py), the Bold and the
-      composites follow. Still open: the arm is 54 units thick against
-      the hairlines' 48 (not asked for).
-- [ ] Sheet for review (before | after, all four styles); then
-      `make regress`, read the report, accept the shaping baselines with
-      its digest.
-- [x] Add the sweep to the tests with an exception list that only
-      shrinks (`tests/data/collisions-STYLE.txt`), so new letters cannot
-      bring collisions back. Done 2026-11-13: `tests/test_collisions.py`,
-      every pair found listed as "known at the start".
-
 ## Phase 2: missing kerning
 
 Model: Sonnet, the measuring by font-measure.
@@ -374,7 +291,8 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       `kern_clear.py`, `smallcaps.py`; small caps and accented letters
       follow through their groups.
 - [ ] Sheet of words per family, four styles; `make diffenator` for side
-      effects; baselines as in phase 1.
+      effects; `make regress`, read the report, accept the shaping
+      baselines with its digest.
 
 ## Phase 3: the italics' own kerning
 
@@ -543,7 +461,8 @@ alongside, each when the phase that needs it comes up.
 
 ### Tools the phases need (made in their phase, listed here to see them together)
 
-- [ ] Collision sweep over unkerned pairs, with its test: phase 1.
+- [x] Collision sweep over unkerned pairs, with its test: phase 1
+      (2026-11-13).
 - [x] Latin pairs test per style, as Greek and Cyrillic have: phase 3
       (the italics; 2026-11-12).
 - [x] Italic kerning computed from the white the italic shapes leave:
