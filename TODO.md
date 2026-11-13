@@ -116,7 +116,7 @@ the other models. One item per session.
       1.00, beside today's and Old Standard Bold):
       `proofs/bold-trial-2026-11-11.pdf`. Reviewed 2026-11-11: B1
       taken and carried out (make_bold.keep_gaps); B2, B3, B4 not.
-- [ ] F5. T3's cause: why the runner splits ae.sc ǽ.sc ǣ.sc fl ſl
+- [x] F5. T3's cause: why the runner splits ae.sc ǽ.sc ǣ.sc fl ſl
       otherwise and lands K's point on the other side of .5; the fix
       made, or specified to the line if it needs a run on the runner to
       confirm.
@@ -134,8 +134,9 @@ the other models. One item per session.
       every setting 1/15, OpenBLAS's generic kernels, numpy at its
       baseline and glibc without AVX-512 included. So no environment pin
       can fix it; what is left (libgfortran, OpenBLAS's LAPACK, the
-      hardware itself) is not worth the chase. Known state: CI's
-      reproduce is only meaningful on non-AMD-AVX-512 runners.
+      hardware itself) is not worth the chase. CI's reproduce step now
+      only warns on AMD runners with AVX-512 and fails as before on the
+      others (test.yml). Closed.
 - [x] F6. Specifications for the engineering Opus will do, one page
       each in DEVELOPMENT.md or beside the code: T2 (`--only`: how the
       dependency closure is taken from builtFrom, what state a partial

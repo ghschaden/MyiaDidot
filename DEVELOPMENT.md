@@ -27,8 +27,9 @@ features or prerequisites already agreed for a particular distribution.
   with AVX-512 and AMD's without never; a library's own CPU dispatch past
   scripts/arithmetic.py's pins (OpenBLAS the likeliest). Not pursued
   further: the probe (scripts/arith_probe.py, workflow probe.yml) found no
-  environment pin that helps, and a tolerance would not cover it. Before
-  0.900: the reproduce step reports without failing on those runners.
+  environment pin that helps, and a tolerance would not cover it. Since
+  2026-11-13 CI's reproduce step reports without failing on those runners
+  (a warning; .github/workflows/test.yml), and fails as before elsewhere.
 
 ## Shape-grammar studies (branch `shape-grammar`, not merged)
 
