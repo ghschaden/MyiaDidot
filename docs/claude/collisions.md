@@ -227,3 +227,11 @@ on `proofs/collisions-loosened-2026-11-13.pdf`. Left for phase 1's
 Sonnet sessions: superiors after f and the hooks, accented small caps
 before closers and superiors, the Greek capitals with breathings after
 the openers, ) ] after η's group, and the rest of the lists.
+
+## Letters against letters: capitals before ascenders (2026-11-13)
+
+Not swept here (signs only, measured across). Üb on the pangram page
+(the italics' top serifs meeting on a diagonal) is kept clear by
+`kern_clear.ascender_entries` with its own measure every way above the
+x-height (`Ink.white_above`, ASCENDER_CLEAR 60; spacing.md), held by
+`tests/test_collisions.py::test_capitals_clear_ascenders`.

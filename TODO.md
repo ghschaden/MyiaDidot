@@ -354,7 +354,7 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       `make regress` read, shaping baselines accepted with the report's
       digest (2026-11-13).
 
-- [ ] `Üb` (the designer, 2026-11-13, on the pangram page of samples.pdf,
+- [x] `Üb` (the designer, 2026-11-13, on the pangram page of samples.pdf,
       "Falsches Üben von Xylophonmusik"): looks bad in almost any style;
       the diaeresis touches the b's ascender in the italics, and it is not
       good in the Regular and Bold either. Look at Ü and the other
@@ -362,6 +362,33 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       (Üb Üd Üf Üh Ük Ül Ó… and the Greek and Cyrillic kin), by
       `make collisions`' measure and by eye, in all four styles; mend
       through the guard/kern_clear route, not by hand in a generated style.
+      Done 2026-11-13: not the accent but U's top serif before b's (Ub as
+      Üb), and every capital with a top serif before an ascender: the
+      italics' serifs met (U J N V W Y b: 1-3 units), the Bold's U b had
+      28 (H b 96). kern_clear.ascender_entries + ASCENDER_CLEAR 60, measured
+      every way above the x-height (spacing.md); Italic U b +72, V +82,
+      Y +98, Bold U b +34, N +40, the Regular only V W Y +2 (its U b keeps
+      87). Before | after and candidates 30/40/60:
+      `proofs/ascender-clearance-2026-11-13.pdf`. Open:
+  - [ ] the Regular's U b keeps 87 units (H b 120): the designer found it
+        "not good" too; a looser ASCENDER_CLEAR (80-120) would reach it,
+        and V W Y with it (see the sheet's candidates).
+  - [ ] the italics' Į (Iogonek) stands about 160 units right of I at
+        the same advance (bounds 131..1097 against -29..923): a glyph
+        fault; the rule now gives it about +200 before every ascender.
+  - [ ] the same family below: capitals before accented lowercase (U ȉ,
+        T ï, Ví): the lowercase accent over the capital's serif, which
+        neither this rule nor the sweep measures.
+
+- [ ] `Wo` (the designer, 2026-11-13): the gap looks too big. W's own
+      group (3017a0aa, W apart from V) set W o/e/c at -60 (Bold -62) from
+      V's -192 (Wa -160 -> -20). Nearest ink, units at Myia's cap height:
+      Regular W o 395 (V o 392; Libertinus 342, Charis 389, Old Standard
+      396), Italic 439 (Libertinus 291, Charis 364: both tighter), Bold
+      407 (353, 384), Bold Italic 437 (331, 363). The italics are loose by
+      the reference rule; the upright's look is W's open area, which
+      nearest ink does not see: a sheet of W o e a at -60/-100/-140 to
+      choose on.
 
 ## Phase 3: the italics' own kerning
 

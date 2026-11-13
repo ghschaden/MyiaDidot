@@ -126,3 +126,29 @@ Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
   now tighter value; nothing (kern_groups, kern_clear, a test) carries
   or checks it. Set by hand here (same delta, never tighter than the
   base).
+
+## Üb: capitals before ascenders (Opus, 2026-11-13)
+
+- **Letter pairs on a diagonal have no sweep.** collisions.md sweeps
+  letters against signs, measured across; kern_clear's letter pairs are
+  found by eye. Üb (the italics' serifs 1-3 units apart, b's serif just
+  above U's, no row in common) was found on a proof. Built:
+  `kern_clear.ascender_entries` and `Ink.white_above` (every way, inks
+  above the x-height) for capitals before ascenders only. Missing: what
+  else to sweep with it (capitals before accented lowercase U ȉ, T ï;
+  f's hook before ascenders; letters after the italics' tall t), and
+  whether collisions.py should list these pairs too ("one measure").
+- **A group's entry has two conventions.** The sign entries go glyph by
+  glyph so one member's overhang does not loosen its group; the guarded
+  letters get exceptions; spacing.md says group pairs are measured on
+  the name-giving glyph. The ascender entries use the last (the
+  italics' Ĳ in J's group would have set J b at +218). No doc says
+  which a new kern_clear family should take.
+- **Where an ascender starts.** The set takes a lowercase letter whose
+  base letter (dotless for i j; the dotted Cyrillic and ĳ ɨ left out)
+  rises three quarters of the way from the x-height to the capitals; the
+  italics' t ť ț д ф pass by that, the upright t does not. A designer's
+  call whether the italic t belongs in the family.
+- **Cross-script groups.** Y's kerning group holds Cyrillic Ү Ұ, so the
+  Latin Y family takes entries before Cyrillic һ (+2): harmless, but the
+  same-script rule meets groups that are not.

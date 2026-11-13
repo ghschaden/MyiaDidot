@@ -114,3 +114,29 @@ def test_row_filter_loses_nothing():
 def test_lists_named_as_the_styles():
     names = {style_data("collisions.txt", p).name for p in UFO_PATHS}
     assert {p.name for p in DATA.glob("collisions*.txt")} <= names
+
+
+# Capitals before ascenders (kern_clear.ascender_entries, Üb on the
+# pangram page, 2026-11-13): the top serifs keep ASCENDER_CLEAR every way
+ASCENDER_PAIRS = [("U", "b"), ("Udieresis", "b"), ("Udieresis", "l"), ("N", "l"), ("H", "h"),
+                  ("V", "h"), ("W", "k"), ("Y", "b"), ("J", "b"), ("K", "h"), ("I", "l")]
+
+
+def test_capitals_clear_ascenders(ufo_path):
+    font = ufoLib2.Font.open(ufo_path)
+    ink = kern_clear.Ink(font)
+    _, entry = kern_clear.kern_lookup(font)
+    short = []
+    for a, b in ASCENDER_PAIRS:
+        k = font.kerning[e] if (e := entry(a, b)) else 0
+        w = ink.white_above(a, b, k)
+        if w is not None and w < kern_clear.ASCENDER_CLEAR - kern_clear.SAMPLE:
+            short.append(f"{a} {b} {w:.0f}")
+    assert not short, f"capitals nearer than ASCENDER_CLEAR to an ascender: {short} (run scripts/kern_clear.py)"
+
+
+def test_ascenders_by_their_base_letter():
+    """ľ ḷ by their l, the dotted letters not by their dot, t not at all."""
+    asc = set(kern_clear.sets(ufoLib2.Font.open(REGULAR))["ASCENDERS"])
+    assert {"b", "l", "lcaron", "uni1E37", "thorn", "uni0431"} <= asc
+    assert not {"i", "j", "ibreve", "icircumflex", "uni0456", "uni0457", "ij", "t"} & asc

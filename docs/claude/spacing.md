@@ -38,7 +38,16 @@ Moved from CLAUDE.md (its ground rules apply).
   sign, MARK_CLEAR 60 before ! ?, CLOSE_CLEAR 40 before the other
   closers, SUPERIOR_CLEAR 60 before a superior figure (a note's number;
   proofs/superior-clearance-text-2026-11-13.pdf); ª º after a letter and
-  letters against letters keep CLEAR (20). A
+  letters against letters keep CLEAR (20). Every capital before an
+  ascender letter of its script (kern_clear.ascender_entries: U b, N l,
+  Ü h, Н б, Η β; the ascenders by their base letter, so ľ ḷ count and
+  ĭ î do not) keeps ASCENDER_CLEAR (60) units of white measured every way
+  on the inks above the x-height (Ink.white_above): the top serifs meet
+  on a diagonal, b's just above U's, where the measure across has no row
+  in common, and foot serifs are left to the spacing (A n as A b). Found
+  as Üb on the pangram page (2026-11-13): the italics' serifs met (1-3
+  units), the Bold's U b had 28; the value was chosen on running text
+  (proofs/ascender-clearance-2026-11-13.pdf). A
   guarded member that a group entry decides gets its own exception where
   the group's value leaves it touching (the Bold's (ɉ, ąɉ). The italics'
   [j (j {j are looser by hand besides (data_italic.ITALIC_KERNING +60). make_bold.py adds the Bold's own cut, make_italic.py

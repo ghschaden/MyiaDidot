@@ -11,7 +11,9 @@ found by scripts/quality/collisions.py, glyph by glyph):
 an entry already in the kerning is only ever loosened; one that is not
 (a letter's exception to its group's pair) is added where its letters
 would come too close at the kerning they take now, and left out where
-they would not. What it changed is recorded in the lib (KEY: the
+they would not. Besides, every capital before an ascender letter of its
+script (ascender_entries(): U b, Н б, Η β) keeps ASCENDER_CLEAR units
+of white measured every way above the x-height. What it changed is recorded in the lib (KEY: the
 entries and the values they had, "added" where it added one); undo() puts
 those back, so a style made from another (the Bold from the Regular)
 starts from the kerning before it and finds its own.
@@ -32,9 +34,10 @@ import sys
 import unicodedata
 from pathlib import Path
 
+import numpy as np
 import pathops
 import ufoLib2
-from fontTools.pens.recordingPen import DecomposingRecordingPen
+from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
@@ -51,6 +54,14 @@ CLOSE_CLEAR = 40
 # a superior figure (a note's number) after a letter or figure: 60; ª º
 # after one keep CLEAR (chosen on proofs/superior-clearance-text-2026-11-13.pdf)
 SUPERIOR_CLEAR = 60
+# a capital's top before an ascender (U b, N l, the italics' V h; Üb on
+# the pangram page of samples.pdf, 2026-11-13): their serifs meet in the
+# italics and nearly in the Bold, mostly on a diagonal (b's serif just
+# above U's), where the measure across has no row in common. Measured
+# every way (Ink.white_above), on the inks above the x-height only: foot
+# serifs meet before every lowercase letter alike (A n as A b) and are
+# spacing's. Chosen on running text (proofs/ascender-clearance-2026-11-13.pdf)
+ASCENDER_CLEAR = 60
 SUPERIOR_FIGURES = {f + "superior" for f in (
     "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")}
 MARKS = ("exclam", "question")
@@ -146,8 +157,33 @@ def sets(font):
         cmap = {g.unicode: g.name for g in font if g.unicode is not None}
         return [cmap[ord(c)] for c in chars if ord(c) in cmap]
 
+    cmap = {g.unicode: g.name for g in font if g.unicode is not None}
+    # three quarters of the way from the x-height to the capitals: t's top
+    # (1164 in the Regular, the midway 1159) is no ascender
+    mid = font.info.xHeight + 0.75 * (font.info.capHeight - font.info.xHeight)
+
+    def ascender(name):
+        """a lowercase letter whose base letter (without its marks) rises
+        well above the x-height: b d f h k l þ ß, ľ ḷ by their l, β δ ζ θ λ ξ, б ђ ћ
+        (not i j: their dot)"""
+        c = first_char(name)
+        if small(name) or not c or unicodedata.category(c) != "Ll":
+            return False
+        # i and j by their dotless forms, the other dotted ones not at
+        # all: the dot is no ascender (ĭ î ȉ ǰ, і ї ј, ϳ, ĳ, ɨ)
+        first = unicodedata.normalize("NFD", c)[0]
+        if first in DOTTED:
+            first = DOTTED[first]
+            if first is None:
+                return False
+        base = cmap.get(ord(first))
+        box = font[base].getBounds(font) if base is not None else None
+        return box is not None and box.yMax > mid
+
     return {
         "LETTERS": letters,
+        "ASCENDERS": [n for n in letters if ascender(n)],
+        "SCRIPT": {n: script(first_char(n)) for n in letters},
         "FIGURES": sorted(figures),
         "CAPITALS": sorted([n for n in letters if capital(n)] + lining),
         "CLOSERS": by_char(CLOSERS),
@@ -173,6 +209,32 @@ def entries(font):
     out += [(a, c + ".case") for c in s["CLOSERS"] if c + ".case" in font for a in s["CAPITALS"]]
     return list(dict.fromkeys(out))
 
+
+def script(c):
+    """LATIN GREEK CYRILLIC ... by the character's name ("" for none)."""
+    name = unicodedata.name(c, "") if c else ""
+    return name.split(" ")[0]
+
+
+def ascender_entries(font):
+    """(left, right) kerning keys for every capital before an ascender
+    letter of the same script: the capital's kerning group (or itself),
+    the ascender itself (b h k l have no left-side group; a group such as
+    d's would loosen c e o with it)."""
+    s = sets(font)
+    g1 = {m: g for g, ms in font.groups.items() if g.startswith("public.kern1.") for m in ms}
+    figures = set(s["FIGURES"])
+    out = []
+    for a in s["CAPITALS"]:
+        if a in figures or not s["SCRIPT"].get(a):
+            continue
+        for b in s["ASCENDERS"]:
+            if s["SCRIPT"][b] == s["SCRIPT"][a]:
+                out.append((g1.get(a, a), b))
+    return list(dict.fromkeys(out))
+
+
+DOTTED = {"i": "ı", "j": "ȷ", "і": None, "ј": None, "ϳ": None, "ĳ": None, "ɨ": None}
 
 SIGN_NAMES = {}
 
@@ -252,6 +314,87 @@ class Ink:
         both = pathops.op(self.path(a, 0), self.path(b, dx), pathops.PathOp.INTERSECTION)
         return abs(both.area) > 1
 
+    def above(self, name):
+        """(the ink above the x-height as a path, its outline as points
+        at most SAMPLE units apart)"""
+        key = ("above", name)
+        if key not in self._rec:
+            box = pathops.Path()
+            pen = box.getPen()
+            y, w = self.font.info.xHeight, 100000
+            pen.moveTo((-w, y))
+            pen.lineTo((-w, y + w))
+            pen.lineTo((w, y + w))
+            pen.lineTo((w, y))
+            pen.closePath()
+            top = pathops.op(self.path(name, 0), box, pathops.PathOp.INTERSECTION)
+            rec = RecordingPen()
+            top.draw(rec)
+            self._rec[key] = (top, points(rec.value))
+        return self._rec[key]
+
+    def white_above(self, a, b, kern, clear=None):
+        """The white between a's ink and b's, set after it with kern, above
+        the x-height, measured every way (the nearest two points; 0 where
+        they overlap; None where either has no ink there). Only white under
+        clear (ASCENDER_CLEAR unless given) is measured exactly: more is
+        returned as math.inf."""
+        clear = ASCENDER_CLEAR if clear is None else clear
+        (pa, qa), (pb, qb) = self.above(a), self.above(b)
+        if not len(qa) or not len(qb):
+            return None
+        dx = self.font[a].width + kern
+        if qb[:, 0].min() + dx - qa[:, 0].max() >= clear:
+            return math.inf
+        qb = qb + (dx, 0)
+        qa = qa[qa[:, 0] > qb[:, 0].min() - clear]
+        qb = qb[qb[:, 0] < qa[:, 0].max() + clear] if len(qa) else qb[:0]
+        if not len(qa) or not len(qb):
+            return math.inf
+        d = qa[:, None, :] - qb[None, :, :]
+        w = float(np.sqrt((d * d).sum(-1)).min())
+        if w < 2 * SAMPLE and abs(pathops.op(pa, pb.transform(1, 0, 0, 1, dx, 0),
+                                             pathops.PathOp.INTERSECTION).area) > 1:
+            return 0
+        return w if w < clear else math.inf
+
+
+SAMPLE = 4  # units between the points of Ink.above's outlines
+
+
+def points(value):
+    """A recorded outline's points, curves and lines cut every SAMPLE units."""
+    out, cur, start = [], None, None
+    for op, args in value:
+        if op == "moveTo":
+            cur = start = args[0]
+            out.append(cur)
+            continue
+        if op == "closePath":
+            if cur is None or start is None or cur == start:
+                continue
+            args, op = (start,), "lineTo"
+        if op == "lineTo":
+            ctrl = [cur, args[0]]
+        elif op == "curveTo":
+            ctrl = [cur, *args]
+        elif op == "qCurveTo":
+            ctrl = [cur, *args]  # pathops draws quadratics as single segments
+        else:
+            continue
+        c = np.array(ctrl, dtype=float)
+        n = max(2, math.ceil(np.abs(np.diff(c, axis=0)).sum() / SAMPLE) + 1)
+        t = np.linspace(0, 1, n)[:, None]
+        if len(c) == 2:
+            pts = c[0] + (c[1] - c[0]) * t
+        elif len(c) == 3:
+            pts = (1 - t) ** 2 * c[0] + 2 * (1 - t) * t * c[1] + t * t * c[2]
+        else:
+            pts = (1 - t) ** 3 * c[0] + 3 * (1 - t) ** 2 * t * c[1] + 3 * (1 - t) * t * t * c[2] + t ** 3 * c[3]
+        out.extend(map(tuple, pts))
+        cur = tuple(c[-1])
+    return np.array(out, dtype=float).reshape(-1, 2)
+
 
 def needed(ink, pairs, kern, clear=CLEAR):
     """The kerning, from kern up, at which no pair comes within clear
@@ -261,6 +404,24 @@ def needed(ink, pairs, kern, clear=CLEAR):
         v += STEP
         if v - kern > LIMIT:
             raise SystemExit(f"kern_clear: {pairs[0]} still touch at {v}")
+    return None if v == kern else v
+
+
+def needed_above(ink, pairs, kern, clear=None):
+    """needed() for the measure every way above the x-height
+    (Ink.white_above): the kerning, from kern up, at which every pair
+    keeps clear (ASCENDER_CLEAR unless given; None: kern does)."""
+    clear = ASCENDER_CLEAR if clear is None else clear
+    v = kern
+    while True:
+        whites = [w for a, b in pairs if (w := ink.white_above(a, b, v, clear)) is not None]
+        if not whites or min(whites) >= clear:
+            break
+        # the white grows by at most what b moves: the missing white at
+        # once, in steps of STEP, never past the first value that keeps clear
+        v += max(STEP, STEP * math.ceil((clear - min(whites)) / STEP))
+        if v - kern > LIMIT:
+            raise SystemExit(f"kern_clear: {pairs[0]} still near at {v}")
     return None if v == kern else v
 
 
@@ -284,7 +445,11 @@ def clear(font, log=None):
     # the guarded letters have exceptions of their own (guard()): they do
     # not loosen their group's pairs
     held = {s: {n for n, side, _ in guarded(font) if side == s} for s in (1, 2)}
-    for left, right in entries(font):
+    # the entries measured across, then the capitals before the ascenders
+    # every way above the x-height (an entry in both: after its first value)
+    todo = [(left, right, False) for left, right in entries(font)]
+    todo += [(left, right, True) for left, right in ascender_entries(font)]
+    for left, right, above in todo:
         if left not in font.groups and left not in font or right not in font.groups and right not in font:
             continue
         # the glyph pairs this entry decides: those with no entry as specific
@@ -305,13 +470,27 @@ def clear(font, log=None):
             kern = now.pop() if now else 0
         else:
             kern = was
-        c = clearance(left, right)
-        # cheap first: the rows show which pairs cannot come within c
-        pairs = [(a, b) for a, b in pairs if (g := prof.gap(a, b, kern)) is not None and g < c + ROW_MARGIN]
-        v = needed(ink, pairs, kern, clear=c) if pairs else None
+        if above:
+            # a group's entry measured on its name-giving glyph (as the
+            # groups' pairs are, spacing.md); a member that needs more
+            # gets its own exception (the italics' Ĳ in J's group would
+            # have set J b at +218)
+            model = [(a, b) for a, b in pairs if left in font.groups and a == left.split(".", 2)[2]]
+            v = needed_above(ink, model or pairs, kern) if pairs else None
+            for a, b in (pairs if model else []):
+                if a != model[0][0] and (w := needed_above(ink, [(a, b)], kern if v is None else v)) is not None:
+                    font.kerning[(a, right)] = w
+                    record.setdefault(f"{a} {right}", "added")
+                    if log is not None:
+                        log.append(f"kern_clear: {a} {right} (beyond its group) -> {w}")
+        else:
+            c = clearance(left, right)
+            # cheap first: the rows show which pairs cannot come within c
+            pairs = [(a, b) for a, b in pairs if (g := prof.gap(a, b, kern)) is not None and g < c + ROW_MARGIN]
+            v = needed(ink, pairs, kern, clear=c) if pairs else None
         if v is not None:
             font.kerning[(left, right)] = v
-            record[f"{left} {right}"] = "added" if was is None else was
+            record.setdefault(f"{left} {right}", "added" if was is None else was)
             if log is not None:
                 log.append(f"kern_clear: {left} {right} {kern} -> {v}")
     guard(font, record, log)
@@ -320,7 +499,7 @@ def clear(font, log=None):
     # unless guard() gave it an exception: where that value leaves it
     # touching, an exception of its own (the Bold's ( ɉ, 2026-11-13)
     _, entry = kern_lookup(font)
-    for left, right in entries(font):
+    for left, right, above in todo:
         if (left, right) not in font.kerning:
             continue
         own = {}
@@ -330,7 +509,9 @@ def clear(font, log=None):
                 if mine is not None and mine not in font.kerning and entry(a, b) == (left, right):
                     own.setdefault(mine, []).append((a, b))
         for mine, its in own.items():
-            v = needed(ink, its, font.kerning[(left, right)], clear=clearance(left, right))
+            kern = font.kerning.get(mine, font.kerning[(left, right)])
+            v = (needed_above(ink, its, kern) if above
+                 else needed(ink, its, kern, clear=clearance(left, right)))
             if v is not None:
                 font.kerning[mine] = v
                 record[f"{mine[0]} {mine[1]}"] = "added"
