@@ -26,6 +26,15 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-13 Italic and Bold Italic Į: set on its I
+  Old Standard draws its Į 84 units right of its I at the same advance,
+  about 160 in the Italic, and kern_clear then opened it by about 200
+  before every ascender. make_italic now moves the outline onto I and
+  gives it I's anchors (data_italic.OS_SHIFT); į.sc follows, and Į's
+  pairs fall to about I's. No other precomposed Old Standard letter
+  stands off its base. Before and after:
+  proofs/iogonek-italics-2026-11-13.pdf.
+
 2026-11-13 Regular y: the join at the baseline rounded
   Where the thick stroke ends against the hairline arm, the sharp V on
   the outside is rounded (chosen on proofs/y-arm-candidates-2026-11-13.pdf);

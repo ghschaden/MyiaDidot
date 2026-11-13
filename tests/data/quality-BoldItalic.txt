@@ -111,6 +111,7 @@ i accent 1                       # 2026-10-16 Bold Italic: first generated (make
 integral extreme 1               # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 114,-479 9 units past
 integral wobble 1                # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 134,-451 34 degrees; 117,-486 64 degrees; 915,1541 31 degrees; 930,1579 61 degrees
 iogonek.dotless extreme 1        # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed in proofs (γ & ξ ү q.sc), new findings proofed: 308,-28 20 units past
+iogonek.sc smooth 1              # 2026-11-13 Į set on its I (OS_SHIFT): the top serif's node as in the Italic's i.sc and iogonek.sc: 601,922 2.4 degrees
 iota zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 j accent 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above dotaccent gap 346, usually 194
 j.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
@@ -444,12 +445,12 @@ uni0429 extreme 1                # 2026-10-21 Italic reweighted and tightened: 1
 uni042F zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
 uni0430.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
 uni0433 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 242 against 279 (0.87, lighter)
-uni0433 wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 479,403 7 degrees; 
+uni0433 wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 479,403 7 degrees;
 uni0436 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 237 against 267 (0.89, lighter)
 uni0436.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0; top +22 from 1040
 uni0438 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
 uni0438.sc kink 2                # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 982,922 2.8 degrees; 382,106 2.7 degrees
-uni043A wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 295,610 4 degrees; 
+uni043A wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 295,610 4 degrees;
 uni043A.sc zone 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0; top +22 from 1040
 uni043B stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: lc 240 against 269 (0.89, lighter)
 uni043B wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 5 against 0: 505,780 64 degrees; 775,161 22 degrees; 759,84 15 degrees; 717,768 29 degrees; 722,785 5
@@ -458,9 +459,9 @@ uni043B.sc wobble 1              # small caps' overshoot scaled with the letter:
 uni043C zone 1                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top -24 from 884
 uni043C.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -17 from 0
 uni043D stroke 1                 # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: lc 242 against 269 (0.90, lighter)
-uni043D wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 530,590 4 degrees; 
+uni043D wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 530,590 4 degrees;
 uni043F slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
-uni043F wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 863,163 5 degrees; 
+uni043F wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 2 against 0: 863,163 5 degrees;
 uni0442 slant 1                  # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: 18.4 degrees, not 15.2
 uni0443.sc kink 1                # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: 523,221 7.8 degrees
 uni0443.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
@@ -472,7 +473,7 @@ uni0448 slant 1                  # 2026-10-16 Bold Italic: first generated (make
 uni0449 extreme 1                # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 1478,63 12 units past
 uni0449 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 18.6 degrees, not 15.2
 uni044E wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 1 against 0: 530,590 4 degrees
-uni044E.loclBGR wobble 1         # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 3 against 0: 534,622 3 degrees; 
+uni044E.loclBGR wobble 1         # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/bold-italic-cyrillic-followers-2026-11-12.pdf: 3 against 0: 534,622 3 degrees;
 uni044F kink 1                   # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed in proofs (γ & ξ ү q.sc), new findings proofed: 681,498 5.4 degrees
 uni044F stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 239 against 267 (0.89, lighter)
 uni044F.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0

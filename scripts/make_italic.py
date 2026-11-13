@@ -84,6 +84,7 @@ from data_italic import (
     MATH_SIGNS,
     NO_TRANSPLANT,
     OS_LOCL,
+    OS_SHIFT,
     OWN_RECIPE,
     POINT_REPAIRS,
     ROMAN_GLYPHS,
@@ -2076,7 +2077,12 @@ def main():
             # (an alias, an accented letter rebuilt below)
             osg = oldstd[osname]
             rec = DecomposingRecordingPen(oldstd)
-            osg.draw(rec)
+            if osname in OS_SHIFT:  # drawn off its base: set on it
+                base, dx = OS_SHIFT[osname]
+                osg.draw(TransformPen(rec, (1, 0, 0, 1, dx, 0)))
+                osg = oldstd[base]  # whose anchors it takes
+            else:
+                osg.draw(rec)
             zoned = RecordingPen()
             rec.replay(Zones(zoned))
             out = rezone(embolden(zoned, AX, AY), AY)  # the flat edges kept on the zones

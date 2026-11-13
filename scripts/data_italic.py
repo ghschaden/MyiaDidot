@@ -561,6 +561,12 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   "т.loclSRB": ("alias", "uni0448", None)}
 # Old Standard's own localized forms taken as they are (none now)
 OS_LOCL = {}
+# Old Standard letters drawn off their base: {glyph: (base, dx)}, the outline
+# moved by dx (Old Standard's units) and the anchors taken from the base's.
+# Į stood 84 right of its I at the same advance (160 in the Italic: bounds
+# 131..1097 against -29..923), the only precomposed letter so (swept
+# 2026-11-13); kern_clear then gave it about +200 before every ascender
+OS_SHIFT = {"Iogonek": ("I", -84)}
 
 # aliases of a plain letter in the Regular that the Italic makes itself
 ITALIC_LOCL = {"uni0433.loclSRB", "uni0434.loclSRB", "uni0453.loclSRB",

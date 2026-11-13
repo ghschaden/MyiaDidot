@@ -373,9 +373,14 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
   - [ ] the Regular's U b keeps 87 units (H b 120): the designer found it
         "not good" too; a looser ASCENDER_CLEAR (80-120) would reach it,
         and V W Y with it (see the sheet's candidates).
-  - [ ] the italics' Į (Iogonek) stands about 160 units right of I at
+  - [x] the italics' Į (Iogonek) stands about 160 units right of I at
         the same advance (bounds 131..1097 against -29..923): a glyph
         fault; the rule now gives it about +200 before every ascender.
+        Done 2026-11-13: Old Standard's own Į stood 84 right of its I
+        (the only precomposed letter so); make_italic sets it on I
+        (data_italic.OS_SHIFT, I's anchors: TopCap 709 -> 680). Į b +36
+        (I b +28), Bold Italic +18; į.sc with it. Sheet
+        `proofs/iogonek-italics-2026-11-13.pdf`.
   - [ ] the same family below: capitals before accented lowercase (U ȉ,
         T ï, Ví): the lowercase accent over the capital's serif, which
         neither this rule nor the sweep measures.
