@@ -381,7 +381,7 @@ alongside, each when the phase that needs it comes up.
       - [ ] `sync_check.py` and the conflict check in `make generate`
             kept until a month has passed without a finding, then
             dropped, CLAUDE.md's rule with them.
-- [ ] T2. A fast loop for single glyphs: `make_bold.py` and
+- [x] T2. A fast loop for single glyphs: `make_bold.py` and
       `make_italic.py` take whole UFOs only (the Bold Italic about 5 min
       40 s).
       Specified 2026-11-11 (F6): `docs/claude/only.md`, to carry out
@@ -414,6 +414,9 @@ alongside, each when the phase that needs it comes up.
       smallcaps.py's 22 s, write), not one glyph's work, so caching
       those passes is likely the smaller step; for the designer to
       decide whether 80 s is fast enough.
+      Decided 2026-11-13 by the designer: fast enough for now; T2 ends
+      at stage A, the closure (stage B, `--only`) and the passes'
+      caches not built unless the loop becomes the bottleneck.
       - [ ] `--only GLYPH ...`: those glyphs and what is built from them
             (lib `org.myiadidot.builtFrom` names the dependencies),
             written to a scratch UFO under `build/`, never to
