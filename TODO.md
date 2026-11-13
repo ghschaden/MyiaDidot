@@ -381,9 +381,23 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
         (data_italic.OS_SHIFT, I's anchors: TopCap 709 -> 680). Į b +36
         (I b +28), Bold Italic +18; į.sc with it. Sheet
         `proofs/iogonek-italics-2026-11-13.pdf`.
-  - [ ] the same family below: capitals before accented lowercase (U ȉ,
+  - [x] the same family below: capitals before accented lowercase (U ȉ,
         T ï, Ví): the lowercase accent over the capital's serif, which
         neither this rule nor the sweep measures.
+        Done 2026-11-13: about 550 pairs a style came within 20 units,
+        nearly all a narrow i/ι under a wide mark (ȉ ǐ ĭ ῖ ἶ ϊ ΐ);
+        against Charis and Libertinus Myia is in range but for the
+        Bold's N ǐ 8, U ǐ 0 (both 90-130). kern_clear.accent_entries,
+        ACCENT_CLEAR 40 (GUARD's white), measured every way above the
+        x-height: Regular N ǐ +32, H ȉ +104, Γ ῖ +22; Bold U ǐ +72.
+        Sheet with candidates 20/40/60:
+        `proofs/accent-clearance-2026-11-13.pdf`; the designer chose 40
+        (2026-11-14). Left open, found on the way:
+    - [ ] f before accented i (fî in French "fît", fï fì fǐ): the hook
+          meets the mark in the upright styles (0 units); Charis touches
+          too, Libertinus substitutes f.short. A contextual f, not kerning.
+    - [ ] pinyin ǖ ǚ ǜ Ǖ Ǚ Ǜ are missing (Ǘ ǘ are there): composites
+          for scripts/coverage.py's TARGET.
 
 - [ ] `Wo` (the designer, 2026-11-13): the gap looks too big. W's own
       group (3017a0aa, W apart from V) set W o/e/c at -60 (Bold -62) from

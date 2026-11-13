@@ -234,4 +234,7 @@ Not swept here (signs only, measured across). Üb on the pangram page
 (the italics' top serifs meeting on a diagonal) is kept clear by
 `kern_clear.ascender_entries` with its own measure every way above the
 x-height (`Ink.white_above`, ASCENDER_CLEAR 60; spacing.md), held by
-`tests/test_collisions.py::test_capitals_clear_ascenders`.
+`tests/test_collisions.py::test_capitals_clear_ascenders`. The same for
+a capital before a lowercase mark above (N ǐ, H ȉ, Γ ῖ):
+`kern_clear.accent_entries`, ACCENT_CLEAR 40,
+`test_capitals_clear_marks_above`.

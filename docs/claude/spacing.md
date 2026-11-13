@@ -47,7 +47,17 @@ Moved from CLAUDE.md (its ground rules apply).
   in common, and foot serifs are left to the spacing (A n as A b). Found
   as Üb on the pangram page (2026-11-13): the italics' serifs met (1-3
   units), the Bold's U b had 28; the value was chosen on running text
-  (proofs/ascender-clearance-2026-11-13.pdf). A
+  (proofs/ascender-clearance-2026-11-13.pdf). Every capital before a
+  lowercase letter of its script with a mark or dot above that is no
+  ascender (kern_clear.accent_entries: N ǐ, H ȉ, Γ ῖ, Υ ϊ, Ѵ ї) keeps
+  ACCENT_CLEAR (40, GUARD's white) by the same measure: a wide mark on a
+  narrow i reaches over the capital's serif (the Bold's U ǐ met, Charis
+  and Libertinus keep 90-130 there; proofs/accent-clearance-2026-11-13.pdf,
+  candidates 20/40/60; 40 chosen by the designer 2026-11-14). Its glyph entries take the place of a group
+  guard that one member's mark had forced (Ɐ before all of i's group for
+  ĭ, U before ẫ for Ư's horn). An entry in two families is measured by
+  each in turn, the second from the first's value (Ƙ l: PAIRS, then the
+  ascenders). A
   guarded member that a group entry decides gets its own exception where
   the group's value leaves it touching (the Bold's (ɉ, ąɉ). The italics'
   [j (j {j are looser by hand besides (data_italic.ITALIC_KERNING +60). make_bold.py adds the Bold's own cut, make_italic.py

@@ -135,6 +135,32 @@ def test_capitals_clear_ascenders(ufo_path):
     assert not short, f"capitals nearer than ASCENDER_CLEAR to an ascender: {short} (run scripts/kern_clear.py)"
 
 
+ACCENT_PAIRS = [("N", "uni01D0"), ("U", "uni01D0"), ("H", "uni0209"), ("T", "uni0209"), ("U", "ibreve"),
+                ("F", "idieresis"), ("Gamma", "uni1FD6"), ("Upsilon", "iotadieresis"), ("uni0474", "uni0457")]
+
+
+def test_capitals_clear_marks_above(ufo_path):
+    """N ǐ, H ȉ, Γ ῖ: a lowercase mark over the capital's serif (kern_clear.accent_entries)."""
+    font = ufoLib2.Font.open(ufo_path)
+    ink = kern_clear.Ink(font)
+    _, entry = kern_clear.kern_lookup(font)
+    short = []
+    for a, b in ACCENT_PAIRS:
+        k = font.kerning[e] if (e := entry(a, b)) else 0
+        w = ink.white_above(a, b, k, kern_clear.ACCENT_CLEAR)
+        if w is not None and w < kern_clear.ACCENT_CLEAR - kern_clear.SAMPLE:
+            short.append(f"{a} {b} {w:.0f}")
+    assert not short, f"capitals nearer than ACCENT_CLEAR to a mark above: {short} (run scripts/kern_clear.py)"
+
+
+def test_marked_lowercase():
+    """the dotted and accented lowercase, not the ascenders, small caps or plain letters."""
+    font = ufoLib2.Font.open(REGULAR)
+    right = {b for _, b in kern_clear.accent_entries(font)}
+    assert {"i", "j", "uni01D0", "uni0209", "idieresis", "uni1FD6", "uni0457", "uni0451"} <= right
+    assert not {"n", "o", "dotlessi", "lcaron", "b", "iacute.sc", "aogonek"} & right
+
+
 def test_ascenders_by_their_base_letter():
     """ľ ḷ by their l, the dotted letters not by their dot, t not at all."""
     asc = set(kern_clear.sets(ufoLib2.Font.open(REGULAR))["ASCENDERS"])

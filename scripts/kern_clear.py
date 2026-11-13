@@ -62,6 +62,13 @@ SUPERIOR_CLEAR = 60
 # serifs meet before every lowercase letter alike (A n as A b) and are
 # spacing's. Chosen on running text (proofs/ascender-clearance-2026-11-13.pdf)
 ASCENDER_CLEAR = 60
+# a capital before a lowercase letter whose mark rises above the x-height
+# (N ǐ, U ȉ, H ȉ, the Bold's U ǐ at 0; TODO.md phase 2, 2026-11-13): a
+# wide mark on a narrow letter reaches over the capital's serif, on a
+# diagonal as the ascenders do. The same measure; GUARD's white, which a
+# guarded accent keeps across (kern_groups); chosen by the designer
+# (2026-11-14) from 20/40/60 on proofs/accent-clearance-2026-11-13.pdf
+ACCENT_CLEAR = 40
 SUPERIOR_FIGURES = {f + "superior" for f in (
     "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")}
 MARKS = ("exclam", "question")
@@ -229,6 +236,35 @@ def ascender_entries(font):
         if a in figures or not s["SCRIPT"].get(a):
             continue
         for b in s["ASCENDERS"]:
+            if s["SCRIPT"][b] == s["SCRIPT"][a]:
+                out.append((g1.get(a, a), b))
+    return list(dict.fromkeys(out))
+
+
+def accent_entries(font):
+    """(left, right) kerning keys for every capital before a lowercase
+    letter of the same script that carries a mark or dot above and is no
+    ascender (ǐ ȉ ĭ ï, ῖ ἶ ϊ, ё й ї): keyed as ascender_entries."""
+    s = sets(font)
+    g1 = {m: g for g, ms in font.groups.items() if g.startswith("public.kern1.") for m in ms}
+    figures, asc = set(s["FIGURES"]), set(s["ASCENDERS"])
+
+    def marked(name):
+        g = font[name]
+        if name in asc or "." in name or g.unicode is None:
+            return False
+        c = chr(g.unicode)
+        if unicodedata.category(c) != "Ll":
+            return False
+        d = unicodedata.normalize("NFD", c)
+        return d[0] in DOTTED or any(unicodedata.combining(m) == 230 for m in d[1:])
+
+    right = [b for b in s["LETTERS"] if marked(b)]
+    out = []
+    for a in s["CAPITALS"]:
+        if a in figures or not s["SCRIPT"].get(a):
+            continue
+        for b in right:
             if s["SCRIPT"][b] == s["SCRIPT"][a]:
                 out.append((g1.get(a, a), b))
     return list(dict.fromkeys(out))
@@ -446,9 +482,11 @@ def clear(font, log=None):
     # not loosen their group's pairs
     held = {s: {n for n, side, _ in guarded(font) if side == s} for s in (1, 2)}
     # the entries measured across, then the capitals before the ascenders
-    # every way above the x-height (an entry in both: after its first value)
-    todo = [(left, right, False) for left, right in entries(font)]
-    todo += [(left, right, True) for left, right in ascender_entries(font)]
+    # every way above the x-height, and the capitals before the marked
+    # lowercase (accent_entries): an entry in two, after its first value
+    todo = [(left, right, None) for left, right in entries(font)]
+    todo += [(left, right, ASCENDER_CLEAR) for left, right in ascender_entries(font)]
+    todo += [(left, right, ACCENT_CLEAR) for left, right in accent_entries(font)]
     for left, right, above in todo:
         if left not in font.groups and left not in font or right not in font.groups and right not in font:
             continue
@@ -470,15 +508,15 @@ def clear(font, log=None):
             kern = now.pop() if now else 0
         else:
             kern = was
-        if above:
+        if above is not None:
             # a group's entry measured on its name-giving glyph (as the
             # groups' pairs are, spacing.md); a member that needs more
             # gets its own exception (the italics' Ĳ in J's group would
             # have set J b at +218)
             model = [(a, b) for a, b in pairs if left in font.groups and a == left.split(".", 2)[2]]
-            v = needed_above(ink, model or pairs, kern) if pairs else None
+            v = needed_above(ink, model or pairs, kern, above) if pairs else None
             for a, b in (pairs if model else []):
-                if a != model[0][0] and (w := needed_above(ink, [(a, b)], kern if v is None else v)) is not None:
+                if a != model[0][0] and (w := needed_above(ink, [(a, b)], kern if v is None else v, above)) is not None:
                     font.kerning[(a, right)] = w
                     record.setdefault(f"{a} {right}", "added")
                     if log is not None:
@@ -510,7 +548,7 @@ def clear(font, log=None):
                     own.setdefault(mine, []).append((a, b))
         for mine, its in own.items():
             kern = font.kerning.get(mine, font.kerning[(left, right)])
-            v = (needed_above(ink, its, kern) if above
+            v = (needed_above(ink, its, kern, above) if above is not None
                  else needed(ink, its, kern, clear=clearance(left, right)))
             if v is not None:
                 font.kerning[mine] = v

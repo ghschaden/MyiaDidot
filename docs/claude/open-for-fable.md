@@ -135,7 +135,8 @@ Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
   above U's, no row in common) was found on a proof. Built:
   `kern_clear.ascender_entries` and `Ink.white_above` (every way, inks
   above the x-height) for capitals before ascenders only. Missing: what
-  else to sweep with it (capitals before accented lowercase U ȉ, T ï;
+  else to sweep with it (capitals before accented lowercase U ȉ, T ï:
+  built 2026-11-13 as kern_clear.accent_entries;
   f's hook before ascenders; letters after the italics' tall t), and
   whether collisions.py should list these pairs too ("one measure").
 - **A group's entry has two conventions.** The sign entries go glyph by
