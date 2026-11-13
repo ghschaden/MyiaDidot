@@ -1,0 +1,25 @@
+name: arithmetic probe
+
+# T3: which pin the Bold Italic's stroking still lacks on AMD runners with
+# AVX-512 (scripts/arith_probe.py). Run by hand: gh workflow run probe.yml;
+# six jobs at once, so that one run lands on several kinds of machine.
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        n: [1, 2, 3, 4, 5, 6]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen --python 3.12
+      - name: machine
+        run: |
+          LC_ALL=C lscpu | grep -E "Model name|Vendor ID|L2 cache"
+          grep -owE "avx512[a-z_]*|avx2|fma" /proc/cpuinfo | sort -u | tr '\n' ' '; echo
+          ldd --version | head -1
+      - run: .venv/bin/python -I scripts/arith_probe.py
