@@ -137,7 +137,13 @@ the other models. One item per session.
       Phase 1's sweep written 2026-11-11: `docs/claude/collisions.md`
       (the pair sets taken from the font, white measured as kern_clear
       measures it, the list's format and its test, the order). Read
-      from the code, nothing run. T5 and T6 are still to write.
+      from the code, nothing run.
+      T6's page written 2026-11-13: `docs/claude/drawn.md` (the key
+      `org.myiadidot.drawn` in all three styles, italicSource kept as
+      provenance only, draft flags review status only, make_bold
+      stripping the source's marks, the four commits and the
+      equivalence check). Read from the code and the UFOs, nothing
+      changed. T5 is still to write.
 - [ ] F7. If sessions remain: phase 5's first two batches done on Fable
       (the rest of a-z, then A-Z), to find the cases redraw.md does not
       yet cover while the model that wrote it is still there; and the
@@ -432,6 +438,7 @@ alongside, each when the phase that needs it comes up.
       tool (`scripts/drawn.py` for all three styles, date and reason),
       the generators reading only that; docs/claude/quality.md and
       CLAUDE.md follow. Before phase 5's first batch is marked.
+      Specified 2026-11-13: `docs/claude/drawn.md`.
 - [ ] T7. The repair scripts retired as their glyphs are drawn: about
       25 scripts patch single generated glyphs at fixed points
       (`dollar_bars` `dollar_drawing` `j_bar` `l_belt` `t_slash`
