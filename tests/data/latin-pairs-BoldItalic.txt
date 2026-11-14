@@ -17,6 +17,8 @@ Uc       # off -0.085: too tight, phase 3's rule (no tightening) leaves it; 2026
 Ug       # off -0.063: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 V,       # off -0.094: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 W,       # off -0.327: W's own left group since 2026-11-13 (split from V's) makes it measured; as tight at HEAD under V's values, for the designer (phase 2)
+Wc       # off -0.044: 2026-11-14 W c -140, W a -80, W u -80 in the Regular (the designer, proofs/w-lowercase-2026-11-14.pdf); the italics keep the rule's values (proofs/w-italics-2026-11-14.pdf)
+Wu       # off -0.103: 2026-11-14 W c -140, W a -80, W u -80 in the Regular (the designer, proofs/w-lowercase-2026-11-14.pdf); the italics keep the rule's values (proofs/w-italics-2026-11-14.pdf)
 WÆ       # off -0.120: W's own left group since 2026-11-13 (split from V's) makes it measured; as tight at HEAD under V's values, for the designer (phase 2)
 aj       # off -0.054: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 at       # off -0.051: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12

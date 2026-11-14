@@ -409,7 +409,7 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
           (not in scripts/coverage.py's TARGET, as it turned out). Done
           2026-11-14 with the batch of phase 11's composed letters.
 
-- [~] `Wo` (the designer, 2026-11-13): the gap looks too big. W's own
+- [x] `Wo` (the designer, 2026-11-13): the gap looks too big. W's own
       group (3017a0aa, W apart from V) set W o/e/c at -60 (Bold -62) from
       V's -192 (Wa -160 -> -20). Nearest ink, units at Myia's cap height:
       Regular W o 395 (V o 392; Libertinus 342, Charis 389, Old Standard
@@ -420,6 +420,9 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       choose on.
       Chosen 2026-11-14 on `proofs/w-lowercase-2026-11-14.pdf`: W c -140,
       W a -80, W u -80 (the Bold x1.04, the italics by the rule).
+      The italics keep the rule's values though W u (and the Bold Italic's
+      W c) come out tighter than the five reference italics
+      (proofs/w-italics-2026-11-14.pdf; latin-pairs lists).
 
 - [x] Qu (dlig Q_u), the tail below the O: a redesign asked of Fable
       (2026-11-14: steeper neck, the swash leaving level at the crotch,
