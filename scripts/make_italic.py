@@ -2265,7 +2265,7 @@ def main():
     # the kept ones stand uncut (above) and are put back as saved below:
     # counted as cut here, so that their composites' parts move with them
     respace(font, letter_cut, [g.name for g in font if g.name not in kept])
-    space_figures(font)  # the old-style figures spaced by their shapes (their .tf, the .pf rebuilt)
+    space_figures(font)  # the figures spaced by their shapes, their tabular .tf made
 
     def restore_kept():
         # as saved; an alias still as wide as its letter

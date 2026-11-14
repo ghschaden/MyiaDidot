@@ -190,7 +190,6 @@ three wobble 1                   # 2026-10-28: leftover pieces of the stroked Bo
 threesuperior wobble 1           # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 1 against 0: 290,675 18 degrees
 trademark extreme 1              # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 801,1335 6 units past
 trademark wobble 1               # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 1164,1265 14 degrees
-two extreme 1                    # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 235,207 11 units past
 two stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 200 against 307 (0.65, lighter)
 twooldstyle stroke 1             # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 179 against 279 (0.64, lighter)
 u slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2

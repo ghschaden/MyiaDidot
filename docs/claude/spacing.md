@@ -83,10 +83,15 @@ Moved from CLAUDE.md (its ground rules apply).
   their whole base are then made of the weighted base (make_bold's
   follow_bases, as in the Bold). Emboldening (derive.embolden)
   keeps smooth nodes smooth and fits the handles; derive.rezone puts flat
-  edges it moved back on the zones. Old-style figures are proportional
-  (`scripts/space_figures.py`, run by make_bold.py/make_italic.py; tnum gives
-  the .tf ones; it also makes the proportional lining .pf (pnum) and the
-  lnum/pnum/tnum/zero block). Capital spacing (cpsp): `scripts/cpsp.py` on
+  edges it moved back on the zones. The figures are proportional by
+  default, lining and old-style alike (2026-11-14, as GFS Didot, Bodoni
+  Moda and Libre Bodoni; Charis, Libertinus, EB Garamond and Old Standard
+  default to tabular): `scripts/space_figures.py`, run by
+  make_bold.py/make_italic.py and on the Regular (check-regular), fits each
+  by its shapes (lining ones with a floor: across the foot serifs' band the
+  ink keeps I's mean side, `FOOT`), makes the tabular `.tf` forms (components, centred in the
+  0's width) that tnum gives, and the lnum/pnum/tnum/zero block; make_bold's
+  `tabular_figures` sets the figure space and dash to the 0's width. Capital spacing (cpsp): `scripts/cpsp.py` on
   the Regular. Case-sensitive punctuation (case, `.case` glyphs):
   `scripts/case_forms.py`, run by make_bold.py/make_italic.py on what they
   make. Per-style spacing tweaks: data_bold.py BOLD_SIDEBEARINGS,

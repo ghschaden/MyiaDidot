@@ -7,7 +7,7 @@ but parts of it are generated too: the derived letters' records
 small caps' aliases, accented forms, kerning, groups and
 smcp/c2sc block (smallcaps.py), the breve resized (adjust_accents.py), the
 anchors composites keep from their base and the stacked ones
-(composites.py), the figures' spacing and their lnum/pnum/tnum/zero
+(composites.py), the figures' spacing, their tabular forms and their lnum/pnum/tnum/zero
 block (space_figures.py), the capital spacing block (cpsp.py), the case-sensitive forms
 (case_forms.py). Each is idempotent: run again on a copy, nothing
 may change. A difference means an edit made by hand to a generated part, or

@@ -223,15 +223,13 @@ LINING_FIGURES = ("zero", "one", "two", "three", "four", "five", "six", "seven",
 
 
 def tabular_figures(font):
-    """The lining figures tabular again: emboldening widens each by its own
-    strokes (Bold 1202-1231, Bold Italic 1199-1240 after the cut, where the
-    Regular's and the Italic's share one width), so columns of figures no
-    longer lined up. Each takes the mean of their widths, the difference
-    split evenly between its sides (its fit as emboldened, moved as a whole);
-    the figure space and figure dash take the same width. Returns it."""
-    width = round(sum(font[n].width for n in LINING_FIGURES) / len(LINING_FIGURES))
+    """The figure space and the figure dash as wide as the tabular figures
+    (the 0's width, space_figures.py: the figures themselves are
+    proportional, their .tf forms tabular), the difference split evenly
+    between their sides. Returns the width."""
+    width = font["zero"].width
     deltas = {}
-    for n in LINING_FIGURES + ("uni2007", "figuredash"):
+    for n in ("uni2007", "figuredash"):
         d = width - font[n].width
         deltas[n] = (d // 2, d - d // 2)
     sidebearings(font, deltas)
@@ -2159,8 +2157,8 @@ def main():
     cut = BOLD_ITALIC_CUT if italic else BOLD_CUT
     respace(font, classifier(font, cut, greek_cut))
     respace(font, lambda n: BOLD_FIGURE_CUT if n in FIGURE_NAMES else 0)
+    space_figures(font)  # the figures spaced by their shapes, their tabular .tf made
     tabular_figures(font)
-    space_figures(font)  # the old-style figures spaced by their shapes (their .tf, the .pf rebuilt)
     # a composite follows its base (sidebearings), as the letters made of one;
     # also one set off for its accent (Έ Ἐ Ῥ: the letter at an offset, the
     # mark before it), else it would stand narrower than its NFD

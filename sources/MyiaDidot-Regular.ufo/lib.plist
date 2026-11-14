@@ -1985,8 +1985,6 @@
 			<string>added</string>
 			<key>quotedblleft iotadieresistonos</key>
 			<string>added</string>
-			<key>quotedblleft one.pf</key>
-			<string>added</string>
 			<key>quotedblleft uni0209</key>
 			<string>added</string>
 			<key>quotedblleft uni0209.sc</key>
@@ -2022,8 +2020,6 @@
 			<key>quotedblleft uni1FD7</key>
 			<string>added</string>
 			<key>quoteleft iotadieresistonos</key>
-			<string>added</string>
-			<key>quoteleft one.pf</key>
 			<string>added</string>
 			<key>quoteleft uni0209</key>
 			<string>added</string>
@@ -6214,6 +6210,17 @@
 			<string>uni01C9.sc</string>
 			<string>uni01CC.sc</string>
 			<string>uni01F3.sc</string>
+			<string>zero.tf</string>
+			<string>one.tf</string>
+			<string>two.tf</string>
+			<string>three.tf</string>
+			<string>four.tf</string>
+			<string>five.tf</string>
+			<string>six.tf</string>
+			<string>seven.tf</string>
+			<string>eight.tf</string>
+			<string>nine.tf</string>
+			<string>zero.zero.tf</string>
 			<string>zerooldstyle.tf</string>
 			<string>oneoldstyle.tf</string>
 			<string>twooldstyle.tf</string>
@@ -6224,17 +6231,6 @@
 			<string>sevenoldstyle.tf</string>
 			<string>eightoldstyle.tf</string>
 			<string>nineoldstyle.tf</string>
-			<string>zero.pf</string>
-			<string>one.pf</string>
-			<string>two.pf</string>
-			<string>three.pf</string>
-			<string>four.pf</string>
-			<string>five.pf</string>
-			<string>six.pf</string>
-			<string>seven.pf</string>
-			<string>eight.pf</string>
-			<string>nine.pf</string>
-			<string>zero.zero.pf</string>
 			<string>zerooldstyle.zero.tf</string>
 			<string>parenleft.case</string>
 			<string>parenright.case</string>
@@ -6968,7 +6964,7 @@
 			<string>base</string>
 			<key>eight.dnom</key>
 			<string>base</string>
-			<key>eight.pf</key>
+			<key>eight.tf</key>
 			<string>base</string>
 			<key>eightinferior</key>
 			<string>base</string>
@@ -7078,7 +7074,7 @@
 			<string>base</string>
 			<key>five.dnom</key>
 			<string>base</string>
-			<key>five.pf</key>
+			<key>five.tf</key>
 			<string>base</string>
 			<key>fiveeighths</key>
 			<string>base</string>
@@ -7100,7 +7096,7 @@
 			<string>base</string>
 			<key>four.dnom</key>
 			<string>base</string>
-			<key>four.pf</key>
+			<key>four.tf</key>
 			<string>base</string>
 			<key>fourinferior</key>
 			<string>base</string>
@@ -7426,7 +7422,7 @@
 			<string>base</string>
 			<key>nine.dnom</key>
 			<string>base</string>
-			<key>nine.pf</key>
+			<key>nine.tf</key>
 			<string>base</string>
 			<key>nineinferior</key>
 			<string>base</string>
@@ -7514,7 +7510,7 @@
 			<string>base</string>
 			<key>one.dnom</key>
 			<string>base</string>
-			<key>one.pf</key>
+			<key>one.tf</key>
 			<string>base</string>
 			<key>oneeighth</key>
 			<string>base</string>
@@ -7694,7 +7690,7 @@
 			<string>base</string>
 			<key>seven.dnom</key>
 			<string>base</string>
-			<key>seven.pf</key>
+			<key>seven.tf</key>
 			<string>base</string>
 			<key>seveneighths</key>
 			<string>base</string>
@@ -7720,7 +7716,7 @@
 			<string>base</string>
 			<key>six.dnom</key>
 			<string>base</string>
-			<key>six.pf</key>
+			<key>six.tf</key>
 			<string>base</string>
 			<key>sixinferior</key>
 			<string>base</string>
@@ -7776,7 +7772,7 @@
 			<string>base</string>
 			<key>three.dnom</key>
 			<string>base</string>
-			<key>three.pf</key>
+			<key>three.tf</key>
 			<string>base</string>
 			<key>threeeighths</key>
 			<string>base</string>
@@ -7808,7 +7804,7 @@
 			<string>base</string>
 			<key>two.dnom</key>
 			<string>base</string>
-			<key>two.pf</key>
+			<key>two.tf</key>
 			<string>base</string>
 			<key>twoinferior</key>
 			<string>base</string>
@@ -10926,11 +10922,11 @@
 			<string>base</string>
 			<key>zero.dnom</key>
 			<string>base</string>
-			<key>zero.pf</key>
+			<key>zero.tf</key>
 			<string>base</string>
 			<key>zero.zero</key>
 			<string>base</string>
-			<key>zero.zero.pf</key>
+			<key>zero.zero.tf</key>
 			<string>base</string>
 			<key>zeroinferior</key>
 			<string>base</string>

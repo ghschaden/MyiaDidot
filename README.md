@@ -70,7 +70,7 @@ each feature.
 |---|---|
 | `smcp`, `c2sc` | Small capitals, made from lowercase and from capitals |
 | `onum`, `lnum` | Old-style and lining figures (lining is the default) |
-| `pnum`, `tnum` | Proportional and tabular figures |
+| `tnum`, `pnum` | Tabular figures for tables; proportional is the default (since 0.900) |
 | `sups`, `subs`, `sinf`, `numr`, `dnom`, `frac`, `ordn` | Superiors, inferiors, fractions and ordinals |
 | `zero` | Slashed zero |
 | `case`, `cpsp` | Case-sensitive punctuation and capital spacing for all-caps text |

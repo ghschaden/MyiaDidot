@@ -123,7 +123,7 @@ PAIRS = [
 CLOSERS = "?!)]}”“’*:;"
 OPENERS = "([{„“‘¿¡"
 NOTE_LETTERS = ("ordfeminine", "ordmasculine")  # ª º: set after a word, as the superiors
-FIGURE_SUFFIXES = {"pf", "tf", "zero"}
+FIGURE_SUFFIXES = {"tf", "zero"}
 F_FAMILY = ("f", "longs", "ff", "fi", "fl", "ffi", "ffl")  # f ſ and their ligatures (f_b, longs_t ...)
 
 

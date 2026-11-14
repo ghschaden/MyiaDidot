@@ -94,10 +94,10 @@ added.
    `derive_stage`): glyph of `ch` reads glyph of `base`, resolved with
    `derive.resolve` as those functions do.
 4. **Names:** `a_b` and `a_b.sfx` read `a` and `b`; `x.sfx` reads `x`
-   where `x` exists (`.case .cap .pf .tf .dnom .horn .zero .loclSRB
+   where `x` exists (`.case .cap .tf .dnom .horn .zero .loclSRB
    .loclBGR .grek .i .iota ...`); `x.sc` reads the capital and the
    lowercase `smallcaps.smcp_map` pairs it with; each figure of a set
-   (the defaults, `.pf`, `…oldstyle`, `…oldstyle.tf`, the `.zero` forms)
+   (the defaults, `.tf`, `…oldstyle`, `…oldstyle.tf`, the `.zero` forms)
    reads all ten of its set and `zero` (`space_figures.space`,
    `tabular_figures`).
 5. **Named in the code:** a table `EXTRA` in `only.py`, each line with the
@@ -237,7 +237,7 @@ replace one that turns out to sit in `ROOTS`' closure):
 | `V` | `redraw_w` in the Italic |
 | `e` | `swapped_sidebearings` (ɘ) |
 | `gravecomb` | a mark: every composite carrying it, stacks |
-| `four` | figures: four.pf, fouroldstyle and its .tf, `space_figures` |
+| `four` | figures: four.tf, fouroldstyle and its .tf, `space_figures` |
 | `T` | small cap draft, `T_h`, Ť made from base and mark |
 | `uni0433.loclSRB` | locl forms, the Serbian bars |
 | `hyphen` | `case_forms` (hyphen.case), punctuation outside the letters' cut |

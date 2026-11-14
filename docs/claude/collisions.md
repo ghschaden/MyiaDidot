@@ -34,7 +34,7 @@ new letter is swept the day it is added:
 | set | members |
 |---|---|
 | `LETTERS` | every glyph with an advance that `respace.classifier(font, 1, 1)` counts as a letter (encoded letters, their `.sc`, locl and other suffixed forms, ligatures of letters), without the superiors below |
-| `FIGURES` | the ten figures of `make_bold.LINING_FIGURES`, their `…oldstyle` forms, and the `.pf` `.tf` `.zero` forms of both (not the figure space and dash that `FIGURE_NAMES` also holds) |
+| `FIGURES` | the ten figures of `make_bold.LINING_FIGURES`, their `…oldstyle` forms, and the `.tf` `.zero` forms of both (not the figure space and dash that `FIGURE_NAMES` also holds) |
 | `CAPITALS` | the members of `LETTERS` whose character is `Lu` (also the capital of a ligature's first part, `T_h`), and the lining figures |
 | `CLOSERS` | `? ! ) ] } ” “ ’ * : ;` |
 | `OPENERS` | `( [ { „ “ ‘ ¿ ¡` |

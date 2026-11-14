@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="four" format="2">
 	<unicode hex="0034"/>
-	<advance width="1216"/>
+	<advance width="1017"/>
 	<outline>
 		<contour>
-			<point x="109" y="455" type="line"/>
-			<point x="64" y="516" type="line"/>
-			<point x="235" y="649"/>
-			<point x="302" y="679"/>
-			<point x="417" y="843" type="curve" smooth="yes"/>
-			<point x="498" y="960"/>
-			<point x="545" y="1121"/>
-			<point x="587" y="1322" type="curve" smooth="yes"/>
-			<point x="607" y="1420"/>
-			<point x="631" y="1507"/>
-			<point x="766" y="1507" type="curve" smooth="yes"/>
-			<point x="864" y="1507"/>
-			<point x="892" y="1460"/>
-			<point x="892" y="1416" type="curve" smooth="yes"/>
-			<point x="892" y="1308"/>
-			<point x="763" y="1088"/>
-			<point x="628" y="921" type="curve" smooth="yes"/>
-			<point x="518" y="787"/>
-			<point x="381" y="669"/>
-			<point x="187" y="513" type="curve"/>
-			<point x="186" y="510" type="line"/>
-			<point x="619" y="510" type="line"/>
-			<point x="619" y="818" type="line"/>
-			<point x="857" y="982" type="line"/>
-			<point x="900" y="982" type="line"/>
-			<point x="900" y="510" type="line"/>
-			<point x="1095" y="510" type="line"/>
-			<point x="1095" y="455" type="line"/>
-			<point x="900" y="455" type="line"/>
-			<point x="900" y="55" type="line"/>
-			<point x="1093" y="55" type="line"/>
-			<point x="1093" y="1" type="line"/>
-			<point x="426" y="1" type="line"/>
-			<point x="426" y="55" type="line"/>
-			<point x="619" y="55" type="line"/>
-			<point x="619" y="455" type="line"/>
+			<point x="-37" y="455" type="line"/>
+			<point x="-82" y="516" type="line"/>
+			<point x="89" y="649"/>
+			<point x="156" y="679"/>
+			<point x="271" y="843" type="curve" smooth="yes"/>
+			<point x="352" y="960"/>
+			<point x="399" y="1121"/>
+			<point x="441" y="1322" type="curve" smooth="yes"/>
+			<point x="461" y="1420"/>
+			<point x="485" y="1507"/>
+			<point x="620" y="1507" type="curve" smooth="yes"/>
+			<point x="718" y="1507"/>
+			<point x="746" y="1460"/>
+			<point x="746" y="1416" type="curve" smooth="yes"/>
+			<point x="746" y="1308"/>
+			<point x="617" y="1088"/>
+			<point x="482" y="921" type="curve" smooth="yes"/>
+			<point x="372" y="787"/>
+			<point x="235" y="669"/>
+			<point x="41" y="513" type="curve"/>
+			<point x="40" y="510" type="line"/>
+			<point x="473" y="510" type="line"/>
+			<point x="473" y="818" type="line"/>
+			<point x="711" y="982" type="line"/>
+			<point x="754" y="982" type="line"/>
+			<point x="754" y="510" type="line"/>
+			<point x="949" y="510" type="line"/>
+			<point x="949" y="455" type="line"/>
+			<point x="754" y="455" type="line"/>
+			<point x="754" y="55" type="line"/>
+			<point x="947" y="55" type="line"/>
+			<point x="947" y="1" type="line"/>
+			<point x="280" y="1" type="line"/>
+			<point x="280" y="55" type="line"/>
+			<point x="473" y="55" type="line"/>
+			<point x="473" y="455" type="line"/>
 		</contour>
 	</outline>
 	<lib>
@@ -47,11 +47,11 @@
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-09</string>
+				<string>2026-11-14</string>
 				<key>source</key>
-				<string>6522db6c0b78</string>
+				<string>30854ade388c</string>
 				<key>why</key>
-				<string>stem's right edge upright as the Regular's: the emboldening leaned it 31 (four) and 20 (fouroldstyle) units above the crossbar; the stem's top moved out by that</string>
+				<string>stem's right edge upright as the Regular's: the emboldening leaned it 31 (four) and 20 (fouroldstyle) units above the crossbar; the stem's top moved out by that (2026-11-09). Refitted 2026-11-14 as a proportional figure with the foot floor (space_figures._fit), the outline unchanged</string>
 			</dict>
 		</dict>
 	</lib>

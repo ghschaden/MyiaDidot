@@ -447,9 +447,30 @@ The Italic carries the Regular's values unchanged (`Av` −128, `To` −108,
 letters are another design with other sidebearings and overhangs. Greek
 and Cyrillic are already measured per style; Latin is not.
 
-- [ ] Measure: `scripts/quality/pairs.py Italic` and `BoldItalic`
+- [x] Measure: `scripts/quality/pairs.py Italic` and `BoldItalic`
       calibrated by each style's own n n / H H, as `greek_pairs.py` does;
       list the Latin pairs outside the references' range.
+      Done 2026-11-14 (`make pairs` on fonts rebuilt from a694d018's
+      sources; every pair outside the range, with its distance:
+      build/quality/pairs-rows-STYLE.txt). 294 frequent lowercase pairs.
+      What it shows is spacing, not missing kerns:
+      - Italic: nothing past 0.15 n-gaps. About 100 pairs (o e p r w v
+        against stems and rounds) sit 0.00-0.05 under the references'
+        lowest, all in one direction: n n is a little loose for the
+        rest of the lowercase, a matter of sidebearings, not pairs.
+      - Bold Italic: the same uniform tightness, deeper (to -0.11), and
+        three letters of their own: t sits right in its advance (left
+        tight: it dt -0.16, nt mt lt -0.12; right loose: tn +0.15, tr
+        +0.10, tu ti +0.08); f's left is tight (df -0.29, nf -0.23, of
+        -0.18); r's right is tight (rh -0.17, ra -0.10). Th (-0.85) is
+        the measure's blind spot (T's stem, not its bar), as in phase 2.
+      - Bold, and the Regular it comes from: t's right loose (Bold tn
+        +0.15, tu ty +0.13, tt +0.14; Regular among the loosest: kt tM
+        at ty tw tz tr tn).
+      Proposed, for a sheet before any change: t's sidebearings in the
+      Regular (the Bold follows), and t f r in the Bold Italic's
+      generator data; the italics' n against the rest of the lowercase
+      left for phase 6 (the Italic's harmonisation).
 - [x] Decide the mechanism before the values (one source of truth;
       decided 2026-11-11, F2: docs/claude/spacing.md; to carry out:
       the rule into make_italic.py and make_bold.py, K y by hand; done
@@ -482,11 +503,22 @@ and Cyrillic are already measured per style; Latin is not.
 
 Model: Opus for the default's change in space_figures.py, Sonnet for the rest.
 
-- [ ] Decide the default: today lining and tabular, so dates and numbers
+- [x] Decide the default: today lining and tabular, so dates and numbers
       in running text set loose, most of all in the italics. Recommended:
       proportional lining by default, `tnum` for tables (a change in
       `scripts/space_figures.py`'s generated block and in README's feature
       table; old documents reflow, so before 0.900 or never).
+      Decided 2026-11-14 by the designer: proportional, as the Didot kin
+      (GFS Didot, Bodoni Moda, Libre Bodoni; Charis, Libertinus, EB
+      Garamond and Old Standard default to tabular). The default glyphs
+      are the proportional ones (the .pf gone), zero.tf ... the tabular
+      ones, centred in the 0's width (the Regular's tabular 1 7 5 moved
+      15-27 units from where they were drawn in the cell). The optical fit
+      left the 1's and 4's foot serifs outside the advance (11 41 fused,
+      H1 touched; so under pnum since it was made): a floor across the
+      foot band, I's mean side, chosen on
+      `proofs/figures-feet-2026-11-14.pdf` (Regular 1 629 -> 876, 4 852 ->
+      936, 2 +32). Sheet of the change: `proofs/figures-proportional-2026-11-14.pdf`.
 - [ ] Italic lining figures against the italic capitals: `1` stem 188
       against `n` about 175 across; they read darker than the words
       around them in lowercase text. Compare with H's stems on a

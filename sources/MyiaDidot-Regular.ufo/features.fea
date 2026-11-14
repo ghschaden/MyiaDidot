@@ -6213,32 +6213,52 @@ lookup lnumLiningFigures {
     sub \sevenoldstyle by \seven;
     sub \eightoldstyle by \eight;
     sub \nineoldstyle by \nine;
-    sub \zerooldstyle.tf by \zero;
-    sub \oneoldstyle.tf by \one;
-    sub \twooldstyle.tf by \two;
-    sub \threeoldstyle.tf by \three;
-    sub \fouroldstyle.tf by \four;
-    sub \fiveoldstyle.tf by \five;
-    sub \sixoldstyle.tf by \six;
-    sub \sevenoldstyle.tf by \seven;
-    sub \eightoldstyle.tf by \eight;
-    sub \nineoldstyle.tf by \nine;
+    sub \zerooldstyle.tf by \zero.tf;
+    sub \oneoldstyle.tf by \one.tf;
+    sub \twooldstyle.tf by \two.tf;
+    sub \threeoldstyle.tf by \three.tf;
+    sub \fouroldstyle.tf by \four.tf;
+    sub \fiveoldstyle.tf by \five.tf;
+    sub \sixoldstyle.tf by \six.tf;
+    sub \sevenoldstyle.tf by \seven.tf;
+    sub \eightoldstyle.tf by \eight.tf;
+    sub \nineoldstyle.tf by \nine.tf;
 } lnumLiningFigures;
 
 lookup pnumProportionalFigures {
-    sub \zero by \zero.pf;
-    sub \one by \one.pf;
-    sub \two by \two.pf;
-    sub \three by \three.pf;
-    sub \four by \four.pf;
-    sub \five by \five.pf;
-    sub \six by \six.pf;
-    sub \seven by \seven.pf;
-    sub \eight by \eight.pf;
-    sub \nine by \nine.pf;
+    sub \zero.tf by \zero;
+    sub \one.tf by \one;
+    sub \two.tf by \two;
+    sub \three.tf by \three;
+    sub \four.tf by \four;
+    sub \five.tf by \five;
+    sub \six.tf by \six;
+    sub \seven.tf by \seven;
+    sub \eight.tf by \eight;
+    sub \nine.tf by \nine;
+    sub \zerooldstyle.tf by \zerooldstyle;
+    sub \oneoldstyle.tf by \oneoldstyle;
+    sub \twooldstyle.tf by \twooldstyle;
+    sub \threeoldstyle.tf by \threeoldstyle;
+    sub \fouroldstyle.tf by \fouroldstyle;
+    sub \fiveoldstyle.tf by \fiveoldstyle;
+    sub \sixoldstyle.tf by \sixoldstyle;
+    sub \sevenoldstyle.tf by \sevenoldstyle;
+    sub \eightoldstyle.tf by \eightoldstyle;
+    sub \nineoldstyle.tf by \nineoldstyle;
 } pnumProportionalFigures;
 
-lookup tnumOldstyleFigures {
+lookup tnumTabularFigures {
+    sub \zero by \zero.tf;
+    sub \one by \one.tf;
+    sub \two by \two.tf;
+    sub \three by \three.tf;
+    sub \four by \four.tf;
+    sub \five by \five.tf;
+    sub \six by \six.tf;
+    sub \seven by \seven.tf;
+    sub \eight by \eight.tf;
+    sub \nine by \nine.tf;
     sub \zerooldstyle by \zerooldstyle.tf;
     sub \oneoldstyle by \oneoldstyle.tf;
     sub \twooldstyle by \twooldstyle.tf;
@@ -6249,21 +6269,11 @@ lookup tnumOldstyleFigures {
     sub \sevenoldstyle by \sevenoldstyle.tf;
     sub \eightoldstyle by \eightoldstyle.tf;
     sub \nineoldstyle by \nineoldstyle.tf;
-    sub \zero.pf by \zero;
-    sub \one.pf by \one;
-    sub \two.pf by \two;
-    sub \three.pf by \three;
-    sub \four.pf by \four;
-    sub \five.pf by \five;
-    sub \six.pf by \six;
-    sub \seven.pf by \seven;
-    sub \eight.pf by \eight;
-    sub \nine.pf by \nine;
-} tnumOldstyleFigures;
+} tnumTabularFigures;
 
 lookup zeroSlashedZero {
     sub \zero by \zero.zero;
-    sub \zero.pf by \zero.zero.pf;
+    sub \zero.tf by \zero.zero.tf;
     sub \zerooldstyle by \zerooldstyle.zero;
     sub \zerooldstyle.tf by \zerooldstyle.zero.tf;
 } zeroSlashedZero;
@@ -6277,7 +6287,7 @@ feature pnum {
 } pnum;
 
 feature tnum {
-    lookup tnumOldstyleFigures;
+    lookup tnumTabularFigures;
 } tnum;
 
 feature zero {
