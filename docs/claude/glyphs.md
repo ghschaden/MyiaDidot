@@ -5,7 +5,11 @@ Moved from CLAUDE.md (its ground rules apply).
 - Composites are generated: `scripts/composites.py` (anchor-driven, follows
   upstream's accent conventions). After moving an anchor, rerun the builder
   for the affected composites rather than hand-editing offsets. Upstream's
-  deliberate special designs are in `SPECIAL` there. Where a precomposed
+  deliberate special designs are in `SPECIAL` there. The digraphs Ǆ-ǌ Ǳ-ǳ
+  (`DIGRAPHS`) are their two letters side by side, the second at the
+  first's advance plus the pair's kerning in that style (as IJ ij);
+  their sides kern as their letters (kern_groups.ALIKE), their small caps
+  are the two small caps so set (smallcaps.py). Where a precomposed
   letter is drawn otherwise than its decomposition places the marks
   (polytonic Greek, the capital breve), `scripts/nfd_compose.py` composes
   the decomposed form back in ccmp (a generated block in the Regular's

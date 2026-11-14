@@ -45,6 +45,12 @@ SLACK = 3  # units a letter may come nearer than its model (rounding, a serif's 
 # style by joining (Ʋ ʋ), and letters that set with the model's script or
 # alone. Sides reviewed and left out: kern_coverage.KEPT_OUT.
 ALIKE = {
+    # the digraphs (composites.DIGRAPHS): their left side the first
+    # letter's, their right side the second's
+    "uni01C4": ("Zcaron", "D"), "uni01C5": ("zcaron", "D"), "uni01C6": ("zcaron", "d"),  # Ǆ ǅ ǆ
+    "uni01C7": ("J", "L"), "uni01C8": ("j", "L"), "uni01C9": ("j", "l"),  # Ǉ ǈ ǉ
+    "uni01CA": ("J", "N"), "uni01CB": ("j", "N"), "uni01CC": ("j", "n"),  # Ǌ ǋ ǌ
+    "uni01F1": ("Z", "D"), "uni01F2": ("z", "D"), "uni01F3": ("z", "d"),  # Ǳ ǲ ǳ
     # Cyrillic letters drawn as the Latin or Cyrillic ones
     "uni0405": ("S", "S"),  # Ѕ
     "uni0456": ("i", "i"),  # і

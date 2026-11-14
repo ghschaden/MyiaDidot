@@ -60,6 +60,12 @@ HORN_GAP = 50
 HORN_FIT = 24
 
 
+# the Latin digraphs (Croatian, Serbian Latin, Slovak/Macedonian dz) made of
+# their two letters (Builder.digraph); IJ ij stay as drawn
+DIGRAPHS = {0x01C4, 0x01C5, 0x01C6, 0x01C7, 0x01C8, 0x01C9, 0x01CA, 0x01CB, 0x01CC,
+            0x01F1, 0x01F2, 0x01F3}
+
+
 @dataclass
 class Placed:
     glyph: str  # glyph used as component
@@ -81,6 +87,7 @@ class Recipe:
 class Builder:
     def __init__(self, font):
         self.font = font
+        self._kern = None
         self.cmap = {}
         for g in font:
             for u in g.unicodes:
@@ -178,7 +185,10 @@ class Builder:
     # -- recipe ------------------------------------------------------------
 
     def recipe(self, cp):
-        """The composite for code point cp, from its canonical decomposition."""
+        """The composite for code point cp, from its canonical decomposition
+        (a DIGRAPHS letter: from its compatibility one, digraph())."""
+        if cp in DIGRAPHS:
+            return self.digraph(cp)
         nfd = unicodedata.normalize("NFD", chr(cp))
         if len(nfd) < 2:
             raise ValueError(f"U+{cp:04X} has no decomposition")
@@ -191,6 +201,24 @@ class Builder:
                 raise ValueError(f"U+{cp:04X}: mark U+{ord(m):04X} missing")
             marks.append(self.cmap[ord(m)])
         return self.compose(f"uni{cp:04X}", cp, base, marks, label=f"U+{cp:04X}")
+
+    def digraph(self, cp):
+        """Ǆ ǅ ǆ Ǉ ... ǳ: its two letters (NFKC) side by side as they set
+        in text, the second at the first's advance plus their kerning in
+        this font (so each style places them by its own widths and
+        kerning), as IJ and ij are made."""
+        a, b = (self.cmap.get(ord(c)) for c in unicodedata.normalize("NFKC", chr(cp)))
+        if a is None or b is None:
+            raise ValueError(f"U+{cp:04X}: a letter of its digraph is missing")
+        if self._kern is None:
+            from kern_clear import kern_lookup
+
+            self._kern = kern_lookup(self.font)[0]
+        k = next((self.font.kerning[x] for x in self._kern(a, b) if x in self.font.kerning), 0)
+        dx = self.font[a].width + k
+        r = Recipe(f"uni{cp:04X}", cp, a, dx + self.font[b].width)
+        r.components += [Placed(a, 0, 0), Placed(b, dx, 0)]
+        return r
 
     def compose(self, name, cp, base, marks, label=None, upper=None):
         """A composite of base glyph + combining mark glyphs (any base, encoded or not).

@@ -405,10 +405,11 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
           40 of (î 184, ï 82, ľ 83 now); ǐ ĭ ȉ kerned apart (ȉ +146).
           Left: f.short takes f's glyph kerning only through kern_clear
           (t f -45 is not t f.short).
-    - [ ] pinyin ǖ ǚ ǜ Ǖ Ǚ Ǜ are missing (Ǘ ǘ are there): composites
-          for scripts/coverage.py's TARGET.
+    - [x] pinyin ǖ ǚ ǜ Ǖ Ǚ Ǜ are missing (Ǘ ǘ are there): composites
+          (not in scripts/coverage.py's TARGET, as it turned out). Done
+          2026-11-14 with the batch of phase 11's composed letters.
 
-- [ ] `Wo` (the designer, 2026-11-13): the gap looks too big. W's own
+- [~] `Wo` (the designer, 2026-11-13): the gap looks too big. W's own
       group (3017a0aa, W apart from V) set W o/e/c at -60 (Bold -62) from
       V's -192 (Wa -160 -> -20). Nearest ink, units at Myia's cap height:
       Regular W o 395 (V o 392; Libertinus 342, Charis 389, Old Standard
@@ -417,6 +418,14 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       the reference rule; the upright's look is W's open area, which
       nearest ink does not see: a sheet of W o e a at -60/-100/-140 to
       choose on.
+      Chosen 2026-11-14 on `proofs/w-lowercase-2026-11-14.pdf`: W c -140,
+      W a -80, W u -80 (the Bold x1.04, the italics by the rule).
+
+- [x] Qu (dlig Q_u), the tail below the O: a redesign asked of Fable
+      (2026-11-14: steeper neck, the swash leaving level at the crotch,
+      thinning to a hairline needle; with and without an upturned end),
+      set beside the present one on `proofs/qu-tail-2026-11-14.pdf`. The
+      designer kept the present tail (QU_TAIL unchanged).
 
 ## Phase 3: the italics' own kerning
 
@@ -868,8 +877,28 @@ Aim: full IPA and Latin as wide as Charis SIL's (Latin 654 of 980 code
 points, IPA and phonetic 133 of 368).
 
 - [ ] Add the next set to `scripts/coverage.py` TARGET before drawing.
-- [ ] Letters that compose from existing glyphs: Ẁ ẁ Ẃ ẃ Ẅ ẅ Ỳ ỳ, the
+- [x] Letters that compose from existing glyphs: Ẁ ẁ Ẃ ẃ Ẅ ẅ Ỳ ỳ, the
       Irish dotted Ḃ ḃ Ḟ ḟ Ṁ ṁ Ṗ ṗ, Ǆ-ǌ, ḁ ḉ ḝ.
+      Done 2026-11-14, before the release at the designer's wish: 86 of the
+      88 Latin letters Charis has that compose from Myia's glyphs (Ǖ-ǜ Ǟ-ǡ
+      Ǵ ǵ, the inverted breve and double grave ones, Ḃ-ẙ, ẛ on ſ with f's
+      anchors) and the 12 digraphs Ǆ-ǌ Ǳ-ǳ (composites.DIGRAPHS: two
+      letters at their kerning; kern_groups.ALIKE; smallcaps ǆ.sc ...).
+      Left: the 32 Cyrillic ones (ӑ ӓ ӛ ...: outside basic Cyrillic).
+- [ ] ḑ (Livonian; U+1E11) left out of that batch (the designer,
+      2026-11-14): on d's Bottom anchor (between bowl and stem) the
+      cedilla's square top steps out of the bowl's thin bottom (5-23 units
+      in every style); a Cedilla anchor at the bowl's lowest point mends
+      the Regular, but the Italic takes its anchors from Old Standard's
+      Bottom (data_italic.ANCHOR_SOURCES) and the Bold's bowl still lets
+      the corner out. Needs d's own Cedilla anchor in every style and the
+      cedilla's top fitted to the bowl. Ḑ waits with it (fontbakery's
+      case_mapping: a capital without its lowercase).
+- [ ] kern_clear's guard: a guarded letter's exception to a group is set by
+      the group's tightest member, so a new tall member loosens all of it:
+      with ǟ ǡ in a's group the italics' Ɐ a went from -112 to -78 (Ɐ á æ
+      ą ... with it; accepted by the designer 2026-11-14, Ɐ is rare). The
+      tall member should take its own exception instead.
 - [ ] Letters derived like ɢ ʙ: the Uralic small capitals ᴀ ᴄ ᴆ ᴇ ...;
       then the rest of IPA, extIPA and the phonetic blocks, in the
       Regular first, each style from its own final base.

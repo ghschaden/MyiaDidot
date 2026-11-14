@@ -409,6 +409,28 @@ def build_specials(font, log, failed):
         jdx = next((c.transformation[4] for c in ij.components if c.baseGlyph == "J"), font["I"].width)
         dx = round(jdx * font["i.sc"].width / font["I"].width)
         new_glyph(font, "ij.sc", dx + font["j.sc"].width, [("i.sc", 0, 0), ("j.sc", dx, 0)])
+    # the digraphs (composites.DIGRAPHS: ǆ ǉ ǌ ǳ, their capital and
+    # titlecase forms reach them by lower_of): the two small caps side by
+    # side, the second at the first's advance plus their kerning, as the
+    # digraph itself is made
+    from composites import DIGRAPHS
+
+    keys = None
+    for cp in sorted(DIGRAPHS):
+        c = chr(cp)
+        if unicodedata.category(c) != "Ll" or cp not in b.cmap:
+            continue
+        a, z = (b.cmap.get(ord(x)) for x in unicodedata.normalize("NFKC", c))
+        if a is None or z is None or not need(f"{a}.sc", f"{z}.sc"):
+            continue
+        if keys is None:
+            from kern_clear import kern_lookup
+
+            keys = kern_lookup(font)[0]
+        a, z = f"{a}.sc", f"{z}.sc"
+        k = next((font.kerning[x] for x in keys(a, z) if x in font.kerning), 0)
+        dx = font[a].width + k
+        new_glyph(font, f"{b.cmap[cp]}.sc", dx + font[z].width, [(a, 0, 0), (z, dx, 0)])
 
     # Latvian/Livonian comma below, Lcaron's apostrophe: mirror the capital.
     for cap in ("Gcommaaccent", "Kcommaaccent", "Lcommaaccent", "Ncommaaccent", "Rcommaaccent"):
