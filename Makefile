@@ -115,6 +115,7 @@ proof:
 .PHONY: _proof
 _proof: $(OTF) build/reference/TheanoDidot-Regular.otf
 	@mkdir -p build/proofs
+	$(PY) scripts/proof_buildinfo.py
 	$(PY) scripts/charset_proof.py fonts/otf/$(FAMILY)-Regular.otf build/proofs/charset.tex \
 	    --baseline build/reference/TheanoDidot-Regular.otf
 	for s in Italic Bold BoldItalic; do \
@@ -130,9 +131,10 @@ _proof: $(OTF) build/reference/TheanoDidot-Regular.otf
 	    smallcaps-review-Italic drafts-review-Italic smallcaps-review-Bold drafts-review-Bold \
 	    smallcaps-review-BoldItalic drafts-review-BoldItalic; do \
 	    lualatex -halt-on-error -interaction=nonstopmode $$t.tex >/dev/null; done
-	cd proofs && for t in proof smallcaps samples textpages; do \
+	# samples and specimen twice: their contents lists
+	cd proofs && for t in proof smallcaps samples textpages specimen samples specimen; do \
 	    lualatex -halt-on-error -interaction=nonstopmode --output-directory=../build/proofs $$t.tex >/dev/null; done
-	@echo "proofs: build/proofs/{charset,charset-Italic,charset-Bold,charset-BoldItalic,proof,samples,textpages,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-{Italic,Bold,BoldItalic}.pdf"
+	@echo "proofs: build/proofs/{charset,charset-Italic,charset-Bold,charset-BoldItalic,proof,samples,textpages,specimen,smallcaps,smallcaps-review,drafts-review}.pdf, *-review-{Italic,Bold,BoldItalic}.pdf"
 
 proof-svg: $(OTF)
 	$(PY) scripts/proof_svg.py $(OTF) --out build/proofs/ci

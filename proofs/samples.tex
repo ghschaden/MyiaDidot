@@ -12,13 +12,31 @@
 \newcommand\allsc[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1}}
 \newcommand\lang[2]{{\addfontfeature{Language=#1}#2}}
 \newfontlanguage{IPA}{IPPH}
-\newcommand\head[1]{\par\bigskip{\large\allsc{#1}}\par\smallskip}
+% a heading never stands alone at a page's foot; it goes into the contents
+\newcommand\head[1]{\par\needspace{6\baselineskip}\bigskip
+  \phantomsection\addcontentsline{toc}{section}{#1}{\large\allsc{#1}}\par\smallskip\nopagebreak}
+% a block that stays on one page (a language with its four styles)
+\newenvironment{keep}{\par\noindent\begin{minipage}{\linewidth}\setlength{\parskip}{5pt}}{\end{minipage}\par\medskip}
 \newcommand\bi[1]{{\bfseries\itshape #1}\par}
 \newcommand\lng[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1.}\enspace}
 \setlength{\parindent}{1.2em}
 \linespread{1.08}
-\pagestyle{empty}
+% page numbers and the build (date, commit: written by `make proof`), so a
+% review note can name the page of the very PDF it was made on
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\InputIfFileExists{../build/proofs/buildinfo.tex}{}{\def\buildinfo{unversioned build}}
+\pagestyle{fancy}\fancyhf{}\renewcommand\headrulewidth{0pt}
+\fancyfoot[L]{\footnotesize\addfontfeature{Numbers=Lining}Myia Didot · samples · \buildinfo}
+\fancyfoot[R]{\footnotesize\addfontfeature{Numbers=Lining}\thepage}
+\renewcommand\contentsname{\allsc{Samples}}
 \begin{document}
+\thispagestyle{fancy}
+{\Huge Myia Didot}\par\medskip{\large\smc{samples, a diagnostic specimen}}\par\bigskip
+\begingroup\setlength{\parskip}{2pt}\tableofcontents\endgroup
+\clearpage
+\phantomsection\addcontentsline{toc}{section}{A book page}
 
 % -- 1. a book page ---------------------------------------------------------
 \begin{center}
@@ -58,77 +76,78 @@ j’étais moi-même ce dont parlait l’ouvrage : une église, un quatuor, la
 rivalité de François~I\textsuperscript{er} et de Charles-Quint.}
 \endgroup
 
-\newpage
+\clearpage
 % -- 2. one text, many languages -------------------------------------------
+\phantomsection\addcontentsline{toc}{section}{Universal Declaration, Article 1, in many languages}
 \begin{center}{\large\allsc{Universal Declaration of Human Rights, Article 1}}\end{center}
 \setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
 
-\lng{English} All human beings are born free and equal in dignity and
+\begin{keep}\lng{English} All human beings are born free and equal in dignity and
 rights. They are endowed with reason and conscience and should act towards one
-another in a spirit of brotherhood.
+another in a spirit of brotherhood.\end{keep}
 
-\lng{Français} \lang{French}{Tous les êtres humains naissent libres et égaux
+\begin{keep}\lng{Français} \lang{French}{Tous les êtres humains naissent libres et égaux
 en dignité et en droits. Ils sont doués de raison et de conscience et doivent
-agir les uns envers les autres dans un esprit de fraternité.}
+agir les uns envers les autres dans un esprit de fraternité.}\end{keep}
 
-\lng{Deutsch} \lang{German}{Alle Menschen sind frei und gleich an Würde und
+\begin{keep}\lng{Deutsch} \lang{German}{Alle Menschen sind frei und gleich an Würde und
 Rechten geboren. Sie sind mit Vernunft und Gewissen begabt und sollen einander
-im Geist der Brüderlichkeit begegnen.}
+im Geist der Brüderlichkeit begegnen.}\end{keep}
 
-\lng{Polski} Wszyscy ludzie rodzą się wolni i równi pod względem swej
+\begin{keep}\lng{Polski} Wszyscy ludzie rodzą się wolni i równi pod względem swej
 godności i swych praw. Są oni obdarzeni rozumem i sumieniem i powinni
-postępować wobec innych w duchu braterstwa.
+postępować wobec innych w duchu braterstwa.\end{keep}
 
-\lng{Čeština} Všichni lidé rodí se svobodní a sobě rovní co do důstojnosti a
-práv. Jsou nadáni rozumem a svědomím a mají spolu jednat v duchu bratrství.
+\begin{keep}\lng{Čeština} Všichni lidé rodí se svobodní a sobě rovní co do důstojnosti a
+práv. Jsou nadáni rozumem a svědomím a mají spolu jednat v duchu bratrství.\end{keep}
 
-\lng{Magyar} Minden emberi lény szabadon születik és egyenlő méltósága és
+\begin{keep}\lng{Magyar} Minden emberi lény szabadon születik és egyenlő méltósága és
 joga van. Az emberek, ésszel és lelkiismerettel bírván, egymással szemben
-testvéri szellemben kell hogy viseltessenek.
+testvéri szellemben kell hogy viseltessenek.\end{keep}
 
-\lng{Română} \lang{Romanian}{Toate ființele umane se nasc libere și egale în
+\begin{keep}\lng{Română} \lang{Romanian}{Toate ființele umane se nasc libere și egale în
 demnitate și în drepturi. Ele sunt înzestrate cu rațiune și conștiință și
-trebuie să se comporte unele față de altele în spiritul fraternității.}
+trebuie să se comporte unele față de altele în spiritul fraternității.}\end{keep}
 
-\lng{Lietuvių} Visi žmonės gimsta laisvi ir lygūs savo orumu ir teisėmis.
+\begin{keep}\lng{Lietuvių} Visi žmonės gimsta laisvi ir lygūs savo orumu ir teisėmis.
 Jiems suteiktas protas ir sąžinė ir jie turi elgtis vienas kito atžvilgiu kaip
-broliai.
+broliai.\end{keep}
 
-\lng{Íslenska} Hver maður er borinn frjáls og jafn öðrum að virðingu og
+\begin{keep}\lng{Íslenska} Hver maður er borinn frjáls og jafn öðrum að virðingu og
 réttindum. Menn eru gæddir vitsmunum og samvisku, og ber þeim að breyta
-bróðurlega hverjum við annan.
+bróðurlega hverjum við annan.\end{keep}
 
-\lng{Türkçe} \lang{Turkish}{Bütün insanlar hür, haysiyet ve haklar
+\begin{keep}\lng{Türkçe} \lang{Turkish}{Bütün insanlar hür, haysiyet ve haklar
 bakımından eşit doğarlar. Akıl ve vicdana sahiptirler ve birbirlerine karşı
-kardeşlik zihniyeti ile hareket etmelidirler.}
+kardeşlik zihniyeti ile hareket etmelidirler.}\end{keep}
 
-\lng{Azərbaycanca} \lang{Azeri}{Bütün insanlar ləyaqət və hüquqlarına görə
+\begin{keep}\lng{Azərbaycanca} \lang{Azeri}{Bütün insanlar ləyaqət və hüquqlarına görə
 azad və bərabər doğulurlar. Onların şüurları və vicdanları var və
-bir-birlərinə münasibətdə qardaşlıq ruhunda davranmalıdırlar.}
+bir-birlərinə münasibətdə qardaşlıq ruhunda davranmalıdırlar.}\end{keep}
 
-\lng{Tiếng Việt} \lang{Vietnamese}{Tất cả mọi người sinh ra đều được tự do và
+\begin{keep}\lng{Tiếng Việt} \lang{Vietnamese}{Tất cả mọi người sinh ra đều được tự do và
 bình đẳng về nhân phẩm và quyền. Mọi con người đều được tạo hóa ban cho lý trí
-và lương tâm và cần phải đối xử với nhau trong tình bằng hữu.}
+và lương tâm và cần phải đối xử với nhau trong tình bằng hữu.}\end{keep}
 
-\lng{Ελληνικά} Όλοι οι άνθρωποι γεννιούνται ελεύθεροι και ίσοι στην
+\begin{keep}\lng{Ελληνικά} Όλοι οι άνθρωποι γεννιούνται ελεύθεροι και ίσοι στην
 αξιοπρέπεια και τα δικαιώματα. Είναι προικισμένοι με λογική και συνείδηση, και
-οφείλουν να συμπεριφέρονται μεταξύ τους με πνεύμα αδελφοσύνης.
+οφείλουν να συμπεριφέρονται μεταξύ τους με πνεύμα αδελφοσύνης.\end{keep}
 
-\lng{Русский} Все люди рождаются свободными и равными в своем достоинстве и
+\begin{keep}\lng{Русский} Все люди рождаются свободными и равными в своем достоинстве и
 правах. Они наделены разумом и совестью и должны поступать в отношении друг
-друга в духе братства.
+друга в духе братства.\end{keep}
 
-\lng{Українська} Всі люди народжуються вільними і рівними у своїй гідності
+\begin{keep}\lng{Українська} Всі люди народжуються вільними і рівними у своїй гідності
 та правах. Вони наділені розумом і совістю і повинні діяти у відношенні один
-до одного в дусі братерства.
+до одного в дусі братерства.\end{keep}
 
-\lng{Български} Всички хора се раждат свободни и равни по достойнство и
+\begin{keep}\lng{Български} Всички хора се раждат свободни и равни по достойнство и
 права. Те са надарени с разум и съвест и следва да се отнасят помежду си в дух
-на братство.
+на братство.\end{keep}
 
-\lng{Српски} Сва људска бића рађају се слободна и једнака у достојанству и
+\begin{keep}\lng{Српски} Сва људска бића рађају се слободна и једнака у достојанству и
 правима. Она су обдарена разумом и свешћу и треба једни према другима да
-поступају у духу братства.
+поступају у духу братства.\end{keep}
 
 \smallskip
 \bi{Čeština: Všichni lidé rodí se svobodní · Magyar: Minden emberi lény · Polski: Wszyscy ludzie}
@@ -137,8 +156,11 @@ và lương tâm và cần phải đối xử với nhau trong tình bằng hữ
 \bi{\lang{Vietnamese}{Tiếng Việt: Tất cả mọi người sinh ra đều được tự do và bình đẳng}}
 \bi{Ελληνικά: Όλοι οι άνθρωποι γεννιούνται ελεύθεροι · \lang{Serbian}{Српски: Сва људска бића}}
 
-\newpage
+\clearpage
 % -- 3. Vietnamese at length ---------------------------------------------------
+
+
+\phantomsection\addcontentsline{toc}{section}{Vietnamese: Truyện Kiều}
 \begin{center}{\large\allsc{Truyện Kiều}}\par\smallskip\smc{Nguyễn Du}\end{center}
 \lang{Vietnamese}{%
 \begin{center}
@@ -156,6 +178,7 @@ Những điều trông thấy mà đau đớn lòng.
 \bi{{\Large ấầẩẫậ ắằẳẵặ ếềểễệ ốồổỗộ ớờởỡợ ứừửữự ỳýỷỹỵ đ Đ}}}
 
 % -- 4. African orthographies, IPA ----------------------------------------------
+\clearpage
 \head{African orthographies}
 \lng{Hausa} ƙasa, ɗaki, ɓera, ƴaƴa — Ƙ Ɗ Ɓ Ƴ\quad
 \lng{Ewe} Eʋegbe, ɖevi, ƒe, ɛ, ɔ — Ʋ Ɖ Ƒ Ɛ Ɔ\quad
@@ -190,6 +213,7 @@ kənˈsɪdɚd ˈstɹɔŋɡɚ ðən ðə ˈʌðɚ.\par
 \endgroup
 
 % -- 5. Greek -----------------------------------------------------------------
+\clearpage
 \head{Greek}
 Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.
 Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον, ὃς μάλα πολλὰ πλάγχθη, ἐπεὶ Τροίης ἱερὸν
@@ -203,8 +227,9 @@ kənˈsɪdɚd ˈstɹɔŋɡɚ ðən ðə ˈʌðɚ.\par
 \bi{Съешь же ещё этих мягких французских булок, да выпей чаю.}
 \bi{Всі люди народжуються вільними · Всички хора се раждат свободни · Сва људска бића · ң җ қ ҷ}
 
-\newpage
+\clearpage
 % -- 6. features --------------------------------------------------------------
+\clearpage
 \head{Small capitals}
 The \smc{unesco} report of 1954 and the \allsc{NATO} archives; \smc{Firmin
 Didot} cut his types in Paris, \smc{Johann Friedrich Unger} in Berlin.
@@ -233,7 +258,7 @@ Metrics: ⏑ ⏒ ⏓ ⏔ ⏕ ⏖ ⏗ ⏘ ⏙\par
 \bi{Currencies: 1 € · £ 2 · \$ 3 · ¥ 4 · ₹ 50 · ₺ 20 · ₴ 100 · ₼ 5 · ₾ 10 · ₪ 30 · ₦ 15 · ₩ 1000 · ₿ 0.1}
 
 % -- 7. waterfall --------------------------------------------------------------
-\newpage
+\clearpage
 % -- 7. the Bold ---------------------------------------------------------------
 \head{Regular, Italic, Bold and Bold Italic}
 \def\both#1{#1\par{\itshape #1}\par{\bfseries #1}\par{\bfseries\itshape #1}\par\medskip}
@@ -264,7 +289,7 @@ Bold Italic in running text: the \textbf{\emph{Dictionnaire de l’Académie}} o
 {\fontsize{48}{52}\selectfont Ẫ Ợ ẞ Ж Ω \& Ǯ}
 
 % -- 8. the Bold Italic at length, and the four styles against each other ------
-\newpage
+\clearpage
 \head{Bold Italic at length}
 \begingroup\osf\bfseries\itshape
 When the Didot family set up their presses in Paris in the last decades of the
@@ -302,7 +327,7 @@ a designer of type, and his first concern was not the shape of the letters but
 the way they were measured.
 \endgroup
 
-\newpage
+\clearpage
 \head{The four styles at 11 and 24 point}
 \raggedright
 \def\sampleline{Hamburgefonstiv Dictionnaire de l’Académie Zeitgeist à propos 1450}
@@ -315,11 +340,11 @@ A roman line with an \emph{italic word}, a \textbf{\emph{bold italic word}} and 
 \textbf{bold word}: the \emph{Encyclopédie}, the \textbf{\emph{Dictionnaire de
 l’Académie}} and the \textbf{Code civil} of \textbf{\emph{1804}} on one shelf.
 
-\newpage
+\clearpage
 \head{Pangrams in many languages, each in the four styles}
-\newcommand\pg[3]{{\par\addfontfeature{Language=#1}\fontsize{13}{16}\selectfont\raggedright
+\newcommand\pg[3]{\begin{keep}\addfontfeature{Language=#1}\fontsize{13}{16}\selectfont\raggedright
   \textsc{\small #2}\par
-  #3\par{\itshape #3}\par{\bfseries #3}\par{\bfseries\itshape #3}\par}\medskip}
+  #3\par{\itshape #3}\par{\bfseries #3}\par{\bfseries\itshape #3}\par\end{keep}}
 \raggedright
 {\small Kerning check: every line below is also a test of the kerning, pair by pair; first the pairs found unkerned or off the references.}\par\medskip
 \def\kp{Ty Tw To Te Va Vo AV AT AY LT LV Kr Ra Gi Wo Yo Fa Pa 7. 4, 1. A“ “A L“ ’s »W W« T» V» “Y ‘A D” D’ AW Av Aw Ay Rv Ry RO}

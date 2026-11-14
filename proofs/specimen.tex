@@ -1,0 +1,170 @@
+% The showcase: the family as a reader or a designer meets it first. A cover,
+% the alphabets, sizes, the OpenType features each shown off and on, the
+% scripts, and two book pages. samples.tex is the diagnostic specimen
+% (coverage, the four styles line by line), textpages.tex the long reading
+% one; this one is for looking at.
+%   lualatex --output-directory=build/proofs proofs/specimen.tex   (twice; or make proof)
+\documentclass[11pt]{article}
+\usepackage[a4paper,top=22mm,bottom=26mm,inner=24mm,outer=24mm]{geometry}
+\usepackage{fontspec}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\defaultfontfeatures{Path=../fonts/otf/, Renderer=HarfBuzz}
+\setmainfont{MyiaDidot-Regular.otf}[BoldFont=MyiaDidot-Bold.otf, ItalicFont=MyiaDidot-Italic.otf,
+  BoldItalicFont=MyiaDidot-BoldItalic.otf]
+\newfontfamily\R{MyiaDidot-Regular.otf}
+\newfontfamily\I{MyiaDidot-Italic.otf}
+\newfontfamily\B{MyiaDidot-Bold.otf}
+\newfontfamily\BI{MyiaDidot-BoldItalic.otf}
+\newcommand\smc[1]{{\addfontfeature{Letters=SmallCaps}#1}}
+\newcommand\allsc[1]{{\addfontfeature{Letters={SmallCaps,UppercaseSmallCaps}}#1}}
+\newcommand\feat[2]{{\addfontfeature{RawFeature=#1}#2}}
+\newcommand\lang[2]{{\addfontfeature{Language=#1}#2}}
+\newcommand\cyr[2]{{\addfontfeature{Script=Cyrillic,Language=#1}#2}}
+\newfontlanguage{IPA}{IPPH}
+\newcommand\sz[2]{\fontsize{#1}{#2}\selectfont}
+\InputIfFileExists{../build/proofs/buildinfo.tex}{}{\def\buildinfo{unversioned build}}
+\pagestyle{fancy}\fancyhf{}\renewcommand\headrulewidth{0pt}
+\fancyhead[R]{\footnotesize\allsc{\leftmark}}
+\fancyfoot[L]{\footnotesize Myia Didot · specimen · \buildinfo}
+\fancyfoot[R]{\footnotesize\thepage}
+% a part of the specimen: a new page, its name in the running head and the contents
+\newcommand\spart[1]{\clearpage\markboth{#1}{#1}\phantomsection\addcontentsline{toc}{section}{#1}%
+  {\sz{9}{11}\allsc{Myia Didot}}\par\vspace{2pt}{\sz{26}{30}#1}\par\vspace{18pt}}
+\newcommand\sub[1]{\par\needspace{5\baselineskip}\vspace{12pt}{\sz{9}{11}\allsc{#1}}\par\vspace{4pt}\nopagebreak}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.1}
+\begin{document}
+
+% -- cover --------------------------------------------------------------------
+\thispagestyle{empty}
+\vspace*{30mm}
+{\sz{96}{96}Myia Didot}\par\vspace{10mm}
+{\sz{20}{26}A Didot for text, in four styles, with real small capitals,\\
+for Latin, Greek and Cyrillic}\par\vspace{18mm}
+{\sz{30}{40}\R Regular\par\I Italic\par\B Bold\par\BI Bold Italic\par}
+\vfill
+{\sz{12}{16}\allsc{Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj}\quad Ἀα Ββ Γγ Δδ\quad Жж Щщ Яя\par}
+\vspace{6mm}
+{\footnotesize A fork of Theano Didot (Alexey Kryukov), its italics after Old Standard;
+SIL Open Font License 1.1.\par \buildinfo\par}
+\clearpage
+
+\thispagestyle{fancy}\markboth{Contents}{Contents}
+{\sz{26}{30}Contents}\par\vspace{12pt}
+\begingroup\renewcommand\contentsname{}\vspace*{-36pt}\tableofcontents\endgroup
+
+% -- the four styles at display size --------------------------------------------
+\spart{The four styles}
+\newcommand\four[1]{{\R #1}\par{\I #1}\par{\B #1}\par{\BI #1}\par}
+{\sz{40}{46}\four{Hamburgefonstiv}}
+\vspace{10pt}
+{\sz{17}{21}\four{ABCDEFGHIJKLMNOPQRSTUVWXYZ}}
+\vspace{6pt}
+{\sz{17}{21}\four{abcdefghijklmnopqrstuvwxyz ß ﬁ ﬂ}}
+\vspace{6pt}
+{\sz{17}{21}\four{\allsc{Small capitals ÆŒÐÞ} 0123456789 {\addfontfeature{Numbers=OldStyle}0123456789}}}
+\vspace{6pt}
+{\sz{17}{21}\four{\&?!¿¡«»“”‘’()[]\{\}§¶†‡€\$£¥\%‰}}
+
+% -- sizes ----------------------------------------------------------------------
+\spart{From display to footnote}
+\newcommand\wf[3]{{\sz{#1}{#2}#3}\par\vspace{2pt}}
+\wf{72}{78}{Didot}
+\wf{48}{54}{Imprimerie royale}
+\wf{36}{42}{\I Le point typographique}
+\wf{28}{33}{Firmin Didot, graveur, 1784}
+\wf{20}{24}{\B The contrast between thick and thin strokes}
+\wf{16}{20}{Ὅμηρος, Ἰλιάς · Война и мир · Łódź · Ærøskøbing · Hồ Chí Minh}
+\wf{14}{17}{It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.}
+\wf{12}{15}{It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.}
+\wf{10.5}{13.5}{It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families.}
+\wf{9}{11.5}{It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters.}
+\wf{7}{9}{It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters.}
+
+% -- features -------------------------------------------------------------------
+\spart{OpenType features}
+{\sz{10}{13}Each line: the text as typed, then with the feature on.}\par\vspace{10pt}
+\newcommand\frow[3]{\texttt{\footnotesize #1} & #2 & #3\\[5pt]}
+\begingroup\sz{14}{18}
+\begin{tabular}{@{}>{\raggedright}p{14mm}p{68mm}p{70mm}@{}}
+\frow{smcp}{The Didot family in Paris}{\smc{The Didot family in Paris}}
+\frow{c2sc}{UNESCO and NATO}{\allsc{UNESCO and NATO}}
+\frow{onum}{in 1784, 1798 and 1801}{\feat{+onum}{in 1784, 1798 and 1801}}
+\frow{pnum}{1111 · 1789 · 2026}{\feat{+pnum}{1111 · 1789 · 2026}}
+\frow{frac}{1/2 3/4 22/7}{\feat{+frac}{1/2 3/4 22/7}}
+\frow{sups}{E = mc2, H2O, x3}{E = mc\feat{+sups}{2}, H\feat{+subs}{2}O, x\feat{+sups}{3}}
+\frow{zero}{0 1 0 1}{\feat{+zero}{0 1 0 1}}
+\frow{case}{¿(¡HOLA!)? «ABC» – [X]}{\feat{+case}{¿(¡HOLA!)? «ABC» – [X]}}
+\frow{liga}{\feat{-liga}{fi fl ff ffi ffl fb fk}}{fi fl ff ffi ffl fb fk}
+\frow{dlig}{act aspect Quand The}{\feat{+dlig}{act aspect Quand The}}
+\frow{hist}{Kunst ist lang}{\feat{+hist}{Kunst ist lang}}
+\frow{calt}{\feat{-calt}{fît naïf fľaša}}{fît naïf fľaša}
+\frow{ss01}{Ş ş Ţ ţ}{\feat{+ss01}{Ş ş Ţ ţ}}
+\frow{ss02}{\allsc{STRAẞE, Maß}}{\feat{+ss02}{\allsc{STRAẞE, Maß}}}
+\frow{locl}{{\I\cyr{Russian}{бгдпт}} (Russian)}{{\I\cyr{Serbian}{бгдпт}} (Serbian)}
+\frow{locl}{fi Íjssel (English)}{\lang{Turkish}{fi} (Turkish) \lang{Dutch}{ÍJssel} (Dutch)}
+\frow{cpsp}{\feat{-cpsp}{TYPOGRAPHIE}}{TYPOGRAPHIE}
+\end{tabular}
+\endgroup
+
+% -- scripts --------------------------------------------------------------------
+\spart{Latin, Greek, Cyrillic}
+\sub{Latin, with Vietnamese and African orthographies}
+{\sz{13}{17}Tous les êtres humains naissent libres et égaux en dignité et en droits.
+Wszyscy ludzie rodzą się wolni i równi. Árvíztűrő tükörfúrógép. Pijamalı hasta
+yağız şoföre çabucak güvendi. Tất cả mọi người sinh ra đều được tự do và bình đẳng
+về nhân phẩm và quyền. Hausa: ƙasa, ɗaki, ɓera; Ewe: Eʋegbe, ɖevi, ƒe, ɛ, ɔ.\par}
+\sub{Greek, monotonic and polytonic}
+{\sz{13}{17}Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν. Ἄνδρα μοι ἔννεπε,
+Μοῦσα, πολύτροπον, ὃς μάλα πολλὰ πλάγχθη. Όλοι οι άνθρωποι γεννιούνται ελεύθεροι
+και ίσοι στην αξιοπρέπεια και τα δικαιώματα. {\I Ἡ Ὀδύσσεια τοῦ Ὁμήρου.}\par}
+\sub{Cyrillic, with Bulgarian and Serbian forms}
+{\sz{13}{17}Все люди рождаются свободными и равными в своём достоинстве и правах.
+Всі люди народжуються вільними. {\I Съешь же ещё этих мягких французских булок.}
+\cyr{Bulgarian}{Всички хора се раждат свободни} · {\I\cyr{Serbian}{Сва људска бића рађају се слободна.}}\par}
+\sub{Phonetics}
+{\sz{13}{17}\lang{IPA}{ðə ˈnɔɹθ ˌwɪnd ən ðə ˈsʌn wɚ dɪˈspjutɪŋ ˈwɪtʃ wəz ðə ˈstɹɔŋɡɚ ·
+ɓ ɗ ʄ ɠ ʛ ɖ ɭ ɳ ɽ ʈ ʂ ʐ ɻ ʃ ʒ ɕ ʑ ɸ β θ ð χ ʁ ħ ʕ ʔ ǀ ǁ ǂ ǃ ʘ}\par}
+
+% -- book pages -----------------------------------------------------------------
+\spart{A book page}
+\begin{multicols}{2}
+\sz{10.5}{14}\setlength{\parindent}{1.2em}\addfontfeature{Numbers=OldStyle}
+\smc{When the Didot family} set up their presses in Paris in the last decades
+of the eighteenth century, the printed page in France had already been through
+two hundred years of quiet change, and almost nobody outside the trade noticed
+what happened next. François-Ambroise Didot, the father, was a printer before he
+was a designer of type, and his first concern was not the shape of the letters
+but the way they were measured: the \emph{point Didot}, which he fixed at a
+little more than the English point, gave the founders a common unit, so that a
+line of type cast in one shop would stand true against a line cast in another.
+
+It sounds like a small thing. It was not. A system of sizes that everyone could
+rely on meant that a book could be set from the founts of three different
+foundries without the compositor having to pack every line with slips of card,
+and it meant, too, that the type itself could be made finer, because nothing had
+to be thickened to survive a careless fit.
+
+The son, Firmin, took the next step. His roman, cut in the 1780s and refined for
+twenty years afterwards, pushed the contrast between thick and thin strokes
+further than anyone had dared: the hairlines are almost threads, the serifs flat
+and unbracketed, the stress upright, so that a capital \emph{O} looks less like a
+written circle than like a drawing made with a ruling pen. Readers who were used
+to the warmer letters of Garamond or Caslon found it cold, and some said so in
+print. Others found it exactly right for an age that admired order and clear
+outlines, and the great editions of Virgil, Horace and Racine that came from the
+Didot press between 1798 and 1801 were bought, admired and imitated across
+Europe.
+
+\textbf{The bold} of a Didot is a nineteenth-century idea: the founders who
+followed Didot and Bodoni thickened the stems and left the hairlines thin, so
+that a heading in \textbf{bold} keeps the family's contrast, and a word set in
+\textbf{\emph{bold italic}} still reads as part of the same page.
+\end{multicols}
+
+\end{document}
