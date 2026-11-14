@@ -1,5 +1,9 @@
 # Myia Didot — notes for Codex
 
+**On hold indefinitely (2026-11-14):** the shape grammar is paused and
+its worktree `~/src/MyiaDidot-shapes` is gone. The notes below stay for
+the record and for a later restart; ask the designer before working here.
+
 Two agents work on this repository at the same time, each in its own
 working copy (git worktree) of the same repository:
 

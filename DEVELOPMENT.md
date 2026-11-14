@@ -36,7 +36,7 @@ features or prerequisites already agreed for a particular distribution.
 Codex's research branch (6 commits to f963d62e, about 15,000 lines of
 studies, previews and tests; worktree `~/src/MyiaDidot-shapes`) changes no
 glyph and is not part of a release (decided 2026-11-08). It stays
-unmerged. Its handoff, docs/shape-grammar-handoff-2026-10-31.md, names
+unmerged, and is on hold indefinitely (2026-11-14; the worktree is gone). Its handoff, docs/shape-grammar-handoff-2026-10-31.md, names
 the one production step worth taking after 0.900: the generators writing a
 construction manifest (base, transform and operations per derived
 letter), U→Ɯ and u→ʉ first, built on `main` rather than merged from the

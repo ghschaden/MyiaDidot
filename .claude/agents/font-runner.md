@@ -13,6 +13,23 @@ Rules:
 - Regenerate with `make generate` (it stops with a list if the sync client left "conflicted" files: report them, do not delete or rename anything).
 - Update baselines (`scripts/update_test_data.py --ufo UFO --golden/--digest/--quality/--lint --reason "..."`) only for the styles and kinds you were told, with the reason you were given.
 
+Long commands (a foreground call stops after 10 minutes; `make generate`
+takes 15-20, `make test` 3-5, `make reproduce` a few):
+- Run the whole task as ONE Bash call with `run_in_background: true`: the
+  steps chained in a subshell, each into its own log, each followed by its
+  exit code, e.g.
+  `(make generate > build/X_generate.log 2>&1; echo generate $?; make normalize > build/X_normalize.log 2>&1; echo normalize $?; make test > build/X_test.log 2>&1; echo test $?)`.
+  Use `;` between steps unless told to stop at the first failure (`&&`).
+- Then wait: you are notified when the call ends. Do not poll, do not
+  `sleep`, do not write `until`/`while` loops, do not start a second copy.
+- Never end your turn while a command you started is still running: your
+  report ends you, and ending you kills the command (a half-generated
+  style). If you must stop early, say which step was running and its PID.
+- After the notification, read the exit codes it printed and grep the logs
+  (`grep -E "^(FAILED|ERROR)| passed| failed" build/X_test.log`).
+- A run that seems stuck may be waiting for the test lock (another `make
+  test` or `make reproduce`, or a commit's hook): say so, do not kill it.
+
 Report exactly:
 1. What you ran (one line per command).
 2. The result: passed/failed counts; for failures, the test names and the one assertion line that says why (e.g. which glyphs, which baseline), nothing more.
