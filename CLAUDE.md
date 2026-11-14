@@ -81,6 +81,8 @@ Details by topic, read the one the task touches:
 
 ## Tests
 
+- After changing the Regular: `make check-regular` (a minute or two) before
+  `make generate` (docs/claude/tests.md).
 - `make test` runs on every commit via the pre-commit hook; with
   `make reproduce` a commit can take several minutes: allow the hook to finish. If it times out, run the same commit again (it waits for or
   reuses the run; `MYIA_RECHECK=1` forces one).

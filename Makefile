@@ -17,7 +17,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch collisions generate visual visual-approve diffenator only
+.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch collisions generate visual visual-approve diffenator only check-regular
 
 all: fonts
 
@@ -34,6 +34,15 @@ VALIDATE_LOCK = $(shell cd "$$(git rev-parse --git-common-dir)" && pwd)/myia-val
 
 test:
 	flock $(VALIDATE_LOCK) .venv/bin/pytest -n $(JOBS)
+
+# After a change to the Regular, before `make generate`: its generated parts
+# made again (scripts/regular_steps.py) and its own tests, a minute or two;
+# what only the Regular shows is caught before a 20-minute regeneration.
+# The generated styles' per-style tests are left out (they are made next).
+check-regular:
+	$(PY) scripts/regular_steps.py
+	flock $(VALIDATE_LOCK) .venv/bin/pytest -n $(JOBS) -q -p no:cacheprovider \
+	    -k "not MyiaDidot-Italic and not MyiaDidot-Bold and not test_class_holds_the_measured_letters[Bold]"
 
 # ruff, lint only (no formatter: the recipe tables are aligned by hand)
 lint:

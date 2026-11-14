@@ -9,6 +9,14 @@ Moved from CLAUDE.md (its ground rules apply).
   out anyway, run the same commit again; it waits for the run in progress
   or takes its result (a failure too, without rerunning; `MYIA_RECHECK=1`
   forces a new run). Results and logs: `.git/myia-checks/`.
+- After a change to the Regular, `make check-regular` first (a minute or
+  two): its generated parts made again (scripts/regular_steps.py: the
+  STEPS of tests/test_generated_current.py, then nfd_compose.py) and the
+  tests but the generated styles' own. Only then `make generate`, and
+  after reviewing the baselines commit: the hook runs `make test` and
+  `make reproduce` on the staged tree, so they need not be run by hand
+  as well (2026-11-14: a batch took six 25-minute rounds, five of them
+  failing on what the Regular alone showed).
 - The post-commit hook rebuilds the proofs (`make proof`) in the
   background after commits touching sources, scripts or proofs/: the
   commit built is in `build/proofs/built-from`, the output in
