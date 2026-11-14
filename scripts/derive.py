@@ -64,6 +64,7 @@ from data_regular import (
     ENLARGE_LIKE,
     F_HOOK,  # noqa: F401  (read as derive.F_HOOK elsewhere)
     F_TOP,  # noqa: F401  (read as derive.F_TOP elsewhere)
+    FIGURE_SIDES,  # noqa: F401  (read by space_figures.py; derive re-exports every data name)
     J_TAIL,  # noqa: F401  (read as derive.J_TAIL elsewhere)
     NARROW,
     RECIPES,

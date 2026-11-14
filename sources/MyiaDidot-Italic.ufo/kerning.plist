@@ -2861,11 +2861,6 @@
 			<key>zerosuperior</key>
 			<integer>2</integer>
 		</dict>
-		<key>eight</key>
-		<dict>
-			<key>zerosuperior</key>
-			<integer>22</integer>
-		</dict>
 		<key>eightoldstyle</key>
 		<dict>
 			<key>colon</key>
@@ -3297,11 +3292,6 @@
 			<key>zerosuperior</key>
 			<integer>62</integer>
 		</dict>
-		<key>five</key>
-		<dict>
-			<key>twosuperior</key>
-			<integer>24</integer>
-		</dict>
 		<key>fouroldstyle</key>
 		<dict>
 			<key>bracketright</key>
@@ -3616,21 +3606,6 @@
 			<integer>119</integer>
 			<key>zerosuperior</key>
 			<integer>62</integer>
-		</dict>
-		<key>nine</key>
-		<dict>
-			<key>colon</key>
-			<integer>24</integer>
-			<key>foursuperior</key>
-			<integer>6</integer>
-			<key>semicolon</key>
-			<integer>24</integer>
-			<key>threesuperior</key>
-			<integer>6</integer>
-			<key>twosuperior</key>
-			<integer>10</integer>
-			<key>zerosuperior</key>
-			<integer>6</integer>
 		</dict>
 		<key>parenleft</key>
 		<dict>
@@ -8272,8 +8247,6 @@
 			<integer>478</integer>
 			<key>fi</key>
 			<integer>476</integer>
-			<key>five</key>
-			<integer>10</integer>
 			<key>fiveoldstyle</key>
 			<integer>148</integer>
 			<key>fiveoldstyle.tf</key>
@@ -8284,8 +8257,6 @@
 			<integer>254</integer>
 			<key>florin.sc</key>
 			<integer>492</integer>
-			<key>four</key>
-			<integer>10</integer>
 			<key>fouroldstyle</key>
 			<integer>182</integer>
 			<key>fouroldstyle.tf</key>
@@ -8555,7 +8526,7 @@
 			<key>omicrontonos</key>
 			<integer>64</integer>
 			<key>one</key>
-			<integer>98</integer>
+			<integer>68</integer>
 			<key>oneoldstyle</key>
 			<integer>178</integer>
 			<key>oogonek</key>
@@ -8684,14 +8655,12 @@
 			<integer>80</integer>
 			<key>thorn.sc</key>
 			<integer>254</integer>
-			<key>three</key>
-			<integer>24</integer>
 			<key>threeoldstyle</key>
 			<integer>174</integer>
 			<key>threeoldstyle.tf</key>
 			<integer>18</integer>
 			<key>two</key>
-			<integer>66</integer>
+			<integer>16</integer>
 			<key>twooldstyle</key>
 			<integer>78</integer>
 			<key>u</key>
@@ -11068,34 +11037,22 @@
 		</dict>
 		<key>seven</key>
 		<dict>
-			<key>asterisk</key>
-			<integer>34</integer>
 			<key>eightsuperior</key>
-			<integer>76</integer>
+			<integer>12</integer>
 			<key>ninesuperior</key>
-			<integer>98</integer>
+			<integer>32</integer>
 			<key>ordfeminine</key>
-			<integer>102</integer>
-			<key>ordmasculine</key>
-			<integer>44</integer>
+			<integer>36</integer>
 			<key>question</key>
-			<integer>80</integer>
-			<key>quotedblleft</key>
-			<integer>34</integer>
-			<key>quotedblright</key>
-			<integer>14</integer>
-			<key>quoteright</key>
 			<integer>14</integer>
 			<key>sevensuperior</key>
-			<integer>72</integer>
-			<key>sixsuperior</key>
-			<integer>60</integer>
+			<integer>6</integer>
 			<key>threesuperior</key>
-			<integer>82</integer>
+			<integer>16</integer>
 			<key>twosuperior</key>
-			<integer>102</integer>
+			<integer>36</integer>
 			<key>zerosuperior</key>
-			<integer>114</integer>
+			<integer>50</integer>
 		</dict>
 		<key>sevenoldstyle</key>
 		<dict>
@@ -11131,11 +11088,6 @@
 			<key>t</key>
 			<integer>0</integer>
 		</dict>
-		<key>three</key>
-		<dict>
-			<key>zerosuperior</key>
-			<integer>16</integer>
-		</dict>
 		<key>threeoldstyle</key>
 		<dict>
 			<key>twosuperior</key>
@@ -11143,16 +11095,8 @@
 		</dict>
 		<key>two</key>
 		<dict>
-			<key>colon</key>
-			<integer>24</integer>
-			<key>ordfeminine</key>
-			<integer>2</integer>
-			<key>semicolon</key>
-			<integer>24</integer>
-			<key>sixsuperior</key>
-			<integer>2</integer>
 			<key>zerosuperior</key>
-			<integer>56</integer>
+			<integer>10</integer>
 		</dict>
 		<key>twooldstyle</key>
 		<dict>
@@ -16451,28 +16395,20 @@
 		<key>zero</key>
 		<dict>
 			<key>colon</key>
-			<integer>20</integer>
-			<key>foursuperior</key>
-			<integer>4</integer>
+			<integer>6</integer>
 			<key>semicolon</key>
-			<integer>20</integer>
-			<key>threesuperior</key>
 			<integer>6</integer>
 			<key>twosuperior</key>
-			<integer>18</integer>
+			<integer>2</integer>
 		</dict>
 		<key>zero.tf</key>
 		<dict>
 			<key>colon</key>
-			<integer>20</integer>
-			<key>foursuperior</key>
-			<integer>4</integer>
+			<integer>6</integer>
 			<key>semicolon</key>
-			<integer>20</integer>
-			<key>threesuperior</key>
 			<integer>6</integer>
 			<key>twosuperior</key>
-			<integer>18</integer>
+			<integer>2</integer>
 		</dict>
 		<key>zeta</key>
 		<dict>

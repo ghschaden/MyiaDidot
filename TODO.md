@@ -524,8 +524,30 @@ Model: Opus for the default's change in space_figures.py, Sonnet for the rest.
       around them in lowercase text. Compare with H's stems on a
       `make strokes` sheet; lining belongs to the capitals, so this may
       be right, but confirm by eye in text.
-- [ ] Figure kerning under `pnum` (1 against the others, 7 4 before
-      period and comma) with phase 2.
+- [x] The lining figures' sides (2026-11-14): measured as pairs against
+      seven references (`scripts/quality/figure_pairs.py STYLE`), what
+      looked like missing kerning was spacing: equal optical sides set
+      the figures 0.2 H-gaps tighter than every reference and the open
+      sides (4's left, 7) too close. Each side now the 0's base plus
+      `data_regular.FIGURE_SIDES`, chosen on
+      `proofs/figures-sides-2026-11-14.pdf` (Regular: rhythm 0.90 ->
+      1.09, references' median 1.10; every side within 20 units). The
+      Bold's drawn 4 refitted by hand to the same rule.
+- [ ] Per-style figure sides: the Regular's table improved every style
+      (figure rhythm / distance from the references' median, HEAD -> now:
+      Italic 0.84 -> 1.02 / 49 -> 35, Bold 0.87 -> 1.05 / 51 -> 46,
+      Bold Italic 0.70 -> 0.85 / 72 -> 56), but each still has its own
+      fit to make: the Italic and Bold Italic a little tight as a whole
+      (Bold Italic below every reference, 1.04-1.32), their 1 and 4 now
+      too wide, the Bold Italic's 5 too close. A table per style in
+      data_italic.py / data_bold_italic.py replacing the Regular's, on a
+      sheet as the Regular's.
+- [ ] Figure kerning after the sides (`figure_pairs.py`'s rest): `7.`
+      `7,` about -115, `2.` `2,` less; 5 before 1 7 2 and 7 before 1 3
+      -40 to -65. The en dash before 3 and 5 measures near but looks as
+      GFS Didot's: left. Old-style figures (`--osf`): no case, the
+      references' own forms disagree; the Regular's are reviewed
+      drawings (2026-11-09).
 
 ## Tooling track
 

@@ -88,8 +88,13 @@ Moved from CLAUDE.md (its ground rules apply).
   Moda and Libre Bodoni; Charis, Libertinus, EB Garamond and Old Standard
   default to tabular): `scripts/space_figures.py`, run by
   make_bold.py/make_italic.py and on the Regular (check-regular), fits each
-  by its shapes (lining ones with a floor: across the foot serifs' band the
-  ink keeps I's mean side, `FOOT`), makes the tabular `.tf` forms (components, centred in the
+  by its shapes: the old-style ones each side as n and o, the lining ones
+  each side the 0's optical space plus its own amount
+  (`data_regular.FIGURE_SIDES`, 2026-11-14 on
+  `proofs/figures-sides-2026-11-14.pdf`: equal sides set the figures 0.2
+  H-gaps tighter than seven references and the open sides, 4's left and
+  the 7, too close; each side to the references' median), with a floor
+  (across the foot serifs' band the ink keeps I's mean side, `FOOT`); makes the tabular `.tf` forms (components, centred in the
   0's width) that tnum gives, and the lnum/pnum/tnum/zero block; make_bold's
   `tabular_figures` sets the figure space and dash to the 0's width. Capital spacing (cpsp): `scripts/cpsp.py` on
   the Regular. Case-sensitive punctuation (case, `.case` glyphs):
