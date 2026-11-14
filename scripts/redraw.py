@@ -371,7 +371,11 @@ class Target:
             u, d = self.nearest(xy)
             if d > NEAR:
                 raise ValueError(f"spec extra {xy}: the outline is {d:.0f} units away")
-            breaks.append(self.extra(u, "spec"))
+            new = self.extra(u, "spec")
+            if (b := next((b for b in breaks if np.linalg.norm(b.at - new.at) < 3), None)) is not None:
+                raise ValueError(f"spec extra {xy}: the structure has a node there already ({b.kind}); "
+                                 "a bend-back there is the curve's, not the node's (docs/claude/redraw.md)")
+            breaks.append(new)
         return sorted(breaks, key=lambda b: b.u)
 
     def extra(self, u, why):
@@ -492,7 +496,7 @@ def fit_cubic(pts, p0, t0, p3, t3):
     ends the handles stay inside the triangle their directions make."""
     chord = float(np.linalg.norm(p3 - p0))
     if chord < 1e-6:
-        return np.array([p0, p0, p3, p3]), 0.0
+        return np.array([p0, p0, p3, p3])
     d = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))])
     u = d / d[-1] if d[-1] > 0 else np.linspace(0, 1, len(pts))
     lo, amax, bmax = handle_bounds(p0, t0, p3, t3)

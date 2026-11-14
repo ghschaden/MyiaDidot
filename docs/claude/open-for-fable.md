@@ -21,7 +21,9 @@ Fit of 25 letters: 14 candidates at once, 5 more after one spec entry each,
   for an extreme the gate wants a node at.
 - **A spec point on an off-curve point crashes** ("operands could not be
   broadcast together with shapes (201,1) (4,2)") instead of being refused
-  as "no node there". Tool bug, cheap to mend; the bend-back messages
+  as "no node there". (Mended 2026-11-14: the crash was an `extra` on a
+  node the structure already has, not a handle; refused by name now,
+  redraw.md.) Tool bug, cheap to mend; the bend-back messages
   give the curve's start node, but beta/phi/mugreek spec points I tried
   were handles.
 - alpha and lambda pass only with the tolerance widened by the tool itself

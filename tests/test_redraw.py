@@ -2,6 +2,7 @@
 
 import math
 
+import numpy as np
 import pytest
 import redraw as R
 import ufoLib2
@@ -114,6 +115,20 @@ def test_spec_adds_and_drops_nodes():
     assert rep["count"]["extreme"] == 3 and rep["tol"] == 50
     with pytest.raises(ValueError):
         R.redraw(g, spec={"drop": [[5000, 5000]]})
+
+
+def test_spec_extra_on_a_node_of_the_structure_is_refused():
+    """an extra where the structure has a node already made a span of no
+    length, and fit_cubic's early return crashed the fit (Italic beta at
+    192,-531, the place its gate named; 2026-11-14): refused by name"""
+    g = oval()
+    plain, _ = R.redraw(g)
+    top = max((p for c in plain.contours for p in c.points if p.type), key=lambda p: p.y)
+    with pytest.raises(ValueError, match="has a node there already"):
+        R.redraw(g, spec={"extra": [[top.x, top.y]]})
+    ctrl = R.fit_cubic(np.array([[10.0, 10.0], [10.0, 10.0]]), np.array([10.0, 10.0]), np.array([1.0, 0.0]),
+                       np.array([10.0, 10.0]), np.array([1.0, 0.0]))
+    assert ctrl.shape == (4, 2)
 
 
 def test_refuses_what_it_cannot_redraw():

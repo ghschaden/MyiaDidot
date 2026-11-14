@@ -402,6 +402,14 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   (`bent_back` at an inflection node it made, a spec point on a handle
   crashing) are in `open-for-fable.md`.
 
+- **A spec `extra` on a node the structure already has** (Italic β at
+  192,-531, the place its gate's bend-back names; 2026-11-14): it made a
+  span of no length and the fit crashed ("operands could not be
+  broadcast"). Now refused by name ("has a node there already", within 3
+  units). A bend-back the gate names at a node is in the curve leaving it,
+  not in the node: an extra node does not mend it (what does: Fable's
+  brief, `docs/claude/fable-brief-2026-11-15.md`).
+
 ## A letter given another shape: f's hook (2026-11-11)
 
 Asked for on the first batch's sheet: the Italic's f with a hook below
