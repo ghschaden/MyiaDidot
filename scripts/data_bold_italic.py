@@ -681,19 +681,21 @@ ITALIC_BOLD_KERNING = {
     ("public.kern1.uni0413", "public.kern2.uni0431"): 68,  # Гб (-46)
     ("public.kern1.uni0422", "public.kern2.uni0431"): 34,  # Тб (-42)
     ("public.kern1.uni0430", "public.kern2.uni043B"): -55,  # ал (loose after emboldening by weight)
-    ("u", "t"): 41,
+    # re-proofed on the stroked letters 2026-11-14 (TODO phase 3; a y +67
+    # dropped: in range plain on both measures; w a, g a, i f, a f, v a, u f,
+    # R e, g h still needed, f r left: the measures disagree)
+    ("u", "t"): 60,  # 41 -> 60, re-proofed 2026-11-14 (proofs/bold-italic-hand-kerns-2026-11-14.pdf)
     ("w", "a"): 57,
     ("g", "h"): 43,
     ("f", "r"): -95,
     ("g", "a"): 89,
     ("i", "f"): 75,
-    ("G", "r"): 121,
+    ("G", "r"): 90,  # 121 -> 90: loose against the references on both measures (Größe), 2026-11-14
     ("a", "f"): 66,
-    ("a", "y"): 67,
     ("v", "a"): 50,
     ("u", "f"): 92,
     ("R", "e"): 39,
-    ("f", "t"): -66,
+    ("f", "t"): -30,  # -66 -> -30, 2026-11-14
     # small caps close against their neighbours in a word (ZWÖLF
     # BOXKÄMPFER, 2026-11-01): the white of B O 232 and E R 291 against the
     # 350-375 around them; the Bold's 282 and 317

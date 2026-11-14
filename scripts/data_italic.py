@@ -198,14 +198,8 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # ₩: the bars from 20 to 20 past the uncrossed W's
                   # advance (redraw_w), as the Regular's across its W
                   "₩": ("lines", "W", ("c", 64, [(20, 528, 1807, 592), (20, 842, 1807, 906)])),
-                  # ₿: the Regular's stubs (538 and 778, from 1300 and to 120)
-                  # stood 65 units into the Italic B's counters under its
-                  # thinner bars and by the stem's bracket: only outside
-                  # the B, 30 into its bars, and nearer each other (116
-                  # apart for 176; "closer, higher, leave the B-form as
-                  # is", 2026-11-12)
-                  "₿": ("lines", "B", ("c", 64, [(568, 1404, 632, 1634), (748, 1404, 812, 1634),
-                                                  (568, -200, 632, 30), (748, -200, 812, 30)])),
+                  # ₿: the Regular's, sloped (its own recipe of 2026-11-12, the
+                  # stubs outside the B, withdrawn on the review of 2026-11-14)
                   # ⱳ.sc: w.sc (made of v.sc as W of V) with Ⱳ's curl at
                   # the small caps' 0.725, the cut between the middle serif
                   # and the right one (all of it); enlarged from that Ⱳ, its

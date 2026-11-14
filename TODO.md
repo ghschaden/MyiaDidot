@@ -199,6 +199,14 @@ the other models. One item per session.
       traced and the Italic's mended in the generator (`sc_late`,
       docs/claude/redraw.md, "O and Q drawn"); waiting for the
       designer's review of the late sheets, then baselines and commit.
+      (Approved and committed 2026-11-12, 4fc4b058.)
+      The open reviews closed 2026-11-14: the mended followers accepted
+      (Ʌ in both italics; the Bold Italic's ₵ ₿ ы.sc psi.sc ǥ.sc) but the
+      Italic's ₿, back to the Regular's sloped (its own recipe withdrawn);
+      on `proofs/f7-open-reviews-2026-11-14.pdf` the Bold Italic's
+      ff-ligatures, ſſj and ƴ's dot below approved, у.sc's right arm
+      drawn straight into its serif; the Bold Italic's ɱ given ŋ's right
+      stroke and hook (`proofs/bold-italic-m-hook-2026-11-14.pdf`, B).
 
 Budget (2026-11-12): F1 to F4 are done, of F6 the pages for T2 and
 phase 1's sweep, of F7 both batches. The limits now:
@@ -451,12 +459,18 @@ and Cyrillic are already measured per style; Latin is not.
       actually leave (computed), with `ITALIC_KERNING` and
       `ITALIC_BOLD_KERNING` holding only reviewed exceptions. A design
       decision to settle on a sheet of 30-40 pairs first.
-- [ ] Re-proof the Bold Italic's hand-set positive kerns in
+- [x] Re-proof the Bold Italic's hand-set positive kerns in
       `ITALIC_BOLD_KERNING` (`scripts/make_bold.py`, about line 940): they
       predate or straddle the stroked outlines. `G r` +121 leaves a clear
       gap in "Größe"; look also at `g a` +89, `u f` +92, `i f` +75,
       `a y` +67, `a f` +66, `w a` +57, `v a` +50. Delete those the stroked
       letters no longer need.
+      Done 2026-11-14: each measured with and without its value (share
+      against five reference italics, pairs.py's gap against three); the
+      designer chose on `proofs/bold-italic-hand-kerns-2026-11-14.pdf`:
+      G r 90, a y dropped, f t -30, u t 60. Kept: w a g a i f a f v a u f
+      R e (still needed on both measures), g h +43 (still a little tight),
+      f r -95 (the measures disagree).
 - [x] Add a Latin pairs test like tests/test_greek_pairs.py: a listed
       pair may not get further off. Done 2026-11-12:
       tests/test_latin_pairs.py, the italics against five reference
