@@ -370,9 +370,11 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       Y +98, Bold U b +34, N +40, the Regular only V W Y +2 (its U b keeps
       87). Before | after and candidates 30/40/60:
       `proofs/ascender-clearance-2026-11-13.pdf`. Open:
-  - [ ] the Regular's U b keeps 87 units (H b 120): the designer found it
+  - [x] the Regular's U b keeps 87 units (H b 120): the designer found it
         "not good" too; a looser ASCENDER_CLEAR (80-120) would reach it,
         and V W Y with it (see the sheet's candidates).
+        Decided 2026-11-14: 87 stays, ASCENDER_CLEAR stays 60 (sheet of
+        60/80/100/120: `proofs/ascender-clearance-regular-2026-11-14.pdf`).
   - [x] the italics' Į (Iogonek) stands about 160 units right of I at
         the same advance (bounds 131..1097 against -29..923): a glyph
         fault; the rule now gives it about +200 before every ascender.
@@ -393,9 +395,16 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
         Sheet with candidates 20/40/60:
         `proofs/accent-clearance-2026-11-13.pdf`; the designer chose 40
         (2026-11-14). Left open, found on the way:
-    - [ ] f before accented i (fî in French "fît", fï fì fǐ): the hook
+    - [x] f before accented i (fî in French "fît", fï fì fǐ): the hook
           meets the mark in the upright styles (0 units); Charis touches
           too, Libertinus substitutes f.short. A contextual f, not kerning.
+          Done 2026-11-14 (the designer chose the contextual f): f.short
+          ff.short, the hook x0.6 (0.7/0.5 looked the same at reading
+          sizes: `proofs/f-short-candidates-2026-11-14.pdf`), calt
+          caltShortF before every Latin lowercase letter f comes within
+          40 of (î 184, ï 82, ľ 83 now); ǐ ĭ ȉ kerned apart (ȉ +146).
+          Left: f.short takes f's glyph kerning only through kern_clear
+          (t f -45 is not t f.short).
     - [ ] pinyin ǖ ǚ ǜ Ǖ Ǚ Ǜ are missing (Ǘ ǘ are there): composites
           for scripts/coverage.py's TARGET.
 

@@ -26,9 +26,14 @@ sharp point, back up nearly along it and away under the Q and the u as a
 gently waving swash; in the italics (QU_TAIL_LOOP) the 2's head loops in
 the O first.
 
+f.short and ff.short (calt before a letter whose mark or ascender f's
+hook meets: fî fǐ fä fľ) are f and ff with the last hook scaled down about
+the stem's top, the top hairline kept (short_hook, SHORT_HOOK).
+
 In the Bold, finish() and finish_f() (finalization passes) make Th th tt Qu
-and the f- and long-s ligatures (ff fi fl ffi ffl fj ffj too) again from
-its own final letters.
+and the f- and long-s ligatures (ff fi fl ffi ffl fj ffj too) and
+ff.short (f beside f.short, which is emboldened as f is) again from its
+own final letters.
 """
 
 import argparse
@@ -513,6 +518,19 @@ def finish_f(font):
             stems = [a for a, _ in stems_at(font, src, 300)][:n_f]
             path = unjoined.get(src) or to_path(font, font[src])
             put(name, without_crossbars(font, path, stems, bar))
+    # ff.short as ff: the f beside the f.short (emboldened from the
+    # Regular's, as f is; shortened again from the Bold's f, its neck's
+    # extra nodes came out wobbling)
+    # f.short spaced as its f (optical_fit gave it its own: 3 units
+    # narrower, 2 to the left), ff.short as ff
+    if "f.short" in font:
+        g = font["f.short"]
+        dx = font["f"].getBounds(font).xMin - g.getBounds(font).xMin
+        g.move((dx, 0))
+        g.width = font["f"].width
+    if "ff.short" in font and "f.short" in font:
+        put("ff.short", path_op(f, shifted(to_path(font, font["f.short"]), dff), "UNION"))
+        font["ff.short"].width = font["ff"].width
 
 
 # name, the fl it is built on, the letter; long-s ones: name, f-ligature
@@ -533,6 +551,64 @@ LONGS_LIGATURES = [
 ENCODED = {"longs_t": 0xFB05, "s_t": 0xFB06}
 # right-side kerning of the ligature = that of its last letter
 KERN1 = {"b": "public.kern1.b", "k": "public.kern1.k"}
+
+
+# f.short and ff.short (calt, before a letter whose mark or ascender f's
+# hook meets: fî fï fǐ fä fľ; TODO.md phase 2, 2026-11-14): the hook right
+# of the last stem scaled by SHORT_HOOK about the stem's top, its top
+# hairline kept at its thickness. SHORT_HOOK chosen from 0.7/0.6/0.5 on
+# proofs/f-short-candidates-2026-11-14.pdf (no difference seen at
+# reading sizes; 0.6 clears the most and keeps f's look)
+SHORT_HOOK = 0.6
+SHORT_F = (("f.short", "f"), ("ff.short", "ff"))
+
+
+def short_hook(font, name, s=SHORT_HOOK):
+    """The contours of name (f, ff) as point lists [(x, y, type, smooth)]
+    with the last stem's hook shortened."""
+    g = font[name]
+    top = max(p.y for c in g.contours for p in c.points)
+    xh = font.info.xHeight
+    right = stems_at(font, name, (xh + top) / 2 - 150)[-1][1]
+
+    def hook(p):
+        return p.x > right + 1 and p.y > xh + 150
+
+    pts = [p for c in g.contours for p in c.points if hook(p)]
+    # the hairline at the top: its outer edge at the top, its inner edge
+    # the highest level of the hook's points below it
+    inner = max(p.y for p in pts if p.y < top - 10)
+    hair = top - inner
+    out = []
+    for c in g.contours:
+        cc = []
+        for p in c.points:
+            x, y = p.x, p.y
+            if hook(p):
+                x = right + (p.x - right) * s
+                y = top - hair if abs(p.y - inner) <= 2 else top - (top - p.y) * s
+            cc.append((round(x), round(y), p.type, p.smooth))
+        out.append(cc)
+    return out
+
+
+def put_short(font, name, src):
+    """name made of src by short_hook, src's advance and anchors."""
+    contours = short_hook(font, src)
+    g = font[name] if name in font else font.newGlyph(name)
+    g.clearContours()
+    g.clearComponents()
+    g.width = font[src].width
+    pen = g.getPointPen()
+    for cc in contours:
+        pen.beginPath()
+        for x, y, t, sm in cc:
+            pen.addPoint((x, y), segmentType=t, smooth=sm)
+        pen.endPath()
+    g.clearAnchors()
+    for a in font[src].anchors:
+        g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    return g
 
 
 def main():
@@ -586,6 +662,20 @@ def main():
             n_f = src.count("f") if "_" not in src else src.split("_").count("f")
             stems = [a for a, _ in stems_at(font, src, 300)][:n_f]
             put(name, without_crossbars(font, to_path(font, font[src]), stems), font[src].width)
+    for name, src in SHORT_F:
+        if src in font and wanted(name):
+            g = put_short(font, name, src)
+            g.lib[DRAFT_KEY] = True
+            cats[name] = "base"
+            order = [n for n in font.glyphOrder if n != name]
+            order.insert(order.index(src) + 1 if src in order else len(order), name)
+            font.glyphOrder = order
+            # it kerns as its f on both sides (kern_clear loosens it where
+            # its hook still meets a mark)
+            for group, members in font.groups.items():
+                if group.startswith("public.kern") and src in members and name not in members:
+                    font.groups[group] = [*members, name]
+            made.append(name)
     for name, code in ENCODED.items():
         if name in font and code not in font[name].unicodes:
             font[name].unicodes = [*font[name].unicodes, code]

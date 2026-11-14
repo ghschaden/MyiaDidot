@@ -70,6 +70,7 @@ def test_new_ligature_feature_and_language_policy(shaper):
         assert names(text) == list(text)
         assert names(text, {"dlig": True}) == ["_".join(text)]
     assert names("ſi", language="tr") == ["longs", "i"]
-    assert names("fi", language="tr") == ["f", "i"]
+    # no fi in Turkish (the dot); the short f keeps the hook off it (test_f_short)
+    assert names("fi", language="tr") == ["f.short", "i"]
     assert names("ffi") == ["ffi"]
     assert names("ffl") == ["ffl"]

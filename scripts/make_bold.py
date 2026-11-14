@@ -1072,6 +1072,13 @@ def finalize(font, smooth=True, separate_stacks=False, plain=()):
     if separate_stacks:
         separate_breve_grave_stacks(font)
     refit_horns(font)
+    # aliases as wide as their glyph after the finishing passes set it
+    # (the Bold Italic's ff, made again by italic_ligatures and fitted after,
+    # left ff.short at the Italic's width)
+    for g in font:
+        if (not g.contours and len(g.components) == 1 and g.components[0].baseGlyph in font
+                and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
+            g.width = font[g.components[0].baseGlyph].width
 
 
 def write(font, path, smooth=True, separate_stacks=False, plain=(), kept=None):

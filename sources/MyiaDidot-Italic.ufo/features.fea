@@ -5012,6 +5012,29 @@ lookup dligDiscretionaryLigaturesforGerman {
     sub \f \t  by \f_t;
 } dligDiscretionaryLigaturesforGerman;
 
+# f.short and ff.short before a letter whose mark or ascender f's hook
+# meets (fî fǐ fä fľ; the italics' are their f and ff). After the
+# ligatures, so fi fl fb ... still form; the class holds every Latin
+# lowercase letter f comes within ACCENT_CLEAR of in the Regular and the
+# Bold (kern_clear.short_f_letters; tests/test_f_short.py)
+lookup caltShortF {
+  lookupflag 0;
+    @ShortFBefore = [
+    \abreve \adieresis \amacron \aring \atilde \b \h \hbar \hcircumflex \i
+    \ibreve \icircumflex \idieresis \igrave \ij \imacron \iogonek \itilde \j
+    \jcircumflex \k \kcommaaccent \l \lacute \lcaron \lcommaaccent \ldot
+    \lslash \napostrophe \scaron \thorn \uni0183 \uni019A \uni019B \uni01CE
+    \uni01D0 \uni01E9 \uni01F0 \uni0201 \uni0205 \uni0209 \uni020D \uni0215
+    \uni0249 \uni0268 \uni026B \uni026C \uni026D \uni026E \uni0295 \uni029D
+    \uni02A1 \uni02A2 \uni1D6C \uni1E05 \uni1E07 \uni1E23 \uni1E25 \uni1E2D
+    \uni1E2F \uni1E31 \uni1E33 \uni1E35 \uni1E37 \uni1E3D \uni1E96 \uni1EAF
+    \uni1EB1 \uni1EB3 \uni1EB5 \uni1EB7 \uni1EC9 \uni1ECB \uni1EE1 \uniA7B5
+    \zcaron
+    ];
+    sub \f' @ShortFBefore by \f.short;
+    sub \ff' @ShortFBefore by \ff.short;
+} caltShortF;
+
 lookup onumOldstyleFigures {
   lookupflag 0;
     sub \zero by \zerooldstyle ;
@@ -5471,24 +5494,34 @@ feature calt {
  script latn;
      language dflt ;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language AZE  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language CRT  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language GAG  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language KAZ  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language TAT  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language DEU  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language MOL  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language ROM  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language TRK  exclude_dflt;
       lookup caltSubstitutionforInitialMedialFinalformsinGreek;
+      lookup caltShortF;
      language CAT ;
      language IPPH ;
      language NLD ;

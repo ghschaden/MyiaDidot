@@ -61,6 +61,7 @@ from data_italic import (
     CAP_WEIGHT,
     GREEK_CAP_SAMPLES,
     HORN_NUDGE,
+    ITALIC_ALIASES,
     ITALIC_CORNERS,
     ITALIC_CUT,
     ITALIC_CUT_GREEK,
@@ -2038,6 +2039,13 @@ def main():
             shear(g, SLANT, extremes=g.name not in POINT_REPAIRS)
             g.lib[SOURCE_KEY] = "sloped roman"
             kept_roman += 1
+            continue
+        if g.name in ITALIC_ALIASES:
+            # the italic letter itself (its width and anchors: the aliases below)
+            g.clearContours()
+            g.clearComponents()
+            g.getPointPen().addComponent(ITALIC_ALIASES[g.name], (1, 0, 0, 1, 0, 0))
+            g.lib[SOURCE_KEY] = "alias"
             continue
         if g.name in ITALIC_LOCL:
             # made below by its italic recipe, as what Old Standard lacks

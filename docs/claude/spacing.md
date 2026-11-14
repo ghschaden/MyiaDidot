@@ -53,7 +53,18 @@ Moved from CLAUDE.md (its ground rules apply).
   ACCENT_CLEAR (40, GUARD's white) by the same measure: a wide mark on a
   narrow i reaches over the capital's serif (the Bold's U ǐ met, Charis
   and Libertinus keep 90-130 there; proofs/accent-clearance-2026-11-13.pdf,
-  candidates 20/40/60; 40 chosen by the designer 2026-11-14). Its glyph entries take the place of a group
+  candidates 20/40/60; 40 chosen by the designer 2026-11-14). f before
+  a letter whose mark or ascender its hook meets (fî fǐ fä fľ, and fl
+  with liga off) is f.short, ff ff.short (calt, caltShortF after the
+  ligatures; drawn by draft_ligatures.short_hook: the hook x0.6 about the
+  stem's top; the italics' are their f and ff), its class every Latin
+  lowercase letter kern_clear.short_f_letters finds within ACCENT_CLEAR
+  of f in the Regular or the Bold (tests/test_f_short.py); where a wide
+  mark still reaches back over its stem (ǐ ĭ ȉ ǰ) the short f keeps
+  ACCENT_CLEAR the same way (short_f_entries; f.short ȉ +146), but not
+  before an ascender: the italics' short f is their f, its hook over the
+  ascender beside it, and German sets f h, f b unligated (kerned apart,
+  the italic Kaufhaus opened 140 units). Its glyph entries take the place of a group
   guard that one member's mark had forced (Ɐ before all of i's group for
   ĭ, U before ẫ for Ư's horn). An entry in two families is measured by
   each in turn, the second from the first's value (Ƙ l: PAIRS, then the

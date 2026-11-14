@@ -1667,6 +1667,8 @@
 			<integer>6</integer>
 			<key>f</key>
 			<integer>134</integer>
+			<key>f.short</key>
+			<integer>134</integer>
 			<key>f_b</key>
 			<integer>132</integer>
 			<key>f_f_b</key>
@@ -1688,6 +1690,8 @@
 			<key>f_t</key>
 			<integer>132</integer>
 			<key>ff</key>
+			<integer>132</integer>
+			<key>ff.short</key>
 			<integer>132</integer>
 			<key>ffi</key>
 			<integer>132</integer>
@@ -2025,6 +2029,8 @@
 			<integer>110</integer>
 			<key>f</key>
 			<integer>232</integer>
+			<key>f.short</key>
+			<integer>232</integer>
 			<key>f_b</key>
 			<integer>232</integer>
 			<key>f_f_b</key>
@@ -2046,6 +2052,8 @@
 			<key>f_t</key>
 			<integer>232</integer>
 			<key>ff</key>
+			<integer>230</integer>
+			<key>ff.short</key>
 			<integer>230</integer>
 			<key>ffi</key>
 			<integer>230</integer>
@@ -2547,6 +2555,8 @@
 			<integer>168</integer>
 			<key>f</key>
 			<integer>194</integer>
+			<key>f.short</key>
+			<integer>194</integer>
 			<key>f_b</key>
 			<integer>192</integer>
 			<key>f_f_b</key>
@@ -2568,6 +2578,8 @@
 			<key>f_t</key>
 			<integer>192</integer>
 			<key>ff</key>
+			<integer>192</integer>
+			<key>ff.short</key>
 			<integer>192</integer>
 			<key>ffi</key>
 			<integer>192</integer>
@@ -2810,6 +2822,51 @@
 			<key>zerosuperior</key>
 			<integer>62</integer>
 		</dict>
+		<key>f.short</key>
+		<dict>
+			<key>bracketright</key>
+			<integer>36</integer>
+			<key>eightsuperior</key>
+			<integer>36</integer>
+			<key>ibreve</key>
+			<integer>94</integer>
+			<key>icircumflex</key>
+			<integer>20</integer>
+			<key>idieresis</key>
+			<integer>128</integer>
+			<key>imacron</key>
+			<integer>100</integer>
+			<key>itilde</key>
+			<integer>94</integer>
+			<key>ninesuperior</key>
+			<integer>52</integer>
+			<key>ordfeminine</key>
+			<integer>56</integer>
+			<key>question</key>
+			<integer>28</integer>
+			<key>sevensuperior</key>
+			<integer>32</integer>
+			<key>sixsuperior</key>
+			<integer>6</integer>
+			<key>threesuperior</key>
+			<integer>44</integer>
+			<key>twosuperior</key>
+			<integer>60</integer>
+			<key>uni01D0</key>
+			<integer>48</integer>
+			<key>uni0205</key>
+			<integer>18</integer>
+			<key>uni0209</key>
+			<integer>192</integer>
+			<key>uni020D</key>
+			<integer>14</integer>
+			<key>uni1E2F</key>
+			<integer>128</integer>
+			<key>uni1EE1</key>
+			<integer>116</integer>
+			<key>zerosuperior</key>
+			<integer>62</integer>
+		</dict>
 		<key>ff</key>
 		<dict>
 			<key>bracketright</key>
@@ -2830,6 +2887,51 @@
 			<integer>44</integer>
 			<key>twosuperior</key>
 			<integer>60</integer>
+			<key>zerosuperior</key>
+			<integer>62</integer>
+		</dict>
+		<key>ff.short</key>
+		<dict>
+			<key>bracketright</key>
+			<integer>36</integer>
+			<key>eightsuperior</key>
+			<integer>36</integer>
+			<key>ibreve</key>
+			<integer>94</integer>
+			<key>icircumflex</key>
+			<integer>20</integer>
+			<key>idieresis</key>
+			<integer>128</integer>
+			<key>imacron</key>
+			<integer>100</integer>
+			<key>itilde</key>
+			<integer>94</integer>
+			<key>ninesuperior</key>
+			<integer>52</integer>
+			<key>ordfeminine</key>
+			<integer>56</integer>
+			<key>question</key>
+			<integer>28</integer>
+			<key>sevensuperior</key>
+			<integer>32</integer>
+			<key>sixsuperior</key>
+			<integer>6</integer>
+			<key>threesuperior</key>
+			<integer>44</integer>
+			<key>twosuperior</key>
+			<integer>60</integer>
+			<key>uni01D0</key>
+			<integer>48</integer>
+			<key>uni0205</key>
+			<integer>16</integer>
+			<key>uni0209</key>
+			<integer>190</integer>
+			<key>uni020D</key>
+			<integer>12</integer>
+			<key>uni1E2F</key>
+			<integer>128</integer>
+			<key>uni1EE1</key>
+			<integer>116</integer>
 			<key>zerosuperior</key>
 			<integer>62</integer>
 		</dict>
@@ -3179,6 +3281,8 @@
 			<integer>76</integer>
 			<key>f</key>
 			<integer>202</integer>
+			<key>f.short</key>
+			<integer>202</integer>
 			<key>f_b</key>
 			<integer>200</integer>
 			<key>f_f_b</key>
@@ -3200,6 +3304,8 @@
 			<key>f_t</key>
 			<integer>200</integer>
 			<key>ff</key>
+			<integer>200</integer>
+			<key>ff.short</key>
 			<integer>200</integer>
 			<key>ffi</key>
 			<integer>200</integer>
@@ -6913,6 +7019,8 @@
 		<dict>
 			<key>f</key>
 			<integer>310</integer>
+			<key>f.short</key>
+			<integer>310</integer>
 			<key>f_b</key>
 			<integer>308</integer>
 			<key>f_f_b</key>
@@ -6934,6 +7042,8 @@
 			<key>f_t</key>
 			<integer>308</integer>
 			<key>ff</key>
+			<integer>308</integer>
+			<key>ff.short</key>
 			<integer>308</integer>
 			<key>ffi</key>
 			<integer>308</integer>
@@ -7533,6 +7643,8 @@
 			<integer>480</integer>
 			<key>f.sc</key>
 			<integer>254</integer>
+			<key>f.short</key>
+			<integer>480</integer>
 			<key>f_b</key>
 			<integer>476</integer>
 			<key>f_f_b</key>
@@ -7554,6 +7666,8 @@
 			<key>f_t</key>
 			<integer>476</integer>
 			<key>ff</key>
+			<integer>476</integer>
+			<key>ff.short</key>
 			<integer>476</integer>
 			<key>ffi</key>
 			<integer>476</integer>
@@ -9754,6 +9868,8 @@
 			<integer>160</integer>
 			<key>f</key>
 			<integer>28</integer>
+			<key>f.short</key>
+			<integer>28</integer>
 			<key>f_b</key>
 			<integer>26</integer>
 			<key>f_f_b</key>
@@ -9775,6 +9891,8 @@
 			<key>f_t</key>
 			<integer>26</integer>
 			<key>ff</key>
+			<integer>26</integer>
+			<key>ff.short</key>
 			<integer>26</integer>
 			<key>ffi</key>
 			<integer>26</integer>
@@ -9960,6 +10078,8 @@
 			<key>Omicrontonos</key>
 			<integer>134</integer>
 			<key>f</key>
+			<integer>2</integer>
+			<key>f.short</key>
 			<integer>2</integer>
 			<key>uni01A5.sc</key>
 			<integer>52</integer>
@@ -10791,6 +10911,8 @@
 			<integer>32</integer>
 			<key>f</key>
 			<integer>56</integer>
+			<key>f.short</key>
+			<integer>56</integer>
 			<key>f_b</key>
 			<integer>52</integer>
 			<key>f_f_b</key>
@@ -10812,6 +10934,8 @@
 			<key>f_t</key>
 			<integer>52</integer>
 			<key>ff</key>
+			<integer>52</integer>
+			<key>ff.short</key>
 			<integer>52</integer>
 			<key>ffi</key>
 			<integer>52</integer>

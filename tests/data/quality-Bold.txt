@@ -41,6 +41,7 @@ exclamdown smooth 2              # contrast-aware Bold (emboldened by stroke wei
 exclamdown width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 f extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 665,1383 9 units past
 f wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 663,1365 18 degrees; 666,1396 15 degrees
+f.short wobble 1                 # 2026-11-14 the short fs (calt before a mark f's hook meets; f.short emboldened as f, ff.short the f beside it): the f's neck wobble, as listed for f, inherited: 2 against 0: 560,1398 3 degrees; 565,1411 12 degrees
 f_f_b wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 f_f_h wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 f_f_j kink 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1240,884 2.6 degrees; 1262,883 2.7 degrees
@@ -50,6 +51,7 @@ f_f_t wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bol
 f_j kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.5 degrees; 659,883 2.6 degrees
 f_j wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 ff wobble 1                      # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1304,1335 18 degrees; 706,1341 23 degrees
+ff.short wobble 1                # 2026-11-14 the short fs (calt before a mark f's hook meets; f.short emboldened as f, ff.short the f beside it): the f's neck wobble, as listed for f and fi, inherited: 4 against 0: 1164,1398 3 degrees; 1169,1411 12 degrees; 663,1369 18 degrees; 666,1392 16 degrees
 ffi kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1239,884 2.6 degrees; 1261,883 2.7 degrees
 ffi wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18 
 ffl wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees

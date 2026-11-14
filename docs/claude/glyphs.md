@@ -41,7 +41,8 @@ Moved from CLAUDE.md (its ground rules apply).
   𝔐 𝔓 𝔖 𝔭 from Libertinus Math (OFL, credited in OFL.txt and the
   copyright notice): `scripts/draft_letterlike.py`; ligatures ct st
   (dlig), f-ligatures fb fh fk ft (liga) and long-s ligatures (own liga
-  lookups): `scripts/draft_ligatures.py`. Hooks: `hook` (f top or ȷ tail
+  lookups) and the short fs f.short ff.short (calt before a mark the
+  hook meets; spacing.md): `scripts/draft_ligatures.py`. Hooks: `hook` (f top or ȷ tail
   scaled to the stem) and `curl` (an elliptical ring with a ball, at the
   stroke's own weight) in derive.py; a terminal ball given as None is
   sized as the drawn balls (derive.ball_for: 0.52 of the case's stem, at

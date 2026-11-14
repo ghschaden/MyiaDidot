@@ -568,6 +568,11 @@ OS_LOCL = {}
 # 2026-11-13); kern_clear then gave it about +200 before every ascender
 OS_SHIFT = {"Iogonek": ("I", -84)}
 
+# the Regular's short fs (calt before a mark f's hook meets; draft_ligatures
+# SHORT_F) are the italic f and ff: their hook clears the marks
+# (2026-11-14). Made a component of the letter, which it then follows
+ITALIC_ALIASES = {"f.short": "f", "ff.short": "ff"}
+
 # aliases of a plain letter in the Regular that the Italic makes itself
 ITALIC_LOCL = {"uni0433.loclSRB", "uni0434.loclSRB", "uni0453.loclSRB",
                "uni0438.loclBGR", "uni043F.loclBGR", "uni0442.loclBGR", "uni0448.loclBGR"}

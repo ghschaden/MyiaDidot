@@ -429,6 +429,14 @@
 			<string>added</string>
 			<key>f zerosuperior</key>
 			<string>added</string>
+			<key>f.short ibreve</key>
+			<string>added</string>
+			<key>f.short uni01D0</key>
+			<string>added</string>
+			<key>f.short uni01F0</key>
+			<string>added</string>
+			<key>f.short uni0209</key>
+			<string>added</string>
 			<key>ff asterisk</key>
 			<string>added</string>
 			<key>ff braceright</key>
@@ -464,6 +472,12 @@
 			<key>ff twosuperior</key>
 			<string>added</string>
 			<key>ff zerosuperior</key>
+			<string>added</string>
+			<key>ff.short ibreve</key>
+			<string>added</string>
+			<key>ff.short uni01D0</key>
+			<string>added</string>
+			<key>ff.short uni0209</key>
 			<string>added</string>
 			<key>florin eightsuperior</key>
 			<string>added</string>
@@ -3612,6 +3626,7 @@
 			<string>d</string>
 			<string>e</string>
 			<string>f</string>
+			<string>f.short</string>
 			<string>g</string>
 			<string>h</string>
 			<string>i</string>
@@ -4562,6 +4577,7 @@
 			<string>eightoldstyle</string>
 			<string>nineoldstyle</string>
 			<string>ff</string>
+			<string>ff.short</string>
 			<string>fi</string>
 			<string>fl</string>
 			<string>ffi</string>
@@ -6518,6 +6534,8 @@
 			<string>base</string>
 			<key>f.sc</key>
 			<string>base</string>
+			<key>f.short</key>
+			<string>base</string>
 			<key>f_b</key>
 			<string>ligature</string>
 			<key>f_f_b</key>
@@ -6540,6 +6558,8 @@
 			<string>ligature</string>
 			<key>ff</key>
 			<string>ligature</string>
+			<key>ff.short</key>
+			<string>base</string>
 			<key>ffi</key>
 			<string>ligature</string>
 			<key>ffl</key>

@@ -13,7 +13,9 @@ an entry already in the kerning is only ever loosened; one that is not
 would come too close at the kerning they take now, and left out where
 they would not. Besides, every capital before an ascender letter of its
 script (ascender_entries(): U b, Н б, Η β) keeps ASCENDER_CLEAR units
-of white measured every way above the x-height. What it changed is recorded in the lib (KEY: the
+of white measured every way above the x-height, and every capital before
+a lowercase letter with a mark above (accent_entries) and the short fs
+before the letters calt sets them before (short_f_entries) ACCENT_CLEAR. What it changed is recorded in the lib (KEY: the
 entries and the values they had, "added" where it added one); undo() puts
 those back, so a style made from another (the Bold from the Regular)
 starts from the kerning before it and finds its own.
@@ -270,6 +272,47 @@ def accent_entries(font):
     return list(dict.fromkeys(out))
 
 
+# the short fs (draft_ligatures.SHORT_F) that calt sets before a letter
+# whose mark or ascender f's hook meets (fî fǐ fä fľ; TODO.md phase 2,
+# 2026-11-14)
+SHORT_F = ("f.short", "ff.short")
+
+
+def short_f_letters(font, clear=None):
+    """The Latin lowercase letters (encoded) whose ink above the x-height
+    f's hook comes within clear (ACCENT_CLEAR unless given) of, measured
+    every way at the kerning f takes: the class calt's ShortF lookup
+    sets f.short before (features.fea; tests/test_f_short.py)."""
+    clear = ACCENT_CLEAR if clear is None else clear
+    if "f" not in font:
+        return []
+    keys, _ = kern_lookup(font)
+    ink = Ink(font)
+    out = []
+    for g in font:
+        if g.unicode is None or "." in g.name or unicodedata.category(chr(g.unicode)) != "Ll":
+            continue
+        if not unicodedata.name(chr(g.unicode), "").startswith("LATIN"):
+            continue
+        k = next((font.kerning[x] for x in keys("f", g.name) if x in font.kerning), 0)
+        w = ink.white_above("f", g.name, k, clear)
+        if w is not None and w < clear:
+            out.append(g.name)
+    return sorted(out)
+
+
+def short_f_entries(font):
+    """(f.short or ff.short, letter) for short_f_letters with a mark
+    above and no ascender: the short f keeps ACCENT_CLEAR where its
+    shorter hook still meets a wide mark reaching back over its stem
+    (ǐ ĭ ȉ). Not before the ascenders: the italics' short f is their f,
+    whose hook rides over the ascender beside it (German sets f h, f b
+    without a ligature; kerned apart, Kaufhaus opened 140 units)."""
+    ascenders = set(sets(font)["ASCENDERS"])
+    letters = [b for b in short_f_letters(font) if b not in ascenders]
+    return [(a, b) for a in SHORT_F if a in font for b in letters]
+
+
 DOTTED = {"i": "ı", "j": "ȷ", "і": None, "ј": None, "ϳ": None, "ĳ": None, "ɨ": None}
 
 SIGN_NAMES = {}
@@ -487,6 +530,7 @@ def clear(font, log=None):
     todo = [(left, right, None) for left, right in entries(font)]
     todo += [(left, right, ASCENDER_CLEAR) for left, right in ascender_entries(font)]
     todo += [(left, right, ACCENT_CLEAR) for left, right in accent_entries(font)]
+    todo += [(left, right, ACCENT_CLEAR) for left, right in short_f_entries(font)]
     for left, right, above in todo:
         if left not in font.groups and left not in font or right not in font.groups and right not in font:
             continue

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="f.short" format="2">
+	<advance width="602"/>
+	<outline>
+		<component base="f"/>
+	</outline>
+	<anchor name="Grave" x="757" y="1480"/>
+	<anchor name="Acute" x="757" y="1480"/>
+	<anchor name="Dotaccent" x="769" y="1520"/>
+	<anchor name="Top" x="770" y="1528"/>
+	<anchor name="DotBelow" x="422" y="-20"/>
+	<anchor name="Bottom" x="428" y="0"/>
+	<lib>
+		<dict>
+			<key>org.myiadidot.draft</key>
+			<true/>
+			<key>org.myiadidot.italicSource</key>
+			<string>alias</string>
+		</dict>
+	</lib>
+</glyph>
