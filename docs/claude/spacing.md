@@ -220,3 +220,107 @@ count above, not tuned. Pairs that do not face each other (’ before s)
 are not measured; there are none among today's Latin pairs. Unkerned
 upright pairs are never kerned by the rule, though the italic may need
 them (phase 2 gives the Regular its missing pairs first).
+
+## One measure for Latin kerning, upright and italic (2026-11-15)
+
+Decided on Fable from the two measures' construction, nothing run: the
+points marked "to confirm" are checked by font-measure before a pair is
+set by this section. The question was open-for-fable.md's "Two pair
+measures, no rule which one decides" (phase 2, 2026-11-13) and the Bold
+Italic's f r of 2026-11-14.
+
+**The share decides, in all four styles.** A Latin pair is judged by
+`italic_kerning`'s share: the pair's white as set (kerning on) over the
+plain rhythm of its two cases, Myia's against the reference fonts' for
+the same pair (`Built.share`, `outside`). It is the measure the italics'
+kerning is computed from and tests/test_latin_pairs.py holds; an upright
+pair set by another yardstick would hand the italics a share that
+yardstick never looked at. pairs.py's gap is no second judge: it stays
+for what it is good at, finding the pairs (below).
+
+**Why the two disagree**: four differences of construction, each behind
+one family of phase 2's disagreements.
+
+| | gap (quality/pairs.py) | share (italic_kerning.py) | what the gap's choice does |
+|---|---|---|---|
+| over | n n, for every pair | the cases' own rhythm: n n, H H, H n, n H | a capital's pair is told against lowercase spacing: where Myia's capitals stand wider against its lowercase than the references' do, every capital pair reads "too loose". R v w y, W v w p q m, R O Q (to confirm: the gap of H n and H H over n n, Myia against the references; if Myia is higher by what these pairs are "loose", that is the whole disagreement) |
+| rows | baseline to x-height, always | where the two inks face each other, from the higher foot to the lower head | a capital pair is seen by its lower half (R O Q), a figure before a period by the period's few rows (7. 1.), a quote not at all or by its tail (A“ A" L“ “A), T by its stem without its bar (T u p z m n r: "+250 to +400" was the stem) |
+| near white | the nearest single row | the row at the 20 % quantile | one row of a serif's or a hairline's tip sets the depth all other rows are cut at; the eye reads the tip by the rows it fills (f's bar before r, R's leg) |
+| verdict | 0.15 n-gaps past the references' range, of four fonts or more | past the range of three or more that set the pair | |
+
+So for a capital, a figure or a sign the gap measures another thing; for
+two lowercase letters the two differ only in the near white, and there
+the quantile is the one reasoned for (the italics' rule, above).
+
+**f r in the Bold Italic** (-95, a hand exception: no pair in the Bold)
+goes by the share like every pair in tests/data/latin-pairs-BoldItalic.txt:
+inside the reference italics' range it is done; outside, it is set to
+the range's nearer edge on the next sheet. The gap's verdict on it is
+dropped either way.
+
+**Setting a pair** (phase 2's open pairs, on Sonnet):
+
+1. The list: the upright's kerned pairs (`latin_pairs`) and pairs.py's
+   300 most frequent of the corpus, and the phase's requested ones: the
+   gap script's job is the list, kerned or not.
+2. Each pair's share in Myia and in the five references of the style
+   (Bodoni Moda, Libre Bodoni, EB Garamond, Libertinus, Charis: the same
+   five as the italics').
+3. First **spacing or pair** (next paragraph), then the pairs left.
+4. A pair is changed when it lies outside the range of the references
+   that set it (three at least) **and** Libertinus and Charis both lie on
+   the range's side of Myia (the reference-font rule). Inside the range
+   nothing is set, whatever a sheet of numbers suggests: that is the
+   eye's, on a proof.
+5. The value: the range's nearer edge, as kerning = edge x Myia's rhythm
+   - Myia's unkerned white; under 8 units (`DROP`) no pair. Never
+   nearer than kern_clear's `GUARD`.
+6. In the Regular only (the Bold by KX, the italics by the rule), as an
+   absolute value per group key; before writing, no two pairs of the
+   round on one key; an accented right group (kern2.agrave ...) gets its
+   base pair's change and is never left tighter than the base.
+7. A sheet of words per family in four styles, `make regress` and `make
+   diffenator` read, then tests/data/latin-pairs-*.txt: lines that fall
+   away deleted. For the uprights the lists do not exist yet (below).
+
+**Spacing or pair.** Before any pair of a letter is set: that letter's
+`off` (the share past the range, signed) over all its partners of one
+case on one side, kerned or not. If two thirds of them, six at least,
+are off the same way, it is the letter's side bearing: the median `off`
+x the rhythm is the change, made in the Regular's side bearing (the
+master; this file's first sections for what follows
+in the generated styles), on a sheet for the designer, since a side
+bearing moves every line of text. The pairs are measured again after
+it. Known from phase 2: ' and ” before the stem capitals, G before the
+lowercase. A letter with fewer partners off is pairs.
+
+**What the share does not see**, and what is used there:
+
+- Fewer than 8 facing rows (`MIN_ROWS`: a quote before a round
+  lowercase, ’ s; 41 of phase 2's pairs): no share. There the measure is
+  the nearest ink every way (kern_clear's `Ink`, the collision sweep's
+  measure) over the same of the cases' rhythm, against the references:
+  a clearance, used only where the share is None, never beside it.
+- White deeper than 0.2 x-heights past the near white (W's open side
+  before o: the nearest ink said "in range" where the eye said "too
+  big"): cut off by `DEPTH`, by design. Such a pair is the eye's:
+  candidates on a sheet, the chosen value a hand entry with its date
+  (W c a u, 2026-11-14), and it stays out of the reference lists.
+- Greek, Cyrillic and small caps: their own tools, as before.
+
+**For Opus, to build** (none of it exists):
+
+- `quality/pairs.py`: its list kept, the gap replaced by `Built.share`
+  with the verdict of step 4, `off` printed; for pairs without a share,
+  the clearance. `make pairs` then says what test_latin_pairs says.
+- A per-letter table for "spacing or pair" (letter, side, case of the
+  partners, how many measured, how many off each way, the median).
+- tests/data/latin-pairs-Regular.txt and -Bold.txt, and
+  test_latin_pairs over the uprights: today's outside pairs listed with
+  phase 2's reasons, lists that only shrink.
+- The confirmations above, as one small table before anything is set:
+  the gap recomputed with one of its four choices at a time replaced by
+  the share's, on R v, W v, R O, 7 period, A “, T u, f r (Bold Italic).
+  If the disagreement of a family does not go with the switch named for
+  it here, this section is wrong there: write it into
+  `docs/claude/open-for-fable.md`'s successor and do not set that family.

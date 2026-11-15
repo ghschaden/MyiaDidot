@@ -345,6 +345,9 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       - spacing, not pairs: ' and ” are loose before every stem capital
         (H B D E N P, by about 0.1 of the rhythm), G is tight before every
         lowercase (n o a e i): sidebearings of ' ” and G, not D or i pairs;
+      - (which measure decides: spacing.md, "One measure for Latin
+        kerning", 2026-11-15: the share; its confirmations and tools are
+        Opus's, then these are Sonnet's)
       - the measures disagree: R v w y, R O Q, A“ A", L“ “A, 7. 1. 1,
         W v w p q m (gap measure: too loose; share: in range or tight);
       - T y w v (T's x-height serif on its right arm), T u p z m n r (the

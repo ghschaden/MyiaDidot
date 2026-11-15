@@ -115,6 +115,10 @@ Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
   everywhere (the share moves 2-3 times as far per unit). One measure for
   upright kerning is missing (one source of truth); the round set only
   pairs on which both agree.
+  Answered on Fable, 2026-11-15 (spacing.md, "One measure for Latin
+  kerning"): the share decides; the gap finds the pairs; "spacing or
+  pair" has its test there. From the measures' construction, to be
+  confirmed by one table before a pair is set.
 - **Spacing or pair?** A fault shared by all the partners of one letter
   (' and ” loose before every stem capital, G tight before every
   lowercase) is the letter's sidebearing, not a pair; the phase lists
