@@ -30,6 +30,6 @@ advances (п 1037 to 1101, т 1501 to 1564 in the Italic).
 
 The Bulgarian forms remain to be reviewed.
 
-Retained proof: proofs/bold-italic-cyrillic-drafts-2026-11-08.pdf (the
+Retained proof: proofs/2026-11/bold-italic-cyrillic-drafts-2026-11-08.pdf (the
 sheet; the Serbian forms beside the references and enlarged; Ҳ's tail
 before and after beside Ң Ҷ).

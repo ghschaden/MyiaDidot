@@ -24,7 +24,7 @@ build/glyph-review/approved-fonts-commit-2026-11-08/.
 Final geometry cleanup splits theta's inner oval at extrema and rounds
 it to whole units, aligns a two-unit jog and tangent in derived barred J,
 and aligns two small handles at Bold Italic Ƈ's hook attachment. The
-before/after proof is proofs/bold-final-outline-cleanup-2026-11-08.pdf.
+before/after proof is proofs/2026-11/bold-final-outline-cleanup-2026-11-08.pdf.
 It was visually inspected against the approved drawings. Extents and
 advances are retained. Acceptance fingerprints match the installed forms.
 

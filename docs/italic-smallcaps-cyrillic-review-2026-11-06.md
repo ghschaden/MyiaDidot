@@ -5,7 +5,7 @@ reviews integrated. This batch contains the remaining 40 unaccepted
 Italic small-cap drafts, all Cyrillic. The review approved 39 unchanged
 and sent back uni044E.sc on 2026-11-06. Those 39 acceptance fingerprints
 are recorded in the Italic UFO. The reviewed sheet is retained as
-`proofs/italic-smallcaps-cyrillic-partial-2026-11-06.pdf`.
+`proofs/2026-11/italic-smallcaps-cyrillic-partial-2026-11-06.pdf`.
 
 Proof: `build/glyph-review/italic-smallcaps-cyrillic/review.pdf`, two
 pages of 20 forms. Both pages were rendered as `review-1.png` and
@@ -50,7 +50,7 @@ explicit Cyrillic smcp/c2sc mappings pass, and outline lint reports no
 findings. The review approved the revision on 2026-11-06. It is installed
 in the Italic, marked drawn and accepted; all 40 forms in this batch and
 all remaining Italic small-cap drafts are now accepted. The approved proof
-is retained as `proofs/italic-yu-smallcap-repair-2026-11-06.svg`.
+is retained as `proofs/2026-11/italic-yu-smallcap-repair-2026-11-06.svg`.
 
 During finalization, a short head-bracket handle inherited from i.sc was
 aligned to the stem by one unit to remove its rounding kink. The old

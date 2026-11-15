@@ -557,7 +557,7 @@ KERN1 = {"b": "public.kern1.b", "k": "public.kern1.k"}
 # hook meets: fî fï fǐ fä fľ; TODO.md phase 2, 2026-11-14): the hook right
 # of the last stem scaled by SHORT_HOOK about the stem's top, its top
 # hairline kept at its thickness. SHORT_HOOK chosen from 0.7/0.6/0.5 on
-# proofs/f-short-candidates-2026-11-14.pdf (no difference seen at
+# proofs/2026-11/f-short-candidates-2026-11-14.pdf (no difference seen at
 # reading sizes; 0.6 clears the most and keeps f's look)
 SHORT_HOOK = 0.6
 SHORT_F = (("f.short", "f"), ("ff.short", "ff"))

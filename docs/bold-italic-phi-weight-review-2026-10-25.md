@@ -1,6 +1,6 @@
 # Bold Italic ɸ optical weight review, 2026-10-25
 
-[Drawing comparison](../proofs/bold-italic-phi-weight-review-2026-10-25.pdf).
+[Drawing comparison](../proofs/2026-10/bold-italic-phi-weight-review-2026-10-25.pdf).
 
 The current drawing has slit-like counters and looks congested beside o.
 The earlier counter-tip review did not resolve this optical weight issue.
@@ -45,7 +45,7 @@ quality/shaping and hinting checks, and production rebuilds.
 
 The review selected the third option with a bowl 5% wider, retaining the
 black stroke thickness and putting the extra width into the white middle.
-[Refined comparison](../proofs/bold-italic-phi-wider-counters-2026-10-25.pdf)
+[Refined comparison](../proofs/2026-10/bold-italic-phi-wider-counters-2026-10-25.pdf)
 shows that proposal against the previous third option.
 
 In the upright construction frame, the bowl's outer and inner contours
@@ -70,7 +70,7 @@ by one convex cubic, following the adjacent curve's direction and opening
 toward its existing counter tip. The other counter segments, entire outer
 contour, stem edges, 5% bowl widening and 978 advance are unchanged.
 
-[Smoothed comparison](../proofs/bold-italic-phi-smooth-counters-2026-10-25.pdf)
+[Smoothed comparison](../proofs/2026-10/bold-italic-phi-smooth-counters-2026-10-25.pdf)
 shows the previous wider-bowl proposal on the left and smoothed drawing
 on the right. Glyph lint remains clean; ink bounds match exactly. Each
 counter loses three points. Scratch source: `build/phi-weight-review/smooth.py`;
@@ -84,7 +84,7 @@ The review approved the smoothed drawing and requested the next task.
 style writer. Outer and inner bowl widths expand equally; the two approved
 convex inner returns are retained. Whole-unit rounding, true extrema and
 near-tangent finishing leave no construction or lint findings.
-[Production before/after](../proofs/bold-italic-phi-production-2026-10-25.pdf).
+[Production before/after](../proofs/2026-10/bold-italic-phi-production-2026-10-25.pdf).
 
 Only `uni0278` changes in the master. Complete Bold Italic generation and
 small-cap rebuilding reproduce it exactly. Advances, anchors, Unicode,

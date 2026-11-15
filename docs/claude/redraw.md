@@ -4,7 +4,7 @@ CLAUDE.md's ground rules apply. What this is for: TODO.md, phases 5-8.
 The tool: `scripts/redraw.py` (tests/test_redraw.py); the sheet:
 `scripts/redraw_sheet.py`; the sweep after an install:
 `scripts/redraw_sweep.py`. Pilot of 2026-11-10: n a e o s g of the Italic,
-`proofs/italic-redraw-pilot-2026-11-10.pdf`.
+`proofs/2026-11/italic-redraw-pilot-2026-11-10.pdf`.
 
 ## What a redraw is
 
@@ -574,7 +574,7 @@ this; the sheet then shows what the mended generators give.
 ## After the capitals' batch of 2026-11-11: what the first run found
 
 A-Z fitted, all 26 candidates, approved on
-`proofs/italic-redraw-caps-2026-11-11.pdf`; 23 stay installed. What the
+`proofs/2026-11/italic-redraw-caps-2026-11-11.pdf`; 23 stay installed. What the
 first `make generate` and its sweep showed, before any test was read:
 
 - **FontForge's small caps follow a capital's nodes, not its shape.** 65
@@ -666,7 +666,7 @@ before, a unit of movement only tipped it.
 
 Then, in their own commits: Ʌ's thin leg (scripts/turned_v.py); the arms
 into the hooks of the Bold Italic's Ƙ Ƴ and Ʋ's thickening, chosen from
-candidates (proofs/bold-italic-hook-arms-2026-11-12.pdf; the reasons at
+candidates (proofs/2026-11/bold-italic-hook-arms-2026-11-12.pdf; the reasons at
 data_bold_italic.py's recipes, CURL_ARM).
 
 Open, for the designer and the next batch:
@@ -701,7 +701,7 @@ tolerance but a construction with the measures held:
   its loop are redraw.py's candidate for today's Q. Today's Q had a bowl
   of its own (the right extreme at 893 for O's 897, the stem 3 units
   lighter at its mid height): 27 -> 26 nodes, 4.4 units from today's.
-- Approved on `proofs/italic-O-Q-drawn-2026-11-12.pdf` and installed
+- Approved on `proofs/2026-11/italic-O-Q-drawn-2026-11-12.pdf` and installed
   2026-11-12 (`--install`). The script refuses once O or Q is marked
   drawn (it builds from Old Standard's outlines only). It has no test yet.
 - **What followed, and is not finished** (working copy uncommitted,
@@ -743,10 +743,10 @@ tolerance but a construction with the measures held:
       capitals (`fontforge_inputs.drafts`, keep), so later runs need no
       `KEEP_DRAFTS`.
   - Sheets of the first run, before o.sc was kept (so they overstate):
-    `proofs/italic-O-Q-followers-2026-11-12.pdf`,
-    `proofs/bold-italic-O-Q-followers-2026-11-12.pdf`. HEAD against now,
-    after the fix: `proofs/italic-O-Q-smallcaps-late-2026-11-12.pdf`,
-    `proofs/bold-italic-O-Q-followers-late-2026-11-12.pdf`; waiting for
+    `proofs/2026-11/italic-O-Q-followers-2026-11-12.pdf`,
+    `proofs/2026-11/bold-italic-O-Q-followers-2026-11-12.pdf`. HEAD against now,
+    after the fix: `proofs/2026-11/italic-O-Q-smallcaps-late-2026-11-12.pdf`,
+    `proofs/2026-11/bold-italic-O-Q-followers-late-2026-11-12.pdf`; waiting for
     the designer.
   - The lesson for the gate: a measure letter's redraw is tried through
     `make generate` in a scratch copy before the designer sees its sheet,
@@ -758,7 +758,7 @@ tolerance but a construction with the measures held:
 
 The six Greek letters of 2026-11-15 pass with no spec entry since the
 tool's mends above (approved on
-`proofs/italic-greek-six-redraw-2026-11-15.pdf` and installed
+`proofs/2026-11/italic-greek-six-redraw-2026-11-15.pdf` and installed
 2026-11-15; what followed: "After the six Greek letters", below); the order below is what is left for a letter that
 does not. One honest correction of the spec, fitted again; then hand
 back or move up a model. Read the JSON first (`notes`, `spans` with
@@ -809,7 +809,7 @@ before" with "half turn" extras (a hook: above).
 Installed, one `make generate`; the Italic's sweep flagged nothing (the
 six and their composites 3.6 units at most, в's Bulgarian form 1.6 with
 β, „β 2 units looser by kern_clear). The Bold Italic, approved on
-`proofs/bold-italic-greek-six-followers-2026-11-15.pdf`: μ 15.7 units
+`proofs/2026-11/bold-italic-greek-six-followers-2026-11-15.pdf`: μ 15.7 units
 (its descender), η 13.6, ψ 10.2 with its advance 13 wider (the optical
 fit answering the right bowl: more than "What may move" allows for, and
 seen so on the sheet), φ 9.5, β 5.0.

@@ -1,7 +1,7 @@
 # Italic old-style figures optical weight proposal, 2026-10-25
 
 After approval and integration of Ⱳ, continued to the remaining old-style
-figure weight review. [Before/proposal proof](../proofs/italic-oldstyle-figures-weight-2026-10-25.pdf)
+figure weight review. [Before/proposal proof](../proofs/2026-10/italic-oldstyle-figures-weight-2026-10-25.pdf)
 shows 3, 4, 5 and 9 beside n/o, the complete figure set, unchanged lining
 figures and three text sizes. Production remains unchanged in this pass.
 
@@ -44,7 +44,7 @@ hinting checks, and final font builds.
 
 The review found the proposed 9 too similar to g. The inherited rounded
 bowl and long curled ball-terminal descender make the resemblance clear
-in a direct g/9 comparison. [Revised 9 proof](../proofs/italic-nine-open-tail-2026-10-25.pdf)
+in a direct g/9 comparison. [Revised 9 proof](../proofs/2026-10/italic-nine-open-tail-2026-10-25.pdf)
 retains the lighter bowl and upper descender, replacing the lower curl
 and ball with a shorter open sweep and cut terminal. This is a drawing
 change in addition to the weight adjustment, intentionally changing the

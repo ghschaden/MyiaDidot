@@ -1,6 +1,6 @@
 # Regular acute-counter review, 2026-10-25
 
-The [comparison proof](../proofs/regular-acute-counters-review-2026-10-25.pdf)
+The [comparison proof](../proofs/2026-10/regular-acute-counters-review-2026-10-25.pdf)
 shows all four styles and enlarged Regular joins. Eight exception entries
 represent four constructions: M, lowercase Cyrillic м, trademark and numero.
 Greek Mu and Cyrillic М are identity components of M; Ḿ and Ṃ add marks to M.

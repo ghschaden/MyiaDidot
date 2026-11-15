@@ -1,9 +1,9 @@
 # Bold Italic Ⱳ curl connection proposal, 2026-10-25
 
 After approval of ɸ, continued to the queued Ⱳ drawing concern.
-[Before/proposal](../proofs/w-curl-before-after-2026-10-25.pdf) shows
+[Before/proposal](../proofs/2026-10/w-curl-before-after-2026-10-25.pdf) shows
 actual outlines at equal scale and the enlarged curl connection.
-[Italic comparison](../proofs/w-curl-review-2026-10-25.pdf) supplies context.
+[Italic comparison](../proofs/2026-10/w-curl-review-2026-10-25.pdf) supplies context.
 
 The old TODO describes a middle serif running into the curl. The current
 middle serif is separated from it. The visible fault is instead at the

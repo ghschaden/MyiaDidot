@@ -3,7 +3,7 @@
 The review reviewed 57 phonetic forms and approved 47 unchanged, then
 approved all ten local drawing repairs on 2026-11-08. All 57 approvals
 are recorded in production Bold Italic. Final proof:
-proofs/bold-italic-phonetic-repairs-2026-11-08.pdf.
+proofs/2026-11/bold-italic-phonetic-repairs-2026-11-08.pdf.
 
 The ten repairs:
 

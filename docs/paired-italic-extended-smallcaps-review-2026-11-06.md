@@ -19,8 +19,8 @@ The inner arc is fitted from the same-style full capital's inner arc,
 with a rounder right side and open head. The outside, stem and terminal
 are retained, as are the advance and anchors. Both drawings are installed,
 marked drawn and accepted. Proofs were rendered and visually inspected:
-`proofs/italic-glottal-smallcap-repair-2026-11-06.svg` and
-`proofs/bold-glottal-smallcap-repair-2026-11-06.svg`.
+`proofs/2026-11/italic-glottal-smallcap-repair-2026-11-06.svg` and
+`proofs/2026-11/bold-glottal-smallcap-repair-2026-11-06.svg`.
 
 ## Approved gamma small caps
 
@@ -35,8 +35,8 @@ Lowercase ɣ and the full capital Ɣ are unchanged.
 The before/after gamma proofs in the scratch directory were rendered
 and visually inspected in both styles. Both approved drawings are installed,
 marked drawn and accepted. Retained evidence is in
-`proofs/italic-gamma-smallcap-repair-2026-11-06.svg` and
-`proofs/bold-gamma-smallcap-repair-2026-11-06.svg`.
+`proofs/2026-11/italic-gamma-smallcap-repair-2026-11-06.svg` and
+`proofs/2026-11/bold-gamma-smallcap-repair-2026-11-06.svg`.
 
 Compiled outline-intersection checks found the wider gammas touching in
 doubled small-cap pairs at the old advance. Final placement preserves both

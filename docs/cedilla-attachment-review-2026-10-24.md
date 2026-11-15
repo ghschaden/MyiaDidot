@@ -2,7 +2,7 @@
 
 **Verdict 2026-10-26:** The repaired attachments accepted after visual review of the proof.
 
-[Before/after proof](../proofs/cedilla-attachments-before-after-2026-10-24.pdf)
+[Before/after proof](../proofs/2026-10/cedilla-attachments-before-after-2026-10-24.pdf)
 shows complete letters alongside enlarged attachment details.
 
 Glyph lint found short steps inside the counters of Bold Ç, Ş and ç.sc,

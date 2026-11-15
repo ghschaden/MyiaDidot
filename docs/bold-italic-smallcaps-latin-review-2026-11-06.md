@@ -48,8 +48,8 @@ repaired forms, and the previously accepted c.sc/g.sc references.
   small lower loop remain exactly unchanged.
 
 The approved focused proof is retained as
-`proofs/bold-italic-b-d-q-smallcap-repairs-2026-11-06.svg`. The original
-sheet is retained as `proofs/bold-italic-smallcaps-latin-partial-2026-11-06.pdf`.
+`proofs/2026-11/bold-italic-b-d-q-smallcap-repairs-2026-11-06.svg`. The original
+sheet is retained as `proofs/2026-11/bold-italic-smallcaps-latin-partial-2026-11-06.pdf`.
 Before sources and intermediate/final candidate proofs are under
 `build/glyph-review/bold-italic-b-q-smallcaps/`. `revised.svg`/`revised.png`
 were visually inspected, including enlarged forms and compiled English

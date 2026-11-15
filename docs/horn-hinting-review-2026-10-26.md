@@ -1,6 +1,6 @@
 # Horn hinting review, 2026-10-26
 
-[Production raster proof](../proofs/horn-hinting-review-2026-10-26.pdf)
+[Production raster proof](../proofs/2026-10/horn-hinting-review-2026-10-26.pdf)
 compares H, standalone Horn/horn, and O Ơ U Ư o ơ u ư in all four styles.
 Samples at 9, 11, 12, 13, 14 and 20 ppem cover every size reported for
 standalone horns. Each appears at native size and 3× nearest-neighbour

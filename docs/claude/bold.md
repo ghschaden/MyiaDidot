@@ -203,7 +203,7 @@ B4. `make_bold.py REGULAR OUT.ufo` writes to any path, so a trial is
 generated into `build/`, never into `sources/`. One sheet as PDF, today's
 Bold | trial | Old Standard Bold, at 144 and 12 pt; one review round.
 
-Made 2026-11-11, awaiting that round: `proofs/bold-trial-2026-11-11.pdf`
+Made 2026-11-11, awaiting that round: `proofs/2026-11/bold-trial-2026-11-11.pdf`
 (`scripts/pilot/bold_trial.py`, `bold_trial_sheet.py`), six rows, each
 adding one rule: today's Bold; B1; B1 and B4; with B3; with B2 (KX
 1.00); Old Standard Bold. At 125 and 12 pt, no kerning in any row.

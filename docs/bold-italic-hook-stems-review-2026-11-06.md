@@ -51,8 +51,8 @@ Previously accepted glyph fingerprints remain valid in all four styles.
 
 The review approved Bold Italic uni0257.sc on 2026-11-06; its acceptance
 fingerprint is recorded. Approved evidence is retained as
-`proofs/bold-italic-hook-stems-2026-11-06.svg` and
-`proofs/bold-italic-hook-feet-2026-11-06.svg`.
+`proofs/2026-11/bold-italic-hook-stems-2026-11-06.svg` and
+`proofs/2026-11/bold-italic-hook-feet-2026-11-06.svg`.
 
 For uni0253.sc, the review requested a rounder upper counter, like its
 lower one, and subsequently approved it. That follow-up is recorded in

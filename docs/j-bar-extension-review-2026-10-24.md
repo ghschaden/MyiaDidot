@@ -1,6 +1,6 @@
 # Bold Italic ɉ right bar extended, 2026-10-24
 
-[Before/after proof](../proofs/bold-italic-j-bar-before-after-2026-10-24.pdf).
+[Before/after proof](../proofs/2026-10/bold-italic-j-bar-before-after-2026-10-24.pdf).
 
 The review found the Bold Italic bar too short in the four-style review.
 That correction supersedes the recommendation to retain this style's

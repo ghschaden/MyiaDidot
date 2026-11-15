@@ -1,6 +1,6 @@
 # Bold Italic Ⱦ foot counter repair, 2026-10-24
 
-[Before/after proof](../proofs/bold-italic-t-slash-before-after-2026-10-24.pdf)
+[Before/after proof](../proofs/2026-10/bold-italic-t-slash-before-after-2026-10-24.pdf)
 shows the complete glyph and the lower serif at a larger scale.
 
 The slash and foot serif enclosed a residual counter of 402 square font

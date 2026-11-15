@@ -4,7 +4,7 @@
 See [the implemented extension](j-bar-extension-review-2026-10-24.md)
 and its before/after proof. The other three styles retain their drawings.
 
-[Four-style comparison proof](../proofs/j-bar-ledges-review-2026-10-24.pdf)
+[Four-style comparison proof](../proofs/2026-10/j-bar-ledges-review-2026-10-24.pdf)
 shows the complete letters and enlarged right bar ends at matching scales.
 
 Bold Italic ɉ has two lint findings at the right end of its horizontal

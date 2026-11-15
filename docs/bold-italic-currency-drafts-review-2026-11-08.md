@@ -28,5 +28,5 @@ Italic's T and S at the emboldened bars' weight:
 The review approved both on 2026-11-08; all 20 currency signs are accepted.
 Shaping of the full corpus (2,119,735 strings) changes in 5,706, all the
 two advances alone; baselines accepted from that exact report.
-Retained proof: proofs/bold-italic-currency-drafts-2026-11-08.pdf (sheet,
+Retained proof: proofs/2026-11/bold-italic-currency-drafts-2026-11-08.pdf (sheet,
 ₮ and ₴ before and after).

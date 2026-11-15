@@ -3,7 +3,7 @@
 Reference: `f471c107`. Current-design review; no production sources changed.
 The review approved all 15 forms unchanged on 2026-11-06. Acceptance
 fingerprints are recorded in the Italic UFO. The accepted sheet is retained
-as `proofs/italic-smallcaps-phonetic-2026-11-06.pdf`.
+as `proofs/2026-11/italic-smallcaps-phonetic-2026-11-06.pdf`.
 
 The next batch contains 15 unaccepted small caps reached from Latin or
 phonetic inputs. omega.sc is shared with Greek; it is included because the

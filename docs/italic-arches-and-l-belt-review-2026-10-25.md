@@ -3,11 +3,11 @@
 **Verdict 2026-10-26:** The inherited open arch joins (m, ɯ, т, ш and their aliases) accepted as drawn after visual review.
 
 The next lint group comprised the Italic m/arch family and ɬ. The
-[arch comparison](../proofs/italic-arches-review-2026-10-25.pdf) includes
+[arch comparison](../proofs/2026-10/italic-arches-review-2026-10-25.pdf) includes
 Old Standard's source drawings, Myia's two italic weights and enlarged
-flagged regions. The [belt before/after sheet](../proofs/italic-l-belt-before-after-2026-10-25.pdf)
+flagged regions. The [belt before/after sheet](../proofs/2026-10/italic-l-belt-before-after-2026-10-25.pdf)
 shows the repair to lowercase ɬ and capital Ɬ. The
-[Bold Italic inheritance sheet](../proofs/bold-italic-l-belt-before-after-2026-10-25.pdf)
+[Bold Italic inheritance sheet](../proofs/2026-10/bold-italic-l-belt-before-after-2026-10-25.pdf)
 shows the corresponding regenerated drawings.
 
 ## Belts attached to their stems
@@ -42,7 +42,7 @@ small caps remain unchanged; no shaping baseline updates are intended.
 ## Reference check requested after the drawing review
 
 The review asked whether the empty space was deliberate and requested a
-Charis/Libertinus comparison. The [actual-outline reference sheet](../proofs/l-belt-charis-libertinus-comparison-2026-10-25.pdf)
+Charis/Libertinus comparison. The [actual-outline reference sheet](../proofs/2026-10/l-belt-charis-libertinus-comparison-2026-10-25.pdf)
 places the installed reference fonts beside Myia's original and joined
 versions at equal em sizes.
 

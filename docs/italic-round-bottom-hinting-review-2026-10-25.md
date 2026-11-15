@@ -2,7 +2,7 @@
 
 **Verdict 2026-10-26:** Current curves and hints accepted after visual review of the proof.
 
-[Production raster proof](../proofs/italic-round-bottom-hinting-review-2026-10-25.pdf)
+[Production raster proof](../proofs/2026-10/italic-round-bottom-hinting-review-2026-10-25.pdf)
 compares both italic weights in FreeType v35 and v40 at 24, 28 and
 29–32 ppem. Each group begins with O; Latin/Cyrillic C and O provide
 additional controls. Samples use 3× nearest-neighbour enlargement.

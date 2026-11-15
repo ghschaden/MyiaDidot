@@ -1,6 +1,6 @@
 # Fraktur 𝔖 CFF hinting review, 2026-10-26
 
-[Production raster proof](../proofs/fraktur-s-cff-hinting-review-2026-10-26.pdf)
+[Production raster proof](../proofs/2026-10/fraktur-s-cff-hinting-review-2026-10-26.pdf)
 compares O S 𝔐 𝔓 𝔖 O in Italic and Bold Italic at 8, 9, 10, 11, 12 and
 16 ppem. It shows CFF production and a TrueType v40 control at native size
 and 6× nearest-neighbour enlargement. Both final PNG pages were inspected,

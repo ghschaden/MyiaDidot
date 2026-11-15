@@ -1,6 +1,6 @@
 # Bold Italic ʄ recipe review, 2026-10-23
 
-[Before/after proof](../proofs/bold-italic-j-hook-before-after-2026-10-23.pdf)
+[Before/after proof](../proofs/2026-10/bold-italic-j-hook-before-after-2026-10-23.pdf)
 
 Bold Italic ʄ is now rebuilt from its own ɟ base, rather than emboldened
 whole. Its recipe is in `ITALIC_BOLD_RECIPES`, with an explicit rebuild

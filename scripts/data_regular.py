@@ -709,7 +709,7 @@ ENLARGE_LIKE = {"ʛ": "g.sc"}
 # against the round ones (4 left, 7 both); measured on proportional pairs
 # (scripts/quality/figure_pairs.py: least squares over the 100 pairs, each side
 # to the references' median), rounded to 5. The foot floor still holds.
-# Chosen on proofs/figures-sides-2026-11-14.pdf.
+# Chosen on proofs/2026-11/figures-sides-2026-11-14.pdf.
 FIGURE_SIDES = {
     "zero": (-5, 25), "one": (150, 155), "two": (60, 55), "three": (75, 55), "four": (125, 105),
     "five": (25, 60), "six": (20, 60), "seven": (85, 75), "eight": (0, 40), "nine": (30, 35),

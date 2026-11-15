@@ -36,6 +36,6 @@ not a screen-hinting review.
 The preceding a.ipa approval was recorded in all four styles, normalized,
 and checked with the acceptance suite: 10 tests pass.
 
-Accepted proofs are retained as `proofs/italic-smallcaps-latin-2026-11-06.pdf`
-and `proofs/italic-smallcaps-latin-words-2026-11-06.svg`. Work complete.
+Accepted proofs are retained as `proofs/2026-11/italic-smallcaps-latin-2026-11-06.pdf`
+and `proofs/2026-11/italic-smallcaps-latin-words-2026-11-06.svg`. Work complete.
 After stamping and normalization, the acceptance suite passes all 10 tests.

@@ -5,7 +5,7 @@ the Regular's 3 and 5 (their lower bowls lightened 2026-10-26, after the
 acceptance of 2026-10-25) and all ten in the Bold. The Italic's (2026-10-25)
 and the Bold Italic's (2026-11-08) were already accepted.
 
-Proofs (`proofs/oldstyle-figures-*-2026-11-09.png`): `sheet` (the four styles with
+Proofs (`proofs/2026-11/oldstyle-figures-*-2026-11-09.png`): `sheet` (the four styles with
 n and o, figures in text), `big` (Regular 3 5, the Bold's ten,
 enlarged), `four` (the Bold 4s before, after, and the Regular's).
 

@@ -73,7 +73,7 @@ the other models. One item per session.
       rule, the count against the references and the hand exceptions
       in docs/claude/spacing.md ("The italics' Latin kerning"). The
       computed values approved by the designer on
-      `proofs/italic-kerning-2026-11-11.pdf`
+      `proofs/2026-11/italic-kerning-2026-11-11.pdf`
       (`scripts/italic_kerning_sheet.py`), nothing tightened past the
       upright; one wish: K y slightly tighter in the italics, a hand
       exception (spacing.md says why the rule cannot give it). Left for
@@ -114,7 +114,7 @@ the other models. One item per session.
       thinned. The Bold Italic's arches are the reverse: counters 24 %
       narrow. The trial sheet is made (B1 at KX 1.04, B1 with KX
       1.00, beside today's and Old Standard Bold):
-      `proofs/bold-trial-2026-11-11.pdf`. Reviewed 2026-11-11: B1
+      `proofs/2026-11/bold-trial-2026-11-11.pdf`. Reviewed 2026-11-11: B1
       taken and carried out (make_bold.keep_gaps); B2, B3, B4 not.
 - [x] F5. T3's cause: why the runner splits ae.sc ǽ.sc ǣ.sc fl ſl
       otherwise and lands K's point on the other side of .5; the fix
@@ -187,12 +187,12 @@ the other models. One item per session.
       redrawn (I O Q not: redraw.md), ⱳ's arm, the Bold Italic's capitals
       accepted, the followers' faults mended (redraw.md, "The second
       sheets, seen 2026-11-12"). Open from it, for the designer: the
-      mends as rendered (proofs/bold-italic-followers-mended-2026-11-12.pdf,
-      proofs/italic-followers-mended-2026-11-12.pdf: g.sc ǥ.sc ₵ ₿ ы.sc
+      mends as rendered (proofs/2026-11/bold-italic-followers-mended-2026-11-12.pdf,
+      proofs/2026-11/italic-followers-mended-2026-11-12.pdf: g.sc ǥ.sc ₵ ₿ ы.sc
       psi.sc у.sc Ʌ; their accepted marks withdrawn until seen); O and Q
       want drawing.
       The Bold Italic's hooks of Ƙ Ƴ Ʋ (and ƙ.sc ƴ.sc ʋ.sc) done
-      2026-11-12, chosen on proofs/bold-italic-hook-arms-2026-11-12.pdf:
+      2026-11-12, chosen on proofs/2026-11/bold-italic-hook-arms-2026-11-12.pdf:
       Ƙ Ƴ version C, Ʋ version D (make_bold.CURL_ARM).
       O and Q drawn 2026-11-12 (`scripts/draw_oq.py`), approved and
       installed; not committed: small caps moved after it, the causes
@@ -203,10 +203,10 @@ the other models. One item per session.
       The open reviews closed 2026-11-14: the mended followers accepted
       (Ʌ in both italics; the Bold Italic's ₵ ₿ ы.sc psi.sc ǥ.sc) but the
       Italic's ₿, back to the Regular's sloped (its own recipe withdrawn);
-      on `proofs/f7-open-reviews-2026-11-14.pdf` the Bold Italic's
+      on `proofs/2026-11/f7-open-reviews-2026-11-14.pdf` the Bold Italic's
       ff-ligatures, ſſj and ƴ's dot below approved, у.sc's right arm
       drawn straight into its serif; the Bold Italic's ɱ given ŋ's right
-      stroke and hook (`proofs/bold-italic-m-hook-2026-11-14.pdf`, B).
+      stroke and hook (`proofs/2026-11/bold-italic-m-hook-2026-11-14.pdf`, B).
 
 Budget (2026-11-12): F1 to F4 are done, of F6 the pages for T2 and
 phase 1's sweep, of F7 both batches. The limits now:
@@ -292,7 +292,7 @@ How these sessions are run, so that they do not go the way of F1's:
 Model: Sonnet; the CI step with F5.
 
 - [x] Commit the staged Bold Italic m-family work (m т ɯ ᵯ ɰ ɱ ſh, proof
-      `proofs/bold-italic-m-family-2026-11-10.pdf`); let the hook finish.
+      `proofs/2026-11/bold-italic-m-family-2026-11-10.pdf`); let the hook finish.
       (In 120800ac.)
 - [x] `scripts/sync_check.py`: no "(conflicted)" copies, no lost glyphs.
       (Clean 2026-11-13, before and after the rebuild.)
@@ -341,7 +341,7 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       copied): W a -20, W o c e d -60, W à 0, W è -36, W u -22, W g -80;
       Y v w -170 to -110, Y y -152 to -105. The italics follow by the rule,
       no hand exception needed. Left open for the designer (sheet:
-      `proofs/kerning-phase2-2026-11-13.pdf`, last pages of each style):
+      `proofs/2026-11/kerning-phase2-2026-11-13.pdf`, last pages of each style):
       - spacing, not pairs: ' and ” are loose before every stem capital
         (H B D E N P, by about 0.1 of the rhythm), G is tight before every
         lowercase (n o a e i): sidebearings of ' ” and G, not D or i pairs;
@@ -361,7 +361,7 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
         lowercase, ’ s): need an ink-to-ink measure;
       - K R X before rounds and v w y beyond the R ones: not set.
 - [x] Sheet of words per family, four styles:
-      `proofs/kerning-phase2-2026-11-13.pdf`; `make diffenator` and
+      `proofs/2026-11/kerning-phase2-2026-11-13.pdf`; `make diffenator` and
       `make regress` read, shaping baselines accepted with the report's
       digest (2026-11-13).
 
@@ -380,12 +380,12 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       every way above the x-height (spacing.md); Italic U b +72, V +82,
       Y +98, Bold U b +34, N +40, the Regular only V W Y +2 (its U b keeps
       87). Before | after and candidates 30/40/60:
-      `proofs/ascender-clearance-2026-11-13.pdf`. Open:
+      `proofs/2026-11/ascender-clearance-2026-11-13.pdf`. Open:
   - [x] the Regular's U b keeps 87 units (H b 120): the designer found it
         "not good" too; a looser ASCENDER_CLEAR (80-120) would reach it,
         and V W Y with it (see the sheet's candidates).
         Decided 2026-11-14: 87 stays, ASCENDER_CLEAR stays 60 (sheet of
-        60/80/100/120: `proofs/ascender-clearance-regular-2026-11-14.pdf`).
+        60/80/100/120: `proofs/2026-11/ascender-clearance-regular-2026-11-14.pdf`).
   - [x] the italics' Į (Iogonek) stands about 160 units right of I at
         the same advance (bounds 131..1097 against -29..923): a glyph
         fault; the rule now gives it about +200 before every ascender.
@@ -393,7 +393,7 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
         (the only precomposed letter so); make_italic sets it on I
         (data_italic.OS_SHIFT, I's anchors: TopCap 709 -> 680). Į b +36
         (I b +28), Bold Italic +18; į.sc with it. Sheet
-        `proofs/iogonek-italics-2026-11-13.pdf`.
+        `proofs/2026-11/iogonek-italics-2026-11-13.pdf`.
   - [x] the same family below: capitals before accented lowercase (U ȉ,
         T ï, Ví): the lowercase accent over the capital's serif, which
         neither this rule nor the sweep measures.
@@ -404,14 +404,14 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
         ACCENT_CLEAR 40 (GUARD's white), measured every way above the
         x-height: Regular N ǐ +32, H ȉ +104, Γ ῖ +22; Bold U ǐ +72.
         Sheet with candidates 20/40/60:
-        `proofs/accent-clearance-2026-11-13.pdf`; the designer chose 40
+        `proofs/2026-11/accent-clearance-2026-11-13.pdf`; the designer chose 40
         (2026-11-14). Left open, found on the way:
     - [x] f before accented i (fî in French "fît", fï fì fǐ): the hook
           meets the mark in the upright styles (0 units); Charis touches
           too, Libertinus substitutes f.short. A contextual f, not kerning.
           Done 2026-11-14 (the designer chose the contextual f): f.short
           ff.short, the hook x0.6 (0.7/0.5 looked the same at reading
-          sizes: `proofs/f-short-candidates-2026-11-14.pdf`), calt
+          sizes: `proofs/2026-11/f-short-candidates-2026-11-14.pdf`), calt
           caltShortF before every Latin lowercase letter f comes within
           40 of (î 184, ï 82, ľ 83 now); ǐ ĭ ȉ kerned apart (ȉ +146).
           Left: f.short takes f's glyph kerning only through kern_clear
@@ -429,16 +429,16 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
       the reference rule; the upright's look is W's open area, which
       nearest ink does not see: a sheet of W o e a at -60/-100/-140 to
       choose on.
-      Chosen 2026-11-14 on `proofs/w-lowercase-2026-11-14.pdf`: W c -140,
+      Chosen 2026-11-14 on `proofs/2026-11/w-lowercase-2026-11-14.pdf`: W c -140,
       W a -80, W u -80 (the Bold x1.04, the italics by the rule).
       The italics keep the rule's values though W u (and the Bold Italic's
       W c) come out tighter than the five reference italics
-      (proofs/w-italics-2026-11-14.pdf; latin-pairs lists).
+      (proofs/2026-11/w-italics-2026-11-14.pdf; latin-pairs lists).
 
 - [x] Qu (dlig Q_u), the tail below the O: a redesign asked of Fable
       (2026-11-14: steeper neck, the swash leaving level at the crotch,
       thinning to a hairline needle; with and without an upturned end),
-      set beside the present one on `proofs/qu-tail-2026-11-14.pdf`. The
+      set beside the present one on `proofs/2026-11/qu-tail-2026-11-14.pdf`. The
       designer kept the present tail (QU_TAIL unchanged).
 
 ## Phase 3: the italics' own kerning
@@ -478,7 +478,7 @@ and Cyrillic are already measured per style; Latin is not.
       decided 2026-11-11, F2: docs/claude/spacing.md; to carry out:
       the rule into make_italic.py and make_bold.py, K y by hand; done
       2026-11-12, K y -30, approved on
-      proofs/italic-kerning-in-generators-2026-11-12.pdf): the
+      proofs/2026-11/italic-kerning-in-generators-2026-11-12.pdf): the
       Regular's kerning scaled per pair by the white the italic shapes
       actually leave (computed), with `ITALIC_KERNING` and
       `ITALIC_BOLD_KERNING` holding only reviewed exceptions. A design
@@ -491,7 +491,7 @@ and Cyrillic are already measured per style; Latin is not.
       letters no longer need.
       Done 2026-11-14: each measured with and without its value (share
       against five reference italics, pairs.py's gap against three); the
-      designer chose on `proofs/bold-italic-hand-kerns-2026-11-14.pdf`:
+      designer chose on `proofs/2026-11/bold-italic-hand-kerns-2026-11-14.pdf`:
       G r 90, a y dropped, f t -30, u t 60. Kept: w a g a i f a f v a u f
       R e (still needed on both measures), g h +43 (still a little tight),
       f r -95 (the measures disagree).
@@ -520,8 +520,8 @@ Model: Opus for the default's change in space_figures.py, Sonnet for the rest.
       left the 1's and 4's foot serifs outside the advance (11 41 fused,
       H1 touched; so under pnum since it was made): a floor across the
       foot band, I's mean side, chosen on
-      `proofs/figures-feet-2026-11-14.pdf` (Regular 1 629 -> 876, 4 852 ->
-      936, 2 +32). Sheet of the change: `proofs/figures-proportional-2026-11-14.pdf`.
+      `proofs/2026-11/figures-feet-2026-11-14.pdf` (Regular 1 629 -> 876, 4 852 ->
+      936, 2 +32). Sheet of the change: `proofs/2026-11/figures-proportional-2026-11-14.pdf`.
 - [x] Italic lining figures against the italic capitals: `1` stem 188
       against `n` about 175 across; they read darker than the words
       around them in lowercase text. Measured 2026-11-14 (deslanted, at
@@ -536,7 +536,7 @@ Model: Opus for the default's change in space_figures.py, Sonnet for the rest.
       the figures 0.2 H-gaps tighter than every reference and the open
       sides (4's left, 7) too close. Each side now the 0's base plus
       `data_regular.FIGURE_SIDES`, chosen on
-      `proofs/figures-sides-2026-11-14.pdf` (Regular: rhythm 0.90 ->
+      `proofs/2026-11/figures-sides-2026-11-14.pdf` (Regular: rhythm 0.90 ->
       1.09, references' median 1.10; every side within 20 units). The
       Bold's drawn 4 refitted by hand to the same rule.
 - [x] Per-style figure sides (2026-11-14): the Regular's table, over
@@ -552,7 +552,7 @@ Model: Opus for the default's change in space_figures.py, Sonnet for the rest.
       its loose capitals (H H 0.32 of the cap height, references
       0.22-0.25): over the cap height its figures were in range. The foot
       floor dropped for these tables (the designer, on
-      `proofs/figures-italics-2026-11-14.pdf`): it held the 1 and 4
+      `proofs/2026-11/figures-italics-2026-11-14.pdf`): it held the 1 and 4
       23-58 units wider than the fit; the feet stay 125 units or more
       apart. Left: the Bold Italic's capitals' own spacing (H H 0.32)
       for phase 3's or a later look; the Regular and Bold could take the
@@ -729,7 +729,8 @@ alongside, each when the phase that needs it comes up.
       With phase 6's verdicts, which fill it in.
 - [ ] T10. The records in order (DEVELOPMENT.md's publication items,
       phase 10): FONT-DESIGN.md back to open tasks only (done 2026-11-15: 529 -> 96
-      lines, the history in FONTLOG's appendix); still to do: the dated proofs (about 130 in `proofs/`) and review
+      lines, the history in FONTLOG's appendix); the dated proofs (185) now in `proofs/2026-10/` and `proofs/2026-11/`
+      with `proofs/INDEX.md`, links updated (2026-11-15); still to do: the review
       documents (about 70 in `docs/`) into dated subfolders with an
       index, links updated; `build/` cleared of what no target makes
       any more, the agents' logs under one name.
@@ -836,8 +837,8 @@ docs/claude/quality.md has both rules with what enforces them.
       glyphs, 1.5-5 units) had corners where FontForge drafted them.
       Outsides that run smoothly into Old Standard's diagonal are left.
 - [x] The designer's eye on both (approved 2026-11-10):
-      `proofs/bold-italic-stems-counters-2026-11-10.pdf`,
-      `proofs/italic-stems-counters-2026-11-10.pdf` (before | now,
+      `proofs/2026-11/bold-italic-stems-counters-2026-11-10.pdf`,
+      `proofs/2026-11/italic-stems-counters-2026-11-10.pdf` (before | now,
       node views, overlay, 144 pt). To say there: whether the bowls
       are round enough (the shoulder's squareness is the 0.9), and
       whether the outsides that still run into a diagonal at the lower

@@ -37,7 +37,7 @@ Moved from CLAUDE.md (its ground rules apply).
   chosen on running text 2026-11-13): OPEN_CLEAR 100 after an opening
   sign, MARK_CLEAR 60 before ! ?, CLOSE_CLEAR 40 before the other
   closers, SUPERIOR_CLEAR 60 before a superior figure (a note's number;
-  proofs/superior-clearance-text-2026-11-13.pdf); ª º after a letter and
+  proofs/2026-11/superior-clearance-text-2026-11-13.pdf); ª º after a letter and
   letters against letters keep CLEAR (20). Every capital before an
   ascender letter of its script (kern_clear.ascender_entries: U b, N l,
   Ü h, Н б, Η β; the ascenders by their base letter, so ľ ḷ count and
@@ -47,12 +47,12 @@ Moved from CLAUDE.md (its ground rules apply).
   in common, and foot serifs are left to the spacing (A n as A b). Found
   as Üb on the pangram page (2026-11-13): the italics' serifs met (1-3
   units), the Bold's U b had 28; the value was chosen on running text
-  (proofs/ascender-clearance-2026-11-13.pdf). Every capital before a
+  (proofs/2026-11/ascender-clearance-2026-11-13.pdf). Every capital before a
   lowercase letter of its script with a mark or dot above that is no
   ascender (kern_clear.accent_entries: N ǐ, H ȉ, Γ ῖ, Υ ϊ, Ѵ ї) keeps
   ACCENT_CLEAR (40, GUARD's white) by the same measure: a wide mark on a
   narrow i reaches over the capital's serif (the Bold's U ǐ met, Charis
-  and Libertinus keep 90-130 there; proofs/accent-clearance-2026-11-13.pdf,
+  and Libertinus keep 90-130 there; proofs/2026-11/accent-clearance-2026-11-13.pdf,
   candidates 20/40/60; 40 chosen by the designer 2026-11-14). f before
   a letter whose mark or ascender its hook meets (fî fǐ fä fľ, and fl
   with liga off) is f.short, ff ff.short (calt, caltShortF after the
@@ -91,13 +91,13 @@ Moved from CLAUDE.md (its ground rules apply).
   by its shapes: the old-style ones each side as n and o, the lining ones
   each side the 0's optical space plus its own amount
   (`data_regular.FIGURE_SIDES`, 2026-11-14 on
-  `proofs/figures-sides-2026-11-14.pdf`: equal sides set the figures 0.2
+  `proofs/2026-11/figures-sides-2026-11-14.pdf`: equal sides set the figures 0.2
   H-gaps tighter than seven references and the open sides, 4's left and
   the 7, too close; each side to the references' median), with a floor
   (across the foot serifs' band the ink keeps I's mean side, `FOOT`). The
   italics have tables of their own (`data_italic.ITALIC_FIGURE_SIDES`,
   `data_bold_italic.BOLD_ITALIC_FIGURE_SIDES`, 2026-11-14 on
-  `proofs/figures-italics-2026-11-14.pdf`): each side over the H's on that
+  `proofs/2026-11/figures-italics-2026-11-14.pdf`): each side over the H's on that
   side, no foot floor, fitted by `figure_pairs.py`'s absolute fit (pair
   gaps over the cap height, figures beside H O n o too). Judged upright
   the italic letters stand left in their advance; over the 0's the
@@ -122,7 +122,7 @@ State 2026-11-12: in the generators. make_italic.py and make_bold.py (the
 Bold Italic, against the Bold) call `italic_kerning.apply` on the finished
 outlines, just before kern_clear; the hand tables go over it. The measure,
 rule and prototype: `scripts/italic_kerning.py`, tests/test_italic_kerning.py;
-the values approved on `proofs/italic-kerning-2026-11-11.pdf`
+the values approved on `proofs/2026-11/italic-kerning-2026-11-11.pdf`
 (`scripts/italic_kerning_sheet.py`; `--before REV` sets an italic at a
 revision beside the one in sources/) with nothing tightened past the
 upright and one wish, K y (below). The pairs left outside the reference

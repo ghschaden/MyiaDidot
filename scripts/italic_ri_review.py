@@ -91,7 +91,7 @@ def main():
     source = ROOT / "comparison.svg"
     source.write_text("\n".join(s))
     for fmt, dest in (("png", ROOT / "comparison.png"),
-                      ("pdf", Path("proofs/italic-ri-weight-review-2026-10-25.pdf"))):
+                      ("pdf", Path("proofs/2026-10/italic-ri-weight-review-2026-10-25.pdf"))):
         subprocess.run(["rsvg-convert", "-f", fmt, str(source), "-o", str(dest)], check=True)
     print(json.dumps(measures, indent=2))
 

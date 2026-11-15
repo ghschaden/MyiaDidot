@@ -1,6 +1,6 @@
 # Italic Ʋ top hinting review, 2026-10-26
 
-[Production raster proof](../proofs/italic-upsilon-top-hinting-review-2026-10-26.pdf)
+[Production raster proof](../proofs/2026-10/italic-upsilon-top-hinting-review-2026-10-26.pdf)
 compares H O U Ʋ U H in Italic and Bold Italic at 8, 9, 10, 12, 16 and
 24 ppem in FreeType v35/v40. Each sample appears at native size and 4×
 nearest-neighbour enlargement. Both final PNG pages were inspected,

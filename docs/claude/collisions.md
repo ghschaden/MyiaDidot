@@ -204,26 +204,26 @@ Steps 1-4 carried out as written; `make reproduce` is untouched (only
 
 ## The first fixes, 2026-11-13
 
-Reviewed on `proofs/collisions-review-2026-11-13.pdf`: all three shown
+Reviewed on `proofs/2026-11/collisions-review-2026-11-13.pdf`: all three shown
 taken as faults, to be loosened. Then, on the before | after sheet, 20
 units still read as touching: a sign beside a letter wants more than the
 floor against ink meeting. Chosen on running text
-(`proofs/sign-clearance-text-2026-11-13.pdf`,
+(`proofs/2026-11/sign-clearance-text-2026-11-13.pdf`,
 `-open-close-`, `-exclam-question-`): 100 after an opening sign, 60
 before ! ?, 40 before the other closers (kern_clear.clearance), and
 every sign beside every letter cleared, not only the families below; the
 sweep measures each pair against the same clearance. The superiors
-after: superior figures 60, ª º 20 (`proofs/superior-clearance-text-2026-11-13.pdf`),
+after: superior figures 60, ª º 20 (`proofs/2026-11/superior-clearance-text-2026-11-13.pdf`),
 and with them the lists are empty. What follows was the first step, at 20. Carried out in `kern_clear.entries()`
 (spacing.md says which pairs), the italics' [j by hand at +60 (of
-`proofs/italic-bracket-j-candidates-2026-11-13.pdf`). The sets moved
+`proofs/2026-11/italic-bracket-j-candidates-2026-11-13.pdf`). The sets moved
 from this script into `kern_clear.sets()`, one definition for the sweep
 and the repair. Found on the way: guarded members were left out of a
 group entry's value but took it, so the Bold's (ɉ stayed 2 units short
 and the ogonek letters before ɉ ʝ ϳ were never cleared (letter pairs, not
 swept); mended in kern_clear. After: Regular 313 pairs (from 383),
 Italic 938 (1798), Bold 240 (306), Bold Italic 795 (1665); before | after
-on `proofs/collisions-loosened-2026-11-13.pdf`. Left for phase 1's
+on `proofs/2026-11/collisions-loosened-2026-11-13.pdf`. Left for phase 1's
 Sonnet sessions: superiors after f and the hooks, accented small caps
 before closers and superiors, the Greek capitals with breathings after
 the openers, ) ] after η's group, and the rest of the lists.

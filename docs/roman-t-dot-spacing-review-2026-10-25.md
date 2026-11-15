@@ -1,6 +1,6 @@
 # Roman ṫ dot spacing review, 2026-10-25
 
-[Comparison proof](../proofs/roman-t-dot-spacing-review-2026-10-25.pdf)
+[Comparison proof](../proofs/2026-10/roman-t-dot-spacing-review-2026-10-25.pdf)
 shows current and proposed Regular/Bold drawings enlarged and at three
 text sizes. The proposal raises only ṫ's dot component by 59 units,
 matching the clearance above ż in each weight.

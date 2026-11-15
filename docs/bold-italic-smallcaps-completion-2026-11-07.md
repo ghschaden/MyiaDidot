@@ -79,13 +79,13 @@ overriding the earlier worktree restrictions for this task.
 
 Retained final sheets:
 
-- [Latin/phonetic small caps](../proofs/bold-italic-phonetic-smallcaps-2026-11-07.pdf)
-- [Greek small caps](../proofs/bold-italic-greek-smallcaps-2026-11-07.pdf)
-- [Cyrillic small caps](../proofs/bold-italic-cyrillic-smallcaps-2026-11-07.pdf)
-- [Lowercase repairs](../proofs/bold-italic-cyrillic-lowercase-2026-11-07.pdf)
-- [Accepted Omega feet](../proofs/bold-italic-omega-feet-2026-11-07.pdf)
-- [Final straight Ka leg](../proofs/bold-italic-ka-foot-2026-11-07.pdf)
-- [Reopened Fita counter](../proofs/bold-italic-fita-counter-2026-11-07.pdf)
+- [Latin/phonetic small caps](../proofs/2026-11/bold-italic-phonetic-smallcaps-2026-11-07.pdf)
+- [Greek small caps](../proofs/2026-11/bold-italic-greek-smallcaps-2026-11-07.pdf)
+- [Cyrillic small caps](../proofs/2026-11/bold-italic-cyrillic-smallcaps-2026-11-07.pdf)
+- [Lowercase repairs](../proofs/2026-11/bold-italic-cyrillic-lowercase-2026-11-07.pdf)
+- [Accepted Omega feet](../proofs/2026-11/bold-italic-omega-feet-2026-11-07.pdf)
+- [Final straight Ka leg](../proofs/2026-11/bold-italic-ka-foot-2026-11-07.pdf)
+- [Reopened Fita counter](../proofs/2026-11/bold-italic-fita-counter-2026-11-07.pdf)
 
 Integration removes seven resolved quality entries and the obsolete
 whole-emboldening exception/metadata for drawn uni04B7. The review explicitly

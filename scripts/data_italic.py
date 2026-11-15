@@ -601,7 +601,7 @@ ITALIC_KERNING = {
     # [j (j {j looser: j's ball tucks under the bracket's foot, near on
     # the diagonal though 56 units clear across, so kern_clear leaves it
     # (chosen +60 of +20..+80 on
-    # proofs/italic-bracket-j-candidates-2026-11-13.pdf, 2026-11-13;
+    # proofs/2026-11/italic-bracket-j-candidates-2026-11-13.pdf, 2026-11-13;
     # the Bold Italic takes it scaled)
     **{(o, "public.kern2.j"): 60 for o in ("parenleft", "bracketleft", "braceleft")},
     # Greek (Old Standard's letters) against Greek references, as the
@@ -729,7 +729,7 @@ ROUND_PLAIN = ("uni2135", "uni026C", "uniA7AD", "uni0237", "uni01B9", "eight", "
 # Fitted 2026-11-14 by figure_pairs.py's absolute fit (each pair's gap over
 # the cap height to the references' median, over the figure pairs and the
 # figures beside H O n o), rounded to 5; chosen without the foot floor on
-# proofs/figures-italics-2026-11-14.pdf (with it the 1 and 4 kept 23-58
+# proofs/2026-11/figures-italics-2026-11-14.pdf (with it the 1 and 4 kept 23-58
 # units more than the fit).
 ITALIC_FIGURE_SIDES = {
     "zero": (-55, -100), "one": (85, 40), "two": (5, -60), "three": (25, -75), "four": (45, -45),

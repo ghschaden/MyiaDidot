@@ -46,8 +46,8 @@ All artifacts below are under `build/glyph-review/hooks-reference-reset/`:
 The final enlarged and context PNGs were inspected. The reset improves the
 continuity of Florin's descent and avoids the pasted-on terminal of the v8
 P-hook. Accepted before/after proofs are retained at
-`proofs/bold-italic-hooks-reference-repair-2026-11-07.svg` and
-`proofs/italic-hooks-reference-repair-2026-11-07.svg`.
+`proofs/2026-11/bold-italic-hooks-reference-repair-2026-11-07.svg` and
+`proofs/2026-11/italic-hooks-reference-repair-2026-11-07.svg`.
 
 Recreate candidates with `scripts/hook_reference_candidates.py --source UFO
 --out build/.../candidate.ufo`, adding `--bold` for Bold Italic. The script

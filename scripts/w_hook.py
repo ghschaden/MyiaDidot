@@ -9,7 +9,7 @@ refitted as one curve from the curl down to w's node at 1129,117, on w's
 handles: the arm ran 38 units wide at mid height where w's own is 58-60
 and swelled to 69 in the hook ("a thickening in the final hook", on the
 sheet of 2026-11-11). Asked for and approved there, version H
-(proofs/italic-w-hook-arm-2026-11-11.pdf):
+(proofs/2026-11/italic-w-hook-arm-2026-11-11.pdf):
 
 - the arm in w's own form but nearer the middle stem: its x drawn towards
   X0 so that its top stands SHIFT units further left, the hook moved with it;

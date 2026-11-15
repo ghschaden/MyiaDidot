@@ -2,7 +2,7 @@
 
 These ten GLIFs are fixed design inputs for `scripts/oldstyle_figures.py`.
 They preserve the proportional drawings and advances approved in
-`proofs/italic-oldstyle-redesign-restored-nine-2026-10-25.pdf` on 2026-10-25.
+`proofs/2026-10/italic-oldstyle-redesign-restored-nine-2026-10-25.pdf` on 2026-10-25.
 They derive from Myia Didot's Old Standard-based Italic figures, fitted to
 new vertical bands and widths, with thick strokes optically reduced.
 The 9 retains its original curled ball terminal. See OFL.txt.

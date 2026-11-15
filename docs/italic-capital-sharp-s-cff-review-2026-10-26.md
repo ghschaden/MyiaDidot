@@ -1,6 +1,6 @@
 # Italic ẞ CFF hinting review, 2026-10-26
 
-[Production raster proof](../proofs/italic-capital-sharp-s-cff-review-2026-10-26.pdf)
+[Production raster proof](../proofs/2026-10/italic-capital-sharp-s-cff-review-2026-10-26.pdf)
 compares H O S ẞ ß O in Italic and Bold Italic at 10, 12, 13, 16, 24 and
 32 ppem. Each panel shows CFF production and a TrueType v40 control at
 native size and 3× nearest-neighbour enlargement. Both final PNG pages were

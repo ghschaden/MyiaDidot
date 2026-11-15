@@ -3,14 +3,14 @@
 **Verdict 2026-10-26:** ʸ ң ᵍ ᶤ ₡ ⱥ.sc accepted as drawn after visual review.
 
 Reviewed the seven entries after ɽ and its small cap. The
-[four-style sheet](../proofs/remaining-bold-italic-lint-review-2026-10-24.pdf)
+[four-style sheet](../proofs/2026-10/remaining-bold-italic-lint-review-2026-10-24.pdf)
 shows the drawings before this pass's aleph repair, with enlarged marked
 regions. This continues the lint review, not the separate ɸ weight or
 dollar drawing work.
 
 ## Aleph repair
 
-The [aleph before/after sheet](../proofs/bold-italic-aleph-before-after-2026-10-24.pdf)
+The [aleph before/after sheet](../proofs/2026-10/bold-italic-aleph-before-after-2026-10-24.pdf)
 shows two small backward turns in the weighted lower tip. The original
 Italic has a continuous curve here. In Bold Italic, weighting introduced
 both a three-unit straight return at 749,19 → 746,18 and another curved
@@ -43,7 +43,7 @@ are identical. Other styles are unchanged.
 
 The review accepted the central and lower-left drawing and identified a
 remaining fault where the lower edge of the upper-right terminal joins
-the stem. The [follow-up proof](../proofs/bold-italic-aleph-upper-join-before-after-2026-10-24.pdf)
+the stem. The [follow-up proof](../proofs/2026-10/bold-italic-aleph-upper-join-before-after-2026-10-24.pdf)
 compares this local correction against the already repaired lower-tip
 version.
 

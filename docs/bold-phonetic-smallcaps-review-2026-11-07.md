@@ -7,8 +7,8 @@ aperture repairs, followed by the smoothed uni0266.sc hook. All 15 small
 caps are approved. The four repaired drawings are installed in Bold and
 marked drawn, tied to their Regular inputs. Approval date: 2026-11-07.
 
-Retained proofs: proofs/bold-omega-hhook-2026-11-07.pdf and
-proofs/bold-hhook-smooth-2026-11-07.pdf. The latter supersedes the former's
+Retained proofs: proofs/2026-11/bold-omega-hhook-2026-11-07.pdf and
+proofs/2026-11/bold-hhook-smooth-2026-11-07.pdf. The latter supersedes the former's
 uni0266.sc drawing. Omega's lower opening is 120 units in the capital and
 90 in the small cap. The hooked H forms have separate rounded terminals
 and a gap before the right stem's upper serif. The final small-cap hook

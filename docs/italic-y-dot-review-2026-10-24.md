@@ -1,6 +1,6 @@
 # Italic ỵ dot placement, 2026-10-24
 
-[Before/after proof](../proofs/italic-y-dot-before-after-2026-10-24.pdf)
+[Before/after proof](../proofs/2026-10/italic-y-dot-before-after-2026-10-24.pdf)
 compares the original collision, the first beside-descender trial and the
 closer placement requested after review.
 

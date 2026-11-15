@@ -5,7 +5,7 @@ small-cap acceptance records. No outlines changed. Acceptance of this
 Greek batch was partially approved on 2026-11-06: all 14 forms except
 delta.sc, lambda.sc and theta.sc are accepted unchanged. Their acceptance
 fingerprints are recorded in the Italic UFO. The reviewed sheet is retained
-as `proofs/italic-smallcaps-greek-partial-2026-11-06.pdf`.
+as `proofs/2026-11/italic-smallcaps-greek-partial-2026-11-06.pdf`.
 
 The batch contains 17 remaining unaccepted small caps reached from Greek
 characters, including archaic forms. omega.sc was already reviewed and
@@ -56,7 +56,7 @@ pass. This remains an outline/shaping proof, not a hinting proof.
 A later review approved all three repairs on 2026-11-06. They
 are installed in the Italic, marked drawn and accepted; all 17 forms in
 this Greek batch are now accepted. The focused approved proof is retained
-as `proofs/italic-greek-smallcap-repairs-2026-11-06.svg`.
+as `proofs/2026-11/italic-greek-smallcap-repairs-2026-11-06.svg`.
 
 Bold Italic was regenerated as a whole, followed by smallcaps.py. Only the
 same three glyphs changed geometrically; no kerning or feature changes.

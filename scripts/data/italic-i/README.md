@@ -1,7 +1,7 @@
 # Approved lighter Italic I
 
 `I.glif` is the −15 thick-stroke trial from
-`proofs/italic-ri-weight-review-2026-10-25.pdf`, approved
+`proofs/2026-10/italic-ri-weight-review-2026-10-25.pdf`, approved
 after the assistant recommended retaining the old drawing. That numerical
 recommendation is superseded by the visual judgment.
 

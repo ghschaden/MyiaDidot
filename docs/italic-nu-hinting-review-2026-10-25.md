@@ -1,6 +1,6 @@
 # Italic ν hinting review, 2026-10-25
 
-[Current/trial proof](../proofs/italic-nu-hinting-review-2026-10-25.pdf)
+[Current/trial proof](../proofs/2026-10/italic-nu-hinting-review-2026-10-25.pdf)
 contains both italic weights at every size from 8 through 32 ppem. Each
 cell compares current and trial output under FreeType v35 and v40, using
 Latin o and Greek ν υ ν ο at 2× nearest-neighbour enlargement. Both PNG

@@ -2,7 +2,7 @@
 
 **Verdict 2026-10-26:** The repaired stacks accepted after visual review of the proof.
 
-[Before/after proof](../proofs/greek-breve-grave-before-after-2026-10-24.pdf).
+[Before/after proof](../proofs/2026-10/greek-breve-grave-before-after-2026-10-24.pdf).
 
 The inherited `brevecmb_uni0313_gravecomb.grek` and
 `brevecmb_uni0314_gravecomb.grek` stacks have fixed component offsets.

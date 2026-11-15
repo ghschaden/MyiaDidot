@@ -23,7 +23,7 @@ The obsolete Bold Italic quality exception for the join step was removed.
 
 Proofs:
 
-- [Accepted Italic before/after](../proofs/italic-p-hook-join-2026-11-06.pdf).
+- [Accepted Italic before/after](../proofs/2026-11/italic-p-hook-join-2026-11-06.pdf).
 - [Enlarged upright join](../build/glyph-review/p-hook-join/join-closeup.png).
 - [Dependent Bold Italic](../build/glyph-review/p-hook-join/bold-italic-dependent.png).
 
@@ -57,5 +57,5 @@ was visually inspected at enlarged and text sizes. Construction checks
 report no smoothness, kink, step, grid or extrema findings.
 After this follow-up, `make test` passed (369 passed, 7 skipped), and
 `make reproduce` reports all three generated styles as generated.
-The [accepted Bold Italic proof](../proofs/bold-italic-p-hook-weight-2026-11-06.pdf)
+The [accepted Bold Italic proof](../proofs/2026-11/bold-italic-p-hook-weight-2026-11-06.pdf)
 is retained with the review.

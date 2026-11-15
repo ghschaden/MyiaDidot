@@ -271,7 +271,7 @@ ITALIC_BOLD_RECIPES = {
     # Ƙ Ƴ: the arm cut below its flare into the serif (its own width there),
     # running on in its own direction; Ʋ: U's right stem.
     # 2026-11-12 ("the arm leading to the hook is not good"; version C of
-    # proofs/bold-italic-hook-arms-2026-11-12.pdf, for Ʋ version D): Ƙ Ƴ's
+    # proofs/2026-11/bold-italic-hook-arms-2026-11-12.pdf, for Ʋ version D): Ƙ Ƴ's
     # hook at the arm's own thickness all round, as the Italic's ⱳ (it was
     # 132 and 103 on the sides, 67 and 59 on top, on an arm of about 98);
     # the curl begun 14 degrees back in the arm ("lead"): the arm is cut
@@ -684,7 +684,7 @@ ITALIC_BOLD_KERNING = {
     # re-proofed on the stroked letters 2026-11-14 (TODO phase 3; a y +67
     # dropped: in range plain on both measures; w a, g a, i f, a f, v a, u f,
     # R e, g h still needed, f r left: the measures disagree)
-    ("u", "t"): 60,  # 41 -> 60, re-proofed 2026-11-14 (proofs/bold-italic-hand-kerns-2026-11-14.pdf)
+    ("u", "t"): 60,  # 41 -> 60, re-proofed 2026-11-14 (proofs/2026-11/bold-italic-hand-kerns-2026-11-14.pdf)
     ("w", "a"): 57,
     ("g", "h"): 43,
     ("f", "r"): -95,
@@ -726,7 +726,7 @@ ITALIC_OVALS = OVALS | {"o.sc", "g"}
 # references 0.22-0.25): over the cap height the figure pairs were within
 # the references' range. Fitted 2026-11-14 by figure_pairs.py's absolute
 # fit (over the cap height), rounded to 5; chosen without the foot floor on
-# proofs/figures-italics-2026-11-14.pdf.
+# proofs/2026-11/figures-italics-2026-11-14.pdf.
 BOLD_ITALIC_FIGURE_SIDES = {
     "zero": (-55, -85), "one": (25, 15), "two": (-15, -75), "three": (5, -60), "four": (25, -25),
     "five": (-35, -30), "six": (-65, -45), "seven": (35, -10), "eight": (-60, -75), "nine": (-15, -85),

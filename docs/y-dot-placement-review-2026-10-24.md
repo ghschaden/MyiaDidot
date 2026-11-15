@@ -3,7 +3,7 @@
 Implemented after review with a closer, 25-unit gap; see the
 [final placement and validation](italic-y-dot-review-2026-10-24.md).
 
-[Comparison proof](../proofs/y-dot-placement-review-2026-10-24.pdf).
+[Comparison proof](../proofs/2026-10/y-dot-placement-review-2026-10-24.pdf).
 
 The inherited Italic ỵ notch is a dot/descender collision, rather than a
 fault in y's outline. Bold Italic has the same collision even though its

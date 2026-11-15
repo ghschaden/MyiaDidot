@@ -5,7 +5,7 @@ Italic set. It was not: the approved proof was Italic, with Bold Italic
 inheritance. Regular and Bold production drawings still have the earlier
 historical proportions.
 
-[Regular redesign proof](../proofs/roman-oldstyle-redesign-2026-10-25.pdf)
+[Regular redesign proof](../proofs/2026-10/roman-oldstyle-redesign-2026-10-25.pdf)
 now shows a matching Roman proposal, including the complete before/after
 set, Libertinus Serif Regular at equal x-height and text specimens.
 

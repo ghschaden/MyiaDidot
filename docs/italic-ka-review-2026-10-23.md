@@ -1,6 +1,6 @@
 # Italic К/к contour review, 2026-10-23
 
-[Before/after proof](../proofs/italic-ka-before-after-2026-10-23.pdf)
+[Before/after proof](../proofs/2026-10/italic-ka-before-after-2026-10-23.pdf)
 
 The К/к cleanup is implemented in `scripts/italic_contours.py`. Both style
 generators align the base joins before derivation and finish the remaining

@@ -32,4 +32,4 @@ quality, acceptance, golden shaping, and TTF/CFF hint-zone checks.
 No baselines are updated for this drawing.
 
 Accepted evidence is retained as
-`proofs/bold-italic-b-upper-counter-2026-11-06.svg`. Work complete.
+`proofs/2026-11/bold-italic-b-upper-counter-2026-11-06.svg`. Work complete.

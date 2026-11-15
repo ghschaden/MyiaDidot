@@ -1,6 +1,6 @@
 # Roman Œ CFF hinting review, 2026-10-26
 
-[Production raster proof](../proofs/roman-oe-cff-hinting-review-2026-10-26.pdf)
+[Production raster proof](../proofs/2026-10/roman-oe-cff-hinting-review-2026-10-26.pdf)
 compares H O Œ E O in Regular and Bold at 12, 14, 15, 21, 22 and 32 ppem.
 Each panel shows CFF production and a TrueType v40 control, at native size
 and 4× nearest-neighbour enlargement. Both final PNG pages were inspected,

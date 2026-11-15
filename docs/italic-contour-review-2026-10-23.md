@@ -1,6 +1,6 @@
 # Italic contour review, 2026-10-23
 
-[Implemented design pass: before/after comparison](../proofs/italic-contours-before-after-2026-10-23.pdf).
+[Implemented design pass: before/after comparison](../proofs/2026-10/italic-contours-before-after-2026-10-23.pdf).
 
 The local finishing pass is now implemented in `scripts/italic_contours.py`
 and called by both style generators before clearance kerning. It removes
@@ -36,7 +36,7 @@ suite was not rerun; earlier shaping-baseline failures remain separate.
 
 ## Initial review
 
-[Review sheets: context and enlarged contour details](../proofs/italic-contour-review-2026-10-23.pdf).
+[Review sheets: context and enlarged contour details](../proofs/2026-10/italic-contour-review-2026-10-23.pdf).
 
 Reviewed ƈ ʑ ɮ ʄ Җ җ Қ қ in Italic and Bold Italic against their
 current bases. These sheets show the current masters, not proposed

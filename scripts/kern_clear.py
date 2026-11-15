@@ -48,13 +48,13 @@ from kern_coverage import MIN_GAP, Profiles
 
 CLEAR = 20  # units of white the inks keep, measured across
 # a sign beside a letter keeps more (chosen on running text,
-# proofs/sign-clearance-*-2026-11-13.pdf): the opening signs before a
+# proofs/2026-11/sign-clearance-*-2026-11-13.pdf): the opening signs before a
 # letter, ! ? after one, the other closing signs after one
 OPEN_CLEAR = 100
 MARK_CLEAR = 60
 CLOSE_CLEAR = 40
 # a superior figure (a note's number) after a letter or figure: 60; ª º
-# after one keep CLEAR (chosen on proofs/superior-clearance-text-2026-11-13.pdf)
+# after one keep CLEAR (chosen on proofs/2026-11/superior-clearance-text-2026-11-13.pdf)
 SUPERIOR_CLEAR = 60
 # a capital's top before an ascender (U b, N l, the italics' V h; Üb on
 # the pangram page of samples.pdf, 2026-11-13): their serifs meet in the
@@ -62,14 +62,14 @@ SUPERIOR_CLEAR = 60
 # above U's), where the measure across has no row in common. Measured
 # every way (Ink.white_above), on the inks above the x-height only: foot
 # serifs meet before every lowercase letter alike (A n as A b) and are
-# spacing's. Chosen on running text (proofs/ascender-clearance-2026-11-13.pdf)
+# spacing's. Chosen on running text (proofs/2026-11/ascender-clearance-2026-11-13.pdf)
 ASCENDER_CLEAR = 60
 # a capital before a lowercase letter whose mark rises above the x-height
 # (N ǐ, U ȉ, H ȉ, the Bold's U ǐ at 0; TODO.md phase 2, 2026-11-13): a
 # wide mark on a narrow letter reaches over the capital's serif, on a
 # diagonal as the ascenders do. The same measure; GUARD's white, which a
 # guarded accent keeps across (kern_groups); chosen by the designer
-# (2026-11-14) from 20/40/60 on proofs/accent-clearance-2026-11-13.pdf
+# (2026-11-14) from 20/40/60 on proofs/2026-11/accent-clearance-2026-11-13.pdf
 ACCENT_CLEAR = 40
 SUPERIOR_FIGURES = {f + "superior" for f in (
     "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")}

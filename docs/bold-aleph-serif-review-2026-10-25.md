@@ -3,7 +3,7 @@
 The four Bold ℵ (`uni2135`) ledge findings exposed tilted serif ends,
 including a backward undercut at the lower-right foot. The generator now
 restores the four rectangular ends by moving four corners. The
-[two-page proof](../proofs/bold-aleph-serif-before-after-2026-10-25.pdf)
+[two-page proof](../proofs/2026-10/bold-aleph-serif-before-after-2026-10-25.pdf)
 shows all styles, the complete Bold before/after, and Regular/Bold details
 for every flagged join plus the unflagged lower-left serif repair.
 

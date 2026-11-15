@@ -1,6 +1,6 @@
 # Italic small-cap bottom hinting review, 2026-10-26
 
-[Production raster proof](../proofs/italic-smallcap-bottoms-hinting-review-2026-10-26.pdf)
+[Production raster proof](../proofs/2026-10/italic-smallcap-bottoms-hinting-review-2026-10-26.pdf)
 compares r.sc, ɍ.sc and Cyrillic ж.sc/к.sc/я.sc in Italic and Bold Italic.
 Each row starts with o, o.sc, h.sc and n.sc. Both pages show native-size
 rasters and 3× nearest-neighbour enlargements at 24, 28 and 29–32 ppem,

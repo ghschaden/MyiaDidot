@@ -8,10 +8,10 @@ The user requested rounded r shoulders and retroflex-r hooks that resemble
 the Regular and Bold drawings. This extends the original review of the
 Bold Italic lowercase shoulder notch at 680,770 (35 pixels).
 
-The [before/after proof](../proofs/r-shoulders-hooks-before-after-2026-10-24.pdf)
+The [before/after proof](../proofs/2026-10/r-shoulders-hooks-before-after-2026-10-24.pdf)
 places r and ɽ beside their previous drawings and the corresponding roman
 weight. Enlarged shoulder panels show the change to the inner return.
-The [initial four-style review](../proofs/r-hook-review-2026-10-24.pdf)
+The [initial four-style review](../proofs/2026-10/r-hook-review-2026-10-24.pdf)
 also includes the small caps.
 
 `scripts/r_hook.py` rounds r's short inner return into its ball. The new

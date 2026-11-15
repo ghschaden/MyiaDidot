@@ -32,7 +32,7 @@ The tool: `scripts/redraw.py` (spec entries in
 `scripts/data/redraw-Italic.json`: extra, drop, corner, smooth, keep,
 line, tol; none set yet for these six). The Italic's other 18 Greek
 lowercase were redrawn and approved on
-`proofs/italic-greek-lowercase-redraw-2026-11-12.pdf` (commit 6e3e0859).
+`proofs/2026-11/italic-greek-lowercase-redraw-2026-11-12.pdf` (commit 6e3e0859).
 
 What is missing, as Sonnet found it:
 

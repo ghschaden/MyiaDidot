@@ -42,5 +42,5 @@ fingerprints, bounds, advances, lint and exact shaping records.
   (10 tests); the preceding complete suite passed 362 tests, with 7
   skipped. No baselines changed for this review.
 
-Accepted proofs are retained as `proofs/ipa-a-roman-2026-11-06.svg` and
-`proofs/ipa-a-italic-2026-11-06.svg`. Work complete.
+Accepted proofs are retained as `proofs/2026-11/ipa-a-roman-2026-11-06.svg` and
+`proofs/2026-11/ipa-a-italic-2026-11-06.svg`. Work complete.

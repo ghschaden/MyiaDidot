@@ -1,7 +1,7 @@
 # Bold modifier glottal stop, 2026-10-25
 
 The next unreviewed lint entry was Bold ˀ (`uni02C0`, U+02C0 MODIFIER
-LETTER GLOTTAL STOP). The [actual-outline comparison](../proofs/bold-glottal-stop-review-2026-10-25.pdf)
+LETTER GLOTTAL STOP). The [actual-outline comparison](../proofs/2026-10/bold-glottal-stop-review-2026-10-25.pdf)
 shows its Regular/Bold source family, enlarged modifier outlines, upper
 join details and a scratch rebuild from the final Bold base.
 

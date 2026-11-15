@@ -1,6 +1,6 @@
 # Inherited italic contour cleanup, 2026-10-23
 
-[Before/after proof](../proofs/italic-base-contours-before-after-2026-10-23.pdf)
+[Before/after proof](../proofs/2026-10/italic-base-contours-before-after-2026-10-23.pdf)
 
 ## Implemented scope
 

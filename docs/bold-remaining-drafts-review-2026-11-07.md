@@ -17,7 +17,7 @@ four edited outlines pass lint and only these four decomposed outlines
 change. Ƈ's advance increases from 1411 to 1507 to accommodate the wider
 hook while retaining its former right bearing; the other advances stay
 unchanged. Anchors, features and kerning stay unchanged. All four proposals were subsequently approved and installed in production.
-Retained proof: proofs/bold-hook-size-2026-11-07.pdf.
+Retained proof: proofs/2026-11/bold-hook-size-2026-11-07.pdf.
 
 The earlier 22-form sheet's direct, discretionary-ligature and small-cap
 shaping checks pass (latn/en). Source-outline proofs do not establish

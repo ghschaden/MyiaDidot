@@ -10,4 +10,4 @@ roman: changing the approved design requires deliberate review here.
 The accepted roman fit removes the 15.2-degree shear and stretches the
 -23..1099 ink bounds to 0..1434, retaining horizontal dimensions. The
 smaller upright versions retain their original height. Optical weight
-was accepted in `proofs/upright-aleph-height-comparison-2026-10-25.pdf`.
+was accepted in `proofs/2026-10/upright-aleph-height-comparison-2026-10-25.pdf`.

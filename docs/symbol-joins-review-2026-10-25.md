@@ -6,7 +6,7 @@ upper-left joins. They also identified Bold Italic ™'s bulging T stem and
 unequal outer M stroke angles, clarifying that only the leftmost and
 rightmost strokes should be parallel; the middle diagonal need not change.
 
-The [three-page before/after proof](../proofs/symbol-joins-before-after-2026-10-25.pdf)
+The [three-page before/after proof](../proofs/2026-10/symbol-joins-before-after-2026-10-25.pdf)
 shows the complete Regular forms and enlarged upper-left serif joins,
 Bold Italic trademark details, and both roman weights against baseline
 guides. This supersedes the earlier recommendation to retain the Regular

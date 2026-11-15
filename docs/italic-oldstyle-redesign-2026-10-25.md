@@ -2,7 +2,7 @@
 
 The review requested a redesign closer to other old-style sets after
 finding the height difference between 3 and 9 distracting, 4 huge and 6
-too fat. [Redesign proof](../proofs/italic-oldstyle-redesign-2026-10-25.pdf)
+too fat. [Redesign proof](../proofs/2026-10/italic-oldstyle-redesign-2026-10-25.pdf)
 shows the complete current and proposed sets, Libertinus Serif Italic
 at equal lowercase x-height, enlarged comparisons and text specimens.
 
@@ -55,7 +55,7 @@ reproduction, quality/shaping/hinting checks and builds.
 ## Original 9 restored in the redesigned set
 
 The review disliked the open-tail 9 and requested the old drawing back.
-[Updated full-set proposal](../proofs/italic-oldstyle-redesign-restored-nine-2026-10-25.pdf)
+[Updated full-set proposal](../proofs/2026-10/italic-oldstyle-redesign-restored-nine-2026-10-25.pdf)
 restores the original curled ball-terminal 9, fitted to the new −380..905
 band and 95% horizontal width, with its thick stroke adjusted to the new
 set (measured 180, ratio 1.05). All other proposed figures are unchanged.
@@ -85,7 +85,7 @@ and spacing generator. A local final pass splits substantial inherited
 extrema and fairs shallow joins only when construction findings require
 it, leaving clean glyphs alone on repeated runs. Its optical result is
 presented for separate visual review, not recorded as accepted.
-[Production and Bold Italic comparison](../proofs/oldstyle-production-bold-italic-review-2026-10-25.pdf).
+[Production and Bold Italic comparison](../proofs/2026-10/oldstyle-production-bold-italic-review-2026-10-25.pdf).
 
 The proportional/tabular old-style family alone changes. Updated shaping
 baselines account for eight affected corpus strings in Italic and eleven

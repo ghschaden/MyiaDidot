@@ -44,9 +44,9 @@ shows that comparison. Final full-letter and shaped-text proofs are
 `italic-final.svg` and `bold-italic-final.svg`; the final versions are
 inspected after rebuilding, including the smoothed stem joins in both
 weights. Retained evidence is in
-`proofs/italic-smallcap-repairs-2026-11-06.svg`,
-`proofs/bold-italic-smallcap-repairs-2026-11-06.svg` and
-`proofs/italic-smallcap-stem-joins-2026-11-06.svg`.
+`proofs/2026-11/italic-smallcap-repairs-2026-11-06.svg`,
+`proofs/2026-11/bold-italic-smallcap-repairs-2026-11-06.svg` and
+`proofs/2026-11/italic-smallcap-stem-joins-2026-11-06.svg`.
 These are outline and shaping proofs, not
 screen-hinting proofs.
 

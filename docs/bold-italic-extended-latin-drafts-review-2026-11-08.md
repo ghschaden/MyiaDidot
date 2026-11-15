@@ -16,9 +16,9 @@ proposal; approved unrelated drawings remain fixed.
 
 Retained proofs:
 
-- proofs/bold-italic-c-hook-capital-2026-11-08.pdf: capital's approved version
+- proofs/2026-11/bold-italic-c-hook-capital-2026-11-08.pdf: capital's approved version
   is on the right. Its lowercase is superseded by the next proof.
-- proofs/bold-italic-c-hook-lowercase-2026-11-08.pdf: final approved lowercase,
+- proofs/2026-11/bold-italic-c-hook-lowercase-2026-11-08.pdf: final approved lowercase,
   with the unchanged same-style c as reference.
 
 Scratch before/candidate/installed snapshots and checks are under
@@ -41,4 +41,4 @@ comparison informed the final full-c construction.
 Final installation cleanup aligns two control handles at Ƈ's hook
 attachment (5 and 3 units respectively) to eliminate tiny tangent breaks.
 The approved design, bounds and advance are retained. Before/after proof:
-proofs/bold-final-outline-cleanup-2026-11-08.pdf.
+proofs/2026-11/bold-final-outline-cleanup-2026-11-08.pdf.

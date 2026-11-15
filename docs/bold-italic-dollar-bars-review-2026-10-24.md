@@ -1,6 +1,6 @@
 # Bold Italic dollar bar correction, 2026-10-24
 
-[Before/after proof](../proofs/bold-italic-dollar-bars-before-after-2026-10-24.pdf)
+[Before/after proof](../proofs/2026-10/bold-italic-dollar-bars-before-after-2026-10-24.pdf)
 shows the whole dollar and an enlarged lower ball/through-stroke clearance.
 
 The user identified that the two bars were not straight. Whole emboldening

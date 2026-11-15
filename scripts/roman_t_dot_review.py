@@ -66,7 +66,7 @@ def main():
     source.write_text("\n".join(svg))
     (ROOT / "measurements.json").write_text(json.dumps(report, indent=2) + "\n")
     for fmt, target in (("png", ROOT / "comparison.png"),
-                        ("pdf", Path("proofs/roman-t-dot-spacing-review-2026-10-25.pdf"))):
+                        ("pdf", Path("proofs/2026-10/roman-t-dot-spacing-review-2026-10-25.pdf"))):
         subprocess.run(["rsvg-convert", "-f", fmt, str(source), "-o", str(target)], check=True)
     print(json.dumps(report, indent=2))
 

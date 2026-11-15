@@ -59,7 +59,7 @@ Validation:
   completed run had the required cache access.
 
 Accepted proofs are retained as
-`proofs/bold-italic-g-hooks-2026-11-06.svg` and
-`proofs/bold-italic-g-hooks-context-2026-11-06.svg`. All three acceptance
+`proofs/2026-11/bold-italic-g-hooks-2026-11-06.svg` and
+`proofs/2026-11/bold-italic-g-hooks-context-2026-11-06.svg`. All three acceptance
 fingerprints were stamped after approval; the focused acceptance suite
 passes (10 tests). Work complete.

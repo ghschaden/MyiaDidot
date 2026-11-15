@@ -1,6 +1,6 @@
 # Italic small-cap tip hinting review refreshed, 2026-10-26
 
-[Refreshed before/after proof](../proofs/italic-smallcap-tip-hinting-review-2026-10-26.pdf)
+[Refreshed before/after proof](../proofs/2026-10/italic-smallcap-tip-hinting-review-2026-10-26.pdf)
 revisits the [2026-10-25 trial](italic-smallcap-tip-hinting-review-2026-10-25.md)
 against current production. It shows h.sc/v.sc/w.sc/o.sc and ѵ.sc/ⱳ.sc
 at 24, 28, 29, 30, 31 and 32 ppem, with current/trial rows under v35/v40.

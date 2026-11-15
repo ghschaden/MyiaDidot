@@ -250,7 +250,7 @@ def space(font):
         # references the feet stay well apart (11 and 41 134 units or more
         # in the Bold Italic), where a floor as I's own feet held the 1 and
         # 4 23-58 units wider than the fit (2026-11-14, the designer, on
-        # proofs/figures-italics-2026-11-14.pdf)
+        # proofs/2026-11/figures-italics-2026-11-14.pdf)
         base = optical(font, "H", ch)
         for d in lining:
             _fit(font, d, ch, [b + s for b, s in zip(base, own.get(d, (0, 0)))])
@@ -262,7 +262,7 @@ def space(font):
         ref = [s - d for s, d in zip(optical(font, "zero", ch), FIGURE_SIDES.get("zero", (0, 0)))]
         target = sum(ref) / len(ref)
         # the feet stand off the side as I's do (the 1's foot serifs met in 11
-        # and H1, the 4's in 41: 2026-11-14, proofs/figures-feet-2026-11-14.pdf)
+        # and H1, the 4's in 41: 2026-11-14, proofs/2026-11/figures-feet-2026-11-14.pdf)
         floor = sum(foot_sides(font, "I")) / 2
         for d in lining:
             _fit(font, d, ch, [target + s for s in FIGURE_SIDES.get(d, (0, 0))], floor)

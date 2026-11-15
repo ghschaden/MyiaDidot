@@ -1,6 +1,6 @@
 # Regular prosgegrammeni hinting trial, 2026-10-26
 
-[Before/after raster proof](../proofs/regular-prosgegrammeni-hinting-trial-2026-10-26.pdf)
+[Before/after raster proof](../proofs/2026-10/regular-prosgegrammeni-hinting-trial-2026-10-26.pdf)
 shows x, iota, prosgegrammeni, Alpha and prosgegrammeni at 8, 10, 12, 14,
 16 and 24 ppem. Each panel compares current and trial under both v35/v40,
 at native size and 3× nearest-neighbour enlargement. The final PNG was

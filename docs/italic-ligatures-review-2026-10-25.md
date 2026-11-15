@@ -5,7 +5,7 @@ was committed and pushed as `c5ea04cf`. The new drawings are installed in
 the local Italic and Bold Italic masters and rebuilt fonts. The review accepted all these drawings and requested commit/push on
 2026-10-25. Draft metadata is cleared in the generator and both masters.
 
-[Four-page review proof](../proofs/italic-ligatures-review-2026-10-25.pdf)
+[Four-page review proof](../proofs/2026-10/italic-ligatures-review-2026-10-25.pdf)
 shows all 19 additions beside separate letters, repeated at text size,
 and in HarfBuzz-shaped English/historical text with ligatures off/on.
 A German sample demonstrates the retained f-ligature exclusion. Final

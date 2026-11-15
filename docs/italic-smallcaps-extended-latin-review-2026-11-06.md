@@ -27,7 +27,7 @@ checks pass, and outline lint has no findings. The three corrected,
 accepted forms are excluded. The review approved this remaining batch
 unchanged; all 43 acceptance fingerprints are recorded in the Italic UFO.
 The accepted sheet is retained as
-`proofs/italic-smallcaps-extended-latin-2026-11-06.pdf`.
+`proofs/2026-11/italic-smallcaps-extended-latin-2026-11-06.pdf`.
 The sheet shows the full capital, small cap and lowercase at the same em
 scale, with baseline/x-height/small-cap/cap-height guides, then n/small-cap/n
 and H/small-cap/H contexts. Hook counters remain open, the bars remain

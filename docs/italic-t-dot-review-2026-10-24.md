@@ -1,6 +1,6 @@
 # Italic ṫ dot placement review, 2026-10-24
 
-[Before/after proof](../proofs/italic-t-dot-before-after-2026-10-24.pdf)
+[Before/after proof](../proofs/2026-10/italic-t-dot-before-after-2026-10-24.pdf)
 compares t, ṫ and ż in both italic weights.
 
 The remaining Bold Italic ṫ step was an intersection artifact: its dot

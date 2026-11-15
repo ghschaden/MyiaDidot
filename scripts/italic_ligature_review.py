@@ -84,7 +84,7 @@ subprocess.run(
         str(root / "BoldItalic-design.pdf"),
         str(root / "Italic-text.pdf"),
         str(root / "BoldItalic-text.pdf"),
-        "proofs/italic-ligatures-review-2026-10-25.pdf",
+        "proofs/2026-10/italic-ligatures-review-2026-10-25.pdf",
     ],
     check=True,
 )

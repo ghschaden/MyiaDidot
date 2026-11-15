@@ -5,12 +5,12 @@ these sheets (before | now, node views, overlay, 144 pt):
 
 | sheet | what |
 |---|---|
-| `proofs/italic-redraw-pilot-2026-11-10.pdf` | Italic n a e o s g redrawn onto clean nodes (accepted earlier the same day) |
-| `proofs/bold-italic-after-redraw-2026-11-10.pdf` | the Bold Italic's six after it; n's crotch 49 units shallower |
-| `proofs/italic-followers-after-redraw-2026-11-10.pdf` | Italic letters that followed by more than 4 units |
-| `proofs/bold-italic-followers-after-redraw-2026-11-10.pdf` | Bold Italic letters that followed by more than 8 units (made before the stems and bowls were mended) |
-| `proofs/italic-stems-counters-2026-11-10.pdf` | Italic: stems into their serifs, bowls redone |
-| `proofs/bold-italic-stems-counters-2026-11-10.pdf` | Bold Italic: the same |
+| `proofs/2026-11/italic-redraw-pilot-2026-11-10.pdf` | Italic n a e o s g redrawn onto clean nodes (accepted earlier the same day) |
+| `proofs/2026-11/bold-italic-after-redraw-2026-11-10.pdf` | the Bold Italic's six after it; n's crotch 49 units shallower |
+| `proofs/2026-11/italic-followers-after-redraw-2026-11-10.pdf` | Italic letters that followed by more than 4 units |
+| `proofs/2026-11/bold-italic-followers-after-redraw-2026-11-10.pdf` | Bold Italic letters that followed by more than 8 units (made before the stems and bowls were mended) |
+| `proofs/2026-11/italic-stems-counters-2026-11-10.pdf` | Italic: stems into their serifs, bowls redone |
+| `proofs/2026-11/bold-italic-stems-counters-2026-11-10.pdf` | Bold Italic: the same |
 
 On the way the designer gave two rules, now in `docs/claude/quality.md`:
 a straight stem is one thickness from top to bottom and never steps in

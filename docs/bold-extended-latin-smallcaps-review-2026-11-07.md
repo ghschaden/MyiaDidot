@@ -14,7 +14,7 @@ hook attachment). Capital uni01B1 remains unchanged and open. The small
 caps uni028B.sc, uni0288.sc and uni01B4.sc remain as approved unchanged.
 
 Retained before/after proof:
-proofs/bold-extended-latin-repairs-2026-11-07.pdf.
+proofs/2026-11/bold-extended-latin-repairs-2026-11-07.pdf.
 Detailed geometry checks and before/installed snapshots are under
 build/glyph-review/bold-extended-latin-repairs-2026-11-07/.
 All nine edited outlines pass lint and retain their advances. The lower

@@ -1,6 +1,6 @@
 # Italic ƙ.sc and ъ CFF hinting review, 2026-10-26
 
-[Production raster proof](../proofs/italic-k-hook-hard-sign-cff-review-2026-10-26.pdf)
+[Production raster proof](../proofs/2026-10/italic-k-hook-hard-sign-cff-review-2026-10-26.pdf)
 shows two pages: h.sc o.sc k.sc ƙ.sc h.sc, then x o ъ ь o. Each compares
 CFF production with TrueType v40 at 8, 9, 10, 11, 12 and 16 ppem, at native
 size and 6× nearest-neighbour enlargement. Both rendered pages were visually

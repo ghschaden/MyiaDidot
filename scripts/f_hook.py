@@ -4,7 +4,7 @@
     python scripts/f_hook.py SRC.ufo OUT.ufo --install --date D --review DOC
 
 Old Standard's italic f ends in a flat cut below the baseline (-461). Asked
-for and approved on proofs/italic-f-hook-2026-11-11.pdf (2026-11-11): the
+for and approved on proofs/2026-11/italic-f-hook-2026-11-11.pdf (2026-11-11): the
 hook other italic fs have, in f and in the f-ligatures; ſ stays as it is.
 
 Each f foot (two line nodes on one level below -400, a stem's width apart,

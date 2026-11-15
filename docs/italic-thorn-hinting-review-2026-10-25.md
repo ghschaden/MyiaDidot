@@ -4,7 +4,7 @@ The review accepted this review and correction on 2026-10-25, after
 clarifying that the red dashed line illustrates the mistaken counter
 reference. A true outside alignment guide belongs on the outside edge.
 
-[Diagnostic and small-size proof](../proofs/italic-thorn-hinting-review-2026-10-25.pdf)
+[Diagnostic and small-size proof](../proofs/2026-10/italic-thorn-hinting-review-2026-10-25.pdf)
 shows the counter boundary, the unrelated reference glyph and TrueType
 rendering before/after in both FreeType interpreters. The large raster
 specimens are nearest-neighbour enlargements, with native-size copies below.

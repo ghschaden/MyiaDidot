@@ -8,7 +8,7 @@ Dollar now has no glyph-lint finding; its old notch exception is removed.
 The observations below describe the earlier drawing and the limited scope
 of this initial terminal review.
 
-[Comparison proof](../proofs/dollar-terminal-review-2026-10-24.pdf)
+[Comparison proof](../proofs/2026-10/dollar-terminal-review-2026-10-24.pdf)
 shows the current Italic and Bold Italic, with enlarged lower terminals.
 
 The first remaining Bold Italic glyph-lint entry is dollar. The current

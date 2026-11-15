@@ -1,6 +1,6 @@
 # Italic r / I weight review, 2026-10-25
 
-[Comparison proof](../proofs/italic-ri-weight-review-2026-10-25.pdf)
+[Comparison proof](../proofs/2026-10/italic-ri-weight-review-2026-10-25.pdf)
 compares the current drawings with a modest lighter trial, enlarged beside
 n/H and in repeated paragraph specimens at three sizes. These are
 unkerned outline specimens; the spacing and advances are the same in both
@@ -43,7 +43,7 @@ I and the separately drawn Iogonek are retained. The earlier generation
 experiment that changed small-cap widths and Greek mark spacing is not
 part of production.
 
-[Production comparison](../proofs/italic-i-production-review-2026-10-25.pdf)
+[Production comparison](../proofs/2026-10/italic-i-production-review-2026-10-25.pdf)
 shows the accepted Italic and its Bold Italic inheritance. Italic's final
 I equals the approved trial exactly. The lighter I adds one intentional
 stroke exception; the two unchanged barred-I drawings add stem-comparison

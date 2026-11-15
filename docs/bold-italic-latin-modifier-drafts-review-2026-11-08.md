@@ -34,6 +34,6 @@ Two repairs requested:
 Both repairs approved on 2026-11-08; all 49 forms are
 accepted. Ꞵ's old kink at the join (quality list) is gone. Shaping of the
 full corpus (2,119,735 strings) is unchanged. Retained proof:
-proofs/bold-italic-latin-modifier-drafts-2026-11-08.pdf (the review sheet,
+proofs/2026-11/bold-italic-latin-modifier-drafts-2026-11-08.pdf (the review sheet,
 Ꞵ and ⱳ before and after, the ⱳ ball close-up). Working proofs and the
 repair scripts: build/glyph-review/bold-italic-beta-w-hook-2026-11-08/.

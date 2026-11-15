@@ -1,6 +1,6 @@
 # Bold Italic ɸ counter cusps reviewed, 2026-10-24
 
-[Current Italic/Bold Italic comparison](../proofs/phi-counter-review-2026-10-24.pdf).
+[Current Italic/Bold Italic comparison](../proofs/2026-10/phi-counter-review-2026-10-24.pdf).
 
 The two glyph-lint flags are at the tapered ends of the counters where
 the central stem intersects the bowl: 448,696 (100 pixels) and 569,233
