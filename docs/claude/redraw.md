@@ -757,9 +757,9 @@ tolerance but a construction with the measures held:
 ## When the gate fails: what to try, in this order
 
 The six Greek letters of 2026-11-15 pass with no spec entry since the
-tool's mends above (fitted, not installed: the sheet
-`proofs/italic-greek-six-redraw-2026-11-15.pdf` waits for the designer;
-then steps 6 to 8 with `build/redraw/greek6.ufo` made again); the order below is what is left for a letter that
+tool's mends above (approved on
+`proofs/italic-greek-six-redraw-2026-11-15.pdf` and installed
+2026-11-15; what followed: "After the six Greek letters", below); the order below is what is left for a letter that
 does not. One honest correction of the spec, fitted again; then hand
 back or move up a model. Read the JSON first (`notes`, `spans` with
 `from`, `to`, `dev`), not the verdict line alone.
@@ -803,6 +803,27 @@ Remarks are not failures, but two of them are read before the sheet:
 a jump higher than the target's ("A small quarter-turn come out
 square", above: look at that curve's handles), and "more nodes than
 before" with "half turn" extras (a hook: above).
+
+## After the six Greek letters of 2026-11-15
+
+Installed, one `make generate`; the Italic's sweep flagged nothing (the
+six and their composites 3.6 units at most, в's Bulgarian form 1.6 with
+β, „β 2 units looser by kern_clear). The Bold Italic, approved on
+`proofs/bold-italic-greek-six-followers-2026-11-15.pdf`: μ 15.7 units
+(its descender), η 13.6, ψ 10.2 with its advance 13 wider (the optical
+fit answering the right bowl: more than "What may move" allows for, and
+seen so on the sheet), φ 9.5, β 5.0.
+
+- **A stroked hook 5 units past its end** (the Bold Italic's χ, both
+  hooks: 387,884 and 713,-559; the lower one stood on the known list
+  since 2026-10-28, the upper one tipped over with this run). The
+  Italic's hook has no upright extreme; the stroked one has, by 5 units,
+  and no node. Mended on the letter: both curves split at their extreme
+  (the shape within 0.2 units), a doubled point at 93,551 dropped,
+  marked drawn. Its curve from 93,551 to 387,884 still bends 0.24
+  degrees back at its start: the stroker's, not gated in the Bold Italic.
+- Lines gone from the known lists: `mugreek kink 1` (Italic), `chi
+  extreme 1` and `psi wobble 1` (Bold Italic).
 
 ## Open
 

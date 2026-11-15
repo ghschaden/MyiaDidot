@@ -5,79 +5,89 @@
 	<outline>
 		<contour>
 			<point x="87" y="341" type="curve" smooth="yes"/>
-			<point x="87" y="462"/>
-			<point x="145" y="630"/>
-			<point x="226" y="737" type="curve" smooth="yes"/>
-			<point x="308" y="846"/>
-			<point x="424" y="884"/>
+			<point x="87" y="538"/>
+			<point x="220" y="884"/>
 			<point x="516" y="884" type="curve" smooth="yes"/>
-			<point x="646" y="884"/>
-			<point x="688" y="791"/>
+			<point x="636" y="884"/>
+			<point x="678" y="817"/>
 			<point x="708" y="739" type="curve"/>
 			<point x="660" y="710" type="line"/>
-			<point x="630" y="774"/>
-			<point x="597" y="837"/>
+			<point x="636" y="761"/>
+			<point x="593" y="837"/>
 			<point x="523" y="837" type="curve" smooth="yes"/>
-			<point x="373" y="837"/>
-			<point x="239" y="458"/>
+			<point x="380" y="837"/>
+			<point x="239" y="478"/>
 			<point x="239" y="260" type="curve" smooth="yes"/>
-			<point x="239" y="54"/>
-			<point x="357" y="0"/>
+			<point x="239" y="58"/>
+			<point x="355" y="0"/>
 			<point x="533" y="0" type="curve"/>
-			<point x="565" y="122"/>
-			<point x="594" y="248"/>
+			<point x="572" y="150"/>
+			<point x="584" y="203"/>
 			<point x="622" y="376" type="curve" smooth="yes"/>
-			<point x="726" y="849"/>
-			<point x="897" y="884"/>
+			<point x="715" y="797"/>
+			<point x="853" y="884"/>
 			<point x="1038" y="884" type="curve" smooth="yes"/>
-			<point x="1205" y="884"/>
-			<point x="1268" y="772"/>
+			<point x="1196" y="884"/>
+			<point x="1268" y="787"/>
 			<point x="1268" y="630" type="curve" smooth="yes"/>
-			<point x="1268" y="469"/>
-			<point x="1201" y="254"/>
-			<point x="1058" y="124" type="curve" smooth="yes"/>
-			<point x="959" y="32"/>
-			<point x="819" y="-24"/>
+			<point x="1268" y="453"/>
+			<point x="1178" y="19"/>
 			<point x="678" y="-41" type="curve"/>
-			<point x="654" y="-135"/>
-			<point x="625" y="-232"/>
+			<point x="661" y="-107"/>
+			<point x="612" y="-263"/>
 			<point x="587" y="-326" type="curve" smooth="yes"/>
-			<point x="526" y="-481"/>
-			<point x="381" y="-541"/>
+			<point x="519" y="-498"/>
+			<point x="363" y="-542"/>
 			<point x="246" y="-547" type="curve"/>
 			<point x="234" y="-504" type="line"/>
-			<point x="350" y="-484"/>
-			<point x="402" y="-415"/>
-			<point x="440" y="-312" type="curve" smooth="yes"/>
-			<point x="471" y="-225"/>
-			<point x="493" y="-135"/>
+			<point x="400" y="-475"/>
+			<point x="428" y="-375"/>
 			<point x="517" y="-47" type="curve"/>
-			<point x="322" y="-47"/>
-			<point x="87" y="37"/>
+			<point x="319" y="-47"/>
+			<point x="87" y="42"/>
 		</contour>
 		<contour>
 			<point x="694" y="8" type="curve"/>
-			<point x="811" y="23"/>
-			<point x="947" y="82"/>
-			<point x="1034" y="182" type="curve" smooth="yes"/>
-			<point x="1133" y="295"/>
-			<point x="1201" y="492"/>
+			<point x="1140" y="65"/>
+			<point x="1201" y="526"/>
 			<point x="1201" y="636" type="curve" smooth="yes"/>
-			<point x="1201" y="744"/>
-			<point x="1157" y="837"/>
+			<point x="1201" y="739"/>
+			<point x="1152" y="837"/>
 			<point x="1046" y="837" type="curve" smooth="yes"/>
-			<point x="888" y="837"/>
-			<point x="823" y="550"/>
+			<point x="891" y="837"/>
+			<point x="829" y="575"/>
 			<point x="778" y="357" type="curve" smooth="yes"/>
-			<point x="752" y="248"/>
-			<point x="724" y="129"/>
+			<point x="751" y="240"/>
+			<point x="723" y="125"/>
 		</contour>
 	</outline>
 	<anchor name="DotBelow" x="993" y="-20"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-15</string>
+				<key>source</key>
+				<string>66c9a7cd6e27</string>
+				<key>why</key>
+				<string>redrawn onto clean nodes, proofs/italic-greek-six-redraw-2026-11-15.pdf</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-15</string>
+				<key>from</key>
+				<string>57871b68535e</string>
+				<key>review</key>
+				<string>proofs/italic-greek-six-redraw-2026-11-15.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

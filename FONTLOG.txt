@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-15 Italic β η φ χ ψ μ redrawn onto clean nodes
+  The six Greek lowercase letters the batch of 2026-11-12 left, after
+  scripts/redraw.py was mended (the handles' triangle, hooks of unequal
+  handles; docs/claude/redraw.md). Approved on
+  proofs/italic-greek-six-redraw-2026-11-15.pdf; the Bold Italic's on
+  proofs/bold-italic-greek-six-followers-2026-11-15.pdf (ψ 13 units
+  wider). The Bold Italic's χ: its hooks' extremes given nodes, by hand.
+
 2026-11-13 Italic and Bold Italic Į: set on its I
   Old Standard draws its Į 84 units right of its I at the same advance,
   about 160 in the Italic, and kern_clear then opened it by about 200
