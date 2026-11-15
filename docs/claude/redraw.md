@@ -41,7 +41,14 @@ Regular's node count is used as a yardstick only.
 - If the redraw comes out with more nodes than the target has, the
   tolerance is widened (x1.4, twice at most) and that result taken when it
   brings the count down within the gate's 4 units; the report's `tol` and
-  a remark say so.
+  a remark say so. That is the rules' own widening, the same for every
+  glyph and inside the gate (α and λ at 2.8 in the Greek batch); what
+  "do not raise `tol` for one glyph" forbids is the spec's `tol`, a
+  decision of the session's to get a failing letter through.
+- Each curve's two handle lengths are found together on the distance to
+  the target (`fit_best`), inside the triangle its two directions make;
+  begun from the plain fit and from one long handle and one short, the
+  plain fit standing unless another is 0.1 units nearer.
 - An extra node is put at the inflection if the span has one, else at the
   old node nearest the worst place, else where the span has made half its
   turn; a span is split twice at most (`DEPTH`).
@@ -58,8 +65,9 @@ Regular's node count is used as a yardstick only.
   `smooth` check stays quiet.
 - No curve bends the other way at one end: after the rounding a handle
   that reaches past the point where the curve's two directions meet is
-  drawn back a unit at a time (`one_bend`; the notes say "a handle
-  shortened"). The Regular has no such curve in a-z A-Z, Old Standard's
+  drawn back a unit at a time, to a third of its length at most
+  (`one_bend`; the notes say "a handle shortened by N"; 1-6 units is the
+  rounding's, more deserves a look at the overlay there). The Regular has no such curve in a-z A-Z, Old Standard's
   Italic 16.
 - Width, anchors, lib, contour order and direction are kept.
 
@@ -74,7 +82,8 @@ One style, about 20 letters, nothing written to `sources/` before step 6.
 
    One line a glyph: nodes before -> after, the Regular's count, the
    distance from the target, the worst curvature jump before -> after,
-   the gate's verdict. About 4 s a letter. Exit status 1 if any glyph
+   the gate's verdict. About 12 s a letter, on one core (the tool sets
+   numpy's threads to one: they took six cores and were no faster). Exit status 1 if any glyph
    fails the gate or is refused.
 2. Read the lines. `candidate`: go on. `FAIL` or `[look: ...]`: next
    section. The notes of each glyph (kinks made smooth, lines closed,
@@ -407,8 +416,44 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   span of no length and the fit crashed ("operands could not be
   broadcast"). Now refused by name ("has a node there already", within 3
   units). A bend-back the gate names at a node is in the curve leaving it,
-  not in the node: an extra node does not mend it (what does: Fable's
-  brief, `docs/claude/fable-brief-2026-11-15.md`).
+  not in the node: an extra node does not mend it (what does: the next
+  entries, and "When the gate fails").
+- **The triangle never held** (found 2026-11-15 on the six Greek letters
+  the batch left: β η φ χ ψ μ). `handle_bounds` had the sign of its second
+  length wrong, so for every curve of one bend "the directions do not
+  meet ahead" and the handles were free to twice the chord. The least
+  squares then put a handle past the meeting point wherever the target's
+  end ran flatter than the node's direction (a curve arriving at a line's
+  end, at an inflection's node, at an extreme), and `one_bend` took it
+  back afterwards, 16 units at most: most likely the 23 "handles shortened" of the
+  alphabet were this, not the rounding, and so were η's and ψ's
+  bend-backs at inflection nodes, β's and φ's "0.03 degrees" and η's
+  4.4 units at 421,369 once the handle was drawn back 50. Fixed in the
+  tool: the sign; `one_bend` goes on to a third of the handle. With the
+  triangle the shortenings in the six are 1-6 units. The generators'
+  callers of `fit_cubic` keep the old bounds (`triangle=False`): see
+  "Open" below.
+- **A hook with one long handle and one short** (χ's four: 554,142 with
+  handles of 392 and 94 units; φ's bowls): `fit_cubic` finds the points'
+  places on the curve and the two lengths in turn, which creeps along a
+  flat valley and stops far short (154 and 141; a thousand rounds reach
+  214). The curve was then 3-6 units off and split by a "half turn" node
+  it did not need (χ 18 -> 21 nodes, φ 23 -> 25), or 6.3 units off after
+  its handle was drawn back. Fixed in the tool (`fit_best`): χ 18 -> 18
+  with no extra, φ 19, ψ 22. A "half turn" extra on a curve that the
+  target draws as one curve is the sign to look for should it come back.
+- **An extreme the result bulges past** (μ's 731,-23, "extreme ... 5
+  units past"): the target's extreme at 596,120 stood under 5 units
+  (`BULGE`) beyond its neighbours and got no node; the fitted curve stood
+  a unit further out and failed checks.py's `extreme`, which names the
+  curve's first node, not the extreme. Fixed in the tool: such an extreme
+  gets its node back and the glyph is fitted again (the notes: "the
+  extreme x,y keeps its node"); by hand the same is `"bulge": [[x, y]]`
+  in the spec, the place taken from the note "no node at the ... extreme
+  x,y".
+- **The spans' distances in the JSON were set beside the wrong spans**
+  (the lines counted in): fixed; each span has `from`, `to`, `dev` now,
+  and the gate names a bent curve by both its ends.
 
 ## A letter given another shape: f's hook (2026-11-11)
 
@@ -709,13 +754,76 @@ tolerance but a construction with the measures held:
 - For another measure letter the same holds: constrain where
   `derive.strokes` measures, then fit what is left free.
 
+## When the gate fails: what to try, in this order
+
+The six Greek letters of 2026-11-15 pass with no spec entry since the
+tool's mends above; the order below is what is left for a letter that
+does not. One honest correction of the spec, fitted again; then hand
+back or move up a model. Read the JSON first (`notes`, `spans` with
+`from`, `to`, `dev`), not the verdict line alone.
+
+1. **"the curve at x,y bends N degrees the other way first (the curve
+   from A to B)".** The curve is the one from A to B; x,y is the end it
+   bends back at. Never an `extra` at A or B (refused: the node is there).
+   - Look in the notes for "A: a handle shortened by N ... and still
+     does": its two directions meet behind an end, no cubic of one bend
+     joins them.
+   - If A and B are both the target's own nodes and the target's curve
+     between them is straight within 2 units (a stem's or a descender's
+     edge): `"line": [[A]]`.
+     Refused as "leaves its chord by N units": it is a real curve, go on.
+   - If A or B is a node the tool made ("extra node at ... (inflection /
+     old node / half turn)" in the notes): the split is at fault, not the
+     curve. One `extra` at the target's own node nearest the middle of
+     the stretch the tool split (the old nodes are in the "today" node
+     view of the sheet) makes the tool split elsewhere. Not met since the
+     mends; if it does not help at once, it is a case for "When the
+     method does not cover a case".
+2. **"N units off the target at x,y (limit 4)".** Find the span in
+   `spans` (the highest `dev`). A handle shortened by more than 6 on that
+   span: it is case 1 in disguise, the directions hardly meet; treat it
+   so. Else `"extra": [[x, y]]` at the place named. If the excess only
+   moves to the next span (χ before the mends: 6.3 -> 4.2 elsewhere),
+   the fit is not finding the curve: do not add a second extra, hand it
+   up.
+3. **"extreme x,y N units past".** The tool has tried the extreme's node
+   itself. If the notes have no "no node at the ... extreme" for that
+   curve, the extreme lies within 12 units of a corner or a line's end
+   (`MIN_SPAN`): `"extra"` at the extreme (its direction there is level
+   or upright by itself).
+4. **"smooth" or "kink" from checks.py**: a handle of under 3 units next
+   to a long one. `"extra"` in the middle of that curve, or, for a kink
+   that is meant, `"corner"`.
+5. **Bounds or ink area**: never by the spec. The letter has a part the
+   structure cannot hold (a hairline's end, a ball): hand back.
+
+Remarks are not failures, but two of them are read before the sheet:
+a jump higher than the target's ("A small quarter-turn come out
+square", above: look at that curve's handles), and "more nodes than
+before" with "half turn" extras (a hook: above).
+
+## Open
+
+- **The Bold Italic's bowls with the triangle.** `bowl_counters.py` fits
+  its two curves with `redraw.fit_cubic`, and those were made and
+  approved with the wrong bounds. With the right ones nine Bold Italic
+  glyphs move (`make reproduce`, 2026-11-15): ® 15 units at 1004,854,
+  ꞵ.sc 10, ƃ.sc б.sc ѣ.sc 5, ɍ.sc 4, љ.sc and Ⓓ 3, ʀ 1; the Italic and
+  the Bold are unchanged. Left as they are (`fit_cubic(triangle=False)`,
+  the default). For Opus: bowl_counters on `triangle=True` in a scratch
+  run, the nine on a sheet before | after, the designer says which.
+- A measure letter's stroke as a line of the gate (O and Q above): not
+  built.
+
 ## Hand back to the designer rather than fit
 
 - A glyph with components is refused: redraw its parts (i j: `dotlessi`
   and `uni0237`; the dot is its own glyph), never decompose it.
 - The glyph is refused otherwise (an open contour, quadratic curves) or
-  fails the gate after one honest correction of its spec. Do not raise
-  `tol` for a single glyph to pass it.
+  fails the gate after one honest correction of its spec ("When the gate
+  fails"). Do not raise `tol` for a single glyph in the spec to pass it
+  (the tool's own widening for the node count is another matter: the
+  rules' list above).
 - More than three extras on one contour: the shape does not want the
   structure, it wants drawing.
 - The fault is the shape's, not the nodes': an entry of kind slant, zone,

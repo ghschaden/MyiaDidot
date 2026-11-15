@@ -43,18 +43,26 @@ node nearest to it goes (within NEAR units); corner / smooth: the old node
 nearest to it is taken as that, whatever its turn; keep: the short line
 ending there (within 3 units) is not closed; line: the curve leaving the
 old node nearest to it is taken as the line between its ends (only
-within TOL of it); tol: this glyph's tolerance. In a glyph of several
-contours each point goes to the contour nearest to it.
+within TOL of it); bulge: the extreme within 3 units of it keeps its
+node though it lies under BULGE beyond its neighbours (the tool does that
+itself where the fitted curve fails the `extreme` check); tol: this
+glyph's tolerance. In a glyph of several contours each point goes to the
+contour nearest to it.
 """
 
 import argparse
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
-import numpy as np
-import ufoLib2
+if __name__ == "__main__":  # one core: numpy's threads took six and were no faster (68 s against 54)
+    for _var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+        os.environ.setdefault(_var, "1")
+
+import numpy as np  # noqa: E402
+import ufoLib2  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -72,6 +80,7 @@ JUMP = 0.5        # the gate's remark for a curvature jump at a smooth node (see
 S_TURN = 3.0      # degrees: a curve turning less than this the other way at one end bends twice by accident
 K_FLAT = 1 / 1500  # curvature under which an edge counts as flat (radius over 1500 units)
 FAIR_ROOM = 0.5   # of its tolerance: how much further a curve may go for one curvature at its ends
+SHORTEST = 1 / 3  # of its length: how far one_bend draws a handle back
 FAIR_SPAN = 1.5    # how much longer or shorter than its plain fit the fairing may make a handle
 G2_WEIGHT = 10.0  # what a curvature jump of 1 costs, in units of deviation along both curves
 KEY = "org.myiadidot.redrawn"
@@ -324,6 +333,7 @@ class Target:
 
     def structure(self, spec=None, notes=None):
         spec, notes = spec or {}, notes if notes is not None else []
+        self.dropped = []  # (the node before, the extreme): extremes left without a node for their bulge
         fixed = []
         for k in range(self.n):
             tin, tout = self.node_tangents(k)
@@ -355,7 +365,10 @@ class Target:
                 a, b = breaks[i - 1], breaks[(i + 1) % len(breaks)]
                 q = 0 if e.why == "upright" else 1
                 lo, hi = sorted((a.at[q], b.at[q]))
+                if any(np.linalg.norm(e.at - np.array(xy, float)) < 3 for xy in spec.get("bulge", [])):
+                    continue
                 if lo - BULGE < e.at[q] < hi + BULGE:
+                    self.dropped.append((a.at.copy(), e.at.copy()))
                     notes.append(f"no node at the {e.why} extreme {e.at[0]:.0f},{e.at[1]:.0f}: "
                                  f"under {BULGE:g} units beyond its neighbours")
                     del breaks[i]
@@ -476,31 +489,46 @@ def feet(ctrl, pts, u):
     return u
 
 
-def handle_bounds(p0, t0, p3, t3):
+def handle_bounds(p0, t0, p3, t3, triangle=True):
     """(least, most a, most b) for the handle lengths: without an inflection
-    between the ends the handles stay inside the triangle their directions make"""
+    between the ends the handles stay inside the triangle their directions make.
+    triangle False: as it stood until 2026-11-15, the second length's sign
+    wrong, so that no triangle held for a curve of one bend. Only for
+    fit_cubic's callers outside the redraw (bowl_counters: the Bold
+    Italic's approved bowls were fitted so; nine move with the triangle,
+    docs/claude/redraw.md, "Open")."""
     chord = float(np.linalg.norm(p3 - p0))
     amax = bmax = 2 * chord
     den = cross(t0, t3)
     if abs(den) > 1e-6:
-        sa, sb = cross(p3 - p0, t3) / den, cross(p3 - p0, t0) / den
+        sa, sb = cross(p3 - p0, t3) / den, cross(t0, p3 - p0) / den
+        if not triangle:
+            sb = -sb
         if sa > 0 and sb > 0:  # the directions meet ahead of both ends: one bend
             amax, bmax = sa, sb
     return 0.02 * chord, amax, bmax
 
 
-def fit_cubic(pts, p0, t0, p3, t3):
+def fit_cubic(pts, p0, t0, p3, t3, start=None, triangle=False, rounds=40):
     """the cubic from p0 (leaving along t0) to p3 (arriving along t3) nearest
     to pts: handle lengths by least squares, the points' parameters found
     again by Newton steps (Schneider). Without an inflection between the
-    ends the handles stay inside the triangle their directions make."""
+    ends the handles stay inside the triangle their directions make.
+    start: the two handle lengths to begin from (fit_best), by default the
+    points' share of their path's length. triangle: handle_bounds'; the
+    redraw fits with it (fit_best)"""
     chord = float(np.linalg.norm(p3 - p0))
     if chord < 1e-6:
         return np.array([p0, p0, p3, p3])
     d = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))])
     u = d / d[-1] if d[-1] > 0 else np.linspace(0, 1, len(pts))
-    lo, amax, bmax = handle_bounds(p0, t0, p3, t3)
+    lo, amax, bmax = handle_bounds(p0, t0, p3, t3, triangle)
     la = lb = chord / 3
+    if start is not None:
+        la, lb = start
+        begin = np.array([p0, p0 + la * t0, p3 - lb * t3, p3])
+        for _ in range(8):
+            u = feet(begin, pts, u)
 
     def solve(u):
         b0, b1, b2, b3 = (1 - u) ** 3, 3 * (1 - u) ** 2 * u, 3 * (1 - u) * u ** 2, u ** 3
@@ -518,7 +546,7 @@ def fit_cubic(pts, p0, t0, p3, t3):
             a = min(max((r1 - m12 * b) / m11 if m11 > 1e-9 else a, lo), amax)
         return a, b
 
-    for _ in range(40):
+    for _ in range(rounds):
         got = solve(u)
         if got is None:
             break
@@ -529,6 +557,74 @@ def fit_cubic(pts, p0, t0, p3, t3):
         if moved < 1e-4:
             break
     return np.array([p0, p0 + la * t0, p3 - lb * t3, p3])
+
+
+STARTS = ((0.75, 0.25), (0.25, 0.75))  # of the handles' room: fit_best's other starts
+BETTER = 0.1  # units: by how much another start has to be nearer the target to be taken
+
+
+def offsets(ctrl, pts):
+    """from each of pts to the nearest place on the cubic (as a polyline of 200 pieces)"""
+    line = bezier(ctrl, np.linspace(0, 1, 201))
+    a, ab = line[:-1], np.diff(line, axis=0)
+    den = np.maximum((ab * ab).sum(axis=1), 1e-12)
+    t = np.clip(((pts[:, None, :] - a[None]) * ab[None]).sum(axis=2) / den[None], 0, 1)
+    off = pts[:, None, :] - (a[None] + t[..., None] * ab[None])
+    return off[np.arange(len(pts)), (off * off).sum(axis=2).argmin(axis=1)]
+
+
+def fit_best(pts, p0, t0, p3, t3):
+    """fit_cubic inside the triangle, then both handle lengths found
+    together on the distance to the curve itself (Levenberg-Marquardt on
+    the two, from the plain fit and from one long handle and one short):
+    fit_cubic alone finds each point's place on the curve and the lengths
+    in turn, and where the handles are very unequal that creeps along a
+    flat valley and stops short (Old Standard's hooks in the Italic chi:
+    handles of 392 and 94 units came out 154 and 141, the curve 6 units
+    off after rounding, or split by a node it did not need). The plain
+    start's result stands unless another is nearer the target by BETTER."""
+    chord = float(np.linalg.norm(p3 - p0))
+    plain = fit_cubic(pts, p0, t0, p3, t3, triangle=True)
+    if chord < 1e-6 or len(pts) < 4:
+        return plain
+    lo, amax, bmax = handle_bounds(p0, t0, p3, t3)
+    low, high = np.array([lo, lo]), np.array([amax, bmax])
+    room = high if amax < 2 * chord or bmax < 2 * chord else np.array([0.8 * chord] * 2)
+
+    def curve(x):
+        return np.array([p0, p0 + x[0] * t0, p3 - x[1] * t3, p3])
+
+    def polished(x):
+        x = np.clip(np.array(x, float), low, high)
+        r = offsets(curve(x), pts).ravel()
+        lam = 1e-3
+        for _ in range(30):
+            J = np.stack([(offsets(curve(x + d), pts).ravel() - r) / 0.5 for d in ((0.5, 0), (0, 0.5))], axis=1)
+            A, g = J.T @ J, J.T @ r
+            for _ in range(8):
+                xn = np.clip(x - np.linalg.solve(A + lam * (np.diag(np.diag(A)) + 1e-9 * np.eye(2)), g), low, high)
+                rn = offsets(curve(xn), pts).ravel()
+                if rn @ rn < r @ r:
+                    break
+                lam *= 5
+            else:
+                break
+            step = float(np.abs(xn - x).max())
+            x, r, lam = xn, rn, lam / 3
+            if step < 0.02:
+                break
+        c = curve(x)
+        return deviation(c, pts)[0], c
+
+    first = (float(np.linalg.norm(plain[1] - plain[0])), float(np.linalg.norm(plain[3] - plain[2])))
+    err, best = deviation(plain, pts)[0], plain
+    for x in (first, *(np.array(f) * room for f in STARTS)):
+        e, c = polished(x)
+        if e < err - BETTER:
+            err, best = e, c
+        if err < BETTER:
+            break
+    return best
 
 
 def wrong_turn(ctrl):
@@ -554,10 +650,16 @@ def wrong_turn(ctrl):
 def one_bend(ctrl, t0, t3):
     """ctrl (whole units) with the handle shortened that makes it bend the
     other way at one end (wrong_turn): the far one drawn back along its
-    direction, a unit at a time, until the curve bends one way"""
+    direction, a unit at a time, until the curve bends one way; to
+    SHORTEST of its length at most (the caller measures what that cost:
+    the gate's distance). Where the curve ends without curvature (at an
+    inflection's node, into a stretch that is nearly straight) the far
+    handle stands on the end's own line, and rounding puts it on either
+    side: 4 to 40 units back (eta, psi's descenders)."""
     ctrl = ctrl.copy()
     short = [0.0, 0.0, 0.0]  # by how much handle 1 and handle 2 are shortened
-    for _ in range(16):
+    least = [0.0, 0.0, 0.0]
+    while True:
         wrong = wrong_turn(ctrl)
         if wrong is None:
             return ctrl
@@ -565,8 +667,9 @@ def one_bend(ctrl, t0, t3):
         k, node, d = (2, ctrl[3], -t3) if wrong[0] == 0 else (1, ctrl[0], t0)
         if not short[k]:
             short[k] = float(np.linalg.norm(ctrl[k] - node))
+            least[k] = max(2.0, SHORTEST * short[k])
         short[k] -= 1
-        if short[k] < 2:
+        if short[k] < least[k]:
             break
         ctrl[k] = whole_handle(node, node + short[k] * d, d)
     return ctrl
@@ -761,6 +864,8 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
     notes = report.setdefault("notes", [])
     tg = Target(cleaned(segs, notes, (spec or {}).get("keep", ()), (spec or {}).get("line", ())), spec)
     breaks = tg.structure(spec, notes)
+    report.setdefault("dropped", []).extend([[float(v) for v in np.round(a)], [float(v) for v in e]]
+                                            for a, e in tg.dropped)
     if len(breaks) < 2:
         raise ValueError("fewer than two nodes found")
 
@@ -770,7 +875,7 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
 
     def solve(a, b, depth):
         pts = tg.between(a.u, b.u)
-        ctrl = fit_cubic(pts, np.round(a.at), a.tout, np.round(b.at), b.tin)
+        ctrl = fit_best(pts, np.round(a.at), a.tout, np.round(b.at), b.tin)
         err, worst = deviation(ctrl, pts)
         if err <= span_tol(pts, tol) or depth == 0:
             return [(a, b)]
@@ -795,7 +900,7 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
             out.append([a, b, np.array([p0, p3]), None])
         else:
             pts = tg.between(a.u, b.u)
-            out.append([a, b, fit_cubic(pts, p0, a.tout, p3, b.tin), pts])
+            out.append([a, b, fit_best(pts, p0, a.tout, p3, b.tin), pts])
     fair(out, tol, notes)
     # handles on whole units, a smooth node's two in one line
     m = len(out)
@@ -820,8 +925,10 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
         if len(seg[2]) == 4 and wrong_turn(seg[2]) is not None:
             was = seg[2]
             seg[2] = one_bend(was, unit(was[1] - was[0]), unit(was[3] - was[2]))
-            if notes is not None and wrong_turn(seg[2]) is None:
-                notes.append(f"{was[0][0]:.0f},{was[0][1]:.0f}: a handle shortened, the curve bent both ways")
+            if notes is not None:
+                by = max(float(np.linalg.norm(was[q] - seg[2][q])) for q in (1, 2))
+                notes.append(f"{was[0][0]:.0f},{was[0][1]:.0f}: a handle shortened by {by:.0f}, the curve bent both ways"
+                             + ("" if wrong_turn(seg[2]) is None else " and still does"))
     devs, jumps = [], []
     for i in range(m):
         a, b, ctrl, pts = out[i]
@@ -831,10 +938,10 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
         nxt = out[(i + 1) % m]
         if b.kind in ("extreme", "extra") and len(ctrl) == 4 and len(nxt[2]) == 4:
             jumps.append((curvature_jump(curvature(ctrl, 1), curvature(nxt[2], 0)), b.at))
+    each = iter(d[0] for d in devs)
     report.setdefault("spans", []).extend(
-        {"from": [float(x) for x in np.round(a.at)], "kind": a.kind, "why": a.why,
-         "dev": round(devs_i, 2)} for (a, _b, _c, pts), devs_i in zip(
-            out, iter([d[0] for d in devs] + [0.0] * m)) if pts is not None)
+        {"from": [float(x) for x in np.round(a.at)], "to": [float(x) for x in np.round(b.at)], "kind": a.kind,
+         "why": a.why, "dev": round(next(each), 2)} for a, b, _c, pts in out if pts is not None)
     report.setdefault("devs", []).extend(devs)
     report.setdefault("jumps", []).extend(jumps)
     report.setdefault("kinds", []).extend(a.kind + (":" + a.why if a.kind == "extra" else "") for a, *_ in out)
@@ -861,15 +968,16 @@ def node_count(glyph):
 
 
 def bent_back(glyph):
-    """[[x, y, degrees]]: the curves of a glyph that bend the other way a
-    little at one end (wrong_turn), at that end"""
+    """[[x, y, degrees, start, end]]: the curves of a glyph that bend the
+    other way a little at one end (wrong_turn), at that end, and the
+    curve's two nodes"""
     out = []
     for c in glyph.contours:
         for seg in segments(c):
             ctrl = np.array(seg, float)
             if len(ctrl) == 4 and (wrong := wrong_turn(ctrl)) is not None:
                 x, y = ctrl[0] if wrong[0] == 0 else ctrl[3]
-                out.append([float(x), float(y), round(wrong[1], 2)])
+                out.append([float(x), float(y), round(wrong[1], 2), [float(v) for v in ctrl[0]], [float(v) for v in ctrl[3]]])
     return out
 
 
@@ -879,7 +987,7 @@ def spec_by_contour(all_segs, spec):
     looked for (and refused as too far away) on the others"""
     spec = spec or {}
     out = [{k: v for k, v in spec.items() if k == "tol"} for _ in all_segs]
-    for name in ("extra", "drop", "corner", "smooth", "keep", "line"):
+    for name in ("extra", "drop", "corner", "smooth", "keep", "line", "bulge"):
         for xy in spec.get(name, []):
             p = np.array(xy, float)
             d = [min(float(np.linalg.norm(point(seg, t) - p)) for seg in segs for t in np.linspace(0, 1, 33))
@@ -888,7 +996,7 @@ def spec_by_contour(all_segs, spec):
     return out
 
 
-def redraw_at(glyph, tol, spec):
+def redraw_at(glyph, tol, spec, _again=False):
     from ufoLib2.objects import Contour, Glyph, Point
 
     if glyph.components:
@@ -929,6 +1037,16 @@ def redraw_at(glyph, tol, spec):
 
     report["findings"] = [list(f) for f in construction(new)]
     report["bent_back"] = bent_back(new)
+    # an extreme left without a node (under BULGE on the target) that the
+    # fitted curve passes by more than that: fitted again with its node
+    back = [e for a, e in report["dropped"]
+            if any(f[0] == "extreme" and f[1] == f"{a[0]:.0f},{a[1]:.0f}" for f in report["findings"])]
+    if back and not _again:
+        spec = dict(spec or {})
+        spec["bulge"] = list(spec.get("bulge", [])) + back
+        new, report = redraw_at(glyph, tol, spec, _again=True)
+        report["notes"] += [f"the extreme {e[0]:.0f},{e[1]:.0f} keeps its node: without it the curve stood "
+                            f"more than {BULGE:g} units past its ends" for e in back]
     return new, report
 
 
@@ -974,8 +1092,9 @@ def gate(report, counterpart=None):
         fail.append(f"{report['dev']} units off the target at {report['dev_at'][0]},{report['dev_at'][1]} (limit {DEV:g})")
     for f in report["findings"]:
         fail.append(f"{f[0]} {f[1]} {f[2]}")
-    for x, y, deg in report.get("bent_back", ()):
-        fail.append(f"the curve at {x:.0f},{y:.0f} bends {deg} degrees the other way first")
+    for x, y, deg, *ends in report.get("bent_back", ()):
+        which = f" (the curve from {ends[0][0]:.0f},{ends[0][1]:.0f} to {ends[1][0]:.0f},{ends[1][1]:.0f})" if ends else ""
+        fail.append(f"the curve at {x:.0f},{y:.0f} bends {deg} degrees the other way first{which}")
     if report["bounds_moved"] > 1:
         fail.append(f"bounds moved by {report['bounds_moved']} units")
     if abs(report["area"]) > 1:

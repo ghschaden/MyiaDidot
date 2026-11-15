@@ -30,6 +30,13 @@ Fit of 25 letters: 14 candidates at once, 5 more after one spec entry each,
   (2.8): the doc says not to raise `tol` for one glyph, yet the tool does
   it unasked and reports it only as a remark.
 
+Answered on Fable, 2026-11-15 (redraw.md: "Faults seen", the last five
+entries; "When the gate fails"): one cause under the first three, the
+handles' triangle never in force (a sign in `handle_bounds`), and for χ
+and φ the fit stopping short on hooks of unequal handles; μ's extreme is
+given its node by the tool; the widening is the rules', the spec's `tol`
+is what the doc forbids. All six are candidates with no spec entry.
+
 ## Phase 3: the italic kerning rule into the generators (Opus, 2026-11-12)
 
 Carried out as spacing.md said; the values came out as the prototype's

@@ -294,3 +294,87 @@ def test_spec_takes_a_straight_curve_as_a_line():
     assert foot.type == "line"
     with pytest.raises(ValueError):
         R.redraw(g, spec={"line": [[560, 600]]})
+
+
+# ---- the gaps of the Greek batch (β η φ χ ψ μ, 2026-11-15)
+
+def test_handles_stay_inside_the_triangle_of_their_directions():
+    """handle_bounds' second length had the wrong sign, so the triangle
+    never held, whichever way the curve turned: every curve bent back
+    after rounding came from there"""
+    for sign in (1.0, -1.0):
+        lo, amax, bmax = R.handle_bounds(np.array([0.0, 0.0]), np.array([1.0, 0.0]),
+                                         np.array([100.0, sign * 60.0]), np.array([0.0, sign]))
+        assert (round(amax), round(bmax)) == (100, 60)
+    # directions that meet behind an end: an S, no triangle
+    lo, amax, bmax = R.handle_bounds(np.array([0.0, 0.0]), np.array([1.0, 0.0]),
+                                     np.array([100.0, 60.0]), np.array([1.0, 0.0]))
+    assert amax == bmax == 2 * math.hypot(100, 60)
+
+
+def test_a_hook_of_one_long_and_one_short_handle_is_found():
+    """the Italic chi's 554,142: handles of 392 and 94 units. Begun from
+    equal handles the least squares stayed 6 units off, or the span was
+    split by a node it did not need"""
+    hook = np.array([[554, 142], [570, -250], [623, -384], [717, -384]], float)
+    pts = R.bezier(hook, np.linspace(0, 1, 300))
+    t0, t3 = R.unit(hook[1] - hook[0]), R.unit(hook[3] - hook[2])
+    best = R.fit_best(pts, hook[0], t0, hook[3], t3)
+    assert R.deviation(best, pts)[0] < 0.5
+    assert abs(np.linalg.norm(best[1] - best[0]) - 392) < 15
+
+
+def test_one_bend_draws_back_as_far_as_it_takes():
+    """psi's 778,576 to 668,198, straight but for a degree: the far handle
+    had to come back 40 units, and one_bend gave up after 16"""
+    bent = np.array([[778, 576], [754, 494], [686, 265], [668, 198]], float)
+    assert R.wrong_turn(bent) is not None
+    mended = R.one_bend(bent, R.unit(bent[1] - bent[0]), R.unit(bent[3] - bent[2]))
+    assert R.wrong_turn(mended) is None
+    was, now = np.linalg.norm(bent[3] - bent[2]), np.linalg.norm(mended[3] - mended[2])
+    assert R.SHORTEST * was <= now < was and (mended[[0, 1, 3]] == bent[[0, 1, 3]]).all()
+
+
+def test_gate_names_the_bent_curve_by_its_ends():
+    g = oval()
+    _, rep = R.redraw(g)
+    rep["bent_back"] = [[192.0, -531.0, 0.03, [227.0, 109.0], [192.0, -531.0]]]
+    assert "(the curve from 227,109 to 192,-531)" in R.gate(rep)[0][0]
+
+
+def bulging_side():
+    """a box whose right side is one curve standing 3 units out"""
+    g = Glyph("box")
+    pen = g.getPen()
+    pen.moveTo((100, 0))
+    pen.lineTo((500, 0))
+    pen.curveTo((504, 200), (504, 400), (500, 600))
+    pen.lineTo((100, 600))
+    pen.closePath()
+    g.width = 600
+    return g
+
+
+def test_an_extreme_under_the_bulge_keeps_its_node_by_the_spec():
+    g = bulging_side()
+    _, plain = R.redraw(g)
+    assert plain["count"]["extreme"] == 0 and len(plain["dropped"]) == 1
+    _, kept = R.redraw(g, spec={"bulge": [[503, 300]]})
+    assert kept["count"]["extreme"] == 1
+
+
+def test_an_extreme_the_fit_bulges_past_gets_its_node_back(monkeypatch):
+    """mugreek's 731,-23: the target's extreme stood 4 units out and got no
+    node, the fitted curve 5 and failed the gate's `extreme`"""
+    import quality.checks as checks
+
+    real = checks.construction
+
+    def strict(glyph):
+        noded = any(p.type and p.y == 300 for c in glyph.contours for p in c.points)
+        return real(glyph) + ([] if noded else [("extreme", "500,0", "6 units past")])
+
+    monkeypatch.setattr(checks, "construction", strict)
+    new, rep = R.redraw(bulging_side())
+    assert rep["count"]["extreme"] == 1 and R.gate(rep)[0] == []
+    assert any("keeps its node" in n for n in rep["notes"])
