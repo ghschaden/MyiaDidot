@@ -140,6 +140,13 @@ Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
   or checks it. Set by hand here (same delta, never tighter than the
   base).
 
+Answered on Fable, 2026-11-15 (spacing.md, "Kerning groups: who sets a
+key, who is measured, what follows", points 4 to 6): members measured
+by their side's distance from the model and the widening rule for the
+lists; absolute values per key from a table; the accented groups'
+invariant, with the five pairs that break it today. "Spacing or pair"
+has its test in "One measure for Latin kerning".
+
 ## Üb: capitals before ascenders (Opus, 2026-11-13)
 
 - **Letter pairs on a diagonal have no sweep.** collisions.md sweeps
@@ -166,3 +173,8 @@ Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
 - **Cross-script groups.** Y's kerning group holds Cyrillic Ү Ұ, so the
   Latin Y family takes entries before Cyrillic һ (+2): harmless, but the
   same-script rule meets groups that are not.
+
+Answered on Fable, 2026-11-15 (the same section, points 3, 7 and 8):
+one question decides a new family's convention; scripts are judged on
+the glyphs; the sweep reads kern_clear's families. The italic t stays
+the designer's call.

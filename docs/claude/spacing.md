@@ -341,3 +341,115 @@ lowercase. A letter with fewer partners off is pairs.
 - (Done 2026-11-15: the confirmations, `scripts/quality/pair_measures.py
   STYLE [--pairs "Rv Tu ..."]`; run it again on a family before setting
   it, since it reads the built fonts.)
+
+## Kerning groups: who sets a key, who is measured, what follows (2026-11-15)
+
+Decided on Fable for the entries of `docs/claude/open-for-fable.md` that
+had no answer (phase 2's last three, Üb's "two conventions", "what else
+to sweep" and "cross-script groups"). Read from kern_clear.py,
+kern_groups.py and the four UFOs' groups and kerning; nothing in
+sources/ changed, the tools named at the end do not exist.
+
+**What a group claims.** A kerning group says: on this side these
+letters are one shape. Its name-giving glyph is the model
+(`italic_kerning.representative`); 53 of the Regular's groups are Latin,
+and they are by side, not by base letter (o p ơ in b's right-side group,
+d e o in c's left-side one, n in i's).
+
+1. **A key's value comes from its model alone.** Whoever sets, computes
+   or measures a pair of group keys does it on the two name-giving
+   glyphs: a hand value, the italics' rule, kern_clear's families, the
+   share in a test. No member's overhang, mark or horn moves the group's
+   value.
+2. **A member that needs more white gets an exception**, glyph against
+   the other key, never the reverse: an exception only loosens. A member
+   that would want it *tighter* than its group is not that shape (4).
+3. **Which convention a new kern_clear family takes** follows from 1
+   and 2, by one question: does the group's model show the feature the
+   family measures?
+   - Yes, and most members with it (a capital's top serif before an
+     ascender, a capital before a marked lowercase): the entry is the
+     group key, measured on the model; a member that needs more gets its
+     exception from the group's new value (`clear()`'s `above` branch:
+     the italics' Ĳ in J's group).
+   - No: the feature is what single members add to the model (a mark, a
+     horn, an overhang beside a sign), or the other side's group holds
+     letters without it (d's left-side group holds c e o, so an
+     ascender is entered as itself): glyph by glyph, added only where
+     that glyph needs it, the group's pair untouched (`entries()`,
+     `short_f_entries`).
+   - A guarded letter is in no model and loosens no group: it has its
+     exceptions (`guard`), and where a family's group value still leaves
+     it touching, one more (`clear()`'s last loop).
+   The three conventions the code has are these three cases; a fourth
+   is not wanted. An entry in two families is measured by each in turn,
+   the second from the first's value, as now.
+4. **Alike is measured, not only listed.** A member's side distance from
+   its model: its unkerned white beside the rhythm's letter (n for
+   lowercase, H for capitals; `italic_kerning.white`) less the model's,
+   over the rhythm. In the Regular 18 members of 10 groups lie more
+   than 0.05 off: Ʌ Ɐ (as A and V, both sides), Ɓ, Ľ, Ɔ, Ʋ, ɞ, the
+   middle dot in the colon's group, and W Ŵ Ẁ Ẃ Ẅ Ẉ Ẇ Ⱳ on the left side
+   in V's group (0.06 nearer). Such a member's pairs are measured in
+   their own right wherever the group's are (tests/test_latin_pairs.py:
+   the group's pairs with the member in the model's place); within 0.05
+   the model stands for it. A member the share then puts outside the
+   references where its model is inside leaves the group on that side
+   (as W left V's on the right, 2026-11-13) or keeps it with exceptions
+   if they are few; that is a choice on a sheet.
+   **When the measured set grows**, old faults appear as new. "Lists
+   only shrink" holds between two widenings of a measure, not across
+   one: the widening is a baseline change of its own commit, every new
+   line entered with "measured since DATE" and the report's digest, and
+   nothing else changed in that commit.
+5. **An accented group follows its base group.** Two right-side groups
+   exist for letters whose mark reaches left of the base (à's, with á â
+   ..., beside a's; è's, with ò ô ć ..., beside c's). The invariant, in
+   every style: for each left key, the accented group's pair is **never
+   tighter than the base group's**; a mark draws no letter nearer. A
+   change to the base pair is made to the accented pair by the same
+   amount, then the invariant applied. Broken today, each for the next
+   kerning sheet (set to the base's value):
+   Regular and Bold v è, y è (-80 against -50, -83 against -52: v ò
+   stands 30 units nearer than v o); Italic T à (-76 against -46), A è
+   (-37, -33); Bold Italic T à (-79 against 0), T è (-65, -33), A è
+   (-11, -9). The italics' are the rule's: it computes the accented
+   key's pair on à and è, whose marks fill rows the base has not, and
+   the base's value is not its floor. The floor belongs in
+   `italic_kerning.compute` (shared machinery, one family of pairs:
+   after the designer has seen T à beside T a).
+6. **Setting pairs** (step 6 of "Setting a pair" above, as a tool): a
+   round of changes is a table of (left glyph, right glyph, absolute
+   value). Each is resolved to its keys; two lines on one key pair with
+   different values refuse the whole round (W o, W e, W c on c's group:
+   three increments had made -192 into +138); a line whose glyph is not
+   its group's model is an exception and says so. Then 5 for the
+   accented groups, and kern_clear after it as always. Increments are
+   never applied to resolved values.
+7. **Scripts.** A family that pairs letters of one script judges it on
+   the glyphs, not on the key: Y's group holds Cyrillic Ү Ұ, so (Y's
+   group, һ) exists as an entry; it is measured only on the members of
+   һ's script, the model being the name-giver if it is of that script
+   and the first member that is otherwise. Harmless as it stands (+2);
+   the rule is for the next family.
+8. **The sweep lists what kern_clear measures.** One table of families
+   in kern_clear (name, the entries' function, the white kept, the
+   measure: across, or every way above the x-height) read by `clear()`
+   and by quality/collisions.py alike, so a pair found on a proof
+   becomes a family once and is listed from then on. Letter pairs on a
+   diagonal are then listed as the signs are. Families still to add are
+   the eye's finds, not a search: after the italics' t (if the designer
+   counts it an ascender: open), f's hook is the short f's.
+
+**For Opus, to build:**
+
+- `scripts/kern_set.py UFO TABLE` (6), on the Regular; the Bold and the
+  italics follow by their generators.
+- tests/test_kerning_groups.py: the invariant of 5 in every style, with
+  today's nine (five pairs over the styles) in `tests/data/kern-accent-STYLE.txt` (lists that only
+  shrink); no exception tighter than its group's value but those of
+  hand tables, each with its date (2).
+- test_latin_pairs: the members of 4 measured (the side distance from
+  the UFO, cached), entered by the widening rule.
+- kern_clear's table of families and collisions.py reading it (8).
+- The floor of 5 in `italic_kerning.compute`, after the sheet.
