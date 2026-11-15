@@ -858,7 +858,9 @@ docs/claude/quality.md has both rules with what enforces them.
 
 Model: Opus for the comparison and family faults, Sonnet for the lists.
 
-- [ ] One sheet Regular beside Italic, measured and seen: ball terminals
+- [ ] (Specified: `docs/claude/italic.md`, 2026-11-15; the script and
+      the sheet are Opus's.)
+      One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %
       narrower), x-height overshoots. What reads as another typeface is

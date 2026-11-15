@@ -757,7 +757,9 @@ tolerance but a construction with the measures held:
 ## When the gate fails: what to try, in this order
 
 The six Greek letters of 2026-11-15 pass with no spec entry since the
-tool's mends above; the order below is what is left for a letter that
+tool's mends above (fitted, not installed: the sheet
+`proofs/italic-greek-six-redraw-2026-11-15.pdf` waits for the designer;
+then steps 6 to 8 with `build/redraw/greek6.ufo` made again); the order below is what is left for a letter that
 does not. One honest correction of the spec, fitted again; then hand
 back or move up a model. Read the JSON first (`notes`, `spans` with
 `from`, `to`, `dev`), not the verdict line alone.
