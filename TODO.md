@@ -728,9 +728,8 @@ alongside, each when the phase that needs it comes up.
       `scripts/status.py` reports the open count per style and kind.
       With phase 6's verdicts, which fill it in.
 - [ ] T10. The records in order (DEVELOPMENT.md's publication items,
-      phase 10): FONT-DESIGN.md back to open tasks only (523 lines,
-      mostly finished work, against its own rule), the history to
-      FONTLOG; the dated proofs (about 130 in `proofs/`) and review
+      phase 10): FONT-DESIGN.md back to open tasks only (done 2026-11-15: 529 -> 96
+      lines, the history in FONTLOG's appendix); still to do: the dated proofs (about 130 in `proofs/`) and review
       documents (about 70 in `docs/`) into dated subfolders with an
       index, links updated; `build/` cleared of what no target makes
       any more, the agents' logs under one name.
