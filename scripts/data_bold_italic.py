@@ -716,3 +716,18 @@ ITALIC_BOLD_KERNING = {
 # Italic's is round (2026-11-06: c g C G unround inside); the
 # open rounds' insides from the Italic's run (italic_inside)
 ITALIC_OVALS = OVALS | {"o.sc", "g"}
+
+# the lining figures' sides (space_figures.py), as data_italic's
+# ITALIC_FIGURE_SIDES: over the H's, side by side, no foot floor. With the
+# Regular's table the figures stood right of the letters as the Italic's
+# did (0 o 0.11 of the cap height, references 0.19-0.23). Over H H they
+# read tighter than every reference (0.85, references 1.04-1.32), but that
+# is the Bold Italic's loose capitals (H H 0.32 of the cap height,
+# references 0.22-0.25): over the cap height the figure pairs were within
+# the references' range. Fitted 2026-11-14 by figure_pairs.py's absolute
+# fit (over the cap height), rounded to 5; chosen without the foot floor on
+# proofs/figures-italics-2026-11-14.pdf.
+BOLD_ITALIC_FIGURE_SIDES = {
+    "zero": (-55, -85), "one": (25, 15), "two": (-15, -75), "three": (5, -60), "four": (25, -25),
+    "five": (-35, -30), "six": (-65, -45), "seven": (35, -10), "eight": (-60, -75), "nine": (-15, -85),
+}

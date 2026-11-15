@@ -519,11 +519,14 @@ Model: Opus for the default's change in space_figures.py, Sonnet for the rest.
       foot band, I's mean side, chosen on
       `proofs/figures-feet-2026-11-14.pdf` (Regular 1 629 -> 876, 4 852 ->
       936, 2 +32). Sheet of the change: `proofs/figures-proportional-2026-11-14.pdf`.
-- [ ] Italic lining figures against the italic capitals: `1` stem 188
+- [x] Italic lining figures against the italic capitals: `1` stem 188
       against `n` about 175 across; they read darker than the words
-      around them in lowercase text. Compare with H's stems on a
-      `make strokes` sheet; lining belongs to the capitals, so this may
-      be right, but confirm by eye in text.
+      around them in lowercase text. Measured 2026-11-14 (deslanted, at
+      mid-height): the italic n is 191 now, the 1 188, H 183 (1/H 1.03,
+      references 0.94-1.00; 1/n 0.99, references 0.96-1.25); the Bold
+      Italic's 1/H 1.00 as every reference. The 1 stands with the
+      capitals at their weight; nothing to change. What read as dark was
+      where it stood: right of the letters (next item).
 - [x] The lining figures' sides (2026-11-14): measured as pairs against
       seven references (`scripts/quality/figure_pairs.py STYLE`), what
       looked like missing kerning was spacing: equal optical sides set
@@ -533,21 +536,38 @@ Model: Opus for the default's change in space_figures.py, Sonnet for the rest.
       `proofs/figures-sides-2026-11-14.pdf` (Regular: rhythm 0.90 ->
       1.09, references' median 1.10; every side within 20 units). The
       Bold's drawn 4 refitted by hand to the same rule.
-- [ ] Per-style figure sides: the Regular's table improved every style
-      (figure rhythm / distance from the references' median, HEAD -> now:
-      Italic 0.84 -> 1.02 / 49 -> 35, Bold 0.87 -> 1.05 / 51 -> 46,
-      Bold Italic 0.70 -> 0.85 / 72 -> 56), but each still has its own
-      fit to make: the Italic and Bold Italic a little tight as a whole
-      (Bold Italic below every reference, 1.04-1.32), their 1 and 4 now
-      too wide, the Bold Italic's 5 too close. A table per style in
-      data_italic.py / data_bold_italic.py replacing the Regular's, on a
-      sheet as the Regular's.
-- [ ] Figure kerning after the sides (`figure_pairs.py`'s rest): `7.`
-      `7,` about -115, `2.` `2,` less; 5 before 1 7 2 and 7 before 1 3
-      -40 to -65. The en dash before 3 and 5 measures near but looks as
-      GFS Didot's: left. Old-style figures (`--osf`): no case, the
-      references' own forms disagree; the Regular's are reviewed
-      drawings (2026-11-09).
+- [x] Per-style figure sides (2026-11-14): the Regular's table, over
+      the 0's, left the italics' figures about 95 units right of their
+      letters (judged upright the italic letters stand left in their
+      advance; Italic 0 o 0.46 H-gaps, references' median 0.75, 1 H 0.78
+      against 1.21, H 1 1.36 against 1.19), which figure-figure pairs
+      cannot see. `figure_pairs.py` has an absolute fit now (pair gaps
+      over the cap height, figures beside H O n o too); the italics take
+      a table each over the H's (`data_italic.ITALIC_FIGURE_SIDES`,
+      `data_bold_italic.BOLD_ITALIC_FIGURE_SIDES`), every side within 2
+      units of the fit. "Bold Italic tighter than every reference" was
+      its loose capitals (H H 0.32 of the cap height, references
+      0.22-0.25): over the cap height its figures were in range. The foot
+      floor dropped for these tables (the designer, on
+      `proofs/figures-italics-2026-11-14.pdf`): it held the 1 and 4
+      23-58 units wider than the fit; the feet stay 125 units or more
+      apart. Left: the Bold Italic's capitals' own spacing (H H 0.32)
+      for phase 3's or a later look; the Regular and Bold could take the
+      same over-the-H rule (it would move the Bold's 2, whose foot the
+      per-side floor would push 22).
+- [x] Figure kerning after the sides (2026-11-14), in the Regular (the
+      Bold x KX, the italics by their rule): 5 1 -65, 5 7 -60, 5 2 -45,
+      7 1 -50, 7 3 -40, 7 before . , -70, 2 before . , -35 (`figure_pairs.py`'s
+      rest, the period's against the other figures': Myia's period
+      stands looser after every figure, -38 to -57 of the references'
+      median, a matter of its own). The Italic's 7 1 (-47 by the rule)
+      and 2 , (-35) fell just outside the reference italics: hand values
+      -5 and -38 in ITALIC_KERNING; the Bold Italic's 7 1, unkerned, is
+      listed in latin-pairs-BoldItalic.txt (tight only over its loose
+      H H). The en dash before 3 and 5 measures
+      near but looks as GFS Didot's: left. Old-style figures (`--osf`):
+      no case, the references' own forms disagree; the Regular's are
+      reviewed drawings (2026-11-09).
 
 ## Tooling track
 

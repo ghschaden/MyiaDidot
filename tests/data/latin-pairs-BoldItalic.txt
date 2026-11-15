@@ -1,4 +1,5 @@
 # The italics' Latin pairs outside the reference italics' range (pair  # off N: why), N in n n gaps; fixing one = deleting its line.
+71       # off -0.116: 2026-11-14 7 1 kerned in the Regular (-50) brings it into the measured pairs; the Bold Italic sets it unkerned (the rule drops it). Over its own H H, which is loose (0.32 of the cap height, references 0.22-0.25), every figure pair reads tight; over the cap height 7 1 is in the references' range (figure_pairs.py's absolute fit, proofs/figures-italics-2026-11-14.pdf)
 AÝ       # off -0.207: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 AŸ       # off -0.207: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 CÆ       # off -0.113: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12

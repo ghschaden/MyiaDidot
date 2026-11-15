@@ -13,6 +13,16 @@ pairs (each pair = the left figure's right side + the right figure's
 left side, their sum held at 0); what the sides cannot explain is left
 for kerning. The basis of data_regular.FIGURE_SIDES (2026-11-14).
 
+A second fit, absolute: each pair's gap over the cap height against the
+references' median (the rhythm included; not over H H, which a style's
+loose capitals would pass on to its figures), over the figure pairs and the figures on
+both sides of H O n o, without the sum held. Only it sees where a figure
+stands in its advance (a figure-figure pair has one figure's right side
+with the other's left, so a shift of all of them cancels): in the
+italics the figures stood right of where the letters stand, 0 o and 1 H
+tight, H 1 loose (2026-11-14). The basis of data_italic's and
+data_bold_italic's figure tables.
+
 Output: build/quality/figure-pairs-STYLE[-osf].txt; a summary on stdout.
 """
 import argparse
@@ -30,6 +40,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import MYIA, OUT, REFDIR, REFS, Face, band  # noqa: E402
 
 FIG = "0123456789"
+LETTERS = "HOno"  # the absolute fit's anchors beside the figures
 OSF_REFS = {"Regular": ["BodoniModa-11-Regular.ttf", "EBGaramond-Regular.ttf", "GFSDidot-Regular.ttf",
                         "LibertinusSerif-Regular.otf"]}
 
@@ -88,14 +99,16 @@ def main():
     fonts = [a.font or MYIA.format(a.style)] + refs
     pairs = [x + y for x in FIG for y in FIG]
     pairs += [x + p for x in FIG for p in ".,:;–/)%"] + [p + x for x in FIG for p in ".,–/($"]
+    pairs += [x + c for x in FIG for c in LETTERS] + [c + x for x in FIG for c in LETTERS]
 
-    res, cal, names = {}, {}, []
+    res, cal, caps, names = {}, {}, {}, []
     for path in fonts:
         face = Face(path)
         hf = hb.Font(hb.Face(hb.Blob.from_file_path(path)))
         cache = {}
         name = face.name if path != fonts[0] else "Myia"
         names.append(name)
+        caps[name] = face.cap
         cal[name] = gap(face, hf, "nn" if a.osf else "HH", feat, cache,
                         zone=(0, face.xh if a.osf else face.cap))
         for p in pairs:
@@ -139,6 +152,8 @@ def main():
               "punctuation pairs after the side changes (units to add):"]
     by = collections.defaultdict(list)
     for p, *_, k in rows:
+        if p[0] in LETTERS or p[1] in LETTERS:
+            continue
         if p[0] in FIG and p[1] not in FIG:
             by[f"{p[1]} after"].append((p, round(k - side["R", p[0]])))
         elif p[1] in FIG and p[0] not in FIG:
@@ -147,6 +162,33 @@ def main():
         lst.sort(key=lambda t: t[1])
         lines.append(f"  {key}: median {statistics.median(v for _, v in lst):+.0f}   "
                      + " ".join(f"{p}{v:+d}" for p, v in lst))
+    # the absolute fit: gaps over H H, no sum held
+    ab = []
+    for p, v in res.items():
+        refs_v = [v[n] for n in names[1:] if n in v]
+        if "Myia" in v and len(refs_v) >= min(4, len(names) - 1) and (
+                (p[0] in FIG and p[1] in FIG) or (p[0] in FIG and p[1] in LETTERS) or (p[0] in LETTERS and p[1] in FIG)):
+            # over the cap height: a style whose own H H is loose (the Bold
+            # Italic's, 0.32 of it against the references' 0.22-0.25) would
+            # loosen its figures with it
+            refs_c = [v[n] * cal[n] / caps[n] for n in names[1:] if n in v]
+            ab.append((p, round((statistics.median(refs_c) - v["Myia"] * cal["Myia"] / caps["Myia"]) * caps["Myia"])))
+    A, y = np.zeros((len(ab), 20)), np.zeros(len(ab))
+    for k, (p, d) in enumerate(ab):
+        if p[0] in FIG:
+            A[k, col["R", p[0]]] = 1
+        if p[1] in FIG:
+            A[k, col["L", p[1]]] = 1
+        y[k] = d
+    x = np.linalg.lstsq(A, y, rcond=None)[0]
+    absolute = {k: x[i] for k, i in col.items()}
+    left = sorted((d - sum(absolute.get((s, c), 0) for s, c in (("R", p[0]), ("L", p[1]))), p) for p, d in ab)
+    lines += ["", (f"absolute fit (gaps over the cap height to the references' median, figures and {' '.join(LETTERS)} "
+                   "beside them; units, + = more space):")]
+    lines += [f"  {c}: left {absolute['L', c]:+5.0f}   right {absolute['R', c]:+5.0f}" for c in FIG]
+    lines += [(f"rms off the median: {np.sqrt(np.mean(y ** 2)):.0f} as set, "
+               f"{np.sqrt(np.mean([d ** 2 for d, _ in left])):.0f} after the side changes"),
+              "pairs the sides leave beyond 40 units: " + " ".join(f"{p}{d:+.0f}" for d, p in left if abs(d) > 40)]
     lines += ["", "pair\tMyia\tref median\tmin\tmax\tunits to median (gaps / the font's figure median)"]
     lines += [f"{p}\t{m:.2f}\t{med:.2f}\t{lo:.2f}\t{hi:.2f}\t{k:+d}" for p, m, med, lo, hi, k in
               sorted(rows, key=lambda r: -abs(r[5]))]
@@ -154,6 +196,8 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n")
     print("\n".join(lines[:lines.index("punctuation pairs after the side changes (units to add):")]))
+    i = next(k for k, t in enumerate(lines) if t.startswith("absolute fit"))
+    print("\n".join(lines[i:i + 13]))
     print(f"full report: {out}")
 
 

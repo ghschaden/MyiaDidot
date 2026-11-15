@@ -65,6 +65,7 @@ from data_italic import (
     ITALIC_CORNERS,
     ITALIC_CUT,
     ITALIC_CUT_GREEK,
+    ITALIC_FIGURE_SIDES,  # noqa: F401  (read by space_figures.py)
     ITALIC_HORN,
     ITALIC_JOINS,
     ITALIC_JOINS_THROUGH,

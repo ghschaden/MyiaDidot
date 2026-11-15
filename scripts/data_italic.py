@@ -591,6 +591,13 @@ ITALIC_KERNING = {
     # K y slightly tighter ("Kyoto", review of 2026-11-11): unkerned in the
     # Regular, so the rule cannot give it; to be set on a sheet with K v K w
     ("public.kern1.K", "public.kern2.y"): -30,
+    # 7 1: the Regular's -50 (2026-11-14, figure kerns) came to -47 by the
+    # rule, tighter than the five reference italics (share 1.10 against
+    # 1.17-1.91; -10 still 0.006 tight); -5 sets it inside. 2 before . ,:
+    # the rule stops at the Regular's -35 (no tightening), 0.002 looser
+    # than the references' range
+    ("seven", "one"): -5,
+    ("two", "public.kern2.comma"): -38,
     # [j (j {j looser: j's ball tucks under the bracket's foot, near on
     # the diagonal though 56 units clear across, so kern_clear leaves it
     # (chosen +60 of +20..+80 on
@@ -711,3 +718,20 @@ POINT_REPAIRS = {"uni2135", "uni026C", "uniA7AD"}
 # and break joins or extremes in the Bold Italic (ϗ.sc: two findings fewer
 # here, five more there).
 ROUND_PLAIN = ("uni2135", "uni026C", "uniA7AD", "uni0237", "uni01B9", "eight", "k.sc", "section", "uni023B", "uni03D7.sc")
+
+# the lining figures' sides (space_figures.py), this style's own: each
+# side's optical space over the figure height as units beyond the H's on
+# that side (the Regular's table is over the 0's), with no foot floor.
+# The Regular's table left the Italic's figures about 95 units right of
+# where its letters stand (judged upright, the letters stand left in their
+# advance and the 0 did not): loose before a letter-figure pair, tight
+# after (0 o 0.46 H-gaps, references' median 0.75; 1 H 0.78 against 1.21).
+# Fitted 2026-11-14 by figure_pairs.py's absolute fit (each pair's gap over
+# the cap height to the references' median, over the figure pairs and the
+# figures beside H O n o), rounded to 5; chosen without the foot floor on
+# proofs/figures-italics-2026-11-14.pdf (with it the 1 and 4 kept 23-58
+# units more than the fit).
+ITALIC_FIGURE_SIDES = {
+    "zero": (-55, -100), "one": (85, 40), "two": (5, -60), "three": (25, -75), "four": (45, -45),
+    "five": (0, -25), "six": (-55, -50), "seven": (35, 0), "eight": (-40, -90), "nine": (-10, -90),
+}

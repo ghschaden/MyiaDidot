@@ -11,7 +11,12 @@ fitted as it is) plus the side's own amount in data_regular.FIGURE_SIDES
 looser, as the references set them), the old-style ones by theirs across the x-height, each
 side made that of n and o; across the foot serifs' band a lining figure's
 ink keeps at least I's mean side (the 1 and 4 would meet their
-neighbours' feet). tnum gives the tabular forms, zero.tf ... and
+neighbours' feet). A style with a table of its own (data_italic's
+ITALIC_FIGURE_SIDES, data_bold_italic's BOLD_ITALIC_FIGURE_SIDES) takes
+its sides from the H's instead, side by side, without the foot floor
+(2026-11-14: the italics' letters stand left in their advance as judged
+upright, the 0 did not, so the figures stood right of the letters; see
+figure_pairs.py's absolute fit). tnum gives the tabular forms, zero.tf ... and
 zerooldstyle.tf ... (components, each centred in the 0's width), from a
 generated block in features.fea (between BEGIN and END); pnum turns them
 back, lnum turns old-style figures into lining ones, and zero gives the
@@ -185,10 +190,23 @@ def foot_sides(font, name):
     return left, right
 
 
+def style_sides(font):
+    """The style's own figure table (sides over the H's), or None for the
+    Regular's (over the 0's)."""
+    style = font.info.styleName
+    if style == "Italic":
+        from data_italic import ITALIC_FIGURE_SIDES
+        return ITALIC_FIGURE_SIDES
+    if style == "Bold Italic":
+        from data_bold_italic import BOLD_ITALIC_FIGURE_SIDES
+        return BOLD_ITALIC_FIGURE_SIDES
+    return None
+
+
 def _fit(font, name, h, target, floor=None):
     """name moved and widened so each side's optical space over 0..h is
-    target (one value, or (left, right)), and its ink across the foot band no nearer the side than floor
-    (if given); a unit either way is the measure's rounding, left. Returns
+    target (one value, or (left, right)), and its ink across the foot band
+    no nearer the side than floor (one value or (left, right), if given); a unit either way is the measure's rounding, left. Returns
     the change of its left side."""
     g = font[name]
     left, right = optical(font, name, h)
@@ -196,7 +214,8 @@ def _fit(font, name, h, target, floor=None):
     dl, dr = round(tl - left), round(tr - right)
     if floor is not None:
         fl, fr = foot_sides(font, name)
-        dl, dr = max(dl, round(floor - fl)), max(dr, round(floor - fr))
+        gl, gr = floor if isinstance(floor, (list, tuple)) else (floor, floor)
+        dl, dr = max(dl, round(gl - fl)), max(dr, round(gr - fr))
     dl, dr = (0 if abs(dl) <= 1 else dl), (0 if abs(dr) <= 1 else dr)
     for c in g.contours:
         for p in c.points:
@@ -222,19 +241,31 @@ def space(font):
             continue
         _fit(font, name, xh, target)
         done.append(name)
-    # the lining figures, from the 0's sides (the widest figure; H and O
-    # would space them looser still), each side by its FIGURE_SIDES
     ch = font.info.capHeight or 1434
-    # the base is the 0's sides less its own amounts, so that a rerun on
-    # the spaced 0 finds the same base (a fixed point)
-    ref = [s - d for s, d in zip(optical(font, "zero", ch), FIGURE_SIDES.get("zero", (0, 0)))]
-    target = sum(ref) / len(ref)
     lining = [d for d in FIGURES if d in font and (font[d].contours or font[d].components)]
-    # the feet stand off the side as I's do (the 1's foot serifs met in 11
-    # and H1, the 4's in 41: 2026-11-14, proofs/figures-feet-2026-11-14.pdf)
-    floor = sum(foot_sides(font, "I")) / 2
-    for d in lining:
-        _fit(font, d, ch, [target + s for s in FIGURE_SIDES.get(d, (0, 0))], floor)
+    own = style_sides(font)
+    if own:
+        # the style's own table: each side the H's side plus its amount (the
+        # H is not moved here: a fixed point). No foot floor: fitted to the
+        # references the feet stay well apart (11 and 41 134 units or more
+        # in the Bold Italic), where a floor as I's own feet held the 1 and
+        # 4 23-58 units wider than the fit (2026-11-14, the designer, on
+        # proofs/figures-italics-2026-11-14.pdf)
+        base = optical(font, "H", ch)
+        for d in lining:
+            _fit(font, d, ch, [b + s for b, s in zip(base, own.get(d, (0, 0)))])
+    else:
+        # the lining figures, from the 0's sides (the widest figure; H and O
+        # would space them looser still), each side by its FIGURE_SIDES;
+        # the base is the 0's sides less its own amounts, so that a rerun on
+        # the spaced 0 finds the same base (a fixed point)
+        ref = [s - d for s, d in zip(optical(font, "zero", ch), FIGURE_SIDES.get("zero", (0, 0)))]
+        target = sum(ref) / len(ref)
+        # the feet stand off the side as I's do (the 1's foot serifs met in 11
+        # and H1, the 4's in 41: 2026-11-14, proofs/figures-feet-2026-11-14.pdf)
+        floor = sum(foot_sides(font, "I")) / 2
+        for d in lining:
+            _fit(font, d, ch, [target + s for s in FIGURE_SIDES.get(d, (0, 0))], floor)
     slashed(font)  # of the zeros as spaced
     # the tabular forms: each figure centred in the 0's width
     tab = font["zero"].width

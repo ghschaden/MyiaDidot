@@ -94,7 +94,20 @@ Moved from CLAUDE.md (its ground rules apply).
   `proofs/figures-sides-2026-11-14.pdf`: equal sides set the figures 0.2
   H-gaps tighter than seven references and the open sides, 4's left and
   the 7, too close; each side to the references' median), with a floor
-  (across the foot serifs' band the ink keeps I's mean side, `FOOT`); makes the tabular `.tf` forms (components, centred in the
+  (across the foot serifs' band the ink keeps I's mean side, `FOOT`). The
+  italics have tables of their own (`data_italic.ITALIC_FIGURE_SIDES`,
+  `data_bold_italic.BOLD_ITALIC_FIGURE_SIDES`, 2026-11-14 on
+  `proofs/figures-italics-2026-11-14.pdf`): each side over the H's on that
+  side, no foot floor, fitted by `figure_pairs.py`'s absolute fit (pair
+  gaps over the cap height, figures beside H O n o too). Judged upright
+  the italic letters stand left in their advance; over the 0's the
+  figures stood about 95 units right of them (0 o and 1 H tight, H 1
+  loose), which figure-figure pairs cannot show. Over H H the Bold
+  Italic's figures looked tight only because its capitals are loose (H H
+  0.32 of the cap height, references 0.22-0.25). Figure kerns, in the
+  Regular (the Bold by KX, the italics by their rule): 5 before 1 7 2,
+  7 before 1 3, 7 and 2 before . , (what the sides leave, against the
+  other figures before the period). Makes the tabular `.tf` forms (components, centred in the
   0's width) that tnum gives, and the lnum/pnum/tnum/zero block; make_bold's
   `tabular_figures` sets the figure space and dash to the 0's width. Capital spacing (cpsp): `scripts/cpsp.py` on
   the Regular. Case-sensitive punctuation (case, `.case` glyphs):

@@ -82,6 +82,7 @@ from data_bold import (
 from data_bold_italic import (
     BOLD_ITALIC_CUT,
     BOLD_ITALIC_CUT_GREEK,
+    BOLD_ITALIC_FIGURE_SIDES,  # noqa: F401  (read by space_figures.py)
     CURL_ARM,  # noqa: F401  (read as make_bold.CURL_ARM elsewhere)
     CURL_CAP,  # noqa: F401  (read as make_bold.CURL_CAP elsewhere)
     CURL_LOW,  # noqa: F401  (read as make_bold.CURL_LOW elsewhere)
