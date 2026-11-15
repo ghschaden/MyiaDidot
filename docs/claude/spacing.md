@@ -223,9 +223,11 @@ them (phase 2 gives the Regular its missing pairs first).
 
 ## One measure for Latin kerning, upright and italic (2026-11-15)
 
-Decided on Fable from the two measures' construction, nothing run: the
-points marked "to confirm" are checked by font-measure before a pair is
-set by this section. The question was open-for-fable.md's "Two pair
+Decided on Fable from the two measures' construction and checked the
+same day by `scripts/quality/pair_measures.py` (the gap with one of its
+choices at a time replaced by the share's, all four styles:
+build/quality/pair-measures-STYLE.md; "Confirmed" below, which corrects
+two of the table's first attributions). The question was open-for-fable.md's "Two pair
 measures, no rule which one decides" (phase 2, 2026-11-13) and the Bold
 Italic's f r of 2026-11-14.
 
@@ -238,25 +240,43 @@ pair set by another yardstick would hand the italics a share that
 yardstick never looked at. pairs.py's gap is no second judge: it stays
 for what it is good at, finding the pairs (below).
 
-**Why the two disagree**: four differences of construction, each behind
-one family of phase 2's disagreements.
+**Why the two disagree**: four differences of construction. Which
+family goes with which is the run's finding, not the first reading's
+(R v w y had been laid to "over", T's pairs to "rows").
 
 | | gap (quality/pairs.py) | share (italic_kerning.py) | what the gap's choice does |
 |---|---|---|---|
-| over | n n, for every pair | the cases' own rhythm: n n, H H, H n, n H | a capital's pair is told against lowercase spacing: where Myia's capitals stand wider against its lowercase than the references' do, every capital pair reads "too loose". R v w y, W v w p q m, R O Q (to confirm: the gap of H n and H H over n n, Myia against the references; if Myia is higher by what these pairs are "loose", that is the whole disagreement) |
-| rows | baseline to x-height, always | where the two inks face each other, from the higher foot to the lower head | a capital pair is seen by its lower half (R O Q), a figure before a period by the period's few rows (7. 1.), a quote not at all or by its tail (A“ A" L“ “A), T by its stem without its bar (T u p z m n r: "+250 to +400" was the stem) |
-| near white | the nearest single row | the row at the 20 % quantile | one row of a serif's or a hairline's tip sets the depth all other rows are cut at; the eye reads the tip by the rows it fills (f's bar before r, R's leg) |
-| verdict | 0.15 n-gaps past the references' range, of four fonts or more | past the range of three or more that set the pair | |
+| over | n n, for every pair | the cases' own rhythm: n n, H H, H n, n H | a capital's pair is told against lowercase spacing. It matters only where a style's capitals stand wider against its lowercase than the references' do: the Bold's H H (a fifth over the references' median and past their highest; the Regular's H n and H H lie within 3 % of the median, the italics' inside the range). Switched alone it settles the Bold's R O, R Q and A" and nothing else |
+| rows | baseline to x-height, always | where the two inks face each other, from the higher foot to the lower head | a quote is not seen at all, or by its tail (A“ A" L“ “A: no gap to give). For letters and figures the rows change little by themselves (R v, R O, T u, 7. within a few per cent of the gap as it was) |
+| near white | the nearest single row | the row at the 20 % quantile | one row of a serif's or a hairline's tip sets the depth all other rows are cut at; the eye reads the tip by the rows it fills. The largest part of the disagreement: T before lowercase (the foot serif's tip: the gap reads half the references' white, the quantile puts T u p z m n r inside or within 7 % of the range), the Bold's R v w y (R's leg: a fifth too loose by the gap, inside by the quantile), f r in the Bold Italic (f's bar) |
+| verdict | 0.15 n-gaps past the references' range, of four fonts or more | past the range of three or more that set the pair | the Bold's 7. is outside only by the gap's own references and margin; on the share's five it is inside by either measure |
 
-So for a capital, a figure or a sign the gap measures another thing; for
-two lowercase letters the two differ only in the near white, and there
-the quantile is the one reasoned for (the italics' rule, above).
+So for a sign the gap measures another thing or nothing; for letters
+the two differ mostly in the near white, and there the quantile is the
+one reasoned for (the italics' rule, above).
+
+**Confirmed** (2026-11-15, the fonts built that day): on R v w y, W v w,
+R O Q, 7. 1., A“ A", T u p z m n r (uprights) and f r, R v, W v, R O, T u
+(italics), wherever the gap and the share give different verdicts
+against the same five references, one switch alone brings the gap to the
+share's: the near white for T's pairs, the Bold's R v w y and the
+italics' f r and T u; "over" for the Bold's R O, R Q, A" and the Italic's
+R O; for A“ only the rows give a number at all. The Regular's T p z m n
+r keep 1 to 7 % past the range after the near white's switch where the
+share has them inside: the other two choices together. In the Regular as
+it stands the two measures agree on R v w y, W v w, R O Q, 7. and 1.
+(inside by both): the disagreement of 2026-11-13 there was the gap
+against its references' median and its own set of fonts, and phase 2's
+pairs have been set since. Both measures call R v too tight in the two
+italics (10 to 25 % under the range).
 
 **f r in the Bold Italic** (-95, a hand exception: no pair in the Bold)
 goes by the share like every pair in tests/data/latin-pairs-BoldItalic.txt:
 inside the reference italics' range it is done; outside, it is set to
 the range's nearer edge on the next sheet. The gap's verdict on it is
-dropped either way.
+dropped either way. Measured 2026-11-15: its share is 1.10 against the
+references' 1.23 to 1.50, a tenth too tight (the gap had it loose): for
+the next sheet.
 
 **Setting a pair** (phase 2's open pairs, on Sonnet):
 
@@ -318,9 +338,6 @@ lowercase. A letter with fewer partners off is pairs.
 - tests/data/latin-pairs-Regular.txt and -Bold.txt, and
   test_latin_pairs over the uprights: today's outside pairs listed with
   phase 2's reasons, lists that only shrink.
-- The confirmations above, as one small table before anything is set:
-  the gap recomputed with one of its four choices at a time replaced by
-  the share's, on R v, W v, R O, 7 period, A “, T u, f r (Bold Italic).
-  If the disagreement of a family does not go with the switch named for
-  it here, this section is wrong there: write it into
-  `docs/claude/open-for-fable.md`'s successor and do not set that family.
+- (Done 2026-11-15: the confirmations, `scripts/quality/pair_measures.py
+  STYLE [--pairs "Rv Tu ..."]`; run it again on a family before setting
+  it, since it reads the built fonts.)

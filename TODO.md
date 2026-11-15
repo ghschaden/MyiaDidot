@@ -346,8 +346,9 @@ Unkerned today in every style (advance difference 0): `Ty` `Tw` `A“` `“A`
         (H B D E N P, by about 0.1 of the rhythm), G is tight before every
         lowercase (n o a e i): sidebearings of ' ” and G, not D or i pairs;
       - (which measure decides: spacing.md, "One measure for Latin
-        kerning", 2026-11-15: the share; its confirmations and tools are
-        Opus's, then these are Sonnet's)
+        kerning", 2026-11-15: the share, confirmed the same day by
+        `scripts/quality/pair_measures.py`; its tools are Opus's, then
+        these are Sonnet's)
       - the measures disagree: R v w y, R O Q, A“ A", L“ “A, 7. 1. 1,
         W v w p q m (gap measure: too loose; share: in range or tight);
       - T y w v (T's x-height serif on its right arm), T u p z m n r (the
@@ -861,8 +862,10 @@ docs/claude/quality.md has both rules with what enforces them.
 
 Model: Opus for the comparison and family faults, Sonnet for the lists.
 
-- [ ] (Specified: `docs/claude/italic.md`, 2026-11-15; the script and
-      the sheet are Opus's.)
+- [ ] (Specified and measured: `docs/claude/italic.md`, 2026-11-15,
+      `scripts/quality/italic_measures.py`; its first run's findings
+      are there, nearly all of them the Regular's side. The sheet is
+      Opus's, the choice among the five proposals the designer's.)
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %

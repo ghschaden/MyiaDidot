@@ -1,9 +1,10 @@
 # The Italic against the Regular: phase 6's measure
 
-Phase 6's first step (TODO.md), specified 2026-11-15 on Fable; nothing
-here is built or measured yet. Opus writes the script and the sheet from
-it; the numbers marked "proposed" are set at the first run (last
-section). The model is F4's `docs/claude/bold.md` and its two scripts.
+Phase 6's first step (TODO.md), specified 2026-11-15 on Fable and built
+the same day: `scripts/quality/italic_measures.py` (measures, gate and
+table in one; tests/test_italic_measures.py), its first run read and the
+specification corrected by it ("The first run" below). Not built: the
+sheet. The model is F4's `docs/claude/bold.md` and its two scripts.
 
 The question: where does the Italic read as another typeface beside the
 Regular? The Regular is Theano Didot's, the Italic's letters are Old
@@ -42,11 +43,32 @@ printing both styles' own-scale values, not the relation alone.
 ## Scale
 
 As bold_measures.py: outlines deslanted by the font's italic angle, a
-1000 em. Then, as bold_targets.py, every length over the style's own
-stem (the lowercase's for lowercase, the capitals' for capitals) or over
-its zone (x-height, cap height), areas over the zone squared. The
-italic's stem is taken a third of the way up (`derive.straight_stem`: an
-italic stem swells towards the branch), the same in every font.
+1000 em. Then every value on the style's own scale: **a thickness over
+the stem** (the lowercase's for lowercase, the capitals' for capitals),
+**a size over the zone** (a width, a counter, a serif's or a hook's
+reach: over the x-height or the cap height); the ball, read against the
+stem beside it, over the stem. The stem is taken a third of the way up
+(an italic stem swells towards the branch), the same in every font: the
+runs there at least 0.6 of the widest (`stem_runs`; a hook's hairline
+is none).
+
+Sizes were first put over the stem too. The italic capitals' stem is
+lighter against the Regular's than most references' (0.875, the range
+0.853 to 0.995: the kept contrast), and every capital serif then read
+10 to 15 % too long, one decision counted six times. Over the cap
+height the same serifs are inside.
+
+The x-height is x's top. In a roman that is the flat letters' height.
+In an italic all the lowercase reaches one line (x z o n u v, in all
+seven fonts), so an italic has no overshoot above to measure; what is
+measured instead is where that line lies against the roman's flat
+letters ("x-height I / R").
+
+A thickness is taken across the stroke: the ink's run in a column or a
+row, times the cosine of the stroke's lean there, the lean read from
+the run's middle 2 units to either side (`across`); where the run to
+one side is another stroke (the arch running into its stem) there is no
+lean, and the place is left out.
 
 Two kinds of measure:
 
@@ -59,39 +81,46 @@ Two kinds of measure:
 
 ## What is measured
 
-| | on | how | kind | have |
-|---|---|---|---|---|
-| stem | n (lc), H (uc); median of i l n m h u, of H I E L | width a third up, deslanted | relation, over the zone | `stems()`, at another height |
-| hairline | o top and bottom, e's bar, n's arch at its thinnest, v's thin stroke; H's bar, O's top, A's thin stroke | the ink's run across the stroke where it is thinnest: vertical at mid width for o O e H, across the lean for v A (strokes.py's narrowing), the least over the arch's columns for n | relation, over the stem (the contrast) | new; o's as `derive.strokes` |
-| colour | a-z together, and each | ink in the x-zone over advance x zone (colour.py's zone colour) | relation | colour.py, per style |
-| width | a-z's advances summed; n, o, e, a each; the same for A-Z, H O | advance over x-height (cap height) | relation | bold_measures |
-| counter | n o e (b d p q) | counter's width over the stem | relation | bold_measures |
-| ball | c f r y j (g's ear) | the widest disc in the terminal's region, over the stem | relation | bold_measures `BALLS` |
-| serif, capitals | H I (E L's feet) | length: the foot's reach past the stem's edge, each side, at the baseline row; thickness at the tip and at half the reach (the ink's vertical run in that column) | relation; length over the stem, thickness over the hairline | new |
-| serif, lowercase feet | p q (the descender's foot), l's head | as the capitals' | relation | new |
-| hooks | n's entry and exit, i, u's exit | reach past the stem's edge at the zone's line; thickness where thinnest | italic's own | new |
-| overshoot | o against x and z (x-height, baseline), O against H, b d l against H (ascender) | the round's edge past the flat one, over the zone | relation | zones.py per UFO; the references by bounds |
-| stress | o, O | the angle of the line through the ring's two thinnest places, after deslanting | relation (a difference in degrees) | transitions.py's profile |
-| slant | n, H, l | the stems' angle | shown only | checks.py `slant` |
+| | on | how | kind, scale |
+|---|---|---|---|
+| stem | median of i l n m h u; of H I E L | across, a third up | relation, over the zone |
+| hairline | o top and bottom, e's bar, n's arch between its stems, v's thin stroke; H's bar, O's top, A's thin stroke | across, where thinnest (o O: over the middle half of the width; v A: the thinner of two runs at half, 0.65 of the zone) | relation, over the stem (the contrast) |
+| colour | a-z together, and each | ink in the x-zone over advance x x-height | relation |
+| width | a-z's advances (mean); n o e a each; A-Z, H O | advance | relation, over the zone |
+| counter | n o e b d p q | the widest disc in the largest counter (bold_measures) | relation, over the x-height |
+| ball | c f r y j | the widest disc in the terminal's region (bold_measures `BALLS`) | relation, over the stem; good to about 3 % (2 units a pixel) |
+| serif, capitals | H I both sides, E L left | reach past the stem's edge in the row just above the foot; thickness near the left tip and at half the reach | relation; reach over the cap height, thickness over H's bar |
+| foot | p q at the descender's end | as the capitals' | relation; reach over the x-height, the tip over o's hairline |
+| hooks | n i entry and exit, u exit, l's head | reach past the stem's edge (top fifth, lower 45 %); the hook's stroke where thinnest | italic's own; reach over the x-height, thickness over the stem |
+| x-height | x | the Italic's x top over the Regular's | relation |
+| overshoot | o below; O above and below | the round's edge past the line, per cent of the zone | difference Italic less Regular |
+| ascender | b d l | top over the cap height | relation |
+| stress | o, O | the angle from the vertical of the line through the stroke's thin places above and below | difference in degrees |
+| slant | the font's angle; what lean n H l's stem keeps after deslanting | | shown only |
 
 Not measured as a relation: joins (bold_measures reads a column beside
 the stem; on a deslanted italic arch that is not the same place as on the
 roman's) and whatever counts different counters in the two styles.
 
-Traps known from the docstrings, to check on the first run before any
-number is believed:
+Traps, as the first run found them (`--marks DIR` draws every measured
+place on the letters, one PNG per font and style: look before a number
+is believed, and again after a letter is redrawn):
 
-- The Italic's a is single-storey: `BALLS["a"]` finds the bowl's top or
-  the stem there, not a ball. a leaves the ball family; "c a f r y" in
-  TODO.md's wording is c f r y for the relation.
+- The Italic's a and g are single-storey: their ball regions hold a
+  bowl's top and a stem. Neither is in the ball family (c f r y j); g's
+  colour differs by a fifth for the same reason and is no finding.
 - The Italic's f has a hook below since 2026-11-11 (a ball there too):
-  the region for f's ball is the top one only.
-- `stems()` wants edges straight within 1.5 % over its rows: an italic
-  stem that swells may not be found; then `derive.straight_stem`'s
-  slice, and the report says which was used.
-- An italic n's counter is open below (it sees ink in seven of eight
-  directions): the counter's width is comparable, its aperture is not
-  the Regular's gap between feet.
+  the region for f's ball is the top one only, and finds it.
+- Sizes over the stem, the x-height of an italic, the lean beside a
+  step: "Scale" above.
+- A roman's l has a head serif, an italic's an entry stroke: l's head is
+  the italic's own, with the hooks. The entries' reach spreads by 40 to
+  60 % among the three Didones (Old Standard's long, the Bodonis'
+  short) and is never gated.
+- EB Garamond's q has no stem where the others have (its foot reads
+  negative): shown only, as that font is anyway.
+- An italic n's counter is open below: its width is comparable (and
+  measured), its aperture is not.
 
 ## The gate
 
@@ -102,21 +131,29 @@ highest, -9 nine below the lowest.
 | position | with | reads as | goes to |
 |---|---|---|---|
 | inside | | the italic of this roman | nothing |
-| outside by 3 % or more (proposed, `OUTSIDE`) | | a candidate | the sheet |
+| outside by 3 % or more (`OUTSIDE`) | | a candidate | the sheet |
 | outside by 3 % or more | Libertinus and Charis both on the range's side of Myia | another typeface | the change list |
-| outside by 10 % or more (proposed) | | another typeface | the change list |
+| outside by 10 % or more (`FAR`) | | another typeface | the change list |
 
 - A measure whose three references spread by more than 30 % of their
   median between lowest and highest does not discriminate: shown, never
-  gated (proposed; the first run prints each measure's spread).
-- Stress is gated in degrees: more than 5 beyond the range (proposed).
+  gated (`SPREAD`; the table prints each measure's spread).
+- Stress is gated in degrees: more than 5 beyond the range (`STRESS`);
+  an overshoot at half a per cent of its zone beyond it (`OVERSHOOT`:
+  about 4 units of the font's em).
+- The numbers stand as proposed after the first run: of some 60
+  measures 8 spread past 30 % (the entries' reach, the feet's inner
+  side, y's ball, H's and L's left serif by Libre Bodoni's short one;
+  and two of the kept capital hairlines);
+  the others spread by 3 to 29 %, and no finding sits between 3 and
+  10 % without the second voice agreeing, so the middle row has not yet
+  had to decide anything.
 - **Kept, never on the change list**: the capitals' contrast (H's bar,
   O's top, A's thin stroke over the capital stem). The report prints the
   rows with "kept: declined 2026-10-21 and 2026-11-02".
-- Expected and to be confirmed, not found: colour about 5 % lighter,
-  width about 5 % narrower (TODO.md's assessment). If the Didones'
-  italics are 3-10 % lighter and narrower than their romans, that is
-  inside.
+- Colour and width, expected about 5 % lighter and narrower: measured
+  2 % lighter (the Didones' italics 1 to 3 %) and 7 % narrower (theirs
+  1 to 10 %). Inside.
 - The change list is a proposal to the designer, one review round on
   the sheet; what is struck there gets its date in this file.
 
@@ -159,21 +196,77 @@ After any of them: redraw.md's steps 7 and 8 (generate, sweep, tests,
 the second sheet with the Bold Italic), the measure letters (o n H O)
 tried through `make generate` in a scratch copy first.
 
-## For Opus: what to build
+## The first run (2026-11-15)
 
-1. `scripts/quality/italic_measures.py`: bold_measures' machinery
-   (`measure`, `run`, `gains`) with the pairs above, a third of the way
-   up for the stem, and the new measures (hairline, serif, hook,
-   overshoot, stress). `--json build/quality/italic-measures.json`.
-   Each new measure with a test on a drawn shape whose value is known
-   (a stem of 80 with a serif of 60 by 12; a ring whose thin places lie
-   at a known angle).
-2. `scripts/quality/italic_targets.py` (or bold_targets.py given the
-   pairing as an argument): own-scale values, relations, positions, the
-   spread per measure, the verdicts of the gate;
-   `build/quality/italic-targets.md`.
-3. Run by font-measure; the traps above checked against a rendering of
-   the letters with the measured places marked, before the table is
-   read.
-4. The proposed numbers set from the spreads and written here; then the
-   sheet.
+`build/quality/italic-targets.md`, every value in
+`build/quality/italic-measures.json`. The table's last columns put
+Myia's Regular and Italic each over Old Standard's (R/OS, I/OS): that
+is where a finding comes from.
+
+**Inside**: the stems' weight (lowercase 0.99, capitals 0.875), the
+lowercase hairlines (o, e's bar, n's arch), colour, the widths of a-z,
+n o e a, A-Z and H, e's and b's counters, f's and j's balls, the
+capitals' serifs in reach and thickness, the feet of p and q, every
+hook's reach and thickness, the stress of o and O, the x-height (the
+Italic's lowercase stands at the Regular's flat height as Old
+Standard's does; the two Bodonis' italics stand 2 to 3 % higher, at
+their romans' rounds).
+
+**Outside, read as another typeface**:
+
+| | Myia | the Didones | past | R/OS | I/OS |
+|---|---|---|---|---|---|
+| counters of n o d p q over the x-height | 0.62 to 0.79 | n 0.68-0.92, o 0.87-1.02, d p q 0.80-0.99 | -7 to -10 % | +8 to +20 | -1 to +1 |
+| O's width | 0.87 | 0.95-1.01 | -9 % | +12 | -4 |
+| c's ball over the stem | 1.05 | 0.93-0.96 | +9 % | -14 | -3 |
+| r's ball | 1.32 | 0.92-1.10 | +20 % | -17 | -1 |
+| v's thin stroke over the stem | 1.25 | 0.92-1.12 | +12 % | -27 | -1 |
+| ascenders of b d l over the cap height | 0.96 | 1.00 (all three, both styles) | -4 % | +4 | 0 |
+| o's overshoot below | +0.8 % of the x-height | 0.0 to +0.1 | 0.6 | | |
+| O's overshoot above | +0.8 % of the cap height | -0.4 to 0.0 | 0.8 | | |
+| p's foot, left reach | 1.36 | 1.06-1.32 | +3 % | -1 | +5 |
+
+**Kept** (the capitals' contrast): O's top 45 % past the range, A's
+thin stroke 16 %, H's bar 4 % (the last two on references that spread).
+
+What the columns say: but for the overshoots and p's foot, **every
+finding is the Regular's side**. On those measures Myia's Italic is Old
+Standard's italic to within 4 %, and Old Standard's pair is inside its
+own family's range; Myia's Regular is Theano's, with wider bowls and a
+wider O than Old Standard's roman, a heavier stem (17 %), a thinner
+diagonal hairline and, against that stem, smaller balls, and ascenders
+4 % over the capitals where every reference's stand at the capitals'
+height in both styles. By "Where a fault is mended" none of these is
+changed in the Italic without the designer. What the Italic could be
+given, for the sheet to show and the designer to choose from:
+
+1. the bowls of n o d p q (and what shares them: b a g h m u) wider by
+   about a tenth of the counter, O wider by a tenth: proportions, the
+   designer's drawing (the widths of a-z and of A-Z as a whole are
+   inside: it is the round letters, not the fit);
+2. r's ball smaller by a sixth, c's by a twelfth (f's and j's are
+   inside: one family is not one size);
+3. v's thin stroke (and w y's, not measured) thinner by a tenth;
+4. the ascenders raised to the Regular's 4 % over the capitals: the
+   likeliest to be seen in running text, where b d h k l stand beside
+   roman ones;
+5. the Italic's own: o's and O's overshoots taken back to the
+   Regular's (o below 2.6 against 1.8 % of the x-height, O above 2.7
+   against 2.0 % of the cap height; O was drawn 2026-11-12), p's foot
+   left as it is (3 %, at the gate's edge).
+
+Not found, though TODO.md's phase 6 named them: the serifs' length and
+thickness, the hairlines of the lowercase, colour and width as a whole.
+
+## What is left to build
+
+1. The sheet (`scripts/italic_sheet.py`, as bold.md's trial sheet): the
+   table, the rows at 144 pt for the findings above with the measured
+   place marked (the marks are in `Cut.marks`, `draw_marks` draws
+   them), the running text, the change list above. Opus.
+2. The references' marked letters looked through once (`--marks`): on
+   Myia's two styles every place was checked on 2026-11-15; on the
+   references only the values' plausibility (EB Garamond's q, Old
+   Standard's i entry).
+3. After the designer's round: what is struck gets its date here; what
+   is taken goes by "Where a fault is mended".

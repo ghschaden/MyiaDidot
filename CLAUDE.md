@@ -12,7 +12,7 @@ Details by topic, read the one the task touches:
 | `docs/claude/glyphs.md` | composites, accents, NFD, small caps, derived letters and drafts, locl forms |
 | `docs/claude/styles.md` | how the Bold, Bold Italic and Italic are generated |
 | `docs/claude/bold.md` | the upright Bold against its references (F4): how it is made, the measures, the rules proposed, what carries to the Bold Italic |
-| `docs/claude/italic.md` | the Italic against the Regular (phase 6's measure, specified 2026-11-15, not built yet): pairs, measures, the gate, the sheet, where a fault is mended |
+| `docs/claude/italic.md` | the Italic against the Regular (phase 6's measure, built 2026-11-15: `scripts/quality/italic_measures.py`; the sheet not yet): pairs, measures, the gate, the first run's findings, where a fault is mended |
 | `docs/claude/stroking.md` | the Bold Italic's stroker (stroke_bold, fair_arcs): stages, constants, invariants, tests, dead ends, T4's switches |
 | `docs/claude/spacing.md` | spacing, kerning, Greek/Cyrillic pairs, figures, cpsp, case |
 | `docs/claude/hinting.md` | TTF and CFF hinting and their tests |
