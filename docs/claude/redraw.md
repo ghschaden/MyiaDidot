@@ -372,6 +372,17 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   pass on: look at that curve's handles before the sheet is made. What
   found it was a recipe (ɾ, made of f's hook) moving 25 units in the
   sweep.
+- **The same quarter turn, where the plain fit is already square**
+  (2026-11-16, the Italic's raw small-cap drafts: x.sc's inner
+  brackets, a handle of 3 units and the other at the corner; 11 of 133
+  drafts, longtail.md, family 3). `FAIR_SPAN` holds the fairing to the
+  plain fit, not the plain fit to a shape. Not mended: a limit on the
+  two handles' share of each other in `fit_best`, or a failure in the
+  gate, is open. Until then a curve with one handle of 6 units or less
+  and the other of 40 or more that the target had not
+  (`scripts/pilot/sc_draft_fit.lopsided`) is looked at before the
+  sheet; in a letter that later stages weight or stroke it does not
+  stay within the tolerance.
 - **Hint zones**: the Bold Italic's G and Ɠ sit 4/64 px off their bottom
   zone at 35 ppem though neither outline moved (test_hint_zones). The
   cause is not traced yet (`scripts/quality/hint_zones.py FONT`): do
@@ -882,6 +893,11 @@ others are components), the Cyrillic capitals (19), κ π ъ ы ь, ſt st,
 So the remaining batches of phase 5 are Sonnet sessions by the steps
 above: figures (20), punctuation and signs (38), capitals Greek and
 Cyrillic (30), the rest (19).
+
+Fitted again on a8d52f50 and put on sheets 2026-11-16 (steps 1 to 4;
+the verdicts as in the dry run), with family 2's letters outside the
+core set: `docs/claude/longtail.md`, family 2, has the sheets and what
+the designer is asked on them. Steps 5 to 8 are what is left.
 
 ## Open
 

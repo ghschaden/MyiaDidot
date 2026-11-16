@@ -1,0 +1,148 @@
+# scripts/pilot/sc_draft_fit.py fit OUT.ufo OUT.json NAMES, on a8d52f50 (2026-11-16): the Italic's stored raw small-cap drafts (sources/drafts/Italic-smallcaps.ufo) through redraw.py, no spec
+# 146 drafts: 133 candidates, 13 fail; 11 candidates with a lopsided curve the raw draft had not (marked L)
+a.sc                          24 ->  25  0.89  0.28->0.11  candidate  [look: more nodes than before (25 against 24): an extreme that had none, or a shape one curve does not hold]
+ae.sc                         46 ->  46  0.82  0.21->0.2  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+aogonek.sc                    34 ->  35  1.34  0.69->0.11  candidate  [look: more nodes than before (35 against 34): an extreme that had none, or a shape one curve does not hold]
+aringacute.sc              L  38 ->  39  1.27  0.65->1.0  candidate  [look: more nodes than before (39 against 38): an extreme that had none, or a shape one curve does not hold; curvature jump 1.0 at 675,1148 (the target's worst 0.65)]
+b.sc                          26 ->  26  2.04  0.99->0.15  candidate  [look: tolerance 3.92; 1 extra node(s) off extremes and inflections (old node)]
+c.sc                          18 ->  18  3.24  1.04->0.41  candidate  [look: tolerance 2.8; 2 extra node(s) off extremes and inflections (old node, old node)]
+d.sc                          20 ->  21  2.63  0.35->0.26  candidate  [look: more nodes than before (21 against 20): an extreme that had none, or a shape one curve does not hold]
+delta.sc                       8 ->   8   0.0  0.0->0.0  candidate
+e.sc                          31 ->  30  1.87  0.36->0.35  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+eng.sc                        36 ->  33   2.2  1.88->0.69  candidate
+eogonek.sc                    41 ->  39  1.87  1.04->1.0  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+eth.sc                        28 ->  28  2.99  0.35->1.0  candidate  [look: tolerance 2.8; curvature jump 1.0 at 900,438 (the target's worst 0.35)]
+f.sc                          28 ->  28  0.69  0.36->0.35  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+florin.sc                     30 ->  29  2.35  0.7->0.59  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+g.sc                          30 ->  30  2.35  1.61->1.02  candidate  [look: 3 extra node(s) off extremes and inflections (old node, old node, half turn)]
+gamma.sc                      19 ->  18  1.45  0.27->0.0  candidate
+germandbls.sc                 32 ->  31   2.6  1.25->0.75  candidate  [look: 1 extra node(s) off extremes and inflections (half turn)]
+h.sc                          36 ->  36  0.32  0.0->0.0  candidate
+hbar.sc                       48 ->  48  0.35  0.0->0.0  candidate
+i.sc                          16 ->  16  0.18  0.0->0.0  candidate
+iogonek.sc                    26 ->  25  1.43  1.08->0.07  candidate
+j.sc                       L  18 ->  17  1.75  1.25->1.0  candidate
+k.sc                          36 ->  37  1.31  0.44->0.15  candidate  [look: more nodes than before (37 against 36): an extreme that had none, or a shape one curve does not hold]
+l.sc                          19 ->  18  1.81  0.16->0.0  candidate
+lambda.sc                     20 ->  20  0.72  0.35->0.08  candidate
+lslash.sc                     27 ->  26  1.81  0.16->0.0  candidate
+m.sc                          34 ->  33  0.37  0.41->0.0  candidate
+n.sc                          28 ->  26  0.87  0.25->0.0  candidate
+o.sc                          10 ->  12  2.98  1.63->0.82  candidate  [look: more nodes than before (12 against 10): an extreme that had none, or a shape one curve does not hold; 2 extra node(s) off extremes and inflections (old node, half turn)]
+oe.sc                         35 ->  34  2.71  1.59->0.77  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+omega.sc                      30 ->  30  3.16  0.83->0.51  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+oogonek.sc                    19 ->  21  2.37  1.63->0.82  candidate  [look: more nodes than before (21 against 19): an extreme that had none, or a shape one curve does not hold; 3 extra node(s) off extremes and inflections (old node, half turn, half turn)]
+oslash.sc                     22 ->  22  2.53  0.69->0.47  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+p.sc                          23 ->  22   2.2  0.26->0.05  candidate
+phi.sc                        40 ->  38   3.6  0.67->0.89  candidate  [look: tolerance 2.8; curvature jump 0.89 at 996,468 (the target's worst 0.67)]
+pi.sc                         28 ->  28  0.32  0.0->0.0  candidate
+psi.sc                     L  45 ->  44  2.22  1.43->1.0  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+q.sc                       L  27 ->  27  3.53  1.0->0.91  candidate  [look: tolerance 2.8; 1 extra node(s) off extremes and inflections (old node)]
+r.sc                          32 ->  32  2.39  0.54->0.59  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node); curvature jump 0.59 at 899,723 (the target's worst 0.54)]
+s.sc                          24 ->  26  3.02  1.55->0.52  candidate  [look: more nodes than before (26 against 24): an extreme that had none, or a shape one curve does not hold; 3 extra node(s) off extremes and inflections (old node, old node, old node)]
+sigma.sc                      20 ->  19  2.02  0.94->0.1  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+sigmalunatesymbolgreek.sc     12 ->  14  2.33  0.77->0.22  candidate  [look: more nodes than before (14 against 12): an extreme that had none, or a shape one curve does not hold; 3 extra node(s) off extremes and inflections (old node, old node, half turn)]
+t.sc                          22 ->  20  1.76  0.15->0.0  candidate
+tbar.sc                       30 ->  28  1.78  0.16->0.0  candidate
+tcaron.sc                     29 ->  27  1.77  0.13->0.0  candidate
+theta.sc                      14 ->  13  2.98  1.03->0.39  candidate  [look: 1 extra node(s) off extremes and inflections (half turn)]
+thorn.sc                      28 ->  29  1.81  0.36->0.09  candidate  [look: more nodes than before (29 against 28): an extreme that had none, or a shape one curve does not hold]
+u.sc                          25 ->  22  1.68  0.47->0.07  candidate
+uni0188.sc                    29 ->  27  2.18  1.98->0.34  FAIL: kink 837,960 4.3 degrees  [look: 5 extra node(s) off extremes and inflections (old node, old node, old node, half turn, old node)]
+uni0199.sc                 L  41 ->  41  0.83  0.73->0.17  candidate
+uni019A.sc                    27 ->  26  1.83  0.19->0.0  candidate
+uni01A5.sc                    29 ->  27  2.34  0.61->0.07  FAIL: kink 269,927 2.7 degrees
+uni01AD.sc                    32 ->  30  0.86  0.3->0.1  candidate
+uni01B4.sc                    31 ->  31  0.71  1.0->0.13  candidate
+uni01B9.sc                    29 ->  21  2.85  1.33->0.86  candidate
+uni01DD.sc                    32 ->  29  1.75  0.46->0.03  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni01E5.sc                    38 ->  38  2.56  1.98->1.6  candidate  [look: 3 extra node(s) off extremes and inflections (old node, old node, half turn)]
+uni023C.sc                    27 ->  27  3.91  1.0->0.27  candidate  [look: tolerance 2.8; 1 extra node(s) off extremes and inflections (old node)]
+uni0249.sc                    26 ->  25  1.34  1.25->1.32  candidate  [look: curvature jump 1.32 at 199,132 (the target's worst 1.25)]
+uni024D.sc                    42 ->  39  1.76  0.54->0.63  candidate  [look: 2 extra node(s) off extremes and inflections (half turn, old node); curvature jump 0.63 at 936,733 (the target's worst 0.54)]
+uni0250.sc                    24 ->  25  0.92  0.28->0.11  candidate  [look: more nodes than before (25 against 24): an extreme that had none, or a shape one curve does not hold]
+uni0251.sc                    20 ->  18  0.89  0.28->0.05  FAIL: step 832,0 47 units aside (the letter's own, there before: the shape's, hand back)
+uni0253.sc                    32 ->  32   3.0  1.03->1.0  FAIL: kink 269,927 2.7 degrees  [look: 2 extra node(s) off extremes and inflections (half turn, old node)]
+uni0254.sc                    18 ->  18  3.89  1.07->0.46  candidate  [look: tolerance 2.8; 1 extra node(s) off extremes and inflections (old node)]
+uni0257.sc                    26 ->  26  2.51  0.55->0.14  FAIL: kink 269,927 2.8 degrees
+uni025B.sc                    23 ->  23  3.77  1.32->0.95  candidate  [look: tolerance 2.8; 1 extra node(s) off extremes and inflections (old node)]
+uni0260.sc                    41 ->  36  2.51  1.95->0.2  FAIL: kink 871,962 5.0 degrees  [look: 4 extra node(s) off extremes and inflections (old node, old node, old node, half turn)]
+uni0263.sc                    18 ->  19  2.19  0.63->0.5  candidate  [look: more nodes than before (19 against 18): an extreme that had none, or a shape one curve does not hold; 2 extra node(s) off extremes and inflections (old node, old node)]
+uni0266.sc                    38 ->  37   0.7  0.82->0.09  candidate
+uni0268.sc                    24 ->  24  0.28  0.0->0.0  candidate
+uni0269.sc                     9 ->   8  1.53  0.49->0.31  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni026B.sc                    31 ->  28  1.95  0.61->0.14  candidate
+uni026C.sc                    29 ->  28  1.85  0.2->0.0  candidate
+uni026F.sc                    44 ->  39  1.98  0.55->0.09  candidate
+uni0272.sc                    32 ->  29  0.93  1.0->0.13  candidate
+uni027D.sc                    39 ->  34   3.0  1.49->1.22  candidate  [look: 1 extra node(s) off extremes and inflections (half turn)]
+uni0280.sc                    39 ->  36  2.49  1.75->0.61  FAIL: bounds moved by 1.5 units  [look: 2 extra node(s) off extremes and inflections (old node, half turn)]
+uni0288.sc                    28 ->  22  1.53  1.0->1.79  candidate  [look: curvature jump 1.79 at 697,-109 (the target's worst 1.0)]
+uni0289.sc                    37 ->  34  1.57  0.39->0.08  candidate
+uni028A.sc                    30 ->  30  2.68  0.84->0.47  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni028B.sc                    29 ->  25   2.3  1.49->1.0  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni028C.sc                    20 ->  21  1.37  0.42->0.07  candidate  [look: more nodes than before (21 against 20): an extreme that had none, or a shape one curve does not hold]
+uni0292.sc                    23 ->  23  2.24  1.03->0.36  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni029D.sc                    27 ->  23   1.0  1.0->0.04  candidate
+uni03D7.sc                    40 ->  40  1.31  1.71->0.15  candidate
+uni03D9.sc                    19 ->  18  3.45  0.49->0.26  candidate  [look: tolerance 2.8]
+uni03DB.sc                    23 ->  23  2.52  1.14->1.42  candidate  [look: curvature jump 1.42 at 382,383 (the target's worst 1.14)]
+uni03DD.sc                    27 ->  25  2.19  0.17->0.0  candidate
+uni03DF.sc                    22 ->  21  2.18  0.87->0.66  candidate
+uni03E1.sc                 L  24 ->  22  2.65  0.59->1.0  candidate  [look: curvature jump 1.0 at 48,869 (the target's worst 0.59)]
+uni0431.sc                    25 ->  25   2.4  0.75->0.12  candidate  [look: tolerance 2.8]
+uni0434.sc                    32 ->  29  2.44  1.45->0.88  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni0436.sc                    73 ->  58  2.76  1.87->1.05  candidate
+uni0437.sc                 L  28 ->  23  2.53  1.36->1.0  candidate
+uni0438.sc                    36 ->  36  0.48  0.0->0.0  candidate
+uni043A.sc                    42 ->  40  1.61  1.69->0.49  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni043B.sc                    30 ->  29   2.5  1.26->0.93  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+uni0443.sc                    29 ->  28  2.26  1.84->0.1  candidate  [look: tolerance 3.92]
+uni0444.sc                    40 ->  38   3.6  0.67->0.89  candidate  [look: tolerance 2.8; curvature jump 0.89 at 996,468 (the target's worst 0.67)]
+uni0446.sc                    31 ->  31  1.59  0.96->0.75  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni0447.sc                    32 ->  30  2.16  0.92->0.03  candidate
+uni0448.sc                    40 ->  40  0.31  0.0->0.0  candidate
+uni0449.sc                    43 ->  43  1.59  0.96->0.75  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni044A.sc                    25 ->  25   2.9  0.72->0.17  candidate  [look: tolerance 2.8]
+uni044B.sc                    38 ->  40  2.19  0.74->1.2  candidate  [look: more nodes than before (40 against 38): an extreme that had none, or a shape one curve does not hold; 1 extra node(s) off extremes and inflections (half turn); curvature jump 1.2 at 798,328 (the target's worst 0.74)]
+uni044C.sc                    22 ->  24  2.19  0.72->1.24  candidate  [look: more nodes than before (24 against 22): an extreme that had none, or a shape one curve does not hold; 1 extra node(s) off extremes and inflections (half turn); curvature jump 1.24 at 798,328 (the target's worst 0.72)]
+uni044D.sc                    25 ->  23  2.28  1.53->0.66  candidate
+uni044E.sc                    30 ->  29   2.4  1.67->0.93  candidate  [look: 1 extra node(s) off extremes and inflections (half turn)]
+uni044F.sc                    34 ->  32  2.91  1.56->1.06  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni0452.sc                    34 ->  31  3.09  1.22->0.65  FAIL: step 1013,630 36 units aside (the letter's own, there before: the shape's, hand back)  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni0454.sc                    24 ->  21  2.79  1.28->0.55  candidate  [look: 1 extra node(s) off extremes and inflections (half turn)]
+uni0459.sc                    36 ->  34  3.78  1.26->0.51  candidate  [look: tolerance 2.8]
+uni045A.sc                    42 ->  44  2.25  0.67->1.35  candidate  [look: more nodes than before (44 against 42): an extreme that had none, or a shape one curve does not hold; 1 extra node(s) off extremes and inflections (half turn); curvature jump 1.35 at 1423,328 (the target's worst 0.67)]
+uni045B.sc                    38 ->  34  1.98  0.93->0.2  FAIL: step 1015,629 38 units aside (the letter's own, there before: the shape's, hand back)
+uni045F.sc                    35 ->  35  0.55  0.51->0.02  candidate
+uni0463.sc                    36 ->  36  2.22  0.74->1.21  candidate  [look: 1 extra node(s) off extremes and inflections (half turn); curvature jump 1.21 at 971,328 (the target's worst 0.74)]
+uni046B.sc                    49 ->  49  0.91  1.9->0.31  candidate
+uni0473.sc                    14 ->  13  2.98  1.03->0.39  candidate  [look: 1 extra node(s) off extremes and inflections (half turn)]
+uni0475.sc                    20 ->  20  2.59  1.0->0.47  candidate
+uni0491.sc                    19 ->  18  1.52  0.38->0.0  candidate
+uni0493.sc                    27 ->  26  1.39  0.22->0.0  candidate
+uni0497.sc                    80 ->  65  2.53  1.6->1.01  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+uni049B.sc                 L  50 ->  46  2.49  1.63->1.0  candidate  [look: 2 extra node(s) off extremes and inflections (old node, half turn)]
+uni04A3.sc                    41 ->  40  1.59  0.98->0.77  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni04B1.sc                    37 ->  37  1.13  1.03->0.08  candidate
+uni04B3.sc                    44 ->  43  3.34  0.96->1.0  candidate  [look: tolerance 3.92; curvature jump 1.0 at 785,863 (the target's worst 0.96)]
+uni04B7.sc                    38 ->  36  1.48  0.97->1.0  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node); curvature jump 1.0 at 356,596 (the target's worst 0.97)]
+uni04BB.sc                    32 ->  30  2.33  0.92->0.04  candidate
+uni04D9.sc                    14 ->  13  2.76  0.59->0.28  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+uni04E9.sc                    14 ->  14  1.72  0.66->0.08  candidate  [look: 2 extra node(s) off extremes and inflections (half turn, half turn)]
+uni1D7D.sc                    31 ->  30  2.65  0.24->0.08  candidate
+uni2C65.sc                    39 ->  40  0.82  0.0->0.47  FAIL: step 209,-44 51 units aside (the letter's own, there before: the shape's, hand back)  [look: more nodes than before (40 against 39): an extreme that had none, or a shape one curve does not hold]
+uni2C66.sc                    35 ->  33  1.69  0.22->0.0  FAIL: step 252,62 57 units aside (the letter's own, there before: the shape's, hand back); step 274,-49 52 units aside (the letter's own, there before: the shape's, hand back); step 292,0 39 units aside (the letter's own, there before: the shape's, hand back)
+uni2C73.sc                    35 ->  35  0.56  0.17->0.07  FAIL: kink 1110,710 4.3 degrees
+uniA78C.sc                     8 ->   7  0.37  0.62->0.1  candidate
+uniA7B5.sc                    32 ->  32  2.75  1.05->0.31  FAIL: kink 225,15 2.9 degrees  [look: tolerance 3.92]
+uniA7B7.sc                    24 ->  27  2.65  0.73->0.67  candidate  [look: more nodes than before (27 against 24): an extreme that had none, or a shape one curve does not hold; 3 extra node(s) off extremes and inflections (old node, old node, old node)]
+uniA7C8.sc                    28 ->  31  1.41  0.34->0.14  candidate  [look: more nodes than before (31 against 28): an extreme that had none, or a shape one curve does not hold; 2 extra node(s) off extremes and inflections (half turn, old node)]
+uogonek.sc                 L  34 ->  29  2.12  1.17->1.25  candidate  [look: curvature jump 1.25 at 748,-17 (the target's worst 1.17)]
+upsilon.sc                    28 ->  23  2.96  0.76->0.94  candidate  [look: curvature jump 0.94 at 961,644 (the target's worst 0.76)]
+v.sc                          20 ->  21  1.37  0.45->0.07  candidate  [look: more nodes than before (21 against 20): an extreme that had none, or a shape one curve does not hold]
+w.sc                       L  33 ->  33  2.45  0.84->0.99  candidate  [look: tolerance 2.8; curvature jump 0.99 at 1029,837 (the target's worst 0.84)]
+x.sc                       L  38 ->  41  1.71  0.71->1.0  candidate  [look: more nodes than before (41 against 38): an extreme that had none, or a shape one curve does not hold; 1 extra node(s) off extremes and inflections (old node); curvature jump 1.0 at 785,865 (the target's worst 0.71)]
+xi.sc                         48 ->  48  0.45  0.0->0.0  candidate
+y.sc                          28 ->  29  1.23  0.33->0.15  candidate  [look: more nodes than before (29 against 28): an extreme that had none, or a shape one curve does not hold]
+z.sc                          16 ->  16  0.99  0.14->0.0  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]

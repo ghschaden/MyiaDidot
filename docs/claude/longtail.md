@@ -157,6 +157,45 @@ only if the designer wants them touched.
 The Bold Italic's lines on the same glyphs are `parent` lines and fall
 with them.
 
+**Fitted 2026-11-16, nothing installed: the sheets wait for the
+designer.** Phase 5's four batches and the two of this family, 142
+glyphs on a8d52f50 (`build/redraw/p5/`, not in git; the lists are the
+dry run's): 141 candidates, the Euro handed back for its own step, the
+old-style 7 and ъ with their spec entries. All 35 of this family's
+letters outside the core set pass with no spec entry (𝔐 𝔓 ℵ too). The
+sheets, `proofs/2026-11/italic-redraw-NAME-2026-11-16.pdf`: `figures`
+(20), `signs` (38), `capitals` (30, Greek and Cyrillic), `rest` (19),
+`tail-latin` (23), `tail-cyrillic` (12). What the designer says on
+them besides yes or no to a letter:
+
+- **Not to be marked drawn for their nodes' sake, though they pass**
+  (generated: the mark would stop them following their source): Δ Λ
+  (derived drafts), æ (the Regular's sloped), ſt st (made ligatures),
+  ъ ы ь (the Italic's sign drawings). They are on the sheets to show
+  what a fit would give; their mend is in what makes them. I is left
+  as it is (redraw.md: a late pass installs it).
+- **ø Ø œ Œ Æ**: letters in parts, fitted whole on the sheet `rest`;
+  redraw.md's "Hand back" asks first whether they stay one outline.
+- **Ą Į Ǫ** (and Ǻ): fitted as they stand they keep Old Standard's
+  letter under the ogonek, beside the redrawn A I O. The sheet
+  `tail-latin` shows that fit; the other way is letter and ogonek as
+  components.
+- **𝔐 𝔓 ℵ**: only if they are to be touched at all.
+- **Remarks read before the sheets** (a jump higher than the target's,
+  the handles looked at): the old-style 5 at 168,-174 (two nodes of a
+  flat stretch made one: the ball into the neck), % at 1422,1372 (a
+  corner made smooth, 5 units of handle), ƒ's top at 926,1361 (handles
+  45 and 21 for 30 and 35: the turn a little squarer, 2.3 units), Ø at
+  356,372 (the flank one curve where there were two), К at 1055,1146.
+  A long curve ending on a handle of 5 units that today's has not: ¡
+  (279,-62), ѵ (873,803), 𝔓 (two). Kinks over 5 degrees made smooth:
+  Ψ 7.2 at 1748,1269, the superior 2 7.5, ђ ћ 7.3 at 744,1264, the
+  asterisk's two 6.9, ] 6.7, § 6.6, 2 6.4, 5 6.2 and a dozen at 5 to 6
+  (the JSON's notes).
+
+After the review: redraw.md's steps 6 to 8, a batch at a time, the
+capitals' with `KEEP_DRAFTS=1`.
+
 ### 3. The italic small caps: FontForge's drafts (checked; trial proposed, Opus)
 
 Italic `smallcap` kink 28 lines (88 findings), smooth 27, extreme 2,
@@ -188,6 +227,63 @@ Two ways, to be decided on a trial:
   draft, or it fits their repairs away.
 - **As batches** (`redraw.py --install` on the final small caps, marked
   drawn): only for the few the generator's fit refuses.
+
+**The trial, 2026-11-16: the lines fall, the shapes do not stay; not
+into the generator as it stands.** `scripts/pilot/sc_draft_fit.py`
+(fit: the stored raw drafts through redraw.py; run: `make_italic
+--out` with the fitted ones handed over by `fontforge_inputs.drafts`),
+the table in `docs/claude/fable/sc-drafts-fit-2026-11-16.txt`, the
+twelve before | after on
+`proofs/2026-11/italic-smallcaps-fitted-drafts-trial-2026-11-16.pdf`.
+
+- **The raw drafts fit better than the finished small caps did**: 133
+  of 146 candidates with no spec entry, all twelve among them (e.sc
+  and b.sc too). 13 fail: seven by a kink the fit leaves (ƈ.sc ƥ.sc
+  ɓ.sc ɗ.sc ɠ.sc ⱳ.sc ꞵ.sc: the hooks' joints), five by a step that is
+  the draft's own (ɑ.sc ђ.sc ћ.sc ⱥ.sc ⱦ.sc), ʀ.sc by its bounds. 22
+  come out with a node or two more (extremes FontForge left without).
+- **The quality list** (Italic, 592 lines): with the twelve 565 (32
+  lines gone, 95 findings; 5 new, 8 findings); with all 133, 504 (111
+  gone, 253 findings; 23 new, 31); with the 122 left when the lopsided
+  fits below are kept as FontForge made them, 514 (99 gone, 21 new).
+  The new lines are the later stages' on the new nodes: x.sc's two
+  `smooth` findings come back as kinks at the same places, w.sc ʋ.sc
+  ʝ.sc ϙ.sc ϛ.sc get an `extreme` of 5 to 7 units, ξ.sc five kinks.
+- **The finished small caps move far more than the fit moved the
+  draft** (4 units at most there). Of the 133: 91 within 4 units, 21
+  by 4 to 10, 16 by 10 to 20, 5 by more (x.sc 28.6, у.sc 28.4, b.sc
+  26.1, ø.sc 23.1, ω.sc 19.4, r.sc 16.5, ѵ.sc 16.1, c.sc 11.7, d.sc
+  11.6); with their composites and what is made of them 382 glyphs
+  differ, ʙ 22.2, ʀ ʁ 16.5 and ᴅ 10.4 among the letters; 46 advances
+  by up to 8 units, 64 kerning pairs. Two causes:
+  - **A quarter turn fitted with one handle of 3 units and the other
+    at the corner** (x.sc's inner brackets: 785,865 to 684,972 with
+    handles at 785,868 and 785,972). Within 1.7 units of the raw
+    draft, through the gate, the only sign the remark "curvature jump
+    1.0 (the target's worst 0.71)"; `weight_thick` then moves the node
+    and the bracket comes out a blister, 28 units off. Redraw.md's
+    "small quarter-turn come out square" again, which `FAIR_SPAN` does
+    not hold when the plain fit is already so: 11 of the 133 have such
+    a curve the raw draft had not (the table's L).
+  - **The stages after the draft read its nodes** (`weight_thick`,
+    `as_capitals`, `bowl_counters`): b.sc at 701,523, r.sc at 689,509,
+    ω.sc, c.sc, d.sc move where two sides meet at a narrow angle or a
+    bowl is redone, with no lopsided curve in their fit. Likely, not
+    traced letter by letter; it is the capitals' lesson (redraw.md:
+    "FontForge's small caps follow a capital's nodes") one stage
+    later. Leaving the 11 lopsided ones out takes x.sc from the list
+    and nothing else: 12 glyphs still move by more than 20 units with
+    their followers, 43 by 10 to 20.
+- **So, for the session that takes it up (Opus):** first the tool: a
+  quarter turn's handles held to a share of each other in `fit_best`
+  or failed in the gate (it is a fault in phase 5's letters too, where
+  a jump remark is all that shows it), and the twelve fitted again.
+  Then the choice is the designer's, on a sheet of the movers: the
+  small caps were reviewed as they stand, and a mend that takes 88
+  lines off the list by moving 21 of them by 10 to 28 units is a new
+  drawing of those, to be accepted anew or held as they are (kept as
+  FontForge made them, like the gate's failures). The cheap half is
+  safe today: the 91 that stay within 4 units.
 
 The Regular's and the Bold's small caps are another matter (14 and 15
 lines, `smallcaps_draft.py`'s own drafts): too few for a family mend,
@@ -295,11 +391,13 @@ lines.
 ## The order
 
 1. Family 1 (marks): done 2026-11-16, 65 lines.
-2. Family 2 with phase 5's batches: Sonnet, as planned.
+2. Family 2 with phase 5's batches: fitted and on six sheets
+   2026-11-16; after the designer's review the installs, Sonnet.
 3. Family 5's sheets for the designer, the Italic's stems first, since
    it belongs to phase 6's review that is waiting anyway.
-4. Family 3's trial (small caps): Opus; about 150 lines in the Italic
-   and what follows in the Bold Italic.
+4. Family 3 (small caps): tried 2026-11-16, 88 lines fall but 21
+   small caps move by 10 units and more. Opus: the quarter turns in
+   redraw.py first, then the movers' sheet for the designer.
 5. The Regular's own lines (8) and its operations (6): Opus.
 6. Family 4 (the Bold's extremes): after the designer's word on the
    node structure.
