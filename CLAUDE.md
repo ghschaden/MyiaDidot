@@ -18,11 +18,12 @@ Details by topic, read the one the task touches:
 | `docs/claude/hinting.md` | TTF and CFF hinting and their tests |
 | `docs/claude/redraw.md` | redrawing a core letter onto clean nodes (phases 5-8): method, gate, batches |
 | `docs/claude/quality.md` | the quality principles in full, with what enforces each |
+| `docs/claude/longtail.md` | the quality lists sorted by where each line is mended (`scripts/quality/families.py`, 2026-11-15): the families, their mends, the order |
 | `docs/claude/tests.md` | what the tests hold, hooks, proofs after commit |
 | `docs/claude/collisions.md` | the sweep for letters meeting signs (phase 1's specification; built 2026-11-13: `make collisions`, tests/test_collisions.py) |
-| `docs/claude/drawn.md` | one mark for "drawn and kept" in the three generated styles (T6's specification, not built yet) |
+| `docs/claude/drawn.md` | one mark for "drawn and kept" in the three generated styles (T6, built 2026-11-13: `scripts/drawn.py`) |
 | `docs/claude/tables.md` | the generators' tables in data modules per style (`scripts/data_regular.py`, `data_italic.py`, `data_bold.py`, `data_bold_italic.py`; T5, built 2026-11-13) |
-| `docs/claude/only.md` | `--only` and `--out`: one glyph made again into a scratch UFO (T2's specification, not built yet) |
+| `docs/claude/only.md` | `--only` and `--out`: one glyph made again into a scratch UFO (T2: stage A, `--out`, built 2026-11-13; stage B, `--only`, not) |
 | `docs/claude/commands.md` | handy commands, the Claude Code plugin |
 
 ## Ground rules

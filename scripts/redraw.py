@@ -1036,6 +1036,7 @@ def redraw_at(glyph, tol, spec, _again=False):
     from quality.checks import construction
 
     report["findings"] = [list(f) for f in construction(new)]
+    report["own_steps"] = [f[1] for f in construction(glyph) if f[0] == "step"]
     report["bent_back"] = bent_back(new)
     # an extreme left without a node (under BULGE on the target) that the
     # fitted curve passes by more than that: fitted again with its node
@@ -1084,6 +1085,12 @@ def bounds(glyph):
     return (*pts.min(axis=0), *pts.max(axis=0))
 
 
+def near(a, b, by=DEV):
+    """two places written "x,y" within by units of each other"""
+    (ax, ay), (bx, by_) = (map(float, a.split(",")), map(float, b.split(",")))
+    return math.hypot(ax - bx, ay - by_) <= by
+
+
 def gate(report, counterpart=None):
     """why the redrawn glyph is not yet a candidate ([] if it is), and what
     to look at on the sheet all the same: (failures, remarks)"""
@@ -1091,7 +1098,8 @@ def gate(report, counterpart=None):
     if report["dev"] > DEV:
         fail.append(f"{report['dev']} units off the target at {report['dev_at'][0]},{report['dev_at'][1]} (limit {DEV:g})")
     for f in report["findings"]:
-        fail.append(f"{f[0]} {f[1]} {f[2]}")
+        own = f[0] == "step" and any(near(f[1], old) for old in report.get("own_steps", ()))
+        fail.append(f"{f[0]} {f[1]} {f[2]}" + (" (the letter's own, there before: the shape's, hand back)" if own else ""))
     for x, y, deg, *ends in report.get("bent_back", ()):
         which = f" (the curve from {ends[0][0]:.0f},{ends[0][1]:.0f} to {ends[1][0]:.0f},{ends[1][1]:.0f})" if ends else ""
         fail.append(f"the curve at {x:.0f},{y:.0f} bends {deg} degrees the other way first{which}")

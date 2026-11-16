@@ -201,8 +201,12 @@ def zones(font, shapes):
         b = shapes.bounds(name) if name in font else None
         return b[i] if b else None
 
+    # the lowercase stands on the baseline, not on x's lowest point: the
+    # italics' x n u l end in exit hooks as deep as o's overshoot (-23),
+    # and measured from there every flat foot on the baseline (r, the
+    # IPA small capitals) was 23 units off
     flat_over = {
-        "lc": [(edge("x", 1), edge("o", 1)), (edge("x", 3), edge("o", 3)), (edge("l", 3), None), (edge("p", 1), None)],
+        "lc": [(0, edge("o", 1)), (edge("x", 3), edge("o", 3)), (edge("l", 3), None), (edge("p", 1), None)],
         "uc": [(edge("H", 1), edge("O", 1)), (edge("H", 3), edge("O", 3))],
         "sc": [(edge("h.sc", 1), edge("o.sc", 1)), (edge("h.sc", 3), edge("o.sc", 3))],
     }

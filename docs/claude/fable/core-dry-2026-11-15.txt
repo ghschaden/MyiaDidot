@@ -1,0 +1,130 @@
+# scripts/redraw.py sources/MyiaDidot-Italic.ufo OUT GLYPHS, no spec entries for them, on 5d3ccb3e (2026-11-15): the Italic's core set not yet redrawn, fitted and not installed
+# 107 glyphs: 104 candidates, 3 fail (sevenoldstyle and uni044A pass with one extra each, now in scripts/data/redraw-Italic.json; Euro's step is its own: redraw.md)
+
+## lining-figures
+glyph           nodes Regular   dev        jump  verdict
+zero          10 -> 10       8   2.3  0.53->0.50  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+one           13 -> 13      12   1.1  0.00->0.00  candidate
+two           29 -> 26      21   3.0  1.28->0.84  candidate  [look: 1 extra node(s) off extremes and inflections (half turn); 26 nodes against the Regular's 21]
+three         33 -> 27      24   2.8  1.79->0.64  candidate
+four          24 -> 24      24   1.5  0.00->0.00  candidate
+five          30 -> 27      22   2.5  1.82->1.80  candidate  [look: 1 extra node(s) off extremes and inflections (old node); 27 nodes against the Regular's 22]
+six           24 -> 17      18   2.8  1.34->0.83  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+seven         25 -> 25      25   2.6  1.60->1.26  candidate  [look: 2 extra node(s) off extremes and inflections (half turn, half turn)]
+eight         23 -> 20      20   2.1  0.62->0.48  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+nine          24 -> 17      18   2.8  1.33->0.79  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+
+## old-style-figures
+glyph           nodes Regular   dev        jump  verdict
+zerooldstyle  10 -> 10       8   2.9  0.54->0.50  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+oneoldstyle   13 -> 13      12   0.9  0.00->0.00  candidate
+twooldstyle   30 -> 27      22   2.6  1.81->1.00  candidate  [look: 1 extra node(s) off extremes and inflections (old node); 27 nodes against the Regular's 22]
+threeoldstyle  33 -> 29      25   2.7  1.82->0.64  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+fouroldstyle  24 -> 24      19   0.5  0.00->0.00  candidate  [look: 24 nodes against the Regular's 19]
+fiveoldstyle  31 -> 26      24   2.6  1.34->1.81  candidate  [look: curvature jump 1.81 at 168,-174 (the target's worst 1.34)]
+sixoldstyle   24 -> 16      19   2.8  1.89->0.52  candidate
+sevenoldstyle  28 -> 25      13   8.0  1.56->1.12  FAIL: 8.0 units off the target at 635,244 (limit 4)  [look: 25 nodes against the Regular's 13]
+eightoldstyle  23 -> 20      20   2.6  0.68->0.43  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+nineoldstyle  24 -> 18      19   2.9  1.51->0.76  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+
+## punct1
+glyph           nodes Regular   dev        jump  verdict
+period         4 ->  4       4   0.2  0.03->0.01  candidate
+comma          8 ->  7       8   1.8  1.31->1.32  candidate  [look: curvature jump 1.32 at 212,48 (the target's worst 1.31)]
+exclam        13 -> 13      13   2.8  0.85->0.86  candidate  [look: 1 extra node(s) off extremes and inflections (old node); curvature jump 0.86 at 399,1245 (the target's worst 0.85)]
+question      27 -> 24      21   3.0  1.00->0.56  candidate
+parenleft      6 ->  6       6   2.3  0.29->0.19  candidate
+parenright     6 ->  6       6   1.8  0.15->0.04  candidate
+bracketleft   10 -> 10       8   0.2  0.00->0.00  candidate
+bracketright  10 -> 10       8   0.8  0.00->0.00  candidate
+braceleft     16 -> 15      20   1.1  0.14->0.02  candidate
+braceright    16 -> 15      20   1.8  0.16->0.03  candidate
+slash          4 ->  4       4   0.0  0.00->0.00  candidate
+backslash      4 ->  4       4   0.0  0.00->0.00  candidate
+hyphen         8 ->  8       4   0.1  0.00->0.00  candidate
+endash         4 ->  4       4   0.0  0.00->0.00  candidate
+emdash         4 ->  4       4   0.0  0.00->0.00  candidate
+quotesingle    6 ->  6       7   1.1  0.37->0.01  candidate
+asterisk      56 -> 38      44   2.0  1.99->1.95  candidate
+ampersand     34 -> 33      31   2.8  1.00->0.42  candidate
+at            29 -> 29      28   3.0  0.86->0.86  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+
+## punct2
+glyph           nodes Regular   dev        jump  verdict
+numbersign    32 -> 32      32   0.0  0.00->0.00  candidate
+percent       28 -> 28      20   2.8  0.56->0.86  candidate  [look: 1 extra node(s) off extremes and inflections (old node); curvature jump 0.86 at 1422,1372 (the target's worst 0.56); 28 nodes against the Regular's 20]
+dollar        56 -> 50      50   2.3  1.34->1.24  candidate
+Euro          31 -> 29      26   2.7  1.16->0.20  FAIL: step 98,616 58 units aside
+sterling      39 -> 37      36   2.9  1.38->1.03  candidate
+yen           43 -> 42      36   1.0  0.83->0.08  candidate  [look: 42 nodes against the Regular's 36]
+section       40 -> 36      30   2.6  1.22->0.55  candidate  [look: 36 nodes against the Regular's 30]
+dagger        22 -> 21      27   1.0  0.35->0.16  candidate
+daggerdbl     36 -> 34      44   1.5  0.34->0.12  candidate
+guilsinglleft   7 ->  7       7   0.0  0.00->0.00  candidate
+guilsinglright   7 ->  7       7   0.0  0.00->0.00  candidate
+quoteleft      8 ->  8       9   1.9  1.29->1.00  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+quoteright     8 ->  8       9   1.9  1.26->1.00  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+exclamdown    13 -> 12      13   2.8  0.88->0.80  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+questiondown  25 -> 24      21   2.7  0.97->0.72  candidate
+plus          12 -> 12      12   0.0  0.00->0.00  candidate
+equal          8 ->  8       8   0.0  0.00->0.00  candidate
+less           7 ->  7       7   0.0  0.00->0.00  candidate
+greater        7 ->  7       7   0.0  0.00->0.00  candidate
+
+## Greek-capitals
+glyph           nodes Regular   dev        jump  verdict
+Gamma         19 -> 19      15   2.0  0.28->0.14  candidate
+Deltagreek     8 ->  8       7   0.0  0.00->0.00  candidate
+Theta         26 -> 24      20   2.5  0.51->0.35  candidate
+Lambda        20 -> 20      15   0.5  0.29->0.00  candidate  [look: 20 nodes against the Regular's 15]
+Xi            48 -> 48      34   0.8  0.00->0.00  candidate  [look: 48 nodes against the Regular's 34]
+Pi            28 -> 28      20   0.5  0.00->0.00  candidate  [look: 28 nodes against the Regular's 20]
+Sigma         20 -> 20      18   1.8  0.94->0.81  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+Upsilon       28 -> 24      23   3.1  0.70->0.41  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+Phi           38 -> 38      32   2.0  0.67->0.64  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node); 38 nodes against the Regular's 32]
+Psi           45 -> 40      32   2.9  1.92->1.00  candidate  [look: 1 extra node(s) off extremes and inflections (old node); 40 nodes against the Regular's 32]
+Omegagreek    30 -> 26      26   3.0  0.89->0.39  candidate
+
+## Cyrillic-capitals
+glyph           nodes Regular   dev        jump  verdict
+uni0411       25 -> 25      22   2.5  0.71->0.56  candidate
+uni0414       32 -> 31      22   1.8  1.05->0.63  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node); 31 nodes against the Regular's 22]
+uni0416       73 -> 62      54   2.5  1.91->0.87  candidate  [look: 62 nodes against the Regular's 54]
+uni0417       28 -> 25      29   2.7  1.78->1.37  candidate
+uni0418       36 -> 36      28   0.7  0.00->0.00  candidate  [look: 36 nodes against the Regular's 28]
+uni041A       42 -> 40      33   2.2  1.79->1.92  candidate  [look: curvature jump 1.92 at 1055,1146 (the target's worst 1.79); 40 nodes against the Regular's 33]
+uni041B       30 -> 28      22   2.6  1.28->0.41  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node); 28 nodes against the Regular's 22]
+uni0423       29 -> 29      23   2.5  1.86->1.00  candidate  [look: 29 nodes against the Regular's 23]
+uni0424       38 -> 38      36   2.0  0.67->0.64  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+uni0426       31 -> 32      33   1.6  0.96->0.77  candidate  [look: more nodes than before (32 against 31): an extreme that had none, or a shape one curve does not hold]
+uni0427       32 -> 32      25   2.4  0.90->0.75  candidate  [look: 32 nodes against the Regular's 25]
+uni0428       40 -> 40      28   0.7  0.00->0.00  candidate  [look: 40 nodes against the Regular's 28]
+uni0429       43 -> 44      41   1.6  0.96->0.77  candidate  [look: more nodes than before (44 against 43): an extreme that had none, or a shape one curve does not hold]
+uni042A       25 -> 25      22   2.6  0.70->0.55  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni042B       38 -> 38      31   2.5  0.69->0.54  candidate  [look: 38 nodes against the Regular's 31]
+uni042C       22 -> 22      19   2.5  0.69->0.54  candidate
+uni042D       25 -> 21      29   2.8  1.73->1.17  candidate
+uni042E       30 -> 28      24   2.6  0.51->0.33  candidate
+uni042F       34 -> 33      28   2.0  1.09->0.98  candidate  [look: 1 extra node(s) off extremes and inflections (old node); 33 nodes against the Regular's 28]
+
+## rest
+glyph           nodes Regular   dev        jump  verdict
+kappa         26 -> 25      22   2.9  1.44->0.71  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+pi            28 -> 25      23   2.8  1.28->1.14  candidate
+uni044A       31 -> 23      22   5.8  1.45->1.00  FAIL: 5.8 units off the target at 554,669 (limit 4)  [look: 2 extra node(s) off extremes and inflections (old node, half turn)]
+uni044B       31 -> 26      31   2.9  0.68->0.34  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+uni044C       21 -> 16      19   2.9  0.68->0.34  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+longs_t       32 -> 29      28   1.7  0.62->0.65  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node); curvature jump 0.65 at 817,1234 (the target's worst 0.62)]
+s_t           56 -> 48      41   2.9  0.65->0.17  candidate  [look: 48 nodes against the Regular's 41]
+germandbls    24 -> 21      26   3.0  1.17->0.51  candidate
+ae            39 -> 34      33   2.9  1.48->1.01  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+oe            26 -> 23      23   3.0  0.71->0.23  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+oslash        20 -> 20      20   2.8  0.65->0.06  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+eth           25 -> 23      23   3.0  1.16->1.09  candidate  [look: 1 extra node(s) off extremes and inflections (old node)]
+thorn         27 -> 24      27   2.4  0.42->0.39  candidate
+I             16 -> 16      12   0.3  0.00->0.00  candidate
+AE            46 -> 46      40   1.4  0.28->0.09  candidate  [look: 1 extra node(s) off extremes and inflections (old node); 46 nodes against the Regular's 40]
+OE            35 -> 35      34   2.7  0.67->0.63  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node)]
+Oslash        22 -> 20      20   1.7  0.87->1.00  candidate  [look: 2 extra node(s) off extremes and inflections (old node, old node); curvature jump 1.0 at 356,372 (the target's worst 0.87)]
+Eth           27 -> 26      22   1.8  0.29->0.20  candidate
+Thorn         27 -> 27      28   3.5  0.30->0.04  candidate  [look: tolerance 3.92]

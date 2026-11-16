@@ -798,6 +798,15 @@ back or move up a model. Read the JSON first (`notes`, `spans` with
    that is meant, `"corner"`.
 5. **Bounds or ink area**: never by the spec. The letter has a part the
    structure cannot hold (a hairline's end, a ball): hand back.
+6. **"step x,y N units aside"**. With "(the letter's own, there before:
+   the shape's, hand back)": the target has the step at that place (a
+   bar's end standing out of the letter, the Italic's Euro; it is on the
+   style's quality list as a candidate), the redraw kept it faithfully
+   and no spec entry is to be tried: hand back, the designer says
+   whether the step is meant (then the letter is drawn, not fitted).
+   Without it the redraw made the step: a short line the cleaning
+   closed or a corner made smooth beside one; read the notes for that
+   place, `"keep"` or `"corner"` there, once.
 
 Remarks are not failures, but two of them are read before the sheet:
 a jump higher than the target's ("A small quarter-turn come out
@@ -825,6 +834,55 @@ seen so on the sheet), φ 9.5, β 5.0.
 - Lines gone from the known lists: `mugreek kink 1` (Italic), `chi
   extreme 1` and `psi wobble 1` (Bold Italic).
 
+## The rest of the core set fitted dry (2026-11-15)
+
+The Italic's core letters not yet redrawn, fitted into scratch UFOs with
+nothing installed, to find what the method does not cover before a
+batch meets it: the lining and old-style figures, the basic punctuation
+and signs (38), the Greek capitals with outlines of their own (11; the
+others are components), the Cyrillic capitals (19), κ π ъ ы ь, ſt st,
+ß æ œ ø ð þ, I Æ Œ Ø Ð Þ. 107 glyphs, the table in
+`docs/claude/fable/core-dry-2026-11-15.txt` (the JSON reports in
+`build/fable/dry/`, not in git; the command is the table's first line).
+
+- **104 are candidates with no spec entry**, Ж (73 -> 62 nodes), the
+  asterisk (56 -> 38) and the dollar among them. Nothing new in the
+  tool's rules was needed.
+- **The old-style 7 and ъ fail by distance** (8.0 units at 635,244; 5.8
+  at 554,669) and pass with the one `extra` "When the gate fails", 2,
+  prescribes, at the place the verdict names; both entries are in
+  `scripts/data/redraw-Italic.json`. In both the tool had split the
+  curve at an old node or a half turn far from the worst place, and
+  the piece left over still did not hold. With the extra at the worst
+  place the tool's own extras fall away and the count is no higher (7:
+  25 nodes either way; ъ: 23 -> 22). Should a third and fourth letter
+  go the same way, `Target.split` could try the worst place itself when
+  the nearest old node is far from it; for two letters in 107 the spec
+  entry is the mend, and a change of the rule would want this whole
+  run again to see what else it moves.
+- **The Euro fails by a step that is its own** (98,616, 58 units aside:
+  the bar's end, a candidate on the quality list since 2026-10-27). The
+  doc had no case for a `step`; the gate now names such a one ("When
+  the gate fails", 6; tests/test_redraw.py) and the letter is handed
+  back.
+- **Remarks to read before the sheets**, as the section above says: a
+  jump higher than the target's on К (1.92 at 1055,1146 against 1.79),
+  the old-style 5 (1.81 at 168,-174 against 1.34), % (0.86 against
+  0.56), Ø (1.00 against 0.87), ſt, the comma and the exclamation mark
+  (by a hundredth); a node more than before on Ц and Щ (the tail's
+  extreme); Þ at a tolerance of 3.92 (the rules' widening).
+- **Not the fit's to decide, for the batch's session:** ø Ø are a round
+  and a slash (the Bold Italic makes them apart, `slashed`), æ œ Æ Œ
+  hold two letters: "Hand back", letters built in parts. Δ Λ are
+  derived drafts: they pass, but a generated letter is not marked
+  drawn for its nodes' sake. ъ ы ь are
+  the Italic's own sign drawings and share one bowl: fit the three in
+  one batch and compare the bowls on the sheet.
+
+So the remaining batches of phase 5 are Sonnet sessions by the steps
+above: figures (20), punctuation and signs (38), capitals Greek and
+Cyrillic (30), the rest (19).
+
 ## Open
 
 - **The Bold Italic's bowls with the triangle.** `bowl_counters.py` fits
@@ -851,7 +909,9 @@ seen so on the sheet), φ 9.5, β 5.0.
   structure, it wants drawing.
 - The fault is the shape's, not the nodes': an entry of kind slant, zone,
   stroke, weight or accent in the quality list (n's 19.7 degrees, s 0.79
-  of its kind's stroke). The redraw keeps those faithfully.
+  of its kind's stroke). The redraw keeps those faithfully. A `step`
+  the letter had before is the same, but fails the gate, named as the
+  letter's own ("When the gate fails", 6).
 - Letters built in parts whose parts overlap or touch (Old Standard's 1
   and 4, a bar through a stem): the parts are designed apart; redraw
   after the designer says whether they are merged.

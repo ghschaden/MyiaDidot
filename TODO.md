@@ -208,6 +208,24 @@ the other models. One item per session.
       drawn straight into its serif; the Bold Italic's ɱ given ŋ's right
       stroke and hook (`proofs/2026-11/bold-italic-m-hook-2026-11-14.pdf`, B).
 
+- [x] F8. Outside the plan, 2026-11-15, after the brief's three items
+      (redraw's gaps, phase 6's measure, the kerning measure: all in
+      their documents):
+      the rest of the Italic's core set fitted dry (107 glyphs: 104
+      candidates as they are, the old-style 7 and ъ with one spec entry
+      each, the Euro handed back for a step of its own, which the gate
+      now names: `docs/claude/redraw.md`, "The rest of the core set
+      fitted dry"); so phase 5's remaining batches are Sonnet's.
+      The quality lists sorted by where each line is mended
+      (`scripts/quality/families.py`, `docs/claude/longtail.md`): the
+      families for phases 6-8 with their mends and the order. Mended on
+      the way: the zone check measured the italics' lowercase from x's
+      exit hook (23 lines gone from each italic list). Left by it, in
+      longtail.md's order: the marks' extremes in make_italic (Opus, 65
+      lines), the Italic's lighter ascender stems onto phase 6's sheet,
+      the small caps' fit at drafting as a trial, the Bold's extremes
+      after the designer's word.
+
 Budget (2026-11-12): F1 to F4 are done, of F6 the pages for T2 and
 phase 1's sweep, of F7 both batches. The limits now:
 
@@ -879,6 +897,8 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a
       family fault goes into the generator, single letters wait.
+      (Sorted 2026-11-15: `docs/claude/longtail.md`, family 5's
+      clusters; the same page for the kinks and smooth entries above.)
 
 ## Phase 7: the Bold's core set finished by hand
 

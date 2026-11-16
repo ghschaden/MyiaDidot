@@ -148,6 +148,21 @@ def test_gate_names_the_failures():
     assert "more nodes" in look[0] and look[1] == "9 nodes against the Regular's 4"
 
 
+def test_gate_names_a_step_the_letter_had_before():
+    """a step at the place of one in the target is the shape's (the
+    Italic's Euro, 2026-11-15): it fails all the same, named so that it
+    is handed back and not tried with spec entries; a step the redraw
+    made is not"""
+    rep = {"dev": 1.0, "dev_at": [1, 2], "findings": [["step", "98,616", "58 units aside"],
+                                                      ["step", "400,20", "30 units aside"]],
+           "own_steps": ["99,615"], "nodes_after": 8, "nodes_before": 8, "bounds_moved": 0, "area": 0.1,
+           "extras": [], "jump": 0.1, "jump_at": [0, 0], "jump_before": 0.2, "tol": 2.0}
+    fail, _look = R.gate(rep)
+    assert len(fail) == 2
+    assert "the letter's own" in fail[0] and "hand back" in fail[0]
+    assert "the letter's own" not in fail[1]
+
+
 def test_install_marks_the_italic_glyph_drawn(tmp_path):
     from drawn import is_drawn
 
