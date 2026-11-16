@@ -76,6 +76,14 @@ out; two gaps, both in what it assumed rather than in the method:
   slanted foot is fixed by kern_clear's measure across (it would loosen
   `„A` by 208) or by a narrower `„` in the italics is a design question.
 
+Answered on Fable, 2026-11-16 (collisions.md, "The italics' `„`"):
+neither. The low quotes are the high quote moved straight down at the
+Regular's offsets, so they stand some 240 units right of where the
+comma stands and overhang their advance; kern_clear has been mending it
+with 1400 entries a style. The mend is the part's place in make_italic.
+The first gap (pictures of another state) needs no rule beyond its own
+sentence: check against pictures of the same commit, or measure by hand.
+
 ## T2's step 0 and stage A (Opus, 2026-11-13)
 
 Carried out as `docs/claude/only.md` said; three gaps:

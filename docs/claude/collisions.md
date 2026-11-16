@@ -314,3 +314,49 @@ whatever held-white finds beyond the table goes into
 `tests/data/collisions*.txt` with its date, as the lists' rule says);
 then the positive pairs in `guard`; the families of point 2 only as the
 designer names them. The count's script is not kept: the test is it.
+
+## The italics' `„`: neither kerning nor a narrower sign (2026-11-16, Fable; not built)
+
+The question left open (open-for-fable.md): the italics' `„` before a
+slanted foot, the sweep's largest family, to be loosened pair by pair or
+drawn narrower. Read from the UFOs, it is neither; the sign stands in
+the wrong place in its advance.
+
+- `„` and `‚` are composites of `quoteright` moved down 1242, in the
+  Italic at the Regular's offsets `(0, -1242)` and `(372, -1242)`.
+  The Italic's `quoteright` is placed for its height (left bearing 285,
+  right −87: a sign up at the capitals leans that far right). Moved
+  straight down, the low quote keeps the high one's place: left bearing
+  285, right −87 at the baseline, where the comma has 44 and 181. The
+  Regular's has 122 and 128.
+- So it overhangs its advance by 87 into whatever follows, and
+  kern_clear answers with an entry for nearly every letter: 1432 pairs
+  with `„` on the left in the Italic (mean +149), 1420 in the Bold
+  Italic, against 2 in the Regular. The lists are empty today because
+  of those entries, not because the sign is right; and before a space
+  or a sign with no entry nothing mends it (a wide hole before `„`, none
+  after).
+- The mend is in make_italic, where a composite's parts are placed: a
+  part moved down by `dy` goes left by what the slant gives over that
+  height. The pure shear is `SLANT × 1242` = 337, which is too much
+  here (the high quote was itself moved left of its sheared place by
+  about 160 when the italic signs were centred): take the shift that
+  gives `‚` the comma's bearings (about 240; one source of truth, the
+  low quote stands as the comma does), and `„` the same with its 372
+  between the two. The Bold Italic follows from the Italic.
+- After it: kern_clear's `„` entries are made anew by the run and most
+  fall away (the test's rule 2 does not apply, they are not listed);
+  the shaping report shows `„` pairs tighter by about the shift less
+  their old entry, to be read for any pair now under CLEAR; `“` as a
+  German closing quote is not touched.
+- The same reading over all composites: 36 in the Italic have a part
+  moved up or down by more than 300 at exactly the Regular's offsets:
+  `: ; ·` and the Greek question mark, `÷ ±`, the dot signs U+2056 to
+  U+205E, the denominators and inferiors, ⅐. Whether the colon's upper
+  dot leans with the text (0.27 × its height, about 170) and the
+  inferiors stand left of the superiors by the slant is the designer's
+  to see on a sheet; none judged here, and no change without it.
+
+Order: the low quotes first (one rule in make_italic, `make generate`,
+the shaping report, the sweep's sheet for `„`), as an Opus session; the
+36 on one sheet for the designer before anything else moves.

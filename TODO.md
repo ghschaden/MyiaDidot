@@ -696,6 +696,13 @@ alongside, each when the phase that needs it comes up.
 
 ### Alongside the phases
 
+- [ ] The italics' low quotes `„ ‚` stand as the high quote moved
+      straight down, about 240 units right of the comma's place, and
+      overhang their advance (found 2026-11-16:
+      `docs/claude/collisions.md`, its last section). Opus: the part's
+      shift in make_italic, then the shaping report. With it one sheet
+      of the 36 composites whose parts keep the Regular's vertical
+      offsets (`: ;`, `÷ ±`, inferiors, denominators) for the designer.
 - [ ] The guard's result held by a test (specified 2026-11-16:
       `docs/claude/collisions.md`, its last section). Opus or Sonnet:
       the kept-keys and held-white assertions in
