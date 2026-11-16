@@ -514,6 +514,20 @@ def undo(font):
             font.kerning[pair] = was
 
 
+def measured(font):
+    """(left, right, above) for the entries clear() measures with Ink: those
+    measured across (above None), then the capitals before the ascenders
+    every way above the x-height, and the capitals before the marked
+    lowercase (accent_entries) and the short fs before their letters; an
+    entry in two is measured twice, after its first value. The guard's
+    exceptions are not among them (guard(), with Profiles)."""
+    todo = [(left, right, None) for left, right in entries(font)]
+    todo += [(left, right, ASCENDER_CLEAR) for left, right in ascender_entries(font)]
+    todo += [(left, right, ACCENT_CLEAR) for left, right in accent_entries(font)]
+    todo += [(left, right, ACCENT_CLEAR) for left, right in short_f_entries(font)]
+    return todo
+
+
 def clear(font, log=None):
     """Loosen PAIRS where they touch (after undoing a previous run)."""
     undo(font)
@@ -524,13 +538,7 @@ def clear(font, log=None):
     # the guarded letters have exceptions of their own (guard()): they do
     # not loosen their group's pairs
     held = {s: {n for n, side, _ in guarded(font) if side == s} for s in (1, 2)}
-    # the entries measured across, then the capitals before the ascenders
-    # every way above the x-height, and the capitals before the marked
-    # lowercase (accent_entries): an entry in two, after its first value
-    todo = [(left, right, None) for left, right in entries(font)]
-    todo += [(left, right, ASCENDER_CLEAR) for left, right in ascender_entries(font)]
-    todo += [(left, right, ACCENT_CLEAR) for left, right in accent_entries(font)]
-    todo += [(left, right, ACCENT_CLEAR) for left, right in short_f_entries(font)]
+    todo = measured(font)
     for left, right, above in todo:
         if left not in font.groups and left not in font or right not in font.groups and right not in font:
             continue
@@ -619,24 +627,31 @@ def guarded(font):
                     yield n, s, side[s][n]
 
 
-def guard(font, record, log=None):
-    """Exceptions for the guarded letters where their group's pairs bring
-    them nearer than GUARD (added to record)."""
-    _, entry = kern_lookup(font)
-    prof = Profiles(font)
-    added = {}
+def guarded_all(font):
+    """(letter, side, its group, against) in the order guard() walks them:
+    guarded() with against None, and GUARDED_AGAINST's letters on the right
+    with the left entries they are guarded against; the left side first."""
     full = list(guarded(font))
     held = {(n, s) for n, s, _ in full}
     only = [(n, 2, group, against) for n, (group, against) in sorted(
         (n, (g, a)) for n, a in GUARDED_AGAINST.items()
         for g in [next((k for k, m in font.groups.items() if k.startswith("public.kern2.") and n in m), None)]
         if g is not None and (n, 2) not in held)]
+    return sorted([(*t, None) for t in full] + only, key=lambda t: t[1])
+
+
+def guard(font, record, log=None):
+    """Exceptions for the guarded letters where their group's pairs bring
+    them nearer than GUARD (added to record)."""
+    _, entry = kern_lookup(font)
+    prof = Profiles(font)
+    added = {}
     # the letters guarded on the left first, each one's exceptions in the
     # kerning before the next is measured: a member of a right group with
     # an exception of its own (ᵬ against ɉ) then answers by it and is not
     # measured for its group, so one member's accent no longer loosens the
     # whole group (b o p ... before ɉ; tried 2026-11-04, rebuilt 2026-11-08)
-    for name, s, group, against in sorted([(*t, None) for t in full] + only, key=lambda t: t[1]):
+    for name, s, group, against in guarded_all(font):
         for (left, right), v in list(font.kerning.items()):
             mine, other = (left, right) if s == 1 else (right, left)
             # a pair at 0 too: the italics keep the upright's pairs they set

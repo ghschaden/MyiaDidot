@@ -168,6 +168,90 @@ def test_ascenders_by_their_base_letter():
     assert not {"i", "j", "ibreve", "icircumflex", "uni0456", "uni0457", "ij", "t"} & asc
 
 
+# The guard's result (kern_clear.guard), held on the UFO after every step of
+# the generators, so that none of them has to remember it (the italic rule
+# once dropped b v, b j, o j, and ᵬ ổ ồ lost their exceptions;
+# docs/claude/collisions.md, "The guard's result held by a test"). Measured
+# as the guard measures (kern_coverage.Profiles, GUARD), not by Ink.
+
+FROM = {"Italic": "Regular", "Bold": "Regular", "BoldItalic": "Italic"}  # the style each is made from
+
+
+def style_of(ufo_path):
+    return ufo_path.stem.rsplit("-", 1)[1]
+
+
+def short_of_guard(font, pairs):
+    """The pairs (a, b) of a guarded letter nearer than GUARD at the value they take."""
+    from kern_coverage import Profiles
+
+    _, entry = kern_clear.kern_lookup(font)
+    prof = Profiles(font)
+    out = []
+    for a, b in pairs:
+        e = entry(a, b)
+        k = font.kerning[e] if e else 0
+        gap = prof.gap(a, b, k)
+        if gap is not None and gap < kern_clear.GUARD:
+            out.append(f"{a} {b} {k} ({gap:.1f})")
+    return out
+
+
+def test_guard_keys_kept(ufo_path):
+    """A group pair kerned (<= 0) in the style this one is made from, whose
+    group holds a guarded member, stays a key here (at any value), or every
+    guarded member beside the other side keeps GUARD at what it takes now."""
+    style = style_of(ufo_path)
+    if style not in FROM:
+        pytest.skip("the Regular is the master")
+    font = ufoLib2.Font.open(ufo_path)
+    source = ufoLib2.Font.open(ufo_path.with_name(ufo_path.name.replace(style, FROM[style])))
+    held = {}
+    for name, side, group in kern_clear.guarded(source):
+        held.setdefault((side, group), []).append(name)
+    pairs = set()
+    for (left, right), v in source.kerning.items():
+        if v > 0 or (left, right) in font.kerning:
+            continue
+        for side, group, other in ((1, left, right), (2, right, left)):
+            for name in held.get((side, group), []):
+                if name in font:
+                    pairs |= {(name, o) if side == 1 else (o, name) for o in kern_clear.members(font, other)}
+    short = short_of_guard(font, sorted(pairs))
+    assert not short, (f"group pairs of the {FROM[style]} dropped, their guarded members now nearer than "
+                       f"GUARD (keep the pair, at 0 if need be): {short[:40]}")
+
+
+def test_guard_white_held(ufo_path):
+    """Every guarded letter beside every member of a pair its group has
+    (<= 0, the pairs guard() walks, and its own exceptions) keeps GUARD at
+    the value the pair takes. The pairs clear() measures with Ink (PAIRS,
+    the signs, the capitals before ascenders and marks) are left out: their
+    own measure and tests hold them, and the two measures differ by a few
+    units at the limit."""
+    font = ufoLib2.Font.open(ufo_path)
+    keys, entry = kern_clear.kern_lookup(font)
+    inked = {(left, right) for left, right, _ in kern_clear.measured(font)}
+    pairs = set()
+    for name, side, group, against in kern_clear.guarded_all(font):
+        for (left, right), v in font.kerning.items():
+            mine, other = (left, right) if side == 1 else (right, left)
+            if mine not in (group, name) or v > 0 or (against is not None and other not in against):
+                continue
+            for o in kern_clear.members(font, other):
+                a, b = (name, o) if side == 1 else (o, name)
+                if entry(a, b) != (left, right):
+                    continue  # decided by a more specific entry, met in its own turn
+                k = keys(a, b)
+                # an Ink entry, or a member's exception beyond its group's Ink entry
+                if {(left, right), (k[2][0], right), (left, k[1][1])} & inked:
+                    continue
+                pairs.add((a, b))
+    assert pairs
+    short = short_of_guard(font, sorted(pairs))
+    assert not short, f"guarded letters nearer than GUARD (run scripts/kern_clear.py): {short[:40]}"
+
+
 # the italics' low quotes (docs/claude/collisions.md, "The italics' „")
 
 BI_FOLLOWS = 12  # the Bold Italic's offset follows the Italic's (tx_offset), its comma its own

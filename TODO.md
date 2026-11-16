@@ -708,6 +708,10 @@ alongside, each when the phase that needs it comes up.
       measuring positive pairs too (kerning changes: its own commit).
       The unkerned pairs under GUARD are counted there by kind; the
       families among them wait for the designer to name them.
+      The two assertions done 2026-11-16 (`test_guard_keys_kept`,
+      `test_guard_white_held`; strict, no list: the pairs short of
+      GUARD were kern_clear's Ink entries, collisions.md). Left: the
+      positive pairs.
 - [x] T5. Data apart from machinery in `derive.py`, `make_italic.py`,
       `make_bold.py` (about 2,900 lines each; make_bold 62 module-level
       tables beside 40 functions, a dozen imports inside functions

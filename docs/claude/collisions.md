@@ -239,7 +239,7 @@ a capital before a lowercase mark above (N ǐ, H ȉ, Γ ῖ):
 `kern_clear.accent_entries`, ACCENT_CLEAR 40,
 `test_capitals_clear_marks_above`.
 
-## The guard's result held by a test (specified 2026-11-16 on Fable; not built)
+## The guard's result held by a test (specified 2026-11-16 on Fable; the first two assertions built the same day)
 
 The case (open-for-fable.md, phase 3): the italic rule dropped the group
 pairs b v, b j, o j; `kern_clear.guard` walks the kerning's group pairs,
@@ -314,6 +314,34 @@ whatever held-white finds beyond the table goes into
 `tests/data/collisions*.txt` with its date, as the lists' rule says);
 then the positive pairs in `guard`; the families of point 2 only as the
 designer names them. The count's script is not kept: the test is it.
+
+**Built 2026-11-16 (Opus), the first two:** `test_guard_keys_kept` and
+`test_guard_white_held` in `tests/test_collisions.py`, no font change.
+Where it differs from the above:
+
+- *Held white has no tolerance and no list.* The Italic's 37 was not a
+  rounding after the guard: every pair under GUARD (27 Regular, 191
+  Italic, 12 Bold, 161 Bold Italic, all at 36.5 or more) has its key
+  written by `clear()`'s own Ink measures, nearly all `accent_entries`
+  (a capital before a lowercase mark above, Y ỉ, V ȁ, W ĭ) and their
+  members' exceptions beyond the group (Ư ẫ), two `entries()`. The guard
+  finds the key already there and leaves it, so the pair is held by
+  ACCENT_CLEAR on `Ink.white_above` (within SAMPLE), not by GUARD on
+  `Profiles`: the two measures differ by up to 3.5 units at the limit.
+  The test leaves out the pairs whose entry, or the group entry it is an
+  exception to, is one of `kern_clear.measured(font)` (PAIRS among
+  them); what is left holds at GUARD exactly in all four styles.
+- *Kept keys* measures a dropped pair's members at the value they take
+  now (a less specific entry, or none), against GUARD.
+- Both read kern_clear's own lists: `measured()` (what clear() measures
+  with Ink) and `guarded_all()` (the letters guard() walks, with
+  GUARDED_AGAINST's) were drawn out of clear() and guard() for it,
+  nothing else changed (kern_clear finds nothing to change in any style).
+- Checked on a copy of the Italic with the guard's exceptions and the
+  Regular's guarded group pairs taken out: both tests fail (ᵬ's kind,
+  f ĭ at -60 with its mark 114 units into f's hook).
+
+Left: the positive pairs in `guard` (its own commit, kerning changes).
 
 ## The italics' `„`: neither kerning nor a narrower sign (2026-11-16, Fable; the low quotes built the same day)
 

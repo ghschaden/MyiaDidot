@@ -51,6 +51,11 @@ Moved from CLAUDE.md (its ground rules apply).
   against `collisions*.txt` ("left right white  # date reason"); a new
   pair fails, a fixed one fails until its line is deleted, one more than
   4 units worse fails. A line is added by hand with a dated reason.
+  In the same file, the guard's result (kern_clear.guard, measured as it
+  measures): `test_guard_keys_kept` (a group pair the source style kerns
+  with a guarded member stays a key, or the members keep GUARD) and
+  `test_guard_white_held` (every guarded letter keeps GUARD in the pairs
+  the guard walks; no list, no tolerance).
 - Exception lists in `tests/data/*.txt` only shrink: a test fails when an
   entry is no longer needed. Fixing an entry = deleting its line.
 - A small cap drawn to its capital's distinctive stroke profile may carry
