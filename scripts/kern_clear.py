@@ -583,11 +583,13 @@ def clear(font, log=None):
             record.setdefault(f"{left} {right}", "added" if was is None else was)
             if log is not None:
                 log.append(f"kern_clear: {left} {right} {kern} -> {v}")
-    guard(font, record, log)
+    by_guard = guard(font, record, log)
     # a guarded member was left out of its group's entry above (its accent
     # must not loosen the group) but takes the entry's value all the same,
-    # unless guard() gave it an exception: where that value leaves it
-    # touching, an exception of its own (the Bold's ( ɉ, 2026-11-13)
+    # or guard()'s exception: where that value leaves it touching, an
+    # exception of its own (the Bold's ( ɉ, 2026-11-13), or guard()'s
+    # loosened further (its Profiles measure the white across, this entry's
+    # Ink above: the italics' Ɐ b, 2026-11-16)
     _, entry = kern_lookup(font)
     for left, right, above in todo:
         if (left, right) not in font.kerning:
@@ -596,12 +598,17 @@ def clear(font, log=None):
         for a in members(font, left):
             for b in members(font, right):
                 mine = (a, right) if a in held[1] and left != a else (left, b) if b in held[2] and right != b else None
-                if mine is not None and mine not in font.kerning and entry(a, b) == (left, right):
+                if mine is not None and (mine not in font.kerning or mine in by_guard) \
+                        and entry(a, b) in ((left, right), mine):
                     own.setdefault(mine, []).append((a, b))
         for mine, its in own.items():
-            kern = font.kerning.get(mine, font.kerning[(left, right)])
+            # measured from the entry's value, as without guard(); the pair
+            # then takes the looser of the two measures
+            kern = font.kerning[(left, right)]
             v = (needed_above(ink, its, kern, above) if above is not None
                  else needed(ink, its, kern, clear=clearance(left, right)))
+            if v is not None and mine in by_guard and v <= font.kerning[mine]:
+                v = None
             if v is not None:
                 font.kerning[mine] = v
                 record[f"{mine[0]} {mine[1]}"] = "added"
@@ -642,7 +649,7 @@ def guarded_all(font):
 
 def guard(font, record, log=None):
     """Exceptions for the guarded letters where their group's pairs bring
-    them nearer than GUARD (added to record)."""
+    them nearer than GUARD (added to record, and returned)."""
     _, entry = kern_lookup(font)
     prof = Profiles(font)
     added = {}
@@ -654,10 +661,10 @@ def guard(font, record, log=None):
     for name, s, group, against in guarded_all(font):
         for (left, right), v in list(font.kerning.items()):
             mine, other = (left, right) if s == 1 else (right, left)
-            # a pair at 0 too: the italics keep the upright's pairs they set
-            # plain at 0 (italic_kerning.apply), and a member's accent may
-            # still reach the other letter there
-            if mine != group or v > 0 or (against is not None and other not in against):
+            # at any value: at 0 the italics keep the upright's pairs they set
+            # plain (italic_kerning.apply), and a pair loosened for the
+            # group's model may still be too little for a member's accent
+            if mine != group or (against is not None and other not in against):
                 continue
             key = (name, other) if s == 1 else (other, name)
             if key in font.kerning or key in added:
@@ -690,6 +697,7 @@ def guard(font, record, log=None):
     for key, v in added.items():
         font.kerning[key] = v
         record[f"{key[0]} {key[1]}"] = "added"
+    return added
 
 
 def main():

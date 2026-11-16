@@ -701,7 +701,7 @@ alongside, each when the phase that needs it comes up.
       for the designer (`docs/claude/collisions.md`, its last section);
       nothing moves without it. The low quotes `„ ‚`, found with them,
       are done (2026-11-16: `ITALIC_STANDS_AS`, FONTLOG).
-- [ ] The guard's result held by a test (specified 2026-11-16:
+- [x] The guard's result held by a test (specified 2026-11-16:
       `docs/claude/collisions.md`, its last section). Opus or Sonnet:
       the kept-keys and held-white assertions in
       `tests/test_collisions.py` (no font change), then `guard`
@@ -710,8 +710,10 @@ alongside, each when the phase that needs it comes up.
       families among them wait for the designer to name them.
       The two assertions done 2026-11-16 (`test_guard_keys_kept`,
       `test_guard_white_held`; strict, no list: the pairs short of
-      GUARD were kern_clear's Ink entries, collisions.md). Left: the
-      positive pairs.
+      GUARD were kern_clear's Ink entries, collisions.md). The positive
+      pairs done 2026-11-16 (collisions.md: ogonek before j's kind, ζ
+      before the breathing capitals, loosened only). The families of
+      point 2 wait for the designer.
 - [x] T5. Data apart from machinery in `derive.py`, `make_italic.py`,
       `make_bold.py` (about 2,900 lines each; make_bold 62 module-level
       tables beside 40 functions, a dozen imports inside functions

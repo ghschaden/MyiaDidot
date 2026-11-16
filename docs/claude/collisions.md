@@ -341,7 +341,40 @@ Where it differs from the above:
   Regular's guarded group pairs taken out: both tests fail (ᵬ's kind,
   f ĭ at -60 with its mark 114 units into f's hook).
 
-Left: the positive pairs in `guard` (its own commit, kerning changes).
+**Built 2026-11-16 (Opus), the positive pairs:** `guard` walks a group
+pair at any value, and `test_guard_white_held` with it. Where it differs
+from the above:
+
+- *The Ink pass after the guard.* clear() measures a guarded member left
+  out of its group's Ink entry with Ink once the guard has run, but
+  skipped any key the guard had written. At 0 and below that rarely
+  mattered; above 0 the guard now writes keys on pairs Ink had loosened
+  (the italics' Ɐ before the ascenders, ACCENT and ASCENDER entries), and
+  its Profiles value is the smaller there (Ɐ b 98 against Ink's 116). So
+  the pass measures the guard's keys too, from the entry's value as
+  before, and the pair takes the looser of the two. Measured from the
+  guard's value instead, Ink's step lands a unit tighter in one Bold
+  Italic pair (Ɐ ẗ): hence from the entry's.
+- *What moved*, every glyph pair the same or looser in all four styles
+  (compared pair by pair with the code before): Regular 35 pairs, Italic
+  43, Bold 31, Bold Italic 47. Three families: the ogonek letters before
+  ǰ ɉ ʝ ϳ (PAIRS' ogonek entries are on j's group, whose guarded members
+  were left at the group's value: +19 to +33 in the italics, to +29 in
+  the Regular); ζ before the Greek capitals with a breathing or tonos
+  (the upstream's ζ Α +64 was too little for the mark: in the italics
+  ζ Ά +339, ζ Ἀ +271; no text sets a lowercase before such a capital);
+  and single pairs (the italics' ľ.sc ȕ.sc +122, Ɐ before marked
+  lowercase by 1 to 21).
+- The reviewed positive pairs are not left out of the guard: the ogonek
+  ones are PAIRS' entries on the group, and the guard measures the
+  members PAIRS leaves at it. The test still leaves out what clear()
+  measures with Ink, as before.
+- *`measured()` reads the kerning* (short_f_letters: the letters f's hook
+  meets at f's kerning). On the final font kern_clear's own f î has
+  cleared î, so the short fs' Ink entries before î ï ī ĩ ǐ ȉ ȋ ḯ were
+  missing from it, and the test, now reading positive pairs, took
+  f.short î at +20 for a guard pair (38 units). The test takes
+  `measured()` from a copy after `undo()`, as clear() does.
 
 ## The italics' `„`: neither kerning nor a narrower sign (2026-11-16, Fable; the low quotes built the same day)
 

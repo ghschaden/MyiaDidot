@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-16 Guarded letters kept clear beside pairs kerned open too
+  kern_clear's guard gives a letter whose mark reaches its neighbour
+  (ǰ, Ά, the breathing capitals ...) an exception where its group's pair
+  brings it too near; it looked only at pairs kerned closer or at 0, and
+  a pair opened for the group's plain letter could still be too little
+  for the mark. It now looks at every pair. Loosened only, in all four
+  styles: the ogonek letters before ǰ ɉ ʝ ϳ (Lithuanian and Polish įj ąj,
+  where j's accented kind kept the plain j's value), ζ before the Greek
+  capitals with a breathing or tonos (much opened in the italics, where
+  ζ's top runs into the mark; not a pair running text sets), and a few
+  single pairs. The Ink measure that follows the guard now checks the
+  guard's values as well, so neither measure is undercut.
+
 2026-11-16 The italics' low quotes set where the comma stands
   „ and ‚ are the high quote moved straight down, and in the italics the
   high quote leans right of its advance: at the baseline the low quotes

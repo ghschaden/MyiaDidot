@@ -224,19 +224,24 @@ def test_guard_keys_kept(ufo_path):
 
 def test_guard_white_held(ufo_path):
     """Every guarded letter beside every member of a pair its group has
-    (<= 0, the pairs guard() walks, and its own exceptions) keeps GUARD at
+    (at any value, the pairs guard() walks, and its own exceptions) keeps GUARD at
     the value the pair takes. The pairs clear() measures with Ink (PAIRS,
     the signs, the capitals before ascenders and marks) are left out: their
     own measure and tests hold them, and the two measures differ by a few
     units at the limit."""
     font = ufoLib2.Font.open(ufo_path)
     keys, entry = kern_clear.kern_lookup(font)
-    inked = {(left, right) for left, right, _ in kern_clear.measured(font)}
+    # measured() reads the kerning (which letters f's hook meets, at f's
+    # kerning): taken as clear() takes it, after undo(), or the short fs'
+    # entries before î ï are missed once kern_clear has cleared f î
+    before = ufoLib2.Font.open(ufo_path)
+    kern_clear.undo(before)
+    inked = {(left, right) for left, right, _ in kern_clear.measured(before)}
     pairs = set()
     for name, side, group, against in kern_clear.guarded_all(font):
-        for (left, right), v in font.kerning.items():
+        for left, right in font.kerning:
             mine, other = (left, right) if side == 1 else (right, left)
-            if mine not in (group, name) or v > 0 or (against is not None and other not in against):
+            if mine not in (group, name) or (against is not None and other not in against):
                 continue
             for o in kern_clear.members(font, other):
                 a, b = (name, o) if side == 1 else (o, name)
