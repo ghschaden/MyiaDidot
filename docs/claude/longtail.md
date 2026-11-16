@@ -193,8 +193,14 @@ them besides yes or no to a letter:
   asterisk's two 6.9, ] 6.7, § 6.6, 2 6.4, 5 6.2 and a dozen at 5 to 6
   (the JSON's notes).
 
-After the review: redraw.md's steps 6 to 8, a batch at a time, the
-capitals' with `KEEP_DRAFTS=1`.
+**Approved whole and installed 2026-11-16**: 112 letters (redraw.md,
+"After the batches of 2026-11-16"). Not installed: the 24 generated
+ones (the ten old-style figures, ‹ › and + = < > besides those named
+above), the Euro and I; put back after the first runs: $ ℵ ™ (their
+Bold Italic repair passes refuse the new outline) and the zero (the
+superiors' measure). Of this family's 35, ℵ and ™ stay; the Italic's
+list falls from 592 to 514 lines, the Bold Italic's from 584 to 566.
+The second sheets approved the same day, the baselines accepted.
 
 ### 3. The italic small caps: FontForge's drafts (checked; trial proposed, Opus)
 
@@ -391,8 +397,10 @@ lines.
 ## The order
 
 1. Family 1 (marks): done 2026-11-16, 65 lines.
-2. Family 2 with phase 5's batches: fitted and on six sheets
-   2026-11-16; after the designer's review the installs, Sonnet.
+2. Family 2 with phase 5's batches: done 2026-11-16, 112 letters.
+   Left: $ ℵ ™ with their Bold Italic passes (Opus), the zero drawn
+   with its measures held, the Euro's step, the generated letters in
+   what makes them.
 3. Family 5's sheets for the designer, the Italic's stems first, since
    it belongs to phase 6's review that is waiting anyway.
 4. Family 3 (small caps): tried 2026-11-16, 88 lines fall but 21

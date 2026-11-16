@@ -43,10 +43,13 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # ц's tail past its extreme 13 units (11 before the redraw), щ's 12, and
 # two wobbles of ц's, 7 degrees (on the sheet of 2026-11-12)
 WIDTHS = {"uni019C": (2446, 2414), "y": (1070, 1069), "uni028E": (1070, 1069), "uni01B4": (1442, 1441),
-          "uni0446": (1188, 1187), "uni0448": (1670, 1669), "uni0449": (1666, 1669)}
+          "uni0446": (1188, 1187), "uni0448": (1670, 1669), "uni0449": (1666, 1669),
+          # џ: 6 wider once its Italic letter was redrawn (2026-11-16); naming
+          # its knee (ITALIC_BOLD_KNEES, as ц's) was tried and changed nothing
+          "uni045F": (1188, 1194)}
 # side bearings moved (left, right): Ɯ's right 4 wider, as U's in the Bold
 # Italic's optical fit after the capitals' redraw (U -224 -> -219)
-BEARINGS = {"uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0)}
+BEARINGS = {"uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0), "uni045F": (2, 4)}
 _ANCHOR_NAMES = ("Top", "Bottom", "DotBelow", "Grave", "Acute", "Horn", "Dotaccent", "Ogonek", "Hook")
 ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
            "u": {a: (-1, 0) for a in _ANCHOR_NAMES},
@@ -57,7 +60,9 @@ ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
 # seen in text (proofed with γ & ξ q.sc)
 FINDINGS = {"uni019C": [("kink", 1212, 1355)], "uogonek": [("wobble", 873, 136)],
             "uni0446": [("extreme", 995, 63), ("wobble", 843, -44), ("wobble", 346, 704)],
-            "uni0449": [("extreme", 1478, 63)]}
+            "uni0449": [("extreme", 1478, 63)],
+            # џ: the counter's bottom past its ends as ц's and щ's, since its redraw (2026-11-16)
+            "uni045F": [("extreme", 654, 66)]}
 
 
 def p(x, y):
@@ -196,11 +201,13 @@ def test_redrawn_v_w_judged_by_the_gate():
 
 
 def test_refused_where_it_adds_a_fault():
-    """љ's knee blended takes its step away but brings in a wobble, an
-    extreme and a smooth node elsewhere: refused, љ as drawn"""
+    """љ's knee blended brings in a step and wobbles and takes nothing
+    away: refused, љ as drawn (until its Italic letter was redrawn,
+    2026-11-16, the blend took one step away and was refused for a wobble,
+    an extreme and a smooth node elsewhere)"""
     [line] = verdict("uni0459")
-    assert line.startswith("as drawn") and "steps gone [('step'" in line
-    assert "findings new or worse [('" in line and "'wobble'" in line, line
+    assert line.startswith("as drawn") and "steps new or worse [('step'" in line, line
+    assert "'wobble'" in line, line
 
 
 @pytest.fixture(scope="module")

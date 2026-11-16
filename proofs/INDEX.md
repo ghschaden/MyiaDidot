@@ -89,6 +89,7 @@ matching `docs/*-review-*.md` or in FONTLOG.txt's appendix.
 - bold-italic-after-redraw-2026-11-10.pdf
 - bold-italic-after-redraw-az-2026-11-11.pdf
 - bold-italic-after-redraw-caps-2026-11-11.pdf
+- bold-italic-after-redraw-phase5-2026-11-16.pdf
 - bold-italic-b-d-q-smallcap-repairs-2026-11-06.svg
 - bold-italic-b-upper-counter-2026-11-06.svg
 - bold-italic-c-hook-capital-2026-11-08.pdf
@@ -151,6 +152,7 @@ matching `docs/*-review-*.md` or in FONTLOG.txt's appendix.
 - italic-f-hook-2026-11-11.pdf
 - italic-f-hook-ligatures-2026-11-11.pdf
 - italic-followers-after-redraw-2026-11-10.pdf
+- italic-followers-after-redraw-phase5-2026-11-16.pdf
 - italic-followers-az-2026-11-11.pdf
 - italic-followers-caps-2026-11-11.pdf
 - italic-followers-mended-2026-11-12.pdf

@@ -5,11 +5,11 @@
 	<outline>
 		<contour>
 			<point x="207" y="-138" type="curve" smooth="yes"/>
-			<point x="207" y="47"/>
-			<point x="411" y="246"/>
+			<point x="207" y="43"/>
+			<point x="411" y="251"/>
 			<point x="411" y="401" type="curve" smooth="yes"/>
-			<point x="411" y="485"/>
-			<point x="341" y="500"/>
+			<point x="411" y="486"/>
+			<point x="345" y="500"/>
 			<point x="238" y="500" type="curve"/>
 			<point x="248" y="535" type="line"/>
 			<point x="392" y="535"/>
@@ -20,32 +20,53 @@
 			<point x="676" y="1391"/>
 			<point x="923" y="1473" type="curve"/>
 			<point x="935" y="1421" type="line"/>
-			<point x="737" y="1354"/>
-			<point x="672" y="1310"/>
+			<point x="764" y="1363"/>
+			<point x="666" y="1323"/>
 			<point x="666" y="1056" type="curve" smooth="yes"/>
 			<point x="666" y="925" type="line" smooth="yes"/>
-			<point x="660" y="772"/>
-			<point x="603" y="583"/>
-			<point x="384" y="520" type="curve"/>
-			<point x="382" y="516" type="line"/>
-			<point x="443" y="495"/>
-			<point x="510" y="444"/>
+			<point x="666" y="866"/>
+			<point x="651" y="597"/>
+			<point x="383" y="518" type="curve"/>
+			<point x="466" y="486"/>
+			<point x="510" y="427"/>
 			<point x="510" y="337" type="curve" smooth="yes"/>
-			<point x="510" y="138"/>
-			<point x="306" y="-54"/>
+			<point x="510" y="142"/>
+			<point x="306" y="-57"/>
 			<point x="306" y="-192" type="curve" smooth="yes"/>
-			<point x="306" y="-271"/>
+			<point x="306" y="-272"/>
 			<point x="379" y="-301"/>
 			<point x="466" y="-333" type="curve"/>
 			<point x="426" y="-380" type="line"/>
-			<point x="288" y="-332"/>
-			<point x="207" y="-252"/>
+			<point x="314" y="-341"/>
+			<point x="207" y="-269"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>source</key>
+				<string>544050fadc56</string>
+				<key>why</key>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-redraw-signs-2026-11-16.pdf</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>from</key>
+				<string>780dcf35b7b4</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-redraw-signs-2026-11-16.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

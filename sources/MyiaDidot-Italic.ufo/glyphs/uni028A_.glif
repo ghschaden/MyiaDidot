@@ -4,67 +4,55 @@
 	<advance width="997"/>
 	<outline>
 		<contour>
-			<point x="1050" y="863" type="line"/>
-			<point x="984" y="616" type="line"/>
-			<point x="892" y="616" type="line"/>
+			<point x="1049" y="863" type="line"/>
+			<point x="985" y="617" type="line"/>
+			<point x="893" y="617" type="line"/>
 			<point x="924" y="720" type="line" smooth="yes"/>
-			<point x="930" y="742"/>
-			<point x="930" y="760"/>
+			<point x="927" y="731"/>
+			<point x="935" y="760"/>
 			<point x="912" y="760" type="curve" smooth="yes"/>
-			<point x="778" y="760" type="line" smooth="yes"/>
-			<point x="757" y="760"/>
-			<point x="740" y="748"/>
-			<point x="735" y="726" type="curve"/>
+			<point x="777" y="760" type="line" smooth="yes"/>
+			<point x="747" y="760"/>
+			<point x="738" y="735"/>
+			<point x="735" y="726" type="curve" smooth="yes"/>
 			<point x="715" y="654" type="line"/>
-			<point x="770" y="642"/>
-			<point x="899" y="539"/>
+			<point x="756" y="645"/>
+			<point x="899" y="554"/>
 			<point x="899" y="423" type="curve" smooth="yes"/>
-			<point x="899" y="295"/>
-			<point x="835" y="189"/>
-			<point x="774" y="122" type="curve" smooth="yes"/>
-			<point x="676" y="13"/>
-			<point x="510" y="-23"/>
+			<point x="899" y="244"/>
+			<point x="748" y="-23"/>
 			<point x="399" y="-23" type="curve" smooth="yes"/>
-			<point x="245" y="-23"/>
-			<point x="80" y="76"/>
-			<point x="79" y="251" type="curve" smooth="yes"/>
-			<point x="80" y="350"/>
-			<point x="113" y="453"/>
-			<point x="223" y="550" type="curve" smooth="yes"/>
-			<point x="281" y="601"/>
-			<point x="399" y="647"/>
+			<point x="224" y="-23"/>
+			<point x="80" y="91"/>
+			<point x="80" y="252" type="curve" smooth="yes"/>
+			<point x="80" y="375"/>
+			<point x="166" y="590"/>
 			<point x="436" y="656" type="curve"/>
-			<point x="454" y="726" type="line" smooth="yes"/>
-			<point x="461" y="753"/>
-			<point x="450" y="760"/>
+			<point x="455" y="726" type="line" smooth="yes"/>
+			<point x="463" y="758"/>
+			<point x="443" y="760"/>
 			<point x="428" y="760" type="curve" smooth="yes"/>
 			<point x="294" y="760" type="line" smooth="yes"/>
-			<point x="275" y="760"/>
-			<point x="266" y="750"/>
+			<point x="274" y="760"/>
+			<point x="267" y="748"/>
 			<point x="259" y="719" type="curve" smooth="yes"/>
-			<point x="236" y="616" type="line"/>
-			<point x="144" y="616" type="line"/>
+			<point x="235" y="617" type="line"/>
+			<point x="145" y="617" type="line"/>
 			<point x="215" y="863" type="line"/>
 			<point x="584" y="863" type="line"/>
-			<point x="522" y="640" type="line"/>
-			<point x="432" y="618"/>
-			<point x="413" y="600"/>
-			<point x="347" y="523" type="curve" smooth="yes"/>
-			<point x="308" y="477"/>
-			<point x="245" y="354"/>
-			<point x="246" y="224" type="curve" smooth="yes"/>
-			<point x="245" y="89"/>
-			<point x="290" y="23"/>
-			<point x="409" y="23" type="curve" smooth="yes"/>
-			<point x="523" y="23"/>
-			<point x="615" y="133"/>
-			<point x="640" y="171" type="curve" smooth="yes"/>
-			<point x="678" y="227"/>
-			<point x="734" y="322"/>
-			<point x="733" y="458" type="curve" smooth="yes"/>
-			<point x="733" y="576"/>
-			<point x="690" y="613"/>
-			<point x="619" y="640" type="curve"/>
+			<point x="522" y="641" type="line"/>
+			<point x="351" y="599"/>
+			<point x="245" y="407"/>
+			<point x="246" y="225" type="curve" smooth="yes"/>
+			<point x="246" y="92"/>
+			<point x="291" y="24"/>
+			<point x="409" y="24" type="curve" smooth="yes"/>
+			<point x="569" y="24"/>
+			<point x="733" y="232"/>
+			<point x="733" y="459" type="curve" smooth="yes"/>
+			<point x="733" y="578"/>
+			<point x="696" y="611"/>
+			<point x="619" y="641" type="curve"/>
 			<point x="680" y="863" type="line"/>
 		</contour>
 	</outline>
@@ -80,9 +68,9 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-12</string>
+				<string>2026-11-16</string>
 				<key>glyph</key>
-				<string>eed1f644c404</string>
+				<string>af08556de24c</string>
 				<key>review</key>
 				<string>docs/claude/redraw.md</string>
 			</dict>

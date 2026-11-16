@@ -5,60 +5,51 @@
 	<outline>
 		<contour>
 			<point x="7" y="171" type="curve" smooth="yes"/>
-			<point x="7" y="248"/>
-			<point x="70" y="306"/>
+			<point x="7" y="250"/>
+			<point x="66" y="306"/>
 			<point x="134" y="306" type="curve" smooth="yes"/>
-			<point x="211" y="306"/>
-			<point x="227" y="260"/>
+			<point x="222" y="306"/>
+			<point x="227" y="249"/>
 			<point x="227" y="227" type="curve" smooth="yes"/>
-			<point x="227" y="186"/>
-			<point x="202" y="152"/>
-			<point x="171" y="124" type="curve"/>
-			<point x="148" y="105"/>
-			<point x="139" y="93"/>
+			<point x="227" y="134"/>
+			<point x="139" y="131"/>
 			<point x="139" y="74" type="curve" smooth="yes"/>
-			<point x="139" y="47"/>
-			<point x="157" y="23"/>
+			<point x="139" y="25"/>
+			<point x="201" y="23"/>
 			<point x="224" y="23" type="curve" smooth="yes"/>
-			<point x="344" y="23"/>
-			<point x="388" y="81"/>
+			<point x="377" y="23"/>
+			<point x="388" y="110"/>
 			<point x="388" y="184" type="curve" smooth="yes"/>
-			<point x="388" y="235"/>
-			<point x="381" y="324"/>
-			<point x="357" y="434" type="curve" smooth="yes"/>
-			<point x="339" y="520"/>
-			<point x="326" y="589"/>
+			<point x="388" y="364"/>
+			<point x="326" y="502"/>
 			<point x="326" y="630" type="curve" smooth="yes"/>
-			<point x="326" y="744"/>
-			<point x="369" y="861"/>
+			<point x="326" y="734"/>
+			<point x="365" y="861"/>
 			<point x="503" y="861" type="curve" smooth="yes"/>
 			<point x="750" y="861" type="line" smooth="yes"/>
-			<point x="783" y="861"/>
-			<point x="786" y="867"/>
-			<point x="787" y="905" type="curve"/>
+			<point x="779" y="861"/>
+			<point x="787" y="864"/>
+			<point x="787" y="905" type="curve" smooth="yes"/>
 			<point x="787" y="1069" type="line" smooth="yes"/>
-			<point x="787" y="1103"/>
-			<point x="819" y="1112"/>
+			<point x="787" y="1105"/>
+			<point x="822" y="1112"/>
 			<point x="851" y="1112" type="curve" smooth="yes"/>
-			<point x="884" y="1112"/>
-			<point x="911" y="1103"/>
+			<point x="881" y="1112"/>
+			<point x="911" y="1104"/>
 			<point x="911" y="1069" type="curve" smooth="yes"/>
 			<point x="911" y="814" type="line"/>
 			<point x="523" y="814" type="line" smooth="yes"/>
-			<point x="482" y="814"/>
-			<point x="457" y="810"/>
+			<point x="493" y="814"/>
+			<point x="457" y="814"/>
 			<point x="457" y="723" type="curve" smooth="yes"/>
-			<point x="457" y="680"/>
-			<point x="468" y="605"/>
-			<point x="486" y="523" type="curve" smooth="yes"/>
-			<point x="506" y="434"/>
-			<point x="520" y="339"/>
+			<point x="457" y="604"/>
+			<point x="520" y="411"/>
 			<point x="520" y="281" type="curve" smooth="yes"/>
-			<point x="520" y="110"/>
-			<point x="408" y="-23"/>
+			<point x="520" y="107"/>
+			<point x="404" y="-23"/>
 			<point x="237" y="-23" type="curve" smooth="yes"/>
-			<point x="137" y="-23"/>
-			<point x="7" y="31"/>
+			<point x="121" y="-23"/>
+			<point x="7" y="40"/>
 		</contour>
 	</outline>
 	<anchor name="Acute" x="612" y="980"/>
@@ -69,8 +60,30 @@
 	<anchor name="DotBelow" x="183" y="-20"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>source</key>
+				<string>3acb62f787bd</string>
+				<key>why</key>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-redraw-tail-cyrillic-2026-11-16.pdf</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>from</key>
+				<string>27fa5a2ae811</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-redraw-tail-cyrillic-2026-11-16.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

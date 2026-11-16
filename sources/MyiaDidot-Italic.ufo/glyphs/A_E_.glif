@@ -7,40 +7,40 @@
 			<point x="-103" y="0" type="line"/>
 			<point x="-87" y="62" type="line"/>
 			<point x="-10" y="62" type="line" smooth="yes"/>
-			<point x="103" y="62"/>
-			<point x="178" y="138"/>
+			<point x="93" y="62"/>
+			<point x="169" y="125"/>
 			<point x="230" y="202" type="curve" smooth="yes"/>
 			<point x="1002" y="1174" type="line" smooth="yes"/>
-			<point x="1051" y="1238"/>
-			<point x="1099" y="1292"/>
+			<point x="1071" y="1261"/>
+			<point x="1099" y="1301"/>
 			<point x="1099" y="1333" type="curve" smooth="yes"/>
-			<point x="1099" y="1355"/>
-			<point x="1085" y="1365"/>
+			<point x="1099" y="1361"/>
+			<point x="1077" y="1365"/>
 			<point x="1053" y="1365" type="curve" smooth="yes"/>
 			<point x="962" y="1365" type="line"/>
 			<point x="978" y="1434" type="line"/>
 			<point x="2071" y="1434" type="line"/>
 			<point x="1980" y="944" type="line"/>
 			<point x="1930" y="944" type="line"/>
-			<point x="1930" y="944"/>
+			<point x="1931" y="949"/>
 			<point x="1936" y="989"/>
 			<point x="1936" y="1047" type="curve" smooth="yes"/>
-			<point x="1936" y="1301"/>
-			<point x="1853" y="1365"/>
+			<point x="1936" y="1300"/>
+			<point x="1849" y="1365"/>
 			<point x="1722" y="1365" type="curve" smooth="yes"/>
 			<point x="1398" y="1365" type="line" smooth="yes"/>
-			<point x="1360" y="1365"/>
-			<point x="1340" y="1348"/>
+			<point x="1357" y="1365"/>
+			<point x="1340" y="1346"/>
 			<point x="1330" y="1307" type="curve" smooth="yes"/>
 			<point x="1188" y="744" type="line"/>
 			<point x="1402" y="744" type="line" smooth="yes"/>
-			<point x="1568" y="744"/>
-			<point x="1612" y="910"/>
+			<point x="1566" y="744"/>
+			<point x="1611" y="904"/>
 			<point x="1641" y="1034" type="curve"/>
 			<point x="1691" y="1034" type="line"/>
 			<point x="1518" y="392" type="line"/>
 			<point x="1469" y="392" type="line"/>
-			<point x="1479" y="434"/>
+			<point x="1480" y="438"/>
 			<point x="1489" y="489"/>
 			<point x="1489" y="537" type="curve" smooth="yes"/>
 			<point x="1489" y="620"/>
@@ -48,15 +48,15 @@
 			<point x="1370" y="682" type="curve" smooth="yes"/>
 			<point x="1170" y="682" type="line"/>
 			<point x="1012" y="114" type="line" smooth="yes"/>
-			<point x="1002" y="79"/>
+			<point x="1002" y="78"/>
 			<point x="1010" y="62"/>
 			<point x="1049" y="62" type="curve" smooth="yes"/>
 			<point x="1418" y="62" type="line" smooth="yes"/>
-			<point x="1475" y="62"/>
-			<point x="1582" y="87"/>
+			<point x="1485" y="62"/>
+			<point x="1585" y="89"/>
 			<point x="1663" y="163" type="curve" smooth="yes"/>
-			<point x="1788" y="283"/>
-			<point x="1873" y="520"/>
+			<point x="1771" y="265"/>
+			<point x="1857" y="476"/>
 			<point x="1873" y="520" type="curve"/>
 			<point x="1920" y="520" type="line"/>
 			<point x="1754" y="0" type="line"/>
@@ -64,16 +64,16 @@
 			<point x="614" y="62" type="line"/>
 			<point x="762" y="62" type="line" smooth="yes"/>
 			<point x="800" y="62"/>
-			<point x="822" y="79"/>
+			<point x="821" y="78"/>
 			<point x="831" y="114" type="curve" smooth="yes"/>
 			<point x="930" y="475" type="line"/>
 			<point x="540" y="475" type="line"/>
-			<point x="380" y="279" type="line"/>
-			<point x="362" y="254"/>
-			<point x="299" y="182"/>
+			<point x="380" y="279" type="line" smooth="yes"/>
+			<point x="347" y="239"/>
+			<point x="299" y="170"/>
 			<point x="299" y="118" type="curve" smooth="yes"/>
-			<point x="299" y="89"/>
-			<point x="317" y="62"/>
+			<point x="299" y="87"/>
+			<point x="316" y="62"/>
 			<point x="370" y="62" type="curve" smooth="yes"/>
 			<point x="465" y="62" type="line"/>
 			<point x="449" y="0" type="line"/>
@@ -90,8 +90,30 @@
 	<anchor name="caret_1" x="1070" y="0"/>
 	<lib>
 		<dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>source</key>
+				<string>5c82908ad868</string>
+				<key>why</key>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-redraw-rest-2026-11-16.pdf</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>from</key>
+				<string>c964bfd475dd</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-redraw-rest-2026-11-16.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

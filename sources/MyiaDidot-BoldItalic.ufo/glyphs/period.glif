@@ -5,23 +5,36 @@
 	<outline>
 		<contour>
 			<point x="145" y="126" type="curve" smooth="yes"/>
-			<point x="145" y="214"/>
-			<point x="213" y="277"/>
+			<point x="145" y="218"/>
+			<point x="218" y="277"/>
 			<point x="307" y="277" type="curve" smooth="yes"/>
-			<point x="399" y="277"/>
-			<point x="467" y="214"/>
+			<point x="396" y="277"/>
+			<point x="467" y="217"/>
 			<point x="467" y="126" type="curve" smooth="yes"/>
-			<point x="467" y="38"/>
-			<point x="399" y="-25"/>
-			<point x="307" y="-25" type="curve" smooth="yes"/>
-			<point x="213" y="-25"/>
-			<point x="145" y="38"/>
+			<point x="467" y="35"/>
+			<point x="396" y="-26"/>
+			<point x="307" y="-26" type="curve" smooth="yes"/>
+			<point x="218" y="-26"/>
+			<point x="145" y="34"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>from</key>
+				<string>7d2ea07255cb</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-redraw-signs-2026-11-16.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

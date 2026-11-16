@@ -26,6 +26,20 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-16 Italic figures, signs, Greek and Cyrillic capitals redrawn onto clean nodes
+  112 of the Italic's letters taken from Old Standard redrawn (shapes kept
+  within the fit, nodes rebuilt): the lining figures 1 to 9, the
+  punctuation and signs, the Greek and Cyrillic capitals with outlines of
+  their own, κ π ß ð þ Ð Þ ø Ø œ Œ Æ, Ą Į Ǫ Ǻ Ŋ ŋ Ŧ ƒ ¢ ∞, the superior
+  2 5 7 8 9, ʹ ϝ ϟ ι, 𝔐 𝔓, Љ Џ ђ љ њ ћ џ Ѣ ѫ Ѵ ѵ ґ. Not redrawn: the
+  generated letters (the old-style figures, Δ Λ, æ, ſt st, ъ ы ь), the
+  Euro, I, and $ ℵ ™ 0, whose Bold Italic repairs or measures depend on
+  their present outlines. The Bold Italic follows, most where two edges
+  meet at a narrow angle (π § ŋ џ Ц Щ Д); advances by up to 10 units,
+  kerning measured from the outlines with them. Ω and Υ before a
+  breathing keep their room (make_italic: the shift of a kept capital's
+  anchor recorded on it).
+
 2026-11-16 The italics' marks split at their extremes
   The Italic's sloped marks (cedilla, ogonek, hook, horn, ring, breve, the
   Greek breathings) get a node where the slant carried a curve past its

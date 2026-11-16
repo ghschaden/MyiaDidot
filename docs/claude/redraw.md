@@ -899,6 +899,76 @@ the verdicts as in the dry run), with family 2's letters outside the
 core set: `docs/claude/longtail.md`, family 2, has the sheets and what
 the designer is asked on them. Steps 5 to 8 are what is left.
 
+## After the batches of 2026-11-16: figures, signs, capitals, the rest, family 2
+
+The six sheets approved whole; 112 letters installed in one run (all six
+batches at once, to regenerate once: the sweep stayed readable, each
+fault below had its letter's name on it). What was not installed, and
+what the first runs found before any test was read:
+
+- **Only Old Standard's own outlines are installed.** 24 candidates
+  carry another source mark and are generated: Δ Λ (derived), the ten
+  old-style figures (figure drafts), ъ ы ь (the sign drawings), ſt st
+  (made ligatures), æ ‹ › (the Regular's sloped), + = < > (the
+  Regular's upright). Marked drawn they would stop following what makes
+  them. Before a batch: `org.myiadidot.italicSource` of every name, and
+  only "Old Standard" goes to `--install`. The Euro (its own step) and I
+  (a late pass installs it) as before.
+- **A sign with a repair pass of its own in the Bold Italic is not
+  redrawn in the Italic**: `dollar_bars` ("dollar bar geometry
+  changed"), `aleph` ("lower tip changed"), `symbol_joins` ("trademark
+  changed") find their places by the stroked outline's nodes and stop
+  the run. $, ℵ and ™ put back as committed. Before a batch:
+  `scripts/finalization.py`'s PASSES, the names in a pass for the Bold
+  Italic. To redraw one, its pass is written anew with it: Opus.
+- **The zero is a measure letter** (`derive.superior`: the superiors'
+  scale and stroke from 0 against ⁰). Redrawn within 2.3 units its top
+  hairline was 119.3 for 118.4, and ⁱ ʲ ᶤ's dots (placed by the dots'
+  ratio, `i_bar_dot`) moved 6 to 9 units. Put back as committed; with O
+  Q H n o on the list of letters that are drawn with their measures
+  held, not fitted.
+- **A kept Greek capital that takes a breathing** (Ω Υ; the others are
+  aliases of Latin letters): `greek_cap_room` moves the capital's
+  GreekCap anchor and then the capital in its composites by what it
+  measures; the kept capital came into the run with the anchor already
+  moved, the composites were set by it, measured as near enough and
+  left with the room: Ὠ and its kind 132 wider, Ὑ's 17. Mended in the
+  generator: the shift is recorded on the capital
+  (`org.myiadidot.greekCapShift`), taken back before the run for a
+  kept one (`greek_cap_unshifted`) and used as recorded. The composites
+  are as before the redraw.
+- **Left for the second sheets** (the Italic's sweep flags only these):
+  ɂ 10 units and ˀ 8.8 (ɂ is ʔ enlarged, ʔ made of the redrawn
+  question mark, which moved 3), б.sc ƃ.sc 5 units and 4 wider (the
+  kept draft weighted by Б's stroke).
+- **The Bold Italic moves most where two edges meet at a narrow
+  angle**, as in the pilot: π 81 units (the left leg into the bar), §
+  46, ŋ 45, џ 44, Ц Щ Д 33 to 36 (the tail's bracket), the asterisk
+  25, 7 23. Advances by more than 5: § 8, ʊ 10, џ Ж 6, К Қ 7 narrower.
+  џ's knee named in `ITALIC_BOLD_KNEES` as ц's was tried: the blend
+  starts and changes nothing (the counter's bottom still 16 units past
+  its ends, the width still 6 more); the entry taken out again.
+- **љ's verdict in the gate changed** (tests/test_stroke_gate.py): the
+  knee blended takes no step away now and adds one; refused as before,
+  љ as drawn.
+- **Quality lists, before any line is touched**: the Italic 592 -> 514
+  (82 lines fall; new: a `smooth` of 2.2 degrees on ʊ ˀ ˁ, ɶ's kinks 2
+  -> 3), the Bold Italic 584 -> 566 (32 fall; 12 new, the stroker's on
+  the new nodes: wobbles on ‘ ‡ ⁵ я.sc, an `extreme` on џ Ѣ, Ξ's 2 ->
+  3, smooth nodes on § 𝔓 ѵ, a kink on ʢ, a step on psi.sc, 3's stroke
+  1.15 of its kind). ‘ ⁵ ‡ џ 3 looked at before | after at 144 pt:
+  nothing to see at that size; they are on the second sheet.
+
+The second sheets, for the designer:
+`proofs/2026-11/bold-italic-after-redraw-phase5-2026-11-16.pdf` (the
+103 redrawn letters by how far they moved, then the 27 followers the
+sweep flags), `proofs/2026-11/italic-followers-after-redraw-phase5-2026-11-16.pdf`.
+Approved whole 2026-11-16: the quality lists updated (the Bold Italic's
+new lines kept with their reason, for phase 8), 32 Italic and 33 Bold
+Italic glyphs accepted anew, the shaping baselines accepted (no glyph
+sequence changed in either style, advances and kerning by 10 units at
+most).
+
 ## Open
 
 - **The Bold Italic's bowls with the triangle.** `bowl_counters.py` fits

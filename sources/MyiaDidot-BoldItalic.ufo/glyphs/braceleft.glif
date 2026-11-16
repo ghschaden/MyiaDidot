@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="braceleft" format="2">
 	<unicode hex="007B"/>
-	<advance width="947"/>
+	<advance width="945"/>
 	<outline>
 		<contour>
-			<point x="225" y="-106" type="curve" smooth="yes"/>
-			<point x="225" y="-29"/>
-			<point x="263" y="57"/>
-			<point x="325" y="158" type="curve" smooth="yes"/>
-			<point x="371" y="234"/>
-			<point x="445" y="340"/>
-			<point x="445" y="417" type="curve" smooth="yes"/>
-			<point x="445" y="504"/>
+			<point x="225" y="-109" type="curve" smooth="yes"/>
+			<point x="225" y="-32"/>
+			<point x="263" y="56"/>
+			<point x="325" y="159" type="curve" smooth="yes"/>
+			<point x="371" y="235"/>
+			<point x="445" y="342"/>
+			<point x="445" y="418" type="curve" smooth="yes"/>
+			<point x="445" y="505"/>
 			<point x="347" y="495"/>
-			<point x="275" y="495" type="curve"/>
-			<point x="288" y="539" type="line"/>
-			<point x="538" y="539"/>
-			<point x="519" y="638"/>
+			<point x="276" y="495" type="curve"/>
+			<point x="289" y="539" type="line"/>
+			<point x="539" y="539"/>
+			<point x="518" y="638"/>
 			<point x="516" y="819" type="curve" smooth="yes"/>
 			<point x="515" y="916" type="line" smooth="yes"/>
-			<point x="512" y="1217"/>
-			<point x="691" y="1380"/>
+			<point x="511" y="1217"/>
+			<point x="692" y="1380"/>
 			<point x="995" y="1477" type="curve"/>
 			<point x="1010" y="1416" type="line"/>
-			<point x="755" y="1332"/>
+			<point x="755" y="1333"/>
 			<point x="767" y="1258"/>
 			<point x="769" y="1053" type="curve" smooth="yes"/>
 			<point x="771" y="922" type="line" smooth="yes"/>
-			<point x="773" y="738"/>
-			<point x="651" y="576"/>
-			<point x="448" y="517" type="curve"/>
-			<point x="539" y="484"/>
-			<point x="605" y="411"/>
-			<point x="605" y="307" type="curve" smooth="yes"/>
-			<point x="605" y="219"/>
-			<point x="558" y="124"/>
+			<point x="773" y="741"/>
+			<point x="657" y="581"/>
+			<point x="453" y="517" type="curve"/>
+			<point x="542" y="481"/>
+			<point x="604" y="412"/>
+			<point x="605" y="309" type="curve" smooth="yes"/>
+			<point x="605" y="223"/>
+			<point x="560" y="128"/>
 			<point x="496" y="28" type="curve" smooth="yes"/>
 			<point x="454" y="-37"/>
-			<point x="385" y="-135"/>
-			<point x="385" y="-204" type="curve" smooth="yes"/>
-			<point x="385" y="-285"/>
+			<point x="385" y="-136"/>
+			<point x="385" y="-205" type="curve" smooth="yes"/>
+			<point x="385" y="-284"/>
 			<point x="478" y="-305"/>
 			<point x="540" y="-327" type="curve"/>
 			<point x="492" y="-382" type="line"/>
-			<point x="365" y="-339"/>
-			<point x="225" y="-255"/>
+			<point x="368" y="-340"/>
+			<point x="225" y="-258"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>from</key>
+				<string>780dcf35b7b4</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-redraw-signs-2026-11-16.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

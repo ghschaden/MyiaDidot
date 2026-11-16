@@ -1885,7 +1885,29 @@ def attach(font, glyph_name, mark, bases):
 
 
 
-def greek_cap_room(font, regular):
+# the shift greek_cap_room gave a capital's GreekCap anchor, on the capital
+GREEK_SHIFT_KEY = "org.myiadidot.greekCapShift"
+
+
+def greek_cap_unshifted(font, kept):
+    """A kept capital is saved with its GreekCap anchor as greek_cap_room
+    left it. Taken back here by the shift recorded on it, so that what is
+    placed by that anchor before greek_cap_room runs stands as for a
+    capital made anew (the redrawn Ω Υ, 2026-11-16: their composites were
+    set by the shifted anchor, measured as near enough already and left
+    132 and 17 units of room too many before the capital)."""
+    for base in GREEK_CAP_SAMPLES:
+        if base not in kept or base not in font:
+            continue
+        if GREEK_SHIFT_KEY not in font[base].lib:
+            raise SystemExit(f"{base} is kept as drawn and has no {GREEK_SHIFT_KEY}: the shift of its "
+                             "GreekCap anchor against the generated one is not known")
+        for a in font[base].anchors:
+            if a.name == "GreekCap":
+                a.x -= font[base].lib[GREEK_SHIFT_KEY]
+
+
+def greek_cap_room(font, regular, kept=()):
     """Old Standard's GreekCap anchors leave a breathing far from its
     capital (Ἀ about twice the Regular's white): each capital's mark is
     brought as near as it stands in the Regular, judged upright (the
@@ -1906,8 +1928,12 @@ def greek_cap_room(font, regular):
 
     shift = {}
     for base, sample in GREEK_CAP_SAMPLES.items():
-        if sample in font and sample in regular:
+        if base in kept and base in font:
+            # as it was saved with (greek_cap_unshifted): its anchor is put back as saved
+            shift[base] = font[base].lib[GREEK_SHIFT_KEY]
+        elif sample in font and sample in regular:
             shift[base] = round(spread(font, sample, base, SLANT) - spread(regular, sample, base, 0))
+            font[base].lib[GREEK_SHIFT_KEY] = shift[base]
     for base, d in shift.items():
         for a in font[base].anchors:
             if a.name == "GreekCap":
@@ -2136,6 +2162,7 @@ def main():
         print(f"{args.italic}: kept though the weights or cuts changed, look again: {' '.join(kept)}")
     for name in kept:
         font.layers.defaultLayer.insertGlyph(copy.deepcopy(previous[name]), name, overwrite=True)
+    greek_cap_unshifted(font, kept)
     # a kept glyph is saved as spaced (the cut taken), everything else here
     # stands uncut until respace below: the kept ones too until then, so
     # that what is built on one is cut once with the rest (ɲ ʂ ɠ ɸ came 2
@@ -2240,7 +2267,7 @@ def main():
         font[name].lib.update(lib)
         rebuilt += 1
     move_parts(font, regular, marks, rule_made)
-    greek_shift = greek_cap_room(font, regular)  # the breathings nearer their capitals
+    greek_shift = greek_cap_room(font, regular, kept)  # the breathings nearer their capitals
     info = font.info
     info.styleName = "Italic"
     info.styleMapStyleName = "italic"

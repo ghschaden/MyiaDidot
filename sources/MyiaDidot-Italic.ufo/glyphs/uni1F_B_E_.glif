@@ -7,12 +7,12 @@
 			<point x="-69" y="0" type="line"/>
 			<point x="-51" y="62" type="line"/>
 			<point x="36" y="62" type="line" smooth="yes"/>
-			<point x="70" y="62"/>
-			<point x="77" y="74"/>
+			<point x="62" y="62"/>
+			<point x="77" y="68"/>
 			<point x="87" y="105" type="curve" smooth="yes"/>
 			<point x="237" y="651" type="line" smooth="yes"/>
-			<point x="247" y="682"/>
-			<point x="243" y="694"/>
+			<point x="245" y="680"/>
+			<point x="247" y="694"/>
 			<point x="211" y="694" type="curve" smooth="yes"/>
 			<point x="121" y="694" type="line"/>
 			<point x="139" y="756" type="line"/>
@@ -20,11 +20,11 @@
 			<point x="527" y="694" type="line"/>
 			<point x="440" y="694" type="line" smooth="yes"/>
 			<point x="407" y="694"/>
-			<point x="399" y="682"/>
+			<point x="398" y="680"/>
 			<point x="390" y="651" type="curve" smooth="yes"/>
 			<point x="239" y="105" type="line" smooth="yes"/>
-			<point x="229" y="74"/>
-			<point x="233" y="62"/>
+			<point x="231" y="76"/>
+			<point x="229" y="62"/>
 			<point x="266" y="62" type="curve" smooth="yes"/>
 			<point x="356" y="62" type="line"/>
 			<point x="337" y="0" type="line"/>
@@ -32,8 +32,30 @@
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>source</key>
+				<string>e862e7a78e1b</string>
+				<key>why</key>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-redraw-tail-latin-2026-11-16.pdf</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>from</key>
+				<string>a0b18bed3534</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-redraw-tail-latin-2026-11-16.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

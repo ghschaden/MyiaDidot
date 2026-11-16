@@ -5,25 +5,47 @@
 	<outline>
 		<contour>
 			<point x="166" y="178" type="curve" smooth="yes"/>
-			<point x="166" y="676"/>
-			<point x="476" y="1169"/>
+			<point x="166" y="674"/>
+			<point x="475" y="1168"/>
 			<point x="852" y="1473" type="curve"/>
 			<point x="906" y="1421" type="line"/>
-			<point x="316" y="897"/>
-			<point x="250" y="390"/>
+			<point x="337" y="916"/>
+			<point x="250" y="418"/>
 			<point x="250" y="178" type="curve" smooth="yes"/>
-			<point x="250" y="-15"/>
-			<point x="321" y="-194"/>
+			<point x="250" y="-19"/>
+			<point x="312" y="-183"/>
 			<point x="435" y="-337" type="curve"/>
 			<point x="364" y="-384" type="line"/>
-			<point x="251" y="-253"/>
-			<point x="166" y="-42"/>
+			<point x="247" y="-248"/>
+			<point x="166" y="-50"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>source</key>
+				<string>2055f7883e98</string>
+				<key>why</key>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-redraw-signs-2026-11-16.pdf</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-16</string>
+				<key>from</key>
+				<string>9288a059fad3</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-redraw-signs-2026-11-16.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>
