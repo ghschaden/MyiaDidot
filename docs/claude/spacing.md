@@ -212,8 +212,13 @@ guard holds the guarded letters clear under a 0 as under a negative value:
 removed, the guard went with it, and the accented members its group pair
 had held met their neighbours (ᵬ's tilde 10-14 units into v w y, the Bold
 Italic's ổ 48 into ǰ, ồ ǰ and ᵬ ϳ within 8-18; found in the shaping
-report, 2026-11-12). Phase 1's sweep is what finds such pairs where no
-group pair was ever kerned.
+report, 2026-11-12). Held by a test on the result, not by the step
+remembering (collisions.md, "The guard's result held by a test",
+specified 2026-11-16): the source style's kerned group pairs with
+guarded members stay keys, and the guard's white is measured again at
+the end. Where no group pair was ever kerned the guard does not reach,
+and phase 1's sweep (signs only) does not either: those pairs are found
+by family (the same section, point 2).
 
 **Open.** The quantile and the depth are set by reasoning and by the
 count above, not tuned. Pairs that do not face each other (’ before s)

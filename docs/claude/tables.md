@@ -161,7 +161,10 @@ moves shift by hundreds.
    except for the rebound names (`AX THIN THICK SLANT KX`), which are
    read through make_bold. The 41 citations in `scripts/` and `tests/`
    (code and comments) that cite `make_bold.TABLE`, `make_italic.TABLE`, `derive.TABLE`
-   point to the data module; so do `docs/claude/` (glyphs, styles,
+   point to the data module (comments and docs only, never a string
+   inside a table: BOLD_REBUILD's reasons name `derive.SPACING`, and a
+   reason repointed is a value changed, which proof (b) catches); so do
+   `docs/claude/` (glyphs, styles,
    bold, stroking, spacing, redraw, only: 54 lines naming a table),
    CLAUDE.md's ground rule ("through the Regular or their generators
    (a recipe, a constant)" names the data modules) and its table (a

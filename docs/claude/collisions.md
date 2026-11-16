@@ -238,3 +238,79 @@ x-height (`Ink.white_above`, ASCENDER_CLEAR 60; spacing.md), held by
 a capital before a lowercase mark above (N ǐ, H ȉ, Γ ῖ):
 `kern_clear.accent_entries`, ACCENT_CLEAR 40,
 `test_capitals_clear_marks_above`.
+
+## The guard's result held by a test (specified 2026-11-16 on Fable; not built)
+
+The case (open-for-fable.md, phase 3): the italic rule dropped the group
+pairs b v, b j, o j; `kern_clear.guard` walks the kerning's group pairs,
+so the guarded members those pairs had held (ᵬ ổ ồ) lost their
+exceptions and met their neighbours. Mended by keeping such a pair at 0;
+found by reading a shaping report. What was asked for: a rule that a
+generator's kerning change is checked over every member, kerned or not.
+
+Counted first (2026-11-16, on the UFOs, `Profiles.gap` at the value each
+pair takes, the guarded letters of `kern_clear.guarded` against every
+encoded letter of their script, 50 304 pairs a style, 2 s):
+
+| | Regular | Italic | what they are |
+|---|---|---|---|
+| under GUARD, no entry at all | 2640 | 8119 | below |
+| under GUARD at a positive value | 68 | 239 | the reviewed ą į ų before j, ζ before breathings; the rest 36 to 39 |
+| under GUARD at a negative value | 25 | 181 | the guard's own results: 40 in the Regular, 37 in the Italic |
+| kerned group pairs of the source style gone from the generated one, a guarded member then under GUARD | (the source) | 0 | Bold and Bold Italic 0 too (9, 0, 4 keys gone, all harmless) |
+
+So "every member, kerned or not" is not one rule but two, and the
+second is not the guard's:
+
+1. **What the guard decides is held by a test, on the result.** No step
+   of a generator has to remember the guard; the test reads the UFO
+   after all of them, as `test_collisions.py` does. Three assertions,
+   per style, in `tests/test_collisions.py`:
+   - *Kept keys.* Every group pair kerned (≤ 0) in the style this one
+     is generated from (Regular for Italic and Bold, Italic for Bold
+     Italic), whose group on either side holds a guarded member of that
+     side, either is a key of this style's kerning (at any value, 0
+     too), or every guarded member beside every member of the other
+     side stands at GUARD or more unkerned. This is the phase-3 fault
+     as a set comparison; it holds today in all three styles with no
+     list.
+   - *Held white.* For every guarded letter and every member of the
+     other side of a pair its group has (the pairs `guard` walks, and
+     the exceptions it wrote): `Profiles.gap` at the value the pair
+     takes ≥ GUARD − 4. The 4 is the Italic's 37: the guard measures
+     before a later step rounds (not looked for which; if it is one
+     step, mend it there and take the 4 back to 1). Pairs listed in
+     `kern_clear.PAIRS` as reviewed are left out by reading PAIRS, not
+     by a second list.
+   - *Positive pairs.* `guard` skips a group pair above 0 (`v > 0`):
+     a pair loosened for the model may still be too little for the
+     member's mark. Take the condition out (measure at any value); the
+     68 and 239 rows are what it then answers, less the reviewed ones.
+     This changes kerning: its own commit, the shaping report read for
+     loosenings only, as for any kern_clear change.
+   The measure is the guard's own (`kern_coverage.Profiles`, GUARD),
+   not the sweep's `Ink`: a test that measures otherwise than the step
+   it holds disagrees with it at the limit.
+2. **The unkerned rest is not a guard fault and gets no blanket rule.**
+   The 2640 and 8119 are pairs with no entry on either side's group.
+   Most are nobody's text: a lowercase letter or a capital before a
+   Greek capital with its breathing at the left (three fifths of the
+   Regular's, four fifths of the Italic's: such a capital begins a
+   word), IPA letters beside Vietnamese or Croatian accents (ʐ ǰ,
+   ɠ ȉ). Others are never set as measured: f ſ before ȉ take the short
+   f (`short_f_entries`), so the UFO's pair is not the text's. An
+   invariant over all of them would be mended by thousands of
+   exceptions for pairs no one sets. They are found as phase 1 finds
+   signs: by family, each with the text that sets it, entered in
+   kern_clear (`accent_entries`, `ascender_entries` are two such) and
+   then swept. Candidates seen in the count, for the designer, none
+   judged: the italics' Ľ before ascenders and before Ɓ Ɗ Ƥ (Ľb −132),
+   Ầ before Ȉ Ï in capitals (−155, −103), ổ ể before Y V W T in the
+   italics (a lowercase before a capital: only in mixed setting), χ ϟ ϡ
+   ξ ζ before ϳ, ї after ї ё ҳ җ (−7 to 28), Q before ǰ ɉ ʝ.
+
+Order: the kept-keys and held-white assertions first (no font change;
+whatever held-white finds beyond the table goes into
+`tests/data/collisions*.txt` with its date, as the lists' rule says);
+then the positive pairs in `guard`; the families of point 2 only as the
+designer names them. The count's script is not kept: the test is it.

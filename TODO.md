@@ -696,6 +696,13 @@ alongside, each when the phase that needs it comes up.
 
 ### Alongside the phases
 
+- [ ] The guard's result held by a test (specified 2026-11-16:
+      `docs/claude/collisions.md`, its last section). Opus or Sonnet:
+      the kept-keys and held-white assertions in
+      `tests/test_collisions.py` (no font change), then `guard`
+      measuring positive pairs too (kerning changes: its own commit).
+      The unkerned pairs under GUARD are counted there by kind; the
+      families among them wait for the designer to name them.
 - [x] T5. Data apart from machinery in `derive.py`, `make_italic.py`,
       `make_bold.py` (about 2,900 lines each; make_bold 62 module-level
       tables beside 40 functions, a dozen imports inside functions

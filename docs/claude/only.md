@@ -54,14 +54,25 @@ more after moving one node of `n` in a copy of the source:
   slow one first (`cProfile`, by cumulative time, the top 15): if one whole-font pass holds most of it,
   say so in TODO.md before writing B; a cache for that pass may be the
   smaller change.
+- **One generator just over a minute and no pass holding most of it**
+  (the case found 2026-11-13: the Bold Italic, spread over the slit
+  check, smallcaps.py and the write): not stage B. Those passes read the
+  whole font, and a glyph that many read (n, o) has most of the font in
+  its closure, so B would keep them. What would shorten them is a cache
+  per pass, keyed as the stroke cache is; each is its own item, taken
+  only when the wait is felt. Decided so by the designer 2026-11-13
+  (TODO.md, T2).
 
 ## Stage A: the whole run into scratch
 
 `--out UFO` alone (no `--only`): TARGET is copied to `--out`
 (`shutil.copytree`, the old one removed first), the generator runs with
 `--out` in TARGET's place, exactly as `check_reproducible.reproduce` does
-on its copies. `make only` then draws the sheet from it. No change to the
-generators beyond the argument; `smallcaps.py` is run on `--out` by the
+on its copies. `make only` then draws the sheet from it. `--out` also
+sets `fontforge_inputs.READ_ONLY`: a whole run saves `sources/drafts`
+when a draft is stale or held, not only a run under `--only`, so the
+argument alone would have written under `sources/`. Otherwise no change
+to the generators; `smallcaps.py` is run on `--out` by the
 `make` target (make_italic runs it itself, line 2908, on the path it
 wrote).
 
@@ -185,7 +196,7 @@ glyphs, at every use.
 
 | | a run with `--out` or `--only` |
 |---|---|
-| reads | `sources/*.ufo`, `sources/oldstand`, `sources/drafts`, `tests/data/nfd-exceptions.txt` |
+| reads | `sources/*.ufo`, the Bold beside SOURCE for the Bold Italic's kerning (`italic_kerning`; the committed Bold where SOURCE is a scratch Italic with none beside it, said in the run's output), `sources/oldstand`, `sources/drafts`, `tests/data/nfd-exceptions.txt` |
 | writes | `--out`, `build/only/work/`, the stroke cache (keyed by content: the entry is the same whoever writes it) |
 | never | anything under `sources/` or `tests/data`: `--out` resolving inside `sources/` is refused before a file is opened; `fontforge_inputs.drafts` asked for a draft the store lacks ends the run ("run make generate") where a whole run would call FontForge and write `sources/drafts`; no `make normalize` |
 | locks | not the validation lock (nothing shared is written); `flock build/only/.lock`, so two runs do not share a work folder |

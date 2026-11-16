@@ -52,6 +52,13 @@ Carried out as spacing.md said; the values came out as the prototype's
   a generator's kerning change is checked with the guard's measure over
   every member, kerned or not (phase 1's sweep).
 
+Answered on Fable, 2026-11-16 (collisions.md, "The guard's result held
+by a test"): a test on the result (the source's kerned group pairs with
+guarded members stay keys; the guard's white measured again; positive
+pairs measured too), not a duty of each step. "Kerned or not" counted:
+the unkerned pairs under GUARD are thousands, mostly nobody's text, and
+go by family, not by an invariant.
+
 ## Phase 1's collision sweep (Opus, 2026-11-13)
 
 Built as `docs/claude/collisions.md` said, nothing in it wrong to carry
@@ -89,6 +96,9 @@ Carried out as `docs/claude/only.md` said; three gaps:
   19 s, smallcaps.py 22 s, write 12 s); stage B would not remove those
   for a glyph that is read by many. Left to the designer.
 
+Mended 2026-11-16 (only.md: the State table's third UFO, stage A's
+read-only store, step 0's third case with the designer's decision).
+
 ## T5, the tables into data modules (Opus, 2026-11-13)
 
 Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
@@ -102,6 +112,8 @@ Carried out as `docs/claude/tables.md` said, in four commits; two gaps:
   table's value changed. Proof (b) caught it; the strings stay as written.
   The page's rule for pointers should say "comments and docs, never a
   string in a table".
+
+Mended 2026-11-16 (tables.md, the order's point 4).
 
 ## Phase 2, the Regular's missing kerning (Opus, 2026-11-13)
 
