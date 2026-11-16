@@ -315,7 +315,7 @@ whatever held-white finds beyond the table goes into
 then the positive pairs in `guard`; the families of point 2 only as the
 designer names them. The count's script is not kept: the test is it.
 
-## The italics' `„`: neither kerning nor a narrower sign (2026-11-16, Fable; not built)
+## The italics' `„`: neither kerning nor a narrower sign (2026-11-16, Fable; the low quotes built the same day)
 
 The question left open (open-for-fable.md): the italics' `„` before a
 slanted foot, the sweep's largest family, to be loosened pair by pair or
@@ -358,5 +358,26 @@ the wrong place in its advance.
   to see on a sheet; none judged here, and no change without it.
 
 Order: the low quotes first (one rule in make_italic, `make generate`,
-the shaping report, the sweep's sheet for `„`), as an Opus session; the
-36 on one sheet for the designer before anything else moves.
+the shaping report, the sweep's sheet for `„`); the 36 on one sheet for
+the designer before anything else moves.
+
+Built 2026-11-16: `data_italic.ITALIC_STANDS_AS` names the sign each low
+quote stands as (the comma), and `make_italic.stand_as` moves the
+composite's parts together, on the final bearings, until its left
+bearing is that sign's; the advance stays. The shift is measured, not a
+constant: 241 in the Italic. The Bold Italic takes the Italic's offsets
+through `tx_offset` (250; its `‚` stands within 9 units of its own
+comma, `„` on it). Bearings after: Italic `‚` 44 and 180, `„` 44 and
+154; Bold Italic `‚` 84 and 196, `„` 93 and 170. `„`'s right bearing is
+less than the comma's by the high double quote's own tightness (its
+advance is the Regular's 900 on a wider single quote); left so, as `”`.
+kern_clear's entries with `„` on the left fell from 1432 to 329 in the
+Italic and from 1420 to 155 in the Bold Italic (what is left: the
+letters reaching left below the baseline or at it, f ſ and their kind,
+Ά, the capitals with a slanted foot); nothing else in the kerning
+changed, and the sweep stays empty in all four styles. What a reader
+sees: the hole before `„` closed by the shift, and the white after it no
+longer kern_clear's least everywhere but the sign's own (wider than
+before by up to the shift where the old entry was small). Held by
+`tests/test_collisions.py::test_low_quotes_stand_as_the_comma`; sheet
+`proofs/2026-11/low-quotes-italics-2026-11-16.pdf`.

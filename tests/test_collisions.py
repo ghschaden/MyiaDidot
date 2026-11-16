@@ -166,3 +166,25 @@ def test_ascenders_by_their_base_letter():
     asc = set(kern_clear.sets(ufoLib2.Font.open(REGULAR))["ASCENDERS"])
     assert {"b", "l", "lcaron", "uni1E37", "thorn", "uni0431"} <= asc
     assert not {"i", "j", "ibreve", "icircumflex", "uni0456", "uni0457", "ij", "t"} & asc
+
+
+# the italics' low quotes (docs/claude/collisions.md, "The italics' „")
+
+BI_FOLLOWS = 12  # the Bold Italic's offset follows the Italic's (tx_offset), its comma its own
+
+
+def test_low_quotes_stand_as_the_comma(ufo_path):
+    """„ and ‚ are the high quote moved down, and the high quote leans right
+    of its advance: in the italics they are set where the comma stands, and
+    do not overhang what follows (kern_clear mended that letter by letter)."""
+    from data_italic import ITALIC_STANDS_AS
+
+    font = ufoLib2.Font.open(ufo_path)
+    if not font.info.italicAngle:
+        pytest.skip("upright: the high quote stands in its advance")
+    slack = 0 if "Bold" not in ufo_path.stem else BI_FOLLOWS
+    for name, ref in ITALIC_STANDS_AS.items():
+        g = font[name]
+        left, _, right, _ = g.getBounds(font)
+        assert abs(left - font[ref].getBounds(font).xMin) <= slack, f"{name}: left bearing {left}, {ref}'s differs"
+        assert right <= g.width, f"{name} overhangs its advance by {right - g.width}"

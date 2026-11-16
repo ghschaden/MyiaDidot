@@ -671,6 +671,14 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
                        # ɦ.sc (from Ɦ): the least white before its hook as h.sc h.sc's
                        # (107; Ɦ's advance kept, it stood 145, the draft's -19)
                        "uni0266.sc": (-38, 0)}
+# the low quotes are the high one moved straight down (the Regular's
+# offsets), and the high one is placed for its height, leaning right of its
+# advance: at the baseline they stood right of the comma's place and
+# overhung what follows, which kern_clear mended letter by letter. Each
+# stands as the sign named here: its parts moved together until its left
+# bearing is that sign's, the advance kept (the Bold Italic follows:
+# make_bold's tx_offset)
+ITALIC_STANDS_AS = {"quotesinglbase": "comma", "quotedblbase": "comma"}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}

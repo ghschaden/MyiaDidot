@@ -26,6 +26,19 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-16 The italics' low quotes set where the comma stands
+  „ and ‚ are the high quote moved straight down, and in the italics the
+  high quote leans right of its advance: at the baseline the low quotes
+  stood about 240 units right of the comma's place, with a hole before
+  them, and overhung what follows, which kern_clear mended with an entry
+  for nearly every letter (and nothing mended before a space). Now
+  make_italic moves their parts until the left bearing is the comma's
+  (data_italic.ITALIC_STANDS_AS; the advance kept), and the Bold Italic
+  follows. Most of the entries with „ on the left fall away (about a
+  quarter left in the Italic, a ninth in the Bold Italic: before f, ſ,
+  slanted feet and the like). The Regular and the Bold are untouched.
+  Sheet: proofs/2026-11/low-quotes-italics-2026-11-16.pdf.
+
 2026-11-16 Italic figures, signs, Greek and Cyrillic capitals redrawn onto clean nodes
   112 of the Italic's letters taken from Old Standard redrawn (shapes kept
   within the fit, nodes rebuilt): the lining figures 1 to 9, the

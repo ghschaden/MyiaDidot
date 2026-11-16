@@ -76,6 +76,7 @@ from data_italic import (
     ITALIC_RUNS,
     ITALIC_SC_RECIPES,
     ITALIC_SIDEBEARINGS,
+    ITALIC_STANDS_AS,
     ITALIC_UNKERNED,
     KEPT_SLOPED,
     KX,
@@ -2003,6 +2004,21 @@ def move_parts(font, regular, marks, rule_made):
 
 
 
+def stand_as(font, table=ITALIC_STANDS_AS):
+    """A composite whose parts were moved down or up from where they were
+    placed (the low quotes) set where the sign named for it stands: all its
+    parts moved by one shift, to that sign's left bearing; the advance stays.
+    Returns {name: shift}."""
+    shifts = {}
+    for name, ref in table.items():
+        g = font[name]
+        shift = round(font[ref].getBounds(font).xMin - g.getBounds(font).xMin)
+        for c in g.components:
+            xx, xy, yx, yy, dx, dy = c.transformation
+            c.transformation = (xx, xy, yx, yy, dx + shift, dy)
+        shifts[name] = shift
+    return shifts
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -2313,6 +2329,7 @@ def main():
     # and again (the side bearings above, carrying composites along, moved
     # them again each run: г.loclSRB -80 a run)
     restore_kept()
+    stand_as(font)  # the low quotes where the comma stands (on the final bearings)
     # an alias a recipe made (Serbian д of g) follows its letter's final width,
     # as derive.py's do in the Regular
     for g in font:
