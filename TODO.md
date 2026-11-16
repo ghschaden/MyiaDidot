@@ -225,6 +225,13 @@ the other models. One item per session.
       lines), the Italic's lighter ascender stems onto phase 6's sheet,
       the small caps' fit at drafting as a trial, the Bold's extremes
       after the designer's word.
+      2026-11-16: the first two done. The marks pass through
+      `with_extremes` in make_italic (quality-Italic.txt 624 -> 592
+      lines, quality-BoldItalic.txt 613 -> 584; the Bold Italic's marks
+      moved by up to 2 units, its Hook lost a stray node: longtail.md,
+      family 1). The long stems are measured (`italic_measures.py`,
+      `long stem` rows; italic.md, "The long stems"): Old Standard's
+      drawing, inside the range, a question for the sheet.
 
 Budget (2026-11-12): F1 to F4 are done, of F6 the pages for T2 and
 phase 1's sweep, of F7 both batches. The limits now:
@@ -883,7 +890,10 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
 - [ ] (Specified and measured: `docs/claude/italic.md`, 2026-11-15,
       `scripts/quality/italic_measures.py`; its first run's findings
       are there, nearly all of them the Regular's side. The sheet is
-      Opus's, the choice among the five proposals the designer's.)
+      Opus's, the choice among the five proposals the designer's;
+      with them the question of the long stems, 2026-11-16: l t f and
+      the ascenders and descenders an eighth lighter than n's stem, as
+      Old Standard's, or brought to it.)
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %

@@ -95,7 +95,24 @@ In the order of "lines removed for the work it takes". "Checked" means
 the cause was read from the code or measured on 2026-11-15; "proposed"
 means it follows from the sort and wants its trial.
 
-### 1. The italics' marks without their extremes (checked; Opus, small)
+### 1. The italics' marks without their extremes (mended 2026-11-16)
+
+Done as proposed below: 33 lines gone from the Italic's list, 32 from
+the Bold Italic's (65 findings and 65), four lines shortened to one
+finding and left (the Italic's uni1FC0.iota at the threshold itself;
+the Bold Italic's Horn horn uni033C, the stroker's). What the proposal
+had wrong: **the Bold Italic does move**, since its marks are stroked
+from the Italic's nodes. The Italic moved by 0.8 units at most (the
+new nodes' rounding), the Bold Italic's marks by 2.1 at most, but for
+Hook: 9 units, where the stroker had left a stray node beside the
+counter's top that the new node takes away (looked at: the outline is
+otherwise the old one). Kerning that is measured from outlines went
+with them by 1 or 2 units in 37 pairs of the Italic and 87 of the
+Bold Italic (two there by 3: Φ before Ὅ and ᾍ), and two of ổ's pairs
+with superiors are no longer needed there. So:
+a node added in the Italic is a change of shape in the Bold Italic,
+small, and wants the sweep there too.
+
 
 Italic `marks extreme` 33 lines, 58 findings; the Bold Italic's 32
 lines are their `parent` lines. Cedilla, ogonek, hook, horn, ring,
@@ -206,7 +223,7 @@ clusters with five lines and more:
 
 | cluster | lines | reading (to be confirmed on a sheet) |
 |---|---|---|
-| Italic `stroke Latin lc lighter` with `weight` b d k l p q | 46 + 6 | the Italic's ascender and descender stems are lighter than n's: l 149 against 195 at half the x-height, k 162, b 161, p 168, d q 171; f ſ t 150 to 160 against 183. Not in italic.md's first run: its stem is the median of i l n m h u, which the x-height letters decide. **For phase 6's sheet**, before any single line is judged |
+| Italic `stroke Latin lc lighter` with `weight` b d k l p q | 46 + 6 | the Italic's ascender and descender stems are lighter than n's. **Measured 2026-11-16** (italic.md, "The long stems"; `italic_measures.py`'s `long stem` rows): 0.87 to 0.90 of the x-height letters' stem, Old Standard's own drawing (0.87 to 0.88; the Bodonis 0.95 to 1.02), so inside the range and the designer's question on phase 6's sheet. The list's numbers overstate it (l 149 against 195: the check reads n's stem where the arch leaves it; against the stem 0.88) |
 | Regular `stroke Greek lc lighter` | 19 | the Greek lowercase is drawn lighter than n (α δ γ ι π ρ τ ...): one decision |
 | Italic and Bold Italic `slant past the angle` | 39 | n u m ı and what is made of them (19.7 degrees for 15.2), и п т ц ш щ, v w y: the entry strokes and diagonals read as stems by the measure; the family is the letter n's, see redraw.md's hand-back list |
 | Italic `slant upright of the angle` | 28 | C G S, c.sc g.sc s.sc and their followers (11.7 to 13.1 degrees): rounds, measured on what the check takes for a stem |
@@ -277,7 +294,7 @@ lines.
 
 ## The order
 
-1. Family 1 (marks): Opus, an hour, 65 lines, no shape moves.
+1. Family 1 (marks): done 2026-11-16, 65 lines.
 2. Family 2 with phase 5's batches: Sonnet, as planned.
 3. Family 5's sheets for the designer, the Italic's stems first, since
    it belongs to phase 6's review that is waiting anyway.

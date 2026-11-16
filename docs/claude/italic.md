@@ -84,6 +84,7 @@ Two kinds of measure:
 | | on | how | kind, scale |
 |---|---|---|---|
 | stem | median of i l n m h u; of H I E L | across, a third up | relation, over the zone |
+| long stems | l t f; b d h k; p q, each over the stem above | l t f across, a third up; b d h k halfway between the x-height and the top, p q halfway down the descender, where the stem stands alone (`long_stem`) | relation, over the stem |
 | hairline | o top and bottom, e's bar, n's arch between its stems, v's thin stroke; H's bar, O's top, A's thin stroke | across, where thinnest (o O: over the middle half of the width; v A: the thinner of two runs at half, 0.65 of the zone) | relation, over the stem (the contrast) |
 | colour | a-z together, and each | ink in the x-zone over advance x x-height | relation |
 | width | a-z's advances (mean); n o e a each; A-Z, H O | advance | relation, over the zone |
@@ -257,6 +258,47 @@ given, for the sheet to show and the designer to choose from:
 
 Not found, though TODO.md's phase 6 named them: the serifs' length and
 thickness, the hairlines of the lowercase, colour and width as a whole.
+
+## The long stems (2026-11-16)
+
+Added after longtail.md's family 5 found 52 lines of the Italic's
+quality list saying one thing (`stroke Latin lc lighter`, `weight` on
+b d k l p q). The first run could not see it: its stem is the median of
+i l n m h u, which the x-height letters decide.
+
+| long stem over the x-height letters' stem | Myia | Old Standard | Bodoni Moda | Libre Bodoni | Libertinus, Charis |
+|---|---|---|---|---|---|
+| Italic, l b d h k f t p q | 0.87 to 0.90 | 0.87 to 0.88 | 0.95 to 1.01 | 0.96 to 1.02 | 0.98 to 1.01 |
+| Regular, the same | 1.00 (t 0.99) | 1.00 | 1.00 to 1.03 | 1.00 | 1.00 |
+
+- **Inside, all nine**, and by one font: Old Standard draws its italic
+  so, and Myia's Italic has it from there to within 2 %. An x-height
+  stem (i n u m) swells to its middle between the entry and the exit
+  hook; a stem that leaves the x-height (l t f, the ascenders and
+  descenders of b d h k p q) is one thickness from end to end, an
+  eighth lighter. The two Bodonis and both second voices draw every
+  italic stem alike.
+- So by the gate it is no fault: a Didone italic may do this, one of
+  three does. It is a **question for the designer on the sheet**, not
+  an entry of the change list: kept as Old Standard's (the 52 lines
+  then `designed`), or the long stems brought to the x-height letters'
+  (a family's change in the core set: "Where a fault is mended", second
+  row, with `reweight` on nine kept letters and what is built on them).
+  Beside the Regular, whose stems are all one, the Italic's l stands at
+  0.87 of the roman l's weight on its own scale where its n stands at
+  0.99; the Didones' l at 0.87 to 0.93.
+- The quality list overstates it. `checks.weights` takes its reference
+  from n's first run at half the x-height, and an italic n's arch
+  leaves the stem there: 195 units where the stem a third up is 162.
+  "l 149 against 195" is 0.76; against the stem it is 0.88. The check's
+  reference is left as it is until the designer has answered (the lines
+  stay either way: 0.88 is at its tolerance of 12 %), but no line of
+  this cluster should be read by its number.
+
+On the sheet: one row n i u | l t f | b d h k | p q at 144 pt with the
+marked places, Myia's two styles beside Old Standard's and Bodoni
+Moda's pairs, and the running text's words chosen to hold them (hill,
+full, little, tilt).
 
 ## What is left to build
 

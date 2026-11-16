@@ -75,11 +75,14 @@ PAIRS = [
 LOWER = "abcdefghijklmnopqrstuvwxyz"
 UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 STEMS = {"lc": "ilnmhu", "uc": "HIEL"}
+# the stems that leave the x-height, each over the x-height letters' stem
+# (an italic's may be drawn lighter: Old Standard's are, the Bodonis' not)
+LONG = "lbdhkftpq"
 # a and g are not among the balls: single-storey in an italic, their
 # regions (bold_measures.BALLS) hold a bowl's top or a stem there
 BALLS = "cfryj"
 # the letters drawn by --marks
-SHOWN = "nioecvfryjgpqlubdHIELOAxz"
+SHOWN = "nioecvfryjgpqlubdhktHIELOAxz"
 
 
 class Cut:
@@ -155,6 +158,22 @@ def stem(c, index=0):
     t, run = across(c.row, c.zone / 3, lambda s: _near(s, runs[index]))
     if t is not None:
         c.mark(run[0], c.zone / 3, run[1], c.zone / 3)
+    return t
+
+
+def long_stem(c):
+    """The stem of a letter with an ascender or a descender, where it
+    stands alone: halfway between the x-height and the letter's top (b d
+    h k), halfway down the descender (p q); the widest run there. A letter
+    whose stem is free a third of the way up (l t f) is measured by stem."""
+    y = (c.zone + c.y1) / 2 if c.y1 - c.zone > -c.y0 else c.y0 / 2
+    runs = [r for r in c.row(y) if r[1] - r[0] < 0.45 * c.zone]
+    if not runs:
+        return None
+    widest = max(runs, key=lambda r: r[1] - r[0])
+    t, run = across(c.row, y, lambda s: _near(s, widest), strict=True)
+    if t is not None:
+        c.mark(run[0], y, run[1], y)
     return t
 
 
@@ -350,6 +369,10 @@ def measure(src):
     uc = statistics.median(widths["uc"]) if widths["uc"] else None
     put("stem lc / x-height", lc, xh)
     put("stem uc / cap height", uc, cap)
+
+    for ch in LONG:
+        if C(ch):
+            put(f"long stem {ch} / stem", stem(C(ch)) if ch in "ltf" else long_stem(C(ch)), lc)
 
     o, O = (ring(C(ch)) if C(ch) else {} for ch in "oO")
     hair = o.get("top")

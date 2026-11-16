@@ -75,6 +75,17 @@ def test_stem_a_third_of_the_way_up_not_the_hairline_beside_it():
     assert im.stem(c) == pytest.approx(80)
 
 
+def test_long_stem_where_it_stands_alone_above_the_x_height_or_below_the_line():
+    # d: a bowl's stroke of 90 left, the stem of 70 right, running up to 760;
+    # p: the stem of 70 left, running down to -240, the bowl's stroke right
+    src = Drawn(d=[box(100, 0, 190, 500), box(300, 0, 370, 760), box(190, 0, 300, 60)],
+                p=[box(100, -240, 170, 500), box(280, 0, 370, 500), box(170, 440, 280, 500)])
+    for ch, y in (("d", 630), ("p", -120)):
+        c = im.cut(src, ch)
+        assert im.long_stem(c) == pytest.approx(70)
+        assert c.marks[-1][1] == pytest.approx(y)
+
+
 def test_serif_of_60_by_12_on_a_stem_of_80():
     src = Drawn(I=[box(160, 0, 240, 700), box(100, 0, 300, 12), box(100, 688, 300, 700)])
     f = im.foot(im.cut(src, "I"))

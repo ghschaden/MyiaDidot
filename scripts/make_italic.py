@@ -106,7 +106,7 @@ from data_italic import (
 from derive import BIG, draw_path, embolden, rezone
 from drawn import is_drawn
 from fontforge_inputs import source_font
-from italic_geometry import ANGLE, CAP, SLANT, XH, shear, upright
+from italic_geometry import ANGLE, CAP, EXTREME_PAST, SLANT, XH, shear, upright
 from make_bold import WHOLE_KEY, mark_like, redraw, write
 from respace import CUT_KEY, classifier, respace, sidebearings, undo
 from smallcaps import ink_bounds, ink_slice
@@ -1437,7 +1437,6 @@ def uncrossed(up, name, rec=None):
     """up[name] (or rec, drawn into it) with no contour crossing itself or
     another (pathops), its curves split again at their extremes"""
     import pathops
-    from italic_geometry import EXTREME_PAST
 
     g = up[name]
     if rec is None:
@@ -1648,7 +1647,6 @@ def as_capitals(font, made, height):
     sys.path.insert(0, str(Path(__file__).resolve().parent / "quality"))
     import pathops
     from derived import Outline
-    from italic_geometry import EXTREME_PAST
     from strokes import main_stroke
 
     def weight(name, top):
@@ -2074,7 +2072,11 @@ def main():
                 for c in g.contours:
                     c.draw(rec)
                 out = ufoLib2.objects.Glyph()
-                rec.replay(TransformPen(out.getPen(), t))
+                slanted = RecordingPen()
+                rec.replay(TransformPen(slanted, t))
+                # split where the slant moved a curve past its points, as
+                # shear does for the letters (nodes added, no shape moved)
+                derive.with_extremes(slanted, out.getPen(), round_points=False, past=EXTREME_PAST)
                 redraw(g, out)
             for c in g.components:
                 xx, xy, yx, yy, dx, dy = c.transformation

@@ -1,7 +1,6 @@
 # Known scripts/quality/checks.py findings (glyph kind count); fixing one = deleting its line.
 Aogonek smooth 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 992,-305 2.3 degrees
 C slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.0 degrees, not 15.2
-Cedilla extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 455,-198 7 units past; 258,-604 7 units past
 Cedilla wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 421,-169 115 degrees
 Deltagreek stroke 1              # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: uc 261 against 292 (0.90, lighter)
 Deltagreek zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +30 from 1434
@@ -9,22 +8,19 @@ Eng stroke 1                     # stroke weights against the kind's (scripts/qu
 Euro step 4                      # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed in proofs (γ & ξ ү q.sc), new findings proofed: 129,619 38 units aside
 G slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.4 degrees, not 15.2
 G wobble 1                       # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 1 against 0: 1083,144 9 degrees
-Hook extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 928,1874 5 units past; 923,1714 14 units past
 Hook kink 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 778,1791 6.1 degrees
-Horn extreme 2                   # horns heavier, Ư on its own base (U.horn), horns fitted to their base: 646,324 6 units past; 681,550 6 units past
+Horn extreme 1                   # horns heavier, Ư on its own base (U.horn), horns fitted to their base: 690,389 6 units past
 J extreme 1                      # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 209,160 8 units past
 J wobble 1                       # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 2 against 0: 220,149 103 degrees; 224,122 13 degrees
 Lambda zone 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +30 from 1434
 M zone 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
 Mu zone 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
 N stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 191 against 307 (0.62, lighter)
-Ogonek extreme 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 247,-274 8 units past; 234,-530 8 units past
 Oslashacute accent 1             # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 Psi zone 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +26 from 1434
 Q wobble 1                       # O and Q drawn in the Italic; small caps measured against the real o.sc (sc_late); reviewed on proofs/*-late-2026-11-12.pdf: 1 against 0: 678,-108 4 degrees
 Q_u wobble 1                     # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: 1 against 0: 1751,352 6 degrees
 R zone 1                         # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -23 from 0
-Ring extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 968,1944 6 units past; 856,1532 6 units past
 S slant 1                        # 2026-10-21 Italic reweighted and tightened: 13.1 degrees, not 15.2
 Sigma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 177 against 307 (0.58, lighter)
 T_h wobble 1                     # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 2 against 0: 1935,206 14 degrees; 1883,704 15 degrees
@@ -54,14 +50,7 @@ at extreme 2                     # 2026-10-16 Bold Italic: first generated (make
 betasymbolgreek zone 1           # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +9 from 1434
 bracketleft kink 2               # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 810,1365 4.4 degrees; 360,-320 4.6 degrees
 bracketright kink 2              # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 88,-320 4.5 degrees; 538,1365 4.5 degrees
-breve extreme 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 733,1077 7 units past
-breve.i extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 736,1090 5 units past
 c.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 9.4 degrees, not 15.2
-cedilla extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 442,-156 5 units past
-commaaccent extreme 1            # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 409,-112 7 units past
-cyrBreve extreme 3               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 671,1766 6 units past; 1123,1966 8 units past; 849,1506 8 units past
-cyrbreve extreme 2               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 927,1346 7 units past; 714,1008 5 units past
-cyrflex extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 820,1398 7 units past
 dcroat extreme 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 902,1334 7 units past
 dcroat wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 795,148 24 degrees; 783,84 16 degrees
 delta.sc stroke 1                # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 264 against 300 (0.88, lighter)
@@ -101,10 +90,9 @@ gamma slant 1                    # 2026-11-12: Italic Greek and Cyrillic lowerca
 gamma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 170 against 279 (0.61, lighter)
 h wobble 1                       # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 1 against 0: 709,704 9 degrees
 hbar slant 1                     # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: 17.2 degrees, not 15.2
-hook extreme 2                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 798,1406 7 units past; 802,1225 14 units past
 hook kink 2                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 635,1313 4.2 degrees; 693,1270 1.7 degrees
 hook wobble 1                    # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 722,1107 11 degrees; 787,1358 35 degrees; 776,1333 12 degrees
-horn extreme 2                   # italic horns 1.2x the Regular's (make_italic ITALIC_HORN), as heavy as the reference italics': 649,329 6 units past; 686,560 6 units past
+horn extreme 1                   # italic horns 1.2x the Regular's (make_italic ITALIC_HORN), as heavy as the reference italics': 649,329 6 units past
 horn wobble 1                    # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 650,333 4 degrees; 655,355 109 degrees
 i accent 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above dotaccent gap 346, usually 194
 integral extreme 1               # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 114,-479 9 units past
@@ -145,7 +133,6 @@ nine stroke 1                    # 2026-10-21 Italic reweighted and tightened: u
 o.sc smooth 1                    # 2026-11-05 Bold Italic counters from the Italic (o o.sc O 0, slashed; recipe scale and hinting zones moved with o): reviewed: 440,648 2.2 degrees
 oe stroke 1                      # 2026-11-10: Italic n a e o s g redrawn onto clean nodes and what follows them; stems run straight into their serifs (stem_joins); bowls redone as two curves (bowl_counters); approved on the sheets of
 oe.sc wobble 1                   # 2026-11-12: the Italic's capitals A-Z redrawn onto clean nodes and what follows them: 2 against 1: 408,676 3 degrees; 331,256 4 degrees
-ogonek extreme 2                 # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 238,-263 8 units past; 227,-490 7 units past
 omega.sc slant 1                 # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: 17.6 degrees, not 15.2
 omega.sc zone 1                  # 2026-10-21 Italic reweighted and tightened: top +28 from 1040
 oogonek zone 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: bottom +14 from -462
@@ -160,7 +147,6 @@ psi.sc smooth 2                  # 2026-11-12: the Italic's capitals A-Z redrawn
 psi.sc zone 1                    # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +22 from 1040
 quotereversed extreme 1          # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 358,1132 16 units past
 r.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): bottom -20 from 0
-ring extreme 4                   # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 845,1492 9 units past; 718,1024 9 units past; 623,1258 7 units past; 941,1258 6 units past
 s stroke 1                       # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 197 against 279 (0.71, lighter)
 s.sc slant 1                     # 2026-10-21 Italic reweighted and tightened: 12.7 degrees, not 15.2
 s.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 163 against 273 (0.60, lighter)
@@ -381,17 +367,10 @@ uni02B0 wobble 1                 # the Italic's b-z redrawn, f's hook, followers
 uni02B7 wobble 1                 # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: 1 against 0: 702,630 5 degrees
 uni02B8 smooth 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 513,516 2.5 degrees
 uni02B8 wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 6 against 0: 300,318 53 degrees; 295,295 3 degrees; 235,708 6 degrees; 332,935 6 degrees; 355,980 38 degrees; 365,1020 6 degrees
-uni02BB extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 495,984 8 units past
-uni02BC extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 604,1516 7 units past
 uni02C1 kink 1                   # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni02C1 smooth 1                 # 2026-11-05 Bold Italic counters from the Italic (o o.sc O 0, slashed; recipe scale and hinting zones moved with o): reviewed: 683,1254 2.4 degrees
-uni02DE extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 365,696 7 units past
 uni02E1 wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 3 against 0: 180,693 17 degrees; 182,702 22 degrees; 324,580 4 degrees
-uni02F3 extreme 4                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 288,-45 7 units past; 179,-444 8 units past; 101,-244 6 units past; 367,-244 5 units past
-uni0315 extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 281,1516 7 units past
-uni031C extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -688,-328 8 units past; -578,-562 10 units past
-uni0339 extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -481,-94 10 units past; -370,-328 8 units past
-uni033C extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -617,-149 7 units past; -345,-149 5 units past
+uni033C extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): -617,-149 7 units past
 uni0359 kink 2                   # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: -577,-244 4.8 degrees; -436,-244 3.5 degrees
 uni0359 smooth 1                 # Italic saved with smooth rounding (make_italic ROUND_PLAIN keeps the rest plain); Bold Italic made of its outlines: -624,-419 2.1 degrees
 uni0359 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 1: -477,-331 160 degrees; -515,-435 3 degrees; -515,-439 6 degrees; -583,-333 160 degrees
@@ -532,16 +511,8 @@ uni1DA4 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni1DB6 wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 2 against 0: 361,1024 12 degrees; 375,623 28 degrees
 uni1DBB wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 3 against 1: 318,716 26 degrees; 271,689 10 degrees; 635,704 3 degrees
 uni1E9E stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: uc 369 against 304 (1.21, darker)
-uni1FBF extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 646,1458 8 units past; 654,1195 6 units past
-uni1FCD extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 441,1438 9 units past
-uni1FCE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 543,1458 9 units past; 560,1181 8 units past
-uni1FCF extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 615,1370 8 units past; 648,1102 7 units past
-uni1FDD extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 376,1197 6 units past; 478,1000 9 units past
-uni1FDE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 427,1169 9 units past; 458,973 13 units past
-uni1FDF extreme 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 647,941 7 units past
 uni1FE8 accent 1                 # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
 uni1FE9 accent 1                 # Private Use code points removed (53: old-style figures, capital accents, Greek letters with marks), reached by features and components; old-style figures named one.osf in the compiled fonts (the perso
-uni1FFE extreme 2                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 565,1209 7 units past; 683,987 10 units past
 uni2042 smooth 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 491,749 2.4 degrees
 uni2071 wobble 1                 # 2026-11-05 Bold Italic counters from the Italic (o o.sc O 0, slashed; recipe scale and hinting zones moved with o): reviewed: 2 against 0: 346,959 11 degrees; 348,961 3 degrees
 uni207F wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 667,603 10 degrees; 666,1015 16 degrees; 338,972 28 degrees

@@ -26,6 +26,14 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-16 The italics' marks split at their extremes
+  The Italic's sloped marks (cedilla, ogonek, hook, horn, ring, breve, the
+  Greek breathings) get a node where the slant carried a curve past its
+  ends, as the letters have had; no shape moves in the Italic (under a
+  unit), the Bold Italic's marks follow by up to 2 units, its capital hook
+  above loses a stray node. Kerning measured from the outlines by 1 to 3
+  units in some pairs.
+
 2026-11-15 FONT-DESIGN.md back to open tasks only (T10, first part)
   529 lines to about 100: the finished work and its verdicts moved here,
   whole, as "Appendix: the design record"; the open items (wobbles, step
