@@ -335,10 +335,34 @@ installed twice for the same reason.
 
 | step | what | letters | how | model |
 |---|---|---|---|---|
-| A | balls, thin strokes, overshoots (2, 3, 5) | r c; v w y (and what is built on them: ŵ ẁ ẃ ẅ ý ỳ ...); o O | a small script per change (the ball shrunk about its centre on the stroke's own curve; the thin stroke by `reweight` on the hairline only; the overshoot by moving the round's extremes and their handles), fitted by redraw.py, one sheet | Opus writes the scripts, Sonnet the sheet and the install |
+| A | balls, thin strokes (2, 3; the overshoots went to C, below) | r c; v w y (and what is built on them: ŵ ẁ ẃ ẅ ý ỳ ...); o O | a small script per change (the ball shrunk about its centre on the stroke's own curve; the thin stroke by `reweight` on the hairline only; the overshoot by moving the round's extremes and their handles), fitted by redraw.py, one sheet | Opus writes the scripts, Sonnet the sheet and the install |
 | B | the bowls wider (1) | n o d p q, b a g h m u, O (and whether C G Q D follow: on the sheet) | an operation that cuts a bowl at its vertical middle and moves the right half out, stems and hairlines untouched, the advance and the right side growing with it; widths of a-z and A-Z checked to stay inside after it. The designer may prefer to draw some by hand: the operation gives candidates | Opus (the operation), the designer on the sheet |
 | C | the ascenders raised and the long stems weighted (4, 6) | measured first: `italic_measures.py`'s `LONG` widened to ſ ß j and the Greek and Cyrillic letters with an ascender or descender; then every long stem `reweight`ed to the x-height letters' stem and the ascenders raised by 4 % of the cap height, in one install | one script over the family; make_italic's zone scaling and `WEIGHT` for the tail set to match | Opus (the measure and the script), Sonnet the sheets |
 | D | what follows | the ligatures on f t l ſ (about 30, many drawn), the derived letters (đ ħ ł ƀ ɓ ɗ ƙ ...), the drawn Bold Italic glyphs whose bases moved | `make generate`; the drawn ones each against what the generator now gives (redraw.md's steps 7 and 8, phase 8's step) | Sonnet |
+
+**Step A, 2026-11-17**: `scripts/italic_harmonise.py` (the
+constructions, each redrawn and gated as redraw.py does; the numbers
+calibrated on italic_measures' relation and printed by each run),
+candidates on `proofs/2026-11/italic-harmonise-a-2026-11-17.pdf`
+(Regular | today | step A, overlay, words):
+
+- r's ball scaled 0.81 about the top of its disc, c's 0.885, the neck
+  blended back over 2.3 radii (1.9 left a 7.9-degree kink in r's
+  neck); the advance loses what the right edge lost (r 819 -> 804,
+  c 808 -> 799). Relations 1.06 and 0.95, inside.
+- v's and w's rising thin strokes 10 units thinner across, the curves
+  quartered before the move (unquartered, the band moved only at the
+  stroke's far nodes and v lost 2 units where it is measured).
+  v's relation 1.07, inside. y has no such stroke: its right stroke is
+  its stem; not changed.
+- **The overshoots moved to step C.** The Italic's whole lowercase
+  reaches -23 (o c e a s d b, ο о с, and x n u with their exit hooks),
+  every round capital -35 and 1473 (O C G S Q Θ О С Э); the Regular's
+  -16, and -28 and 1462. o and O alone would stand out of line with
+  their neighbours: it is a zone, made in one install with the
+  ascenders (step C), the tail by make_italic's zone scaling.
+  italic_harmonise.py's `overshoot` is kept for it (it moves a glyph
+  along the italic angle by height); not run in step A.
 
 After each step: `make generate`, `make reproduce`, `redraw_sweep.py`,
 `make diffenator`, the second sheet with the Bold Italic, the quality

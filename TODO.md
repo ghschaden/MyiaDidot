@@ -920,11 +920,15 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       The order of work (A balls, thin strokes, overshoots; B the
       bowls; C ascenders and long stems together; D what follows):
       `docs/claude/italic.md`, "The designer's round".
-- [ ] A. r c balls, v w y thin strokes, o O overshoots (italic.md).
+- [ ] A. r c balls, v w thin strokes (italic.md): candidates on
+      proofs/2026-11/italic-harmonise-a-2026-11-17.pdf, for the
+      designer; then install, generate, sweep, second sheet. The
+      overshoots moved to C (a zone the whole Italic shares).
 - [ ] B. The bowls of n o d p q (b a g h m u) and O wider.
 - [ ] C. The long stems measured across the three scripts, then
       weighted to n's stem, with the ascenders raised to the
-      Regular's 4 % over the capitals, in one install.
+      Regular's 4 % over the capitals and the overshoots set to the
+      Regular's (lowercase -16, capitals -28 and 1462), in one install.
 - [ ] D. The ligatures, derived letters and drawn Bold Italic glyphs
       on the moved bases.
       One sheet Regular beside Italic, measured and seen: ball terminals
