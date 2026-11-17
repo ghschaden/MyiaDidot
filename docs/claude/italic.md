@@ -4,7 +4,8 @@ Phase 6's first step (TODO.md), specified 2026-11-15 on Fable and built
 the same day: `scripts/quality/italic_measures.py` (measures, gate and
 table in one; tests/test_italic_measures.py), its first run read and the
 specification corrected by it ("The first run" below). Not built: the
-sheet. The model is F4's `docs/claude/bold.md` and its two scripts.
+sheet (built 2026-11-17: `scripts/italic_sheet.py`, "What is left to
+build"). The model is F4's `docs/claude/bold.md` and its two scripts.
 
 The question: where does the Italic read as another typeface beside the
 Regular? The Regular is Theano Didot's, the Italic's letters are Old
@@ -302,10 +303,19 @@ full, little, tilt).
 
 ## What is left to build
 
-1. The sheet (`scripts/italic_sheet.py`, as bold.md's trial sheet): the
-   table, the rows at 144 pt for the findings above with the measured
-   place marked (the marks are in `Cut.marks`, `draw_marks` draws
-   them), the running text, the change list above. Opus.
+1. ~~The sheet~~ Built 2026-11-17: `scripts/italic_sheet.py`, rendered
+   as `proofs/2026-11/italic-against-regular-2026-11-17.pdf` (11 pages:
+   the table on two, a page per change-list entry and one for the long
+   stems, running text at 24 and 12 pt, the change list with a box per
+   entry to take or strike). It measures as italic_measures.py does
+   (the run of 2026-11-17 gave the first run's findings unchanged) and
+   draws each page's own measures only: a fresh `Cut` per measure, the
+   discs of balls and counters found again as bold_measures finds them
+   (`ball_disc`, `counter_disc`), the italics slanted back with their
+   marks. Each finding page sets the Didone whose relation lies nearest
+   Myia's; the long stems' sets Old Standard's and Bodoni Moda's. The
+   running text has no Greek in any reference and no Cyrillic in Bodoni
+   Moda (build/refs/); those places are left blank and say so.
 2. The references' marked letters looked through once (`--marks`): on
    Myia's two styles every place was checked on 2026-11-15; on the
    references only the values' plausibility (EB Garamond's q, Old

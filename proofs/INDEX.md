@@ -149,6 +149,7 @@ matching `docs/*-review-*.md` or in FONTLOG.txt's appendix.
 - ipa-a-roman-2026-11-06.svg
 - italic-bracket-j-candidates-2026-11-13.pdf
 - italic-cyrillic-lowercase-redraw-2026-11-12.pdf
+- italic-against-regular-2026-11-17.pdf
 - italic-f-hook-2026-11-11.pdf
 - italic-f-hook-ligatures-2026-11-11.pdf
 - italic-followers-after-redraw-2026-11-10.pdf

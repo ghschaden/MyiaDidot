@@ -912,6 +912,10 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       with them the question of the long stems, 2026-11-16: l t f and
       the ascenders and descenders an eighth lighter than n's stem, as
       Old Standard's, or brought to it.)
+      The sheet built 2026-11-17 (`scripts/italic_sheet.py`,
+      `proofs/2026-11/italic-against-regular-2026-11-17.pdf`): the
+      measures unchanged since the first run; waiting for the
+      designer's round on its change list.
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %
