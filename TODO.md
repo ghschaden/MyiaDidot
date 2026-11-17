@@ -914,8 +914,19 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       Old Standard's, or brought to it.)
       The sheet built 2026-11-17 (`scripts/italic_sheet.py`,
       `proofs/2026-11/italic-against-regular-2026-11-17.pdf`): the
-      measures unchanged since the first run; waiting for the
-      designer's round on its change list.
+      measures unchanged since the first run. The designer's round
+      the same day: all five proposals taken, and the long stems
+      brought to n's, as one family across Latin, Greek and Cyrillic.
+      The order of work (A balls, thin strokes, overshoots; B the
+      bowls; C ascenders and long stems together; D what follows):
+      `docs/claude/italic.md`, "The designer's round".
+- [ ] A. r c balls, v w y thin strokes, o O overshoots (italic.md).
+- [ ] B. The bowls of n o d p q (b a g h m u) and O wider.
+- [ ] C. The long stems measured across the three scripts, then
+      weighted to n's stem, with the ascenders raised to the
+      Regular's 4 % over the capitals, in one install.
+- [ ] D. The ligatures, derived letters and drawn Bold Italic glyphs
+      on the moved bases.
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %

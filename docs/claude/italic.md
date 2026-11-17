@@ -301,6 +301,52 @@ marked places, Myia's two styles beside Old Standard's and Bodoni
 Moda's pairs, and the running text's words chosen to hold them (hill,
 full, little, tilt).
 
+## The designer's round (2026-11-17)
+
+On `proofs/2026-11/italic-against-regular-2026-11-17.pdf`, all six taken:
+
+1. The bowls of n o d p q (and what shares them: b a g h m u) and O
+   wider, by about a tenth of the counter: **taken**.
+2. r's ball smaller by about a sixth, c's by a twelfth: **taken**.
+3. v's thin stroke (and w y's) thinner by about a tenth: **taken**.
+4. The ascenders raised to the Regular's, 4 % over the capitals:
+   **taken**.
+5. o's and O's overshoots taken back to the Regular's: **taken**; p's
+   foot left as it is.
+6. The long stems brought to the x-height letters' stem: **taken, as
+   one family across the three scripts**, not the nine Latin letters
+   alone. Old Standard lightens every stem that leaves the x-height;
+   bringing up only l t f b d h k p q would leave ſ (beside f in ſt ſſ
+   and the ligatures), ß, j's descender and the Greek and Cyrillic
+   ascenders and descenders (β ζ η φ ψ, б д ф ђ ћ and their kind)
+   lighter than the Latin beside them. The 52 `stroke Latin lc
+   lighter` and `weight` lines are then mended, not marked designed.
+
+Each change goes by "Where a fault is mended": a family's in the core
+set by one script over the kept letters, each result through
+redraw.py's gate and a sheet, **and** make_italic's constant or zone
+scaling set to the same value for the tail. Nothing in the Regular.
+
+### The order of work
+
+Small first, then the proportions, then the zones and stems together,
+so that each step starts from letters already final and no letter is
+installed twice for the same reason.
+
+| step | what | letters | how | model |
+|---|---|---|---|---|
+| A | balls, thin strokes, overshoots (2, 3, 5) | r c; v w y (and what is built on them: ŵ ẁ ẃ ẅ ý ỳ ...); o O | a small script per change (the ball shrunk about its centre on the stroke's own curve; the thin stroke by `reweight` on the hairline only; the overshoot by moving the round's extremes and their handles), fitted by redraw.py, one sheet | Opus writes the scripts, Sonnet the sheet and the install |
+| B | the bowls wider (1) | n o d p q, b a g h m u, O (and whether C G Q D follow: on the sheet) | an operation that cuts a bowl at its vertical middle and moves the right half out, stems and hairlines untouched, the advance and the right side growing with it; widths of a-z and A-Z checked to stay inside after it. The designer may prefer to draw some by hand: the operation gives candidates | Opus (the operation), the designer on the sheet |
+| C | the ascenders raised and the long stems weighted (4, 6) | measured first: `italic_measures.py`'s `LONG` widened to ſ ß j and the Greek and Cyrillic letters with an ascender or descender; then every long stem `reweight`ed to the x-height letters' stem and the ascenders raised by 4 % of the cap height, in one install | one script over the family; make_italic's zone scaling and `WEIGHT` for the tail set to match | Opus (the measure and the script), Sonnet the sheets |
+| D | what follows | the ligatures on f t l ſ (about 30, many drawn), the derived letters (đ ħ ł ƀ ɓ ɗ ƙ ...), the drawn Bold Italic glyphs whose bases moved | `make generate`; the drawn ones each against what the generator now gives (redraw.md's steps 7 and 8, phase 8's step) | Sonnet |
+
+After each step: `make generate`, `make reproduce`, `redraw_sweep.py`,
+`make diffenator`, the second sheet with the Bold Italic, the quality
+lines that fell deleted, baselines with their reports' digests; and
+`italic_sheet.py` run again, which should show the finding gone and
+nothing new outside. The italic kerning is computed from the shapes and
+moves with them: `make pairs` after B and C.
+
 ## What is left to build
 
 1. ~~The sheet~~ Built 2026-11-17: `scripts/italic_sheet.py`, rendered
@@ -320,5 +366,5 @@ full, little, tilt).
    Myia's two styles every place was checked on 2026-11-15; on the
    references only the values' plausibility (EB Garamond's q, Old
    Standard's i entry).
-3. After the designer's round: what is struck gets its date here; what
-   is taken goes by "Where a fault is mended".
+3. ~~After the designer's round~~ Done 2026-11-17: all taken, the
+   order of work above ("The designer's round").
