@@ -4,8 +4,11 @@
 	<outline>
 		<contour>
 			<point x="316" y="150" type="line"/>
-			<point x="235" y="-149" type="line" smooth="yes"/>
-			<point x="230" y="-168"/>
+			<point x="235" y="-149" type="line"/>
+			<point x="235" y="-149"/>
+			<point x="235" y="-150"/>
+			<point x="235" y="-150" type="curve"/>
+			<point x="230" y="-170"/>
 			<point x="227" y="-188"/>
 			<point x="227" y="-201" type="curve" smooth="yes"/>
 			<point x="227" y="-216"/>
@@ -14,8 +17,8 @@
 			<point x="248" y="-226"/>
 			<point x="263" y="-203"/>
 			<point x="274" y="-170" type="curve"/>
-			<point x="275" y="-165"/>
-			<point x="275" y="-161"/>
+			<point x="274" y="-165"/>
+			<point x="275" y="-160"/>
 			<point x="277" y="-155" type="curve" smooth="yes"/>
 			<point x="292" y="-99"/>
 			<point x="351" y="-53"/>
@@ -28,12 +31,12 @@
 			<point x="477" y="-169" type="curve"/>
 			<point x="476" y="-171"/>
 			<point x="476" y="-172"/>
-			<point x="475" y="-173" type="curve"/>
+			<point x="476" y="-173" type="curve"/>
 			<point x="456" y="-217"/>
-			<point x="411" y="-251"/>
-			<point x="365" y="-257" type="curve"/>
+			<point x="410" y="-252"/>
+			<point x="364" y="-257" type="curve"/>
 			<point x="322" y="-274"/>
-			<point x="273" y="-284"/>
+			<point x="272" y="-284"/>
 			<point x="222" y="-284" type="curve" smooth="yes"/>
 			<point x="96" y="-284"/>
 			<point x="10" y="-224"/>
@@ -113,11 +116,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-12</string>
+				<string>2026-11-18</string>
 				<key>glyph</key>
-				<string>43978757bc43</string>
+				<string>bddac455befd</string>
 				<key>review</key>
-				<string>docs/claude/redraw.md</string>
+				<string>proofs/2026-11/italic-bowls-b-bold-italic-2026-11-18.pdf</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>

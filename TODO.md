@@ -924,13 +924,21 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       proofs/2026-11/italic-harmonise-a-2026-11-17.pdf, for the
       designer; then install, generate, sweep, second sheet. The
       overshoots moved to C (a zone the whole Italic shares).
-- [ ] B. The bowls of n o d p q (b a g h m u) and O wider.
+- [ ] B. The bowls of n o d p q (b a g h m u) and O wider (italic.md):
+      scripts/italic_bowls.py, proofs/2026-11/italic-bowls-b-2026-11-17.pdf
+      and its running-text page; approved and installed 2026-11-17 with
+      C G Q D. Generated, followers placed (italic.md, "What
+      followed"); the second sheet (the Bold Italic, the followers)
+      approved 2026-11-18, baselines accepted. Left: `redraw_sweep.py`,
+      `make diffenator`, `make pairs`, italic_sheet.py run again.
 - [ ] C. The long stems measured across the three scripts, then
       weighted to n's stem, with the ascenders raised to the
       Regular's 4 % over the capitals and the overshoots set to the
       Regular's (lowercase -16, capitals -28 and 1462), in one install.
 - [ ] D. The ligatures, derived letters and drawn Bold Italic glyphs
-      on the moved bases.
+      on the moved bases; the Italic's ą ǫ ų Ǫ (ǭ Ǭ) not yet widened
+      with a o u O, ď's caron and advance not moved with d (italic.md,
+      "What followed").
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %

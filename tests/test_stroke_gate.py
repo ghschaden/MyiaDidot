@@ -46,13 +46,17 @@ WIDTHS = {"uni019C": (2446, 2414), "y": (1070, 1069), "uni028E": (1070, 1069), "
           "uni0446": (1188, 1187), "uni0448": (1670, 1669), "uni0449": (1666, 1669),
           # џ: 6 wider once its Italic letter was redrawn (2026-11-16); naming
           # its knee (ITALIC_BOLD_KNEES, as ц's) was tried and changed nothing
-          "uni045F": (1188, 1194)}
+          "uni045F": (1188, 1194),
+          # phase 6's step B (2026-11-18): the drawn u 3 right and 5 wider, where
+          # the run spaces it on the Italic's wider u (so ú ʉ Q_u built on it
+          # agree); sevenoldstyle a unit wider (n's stem 1.5 thinner, not traced)
+          "u": (1188, 1193), "sevenoldstyle": (900, 901)}
 # side bearings moved (left, right): Ɯ's right 4 wider, as U's in the Bold
 # Italic's optical fit after the capitals' redraw (U -224 -> -219)
-BEARINGS = {"uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0), "uni045F": (2, 4)}
+BEARINGS = {"u": (3, 2), "uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0), "uni045F": (2, 4)}
 _ANCHOR_NAMES = ("Top", "Bottom", "DotBelow", "Grave", "Acute", "Horn", "Dotaccent", "Ogonek", "Hook")
 ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
-           "u": {a: (-1, 0) for a in _ANCHOR_NAMES},
+           "u": {a: (2, 0) for a in _ANCHOR_NAMES},  # -1 (2026-11-11), +3 (step B)
            "uni01B4": {"DotBelow": (521, 0)}, "uni0438": {a: (-1, 0) for a in _ANCHOR_NAMES}}
 # ų: its stem's foot, a crotch drawn as a short line, now meets as one
 # point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it

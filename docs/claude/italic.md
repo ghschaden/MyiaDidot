@@ -364,6 +364,92 @@ candidates on `proofs/2026-11/italic-harmonise-a-2026-11-17.pdf`
   italic_harmonise.py's `overshoot` is kept for it (it moves a glyph
   along the italic angle by height); not run in step A.
 
+**Step B, 2026-11-17**: `scripts/italic_bowls.py` (the operation; tests
+in tests/test_italic_bowls.py), candidates on
+`proofs/2026-11/italic-bowls-b-2026-11-17.pdf` (Regular | today |
+step B, overlay, words). Nothing installed; built while step A waits
+for the designer (B touches none of r c v w).
+
+- Each counter is found on the row through the middle of the zone
+  (deslanted): the white between two ink runs (m has two; C and G,
+  open on the right, run from the left side's inside to the ink's
+  right edge). Everything right of the counter's middle moves out by
+  `WIDEN` units, eased in by smoothstep over the counter's middle 60 %,
+  so stems and thick sides move whole or not at all and only the
+  near-horizontal hairlines crossing the band stretch. Anchors move
+  with it; the advance grows by the same units, both sidebearings
+  stay. Only the curves reaching into the band are quartered before
+  the map: quartering b's short curve at its stem's foot let the
+  redraw drop the stem's edge node.
+- Units: n 34 (h m u with it), o 42, d p q 40 (a b g with them), O 140
+  (Q C G D with it when named). Relations after: counters n 0.703, o
+  0.880, d p q 0.829, b 0.880, O's width 0.959, all inside; widths n
+  1.003, o 0.925 (the range ends at 0.931), a-z 0.952, A-Z 0.966 (0.981
+  with C G Q D), hairlines o and n's arch inside.
+- **a's advance leaves the range**: 1.083 -> 1.125 against 1.026-1.085
+  (it was at the edge already). For the designer: a widened as its kin,
+  or a's bowl left, or widened with its sidebearings taken in.
+- b passes the gate at tolerance 1.5, not 2 (`TOLS`). G's bar and beak
+  stretch with the band (they lie in it): on the sheet.
+- **The designer's verdict, 2026-11-17**: all taken, C G Q D with O
+  (judged in running text: `proofs/2026-11/italic-bowls-b-text-2026-11-17.pdf`,
+  today | O Q only | O Q C G D; O and Q alone stood wider than C G D
+  beside them), and a widened with its kin, its advance past the range.
+  Installed the same day, marked drawn, lib org.myiadidot.redrawn
+  "harmonise": "bowls".
+- What followed, 2026-11-17/18. **Recipes placed by coordinates did not
+  follow** the wider bases, each set by hand to where its base moved:
+  ɰ (ɯ's last stem +68, ɥ's descender +34; in the Bold Italic, whose
+  m is drawn, ɥ +35, 32 once scaled), ₡ (its slashes +70, the middle
+  of the wider C: the right one notched the Bold Italic's terminal),
+  Ƈ Ɠ (the spur and its cut +140 in the Italic's recipe; the Italic's
+  ƈ.sc ɠ.sc are drafted from them), ƈ.sc (+116 in the Bold Italic),
+  smooth_joins' ɱ node (+68), and ₵ ₲ (their lines +70 in the Italic,
+  as they stood before; ₵ +73 in the Bold Italic, and its ₡ given its
+  own recipe there: the Italic's numbers strayed on the wider C and it
+  fell back to emboldened whole). Look for
+  the like after step C: `glyph_lint.py` on both italics and a render
+  of every recipe on a moved base, not only the tests.
+- u was installed again at tolerance 1: at 2 its crotch opened into a
+  slit (glyph_lint's notch, 30 px); the script now refuses a fit with a
+  notch the construction has not.
+- n's left stem came out 1.5 units thinner at half the x-height (the
+  redraw: its inner edge and its arch are one curve; bowls()' docstring
+  for what was tried). The small caps take their drafting stem from n
+  there, rounded to a unit (make_italic, `f"{stem:.0f}"`): 181 became
+  180 and FontForge drafted every small cap again, with new kinks
+  across them, and the Bold Italic's stroker lost ψ.sc's whole left
+  arm on its new draft (test_sc_clearance found it). Mended in n, by
+  hand after the install (its drawn mark says so): the inner curve's
+  lower handle shortened along itself (390,335 -> 384,314), the stem
+  191.4 again (HEAD 191.1), the drafts store as it was, only the small
+  caps of the widened capitals drafted again. A stem that moves at XH/2
+  moves every small cap: look there first after any redraw of n.
+- The Bold Italic's drawn glyphs on the moved bases did not follow:
+  step D. derived.py finds them against HEAD (Ƈ 15 % of C kept, Ɠ 7 %
+  of G, ɖ 51 % of d, ɳ 36 % of n, ɠ 40 % of ɡ: drawn, so the old
+  letter beside the wider base), with m, g.sc and the rest; Ƈ Ɠ's
+  recipe there still has the old numbers (C G moved 145 and 148).
+  Two of them, u and m, carry what is built on them in the run (ú ù û,
+  ʉ, Q_u): made on the letter as the run spaces it, then the drawn one
+  put back as saved, they stood 3-4 units off its anchors. u and m were
+  moved (shape untouched) to where the spacing puts them now, so saved
+  and spaced agree again as before step B. (drawn.stale cannot pick
+  such glyphs: 44 of the Bold Italic's drawn glyphs were already stale
+  at HEAD.)
+- Found in the shaping report, left for step D: the Italic's ą ǫ ų are
+  Old Standard's own outlines, not built from a o u, and Ǫ is drawn, so
+  their bowls stayed as narrow as before (ǭ Ǭ, built on ǫ Ǫ, with them);
+  ď, one of composites.SPECIAL taken whole, kept its advance and its
+  caron's offset, so the caron stands 40 nearer the wider d's stem. To
+  find the like: every letter whose NFD base widened but which did not
+  (a dozen lines over HEAD's UFO and the new one).
+- The second sheet, approved by the designer 2026-11-18:
+  `proofs/2026-11/italic-bowls-b-bold-italic-2026-11-18.pdf` (the Bold
+  Italic at HEAD and now, the bowls and their followers) and
+  `proofs/2026-11/italic-bowls-b-followers-2026-11-18.pdf` (the
+  Italic's letters placed on the wider bases, ψ.sc ε.sc υ.sc).
+
 After each step: `make generate`, `make reproduce`, `redraw_sweep.py`,
 `make diffenator`, the second sheet with the Bold Italic, the quality
 lines that fell deleted, baselines with their reports' digests; and

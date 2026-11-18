@@ -198,6 +198,16 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # ₩: the bars from 20 to 20 past the uncrossed W's
                   # advance (redraw_w), as the Regular's across its W
                   "₩": ("lines", "W", ("c", 64, [(20, 528, 1807, 592), (20, 842, 1807, 906)])),
+                  # ₡: the Regular's slashes, 70 to the right: the middle of
+                  # the Italic's C, 140 wider since phase 6's step B
+                  # (2026-11-17); where they stood the right one ran into the
+                  # upper terminal and left a notch in the Bold Italic
+                  "₡": ("lines", "C", ("c", 64, [((610, -150), (950, 1610)), ((910, -150), (1250, 1610))])),
+                  # ₵ ₲: the Regular's lines, 70 to the right as ₡'s: where
+                  # they stood before step B against the C and G's bowl,
+                  # both 140 wider since (₵ 64 right of C's middle)
+                  "₵": ("lines", "C", ("c", 64, [(758, -180, 822, 1640)])),
+                  "₲": ("lines", "G", ("c", 64, [(778, -180, 842, 1640)])),
                   # ₿: the Regular's, sloped (its own recipe of 2026-11-12, the
                   # stubs outside the B, withdrawn on the review of 2026-11-14)
                   # ⱳ.sc: w.sc (made of v.sc as W of V) with Ⱳ's curl at
@@ -229,8 +239,11 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   "ɸ": ("stem", "o", None),  # o with a stem as heavy as l's through it
                   "ɯ": ("turn", "m", "x"),  # the turned m it is named after
                   # ɯ with its last stem running down into ɥ's descender
-                  "ɰ": ("attach", "uni026F", ("x", [(1150, -BIG, BIG, 300), (1300, -BIG, BIG, 600)],
-                                              [("uni0265", (700, -BIG, BIG, 300), (0, 0), (1, 1, 459, 0))], 1500)),
+                  # (since phase 6's step B, 2026-11-17, m 68 wider and h 34:
+                  # the cuts and the advance with ɯ's last stem, ɥ's
+                  # descender taken 34 further right and moved 34 less)
+                  "ɰ": ("attach", "uni026F", ("x", [(1218, -BIG, BIG, 300), (1368, -BIG, BIG, 600)],
+                                              [("uni0265", (734, -BIG, BIG, 300), (0, 0), (1, 1, 493, 0))], 1568)),
                   # the italic r turned (as Charis's), not the roman's drawn ɹ:
                   # its stem as light as the other italic stems
                   "ɹ": ("turn", "r", "x"),
@@ -356,17 +369,21 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # λ whole, a bar drawn across its upper stroke (the Regular's,
                   # transplanted, cut the arch off the long stroke)
                   "ƛ": ("attach", "lambda", ("x", [], [("line", ((130, 1010), (610, 1285), 46), (0, 0), (1, 1, 0, 0))])),
-                  # C's spur likewise (as Ɠ)
-                  "Ƈ": ("attach", "C", ("c", [(1040, 1330, BIG, BIG)],
-                                        [("line", ((1090, 1320), (1090, 1500), 36), (0, 0), (1, 1, 0, 0)),
-                                         ("curl", {"at": ("pt", 1090, 1500, 36), "dir": 90, "turn": "cw",
+                  # C's spur likewise (as Ɠ). Ƈ Ɠ: the cut and the spur 140 to
+                  # the right with the terminals of C and G since phase 6's
+                  # step B (2026-11-17); where they stood, the spur rose off
+                  # the arc and left the wider terminal a stub beside it.
+                  # ƈ.sc ɠ.sc are drafted from these (SC_DRAFTED)
+                  "Ƈ": ("attach", "C", ("c", [(1180, 1330, BIG, BIG)],
+                                        [("line", ((1230, 1320), (1230, 1500), 36), (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 1230, 1500, 36), "dir": 90, "turn": "cw",
                                                    "r": (105, 95), "sweep": 210, "ball": None, "t": (36, 30),
                                                    "lead": 10}, (0, 0), (1, 1, 0, 0))])),
                   # G's spur rising above the cap height into a hook to the right
                   # (as Charis and Libertinus), not curling back over the bowl
-                  "Ɠ": ("attach", "G", ("c", [(1080, 1330, BIG, BIG)],
-                                        [("line", ((1139, 1320), (1139, 1500), 36), (0, 0), (1, 1, 0, 0)),
-                                         ("curl", {"at": ("pt", 1139, 1500, 36), "dir": 90, "turn": "cw",
+                  "Ɠ": ("attach", "G", ("c", [(1220, 1330, BIG, BIG)],
+                                        [("line", ((1279, 1320), (1279, 1500), 36), (0, 0), (1, 1, 0, 0)),
+                                         ("curl", {"at": ("pt", 1279, 1500, 36), "dir": 90, "turn": "cw",
                                                    "r": (105, 95), "sweep": 210, "ball": None, "t": (36, 30),
                                                    "lead": 10}, (0, 0), (1, 1, 0, 0))])),
                   # the stem (its foot serif cut away) running down into the hook

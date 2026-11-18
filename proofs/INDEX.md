@@ -152,6 +152,10 @@ matching `docs/*-review-*.md` or in FONTLOG.txt's appendix.
 - italic-against-regular-2026-11-17.pdf
 - italic-f-hook-2026-11-11.pdf
 - italic-harmonise-a-2026-11-17.pdf
+- italic-bowls-b-2026-11-17.pdf
+- italic-bowls-b-text-2026-11-17.pdf
+- italic-bowls-b-bold-italic-2026-11-18.pdf
+- italic-bowls-b-followers-2026-11-18.pdf
 - italic-f-hook-ligatures-2026-11-11.pdf
 - italic-followers-after-redraw-2026-11-10.pdf
 - italic-followers-after-redraw-phase5-2026-11-16.pdf

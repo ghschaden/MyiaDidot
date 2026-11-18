@@ -239,6 +239,8 @@ ITALIC_BOLD_RECIPES = {
                              [("line", ((x, y0), (x, 1500), 53), (0, 0), (1, 1, 0, 0)),
                               ("curl", {"at": ("pt", x, 1500, 53), "dir": 90, "turn": "cw", "r": (165, 150),
                                         "sweep": 200, "ball": 85, "t": (53, 45), "lead": 10}, (0, 0), (1, 1, 0, 0))]))
+       # (drawn here: their C and G moved 145 and 148 in phase 6's step B,
+       # 2026-11-17, and these numbers stand for step D)
        for ch, base, x, y0 in (("Ƈ", "C", 1090, 1320), ("Ɠ", "G", 1139, 1310))},
     # Ƭ: the Italic's, its strokes at this weight (as rederive scales them)
     # and its ball as large as the curl takes with no notch (80-90 at 180-200
@@ -264,10 +266,12 @@ ITALIC_BOLD_RECIPES = {
     # stroke further left (720) and flatter (35 degrees), turning further:
     # from 782 at 70 degrees it rose off the stroke with a dip outside and
     # a cusp inside ("badly attached")
-    **{ch: ("curl", base, ("s", [(735, 530, 10000, 10000)],
-                           {"at": ("x", 720), "dir": 35, "turn": "cw", "r": (165, 140),
+    # (c.sc's terminal 116 to the right since phase 6's step B, 2026-11-17;
+    # g.sc is drawn here and stayed)
+    **{ch: ("curl", base, ("s", [(735 + dx, 530, 10000, 10000)],
+                           {"at": ("x", 720 + dx), "dir": 35, "turn": "cw", "r": (165, 140),
                             "sweep": 195, "ball": 75, "t": (100, 45)}))
-       for ch, base in (("ƈ.sc", "c.sc"), ("ɠ.sc", "g.sc"))},
+       for ch, base, dx in (("ƈ.sc", "c.sc", 116), ("ɠ.sc", "g.sc", 0))},
     # Ƙ Ƴ: the arm cut below its flare into the serif (its own width there),
     # running on in its own direction; Ʋ: U's right stem.
     # 2026-11-12 ("the arm leading to the hook is not good"; version C of
@@ -321,8 +325,14 @@ ITALIC_BOLD_RECIPES = {
     # (0.48), as heavy as emboldened (104 across)
     "₮": ("lines", "T", ("c", 104, [((380, 354), (990, 646)), ((380, 674), (990, 966))])),
     # ₵: the line 98 across as ₲'s comes out, straight, its middle 64 right
-    # of the Bold Italic C's (138-1320 here), as the Italic's stands to its C
-    "₵": ("lines", "C", ("c", 98, [(744, -180, 842, 1640)])),
+    # of the Bold Italic C's (138-1466 here since phase 6's step B; was
+    # 138-1320 and 744-842), as the Italic's stands to its C
+    "₵": ("lines", "C", ("c", 98, [(817, -180, 915, 1640)])),
+    # ₡: the Italic's slashes as they stand to its C (their middles 54 and
+    # 354 right of the C's at half its height), 98 across as ₵'s; made of
+    # the Italic's numbers on this wider C they strayed from the ₡
+    # emboldened whole (step B, 2026-11-18)
+    "₡": ("lines", "C", ("c", 98, [((686, -150), (1026, 1610)), ((986, -150), (1326, 1610))])),
     # ₿: the stubs 96 across as emboldened, 104 apart (were 154: "closer")
     # and clear of the stem's bracket; only outside the B, 34 into its bars
     # ("not impact the thickness of the outline of the B", 2026-11-12)
@@ -407,7 +417,9 @@ ITALIC_BOLD_RECIPES = {
     # narrowed to that stem (216 at the cut, ɥ's 236): emboldened from the
     # Italic's ɰ, it was notched at the knees where ɯ is whole
     "ɰ": ("attach", "uni026F", ("x", [(1205, -10000, 10000, 300), (1445, -10000, 10000, 600)],
-                                [("uni0265", (717, -10000, 10000, 300), (0, 0), (0.92, 1, 554, 0))], 1620)),
+                                # (ɥ 35 to the right, 32 once scaled, since phase 6's step B, its h
+                                # wider, 2026-11-17; m is drawn here and stayed)
+                                [("uni0265", (752, -10000, 10000, 300), (0, 0), (0.92, 1, 522, 0))], 1620)),
     # ɳ: the Italic's (data_italic.retroflex), on the Bold Italic's leg (its
     # centre 836, 229 thick at the cut): emboldened whole, the descender took
     # only part of the weight (its stroke under the thick threshold) and the

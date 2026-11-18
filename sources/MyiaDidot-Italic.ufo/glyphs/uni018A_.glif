@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni018A" format="2">
 	<unicode hex="018A"/>
-	<advance width="1453"/>
+	<advance width="1593"/>
 	<outline>
 		<contour>
 			<point x="-36" y="0" type="line"/>
@@ -36,26 +36,32 @@
 			<point x="527" y="1480"/>
 			<point x="588" y="1463"/>
 			<point x="631" y="1434" type="curve"/>
-			<point x="982" y="1434" type="line" smooth="yes"/>
-			<point x="1296" y="1434"/>
-			<point x="1421" y="1149"/>
-			<point x="1421" y="878" type="curve" smooth="yes"/>
-			<point x="1421" y="458"/>
-			<point x="1092" y="0"/>
-			<point x="645" y="0" type="curve" smooth="yes"/>
+			<point x="1010" y="1434" type="line" smooth="yes"/>
+			<point x="1095" y="1434"/>
+			<point x="1234" y="1417"/>
+			<point x="1311" y="1385" type="curve" smooth="yes"/>
+			<point x="1468" y="1320"/>
+			<point x="1561" y="1107"/>
+			<point x="1561" y="878" type="curve" smooth="yes"/>
+			<point x="1561" y="562"/>
+			<point x="1375" y="225"/>
+			<point x="1095" y="78" type="curve" smooth="yes"/>
+			<point x="966" y="10"/>
+			<point x="843" y="0"/>
+			<point x="698" y="0" type="curve" smooth="yes"/>
 		</contour>
 		<contour>
 			<point x="378" y="114" type="line" smooth="yes"/>
 			<point x="369" y="80"/>
 			<point x="379" y="62"/>
 			<point x="416" y="62" type="curve" smooth="yes"/>
-			<point x="665" y="62" type="line" smooth="yes"/>
-			<point x="1095" y="62"/>
-			<point x="1231" y="645"/>
-			<point x="1231" y="979" type="curve" smooth="yes"/>
-			<point x="1231" y="1174"/>
-			<point x="1173" y="1365"/>
-			<point x="938" y="1365" type="curve" smooth="yes"/>
+			<point x="719" y="62" type="line" smooth="yes"/>
+			<point x="1232" y="62"/>
+			<point x="1371" y="535"/>
+			<point x="1371" y="979" type="curve" smooth="yes"/>
+			<point x="1371" y="1265"/>
+			<point x="1257" y="1365"/>
+			<point x="956" y="1365" type="curve" smooth="yes"/>
 			<point x="764" y="1365" type="line" smooth="yes"/>
 			<point x="723" y="1365"/>
 			<point x="707" y="1344"/>
@@ -70,11 +76,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-12</string>
+				<string>2026-11-18</string>
 				<key>glyph</key>
-				<string>495ee9f47f6f</string>
+				<string>554ce0193f52</string>
 				<key>review</key>
-				<string>docs/claude/redraw.md</string>
+				<string>proofs/2026-11/italic-bowls-b-bold-italic-2026-11-18.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

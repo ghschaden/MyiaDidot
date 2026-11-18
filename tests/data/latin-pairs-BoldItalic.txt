@@ -1,32 +1,34 @@
 # The italics' Latin pairs outside the reference italics' range (pair  # off N: why), N in n n gaps; fixing one = deleting its line.
-71       # off -0.116: 2026-11-14 7 1 kerned in the Regular (-50) brings it into the measured pairs; the Bold Italic sets it unkerned (the rule drops it). Over its own H H, which is loose (0.32 of the cap height, references 0.22-0.25), every figure pair reads tight; over the cap height 7 1 is in the references' range (figure_pairs.py's absolute fit, proofs/2026-11/figures-italics-2026-11-14.pdf)
+71       # off -0.114: 2026-11-14 7 1 kerned in the Regular (-50) brings it into the measured pairs; the Bold Italic sets it unkerned (the rule drops it). Over its own H H, which is loose (0.32 of the cap height, references 0.22-0.25), every figure pair reads tight; over the cap height 7 1 is in the references' range (figure_pairs.py's absolute fit, proofs/2026-11/figures-italics-2026-11-14.pdf)
 AÝ       # off -0.207: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 AŸ       # off -0.207: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-CÆ       # off -0.113: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+CÆ       # off -0.112: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 DÆ       # off -0.055: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-FÆ       # off -0.121: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+FÆ       # off -0.122: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 JA       # off -0.048: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 KJ       # off -0.175: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 LU       # off -0.054: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 NJ       # off -0.038: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 PÆ       # off -0.032: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 TA       # off -0.008: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-UC       # off -0.002: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-UO       # off -0.024: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-Ua       # off -0.138: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-Uc       # off -0.085: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-Ug       # off -0.063: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-V,       # off -0.094: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-W,       # off -0.327: W's own left group since 2026-11-13 (split from V's) makes it measured; as tight at HEAD under V's values, for the designer (phase 2)
-Wc       # off -0.044: 2026-11-14 W c -140, W a -80, W u -80 in the Regular (the designer, proofs/2026-11/w-lowercase-2026-11-14.pdf); the italics keep the rule's values (proofs/2026-11/w-italics-2026-11-14.pdf)
+UC       # off -0.000: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+UO       # off -0.025: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+Ua       # off -0.137: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+Uc       # off -0.091: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+Ug       # off -0.062: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+V,       # off -0.089: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+W,       # off -0.324: W's own left group since 2026-11-13 (split from V's) makes it measured; as tight at HEAD under V's values, for the designer (phase 2)
+Wc       # off -0.052: 2026-11-14 W c -140, W a -80, W u -80 in the Regular (the designer, proofs/2026-11/w-lowercase-2026-11-14.pdf); the italics keep the rule's values (proofs/2026-11/w-italics-2026-11-14.pdf)
 Wu       # off -0.103: 2026-11-14 W c -140, W a -80, W u -80 in the Regular (the designer, proofs/2026-11/w-lowercase-2026-11-14.pdf); the italics keep the rule's values (proofs/2026-11/w-italics-2026-11-14.pdf)
 WÆ       # off -0.120: W's own left group since 2026-11-13 (split from V's) makes it measured; as tight at HEAD under V's values, for the designer (phase 2)
-aj       # off -0.054: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-at       # off -0.051: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-bv       # off -0.028: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-nt       # off -0.147: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-tf       # off -0.102: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+aj       # off -0.078: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+at       # off -0.074: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+ay       # off -0.006: 2026-11-18 phase 6 step B carried to the Bold Italic: Ɠ Ƈ ɖ ɳ ɠ drawn on the old bases (step D); Ǥ's top with the wider G; ay zt a hair outside the references
+bv       # off -0.044: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+nt       # off -0.154: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+tf       # off -0.119: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
 va       # off -0.002: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-vc       # off -0.003: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-xt       # off -0.038: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
-ÞA       # off -0.062: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+vc       # off -0.014: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+xt       # off -0.052: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12
+zt       # off -0.009: 2026-11-18 phase 6 step B carried to the Bold Italic: Ɠ Ƈ ɖ ɳ ɠ drawn on the old bases (step D); Ǥ's top with the wider G; ay zt a hair outside the references
+ÞA       # off -0.061: too tight, phase 3's rule (no tightening) leaves it; 2026-11-12

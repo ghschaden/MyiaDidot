@@ -70,7 +70,7 @@ JOINS = {
 # there since ȷ was redrawn (a spike of two nodes on one point, 0.3 degrees
 # between the curves; 2026-11-11)
 ITALIC_JOINS = {
-    "uni0271": [(1069, 45)],
+    "uni0271": [(1137, 45)],  # m 68 wider (phase 6 step B, 2026-11-17)
 }
 # glyph: (x, y, reach) of the brackets redrawn as fillets
 FILLETS = {
