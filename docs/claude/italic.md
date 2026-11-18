@@ -449,6 +449,48 @@ for the designer (B touches none of r c v w).
   Italic at HEAD and now, the bowls and their followers) and
   `proofs/2026-11/italic-bowls-b-followers-2026-11-18.pdf` (the
   Italic's letters placed on the wider bases, ψ.sc ε.sc υ.sc).
+- Ø ø, 2026-11-18 (`scripts/italic_slashed.py`, sheet
+  `proofs/2026-11/italic-slashed-sc-rounds-2026-11-18.pdf`, approved with
+  the Bold Italic following): they are single hand-redrawn outlines with
+  the slash merged into the ring, so italic_bowls.py cannot widen them
+  and they stood at the old O's and o's advance (1374, 883) beside the
+  wider O o (1514, 925). Each is now the widened ring joined to the slash
+  of the old letter: a straight bar of the old thickness and angle, put
+  across the middle of the widened ring, its ends as far beyond the ring
+  and as high and low as before (Ø's corners at -35 and 1473, ø's at -23
+  and 884). The union itself is kept, not a redraw's refit of it: the
+  counters are the ring's own arcs cut at the slash, a refit put a knee
+  into the counter just past the slash. Tried first and found wrong: the
+  slash moved point by point (thicker in the middle), kept at its lower
+  end and moved at its upper (flatter, met the counters at other angles).
+  Ø.sc ø.sc: ø.sc marked drawn and kept as it was (see below).
+- **o.sc q.sc ø.sc not widened, deferred to phase 8.** The Italic's o.sc
+  (1060) stands narrower than c.sc d.sc (1148, 1221) since step B, where
+  the Regular's is the widest of the three. Found 2026-11-18, tried and
+  taken out again: a FontForge draft of the widened O comes out square
+  inside; widening o.sc with italic_bowls.py pushes the width into a
+  straight right side; made as the small caps' own recipe makes a small cap
+  of a capital (derive.enlarge from the widened O Q, the strokes measured
+  on the old o.sc, `scripts/italic_round_sc.py`: stem, sides and top
+  brought to the old o.sc's, an oval like O's, 1145 wide) it is right in
+  the Italic. But o.sc is the measure of dozens of recipes (data_regular's
+  ("O", "o.sc") band): a unit in its stem or sides moves n.sc s.sc g.sc ɴ ɢ ʛ
+  by 1 to 6 units, which opens 2-degree smooth and kink entries in the
+  quality lists; and the Bold Italic, whose o.sc is stroked from the
+  Italic's, got a stem measure 13 heavier (313 -> 327) on the new shape, so
+  ƙ.sc ƭ.sc ƴ.sc ʋ.sc n.sc made against it moved 13 and ƙ.sc fell to
+  emboldened whole, ө.sc's union with its base failed. Holding the Bold
+  Italic's o.sc as a drawn glyph does not help: a drawn glyph is put
+  back at the end of the run, what is derived reads the stroked one
+  while it runs. So: to be taken with the Bold Italic's o.sc in phase 8,
+  where the measure has to be settled anyway (the script is kept for it,
+  not run). Whole-glyph pins of the measure inside make_italic were tried
+  and are no better (the upright frame pads the sides; the small caps of
+  the rounds then differ by 32).
+- Found with it: Bold Italic `test_greek_pairs` fails for μπ (-0.156, 0.006
+  past the tolerance) at 6eecb101 as well, with the references as
+  installed; listed in greek-pairs-BoldItalic.txt for the designer's eye
+  (Charis and Libertinus agree against Myia).
 
 After each step: `make generate`, `make reproduce`, `redraw_sweep.py`,
 `make diffenator`, the second sheet with the Bold Italic, the quality

@@ -929,8 +929,12 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       and its running-text page; approved and installed 2026-11-17 with
       C G Q D. Generated, followers placed (italic.md, "What
       followed"); the second sheet (the Bold Italic, the followers)
-      approved 2026-11-18, baselines accepted. Left: `redraw_sweep.py`,
-      `make diffenator`, `make pairs`, italic_sheet.py run again.
+      approved 2026-11-18, baselines accepted. `redraw_sweep.py`,
+      `make diffenator`, `make pairs`, italic_sheet.py run again
+      2026-11-18 (sheet approved). Ø ø widened with O o, installed
+      2026-11-18 (italic.md, "What followed"). Left, to phase 8: o.sc q.sc
+      ø.sc widened with the Bold Italic's o.sc (italic.md; the script
+      is `scripts/italic_round_sc.py`).
 - [ ] C. The long stems measured across the three scripts, then
       weighted to n's stem, with the ascenders raised to the
       Regular's 4 % over the capitals and the overshoots set to the
@@ -938,7 +942,8 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
 - [ ] D. The ligatures, derived letters and drawn Bold Italic glyphs
       on the moved bases; the Italic's ą ǫ ų Ǫ (ǭ Ǭ) not yet widened
       with a o u O, ď's caron and advance not moved with d (italic.md,
-      "What followed").
+      "What followed"); the Italic's ø.sc (Ø's small cap) is kept as drawn beside the
+      narrow o.sc (Ø ø themselves are done).
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %
