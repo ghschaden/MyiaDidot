@@ -78,6 +78,7 @@ from data_italic import (
     ITALIC_SIDEBEARINGS,
     ITALIC_STANDS_AS,
     ITALIC_UNKERNED,
+    ITALIC_VERTICAL_CARON,
     KEPT_SLOPED,
     KX,
     LEAN_AS,
@@ -2283,6 +2284,14 @@ def main():
         font[name].lib.update(lib)
         rebuilt += 1
     move_parts(font, regular, marks, rule_made)
+    for name, (letter, offset, beyond) in ITALIC_VERTICAL_CARON.items():
+        g = font[name]
+        edge = font[letter].getBounds(font).xMax
+        for c in g.components:
+            if c.baseGlyph != letter:
+                x = c.transformation
+                c.transformation = (*x[:4], round(edge + offset), x[5])
+        g.width = round(edge + beyond)
     greek_shift = greek_cap_room(font, regular, kept)  # the breathings nearer their capitals
     info = font.info
     info.styleName = "Italic"

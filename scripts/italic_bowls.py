@@ -55,7 +55,9 @@ import redraw as R  # noqa: E402
 WIDEN = {"n": 34, "o": 42, "d": 40, "p": 40, "q": 40, "O": 140}
 # the letters without a measure of their own take their leader's units
 KIN = {"h": "n", "m": "n", "u": "n", "b": "p", "a": "d", "g": "q",
-       "Q": "O", "C": "O", "G": "O", "D": "O"}
+       "Q": "O", "C": "O", "G": "O", "D": "O",
+       # Old Standard's own ogonek letters, widened with their bases (step D)
+       "aogonek": "d", "oogonek": "o", "uogonek": "n", "Oogonek": "O"}
 BAND = 0.20  # of the counter's width at either side: the ease runs over the middle 60 %
 ROW = 0.5  # of the zone: where the counters are found
 MIN_GAP = 0.12  # of the zone: white narrower than this is no counter (a serif's slot)

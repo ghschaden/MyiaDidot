@@ -696,6 +696,12 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
 # bearing is that sign's, the advance kept (the Bold Italic follows:
 # make_bold's tx_offset)
 ITALIC_STANDS_AS = {"quotesinglbase": "comma", "quotedblbase": "comma"}
+# the vertical caron of a SPECIAL composite (no anchor, so the rules cannot
+# follow its letter): letter, the caron's offset from the right edge of the
+# letter's ink and the composite's advance beyond that edge, as Old Standard's
+# d had them (ink to 1048: caron 938, advance 1234). The letter moved with
+# steps B and C, so these are kept as distances, not as places
+ITALIC_VERTICAL_CARON = {"dcaron": ("d", -110, 186)}
 # the horn's foot sunk into the top of u's stem: set on it, it leaves a
 # ledge beside the stem (glyph_lint)
 HORN_NUDGE = {"u": (-20, -30), "U": (-20, 0), "u.sc": (-20, 0)}

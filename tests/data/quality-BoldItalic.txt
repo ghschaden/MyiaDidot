@@ -34,7 +34,6 @@ ae zone 1                        # 2026-11-19, phase 6 step C: the Italic's over
 ae.sc kink 1                     # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 297,208 4.3 degrees
 ae.sc wobble 1                   # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 265,169 65 degrees
 alpha.sc zone 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
-aogonek wobble 1                 # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed in proofs (γ & ξ ү q.sc), new findings proofed: 1 against 0: 587,350 3
 aogonek.sc smooth 1              # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 661,129 2.6 degrees
 aogonek.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +5 from 1040
 aringacute.sc kink 1             # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 623,129 3.1 degrees
@@ -543,7 +542,6 @@ uniA7C8 kink 3                   # 2026-11-19, phase 6 step C: the Italic's over
 uniA7C8 smooth 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uniA7C8 wobble 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uogonek slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 20.0 degrees, not 15.2
-uogonek wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 878,156 24 degrees; 863,85 9 degrees
 uogonek.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 upsilon wobble 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 v slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2

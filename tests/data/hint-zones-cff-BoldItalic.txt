@@ -1,5 +1,4 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
 cff OE:top1462 19                # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
-cff dcaron:top1495 8             # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
 cff lcaron:top1495 6             # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
 cff uni0463:top884 1             # 2026-11-19, phase 6 step C: the Italic's overshoots and ascenders set to the Regular's (round capitals 1462, lowercase -15, ascenders 1495), the tail installed from proofs/2026-11/italic-long-c-tail-2

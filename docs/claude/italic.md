@@ -444,6 +444,24 @@ for the designer (B touches none of r c v w).
   caron's offset, so the caron stands 40 nearer the wider d's stem. To
   find the like: every letter whose NFD base widened but which did not
   (a dozen lines over HEAD's UFO and the new one).
+- **Step D, first part, 2026-11-19** (uncommitted, for the designer's sheet
+  `proofs/2026-11/italic-ogonek-d-2026-11-19.pdf`, Italic then Bold Italic):
+  the Italic's ą ǫ ų Ǫ widened by italic_bowls.py with their bases (KIN:
+  aogonek -> d's 40, oogonek o's 42, uogonek n's 34, Oogonek O's 140; the
+  tail moves with the right half, as a's own foot did), ą ǫ ų then through
+  italic_long.py for the overshoot; advances now equal their bases'.
+  ď: make_italic's `ITALIC_VERTICAL_CARON` (data_italic) keeps its caron
+  and advance as distances from d's ink edge (-110, +186), not as places;
+  the generator did not move it because caroncommaaccent is no mark.
+  Tests failing as intended (baselines NOT yet accepted): test_accepted
+  (oogonek.sc; BI aogonek uogonek), golden shaping and corpus digest (4
+  cases with ą ų), test_hinting's stale `cff dcaron:top1495 8`, test_quality's
+  stale BI `aogonek wobble 1` `uogonek wobble 1`. Two that are not just
+  baselines: test_stroke_gate's WIDTHS lacks uogonek (BI 1192 -> 1232), and
+  test_knee_turns_one_way[uogonek] finds a bend at (332,159), 38 from the
+  fixed knee (345,195): the BI ų's inner stem edge is slightly S-shaped at the
+  crotch (u's is not). The designer's eye: a hand fix marked drawn, or taken.
+  Still open in step D: the BI's drawn letters (u, m, Ƈ Ɠ ɖ ɳ ɠ ...).
 - The second sheet, approved by the designer 2026-11-18:
   `proofs/2026-11/italic-bowls-b-bold-italic-2026-11-18.pdf` (the Bold
   Italic at HEAD and now, the bowls and their followers) and
