@@ -5,9 +5,9 @@
 		<contour>
 			<point x="160" y="568" type="line"/>
 			<point x="196" y="717"/>
-			<point x="269" y="1047"/>
-			<point x="494" y="1047" type="curve" smooth="yes"/>
-			<point x="646" y="1047"/>
+			<point x="269" y="1037"/>
+			<point x="494" y="1037" type="curve" smooth="yes"/>
+			<point x="646" y="1037"/>
 			<point x="642" y="803"/>
 			<point x="641" y="639" type="curve" smooth="yes"/>
 			<point x="642" y="512"/>
@@ -21,17 +21,17 @@
 			<point x="929" y="723"/>
 			<point x="929" y="768" type="curve" smooth="yes"/>
 			<point x="929" y="790"/>
-			<point x="927" y="817"/>
-			<point x="921" y="843" type="curve" smooth="yes"/>
-			<point x="915" y="870"/>
-			<point x="913" y="899"/>
-			<point x="913" y="924" type="curve" smooth="yes"/>
-			<point x="913" y="988"/>
-			<point x="940" y="1047"/>
-			<point x="1016" y="1047" type="curve" smooth="yes"/>
-			<point x="1090" y="1047"/>
-			<point x="1128" y="1003"/>
-			<point x="1128" y="941" type="curve" smooth="yes"/>
+			<point x="927" y="816"/>
+			<point x="921" y="841" type="curve" smooth="yes"/>
+			<point x="915" y="867"/>
+			<point x="913" y="895"/>
+			<point x="913" y="919" type="curve" smooth="yes"/>
+			<point x="913" y="980"/>
+			<point x="940" y="1037"/>
+			<point x="1016" y="1037" type="curve" smooth="yes"/>
+			<point x="1090" y="1037"/>
+			<point x="1128" y="995"/>
+			<point x="1128" y="935" type="curve" smooth="yes"/>
 			<point x="1128" y="692"/>
 			<point x="930" y="489"/>
 			<point x="800" y="354" type="curve" smooth="yes"/>
@@ -54,9 +54,9 @@
 			<point x="568" y="423"/>
 			<point x="568" y="574" type="curve" smooth="yes"/>
 			<point x="569" y="698"/>
-			<point x="560" y="879"/>
-			<point x="468" y="879" type="curve" smooth="yes"/>
-			<point x="336" y="879"/>
+			<point x="560" y="876"/>
+			<point x="468" y="876" type="curve" smooth="yes"/>
+			<point x="336" y="876"/>
 			<point x="259" y="714"/>
 			<point x="213" y="550" type="curve"/>
 		</contour>
@@ -74,11 +74,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-06</string>
+				<string>2026-11-19</string>
 				<key>glyph</key>
-				<string>c8b7f73a7906</string>
+				<string>a92811921e96</string>
 				<key>review</key>
-				<string>docs/paired-italic-extended-smallcaps-review-2026-11-06.md</string>
+				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 			</dict>
 			<key>org.myiadidot.caseReference</key>
 			<string>uni0194</string>
@@ -87,11 +87,11 @@
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>before 2026-11-13</string>
+				<string>2026-11-19</string>
 				<key>source</key>
 				<string>b89a3f30be64</string>
 				<key>why</key>
-				<string>marked drawn in italicSource before T6</string>
+				<string>top lowered 10 units, to follow its capital Ɣ whose arms stand at 1430 since phase 6 step C (the small cap's reference, tests/test_case_reference.py)</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>

@@ -100,7 +100,7 @@ def test_bold_italic_turned_r_top_bracket_is_l_s():
     came out in two curves (by weight it swelled 10 units past l's)."""
     font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-BoldItalic.ufo')
     def top(name):  # the stem's end, the bracket, the serif's underside
-        return [(p.x, p.y, p.type) for p in font[name].contours[0].points if 1320 < p.y <= 1374]
+        return [(p.x, p.y, p.type) for p in font[name].contours[0].points if 1380 < p.y <= 1435]
     l, turned = top('l'), top('uni027A')
     dx = turned[0][0] - l[0][0]
     assert dx > 200

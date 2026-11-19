@@ -1,5 +1,5 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
-cff OE:bot-35 11                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs); ᶻ's curl squared (a 35 px slit) and OE's CFF bottom at 11 sizes accepted; ѵ
-cff OE:top1473 23                # 2026-10-28: whole arcs faired (fair_arcs); OE oe.sc ɶ CFF tops/bottoms 0.08-0.27 px off O's row, accepted
-cff uni01E4:top1473 21           # 2026-11-18 phase 6 step B carried to the Bold Italic: Ɠ Ƈ ɖ ɳ ɠ drawn on the old bases (step D); Ǥ's top with the wider G; ay zt a hair outside the references
-cff uni0463:top884 4             # retention accepted 2026-11-08: ѣ's three round tops at 884, no flat for the zone; 0.08-0.42 px above x at 8/13/14/17 ppem, the extra row at most 50/255 (17 ppem)
+cff OE:top1462 19                # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
+cff dcaron:top1495 8             # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
+cff lcaron:top1495 6             # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
+cff uni0463:top884 1             # 2026-11-19, phase 6 step C: the Italic's overshoots and ascenders set to the Regular's (round capitals 1462, lowercase -15, ascenders 1495), the tail installed from proofs/2026-11/italic-long-c-tail-2

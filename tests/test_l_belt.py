@@ -10,7 +10,23 @@ from glyph_lint import lint
 from l_belt import finish
 
 
-@pytest.mark.parametrize('name', ['uni026C', 'uniA7AD'])
+def test_belted_l_comes_joined_from_the_heavier_stem():
+    """ɬ's ring and bar meet l's stem without the belt's bridges since phase 6
+    step C (2026-11-19, the stem weighted to n's): the generator's own
+    outline is one outside and one counter, lint clean, and finish leaves it
+    as it is (the bridging itself is tested on Ɬ below, whose pieces still
+    stand clear of its stem; the fixture before-uni026C, ɬ's three pieces
+    at the old stem, is no longer used: tests/data/l-belt-before-uni026C.glif)."""
+    font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-Italic.ufo')
+    glyph = font['uni026C']
+    before = deepcopy(glyph)
+    assert len(glyph.contours) == 2
+    assert not lint(font, ['uni026C'])
+    finish(font)
+    assert glyph == before
+
+
+@pytest.mark.parametrize('name', ['uniA7AD'])
 def test_belts_join_and_preserve_surroundings(name):
     font = ufoLib2.Font.open(ROOT / 'sources/MyiaDidot-Italic.ufo')
     expected = deepcopy(font[name])
@@ -61,7 +77,11 @@ def test_bold_belts_keep_spacing_and_follow_final_base(name, base):
     readGlyphFromString((DATA / f'l-belt-before-BoldItalic-{name}.glif').read_text(),
                        glyphObject=before, pointPen=before.getPointPen())
     respaced(before)  # (recorded at the Bold's cut)
-    assert glyph.width == before.width
-    assert glyph.anchors == before.anchors
+    # ɬ a unit narrower: l's stem weighted to n's (phase 6 step C, 2026-11-19)
+    assert glyph.width == before.width + {'uni026C': -1}.get(name, 0)
+    # (ɬ's anchors up to 20 across from the fixture's: l's stem weighted, step C)
+    slack = 20 if name == 'uni026C' else 0
+    assert [(a.name, a.y) for a in glyph.anchors] == [(a.name, a.y) for a in before.anchors]
+    assert all(abs(a.x - b.x) <= slack for a, b in zip(glyph.anchors, before.anchors))
     assert glyph.getBounds(font).yMax == font[base].getBounds(font).yMax
     assert not lint(font, [name])

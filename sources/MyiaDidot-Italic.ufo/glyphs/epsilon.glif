@@ -5,85 +5,87 @@
 	<outline>
 		<contour>
 			<point x="63" y="200" type="curve" smooth="yes"/>
-			<point x="63" y="353"/>
+			<point x="63" y="355"/>
 			<point x="233" y="440"/>
 			<point x="349" y="463" type="curve"/>
-			<point x="277" y="491"/>
-			<point x="198" y="552"/>
+			<point x="264" y="496"/>
+			<point x="198" y="553"/>
 			<point x="198" y="651" type="curve" smooth="yes"/>
-			<point x="198" y="840"/>
-			<point x="422" y="884"/>
+			<point x="198" y="839"/>
+			<point x="424" y="884"/>
 			<point x="523" y="884" type="curve" smooth="yes"/>
-			<point x="682" y="884"/>
-			<point x="777" y="768"/>
+			<point x="680" y="884"/>
+			<point x="777" y="771"/>
 			<point x="777" y="696" type="curve" smooth="yes"/>
-			<point x="777" y="664"/>
-			<point x="766" y="638"/>
+			<point x="777" y="667"/>
+			<point x="764" y="638"/>
 			<point x="721" y="638" type="curve" smooth="yes"/>
-			<point x="657" y="638"/>
-			<point x="649" y="705"/>
-			<point x="642" y="733" type="curve" smooth="yes"/>
-			<point x="626" y="797"/>
-			<point x="572" y="837"/>
+			<point x="664" y="638"/>
+			<point x="651" y="693"/>
+			<point x="644" y="724" type="curve" smooth="yes"/>
+			<point x="623" y="815"/>
+			<point x="565" y="837"/>
 			<point x="508" y="837" type="curve" smooth="yes"/>
-			<point x="397" y="837"/>
-			<point x="350" y="721"/>
+			<point x="393" y="837"/>
+			<point x="350" y="718"/>
 			<point x="350" y="618" type="curve" smooth="yes"/>
-			<point x="350" y="569"/>
+			<point x="350" y="568"/>
 			<point x="361" y="505"/>
 			<point x="409" y="481" type="curve"/>
-			<point x="451" y="498"/>
-			<point x="494" y="512"/>
+			<point x="453" y="499"/>
+			<point x="495" y="512"/>
 			<point x="543" y="512" type="curve" smooth="yes"/>
-			<point x="590" y="512"/>
+			<point x="588" y="512"/>
 			<point x="659" y="500"/>
 			<point x="659" y="442" type="curve" smooth="yes"/>
-			<point x="659" y="386"/>
-			<point x="595" y="376"/>
+			<point x="659" y="389"/>
+			<point x="601" y="376"/>
 			<point x="559" y="376" type="curve" smooth="yes"/>
-			<point x="501" y="376"/>
-			<point x="448" y="402"/>
+			<point x="499" y="376"/>
+			<point x="446" y="403"/>
 			<point x="395" y="430" type="curve"/>
 			<point x="300" y="401"/>
 			<point x="231" y="309"/>
 			<point x="231" y="207" type="curve" smooth="yes"/>
-			<point x="231" y="100"/>
-			<point x="305" y="39"/>
+			<point x="231" y="99"/>
+			<point x="307" y="39"/>
 			<point x="413" y="39" type="curve" smooth="yes"/>
-			<point x="534" y="39"/>
+			<point x="533" y="39"/>
 			<point x="631" y="116"/>
 			<point x="694" y="213" type="curve"/>
 			<point x="721" y="194" type="line"/>
-			<point x="655" y="75"/>
-			<point x="538" y="-23"/>
-			<point x="389" y="-23" type="curve" smooth="yes"/>
-			<point x="297" y="-23"/>
+			<point x="652" y="70"/>
+			<point x="537" y="-15"/>
+			<point x="391" y="-15" type="curve" smooth="yes"/>
+			<point x="305" y="-15"/>
 			<point x="63" y="14"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="383" y="-20"/>
+	<anchor name="DotBelow" x="385" y="-20"/>
 	<anchor name="GreekTop" x="555" y="980"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-12</string>
+				<string>2026-11-18</string>
 				<key>source</key>
 				<string>cf458fdd3c89</string>
 				<key>why</key>
-				<string>redrawn onto clean nodes, proofs/2026-11/italic-greek-lowercase-redraw-2026-11-12.pdf</string>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>
 			<key>org.myiadidot.redrawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-12</string>
+				<string>2026-11-18</string>
 				<key>from</key>
-				<string>e5448258fe73</string>
+				<string>b137a823738c</string>
+				<key>harmonise</key>
+				<string>long</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-greek-lowercase-redraw-2026-11-12.pdf</string>
+				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 				<key>source</key>
 				<string>Old Standard</string>
 				<key>tol</key>

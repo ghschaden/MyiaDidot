@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="Upsilon" format="2">
 	<unicode hex="03A5"/>
-	<advance width="1411"/>
+	<advance width="1409"/>
 	<outline>
 		<contour>
 			<point x="141" y="785" type="line"/>
-			<point x="206" y="1023"/>
-			<point x="273" y="1448"/>
-			<point x="616" y="1448" type="curve" smooth="yes"/>
-			<point x="866" y="1448"/>
-			<point x="904" y="1274"/>
+			<point x="207" y="1022"/>
+			<point x="274" y="1446"/>
+			<point x="616" y="1446" type="curve" smooth="yes"/>
+			<point x="868" y="1446"/>
+			<point x="905" y="1276"/>
 			<point x="903" y="1063" type="curve"/>
-			<point x="972" y="1248"/>
-			<point x="1053" y="1477"/>
-			<point x="1295" y="1477" type="curve" smooth="yes"/>
-			<point x="1478" y="1477"/>
-			<point x="1604" y="1345"/>
-			<point x="1604" y="1169" type="curve" smooth="yes"/>
-			<point x="1604" y="1145"/>
-			<point x="1601" y="1017"/>
-			<point x="1488" y="879" type="curve" smooth="yes"/>
-			<point x="1439" y="820"/>
-			<point x="1384" y="776"/>
+			<point x="971" y="1243"/>
+			<point x="1056" y="1467"/>
+			<point x="1290" y="1467" type="curve" smooth="yes"/>
+			<point x="1473" y="1467"/>
+			<point x="1603" y="1350"/>
+			<point x="1603" y="1166" type="curve" smooth="yes"/>
+			<point x="1603" y="993"/>
+			<point x="1490" y="850"/>
 			<point x="1324" y="734" type="curve"/>
 			<point x="1291" y="765" type="line"/>
-			<point x="1379" y="832"/>
-			<point x="1403" y="918"/>
-			<point x="1403" y="1007" type="curve" smooth="yes"/>
-			<point x="1403" y="1152"/>
-			<point x="1361" y="1302"/>
-			<point x="1193" y="1302" type="curve" smooth="yes"/>
-			<point x="983" y="1302"/>
-			<point x="973" y="977"/>
+			<point x="1384" y="834"/>
+			<point x="1405" y="917"/>
+			<point x="1405" y="1015" type="curve" smooth="yes"/>
+			<point x="1405" y="1139"/>
+			<point x="1372" y="1302"/>
+			<point x="1219" y="1302" type="curve" smooth="yes"/>
+			<point x="1032" y="1302"/>
+			<point x="971" y="969"/>
 			<point x="935" y="839" type="curve" smooth="yes"/>
 			<point x="738" y="121" type="line" smooth="yes"/>
 			<point x="729" y="86"/>
@@ -46,24 +43,24 @@
 			<point x="441" y="86"/>
 			<point x="451" y="121" type="curve" smooth="yes"/>
 			<point x="626" y="765" type="line" smooth="yes"/>
-			<point x="637" y="806"/>
-			<point x="642" y="828"/>
-			<point x="646" y="845" type="curve" smooth="yes"/>
-			<point x="650" y="862"/>
-			<point x="657" y="907"/>
+			<point x="638" y="807"/>
+			<point x="642" y="829"/>
+			<point x="645" y="843" type="curve" smooth="yes"/>
+			<point x="649" y="862"/>
+			<point x="657" y="906"/>
 			<point x="657" y="976" type="curve" smooth="yes"/>
-			<point x="657" y="1069"/>
+			<point x="657" y="1070"/>
 			<point x="645" y="1245"/>
 			<point x="524" y="1245" type="curve" smooth="yes"/>
-			<point x="348" y="1245"/>
+			<point x="349" y="1245"/>
 			<point x="230" y="890"/>
 			<point x="197" y="770" type="curve"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="559" y="-20"/>
+	<anchor name="DotBelow" x="561" y="-20"/>
 	<anchor name="Bottom" x="565" y="0"/>
-	<anchor name="TopCap" x="962" y="1580"/>
-	<anchor name="GreekCap" x="166" y="1460"/>
+	<anchor name="TopCap" x="958" y="1580"/>
+	<anchor name="GreekCap" x="164" y="1460"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.greekCapShift</key>
@@ -73,11 +70,13 @@
 			<key>org.myiadidot.redrawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-16</string>
+				<string>2026-11-18</string>
 				<key>from</key>
-				<string>6456ac309349</string>
+				<string>cd164fa903a3</string>
+				<key>harmonise</key>
+				<string>long</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-redraw-capitals-2026-11-16.pdf</string>
+				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 				<key>source</key>
 				<string>Old Standard</string>
 				<key>tol</key>

@@ -58,6 +58,10 @@ TTFAUTOHINT = dict(no_info=True, windows_compatibility=True, fallback_script="la
 SHORT = 24  # a tip's flat is shorter than this
 LONG = 40   # an edge's flat at least this long
 ASSIGN = 8  # glyph names per style assignment line
+# letters the italics hint with the Latin x-height row by their own line
+# (2026-11-19, phase 6 step C: ϱ's top, long flat handles over the x-height,
+# hinted a pixel above x's row at 13 sizes with the Greek set: given the Latin row)
+ITALIC_LATIN = ("rhosymbolgreek",)
 
 
 def runs(points):
@@ -222,6 +226,9 @@ def hint(unhinted, hinted, control=None):
             # Approved 2026-10-26: the serifed adscript aligns with x in
             # Latin zones. Append after other assignments, as in the proof.
             overrides = "# prosgegrammeni: Latin x-height\nlatn dflt @ uni1FBE\n"
+        if tt["name"].getDebugName(2).endswith("Italic"):
+            names = [n for n in ITALIC_LATIN if n in tt.getGlyphOrder()]
+            overrides += "".join(f"# Latin x-height\nlatn dflt @ {n}\n" for n in names)
         control.write_text(head + "# zones\n" + "".join(f"{x}\n" for x in deltas) + overrides)
         autohint(unhinted, hinted, control)
     return dict(tips=len(tiplines), greek_latin=greek, tried=tried, deltas=len(deltas), left=len(left))

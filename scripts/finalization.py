@@ -46,8 +46,6 @@ PASSES = (
          ("T_h", "t_h", "t_t", "Q_u")),
     Pass("draft_ligatures", "finish_f", ("Bold",), ("final f", "final ı ȷ l b h k t"),
          ("ff fi fl ffi ffl fj ffj", "f- and ff-ligatures before b h k t", "long-s ligatures")),
-    Pass("italic_ligatures", "make", ITALIC,
-         ("final f", "final ſ", "final partner letters"), ("accepted italic ligatures",)),
     Pass("smooth_joins", "finish", ITALIC, ("finished outlines",), ("named joins and brackets",)),
     # the designer's rule of 2026-11-10: no stem steps in at its serif
     Pass("stem_joins", "finish", ("Italic", "Bold", "Bold Italic"), ("finished outlines",),
@@ -55,6 +53,12 @@ PASSES = (
     # the designer, 2026-11-10: a bowl's inside two curves (D Ь Ы and
     # their small caps), in the styles made from Old Standard's italic
     Pass("bowl_counters", "finish", ITALIC, ("finished outlines", "mended stem joins"), ("bowls' insides",)),
+    # after the passes that mend a base (stem_joins, bowl_counters): a
+    # ligature is made of its final bases (p mended 2026-11-19 by stem_joins
+    # left s_p with the unmended p)
+    Pass("italic_ligatures", "make", ITALIC,
+         ("final f", "final ſ", "final partner letters", "mended stem joins", "bowls' insides"),
+         ("accepted italic ligatures",)),
     # the designer, 2026-11-12: ы.sc's two parts and psi.sc's serif and arms do not touch
     # the designer, 2026-11-12: Ʌ's thin leg straight down to its foot, as Λ's
     Pass("turned_v", "finish", ITALIC, ("final V", "uni0245 turned from it"), ("uni0245",)),

@@ -6,62 +6,77 @@
 		<contour>
 			<point x="126" y="238" type="line"/>
 			<point x="275" y="576" type="line" smooth="yes"/>
-			<point x="367" y="783"/>
-			<point x="512" y="1052"/>
-			<point x="512" y="1256" type="curve" smooth="yes"/>
-			<point x="512" y="1290"/>
-			<point x="506" y="1305"/>
-			<point x="501" y="1305" type="curve" smooth="yes"/>
-			<point x="479" y="1305"/>
-			<point x="494" y="1273"/>
-			<point x="473" y="1251" type="curve" smooth="yes"/>
-			<point x="467" y="1246"/>
-			<point x="415" y="1194"/>
-			<point x="349" y="1194" type="curve" smooth="yes"/>
-			<point x="289" y="1194"/>
-			<point x="221" y="1237"/>
-			<point x="221" y="1314" type="curve" smooth="yes"/>
+			<point x="366" y="781"/>
+			<point x="510" y="1051"/>
+			<point x="510" y="1255" type="curve" smooth="yes"/>
+			<point x="510" y="1290"/>
+			<point x="504" y="1306"/>
+			<point x="500" y="1306" type="curve" smooth="yes"/>
+			<point x="436" y="1306"/>
+			<point x="411" y="1196"/>
+			<point x="347" y="1196" type="curve" smooth="yes"/>
+			<point x="315" y="1196"/>
+			<point x="221" y="1224"/>
+			<point x="221" y="1313" type="curve" smooth="yes"/>
 			<point x="221" y="1417"/>
-			<point x="345" y="1476"/>
-			<point x="446" y="1476" type="curve" smooth="yes"/>
-			<point x="544" y="1476"/>
-			<point x="627" y="1420"/>
-			<point x="627" y="1318" type="curve" smooth="yes"/>
-			<point x="627" y="1151"/>
-			<point x="494" y="838"/>
+			<point x="345" y="1467"/>
+			<point x="441" y="1467" type="curve" smooth="yes"/>
+			<point x="548" y="1467"/>
+			<point x="624" y="1403"/>
+			<point x="624" y="1297" type="curve" smooth="yes"/>
+			<point x="624" y="1108"/>
+			<point x="497" y="842"/>
 			<point x="414" y="650" type="curve"/>
-			<point x="1342" y="1156" type="line"/>
-			<point x="1197" y="801" type="line" smooth="yes"/>
-			<point x="1114" y="599"/>
-			<point x="961" y="353"/>
-			<point x="961" y="157" type="curve" smooth="yes"/>
-			<point x="961" y="117"/>
-			<point x="970" y="117"/>
-			<point x="971" y="117" type="curve" smooth="yes"/>
-			<point x="991" y="117"/>
-			<point x="980" y="147"/>
-			<point x="1001" y="166" type="curve" smooth="yes"/>
-			<point x="1005" y="169"/>
-			<point x="1059" y="217"/>
-			<point x="1124" y="217" type="curve" smooth="yes"/>
-			<point x="1184" y="217"/>
-			<point x="1251" y="175"/>
+			<point x="1344" y="1157" type="line"/>
+			<point x="1199" y="803" type="line" smooth="yes"/>
+			<point x="1153" y="691"/>
+			<point x="1106" y="600"/>
+			<point x="1056" y="488" type="curve" smooth="yes"/>
+			<point x="1007" y="378"/>
+			<point x="974" y="281"/>
+			<point x="965" y="175" type="curve" smooth="yes"/>
+			<point x="964" y="171"/>
+			<point x="963" y="152"/>
+			<point x="963" y="140" type="curve" smooth="yes"/>
+			<point x="963" y="123"/>
+			<point x="966" y="117"/>
+			<point x="981" y="117" type="curve" smooth="yes"/>
+			<point x="1043" y="117"/>
+			<point x="1056" y="215"/>
+			<point x="1125" y="215" type="curve" smooth="yes"/>
+			<point x="1160" y="215"/>
+			<point x="1250" y="191"/>
 			<point x="1251" y="109" type="curve" smooth="yes"/>
-			<point x="1251" y="19"/>
-			<point x="1128" y="-42"/>
-			<point x="1029" y="-42" type="curve" smooth="yes"/>
-			<point x="936" y="-42"/>
-			<point x="851" y="11"/>
-			<point x="851" y="124" type="curve" smooth="yes"/>
-			<point x="850" y="300"/>
-			<point x="983" y="549"/>
-			<point x="1062" y="730" type="curve"/>
+			<point x="1251" y="11"/>
+			<point x="1121" y="-31"/>
+			<point x="1029" y="-31" type="curve" smooth="yes"/>
+			<point x="954" y="-31"/>
+			<point x="851" y="-4"/>
+			<point x="851" y="128" type="curve" smooth="yes"/>
+			<point x="850" y="301"/>
+			<point x="982" y="552"/>
+			<point x="1061" y="729" type="curve"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-19</string>
+				<key>from</key>
+				<string>f910f911e51b</string>
+				<key>harmonise</key>
+				<string>long</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-long-c-tail-2026-11-19.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

@@ -1,85 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="c" format="2">
 	<unicode hex="0063"/>
-	<advance width="882"/>
+	<advance width="885"/>
 	<outline>
 		<contour>
-			<point x="401" y="31" type="curve" smooth="yes"/>
-			<point x="549" y="31"/>
-			<point x="663" y="177"/>
-			<point x="714" y="307" type="curve"/>
-			<point x="769" y="291" type="line"/>
-			<point x="709" y="129"/>
-			<point x="574" y="-23"/>
-			<point x="390" y="-23" type="curve" smooth="yes"/>
-			<point x="197" y="-23"/>
-			<point x="56" y="140"/>
-			<point x="55" y="325" type="curve" smooth="yes"/>
-			<point x="56" y="467"/>
-			<point x="123" y="630"/>
-			<point x="247" y="743" type="curve" smooth="yes"/>
-			<point x="344" y="830"/>
-			<point x="470" y="884"/>
-			<point x="588" y="884" type="curve" smooth="yes"/>
-			<point x="726" y="884"/>
-			<point x="848" y="788"/>
-			<point x="848" y="676" type="curve" smooth="yes"/>
-			<point x="848" y="568"/>
-			<point x="735" y="538"/>
-			<point x="668" y="538" type="curve" smooth="yes"/>
-			<point x="597" y="538"/>
-			<point x="543" y="572"/>
-			<point x="543" y="628" type="curve" smooth="yes"/>
-			<point x="543" y="672"/>
-			<point x="577" y="690"/>
-			<point x="612" y="718" type="curve" smooth="yes"/>
-			<point x="628" y="731"/>
-			<point x="657" y="757"/>
-			<point x="657" y="785" type="curve" smooth="yes"/>
-			<point x="657" y="822"/>
-			<point x="607" y="829"/>
-			<point x="586" y="829" type="curve" smooth="yes"/>
-			<point x="478" y="829"/>
-			<point x="407" y="624"/>
-			<point x="367" y="504" type="curve" smooth="yes"/>
-			<point x="361" y="486"/>
-			<point x="357" y="470"/>
-			<point x="352" y="452" type="curve" smooth="yes"/>
-			<point x="330" y="372"/>
-			<point x="316" y="285"/>
-			<point x="311" y="197" type="curve" smooth="yes"/>
-			<point x="308" y="142"/>
-			<point x="309" y="31"/>
+			<point x="404" y="31" type="curve" smooth="yes"/>
+			<point x="557" y="31"/>
+			<point x="667" y="178"/>
+			<point x="717" y="307" type="curve"/>
+			<point x="772" y="291" type="line"/>
+			<point x="713" y="127"/>
+			<point x="576" y="-15"/>
+			<point x="394" y="-15" type="curve" smooth="yes"/>
+			<point x="194" y="-15"/>
+			<point x="59" y="137"/>
+			<point x="59" y="325" type="curve" smooth="yes"/>
+			<point x="58" y="594"/>
+			<point x="293" y="884"/>
+			<point x="592" y="884" type="curve" smooth="yes"/>
+			<point x="731" y="884"/>
+			<point x="850" y="790"/>
+			<point x="851" y="676" type="curve" smooth="yes"/>
+			<point x="851" y="566"/>
+			<point x="739" y="538"/>
+			<point x="671" y="538" type="curve" smooth="yes"/>
+			<point x="589" y="538"/>
+			<point x="546" y="578"/>
+			<point x="545" y="630" type="curve" smooth="yes"/>
+			<point x="545" y="678"/>
+			<point x="583" y="691"/>
+			<point x="612" y="711" type="curve" smooth="yes"/>
+			<point x="620" y="716"/>
+			<point x="661" y="744"/>
+			<point x="661" y="781" type="curve" smooth="yes"/>
+			<point x="660" y="818"/>
+			<point x="617" y="829"/>
+			<point x="590" y="829" type="curve" smooth="yes"/>
+			<point x="496" y="829"/>
+			<point x="413" y="663"/>
+			<point x="365" y="487" type="curve" smooth="yes"/>
+			<point x="338" y="388"/>
+			<point x="321" y="286"/>
+			<point x="315" y="203" type="curve" smooth="yes"/>
+			<point x="310" y="120"/>
+			<point x="315" y="31"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="372" y="-20"/>
-	<anchor name="Bottom" x="377" y="0"/>
-	<anchor name="Acute" x="637" y="980"/>
-	<anchor name="Grave" x="637" y="980"/>
-	<anchor name="Dotaccent" x="649" y="1020"/>
-	<anchor name="Top" x="643" y="1000"/>
-	<anchor name="Cedilla" x="377" y="-4"/>
+	<anchor name="DotBelow" x="377" y="-20"/>
+	<anchor name="Bottom" x="380" y="0"/>
+	<anchor name="Acute" x="640" y="980"/>
+	<anchor name="Grave" x="640" y="980"/>
+	<anchor name="Dotaccent" x="652" y="1020"/>
+	<anchor name="Top" x="646" y="1000"/>
+	<anchor name="Cedilla" x="380" y="-4"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-11</string>
+				<string>2026-11-19</string>
 				<key>glyph</key>
-				<string>885a5ab6eb5a</string>
+				<string>ac00ec2a071e</string>
 				<key>review</key>
-				<string>proofs/2026-11/bold-italic-after-redraw-az-2026-11-11.pdf</string>
+				<string>proofs/2026-11/italic-long-c-bold-italic-2026-11-19.pdf</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>
 			<key>org.myiadidot.redrawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-11</string>
+				<string>2026-11-18</string>
 				<key>from</key>
-				<string>4c5c9b78e7e6</string>
+				<string>207312b66b98</string>
+				<key>harmonise</key>
+				<string>long</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-redraw-az-2026-11-11.pdf</string>
+				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 				<key>source</key>
 				<string>Old Standard</string>
 				<key>tol</key>

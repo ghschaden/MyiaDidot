@@ -45,7 +45,7 @@ JOINS = {
     "m": [(770, 598)],
     "uni0442": [(770, 598)],
     "uni026F": [(900, 286), (1354, 194)],  # (the second: the one-way foot, below)
-    "uni0496": [(1016, -314), (926, -237), (1776, 307), (1447, 268)],
+    "uni0496": [(1016, -314), (926, -237), (1774, 285), (1447, 268)],
     "u1D510": [(1838, 92)],
     "uni01B4": [(1181, 759), (810, 752)],
     "ordfeminine": [(649, 865)],
@@ -63,7 +63,7 @@ JOINS = {
     "uni1D6F": [(316, 690)],
     "uni0289": [(888, 168)],
     "uni1D43": [(422, 1046)],
-    "uni1DA4": [(383, 633)],
+    "uni1DA4": [(387, 615)],
 }
 # the Italic's, the same way (its node made smooth too): ɱ's hook, its
 # inner edge running into m's leg, a zero-length line stacked on the node

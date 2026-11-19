@@ -4,8 +4,11 @@ import math
 
 # Capital cedillas attach with dy=122. The italic C's counter starts at
 # y=30: keep the top of the attached mark one unit below it. Weighting can
-# otherwise push the corner through the inner edge (a sub-unit step).
-TOP = -93
+# otherwise push the corner through the inner edge (a sub-unit step). The
+# small cap c's counter starts at 27 since phase 6 step C (the overshoots
+# the Regular's, 2026-11-19; 28 before): so the mark's tip at 29 stood a
+# unit and a half through it, in ccedilla.sc and ḉ.sc; 26 below it.
+TOP = -96
 ATTACHMENT = -122
 
 

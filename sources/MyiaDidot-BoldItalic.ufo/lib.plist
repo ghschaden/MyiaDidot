@@ -6,6 +6,8 @@
 		<dict>
 			<key>uni019D</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (Ɲ: crumbs of the foot serif at the cut)</string>
+			<key>uni01AD</key>
+			<string>hook: emboldened whole, made again from the Bold it has faults</string>
 			<key>uni026D</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (ɭ: a step on the stem at the cut)</string>
 			<key>uni026E</key>
@@ -18,6 +20,8 @@
 			<string>glottal: emboldened whole, made again from the Bold it misses (ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver)</string>
 			<key>uni044E.loclBGR</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (Bulgarian ю: a spur of ю's entry stroke left under the cut)</string>
+			<key>uni2C66</key>
+			<string>slash: emboldened whole, made again from the Bold it has faults</string>
 			<key>uniA7B2</key>
 			<string>attach: emboldened whole, made again from the Bold it misses (Ʝ: steps on both sides of the stem at the cut)</string>
 		</dict>
@@ -43,30 +47,6 @@
 			<key>AE hbar</key>
 			<string>added</string>
 			<key>AEacute hbar</key>
-			<string>added</string>
-			<key>Eng b</key>
-			<string>added</string>
-			<key>Eng k</key>
-			<string>added</string>
-			<key>Eng kcommaaccent</key>
-			<string>added</string>
-			<key>Eng uni01E9</key>
-			<string>added</string>
-			<key>Eng uni0209</key>
-			<string>added</string>
-			<key>Eng uni1D6C</key>
-			<string>added</string>
-			<key>Eng uni1E03</key>
-			<string>added</string>
-			<key>Eng uni1E05</key>
-			<string>added</string>
-			<key>Eng uni1E07</key>
-			<string>added</string>
-			<key>Eng uni1E31</key>
-			<string>added</string>
-			<key>Eng uni1E33</key>
-			<string>added</string>
-			<key>Eng uni1E35</key>
 			<string>added</string>
 			<key>H b</key>
 			<string>added</string>
@@ -146,79 +126,23 @@
 			<string>added</string>
 			<key>H uni1E97</key>
 			<string>added</string>
-			<key>Hbar b</key>
-			<string>added</string>
-			<key>Hbar h</key>
-			<string>added</string>
 			<key>Hbar hbar</key>
-			<string>added</string>
-			<key>Hbar hcircumflex</key>
 			<string>added</string>
 			<key>Hbar k</key>
 			<string>added</string>
 			<key>Hbar kcommaaccent</key>
 			<string>added</string>
-			<key>Hbar l</key>
-			<string>added</string>
-			<key>Hbar lacute</key>
-			<string>added</string>
-			<key>Hbar lcaron</key>
-			<string>added</string>
-			<key>Hbar lcommaaccent</key>
-			<string>added</string>
-			<key>Hbar ldot</key>
-			<string>added</string>
 			<key>Hbar lslash</key>
-			<string>added</string>
-			<key>Hbar uni019A</key>
-			<string>added</string>
-			<key>Hbar uni01C9</key>
 			<string>added</string>
 			<key>Hbar uni01E9</key>
 			<string>added</string>
 			<key>Hbar uni0209</key>
-			<string>added</string>
-			<key>Hbar uni021F</key>
-			<string>added</string>
-			<key>Hbar uni026B</key>
-			<string>added</string>
-			<key>Hbar uni026C</key>
-			<string>added</string>
-			<key>Hbar uni026D</key>
-			<string>added</string>
-			<key>Hbar uni1D6C</key>
-			<string>added</string>
-			<key>Hbar uni1E03</key>
-			<string>added</string>
-			<key>Hbar uni1E05</key>
-			<string>added</string>
-			<key>Hbar uni1E07</key>
-			<string>added</string>
-			<key>Hbar uni1E23</key>
-			<string>added</string>
-			<key>Hbar uni1E25</key>
-			<string>added</string>
-			<key>Hbar uni1E27</key>
-			<string>added</string>
-			<key>Hbar uni1E29</key>
-			<string>added</string>
-			<key>Hbar uni1E2B</key>
 			<string>added</string>
 			<key>Hbar uni1E31</key>
 			<string>added</string>
 			<key>Hbar uni1E33</key>
 			<string>added</string>
 			<key>Hbar uni1E35</key>
-			<string>added</string>
-			<key>Hbar uni1E37</key>
-			<string>added</string>
-			<key>Hbar uni1E39</key>
-			<string>added</string>
-			<key>Hbar uni1E3B</key>
-			<string>added</string>
-			<key>Hbar uni1E3D</key>
-			<string>added</string>
-			<key>Hbar uni1E96</key>
 			<string>added</string>
 			<key>Hbar uni1E97</key>
 			<string>added</string>
@@ -1274,8 +1198,6 @@
 			<string>added</string>
 			<key>Itilde uni1E97</key>
 			<string>added</string>
-			<key>Jcircumflex uni1E39</key>
-			<string>added</string>
 			<key>Jcircumflex uni1F36</key>
 			<string>added</string>
 			<key>Jcircumflex uni1F37</key>
@@ -1376,18 +1298,6 @@
 			<string>added</string>
 			<key>Psi zerosuperior</key>
 			<string>added</string>
-			<key>Uogonek b</key>
-			<string>added</string>
-			<key>Uogonek h</key>
-			<string>added</string>
-			<key>Uogonek hbar</key>
-			<string>added</string>
-			<key>Uogonek hcircumflex</key>
-			<string>added</string>
-			<key>Uogonek k</key>
-			<string>added</string>
-			<key>Uogonek kcommaaccent</key>
-			<string>added</string>
 			<key>Uogonek l</key>
 			<string>added</string>
 			<key>Uogonek lacute</key>
@@ -1398,19 +1308,9 @@
 			<string>added</string>
 			<key>Uogonek ldot</key>
 			<string>added</string>
-			<key>Uogonek lslash</key>
-			<string>added</string>
 			<key>Uogonek uni019A</key>
 			<string>added</string>
 			<key>Uogonek uni01C9</key>
-			<string>added</string>
-			<key>Uogonek uni01D0</key>
-			<string>added</string>
-			<key>Uogonek uni01E9</key>
-			<string>added</string>
-			<key>Uogonek uni0209</key>
-			<string>added</string>
-			<key>Uogonek uni021F</key>
 			<string>added</string>
 			<key>Uogonek uni026B</key>
 			<string>added</string>
@@ -1420,30 +1320,6 @@
 			<string>added</string>
 			<key>Uogonek uni026E</key>
 			<string>added</string>
-			<key>Uogonek uni1D6C</key>
-			<string>added</string>
-			<key>Uogonek uni1E03</key>
-			<string>added</string>
-			<key>Uogonek uni1E05</key>
-			<string>added</string>
-			<key>Uogonek uni1E07</key>
-			<string>added</string>
-			<key>Uogonek uni1E23</key>
-			<string>added</string>
-			<key>Uogonek uni1E25</key>
-			<string>added</string>
-			<key>Uogonek uni1E27</key>
-			<string>added</string>
-			<key>Uogonek uni1E29</key>
-			<string>added</string>
-			<key>Uogonek uni1E2B</key>
-			<string>added</string>
-			<key>Uogonek uni1E31</key>
-			<string>added</string>
-			<key>Uogonek uni1E33</key>
-			<string>added</string>
-			<key>Uogonek uni1E35</key>
-			<string>added</string>
 			<key>Uogonek uni1E37</key>
 			<string>added</string>
 			<key>Uogonek uni1E39</key>
@@ -1451,10 +1327,6 @@
 			<key>Uogonek uni1E3B</key>
 			<string>added</string>
 			<key>Uogonek uni1E3D</key>
-			<string>added</string>
-			<key>Uogonek uni1E96</key>
-			<string>added</string>
-			<key>Uogonek uni1E97</key>
 			<string>added</string>
 			<key>Upsilon ordfeminine</key>
 			<string>added</string>
@@ -1758,8 +1630,6 @@
 			<string>added</string>
 			<key>bracketleft Ydieresis</key>
 			<string>added</string>
-			<key>bracketleft b</key>
-			<string>added</string>
 			<key>bracketleft f</key>
 			<string>added</string>
 			<key>bracketleft f.short</key>
@@ -1796,12 +1666,6 @@
 			<string>added</string>
 			<key>bracketleft fl</key>
 			<string>added</string>
-			<key>bracketleft h</key>
-			<string>added</string>
-			<key>bracketleft hbar</key>
-			<string>added</string>
-			<key>bracketleft hcircumflex</key>
-			<string>added</string>
 			<key>bracketleft idieresis.sc</key>
 			<string>added</string>
 			<key>bracketleft iotadieresis.sc</key>
@@ -1810,29 +1674,13 @@
 			<string>added</string>
 			<key>bracketleft kcommaaccent</key>
 			<string>added</string>
-			<key>bracketleft l</key>
-			<string>added</string>
-			<key>bracketleft lacute</key>
-			<string>added</string>
-			<key>bracketleft lcaron</key>
-			<string>added</string>
-			<key>bracketleft lcommaaccent</key>
-			<string>added</string>
-			<key>bracketleft ldot</key>
-			<string>added</string>
-			<key>bracketleft lslash</key>
-			<string>added</string>
 			<key>bracketleft uni0181</key>
 			<string>added</string>
 			<key>bracketleft uni018A</key>
 			<string>added</string>
-			<key>bracketleft uni019A</key>
-			<string>added</string>
 			<key>bracketleft uni01A4</key>
 			<string>added</string>
 			<key>bracketleft uni01B3</key>
-			<string>added</string>
-			<key>bracketleft uni01C9</key>
 			<string>added</string>
 			<key>bracketleft uni01D0</key>
 			<string>added</string>
@@ -1842,19 +1690,9 @@
 			<string>added</string>
 			<key>bracketleft uni0209.sc</key>
 			<string>added</string>
-			<key>bracketleft uni021F</key>
-			<string>added</string>
 			<key>bracketleft uni0232</key>
 			<string>added</string>
 			<key>bracketleft uni025F</key>
-			<string>added</string>
-			<key>bracketleft uni026B</key>
-			<string>added</string>
-			<key>bracketleft uni026C</key>
-			<string>added</string>
-			<key>bracketleft uni026D</key>
-			<string>added</string>
-			<key>bracketleft uni026E</key>
 			<string>added</string>
 			<key>bracketleft uni0272</key>
 			<string>added</string>
@@ -1880,29 +1718,9 @@
 			<string>added</string>
 			<key>bracketleft uni04B0</key>
 			<string>added</string>
-			<key>bracketleft uni04BB</key>
-			<string>added</string>
-			<key>bracketleft uni1D6C</key>
-			<string>added</string>
 			<key>bracketleft uni1D6E</key>
 			<string>added</string>
-			<key>bracketleft uni1E03</key>
-			<string>added</string>
-			<key>bracketleft uni1E05</key>
-			<string>added</string>
-			<key>bracketleft uni1E07</key>
-			<string>added</string>
 			<key>bracketleft uni1E1F</key>
-			<string>added</string>
-			<key>bracketleft uni1E23</key>
-			<string>added</string>
-			<key>bracketleft uni1E25</key>
-			<string>added</string>
-			<key>bracketleft uni1E27</key>
-			<string>added</string>
-			<key>bracketleft uni1E29</key>
-			<string>added</string>
-			<key>bracketleft uni1E2B</key>
 			<string>added</string>
 			<key>bracketleft uni1E2F.sc</key>
 			<string>added</string>
@@ -1912,19 +1730,9 @@
 			<string>added</string>
 			<key>bracketleft uni1E35</key>
 			<string>added</string>
-			<key>bracketleft uni1E37</key>
-			<string>added</string>
-			<key>bracketleft uni1E39</key>
-			<string>added</string>
 			<key>bracketleft uni1E39.sc</key>
 			<string>added</string>
-			<key>bracketleft uni1E3B</key>
-			<string>added</string>
-			<key>bracketleft uni1E3D</key>
-			<string>added</string>
 			<key>bracketleft uni1E8E</key>
-			<string>added</string>
-			<key>bracketleft uni1E96</key>
 			<string>added</string>
 			<key>bracketleft uni1E97</key>
 			<string>added</string>
@@ -2414,15 +2222,11 @@
 			<string>added</string>
 			<key>f ordmasculine</key>
 			<string>added</string>
-			<key>f question</key>
-			<string>added</string>
 			<key>f quotedblright</key>
 			<string>added</string>
 			<key>f quoteright</key>
 			<string>added</string>
 			<key>f sevensuperior</key>
-			<string>added</string>
-			<key>f sixsuperior</key>
 			<string>added</string>
 			<key>f threesuperior</key>
 			<string>added</string>
@@ -2454,6 +2258,8 @@
 			<string>added</string>
 			<key>f.short idieresis</key>
 			<string>added</string>
+			<key>f.short igrave</key>
+			<string>added</string>
 			<key>f.short imacron</key>
 			<string>added</string>
 			<key>f.short itilde</key>
@@ -2464,15 +2270,11 @@
 			<string>added</string>
 			<key>f.short ordmasculine</key>
 			<string>added</string>
-			<key>f.short question</key>
-			<string>added</string>
 			<key>f.short quotedblright</key>
 			<string>added</string>
 			<key>f.short quoteright</key>
 			<string>added</string>
 			<key>f.short sevensuperior</key>
-			<string>added</string>
-			<key>f.short sixsuperior</key>
 			<string>added</string>
 			<key>f.short threesuperior</key>
 			<string>added</string>
@@ -2482,17 +2284,21 @@
 			<string>added</string>
 			<key>f.short uni01F0</key>
 			<string>added</string>
+			<key>f.short uni0201</key>
+			<string>added</string>
 			<key>f.short uni0205</key>
 			<string>added</string>
 			<key>f.short uni0209</key>
 			<string>added</string>
 			<key>f.short uni020B</key>
 			<string>added</string>
+			<key>f.short uni020D</key>
+			<string>added</string>
 			<key>f.short uni0211</key>
 			<string>added</string>
 			<key>f.short uni1E2F</key>
 			<string>added</string>
-			<key>f.short uni1E5D</key>
+			<key>f.short uni1EC9</key>
 			<string>added</string>
 			<key>f.short uni1EE1</key>
 			<string>added</string>
@@ -2571,8 +2377,6 @@
 			<key>ff.short uni0211</key>
 			<string>added</string>
 			<key>ff.short uni1E2F</key>
-			<string>added</string>
-			<key>ff.short uni1E5D</key>
 			<string>added</string>
 			<key>ff.short uni1EE1</key>
 			<string>added</string>
@@ -3308,9 +3112,19 @@
 			<string>added</string>
 			<key>public.kern1.F hbar</key>
 			<string>added</string>
+			<key>public.kern1.F k</key>
+			<string>added</string>
+			<key>public.kern1.F kcommaaccent</key>
+			<string>added</string>
+			<key>public.kern1.F uni01E9</key>
+			<string>added</string>
 			<key>public.kern1.F uni0209</key>
 			<string>added</string>
-			<key>public.kern1.F uni1E97</key>
+			<key>public.kern1.F uni1E31</key>
+			<string>added</string>
+			<key>public.kern1.F uni1E33</key>
+			<string>added</string>
+			<key>public.kern1.F uni1E35</key>
 			<string>added</string>
 			<key>public.kern1.F uni1EE1</key>
 			<string>added</string>
@@ -3978,7 +3792,19 @@
 			<string>added</string>
 			<key>public.kern1.T hbar</key>
 			<string>added</string>
+			<key>public.kern1.T k</key>
+			<string>added</string>
+			<key>public.kern1.T kcommaaccent</key>
+			<string>added</string>
+			<key>public.kern1.T uni01E9</key>
+			<string>added</string>
 			<key>public.kern1.T uni0209</key>
+			<string>added</string>
+			<key>public.kern1.T uni1E31</key>
+			<string>added</string>
+			<key>public.kern1.T uni1E33</key>
+			<string>added</string>
+			<key>public.kern1.T uni1E35</key>
 			<string>added</string>
 			<key>public.kern1.T uni1E97</key>
 			<string>added</string>
@@ -4087,6 +3913,8 @@
 			<key>public.kern1.U uni019A</key>
 			<string>added</string>
 			<key>public.kern1.U uni01C9</key>
+			<string>added</string>
+			<key>public.kern1.U uni01D0</key>
 			<string>added</string>
 			<key>public.kern1.U uni01E9</key>
 			<string>added</string>
@@ -4708,7 +4536,11 @@
 			<string>added</string>
 			<key>public.kern1.zeta Alphatonos</key>
 			<string>added</string>
+			<key>public.kern1.zeta Omegatonos</key>
+			<string>added</string>
 			<key>public.kern1.zeta Omicrontonos</key>
+			<string>added</string>
+			<key>public.kern1.zeta Upsilontonos</key>
 			<string>added</string>
 			<key>public.kern1.zeta uni0263</key>
 			<string>added</string>
@@ -4850,6 +4682,8 @@
 			<string>added</string>
 			<key>questiondown uni1D6E</key>
 			<string>added</string>
+			<key>questiondown uni1D7D</key>
+			<string>added</string>
 			<key>questiondown uni1E1F</key>
 			<string>added</string>
 			<key>questiondown uni1E2D.sc</key>
@@ -4877,8 +4711,6 @@
 			<key>questiondown.case Omicrontonos</key>
 			<string>added</string>
 			<key>questiondown.case four</key>
-			<string>added</string>
-			<key>questiondown.case uni0196</key>
 			<string>added</string>
 			<key>questiondown.case uni01B7</key>
 			<string>added</string>
@@ -5432,6 +5264,10 @@
 			<string>added</string>
 			<key>quotedblleft uni1F4D</key>
 			<string>added</string>
+			<key>quotedblleft uni1F6E</key>
+			<string>added</string>
+			<key>quotedblleft uni1F6F</key>
+			<string>added</string>
 			<key>quotedblleft uni1F88</key>
 			<string>added</string>
 			<key>quotedblleft uni1F8A</key>
@@ -5459,6 +5295,10 @@
 			<key>quotedblleft uni1F9E</key>
 			<string>added</string>
 			<key>quotedblleft uni1F9F</key>
+			<string>added</string>
+			<key>quotedblleft uni1FAE</key>
+			<string>added</string>
+			<key>quotedblleft uni1FAF</key>
 			<string>added</string>
 			<key>quotedblleft uni1FBA</key>
 			<string>added</string>
@@ -5850,9 +5690,19 @@
 			<string>added</string>
 			<key>uni0191 hbar</key>
 			<string>added</string>
+			<key>uni0191 k</key>
+			<string>added</string>
+			<key>uni0191 kcommaaccent</key>
+			<string>added</string>
+			<key>uni0191 uni01E9</key>
+			<string>added</string>
 			<key>uni0191 uni0209</key>
 			<string>added</string>
-			<key>uni0191 uni1E97</key>
+			<key>uni0191 uni1E31</key>
+			<string>added</string>
+			<key>uni0191 uni1E33</key>
+			<string>added</string>
+			<key>uni0191 uni1E35</key>
 			<string>added</string>
 			<key>uni0193 b</key>
 			<string>added</string>
@@ -5886,6 +5736,14 @@
 			<string>added</string>
 			<key>uni0193 napostrophe</key>
 			<string>added</string>
+			<key>uni0193 t</key>
+			<string>added</string>
+			<key>uni0193 t_t</key>
+			<string>added</string>
+			<key>uni0193 tcaron</key>
+			<string>added</string>
+			<key>uni0193 tcommaaccent</key>
+			<string>added</string>
 			<key>uni0193 thorn</key>
 			<string>added</string>
 			<key>uni0193 uni019A</key>
@@ -5906,6 +5764,8 @@
 			<string>added</string>
 			<key>uni0193 uni0211</key>
 			<string>added</string>
+			<key>uni0193 uni021B</key>
+			<string>added</string>
 			<key>uni0193 uni021F</key>
 			<string>added</string>
 			<key>uni0193 uni026B</key>
@@ -5916,7 +5776,11 @@
 			<string>added</string>
 			<key>uni0193 uni026E</key>
 			<string>added</string>
+			<key>uni0193 uni0288</key>
+			<string>added</string>
 			<key>uni0193 uni1D6C</key>
+			<string>added</string>
+			<key>uni0193 uni1D75</key>
 			<string>added</string>
 			<key>uni0193 uni1E03</key>
 			<string>added</string>
@@ -5948,6 +5812,14 @@
 			<string>added</string>
 			<key>uni0193 uni1E3D</key>
 			<string>added</string>
+			<key>uni0193 uni1E6B</key>
+			<string>added</string>
+			<key>uni0193 uni1E6D</key>
+			<string>added</string>
+			<key>uni0193 uni1E6F</key>
+			<string>added</string>
+			<key>uni0193 uni1E71</key>
+			<string>added</string>
 			<key>uni0193 uni1E96</key>
 			<string>added</string>
 			<key>uni0193 uni1E97</key>
@@ -5959,6 +5831,8 @@
 			<key>uni0193 uni1EC5</key>
 			<string>added</string>
 			<key>uni0193 uni1ED7</key>
+			<string>added</string>
+			<key>uni0193 uni2C66</key>
 			<string>added</string>
 			<key>uni0194 hbar</key>
 			<string>added</string>
@@ -6328,8 +6202,6 @@
 			<string>added</string>
 			<key>uni0198 zerosuperior</key>
 			<string>added</string>
-			<key>uni019C uni1E97</key>
-			<string>added</string>
 			<key>uni019D b</key>
 			<string>added</string>
 			<key>uni019D h</key>
@@ -6418,9 +6290,23 @@
 			<string>added</string>
 			<key>uni01A6 bracketright.case</key>
 			<string>added</string>
+			<key>uni01AC k</key>
+			<string>added</string>
+			<key>uni01AC kcommaaccent</key>
+			<string>added</string>
+			<key>uni01AC uni01E9</key>
+			<string>added</string>
+			<key>uni01AC uni1E31</key>
+			<string>added</string>
+			<key>uni01AC uni1E33</key>
+			<string>added</string>
+			<key>uni01AC uni1E35</key>
+			<string>added</string>
+			<key>uni01AC uni1E97</key>
+			<string>added</string>
 			<key>uni01AD b</key>
 			<string>added</string>
-			<key>uni01AD eightsuperior</key>
+			<key>uni01AD bracketright</key>
 			<string>added</string>
 			<key>uni01AD h</key>
 			<string>added</string>
@@ -6438,7 +6324,17 @@
 			<string>added</string>
 			<key>uni01AE hbar</key>
 			<string>added</string>
-			<key>uni01AE uni1E97</key>
+			<key>uni01AE k</key>
+			<string>added</string>
+			<key>uni01AE kcommaaccent</key>
+			<string>added</string>
+			<key>uni01AE uni01E9</key>
+			<string>added</string>
+			<key>uni01AE uni1E31</key>
+			<string>added</string>
+			<key>uni01AE uni1E33</key>
+			<string>added</string>
+			<key>uni01AE uni1E35</key>
 			<string>added</string>
 			<key>uni01AF uni1E39</key>
 			<string>added</string>
@@ -6456,7 +6352,19 @@
 			<string>added</string>
 			<key>uni01B1 hbar</key>
 			<string>added</string>
+			<key>uni01B1 k</key>
+			<string>added</string>
+			<key>uni01B1 kcommaaccent</key>
+			<string>added</string>
+			<key>uni01B1 uni01E9</key>
+			<string>added</string>
 			<key>uni01B1 uni0209</key>
+			<string>added</string>
+			<key>uni01B1 uni1E31</key>
+			<string>added</string>
+			<key>uni01B1 uni1E33</key>
+			<string>added</string>
+			<key>uni01B1 uni1E35</key>
 			<string>added</string>
 			<key>uni01B1 uni1E97</key>
 			<string>added</string>
@@ -6814,7 +6722,7 @@
 			<string>added</string>
 			<key>uni01B7 uni1E97</key>
 			<string>added</string>
-			<key>uni01B8 uni1E97</key>
+			<key>uni01B8 hbar</key>
 			<string>added</string>
 			<key>uni01C7 b</key>
 			<string>added</string>
@@ -6863,8 +6771,6 @@
 			<key>uni01C7 quotedblright</key>
 			<string>added</string>
 			<key>uni01C7 quoteright</key>
-			<string>added</string>
-			<key>uni01C7 scaron</key>
 			<string>added</string>
 			<key>uni01C7 sevensuperior</key>
 			<string>added</string>
@@ -6965,8 +6871,6 @@
 			<key>uni01C7 uni1E3B</key>
 			<string>added</string>
 			<key>uni01C7 uni1E3D</key>
-			<string>added</string>
-			<key>uni01C7 uni1E67</key>
 			<string>added</string>
 			<key>uni01C7 uni1E6B</key>
 			<string>added</string>
@@ -7676,7 +7580,19 @@
 			<string>added</string>
 			<key>uni023E hbar</key>
 			<string>added</string>
+			<key>uni023E k</key>
+			<string>added</string>
+			<key>uni023E kcommaaccent</key>
+			<string>added</string>
+			<key>uni023E uni01E9</key>
+			<string>added</string>
 			<key>uni023E uni0209</key>
+			<string>added</string>
+			<key>uni023E uni1E31</key>
+			<string>added</string>
+			<key>uni023E uni1E33</key>
+			<string>added</string>
+			<key>uni023E uni1E35</key>
 			<string>added</string>
 			<key>uni023E uni1E97</key>
 			<string>added</string>
@@ -7694,97 +7610,17 @@
 			<string>added</string>
 			<key>uni0241 zerosuperior</key>
 			<string>added</string>
-			<key>uni0244 b</key>
-			<string>added</string>
-			<key>uni0244 h</key>
-			<string>added</string>
-			<key>uni0244 hbar</key>
-			<string>added</string>
-			<key>uni0244 hcircumflex</key>
-			<string>added</string>
-			<key>uni0244 k</key>
-			<string>added</string>
-			<key>uni0244 kcommaaccent</key>
-			<string>added</string>
-			<key>uni0244 l</key>
-			<string>added</string>
-			<key>uni0244 lacute</key>
-			<string>added</string>
-			<key>uni0244 lcaron</key>
-			<string>added</string>
-			<key>uni0244 lcommaaccent</key>
-			<string>added</string>
-			<key>uni0244 ldot</key>
-			<string>added</string>
-			<key>uni0244 lslash</key>
-			<string>added</string>
 			<key>uni0244 public.kern2.O.sc</key>
-			<string>added</string>
-			<key>uni0244 uni019A</key>
-			<string>added</string>
-			<key>uni0244 uni01C9</key>
-			<string>added</string>
-			<key>uni0244 uni01E9</key>
 			<string>added</string>
 			<key>uni0244 uni0209</key>
 			<string>added</string>
-			<key>uni0244 uni021F</key>
-			<string>added</string>
-			<key>uni0244 uni026B</key>
-			<string>added</string>
-			<key>uni0244 uni026C</key>
-			<string>added</string>
-			<key>uni0244 uni026D</key>
-			<string>added</string>
-			<key>uni0244 uni026E</key>
-			<string>added</string>
-			<key>uni0244 uni1D6C</key>
-			<string>added</string>
-			<key>uni0244 uni1E03</key>
-			<string>added</string>
-			<key>uni0244 uni1E05</key>
-			<string>added</string>
-			<key>uni0244 uni1E07</key>
-			<string>added</string>
-			<key>uni0244 uni1E23</key>
-			<string>added</string>
-			<key>uni0244 uni1E25</key>
-			<string>added</string>
-			<key>uni0244 uni1E27</key>
-			<string>added</string>
-			<key>uni0244 uni1E29</key>
-			<string>added</string>
-			<key>uni0244 uni1E2B</key>
-			<string>added</string>
-			<key>uni0244 uni1E31</key>
-			<string>added</string>
-			<key>uni0244 uni1E33</key>
-			<string>added</string>
-			<key>uni0244 uni1E35</key>
-			<string>added</string>
-			<key>uni0244 uni1E37</key>
-			<string>added</string>
-			<key>uni0244 uni1E39</key>
-			<string>added</string>
-			<key>uni0244 uni1E3B</key>
-			<string>added</string>
-			<key>uni0244 uni1E3D</key>
-			<string>added</string>
-			<key>uni0244 uni1E96</key>
-			<string>added</string>
-			<key>uni0244 uni1E97</key>
-			<string>added</string>
 			<key>uni0250.sc zerosuperior</key>
-			<string>added</string>
-			<key>uni0257 asterisk</key>
 			<string>added</string>
 			<key>uni0257 b</key>
 			<string>added</string>
 			<key>uni0257 bracketright</key>
 			<string>added</string>
 			<key>uni0257 eightsuperior</key>
-			<string>added</string>
-			<key>uni0257 exclam</key>
 			<string>added</string>
 			<key>uni0257 h</key>
 			<string>added</string>
@@ -7798,17 +7634,11 @@
 			<string>added</string>
 			<key>uni0257 ordmasculine</key>
 			<string>added</string>
-			<key>uni0257 question</key>
-			<string>added</string>
-			<key>uni0257 quotedblleft</key>
-			<string>added</string>
 			<key>uni0257 quotedblright</key>
 			<string>added</string>
 			<key>uni0257 quoteright</key>
 			<string>added</string>
 			<key>uni0257 sevensuperior</key>
-			<string>added</string>
-			<key>uni0257 sixsuperior</key>
 			<string>added</string>
 			<key>uni0257 threesuperior</key>
 			<string>added</string>
@@ -7892,8 +7722,6 @@
 			<string>added</string>
 			<key>uni0281 zerosuperior</key>
 			<string>added</string>
-			<key>uni0283 asterisk</key>
-			<string>added</string>
 			<key>uni0283 bracketright</key>
 			<string>added</string>
 			<key>uni0283 eightsuperior</key>
@@ -7906,9 +7734,9 @@
 			<string>added</string>
 			<key>uni0283 ordmasculine</key>
 			<string>added</string>
-			<key>uni0283 question</key>
+			<key>uni0283 parenright</key>
 			<string>added</string>
-			<key>uni0283 quotedblleft</key>
+			<key>uni0283 question</key>
 			<string>added</string>
 			<key>uni0283 quotedblright</key>
 			<string>added</string>
@@ -8064,17 +7892,11 @@
 			<string>added</string>
 			<key>uni0496 uni0457</key>
 			<string>added</string>
-			<key>uni0496 uni04BB</key>
-			<string>added</string>
 			<key>uni049A uni0457</key>
-			<string>added</string>
-			<key>uni049A uni04BB</key>
 			<string>added</string>
 			<key>uni04AF.sc zerosuperior</key>
 			<string>added</string>
 			<key>uni04B1.sc zerosuperior</key>
-			<string>added</string>
-			<key>uni04B6 uni04BB</key>
 			<string>added</string>
 			<key>uni04E2 uni04BB</key>
 			<string>added</string>
@@ -8098,15 +7920,11 @@
 			<string>added</string>
 			<key>uni1D6E ordmasculine</key>
 			<string>added</string>
-			<key>uni1D6E question</key>
-			<string>added</string>
 			<key>uni1D6E quotedblright</key>
 			<string>added</string>
 			<key>uni1D6E quoteright</key>
 			<string>added</string>
 			<key>uni1D6E sevensuperior</key>
-			<string>added</string>
-			<key>uni1D6E sixsuperior</key>
 			<string>added</string>
 			<key>uni1D6E threesuperior</key>
 			<string>added</string>
@@ -8128,15 +7946,11 @@
 			<string>added</string>
 			<key>uni1E1F ordmasculine</key>
 			<string>added</string>
-			<key>uni1E1F question</key>
-			<string>added</string>
 			<key>uni1E1F quotedblright</key>
 			<string>added</string>
 			<key>uni1E1F quoteright</key>
 			<string>added</string>
 			<key>uni1E1F sevensuperior</key>
-			<string>added</string>
-			<key>uni1E1F sixsuperior</key>
 			<string>added</string>
 			<key>uni1E1F threesuperior</key>
 			<string>added</string>
@@ -8966,65 +8780,15 @@
 			<string>added</string>
 			<key>uni1E9B zerosuperior</key>
 			<string>added</string>
-			<key>uni1E9E b</key>
-			<string>added</string>
-			<key>uni1E9E h</key>
-			<string>added</string>
-			<key>uni1E9E hbar</key>
-			<string>added</string>
-			<key>uni1E9E hcircumflex</key>
-			<string>added</string>
 			<key>uni1E9E k</key>
 			<string>added</string>
 			<key>uni1E9E kcommaaccent</key>
 			<string>added</string>
-			<key>uni1E9E l</key>
-			<string>added</string>
-			<key>uni1E9E lacute</key>
-			<string>added</string>
-			<key>uni1E9E lcaron</key>
-			<string>added</string>
-			<key>uni1E9E lcommaaccent</key>
-			<string>added</string>
-			<key>uni1E9E ldot</key>
-			<string>added</string>
 			<key>uni1E9E lslash</key>
-			<string>added</string>
-			<key>uni1E9E uni019A</key>
-			<string>added</string>
-			<key>uni1E9E uni01C9</key>
 			<string>added</string>
 			<key>uni1E9E uni01E9</key>
 			<string>added</string>
 			<key>uni1E9E uni0209</key>
-			<string>added</string>
-			<key>uni1E9E uni021F</key>
-			<string>added</string>
-			<key>uni1E9E uni026B</key>
-			<string>added</string>
-			<key>uni1E9E uni026C</key>
-			<string>added</string>
-			<key>uni1E9E uni026D</key>
-			<string>added</string>
-			<key>uni1E9E uni026E</key>
-			<string>added</string>
-			<key>uni1E9E uni1D6C</key>
-			<string>added</string>
-			<key>uni1E9E uni1E03</key>
-			<string>added</string>
-			<key>uni1E9E uni1E05</key>
-			<string>added</string>
-			<key>uni1E9E uni1E07</key>
-			<string>added</string>
-			<key>uni1E9E uni1E23</key>
-			<string>added</string>
-			<key>uni1E9E uni1E25</key>
-			<string>added</string>
-			<key>uni1E9E uni1E27</key>
-			<string>added</string>
-			<key>uni1E9E uni1E29</key>
-			<string>added</string>
-			<key>uni1E9E uni1E2B</key>
 			<string>added</string>
 			<key>uni1E9E uni1E31</key>
 			<string>added</string>
@@ -9032,21 +8796,13 @@
 			<string>added</string>
 			<key>uni1E9E uni1E35</key>
 			<string>added</string>
-			<key>uni1E9E uni1E37</key>
-			<string>added</string>
-			<key>uni1E9E uni1E39</key>
-			<string>added</string>
-			<key>uni1E9E uni1E3B</key>
-			<string>added</string>
-			<key>uni1E9E uni1E3D</key>
-			<string>added</string>
-			<key>uni1E9E uni1E96</key>
-			<string>added</string>
 			<key>uni1E9E uni1E97</key>
 			<string>added</string>
 			<key>uni1EA4 uni01E9</key>
 			<string>added</string>
 			<key>uni1EA4 uni021F</key>
+			<string>added</string>
+			<key>uni1EA6 public.kern2.c</key>
 			<string>added</string>
 			<key>uni1EA7.sc braceright</key>
 			<string>added</string>

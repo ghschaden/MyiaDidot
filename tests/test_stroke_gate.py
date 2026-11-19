@@ -43,21 +43,31 @@ BLENDED = ["y", "uni028E", "sevenoldstyle", "uni02B2", "uni040F", "uni043C", "un
 # ц's tail past its extreme 13 units (11 before the redraw), щ's 12, and
 # two wobbles of ц's, 7 degrees (on the sheet of 2026-11-12)
 WIDTHS = {"uni019C": (2446, 2414), "y": (1070, 1069), "uni028E": (1070, 1069), "uni01B4": (1442, 1441),
-          "uni0446": (1188, 1187), "uni0448": (1670, 1669), "uni0449": (1666, 1669),
+          "uni0446": (1188, 1187), "uni0448": (1670, 1675), "uni0449": (1666, 1669),
           # џ: 6 wider once its Italic letter was redrawn (2026-11-16); naming
           # its knee (ITALIC_BOLD_KNEES, as ц's) was tried and changed nothing
           "uni045F": (1188, 1194),
           # phase 6's step B (2026-11-18): the drawn u 3 right and 5 wider, where
           # the run spaces it on the Italic's wider u (so ú ʉ Q_u built on it
           # agree); sevenoldstyle a unit wider (n's stem 1.5 thinner, not traced)
-          "u": (1188, 1193), "sevenoldstyle": (900, 901)}
+          "u": (1188, 1192), "sevenoldstyle": (900, 899),
+          # step C (2026-11-19): the drawn u a unit narrower where the run spaces
+          # it on the Italic (its x, k, т moved the same way); м a unit narrower;
+          # и 5 wider and ш 6 wider than before, as the Italic's и ш (made whole
+          # by the generator, not drawn)
+          "uni043C": (1393, 1392), "uni0438": (1188, 1193)}
 # side bearings moved (left, right): Ɯ's right 4 wider, as U's in the Bold
 # Italic's optical fit after the capitals' redraw (U -224 -> -219)
-BEARINGS = {"u": (3, 2), "uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0), "uni045F": (2, 4)}
+BEARINGS = {"u": (3, 2), "uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0), "uni045F": (2, 4),
+            "sevenoldstyle": (-1, 0), "uni0448": (2, 3), "uni0438": (2, 3)}
+# phase 6 step C (2026-11-19): the Italic's overshoots set to the Regular's
+# (lowercase -23 -> -15, capitals -35 -> -27), the Bold Italic's letters made
+# from it follow: how much higher the bottom stands now
+OVERSHOOT = {"uni043C": 8, "uni019C": 8, "uni0448": 8, "uni0438": 8}
 _ANCHOR_NAMES = ("Top", "Bottom", "DotBelow", "Grave", "Acute", "Horn", "Dotaccent", "Ogonek", "Hook")
 ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
            "u": {a: (2, 0) for a in _ANCHOR_NAMES},  # -1 (2026-11-11), +3 (step B)
-           "uni01B4": {"DotBelow": (521, 0)}, "uni0438": {a: (-1, 0) for a in _ANCHOR_NAMES}}
+           "uni01B4": {"DotBelow": (521, 0)}, "uni0438": {**{a: (2, 0) for a in _ANCHOR_NAMES}, "DotBelow": (4, 0)}}
 # ų: its stem's foot, a crotch drawn as a short line, now meets as one
 # point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it
 # draws the stem's inside a little bowed, a wobble the size of a unit, not
@@ -196,12 +206,12 @@ def test_redrawn_v_w_judged_by_the_gate():
     """v and w, controls until their Italic letters were redrawn onto clean
     nodes (2026-11-11): the blend starts on both now. v's takes two steps
     away (121,650 and 313,204) and adds nothing, w's removes none and w is
-    as drawn; both approved so on the Bold Italic's sheet of 2026-11-11"""
-    [v] = verdict("v")
-    assert v.startswith("blended") and "('step', 121, 650" in v and "('step', 313, 204" in v, v
-    assert "steps new or worse []; bends new []; findings new or worse []; guarded kept" in v, v
-    assert verdict("w") == [("as drawn: steps gone [], steps new or worse []; bends new []; "
-                             "findings new or worse []; guarded not reached")]
+    as drawn; both approved so on the Bold Italic's sheet of 2026-11-11.
+    Phase 6 step C (2026-11-19) set their overshoots and ascent to the
+    Regular's and moved v's nodes there (121,650 and 313,204 among them): the
+    two steps are gone from the Italic's v, the blend does not start on v nor
+    w (nothing left to take away)"""
+    assert verdict("v") == verdict("w") == []
 
 
 def test_refused_where_it_adds_a_fault():
@@ -270,7 +280,7 @@ def test_finished_letter_keeps_what_it_was(bold_italic, name):
     bo, bn = old.getBounds(), new.getBounds()
     left, right = BEARINGS.get(name, (0, 0))
     assert abs(bn.xMin - bo.xMin - left) <= 1 and abs((new.width - bn.xMax) - (old.width - bo.xMax) - right) <= 1
-    assert (bo.yMin, bo.yMax) == pytest.approx((bn.yMin, bn.yMax), abs=1)
+    assert (bo.yMin + OVERSHOOT.get(name, 0), bo.yMax) == pytest.approx((bn.yMin, bn.yMax), abs=1)
     rec = RecordingPen()
     new.draw(rec)
     assert len(new.contours) == len(old.contours) == len(pieces(segments(rec.value)))

@@ -62,12 +62,18 @@ def finish_turned_r_top(font):
     if font.info.styleName != "Bold Italic" or "uni027A" not in font:
         return
     lp = font["l"].contours[0].points
-    starts = [i for i, p in enumerate(lp) if p.type == "line" and 1320 <= p.y <= 1340]
-    if len(starts) != 1 or not lp[starts[0] + 3].type or lp[starts[0] + 4].type != "line":
+    # the stem's end: a line point whose next point is a handle, below the serif
+    starts = [i for i, p in enumerate(lp) if p.type == "line" and 1300 <= p.y <= 1420
+              and lp[(i + 1) % len(lp)].type is None]
+    if len(starts) != 1:
         raise ValueError("l's top bracket landmarks changed; review ɺ's top")
     s = starts[0]
-    bracket = lp[s + 1:s + 4]  # two handles and the curve's end under the serif
-    corner = lp[s + 4]
+    # the bracket runs to the next line point (one curve, or two since step C)
+    e = next((j for j in range(s + 1, len(lp)) if lp[j].type == "line"), None)
+    if e is None or not lp[e - 1].type:
+        raise ValueError("l's top bracket landmarks changed; review ɺ's top")
+    bracket = lp[s + 1:e]  # the handles and curve ends up to the serif's underside
+    corner = lp[e]
     dx = round(derive.stems_at(font, "uni027A", 1300)[-1][0] - derive.stems_at(font, "l", 1300)[0][0])
     _run_as(font["uni027A"], font["l"].contours[0])
     points = font["uni027A"].contours[0].points

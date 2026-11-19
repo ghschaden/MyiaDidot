@@ -49,20 +49,20 @@
 			<point x="247" y="1003"/>
 			<point x="289" y="976" type="curve" smooth="yes"/>
 			<point x="350" y="937" type="line" smooth="yes"/>
-			<point x="358" y="932"/>
-			<point x="365" y="908"/>
+			<point x="357" y="933"/>
+			<point x="365" y="907"/>
 			<point x="360" y="889" type="curve" smooth="yes"/>
 			<point x="262" y="528" type="line"/>
 			<point x="420" y="528" type="line"/>
 			<point x="517" y="885" type="line"/>
 			<point x="517" y="885"/>
-			<point x="519" y="888"/>
-			<point x="520" y="890" type="curve" smooth="yes"/>
-			<point x="522" y="897" type="line" smooth="yes"/>
+			<point x="520" y="888"/>
+			<point x="521" y="890" type="curve"/>
+			<point x="522" y="897" type="line"/>
 			<point x="524" y="906"/>
-			<point x="526" y="916"/>
-			<point x="525" y="925" type="curve"/>
-			<point x="526" y="971"/>
+			<point x="525" y="916"/>
+			<point x="525" y="926" type="curve" smooth="yes"/>
+			<point x="525" y="971"/>
 			<point x="500" y="1018"/>
 		</contour>
 	</outline>
@@ -71,11 +71,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-16</string>
+				<string>2026-11-19</string>
 				<key>glyph</key>
-				<string>92db428461fd</string>
+				<string>724bfa91f6dd</string>
 				<key>review</key>
-				<string>proofs/2026-11/bold-italic-after-redraw-phase5-2026-11-16.pdf</string>
+				<string>proofs/2026-11/italic-long-c-bold-italic-2026-11-19.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

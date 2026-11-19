@@ -4,64 +4,64 @@
 	<advance width="1339"/>
 	<outline>
 		<contour>
-			<point x="75" y="-19" type="line"/>
+			<point x="77" y="-11" type="line"/>
 			<point x="234" y="596" type="line"/>
 			<point x="322" y="596" type="line"/>
 			<point x="317" y="570"/>
 			<point x="314" y="543"/>
 			<point x="314" y="518" type="curve" smooth="yes"/>
-			<point x="315" y="337"/>
-			<point x="489" y="35"/>
-			<point x="691" y="35" type="curve" smooth="yes"/>
+			<point x="315" y="333"/>
+			<point x="485" y="35"/>
+			<point x="690" y="35" type="curve" smooth="yes"/>
 			<point x="839" y="35"/>
 			<point x="1002" y="96"/>
-			<point x="1002" y="271" type="curve" smooth="yes"/>
-			<point x="1002" y="410"/>
+			<point x="1002" y="272" type="curve" smooth="yes"/>
+			<point x="1001" y="412"/>
 			<point x="940" y="428"/>
 			<point x="837" y="486" type="curve" smooth="yes"/>
 			<point x="596" y="621" type="line" smooth="yes"/>
 			<point x="473" y="691"/>
-			<point x="345" y="817"/>
+			<point x="345" y="816"/>
 			<point x="345" y="976" type="curve" smooth="yes"/>
 			<point x="345" y="1277"/>
-			<point x="499" y="1473"/>
-			<point x="827" y="1473" type="curve" smooth="yes"/>
-			<point x="965" y="1473"/>
-			<point x="1103" y="1329"/>
+			<point x="500" y="1462"/>
+			<point x="824" y="1462" type="curve" smooth="yes"/>
+			<point x="961" y="1462"/>
+			<point x="1094" y="1329"/>
 			<point x="1162" y="1329" type="curve" smooth="yes"/>
 			<point x="1189" y="1329"/>
-			<point x="1241" y="1434"/>
-			<point x="1247" y="1455" type="curve"/>
-			<point x="1335" y="1455" type="line"/>
+			<point x="1240" y="1428"/>
+			<point x="1246" y="1450" type="curve"/>
+			<point x="1334" y="1450" type="line"/>
 			<point x="1221" y="889" type="line"/>
 			<point x="1133" y="889" type="line"/>
-			<point x="1136" y="1036"/>
-			<point x="975" y="1395"/>
-			<point x="808" y="1395" type="curve" smooth="yes"/>
-			<point x="669" y="1395"/>
-			<point x="522" y="1278"/>
-			<point x="522" y="1136" type="curve" smooth="yes"/>
-			<point x="522" y="997"/>
-			<point x="616" y="902"/>
+			<point x="1136" y="1040"/>
+			<point x="980" y="1396"/>
+			<point x="809" y="1396" type="curve" smooth="yes"/>
+			<point x="669" y="1396"/>
+			<point x="522" y="1281"/>
+			<point x="522" y="1137" type="curve" smooth="yes"/>
+			<point x="522" y="995"/>
+			<point x="613" y="904"/>
 			<point x="731" y="853" type="curve" smooth="yes"/>
 			<point x="932" y="768" type="line" smooth="yes"/>
 			<point x="1065" y="712"/>
 			<point x="1211" y="563"/>
-			<point x="1211" y="406" type="curve" smooth="yes"/>
-			<point x="1212" y="94"/>
-			<point x="955" y="-35"/>
-			<point x="673" y="-35" type="curve" smooth="yes"/>
-			<point x="542" y="-35"/>
-			<point x="323" y="42"/>
-			<point x="248" y="89" type="curve"/>
-			<point x="219" y="53"/>
-			<point x="176" y="18"/>
-			<point x="164" y="-19" type="curve"/>
+			<point x="1211" y="405" type="curve" smooth="yes"/>
+			<point x="1212" y="95"/>
+			<point x="953" y="-27"/>
+			<point x="675" y="-27" type="curve" smooth="yes"/>
+			<point x="545" y="-27"/>
+			<point x="322" y="47"/>
+			<point x="246" y="92" type="curve"/>
+			<point x="220" y="59"/>
+			<point x="178" y="23"/>
+			<point x="166" y="-11" type="curve"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="606" y="-20"/>
+	<anchor name="DotBelow" x="608" y="-20"/>
 	<anchor name="Bottom" x="611" y="0"/>
-	<anchor name="TopCap" x="899" y="1580"/>
+	<anchor name="TopCap" x="896" y="1580"/>
 	<anchor name="Cedilla" x="611" y="0"/>
 	<lib>
 		<dict>
@@ -70,15 +70,17 @@
 			<key>org.myiadidot.redrawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-11</string>
+				<string>2026-11-18</string>
 				<key>from</key>
-				<string>bbc14bc738b3</string>
+				<string>347b7980f843</string>
+				<key>harmonise</key>
+				<string>long</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-redraw-caps-2026-11-11.pdf</string>
+				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 				<key>source</key>
 				<string>Old Standard</string>
 				<key>tol</key>
-				<real>2.8</real>
+				<integer>2</integer>
 			</dict>
 		</dict>
 	</lib>

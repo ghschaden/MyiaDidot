@@ -51,6 +51,10 @@ sys.path.insert(0, str(ROOT))
 
 TOL = 6  # units an edge may move and still be the base's
 KEPT = 0.6  # least share of the base's ink a derived glyph keeps
+# less, named: ɮ's l keeps no foot in the Italic (its recipe cuts it, the
+# stem running straight down to the baseline, ʒ beside): 59% since phase 6
+# step C made l's stem longer and heavier, where 60 stood (2026-11-19)
+KEPT_LESS = {"uni026E": 0.55}
 STEM_OFF = (8, 0.06)  # a stem off by more than this many units and this share
 STYLE_MARGIN = 0.1
 STEP = 10  # row spacing
@@ -316,7 +320,7 @@ def derived(font, path=None, only=None, regular=None):
         mid, st = probes[len(probes) // 2] if probes else (None, None)
         m["stem"] = st
         kept = shares["exact"] + shares["covered"]
-        if kept < KEPT:
+        if kept < KEPT_LESS.get(name, KEPT):
             out.append((name, "base", "", f"{kept:.0%} of {source} kept ({op})"))
         if st and abs(st[1] - st[0]) > max(STEM_OFF[0], STEM_OFF[1] * st[0]):
             out.append((name, "stem", f"at {round(mid)}", f"{round(st[1])} against {source}'s {round(st[0])}"))

@@ -5,59 +5,59 @@
 	<outline>
 		<contour>
 			<point x="831" y="101" type="curve" smooth="yes"/>
-			<point x="831" y="159"/>
-			<point x="877" y="202"/>
+			<point x="831" y="162"/>
+			<point x="880" y="202"/>
 			<point x="939" y="202" type="curve" smooth="yes"/>
-			<point x="1001" y="202"/>
-			<point x="1046" y="159"/>
+			<point x="998" y="202"/>
+			<point x="1046" y="162"/>
 			<point x="1046" y="101" type="curve" smooth="yes"/>
-			<point x="1046" y="43"/>
-			<point x="1001" y="0"/>
+			<point x="1046" y="40"/>
+			<point x="998" y="0"/>
 			<point x="939" y="0" type="curve" smooth="yes"/>
-			<point x="877" y="0"/>
-			<point x="831" y="43"/>
+			<point x="880" y="0"/>
+			<point x="831" y="40"/>
 		</contour>
 		<contour>
 			<point x="831" y="783" type="curve" smooth="yes"/>
-			<point x="831" y="841"/>
-			<point x="877" y="884"/>
+			<point x="831" y="844"/>
+			<point x="880" y="884"/>
 			<point x="939" y="884" type="curve" smooth="yes"/>
-			<point x="1001" y="884"/>
-			<point x="1046" y="841"/>
+			<point x="998" y="884"/>
+			<point x="1046" y="844"/>
 			<point x="1046" y="783" type="curve" smooth="yes"/>
-			<point x="1046" y="725"/>
-			<point x="1001" y="682"/>
+			<point x="1046" y="722"/>
+			<point x="998" y="682"/>
 			<point x="939" y="682" type="curve" smooth="yes"/>
-			<point x="877" y="682"/>
-			<point x="831" y="725"/>
+			<point x="880" y="682"/>
+			<point x="831" y="722"/>
 		</contour>
 		<contour>
 			<point x="126" y="101" type="curve" smooth="yes"/>
-			<point x="126" y="159"/>
-			<point x="172" y="202"/>
+			<point x="126" y="162"/>
+			<point x="175" y="202"/>
 			<point x="234" y="202" type="curve" smooth="yes"/>
-			<point x="296" y="202"/>
-			<point x="342" y="159"/>
+			<point x="293" y="202"/>
+			<point x="342" y="162"/>
 			<point x="342" y="101" type="curve" smooth="yes"/>
-			<point x="342" y="43"/>
-			<point x="296" y="0"/>
+			<point x="342" y="40"/>
+			<point x="293" y="0"/>
 			<point x="234" y="0" type="curve" smooth="yes"/>
-			<point x="172" y="0"/>
-			<point x="126" y="43"/>
+			<point x="175" y="0"/>
+			<point x="126" y="40"/>
 		</contour>
 		<contour>
 			<point x="126" y="783" type="curve" smooth="yes"/>
-			<point x="126" y="841"/>
-			<point x="172" y="884"/>
+			<point x="126" y="844"/>
+			<point x="175" y="884"/>
 			<point x="234" y="884" type="curve" smooth="yes"/>
-			<point x="296" y="884"/>
-			<point x="342" y="841"/>
+			<point x="293" y="884"/>
+			<point x="342" y="844"/>
 			<point x="342" y="783" type="curve" smooth="yes"/>
-			<point x="342" y="725"/>
-			<point x="296" y="682"/>
+			<point x="342" y="722"/>
+			<point x="293" y="682"/>
 			<point x="234" y="682" type="curve" smooth="yes"/>
-			<point x="172" y="682"/>
-			<point x="126" y="725"/>
+			<point x="175" y="682"/>
+			<point x="126" y="722"/>
 		</contour>
 		<contour>
 			<point x="102" y="403" type="line"/>
@@ -69,15 +69,39 @@
 			<point x="1070" y="481" type="line"/>
 			<point x="1070" y="403" type="line"/>
 			<point x="631" y="403" type="line"/>
-			<point x="635" y="-23" type="line"/>
-			<point x="538" y="-23" type="line"/>
+			<point x="637" y="-15" type="line"/>
+			<point x="540" y="-15" type="line"/>
 			<point x="542" y="403" type="line"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
+			<key>org.myiadidot.drawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-19</string>
+				<key>source</key>
+				<string>a18b17a067d3</string>
+				<key>why</key>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-long-c-tail-2026-11-19.pdf</string>
+			</dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-19</string>
+				<key>from</key>
+				<string>7dbda7a7e92e</string>
+				<key>harmonise</key>
+				<string>long</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-long-c-tail-2026-11-19.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

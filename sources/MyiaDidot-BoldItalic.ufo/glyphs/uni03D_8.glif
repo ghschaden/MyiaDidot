@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni03D8" format="2">
 	<unicode hex="03D8"/>
-	<advance width="1370"/>
+	<advance width="1371"/>
 	<outline>
 		<contour>
-			<point x="152" y="862" type="curve" smooth="yes"/>
-			<point x="152" y="1012"/>
-			<point x="247" y="1208"/>
-			<point x="388" y="1318" type="curve" smooth="yes"/>
-			<point x="542" y="1439"/>
-			<point x="777" y="1473"/>
-			<point x="937" y="1473" type="curve" smooth="yes"/>
-			<point x="1214" y="1473"/>
-			<point x="1459" y="1331"/>
+			<point x="152" y="861" type="curve" smooth="yes"/>
+			<point x="152" y="1011"/>
+			<point x="249" y="1211"/>
+			<point x="387" y="1318" type="curve" smooth="yes"/>
+			<point x="539" y="1436"/>
+			<point x="778" y="1462"/>
+			<point x="934" y="1462" type="curve" smooth="yes"/>
+			<point x="1212" y="1462"/>
+			<point x="1459" y="1330"/>
 			<point x="1459" y="1048" type="curve" smooth="yes"/>
-			<point x="1459" y="888"/>
-			<point x="1384" y="754"/>
-			<point x="1237" y="634" type="curve" smooth="yes"/>
-			<point x="1101" y="523"/>
-			<point x="983" y="485"/>
-			<point x="827" y="477" type="curve"/>
+			<point x="1460" y="727"/>
+			<point x="1133" y="493"/>
+			<point x="826" y="477" type="curve"/>
 			<point x="730" y="121" type="line" smooth="yes"/>
-			<point x="720" y="84"/>
-			<point x="735" y="69"/>
+			<point x="720" y="83"/>
+			<point x="734" y="69"/>
 			<point x="771" y="69" type="curve" smooth="yes"/>
 			<point x="895" y="69" type="line"/>
 			<point x="877" y="0" type="line"/>
@@ -32,31 +29,46 @@
 			<point x="410" y="69"/>
 			<point x="433" y="84"/>
 			<point x="443" y="121" type="curve" smooth="yes"/>
-			<point x="541" y="477" type="line"/>
-			<point x="337" y="493"/>
+			<point x="541" y="478" type="line"/>
+			<point x="337" y="494"/>
 			<point x="152" y="652"/>
 		</contour>
 		<contour>
-			<point x="449" y="782" type="curve" smooth="yes"/>
-			<point x="449" y="638"/>
-			<point x="548" y="556"/>
+			<point x="449" y="783" type="curve" smooth="yes"/>
+			<point x="449" y="636"/>
+			<point x="545" y="556"/>
 			<point x="695" y="556" type="curve" smooth="yes"/>
 			<point x="1009" y="556"/>
-			<point x="1163" y="895"/>
-			<point x="1163" y="1137" type="curve" smooth="yes"/>
-			<point x="1163" y="1287"/>
-			<point x="1080" y="1396"/>
+			<point x="1163" y="898"/>
+			<point x="1163" y="1139" type="curve" smooth="yes"/>
+			<point x="1163" y="1297"/>
+			<point x="1078" y="1396"/>
 			<point x="917" y="1396" type="curve" smooth="yes"/>
-			<point x="617" y="1396"/>
-			<point x="449" y="1009"/>
+			<point x="607" y="1396"/>
+			<point x="448" y="1010"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="556" y="-20"/>
+	<anchor name="DotBelow" x="558" y="-20"/>
 	<anchor name="Bottom" x="562" y="0"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-19</string>
+				<key>from</key>
+				<string>fdaa9f29a2f8</string>
+				<key>harmonise</key>
+				<string>long</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-long-c-tail-2026-11-19.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

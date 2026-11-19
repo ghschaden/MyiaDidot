@@ -4,80 +4,95 @@
 	<advance width="1548"/>
 	<outline>
 		<contour>
-			<point x="183" y="44" type="line"/>
+			<point x="184" y="45" type="line"/>
 			<point x="691" y="516" type="line"/>
 			<point x="169" y="1022" type="line"/>
 			<point x="273" y="1121" type="line"/>
 			<point x="800" y="621" type="line"/>
 			<point x="1301" y="1118" type="line"/>
 			<point x="1410" y="1017" type="line"/>
-			<point x="902" y="528" type="line"/>
-			<point x="1424" y="42" type="line"/>
-			<point x="1319" y="-47" type="line"/>
-			<point x="791" y="425" type="line"/>
-			<point x="293" y="-47" type="line"/>
-		</contour>
-		<contour>
-			<point x="348" y="403" type="curve" smooth="yes"/>
-			<point x="265" y="403"/>
-			<point x="204" y="460"/>
-			<point x="204" y="537" type="curve" smooth="yes"/>
-			<point x="204" y="616"/>
-			<point x="265" y="673"/>
-			<point x="348" y="673" type="curve" smooth="yes"/>
-			<point x="431" y="673"/>
-			<point x="493" y="616"/>
-			<point x="493" y="537" type="curve" smooth="yes"/>
-			<point x="493" y="460"/>
-			<point x="431" y="403"/>
+			<point x="901" y="527" type="line"/>
+			<point x="1421" y="43" type="line"/>
+			<point x="1319" y="-34" type="line"/>
+			<point x="791" y="427" type="line"/>
+			<point x="298" y="-34" type="line"/>
 		</contour>
 		<contour>
 			<point x="1251" y="403" type="curve" smooth="yes"/>
-			<point x="1168" y="403"/>
-			<point x="1107" y="460"/>
-			<point x="1107" y="537" type="curve" smooth="yes"/>
-			<point x="1107" y="616"/>
-			<point x="1168" y="672"/>
-			<point x="1251" y="672" type="curve" smooth="yes"/>
-			<point x="1334" y="672"/>
-			<point x="1396" y="616"/>
+			<point x="1172" y="403"/>
+			<point x="1106" y="455"/>
+			<point x="1106" y="537" type="curve" smooth="yes"/>
+			<point x="1106" y="619"/>
+			<point x="1171" y="673"/>
+			<point x="1251" y="673" type="curve" smooth="yes"/>
+			<point x="1332" y="673"/>
+			<point x="1396" y="619"/>
 			<point x="1396" y="537" type="curve" smooth="yes"/>
-			<point x="1396" y="460"/>
-			<point x="1334" y="403"/>
+			<point x="1396" y="455"/>
+			<point x="1330" y="403"/>
+		</contour>
+		<contour>
+			<point x="348" y="403" type="curve" smooth="yes"/>
+			<point x="269" y="403"/>
+			<point x="203" y="455"/>
+			<point x="203" y="537" type="curve" smooth="yes"/>
+			<point x="203" y="619"/>
+			<point x="268" y="673"/>
+			<point x="348" y="673" type="curve" smooth="yes"/>
+			<point x="429" y="673"/>
+			<point x="493" y="619"/>
+			<point x="493" y="537" type="curve" smooth="yes"/>
+			<point x="493" y="455"/>
+			<point x="427" y="403"/>
 		</contour>
 		<contour>
 			<point x="662" y="962" type="curve" smooth="yes"/>
-			<point x="662" y="1042"/>
+			<point x="662" y="1040"/>
 			<point x="718" y="1100"/>
 			<point x="796" y="1100" type="curve" smooth="yes"/>
-			<point x="873" y="1100"/>
-			<point x="931" y="1042"/>
+			<point x="876" y="1100"/>
+			<point x="931" y="1040"/>
 			<point x="931" y="962" type="curve" smooth="yes"/>
-			<point x="931" y="881"/>
-			<point x="873" y="828"/>
+			<point x="931" y="884"/>
+			<point x="876" y="828"/>
 			<point x="796" y="828" type="curve" smooth="yes"/>
-			<point x="719" y="828"/>
-			<point x="662" y="881"/>
+			<point x="718" y="828"/>
+			<point x="662" y="884"/>
 		</contour>
 		<contour>
 			<point x="665" y="130" type="curve" smooth="yes"/>
-			<point x="665" y="205"/>
-			<point x="724" y="260"/>
+			<point x="665" y="209"/>
+			<point x="728" y="260"/>
 			<point x="804" y="260" type="curve" smooth="yes"/>
-			<point x="884" y="260"/>
-			<point x="943" y="205"/>
+			<point x="880" y="260"/>
+			<point x="943" y="209"/>
 			<point x="943" y="130" type="curve" smooth="yes"/>
-			<point x="943" y="55"/>
-			<point x="884" y="0"/>
+			<point x="943" y="52"/>
+			<point x="880" y="0"/>
 			<point x="804" y="0" type="curve" smooth="yes"/>
-			<point x="724" y="0"/>
-			<point x="665" y="55"/>
+			<point x="728" y="0"/>
+			<point x="665" y="52"/>
 		</contour>
 	</outline>
 	<lib>
 		<dict>
 			<key>org.myiadidot.italicSource</key>
-			<string>Old Standard</string>
+			<string>drawn</string>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-19</string>
+				<key>from</key>
+				<string>bda00c819093</string>
+				<key>harmonise</key>
+				<string>long</string>
+				<key>review</key>
+				<string>proofs/2026-11/italic-long-c-tail-2026-11-19.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 	</lib>
 </glyph>

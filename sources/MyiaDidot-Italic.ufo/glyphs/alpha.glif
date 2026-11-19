@@ -5,93 +5,95 @@
 	<outline>
 		<contour>
 			<point x="75" y="256" type="curve" smooth="yes"/>
-			<point x="75" y="377"/>
-			<point x="122" y="532"/>
-			<point x="173" y="630" type="curve" smooth="yes"/>
-			<point x="241" y="760"/>
-			<point x="378" y="884"/>
+			<point x="75" y="526"/>
+			<point x="262" y="884"/>
 			<point x="519" y="884" type="curve" smooth="yes"/>
-			<point x="582" y="884"/>
-			<point x="635" y="860"/>
+			<point x="583" y="884"/>
+			<point x="634" y="861"/>
 			<point x="669" y="804" type="curve" smooth="yes"/>
-			<point x="719" y="722"/>
-			<point x="723" y="556"/>
+			<point x="720" y="721"/>
+			<point x="723" y="571"/>
 			<point x="725" y="454" type="curve"/>
 			<point x="734" y="454" type="line"/>
 			<point x="750" y="495"/>
-			<point x="791" y="612"/>
+			<point x="789" y="606"/>
 			<point x="806" y="655" type="curve" smooth="yes"/>
-			<point x="866" y="826"/>
-			<point x="877" y="876"/>
+			<point x="869" y="837"/>
+			<point x="883" y="876"/>
 			<point x="1003" y="876" type="curve" smooth="yes"/>
-			<point x="1031" y="876"/>
-			<point x="1071" y="873"/>
+			<point x="1030" y="876"/>
+			<point x="1071" y="874"/>
 			<point x="1071" y="822" type="curve" smooth="yes"/>
-			<point x="1071" y="720"/>
-			<point x="849" y="454"/>
+			<point x="1071" y="806"/>
+			<point x="1067" y="794"/>
+			<point x="1061" y="777" type="curve" smooth="yes"/>
+			<point x="1049" y="743"/>
+			<point x="1047" y="740"/>
+			<point x="1027" y="705" type="curve" smooth="yes"/>
+			<point x="1005" y="667"/>
+			<point x="995" y="650"/>
 			<point x="780" y="361" type="curve" smooth="yes"/>
 			<point x="739" y="306" type="line"/>
-			<point x="752" y="229"/>
-			<point x="775" y="140"/>
+			<point x="752" y="230"/>
+			<point x="774" y="140"/>
 			<point x="868" y="140" type="curve" smooth="yes"/>
 			<point x="928" y="140"/>
 			<point x="979" y="176"/>
 			<point x="1014" y="225" type="curve"/>
 			<point x="1034" y="213" type="line"/>
-			<point x="1007" y="117"/>
-			<point x="944" y="-23"/>
-			<point x="828" y="-23" type="curve" smooth="yes"/>
-			<point x="711" y="-23"/>
-			<point x="695" y="146"/>
+			<point x="1008" y="120"/>
+			<point x="943" y="-15"/>
+			<point x="830" y="-15" type="curve" smooth="yes"/>
+			<point x="711" y="-15"/>
+			<point x="695" y="144"/>
 			<point x="686" y="244" type="curve"/>
-			<point x="593" y="128"/>
-			<point x="469" y="-23"/>
-			<point x="314" y="-23" type="curve" smooth="yes"/>
-			<point x="159" y="-23"/>
-			<point x="75" y="100"/>
+			<point x="586" y="119"/>
+			<point x="478" y="-15"/>
+			<point x="316" y="-15" type="curve" smooth="yes"/>
+			<point x="159" y="-15"/>
+			<point x="75" y="92"/>
 		</contour>
 		<contour>
 			<point x="243" y="264" type="curve" smooth="yes"/>
-			<point x="243" y="201"/>
-			<point x="256" y="62"/>
+			<point x="243" y="198"/>
+			<point x="258" y="62"/>
 			<point x="361" y="62" type="curve" smooth="yes"/>
-			<point x="497" y="62"/>
+			<point x="493" y="62"/>
 			<point x="628" y="268"/>
 			<point x="685" y="374" type="curve"/>
-			<point x="682" y="471"/>
-			<point x="674" y="722"/>
-			<point x="613" y="784" type="curve" smooth="yes"/>
-			<point x="593" y="804"/>
-			<point x="564" y="814"/>
+			<point x="674" y="732"/>
+			<point x="630" y="814"/>
 			<point x="535" y="814" type="curve" smooth="yes"/>
-			<point x="357" y="814"/>
+			<point x="355" y="814"/>
 			<point x="243" y="442"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="562" y="-20"/>
-	<anchor name="IotaSubscript" x="556" y="-40"/>
+	<anchor name="DotBelow" x="564" y="-20"/>
+	<anchor name="IotaSubscript" x="558" y="-40"/>
 	<anchor name="GreekTop" x="705" y="980"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.drawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-12</string>
+				<string>2026-11-18</string>
 				<key>source</key>
 				<string>386ce4b5cc19</string>
 				<key>why</key>
-				<string>redrawn onto clean nodes, proofs/2026-11/italic-greek-lowercase-redraw-2026-11-12.pdf</string>
+				<string>redrawn onto clean nodes, proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>
 			<key>org.myiadidot.redrawn</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-12</string>
+				<string>2026-11-18</string>
 				<key>from</key>
-				<string>3199c10252a9</string>
+				<string>7f1ef543ea9d</string>
+				<key>harmonise</key>
+				<string>long</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-greek-lowercase-redraw-2026-11-12.pdf</string>
+				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
 				<key>source</key>
 				<string>Old Standard</string>
 				<key>tol</key>
