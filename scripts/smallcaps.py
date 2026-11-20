@@ -393,10 +393,11 @@ def build_specials(font, log, failed):
         new_glyph(font, "dotlessi.sc", font["i.sc"].width, [("i.sc", 0, 0)],
                   [(a.name, a.x, a.y) for a in font["i.sc"].anchors])
         try:
-            r = b.compose("idotaccent.sc", None, "i.sc", ["uni0307"], upper=True)
-            if "idotaccent.sc" in font:
-                del font["idotaccent.sc"]
-            b.write(r)
+            if "uni0307" in font:  # (a partial run: the mark is held when idotaccent.sc is)
+                r = b.compose("idotaccent.sc", None, "i.sc", ["uni0307"], upper=True)
+                if "idotaccent.sc" in font:
+                    del font["idotaccent.sc"]
+                b.write(r)
         except ValueError as e:
             failed.append(str(e))
     if need("j.sc") and "uni0237" in font:

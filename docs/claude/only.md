@@ -319,11 +319,57 @@ every glyph reads the glyphs of its NFD (and a circumflex + tone pair glyph),
 a mark reads its `.cap .i ...` variants, `PASS_GROUPS` (sc_feet; the f-ligatures: a
 group meeting D is made again whole, one meeting N held whole), the root `I`.
 
-Open: the 5 small caps with two stacked accents (ǜ.sc ḕ.sc ... asked via gravecomb) come
-out 9 units off the committed (-66 against -57, Grave on Dieresis; cause not found);
-**the Bold Italic runs (`--only hyphen`, 130 s, its stroke cache misses after any edit
-of make_bold.py) but is not exact**: N glyphs outside D change (i.sc dotlessi.sc ...),
-`smallcaps.py --glyphs-only` fails on `uni0307`, 11 finishing passes are skipped
-(y_dot_anchor, sc_feet, dollar, ... each wants its group in `PASS_GROUPS`).
-`make_italic.py --only`, the sheet's join (`make only` with `--only`) and tiers 3-5
-(singles at random, the test that can fail, sources untouched) are not built.
+Open: see the end of this page.
+
+### The Bold Italic's `--only` exact (2026-11-20, later)
+
+Six runs (hyphen a T m ь y) come out as committed, D and the glyphs read but not asked for
+(tests/test_only.py, tier 2, `test_bold_italic_only_...`; `build/only/battery.log` has
+b O e s i ú Ƈ ǥ ... by hand, 10-130 s each). What the first runs lacked:
+
+- **Kept (drawn) glyphs outside the run were put back whole.** `drawn.restore` inserts every
+  kept glyph, finished and already cut, into the work font; `respace` then cut m a second
+  time (68 -> 44) and the passes that name it (smooth_joins' n m) ran on it. Under `--only`
+  `kept` is cut to the glyphs the run holds (make_bold.main, after `only_ctx.cut`).
+- **A finishing pass that names a glyph not held stopped half-way** (smooth_joins at ʊ, so
+  n's join was never made; sc_feet at x.sc, so `brackets` never ran over i.sc). Now
+  `finalization.absent(font, name)` (true only under `--only`) lets the pass go on without
+  the glyph: smooth_joins, sc_feet, cyrillic_signs.redraw; italic_ligatures.make has each
+  ligature in `with held():` (a KeyError or NameError of a ligature whose parts are not
+  held leaves it out; a whole run still raises). The passes left to skip whole (y_dot_anchor,
+  serbian_bars, cedilla, dollar, trademark, phi, oldstyle figures) name one glyph or a family
+  each: asked for it, it is held and they run.
+- **Edges the graph lacked:** `space` (a recipe's width; a ROOT now), `h.sc` and `o.sc` for every
+  enlarged small cap (`make_bold.small_cap_stems`, `derive.enlarge`), `l.sc` for a recipe on a
+  small cap (`derive.ball_for`), level_gain's h.sc, capital and H for s.sc and n.sc. O's closure
+  grew by it (N 365 -> 590 of 2345: o.sc is every enlarged small cap's measure).
+- A recipe that fails under `--only` (a glyph it reads is not held) is named in the skipped list
+  ("rederive uni2C73.sc: KeyError 'l.sc'"); in a whole run it is left whole silently, as before.
+
+### The Italic's `--only`, the sheet's join, tier 4 (2026-11-20, evening)
+
+- `make_italic.py REGULAR ITALIC --only GLYPH... [--out UFO]`: as the Bold's, in `main`
+  (the font cut to N after it is opened, `previous` and `kept` cut to what the run holds,
+  `step(...)` around the passes that name glyphs: redraw_w, lighten_a, mirror_zhe, lean_as,
+  round_shoulder, serbian_gje/bars, the dot anchors, redraw_cyrillic_signs, finish_contours,
+  install_italic_i; the side-bearing tables and `stand_as` filtered to what is held; the
+  kerning left out; `only_ctx.finish()` after `write`). Exact on hyphen a T m W ь y e
+  (tests/test_only.py, `test_italic_only_...`). Edges added: t reads z (t_dot_anchor),
+  `ITALIC_STANDS_AS`.
+- `make only STYLE=Bold|BoldItalic GLYPHS="n m" PARTIAL=1` makes the glyphs with `--only`
+  and draws the sheet from the result (all three styles).
+- The 9-unit stacked-accent difference of ǜ.sc ḕ.sc (asked via gravecomb) is gone: with the
+  kept glyphs no longer put back whole the Bold's gravecomb run is exact (a case of
+  tier 2 now). `smallcaps.py --glyphs-only` no longer fails on `uni0307` (idotaccent.sc is
+  made only where the mark is held).
+- Tier 4, `test_the_equivalence_check_can_fail`: a glyph read but not asked for that
+  comes out unlike the committed ends the run with 2 and lists it.
+- Tier 5 (sources and tests/data untouched) is checked in each of the runs above.
+
+Later the same evening: a battery of 30 asked glyphs in the Italic found three more groups of
+missing edges, all in `only.py`: `serbian_gje` and `serbian_bars` read imacron, ḗ, macron,
+ū's macron, и ш; `greek_cap_room` reads each capital's sample composite
+(`GREEK_CAP_SAMPLES`); `Q_u` reads O, the long-s ligatures their f ligature. After them
+hyphen a b O s i k z t T m W e Q ь т г Ƈ ǥ ú ǜ c x r p g ɸ $ Α come out exact in the Italic
+(tests: the 13 of `test_italic_only_...`). Not tried in any style: figures (`zero` is a measure,
+so a figure asked for is refused), the Greek and the less common Latin.

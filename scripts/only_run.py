@@ -40,11 +40,11 @@ class Context:
         self.D, self.N, self.work, self.italic = D, N, Path(work), italic
         self.skipped = []  # passes that named a glyph the run does not hold (finalization.SKIPPED)
 
-    def step(self, label, function, *args):
+    def step(self, label, function, *args, **kwargs):
         """function(*args), a whole-font pass of the Italic's: under --only one
         that names a glyph the run does not hold is skipped and recorded."""
         try:
-            return function(*args)
+            return function(*args, **kwargs)
         except KeyError as missing:
             self.skipped.append(f"{label}: {missing.args[0]}")
 

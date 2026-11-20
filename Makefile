@@ -281,6 +281,8 @@ oldstand:
 # a generated style's whole run into build/only, beside sources/, and its
 # sheet (T2, docs/claude/only.md); sources/ untouched:
 #   make only STYLE=BoldItalic GLYPHS="n m" [SOURCE=build/only/MyiaDidot-Italic.ufo]
+# with PARTIAL=1 only those glyphs and what is built from them are made (--only):
+# seconds, not minutes
 ONLY_SOURCE = $(or $(SOURCE),sources/$(FAMILY)-$(if $(filter BoldItalic,$(STYLE)),Italic,Regular).ufo)
 ONLY_OUT = build/only/$(FAMILY)-$(STYLE).ufo
 only:
@@ -291,8 +293,8 @@ only:
 
 .PHONY: _only
 _only:
-	$(PY) scripts/$(if $(filter Italic,$(STYLE)),make_italic.py,make_bold.py) $(ONLY_SOURCE) sources/$(FAMILY)-$(STYLE).ufo --out $(ONLY_OUT)
-	$(if $(filter Italic,$(STYLE)),,$(PY) scripts/smallcaps.py $(ONLY_OUT))
+	$(PY) scripts/$(if $(filter Italic,$(STYLE)),make_italic.py,make_bold.py) $(ONLY_SOURCE) sources/$(FAMILY)-$(STYLE).ufo $(if $(PARTIAL),--only $(GLYPHS)) --out $(ONLY_OUT)
+	$(if $(or $(PARTIAL),$(filter Italic,$(STYLE))),,$(PY) scripts/smallcaps.py $(ONLY_OUT))
 	$(PY) scripts/only_sheet.py $(STYLE) $(GLYPHS) --source $(ONLY_SOURCE) --new $(ONLY_OUT)
 
 reproduce:

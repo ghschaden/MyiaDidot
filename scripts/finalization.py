@@ -72,6 +72,13 @@ PASSES = (
 SKIPPED = None
 
 
+def absent(font, name):
+    """Under --only: the run does not hold this glyph, so the pass leaves it
+    (and goes on with the others). In a whole run never true: a missing
+    glyph is an error there."""
+    return SKIPPED is not None and name not in font
+
+
 def finish_glyphs(font):
     for stage in PASSES:
         if font.info.styleName in stage.styles:

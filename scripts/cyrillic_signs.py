@@ -17,6 +17,7 @@ from fontTools.pens.transformPen import TransformPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from derive import with_extremes
+from finalization import absent
 
 NAMES = ('uni044C', 'uni044B', 'uni044A', 'uni044C.loclBGR', 'uni044A.loclBGR')
 # Final advances and anchor x coordinates, in NAMES order. These drawings
@@ -120,6 +121,8 @@ def redraw(font):
     slant = math.tan(math.radians(-font.info.italicAngle))
     kinds = ('soft', 'yeru', 'hard', 'bgr_soft', 'bgr_hard')
     for name, kind, metrics in zip(NAMES, kinds, METRICS[b], strict=True):
+        if absent(font, name):  # (--only: what is not read is not made)
+            continue
         g = font[name]
         g.width, top, acute, dot, bottom, below = metrics
         anchor_x = dict(Top=top, Acute=acute, Grave=acute, Dotaccent=dot, Bottom=bottom, DotBelow=below)

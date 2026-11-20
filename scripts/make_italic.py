@@ -2033,6 +2033,8 @@ def stand_as(font, table=ITALIC_STANDS_AS):
     Returns {name: shift}."""
     shifts = {}
     for name, ref in table.items():
+        if name not in font or ref not in font:  # (--only: what is not read)
+            continue
         g = font[name]
         shift = round(font[ref].getBounds(font).xMin - g.getBounds(font).xMin)
         for c in g.components:
@@ -2052,8 +2054,18 @@ def main():
                          "(after capitals were redrawn onto new nodes: fontforge_inputs.drafts)")
     ap.add_argument("--out", metavar="UFO", help="the whole run into a copy of ITALIC, which stays as it is "
                     "(scratch_out.py; smallcaps.py runs on the copy)")
+    ap.add_argument("--only", nargs="+", metavar="GLYPH",
+                    help="only these glyphs and what is built from them, into --out (default "
+                    "build/only/<ITALIC's name>); ITALIC is read, never written "
+                    "(docs/claude/only.md, scripts/only_run.py)")
     args = ap.parse_args()
-    if args.out:
+    only_ctx = None
+    if args.only:
+        from only_run import begin
+
+        only_ctx = begin(args.regular, args.italic, args.out, args.only)
+        args.italic, args.out = str(only_ctx.work), str(only_ctx.out)
+    elif args.out:
         from scratch_out import prepare
 
         args.italic = str(prepare(args.italic, args.out))
@@ -2064,6 +2076,12 @@ def main():
     undo(regular)
     undo(font)
     kern_clear.undo(font)  # the Regular's loosened pairs: the Italic finds its own
+    step = only_ctx.step if only_ctx else (lambda label, function, *args, **kwargs: function(*args, **kwargs))
+    if only_ctx:
+        import finalization
+
+        finalization.SKIPPED = only_ctx.skipped
+        only_ctx.cut(font)  # --only: what is not read is not made
     oldstd = source_font()  # fontforge_inputs: converted once, kept in sources/oldstand
     previous = ufoLib2.Font.open(args.italic) if (Path(args.italic) / "metainfo.plist").exists() else None
     os_cmap = {u: g.name for g in oldstd for u in g.unicodes}
@@ -2077,7 +2095,7 @@ def main():
     builder = Builder(regular)
     rule_made = set()
     for g in regular:
-        if not g.components or g.contours or g.unicode is None or g.name in SPECIAL:
+        if not g.components or g.contours or g.unicode is None or g.name in SPECIAL or g.name not in font:
             continue
         if len(unicodedata.normalize("NFD", chr(g.unicode))) < 2:
             continue
@@ -2189,13 +2207,15 @@ def main():
             kept_roman += 1
 
     # Old Standard's W and a, redrawn (before anything is made of them)
-    redraw_w(font)
-    lighten_a(font)
-    mirror_zhe(font)
-    lean_as(font)
+    step("redraw_w", redraw_w, font)
+    step("lighten_a", lighten_a, font)
+    step("mirror_zhe", mirror_zhe, font)
+    step("lean_as", lean_as, font)
     # what was drawn in the Italic stays (drawn.py), whatever the settings
     # (and the Italic's own: ʀ.sc, drafted from its Ʀ, is not in the Regular)
     kept = kept_names(previous, font)
+    if only_ctx:  # (not put back whole: respace would cut a finished glyph again)
+        kept = [n for n in kept if n in font]
     if previous is not None and kept and previous.lib.get(MADE_WITH_KEY) != MADE_WITH:
         print(f"{args.italic}: kept though the weights or cuts changed, look again: {' '.join(kept)}")
     for name in kept:
@@ -2213,7 +2233,7 @@ def main():
     finish_bases(font, skip=kept)
     from r_hook import round_shoulder
 
-    round_shoulder(font, skip=kept)
+    step("round_shoulder", round_shoulder, font, skip=kept)
     # what Old Standard lacks, made from what it has
     upright_signs = 0
     for g in list(font):
@@ -2226,7 +2246,7 @@ def main():
     figures = figures_stage(font, regular)
     small_caps = smallcaps_stage(font, later, redraft=args.redraft, keep=args.keep_drafts)
     if "w.sc" in small_caps:
-        redraw_w(font, "w.sc", "v.sc")  # as W of V
+        step("redraw_w w.sc", redraw_w, font, "w.sc", "v.sc")  # as W of V
     # a small cap the Regular lacks (ʀ.sc, drafted from the Italic's own Ʀ):
     # in the glyph order after its letter, a base glyph
     order = list(font.glyphOrder)
@@ -2261,14 +2281,14 @@ def main():
 
     # letters Old Standard draws with their accent in one outline (Ť): made
     # from base and mark like the decomposed text (not upstream's specials)
-    t_dot_anchor(font)
+    step("t_dot_anchor", t_dot_anchor, font)
     from y_dot import y_dot_anchor
 
     # a kept y has its dot's anchor as saved: placed here on it uncut, it
     # came a unit off (912 for the saved 897 + 16), ỵ was built on that and
     # y then put back as saved (the redrawn y, 2026-11-11)
     if "y" not in kept:
-        y_dot_anchor(font)
+        step("y_dot_anchor", y_dot_anchor, font)
     log = []
     stack_anchors(font, log)
     b = Builder(font)
@@ -2306,6 +2326,8 @@ def main():
         rebuilt += 1
     move_parts(font, regular, marks, rule_made)
     for name, (letter, offset, beyond) in ITALIC_VERTICAL_CARON.items():
+        if name not in font or letter not in font:  # (--only: what is not read)
+            continue
         g = font[name]
         edge = font[letter].getBounds(font).xMax
         for c in g.components:
@@ -2354,8 +2376,8 @@ def main():
 
     # the kept ones as saved, cut: ɘ takes its sides from e's below
     restore_kept()
-    sidebearings(font, swapped_sidebearings(font))
-    sidebearings(font, ITALIC_SIDEBEARINGS)
+    sidebearings(font, {n: d for n, d in swapped_sidebearings(font).items() if n in font})  # (--only: what is read)
+    sidebearings(font, {n: d for n, d in ITALIC_SIDEBEARINGS.items() if n in font})
     # and again (the side bearings above, carrying composites along, moved
     # them again each run: г.loclSRB -80 a run)
     restore_kept()
@@ -2367,9 +2389,9 @@ def main():
                 and not g.contours and tuple(g.components[0].transformation) == (1, 0, 0, 1, 0, 0)):
             g.width = font[g.components[0].baseGlyph].width
     if "uni0453.loclSRB" not in kept:
-        serbian_gje(font)
+        step("serbian_gje", serbian_gje, font)
     if not {"uni043F.loclSRB", "uni0442.loclSRB"} & set(kept):
-        serbian_bars(font)
+        step("serbian_bars", serbian_bars, font)
     font.lib[CUT_KEY] ={"cut": ITALIC_CUT, "greekLower": ITALIC_CUT_GREEK}
     anchored = missing_anchors(font, regular, marks)
     case_forms.make(font)  # punctuation raised onto the capitals (case), on the final widths
@@ -2377,22 +2399,26 @@ def main():
     from cyrillic_signs import redraw as redraw_cyrillic_signs
     from italic_contours import finish as finish_contours
 
-    redraw_cyrillic_signs(font)
-    finish_contours(font, skip=kept, smooth=False)
+    step("redraw_cyrillic_signs", redraw_cyrillic_signs, font)
+    step("finish_contours", finish_contours, font, skip=kept, smooth=False)
     from italic_i import install as install_italic_i
 
-    install_italic_i(font)
+    step("install_italic_i", install_italic_i, font)
     # the Latin pairs from the white the finished italic shapes leave
     # (italic_kerning.py, docs/claude/spacing.md), then the reviewed exceptions
     from italic_kerning import apply as italic_kerning
 
     # against the Regular as saved (the one above has respace undone)
-    kerned = italic_kerning(ufoLib2.Font.open(args.regular), font)
-    font.kerning.update(ITALIC_KERNING)
-    for pair in ITALIC_UNKERNED:
-        font.kerning.pop(pair, None)
-    kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
+    kerned = (0, 0)
+    if not only_ctx:  # (--only: the kerning stays the target's)
+        kerned = italic_kerning(ufoLib2.Font.open(args.regular), font)
+        font.kerning.update(ITALIC_KERNING)
+        for pair in ITALIC_UNKERNED:
+            font.kerning.pop(pair, None)
+        kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.italic), plain=ROUND_PLAIN)
+    if only_ctx:
+        sys.exit(only_ctx.finish())  # smallcaps.py --glyphs-only on the work font, the check, --out
     # the accented small caps and the smcp/c2sc features, from the new drafts
     subprocess.run([sys.executable, "-I", str(ROOT / "scripts/smallcaps.py"), args.italic], check=True)
     print(f"{args.italic}: {taken} from Old Standard, {len(kept)} kept as drawn, "

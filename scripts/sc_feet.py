@@ -15,6 +15,8 @@ serif: on a round's extreme a handle may stand so, and the bowl needs it.
 
 import math
 
+from finalization import absent
+
 DEPTH = 6
 HEIGHT = 1040
 SERIF_TOP = range(65, 80)
@@ -172,9 +174,11 @@ def finish(font):
     # brackets made fillets (2026-11-05: the knees removed)
     if font.info.styleName == "Bold":
         k_sc(font)
-    else:
+    elif not absent(font, "x.sc"):
         fillets(font["x.sc"])
     for name in ("m.sc", "v.sc", "w.sc"):
+        if absent(font, name):
+            continue
         points = [p for c in font[name].contours for p in c.points]
         for p in points:
             p.y = min(p.y, HEIGHT)

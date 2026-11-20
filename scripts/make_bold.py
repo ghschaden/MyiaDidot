@@ -1627,6 +1627,10 @@ def rederive(source, font, italic, whole):
             new = up[tmp] if italic and own_built else derive.build(up, ch, op, base, band, tmp)
         except Exception as e:  # noqa: BLE001 (a recipe that does not run on the Bold: left whole)
             whole[name] = f"{op}: emboldened whole, its recipe fails on the Bold ({type(e).__name__})"
+            import finalization
+
+            if finalization.SKIPPED is not None:  # (--only: a glyph the recipe reads is not held: say so)
+                finalization.SKIPPED.append(f"rederive {name}: {type(e).__name__} {e}")
             continue
         finally:
             up.glyphOrder = order
@@ -1777,12 +1781,15 @@ def main():
     # what it marked itself (kept, above; docs/claude/drawn.md, rule 5)
     strip(font)
     kern_clear.undo(font)  # the source's loosened pairs: this style finds its own
-    step = only_ctx.step if only_ctx else (lambda label, function, *args: function(*args))
+    step = only_ctx.step if only_ctx else (lambda label, function, *args, **kwargs: function(*args, **kwargs))
     if only_ctx:
         import finalization
 
         finalization.SKIPPED = only_ctx.skipped
         only_ctx.cut(font)  # --only: what is not read is not made
+        # nor put back: restore() inserts every drawn glyph, finished and cut
+        # already, which respace would cut a second time
+        kept = {n: g for n, g in kept.items() if n in font}
     angle = -(regular.info.italicAngle or 0)
     SLANT = math.tan(math.radians(angle))
     italic = bool(angle)

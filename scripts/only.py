@@ -37,8 +37,8 @@ BUILT_FROM = "org.myiadidot.builtFrom"
 
 # glyphs every other glyph is measured against, always present in a run:
 # o (derive.strokes scales every recipe), n, H, l, bar, zero and zerosuperior
-# (small_glyphs' scale), f (the hooks' top), I (space_figures' floor)
-ROOTS = ["o", "n", "H", "I", "l", "bar", "zero", "zerosuperior", "f"]
+# (small_glyphs' scale), f (the hooks' top), I (space_figures' floor), space (a recipe's width)
+ROOTS = ["o", "n", "H", "I", "l", "bar", "zero", "zerosuperior", "f", "space"]
 
 DIGITS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
@@ -52,6 +52,16 @@ EXTRA = [
     ("uni027D", "r", "make_italic r_hook"),
     ("y", "dotbelowcomb", "y_dot.y_dot_anchor"),
     ("t", "dotbelowcomb", "t_dot_anchor"),
+    ("t", "z", "make_italic.t_dot_anchor"),
+    # make_italic.serbian_gje, serbian_bars (and make_bold's calls of them)
+    *[("uni0453.loclSRB", r, "make_italic.serbian_gje") for r in ("imacron", "uni1E17", "macron.i", "macron", "acute")],
+    *[(w, r, "make_italic.serbian_bars") for w, l in (("uni043F.loclSRB", "uni0438"), ("uni0442.loclSRB", "uni0448"))
+      for r in ("umacron", "macron", "u", l)],
+    # make_italic.level_gain (SC_LEVEL_GAIN): the small cap's stroke against h.sc's as the capital's against H's
+    ("s.sc", "h.sc", "make_italic.level_gain"), ("s.sc", "S", "make_italic.level_gain"),
+    ("s.sc", "H", "make_italic.level_gain"),
+    ("n.sc", "h.sc", "make_italic.level_gain"), ("n.sc", "N", "make_italic.level_gain"),
+    ("n.sc", "H", "make_italic.level_gain"),
 ]
 
 
@@ -95,6 +105,10 @@ def _recipe_edges(font, italic, edges):
             names.append(derive.resolve(cmap, base))
         if op == "attach" and isinstance(band, tuple) and len(band) >= 3 and band[2]:
             names += [p[0] for p in band[2] if isinstance(p, (tuple, list)) and p and isinstance(p[0], str)]
+        if names and names[0].endswith(".sc"):  # derive.ball_for: a ball's size from l.sc's stem
+            names.append("l.sc")
+        if op == "enlarge" and reader.endswith(".sc"):  # make_bold.small_cap_stems; derive.enlarge's o.sc
+            names += ["h.sc", "o.sc"]
         for n in names:
             if n in font and n != reader:
                 edges[reader].add(n)
@@ -202,6 +216,18 @@ def reads(source, regular, italic):
         edges[reader].add(base)
     for reader, base, _where in EXTRA:
         edges[reader].add(base)
+    if italic:
+        import italic_ligatures
+        import make_italic
+
+        edges["Q_u"].add("O")  # italic_ligatures.make: qu_ligature on this style's O and u
+        for reader, base in italic_ligatures.LONGS:  # the long-s ligature from the f one
+            edges[reader].add(base)
+
+        for reader, base in make_italic.ITALIC_STANDS_AS.items():  # make_italic.stand_as
+            edges[reader].add(base)
+        for reader, base in make_italic.GREEK_CAP_SAMPLES.items():  # greek_cap_room: the capital's shift from its sample
+            edges[reader].add(base)
     return {k: {x for x in v if x in names and x != k} for k, v in edges.items() if k in names}
 
 

@@ -33,6 +33,7 @@ import math
 
 import sc_feet
 from derive import path_op, rect_path, to_path
+from finalization import absent
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 from italic_geometry import SLANT, XH
@@ -190,6 +191,8 @@ def gap(glyph, cx, y0, width):
 def finish(font):
     if font.info.styleName == "Italic":
         for name, spots in ITALIC_JOINS.items():
+            if absent(font, name):
+                continue
             for x, y in spots:
                 align(font[name], x, y)
                 node = min((p for c in font[name].contours for p in c.points if p.type),
@@ -197,10 +200,16 @@ def finish(font):
                 node.smooth = True
         return
     for name, (cx, y0, width) in GAPS.items():
+        if absent(font, name):
+            continue
         gap(font[name], cx, y0, width)
     for name, spots in FILLETS.items():
+        if absent(font, name):
+            continue
         for x, y, reach in spots:
             fillet(font[name], x, y, reach)
     for name, spots in JOINS.items():
+        if absent(font, name):
+            continue
         for x, y in spots:
             align(font[name], x, y)

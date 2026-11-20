@@ -1,6 +1,7 @@
 """Accepted italic ligatures, built from the final same-style letters."""
 
 import math
+from contextlib import contextmanager
 from copy import deepcopy
 
 from derive import BIG, draw_path, path_op, rect_path, stems_at, to_path
@@ -80,6 +81,21 @@ def italic_th(up, closer=ITALIC_TH_CLOSER, peak=TH_PEAK):
     return out, dx + up["h"].width
 
 
+@contextmanager
+def held():
+    """A block that reads a glyph the run does not hold is left out under
+    --only (finalization.SKIPPED is a list there): the ligatures of the
+    glyphs it has are made, the rest stay as they were. In a whole run a
+    missing glyph is an error."""
+    try:
+        yield
+    except (KeyError, NameError):  # (NameError: a value an earlier block of a glyph not held would have set)
+        import finalization
+
+        if finalization.SKIPPED is None:
+            raise
+
+
 def make(font):
     """Rebuild new ligatures from final bases at this italic weight."""
     if not font.info.italicAngle:
@@ -142,124 +158,133 @@ def make(font):
         made.append(name)
 
     for prefix, base in (("f", "fl"), ("f_f", "ffl")):
-        lx = stems_at(up, base, 1000)[-1][0]
-        for letter in ("b", "h", "k", "t"):
-            cut = 1200
-            dx = lx - stems_at(up, letter, 1000)[0][0]
-            keep = path_op(to_path(up, up[base]), rect_path(lx - 100, -BIG, BIG, cut), "DIFFERENCE")
-            part = path_op(to_path(up, up[letter]), rect_path(-BIG, cut, BIG, BIG), "DIFFERENCE")
-            out = path_op(keep, shift(part, dx), "UNION")
-            if letter == "t":
-                fx = stems_at(up, base, 700)[-2][0]
-                ys = sorted({p.y for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
-                out = path_op(out, rect_path(fx, ys[0], dx + stems_at(up, "t", 700)[0][1], ys[-1]), "UNION")
-            put(
-                f"{prefix}_{letter}",
-                out,
-                dx + up[letter].width,
-                [a.x for a in font[base].anchors if a.name.startswith("caret_")],
-            )
+        with held():
+            lx = stems_at(up, base, 1000)[-1][0]
+            for letter in ("b", "h", "k", "t"):
+                with held():
+                    cut = 1200
+                    dx = lx - stems_at(up, letter, 1000)[0][0]
+                    keep = path_op(to_path(up, up[base]), rect_path(lx - 100, -BIG, BIG, cut), "DIFFERENCE")
+                    part = path_op(to_path(up, up[letter]), rect_path(-BIG, cut, BIG, BIG), "DIFFERENCE")
+                    out = path_op(keep, shift(part, dx), "UNION")
+                    if letter == "t":
+                        fx = stems_at(up, base, 700)[-2][0]
+                        ys = sorted({p.y for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
+                        out = path_op(out, rect_path(fx, ys[0], dx + stems_at(up, "t", 700)[0][1], ys[-1]), "UNION")
+                    put(
+                        f"{prefix}_{letter}",
+                        out,
+                        dx + up[letter].width,
+                        [a.x for a in font[base].anchors if a.name.startswith("caret_")],
+                    )
     # Replace the crossbar region with the same-style long s; keep joined heads.
     # how far left of its stem the f's hook reaches in this style (upright)
     reach = HOOK_MARGIN + stems_at(up, "f", 700)[0][0] - min(
         p.x for c in up["f"].contours for p in c.points if p.y < HOOK_TOP)
     for name, base in LONGS:
-        path = to_path(up, up[base])
-        count = 2 if "longs_longs" in name else 1
-        stem_pairs = stems_at(up, base, 700)[:count]
-        stems = []
-        for i, (a, b) in enumerate(stem_pairs):
-            cut = 1000
-            ca, cb = stems_at(up, base, cut)[i]
-            la, lb = stems_at(up, "longs", cut)[0]
-            dx = (ca + cb - la - lb) / 2
-            right = b + 230
-            if name in ("longs_t", "longs_longs_t"):
-                # not into t's own crossbar arm (where f_t set t: lx - t's
-                # stem): the Bold Italic's wider f stem cut it to a stub
-                fl = "fl" if name == "longs_t" else "ffl"
-                t_dx = stems_at(up, fl, 1000)[-1][0] - stems_at(up, "t", 1000)[0][0]
-                arm = min(p.x for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900)
-                right = min(right, t_dx + arm)
-            region = rect_path(a - 220, -BIG, right, cut)
-            path = path_op(path, region, "DIFFERENCE")
-            # the f's hook below (2026-11-11) reaches further left than its
-            # crossbar: cleared too, the ſ keeps its flat foot
-            path = path_op(path, rect_path(a - reach, -BIG, right, HOOK_TOP), "DIFFERENCE")
-            stem = path_op(to_path(up, up["longs"]), rect_path(-BIG, cut, BIG, BIG), "DIFFERENCE")
-            stems.append(shift(stem, dx))
-        # the stems after every clearing: the second f's hook lies under the
-        # first, and clearing it would cut the first ſ's foot
-        for stem in stems:
-            path = path_op(path, stem, "UNION")
-        if name.endswith("_j"):
-            # the j's ball curls back under the f's stem, its dot near the
-            # f's hook: both fell in the region cleared for the ſ (cut off in
-            # the Bold Italic, 2026-11-08); the j's part of fj ffj put back:
-            # the contours that end at the x-height (the f's rise above it)
-            # (ink only: where the Bold Italic's second hook closes on the
-            # first f's tail, the white between the stems is a contour too)
-            j_part = Glyph(name="j_part")
-            turn = {id(c): signed_area(c) for c in up[base].contours}
-            ink = max(turn.values(), key=abs) > 0
-            for contour in up[base].contours:
-                if max(p.y for p in contour.points) < J_BELOW and (turn[id(contour)] > 0) == ink:
-                    j_part.appendContour(deepcopy(contour))
-            if not j_part.contours:
-                raise ValueError(f"{base}: no contour of its own for the j")
-            path = path_op(path, to_path(None, j_part), "UNION")
-        put(name, path, up[base].width, [a.x for a in font[base].anchors if a.name.startswith("caret_")])
+        with held():
+            path = to_path(up, up[base])
+            count = 2 if "longs_longs" in name else 1
+            stem_pairs = stems_at(up, base, 700)[:count]
+            stems = []
+            for i, (a, b) in enumerate(stem_pairs):
+                cut = 1000
+                ca, cb = stems_at(up, base, cut)[i]
+                la, lb = stems_at(up, "longs", cut)[0]
+                dx = (ca + cb - la - lb) / 2
+                right = b + 230
+                if name in ("longs_t", "longs_longs_t"):
+                    # not into t's own crossbar arm (where f_t set t: lx - t's
+                    # stem): the Bold Italic's wider f stem cut it to a stub
+                    fl = "fl" if name == "longs_t" else "ffl"
+                    t_dx = stems_at(up, fl, 1000)[-1][0] - stems_at(up, "t", 1000)[0][0]
+                    arm = min(p.x for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900)
+                    right = min(right, t_dx + arm)
+                region = rect_path(a - 220, -BIG, right, cut)
+                path = path_op(path, region, "DIFFERENCE")
+                # the f's hook below (2026-11-11) reaches further left than its
+                # crossbar: cleared too, the ſ keeps its flat foot
+                path = path_op(path, rect_path(a - reach, -BIG, right, HOOK_TOP), "DIFFERENCE")
+                stem = path_op(to_path(up, up["longs"]), rect_path(-BIG, cut, BIG, BIG), "DIFFERENCE")
+                stems.append(shift(stem, dx))
+            # the stems after every clearing: the second f's hook lies under the
+            # first, and clearing it would cut the first ſ's foot
+            for stem in stems:
+                path = path_op(path, stem, "UNION")
+            if name.endswith("_j"):
+                # the j's ball curls back under the f's stem, its dot near the
+                # f's hook: both fell in the region cleared for the ſ (cut off in
+                # the Bold Italic, 2026-11-08); the j's part of fj ffj put back:
+                # the contours that end at the x-height (the f's rise above it)
+                # (ink only: where the Bold Italic's second hook closes on the
+                # first f's tail, the white between the stems is a contour too)
+                j_part = Glyph(name="j_part")
+                turn = {id(c): signed_area(c) for c in up[base].contours}
+                ink = max(turn.values(), key=abs) > 0
+                for contour in up[base].contours:
+                    if max(p.y for p in contour.points) < J_BELOW and (turn[id(contour)] > 0) == ink:
+                        j_part.appendContour(deepcopy(contour))
+                if not j_part.contours:
+                    raise ValueError(f"{base}: no contour of its own for the j")
+                path = path_op(path, to_path(None, j_part), "UNION")
+            put(name, path, up[base].width, [a.x for a in font[base].anchors if a.name.startswith("caret_")])
     for first in ("c", "s"):
-        dx = up[first].width - 70
-        tx0, tx1 = stems_at(up, "t", 700)[0]
-        part = path_op(to_path(up, up["t"]), rect_path(-BIG, 884, BIG, BIG), "DIFFERENCE")
-        a = to_path(up, up[first])
-        bar_heights = sorted({p.y for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
-        hair = (bar_heights[-1] - bar_heights[0]) * 0.7
-        bow = arch(300, dx + tx1, 790, 1434, hair, tx1 - tx0, hair, 810)
-        out = path_op(path_op(a, shift(part, dx), "UNION"), bow, "UNION")
-        put(f"{first}_t", out, dx + up["t"].width, [dx])
+        with held():
+            dx = up[first].width - 70
+            tx0, tx1 = stems_at(up, "t", 700)[0]
+            part = path_op(to_path(up, up["t"]), rect_path(-BIG, 884, BIG, BIG), "DIFFERENCE")
+            a = to_path(up, up[first])
+            bar_heights = sorted({p.y for c in up["t"].contours for p in c.points if p.type == "line" and 780 < p.y < 900})
+            hair = (bar_heights[-1] - bar_heights[0]) * 0.7
+            bow = arch(300, dx + tx1, 790, 1434, hair, tx1 - tx0, hair, 810)
+            out = path_op(path_op(a, shift(part, dx), "UNION"), bow, "UNION")
+            put(f"{first}_t", out, dx + up["t"].width, [dx])
     # sp: st's arch landing on the p's stem, its stem where st's t stem
     # stands; the p's entry hook (all left of the stem) cut away and the
     # stem's top above the bowl's crotch (above it the stem narrows into the
     # hook, both edges leaning), the stem carried on upright from there, its
     # left edge where it is clean (400), its right where the bowl leaves it,
     # into the arch's right leg
-    ta = stems_at(up, "t", 700)[0][0]
-    pa, pb0 = stems_at(up, "p", 400)[0]
-    dx = up["s"].width - 70 - (pa - ta)
-    mid = (pa + pb0) / 2
+    with held():
+        ta = stems_at(up, "t", 700)[0][0]
+        pa, pb0 = stems_at(up, "p", 400)[0]
+        dx = up["s"].width - 70 - (pa - ta)
+        mid = (pa + pb0) / 2
 
-    def split(y):  # the bowl's inside opens beside the stem
-        runs = stems_at(up, "p", y)
-        stem = next(r for r in runs if r[0] <= mid <= r[1])
-        return any(0 <= a - stem[1] < 25 for a, _ in runs)
+        def split(y):  # the bowl's inside opens beside the stem
+            runs = stems_at(up, "p", y)
+            stem = next(r for r in runs if r[0] <= mid <= r[1])
+            return any(0 <= a - stem[1] < 25 for a, _ in runs)
 
-    crotch = next(y for y in range(550, 800, 2) if split(y))
-    pb = next(b for a, b in stems_at(up, "p", crotch) if a <= mid <= b)
-    part = path_op(to_path(up, up["p"]), rect_path(-BIG, 400, pa, BIG), "DIFFERENCE")
-    part = path_op(part, rect_path(-BIG, crotch, pb, BIG), "DIFFERENCE")
-    part = path_op(part, rect_path(pa, 400, pb, 815), "UNION")
-    bow = arch(300, dx + pb, 790, 1434, hair, pb - pa, hair, 810)
-    out = path_op(path_op(to_path(up, up["s"]), shift(part, dx), "UNION"), bow, "UNION")
-    put("s_p", out, dx + up["p"].width, [dx])
+        crotch = next(y for y in range(550, 800, 2) if split(y))
+        pb = next(b for a, b in stems_at(up, "p", crotch) if a <= mid <= b)
+        part = path_op(to_path(up, up["p"]), rect_path(-BIG, 400, pa, BIG), "DIFFERENCE")
+        part = path_op(part, rect_path(-BIG, crotch, pb, BIG), "DIFFERENCE")
+        part = path_op(part, rect_path(pa, 400, pb, 815), "UNION")
+        bow = arch(300, dx + pb, 790, 1434, hair, pb - pa, hair, 810)
+        out = path_op(path_op(to_path(up, up["s"]), shift(part, dx), "UNION"), bow, "UNION")
+        put("s_p", out, dx + up["p"].width, [dx])
     # Th as the Regular's (draft_ligatures.th_ligature), on this style's T and h
     # the italic T's arm is short: the h 0.8 of a T stem further out
     # (chosen 2026-11-08 from 0, 0.5, 1)
-    ta, tb = stems_at(up, "T", 700)[0]
-    out, width = th_ligature(up, reach=0.8 * (tb - ta))
-    put("T_h", out, width, [width - up["h"].width + stems_at(up, "h", 700)[0][0]])
+    with held():
+        ta, tb = stems_at(up, "T", 700)[0]
+        out, width = th_ligature(up, reach=0.8 * (tb - ta))
+        put("T_h", out, width, [width - up["h"].width + stems_at(up, "h", 700)[0][0]])
     # th (accepted 2026-11-08): an arch from the t's top to the h's, as the
     # ct st arches: a hairline rising from the t's top, its stem's top a
     # concave scoop as the Regular t's (leaving the stem's left edge level,
     # arriving upright at the hairline), over the top as a hairline and down
     # into the h's stem at its full width; the h's sloped top serif cut
     # away, the h ITALIC_TH_CLOSER nearer than set after t
-    put("t_h", *italic_th(up), [up["t"].width - ITALIC_TH_CLOSER])
+    with held():
+        put("t_h", *italic_th(up), [up["t"].width - ITALIC_TH_CLOSER])
     # Qu: the tail with the 2's head looping in the O (the upright styles
     # hang only its lower part from the O), on this style's O and u (mapped
     # onto the O, at this style's stem and hairline), upright then slanted
-    put("Q_u", *qu_ligature(up, QU_TAIL_LOOP), [up["O"].width])
+    with held():
+        put("Q_u", *qu_ligature(up, QU_TAIL_LOOP), [up["O"].width])
     # tt: two t's on one crossbar, the second as near as th's h
-    put("t_t", *t_t_ligature(up, ITALIC_TT_CLOSER), [up["t"].width - ITALIC_TT_CLOSER])
+    with held():
+        put("t_t", *t_t_ligature(up, ITALIC_TT_CLOSER), [up["t"].width - ITALIC_TT_CLOSER])
     return made
