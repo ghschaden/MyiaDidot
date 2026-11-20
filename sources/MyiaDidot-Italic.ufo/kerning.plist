@@ -6530,7 +6530,7 @@
 			<key>public.kern2.kappa</key>
 			<integer>-127</integer>
 			<key>public.kern2.mugreek</key>
-			<integer>-21</integer>
+			<integer>-22</integer>
 			<key>public.kern2.upsilon</key>
 			<integer>-120</integer>
 		</dict>
@@ -7530,6 +7530,8 @@
 			<integer>42</integer>
 			<key>uni1E6F</key>
 			<integer>56</integer>
+			<key>uni2C66</key>
+			<integer>28</integer>
 			<key>xi.sc</key>
 			<integer>2</integer>
 		</dict>
@@ -8337,7 +8339,7 @@
 			<key>uni2C65.sc</key>
 			<integer>62</integer>
 			<key>uni2C66</key>
-			<integer>56</integer>
+			<integer>92</integer>
 			<key>uniA7C8.sc</key>
 			<integer>16</integer>
 		</dict>
@@ -8391,8 +8393,20 @@
 			<integer>26</integer>
 			<key>psi.sc</key>
 			<integer>10</integer>
+			<key>t</key>
+			<integer>2</integer>
+			<key>t_h</key>
+			<integer>2</integer>
+			<key>t_t</key>
+			<integer>2</integer>
+			<key>tcaron</key>
+			<integer>2</integer>
+			<key>tcommaaccent</key>
+			<integer>2</integer>
 			<key>uni01A5.sc</key>
 			<integer>78</integer>
+			<key>uni01AD</key>
+			<integer>2</integer>
 			<key>uni01AD.sc</key>
 			<integer>4</integer>
 			<key>uni01B4.sc</key>
@@ -8401,12 +8415,16 @@
 			<integer>22</integer>
 			<key>uni0209.sc</key>
 			<integer>66</integer>
+			<key>uni021B</key>
+			<integer>2</integer>
 			<key>uni0233.sc</key>
 			<integer>14</integer>
 			<key>uni0253.sc</key>
 			<integer>102</integer>
 			<key>uni0257.sc</key>
 			<integer>102</integer>
+			<key>uni0288</key>
+			<integer>2</integer>
 			<key>uni0414</key>
 			<integer>-252</integer>
 			<key>uni0475.sc</key>
@@ -8417,8 +8435,18 @@
 			<integer>14</integer>
 			<key>uni1D6E</key>
 			<integer>28</integer>
+			<key>uni1D75</key>
+			<integer>2</integer>
 			<key>uni1E1F</key>
 			<integer>28</integer>
+			<key>uni1E6B</key>
+			<integer>2</integer>
+			<key>uni1E6D</key>
+			<integer>2</integer>
+			<key>uni1E6F</key>
+			<integer>2</integer>
+			<key>uni1E71</key>
+			<integer>2</integer>
 			<key>uni1E8F.sc</key>
 			<integer>14</integer>
 			<key>uni1E97</key>
@@ -8553,6 +8581,8 @@
 			<integer>170</integer>
 			<key>uni1FF8</key>
 			<integer>170</integer>
+			<key>uni2C66</key>
+			<integer>2</integer>
 			<key>y.sc</key>
 			<integer>14</integer>
 			<key>yacute.sc</key>

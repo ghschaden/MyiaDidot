@@ -15,6 +15,30 @@ change through their generators, `make reproduce` before every commit,
 exception lists only shrink, every visible change goes on a PDF sheet for
 review before its baseline is accepted.
 
+## Done 2026-11-20: t's bar centred in all four styles (designer: "do 2"), step D's ƭ ⱦ
+
+- Measured: the bar's centre stood right of the stem's by 27 (Regular), 44
+  (Italic), 34 (Bold), 46 (Bold Italic) units; f's bar in the italics +7;
+  references -3 .. +50 per mille em. Target +6 units. Method:
+  `scripts/tbar_center.py`, only the bar's ends move (stem, tail, advance
+  stay: a first attempt that kept the bar-end side bearings narrowed the
+  Italic's t by 33 and spoiled the pairs tf tt). Regular t and Italic t by
+  point, the stored ƭ ʈ ᵵ ⱦ by band (`--skip-t --glyphs`), the Regular's
+  ligatures with t by coordinates (`--ligatures`); the Bold, Italic and
+  Bold Italic follow in `make generate`; Bold ƭ (drawn) by centre_band, drawn
+  again. Regular shaping unchanged over the full corpus (`make regress`).
+- Bold Italic ƭ ⱦ: rebuilt from their recipes (data_bold_italic.py: ƭ hook cut
+  1100; ⱦ slash right end 0.80, top 960, 0.88-0.95 left a 55-unit step), the
+  join node smoothed (smooth_joins ⱦ and ƭ at 294,164), ƭ's 5.9 degree kink
+  mended by hand (handle turned onto the line: drawn). Advances: ƭ 740 -> 791,
+  ⱦ 640 -> 663 (their recipes' own spacing).
+- Sheets approved by the designer: `proofs/2026-11/t-bar-centred-2026-11-20.pdf`,
+  `proofs/2026-11/bolditalic-tbar-hook-2026-11-20.pdf`; baselines accepted
+  with the reviewed shaping reports (Bold 3188 strings, Italic 15, Bold
+  Italic 40466, all 1-2 units but ⱦ ƭ).
+- Not done: `make diffenator` and the pairs sweeps on the three generated
+  styles; the Regular's `make regress` is clean.
+
 ## Next session (set 2026-11-19, first on the list)
 
 - [x] (built 2026-11-20 as scripts/only_glyph.py, docs/claude/only.md; Ƈ Ɠ checked, other families not) `generate(glyph)`: make the throwaway `scripts/only_glyph_draft.py` (2026-11-19) a
@@ -32,7 +56,7 @@ review before its baseline is accepted.
       glyphs a recipe needs (its base, the strokes' reference o).
       Why: the full Bold Italic run takes 10-15 minutes, a trial of
       Ƈ Ɠ's cut took 1.5 seconds this way.
-- [ ] Ƈ Ɠ in the Bold Italic (step D): recipe moved to the wider C G
+- [x] (done 2026-11-20, 932e1c4f) Ƈ Ɠ in the Bold Italic (step D): recipe moved to the wider C G
       (x +145/+148, cut from x - 10 above 1320, stroke from 1290,
       data_bold_italic.py), drawn marks dropped; regenerating and the
       tests were the open step at the end of 2026-11-19 (uncommitted):

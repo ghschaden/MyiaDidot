@@ -73,6 +73,7 @@ ITALIC_BOLD_REBUILD = {
     "uni023E": "Ⱦ: the slash on the Bold Italic's T", "uni2C65.sc": "ⱥ.sc: the slash on a.sc",
     "uni023C.sc": "ȼ.sc: the slash on c.sc", "uni2C66.sc": "ⱦ.sc: the slash on t.sc",
     "uni2C66": "ⱦ: the slash on the Bold Italic's t (ITALIC_BOLD_RECIPES)",
+    "uni01AD": "ƭ: the hook on the Bold Italic's t (ITALIC_BOLD_RECIPES)",
     # ɉ: emboldened whole its dot came out larger than j's (2026-11-09); the
     # bar on the Bold Italic's j, its arms then lengthened by j_bar.py
     "uni0249": "ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_RECIPES)",
@@ -188,7 +189,14 @@ ITALIC_BOLD_RECIPES = {
     # ⱦ: emboldened whole its slash kept the Regular's thickness, too light
     # (55): a quarter heavier, as Ⱦ ⱦ.sc's, where the Italic's runs (chosen
     # 2026-11-09 from 69 / 83, each also lower and longer)
-    "ⱦ": ("slash", "t", ("x", "box", 0.05, -80, 0.95, 960, 69)),
+    # right end 0.95 -> 0.80 (2026-11-20): at 0.95 the slash's right edge ran
+    # into the bar's corner (a 55-unit step: the same at 0.88-0.92) and the
+    # counter it makes with the stem was a pinhole (2400, MIN_PIECE 3000); at
+    # 0.80 the tip leaves the bar's top clear of its end; the top stays 960
+    "ⱦ": ("slash", "t", ("x", "box", 0.05, -80, 0.80, 960, 69)),
+    # ƭ: the hook cut at 1100, not the Regular's 900: at 900 the Bold Italic t's
+    # cut leaves a notch (394,1218) and a pinhole, at 1000 it takes the crossbar
+    "ƭ": ("hook", "t", ("x", "up-right", "first", 1100, 300, 0)),
     # ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_REBUILD), centred as
     # the Italic's, as heavy as emboldened (the Italic's 56 and AY, as ʉ's;
     # at the stroke scale it came to 56); j_bar.py then sets its arms

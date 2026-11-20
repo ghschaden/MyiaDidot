@@ -52,7 +52,8 @@ JOINS = {
     "uni044F.sc": [(465, 195)],
     # ⱦ: the slash's lower edge into the stem's inner curve, a 4-unit crumb
     # there (2026-11-09, its slash drawn at this weight)
-    "uni2C66": [(278, 167)],
+    # was (278, 167): the rebuilt ⱦ and ƭ (2026-11-20) have it at (294, 164)
+    "uni2C66": [(294, 164)], "uni01AD": [(294, 164)],
     # the entry strokes and feet kept turning one way (stroke_bold.one_way,
     # 2026-11-09): fair_arcs' split or the cleaning leaves a short handle
     # or a crumb at their node, rounded off its course (11-26 degrees;
@@ -137,7 +138,9 @@ def align(glyph, x, y, r=CRUMB):
             if p.type and d < r and (best is None or d < best[0]):
                 best = (d, c, i)
     if best is None:
-        raise ValueError(f"smooth_joins: {glyph.name} has no node near {x},{y}")
+        near = sorted((round(math.dist((p.x, p.y), (x, y))), round(p.x), round(p.y)) for c in glyph.contours
+                      for p in c.points if p.type and math.dist((p.x, p.y), (x, y)) < 6 * r)[:4]
+        raise ValueError(f"smooth_joins: {glyph.name} has no node near {x},{y} (nearest on-curve nodes: distance, x, y: {near})")
     _, c, i = best
     P = c.points
     p, a, b = P[i], P[i - 1], P[(i + 1) % len(P)]

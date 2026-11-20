@@ -639,7 +639,7 @@ ITALIC_KERNING = {
     ("public.kern1.Kappa", "public.kern2.alphatonos"): -175,  # Κα
     ("public.kern1.lambda", "public.kern2.epsilontonos"): 15,  # λε (the Regular's -57)
     # where Charis and Libertinus agree against the Italic (tests/test_greek_pairs.py)
-    ("public.kern1.sigma", "public.kern2.mugreek"): -21,  # σμ
+    ("public.kern1.sigma", "public.kern2.mugreek"): -22,  # σμ (-21 until 2026-11-20: t's bar centred moved the style's Latin offset, σμ stood 0.151 outside the references)
     ("public.kern1.rho", "public.kern2.gamma"): 32,  # ργ
     # Cyrillic against Cyrillic references, as the Italic's Latin sets them
     # (greek_pairs.py --script cyrillic): the Regular's pairs were made for
