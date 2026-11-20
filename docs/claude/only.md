@@ -268,3 +268,17 @@ replace one that turns out to sit in `ROOTS`' closure):
    Italic; then `make_italic.py`.
 5. `docs/claude/commands.md` gets the commands; this page, cut down to
    what was built, stays as the description.
+
+## `generate(glyph)`: the common case of stage B (built 2026-11-20)
+
+`scripts/only_glyph.py STYLE CHAR...` (Bold or BoldItalic) makes a recipe
+glyph (attach, bar, curl, hook) again on the finished base of its style in
+about a second, to `build/only_glyph/` with a sheet; `generate(style, ch,
+recipe=...)` takes a recipe override. It does what `make_bold.rederive`
+does for one letter. The recipes' numbers are in the frame rederive meets,
+not the saved font's (later passes shift it), so one full run with
+`MYIA_DUMP_FRAME=build/only_glyph/frame-BoldItalic.ufo` makes the
+snapshot first. Checked: Ƈ Ɠ equal the saved outlines up to a translation
+in x and 3 units (tests/test_only_glyph.py, skipped without the snapshot).
+Not every letter of the recipes runs through rederive (ƈ is stroked
+elsewhere and differs): test a family before using it.

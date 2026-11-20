@@ -1535,6 +1535,10 @@ def rederive(source, font, italic, whole):
 
     iou, width = 0.85, 0.03
     keep = ITALIC_BOLD_KEEP_WHOLE if italic else BOLD_KEEP_WHOLE
+    if os.environ.get("MYIA_DUMP_FRAME"):
+        # the style's font as the recipes meet it, for scripts/only_glyph.py
+        # (the saved font is later shifted: its frame is not the recipes')
+        font.save(os.environ["MYIA_DUMP_FRAME"], overwrite=True)
     up = copy.deepcopy(font)
     if italic:
 

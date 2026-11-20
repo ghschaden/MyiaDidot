@@ -17,7 +17,7 @@ review before its baseline is accepted.
 
 ## Next session (set 2026-11-19, first on the list)
 
-- [ ] `generate(glyph)`: make the throwaway `scripts/only_glyph_draft.py` (2026-11-19) a
+- [x] (built 2026-11-20 as scripts/only_glyph.py, docs/claude/only.md; Ƈ Ɠ checked, other families not) `generate(glyph)`: make the throwaway `scripts/only_glyph_draft.py` (2026-11-19) a
       tool, `scripts/only_glyph.py`: `generate(name, style,
       recipe_overrides=None)` builds one recipe glyph (attach, bar, curl,
       hook) on the finished base of its style in seconds, with its sheet,
