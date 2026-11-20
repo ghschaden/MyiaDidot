@@ -48,15 +48,11 @@ eight stroke 1                   # stroke weights against the kind's (scripts/qu
 eightoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 207 against 279 (0.74, lighter)
 eng.sc stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 142 against 282 (0.50, lighter)
 eogonek.sc smooth 1              # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 397,106 2.4 degrees
-f_f_j extreme 1                  # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 183,-304 26 units past
 f_f_j kink 2                     # the Italic's b-z redrawn, f's hook, followers (2026-11-11): -204,-334 6.5 degrees; 1489,1308 4.9 degrees
 f_j kink 1                       # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 456,-338 7.0 degrees
 f_k wobble 1                     # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 4 against 3: 1265,741 18 degrees; 1266,742 9 degrees; 1261,795 202 degrees; 1214,172 8 degrees
-ff extreme 1                     # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 187,-304 26 units past
 ff kink 2                        # the Italic's b-z redrawn, f's hook, followers (2026-11-11): -192,-331 2.6 degrees; 1405,1304 4.4 degrees
-ffi extreme 1                    # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 187,-304 26 units past
 ffi kink 2                       # the Italic's b-z redrawn, f's hook, followers (2026-11-11): -200,-334 6.5 degrees; 1493,1308 4.9 degrees
-ffl extreme 1                    # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 187,-304 27 units past
 fi kink 1                        # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 874,1308 4.0 degrees
 fi slant 1                       # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: 17.3 degrees, not 15.2
 fi wobble 1                      # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 1 against 0: 788,699 6 degrees

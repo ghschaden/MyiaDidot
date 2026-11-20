@@ -213,3 +213,73 @@ def finish(font):
             continue
         for x, y in spots:
             align(font[name], x, y)
+    for name in FF_HOOKS:
+        if absent(font, name):
+            continue
+        while hook_ball(font[name]):
+            pass
+
+
+# the ff-ligatures' lower hooks (2026-11-20, the designer: "a strange lower
+# hook" in ffi): the stroker leaves the ball's leftmost node out and joins
+# its two curves in a corner a bend of this many degrees or more, the curve
+# after it running on to the left past the node (a lobe)
+FF_HOOKS = ("ff", "ffi", "ffl", "f_f_j")
+BALL_BEND = 30
+
+
+def hook_ball(glyph):
+    """Mend one such corner (below the baseline, between two curves): the
+    two curves through it are fitted again with a node at the ball's
+    leftmost point, upright there. Returns whether one was mended."""
+    import numpy as np
+    from fontTools.misc.bezierTools import solveQuadratic, splitCubicAtT
+    from redraw import fit_cubic
+    from ufoLib2.objects import Point
+
+    for c in glyph.contours:
+        P = c.points
+        n = len(P)
+        for i, p in enumerate(P):
+            if not (p.type == "curve" and not p.smooth and p.y < -20):
+                continue
+            a, b = P[i - 1], P[(i + 1) % n]
+            if a.type or b.type:
+                continue
+            u = (p.x - a.x, p.y - a.y)
+            v = (b.x - p.x, b.y - p.y)
+            bend = abs(math.degrees(math.atan2(u[0] * v[1] - u[1] * v[0], u[0] * v[0] + u[1] * v[1])))
+            if bend < BALL_BEND:
+                continue
+            if not 3 <= i <= n - 4 or P[i - 3].type != "curve" or P[i + 3].type != "curve":
+                raise ValueError(f"hook_ball: {glyph.name} {p.x},{p.y}: the corner's curves are not whole in the contour")
+            A, C, D = P[i - 3], p, P[i + 3]
+            s1 = [(A.x, A.y), (P[i - 2].x, P[i - 2].y), (a.x, a.y), (C.x, C.y)]
+            s2 = [(C.x, C.y), (b.x, b.y), (P[i + 2].x, P[i + 2].y), (D.x, D.y)]
+            xs = [q[0] for q in s2]
+            ts = [t for t in solveQuadratic(3 * (-xs[0] + 3 * xs[1] - 3 * xs[2] + xs[3]),
+                                            6 * (xs[0] - 2 * xs[1] + xs[2]), 3 * (xs[1] - xs[0]))
+                  if 0.02 < t < 0.98]
+            if not ts:
+                raise ValueError(f"hook_ball: {glyph.name} {p.x},{p.y}: no leftmost point after the corner")
+            t = ts[0]
+            first, second = splitCubicAtT(*s2, t)
+            E = np.array(first[3], float)
+
+            def sample(seg, m=24):
+                s = np.linspace(0, 1, m)[:, None]
+                q = np.array(seg, float)
+                return ((1 - s) ** 3) * q[0] + 3 * ((1 - s) ** 2) * s * q[1] + 3 * (1 - s) * s * s * q[2] + s ** 3 * q[3]
+
+            up = np.array([0.0, 1.0 if second[1][1] >= second[0][1] else -1.0])
+            tA = np.array([s1[1][0] - s1[0][0], s1[1][1] - s1[0][1]], float)
+            tA /= np.linalg.norm(tA)
+            tD = np.array([s2[3][0] - s2[2][0], s2[3][1] - s2[2][1]], float)
+            tD /= np.linalg.norm(tD)
+            lower = fit_cubic(np.vstack([sample(s1), sample(first)[1:]]), np.array(s1[0], float), tA, E, up)
+            upper = fit_cubic(sample(second), E, up, np.array(s2[3], float), tD)
+            new = [Point(round(q[0]), round(q[1]), kind, smooth=kind == "curve")
+                   for q, kind in ((lower[1], None), (lower[2], None), (E, "curve"), (upper[1], None), (upper[2], None))]
+            P[i - 2:i + 3] = new
+            return True
+    return False

@@ -41,6 +41,12 @@ review before its baseline is accepted.
 
 ## Next session (set 2026-11-19, first on the list)
 
+- [x] (mended 2026-11-20: smooth_joins.hook_ball; the second ball's leftmost node was missing, a corner and lobe; ff ffi ffl f_f_j, followers refit) The Bold Italic's `f_f_i` ligature (glyph `ffi`) has a
+      strange lower hook in its second f. Look at it on a sheet beside `ffl`, `ffj` and the
+      single `fi` in the Bold Italic and the Italic; where `ffi` is made in this style is not
+      yet looked up (draft_ligatures' f ligatures, or the Italic's carried through
+      make_bold). `make only STYLE=BoldItalic GLYPHS="ffi" PARTIAL=1` makes a trial in
+      seconds. Part of the Bold Italic's review (build/bi-review/).
 - [x] (built 2026-11-20 as scripts/only_glyph.py, docs/claude/only.md; Ƈ Ɠ checked, other families not) `generate(glyph)`: make the throwaway `scripts/only_glyph_draft.py` (2026-11-19) a
       tool, `scripts/only_glyph.py`: `generate(name, style,
       recipe_overrides=None)` builds one recipe glyph (attach, bar, curl,
