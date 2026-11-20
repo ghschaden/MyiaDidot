@@ -254,15 +254,21 @@ strokes:
 # each; the Italic's report after the Bold's), then the Bold Italic
 generate:
 	@mkdir -p build
+	@$(PY) scripts/progress.py begin generate 4
+	@$(PY) scripts/progress.py step generate 1 "Italic, Bold and their small caps"
 	$(PY) scripts/make_italic.py $(if $(KEEP_DRAFTS),--keep-drafts) > build/make-italic.log 2>&1 & italic=$$!; \
 	$(PY) scripts/make_bold.py && $(PY) scripts/smallcaps.py sources/$(FAMILY)-Bold.ufo; bold=$$?; \
 	wait $$italic; status=$$?; cat build/make-italic.log; \
 	[ $$status -eq 0 ] || { echo "make_italic.py failed"; exit 1; }; [ $$bold -eq 0 ]
+	@$(PY) scripts/progress.py step generate 2 "Bold Italic"
 	$(PY) scripts/make_bold.py sources/$(FAMILY)-Italic.ufo sources/$(FAMILY)-BoldItalic.ufo
+	@$(PY) scripts/progress.py step generate 3 "Bold Italic small caps"
 	$(PY) scripts/smallcaps.py sources/$(FAMILY)-BoldItalic.ufo
+	@$(PY) scripts/progress.py step generate 4 "normalize"
 	$(MAKE) normalize
 	@if find sources -iname '*conflict*' | grep -q .; then \
 	    echo "sync conflicts in sources/:"; find sources -iname '*conflict*'; exit 1; fi
+	@$(PY) scripts/progress.py end generate
 
 # Old Standard's SFD converted again with FontForge (scripts/fontforge_inputs.py)
 oldstand:
