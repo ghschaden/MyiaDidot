@@ -233,7 +233,6 @@ def hook_ball(glyph):
     two curves through it are fitted again with a node at the ball's
     leftmost point, upright there. Returns whether one was mended."""
     import numpy as np
-    from fontTools.misc.bezierTools import solveQuadratic, splitCubicAtT
     from redraw import fit_cubic
     from ufoLib2.objects import Point
 
@@ -256,28 +255,25 @@ def hook_ball(glyph):
             A, C, D = P[i - 3], p, P[i + 3]
             s1 = [(A.x, A.y), (P[i - 2].x, P[i - 2].y), (a.x, a.y), (C.x, C.y)]
             s2 = [(C.x, C.y), (b.x, b.y), (P[i + 2].x, P[i + 2].y), (D.x, D.y)]
-            xs = [q[0] for q in s2]
-            ts = [t for t in solveQuadratic(3 * (-xs[0] + 3 * xs[1] - 3 * xs[2] + xs[3]),
-                                            6 * (xs[0] - 2 * xs[1] + xs[2]), 3 * (xs[1] - xs[0]))
-                  if 0.02 < t < 0.98]
-            if not ts:
-                raise ValueError(f"hook_ball: {glyph.name} {p.x},{p.y}: no leftmost point after the corner")
-            t = ts[0]
-            first, second = splitCubicAtT(*s2, t)
-            E = np.array(first[3], float)
-
+            # the ball's leftmost point: above the corner (the lobe's tip,
+            # which ran on to the left, is not the ball's), halfway between
+            # the ball's bottom and its top, upright there; the lower curve
+            # fitted to the stroker's own samples, the upper a quarter ellipse
             def sample(seg, m=24):
                 s = np.linspace(0, 1, m)[:, None]
                 q = np.array(seg, float)
                 return ((1 - s) ** 3) * q[0] + 3 * ((1 - s) ** 2) * s * q[1] + 3 * (1 - s) * s * s * q[2] + s ** 3 * q[3]
 
-            up = np.array([0.0, 1.0 if second[1][1] >= second[0][1] else -1.0])
+            E = np.array([C.x, (A.y + D.y) / 2], float)
+            up = np.array([0.0, 1.0])
             tA = np.array([s1[1][0] - s1[0][0], s1[1][1] - s1[0][1]], float)
             tA /= np.linalg.norm(tA)
             tD = np.array([s2[3][0] - s2[2][0], s2[3][1] - s2[2][1]], float)
             tD /= np.linalg.norm(tD)
-            lower = fit_cubic(np.vstack([sample(s1), sample(first)[1:]]), np.array(s1[0], float), tA, E, up)
-            upper = fit_cubic(sample(second), E, up, np.array(s2[3], float), tD)
+            lower = fit_cubic(sample(s1), np.array(s1[0], float), tA, E, up)
+            k = 0.5523
+            Dn = np.array(s2[3], float)
+            upper = [E, E + up * k * (Dn[1] - E[1]), Dn - tD * k * abs(Dn[0] - E[0]), Dn]
             new = [Point(round(q[0]), round(q[1]), kind, smooth=kind == "curve")
                    for q, kind in ((lower[1], None), (lower[2], None), (E, "curve"), (upper[1], None), (upper[2], None))]
             P[i - 2:i + 3] = new
