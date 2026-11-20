@@ -740,6 +740,9 @@ def main():
     ap.add_argument("--height", type=int,
                     help=f"set the small-cap height (stored in lib {HEIGHT_KEY})")
     ap.add_argument("-v", "--verbose", action="store_true")
+    ap.add_argument("--glyphs-only", action="store_true",
+                    help="the glyphs only, not the kerning or the features (a partial run, "
+                    "scripts/only_run.py: the font holds some of its glyphs)")
     args = ap.parse_args()
 
     font = ufoLib2.Font.open(args.ufo)
@@ -762,8 +765,9 @@ def main():
     build_accented(font, log, failed)
     build_specials(font, log, failed)
     build_lowercase_only(font, log, failed)
-    scale_kerning(font, log)
-    write_features(font, log)
+    if not args.glyphs_only:
+        scale_kerning(font, log)
+        write_features(font, log)
     carry(accepted, font)
     restore(kept, font)
     font.save()

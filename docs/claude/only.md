@@ -296,3 +296,34 @@ working font to N, the sets taken from the whole source, the write into scratch,
 the equivalence check), tiers 2-5, the sheet's join. Edit the generators only
 when no `make generate` is running: its second `make_bold` call reads the file
 later.
+
+### The Bold's `--only` built, the Bold Italic's not yet exact (2026-11-20)
+
+`make_bold.py REGULAR BOLD --only GLYPH... [--out UFO]` (shared parts in
+`scripts/only_run.py`): BOLD is read, a copy of it in `build/only/work/<pid>/` is
+what the run writes, the font is cut to N right after it is opened, and the result
+is BOLD with the glyphs of D from the work font (default `--out
+build/only/MyiaDidot-Bold.ufo`). Checked on a b O e T hyphen
+uni0433.loclSRB: made in 5-14 s (the whole run is about 25 min with the Italics'),
+D identical to the committed Bold and the N glyphs outside D too (tests/test_only.py,
+tier 2, five runs). `zero` and `four` (its figure set reads zero) refuse.
+
+What the generator needed, all behind `--only`, a whole run unchanged: a guard `if name
+in font` at the passes that name glyphs (SLASHED, `r_hook.fair_bold_stem`,
+`rederive`, `tabular_figures`, `separate_breve_grave_stacks`, the rule-made rebuild,
+the side-bearing table), `finalization.SKIPPED` (a finishing pass that names a glyph
+the run lacks is skipped and listed), `only_run.Context.step` for the Italic's own
+whole-font passes, kern_clear and italic_kerning left out (the kerning stays the
+target's), `smallcaps.py --glyphs-only` on the work font. In the graph (`only.py`):
+every glyph reads the glyphs of its NFD (and a circumflex + tone pair glyph),
+a mark reads its `.cap .i ...` variants, `PASS_GROUPS` (sc_feet; the f-ligatures: a
+group meeting D is made again whole, one meeting N held whole), the root `I`.
+
+Open: the 5 small caps with two stacked accents (ǜ.sc ḕ.sc ... asked via gravecomb) come
+out 9 units off the committed (-66 against -57, Grave on Dieresis; cause not found);
+**the Bold Italic runs (`--only hyphen`, 130 s, its stroke cache misses after any edit
+of make_bold.py) but is not exact**: N glyphs outside D change (i.sc dotlessi.sc ...),
+`smallcaps.py --glyphs-only` fails on `uni0307`, 11 finishing passes are skipped
+(y_dot_anchor, sc_feet, dollar, ... each wants its group in `PASS_GROUPS`).
+`make_italic.py --only`, the sheet's join (`make only` with `--only`) and tiers 3-5
+(singles at random, the test that can fail, sources untouched) are not built.

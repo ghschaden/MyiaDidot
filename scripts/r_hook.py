@@ -190,6 +190,8 @@ def fair_bold_stem(font, bold=None):
     if not (font.info.styleName == "Bold" if bold is None else bold):
         return
     for name in ("r", "uni027D"):
+        if name not in font:  # (--only: what is not read is absent)
+            continue
         for contour in font[name].contours:
             points = contour.points
             for i, node in enumerate(points):

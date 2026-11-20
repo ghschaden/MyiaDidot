@@ -66,3 +66,8 @@ what is built on it stale, and the list says so.
 through `make check-regular` as it now stands (that run is marked in
 `build/stale/regular-checked.json`, failures or not); `SKIP_CHECK=1` waives it.
 Not covered: kerning and features, which the generators also read.
+
+`.venv/bin/python -I scripts/make_bold.py sources/MyiaDidot-Regular.ufo sources/MyiaDidot-Bold.ufo --only a b`
+makes those glyphs and what is built from them (the Bold only; the Bold Italic's is not
+exact yet) into `build/only/MyiaDidot-Bold.ufo` in seconds, and says what it did not show.
+`scripts/only.py Bold a` prints the closure alone. docs/claude/only.md, last section.

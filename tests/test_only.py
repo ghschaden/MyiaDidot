@@ -69,3 +69,34 @@ def test_sheet_words():
     assert w[:2] == ["nvo", "HvO"] and len(w) == 5 and all("v" in x for x in w[2:])
     font = ufoLib2.Font.open(ROOT / "sources/MyiaDidot-Bold.ufo")
     assert only_sheet.characters(font, ["n", "aacute", "f_f"])[:2] == ["n", "á"]
+
+
+# stage B, tier 2 (docs/claude/only.md): the Bold's `--only` makes what it is
+# asked for exactly as the whole run did, and what it holds but was not asked
+# for comes out as committed. The Bold Italic's `--only` runs but is not exact
+# yet (the Italic's own finishing passes and groups), so it has no test here.
+@pytest.mark.parametrize("asked", [["a"], ["b"], ["O"], ["e"], ["T", "hyphen"]])
+def test_bold_only_makes_the_glyphs_as_committed(asked, tmp_path):
+    out = tmp_path / "MyiaDidot-Bold.ufo"
+    before = subprocess.run(["git", "status", "--porcelain", "sources", "tests/data"], cwd=ROOT,
+                            capture_output=True, text=True).stdout
+    r = subprocess.run([PY, "-I", str(ROOT / "scripts/make_bold.py"), str(ROOT / "sources/MyiaDidot-Regular.ufo"),
+                        str(ROOT / "sources/MyiaDidot-Bold.ufo"), "--only", *asked, "--out", str(out)],
+                       capture_output=True, text=True, timeout=300)
+    assert r.returncode == 0, r.stdout[-800:] + r.stderr[-800:]
+    assert "come out as committed" in r.stdout
+    from check_reproducible import differences
+
+    lines = [ln for ln in differences(ufoLib2.Font.open(out), ufoLib2.Font.open(ROOT / "sources/MyiaDidot-Bold.ufo"))
+             if ln.startswith("glyph ")]
+    assert not lines, lines[:5]
+    after = subprocess.run(["git", "status", "--porcelain", "sources", "tests/data"], cwd=ROOT,
+                           capture_output=True, text=True).stdout
+    assert before == after
+
+
+def test_a_measure_cannot_be_asked_for_in_a_run():
+    r = subprocess.run([PY, "-I", str(ROOT / "scripts/make_bold.py"), str(ROOT / "sources/MyiaDidot-Regular.ufo"),
+                        str(ROOT / "sources/MyiaDidot-Bold.ufo"), "--only", "zero"],
+                       capture_output=True, text=True, timeout=120)
+    assert r.returncode != 0 and "measure" in (r.stdout + r.stderr)

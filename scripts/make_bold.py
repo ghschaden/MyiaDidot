@@ -231,6 +231,8 @@ def tabular_figures(font):
     width = font["zero"].width
     deltas = {}
     for n in ("uni2007", "figuredash"):
+        if n not in font:  # (--only: what is not read is absent)
+            continue
         d = width - font[n].width
         deltas[n] = (d // 2, d - d // 2)
     sidebearings(font, deltas)
@@ -1031,6 +1033,8 @@ def separate_breve_grave_stacks(font):
     from smallcaps import ink_bounds
 
     for breathing in ("0313", "0314"):
+        if f"brevecmb_uni{breathing}_gravecomb.grek" not in font:  # (--only: what is read)
+            continue
         glyph = font[f"brevecmb_uni{breathing}_gravecomb.grek"]
         upper, breve = glyph.components
         upper_bounds = ink_bounds(font, upper.baseGlyph)
@@ -1581,6 +1585,8 @@ def rederive(source, font, italic, whole):
     changed = []
     for ch, op, base, band in recipes(italic):
         name = resolve(ch)
+        if name not in font:  # (--only: what is not read is absent)
+            continue
         why = whole.get(name, "")
         rebuild = ITALIC_BOLD_REBUILD if italic else BOLD_REBUILD
         # (only what the Italic made so: its ᵃ is the sloped roman's, its ⁺ ⁼
@@ -1745,8 +1751,17 @@ def main():
     ap.add_argument("bold", nargs="?", default=str(ROOT / "sources/MyiaDidot-Bold.ufo"))
     ap.add_argument("--out", metavar="UFO", help="the whole run into a copy of BOLD, which stays as it is "
                     "(scratch_out.py; then smallcaps.py on it)")
+    ap.add_argument("--only", nargs="+", metavar="GLYPH", help="only these glyphs and what is built from them, "
+                    "into --out (default build/only/<BOLD's name>); BOLD is read, never written "
+                    "(docs/claude/only.md, scripts/only_run.py)")
     args = ap.parse_args()
-    if args.out:
+    only_ctx = None
+    if args.only:
+        from only_run import begin
+
+        only_ctx = begin(args.regular, args.bold, args.out, args.only)
+        args.bold, args.out = str(only_ctx.work), str(only_ctx.out)
+    elif args.out:
         from scratch_out import prepare
 
         args.bold = str(prepare(args.bold, args.out))
@@ -1762,6 +1777,12 @@ def main():
     # what it marked itself (kept, above; docs/claude/drawn.md, rule 5)
     strip(font)
     kern_clear.undo(font)  # the source's loosened pairs: this style finds its own
+    step = only_ctx.step if only_ctx else (lambda label, function, *args: function(*args))
+    if only_ctx:
+        import finalization
+
+        finalization.SKIPPED = only_ctx.skipped
+        only_ctx.cut(font)  # --only: what is not read is not made
     angle = -(regular.info.italicAngle or 0)
     SLANT = math.tan(math.radians(angle))
     italic = bool(angle)
@@ -2055,12 +2076,13 @@ def main():
     # a slashed round spaced as its round (the Regular's Ø is as wide as O,
     # its ring where O's is): the slash is not fitted
     for name, ring in SLASHED.items():
-        fit[name] = fit.get(ring, (0, 0))
+        if name in font:  # (--only: what is not read is absent)
+            fit[name] = fit.get(ring, (0, 0))
     sidebearings(font, {n: d for n, d in fit.items() if d != (0, 0)})
     if italic:
         from italic_contours import finish_bases
 
-        finish_bases(font)
+        step("finish_bases", finish_bases, font)
         # (r's shoulders not rounded after: the by-weight r's stepped arch
         # and return, the stroked r has neither)
     else:
@@ -2119,12 +2141,12 @@ def main():
     if italic:
         from y_dot import y_dot_anchor
 
-        y_dot_anchor(font)
+        step("y_dot_anchor", y_dot_anchor, font)
     log = []
     stack_anchors(font, log)
     bold_builder = Builder(font)
     rebuilt = 0
-    for name in sorted(rule_made - set(kept)):
+    for name in sorted((rule_made & set(font.keys())) - set(kept)):  # (--only: what is read)
         g = font[name]
         r = bold_builder.recipe(g.unicode)
         r.name = name
@@ -2185,7 +2207,7 @@ def main():
     if STROKE_OUT_LOG is not None:
         Path(STROKE_OUT_LOG).write_text("".join(f"{n} {a} {b}\n" for n, (a, b) in stroke_out.items()))
     sidebearings(font, {n: tuple(a + b for a, b in zip(extra.get(n, (0, 0)), stroke_out.get(n, (0, 0))))
-                        for n in set(extra) | set(stroke_out)})
+                        for n in set(extra) | set(stroke_out) if n in font})  # (--only: what is read)
     done = regular.lib.get(CUT_KEY, {"cut": 0, "greekLower": 0})
     font.lib[CUT_KEY] = {"cut": round(done["cut"] * KX) + cut,
                          "greekLower": round(done["greekLower"] * KX) + greek_cut}
@@ -2194,18 +2216,18 @@ def main():
         from cyrillic_signs import redraw as redraw_cyrillic_signs
         from italic_contours import finish as finish_contours
 
-        redraw_cyrillic_signs(font)
-        finish_contours(font)
+        step("redraw_cyrillic_signs", redraw_cyrillic_signs, font)
+        step("finish_contours", finish_contours, font)
         # Serbian ѓ: its acute stacked over ī's bar as this style's ḗ,
         # rebuilt from anchors above, stacks it (carried along from the
         # Italic, it kept the Italic's step)
         from make_italic import serbian_bars, serbian_gje
 
         if "uni0453.loclSRB" in font and "uni0453.loclSRB" not in kept:
-            serbian_gje(font)
+            step("serbian_gje", serbian_gje, font)
         # п т: their bars over и ш as this style's ū has its own
         if not {"uni043F.loclSRB", "uni0442.loclSRB"} & set(kept):
-            serbian_bars(font)
+            step("serbian_bars", serbian_bars, font)
         # the Latin pairs from the white the finished shapes leave, against
         # the Bold as the Italic's against the Regular (italic_kerning.py,
         # docs/claude/spacing.md), without the Bold's own exceptions; the
@@ -2219,10 +2241,12 @@ def main():
             # committed Bold (make only STYLE=BoldItalic SOURCE=...)
             upright = ROOT / "sources" / upright.name
             print(f"{args.bold}: no Bold beside {args.regular}, kerned against {upright}")
-        kerned = italic_kerning(ufoLib2.Font.open(upright), font, skip=set(BOLD_KERNING))
-        print(f"{args.bold}: {kerned[0]} Latin pairs computed against {upright.name} ({kerned[1]} set plain, at 0)")
-        font.kerning.update(ITALIC_BOLD_KERNING)
-    kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
+        if not only_ctx:  # (--only: the kerning stays the target's)
+            kerned = italic_kerning(ufoLib2.Font.open(upright), font, skip=set(BOLD_KERNING))
+            print(f"{args.bold}: {kerned[0]} Latin pairs computed against {upright.name} ({kerned[1]} set plain, at 0)")
+            font.kerning.update(ITALIC_BOLD_KERNING)
+    if not only_ctx:  # (--only: the kerning stays the target's, said in the run's output)
+        kern_clear.clear(font)  # pairs whose inks would meet, loosened (on the final outlines)
     write(font, Path(args.bold), separate_stacks=True, kept=kept)
     if parted:
         print("  serifs kept apart:", " ".join(parted))
@@ -2235,6 +2259,8 @@ def main():
     print(f"{args.bold}: {len(font)} glyphs, {rebuilt} composites rebuilt from anchors, "
           f"{outlined} outlined letters made from base and mark, {len(followed)} derived letters "
           f"made of their Bold base, {len(cleaned)} cleaned")
+    if only_ctx:
+        sys.exit(only_ctx.finish())
 
 
 if __name__ == "__main__":

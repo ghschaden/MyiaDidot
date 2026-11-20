@@ -23,6 +23,7 @@ an edge that is missing.
 
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 import ufoLib2
@@ -36,8 +37,8 @@ BUILT_FROM = "org.myiadidot.builtFrom"
 
 # glyphs every other glyph is measured against, always present in a run:
 # o (derive.strokes scales every recipe), n, H, l, bar, zero and zerosuperior
-# (small_glyphs' scale), f (the hooks' top)
-ROOTS = ["o", "n", "H", "l", "bar", "zero", "zerosuperior", "f"]
+# (small_glyphs' scale), f (the hooks' top), I (space_figures' floor)
+ROOTS = ["o", "n", "H", "I", "l", "bar", "zero", "zerosuperior", "f"]
 
 DIGITS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
@@ -52,6 +53,24 @@ EXTRA = [
     ("y", "dotbelowcomb", "y_dot.y_dot_anchor"),
     ("t", "dotbelowcomb", "t_dot_anchor"),
 ]
+
+
+# finishing passes (finalization.PASSES) that act on a set of glyphs together:
+# (label, a set of names or a regex over names). A group that meets D is made
+# again whole (but its roots, which are measures); one that meets N is held
+# whole, so the pass can run: a pass that names a glyph the run lacks is
+# skipped (finalization.SKIPPED) and leaves its glyphs as the generator drew
+# them. To be completed as the single-glyph tier finds them.
+PASS_GROUPS = [
+    ("sc_feet.finish", {"m.sc", "v.sc", "w.sc", "k.sc", "x.sc"}),
+    ("draft_ligatures.finish_f", re.compile(r"(f|f_.+|longs_.+|ff|fi|fl|fj|ffi|ffl|ffj|dotlessi|uni0237)")),
+]
+
+
+def _group(names, spec):
+    if isinstance(spec, set):
+        return spec & names
+    return {n for n in names if spec.fullmatch(n.split(".")[0])}
 
 
 class OnlyError(Exception):
@@ -106,6 +125,29 @@ def _name_edges(font, edges):
         if name.endswith(".sc") and "." not in name[:-3]:
             for other in smcp_partners(name[:-3], names):
                 edges[name].add(other)
+    # a mark is placed by the anchor rule in the variant its base wants (.cap
+    # over a capital, .i over i ...): it reads them all
+    cats = font.lib.get("public.openTypeCategories", {})
+    for name in names:
+        stem, _, suffix = name.partition(".")
+        if suffix and stem in names and cats.get(stem) == "mark" and stem != name:
+            edges[stem].add(name)
+    # a precomposed letter is made by the anchor rule from the glyphs of its
+    # decomposition (Á from A and U+0301's own glyph, not its .cap form)
+    cmap = _cmap(font)
+    for g in font:
+        if g.unicode is None or len(unicodedata.normalize("NFD", chr(g.unicode))) < 2:
+            continue
+        nfd = unicodedata.normalize("NFD", chr(g.unicode))
+        for ch in nfd:
+            n = cmap.get(ord(ch))
+            if n and n != g.name:
+                edges[g.name].add(n)
+        # circumflex + tone: the pair glyph composites.vietnamese_tones looks for
+        for a, b in zip(nfd[1:], nfd[2:], strict=False):
+            pair = f"{cmap.get(ord(a))}_{cmap.get(ord(b))}"
+            if pair in names:
+                edges[g.name].add(pair)
     # figures: each of a set reads all ten of the set, and zero
     sets = {}
     for name in names:
@@ -196,12 +238,28 @@ def closure(graph, font, asked):
             raise OnlyError(f"{a}: not in the source (a new glyph changes the glyph order: use --out without --only)")
         want.append(n)
     roots = [r for r in ROOTS if r in names]
-    D = _reach(want, reverse(graph))
+    rev = reverse(graph)
+    groups = [(label, _group(names, spec)) for label, spec in PASS_GROUPS]
+    D = _reach(want, rev)
+    for _ in range(len(groups) + 1):  # a group made again whole may reach another
+        before = len(D)
+        for _label, group in groups:
+            if group & D:
+                D |= _reach(group - set(roots), rev)
+        if len(D) == before:
+            break
     hit = sorted(set(roots) & D)
     if hit:
         raise OnlyError(f"{' '.join(want)}: {' '.join(hit)} is a measure of the whole style "
                         "(or built on what is asked): use --out without --only")
     N = _reach(D, graph) | set(roots)
+    for _ in range(len(groups) + 1):
+        before = len(N)
+        for _label, group in groups:
+            if group & N:
+                N |= _reach(group, graph)
+        if len(N) == before:
+            break
     return D, N
 
 

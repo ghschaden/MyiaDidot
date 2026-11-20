@@ -66,7 +66,19 @@ PASSES = (
 )
 
 
+# a list, under --only (only_run.py): a pass that names a glyph the run does not
+# hold is skipped and recorded here, by pass and glyph, and printed at the end;
+# None in a whole run, where a missing glyph is an error
+SKIPPED = None
+
+
 def finish_glyphs(font):
     for stage in PASSES:
         if font.info.styleName in stage.styles:
-            getattr(import_module(stage.module), stage.entry)(font)
+            if SKIPPED is None:
+                getattr(import_module(stage.module), stage.entry)(font)
+                continue
+            try:
+                getattr(import_module(stage.module), stage.entry)(font)
+            except KeyError as missing:
+                SKIPPED.append(f"{stage.module}.{stage.entry}: {missing.args[0]}")
