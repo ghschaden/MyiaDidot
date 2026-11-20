@@ -377,11 +377,17 @@ regenerated; if three things, the lines go back to their recipes.
   the answer to phase 8's "what the clean input alone gives": the
   stroker's, on clean input. The other 24 are stroked from Old
   Standard's nodes and are judged after family 2.
-- Bold Italic `letter extreme` 24: J ц щ, ff ffi ffl: the stroked hook
+- Bold Italic `letter extreme` 24 (21 now): J ц щ: the stroked hook
   past its end (redraw.md, "After the six Greek letters": χ's was
-  mended on the letter). Seven glyphs with one fault: the stroker's
+  mended on the letter). Three glyphs with one fault: the stroker's
   hooks want their extreme's node, in `stroke_bold` or as family 4
-  does it.
+  does it. ff ffi ffl (and f_f_j) were listed here and are another
+  fault: the second f's ball lacked its leftmost node and had a corner
+  with a beak at its upper left. Mended 2026-11-20 in
+  `smooth_joins.hook_ball` (the node halfway up the ball, upright, the
+  lower curve fitted to the stroker's outline, the upper a quarter
+  ellipse), approved by the designer; f_f_b f_f_h f_f_k f_f_t follow
+  from them, ff.short is an alias of ff.
 
 ### 8. What is left
 
