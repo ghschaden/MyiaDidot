@@ -47,6 +47,7 @@ review before its baseline is accepted.
       yet looked up (draft_ligatures' f ligatures, or the Italic's carried through
       make_bold). `make only STYLE=BoldItalic GLYPHS="ffi" PARTIAL=1` makes a trial in
       seconds. Part of the Bold Italic's review (build/bi-review/).
+- [x] (approved by the designer 2026-11-20) The Bold Italic's review sheet, `build/bi-review/bi-sheet.pdf` (`scripts/quality/bi_sheet.py`; the colour table beside it, `bi_colour.py`): no more candidates. Bold Italic review done.
 - [x] (built 2026-11-20 as scripts/only_glyph.py, docs/claude/only.md; Ƈ Ɠ checked, other families not) `generate(glyph)`: make the throwaway `scripts/only_glyph_draft.py` (2026-11-19) a
       tool, `scripts/only_glyph.py`: `generate(name, style,
       recipe_overrides=None)` builds one recipe glyph (attach, bar, curl,
