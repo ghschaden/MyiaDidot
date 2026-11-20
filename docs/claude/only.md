@@ -282,3 +282,17 @@ snapshot first. Checked: Ƈ Ɠ equal the saved outlines up to a translation
 in x and 3 units (tests/test_only_glyph.py, skipped without the snapshot).
 Not every letter of the recipes runs through rederive (ƈ is stroked
 elsewhere and differs): test a family before using it.
+
+## Stage B: the graph built (2026-11-20)
+
+`scripts/only.py` (`only.py STYLE GLYPH...`, `--closures`): `reads()`, `closure()`
+and the refusals as written above, from sources 1-4 and 6, with `EXTRA`
+(seven lines and `data_bold.SLASHED`) still to be completed by reading what
+the two `main`s read by name. tests/test_only_graph.py is tier 1 (51 cases, no
+generator run). Closure sizes for a-z A-Z (`build/only/closures.txt`): mean D
+34, mean N 96 of 2345; O has the largest (D 143, N 365); refused: o n H l f in
+each style. Not built: `--only` in `make_bold.py` and `make_italic.py` (cut the
+working font to N, the sets taken from the whole source, the write into scratch,
+the equivalence check), tiers 2-5, the sheet's join. Edit the generators only
+when no `make generate` is running: its second `make_bold` call reads the file
+later.

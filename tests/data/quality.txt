@@ -26,13 +26,13 @@ g stroke 1                       # stroke weights against the kind's (scripts/qu
 g.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 196 against 176 (1.11, darker)
 gamma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 70 against 164 (0.43, lighter)
 germandbls.sc smooth 3           # 2026-10-16 known at the start (quality checks added): 881,857 2.0 degrees; 428,119 2.3 degrees; 644,171 7.3 degrees
-germandbls.sc zone 2             # 2026-10-16 known at the start (quality checks added): bottom -14 from 0; top +11 from 1040
+germandbls.sc zone 1             # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +11 from 1040
 hook kink 2                      # 2026-10-16 known at the start (quality checks added): 293,1313 5.8 degrees; 348,1274 2.0 degrees
 i accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 350, usually 182
 integral smooth 2                # 2026-10-16 known at the start (quality checks added): 264,-353 2.2 degrees; 942,1373 2.2 degrees
 iota stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 130 against 164 (0.79, lighter)
 j accent 1                       # 2026-10-16 known at the start (quality checks added): above dotaccent gap 350, usually 182
-j.sc zone 2                      # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+j.sc zone 1                      # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +3 from 1040
 kappa zone 1                     # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 longs_b kink 1                   # 2026-10-16 known at the start (quality checks added): 772,1250 6.0 degrees
@@ -54,7 +54,6 @@ phi zone 1                       # 2026-10-16 known at the start (quality checks
 pi stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 135 against 164 (0.82, lighter)
 pisymbolgreek stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 202 against 182 (1.11, darker)
 psi stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 140 against 164 (0.85, lighter)
-r.sc zone 1                      # 2026-10-16 known at the start (quality checks added): bottom -14 from 0
 rho stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 141 against 164 (0.86, lighter)
 rhosymbolgreek stroke 1          # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 115 against 164 (0.70, lighter)
 s.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 150 against 176 (0.85, lighter)
@@ -116,7 +115,7 @@ uni01C1 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni01C2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 108 against 164 (0.66, lighter)
 uni01E5 step 4                   # 2026-10-27 step check added (checks.py step): a candidate to review: 108,-368 42 units aside; 66,-312 53 units aside; 932,-312 47 units aside; 979,-368 66 units aside
 uni01E5 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 137 against 164 (0.83, lighter)
-uni0237.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni0237.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +3 from 1040
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
 uni0242 kink 2                   # 2026-10-16 known at the start (quality checks added): 76,775 3.9 degrees; 251,855 3.7 degrees
 uni0242 smooth 2                 # 2026-10-16 known at the start (quality checks added): 294,437 2.9 degrees; 212,771 2.0 degrees
@@ -125,15 +124,13 @@ uni0242.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 87 against 176 (0.50, lighter)
 uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni0249 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 382,470 30 units aside; 412,414 30 units aside
-uni0249.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni0249.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +3 from 1040
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
-uni024D.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -14 from 0
 uni0251.sc step 2                # 2026-10-27 step check added (checks.py step): a candidate to review: 749,986 54 units aside; 749,0 32 units aside
 uni0253.sc kink 1                # 2026-10-16 known at the start (quality checks added): -89,871 3.4 degrees
 uni0257.sc kink 1                # 2026-10-16 known at the start (quality checks added): -89,871 3.4 degrees
 uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 594,553 4.0 degrees
 uni025B.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 738,928 2.1 degrees; 166,702 2.0 degrees
-uni025B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +16 from 1040
 uni025D step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 666,625 35 units aside
 uni025E base 1                   # derived-glyph checks added (scripts/quality/derived.py): 41% of uni025C kept (attach)
 uni025E kink 1                   # 2026-10-16 known at the start (quality checks added): 380,-7 3.3 degrees
@@ -152,7 +149,7 @@ uni0264.sc stroke 1              # stroke weights against the kind's (scripts/qu
 uni0266.sc kink 1                # 2026-10-16 known at the start (quality checks added): 630,894 5.4 degrees
 uni0266.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 225,589 2.9 degrees
 uni0267 kink 1                   # 2026-10-16 known at the start (quality checks added): 200,1000 3.2 degrees
-uni0269.sc kink 2                # 2026-10-16 known at the start (quality checks added): 222,124 2.9 degrees; 274,-24 1.0 degrees
+uni0269.sc kink 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: 222,124 2.9 degrees
 uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 464,175 2.5 degrees
 uni0269.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 135 against 176 (0.77, lighter)
 uni026E kink 3                   # 2026-10-16 known at the start (quality checks added): 828,540 1.0 degrees; 534,-133 3.9 degrees; 492,-225 4.8 degrees
@@ -198,7 +195,7 @@ uni03DF stroke 1                 # stroke weights against the kind's (scripts/qu
 uni03DF.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 56 against 176 (0.32, lighter)
 uni03E1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 127 against 164 (0.77, lighter)
 uni03E1.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 884,461 2.2 degrees
-uni03F3.sc zone 2                # sources made reproducible: Ꞁ Ʀ Ϳ Ꭓ ɬ.sc as derive.py recipes, small caps for them, ⸏⸐⸑ and tt/tf in the generators, attached rings from Bold parts; full reruns: bottom -17 from 0; top +3 from 1040
+uni03F3.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +3 from 1040
 uni0408 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni042F zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -16 from 0
 uni0436.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 248,944 2.8 degrees; 1307,944 2.8 degrees
@@ -208,17 +205,15 @@ uni0444.sc zone 1                # 2026-10-16 known at the start (quality checks
 uni0449.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 1124,-248 4.0 degrees; 1233,-119 6.3 degrees
 uni044D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 226 against 182 (1.24, darker)
 uni044D.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 222 against 196 (1.13, darker)
-uni044F.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -14 from 0
 uni0454 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 226 against 182 (1.24, darker)
 uni0454.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 222 against 196 (1.13, darker)
-uni0458.sc zone 2                # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +3 from 1040
+uni0458.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +3 from 1040
 uni0473.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 293,377 2.0 degrees
 uni0497.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 248,944 2.8 degrees; 1307,944 2.8 degrees
 uni04B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 1514,41 7.3 degrees
 uni04B3.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 155 against 176 (0.88, lighter)
 uni04D8 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 258 against 231 (1.11, darker)
 uni1D74 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 140 against 164 (0.85, lighter)
-uni1D7E zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 uni1E9E smooth 3                 # 2026-10-16 known at the start (quality checks added): 564,163 2.2 degrees; 828,231 5.2 degrees; 728,79 11.6 degrees
 uni1E9E zone 2                   # 2026-10-16 known at the start (quality checks added): bottom -17 from 0; top +15 from 1434
 uni1FBE stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 184 against 164 (1.12, darker)
@@ -243,7 +238,7 @@ uniA7B2 kink 2                   # 2026-10-16 known at the start (quality checks
 uniA7B6 kink 5                   # 2026-10-16 known at the start (quality checks added): 465,1457 5.6 degrees; 866,1071 6.7 degrees; 1212,1465 5.1 degrees; 1217,-28 1.1 degrees; 533,-25 1.2 degrees
 uniA7B6 smooth 1                 # 2026-10-16 known at the start (quality checks added): 622,97 2.4 degrees
 uniA7B6 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 259 against 231 (1.12, darker)
-uniA7B7.sc kink 2                # 2026-10-16 known at the start (quality checks added): 373,1059 3.3 degrees; 1005,1065 3.9 degrees
+uniA7B7.sc kink 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: 373,1059 3.3 degrees
 uniA7B7.sc smooth 2              # 2026-10-16 known at the start (quality checks added): 712,780 2.6 degrees; 1005,964 2.3 degrees
 uniA7B7.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 219 against 196 (1.12, darker)
 uniA7CB kink 2                   # 2026-10-16 known at the start (quality checks added): 722,-28 2.4 degrees; 321,1276 2.2 degrees

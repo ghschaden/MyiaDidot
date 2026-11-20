@@ -49,3 +49,20 @@ after commands that rewrite UFOs (toast, and again 30 s later), and
 pairs outside the references, all styles), `/font-status`,
 `/font-test`, `/font-proof`. Its rules have tests: `claude plugin test
 tools/claude-plugin/myia-didot`.
+
+## What is stale before a regeneration (2026-11-20)
+
+`.venv/bin/python -I scripts/stale.py` lists, in two seconds, the source
+glyphs (Regular for the Italic and Bold, Italic for the Bold Italic) whose
+fingerprint differs from the stamp the last `make generate` wrote
+(`build/stale/stamp.json`), composites included, and the generator files that
+changed. It answers what `make reproduce` finds in twenty minutes, not what a
+run will make of it (drawn glyphs are kept as saved). Order of work after a
+hand fix in a generated style: edit, `scripts/stale.py`, then one
+`make generate`, then `make reproduce`; a fix applied after a generate leaves
+what is built on it stale, and the list says so.
+
+`make generate` begins with `stale.py guard`: the Regular must have been
+through `make check-regular` as it now stands (that run is marked in
+`build/stale/regular-checked.json`, failures or not); `SKIP_CHECK=1` waives it.
+Not covered: kerning and features, which the generators also read.

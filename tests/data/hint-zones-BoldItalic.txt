@@ -1,2 +1,4 @@
 # Known scripts/quality/hint_zones.py findings (interpreter glyph:zone sizes); fixing one = deleting its line.
+v35 uni0281:top1060 12           # small caps' overshoot 20 over the zone (2026-11-20): their tops and bottoms moved with it
 v40 nu:bot-15 10                 # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
+v40 uni0281:top1060 9            # small caps' overshoot 20 over the zone (2026-11-20): their tops and bottoms moved with it

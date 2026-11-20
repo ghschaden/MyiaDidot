@@ -1,4 +1,6 @@
 # Known scripts/quality/hint_zones.py findings (interpreter glyph:zone sizes); fixing one = deleting its line.
 v35 uni01B2:top1434 2            # current hints accepted 2026-10-26: curved hook rises ~0.6 px (v35), 1 px (v40) above H at 8/9 ppem
+v35 uni0281:top1060 10           # small caps' overshoot 20 over the zone (2026-11-20): their tops and bottoms moved with it
 v40 nu:bot-15 12                 # 2026-11-19, phase 6 step C: overshoots set to the Regular's (lowercase -16, capitals -28/1462), ascenders 1495; sub-pixel (0.08-0.44 px) CFF rows and nu's tip accepted
 v40 uni01B2:top1434 2            # current hints accepted 2026-10-26: curved hook rises ~0.6 px (v35), 1 px (v40) above H at 8/9 ppem
+v40 uni0281:top1060 10           # small caps' overshoot 20 over the zone (2026-11-20): their tops and bottoms moved with it

@@ -1,64 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni1D05" format="2">
 	<unicode hex="1D05"/>
-	<advance width="1187"/>
+	<advance width="1181"/>
 	<outline>
 		<contour>
 			<point x="-6" y="0" type="line"/>
-			<point x="23" y="56" type="line"/>
-			<point x="78" y="56" type="line" smooth="yes"/>
-			<point x="95" y="56"/>
-			<point x="112" y="69"/>
-			<point x="116" y="85" type="curve" smooth="yes"/>
-			<point x="302" y="790" type="line" smooth="yes"/>
-			<point x="307" y="808"/>
-			<point x="296" y="822"/>
-			<point x="277" y="822" type="curve" smooth="yes"/>
-			<point x="219" y="822" type="line"/>
-			<point x="238" y="884" type="line"/>
-			<point x="705" y="884" type="line" smooth="yes"/>
-			<point x="974" y="884"/>
-			<point x="1142" y="780"/>
-			<point x="1143" y="510" type="curve" smooth="yes"/>
-			<point x="1144" y="196"/>
-			<point x="805" y="0"/>
-			<point x="518" y="0" type="curve" smooth="yes"/>
+			<point x="25" y="62" type="line"/>
+			<point x="83" y="62" type="line" smooth="yes"/>
+			<point x="98" y="62"/>
+			<point x="112" y="73"/>
+			<point x="116" y="87" type="curve" smooth="yes"/>
+			<point x="301" y="783" type="line" smooth="yes"/>
+			<point x="303" y="790"/>
+			<point x="306" y="801"/>
+			<point x="306" y="807" type="curve" smooth="yes"/>
+			<point x="306" y="815"/>
+			<point x="294" y="816"/>
+			<point x="287" y="816" type="curve" smooth="yes"/>
+			<point x="208" y="816" type="line"/>
+			<point x="233" y="884" type="line"/>
+			<point x="703" y="884" type="line" smooth="yes"/>
+			<point x="973" y="884"/>
+			<point x="1137" y="782"/>
+			<point x="1138" y="511" type="curve" smooth="yes"/>
+			<point x="1139" y="197"/>
+			<point x="803" y="0"/>
+			<point x="515" y="0" type="curve" smooth="yes"/>
 		</contour>
 		<contour>
-			<point x="395" y="85" type="line" smooth="yes"/>
-			<point x="391" y="69"/>
-			<point x="401" y="56"/>
-			<point x="417" y="56" type="curve" smooth="yes"/>
-			<point x="556" y="56" type="line" smooth="yes"/>
-			<point x="856" y="56"/>
-			<point x="913" y="254"/>
-			<point x="913" y="510" type="curve" smooth="yes"/>
-			<point x="913" y="693"/>
-			<point x="890" y="822"/>
-			<point x="688" y="822" type="curve" smooth="yes"/>
-			<point x="624" y="822" type="line" smooth="yes"/>
-			<point x="605" y="822"/>
-			<point x="587" y="808"/>
-			<point x="582" y="790" type="curve" smooth="yes"/>
+			<point x="395" y="87" type="line" smooth="yes"/>
+			<point x="391" y="73"/>
+			<point x="400" y="62"/>
+			<point x="414" y="62" type="curve" smooth="yes"/>
+			<point x="555" y="62" type="line" smooth="yes"/>
+			<point x="854" y="62"/>
+			<point x="908" y="258"/>
+			<point x="908" y="510" type="curve" smooth="yes"/>
+			<point x="908" y="696"/>
+			<point x="886" y="816"/>
+			<point x="684" y="816" type="curve" smooth="yes"/>
+			<point x="619" y="816" type="line" smooth="yes"/>
+			<point x="602" y="816"/>
+			<point x="585" y="803"/>
+			<point x="581" y="787" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="758" y="1000"/>
-	<anchor name="Acute" x="752" y="980"/>
-	<anchor name="Grave" x="752" y="980"/>
-	<anchor name="Dotaccent" x="764" y="1020"/>
-	<anchor name="Bottom" x="528" y="0"/>
-	<anchor name="DotBelow" x="525" y="-20"/>
-	<anchor name="Horn" x="968" y="759"/>
+	<anchor name="Top" x="754" y="1000"/>
+	<anchor name="Acute" x="748" y="980"/>
+	<anchor name="Grave" x="748" y="980"/>
+	<anchor name="Dotaccent" x="761" y="1020"/>
+	<anchor name="Bottom" x="525" y="0"/>
+	<anchor name="DotBelow" x="522" y="-20"/>
+	<anchor name="Horn" x="963" y="759"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-19</string>
+				<string>2026-11-20</string>
 				<key>glyph</key>
-				<string>4cea79b1c91f</string>
+				<string>9c8045543221</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-long-c-bold-italic-2026-11-19.pdf</string>
+				<string>proofs/2026-11/smallcap-overshoot-BoldItalic-2026-11-20.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

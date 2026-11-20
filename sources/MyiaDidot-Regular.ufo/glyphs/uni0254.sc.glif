@@ -5,9 +5,9 @@
 		<contour>
 			<point x="985" y="516" type="curve" smooth="yes"/>
 			<point x="985" y="176"/>
-			<point x="728" y="-24"/>
-			<point x="466" y="-24" type="curve" smooth="yes"/>
-			<point x="370" y="-24"/>
+			<point x="728" y="-20"/>
+			<point x="466" y="-20" type="curve" smooth="yes"/>
+			<point x="370" y="-20"/>
 			<point x="303" y="-4"/>
 			<point x="255" y="15" type="curve" smooth="yes"/>
 			<point x="225" y="27"/>
@@ -15,8 +15,8 @@
 			<point x="184" y="33" type="curve" smooth="yes"/>
 			<point x="150" y="33"/>
 			<point x="137" y="8"/>
-			<point x="122" y="-24" type="curve"/>
-			<point x="90" y="-24" type="line"/>
+			<point x="122" y="-20" type="curve"/>
+			<point x="90" y="-20" type="line"/>
 			<point x="90" y="322" type="line"/>
 			<point x="127" y="322" type="line"/>
 			<point x="144" y="254"/>
@@ -38,8 +38,8 @@
 			<point x="144" y="785"/>
 			<point x="127" y="717" type="curve"/>
 			<point x="90" y="717" type="line"/>
-			<point x="90" y="1063" type="line"/>
-			<point x="122" y="1063" type="line"/>
+			<point x="90" y="1060" type="line"/>
+			<point x="122" y="1060" type="line"/>
 			<point x="137" y="1031"/>
 			<point x="150" y="1006"/>
 			<point x="184" y="1006" type="curve" smooth="yes"/>
@@ -47,9 +47,9 @@
 			<point x="225" y="1012"/>
 			<point x="255" y="1024" type="curve" smooth="yes"/>
 			<point x="303" y="1043"/>
-			<point x="370" y="1063"/>
-			<point x="466" y="1063" type="curve" smooth="yes"/>
-			<point x="728" y="1063"/>
+			<point x="370" y="1060"/>
+			<point x="466" y="1060" type="curve" smooth="yes"/>
+			<point x="728" y="1060"/>
 			<point x="985" y="856"/>
 		</contour>
 	</outline>
@@ -65,7 +65,7 @@
 			<key>org.myiadidot.builtFrom</key>
 			<dict>
 				<key>c.sc</key>
-				<string>edbc61ed20a9</string>
+				<string>e6a5d31f23f0</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>

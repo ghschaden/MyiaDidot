@@ -41,8 +41,9 @@ test:
 # The generated styles' per-style tests are left out (they are made next).
 check-regular:
 	$(PY) scripts/regular_steps.py
-	flock $(VALIDATE_LOCK) .venv/bin/pytest -n $(JOBS) -q -p no:cacheprovider \
-	    -k "not MyiaDidot-Italic and not MyiaDidot-Bold and not test_class_holds_the_measured_letters[Bold]"
+	@status=0; flock $(VALIDATE_LOCK) .venv/bin/pytest -n $(JOBS) -q -p no:cacheprovider \
+	    -k "not MyiaDidot-Italic and not MyiaDidot-Bold and not test_class_holds_the_measured_letters[Bold]" \
+	    || status=$$?; $(PY) scripts/stale.py mark-regular $$status; exit $$status
 
 # ruff, lint only (no formatter: the recipe tables are aligned by hand)
 lint:
@@ -254,6 +255,7 @@ strokes:
 # each; the Italic's report after the Bold's), then the Bold Italic
 generate:
 	@mkdir -p build
+	@$(PY) scripts/stale.py guard
 	@$(PY) scripts/progress.py begin generate 4
 	@$(PY) scripts/progress.py step generate 1 "Italic, Bold and their small caps"
 	$(PY) scripts/make_italic.py $(if $(KEEP_DRAFTS),--keep-drafts) > build/make-italic.log 2>&1 & italic=$$!; \
@@ -268,6 +270,7 @@ generate:
 	$(MAKE) normalize
 	@if find sources -iname '*conflict*' | grep -q .; then \
 	    echo "sync conflicts in sources/:"; find sources -iname '*conflict*'; exit 1; fi
+	@$(PY) scripts/stale.py stamp
 	@$(PY) scripts/progress.py end generate
 
 # Old Standard's SFD converted again with FontForge (scripts/fontforge_inputs.py)

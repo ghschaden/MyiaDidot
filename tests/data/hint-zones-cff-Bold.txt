@@ -1,3 +1,4 @@
 # Known scripts/quality/hint_zones.py (CFF) findings (cff glyph:zone sizes); fixing one = deleting its line.
 cff OE:bot-28 11                 # retention accepted 2026-10-26: bottom 0.078–0.094 px below O at 22–32 ppem
 cff OE:top1462 18                # retention accepted 2026-10-26: top 0.078–0.172 px above O at 15–32 ppem
+cff oe.sc:top1060 15             # small caps' overshoot 20 over the zone (2026-11-20): their tops and bottoms moved with it

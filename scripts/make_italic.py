@@ -1707,12 +1707,24 @@ def as_capitals(font, made, height):
 OVERSHOOT_NEAR = 60
 
 
+# the Regular's small caps' overshoot (scripts/sc_overshoot.py): the capitals'
+# 28 over 1434 scaled to the small-cap height
+SC_OVERSHOOT = 20
+# an extreme this far past its zone (units) is an overshoot to set; less is a flat
+# letter's, more a tail
+SC_OVERSHOOT_MIN, SC_OVERSHOOT_MAX = 15, 40
+
+
 def overshoot_scaled(g, height, scale):
     """FontForge's drafts keep the capitals' overshoot in units (39 past 0
-    and the small-cap height, 3.7 %; the Italic's capitals 2.7 %): a
-    contour whose top or bottom lies within OVERSHOOT_NEAR past its zone
-    has the points past it brought nearer by scale, along the slant (the
-    glyph is slanted); tails reaching further are left as they are."""
+    and the small-cap height, 3.7 %; the Italic's capitals 2.7 %): a contour
+    whose top or bottom lies within OVERSHOOT_NEAR past its zone has the
+    points past it brought nearer by scale, along the slant (the glyph is
+    slanted); tails reaching further are left as they are. Then its extreme
+    alone (the nodes and handles at that height) is set to SC_OVERSHOOT, the
+    Regular's (scripts/sc_overshoot.py): a smooth node beside it stays where
+    it is, so no tangent is bent by more than the few units that move (all
+    the points past the zone moved by one factor kinked about 30 letters)."""
     for c in g.contours:
         ys = [p.y for p in c.points]
         top = max(ys) if height < max(ys) <= height + OVERSHOOT_NEAR else None
@@ -1726,8 +1738,17 @@ def overshoot_scaled(g, height, scale):
                 continue
             p.x += (y - p.y) * SLANT
             p.y = y
-
-
+        ys = [p.y for p in c.points]
+        top, bottom = max(ys) - height, -min(ys)
+        for p in c.points:
+            if SC_OVERSHOOT_MIN <= top <= SC_OVERSHOOT_MAX and abs(p.y - height - top) <= 1:
+                y = height + SC_OVERSHOOT
+            elif SC_OVERSHOOT_MIN <= bottom <= SC_OVERSHOOT_MAX and abs(p.y + bottom) <= 1:
+                y = -SC_OVERSHOOT
+            else:
+                continue
+            p.x += (y - p.y) * SLANT
+            p.y = y
 
 
 def swapped_sidebearings(font):
