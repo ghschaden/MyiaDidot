@@ -235,13 +235,15 @@ ITALIC_BOLD_RECIPES = {
     # Ƈ Ɠ: the Italic's, the stroke and hook at this weight; the stroke from
     # y0, within the terminal's ink (Ɠ's from 1320 left a notch on the faired
     # G, fair_arcs, 2026-10-28)
-    **{ch: ("attach", base, ("c", [(x - 50, 1330, 10000, 10000)],
+    **{ch: ("attach", base, ("c", [(x - 10, 1320, 10000, 10000)],
                              [("line", ((x, y0), (x, 1500), 53), (0, 0), (1, 1, 0, 0)),
                               ("curl", {"at": ("pt", x, 1500, 53), "dir": 90, "turn": "cw", "r": (165, 150),
                                         "sweep": 200, "ball": 85, "t": (53, 45), "lead": 10}, (0, 0), (1, 1, 0, 0))]))
-       # (drawn here: their C and G moved 145 and 148 in phase 6's step B,
-       # 2026-11-17, and these numbers stand for step D)
-       for ch, base, x, y0 in (("Ƈ", "C", 1090, 1320), ("Ɠ", "G", 1139, 1310))},
+       # (C and G moved 145 and 148 in phase 6's step B, 2026-11-17; the
+       # stroke's x with them, step D; the cut and the stroke's foot found
+       # again on the wider terminals, a notch and a step at the old ones:
+       # cut from x - 10 above 1320, the stroke from 1290)
+       for ch, base, x, y0 in (("Ƈ", "C", 1090 + 145, 1290), ("Ɠ", "G", 1139 + 148, 1290))},
     # Ƭ: the Italic's, its strokes at this weight (as rederive scales them)
     # and its ball as large as the curl takes with no notch (80-90 at 180-200
     # degrees; the case's, 96, notched it): the Italic's smaller one (65)

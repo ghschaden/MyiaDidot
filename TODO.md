@@ -15,6 +15,31 @@ change through their generators, `make reproduce` before every commit,
 exception lists only shrink, every visible change goes on a PDF sheet for
 review before its baseline is accepted.
 
+## Next session (set 2026-11-19, first on the list)
+
+- [ ] `generate(glyph)`: make the throwaway `scripts/only_glyph_draft.py` (2026-11-19) a
+      tool, `scripts/only_glyph.py`: `generate(name, style,
+      recipe_overrides=None)` builds one recipe glyph (attach, bar, curl,
+      hook) on the finished base of its style in seconds, with its sheet,
+      to a scratch UFO. It is stage B of `docs/claude/only.md`, the
+      common case only: no stroker, no whole-font passes. What it must
+      do as make_bold's `rederive` does: set `make_bold.SLANT` from the
+      Italic's angle (a global that main() sets, else the base is not
+      deslanted), deslant a copy of the style, `derive.build`,
+      `drop_specks`, `fix`, `slant_back`. A test that it gives the
+      full run's outline for known glyphs (Ƈ Ɠ ƈ and others) decides
+      whether a family may use it. A dependency table says which
+      glyphs a recipe needs (its base, the strokes' reference o).
+      Why: the full Bold Italic run takes 10-15 minutes, a trial of
+      Ƈ Ɠ's cut took 1.5 seconds this way.
+- [ ] Ƈ Ɠ in the Bold Italic (step D): recipe moved to the wider C G
+      (x +145/+148, cut from x - 10 above 1320, stroke from 1290,
+      data_bold_italic.py), drawn marks dropped; regenerating and the
+      tests were the open step at the end of 2026-11-19 (uncommitted):
+      test_quality (Ɠ smooth 2.2 degrees at 1242,111, Ƈ's step),
+      test_accepted, golden and digest baselines to accept with a
+      review. Then step D's rest: ɖ ɳ ɠ ɧ, u m, the BI's drawn letters.
+
 ## Assessment in short
 
 - Regular: release quality. Lowercase stems 164, hairlines 48 (of 2048):

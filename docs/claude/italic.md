@@ -462,6 +462,11 @@ for the designer (B touches none of r c v w).
   fixed knee (345,195): the BI ų's inner stem edge is slightly S-shaped at the
   crotch (u's is not). The designer's eye: a hand fix marked drawn, or taken.
   Still open in step D: the BI's drawn letters (u, m, Ƈ Ɠ ɖ ɳ ɠ ...).
+- **Cyrillic long stems approved as they stand, 2026-11-19.** The Italic's
+  б д ф ђ ћ ц щ џ (unchanged since step A, seen on the overlay sheet
+  against step A's) were looked at by the designer and taken: no install
+  through italic_long.py. Not measured against n's stem; the approval is
+  of the look.
 - The second sheet, approved by the designer 2026-11-18:
   `proofs/2026-11/italic-bowls-b-bold-italic-2026-11-18.pdf` (the Bold
   Italic at HEAD and now, the bowls and their followers) and
