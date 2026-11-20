@@ -65,7 +65,7 @@ BEARINGS = {"u": (3, 2), "uni019C": (0, 4), "uni0446": (2, -3), "uni0449": (2, 0
 # phase 6 step C (2026-11-19): the Italic's overshoots set to the Regular's
 # (lowercase -23 -> -15, capitals -35 -> -27), the Bold Italic's letters made
 # from it follow: how much higher the bottom stands now
-OVERSHOOT = {"uni043C": 8, "uni019C": 8, "uni0448": 8, "uni0438": 8}
+OVERSHOOT = {"u": 8, "uni043C": 8, "uni019C": 8, "uni0448": 8, "uni0438": 8}
 _ANCHOR_NAMES = ("Top", "Bottom", "DotBelow", "Grave", "Acute", "Horn", "Dotaccent", "Ogonek", "Hook")
 ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
            "u": {a: (2, 0) for a in _ANCHOR_NAMES},  # -1 (2026-11-11), +3 (step B)

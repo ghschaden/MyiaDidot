@@ -462,6 +462,7 @@ for the designer (B touches none of r c v w).
   fixed knee (345,195): the BI ų's inner stem edge is slightly S-shaped at the
   crotch (u's is not). The designer's eye: a hand fix marked drawn, or taken.
   Still open in step D: the BI's drawn letters (u, m, Ƈ Ɠ ɖ ɳ ɠ ...).
+- **Bold Italic bottoms, 2026-11-20** (sheet `proofs/2026-11/bolditalic-bottoms-2026-11-20.pdf`, approved): k m u x ƈ т ⱳ, drawn, stood at -23; every point at y -23 set to -15 (nodes and handles together), the letters built on them regenerated (`KEEP_DRAFTS=1 make generate`; reproduce clean). ɖ ɳ ɠ ɧ looked at: the saved drawn ones match the wider bases, the regenerated recipes notch; left. Small caps' overshoot (+23 Regular, +27 Italic) measured, 4 units at most: left.
 - **Cyrillic long stems approved as they stand, 2026-11-19.** The Italic's
   б д ф ђ ћ ц щ џ (unchanged since step A, seen on the overlay sheet
   against step A's) were looked at by the designer and taken: no install
