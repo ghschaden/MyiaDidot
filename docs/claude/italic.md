@@ -493,6 +493,20 @@ for the designer (B touches none of r c v w).
   at text size), for phase 8's long tail; and ſg, 0.012 tighter than the
   reference italics' range in the Bold Italic only (the heavier ſ's narrower
   right side). The Italic's `stroke` lines for ff ffl fl ſ fell.
+- **The tail joins of ɭ ʈ ң ҷ, 2026-11-21** (sheet
+  `proofs/2026-11/italic-tail-joins-2026-11-21.pdf`, approved; the
+  designer could not tell the difference at text size). Family 6's first
+  cluster (`longtail.md`, the Italic's `attach` kinks): ң ҷ broke 7.7
+  degrees at y -162 where data_italic's `descender()` ran the straight
+  stroke 12 past the curl's start; the run-on is now kept only for a
+  stroke that leans off the curl's starting direction (қ; җ ҳ, already heading as
+  their curl starts, lost theirs as well, no finding changed).
+  ɭ ʈ broke 7.2 degrees where a ball of 45 (below half
+  their 116 stroke, set at the first Italic master with no reason) cut
+  the curl's inner edge: 58, as ɖ ɳ on the same `retroflex()`. Advances
+  kept. Left in the cluster: ɭ ʈ's 1-1.6 degree joins with the stem at
+  350 and 600, the capitals' hooks at the cap height (Ɓ Ɗ Ƥ ƃ Ƈ Ɠ), the
+  `attach` steps (ƃ ɖ ɧ ɳ ʝ).
 - **Cyrillic long stems approved as they stand, 2026-11-19.** The Italic's
   б д ф ђ ћ ц щ џ (unchanged since step A, seen on the overlay sheet
   against step A's) were looked at by the designer and taken: no install

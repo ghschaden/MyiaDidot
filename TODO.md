@@ -1004,7 +1004,8 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       f-ligatures raised and weighted as f was in step C, the Bold Italic's k
       on the new Italic k; a sweep of every glyph whose base moved in B or C
       while it did not (6eecb101^ against HEAD) found nothing else but marks
-      below, which hang from anchors. Left of D: the derived letters'
+      below, which hang from anchors. The tail joins of ɭ ʈ ң ҷ mended
+      2026-11-21 (italic.md). Left of D: the derived letters'
       entries below.
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,

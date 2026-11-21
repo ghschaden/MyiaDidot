@@ -124,7 +124,12 @@ def descender(x0, y0, x1, y1, w, d, r, th):
     degrees on radii r, the ball as heavy as the stroke."""
     dx, dy = x1 - x0, y1 - y0
     n = math.hypot(dx, dy)
-    return [("line", ((x0, y0), (x1 + dx / n * 12, y1 + dy / n * 12), w), (0, 0), (1, 1, 0, 0)),
+    # the run-on covers the stroke's square end where it meets the curl at
+    # an angle; a stroke already heading as the curl starts needs none: its
+    # straight edge, run 12 past the start, crossed the ring's edge where
+    # that had begun to bend (ң ҷ: a 7.7-degree kink at y1 - 12)
+    on = 0 if abs(math.degrees(math.atan2(dy, dx)) % 360 - d) < 0.5 else 12
+    return [("line", ((x0, y0), (x1 + dx / n * on, y1 + dy / n * on), w), (0, 0), (1, 1, 0, 0)),
             ("curl", {"at": ("pt", x1, y1, w), "dir": d, "turn": "cw", "r": r, "sweep": 170,
                       "ball": max(36, round(w * 0.48)), "t": (w, th)}, (0, 0), (1, 1, 0, 0))]
 
@@ -401,7 +406,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   "ɖ": ("attach", "d", ("x", [(700, -BIG, BIG, 200), (820, -BIG, BIG, 450)],
                                         retroflex(733, 733, 210, 114, (110, 100), 57, 40))),
                   "ɭ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
-                                        retroflex(234, 234, 350, 116, (110, 100), 45, 40))),
+                                        retroflex(234, 234, 350, 116, (110, 100), 58, 40))),
                   # the tail on the stem (its foot serif cut away), as ɽ's
                   "Ɽ": ("attach", "R", ("c", [(-BIG, -BIG, 800, 120)],
                                         retroflex(393, 393, 160, 166, (150, 125), 82, 50))),
@@ -478,7 +483,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                       {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", "r": (120, 110),
                                        "sweep": 200, "ball": None, "t": (120, 42)})),
                   "ʈ": ("attach", "t", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
-                                        retroflex(232, 232, 350, 116, (110, 100), 45, 40))),
+                                        retroflex(232, 232, 350, 116, (110, 100), 58, 40))),
                   # the left stem curling over to the left, as on Ɓ; W's right arm to the right
                   "Ɦ": ("curl", "H", ("c", [(-BIG, 1300, 700, BIG)],
                                       {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
