@@ -1417,7 +1417,7 @@ def smooth_curves(glyph, y0, y1, max_turn=10, tiny=16):
 
 
 
-def fair_joins(glyph, y0, y1, max_turn=25, tiny=16, min_turn=1):
+def fair_joins(glyph, y0, y1, max_turn=25, tiny=16, min_turn=1, split=False):
     """glyph (in place) with the shallow corners between y0 and y1 faired:
     where an added piece meets a stroke that runs on at another angle (an
     italic leg leaning into a straight descender, a cut's stub left in
@@ -1428,6 +1428,9 @@ def fair_joins(glyph, y0, y1, max_turn=25, tiny=16, min_turn=1):
     (a cut's stubs) go first; corners turning further (serifs, crotches) stay.
     With min_turn 0 a smooth node in the band belongs to the run as well, so
     the curve runs on through it to the next node outside the band.
+    With split, a straight line crossing y0 or y1 gets a node there first,
+    so the curve runs between the band's edges and a long stem beyond them
+    stays straight (Ƈ Ɠ ƃ: the node before the corner was the stem's foot).
     Returns how many runs were faired."""
 
     def turn(a, p, b):
@@ -1451,6 +1454,25 @@ def fair_joins(glyph, y0, y1, max_turn=25, tiny=16, min_turn=1):
         """the point the outline leaves segs[k]'s end towards"""
         nxt = segs[(k + 1) % len(segs)]
         return nxt[1][0] if nxt[1] else nxt[0]
+
+    # (the nodes split in, kept only where a faired curve ends on them: one
+    # left on a straight edge with nothing faired, rounded and slanted back,
+    # stood off its line, a kink of its own)
+    splits = set()
+    if split:
+        before = [[(q.x, q.y, q.type, q.smooth) for q in c.points] for c in glyph.contours]
+        for contour in glyph.contours:
+            pts, out = contour.points, []
+            for i, p in enumerate(pts):
+                q = pts[i - 1]
+                if p.type == "line" and q.type is not None:
+                    for y in sorted((y0, y1), reverse=q.y > p.y):
+                        if min(q.y, p.y) < y < max(q.y, p.y):
+                            t = (y - q.y) / (p.y - q.y)
+                            out.append(ufoLib2.objects.Point(q.x + t * (p.x - q.x), y, "line"))
+                            splits.add((out[-1].x, out[-1].y))
+                out.append(p)
+            contour.points[:] = out
 
     faired = 0
     contours = []
@@ -1515,6 +1537,11 @@ def fair_joins(glyph, y0, y1, max_turn=25, tiny=16, min_turn=1):
                     out[0] = [exit_, [h1, h2], trail[2]]
             segs = out
         contours.append(segs)
+    if splits:
+        contours = [[seg for seg in segs if seg[0] not in splits or seg[0] in ends] for segs in contours]
+        if not faired:
+            for contour, pts in zip(glyph.contours, before):
+                contour.points[:] = [ufoLib2.objects.Point(x, y, t, sm) for x, y, t, sm in pts]
     if faired:
         glyph.clearContours()
         pen = glyph.getPointPen()

@@ -723,6 +723,25 @@ alongside, each when the phase that needs it comes up.
       - [ ] a test that `--only` gives the same outlines as the whole
             run for a sample of glyphs, so the preview cannot drift from
             the build.
+      - [ ] (found 2026-11-21, phase 6 step D) `make_italic.py --only
+            --out` stops when a glyph asked for has small caps drafted
+            from it (fontforge_inputs.READ_ONLY: "small-cap drafts to
+            make again ... a scratch run does not write
+            sources/drafts/Italic-smallcaps.ufo"). Ɓ Ɗ Ƥ (ɓ.sc ɗ.sc
+            ƥ.sc) and Ƈ Ɠ (ƈ.sc ɠ.sc) each took a full `make generate`
+            for what `--only` does in seconds. Let a scratch run draft
+            into a scratch copy of the drafts store (under `--out`),
+            sources/drafts untouched, so these letters can be tried
+            with `--only` as well.
+      - [ ] (2026-11-21) The commit's `make reproduce` for a small
+            change: check only the glyphs whose dependencies changed
+            (`org.myiadidot.builtFrom`, built_from.py), once a test
+            shows such a partial check finds what the full run finds;
+            the full run stays for generator-wide changes and before a
+            release. Until then the full run is the safe one. (The hook
+            already skips docs-only commits and runs `make reproduce`
+            only for sources/ and scripts/.) On a machine with more
+            cores, MYIA_JOBS set per machine above 4.
 - [ ] T3. Reproduction across machines (phase 0's CI step, here in
       full). Recommended: a one-unit tolerance on point coordinates in
       `scripts/check_reproducible.py` (a unit is 1/2048 em), node
@@ -1005,7 +1024,8 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       on the new Italic k; a sweep of every glyph whose base moved in B or C
       while it did not (6eecb101^ against HEAD) found nothing else but marks
       below, which hang from anchors. The tail joins of ɭ ʈ ң ҷ and the cap-height
-      curl of Ɓ Ɗ Ƥ mended 2026-11-21 (italic.md); ƃ Ƈ Ɠ next. Left of D: the derived letters'
+      curl of Ɓ Ɗ Ƥ, the joins of ƃ Ƈ Ɠ mended 2026-11-21
+      (italic.md). Left of D: the derived letters'
       entries below.
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,

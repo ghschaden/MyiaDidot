@@ -68,6 +68,7 @@ from data_italic import (
     ITALIC_FIGURE_SIDES,  # noqa: F401  (read by space_figures.py)
     ITALIC_HORN,
     ITALIC_JOINS,
+    ITALIC_JOINS_SPLIT,
     ITALIC_JOINS_THROUGH,
     ITALIC_KERNING,
     ITALIC_LOCL,
@@ -1414,6 +1415,8 @@ def derive_stage(font, regular, late=False, kept=()):
             draft_sides(up, name, old)
         if ch in ITALIC_JOINS:
             derive.fair_joins(up[name], *ITALIC_JOINS[ch], min_turn=0 if ch in ITALIC_JOINS_THROUGH else 1)
+        if ch in ITALIC_JOINS_SPLIT:
+            derive.fair_joins(up[name], *ITALIC_JOINS_SPLIT[ch], split=True)
         if ch in ITALIC_RUNS:
             straighten_run(up[name], *ITALIC_RUNS[ch])
         if ch in ITALIC_CORNERS:

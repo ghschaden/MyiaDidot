@@ -518,8 +518,21 @@ for the designer (B touches none of r c v w).
   drafted from Ƥ, lost two kinks with it. Bounds, advances and the Bold
   Italic unchanged. A scratch `--only` run cannot make these: their small
   caps are drafted from them (fontforge_inputs refuses under `--out`).
-  Left of the cluster: ƃ Ƈ Ɠ (an upright piece on a leaning stroke:
-  fair_joins with the long lines split at the band's edges, proposed).
+  The next: ƃ Ƈ Ɠ (below).
+- **ƃ Ƈ Ɠ, an upright piece on a leaning stroke, 2026-11-21** (sheet
+  `proofs/2026-11/italic-upright-joins-2026-11-21.pdf`, approved): b's
+  stem above the cut and C's and G's spur met the stroke below at 2.5-3.6
+  degrees. `data_italic.ITALIC_JOINS_SPLIT` fairs them with
+  `derive.fair_joins(..., split=True)`: a straight line crossing the
+  band's edges gets a node there, so the curve runs between the edges and
+  the stem beyond stays straight (without it the curve ran from the stem's
+  foot); a split node no faired curve ends on is taken out again (left,
+  rounded and slanted back, it stood off its line: a kink of its own, and
+  the small caps drafted from these inherited it). The Italic's only: the
+  Bold Italic's Ƈ Ɠ are its own recipes. Followers redrafted with fewer
+  findings: ƈ.sc (5 narrower; its 6.2-degree kink at the foot now a
+  2.7-degree smooth), ɠ.sc, ʛ, the Bold Italic's ʛ (1 wider). Italic
+  kinks 312 -> 306. The cap-height cluster of family 6 is done.
 - **Cyrillic long stems approved as they stand, 2026-11-19.** The Italic's
   б д ф ђ ћ ц щ џ (unchanged since step A, seen on the overlay sheet
   against step A's) were looked at by the designer and taken: no install

@@ -4,9 +4,6 @@
 	<advance width="1382"/>
 	<outline>
 		<contour>
-			<point x="166" y="489" type="curve" smooth="yes"/>
-			<point x="166" y="978"/>
-			<point x="548" y="1402"/>
 			<point x="804" y="1451" type="curve" smooth="yes"/>
 			<point x="809" y="1452"/>
 			<point x="862" y="1462"/>
@@ -52,7 +49,10 @@
 			<point x="1523" y="1496"/>
 			<point x="1522" y="1491"/>
 			<point x="1521" y="1487" type="curve" smooth="yes"/>
-			<point x="1482" y="1330" type="line"/>
+			<point x="1495" y="1380" type="line" smooth="yes"/>
+			<point x="1487" y="1347"/>
+			<point x="1479" y="1313"/>
+			<point x="1473" y="1280" type="curve" smooth="yes"/>
 			<point x="1383" y="806" type="line"/>
 			<point x="1338" y="806" type="line"/>
 			<point x="1348" y="998"/>
@@ -82,6 +82,9 @@
 			<point x="458" y="-5" type="curve" smooth="yes"/>
 			<point x="291" y="39"/>
 			<point x="166" y="195"/>
+			<point x="166" y="489" type="curve" smooth="yes"/>
+			<point x="166" y="978"/>
+			<point x="548" y="1402"/>
 		</contour>
 	</outline>
 	<anchor name="DotBelow" x="637" y="-20"/>
@@ -93,11 +96,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-19</string>
+				<string>2026-11-21</string>
 				<key>glyph</key>
-				<string>820452abba2e</string>
+				<string>acaed9a1183a</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
+				<string>proofs/2026-11/italic-upright-joins-2026-11-21.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

@@ -153,6 +153,14 @@ ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 520), "ɳ": (190
 # turning one way. (The spike of two nodes on one point at 1069,45, first
 # blamed on this, is ȷ's, there with or without it: smooth_joins.ITALIC_JOINS.)
 ITALIC_JOINS_THROUGH = {"ɳ", "ɱ"}
+# an upright piece on a stroke that leans or bends by a few degrees in the
+# upright frame (ƃ: b's stem above the cut; Ƈ Ɠ: the spur on C's and G's
+# terminal), faired in the band with fair_joins' split: the lines crossing
+# the band's edges get a node there, so the long stem below stays straight
+# (without it the curve ran from the stem's foot). The Italic's only: the
+# Bold Italic's Ƈ Ɠ are its own recipes (data_bold_italic), its ƃ is
+# stroked from this one.
+ITALIC_JOINS_SPLIT = {"ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380)}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
