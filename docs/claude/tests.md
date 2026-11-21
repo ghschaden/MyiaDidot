@@ -9,6 +9,20 @@ Moved from CLAUDE.md (its ground rules apply).
   out anyway, run the same commit again; it waits for the run in progress
   or takes its result (a failure too, without rerunning; `MYIA_RECHECK=1`
   forces a new run). Results and logs: `.git/myia-checks/`.
+- The hook's `make reproduce` makes again only the styles without a
+  proof (`scripts/stale.py unproven`, `check_reproducible.py STYLE ...`;
+  none: skipped), 2026-11-21. A style has one when a plain `make generate`
+  made it and nothing it read or wrote has changed since: each style's proof in
+  `build/stale/stamp.json` is a digest of its inputs (its source UFO, all
+  of scripts/, Makefile, pyproject.toml, uv.lock, .python-version, the
+  toolchain with FontForge) and of the UFO it wrote (accepted.py's review
+  marks left out). No proof after `KEEP_DRAFTS` or a `MYIA_*` switch that
+  is not one that only steers; after `STYLES=` the styles not made keep
+  their proofs, which hold while scripts/ and their source are unchanged
+  (a hand fix in the Italic: the Bold Italic alone is made again; a
+  generator change: all three). Given up: the check that two runs
+  agree (the designer's decision, 2026-11-21). `FULL_REPRODUCE=1 git
+  commit ...` runs `make reproduce` regardless.
 - After a change to the Regular, `make check-regular` first (a minute or
   two): its generated parts made again (scripts/regular_steps.py: the
   STEPS of tests/test_generated_current.py, then nfd_compose.py) and the

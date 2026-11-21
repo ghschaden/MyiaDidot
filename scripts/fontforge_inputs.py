@@ -32,9 +32,24 @@ DRAFTS_UFO = ROOT / "sources/drafts/Italic-smallcaps.ufo"
 DRAFT_SCRIPT = ROOT / "scripts/smallcaps_draft.py"
 CONVERTED_KEY = "org.myiadidot.convertedFrom"
 INPUT_KEY = "org.myiadidot.draftInputs"
-# set by scratch_out.prepare (a run with --out): the drafts store is only
-# read, a draft it lacks ends the run instead of FontForge writing sources/
+# a run that may only read the drafts store: a draft it lacks ends the run
+# instead of FontForge writing it (scratch_out.prepare no longer sets it: a
+# scratch run drafts into its own copy, redirect_drafts)
 READ_ONLY = False
+
+
+def redirect_drafts(path):
+    """this process's drafts store: a fresh copy of the committed one at path
+    (a scratch run with --out drafts into it; sources/drafts stays as it is)"""
+    global DRAFTS_UFO
+    path = Path(path).resolve()
+    if path.exists():
+        shutil.rmtree(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if (DRAFTS_UFO / "metainfo.plist").exists():
+        shutil.copytree(DRAFTS_UFO, path)
+    DRAFTS_UFO = path
+    return path
 
 
 def sha256(path):

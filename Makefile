@@ -17,7 +17,7 @@ WOFF2 := $(patsubst sources/%.ufo,fonts/webfonts/%.woff2,$(UFOS))
 UFO_FILES = $$(shell find sources/$$*.ufo -type f)
 .SECONDARY:
 
-.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch collisions generate visual visual-approve diffenator only check-regular
+.PHONY: all setup oldstand test lint test-data fonts otf ttf webfonts release compare regress qa quality pairs proof proof-svg udhr normalize winmetrics reimport clean reproduce strokes kerntouch collisions generate generate-styles generate-nothing visual visual-approve diffenator only check-regular
 
 all: fonts
 
@@ -253,24 +253,40 @@ strokes:
 # normalize and look for files the sync client renamed ("conflicted")
 # the Italic and the Bold side by side (both read only the Regular, a core
 # each; the Italic's report after the Bold's), then the Bold Italic
-generate:
+# make generate [STYLES="Italic BoldItalic" | STYLES=auto]: the styles to make
+# (all by default); auto asks scripts/stale.py which ones a change can reach
+# (their source or one of their generator files changed since they were made;
+# the Bold Italic with the Italic). Only the styles made are stamped.
+ALL_STYLES := Italic Bold BoldItalic
+GEN_STYLES = $(strip $(if $(filter auto,$(STYLES)),$(shell $(PY) scripts/stale.py styles),$(or $(STYLES),$(ALL_STYLES))))
+gen_has = $(filter $(1),$(GEN_STYLES))
+
+generate: $(if $(GEN_STYLES),generate-styles,generate-nothing)
+
+generate-nothing:
+	@echo "make generate: nothing to make (stale.py: no style has changed since it was made)"
+
+generate-styles:
 	@mkdir -p build
 	@$(PY) scripts/stale.py guard
+	@for s in $(GEN_STYLES); do case " $(ALL_STYLES) " in *" $$s "*) ;; *) echo "make generate: no style $$s"; exit 2;; esac; done
+	@echo "make generate: $(GEN_STYLES)"
 	@$(PY) scripts/progress.py begin generate 4
-	@$(PY) scripts/progress.py step generate 1 "Italic, Bold and their small caps"
-	$(PY) scripts/make_italic.py $(if $(KEEP_DRAFTS),--keep-drafts) > build/make-italic.log 2>&1 & italic=$$!; \
-	$(PY) scripts/make_bold.py && $(PY) scripts/smallcaps.py sources/$(FAMILY)-Bold.ufo; bold=$$?; \
-	wait $$italic; status=$$?; cat build/make-italic.log; \
-	[ $$status -eq 0 ] || { echo "make_italic.py failed"; exit 1; }; [ $$bold -eq 0 ]
+	@$(PY) scripts/progress.py step generate 1 "$(strip $(call gen_has,Italic) $(call gen_has,Bold)) and their small caps"
+	italic=0; bold=0; \
+	$(if $(call gen_has,Italic),$(PY) scripts/make_italic.py $(if $(KEEP_DRAFTS),--keep-drafts) > build/make-italic.log 2>&1 & ipid=$$!;) \
+	$(if $(call gen_has,Bold),$(PY) scripts/make_bold.py && $(PY) scripts/smallcaps.py sources/$(FAMILY)-Bold.ufo; bold=$$?;) \
+	$(if $(call gen_has,Italic),wait $$ipid; italic=$$?; cat build/make-italic.log;) \
+	[ $$italic -eq 0 ] || { echo "make_italic.py failed"; exit 1; }; [ $$bold -eq 0 ]
 	@$(PY) scripts/progress.py step generate 2 "Bold Italic"
-	$(PY) scripts/make_bold.py sources/$(FAMILY)-Italic.ufo sources/$(FAMILY)-BoldItalic.ufo
+	$(if $(call gen_has,BoldItalic),$(PY) scripts/make_bold.py sources/$(FAMILY)-Italic.ufo sources/$(FAMILY)-BoldItalic.ufo,@echo "Bold Italic: not made")
 	@$(PY) scripts/progress.py step generate 3 "Bold Italic small caps"
-	$(PY) scripts/smallcaps.py sources/$(FAMILY)-BoldItalic.ufo
+	$(if $(call gen_has,BoldItalic),$(PY) scripts/smallcaps.py sources/$(FAMILY)-BoldItalic.ufo,@true)
 	@$(PY) scripts/progress.py step generate 4 "normalize"
 	$(MAKE) normalize
 	@if find sources -iname '*conflict*' | grep -q .; then \
 	    echo "sync conflicts in sources/:"; find sources -iname '*conflict*'; exit 1; fi
-	@$(PY) scripts/stale.py stamp
+	@$(PY) scripts/stale.py stamp $(GEN_STYLES) $(if $(KEEP_DRAFTS),--no-proof)
 	@$(PY) scripts/progress.py end generate
 
 # Old Standard's SFD converted again with FontForge (scripts/fontforge_inputs.py)

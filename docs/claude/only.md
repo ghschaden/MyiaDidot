@@ -13,7 +13,10 @@ make_bold reads the Bold beside its SOURCE for the Bold Italic's kerning
 (`italic_kerning`), so a trial Italic in scratch with no Bold beside it is
 kerned against the committed Bold (said in the run's output); the drafts
 store is made read-only by `fontforge_inputs.READ_ONLY`, set by `--out`
-already in stage A, not only under `--only`.
+already in stage A, not only under `--only`. (Since 2026-11-21 `--out`
+drafts into a copy of the store beside OUT instead,
+`fontforge_inputs.redirect_drafts`: a capital whose small cap is drafted
+from it (Ƥ: ƥ.sc) can be tried with `--only` too; before, the run ended.)
 
 ## What it is for
 
@@ -69,7 +72,8 @@ more after moving one node of `n` in a copy of the source:
 (`shutil.copytree`, the old one removed first), the generator runs with
 `--out` in TARGET's place, exactly as `check_reproducible.reproduce` does
 on its copies. `make only` then draws the sheet from it. `--out` also
-sets `fontforge_inputs.READ_ONLY`: a whole run saves `sources/drafts`
+sets `fontforge_inputs.READ_ONLY` (since 2026-11-21: points the drafts
+store at a copy beside OUT, `scratch_out.drafts_for`): a whole run saves `sources/drafts`
 when a draft is stale or held, not only a run under `--only`, so the
 argument alone would have written under `sources/`. Otherwise no change
 to the generators; `smallcaps.py` is run on `--out` by the

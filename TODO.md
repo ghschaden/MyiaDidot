@@ -723,7 +723,9 @@ alongside, each when the phase that needs it comes up.
       - [ ] a test that `--only` gives the same outlines as the whole
             run for a sample of glyphs, so the preview cannot drift from
             the build.
-      - [ ] (found 2026-11-21, phase 6 step D) `make_italic.py --only
+      - [x] (built 2026-11-21: fontforge_inputs.redirect_drafts,
+            scratch_out.drafts_for; `--only Ƥ` redrafts ƥ.sc into the
+            scratch store, sources/drafts untouched) (found 2026-11-21, phase 6 step D) `make_italic.py --only
             --out` stops when a glyph asked for has small caps drafted
             from it (fontforge_inputs.READ_ONLY: "small-cap drafts to
             make again ... a scratch run does not write
@@ -733,7 +735,10 @@ alongside, each when the phase that needs it comes up.
             into a scratch copy of the drafts store (under `--out`),
             sources/drafts untouched, so these letters can be tried
             with `--only` as well.
-      - [ ] (2026-11-21) The commit's `make reproduce` for a small
+      - [x] (built 2026-11-21 per style, not per glyph: the hook makes
+            again only the styles without a proof, stale.py unproven,
+            check_reproducible.py STYLE ...; per glyph not begun)
+            (2026-11-21) The commit's `make reproduce` for a small
             change: check only the glyphs whose dependencies changed
             (`org.myiadidot.builtFrom`, built_from.py), once a test
             shows such a partial check finds what the full run finds;
@@ -742,6 +747,35 @@ alongside, each when the phase that needs it comes up.
             already skips docs-only commits and runs `make reproduce`
             only for sources/ and scripts/.) On a machine with more
             cores, MYIA_JOBS set per machine above 4.
+      - [ ] (not built, 2026-11-21: make_bold reads data_italic's tables
+            itself, so every data_italic change reaches the Bold Italic
+            anyway; it would help only for a Regular change the Italic
+            does not pass on) (2026-11-21) `make generate` skips the Bold Italic when
+            nothing it reads changed: after the Italic's stage,
+            `stale.py` compares the Italic's fingerprints and the bold
+            generator's files with the last stamp. The stamp covers
+            neither kerning nor features, which make_bold also reads:
+            put them in it first, or a changed kerning always runs the
+            stage. (Phase 6 step D, Ɓ Ɗ Ƥ: the Bold Italic came out
+            unchanged after its whole stage.)
+      - [x] (built 2026-11-21: `make generate STYLES=auto`, stale.py's
+            per-style stamp and REACHES, tests/test_stale.py;
+            docs/claude/commands.md) `make generate STYLES=...`, chosen from what
+            changed: data_italic.py or make_italic.py → Italic and Bold
+            Italic; data_bold.py → Bold; data_bold_italic.py → Bold
+            Italic; derive.py, shared modules or a Regular glyph → all.
+            Every step D run rebuilt the upright Bold, which none of its
+            changes could reach, sharing the cores with the Italic.
+      - [x] (built 2026-11-21: stale.py's proof and `proven`, the hook's
+            run-checks; docs/claude/tests.md; the designer took the
+            trade) (2026-11-21) The commit's `make reproduce` right after a
+            `make generate` on the same inputs: `generate` records a
+            hash of the UFOs it wrote beside its stamp; when sources,
+            generator files and the generated UFOs all still match, the
+            hook takes that run as the proof instead of making the
+            styles again. Lost: the check that two runs agree (nearly
+            always so on one machine); kept by a full reproduce before
+            a push or on another machine (T3).
 - [ ] T3. Reproduction across machines (phase 0's CI step, here in
       full). Recommended: a one-unit tolerance on point coordinates in
       `scripts/check_reproducible.py` (a unit is 1/2048 em), node

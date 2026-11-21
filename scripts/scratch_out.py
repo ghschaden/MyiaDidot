@@ -7,8 +7,11 @@ TARGET is copied to --out and the generator runs on the copy as on TARGET
 (the glyphs kept as drawn, the acceptances and the Italic's `previous` read
 from it), exactly as check_reproducible.reproduce runs on its copies. TARGET
 and everything under sources/ stay untouched: an --out there is refused
-before a file is opened, and the small-cap drafts store is only read
-(fontforge_inputs.READ_ONLY: a draft it lacks ends the run).
+before a file is opened, and the Italic's small caps are drafted into a copy
+of the drafts store beside OUT (OUT-drafts.ufo, fontforge_inputs.redirect_drafts),
+so a letter whose small caps are drafted from it (Ɓ Ɗ Ƥ, Ƈ Ɠ) can be made
+again in a scratch run as well (2026-11-21; before, a draft to make ended
+the run).
 """
 
 import shutil
@@ -28,15 +31,21 @@ def refused(out):
     return None
 
 
+def drafts_for(out):
+    """the scratch drafts store of a run into OUT"""
+    out = Path(out).resolve()
+    return out.with_name(out.stem + "-drafts.ufo")
+
+
 def prepare(target, out):
-    """TARGET copied to OUT (the old OUT removed first); the drafts store
-    made read-only for this process; OUT's path returned for the run"""
+    """TARGET copied to OUT (the old OUT removed first); this process's
+    drafts store a copy beside it (drafts_for); OUT's path returned for the run"""
     if why := refused(out):
         raise SystemExit(why)
     import fontforge_inputs
 
-    fontforge_inputs.READ_ONLY = True
     out = Path(out).resolve()
+    fontforge_inputs.redirect_drafts(drafts_for(out))
     if out == Path(target).resolve():
         raise SystemExit("--out is TARGET itself")
     if out.exists():

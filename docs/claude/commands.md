@@ -7,7 +7,7 @@ Moved from CLAUDE.md (its ground rules apply).
 | `make` | OTF, hinted TTF, WOFF2 into `fonts/` |
 | `make test` / `make regress` | test suite / shaping diff vs `REF=HEAD` |
 | `make lint` | ruff, lint only (no formatter: the recipe tables are aligned by hand); pre-commit and CI run it |
-| `make generate` | regenerate Italic, Bold, Bold Italic from the Regular (then normalize, check for sync conflicts); the Bold Italic's stroking is cached (`scripts/stroke_cache.py`; `MYIA_STROKE_CACHE=0` for a run without) |
+| `make generate [STYLES=auto]` | regenerate Italic, Bold, Bold Italic from the Regular (only the styles a change reaches with `STYLES=auto`, below) (then normalize, check for sync conflicts); the Bold Italic's stroking is cached (`scripts/stroke_cache.py`; `MYIA_STROKE_CACHE=0` for a run without) |
 | `make reproduce` | do the generated styles come out of their generators as the current UFOs specify? |
 | `make only STYLE=BoldItalic GLYPHS="n m" [SOURCE=UFO]` | a generated style made again whole into `build/only/MyiaDidot-STYLE.ufo` (`make_bold.py`/`make_italic.py --out UFO`; `sources/` untouched, an `--out` there refused), then the sheet `build/only/STYLE-n.pdf`: source style \| committed \| new, node views, 144 pt, words (`scripts/only_sheet.py`, `docs/claude/only.md`) |
 | `make strokes` | `build/quality/strokes-STYLE.pdf`: glyphs darker or lighter than their kind, each between its references, for review |
@@ -65,7 +65,25 @@ what is built on it stale, and the list says so.
 `make generate` begins with `stale.py guard`: the Regular must have been
 through `make check-regular` as it now stands (that run is marked in
 `build/stale/regular-checked.json`, failures or not); `SKIP_CHECK=1` waives it.
-Not covered: kerning and features, which the generators also read.
+A source's kerning, groups and features are fingerprinted too (`@kerning`
+`@groups` `@features`, 2026-11-21).
+
+**Only the styles a change reaches (2026-11-21).** The stamp is kept per
+style. `make generate STYLES=auto` makes only the styles `stale.py styles`
+names: those whose source changed, or one of whose generator files did
+(`stale.REACHES`: data_italic.py, make_italic.py, fontforge_inputs.py,
+smallcaps_draft.py reach the Italic and Bold Italic, data_bold_italic.py the
+Bold Italic alone; every other file all three), and the Bold Italic whenever
+the Italic is made. `STYLES="Italic BoldItalic"` names them by hand; without
+STYLES all three are made, as before. Only the styles made are stamped.
+`REACHES` rests on make_bold.py reading data_italic's and data_bold_italic's
+tables and importing from make_italic only behind its `italic` flag; a new
+use outside it means the file reaches the Bold as well (take it out of
+`REACHES`). The generator files are GENERATOR_GLOBS and every project
+module make_italic, make_bold and smallcaps import at any depth
+(stroke_cache.modules). Tests: tests/test_stale.py. `make reproduce` stays
+whole; the commit's hook may take a plain full run's proof instead
+(docs/claude/tests.md).
 
 `.venv/bin/python -I scripts/make_bold.py sources/MyiaDidot-Regular.ufo sources/MyiaDidot-Bold.ufo --only a b`
 makes those glyphs and what is built from them (the Bold only; the Bold Italic's is not

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Do the generated styles come out of their generators as they are?
 
-    python scripts/check_reproducible.py        (make reproduce)
+    python scripts/check_reproducible.py [STYLE ...]   (make reproduce: all three)
+
+With STYLE (Italic, Bold, BoldItalic) only those are made again and
+compared (the commit's hook: the styles without a proof, stale.py unproven).
 
 The Italic, the Bold and the Bold Italic are made by make_italic.py and
 make_bold.py (then smallcaps.py); an edit made in one of them by hand, or by
@@ -98,26 +101,33 @@ def run(*args):
     subprocess.run([PY, "-I", *map(str, args)], check=True, stdout=subprocess.DEVNULL)
 
 
-def reproduce(work, sources):
-    for style in ("Italic", "Bold", "BoldItalic"):
+ALL = ("Italic", "Bold", "BoldItalic")
+
+
+def reproduce(work, sources, styles=ALL):
+    for style in styles:
         shutil.copytree(sources / f"MyiaDidot-{style}.ufo", work / f"MyiaDidot-{style}.ufo")
     regular = sources / "MyiaDidot-Regular.ufo"
-    italic, bold, bold_italic = (work / f"MyiaDidot-{s}.ufo" for s in ("Italic", "Bold", "BoldItalic"))
+    italic, bold, bold_italic = (work / f"MyiaDidot-{s}.ufo" for s in ALL)
     # the Italic and the Bold side by side: both read only the Regular (a
     # core each, as make generate runs them)
-    italic_run = subprocess.Popen([PY, "-I", str(ROOT / "scripts/make_italic.py"), str(regular), str(italic)],
-                                  stdout=subprocess.DEVNULL)
+    italic_run = (subprocess.Popen([PY, "-I", str(ROOT / "scripts/make_italic.py"), str(regular), str(italic)],
+                                   stdout=subprocess.DEVNULL) if "Italic" in styles else None)
     try:
-        run(ROOT / "scripts/make_bold.py", regular, bold)
-        run(ROOT / "scripts/smallcaps.py", bold)
+        if "Bold" in styles:
+            run(ROOT / "scripts/make_bold.py", regular, bold)
+            run(ROOT / "scripts/smallcaps.py", bold)
     finally:
-        if italic_run.wait():
+        if italic_run and italic_run.wait():
             raise subprocess.CalledProcessError(italic_run.returncode, italic_run.args)
     # the Bold Italic from the snapshot Italic: each generator on its own input
-    run(ROOT / "scripts/make_bold.py", sources / "MyiaDidot-Italic.ufo", bold_italic)
-    run(ROOT / "scripts/smallcaps.py", bold_italic)
+    if "BoldItalic" in styles:
+        run(ROOT / "scripts/make_bold.py", sources / "MyiaDidot-Italic.ufo", bold_italic)
+        run(ROOT / "scripts/smallcaps.py", bold_italic)
     found = 0
     for style, path in (("Italic", italic), ("Bold", bold), ("BoldItalic", bold_italic)):
+        if style not in styles:
+            continue
         lines = differences(ufoLib2.Font.open(path), ufoLib2.Font.open(sources / f"MyiaDidot-{style}.ufo"))
         found += len(lines)
         print(f"{style}: {'as generated' if not lines else f'{len(lines)} differences'}")
@@ -128,7 +138,7 @@ def reproduce(work, sources):
     # MYIA_REPRODUCE_KEEP=DIR keeps the rerun's styles when they differ (CI
     # uploads them, to tell which machine's arithmetic made what)
     if found and (keep := os.environ.get("MYIA_REPRODUCE_KEEP")):
-        for path in (italic, bold, bold_italic):
+        for path in (work / f"MyiaDidot-{s}.ufo" for s in styles):
             shutil.copytree(path, Path(keep) / path.name, dirs_exist_ok=True)
         print(f"rerun's styles kept in {keep}")
     return 1 if found else 0
@@ -139,13 +149,17 @@ def main():
         print(f"check_reproducible: unknown variable(s) set: {', '.join(stray)} (the project reads none "
               "of them, stroke_cache.KNOWN; unset them: docs/claude/stroking.md, T4)", file=sys.stderr)
         raise SystemExit(2)
+    styles = tuple(s for s in ALL if s in sys.argv[1:]) or ALL
+    if bad := [a for a in sys.argv[1:] if a not in ALL]:
+        print(f"check_reproducible: no style {' '.join(bad)} (Italic, Bold, BoldItalic)", file=sys.stderr)
+        raise SystemExit(2)
     # Freeze all source UFOs before running any generator. Each invocation owns
     # its scratch tree, including the Regular and the Bold Italic's input.
     with tempfile.TemporaryDirectory(prefix="myia-reproduce-") as temporary:
         work = Path(temporary)
         sources = work / "sources"
         shutil.copytree(SOURCES, sources)
-        raise SystemExit(reproduce(work, sources))
+        raise SystemExit(reproduce(work, sources, styles))
 
 
 if __name__ == "__main__":

@@ -38,8 +38,9 @@ def test_refused():
     assert scratch_out.refused(ROOT / "build/only/MyiaDidot-Bold.ufo") is None
 
 
-def test_prepare_copies_and_reads_drafts_only(tmp_path, monkeypatch):
+def test_prepare_copies_and_drafts_beside_it(tmp_path, monkeypatch):
     monkeypatch.setattr(fontforge_inputs, "READ_ONLY", False)
+    monkeypatch.setattr(fontforge_inputs, "DRAFTS_UFO", fontforge_inputs.DRAFTS_UFO)
     target = tmp_path / "T.ufo"
     font = ufoLib2.Font()
     font.newGlyph("a").width = 500
@@ -48,7 +49,10 @@ def test_prepare_copies_and_reads_drafts_only(tmp_path, monkeypatch):
     out.mkdir(parents=True)
     (out / "stale.txt").write_text("from an older run")
     assert scratch_out.prepare(target, out) == out.resolve()
-    assert fontforge_inputs.READ_ONLY
+    # the drafts go to a copy beside OUT, never to sources/drafts
+    assert fontforge_inputs.DRAFTS_UFO == (tmp_path / "scratch" / "O-drafts.ufo").resolve()
+    assert (fontforge_inputs.DRAFTS_UFO / "metainfo.plist").exists()
+    assert not fontforge_inputs.READ_ONLY
     assert not (out / "stale.txt").exists()
     assert ufoLib2.Font.open(out)["a"].width == 500
     with pytest.raises(SystemExit):
