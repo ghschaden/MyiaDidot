@@ -507,6 +507,19 @@ for the designer (B touches none of r c v w).
   kept. Left in the cluster: ɭ ʈ's 1-1.6 degree joins with the stem at
   350 and 600, the capitals' hooks at the cap height (Ɓ Ɗ Ƥ ƃ Ƈ Ɠ), the
   `attach` steps (ƃ ɖ ɧ ɳ ʝ).
+- **Ɓ Ɗ Ƥ, the curl at the cap height, 2026-11-21** (sheet
+  `proofs/2026-11/italic-cap-curls-2026-11-21.pdf`, approved): the curl
+  started at the middle of the run at y 1300 as `_run_at` measures it,
+  which takes in part of the top serif, so its 166-thick ring began 23
+  units inside the stem's left edge (282 in the upright frame, sheared
+  about XH / 2) and the cut joined them at 2.4 degrees. Now `("pt", 365,
+  1300, 166)`: the inner edge flush with the stem, the weight kept, the
+  hook 23 further left (kern_clear: ( [ ¡ ¿ before them +22). ƥ.sc,
+  drafted from Ƥ, lost two kinks with it. Bounds, advances and the Bold
+  Italic unchanged. A scratch `--only` run cannot make these: their small
+  caps are drafted from them (fontforge_inputs refuses under `--out`).
+  Left of the cluster: ƃ Ƈ Ɠ (an upright piece on a leaning stroke:
+  fair_joins with the long lines split at the band's edges, proposed).
 - **Cyrillic long stems approved as they stand, 2026-11-19.** The Italic's
   б д ф ђ ћ ц щ џ (unchanged since step A, seen on the overlay sheet
   against step A's) were looked at by the designer and taken: no install

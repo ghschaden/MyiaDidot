@@ -321,7 +321,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                         950 + ZH_DX)),
                   # the stem rising through the top serif and curling over to the left
                   **{ch: ("curl", base, ("c", [(-BIG, 1300, 300, BIG)],
-                                         {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),
+                                         {"at": ("pt", 365, 1300, 166), "dir": 90, "turn": "ccw", "r": (200, 150),
                                           "sweep": 200, "ball": None, "t": (166, 60)}))
                      for ch, base in (("Ɓ", "B"), ("Ɗ", "D"), ("Ƥ", "P"))},
                   # the arm or stem itself curling over at the top (its serif
