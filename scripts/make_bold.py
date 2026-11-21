@@ -177,6 +177,12 @@ def fishhook_band(font):
 ITALIC_BOLD_FF_APART = 100
 FF_LIGATURES = ("ff", "ffi", "ffl", "f_f_j")
 FF_STRETCH = 0.6  # of the way between the stems the arch is stretched over; the head's join to the second stem moves whole
+# below the baseline, a point further right of the first stem's edge than this
+# belongs to the second f's hook (its ball curls under the first f) and moves:
+# the first f's own points lie at the edge or left of it. 8 until 2026-11-21;
+# the Italic's ff stems weighted to n's (phase 6, step C) brought the edge 11
+# nearer the ball, which now starts 3 past it
+FF_SPLIT = 2
 
 
 def part_ff(font, apart=ITALIC_BOLD_FF_APART):
@@ -197,13 +203,13 @@ def part_ff(font, apart=ITALIC_BOLD_FF_APART):
         b1, a2 = b1 - slant * 700, a2 - slant * 700
         m = b1 + FF_STRETCH * (a2 - b1)
         low = [p.x - slant * p.y for c in g.contours for p in c.points if p.type and p.y < -20]
-        if any(b1 + 1 < x < b1 + 8 for x in low):
+        if any(b1 + 1 < x <= b1 + FF_SPLIT for x in low):
             raise ValueError(f"{name}: the two hooks are not apart at the first stem's edge")
 
         def moved(x, y, b1=b1, m=m, slant=slant):
             u = x - slant * y
             if y < -20:
-                return apart if u > b1 + 8 else 0
+                return apart if u > b1 + FF_SPLIT else 0
             return apart * min(1.0, max(0.0, (u - b1) / (m - b1)))
 
         for c in g.contours:

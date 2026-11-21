@@ -463,6 +463,36 @@ for the designer (B touches none of r c v w).
   crotch (u's is not). The designer's eye: a hand fix marked drawn, or taken.
   Still open in step D: the BI's drawn letters (u, m, Ƈ Ɠ ɖ ɳ ɠ ...).
 - **Bold Italic bottoms, 2026-11-20** (sheet `proofs/2026-11/bolditalic-bottoms-2026-11-20.pdf`, approved): k m u x ƈ т ⱳ, drawn, stood at -23; every point at y -23 set to -15 (nodes and handles together), the letters built on them regenerated (`KEEP_DRAFTS=1 make generate`; reproduce clean). ɖ ɳ ɠ ɧ looked at: the saved drawn ones match the wider bases, the regenerated recipes notch; left. Small caps' overshoot (+23 Regular, +27 Italic) measured, 4 units at most: left on that day, set the next (below).
+- **ſ and the f-ligatures, 2026-11-21** (sheet
+  `proofs/2026-11/italic-long-c-fligatures-2026-11-21.pdf`, approved: "all
+  approved"). Step C's install had left ſ (Old Standard's own, never drawn, so
+  `--all` passed it) and the drawn fi fl ff ffi ffl f_j f_f_j (no character of
+  their own) at Old Standard's top 1451 and stem 139, beside f at 1512 and 161;
+  italic_ligatures.py builds f_b f_h f_k f_t and every ſ-ligature from them, so
+  about 30 ligatures in both italics stood on the old f. Found by comparing,
+  between 6eecb101^ and HEAD, every glyph whose base (NFD base, ligature parts)
+  moved while it did not. `italic_long.py` now takes the drawn f-ligatures by
+  name (`LIGATURES`, made as f: raised as f is); in a ligature only the stems
+  light at their middle (under `LIGHT` of n's) are weighted, so fi's i keeps
+  its own 157/164 and fl's l, thick only at its head, is weighted. Installed:
+  ſ and the seven, stems 160-162, tops 1512.
+  With it the Bold Italic's k, drawn 2026-11-04 (the counter's turn into the
+  ball), stood at the old 1434 with an ascender stem of 238 (h l b: 259-265);
+  the stroker's k from today's Italic k (top 1495, 67 nodes against 77,
+  advance 1006 -> 1024) was approved on the same sheet. Generated, it showed
+  the old fault again (the counter's turn into the ball 7 units past its
+  extreme, between nodes): the curve split exactly at the extreme (762,788),
+  shape unchanged, and k marked drawn again on the new letter.
+  What it took in the Bold Italic: make_bold.part_ff splits the ff-ligatures'
+  points below the baseline between the first f and the second f's ball at
+  `FF_SPLIT` past the first stem's edge; the heavier stem brought that edge 11
+  nearer the ball (now 3 past it), so 8 became 2. Taken into the lists, with
+  the designer (2026-11-21): 16 wobble and kink entries in the Bold Italic's
+  built ligatures (f_b f_h f_t f_k and their ff and ſ forms, f_j f_f_j:
+  near-coincident node pairs where the stroker meets the joins, not visible
+  at text size), for phase 8's long tail; and ſg, 0.012 tighter than the
+  reference italics' range in the Bold Italic only (the heavier ſ's narrower
+  right side). The Italic's `stroke` lines for ff ffl fl ſ fell.
 - **Cyrillic long stems approved as they stand, 2026-11-19.** The Italic's
   б д ф ђ ћ ц щ џ (unchanged since step A, seen on the overlay sheet
   against step A's) were looked at by the designer and taken: no install

@@ -2262,7 +2262,7 @@
 			<key>f.short</key>
 			<integer>232</integer>
 			<key>f_b</key>
-			<integer>232</integer>
+			<integer>230</integer>
 			<key>f_f_b</key>
 			<integer>230</integer>
 			<key>f_f_h</key>
@@ -2274,13 +2274,13 @@
 			<key>f_f_t</key>
 			<integer>230</integer>
 			<key>f_h</key>
-			<integer>232</integer>
+			<integer>230</integer>
 			<key>f_j</key>
 			<integer>230</integer>
 			<key>f_k</key>
-			<integer>232</integer>
+			<integer>230</integer>
 			<key>f_t</key>
-			<integer>232</integer>
+			<integer>230</integer>
 			<key>ff</key>
 			<integer>230</integer>
 			<key>ff.short</key>
@@ -3077,72 +3077,82 @@
 		<key>ff</key>
 		<dict>
 			<key>bracketright</key>
-			<integer>36</integer>
+			<integer>72</integer>
 			<key>eightsuperior</key>
-			<integer>36</integer>
-			<key>ninesuperior</key>
-			<integer>52</integer>
-			<key>ordfeminine</key>
-			<integer>56</integer>
-			<key>question</key>
 			<integer>26</integer>
-			<key>sevensuperior</key>
-			<integer>32</integer>
-			<key>sixsuperior</key>
+			<key>ninesuperior</key>
+			<integer>34</integer>
+			<key>ordfeminine</key>
+			<integer>40</integer>
+			<key>parenright</key>
 			<integer>6</integer>
+			<key>quotedblright</key>
+			<integer>8</integer>
+			<key>quoteright</key>
+			<integer>8</integer>
+			<key>sevensuperior</key>
+			<integer>30</integer>
 			<key>threesuperior</key>
-			<integer>44</integer>
+			<integer>38</integer>
 			<key>twosuperior</key>
-			<integer>60</integer>
+			<integer>48</integer>
 			<key>zerosuperior</key>
-			<integer>62</integer>
+			<integer>36</integer>
 		</dict>
 		<key>ff.short</key>
 		<dict>
 			<key>bracketright</key>
-			<integer>36</integer>
-			<key>eightsuperior</key>
-			<integer>36</integer>
-			<key>ibreve</key>
-			<integer>94</integer>
-			<key>icircumflex</key>
-			<integer>20</integer>
-			<key>idieresis</key>
-			<integer>128</integer>
-			<key>imacron</key>
-			<integer>100</integer>
-			<key>itilde</key>
-			<integer>94</integer>
-			<key>ninesuperior</key>
-			<integer>52</integer>
-			<key>ordfeminine</key>
-			<integer>56</integer>
-			<key>question</key>
-			<integer>26</integer>
-			<key>sevensuperior</key>
-			<integer>32</integer>
-			<key>sixsuperior</key>
-			<integer>6</integer>
-			<key>threesuperior</key>
-			<integer>44</integer>
-			<key>twosuperior</key>
-			<integer>60</integer>
-			<key>uni01D0</key>
-			<integer>48</integer>
-			<key>uni0205</key>
-			<integer>16</integer>
-			<key>uni0209</key>
-			<integer>190</integer>
-			<key>uni020B</key>
-			<integer>112</integer>
-			<key>uni0211</key>
-			<integer>60</integer>
-			<key>uni1E2F</key>
-			<integer>128</integer>
-			<key>uni1EE1</key>
 			<integer>72</integer>
+			<key>eightsuperior</key>
+			<integer>26</integer>
+			<key>ibreve</key>
+			<integer>110</integer>
+			<key>idieresis</key>
+			<integer>114</integer>
+			<key>igrave</key>
+			<integer>12</integer>
+			<key>imacron</key>
+			<integer>82</integer>
+			<key>itilde</key>
+			<integer>60</integer>
+			<key>ninesuperior</key>
+			<integer>34</integer>
+			<key>ordfeminine</key>
+			<integer>40</integer>
+			<key>parenright</key>
+			<integer>6</integer>
+			<key>quotedblright</key>
+			<integer>8</integer>
+			<key>quoteright</key>
+			<integer>8</integer>
+			<key>sevensuperior</key>
+			<integer>30</integer>
+			<key>threesuperior</key>
+			<integer>38</integer>
+			<key>twosuperior</key>
+			<integer>48</integer>
+			<key>uni01D0</key>
+			<integer>88</integer>
+			<key>uni01F0</key>
+			<integer>36</integer>
+			<key>uni0205</key>
+			<integer>46</integer>
+			<key>uni0209</key>
+			<integer>220</integer>
+			<key>uni020B</key>
+			<integer>88</integer>
+			<key>uni020D</key>
+			<integer>22</integer>
+			<key>uni0211</key>
+			<integer>90</integer>
+			<key>uni022D</key>
+			<integer>6</integer>
+			<key>uni1E2F</key>
+			<integer>114</integer>
+			<key>uni1EE1</key>
+			<integer>40</integer>
 			<key>zerosuperior</key>
-			<integer>62</integer>
+			<integer>36</integer>
 		</dict>
 		<key>five</key>
 		<dict>
@@ -3356,19 +3366,17 @@
 		<key>longs</key>
 		<dict>
 			<key>bracketright</key>
-			<integer>34</integer>
+			<integer>72</integer>
 			<key>edieresis</key>
-			<integer>-28</integer>
+			<integer>-41</integer>
 			<key>eightsuperior</key>
-			<integer>38</integer>
-			<key>emacron</key>
-			<integer>-38</integer>
+			<integer>26</integer>
 			<key>ninesuperior</key>
-			<integer>54</integer>
-			<key>odieresis</key>
-			<integer>-51</integer>
+			<integer>34</integer>
 			<key>ordfeminine</key>
-			<integer>56</integer>
+			<integer>40</integer>
+			<key>parenright</key>
+			<integer>8</integer>
 			<key>public.kern2.c</key>
 			<integer>-60</integer>
 			<key>public.kern2.egrave</key>
@@ -3377,51 +3385,45 @@
 			<integer>-60</integer>
 			<key>q</key>
 			<integer>-60</integer>
-			<key>question</key>
-			<integer>26</integer>
-			<key>sevensuperior</key>
-			<integer>32</integer>
-			<key>sixsuperior</key>
+			<key>quotedblright</key>
 			<integer>8</integer>
+			<key>quoteright</key>
+			<integer>8</integer>
+			<key>sevensuperior</key>
+			<integer>30</integer>
 			<key>threesuperior</key>
-			<integer>44</integer>
+			<integer>38</integer>
 			<key>twosuperior</key>
-			<integer>60</integer>
+			<integer>48</integer>
 			<key>uni0205</key>
-			<integer>20</integer>
-			<key>uni0207</key>
-			<integer>-59</integer>
+			<integer>46</integer>
 			<key>uni020D</key>
-			<integer>-3</integer>
+			<integer>23</integer>
 			<key>uni022B</key>
-			<integer>-46</integer>
+			<integer>-6</integer>
 			<key>uni022D</key>
-			<integer>-28</integer>
+			<integer>6</integer>
 			<key>uni0231</key>
-			<integer>-54</integer>
-			<key>uni1E15</key>
-			<integer>-38</integer>
-			<key>uni1E17</key>
-			<integer>-38</integer>
-			<key>uni1EBD</key>
-			<integer>-53</integer>
+			<integer>-3</integer>
+			<key>uni1E4F</key>
+			<integer>-18</integer>
 			<key>uni1EE1</key>
-			<integer>76</integer>
+			<integer>43</integer>
 			<key>zerosuperior</key>
-			<integer>62</integer>
+			<integer>36</integer>
 		</dict>
 		<key>longs_longs</key>
 		<dict>
 			<key>bracketright</key>
-			<integer>34</integer>
-			<key>edieresis</key>
-			<integer>-29</integer>
+			<integer>72</integer>
 			<key>eightsuperior</key>
-			<integer>36</integer>
+			<integer>26</integer>
 			<key>ninesuperior</key>
-			<integer>52</integer>
+			<integer>34</integer>
 			<key>ordfeminine</key>
-			<integer>56</integer>
+			<integer>40</integer>
+			<key>parenright</key>
+			<integer>6</integer>
 			<key>public.kern2.c</key>
 			<integer>-60</integer>
 			<key>public.kern2.egrave</key>
@@ -3430,36 +3432,32 @@
 			<integer>0</integer>
 			<key>q</key>
 			<integer>-60</integer>
-			<key>question</key>
-			<integer>26</integer>
+			<key>quotedblright</key>
+			<integer>8</integer>
+			<key>quoteright</key>
+			<integer>8</integer>
 			<key>sevensuperior</key>
-			<integer>32</integer>
-			<key>sixsuperior</key>
-			<integer>6</integer>
+			<integer>30</integer>
 			<key>threesuperior</key>
-			<integer>44</integer>
+			<integer>38</integer>
 			<key>twosuperior</key>
-			<integer>60</integer>
+			<integer>48</integer>
 			<key>uni0205</key>
-			<integer>20</integer>
+			<integer>46</integer>
 			<key>uni020D</key>
-			<integer>-3</integer>
+			<integer>23</integer>
 			<key>uni022B</key>
-			<integer>-45</integer>
+			<integer>-6</integer>
 			<key>uni022D</key>
-			<integer>-28</integer>
+			<integer>6</integer>
 			<key>uni0231</key>
-			<integer>-52</integer>
-			<key>uni1E15</key>
-			<integer>-39</integer>
-			<key>uni1E17</key>
-			<integer>-39</integer>
-			<key>uni1EBD</key>
-			<integer>-53</integer>
+			<integer>-3</integer>
+			<key>uni1E4F</key>
+			<integer>-18</integer>
 			<key>uni1EE1</key>
-			<integer>76</integer>
+			<integer>44</integer>
 			<key>zerosuperior</key>
-			<integer>62</integer>
+			<integer>36</integer>
 		</dict>
 		<key>parenleft</key>
 		<dict>
@@ -7810,7 +7808,7 @@
 			<key>f.short</key>
 			<integer>238</integer>
 			<key>f_b</key>
-			<integer>236</integer>
+			<integer>238</integer>
 			<key>f_f_b</key>
 			<integer>236</integer>
 			<key>f_f_h</key>
@@ -7822,13 +7820,13 @@
 			<key>f_f_t</key>
 			<integer>236</integer>
 			<key>f_h</key>
-			<integer>236</integer>
+			<integer>238</integer>
 			<key>f_j</key>
 			<integer>236</integer>
 			<key>f_k</key>
-			<integer>236</integer>
+			<integer>238</integer>
 			<key>f_t</key>
-			<integer>236</integer>
+			<integer>238</integer>
 			<key>ff</key>
 			<integer>236</integer>
 			<key>ff.short</key>
@@ -9548,39 +9546,39 @@
 			<key>f.short</key>
 			<integer>60</integer>
 			<key>f_b</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_f_b</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_f_h</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_f_j</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_f_k</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_f_t</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_h</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_j</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_k</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>f_t</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>ff</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>ff.short</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>ffi</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>ffl</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>fi</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>fivesuperior</key>
 			<integer>42</integer>
 			<key>fl</key>
-			<integer>52</integer>
+			<integer>58</integer>
 			<key>germandbls</key>
 			<integer>66</integer>
 			<key>h</key>
@@ -9618,37 +9616,37 @@
 			<key>ldot</key>
 			<integer>94</integer>
 			<key>longs</key>
-			<integer>54</integer>
+			<integer>64</integer>
 			<key>longs_b</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_h</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_i</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_j</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_k</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_l</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs_b</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs_h</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs_i</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs_j</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs_k</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs_l</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_longs_t</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>longs_t</key>
-			<integer>50</integer>
+			<integer>56</integer>
 			<key>lslash</key>
 			<integer>80</integer>
 			<key>napostrophe</key>
@@ -9836,7 +9834,7 @@
 			<key>uni1E97</key>
 			<integer>92</integer>
 			<key>uni1E9B</key>
-			<integer>54</integer>
+			<integer>64</integer>
 			<key>uni1EBD</key>
 			<integer>58</integer>
 			<key>uni1EC9</key>
@@ -12189,25 +12187,27 @@
 		<key>uni1E9B</key>
 		<dict>
 			<key>bracketright</key>
-			<integer>34</integer>
+			<integer>72</integer>
 			<key>eightsuperior</key>
-			<integer>38</integer>
-			<key>ninesuperior</key>
-			<integer>54</integer>
-			<key>ordfeminine</key>
-			<integer>56</integer>
-			<key>question</key>
 			<integer>26</integer>
-			<key>sevensuperior</key>
-			<integer>32</integer>
-			<key>sixsuperior</key>
+			<key>ninesuperior</key>
+			<integer>34</integer>
+			<key>ordfeminine</key>
+			<integer>40</integer>
+			<key>parenright</key>
 			<integer>8</integer>
+			<key>quotedblright</key>
+			<integer>8</integer>
+			<key>quoteright</key>
+			<integer>8</integer>
+			<key>sevensuperior</key>
+			<integer>30</integer>
 			<key>threesuperior</key>
-			<integer>44</integer>
+			<integer>38</integer>
 			<key>twosuperior</key>
-			<integer>60</integer>
+			<integer>48</integer>
 			<key>zerosuperior</key>
-			<integer>62</integer>
+			<integer>36</integer>
 		</dict>
 		<key>uni1E9E</key>
 		<dict>

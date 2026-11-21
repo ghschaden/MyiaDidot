@@ -48,17 +48,21 @@ eight stroke 1                   # stroke weights against the kind's (scripts/qu
 eightoldstyle stroke 1           # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 207 against 279 (0.74, lighter)
 eng.sc stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 142 against 282 (0.50, lighter)
 eogonek.sc smooth 1              # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 397,106 2.4 degrees
-f_f_j kink 2                     # the Italic's b-z redrawn, f's hook, followers (2026-11-11): -204,-334 6.5 degrees; 1489,1308 4.9 degrees
+f_b wobble 1                     # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 4 against 3: -186,-324 20 degrees; -190,-326 18 degre
+f_f_h wobble 1                   # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 2 against 1: 1496,1361 11 degrees; 1501,1364 11 degre
+f_f_j kink 1                     # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 1077,-331 4.8 degrees
+f_f_k wobble 1                   # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 7 against 0: 1858,680 9 degrees; 1860,692 37 degrees;
+f_f_t wobble 1                   # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 5 against 1: 1433,168 15 degrees; 1430,163 9 degrees;
+f_h wobble 1                     # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 4 against 1: -186,-324 20 degrees; -190,-326 18 degre
 f_j kink 1                       # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 456,-338 7.0 degrees
+f_j wobble 1                     # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 2 against 0: 825,650 5 degrees; 835,677 4 degrees
 f_k wobble 1                     # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 4 against 3: 1265,741 18 degrees; 1266,742 9 degrees; 1261,795 202 degrees; 1214,172 8 degrees
-ff kink 2                        # the Italic's b-z redrawn, f's hook, followers (2026-11-11): -192,-331 2.6 degrees; 1405,1304 4.4 degrees
-ffi kink 2                       # the Italic's b-z redrawn, f's hook, followers (2026-11-11): -200,-334 6.5 degrees; 1493,1308 4.9 degrees
-fi kink 1                        # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 874,1308 4.0 degrees
+f_t wobble 1                     # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 7 against 1: -186,-324 20 degrees; -190,-326 18 degre
+ffi wobble 1                     # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 1 against 0: 1431,146 7 degrees
 fi slant 1                       # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: 17.3 degrees, not 15.2
 fi wobble 1                      # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 1 against 0: 788,699 6 degrees
 fiveoldstyle wobble 1            # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 349,810 95 degrees
 fivesuperior wobble 1            # the Italic's redraw of 2026-11-16 (phase 5's batches, family 2); new lines in the Bold Italic are the stroker's on the new nodes, for phase 8: 1 against 0: 298,636 38 degrees
-fl wobble 1                      # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 3 against 0: 852,261 7 degrees; 849,249 10 degrees; 615,281 6 degrees
 florin zone 1                    # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: bottom -3 from -462
 g.sc slant 1                     # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 10.4 degrees, not 15.2
 g.sc smooth 1                    # 2026-11-06 the third look: the italics' Ƭ ƭ.sc arm 0.65, Bold Italic Ƭ bar as T's, ƈ.sc ɠ.sc curls flatter, c C G c.sc g.sc insides and g's bowl from the Italic's (italic_inside, italic_count
@@ -80,19 +84,23 @@ iota zone 1                      # 2026-10-16 Bold Italic: first generated (make
 j accent 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): above dotaccent gap 346, usually 194
 j.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 k weight 1                       # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): at 442 stem 499 against 291
-k wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 751,763 42 degrees; 760,781 49 degrees; 683,127 30 degrees; 676,95 24 degrees
 kappa stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 239 against 279 (0.86, lighter)
 kgreenlandic wobble 1            # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 8 against 0: 870,764 47 degrees; 878,781 53 degrees; 801,127 27 degrees; 794,96 22 degrees; 302,609 3
 lambda zone 1                    # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 lambda.sc kink 1                 # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 336,214 5.2 degrees
 lambda.sc stroke 1               # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 262 against 300 (0.88, lighter)
-longs stroke 1                   # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: lc 242 against 269 (0.90, lighter)
-longs_b wobble 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
+longs_h wobble 1                 # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 2 against 1: 877,1360 10 degrees; 882,1363 11 degrees
 longs_i wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 1 against 0: 788,698 4 degrees
+longs_j wobble 1                 # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 7 against 3: 824,649 8 degrees; 836,680 4 degrees; 65
 longs_k wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 4 against 3: 1265,741 18 degrees; 1266,742 9 degrees; 1261,795 202 degrees; 1214,172 8 degrees
+longs_l wobble 1                 # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 2 against 0: 877,1360 10 degrees; 882,1363 11 degrees
 longs_longs wobble 1             # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 2 against 0: 952,1300 12 degrees; 959,1304 12 degrees
+longs_longs_h wobble 1           # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 2 against 1: 1496,1361 11 degrees; 1501,1364 11 degre
 longs_longs_i wobble 1           # 2026-10-28: leftover pieces of the stroked Bold Italic merged (stroke_bold), fairing without libm (fair_arcs): 2 against 1: 1349,175 18 degrees; 1347,172 5 degrees
 longs_longs_j wobble 1           # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 2 against 1: 1140,1003 12 degrees; 1247,-115 6 degrees
+longs_longs_k wobble 1           # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 8 against 0: 1858,680 9 degrees; 1860,692 37 degrees;
+longs_longs_l wobble 1           # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 3 against 0: 1201,263 20 degrees; 1496,1361 11 degree
+longs_longs_t wobble 1           # 2026-11-21 phase 6 step C: ſ, the f-ligatures and k on the raised Italic; the built ligatures' node pairs for phase 8, ſg a hair tight (designer): 5 against 2: 1433,168 15 degrees; 1430,163 9 degrees;
 longs_t wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 1 against 0: 587,210 6 degrees
 lslash stroke 1                  # 2026-10-21 Italic reweighted and tightened: lc 238 against 267 (0.89, lighter)
 m slant 1                        # Bold Italic entry strokes kept turning one way (stroke_bold.one_way); ɯ ᵯ ɰ to smooth further: 18.4 degrees, not 15.2
@@ -165,7 +173,6 @@ uni0194 zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni0196 zone 1                   # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni0198 kink 1                   # 2026-11-12: the hooks of Ƙ Ƴ (version C) and Ʋ (version D), chosen on proofs/2026-11/bold-italic-hook-arms-2026-11-12.pdf: 1283,1111 3.8 degrees
 uni0199 kink 1                   # 2026-10-21 Italic reweighted and tightened: 273,983 7.5 degrees
-uni0199 wobble 1                 # 2026-11-04: Bold Italic k's counter turn into the ball redrawn round (k drawn); ƙ follows it: the round turn reads as a wobble (as in k), and its rebuilt leg leaves 1-3 unit pieces; reviewed by the pe
 uni0199.sc kink 3                # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni019B kink 1                   # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed in proofs (γ & ξ ү q.sc), new findings proofed: 674,1366 4.6 degrees
 uni019B wobble 1                 # Bold Italic keep_bends; o/O/zero refitted as ovals: 1 against 0: 559,403 6 degrees
@@ -176,7 +183,7 @@ uni01AE kink 2                   # 2026-10-26 Italic/Bold Italic retroflex tails
 uni01B4 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 17.9 degrees, not 15.2
 uni01B4 zone 1                   # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni01B4.sc smooth 1              # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-BoldItalic); a few units of extreme moved, neighbours kept: 660,907 2.6 degrees
-uni01B4.sc wobble 1              # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-BoldItalic); a few units of extreme moved, neighbours kept: 3 against 1: 1178,806 17 degrees; 1177,803 18 degrees; 910,800 
+uni01B4.sc wobble 1              # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-BoldItalic); a few units of extreme moved, neighbours kept: 3 against 1: 1178,806 17 degrees; 1177,803 18 degrees; 910,800
 uni01B7 stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: uc 360 against 304 (1.19, darker)
 uni01B8 stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: uc 360 against 304 (1.19, darker)
 uni01B9 slant 1                  # 2026-10-21 Italic reweighted and tightened: 13.0 degrees, not 15.2

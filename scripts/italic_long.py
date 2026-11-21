@@ -25,6 +25,9 @@ what is one reason, each by the outline's own points:
   (the Italic -35 and 1473). Only the points within OVER_BAND of an
   extreme move, so a flat foot (0, 1434) and a descender's end stay.
 
+The drawn f-ligatures (LIGATURES) are given by glyph name and made as f;
+in them only the stems light at their middle are weighted (fi's i is not).
+
 Then, as italic_harmonise.py: redrawn onto clean nodes (redraw.py) and
 gated against the construction, into OUT.ufo; with --install into SRC.ufo
 marked drawn, lib org.myiadidot.redrawn "harmonise": "long". Run again on
@@ -70,6 +73,12 @@ OVER_BAND = (-2, -14)  # the baseline's flat edge stays: the move eased in from 
 OVER_FAR = (-45, -90)  # and eased out again below: a descender's end stays
 STEM_AT = (0.5, 1.45)  # a stem edge's thickness across, over n's: the nodes weighted
 CASE_TOP = 1440  # a capital's overshoot above begins here (the cap line is 1434)
+# the drawn f-ligatures, named by glyph, made as the letter given (2026-11-21:
+# step C left them, and ſ, at Old Standard's height and stem; italic_ligatures
+# builds f_b ... and the ſ-ligatures from them). In a ligature only the stems
+# lighter than LIGHT of n's are weighted: fi's i stands at n's already.
+LIGATURES = dict.fromkeys(("fi", "fl", "ff", "ffi", "ffl", "f_j", "f_f_j"), "f")
+LIGHT = 0.95
 
 
 def smooth(t):
@@ -93,11 +102,16 @@ def runs_at(segs, y):
     return list(zip(xs[0::2], xs[1::2], strict=False))
 
 
-def stem_at(segs, y, xh, lean):
+def stem_at(segs, y, xh, lean, lightest=None):
     """the widest run under 0.45 of the x-height on row y, across (its
-    lean taken out), or None"""
-    runs = [r for r in runs_at(segs, y) if 0 < r[1] - r[0] < 0.45 * xh]
-    return max(r[1] - r[0] for r in runs) / math.hypot(1, lean) if runs else None
+    lean taken out), or None; with lightest (a ligature: n's stem) the
+    narrowest run that is still a stem"""
+    k = math.hypot(1, lean)
+    runs = [(r[1] - r[0]) / k for r in runs_at(segs, y) if 0 < r[1] - r[0] < 0.45 * xh]
+    if lightest:
+        runs = [t for t in runs if t >= STEM_AT[0] * lightest]
+        return min(runs) if runs else None
+    return max(runs) if runs else None
 
 
 def bands(kind, xh, top, bottom):
@@ -107,7 +121,7 @@ def bands(kind, xh, top, bottom):
     return {"asc": [asc], "desc": [desc], "both": [asc, desc], "all": [whole]}[kind]
 
 
-def stem_nodes(glyph, segs, spans, stem, sl):
+def stem_nodes(glyph, segs, spans, stem, sl, upper=STEM_AT[1]):
     """the end nodes of the stem's straight edges, {(x, y)} rounded: the
     long edges running along the italic angle, a stem thick across, that
     lie in a band by a third of their length or are collinear with one that
@@ -125,14 +139,17 @@ def stem_nodes(glyph, segs, spans, stem, sl):
             ln = math.hypot(dx, dy)
             if ln < 100 or abs(dx - sl * dy) > 0.36 * ln:  # within 20 degrees of the stem's lean
                 continue
-            ok = False
+            ok = heavy = False
             for u in (0.2, 0.5, 0.8):  # the edge is a stem where it stands alone: not at every height (q's joins its bowl)
                 mx, my = q.x + u * dx, q.y + u * dy
                 runs = [r for r in runs_at(segs, my) if r[0] - 3 <= mx <= r[1] + 3]
-                if runs and STEM_AT[0] * stem <= (runs[0][1] - runs[0][0]) / math.hypot(1, sl) <= STEM_AT[1] * stem:
-                    ok = True
-                    break
-            if not ok:
+                t = (runs[0][1] - runs[0][0]) / math.hypot(1, sl) if runs else 0
+                ok |= STEM_AT[0] * stem <= t <= upper * stem
+                heavy |= u == 0.5 and t > upper * stem
+            # a ligature's stem is light at its middle: fi's i stands at n's
+            # there and thins towards its top; fl's l is light but thick at
+            # its head, so the ends do not decide
+            if not ok or (heavy and upper < STEM_AT[1]):
                 continue
             lo, hi = sorted((p.y, q.y))
             inside = sum(max(0.0, min(hi, b) - max(lo, a)) for a, b in spans) / max(hi - lo, 1.0)
@@ -149,8 +166,9 @@ def stem_nodes(glyph, segs, spans, stem, sl):
     return out
 
 
-def construct(font, glyph, stem, ch):
-    """glyph as the three changes make it (a new glyph, outline only)"""
+def construct(font, glyph, stem, ch, ligature=False):
+    """glyph as the three changes make it (a new glyph, outline only); a
+    ligature is made as its letter ch, its light stems alone weighted"""
     sl, xh = H.slant_of(font), font.info.xHeight
     ys = [p.y for c in glyph.contours for p in c.points if p.type]
     top, bottom = max(ys), min(ys)
@@ -192,7 +210,7 @@ def construct(font, glyph, stem, ch):
             rows.append(max(lo, bottom + 1) + t * (min(hi, top + up) - max(lo, bottom + 1)))
     if kind == "all":
         rows = [xh / 3, xh / 2]
-    got = [t for y in rows if (t := stem_at(segs, y, xh, sl)) is not None]
+    got = [t for y in rows if (t := stem_at(segs, y, xh, sl, stem if ligature else None)) is not None]
     if not got:
         return new, None, fn
     now = sum(got) / len(got)
@@ -200,7 +218,7 @@ def construct(font, glyph, stem, ch):
     if amount <= 0.5:
         return new, {"now": now, "amount": 0.0}, fn
 
-    fixed = stem_nodes(new, segs, spans, stem, sl)
+    fixed = stem_nodes(new, segs, spans, stem, sl, LIGHT if ligature else STEM_AT[1])
 
     def factor(x, y, inward):
         return 1.0 if (round(x, 1), round(y, 1)) in fixed else 0.0
@@ -212,7 +230,7 @@ def construct(font, glyph, stem, ch):
     return made, {"now": now, "amount": amount}, fn
 
 
-def stem_after(font, glyph, ch):
+def stem_after(font, glyph, ch, ligature=False, stem=None):
     """the stem as construct reads it, on a finished glyph: the same rows"""
     sl, xh = H.slant_of(font), font.info.xHeight
     ys = [p.y for c in glyph.contours for p in c.points if p.type]
@@ -229,7 +247,7 @@ def stem_after(font, glyph, ch):
         rows += [lo + t * (hi - lo) for t in (0.35, 0.5, 0.65)]
     if STEMS[ch] == "all":
         rows = [xh / 3, xh / 2]
-    got = [t for y in rows if (t := stem_at(segs, y, xh, sl)) is not None]
+    got = [t for y in rows if (t := stem_at(segs, y, xh, sl, stem if ligature else None)) is not None]
     return sum(got) / len(got) if got else None
 
 
@@ -274,7 +292,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("src")
     ap.add_argument("out")
-    ap.add_argument("glyphs", nargs="*", help="characters")
+    ap.add_argument("glyphs", nargs="*", help="characters, or the ligatures of LIGATURES by name")
     ap.add_argument("--install", action="store_true")
     ap.add_argument("--date")
     ap.add_argument("--review")
@@ -288,15 +306,17 @@ def main():
     spec = R.spec_for(a.src, None)
     cmap = {chr(g.unicode): g.name for g in font if g.unicode and not g.components}
     chars = list(a.glyphs[0]) if len(a.glyphs) == 1 and len(a.glyphs[0]) > 1 and a.glyphs[0] not in cmap.values() \
+        and a.glyphs[0] not in LIGATURES \
         else a.glyphs
     if a.all:
         chars = [c for c, n in cmap.items() if any("drawn" in k for k in font[n].lib) and affected(font, n)]
     print(f"n's stem {stem:.1f}")
     failed = 0
     for ch in chars:
-        name = cmap[ch]
+        lig = ch in LIGATURES
+        name, ch = (ch, LIGATURES[ch]) if lig else (cmap[ch], ch)
         g = font[name]
-        raw, info, fn = construct(font, g, stem, ch)
+        raw, info, fn = construct(font, g, stem, ch, lig)
         for c in raw.contours:
             for pt in c.points:
                 pt.x, pt.y = round(pt.x), round(pt.y)
@@ -310,7 +330,7 @@ def main():
                      if f[1] not in had]
             if not fail:
                 break
-        after = stem_after(font, new, ch) if ch in STEMS else None
+        after = stem_after(font, new, ch, lig, stem) if ch in STEMS else None
         note = f"stem {info['now']:.0f} -> {after:.0f}" if info and after else ""
         print(f"{ch} {name:<10}{rep['nodes_before']:>3} ->{rep['nodes_after']:>3} nodes  "
               f"tol {tol:g}  {rep['dev']:.1f} from the construction  {note}  "

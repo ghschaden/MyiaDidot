@@ -43,10 +43,7 @@ eogonek.sc smooth 1              # Italic weighted as its letters are taken, der
 estimated smooth 1               # 2026-10-26 curves split at the extremes a slant moves (derive.with_extremes): 1605,746 2.5 degrees
 eta stroke 1                     # 2026-10-21 Italic reweighted and tightened: lc 194 against 172 (1.13, darker)
 f.sc smooth 1                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 327,931 2.4 degrees
-ff stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
-ffl stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
 fi slant 1                       # 2026-10-21 Italic reweighted and tightened: 17.2 degrees, not 15.2
-fl stroke 1                      # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 160 against 183 (0.88, lighter)
 g.sc slant 1                     # 2026-10-16 known at the start (quality checks added): 11.2 degrees, not 15.2
 gamma slant 1                    # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/2026-11/bold-italic-cyrillic-followers-2026-11-12.pdf: 12.4 degrees, not 15.2
 gamma stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 85 against 183 (0.46, lighter)
@@ -71,7 +68,6 @@ l weight 1                       # 2026-10-16 known at the start (quality checks
 l.sc smooth 1                    # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 326,931 2.4 degrees
 lambda.sc kink 1                 # 2026-10-21 Italic reweighted and tightened: 229,119 4.9 degrees
 lambda.sc stroke 1               # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: sc 173 against 194 (0.89, lighter)
-longs stroke 1                   # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 158 against 183 (0.86, lighter)
 lslash stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 153 against 183 (0.84, lighter)
 lslash.sc kink 1                 # 2026-10-21 Italic reweighted and tightened: 326,930 1.8 degrees
 m slant 1                        # 2026-10-16 known at the start (quality checks added): 18.4 degrees, not 15.2

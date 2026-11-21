@@ -2690,11 +2690,13 @@
 			<string>added</string>
 			<key>ff ordfeminine</key>
 			<string>added</string>
-			<key>ff question</key>
+			<key>ff parenright</key>
+			<string>added</string>
+			<key>ff quotedblright</key>
+			<string>added</string>
+			<key>ff quoteright</key>
 			<string>added</string>
 			<key>ff sevensuperior</key>
-			<string>added</string>
-			<key>ff sixsuperior</key>
 			<string>added</string>
 			<key>ff threesuperior</key>
 			<string>added</string>
@@ -2708,9 +2710,9 @@
 			<string>added</string>
 			<key>ff.short ibreve</key>
 			<string>added</string>
-			<key>ff.short icircumflex</key>
-			<string>added</string>
 			<key>ff.short idieresis</key>
+			<string>added</string>
+			<key>ff.short igrave</key>
 			<string>added</string>
 			<key>ff.short imacron</key>
 			<string>added</string>
@@ -2720,11 +2722,13 @@
 			<string>added</string>
 			<key>ff.short ordfeminine</key>
 			<string>added</string>
-			<key>ff.short question</key>
+			<key>ff.short parenright</key>
+			<string>added</string>
+			<key>ff.short quotedblright</key>
+			<string>added</string>
+			<key>ff.short quoteright</key>
 			<string>added</string>
 			<key>ff.short sevensuperior</key>
-			<string>added</string>
-			<key>ff.short sixsuperior</key>
 			<string>added</string>
 			<key>ff.short threesuperior</key>
 			<string>added</string>
@@ -2732,13 +2736,19 @@
 			<string>added</string>
 			<key>ff.short uni01D0</key>
 			<string>added</string>
+			<key>ff.short uni01F0</key>
+			<string>added</string>
 			<key>ff.short uni0205</key>
 			<string>added</string>
 			<key>ff.short uni0209</key>
 			<string>added</string>
 			<key>ff.short uni020B</key>
 			<string>added</string>
+			<key>ff.short uni020D</key>
+			<string>added</string>
 			<key>ff.short uni0211</key>
+			<string>added</string>
+			<key>ff.short uni022D</key>
 			<string>added</string>
 			<key>ff.short uni1E2F</key>
 			<string>added</string>
@@ -2886,27 +2896,23 @@
 			<string>added</string>
 			<key>longs eightsuperior</key>
 			<string>added</string>
-			<key>longs emacron</key>
-			<string>added</string>
 			<key>longs ninesuperior</key>
-			<string>added</string>
-			<key>longs odieresis</key>
 			<string>added</string>
 			<key>longs ordfeminine</key>
 			<string>added</string>
-			<key>longs question</key>
+			<key>longs parenright</key>
+			<string>added</string>
+			<key>longs quotedblright</key>
+			<string>added</string>
+			<key>longs quoteright</key>
 			<string>added</string>
 			<key>longs sevensuperior</key>
-			<string>added</string>
-			<key>longs sixsuperior</key>
 			<string>added</string>
 			<key>longs threesuperior</key>
 			<string>added</string>
 			<key>longs twosuperior</key>
 			<string>added</string>
 			<key>longs uni0205</key>
-			<string>added</string>
-			<key>longs uni0207</key>
 			<string>added</string>
 			<key>longs uni020D</key>
 			<string>added</string>
@@ -2916,11 +2922,7 @@
 			<string>added</string>
 			<key>longs uni0231</key>
 			<string>added</string>
-			<key>longs uni1E15</key>
-			<string>added</string>
-			<key>longs uni1E17</key>
-			<string>added</string>
-			<key>longs uni1EBD</key>
+			<key>longs uni1E4F</key>
 			<string>added</string>
 			<key>longs uni1EE1</key>
 			<string>added</string>
@@ -2928,19 +2930,19 @@
 			<string>added</string>
 			<key>longs_longs bracketright</key>
 			<string>added</string>
-			<key>longs_longs edieresis</key>
-			<string>added</string>
 			<key>longs_longs eightsuperior</key>
 			<string>added</string>
 			<key>longs_longs ninesuperior</key>
 			<string>added</string>
 			<key>longs_longs ordfeminine</key>
 			<string>added</string>
-			<key>longs_longs question</key>
+			<key>longs_longs parenright</key>
+			<string>added</string>
+			<key>longs_longs quotedblright</key>
+			<string>added</string>
+			<key>longs_longs quoteright</key>
 			<string>added</string>
 			<key>longs_longs sevensuperior</key>
-			<string>added</string>
-			<key>longs_longs sixsuperior</key>
 			<string>added</string>
 			<key>longs_longs threesuperior</key>
 			<string>added</string>
@@ -2956,11 +2958,7 @@
 			<string>added</string>
 			<key>longs_longs uni0231</key>
 			<string>added</string>
-			<key>longs_longs uni1E15</key>
-			<string>added</string>
-			<key>longs_longs uni1E17</key>
-			<string>added</string>
-			<key>longs_longs uni1EBD</key>
+			<key>longs_longs uni1E4F</key>
 			<string>added</string>
 			<key>longs_longs uni1EE1</key>
 			<string>added</string>
@@ -9358,11 +9356,13 @@
 			<string>added</string>
 			<key>uni1E9B ordfeminine</key>
 			<string>added</string>
-			<key>uni1E9B question</key>
+			<key>uni1E9B parenright</key>
+			<string>added</string>
+			<key>uni1E9B quotedblright</key>
+			<string>added</string>
+			<key>uni1E9B quoteright</key>
 			<string>added</string>
 			<key>uni1E9B sevensuperior</key>
-			<string>added</string>
-			<key>uni1E9B sixsuperior</key>
 			<string>added</string>
 			<key>uni1E9B threesuperior</key>
 			<string>added</string>

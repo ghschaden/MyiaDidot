@@ -1000,6 +1000,12 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       with a o u O, ď's caron and advance not moved with d (italic.md,
       "What followed"); the Italic's ø.sc (Ø's small cap) is kept as drawn beside the
       narrow o.sc (Ø ø themselves are done).
+      Done 2026-11-21 (italic.md, "ſ and the f-ligatures"): ſ and the drawn
+      f-ligatures raised and weighted as f was in step C, the Bold Italic's k
+      on the new Italic k; a sweep of every glyph whose base moved in B or C
+      while it did not (6eecb101^ against HEAD) found nothing else but marks
+      below, which hang from anchors. Left of D: the derived letters'
+      entries below.
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %
