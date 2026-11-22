@@ -141,7 +141,7 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 # (ɱ's band up to 520, 2026-11-11: the outer edge's node where the m's
 # shoulder runs into the descender stands at 500 and kept a corner of 4
 # degrees, "a kind of kink" in the downstroke on the sheet)
-ITALIC_JOINS = {"ɰ": (250, 350), "ɭ": (340, 610), "ʈ": (340, 610), "ɧ": (200, 300), "ɱ": (190, 520), "ɳ": (190, 460), "ⱳ": (590, 700)}
+ITALIC_JOINS = {"ɰ": (250, 650), "ɭ": (340, 610), "ʈ": (340, 610), "ɧ": (200, 300), "ɱ": (190, 520), "ɳ": (190, 460), "ⱳ": (590, 700)}
 # those whose join runs on through the letter's own smooth node in the band
 # (fair_joins' min_turn 0), up the stem's straight edge to its top: ɳ's
 # did only because n had a kink of 1.3 degrees at that node (682,361);
@@ -160,7 +160,16 @@ ITALIC_JOINS_THROUGH = {"ɳ", "ɱ"}
 # (without it the curve ran from the stem's foot). The Italic's only: the
 # Bold Italic's Ƈ Ɠ are its own recipes (data_bold_italic), its ƃ is
 # stroked from this one.
-ITALIC_JOINS_SPLIT = {"ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380), "Ⱳ": (940, 1040)}
+# ɓ ƙ ɦ (2026-11-22): f's top as the hook on the stem, a corner of 2.4-2.9
+# degrees on the outer edge at about 950; with the plain fair_joins the
+# curve ran from the stem's foot (the stem 13 thinner at 362, ɦ's slant
+# 23.6 degrees), split keeps it straight.
+# ɗ: ɓ's top on the italic d (make_italic.build_own, DHOOK_CUT 1000),
+# its join faired again on d's stem; ɠ: the same hook at its cut of 800,
+# the band above ɡ's bowl; ƴ: where the curl leaves the diagonal (at 760);
+# ʃ: f's top on the stem, as ɓ (its left edge keeps 1.5 degrees)
+# (2026-11-22, sheets approved by the designer)
+ITALIC_JOINS_SPLIT = {"ɓ": (880, 1020), "ɗ": (940, 1040), "ɠ": (770, 840), "ƴ": (710, 810), "ʃ": (860, 960), "ƙ": (880, 1020), "ɦ": (880, 1020), "ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380), "Ⱳ": (940, 1040)}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
@@ -256,7 +265,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # the cuts and the advance with ɯ's last stem, ɥ's
                   # descender taken 34 further right and moved 34 less)
                   "ɰ": ("attach", "uni026F", ("x", [(1218, -BIG, BIG, 300), (1368, -BIG, BIG, 600)],
-                                              [("uni0265", (734, -BIG, BIG, 300), (0, 0), (1, 1, 493, 0))], 1568)),
+                                              [("uni0265", (734, -BIG, BIG, 300), (0, 0), (1, 1, 480, 0))], 1568)),
                   # the italic r turned (as Charis's), not the roman's drawn ɹ:
                   # its stem as light as the other italic stems
                   "ɹ": ("turn", "r", "x"),
@@ -336,8 +345,10 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # cut away), at its own weight
                   # Ƙ Ƴ Ʋ: curls 1.25 times what they were, as large as Ƈ Ɠ's
                   # (their balls growing with them; 2026-11-08)
+                  # Ƙ's dir 48, not 51: the arm's own angle in the upright
+                  # frame, it broke into the curl by 7.8 degrees (2026-11-22)
                   "Ƙ": ("curl", "K", ("c", [(850, 1250, BIG, BIG)],
-                                      {"at": ("y", 1250, "last"), "dir": 51, "turn": "cw", "r": (140, 120),
+                                      {"at": ("y", 1250, "last"), "dir": 48, "turn": "cw", "r": (140, 120),
                                        "sweep": 210, "ball": None, "t": (89, 45)})),
                   "Ʋ": ("curl", "U", ("c", [(930, 1200, BIG, BIG)],
                                       {"at": ("y", 1200, "last"), "dir": 90, "turn": "ccw", "r": (175, 150),

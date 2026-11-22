@@ -38,6 +38,13 @@ Moved from CLAUDE.md (its ground rules apply).
   modules naming a changed data file (`tools/git-hooks/rerun_plan.py`,
   T11, 2026-11-22; tests/test_rerun_plan.py); a data file no module
   names, or `MYIA_RECHECK=1`, runs everything.
+- The proof that lets the hook skip `make reproduce` (`stale.py
+  unproven`) reads a style's source as `ufo_digest` does, without the
+  acceptances `accepted.py` writes after a run: accepting the Italic's
+  glyphs no longer unproves the Bold Italic made from them (2026-11-22;
+  it had cost every such commit a Bold Italic reproduce). It does read
+  `tests/data/nfd-exceptions.txt`, the one data file the generators
+  read.
 - The post-commit hook rebuilds the proofs (`make proof`) in the
   background after commits touching sources, scripts or proofs/: the
   commit built is in `build/proofs/built-from`, the output in

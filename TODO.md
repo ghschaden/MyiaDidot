@@ -39,7 +39,94 @@ review before its baseline is accepted.
 - Not done: `make diffenator` and the pairs sweeps on the three generated
   styles; the Regular's `make regress` is clean.
 
-## Next session (set 2026-11-19, first on the list)
+## Next session (set 2026-11-22, first on the list)
+
+- [x] (committed 2026-11-22: ɓ ƙ ɦ ɰ ɗ ɠ ƴ ʃ Ƙ; Italic 12 quality lines off,
+      Bold Italic 1, ɰ's slant listed; shaping: ɗ 11 narrower (its hook's
+      right end, approved), Ƙ Ƴƙ pairs -6; Bold Italic shaping unchanged.
+      Generated once, ɗ grew a kink from ɓ's new top, so ɗ ɠ ƴ ʃ Ƙ were
+      added and generated again, the curl patch kept for its own batch)
+      Uncommitted in the working copy, for the next batch (one `make
+      generate`, then commit; CLAUDE.md "The cycle"):
+      ɰ in data_italic.py (ɥ's piece at 480, not 493; ITALIC_JOINS
+      250-650; tried with `make only`: the kink gone, lint clean; its
+      "slant 17.7" is checks.slant reading the crotch diagonals, as m n u
+      ɯ already listed: list it with that reason), and scripts/stale.py +
+      docs/claude/tests.md (the proof reads the source without
+      acceptances; nfd-exceptions.txt in PROOF_FILES). Sonnet's ɰ report:
+      build/pending/turnedm-report.md.
+- [ ] Approved by the designer 2026-11-22 on the full-letter sheet
+      (build/pending/curl-normal-full.pdf): into the next batch with ɗ ɠ.
+      derive.curl's ball on the outer edge's normal
+      (build/pending/curl-normal.patch, sheet build/pending/c.png): Ʈ 7.4
+      and Ɽ 4.3 degree corners gone, ɖ's hidden 4.1 too, but ɽ.sc ʈ.sc
+      get a 2.9 degree corner; every curl in all styles: `make regress`,
+      `make diffenator` first. Or left.
+      Joined in the batch (2026-11-22): ɓ ƙ ɦ, f's top on the stem, a
+      2.4-2.9 degree corner at about 950: ITALIC_JOINS_SPLIT 880-1020
+      (the plain fair_joins thinned the stems from the foot); tried with
+      `make only`, checks and lint clean, sheet build/only/Italic-ɓ.pdf.
+- [ ] Next family for Sonnet (read-only, as build/pending/attach-*.md):
+      the Italic's remaining `recipe` singles (families.py --style Italic
+      --family recipe; ɓ ƙ ɦ ɰ done in the batch above).
+- [x] (in the 2026-11-22 commit) Next batch, the same hook family: ɗ (line node 817,980 at the cut,
+      5.0 degrees) and ɠ (784,800 at the cut, 1.7) into
+      ITALIC_JOINS_SPLIT, bands kept above the bowl's join to the stem
+      (837-884): about 940-1020 and 770-840. Try with `make only` first.
+      Tried 2026-11-22 (build/pending/d-g-hook-trial.pdf): ɠ 770-840
+      clean, the letter unchanged but the join. ɗ is built from ɓ
+      (make_italic.build_own, DHOOK_CUT 1000): with ɓ's split alone its
+      corner grew (6.0, and 3.6 at 989,1000); ɗ 940-1040 with it clean
+      (900-1060 and 950-1010 too). --only must name ɓ with ɗ, or the run
+      builds ɗ from the wrong top. ɗ's hook a few units fuller.
+      Approved by the designer 2026-11-22: into the next batch.
+- [x] (in the 2026-11-22 commit: ƴ ʃ, Ƙ at dir 48) With them, read from the checks (2026-11-22):
+      Ƙ (1243,1251, 7.8 degrees) and ƴ (948,760, 7.5) break where the
+      curl starts (`at` y 1250 / 760), not at the ball, so the curl
+      patch leaves them: the arm's direction in the upright frame
+      against the recipe's `dir` (51, 90), or a split band about
+      1200-1300 / 710-810. ʃ: four corners of 1.1-3.3 degrees on both
+      edges at 900-920, f's top on the stem as in ɓ (split band about
+      860-960), and 158,-100 (4.3) where ȷ's tail is put on (cut -80).
+      Tried 2026-11-22 (build/pending/curl-starts-esh-trial.pdf,
+      approved by the designer): ƴ split 710-810 clean; ʃ split
+      860-960 mends the right edge (left 280,900 / 286,920 and the tail's
+      158,-100 stay). Into the next batch. Ƙ: split 1200-1300 mends the
+      arm but straightens the stem's right edge and drops its serif
+      bracket (same height): not taken; mend it by the recipe's `dir`
+      (51) set to the arm's angle in the upright frame instead.
+      Tried: dir 42/45/48 leave no finding (54: 5.4, 57: 3.4 degrees);
+      48 on build/pending/K-hook-dir48.pdf: stem untouched, the curl
+      turned a little down; the shoulder where arm meets curl (top
+      edge) still visible on the sheet; approved by the designer
+      2026-11-22 at 48: into the next batch.
+- [ ] Approved by the designer 2026-11-22 (build/pending/ue-glottal-trial.pdf),
+      for the batch with the curl patch: ITALIC_JOINS_SPLIT ү (-130, -30)
+      (kink 423,-80 gone; slant reads 21.1 not 19.5, invisible) and
+      ʔ (540, 720) (kink 610,687 and smooth 521,577 gone, 19 nodes to 16).
+- [ ] Tried 2026-11-22, to the designer (build/pending/fishhook-r-trial.pdf):
+      ɾ ITALIC_JOINS_SPLIT (100, 300): kinks 272,157 (3.0) and 140,254
+      (7.9) gone, 20 nodes to 19; its two steps are the foot slab's ends
+      (design, to be listed so). The designer: the stem still jogs (the
+      crossbar's band redrawn), make it straighter. So instead, no band:
+      make_italic.straight_stem at the end of fishhook (build/pending/straight_stem.patch;
+      re-made from this note if lost): each edge from
+      the foot (y 50) straight up on the tangent of the first smooth node
+      or curve above, the redraw's line nodes dropped; foot 68 -> 83 and
+      237 -> 251, 20 nodes to 15, kinks gone, one slab-end step left.
+      Sheet build/pending/fishhook-r-straight.pdf, approved by the
+      designer 2026-11-22: into the batch with the curl patch.
+      ɬ: a split band 720-800 changes nothing. The cause: l_belt.finish's
+      union leaves the ring's arc 3 units past the l's right edge between
+      bar and ring (smooth 390,760, 4.4 degrees). Tried: l_belt.flatten_stem
+      (build/pending/l_belt_flatten.patch), nodes between two on the l's
+      edge dropped, within attachment_band only (without it, it also
+      flattened the l's own curve at its top, 1407-1431): 6 nodes on the
+      right edge 724-796 become a line, Ɬ unchanged, checks and lint
+      clean. Sheet build/pending/l-belt-trial.pdf, approved by the
+      designer 2026-11-22: into the batch with the curl patch.
+
+## Next session (set 2026-11-19)
 
 - [x] (mended 2026-11-20: smooth_joins.hook_ball; the second ball's leftmost node was missing, a corner and lobe; ff ffi ffl f_f_j, followers refit) The Bold Italic's `f_f_i` ligature (glyph `ffi`) has a
       strange lower hook in its second f. Look at it on a sheet beside `ffl`, `ffj` and the
@@ -223,6 +310,20 @@ the other models. One item per session.
       four commits, each proven by every line moved, every value equal
       and `make reproduce`). Read from the code, nothing changed.
       With it F6 is complete.
+- [ ] Tried 2026-11-22, to the designer (build/pending/m-hook-trial.pdf):
+      ɱ's step 1278,200 (35 units): derive.hook_path measured the leg at
+      the cut before the recipe's `cuts` box took m's exit flare off, so
+      ȷ's descender was set 35 wider than the leg (44 at cut 250, 52 at
+      300). build/pending/hook_cuts.patch measures after the boxes (only
+      ɱ passes boxes: no other letter can change). Step gone, edge runs
+      on smoothly; but the whole tail is scaled across with it, so the
+      descender and its curl come out narrower than before.
+      Second option (build/pending/m-hook-keepwidth.pdf,
+      build/pending/hook_narrow.patch): the piece placed as before, then
+      drawn in to the leg's width at the cut and widening back to its
+      own over 300 units below (smoothstep); the step gone, the curl and
+      tail exactly as committed. NARROW_RUN 150 also clean, 220 left a
+      4.4 kink at 1265,89. To the designer: option 1 or 2.
 - [ ] F7. If sessions remain: phase 5's first two batches done on Fable
       (the rest of a-z, then A-Z), to find the cases redraw.md does not
       yet cover while the model that wrote it is still there; and the

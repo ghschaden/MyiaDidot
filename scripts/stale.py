@@ -105,17 +105,22 @@ def generator_hashes():
 
 # what a style's proof is taken over: a run of the generators made these
 # outputs from these inputs (the hook's `proven`, instead of make reproduce)
-PROOF_FILES = ("Makefile", "pyproject.toml", "uv.lock", ".python-version")
+PROOF_FILES = ("Makefile", "pyproject.toml", "uv.lock", ".python-version",
+               # read by make_italic and make_bold (their NFD check)
+               "tests/data/nfd-exceptions.txt")
 DRAFTS = SOURCES / "drafts" / "Italic-smallcaps.ufo"
 
 
 def proof_inputs(style):
-    """a digest of everything a run of style reads: its source UFO whole,
-    every file under scripts/, the build files and the toolchain (strict:
-    any change there and the proof no longer holds)"""
+    """a digest of everything a run of style reads: its source UFO (as
+    ufo_digest reads it: the acceptances accepted.py writes after a run left
+    out, or accepting the Italic's glyphs unproved the Bold Italic made from
+    them and cost the hook a reproduce, 2026-11-22), every file under
+    scripts/, the build files and the toolchain (strict: any other change
+    there and the proof no longer holds)"""
     from build_support import content_hash, json_digest, toolchain
 
-    parts = {"source": content_hash(SOURCES / f"{FAMILY}-{SOURCE_OF[style]}.ufo"),
+    parts = {"source": ufo_digest(SOURCES / f"{FAMILY}-{SOURCE_OF[style]}.ufo"),
              "scripts": content_hash(ROOT / "scripts"),
              "files": {n: content_hash(ROOT / n) for n in PROOF_FILES if (ROOT / n).exists()},
              "toolchain": toolchain()}
