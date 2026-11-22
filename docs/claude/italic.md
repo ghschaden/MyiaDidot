@@ -596,6 +596,19 @@ for the designer (B touches none of r c v w).
   wobbles; so the superiors only. The Bold Italic's ʷ ᵒ ᵘ ᶶ ⁿ, stroked
   from these, refit their handles (up to 16 units, no finding; ʷ ᵒ
   advances ±1).
+- **The recipe joins, 2026-11-22** (sheet
+  `proofs/2026-11/italic-recipe-joins-2026-11-22.pdf`, approved; causes
+  in longtail.md, family 6): ɭ ʈ faired at the stem (ITALIC_JOINS 340-610),
+  Ⱳ's arm split-faired (940-1040), Ꞵ's stem a polygon continuing B's own
+  edge (ꞵ.sc follows, 2 wider), ƃ's bar raised 60 to the 1495 ascender,
+  and ɳ ɧ ɖ's outer edge tapered from the leg into the thinner tail
+  (derive.attach's `taper` piece: the leg's edge read at the taper's top,
+  the tail's from the recipe or from the ink already built; one side
+  only, the other edge had no ledge and bowed out past the leg when
+  tapered too). ɖ was first given an even downstroke at the stem's width
+  (asked for on the sheet): it read heavier than ɭ ɳ ɧ, its curl and ball
+  had to grow with it and the advance by 74; the designer took the taper.
+  Not done: ɰ, Ɽ Ʈ's curl balls, ɱ (TODO.md).
 
 After each step: `make generate`, `make reproduce`, `redraw_sweep.py`,
 `make diffenator`, the second sheet with the Bold Italic, the quality

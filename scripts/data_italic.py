@@ -141,7 +141,7 @@ def descender(x0, y0, x1, y1, w, d, r, th):
 # (ɱ's band up to 520, 2026-11-11: the outer edge's node where the m's
 # shoulder runs into the descender stands at 500 and kept a corner of 4
 # degrees, "a kind of kink" in the downstroke on the sheet)
-ITALIC_JOINS = {"ɰ": (250, 350), "ɧ": (200, 300), "ɱ": (190, 520), "ɳ": (190, 460), "ⱳ": (590, 700)}
+ITALIC_JOINS = {"ɰ": (250, 350), "ɭ": (340, 610), "ʈ": (340, 610), "ɧ": (200, 300), "ɱ": (190, 520), "ɳ": (190, 460), "ⱳ": (590, 700)}
 # those whose join runs on through the letter's own smooth node in the band
 # (fair_joins' min_turn 0), up the stem's straight edge to its top: ɳ's
 # did only because n had a kink of 1.3 degrees at that node (682,361);
@@ -160,7 +160,7 @@ ITALIC_JOINS_THROUGH = {"ɳ", "ɱ"}
 # (without it the curve ran from the stem's foot). The Italic's only: the
 # Bold Italic's Ƈ Ɠ are its own recipes (data_bold_italic), its ƃ is
 # stroked from this one.
-ITALIC_JOINS_SPLIT = {"ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380)}
+ITALIC_JOINS_SPLIT = {"ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380), "Ⱳ": (940, 1040)}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
@@ -378,7 +378,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # b's stem without its flag serif, the bar its top run on to
                   # the right
                   "ƃ": ("attach", "b", ("x", [(-BIG, 1300, 173, BIG)],
-                                        [("rect", (173, 1379, 720, 1435), (0, 0), (1, 1, 0, 0))])),
+                                        [("rect", (173, 1439, 720, 1495), (0, 0), (1, 1, 0, 0))])),
                   # λ whole, a bar drawn across its upper stroke (the Regular's,
                   # transplanted, cut the arch off the long stroke)
                   "ƛ": ("attach", "lambda", ("x", [], [("line", ((130, 1010), (610, 1285), 46), (0, 0), (1, 1, 0, 0))])),
@@ -411,15 +411,22 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # the stem (below its swell, without the exit stroke) going on
                   # below the baseline and curling right, as ɭ ɽ ʈ (the bowl kept
                   # joined)
-                  "ɖ": ("attach", "d", ("x", [(700, -BIG, BIG, 200), (820, -BIG, BIG, 450)],
-                                        retroflex(733, 733, 210, 114, (110, 100), 57, 40))),
+                  # ɖ ɳ ɧ: the leg's outer edge tapered into the thinner tail
+                  # (derive's "taper" piece, 2026-11-22), where the flat cuts
+                  # left a 32-39 unit ledge; ɖ's cut raised to the taper's top
+                  # (an even downstroke instead was tried: heavier than ɭ ɳ,
+                  # a larger curl, 74 wider)
+                  "ɖ": ("attach", "d", ("x", [(700, -BIG, BIG, 200), (760, -BIG, BIG, 650)],
+                                        [("taper", (650, 740, (733, 114, 0), "right"), (0, 0), (1, 1, 0, 0))]
+                                        + retroflex(733, 733, 210, 114, (110, 100), 57, 40))),
                   "ɭ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
                                         retroflex(234, 234, 350, 116, (110, 100), 58, 40))),
                   # the tail on the stem (its foot serif cut away), as ɽ's
                   "Ɽ": ("attach", "R", ("c", [(-BIG, -BIG, 800, 120)],
                                         retroflex(393, 393, 160, 166, (150, 125), 82, 50))),
                   "ɳ": ("attach", "n", ("x", [(700, -BIG, BIG, 200), (900, -BIG, BIG, 450)],
-                                        retroflex(795, 795, 210, 112, (110, 100), 56, 40))),
+                                        [("taper", (600, 840, (795, 112, -50), "right"), (0, 0), (1, 1, 0, 0))]
+                                        + retroflex(795, 795, 210, 112, (110, 100), 56, 40))),
                   "ɽ": ("attach", "r", ("x", [], retroflex(354.5, 354.5, 100, 119, (110, 100), 55, 40))),
                   # ɽ.sc ʈ.sc: the tail on the stem (its foot serif cut away),
                   # as Ɽ's and Ʈ's at the small caps' size: the hook recipe
@@ -458,7 +465,8 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # its exit, the hook was scaled to that and the leg pinched
                   "ɧ": ("attach", "uni0266", ("x", [(450, -BIG, BIG, 250), (800, -BIG, BIG, 450)],
                                               [("uni0237", (-BIG, -BIG, BIG, 260), (405, 250),
-                                                (152 / 144, 1, 661, 250))])),
+                                                (152 / 144, 1, 661, 250)),
+                                               ("taper", (550, 720, ("ink", 60, 660), "right"), (0, 0), (1, 1, 0, 0))])),
                   "ɱ": ("hook", "m", ("x", "down-left", "last", 200, 160, 400, [(1360, -BIG, BIG, 450)])),
                   # F's stem (its foot serif cut away) tapering into the hook
                   "Ƒ": ("attach", "F", ("c", [(-BIG, -BIG, BIG, 150)],
@@ -468,7 +476,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                           (0, 0), (1, 1, 0, 0))])),
                   # B's stem running on down (its foot serif cut away) to a serif of its own
                   "Ꞵ": ("attach", "B", ("c", [(-BIG, -BIG, 309, 110)],
-                                        [("rect", (310, -480, 476, 40), (0, 0), (1, 1, 0, 0)),
+                                        [("poly", [(290, 110), (476, 110), (476, -480), (311, -480)], (0, 0), (1, 1, 0, 0)),
                                          ("rect", (170, -480, 616, -428), (0, 0), (1, 1, 0, 0))])),
                   # J's stem straight down into a tail curling left, crossed
                   "Ʝ": ("attach", "J", ("c", [(-BIG, -BIG, BIG, 400), (-BIG, -BIG, 500, 600)],

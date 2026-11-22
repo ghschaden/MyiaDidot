@@ -1791,6 +1791,17 @@ def attach(font, source, cuts, pieces):
             part = curl(font, "space", [], **args)
             for box in boxes:
                 part = path_op(part, rect_path(*box), "DIFFERENCE")
+        elif name == "taper":  # a leg run on into a narrower stroke below it
+            y0, near, bottom, *rest = clip
+            if bottom[0] == "ink":  # the stroke below as the pieces before drew it: ("ink", y, x near)
+                _, by, bx = bottom
+                (l0, r0), (l1, r1) = (_path_run(out, by, bx), _path_run(out, by - 30, bx))
+                way = ((l1 + r1) / 2 - (l0 + r0) / 2, -30)
+                side = rest[0] if rest else "both"
+                part = taper_path(font, source, y0, near, (l0, r0, by), side, way)
+            else:  # the stroke below: its middle, width (as a "line" piece's), y
+                bx, bw, by = bottom
+                part = taper_path(font, source, y0, near, (bx - thick(bw) / 2, bx + thick(bw) / 2, by), *rest)
         else:
             # a box, or boxes: the first kept, the others cut out of it (one
             # piece whose outline is the glyph's own, no seam to join)
@@ -1808,6 +1819,56 @@ def attach(font, source, cuts, pieces):
         out = path_op(out, path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG),
                                    "INTERSECTION"), "UNION")
     return out
+
+
+def _path_run(path, y, near):
+    """The ink run of a pathops Path at height y nearest x near, (x0, x1)."""
+    band = path_op(path, rect_path(-BIG, y - 0.25, BIG, y + 0.25), "INTERSECTION")
+    runs = [(c.bounds[0], c.bounds[2]) for c in band.contours]
+    return min(runs, key=lambda r: abs((r[0] + r[1]) / 2 - near))
+
+
+def taper_path(font, source, y0, near, bottom, side="both", way=(0, -1), over=30):
+    """An attach piece taking a leg of the letter (its ink run at y0 nearest
+    x near) down into a narrower stroke: bottom is (left x, right x, y), the
+    stroke's edges where the taper ends on them (in a recipe: its middle x,
+    its width as a "line" piece's, scaled as that is, and y), way the direction it runs
+    there (straight down by default). Each side a curve leaving the leg's
+    edge in that edge's own direction (read over the `over` units above y0)
+    and arriving along way, so neither end is a corner; the piece reaches
+    over units into the leg above and the stroke below, so the union leaves
+    no seam. Made for the retroflex and hooked legs whose tail is thinner
+    than the leg (ɳ ɧ ɱ: a 30-40 unit ledge on the outer edge where the
+    recipe's flat cut met the tail, 2026-11-22). side "right" or "left":
+    only that edge tapered, the other run straight down the middle, inside
+    the ink (a leg leaning more than its tail: tapered on both sides, the
+    edge without a ledge bowed out past the leg)."""
+    def run(y):
+        return min(stems_at(font, source, y), key=lambda r: abs((r[0] + r[1]) / 2 - near))
+
+    (a, b), (a2, b2) = run(y0), run(y0 + over)
+    xl, xr, y1 = bottom
+    if side == "right":
+        a = a2 = (a + b) / 2
+        xl = (xl + xr) / 2
+    elif side == "left":
+        b = b2 = (a + b) / 2
+        xr = (xl + xr) / 2
+    n = math.hypot(*way)
+    wx, wy = way[0] / n, way[1] / n
+    span = (y0 - y1) / 3
+    rec = RecordingPen()
+    rec.moveTo((a2, y0 + over))
+    rec.lineTo((a, y0))
+    # down the left edge: leaving as the leg's edge runs, arriving along way
+    rec.curveTo((a + (a - a2) / over * span, y0 - span), (xl - wx * span, y1 - wy * span), (xl, y1))
+    rec.lineTo((xl + wx * over, y1 + wy * over))
+    rec.lineTo((xr + wx * over, y1 + wy * over))
+    rec.lineTo((xr, y1))
+    rec.curveTo((xr - wx * span, y1 - wy * span), (b + (b - b2) / over * span, y0 - span), (b, y0))
+    rec.lineTo((b2, y0 + over))
+    rec.closePath()
+    return path_op(to_path(None, rec=rec), rect_path(-BIG, -BIG, BIG, BIG), "INTERSECTION")
 
 
 def _run_at(font, name, y, pick):

@@ -376,6 +376,16 @@ took the break for drawn. Now rounded smoothly in the Italic
 Italic: there the same unit moved the stroker's fit by up to 24 units
 and notched ⁿ's crotch; its `superior` lines wait for phase 8.
 
+**Italic `attach` kink and step, 2026-11-22** (diagnosed read-only by
+Sonnet on a HEAD extract, mended in one batch): not one cause but four.
+ɭ ʈ: a stem edge in straight pieces turning 1-1.6 degrees outside any
+faired band (ITALIC_JOINS). Ⱳ: the line piece at the arm's local slope
+(ITALIC_JOINS_SPLIT). Ꞵ: B's stem leans 2 degrees off the slant, so a
+straight rect met it with a kink wherever it joined (a polygon on B's
+own edge). ƃ: the bar's numbers older than step C's ascender. ɳ ɧ ɖ: the
+tail thinner than the leg, a 32-39 unit ledge at the flat cut, which
+fair_joins (turns under 25 degrees) cannot take: derive's `taper` piece.
+
 ### 7. The bolds' own letters (phases 7 and 8)
 
 - Bold `letter wobble` 42, with 62 more on bases (21 of them the

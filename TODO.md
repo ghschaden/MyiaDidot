@@ -1084,6 +1084,14 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       (families.py --style Italic --family recipe): `attach` kink 6 (ɭ ɰ
       ʈ Ɽ Ⱳ Ꞵ, Ɽ's 7.4 degrees the largest), `attach` step 5 (ƃ ɖ ɧ ɳ
       ʝ), and singles by recipe (Sonnet).
+      The joins batch done 2026-11-22 (italic.md, "The recipe joins"):
+      ɭ ʈ Ⱳ Ꞵ ƃ ɳ ɧ ɖ. Left: ɰ (ɥ's descender 2.3 degrees past the slant:
+      set it at the slant, then fair), Ɽ Ʈ ɖ's curl balls (derive.curl
+      places the ball on the ring's parametric angle, not the outer edge's
+      normal: a 4-7 degree corner with unequal radii in every style; a
+      shared change, `make regress` and `make diffenator` first, or left),
+      ɱ's ledge (made by `hook`, which has no taper), ʝ designed (its
+      crossbar's square end), ɧ's 271,955 from ɦ.
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a
