@@ -104,7 +104,7 @@ review before its baseline is accepted.
       docs/claude/tests.md (the proof reads the source without
       acceptances; nfd-exceptions.txt in PROOF_FILES). Sonnet's ɰ report:
       build/pending/turnedm-report.md.
-- [ ] Approved by the designer 2026-11-22 on the full-letter sheet
+- [x] (in 57ce3b2a) Approved by the designer 2026-11-22 on the full-letter sheet
       (build/pending/curl-normal-full.pdf): into the next batch with ɗ ɠ.
       derive.curl's ball on the outer edge's normal
       (build/pending/curl-normal.patch, sheet build/pending/c.png): Ʈ 7.4
@@ -115,9 +115,27 @@ review before its baseline is accepted.
       2.4-2.9 degree corner at about 950: ITALIC_JOINS_SPLIT 880-1020
       (the plain fair_joins thinned the stems from the foot); tried with
       `make only`, checks and lint clean, sheet build/only/Italic-ɓ.pdf.
-- [ ] Next family for Sonnet (read-only, as build/pending/attach-*.md):
+- [x] Next family for Sonnet (read-only, as build/pending/attach-*.md):
       the Italic's remaining `recipe` singles (families.py --style Italic
       --family recipe; ɓ ƙ ɦ ɰ done in the batch above).
+      Diagnosed 2026-11-22 (build/pending/recipe-singles-report.md,
+      pictures in build/pending/singles/); the batch, approved by the
+      designer on build/only/Italic-uni0267.pdf: derive.fair_joins takes
+      the arriving tangent at the band's entry (ɧ's kink, ɳ's smooth;
+      only these two of its 20 users change); ʃ a second split band at
+      the tail (-110, -80; ITALIC_JOINS_SPLIT takes several); ƴ
+      ITALIC_CORNERS (628, 40); в.loclBGR a handle 3 units; ₮'s bars
+      centred on the Italic's stem (400-900; the designer: "not
+      centered" at the Regular's 560); ɬ Ɬ out of POINT_REPAIRS (their
+      extremes split); derive.relevel for data_italic.RELEVEL (ɧ Ɯ ƹ ʊ
+      ˁ ɬ: rounding of short handles). Left: Ⱦ's shelf under the slash,
+      ɾ's foot slab (a symmetric slab added a step to the Bold Italic's
+      ɾ ᵳ), ʃ's two 1.5-degree seam nodes, ʝ (designed).
+- [ ] Open, a decision for the designer with its own run and review:
+      derive.relevel over the whole Italic (Sonnet's experiment,
+      build/pending/singles/relevel_all_italic.py): smooth 67 -> 1, but
+      464 nodes in 241 glyphs move 1-2 units and every Bold Italic glyph
+      stroked from them; taken 2026-11-22 for six letters only.
 - [x] (in the 2026-11-22 commit) Next batch, the same hook family: ɗ (line node 817,980 at the cut,
       5.0 degrees) and ɠ (784,800 at the cut, 1.7) into
       ITALIC_JOINS_SPLIT, bands kept above the bowl's join to the stem
@@ -149,11 +167,11 @@ review before its baseline is accepted.
       turned a little down; the shoulder where arm meets curl (top
       edge) still visible on the sheet; approved by the designer
       2026-11-22 at 48: into the next batch.
-- [ ] Approved by the designer 2026-11-22 (build/pending/ue-glottal-trial.pdf),
+- [x] (in 57ce3b2a) Approved by the designer 2026-11-22 (build/pending/ue-glottal-trial.pdf),
       for the batch with the curl patch: ITALIC_JOINS_SPLIT ү (-130, -30)
       (kink 423,-80 gone; slant reads 21.1 not 19.5, invisible) and
       ʔ (540, 720) (kink 610,687 and smooth 521,577 gone, 19 nodes to 16).
-- [ ] Tried 2026-11-22, to the designer (build/pending/fishhook-r-trial.pdf):
+- [x] (in 57ce3b2a) Tried 2026-11-22, to the designer (build/pending/fishhook-r-trial.pdf):
       ɾ ITALIC_JOINS_SPLIT (100, 300): kinks 272,157 (3.0) and 140,254
       (7.9) gone, 20 nodes to 19; its two steps are the foot slab's ends
       (design, to be listed so). The designer: the stem still jogs (the

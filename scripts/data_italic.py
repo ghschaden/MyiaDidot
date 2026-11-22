@@ -169,14 +169,17 @@ ITALIC_JOINS_THROUGH = {"ɳ", "ɱ"}
 # the band above ɡ's bowl; ƴ: where the curl leaves the diagonal (at 760);
 # ʃ: f's top on the stem, as ɓ (its left edge keeps 1.5 degrees)
 # (2026-11-22, sheets approved by the designer)
-ITALIC_JOINS_SPLIT = {"ɓ": (880, 1020), "ɗ": (940, 1040), "ɠ": (770, 840), "ƴ": (710, 810), "ʃ": (860, 960), "ƙ": (880, 1020), "ɦ": (880, 1020), "ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380), "Ⱳ": (940, 1040), "ү": (-130, -30), "ʔ": (540, 720)}
+ITALIC_JOINS_SPLIT = {"ɓ": (880, 1020), "ɗ": (940, 1040), "ɠ": (770, 840), "ƴ": (710, 810), "ʃ": ((860, 960), (-110, -80)), "ƙ": (880, 1020), "ɦ": (880, 1020), "ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380), "Ⱳ": (940, 1040), "ү": (-130, -30), "ʔ": (540, 720)}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
 # back of ж's right c it meets rises at 2, a kink with a swelling above it
 # (2026-11-08). Not fair_joins: one curve from the descender's
 # foot to the c would bend the whole edge (as it thinned ⱳ's arm).
-ITALIC_CORNERS = {"җ": (200, 120)}
+# ƴ: y's arm into the curl's thinner lead, a 3.5-degree corner at y's node
+# at 628 below the split band (reach 40: the taper is 82 long; a fatter
+# lead closed the curl, 2026-11-22)
+ITALIC_CORNERS = {"җ": (200, 120), "ƴ": (628, 40)}
 
 # an edge run straight between two heights: from the rightmost on-curve
 # point at the first (within 6 units) going down, to the second on the
@@ -200,7 +203,12 @@ ZH_DX = 150
 # ɑ is the italic's one-storey a (Old Standard's ɑ is its α), ɒ that turned
 OWN_RECIPE = {"ʀ", "ɑ"}
 KEPT_SLOPED = {"ʌ", "ɐ", "ᵃ", "a.ipa"}
-ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
+# ₮: the Regular's bars (500 long, the same slope and heights), centred on
+# the Italic's stem (560-740 upright, middle 650) as on the Regular's: with
+# the Regular's x (560) they ran off to the right only and their square
+# starts stood 14-30 units out of the stem's left edge (2026-11-22)
+ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((400, 700), (900, 940))])),
+                  "л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                   # ɴ: n.sc's ink fitted from its vertex, 25 below the line
                   # (21 at ɴ's size), so its feet stand on it (from 0 they
                   # stood 23 above, 2026-11-05)
@@ -585,7 +593,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                                  ("poly", [(300, 690), (300, 835), (360, 835), (430, 820), (395, 800),
                                                            (375, 780), (360, 760), (345, 740), (335, 720), (325, 700)],
                                                   (0, 0), (1, 1, 0, 0)),
-                                                 ("poly", [(354, 915), (354, 931), ((430, 931), (554, 942), (564, 991)),
+                                                 ("poly", [(354, 915), (354, 931), ((430, 931), (551, 943), (564, 991)),
                                                            (580, 960), (510, 872)],
                                                   (0, 0), (1, 1, 0, 0))])),
                   # ъ (its stem a cursive diagonal): the ь above with ъ's
@@ -770,9 +778,21 @@ ANCHOR_NUDGE = {("c", "Cedilla"): (0, -4), ("e", "Cedilla"): (0, -10),
 GREEK_CAP_SAMPLES = {"Alpha": "uni1F08", "Epsilon": "uni1F18", "Eta": "uni1F28", "Iota": "uni1F38",
                      "Omicron": "uni1F48", "Rho": "uni1FEC", "Upsilon": "uni1F59", "Omegagreek": "uni1F68"}
 
-# their repairs match their exact points (aleph.py, l_belt.py): slanted
-# without splitting their curves at the extremes the slant moves
-POINT_REPAIRS = {"uni2135", "uni026C", "uniA7AD"}
+# smooth nodes that whole-unit rounding of a short handle (or a line seam
+# flagged smooth) left 1-5 degrees off, put in line again (derive.relevel,
+# at make_italic.put; ɬ Ɬ at the end of l_belt.finish): ɧ's tail, Ɯ's
+# bracket, ʊ ˁ's seams, ɬ's ring once its extremes are split (2026-11-22,
+# phase 6 step D; the pass over the whole Italic, smooth 67 -> 1 but 241
+# glyphs and the Bold Italic moved, not taken). Not ƹ: its mirrored node
+# put in line, the CFF hints took its top off the x-height zone at four
+# sizes (tests/test_hinting.py), a screen fault for an invisible 2.2 degrees
+RELEVEL = {"uni0267", "uni019C", "uni028A", "uni02C1", "uni026C"}
+
+# their repairs match their exact points (aleph.py): slanted without
+# splitting their curves at the extremes the slant moves (ɬ Ɬ taken out
+# 2026-11-22: the ring's extremes, 6-7 units past, split at the shear;
+# l_belt's bridges hold without the exact points)
+POINT_REPAIRS = {"uni2135"}
 # Rounded plainly, not smoothly (make_bold.round_smoothly): the repairs of
 # ℵ (aleph.py) and of ɬ Ɬ's belts (l_belt.py) match their exact points;
 # ȷ's descender is cut and attached for the Bold Italic ɱ and ɧ, where a

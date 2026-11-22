@@ -77,10 +77,13 @@ def test_bold_belts_keep_spacing_and_follow_final_base(name, base):
     readGlyphFromString((DATA / f'l-belt-before-BoldItalic-{name}.glif').read_text(),
                        glyphObject=before, pointPen=before.getPointPen())
     respaced(before)  # (recorded at the Bold's cut)
-    # ɬ a unit narrower: l's stem weighted to n's (phase 6 step C, 2026-11-19)
-    assert glyph.width == before.width + {'uni026C': -1}.get(name, 0)
-    # (ɬ's anchors up to 20 across from the fixture's: l's stem weighted, step C)
-    slack = 20 if name == 'uni026C' else 0
+    # ɬ a unit narrower: l's stem weighted to n's (phase 6 step C, 2026-11-19);
+    # ɬ Ɬ a unit narrower again: the Italic's ring has its extremes split at
+    # the shear (out of POINT_REPAIRS, 2026-11-22; the shaping report reviewed)
+    assert glyph.width == before.width + {'uni026C': -2, 'uniA7AD': -1}.get(name, 0)
+    # (ɬ's anchors up to 20 across from the fixture's: l's stem weighted, step C;
+    # Ɬ's one unit, with its width, 2026-11-22)
+    slack = 20 if name == 'uni026C' else 1
     assert [(a.name, a.y) for a in glyph.anchors] == [(a.name, a.y) for a in before.anchors]
     assert all(abs(a.x - b.x) <= slack for a, b in zip(glyph.anchors, before.anchors))
     assert glyph.getBounds(font).yMax == font[base].getBounds(font).yMax

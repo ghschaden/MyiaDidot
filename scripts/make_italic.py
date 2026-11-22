@@ -92,6 +92,7 @@ from data_italic import (
     OS_SHIFT,
     OWN_RECIPE,
     POINT_REPAIRS,
+    RELEVEL,
     ROMAN_GLYPHS,
     ROMAN_SIGNS,
     ROUND_PLAIN,
@@ -110,6 +111,7 @@ from derive import BIG, draw_path, embolden, rezone
 from drawn import is_drawn
 from fontforge_inputs import source_font
 from italic_geometry import ANGLE, CAP, EXTREME_PAST, SLANT, XH, shear, upright
+from l_belt import TARGETS as BELTED
 from make_bold import WHOLE_KEY, mark_like, redraw, write
 from respace import CUT_KEY, classifier, respace, sidebearings, undo
 from smallcaps import ink_bounds, ink_slice
@@ -554,6 +556,8 @@ def put(font, up, name, source):
         before = copy.deepcopy(g)
         g.clearContours()
         derive.draw_path(font, before, g, derive.to_path(font, before), smooth=name in SUPERIORS)
+    if name in RELEVEL and name not in BELTED:  # ɬ Ɬ: after their belt pass (l_belt.finish)
+        derive.relevel(g)
     g.lib[SOURCE_KEY] = source
     font.layers.defaultLayer.insertGlyph(g, name, overwrite=True)
 
@@ -1459,7 +1463,9 @@ def derive_stage(font, regular, late=False, kept=()):
         if ch in ITALIC_JOINS:
             derive.fair_joins(up[name], *ITALIC_JOINS[ch], min_turn=0 if ch in ITALIC_JOINS_THROUGH else 1)
         if ch in ITALIC_JOINS_SPLIT:
-            derive.fair_joins(up[name], *ITALIC_JOINS_SPLIT[ch], split=True)
+            bands = ITALIC_JOINS_SPLIT[ch]  # one band, or several (ʃ: the top of f and the tail)
+            for band in (bands if isinstance(bands[0], tuple) else (bands,)):
+                derive.fair_joins(up[name], *band, split=True)
         if ch in ITALIC_RUNS:
             straighten_run(up[name], *ITALIC_RUNS[ch])
         if ch in ITALIC_CORNERS:

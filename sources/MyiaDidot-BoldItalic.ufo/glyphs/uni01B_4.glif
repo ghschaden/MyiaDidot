@@ -4,9 +4,6 @@
 	<advance width="1441"/>
 	<outline>
 		<contour>
-			<point x="4" y="-276" type="curve" smooth="yes"/>
-			<point x="4" y="-189"/>
-			<point x="111" y="-154"/>
 			<point x="180" y="-154" type="curve" smooth="yes"/>
 			<point x="250" y="-154"/>
 			<point x="304" y="-190"/>
@@ -107,6 +104,9 @@
 			<point x="327" y="-485" type="curve" smooth="yes"/>
 			<point x="190" y="-485"/>
 			<point x="4" y="-421"/>
+			<point x="4" y="-276" type="curve" smooth="yes"/>
+			<point x="4" y="-189"/>
+			<point x="111" y="-154"/>
 		</contour>
 	</outline>
 	<anchor name="DotBelow" x="957" y="-20"/>
@@ -119,11 +119,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-11</string>
+				<string>2026-11-22</string>
 				<key>glyph</key>
-				<string>ad5ecc4199d2</string>
+				<string>d87b434b21ee</string>
 				<key>review</key>
-				<string>docs/claude/redraw.md</string>
+				<string>proofs/2026-11/recipe-singles-2026-11-22.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

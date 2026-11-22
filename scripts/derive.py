@@ -1539,6 +1539,15 @@ def fair_joins(glyph, y0, y1, max_turn=25, tiny=16, min_turn=1, split=False):
                 else:
                     u = unit(entry, lead[0])
                     h1 = (entry[0] + u[0] * span / 3, entry[1] + u[1] * span / 3)
+                # the curve leaves the entry on the tangent the outline arrives on, where the
+                # two differ by a few degrees (a join the band did not reach: the curl's edge
+                # into a leg's taper, ɧ ɳ)
+                before = into(segs, (run[0] - 1) % n)
+                tin = math.atan2(entry[1] - before[1], entry[0] - before[0])
+                tout = math.atan2(h1[1] - entry[1], h1[0] - entry[0])
+                if 1 <= abs((math.degrees(tout - tin) + 180) % 360 - 180) <= 6:
+                    reach = math.dist(entry, h1)
+                    h1 = (entry[0] + reach * math.cos(tin), entry[1] + reach * math.sin(tin))
                 if trail[1]:
                     h2 = trail[1][-1]
                 else:
@@ -2439,3 +2448,51 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def relevel(glyph, lo=1.0, hi=5.0):
+    """Smooth nodes that whole-unit rounding of a short handle left lo-hi
+    degrees off, put in line again on whole units: between two curves both
+    handles turned onto the bisector, beside a line the curve's handle
+    turned onto the line, each to the whole-unit point nearest that
+    direction at its own length. Returns the number of nodes moved
+    (data_italic.RELEVEL, 2026-11-22)."""
+
+    def direction(a, b):
+        return math.atan2(b[1] - a[1], b[0] - a[0])
+
+    def off(a, b):
+        return abs((math.degrees(b - a) + 180) % 360 - 180)
+
+    def nearest(node, angle, length):
+        ideal = (node[0] + length * math.cos(angle), node[1] + length * math.sin(angle))
+        return min(((x, y) for x in (math.floor(ideal[0]), math.ceil(ideal[0]))
+                    for y in (math.floor(ideal[1]), math.ceil(ideal[1]))),
+                   key=lambda q: off(direction(node, q), angle))
+
+    moved = 0
+    for contour in glyph.contours:
+        pts = contour.points
+        for i, p in enumerate(pts):
+            if not p.type or not p.smooth:
+                continue
+            a, b = pts[i - 1], pts[(i + 1) % len(pts)]
+            node = (p.x, p.y)
+            la, lb = math.dist((a.x, a.y), node), math.dist((b.x, b.y), node)
+            if not la or not lb:
+                continue
+            d0, d1 = direction((a.x, a.y), node), direction(node, (b.x, b.y))
+            if not lo <= off(d0, d1) <= hi:
+                continue
+            if a.type is None and b.type is None:
+                mid = d0 + math.radians((math.degrees(d1 - d0) + 180) % 360 - 180) / 2
+                a.x, a.y = nearest(node, mid + math.pi, la)
+                b.x, b.y = nearest(node, mid, lb)
+            elif b.type is None:  # a line arrives: the curve leaves on it
+                b.x, b.y = nearest(node, d0, lb)
+            elif a.type is None:  # a line leaves: the curve arrives on it
+                a.x, a.y = nearest(node, d1 + math.pi, la)
+            else:
+                continue
+            moved += 1
+    return moved

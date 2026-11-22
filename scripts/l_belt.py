@@ -3,7 +3,8 @@
 import math
 from copy import deepcopy
 
-from derive import draw_path, path_op, rect_path, stems_at, to_path
+from data_italic import RELEVEL
+from derive import draw_path, path_op, rect_path, relevel, stems_at, to_path
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.transformPen import TransformPen
 
@@ -61,6 +62,10 @@ def finish(font):
         glyph.clearContours()
         draw_path(font, before, glyph, out)
         flatten_stem(font, glyph, base, attachment_band(name))
+    # their rounding seen to once the belt is joined (ɬ: one inner ring node)
+    for name in sorted(RELEVEL & TARGETS.keys()):
+        if name in font:
+            relevel(font[name])
 
 
 def flatten_stem(font, glyph, base, band, near=6, on=1.5):
