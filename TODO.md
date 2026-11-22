@@ -41,6 +41,55 @@ review before its baseline is accepted.
 
 ## Next session (set 2026-11-22, first on the list)
 
+- [x] (committed 2026-11-22, proofs/2026-11/curl-normal-batch3-2026-11-22.pdf) **Start here (handover 2026-11-22, after 875945c8).** The third
+      batch, all approved by the designer on sheets in build/pending/:
+      the curl ball on the outer edge's normal (curl-normal.patch, to
+      scripts/derive.py), ɾ's straight stem (straight_stem.patch, to
+      make_italic.py), ɬ's belt edge (l_belt_flatten.patch, to l_belt.py),
+      and two lines in data_italic.py: ITALIC_JOINS_SPLIT gains "ү":
+      (-130, -30) and "ʔ": (540, 720); ɱ's cuts box (1360, -BIG, BIG, 450)
+      becomes (1460, -BIG, BIG, 450). All five apply cleanly to 875945c8
+      (tried). NOT the other ɱ patches (hook_cuts, hook_narrow: rejected).
+      Still to do before `make generate`: the curl patch reaches the
+      generated Bold (Ƭ and others) and Bold Italic (Ƙ Ʋ Ƴ ƴ ʋ Ɦ ɦ.sc and
+      its curled IPA descenders), which the designer has not seen. Make a
+      scratch run of all three styles from a worktree with the five
+      changes (make_italic --out, make_bold Regular -> Bold --out,
+      make_bold scratch Italic -> Bold Italic --out; Italic 2 min, Bold 1,
+      Bold Italic 10-15), list the glyphs whose outlines differ from the
+      committed sources, and put those on sheets for the designer first.
+      The Regular is not reached (derive.py keeps reviewed glyphs). Then
+      generate, `make regress` and `make diffenator` (every curl), the
+      lists, baselines, commit. Also open: ʃ's left edge and tail join;
+      the rest of the Italic's recipe singles (families.py --family
+      recipe).
+      Scratch runs done 2026-11-22 (worktree, all three styles, `--out`):
+      the Italic and Bold sheets approved by the designer (Bold: Ƭ ʂ ʐ,
+      the ball of ʂ ʐ smaller). The curl patch also reached the Cyrillic
+      descenders (data_italic.descender draws them with derive.curl): a
+      notch where the ball runs back into its stroke (Italic Җ Қ, Bold
+      Italic Җ җ Қ ң, a spike in Җ) and a sharp tip on the Bold Italic's
+      ʋ. The designer: keep the old ball there. derive.curl takes
+      `normal=False` (the ball on the parametric angle, as before), set
+      by descender() and by the Bold Italic's ʋ Қ Җ җ қ ң recipes. Checks
+      on the scratch Italic: kinks 289 -> 274, smooth 72 -> 67, steps
+      25 -> 22; new: ɽ.sc ʈ.sc 2.9 degrees at y -225 (expected), ʝ.sc
+      1.4, ˁ Ɦ smooth 2.3-2.5, ү slant 19.5 -> 21.1, ɾ ᵳ one step of 55
+      left at the foot (were two of 67-69 and kinks). ң's 4.3-degree
+      kink in the first run was from the new ball: gone with normal=False
+      (ң and every Italic descender as committed; ү ұ change by ү's band).
+      The Bold Italic's sheet approved but Ɠ and Ƈ (the designer: the
+      hook's stroke at the very edge of the terminal, as in the Italic):
+      their stroke 60 and 70 further right (data_bold_italic.py; tried
+      at 55-90 and 134: less left a shelf of the terminal beside the
+      stroke, more a step on its left edge), which left a 6.5-degree kink
+      where the stroke meets the curl (1500): ITALIC_BOLD_JOINS Ƈ
+      1440-1520, Ɠ 1470-1520 (Ɠ at 1440 cut the curl off its stroke, and
+      neither checks nor lint saw it: look at every faired join).
+      Still open from this batch: ɽ.sc ʈ.sc's 2.9-degree corner at -225
+      (3.9 in the Bold Italic), ɾ ᵳ's step of 52-55 at the foot, ү's
+      slant 21.1, ʝ.sc ˁ Ɦ ƴ.sc small corners.
+
 - [x] (committed 2026-11-22: ɓ ƙ ɦ ɰ ɗ ɠ ƴ ʃ Ƙ; Italic 12 quality lines off,
       Bold Italic 1, ɰ's slant listed; shaping: ɗ 11 narrower (its hook's
       right end, approved), Ƙ Ƴƙ pairs -6; Bold Italic shaping unchanged.
@@ -323,7 +372,15 @@ the other models. One item per session.
       drawn in to the leg's width at the cut and widening back to its
       own over 300 units below (smoothstep); the step gone, the curl and
       tail exactly as committed. NARROW_RUN 150 also clean, 220 left a
-      4.4 kink at 1265,89. To the designer: option 1 or 2.
+      4.4 kink at 1265,89. The designer: both very bad, steps in the
+      stroke. The real fault: the `cuts` box (1360, -BIG, BIG, 450) sliced
+      the leg flat at 450 (a 37-77 unit shoulder) and left it about 100
+      wide below (m's stem ~165), the 35 at 200 only its consequence.
+      Mend: the box moved clear of the leg, x0 1460 (the exit stroke's tip
+      lies 1493-1600, the leg at most 1423 at 450 in the box's frame); the
+      hook code unchanged, no patch. One contour, checks and lint clean,
+      advance 1532 kept. build/pending/m-hook-fullleg.pdf, approved by the
+      designer 2026-11-22: into the batch with the curl patch.
 - [ ] F7. If sessions remain: phase 5's first two batches done on Fable
       (the rest of a-z, then A-Z), to find the cases redraw.md does not
       yet cover while the model that wrote it is still there; and the
@@ -1037,10 +1094,16 @@ count within a few of the Regular's counterpart (where the design has
 one); no entry in the style's quality list; accepted at 144 pt beside the
 Regular and in words at text size.
 
-To decide first: whether 0.900 waits for these phases. Recommended: ship
-0.900 after phases 0-4 and 9 (every glyph is already accepted at text
-size) and take phases 5-8 as the road to 1.000; a redrawn core changes
-advances little but shaping baselines much, better between releases.
+Decided by the designer 2026-11-22: 0.900 waits for these phases, and
+the font is proofed once, complete (phase 9 after phase 8). No one but
+the designer uses it yet, so the reflow a redrawn core brings costs
+nothing outside, and a printed proof made before 5-8 would have to be
+read again. Two things are taken early instead: the Italic's colour
+(phase 9's first step, as a small print sample, before phase 5 redraws
+the Italic on a weight that might change) and phase 9's automated parts
+(`make qa`, `make udhr`, the screen checks) run along the way, to catch
+regressions while the styles are redrawn. (The earlier recommendation,
+0.900 after phases 0-4 and 9, set aside.)
 
 ## Phase 5: the Italic's core set redrawn
 
@@ -1264,7 +1327,14 @@ does not follow the Italic, so each would be redone.
 
 Model: Sonnet and the agents; the reading is the designer's.
 
-- [ ] Printed text pages (`proofs/textpages.tex`) at 9, 10, 11, 12 pt in
+- [ ] Before phase 5 (decided 2026-11-22): the Italic's colour alone,
+      a small printed sample of Regular and Italic paragraphs at 9-12 pt
+      (from `proofs/textpages.tex`): accept the Italic about 5 % lighter
+      or raise `make_italic.py` WEIGHT a step, so that phase 5 redraws
+      on the final weight.
+- [ ] Along phases 5-8: `make qa`, `make udhr` and the screen checks
+      below rerun now and then, new findings only (no reading).
+- [ ] After phase 8, once: printed text pages (`proofs/textpages.tex`) at 9, 10, 11, 12 pt in
       the four styles, mixed roman/italic/bold paragraphs, in German,
       French, Greek, Russian, Vietnamese; read for colour between styles
       (the Italic about 5 % lighter than the Regular: accept or raise

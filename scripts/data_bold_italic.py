@@ -41,8 +41,13 @@ ITALIC_BOLD_UNJOINED = {"uni2C72": "Ⱳ: the curl's join tangled (53 nodes)"}
 # stem (the cut's top, 300); the Italic's band (250-350) also took ɯ's own
 # nodes there, the first stroke's at 310 and the last hairline's at 256
 # and where it meets the descender (276), each refitted in one curve to
-# the next node: the hairline 41-45 against ɯ's 62-64 (2026-11-10)
-ITALIC_BOLD_JOINS = {"ɰ": (290, 305)}
+# the next node: the hairline 41-45 against ɯ's 62-64 (2026-11-10).
+# Ƈ Ɠ: their stroke moved onto the terminal's right edge (2026-11-22), the
+# terminal's top ran on into its left side up to 1450 and a short line
+# above it met the curl at 1500 at 6.5 degrees; Ɠ's band from 1440 joined
+# the wrong nodes and cut the curl off its stroke (seen, not caught by the
+# checks or the lint)
+ITALIC_BOLD_JOINS = {"ɰ": (290, 305), "Ƈ": (1440, 1520), "Ɠ": (1470, 1520)}
 # Bold Italic letters still emboldened by weight: a repair after matches
 # that outline's points (to redo on the stroked outline)
 ITALIC_BOLD_BY_POINTS = {
@@ -250,8 +255,12 @@ ITALIC_BOLD_RECIPES = {
        # (C and G moved 145 and 148 in phase 6's step B, 2026-11-17; the
        # stroke's x with them, step D; the cut and the stroke's foot found
        # again on the wider terminals, a notch and a step at the old ones:
-       # cut from x - 10 above 1320, the stroke from 1290)
-       for ch, base, x, y0 in (("Ƈ", "C", 1090 + 145, 1290), ("Ɠ", "G", 1139 + 148, 1290))},
+       # cut from x - 10 above 1320, the stroke from 1290; Ƈ's 70 and Ɠ's
+       # 60 further right, their right edge running on from the terminal's
+       # as in the Italic: before, the terminal's top stood out beside the
+       # stroke as a shelf (Ƈ at 60 still 31 units of it), Ɠ's left edge
+       # stepped at 75 and more, 2026-11-22)
+       for ch, base, x, y0 in (("Ƈ", "C", 1090 + 145 + 70, 1290), ("Ɠ", "G", 1139 + 148 + 60, 1290))},
     # Ƭ: the Italic's, its strokes at this weight (as rederive scales them)
     # and its ball as large as the curl takes with no notch (80-90 at 180-200
     # degrees; the case's, 96, notched it): the Italic's smaller one (65)
@@ -386,7 +395,7 @@ ITALIC_BOLD_RECIPES = {
     # eye closed to a slit; the stem tapered into it, a dead end)
     "ʋ": ("curl", "u", ("x", [(705, 700, 10000, 10000)],
                         {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", **CURL_LOW, "sweep": 105,
-                         "ball": 95, "t": (251, 62)})),
+                         "ball": 95, "t": (251, 62), "normal": False})),
     # ⱳ: the Italic's, on the Bold Italic's arm, cut below where it flares
     # (1312-1404 at 600) and narrowing to the curl's stroke (a straight
     # stroke at the curl's width stepped 36 units aside of the arm at 645);
@@ -399,30 +408,31 @@ ITALIC_BOLD_RECIPES = {
     # Қ Җ җ қ: the Italic's (data_italic.descender), on the Bold Italic's
     # leg (its centre and weight at 200, where it is cut), the exit stroke
     # cut away, the ball half the stroke (as there, so the curl's end has no
-    # step): emboldened whole, the curls closed on their strokes
+    # step): emboldened whole, the curls closed on their strokes; the ball
+    # on the parametric angle (normal False, as in data_italic.descender)
     "Қ": ("attach", "uni041A", ("c", [(900, -10000, 10000, 200), (1270, -10000, 10000, 450)],
                                 [("line", ((1057, 210), (1062, -150), 300), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 1062, -150, 300), "dir": 270, "turn": "cw", "r": (195, 170),
-                                           "sweep": 170, "ball": 144, "t": (300, 60)}, (0, 0), (1, 1, 0, 0))])),
+                                           "sweep": 170, "ball": 144, "t": (300, 60), "normal": False}, (0, 0), (1, 1, 0, 0))])),
     "Җ": ("attach", "uni0416", ("c", [(1495, -10000, 10000, 200), (1900, -10000, 10000, 450)],
                                 [("line", ((1664, 210), (1669, -150), 318), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 1669, -150, 318), "dir": 270, "turn": "cw", "r": (205, 175),
-                                           "sweep": 155, "ball": 134, "t": (318, 60)}, (0, 0), (1, 1, 0, 0))])),
+                                           "sweep": 155, "ball": 134, "t": (318, 60), "normal": False}, (0, 0), (1, 1, 0, 0))])),
     "җ": ("attach", "uni0436", ("x", [(975, -10000, 10000, 200), (1390, -10000, 10000, 450)],
                                 [("line", ((1090, 210), (1102, -150), 215), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 1102, -150, 215), "dir": 272, "turn": "cw", "r": (150, 130),
-                                           "sweep": 170, "ball": 103, "t": (215, 55)}, (0, 0), (1, 1, 0, 0))])),
+                                           "sweep": 170, "ball": 103, "t": (215, 55), "normal": False}, (0, 0), (1, 1, 0, 0))])),
     "қ": ("attach", "uni043A", ("x", [(630, -10000, 10000, 200), (960, -10000, 10000, 450)],
                                 [("line", ((765, 210), (771, -150), 255), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 771, -150, 255), "dir": 270, "turn": "cw", "r": (170, 145),
-                                           "sweep": 170, "ball": 122, "t": (255, 55)}, (0, 0), (1, 1, 0, 0))])),
+                                           "sweep": 170, "ball": 122, "t": (255, 55), "normal": False}, (0, 0), (1, 1, 0, 0))])),
     # ң: the Italic's, on the Bold Italic's н (the stem's centre 855 in the
     # upright frame, 241 thick at the cut, its ball between қ's and җ's): by the Italic's numbers the
     # stroke stood 40 units beside the stem, a step on either side
     "ң": ("attach", "uni043D", ("x", [(675, -10000, 10000, 200), (1015, -10000, 10000, 450)],
                                 [("line", ((855, 210), (858, -150), 245), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 858, -150, 245), "dir": 270, "turn": "cw", "r": (162, 139),
-                                           "sweep": 170, "ball": 114, "t": (245, 55)}, (0, 0), (1, 1, 0, 0))])),
+                                           "sweep": 170, "ball": 114, "t": (245, 55), "normal": False}, (0, 0), (1, 1, 0, 0))])),
     # ɰ: the Bold Italic's ɯ, its last stem running down into ɥ's descender,
     # narrowed to that stem (216 at the cut, ɥ's 236): emboldened from the
     # Italic's ɰ, it was notched at the knees where ɯ is whole

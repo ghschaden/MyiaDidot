@@ -39,22 +39,19 @@
 			<point x="1516" y="870"/>
 			<point x="1502" y="819" type="curve" smooth="yes"/>
 			<point x="1496" y="797"/>
-			<point x="1481" y="776"/>
-			<point x="1460" y="759" type="curve"/>
-			<point x="1445" y="745"/>
-			<point x="1425" y="735"/>
-			<point x="1405" y="735" type="curve" smooth="yes"/>
-			<point x="1371" y="735"/>
-			<point x="1350" y="763"/>
-			<point x="1359" y="797" type="curve" smooth="yes"/>
-			<point x="1368" y="831"/>
-			<point x="1404" y="858"/>
-			<point x="1438" y="858" type="curve" smooth="yes"/>
-			<point x="1439" y="858"/>
-			<point x="1441" y="858"/>
-			<point x="1442" y="858" type="curve"/>
-			<point x="1436" y="874"/>
-			<point x="1422" y="884"/>
+			<point x="1481" y="777"/>
+			<point x="1460" y="759" type="curve" smooth="yes"/>
+			<point x="1446" y="747"/>
+			<point x="1428" y="740"/>
+			<point x="1410" y="740" type="curve" smooth="yes"/>
+			<point x="1376" y="740"/>
+			<point x="1356" y="767"/>
+			<point x="1366" y="801" type="curve" smooth="yes"/>
+			<point x="1376" y="835"/>
+			<point x="1407" y="861"/>
+			<point x="1440" y="863" type="curve"/>
+			<point x="1433" y="876"/>
+			<point x="1420" y="884"/>
 			<point x="1404" y="884" type="curve" smooth="yes"/>
 			<point x="1376" y="884"/>
 			<point x="1348" y="863"/>
@@ -70,24 +67,24 @@
 			<point x="177" y="971" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="893" y="1156"/>
-	<anchor name="Acute" x="889" y="1136"/>
-	<anchor name="Grave" x="889" y="1136"/>
-	<anchor name="Dotaccent" x="898" y="1176"/>
-	<anchor name="TopCap" x="901" y="1186"/>
-	<anchor name="Bottom" x="597" y="0"/>
-	<anchor name="DotBelow" x="592" y="-20"/>
-	<anchor name="Horn" x="1267" y="917"/>
+	<anchor name="Top" x="898" y="1156"/>
+	<anchor name="Acute" x="894" y="1136"/>
+	<anchor name="Grave" x="894" y="1136"/>
+	<anchor name="Dotaccent" x="903" y="1176"/>
+	<anchor name="TopCap" x="906" y="1186"/>
+	<anchor name="Bottom" x="602" y="0"/>
+	<anchor name="DotBelow" x="597" y="-20"/>
+	<anchor name="Horn" x="1272" y="917"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-20</string>
+				<string>2026-11-22</string>
 				<key>glyph</key>
-				<string>0ac6c52be5e2</string>
+				<string>c199c4823627</string>
 				<key>review</key>
-				<string>proofs/2026-11/smallcap-overshoot-BoldItalic-2026-11-20.pdf</string>
+				<string>proofs/2026-11/curl-normal-batch3-2026-11-22.pdf</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>

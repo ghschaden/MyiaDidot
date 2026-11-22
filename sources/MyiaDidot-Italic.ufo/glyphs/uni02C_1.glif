@@ -4,25 +4,22 @@
 	<advance width="542"/>
 	<outline>
 		<contour>
+			<point x="366" y="1068" type="curve" smooth="yes"/>
 			<point x="402" y="1036" type="line" smooth="yes"/>
-			<point x="437" y="1005"/>
-			<point x="456" y="961"/>
-			<point x="445" y="906" type="curve"/>
-			<point x="443" y="899" type="line" smooth="yes"/>
-			<point x="443" y="897"/>
-			<point x="442" y="896"/>
-			<point x="442" y="895" type="curve"/>
-			<point x="442" y="895"/>
-			<point x="442" y="895"/>
-			<point x="442" y="894" type="curve" smooth="yes"/>
+			<point x="429" y="1014"/>
+			<point x="444" y="971"/>
+			<point x="444" y="927" type="curve" smooth="yes"/>
+			<point x="444" y="910"/>
+			<point x="441" y="891"/>
+			<point x="437" y="876" type="curve" smooth="yes"/>
 			<point x="346" y="542" type="line"/>
 			<point x="247" y="542" type="line"/>
-			<point x="344" y="898" type="line" smooth="yes"/>
-			<point x="350" y="923"/>
-			<point x="344" y="946"/>
-			<point x="330" y="960" type="curve"/>
+			<point x="338" y="876" type="line" smooth="yes"/>
+			<point x="349" y="916"/>
+			<point x="330" y="959"/>
+			<point x="300" y="980" type="curve" smooth="yes"/>
 			<point x="271" y="1000" type="line" smooth="yes"/>
-			<point x="236" y="1023"/>
+			<point x="236" y="1024"/>
 			<point x="209" y="1057"/>
 			<point x="209" y="1104" type="curve" smooth="yes"/>
 			<point x="209" y="1129"/>
@@ -63,7 +60,6 @@
 			<point x="329" y="1133" type="curve" smooth="yes"/>
 			<point x="329" y="1100"/>
 			<point x="350" y="1082"/>
-			<point x="366" y="1068" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
 	<lib>
@@ -73,9 +69,9 @@
 				<key>date</key>
 				<string>2026-11-22</string>
 				<key>glyph</key>
-				<string>51e061d7ef0a</string>
+				<string>06c051cf5b17</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-superiors-smooth-2026-11-22.pdf</string>
+				<string>proofs/2026-11/curl-normal-batch3-2026-11-22.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

@@ -131,7 +131,7 @@ def descender(x0, y0, x1, y1, w, d, r, th):
     on = 0 if abs(math.degrees(math.atan2(dy, dx)) % 360 - d) < 0.5 else 12
     return [("line", ((x0, y0), (x1 + dx / n * on, y1 + dy / n * on), w), (0, 0), (1, 1, 0, 0)),
             ("curl", {"at": ("pt", x1, y1, w), "dir": d, "turn": "cw", "r": r, "sweep": 170,
-                      "ball": max(36, round(w * 0.48)), "t": (w, th)}, (0, 0), (1, 1, 0, 0))]
+                      "ball": max(36, round(w * 0.48)), "t": (w, th), "normal": False}, (0, 0), (1, 1, 0, 0))]
 
 # where a recipe's straight piece meets an italic stroke that leans or
 # curves (ɰ ɱ ɳ: a leg running on into a descender; ⱳ: the arm into its
@@ -169,7 +169,7 @@ ITALIC_JOINS_THROUGH = {"ɳ", "ɱ"}
 # the band above ɡ's bowl; ƴ: where the curl leaves the diagonal (at 760);
 # ʃ: f's top on the stem, as ɓ (its left edge keeps 1.5 degrees)
 # (2026-11-22, sheets approved by the designer)
-ITALIC_JOINS_SPLIT = {"ɓ": (880, 1020), "ɗ": (940, 1040), "ɠ": (770, 840), "ƴ": (710, 810), "ʃ": (860, 960), "ƙ": (880, 1020), "ɦ": (880, 1020), "ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380), "Ⱳ": (940, 1040)}
+ITALIC_JOINS_SPLIT = {"ɓ": (880, 1020), "ɗ": (940, 1040), "ɠ": (770, 840), "ƴ": (710, 810), "ʃ": (860, 960), "ƙ": (880, 1020), "ɦ": (880, 1020), "ƃ": (1250, 1350), "Ƈ": (1280, 1380), "Ɠ": (1280, 1380), "Ⱳ": (940, 1040), "ү": (-130, -30), "ʔ": (540, 720)}
 # corners rounded off where a descender's straight edge meets the curve of
 # the letter it hangs from (round_corner: at that height, a curve tangent to
 # both reaching that far either way): җ's descender leans 14 degrees, the
@@ -478,7 +478,7 @@ ITALIC_RECIPES = {"л.loclBGR": ("turn", "v", "x"),  # the rounded form ʌ had
                                               [("uni0237", (-BIG, -BIG, BIG, 260), (405, 250),
                                                 (152 / 144, 1, 661, 250)),
                                                ("taper", (550, 720, ("ink", 60, 660), "right"), (0, 0), (1, 1, 0, 0))])),
-                  "ɱ": ("hook", "m", ("x", "down-left", "last", 200, 160, 400, [(1360, -BIG, BIG, 450)])),
+                  "ɱ": ("hook", "m", ("x", "down-left", "last", 200, 160, 400, [(1460, -BIG, BIG, 450)])),
                   # F's stem (its foot serif cut away) tapering into the hook
                   "Ƒ": ("attach", "F", ("c", [(-BIG, -BIG, BIG, 150)],
                                         [("poly", [(310, 150), (477, 150), (477, -150), (357, -150)], (0, 0), (1, 1, 0, 0)),

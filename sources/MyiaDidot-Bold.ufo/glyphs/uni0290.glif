@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0290" format="2">
 	<unicode hex="0290"/>
-	<advance width="775"/>
+	<advance width="789"/>
 	<outline>
 		<contour>
 			<point x="68" y="575" type="line"/>
@@ -23,24 +23,21 @@
 			<point x="921" y="-420" type="curve" smooth="yes"/>
 			<point x="943" y="-420"/>
 			<point x="961" y="-386"/>
-			<point x="968" y="-343" type="curve"/>
-			<point x="979" y="-300"/>
-			<point x="1017" y="-266"/>
-			<point x="1064" y="-266" type="curve" smooth="yes"/>
-			<point x="1115" y="-266"/>
-			<point x="1156" y="-308"/>
-			<point x="1156" y="-359" type="curve" smooth="yes"/>
-			<point x="1156" y="-372"/>
-			<point x="1153" y="-384"/>
-			<point x="1150" y="-396" type="curve"/>
-			<point x="1149" y="-399"/>
-			<point x="1147" y="-402"/>
-			<point x="1144" y="-405" type="curve"/>
-			<point x="1129" y="-430"/>
-			<point x="1104" y="-447"/>
-			<point x="1074" y="-451" type="curve"/>
-			<point x="1031" y="-469"/>
-			<point x="978" y="-480"/>
+			<point x="975" y="-345" type="curve"/>
+			<point x="986" y="-346"/>
+			<point x="985" y="-343"/>
+			<point x="985" y="-340" type="curve" smooth="yes"/>
+			<point x="985" y="-289"/>
+			<point x="1027" y="-248"/>
+			<point x="1078" y="-248" type="curve" smooth="yes"/>
+			<point x="1129" y="-248"/>
+			<point x="1170" y="-289"/>
+			<point x="1170" y="-340" type="curve" smooth="yes"/>
+			<point x="1170" y="-361"/>
+			<point x="1163" y="-380"/>
+			<point x="1152" y="-396" type="curve"/>
+			<point x="1110" y="-446"/>
+			<point x="1022" y="-480"/>
 			<point x="921" y="-480" type="curve" smooth="yes"/>
 			<point x="779" y="-480"/>
 			<point x="664" y="-413"/>
@@ -75,11 +72,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-07</string>
+				<string>2026-11-22</string>
 				<key>glyph</key>
-				<string>64ca4e86289d</string>
+				<string>6ebf2336e372</string>
 				<key>review</key>
-				<string>docs/bold-remaining-drafts-review-2026-11-07.md</string>
+				<string>proofs/2026-11/curl-normal-batch3-2026-11-22.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

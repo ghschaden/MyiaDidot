@@ -1957,7 +1957,7 @@ def ball_for(font, source):
     return BALL_OF_STEM * strokes(font, ref)[1]
 
 
-def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
+def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, normal=True):
     """The letter minus cuts, with a hook drawn as part of an elliptical
     ring ending in a ball: it leaves the letter's stroke at `at` (('y', y,
     pick): the run at height y; ('x', x) / ('xb', x): the topmost /
@@ -2064,9 +2064,22 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3):
         cut = path_op(to_path(None, rec=rec), path_op(to_path(None, rec=near), rect_path(-BIG, -BIG, BIG, BIG),
                                                        "INTERSECTION"), "INTERSECTION")
         hook = path_op(hook, cut, "DIFFERENCE")
-    else:
+    elif not normal:
+        # on the parametric angle, as before 2026-11-22: kept where the ball
+        # on the normal ran into the stroke it curls back to and left a notch
+        # there (the Cyrillic descenders, data_italic.descender; the Bold
+        # Italic's ʋ)
         bx = cx + (a + tv / 2 - ball) * math.cos(end)
         by = cy + (b + th / 2 - ball) * math.sin(end)
+    else:
+        # inside the end, tangent to the outer edge there: along that edge's
+        # normal (on the parametric angle, with unequal radii, the circle
+        # crossed the edge and left a corner of 4-7 degrees: Ɽ Ʈ ɖ)
+        A, B = a + tv / 2, b + th / 2
+        nx, ny = math.cos(end) / A, math.sin(end) / B
+        nl = math.hypot(nx, ny)
+        bx = cx + A * math.cos(end) - ball * nx / nl
+        by = cy + B * math.sin(end) - ball * ny / nl
     hook = path_op(hook, _ellipse(bx, by, ball, ball), "UNION")
     out = to_path(font, font[source])
     for box in cuts:

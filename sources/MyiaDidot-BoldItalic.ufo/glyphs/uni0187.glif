@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0187" format="2">
 	<unicode hex="0187"/>
-	<advance width="1611"/>
+	<advance width="1681"/>
 	<outline>
 		<contour>
-			<point x="737" y="35" type="curve" smooth="yes"/>
-			<point x="955" y="35"/>
-			<point x="1118" y="113"/>
 			<point x="1252" y="313" type="curve" smooth="yes"/>
 			<point x="1289" y="368"/>
 			<point x="1316" y="420"/>
@@ -31,45 +28,45 @@
 			<point x="1253" y="1437"/>
 			<point x="1345" y="1383" type="curve" smooth="yes"/>
 			<point x="1397" y="1352" type="line" smooth="yes"/>
-			<point x="1407" y="1346"/>
-			<point x="1419" y="1329"/>
-			<point x="1432" y="1319" type="curve"/>
-			<point x="1481" y="1500" type="line" smooth="yes"/>
-			<point x="1507" y="1595"/>
-			<point x="1613" y="1673"/>
-			<point x="1719" y="1673" type="curve" smooth="yes"/>
-			<point x="1810" y="1673"/>
-			<point x="1870" y="1616"/>
-			<point x="1870" y="1541" type="curve" smooth="yes"/>
-			<point x="1870" y="1528"/>
-			<point x="1868" y="1514"/>
-			<point x="1864" y="1500" type="curve" smooth="yes"/>
-			<point x="1858" y="1479"/>
-			<point x="1849" y="1461"/>
-			<point x="1836" y="1441" type="curve" smooth="yes"/>
-			<point x="1816" y="1410"/>
-			<point x="1778" y="1385"/>
-			<point x="1741" y="1385" type="curve" smooth="yes"/>
-			<point x="1694" y="1385"/>
-			<point x="1667" y="1423"/>
-			<point x="1679" y="1470" type="curve" smooth="yes"/>
-			<point x="1691" y="1517"/>
-			<point x="1740" y="1555"/>
-			<point x="1787" y="1555" type="curve" smooth="yes"/>
-			<point x="1797" y="1555"/>
-			<point x="1806" y="1554"/>
-			<point x="1813" y="1551" type="curve"/>
-			<point x="1805" y="1596"/>
-			<point x="1764" y="1628"/>
-			<point x="1707" y="1628" type="curve" smooth="yes"/>
-			<point x="1631" y="1628"/>
-			<point x="1553" y="1570"/>
-			<point x="1534" y="1500" type="curve" smooth="yes"/>
-			<point x="1533" y="1493"/>
-			<point x="1530" y="1485"/>
-			<point x="1528" y="1478" type="curve" smooth="yes"/>
-			<point x="1486" y="1320" type="line"/>
-			<point x="1580" y="1320" type="line"/>
+			<point x="1410" y="1344"/>
+			<point x="1431" y="1311"/>
+			<point x="1450" y="1311" type="curve" smooth="yes"/>
+			<point x="1483" y="1311"/>
+			<point x="1521" y="1426"/>
+			<point x="1531" y="1450" type="curve" smooth="yes"/>
+			<point x="1571" y="1548"/>
+			<point x="1683" y="1673"/>
+			<point x="1789" y="1673" type="curve" smooth="yes"/>
+			<point x="1880" y="1673"/>
+			<point x="1940" y="1616"/>
+			<point x="1940" y="1541" type="curve" smooth="yes"/>
+			<point x="1940" y="1528"/>
+			<point x="1938" y="1514"/>
+			<point x="1934" y="1500" type="curve" smooth="yes"/>
+			<point x="1928" y="1479"/>
+			<point x="1918" y="1459"/>
+			<point x="1906" y="1441" type="curve" smooth="yes"/>
+			<point x="1886" y="1411"/>
+			<point x="1849" y="1388"/>
+			<point x="1813" y="1388" type="curve" smooth="yes"/>
+			<point x="1766" y="1388"/>
+			<point x="1738" y="1426"/>
+			<point x="1751" y="1473" type="curve" smooth="yes"/>
+			<point x="1764" y="1520"/>
+			<point x="1812" y="1558"/>
+			<point x="1859" y="1558" type="curve" smooth="yes"/>
+			<point x="1868" y="1558"/>
+			<point x="1876" y="1557"/>
+			<point x="1882" y="1554" type="curve"/>
+			<point x="1872" y="1598"/>
+			<point x="1832" y="1628"/>
+			<point x="1777" y="1628" type="curve" smooth="yes"/>
+			<point x="1701" y="1628"/>
+			<point x="1623" y="1570"/>
+			<point x="1604" y="1500" type="curve" smooth="yes"/>
+			<point x="1603" y="1493"/>
+			<point x="1579" y="1380"/>
+			<point x="1568" y="1320" type="curve" smooth="yes"/>
 			<point x="1480" y="799" type="line"/>
 			<point x="1402" y="799" type="line"/>
 			<point x="1411" y="991"/>
@@ -86,22 +83,25 @@
 			<point x="446" y="396" type="curve" smooth="yes"/>
 			<point x="439" y="148"/>
 			<point x="494" y="35"/>
+			<point x="737" y="35" type="curve" smooth="yes"/>
+			<point x="955" y="35"/>
+			<point x="1118" y="113"/>
 		</contour>
 	</outline>
-	<anchor name="DotBelow" x="691" y="-20"/>
-	<anchor name="Bottom" x="696" y="0"/>
-	<anchor name="Cedilla" x="696" y="0"/>
-	<anchor name="TopCap" x="1038" y="1580"/>
+	<anchor name="DotBelow" x="693" y="-20"/>
+	<anchor name="Bottom" x="698" y="0"/>
+	<anchor name="Cedilla" x="698" y="0"/>
+	<anchor name="TopCap" x="1040" y="1580"/>
 	<lib>
 		<dict>
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-19</string>
+				<string>2026-11-22</string>
 				<key>glyph</key>
-				<string>fe3e0da6e516</string>
+				<string>4328ac8348bf</string>
 				<key>review</key>
-				<string>proofs/2026-11/bi-hooks-ci-step-d-2026-11-19.pdf</string>
+				<string>proofs/2026-11/curl-normal-batch3-2026-11-22.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

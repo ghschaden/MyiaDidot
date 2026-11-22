@@ -1084,6 +1084,42 @@ def fishhook(up, source, band, name):
     g.width = round(right(g) + up[r].width - right(up[r]))
     for a in up[r].anchors:
         g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
+    straight_stem(g, y1)
+
+
+def straight_stem(g, foot):
+    """g's stem (in place) one straight run on each edge from the foot
+    serif's top (foot) up to the first smooth node or curve above it, on
+    that curve's tangent: the crossbar's band cut out of f and the stem
+    drawn again across it left both edges jogging aside by about 15 units
+    between 150 and 320, with corners at the cuts (ɾ, 2026-11-22)."""
+
+    for contour in g.contours:
+        pts = contour.points
+        n = len(pts)
+        drop = set()
+        for i, p in enumerate(pts):
+            if not p.type or abs(p.y - foot) > 0.5:
+                continue
+            step = 1 if pts[(i + 1) % n].y > foot + 5 else -1 if pts[(i - 1) % n].y > foot + 5 else 0
+            if not step:
+                continue  # the serif's top, not the stem's foot
+            k, skipped = (i + step) % n, []
+            # up the edge over the line nodes the redraw left
+            while (pts[k].type == "line" and not pts[k].smooth
+                   and pts[(k + step) % n].type is not None):
+                skipped.append(k)
+                k = (k + step) % n
+            u = pts[k]
+            if not u.type:
+                break
+            h = pts[(k + step) % n]  # the handle above it, or the next node
+            if h.y - u.y < 20:
+                continue  # no tangent to run down on
+            p.x = u.x + (h.x - u.x) / (h.y - u.y) * (foot - u.y)
+            drop.update(skipped)
+        for i in sorted(drop, reverse=True):
+            del pts[i]
 
 
 

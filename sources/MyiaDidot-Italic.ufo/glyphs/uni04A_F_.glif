@@ -4,9 +4,6 @@
 	<advance width="903"/>
 	<outline>
 		<contour>
-			<point x="55" y="520" type="line"/>
-			<point x="97" y="639"/>
-			<point x="200" y="884"/>
 			<point x="350" y="884" type="curve" smooth="yes"/>
 			<point x="447" y="884"/>
 			<point x="482" y="781"/>
@@ -39,7 +36,10 @@
 			<point x="882" y="514"/>
 			<point x="753" y="83"/>
 			<point x="446" y="-1" type="curve"/>
-			<point x="423" y="-80" type="line"/>
+			<point x="438" y="-30" type="line" smooth="yes"/>
+			<point x="428" y="-63"/>
+			<point x="419" y="-97"/>
+			<point x="411" y="-130" type="curve" smooth="yes"/>
 			<point x="350" y="-364" type="line" smooth="yes"/>
 			<point x="344" y="-388"/>
 			<point x="359" y="-407"/>
@@ -73,6 +73,9 @@
 			<point x="222" y="826"/>
 			<point x="126" y="593"/>
 			<point x="95" y="508" type="curve"/>
+			<point x="55" y="520" type="line"/>
+			<point x="97" y="639"/>
+			<point x="200" y="884"/>
 		</contour>
 	</outline>
 	<anchor name="Dotaccent" x="597" y="1020"/>
@@ -84,11 +87,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-19</string>
+				<string>2026-11-22</string>
 				<key>glyph</key>
-				<string>542172a0901b</string>
+				<string>47b86edc36b3</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-long-c-2026-11-18.pdf</string>
+				<string>proofs/2026-11/curl-normal-batch3-2026-11-22.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

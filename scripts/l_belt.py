@@ -26,6 +26,7 @@ def finish(font):
             continue
         glyph = font[name]
         if len(glyph.contours) == 2:  # Connected outer outline and belt counter.
+            flatten_stem(font, glyph, base, attachment_band(name))
             continue
         if len(glyph.contours) != 3:
             raise ValueError(f"{name}: review the belted-l component construction")
@@ -59,6 +60,45 @@ def finish(font):
         before = deepcopy(glyph)
         glyph.clearContours()
         draw_path(font, before, glyph, out)
+        flatten_stem(font, glyph, base, attachment_band(name))
+
+
+def flatten_stem(font, glyph, base, band, near=6, on=1.5):
+    """The stem's edges in glyph (in place) run as the base's: where the
+    ring's arc reaches a few units past the stem (ɬ: 3 units on the right
+    edge between the bar and the ring, a curve of three nodes with a
+    4.4-degree turn), the nodes between two on the base's edge are
+    dropped and the edge drawn as a line, within the belt's band only
+    (the l's own curves above and below kept; 2026-11-22)."""
+
+    def edges(y):
+        runs = stems_at(font, base, y)
+        return [x for run in runs for x in run] if len(runs) == 1 else []
+
+    def at_edge(p, tol):
+        return band[0] <= p.y <= band[1] and any(abs(p.x - x) <= tol for x in edges(p.y))
+
+    for contour in glyph.contours:
+        pts = contour.points
+        i = 0
+        while i < len(pts):
+            n = len(pts)
+            if not pts[i].type or not at_edge(pts[i], on):
+                i += 1
+                continue
+            j = (i + 1) % n
+            run = []
+            while j != i and at_edge(pts[j], near) and not (pts[j].type and at_edge(pts[j], on)):
+                run.append(j)
+                j = (j + 1) % n
+            if run and j != i and pts[j].type and at_edge(pts[j], on) and pts[j].type != "line":
+                pts[j].type = "line"
+                pts[j].smooth = False
+                for k in sorted(run, reverse=True):
+                    del pts[k]
+                    if k < i:
+                        i -= 1
+            i += 1
 
 
 def attachment_band(name):
