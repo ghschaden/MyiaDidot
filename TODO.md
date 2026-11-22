@@ -669,15 +669,17 @@ alongside, each when the phase that needs it comes up.
 - [ ] T1. The working copy out of the synced folder: git is the sync. A
       UFO is thousands of small files; the "(conflicted)" copies and
       lost glyph files `scripts/sync_check.py` looks for come from
-      syncing them, and `build/` is 4.7 GB in 429 entries.
-      - [ ] everything pushed; the Codex worktree
-            (`~/src/MyiaDidot-shapes`) and the shared validation lock
-            thought of in the move;
-      - [ ] the folder excluded from the sync (or moved), `build/`
-            first if the move has to wait;
+      syncing them.
+      - [x] everything pushed; no git worktree left; the validation
+            lock unaffected (the working copy did not move). Done
+            2026-11-22.
+      - [x] the folder excluded from the sync, in place (2026-11-22).
+            The leftover "(conflicted)" copies outside the UFOs (one in
+            `.git`, four in `.ruff_cache`) deleted; `sync_check.py`
+            clean, `git fsck` sound.
       - [ ] `sync_check.py` and the conflict check in `make generate`
-            kept until a month has passed without a finding, then
-            dropped, CLAUDE.md's rule with them.
+            kept until a month has passed without a finding
+            (2026-12-22), then dropped, CLAUDE.md's rule with them.
 - [x] T2. A fast loop for single glyphs: `make_bold.py` and
       `make_italic.py` take whole UFOs only (the Bold Italic about 5 min
       40 s).

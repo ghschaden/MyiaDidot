@@ -55,8 +55,10 @@ Details by topic, read the one the task touches:
   leave that branch and any merging of it to the designer.
   `make test` / `make reproduce` and the commit checks take one lock
   (4 cores at most: `JOBS`/`MYIA_JOBS`; your own parallel runs too).
-- The working copy is in a synced folder: after big generation runs check
-  for "(conflicted)" copies and lost glyph files (`scripts/sync_check.py`).
+- The working copy is no longer file-synced (T1, 2026-11-22; git is the
+  sync). Until 2026-12-22 still run `scripts/sync_check.py` after big
+  generation runs; if a month passes with no finding, the check and this
+  rule go.
 - `make winmetrics` after adding tall or deep glyphs.
 - Hinting is generated at build time, nothing in the UFOs.
 - Run Python as `.venv/bin/python -I`. Shaping tests explicitly default to English; language-specific checks
