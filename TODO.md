@@ -882,6 +882,13 @@ alongside, each when the phase that needs it comes up.
       `designed`, `accepted`, `candidate`, before the free-text reason;
       `scripts/status.py` reports the open count per style and kind.
       With phase 6's verdicts, which fill it in.
+- [x] T11. (built 2026-11-22: tools/git-hooks/rerun_plan.py, docs/claude/tests.md; pytest without -x) The hook re-checks baselines only: a commit whose tree
+      differs from one that passed only in `tests/data/*` runs the
+      baseline tests (quality, lint, accepted, golden shaping, digest,
+      hint zones), not the whole suite and `make reproduce` again
+      (2026-11-22: accepting baselines after `make test` made the hook
+      run everything a second time, some 15 minutes a cycle). Before T8,
+      and much smaller.
 - [ ] T10. The records in order (DEVELOPMENT.md's publication items,
       phase 10): FONT-DESIGN.md back to open tasks only (done 2026-11-15: 529 -> 96
       lines, the history in FONTLOG's appendix); the dated proofs (185) now in `proofs/2026-10/` and `proofs/2026-11/`
@@ -1072,6 +1079,11 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
 - [ ] The derived letters, once their bases are final: the kink, smooth
       and extreme entries left in quality-Italic.txt, by family (a
       recipe's fault in the recipe, a letter's in the letter).
+      `superior` smooth done 2026-11-22 (italic.md, "The superiors
+      rounded smoothly"): 9 lines gone; the Bold Italic's ʷ ᵒ ᵘ ᶶ ⁿ, stroked from them, refitted (no finding, ʷ ᵒ ±1). Left
+      (families.py --style Italic --family recipe): `attach` kink 6 (ɭ ɰ
+      ʈ Ɽ Ⱳ Ꞵ, Ɽ's 7.4 degrees the largest), `attach` step 5 (ƃ ɖ ɧ ɳ
+      ʝ), and singles by recipe (Sonnet).
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a

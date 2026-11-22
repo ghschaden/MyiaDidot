@@ -16,17 +16,29 @@ if [ "${4:-}" != --inside ]; then
     root=$(pwd)  # (here $5 is HEAD: the working copy is where the hook started)
     if flock "$lock" .venv/bin/python -I scripts/validate_snapshot.py --tree "$4" --head "$5" -- \
         sh tools/git-hooks/run-checks "$state" "$key" "$repro" --inside "$root" >> "$state/$key.log" 2>&1; then
-        touch "$state/$key.pass"
+        touch "$state/$key.pass"; outcome=pass
     else
-        touch "$state/$key.fail"
+        touch "$state/$key.fail"; outcome=fail
     fi
+    # what the next commit of a tree differing only in tests/data/ reuses
+    .venv/bin/python -I tools/git-hooks/rerun_plan.py record "$state" "$key" "$4" "$5" \
+        "${CHECKS_TOOLCHAIN:-}" "$repro" "$outcome" 2>/dev/null || true
     rm -f "$state/$key.pid"
     exit 0
 fi
 
 checks() {
-    echo "pre-commit: running the test suite..."
-    if ! .venv/bin/pytest -q -x -n "${MYIA_JOBS:-4}" -p no:cacheprovider; then
+    # not -x: every failure at once, so one round of baselines takes them all
+    # and the next commit can run just those (rerun_plan.py)
+    if [ -n "${CHECKS_SELECT:-}" ] && [ -f "$CHECKS_SELECT" ]; then
+        echo "pre-commit: running the tests the changed baselines touch ($CHECKS_SELECT)..."
+        # shellcheck disable=SC2046
+        set -f; set -- $(cat "$CHECKS_SELECT"); set +f
+    else
+        echo "pre-commit: running the test suite..."
+        set --
+    fi
+    if ! .venv/bin/pytest -q -n "${MYIA_JOBS:-4}" -p no:cacheprovider "$@"; then
         echo
         echo "pre-commit: tests failed; commit aborted."
         echo "  Fix the cause, or if the change is intended, update the baselines:"

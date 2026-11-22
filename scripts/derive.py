@@ -1330,9 +1330,13 @@ class CubicPen(BasePen):
         self.out.endPath()
 
 
-def draw_path(font, src, dst, out):
+def draw_path(font, src, dst, out, smooth=False):
     """Draw a merged outline (a pathops Path or a recording) into dst,
-    rounded and in the source's contour direction."""
+    rounded and in the source's contour direction. smooth: rounded by
+    make_bold.round_smoothly, not point by point: a letter made small (a
+    superior) has handles of some 20 units, which plain rounding turns by
+    up to 3 degrees, and in the italics that break is sheared before the
+    style's own smooth rounding, which then takes it for drawn."""
     from glyph_lint import LEDGE_KEEP, clean
 
     if isinstance(out, pathops.Path):  # no crumbs of the cuts and merges (glyph_lint)
@@ -1343,11 +1347,23 @@ def draw_path(font, src, dst, out):
     out.draw(cubic) if hasattr(out, "draw") else out.replay(cubic)
     ref = DecomposingRecordingPen(font)
     src.draw(ref)
-    pen = RoundingPen(dst.getPen())
+    first = len(dst.contours)
+    pen = dst.getPen() if smooth else RoundingPen(dst.getPen())
     if orientation(rec) != orientation(ref):
         pen = ReverseContourPen(pen)
     rec.replay(pen)
+    if smooth:
+        from make_bold import round_smoothly
 
+        for contour in dst.contours[first:]:
+            round_smoothly(contour.points)
+
+
+# superiors rounded smoothly (draw_path's smooth): set by make_italic only.
+# In the Bold Italic, whose superiors are stroked after, the same rounding
+# moved the stroker's fit by up to 24 units and notched ⁿ's crotch
+# (2026-11-22); its superiors stay rounded plainly until phase 8.
+SMOOTH_SUPERIORS = False
 
 # hooks are taken from the font: the top of f (up), the descender of ȷ (down)
 HOOK_SRC = {"up": ("f", 1512), "down": ("uni0237", -628)}
@@ -2199,7 +2215,7 @@ def build(font, ch, op, source, band, name=None):
                 g.appendAnchor({"name": a.name, "x": a.x, "y": a.y})
     elif op == "superior":
         out, g.width = superior(font, source, *([band] if band else []))
-        draw_path(font, src, g, out)
+        draw_path(font, src, g, out, smooth=SMOOTH_SUPERIORS)
     elif op in ("enlarge", "stretch"):
         src_ref, dst_ref, *rest = band
         fit = tuple(v for v in rest if not isinstance(v, str)) or None

@@ -585,6 +585,17 @@ for the designer (B touches none of r c v w).
   past the tolerance) at 6eecb101 as well, with the references as
   installed; listed in greek-pairs-BoldItalic.txt for the designer's eye
   (Charis and Libertinus agree against Myia).
+- **The superiors rounded smoothly, 2026-11-22** (sheet
+  `proofs/2026-11/italic-superiors-smooth-2026-11-22.pdf`, approved):
+  ʲ ˁ ᵘ ᶤ ᶶ ⁱ ⁿ broke by 2.1 to 4.5 degrees at their smooth nodes, all
+  from plain rounding of 20-unit handles before the shear (longtail.md,
+  family 6). 17 superiors moved by 1 unit (ᶶ 4), advances kept; the
+  Italic's quality list 9 lines shorter. Tried on every derived glyph's
+  redraw first: ϟ.sc lost a kink, but the Bold Italic, stroking the
+  Italic's small caps, moved ϟ.sc є.sc ћ.sc by up to 24 units with new
+  wobbles; so the superiors only. The Bold Italic's ʷ ᵒ ᵘ ᶶ ⁿ, stroked
+  from these, refit their handles (up to 16 units, no finding; ʷ ᵒ
+  advances ±1).
 
 After each step: `make generate`, `make reproduce`, `redraw_sweep.py`,
 `make diffenator`, the second sheet with the Bold Italic, the quality

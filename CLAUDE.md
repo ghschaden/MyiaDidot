@@ -112,6 +112,22 @@ agents (`.claude/agents/`):
   the paths of the full reports.
 - Searches through the code: the built-in Explore agent.
 
+The cycle (2026-11-22; a full one is about 45 minutes):
+
+- **Mends batched.** Each mend tried in seconds on a scratch UFO
+  (`make only STYLE=... GLYPHS=... PARTIAL=1`, or the whole Italic
+  without PARTIAL in about a minute) and on its sheet; then 3 to 5 of
+  them through one `make generate` and one commit, not a cycle each.
+- **The checks once.** After `make generate`: the quality and lint
+  lists read directly (`scripts/quality/checks.py`, `glyph_lint.py`),
+  the baselines accepted, then commit: the hook's `make test` and `make
+  reproduce` are the full run. No separate `make test` or `make
+  reproduce` before it (the hook keys its result on the exact tree, and
+  a baseline accepted after a test run makes a new tree).
+- **The waiting used.** While a run goes, analysis only on a HEAD
+  extract (`git archive HEAD sources/... | tar -x -C SCRATCH`): nothing
+  that writes `sources/` or runs a generator.
+
 Write long outputs to files and grep them; render only the glyphs in
 question, small. One task per session (`/clear` between tasks): CLAUDE.md
 and git hold the state.

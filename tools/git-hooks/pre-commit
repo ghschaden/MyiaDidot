@@ -9,6 +9,9 @@
 # takes its result (pass or fail) instead of starting again. A commit of a
 # changed tree stops a run for an older one. Run again regardless with
 # MYIA_RECHECK=1 git commit ...
+# A tree that differs from a checked one only in tests/data/ runs the
+# tests that failed there and those reading the changed files
+# (rerun_plan.py); MYIA_RECHECK=1 runs everything.
 
 cd "$(git rev-parse --show-toplevel)" || exit 1
 
@@ -59,7 +62,7 @@ toolchain=$(.venv/bin/python -I -c 'import sys; sys.path.insert(0, "scripts"); f
 key=$(printf '%s %s %s %s\n' "$staged" "$repro" "$head" "$toolchain" | git hash-object --stdin)
 
 if [ -n "$MYIA_RECHECK" ]; then
-    rm -f "$state/$key.pass" "$state/$key.fail"
+    rm -f "$state/$key.pass" "$state/$key.fail" "$state"/*.meta
 fi
 
 running() { [ -f "$1" ] && kill -0 "$(cat "$1")" 2>/dev/null; }
@@ -86,7 +89,14 @@ else
         rm -f "$f" "${f%.log}.pass" "${f%.log}.fail"
     done
     : > "$state/$key.log"
-    setsid sh tools/git-hooks/run-checks "$state" "$key" "$repro" "$staged" "$head" </dev/null >/dev/null 2>&1 &
+    # a tree that differs from one already checked only in tests/data/
+    # (baselines accepted): only what that can change (rerun_plan.py, T11)
+    select=$(.venv/bin/python -I tools/git-hooks/rerun_plan.py plan "$state" "$staged" "$head" "$toolchain" "$repro" 2>/dev/null) || select=
+    if [ -n "$select" ]; then
+        echo "pre-commit: only baselines changed since a checked tree: running $(wc -l < "$select") test selections, not the whole suite" >&2
+    fi
+    CHECKS_SELECT="$select" CHECKS_TOOLCHAIN="$toolchain" \
+        setsid sh tools/git-hooks/run-checks "$state" "$key" "$repro" "$staged" "$head" </dev/null >/dev/null 2>&1 &
     i=0
     while [ ! -f "$state/$key.pid" ] && [ $i -lt 50 ]; do sleep 0.1; i=$((i + 1)); done
 fi

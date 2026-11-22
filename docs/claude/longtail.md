@@ -366,6 +366,16 @@ For each: three of its letters rendered at the places the list names;
 if they show one thing, the operation is mended and the family
 regenerated; if three things, the lines go back to their recipes.
 
+**Italic `superior` smooth, mended 2026-11-22**: one cause for all six
+glyphs. `derive.draw_path` rounded plainly; a superior's handles are some
+20 units long, so a half unit turned a smooth node by 2-3 degrees, and in
+the Italic that happened in the upright frame (and again in `put`'s
+redraw after the shear), before the style's `round_smoothly`, which then
+took the break for drawn. Now rounded smoothly in the Italic
+(`derive.SMOOTH_SUPERIORS`, `make_italic.SUPERIORS`). Not in the Bold
+Italic: there the same unit moved the stroker's fit by up to 24 units
+and notched ⁿ's crotch; its `superior` lines wait for phase 8.
+
 ### 7. The bolds' own letters (phases 7 and 8)
 
 - Bold `letter wobble` 42, with 62 more on bases (21 of them the

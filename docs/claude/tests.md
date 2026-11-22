@@ -31,6 +31,13 @@ Moved from CLAUDE.md (its ground rules apply).
   `make reproduce` on the staged tree, so they need not be run by hand
   as well (2026-11-14: a batch took six 25-minute rounds, five of them
   failing on what the Regular alone showed).
+- The hook runs pytest without `-x`: a failing commit lists every
+  failure, so one round of baselines takes them all. A commit whose tree
+  differs from one the hook already checked (same HEAD, same toolchain)
+  only under `tests/data/` runs just the tests that failed there and the
+  modules naming a changed data file (`tools/git-hooks/rerun_plan.py`,
+  T11, 2026-11-22; tests/test_rerun_plan.py); a data file no module
+  names, or `MYIA_RECHECK=1`, runs everything.
 - The post-commit hook rebuilds the proofs (`make proof`) in the
   background after commits touching sources, scripts or proofs/: the
   commit built is in `build/proofs/built-from`, the output in

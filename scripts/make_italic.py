@@ -518,6 +518,13 @@ def weight_thick(rec, ax, thin=80, thick=120):
     return embolden(rec, ax, 0, factor)
 
 
+# the superiors (derive's "superior" recipes): redrawn after the shear with
+# smooth rounding, as derive.draw_path made them (SMOOTH_SUPERIORS); other
+# glyphs plainly, as before (the Bold Italic strokes the Italic's small caps,
+# and a unit's change there moved its fit by up to 24)
+SUPERIORS = {derive.glyph_name(r[0]) for r in derive.RECIPES if r[1] == "superior"}
+
+
 def put(font, up, name, source):
     """A glyph made in the upright frame, slanted into the Italic."""
     from glyph_lint import (
@@ -546,7 +553,7 @@ def put(font, up, name, source):
             break
         before = copy.deepcopy(g)
         g.clearContours()
-        derive.draw_path(font, before, g, derive.to_path(font, before))
+        derive.draw_path(font, before, g, derive.to_path(font, before), smooth=name in SUPERIORS)
     g.lib[SOURCE_KEY] = source
     font.layers.defaultLayer.insertGlyph(g, name, overwrite=True)
 
@@ -2048,6 +2055,7 @@ def stand_as(font, table=ITALIC_STANDS_AS):
 
 
 def main():
+    derive.SMOOTH_SUPERIORS = True  # the Italic's superiors rounded smoothly (derive.draw_path)
     ap = argparse.ArgumentParser()
     ap.add_argument("regular", nargs="?", default=str(ROOT / "sources/MyiaDidot-Regular.ufo"))
     ap.add_argument("italic", nargs="?", default=str(ROOT / "sources/MyiaDidot-Italic.ufo"))
