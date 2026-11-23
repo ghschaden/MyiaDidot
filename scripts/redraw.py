@@ -574,7 +574,7 @@ def offsets(ctrl, pts):
     return off[np.arange(len(pts)), (off * off).sum(axis=2).argmin(axis=1)]
 
 
-def fit_best(pts, p0, t0, p3, t3):
+def fit_best(pts, p0, t0, p3, t3, hold=(True, True)):
     """fit_cubic inside the triangle, then both handle lengths found
     together on the distance to the curve itself (Levenberg-Marquardt on
     the two, from the plain fit and from one long handle and one short):
@@ -589,7 +589,10 @@ def fit_best(pts, p0, t0, p3, t3):
     within the tolerance and square (the Italic's raw small-cap drafts,
     x.sc's inner brackets, 2026-11-16; redraw.md). Where the target
     turns that tightly, the span comes out further than its tolerance
-    and redraw_contour splits it by a node instead."""
+    and redraw_contour splits it by a node instead. hold: whether each
+    end's handle is held so; at a corner a short handle is how the
+    corner is drawn (t.sc's bar end: split for it, the short piece bent
+    back), so redraw_contour holds the ends at smooth nodes only."""
     chord = float(np.linalg.norm(p3 - p0))
     plain = fit_cubic(pts, p0, t0, p3, t3, triangle=True)
     if chord < 1e-6 or len(pts) < 4:
@@ -601,9 +604,11 @@ def fit_best(pts, p0, t0, p3, t3):
     def curve(x):
         return np.array([p0, p0 + x[0] * t0, p3 - x[1] * t3, p3])
 
+    held_ends = np.array(hold, bool)
+
     def held(x):
         x = np.clip(np.array(x, float), low, high)
-        return np.minimum(np.maximum(x, SHARE * x[::-1]), high)
+        return np.minimum(np.where(held_ends, np.maximum(x, SHARE * x[::-1]), x), high)
 
     def polished(x):
         x = held(x)
@@ -629,7 +634,7 @@ def fit_best(pts, p0, t0, p3, t3):
 
     first = (float(np.linalg.norm(plain[1] - plain[0])), float(np.linalg.norm(plain[3] - plain[2])))
     err, best = deviation(plain, pts)[0], plain
-    if min(first) < SHARE * max(first):  # the plain fit lopsided: it does not stand
+    if (np.array(first) < SHARE * np.array(first[::-1]))[held_ends].any():  # the plain fit lopsided: it does not stand
         err, best = math.inf, curve(held(first))
     for x in (first, *(np.array(f) * room for f in STARTS)):
         e, c = polished(x)
@@ -759,13 +764,16 @@ def fair(out, tol, notes=None):
     # no handle further than FAIR_SPAN from its plain fit: a curve's own
     # shape is not given up for the joint's curvature
     lows, highs = np.maximum(lows, x0 / FAIR_SPAN), np.minimum(highs, x0 * FAIR_SPAN)
+    smooth_end = np.concatenate([[out[i][0].kind in ("extreme", "extra"), out[i][1].kind in ("extreme", "extra")]
+                                 for i in curves])
+
     def held(x):
         """x inside its bounds, and neither handle of a curve under SHARE of
-        the other (fit_best's rule: the fairing kept it no more than the
-        plain fit, uogonek.sc 6 against 64)"""
+        the other where it leaves a smooth node (fit_best's rule: the
+        fairing kept it no more than the plain fit, uogonek.sc 6 against 64)"""
         x = np.clip(x, lows, highs)
-        pair = x.reshape(-1, 2)
-        return np.minimum(np.maximum(pair, SHARE * pair[:, ::-1]).ravel(), highs)
+        other = x.reshape(-1, 2)[:, ::-1].ravel()
+        return np.minimum(np.where(smooth_end, np.maximum(x, SHARE * other), x), highs)
 
     limit = {i: max(span_tol(out[i][3], tol) * (1 + FAIR_ROOM), deviation(out[i][2], out[i][3])[0] + 0.25)
              for i in curves}
@@ -894,9 +902,12 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
         return (a.u == math.floor(a.u) and b.u == math.floor(b.u) and tg.line[int(a.u)]
                 and (int(a.u) + 1) % tg.n == int(b.u))
 
+    def smooth(node):  # between two curves: a short handle there is a curvature jump
+        return node.kind in ("extreme", "extra")
+
     def solve(a, b, depth):
         pts = tg.between(a.u, b.u)
-        ctrl = fit_best(pts, np.round(a.at), a.tout, np.round(b.at), b.tin)
+        ctrl = fit_best(pts, np.round(a.at), a.tout, np.round(b.at), b.tin, (smooth(a), smooth(b)))
         err, worst = deviation(ctrl, pts)
         if err <= span_tol(pts, tol) or depth == 0:
             return [(a, b)]
@@ -921,7 +932,7 @@ def redraw_contour(segs, tol=TOL, spec=None, report=None):
             out.append([a, b, np.array([p0, p3]), None])
         else:
             pts = tg.between(a.u, b.u)
-            out.append([a, b, fit_best(pts, p0, a.tout, p3, b.tin), pts])
+            out.append([a, b, fit_best(pts, p0, a.tout, p3, b.tin, (smooth(a), smooth(b))), pts])
     fair(out, tol, notes)
     # handles on whole units, a smooth node's two in one line
     m = len(out)

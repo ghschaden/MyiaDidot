@@ -291,6 +291,14 @@ twelve before | after on
   FontForge made them, like the gate's failures). The cheap half is
   safe today: the 91 that stay within 4 units.
 
+**The tool, 2026-11-23** (redraw.md, "The same quarter turn"):
+`fit_best` and `fair` hold a handle at a smooth node to `SHARE` of the
+other. All 146 drafts fitted again
+(`docs/claude/fable/sc-drafts-fit-2026-11-23.txt`): 140 through the
+gate, none lopsided at a smooth node. Next: the run through
+`make_italic --out` with these, and the movers' sheet for the
+designer.
+
 The Regular's and the Bold's small caps are another matter (14 and 15
 lines, `smallcaps_draft.py`'s own drafts): too few for a family mend,
 by letter.

@@ -380,7 +380,10 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   2026-11-23: `fit_best` holds neither handle under `SHARE` (0.15) of
   the other, and a lopsided plain fit does not stand; where the target
   turns that tightly the span comes out past its tolerance and is split
-  (test_a_quarter_turn_is_not_fitted_square). `fair` keeps the same
+  (test_a_quarter_turn_is_not_fitted_square). Only a handle leaving a
+  smooth node (`extreme`, `extra`) is held: at a corner a short handle
+  is how the corner is drawn (t.sc's bar end, held too, was split and
+  its short piece bent back). `fair` keeps the same
   share (it may move a handle by `FAIR_SPAN`, and took uogonek.sc's
   14/95 down to 6/64). On the eleven drafts with such a curve and the
   trial's twelve: x.sc's bracket 6/99 -> 14/95 at the same distance,
@@ -389,7 +392,10 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   the fitter before it on the drafts of 2026-11-22: q.sc's two extra
   nodes 13 units apart at the tail (843,748 and 847,735, a jump of
   1.59), j.sc's jump of 1.0 at 199,134.
-  `scripts/pilot/sc_draft_fit.lopsided`
+  All 146 drafts (docs/claude/fable/sc-drafts-fit-2026-11-23.txt): 140
+  through the gate (133 on 2026-11-16), the six failures the drafts' own
+  steps and bounds (ɑ ʀ ђ ћ ⱥ ⱦ); no lopsided curve at a smooth node
+  (the drafts hold 36), jump remarks 15. `scripts/pilot/sc_draft_fit.lopsided`
   still names what is left before a sheet.
 - **Hint zones**: the Bold Italic's G and Ɠ sit 4/64 px off their bottom
   zone at 35 ppem though neither outline moved (test_hint_zones). The
