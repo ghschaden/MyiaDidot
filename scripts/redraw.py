@@ -561,6 +561,7 @@ def fit_cubic(pts, p0, t0, p3, t3, start=None, triangle=False, rounds=40):
 
 STARTS = ((0.75, 0.25), (0.25, 0.75))  # of the handles' room: fit_best's other starts
 BETTER = 0.1  # units: by how much another start has to be nearer the target to be taken
+SHARE = 0.15  # neither handle of a fitted curve shorter than this share of the other (a quarter turn come out square)
 
 
 def offsets(ctrl, pts):
@@ -582,7 +583,13 @@ def fit_best(pts, p0, t0, p3, t3):
     flat valley and stops short (Old Standard's hooks in the Italic chi:
     handles of 392 and 94 units came out 154 and 141, the curve 6 units
     off after rounding, or split by a node it did not need). The plain
-    start's result stands unless another is nearer the target by BETTER."""
+    start's result stands unless another is nearer the target by BETTER.
+    Neither handle is shorter than SHARE of the other: a quarter turn
+    fitted with one handle of 3 units and the other at the corner is
+    within the tolerance and square (the Italic's raw small-cap drafts,
+    x.sc's inner brackets, 2026-11-16; redraw.md). Where the target
+    turns that tightly, the span comes out further than its tolerance
+    and redraw_contour splits it by a node instead."""
     chord = float(np.linalg.norm(p3 - p0))
     plain = fit_cubic(pts, p0, t0, p3, t3, triangle=True)
     if chord < 1e-6 or len(pts) < 4:
@@ -594,15 +601,19 @@ def fit_best(pts, p0, t0, p3, t3):
     def curve(x):
         return np.array([p0, p0 + x[0] * t0, p3 - x[1] * t3, p3])
 
-    def polished(x):
+    def held(x):
         x = np.clip(np.array(x, float), low, high)
+        return np.minimum(np.maximum(x, SHARE * x[::-1]), high)
+
+    def polished(x):
+        x = held(x)
         r = offsets(curve(x), pts).ravel()
         lam = 1e-3
         for _ in range(30):
             J = np.stack([(offsets(curve(x + d), pts).ravel() - r) / 0.5 for d in ((0.5, 0), (0, 0.5))], axis=1)
             A, g = J.T @ J, J.T @ r
             for _ in range(8):
-                xn = np.clip(x - np.linalg.solve(A + lam * (np.diag(np.diag(A)) + 1e-9 * np.eye(2)), g), low, high)
+                xn = held(x - np.linalg.solve(A + lam * (np.diag(np.diag(A)) + 1e-9 * np.eye(2)), g))
                 rn = offsets(curve(xn), pts).ravel()
                 if rn @ rn < r @ r:
                     break
@@ -618,6 +629,8 @@ def fit_best(pts, p0, t0, p3, t3):
 
     first = (float(np.linalg.norm(plain[1] - plain[0])), float(np.linalg.norm(plain[3] - plain[2])))
     err, best = deviation(plain, pts)[0], plain
+    if min(first) < SHARE * max(first):  # the plain fit lopsided: it does not stand
+        err, best = math.inf, curve(held(first))
     for x in (first, *(np.array(f) * room for f in STARTS)):
         e, c = polished(x)
         if e < err - BETTER:
@@ -746,6 +759,14 @@ def fair(out, tol, notes=None):
     # no handle further than FAIR_SPAN from its plain fit: a curve's own
     # shape is not given up for the joint's curvature
     lows, highs = np.maximum(lows, x0 / FAIR_SPAN), np.minimum(highs, x0 * FAIR_SPAN)
+    def held(x):
+        """x inside its bounds, and neither handle of a curve under SHARE of
+        the other (fit_best's rule: the fairing kept it no more than the
+        plain fit, uogonek.sc 6 against 64)"""
+        x = np.clip(x, lows, highs)
+        pair = x.reshape(-1, 2)
+        return np.minimum(np.maximum(pair, SHARE * pair[:, ::-1]).ravel(), highs)
+
     limit = {i: max(span_tol(out[i][3], tol) * (1 + FAIR_ROOM), deviation(out[i][2], out[i][3])[0] + 0.25)
              for i in curves}
     rows = np.cumsum([0] + [2 * len(out[i][3]) for i in curves])
@@ -795,7 +816,7 @@ def fair(out, tol, notes=None):
                 r, J = system(x, active)
                 A, g = J.T @ J, J.T @ r
                 for _ in range(10):
-                    xn = np.clip(x + np.linalg.solve(A + lam * np.diag(np.diag(A) + 1e-9), -g), lows, highs)
+                    xn = held(x + np.linalg.solve(A + lam * np.diag(np.diag(A) + 1e-9), -g))
                     rn = system(xn, active)[0]
                     if rn @ rn < r @ r:
                         break

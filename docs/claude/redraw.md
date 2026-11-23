@@ -376,13 +376,21 @@ and A-Z, `build/redraw/alphabet.txt` (not kept in git; 2 min 15 s). All
   (2026-11-16, the Italic's raw small-cap drafts: x.sc's inner
   brackets, a handle of 3 units and the other at the corner; 11 of 133
   drafts, longtail.md, family 3). `FAIR_SPAN` holds the fairing to the
-  plain fit, not the plain fit to a shape. Not mended: a limit on the
-  two handles' share of each other in `fit_best`, or a failure in the
-  gate, is open. Until then a curve with one handle of 6 units or less
-  and the other of 40 or more that the target had not
-  (`scripts/pilot/sc_draft_fit.lopsided`) is looked at before the
-  sheet; in a letter that later stages weight or stroke it does not
-  stay within the tolerance.
+  plain fit, not the plain fit to a shape. Mended in the tool
+  2026-11-23: `fit_best` holds neither handle under `SHARE` (0.15) of
+  the other, and a lopsided plain fit does not stand; where the target
+  turns that tightly the span comes out past its tolerance and is split
+  (test_a_quarter_turn_is_not_fitted_square). `fair` keeps the same
+  share (it may move a handle by `FAIR_SPAN`, and took uogonek.sc's
+  14/95 down to 6/64). On the eleven drafts with such a curve and the
+  trial's twelve: x.sc's bracket 6/99 -> 14/95 at the same distance,
+  the 1.0 jumps of b ψ ϡ з Қ x gone, all still through the gate;
+  uogonek.sc 2.1 -> 2.9 units off. Not from this mend, the same with
+  the fitter before it on the drafts of 2026-11-22: q.sc's two extra
+  nodes 13 units apart at the tail (843,748 and 847,735, a jump of
+  1.59), j.sc's jump of 1.0 at 199,134.
+  `scripts/pilot/sc_draft_fit.lopsided`
+  still names what is left before a sheet.
 - **Hint zones**: the Bold Italic's G and Ɠ sit 4/64 px off their bottom
   zone at 35 ppem though neither outline moved (test_hint_zones). The
   cause is not traced yet (`scripts/quality/hint_zones.py FONT`): do

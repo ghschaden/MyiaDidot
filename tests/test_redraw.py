@@ -339,6 +339,20 @@ def test_a_hook_of_one_long_and_one_short_handle_is_found():
     assert abs(np.linalg.norm(best[1] - best[0]) - 392) < 15
 
 
+def test_a_quarter_turn_is_not_fitted_square():
+    """x.sc's inner bracket in the Italic's raw small-cap drafts: up the
+    stem, a tight turn at the top, out along the serif. Fitted from the
+    stem's extreme, the plain fit was a handle of 6 units and one of 99,
+    1.6 units off and square at its start (longtail.md, family 3)"""
+    a = np.array([[785, 865], [785, 885], [783, 895], [775, 909]], float)
+    b = np.array([[775, 909], [762, 954], [727, 972], [684, 972]], float)
+    pts = np.vstack([R.bezier(a, np.linspace(0, 1, 60)), R.bezier(b, np.linspace(0, 1, 120))[1:]])
+    best = R.fit_best(pts, a[0], np.array([0.0, 1.0]), b[3], np.array([-1.0, 0.0]))
+    h1, h2 = np.linalg.norm(best[1] - best[0]), np.linalg.norm(best[3] - best[2])
+    assert min(h1, h2) >= R.SHARE * max(h1, h2) - 1e-6
+    assert R.deviation(best, pts)[0] < 2.0
+
+
 def test_one_bend_draws_back_as_far_as_it_takes():
     """psi's 778,576 to 668,198, straight but for a degree: the far handle
     had to come back 40 units, and one_bend gave up after 16"""
