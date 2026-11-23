@@ -139,7 +139,7 @@ ITALIC_BOLD_REBUILD = {
     "uni028B": "ʋ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
     "uni2C73": "ⱳ: its own recipe (ITALIC_BOLD_RECIPES); emboldened or scaled from the Italic's, its curl closed on the ball",
     "uni01AC": "Ƭ: its own recipe (ITALIC_BOLD_RECIPES); the Italic's ball scaled up closed the curl",
-    "uni0188.sc": "ƈ.sc: its own curl on the Bold Italic ƈ.sc (ITALIC_BOLD_RECIPES); emboldened from the Italic's draft, its curl closed on the ball",
+    "uni0188.sc": "ƈ.sc: its own stroke and curl on the Bold Italic c.sc (ITALIC_BOLD_RECIPES); emboldened from the Italic's draft, its curl closed on the ball",
     "uni0199.sc": "ƙ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni01A5.sc": "ƥ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
     "uni01AD.sc": "ƭ.sc: made again from the Bold Italic's capital (derive.py's recipe); emboldened from the Italic's draft, its curl closed on the ball",
@@ -190,7 +190,13 @@ ITALIC_BOLD_RECIPES = {
     # Regular's (chosen 2026-11-09 from heavier x1.5, x2); its top at the
     # top line as before (40 higher, its square end stood a peak on it)
     "Ⱦ": ("slash", "T", ("c", "box", 0.10, -140, 0.90, 1434, 96)),
-    "ⱦ.sc": ("slash", "t.sc", ("s", "box", 0.10, -120, 0.90, 1040, 83)),
+    # ⱦ.sc's right end 0.90 -> 0.95, ȼ.sc's (the Italic's recipe) 0.78 ->
+    # 0.82 (2026-11-23): on the small caps fitted from their drafts the
+    # ends crossed t.sc's bracket and c.sc's terminal where they bend, a
+    # sliver and a knot of nodes; further out they pass through clean
+    # (ⱦ.sc at 0.80/0.85 a pinhole under the bar, at 1.0 the bar's corner cut)
+    "ⱦ.sc": ("slash", "t.sc", ("s", "box", 0.10, -120, 0.95, 1040, 83)),
+    "ȼ.sc": ("slash", "c.sc", ("s", "box", 0.25, -90, 0.82, 1130)),
     # ⱦ: emboldened whole its slash kept the Regular's thickness, too light
     # (55): a quarter heavier, as Ⱦ ⱦ.sc's, where the Italic's runs (chosen
     # 2026-11-09 from 69 / 83, each also lower and longer)
@@ -285,12 +291,27 @@ ITALIC_BOLD_RECIPES = {
     # stroke further left (720) and flatter (35 degrees), turning further:
     # from 782 at 70 degrees it rose off the stroke with a dip outside and
     # a cusp inside ("badly attached")
-    # (c.sc's terminal 116 to the right since phase 6's step B, 2026-11-17;
-    # g.sc is drawn here and stayed)
-    **{ch: ("curl", base, ("s", [(735 + dx, 530, 10000, 10000)],
-                           {"at": ("x", 720 + dx), "dir": 35, "turn": "cw", "r": (165, 140),
-                            "sweep": 195, "ball": 75, "t": (100, 45)}))
-       for ch, base, dx in (("ƈ.sc", "c.sc", 116), ("ɠ.sc", "g.sc", 0))},
+    # (g.sc is drawn here)
+    "ɠ.sc": ("curl", "g.sc", ("s", [(735, 530, 10000, 10000)],
+                              {"at": ("x", 720), "dir": 35, "turn": "cw", "r": (165, 140),
+                               "sweep": 195, "ball": 75, "t": (100, 45)})),
+    # ƈ.sc: as Ƈ, a stroke straight up from the terminal into the curl
+    # (2026-11-23, "it should go up, and not sideways", as ɠ.sc's): the
+    # curl on c.sc's top, as ɠ.sc's recipe (shifted 116 with c.sc's
+    # terminal), ran out sideways, since c.sc's top dips into its terminal where
+    # g.sc's does not. The stroke's right edge runs on from the terminal's
+    # (1110), the terminal's top cut away left of it and drawn again as a
+    # concave taper from its left edge (980) into the stroke: left standing,
+    # its flat top was a shelf beside the stroke. The stroke's foot 14 to
+    # the right, along the terminal's edge (upright, it leans 4.5 degrees):
+    # plumb, the edges met at a 3.1-degree kink
+    "ƈ.sc": ("attach", "c.sc", ("s", [(1073, 957, 10000, 10000), (944, 980, 1083, 10000)],
+                                [("line", ((1097, 935), (1083, 1110), 53), (0, 0), (1, 1, 0, 0)),
+                                 ("poly", [(944, 900), (1110, 900), (1110, 1110), (1056, 1110),
+                                           ((1056, 1040), (1000, 990), (944, 980))], (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 1083, 1110, 53), "dir": 90, "turn": "cw", "r": (130, 115),
+                                           "sweep": 200, "ball": 66, "t": (53, 45), "lead": 10},
+                                  (0, 0), (1, 1, 0, 0))])),
     # Ƙ Ƴ: the arm cut below its flare into the serif (its own width there),
     # running on in its own direction; Ʋ: U's right stem.
     # 2026-11-12 ("the arm leading to the hook is not good"; version C of

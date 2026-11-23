@@ -7,43 +7,59 @@
 			<point x="161" y="1047" type="line"/>
 			<point x="557" y="1047" type="line"/>
 			<point x="539" y="980" type="line"/>
-			<point x="519" y="980" type="line" smooth="yes"/>
-			<point x="484" y="980"/>
-			<point x="457" y="963"/>
-			<point x="453" y="923" type="curve" smooth="yes"/>
+			<point x="517" y="980" type="line" smooth="yes"/>
+			<point x="482" y="980"/>
+			<point x="456" y="963"/>
+			<point x="453" y="923" type="curve"/>
+			<point x="452" y="934"/>
+			<point x="452" y="927"/>
+			<point x="452" y="919" type="curve" smooth="yes"/>
+			<point x="452" y="915"/>
+			<point x="452" y="910"/>
+			<point x="452" y="907" type="curve" smooth="yes"/>
 			<point x="381" y="185" type="line"/>
-			<point x="737" y="841" type="line"/>
+			<point x="736" y="840" type="line"/>
 			<point x="741" y="923" type="line" smooth="yes"/>
 			<point x="743" y="963"/>
 			<point x="718" y="980"/>
-			<point x="684" y="980" type="curve" smooth="yes"/>
+			<point x="683" y="980" type="curve" smooth="yes"/>
 			<point x="650" y="980" type="line"/>
 			<point x="668" y="1047" type="line"/>
 			<point x="1034" y="1047" type="line"/>
 			<point x="1016" y="980" type="line"/>
-			<point x="1001" y="980" type="line" smooth="yes"/>
-			<point x="967" y="980"/>
-			<point x="940" y="963"/>
-			<point x="936" y="923" type="curve" smooth="yes"/>
+			<point x="1000" y="980" type="line" smooth="yes"/>
+			<point x="965" y="980"/>
+			<point x="938" y="963"/>
+			<point x="936" y="923" type="curve"/>
+			<point x="934" y="934"/>
+			<point x="934" y="927"/>
+			<point x="934" y="919" type="curve" smooth="yes"/>
+			<point x="934" y="919" type="line" smooth="yes"/>
+			<point x="934" y="915"/>
+			<point x="935" y="910"/>
+			<point x="934" y="907" type="curve" smooth="yes"/>
 			<point x="864" y="185" type="line"/>
-			<point x="1173" y="756" type="line"/>
-			<point x="1209" y="814"/>
-			<point x="1213" y="865"/>
-			<point x="1212" y="915" type="curve"/>
-			<point x="1214" y="952"/>
-			<point x="1213" y="980"/>
+			<point x="1173" y="756" type="line" smooth="yes"/>
+			<point x="1202" y="808"/>
+			<point x="1209" y="831"/>
+			<point x="1217" y="860" type="curve" smooth="yes"/>
+			<point x="1221" y="874"/>
+			<point x="1217" y="889"/>
+			<point x="1217" y="903" type="curve" smooth="yes"/>
+			<point x="1219" y="945"/>
+			<point x="1216" y="980"/>
 			<point x="1185" y="980" type="curve" smooth="yes"/>
 			<point x="1127" y="980" type="line"/>
-			<point x="1146" y="1047" type="line"/>
+			<point x="1145" y="1047" type="line"/>
 			<point x="1517" y="1047" type="line"/>
 			<point x="1499" y="980" type="line"/>
 			<point x="1422" y="980" type="line" smooth="yes"/>
-			<point x="1373" y="980"/>
-			<point x="1312" y="921"/>
-			<point x="1285" y="866" type="curve"/>
+			<point x="1360" y="980"/>
+			<point x="1304" y="898"/>
+			<point x="1285" y="866" type="curve" smooth="yes"/>
 			<point x="769" y="-20" type="line"/>
 			<point x="694" y="-20" type="line"/>
-			<point x="732" y="745" type="line"/>
+			<point x="732" y="744" type="line"/>
 			<point x="286" y="-20" type="line"/>
 			<point x="211" y="-20" type="line"/>
 			<point x="258" y="923" type="line" smooth="yes"/>
@@ -52,11 +68,11 @@
 			<point x="201" y="980" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
-	<anchor name="Top" x="850" y="1156"/>
-	<anchor name="Acute" x="846" y="1136"/>
-	<anchor name="Grave" x="846" y="1136"/>
-	<anchor name="Dotaccent" x="855" y="1176"/>
-	<anchor name="TopCap" x="858" y="1186"/>
+	<anchor name="Top" x="849" y="1156"/>
+	<anchor name="Acute" x="845" y="1136"/>
+	<anchor name="Grave" x="845" y="1136"/>
+	<anchor name="Dotaccent" x="854" y="1176"/>
+	<anchor name="TopCap" x="857" y="1186"/>
 	<anchor name="Bottom" x="553" y="0"/>
 	<anchor name="DotBelow" x="548" y="-20"/>
 	<lib>
@@ -64,11 +80,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-20</string>
+				<string>2026-11-23</string>
 				<key>glyph</key>
-				<string>7f6aebd94fd6</string>
+				<string>2baaf0a84fc4</string>
 				<key>review</key>
-				<string>proofs/2026-11/smallcap-overshoot-Italic-2026-11-20.pdf</string>
+				<string>docs/claude/longtail.md</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>

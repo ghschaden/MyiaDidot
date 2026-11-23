@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni0288.sc" format="2">
-	<advance width="1110"/>
+	<advance width="1125"/>
 	<outline>
 		<contour>
-			<point x="303" y="160" type="line"/>
-			<point x="515" y="919" type="line" smooth="yes"/>
-			<point x="522" y="944"/>
-			<point x="520" y="959"/>
-			<point x="493" y="960" type="curve"/>
-			<point x="474" y="956"/>
-			<point x="419" y="942"/>
-			<point x="355" y="881" type="curve" smooth="yes"/>
-			<point x="284" y="813"/>
-			<point x="224" y="706"/>
-			<point x="195" y="614" type="curve"/>
-			<point x="102" y="614" type="line"/>
-			<point x="217" y="1040" type="line"/>
-			<point x="1158" y="1040" type="line"/>
-			<point x="1059" y="614" type="line"/>
-			<point x="989" y="614" type="line"/>
-			<point x="997" y="651"/>
-			<point x="1002" y="695"/>
-			<point x="1002" y="725" type="curve" smooth="yes"/>
-			<point x="1002" y="810"/>
-			<point x="963" y="959"/>
-			<point x="857" y="959" type="curve"/>
-			<point x="857" y="959" type="line"/>
-			<point x="826" y="959"/>
-			<point x="816" y="947"/>
-			<point x="810" y="918" type="curve"/>
-			<point x="590" y="120" type="line"/>
+			<point x="299" y="160" type="line"/>
+			<point x="514" y="939" type="line" smooth="yes"/>
+			<point x="518" y="953"/>
+			<point x="510" y="964"/>
+			<point x="495" y="964" type="curve" smooth="yes"/>
+			<point x="489" y="964" type="line" smooth="yes"/>
+			<point x="281" y="964"/>
+			<point x="172" y="624"/>
+			<point x="182" y="614" type="curve"/>
+			<point x="126" y="618" type="line"/>
+			<point x="218" y="1040" type="line"/>
+			<point x="1152" y="1040" type="line"/>
+			<point x="1032" y="618" type="line"/>
+			<point x="994" y="616" type="line"/>
+			<point x="1005" y="659"/>
+			<point x="1011" y="707"/>
+			<point x="1010" y="755" type="curve"/>
+			<point x="997" y="862"/>
+			<point x="967" y="964"/>
+			<point x="854" y="964" type="curve" smooth="yes"/>
+			<point x="847" y="964" type="line" smooth="yes"/>
+			<point x="832" y="964"/>
+			<point x="816" y="952"/>
+			<point x="812" y="937" type="curve" smooth="yes"/>
+			<point x="588" y="120" type="line"/>
 			<point x="507" y="-150" type="line" smooth="yes"/>
 			<point x="497" y="-187"/>
 			<point x="492" y="-221"/>
@@ -39,10 +37,10 @@
 			<point x="504" y="-277" type="curve" smooth="yes"/>
 			<point x="520" y="-277"/>
 			<point x="549" y="-222"/>
-			<point x="569" y="-152" type="curve" smooth="yes"/>
+			<point x="569" y="-152" type="curve"/>
 			<point x="570" y="-147"/>
 			<point x="571" y="-142"/>
-			<point x="573" y="-136" type="curve" smooth="yes"/>
+			<point x="573" y="-136" type="curve"/>
 			<point x="596" y="-53"/>
 			<point x="681" y="14"/>
 			<point x="764" y="14" type="curve" smooth="yes"/>
@@ -82,11 +80,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-22</string>
+				<string>2026-11-23</string>
 				<key>glyph</key>
-				<string>f1a21f24170a</string>
+				<string>81c6874ade7d</string>
 				<key>review</key>
-				<string>proofs/2026-11/curl-normal-batch3-2026-11-22.pdf</string>
+				<string>docs/claude/longtail.md</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>

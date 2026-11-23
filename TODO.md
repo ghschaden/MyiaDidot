@@ -464,6 +464,11 @@ the other models. One item per session.
       family 1). The long stems are measured (`italic_measures.py`,
       `long stem` rows; italic.md, "The long stems"): Old Standard's
       drawing, inside the range, a question for the sheet.
+      2026-11-23: the small caps' fit done (longtail.md, family 3):
+      redraw holds a handle's share at smooth nodes, the Italic's
+      small caps come from their fitted drafts (139 of 146), approved
+      on the movers' sheets; the Bold Italic's new wobbles (19 small
+      caps) wait for phase 8.
 
 Budget (2026-11-12): F1 to F4 are done, of F6 the pages for T2 and
 phase 1's sweep, of F7 both batches. The limits now:

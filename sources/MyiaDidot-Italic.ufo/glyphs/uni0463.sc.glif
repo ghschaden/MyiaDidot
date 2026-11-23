@@ -3,68 +3,68 @@
 	<advance width="1151"/>
 	<outline>
 		<contour>
-			<point x="473" y="98" type="line" smooth="yes"/>
-			<point x="467" y="74"/>
-			<point x="466" y="62"/>
-			<point x="494" y="62" type="curve" smooth="yes"/>
-			<point x="678" y="62" type="line" smooth="yes"/>
-			<point x="811" y="62"/>
-			<point x="921" y="163"/>
-			<point x="921" y="302" type="curve" smooth="yes"/>
-			<point x="921" y="416"/>
-			<point x="906" y="500"/>
-			<point x="774" y="500" type="curve" smooth="yes"/>
-			<point x="579" y="500" type="line"/>
-		</contour>
-		<contour>
 			<point x="75" y="585" type="line"/>
 			<point x="172" y="921" type="line"/>
 			<point x="504" y="921" type="line"/>
 			<point x="502" y="942" type="line"/>
-			<point x="509" y="963"/>
-			<point x="507" y="972"/>
+			<point x="502" y="944"/>
+			<point x="503" y="946"/>
+			<point x="504" y="949" type="curve" smooth="yes"/>
+			<point x="508" y="961"/>
+			<point x="511" y="972"/>
 			<point x="479" y="972" type="curve" smooth="yes"/>
 			<point x="361" y="972" type="line"/>
 			<point x="381" y="1040" type="line"/>
 			<point x="869" y="1040" type="line"/>
 			<point x="849" y="972" type="line"/>
 			<point x="736" y="972" type="line" smooth="yes"/>
-			<point x="707" y="972"/>
-			<point x="699" y="963"/>
+			<point x="713" y="972"/>
+			<point x="700" y="966"/>
 			<point x="695" y="942" type="curve"/>
-			<point x="683" y="921" type="line"/>
+			<point x="684" y="921" type="line"/>
 			<point x="1050" y="921" type="line"/>
 			<point x="978" y="585" type="line"/>
 			<point x="941" y="585" type="line"/>
-			<point x="941" y="585"/>
-			<point x="946" y="619"/>
-			<point x="945" y="663" type="curve" smooth="yes"/>
-			<point x="941" y="824"/>
-			<point x="864" y="853"/>
+			<point x="944" y="608"/>
+			<point x="976" y="853"/>
 			<point x="806" y="853" type="curve" smooth="yes"/>
 			<point x="671" y="853" type="line"/>
 			<point x="602" y="562" type="line"/>
 			<point x="815" y="562" type="line" smooth="yes"/>
-			<point x="984" y="562"/>
-			<point x="1073" y="469"/>
-			<point x="1073" y="302" type="curve" smooth="yes"/>
-			<point x="1073" y="119"/>
-			<point x="833" y="0"/>
+			<point x="1019" y="562"/>
+			<point x="1074" y="424"/>
+			<point x="1074" y="323" type="curve" smooth="yes"/>
+			<point x="1074" y="294"/>
+			<point x="1070" y="268"/>
+			<point x="1065" y="249" type="curve" smooth="yes"/>
+			<point x="1027" y="108"/>
+			<point x="835" y="0"/>
 			<point x="666" y="0" type="curve" smooth="yes"/>
 			<point x="102" y="0" type="line"/>
 			<point x="122" y="62" type="line"/>
 			<point x="237" y="62" type="line" smooth="yes"/>
-			<point x="266" y="62"/>
-			<point x="273" y="74"/>
+			<point x="263" y="62"/>
+			<point x="272" y="71"/>
 			<point x="279" y="97" type="curve" smooth="yes"/>
 			<point x="478" y="853" type="line"/>
 			<point x="380" y="853" type="line" smooth="yes"/>
-			<point x="327" y="853"/>
-			<point x="290" y="834"/>
-			<point x="235" y="780" type="curve" smooth="yes"/>
-			<point x="158" y="704"/>
-			<point x="111" y="585"/>
+			<point x="213" y="853"/>
+			<point x="115" y="597"/>
 			<point x="111" y="585" type="curve"/>
+		</contour>
+		<contour>
+			<point x="473" y="98" type="line" smooth="yes"/>
+			<point x="466" y="73"/>
+			<point x="467" y="62"/>
+			<point x="494" y="62" type="curve" smooth="yes"/>
+			<point x="678" y="62" type="line" smooth="yes"/>
+			<point x="805" y="62"/>
+			<point x="921" y="166"/>
+			<point x="921" y="287" type="curve" smooth="yes"/>
+			<point x="921" y="406"/>
+			<point x="906" y="500"/>
+			<point x="774" y="500" type="curve" smooth="yes"/>
+			<point x="579" y="500" type="line"/>
 		</contour>
 	</outline>
 	<anchor name="Top" x="654" y="1156"/>
@@ -79,11 +79,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-16</string>
+				<string>2026-11-23</string>
 				<key>glyph</key>
-				<string>b7cb4ab46d38</string>
+				<string>9b999af5ed89</string>
 				<key>review</key>
-				<string>docs/claude/redraw.md</string>
+				<string>docs/claude/longtail.md</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>

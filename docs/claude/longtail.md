@@ -295,9 +295,28 @@ twelve before | after on
 `fit_best` and `fair` hold a handle at a smooth node to `SHARE` of the
 other. All 146 drafts fitted again
 (`docs/claude/fable/sc-drafts-fit-2026-11-23.txt`): 140 through the
-gate, none lopsided at a smooth node. Next: the run through
-`make_italic --out` with these, and the movers' sheet for the
-designer.
+gate, none lopsided at a smooth node.
+
+**Installed, 2026-11-23** (approved by the designer on
+`proofs/2026-11/sc-fitted-movers-over10-2026-11-23.pdf`,
+`sc-fitted-movers-4to10-2026-11-23.pdf` and, for the Bold Italic,
+`sc-fitted-bolditalic-2026-11-23.pdf`): the drafts store keeps
+FontForge's raw drafts and, in its layer `fitted`, each one redrawn
+when it passed the gate (`fontforge_inputs.fit_store`, FIT_KEY: 139
+fitted; the six gate failures and psi.sc raw). A draft made again is
+fitted when it is stored. psi.sc stays raw by decision (`KEEP_RAW`):
+stroked from the fitted Italic, the Bold Italic's left arm met the
+stem's top serif, the counter became a hole and the arm was lost.
+The Bold Italic's ⱦ.sc and ȼ.sc slash ends moved out (0.95, 0.82),
+where the slash crossed the new bracket and terminal as they bend.
+ƈ.sc's hook in the Bold Italic made as Ƈ's (the designer: "it should
+go up, and not sideways", as ɠ.sc's;
+`proofs/2026-11/bold-italic-c-hook-sc-2026-11-23.png`).
+Lists: the Italic 111 lines gone, 21 new (kinks and smooths of 1.4 to
+7.9 degrees, w.sc's two extremes 6 units past); the Bold Italic 24
+gone, 32 new, mostly the stroker's wobbles on the fitted letters
+(д.sc's 84 and 105 degrees at its top, ж.sc, ʀ, ɽ.sc, ⱳ.sc the
+largest): left for phase 8, which strokes these letters again.
 
 The Regular's and the Bold's small caps are another matter (14 and 15
 lines, `smallcaps_draft.py`'s own drafts): too few for a family mend,
@@ -437,9 +456,9 @@ lines.
    what makes them.
 3. Family 5's sheets for the designer, the Italic's stems first, since
    it belongs to phase 6's review that is waiting anyway.
-4. Family 3 (small caps): tried 2026-11-16, 88 lines fall but 21
-   small caps move by 10 units and more. Opus: the quarter turns in
-   redraw.py first, then the movers' sheet for the designer.
+4. Family 3 (small caps): done 2026-11-23, the Italic's small caps
+   fitted from their drafts (above); the Bold Italic's new wobbles
+   with phase 8.
 5. The Regular's own lines (8) and its operations (6): Opus.
 6. Family 4 (the Bold's extremes): after the designer's word on the
    node structure.

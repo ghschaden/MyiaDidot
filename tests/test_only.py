@@ -177,3 +177,39 @@ def test_the_equivalence_check_can_fail(tmp_path):
     font(600).save(work)
     ctx2 = only_run.Context(tmp_path / "S.ufo", target, out, {"a"}, {"a", "b"}, work, False)
     assert ctx2.finish() == 0
+
+
+def test_every_stored_draft_is_fitted_or_named_raw():
+    """family 3 (longtail.md): each raw draft has its fit recorded, a fitted
+    one beside it in the layer `fitted`, a raw one with the gate's reason"""
+    store = ufoLib2.Font.open(fontforge_inputs.DRAFTS_UFO)
+    status = store.lib[fontforge_inputs.FIT_KEY]
+    layer = store.layers[fontforge_inputs.FITTED_LAYER]
+    assert set(status) == set(store.keys())
+    for name, why in status.items():
+        assert (why == "fitted") == (name in layer), name
+        assert why == "fitted" or why.startswith("raw: "), name
+    assert set(layer.keys()) <= set(store.keys())
+
+
+def test_a_new_draft_is_fitted_when_stored(monkeypatch):
+    store = ufoLib2.Font()
+    for name in ("a.sc", "b.sc"):
+        g = store.newGlyph(name)
+        g.width = 600
+    calls = []
+
+    def fake(glyph):
+        calls.append(glyph.name)
+        if glyph.name == "b.sc":
+            return None, "raw: a step, the draft's own"
+        new = ufoLib2.objects.Glyph(glyph.name)
+        new.width = 601
+        return new, "fitted"
+
+    monkeypatch.setattr(fontforge_inputs, "fit_draft", fake)
+    fontforge_inputs.fit_store(store, ["a.sc", "b.sc", "gone.sc"])
+    assert calls == ["a.sc", "b.sc"]
+    assert store.lib[fontforge_inputs.FIT_KEY] == {"a.sc": "fitted", "b.sc": "raw: a step, the draft's own"}
+    layer = store.layers[fontforge_inputs.FITTED_LAYER]
+    assert list(layer.keys()) == ["a.sc"] and layer["a.sc"].width == 601

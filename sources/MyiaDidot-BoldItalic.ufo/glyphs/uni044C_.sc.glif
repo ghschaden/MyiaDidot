@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni044C.sc" format="2">
-	<advance width="1073"/>
+	<advance width="1074"/>
 	<outline>
 		<contour>
 			<point x="-56" y="0" type="line"/>
 			<point x="-33" y="69" type="line"/>
-			<point x="46" y="69" type="line" smooth="yes"/>
-			<point x="73" y="69"/>
-			<point x="82" y="78"/>
+			<point x="44" y="69" type="line" smooth="yes"/>
+			<point x="63" y="69"/>
+			<point x="84" y="85"/>
 			<point x="89" y="104" type="curve" smooth="yes"/>
-			<point x="304" y="922" type="line" smooth="yes"/>
-			<point x="311" y="948"/>
-			<point x="313" y="963"/>
-			<point x="283" y="963" type="curve" smooth="yes"/>
+			<point x="306" y="927" type="line" smooth="yes"/>
+			<point x="311" y="947"/>
+			<point x="299" y="963"/>
+			<point x="278" y="963" type="curve" smooth="yes"/>
 			<point x="188" y="963" type="line"/>
 			<point x="211" y="1040" type="line"/>
 			<point x="762" y="1040" type="line"/>
@@ -23,11 +23,14 @@
 			<point x="603" y="923" type="curve" smooth="yes"/>
 			<point x="517" y="567" type="line"/>
 			<point x="689" y="567" type="line" smooth="yes"/>
-			<point x="887" y="567"/>
-			<point x="1008" y="501"/>
-			<point x="1009" y="292" type="curve" smooth="yes"/>
-			<point x="1009" y="91"/>
-			<point x="690" y="0"/>
+			<point x="870" y="567"/>
+			<point x="1009" y="508"/>
+			<point x="1009" y="313" type="curve" smooth="yes"/>
+			<point x="1009" y="295"/>
+			<point x="1009" y="276"/>
+			<point x="1002" y="251" type="curve" smooth="yes"/>
+			<point x="952" y="72"/>
+			<point x="684" y="0"/>
 			<point x="540" y="0" type="curve" smooth="yes"/>
 		</contour>
 		<contour>
@@ -35,13 +38,13 @@
 			<point x="381" y="80"/>
 			<point x="400" y="70"/>
 			<point x="411" y="70" type="curve" smooth="yes"/>
-			<point x="553" y="70" type="line" smooth="yes"/>
-			<point x="685" y="70"/>
-			<point x="755" y="194"/>
-			<point x="755" y="313" type="curve" smooth="yes"/>
-			<point x="755" y="398"/>
-			<point x="744" y="493"/>
-			<point x="644" y="493" type="curve" smooth="yes"/>
+			<point x="533" y="70" type="line" smooth="yes"/>
+			<point x="666" y="70"/>
+			<point x="755" y="161"/>
+			<point x="755" y="292" type="curve" smooth="yes"/>
+			<point x="755" y="401"/>
+			<point x="741" y="493"/>
+			<point x="616" y="493" type="curve" smooth="yes"/>
 			<point x="491" y="493" type="line"/>
 		</contour>
 	</outline>
@@ -57,11 +60,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-16</string>
+				<string>2026-11-23</string>
 				<key>glyph</key>
-				<string>b997b57e0ddb</string>
+				<string>a4068b44d887</string>
 				<key>review</key>
-				<string>proofs/2026-11/bold-italic-after-redraw-phase5-2026-11-16.pdf</string>
+				<string>docs/claude/longtail.md</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>

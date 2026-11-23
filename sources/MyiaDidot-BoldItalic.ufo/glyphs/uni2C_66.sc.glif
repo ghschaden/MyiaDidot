@@ -1,59 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="uni2C66.sc" format="2">
-	<advance width="1083"/>
+	<advance width="1076"/>
 	<outline>
 		<contour>
-			<point x="-34" y="-97" type="line"/>
-			<point x="351" y="317" type="line"/>
-			<point x="511" y="919" type="line" smooth="yes"/>
-			<point x="517" y="943"/>
-			<point x="516" y="959"/>
-			<point x="489" y="960" type="curve"/>
-			<point x="470" y="956"/>
-			<point x="415" y="942"/>
-			<point x="351" y="881" type="curve" smooth="yes"/>
-			<point x="280" y="813"/>
-			<point x="220" y="706"/>
-			<point x="191" y="614" type="curve"/>
-			<point x="98" y="614" type="line"/>
-			<point x="213" y="1040" type="line"/>
-			<point x="1154" y="1040" type="line"/>
-			<point x="1055" y="614" type="line"/>
-			<point x="985" y="614" type="line"/>
-			<point x="993" y="651"/>
-			<point x="998" y="695"/>
-			<point x="998" y="725" type="curve" smooth="yes"/>
-			<point x="998" y="767"/>
-			<point x="989" y="824"/>
-			<point x="967" y="871" type="curve"/>
-			<point x="724" y="611" type="line"/>
-			<point x="590" y="106" type="line" smooth="yes"/>
-			<point x="584" y="83"/>
-			<point x="602" y="69"/>
-			<point x="613" y="69" type="curve" smooth="yes"/>
-			<point x="736" y="69" type="line"/>
-			<point x="715" y="0" type="line"/>
-			<point x="156" y="0" type="line"/>
-			<point x="22" y="-143" type="line"/>
+			<point x="-35" y="-97" type="line"/>
+			<point x="20" y="-143" type="line"/>
+			<point x="158" y="0" type="line"/>
+			<point x="694" y="0" type="line"/>
+			<point x="716" y="69" type="line"/>
+			<point x="611" y="69" type="line" smooth="yes"/>
+			<point x="593" y="69"/>
+			<point x="581" y="84"/>
+			<point x="586" y="102" type="curve" smooth="yes"/>
+			<point x="713" y="581" type="line"/>
+			<point x="982" y="863" type="line"/>
+			<point x="994" y="830"/>
+			<point x="1001" y="793"/>
+			<point x="1006" y="755" type="curve"/>
+			<point x="1007" y="707"/>
+			<point x="1001" y="659"/>
+			<point x="990" y="616" type="curve"/>
+			<point x="1028" y="618" type="line"/>
+			<point x="1147" y="1035" type="line"/>
+			<point x="1152" y="1040" type="line"/>
+			<point x="214" y="1040" type="line"/>
+			<point x="122" y="618" type="line"/>
+			<point x="178" y="614" type="line"/>
+			<point x="168" y="624"/>
+			<point x="277" y="964"/>
+			<point x="485" y="964" type="curve" smooth="yes"/>
+			<point x="491" y="964" type="line" smooth="yes"/>
+			<point x="505" y="964"/>
+			<point x="514" y="953"/>
+			<point x="510" y="939" type="curve" smooth="yes"/>
+			<point x="339" y="294" type="line"/>
 		</contour>
 		<contour>
-			<point x="764" y="760" type="line"/>
-			<point x="924" y="932" type="line"/>
-			<point x="904" y="948"/>
-			<point x="881" y="959"/>
-			<point x="853" y="959" type="curve"/>
-			<point x="853" y="959" type="line"/>
-			<point x="822" y="959"/>
-			<point x="812" y="947"/>
-			<point x="806" y="918" type="curve"/>
-		</contour>
-		<contour>
-			<point x="312" y="168" type="line"/>
-			<point x="220" y="69" type="line"/>
-			<point x="252" y="69" type="line" smooth="yes"/>
-			<point x="279" y="69"/>
-			<point x="290" y="82"/>
-			<point x="296" y="106" type="curve" smooth="yes"/>
+			<point x="751" y="726" type="line"/>
+			<point x="805" y="927" type="line"/>
+			<point x="807" y="934" type="line" smooth="yes"/>
+			<point x="810" y="946"/>
+			<point x="788" y="956"/>
+			<point x="787" y="961" type="curve"/>
+			<point x="788" y="963"/>
+			<point x="791" y="964"/>
+			<point x="800" y="964" type="curve" smooth="yes"/>
+			<point x="850" y="964" type="line" smooth="yes"/>
+			<point x="892" y="964"/>
+			<point x="922" y="950"/>
+			<point x="944" y="928" type="curve"/>
 		</contour>
 	</outline>
 	<anchor name="Top" x="705" y="1156"/>
@@ -69,11 +64,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-09</string>
+				<string>2026-11-23</string>
 				<key>glyph</key>
-				<string>944956e5773d</string>
+				<string>55f01a3f176e</string>
 				<key>review</key>
-				<string>slash longer and wider, top at the top line (chosen 2026-11-09 from scratch sheets Tbar/Ttop)</string>
+				<string>docs/claude/longtail.md</string>
 			</dict>
 			<key>org.myiadidot.derived</key>
 			<true/>

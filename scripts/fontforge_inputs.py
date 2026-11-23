@@ -13,6 +13,13 @@ input changed:
   frame, the small caps' height and stems, smallcaps_draft.py). A stale or
   missing one is drafted again where FontForge is installed; elsewhere (CI)
   the generator stops and names it. make_italic.py --redraft drafts all.
+  Beside each raw draft, in the layer `fitted`, the same draft redrawn
+  onto clean nodes (redraw.py, no spec) when it passed redraw's gate:
+  fitted once, when it is drafted, and handed over in place of the raw
+  one. FontForge's kinks stay out of the small caps so, before
+  weight_thick and the finishing passes read their nodes (longtail.md,
+  family 3; approved by the designer 2026-11-23). A draft that fails the
+  gate is handed over raw; FIT_KEY records which, and why.
 """
 
 import hashlib
@@ -32,6 +39,13 @@ DRAFTS_UFO = ROOT / "sources/drafts/Italic-smallcaps.ufo"
 DRAFT_SCRIPT = ROOT / "scripts/smallcaps_draft.py"
 CONVERTED_KEY = "org.myiadidot.convertedFrom"
 INPUT_KEY = "org.myiadidot.draftInputs"
+FIT_KEY = "org.myiadidot.draftFit"  # {name: "fitted" or "raw: why"}
+FITTED_LAYER = "fitted"
+# drafts handed over raw though the fit passes its gate, by decision
+KEEP_RAW = {
+    "psi.sc": "the Bold Italic's stroke closes the fitted arm onto the stem's top serif "
+              "(a counter made a hole, the arm lost; 2026-11-23)",
+}
 # a run that may only read the drafts store: a draft it lacks ends the run
 # instead of FontForge writing it (scratch_out.prepare no longer sets it: a
 # scratch run drafts into its own copy, redirect_drafts)
@@ -107,6 +121,45 @@ def input_key(glyphs, params):
     return h.hexdigest()
 
 
+def fit_draft(glyph):
+    """(the draft redrawn onto clean nodes, "fitted"), or (None, "raw: why")
+    where redraw refuses it or its gate fails"""
+    import redraw
+
+    try:
+        new, report = redraw.redraw(glyph)
+    except Exception as e:  # refused by the tool
+        return None, f"raw: {e}"
+    fail, _look = redraw.gate(report)
+    if fail:
+        return None, "raw: " + "; ".join(fail)
+    new.lib.clear()
+    return new, "fitted"
+
+
+def fit_store(store, names):
+    """names' raw drafts in store fitted into its fitted layer, FIT_KEY set"""
+    layer = (store.layers[FITTED_LAYER] if FITTED_LAYER in store.layers
+             else store.layers.newLayer(FITTED_LAYER))
+    status = dict(store.lib.get(FIT_KEY, {}))
+    for name in names:
+        if name in layer:
+            del layer[name]
+        status.pop(name, None)
+        if name not in store:
+            continue
+        if name in KEEP_RAW:
+            status[name] = "raw: " + KEEP_RAW[name]
+            sys.stderr.write(f"small-cap draft {name}: {status[name]}\n")
+            continue
+        new, why = fit_draft(store[name])
+        if new is not None:
+            layer.insertGlyph(new, name)
+        status[name] = why
+        sys.stderr.write(f"small-cap draft {name}: {why}\n")
+    store.lib[FIT_KEY] = {n: status[n] for n in sorted(status) if n in store}
+
+
 def drafts(up, height, stem, redraft=False, keep=False):
     """{small cap name: draft} for up (the Italic in the upright frame):
     the stored drafts whose input is unchanged, the others drafted anew by
@@ -164,6 +217,11 @@ def drafts(up, height, stem, redraft=False, keep=False):
                 store.layers.defaultLayer.insertGlyph(g, name)
         for name in [n for n in store.keys() if n not in wanted]:
             del store[name]
+        if FITTED_LAYER in store.layers:
+            layer = store.layers[FITTED_LAYER]
+            for name in [n for n in layer.keys() if n not in store]:
+                del layer[name]
+        fit_store(store, stale)
         store.lib[INPUT_KEY] = {name: keys[name] for name in sorted(wanted)}
         store.lib[CONVERTED_KEY] = {"fontforge": fontforge_version()}
         store.glyphOrder = sorted(store.keys())
@@ -172,6 +230,11 @@ def drafts(up, height, stem, redraft=False, keep=False):
     elif held and not READ_ONLY:
         store.lib[INPUT_KEY] = {name: keys[name] for name in sorted(wanted)}
         store.save(DRAFTS_UFO, overwrite=True)
+    unfitted = [name for name in wanted if name in store and name not in store.lib.get(FIT_KEY, {})]
+    if unfitted and not READ_ONLY:
+        fit_store(store, unfitted)
+        store.save(DRAFTS_UFO, overwrite=True)
+    fitted = store.layers[FITTED_LAYER] if FITTED_LAYER in store.layers else {}
     out = {g.name: g for g in up if g.name.endswith(".sc")}
-    out.update({name: store[name] for name in wanted if name in store})
+    out.update({name: fitted[name] if name in fitted else store[name] for name in wanted if name in store})
     return out

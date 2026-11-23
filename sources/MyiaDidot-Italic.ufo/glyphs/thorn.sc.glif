@@ -6,33 +6,36 @@
 			<point x="-70" y="0" type="line"/>
 			<point x="-51" y="62" type="line"/>
 			<point x="62" y="62" type="line" smooth="yes"/>
-			<point x="90" y="62"/>
-			<point x="99" y="75"/>
+			<point x="89" y="62"/>
+			<point x="98" y="73"/>
 			<point x="105" y="99" type="curve" smooth="yes"/>
 			<point x="326" y="931" type="line" smooth="yes"/>
-			<point x="335" y="960"/>
-			<point x="331" y="972"/>
+			<point x="330" y="946"/>
+			<point x="342" y="972"/>
 			<point x="304" y="972" type="curve" smooth="yes"/>
 			<point x="190" y="972" type="line"/>
 			<point x="210" y="1040" type="line"/>
 			<point x="744" y="1040" type="line"/>
 			<point x="725" y="972" type="line"/>
 			<point x="559" y="972" type="line" smooth="yes"/>
-			<point x="527" y="972"/>
-			<point x="522" y="962"/>
+			<point x="530" y="972"/>
+			<point x="522" y="964"/>
 			<point x="516" y="936" type="curve" smooth="yes"/>
 			<point x="494" y="835" type="line"/>
-			<point x="701" y="835" type="line"/>
-			<point x="872" y="835"/>
-			<point x="944" y="736"/>
-			<point x="944" y="570" type="curve" smooth="yes"/>
-			<point x="944" y="366"/>
-			<point x="692" y="268"/>
+			<point x="701" y="835" type="line" smooth="yes"/>
+			<point x="901" y="835"/>
+			<point x="946" y="693"/>
+			<point x="946" y="593" type="curve" smooth="yes"/>
+			<point x="946" y="558"/>
+			<point x="941" y="527"/>
+			<point x="937" y="512" type="curve" smooth="yes"/>
+			<point x="904" y="388"/>
+			<point x="740" y="268"/>
 			<point x="513" y="268" type="curve" smooth="yes"/>
 			<point x="341" y="268" type="line"/>
 			<point x="293" y="96" type="line" smooth="yes"/>
-			<point x="287" y="73"/>
-			<point x="287" y="62"/>
+			<point x="286" y="70"/>
+			<point x="290" y="62"/>
 			<point x="317" y="62" type="curve" smooth="yes"/>
 			<point x="484" y="62" type="line"/>
 			<point x="466" y="0" type="line"/>
@@ -40,15 +43,15 @@
 		<contour>
 			<point x="361" y="330" type="line"/>
 			<point x="548" y="330" type="line" smooth="yes"/>
-			<point x="680" y="330"/>
-			<point x="796" y="443"/>
-			<point x="796" y="578" type="curve" smooth="yes"/>
-			<point x="796" y="669"/>
-			<point x="774" y="767"/>
+			<point x="691" y="330"/>
+			<point x="796" y="448"/>
+			<point x="796" y="591" type="curve" smooth="yes"/>
+			<point x="796" y="680"/>
+			<point x="769" y="767"/>
 			<point x="664" y="767" type="curve" smooth="yes"/>
 			<point x="509" y="767" type="line" smooth="yes"/>
-			<point x="482" y="767"/>
-			<point x="473" y="755"/>
+			<point x="472" y="767"/>
+			<point x="470" y="742"/>
 			<point x="466" y="727" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
@@ -57,11 +60,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-10</string>
+				<string>2026-11-23</string>
 				<key>glyph</key>
-				<string>2c6380f1780c</string>
+				<string>206568c4d691</string>
 				<key>review</key>
-				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
+				<string>docs/claude/longtail.md</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>
