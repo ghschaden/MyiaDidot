@@ -1271,6 +1271,27 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       (families.py --style Italic --family recipe): `attach` kink 6 (ɭ ɰ
       ʈ Ɽ Ⱳ Ꞵ, Ɽ's 7.4 degrees the largest), `attach` step 5 (ƃ ɖ ɧ ɳ
       ʝ), and singles by recipe (Sonnet).
+      The Regular's `enlarge` family looked at 2026-11-24 (039bd942): no
+      fault shared in the operation itself; ɢ ʛ's smooth node at 710,23
+      (2.6 degrees, from enlarge's scaling of g.sc's 0.6) made smooth in
+      the Regular's glyphs by smooth_joins.align (not in JOINS: that list
+      runs on the Bold Italic only), Bold follows; 251 -> 249 lines. Left
+      of the family: ɢ ʛ's step at 701,304 (design), and the lines that
+      are the bases' own (Ɛ ɣ ɩ ɤ ʊ: one-letter faults, kinks and
+      strokes of the 2026-10-16 start list). only_glyph.generate now
+      applies ITALIC_JOINS/ITALIC_BOLD_JOINS/RUNS/CORNERS as rederive
+      does (the Ƈ Ɠ test failed on a fresh frame dump without it).
+      The t-bar sweep (diffenator + pairs, 2026-11-24, against 3b88d906,
+      mixed with 23 later commits): t-family as expected in all four. The
+      t-bar commit alone (c461b1de against its parent, by the sources): only
+      t, its ligatures (c_t f_t f_f_t longs_t longs_longs_t s_t t_h t_t),
+      ƭ ʈ ᵵ ṫ ⱦ and, in the Bold Italic, tcaron tcommaaccent ț ṭ ṱ ẗ and s_p
+      (advance +1, an outline change: looked at when the Bold Italic's
+      ligatures are next; not the t-bar's design); Italic and Bold Italic
+      kerning.plist (19 and 168 values: the t pairs, and the Greek group
+      pair sigma-mugreek -21 -> -22, the whole of σμ -1). ʐm +11/+14 is
+      ʐ's advance (Italic 785->796, Bold 775->789; no kern pair in either);
+      the Bold Italic's GDEF carets (+1..+4) follow its ligatures' advances.
       The joins batch done 2026-11-22 (italic.md, "The recipe joins"):
       ɭ ʈ Ⱳ Ꞵ ƃ ɳ ɧ ɖ. Left: ɰ (ɥ's descender 2.3 degrees past the slant:
       set it at the slant, then fair), Ɽ Ʈ ɖ's curl balls (derive.curl
