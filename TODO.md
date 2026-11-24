@@ -1382,6 +1382,26 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       starting the piece no higher than f's straight top (the Bold's ɓ ɗ ɦ
       join kinks of 3.7-5.2 degrees, made by rederive; it changes the
       italics' hooks too: its own trial).
+      Done 2026-11-24 (sheet proofs/2026-11/bold-hook-neck-stem-2026-11-24.pdf,
+      approved by the designer): (1) the neck, in f, longs and ʃ alike
+      (each emboldened on its own, the same fault), by hand
+      (`scripts/bold_neck.py`, drawn): the node at the ball's side 5
+      left, the arch's inner top at the Regular's share (621 -> 602), its
+      handles at the Regular's shares; extreme and wobble gone, carried
+      into the f/ſ ligatures and the hook letters. (2) the stem: make_bold
+      straight_hook_stem, data_bold.BOLD_STRAIGHT_HOOK (Ɓ Ɗ Ƥ Ɦ straight to
+      1100; 1050 and 1150 shown, the designer saw no difference in weight
+      and took the middle). Ɦ ɦ.sc released (hook left, from the Regular).
+      Found in the generate: ƥ.sc ɦ.sc, emboldened from the Regular's,
+      brought the neck fault back (ɦ.sc 13 past): now enlarged from the
+      Bold's Ƥ Ɦ (BOLD_REBUILD), ƥ.sc left with a 2.7-degree smooth at
+      930,970 (a 23-unit handle's rounding, listed); f_b f_h f_k and their
+      ff/ſ/ſſ forms: draft_ligatures.f_ligature cut the letter in at 1250,
+      above fl's straight stem (1168): a 1.9-degree corner, 2.4 with the
+      rounder arch; the Bold's now cut at FL_ARCH in_foot. Left: f.short's
+      own smaller neck wobble (562,1398; a reviewed draft). hook_path
+      starting no higher than f's straight top (the Bold's ɓ ɗ ɦ joins)
+      still open.
       Next of the Regular's operations: `curl` (Ƙ ƴ Ⱳ ⱳ Ƴ ʋ).
       The joins batch done 2026-11-22 (italic.md, "The recipe joins"):
       ɭ ʈ Ⱳ Ꞵ ƃ ɳ ɧ ɖ. Left: ɰ (ɥ's descender 2.3 degrees past the slant:

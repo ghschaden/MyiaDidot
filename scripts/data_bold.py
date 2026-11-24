@@ -52,6 +52,11 @@ BOLD_REBUILD = {
     "uni0255": "ɕ: its own recipe (BOLD_RECIPES); emboldened, the loop's counter closed",
     "uni025E": "ɞ: its own recipe (BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
     "uni027E": "ɾ: its own recipe (BOLD_RECIPES), the Bold r's stem and foot slab under the Bold f's hook",
+    # enlarged from the Bold's Ƥ Ɦ (their neck mended, stem straight:
+    # 2026-11-24); emboldened from the Regular's, the f-neck fault came
+    # back (ɦ.sc 360,1004 13 past) and the stem leaned from 638
+    "uni01A5.sc": "ƥ.sc: enlarged from the Bold's Ƥ",
+    "uni0266.sc": "ɦ.sc: enlarged from the Bold's Ɦ",
     # the middle tildes on the Bold's own base, as the Bold Italic's
     # (ITALIC_BOLD_REBUILD): emboldened whole and joined to the base, the
     # foot serif's left end was cut at a slant, the stem's left edge swelled
@@ -113,6 +118,13 @@ BOLD_RECIPES = {
     # its leaning edge the stem's right edge, 2026-11-09)
     "ɮ": ("attach", "l", "lezh_band"),
 }
+
+# Capitals with f's hook mirrored on their stem (up-left): the stem's outer
+# edge kept straight up to this height, where it turns into the hook (made
+# again by rederive, the curve left the stem at 922 and leaned out under
+# the hook: make_bold.straight_hook_stem). The designer, 2026-11-24, on
+# proofs/2026-11/bold-hook-neck-stem-2026-11-24.pdf: 1100 of 1050-1150.
+BOLD_STRAIGHT_HOOK = {"Ɓ": 1100, "Ɗ": 1100, "Ƥ": 1100, "Ɦ": 1100}
 
 # Reviewed weight-aware choices: the rounder emboldening can lighten or
 # dent a body, and a local contour repair must not switch its construction.

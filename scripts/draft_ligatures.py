@@ -140,9 +140,13 @@ def f_ligature(font, base, letter, bar=None):
         # the f's crossbar (ending 610 after its last stem) runs on into the t's
         keep = path_op(keep, rect_path(fx + bar[2] - 20, bar[1], dx + 100, bar[3]), "UNION")
     else:
-        # the l's stem and foot cut away below 1250, not the f's crossbar
+        # the l's stem and foot cut away below 1250, not the f's crossbar;
+        # in the Bold (fl by fl_shape) below where fl's stem stops being
+        # straight: cut at 1250 the letter's straight stem met fl's curve
+        # already leaning (f_b f_h f_k, 2.4 degrees, 2026-11-24)
+        top = 1250 if bar is F_BAR else FL_ARCH["in_foot"]
         cut = path_op(rect_path(lx - 160, -BIG, BIG, bar[1] - 1),
-                      rect_path(max(lx - 160, fx + bar[2] + 1), bar[1] - 2, BIG, 1250), "UNION")
+                      rect_path(max(lx - 160, fx + bar[2] + 1), bar[1] - 2, BIG, top), "UNION")
         keep = path_op(to_path(font, font[base]), cut, "DIFFERENCE")
         part = path_op(to_path(font, font[letter]), rect_path(-BIG, 1300, BIG, BIG), "DIFFERENCE")
     rec = RecordingPen()

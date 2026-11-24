@@ -70,6 +70,7 @@ from data_bold import (
     BOLD_REFERENCE_ROUNDER,
     BOLD_ROUNDER,
     BOLD_SIDEBEARINGS,
+    BOLD_STRAIGHT_HOOK,
     KX,
     MARK_AX,
     MARK_AY,
@@ -1525,6 +1526,32 @@ def serif_top(font, name, pick):
     return None
 
 
+def straight_hook_stem(glyph, top):
+    """The stem's outer edge under an up-left hook (Ɓ: f's top mirrored)
+    straight up to top (data_bold.BOLD_STRAIGHT_HOOK): the node where the
+    edge leaves its line for the hook's inner curve raised to top, the
+    curve's first handle (straight above it) shortened in proportion, so
+    the curve keeps its arch's top and its last handle. Returns whether
+    the node was found."""
+    for c in glyph.contours:
+        pts = c.points
+        n = len(pts)
+        for i, p in enumerate(pts):
+            prev, h1, h2, a = pts[i - 1], pts[(i + 1) % n], pts[(i + 2) % n], pts[(i + 3) % n]
+            if not (p.type == "line" and h1.type is None and h2.type is None and a.type == "curve"):
+                continue
+            # the edge rising (from below, the handle above), the arch's top
+            # left of it and level with its handle
+            if not (prev.x == p.x == h1.x and prev.y < p.y < top < a.y and a.x < p.x
+                    and h2.y == a.y):
+                continue
+            k = (a.y - top) / (a.y - p.y)
+            h1.y = round(top + (h1.y - p.y) * k)
+            p.y = top
+            return True
+    return False
+
+
 def rederive(source, font, italic, whole):
     """Derived letters left emboldened whole because they cut their base (a
     hook replacing a stem's end, Ц's tail its foot) made again by their
@@ -1667,6 +1694,8 @@ def rederive(source, font, italic, whole):
                     capital_width(up, tmp, SC_LEVEL_GAIN[name][0])
             elif op == "enlarge" and name.endswith(".sc"):
                 small_cap_stems(up, new)
+        elif ch in BOLD_STRAIGHT_HOOK:
+            straight_hook_stem(new, BOLD_STRAIGHT_HOOK[ch])
         drop_specks(new)
         fill_pinholes(new, up[name], up)
         if op == "midtilde" and not italic:

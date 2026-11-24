@@ -38,24 +38,12 @@ exclam smooth 2                  # contrast-aware Bold (emboldened by stroke wei
 exclam width 1                   # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
 exclamdown smooth 2              # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 201,93 3.1 degrees; 430,93 3.1 degrees
 exclamdown width 1               # 2026-10-16 known at the start (quality checks added): 1.21 of the Regular's, usually 1.09
-f extreme 1                      # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 665,1383 9 units past
-f wobble 1                       # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 663,1365 18 degrees; 666,1396 15 degrees
 f.short wobble 1                 # 2026-11-14 the short fs (calt before a mark f's hook meets; f.short emboldened as f, ff.short the f beside it): the f's neck wobble, as listed for f, inherited: 2 against 0: 560,1398 3 degrees; 565,1411 12 degrees
-f_f_b wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-f_f_h wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 f_f_j kink 2                     # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1240,884 2.6 degrees; 1262,883 2.7 degrees
-f_f_j wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18
-f_f_k wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-f_f_t wobble 1                   # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 f_j kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.5 degrees; 659,883 2.6 degrees
-f_j wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-ff wobble 1                      # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1304,1335 18 degrees; 706,1341 23 degrees
 ff.short wobble 1                # 2026-11-14 the short fs (calt before a mark f's hook meets; f.short emboldened as f, ff.short the f beside it): the f's neck wobble, as listed for f and fi, inherited: 4 against 0: 1164,1398 3 degrees; 1169,1411 12 degrees; 663,1369 18 degrees; 666,1392 16 degrees
 ffi kink 2                       # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1239,884 2.6 degrees; 1261,883 2.7 degrees
-ffi wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18
-ffl wobble 1                     # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 fi kink 2                        # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 636,884 2.6 degrees; 658,883 2.7 degrees
-fi wobble 1                      # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 fiveoldstyle stroke 1            # accepted Roman old-style set: modest Bold weight increase preserves figure contrast; lc 218 against 261 (0.83, lighter)
 florin extreme 1                 # 2026-10-27 Bold: a fitted curve keeps its source's bends (derive.embolden keep_bends): 24,-466 8 units past
 florin stroke 1                  # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 227 against 261 (0.87, lighter)
@@ -77,18 +65,6 @@ j accent 1                       # 2026-10-16 known at the start (quality checks
 j.sc zone 1                      # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Bold); a few units of extreme moved, neighbours kept: top +4 from 1039
 kappa zone 1                     # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
 kappasymbolgreek zone 1          # 2026-10-16 known at the start (quality checks added): bottom -24 from 0
-longs extreme 1                  # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 668,1383 9 units past
-longs wobble 1                   # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 666,1365 18 degrees; 669,1396 15 degrees
-longs_i wobble 1                 # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-longs_j wobble 1                 # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-longs_longs wobble 1             # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1306,1335 18 degrees; 708,1341 23 degrees
-longs_longs_b wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-longs_longs_h wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-longs_longs_i wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18
-longs_longs_j wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 4 against 0: 1267,1369 18 degrees; 1270,1392 16 degrees; 663,1369 18
-longs_longs_k wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-longs_longs_l wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
-longs_longs_t wobble 1           # 2026-11-09 Bold f-ligatures made from the Bold's own f (draft_ligatures.finish_f): the f's ear wobble, as listed for f, inherited: 2 against 0: 663,1369 18 degrees; 666,1392 16 degrees
 m.sc step 1                      # 2026-10-27 step check added (checks.py step): a candidate to review: 1318,988 60 units aside
 m.sc zone 1                      # baseline: bottom -7 from 1
 mugreek.sc zone 1                # baseline: bottom -7 from 1
@@ -154,9 +130,7 @@ u1D516 stroke 1                  # stroke weights against the kind's (scripts/qu
 u1D516 wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 1: 1075,1378 13 degrees; 1081,1376 12 degrees
 u1D52D extreme 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 311,-473 6 units past
 u1D52D wobble 1                  # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 206,924 4 degrees; 204,927 4 degrees; 284,1126 16 degrees
-uni0181 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 91,1396 5 units past
 uni0183 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 85,1496 1.5 degrees; 85,1440 1.5 degrees
-uni018A extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 91,1396 5 units past
 uni0190 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 741,190 14 units past
 uni0190 kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1076,1276 6.6 degrees; 211,965 3.9 degrees; 183,498 3.4 degrees
 uni0190 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 2: 1076,1279 5 degrees; 869,763 9 degrees; 689,199 11 degrees
@@ -171,14 +145,10 @@ uni0196 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni0196 zone 1                   # 2026-10-16 known at the start (quality checks added): top +21 from 1434
 uni0198 smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 1401,1111 2.6 degrees
 uni0199 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
-uni0199 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 659,1369 18 degrees; 662,1392 16 degrees
 uni0199.sc extreme 1             # 2026-10-27 hook balls sized from the case's stem (derive.ball_for), redrafted: 922,895 11 units past
 uni019B smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 226,1297 2.2 degrees
-uni01A4 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 91,1396 5 units past
-uni01A5 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 648,1343 14 degrees
 uni01A5 zone 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: top -25 from 1496
-uni01A5.sc extreme 1             # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 359,1001 18 units past
-uni01A5.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 342,919 17 degrees; 1055,699 5 degrees
+uni01A5.sc smooth 1              # 2026-11-24 the Bold's hook batch (f/ſ/ʃ neck by hand, Ɓ Ɗ Ƥ Ɦ stem straight to 1100, ƥ.sc ɦ.sc enlarged from the Bold's): ƥ.sc's 23-unit handle rounded in enlarge: 930,970 2.7 degrees
 uni01AC kink 1                   # 2026-11-06 the second look: Bold Ƭ from the bar's weight, the italics' Ƭ ƭ.sc left arm lengthened, Bold Italic ƈ.sc ɠ.sc open curls: candidates for review: 57,1102 4.2 degrees
 uni01AD smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 609,1328 2.5 degrees
 uni01AD wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 619,1362 17 degrees; 622,1392 13 degrees
@@ -234,10 +204,8 @@ uni024C zone 1                   # 2026-10-16 known at the start (quality checks
 uni024D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 669,799 19 degrees; 665,768 23 degrees
 uni0251.sc step 2                # 2026-10-27 step check added (checks.py step): a candidate to review: 757,988 52 units aside; 776,2 34 units aside
 uni0253 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 189,1000 3.7 degrees
-uni0253 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 658,1369 18 degrees; 661,1392 16 degrees
 uni0255 kink 1                   # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 566,160 5.3 degrees
 uni0257 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 757,1000 3.7 degrees
-uni0257 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 1224,1369 18 degrees; 1227,1392 16 degrees
 uni025A wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 939,567 22 degrees; 942,602 11 degrees
 uni025B.sc kink 1                # 2026-10-16 known at the start (quality checks added): 689,552 3.8 degrees
 uni025B.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 224,362 2.1 degrees
@@ -257,11 +225,7 @@ uni0264 kink 5                   # 2026-10-16 known at the start (quality checks
 uni0264.sc kink 1                # 2026-10-16 known at the start (quality checks added): 565,-20 1.6 degrees
 uni0264.sc smooth 1              # joins the rounding to whole units broke kept smooth (make_bold.round_smoothly); bracket ends run on along their strokes: 943,1002 2.4 degrees
 uni0266 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 189,1000 3.7 degrees
-uni0266 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 658,1369 18 degrees; 661,1392 16 degrees
-uni0266.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 631,891 2.7 degrees
-uni0266.sc width 1               # 2026-11-24: the Bold's Ɦ ɦ.sc kept drawn (old hook) while the Regular's turned left; their Bold batch in TODO.md: 0.88 of the Regular's, usually 1.08
 uni0267 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
-uni0267 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 657,1365 17 degrees; 672,-463 17 degrees; 668,-495 5 degrees
 uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 554,177 2.0 degrees
 uni0269.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 227 against 273 (0.83, lighter)
 uni026E kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 924,537 5.9 degrees; 607,-132 4.8 degrees; 571,-221 5.1 degrees
@@ -279,14 +243,11 @@ uni027D wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni027D.sc kink 1                # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 580,-134 3.0 degrees
 uni027D.sc wobble 1              # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 600,-225 6 degrees; 596,-188 17 degrees; 712,739 4 degrees
 uni027E base 1                   # reviewed 2026-11-04: ɾ a fishhook (r's stem and slab under f's hook, the stem above cut away; Italic stem made as heavy as r's), ᵳ from it: 52% of r kept (attach)
-uni027E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 542,764 23 degrees; 546,796 17 degrees
 uni0280 extreme 1                # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 888,164 7 units past; 547,501 5 units past
 uni0280 wobble 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: 1 against 0: 607,629 5 degrees
 uni0281 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 712,301 4 degrees
 uni0282 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 214 against 261 (0.82, lighter)
 uni0282 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 1: 503,-372 11 degrees; 468,-410 52 degrees; 423,-427 14 degrees
-uni0283 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 838,1383 9 units past
-uni0283 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 0: 98,-464 17 degrees; 94,-498 4 degrees; 685,1369 18 degrees; 688,1396 15 degrees
 uni0284 extreme 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 675,1313 9 units past
 uni0284 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 87,-464 17 degrees; 83,-499 4 degrees; 676,1326 15 degrees
 uni0288 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 559,-206 3.1 degrees
@@ -410,10 +371,7 @@ uni1D43 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni1D4B width 1                  # 2026-10-16 known at the start (quality checks added): 1.23 of the Regular's, usually 1.09
 uni1D4D kink 1                   # 2026-10-16 known at the start (quality checks added): 357,1117 2.3 degrees
 uni1D58 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 427,760 4 degrees
-uni1D6E kink 1                   # 2026-10-16 known at the start (quality checks added): 656,1331 4.1 degrees
-uni1D6E wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 657,1365 18 degrees; 660,1392 16 degrees
 uni1D72 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 652,798 16 degrees; 649,767 17 degrees; 559,872 4 degrees
-uni1D73 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 534,798 16 degrees; 531,763 17 degrees
 uni1D74 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 203 against 261 (0.78, lighter)
 uni1DA4 step 4                   # 2026-10-27 step check added (checks.py step): a candidate to review: 137,872 52 units aside; 85,920 52 units aside; 318,920 51 units aside; 369,872 51 units aside
 uni1DA4 width 1                  # 2026-10-16 known at the start (quality checks added): 1.29 of the Regular's, usually 1.09
@@ -459,8 +417,6 @@ uni2C73 kink 1                   # contrast-aware Bold (emboldened by stroke wei
 uni2C73 smooth 1                 # 2026-10-27 hook balls sized from the case's stem (derive.ball_for), redrafted: 1671,715 2.1 degrees
 uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 261 (0.77, lighter)
 uniA78C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 194 against 273 (0.71, lighter)
-uniA7AA kink 1                   # 2026-11-08 approved local drawing; fewer existing findings: 287,860 5.4 degrees
-uniA7AA width 1                  # 2026-11-24: the Bold's Ɦ ɦ.sc kept drawn (old hook) while the Regular's turned left; their Bold batch in TODO.md: 0.88 of the Regular's, usually 1.08
 uniA7B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 737,262 3.7 degrees
 uniA7B6 kink 4                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 509,1457 5.3 degrees; 927,1071 6.3 degrees; 1286,1465 4.6 degrees; 1292,-28 1.1 degrees
 uniA7B7.sc kink 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Bold); a few units of extreme moved, neighbours kept: 411,1059 3.6 degrees
