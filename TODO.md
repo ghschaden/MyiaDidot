@@ -1292,6 +1292,28 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       pair sigma-mugreek -21 -> -22, the whole of σμ -1). ʐm +11/+14 is
       ʐ's advance (Italic 785->796, Bold 775->789; no kern pair in either);
       the Bold Italic's GDEF carets (+1..+4) follow its ligatures' advances.
+      The Regular's `attach` family done 2026-11-24
+      (`scripts/regular_attach.py`, sheet
+      proofs/2026-11/regular-attach-2026-11-24.pdf, approved): no shared
+      cause, a node each. Ʈ and ⁂ made again (Ʈ's ball by today's curl;
+      ⁂ from the asterisk, whose four 2.3-degree seams were aligned), Ɲ's
+      tail top moved onto N's edge lines, the rest smooth_joins.align
+      (ʑ Ʝ ɮ Ϗ ɞ ʐ, Ʈ's stem into the curl); ɲ.sc ʝ.sc ϗ.sc, enlarged from
+      Ɲ Ʝ Ϗ, made again on them (ɲ.sc ʝ.sc clean, ϗ.sc 3 lines to 2: a
+      1.9-degree join of two lines at 677,541 and 935,-293's 2.6, which
+      align does not move); ʐ's kerning against b h k l 24 -> 26
+      (check-regular's kern step, its tail moved). Lines: Regular 18 gone,
+      2 new (count keys); Bold 4 gone, 3 new; Italic 1 gone; Bold Italic 1
+      and 1. The Bold's ʝ.sc: its smooth 2.5 at 111,-377 now a kink 3.8
+      (113,-377; width 900 -> 904): the Regular's join there is now in
+      line, the emboldening turns line and handle apart (HEAD's 1.7 off
+      the other way hid it); left for phase 7. Re-deriving alone (a scratch
+      run) mended only Ʈ's ball. Left: ɮ 828,540 (1.0, two lines), the
+      steps of ɝ ₹ Ɑ (design), ɞ's zone and base lines. **ɮ's recipe is
+      stale**: run again, it sets ʒ apart from the l (ʒ moved since); the
+      kept glyph is right, the recipe to be brought to it before ɮ is
+      ever made again. Next of the Regular's operations: `hook` smooth
+      (Ɓ Ɗ Ƒ Ƥ Ɦ), then `curl` (Ƙ ƴ Ⱳ ⱳ Ƴ ʋ).
       The joins batch done 2026-11-22 (italic.md, "The recipe joins"):
       ɭ ʈ Ⱳ Ꞵ ƃ ɳ ɧ ɖ. Left: ɰ (ɥ's descender 2.3 degrees past the slant:
       set it at the slant, then fair), Ɽ Ʈ ɖ's curl balls (derive.curl
