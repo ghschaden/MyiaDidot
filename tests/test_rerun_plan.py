@@ -17,7 +17,9 @@ def git(repo, *args):
     env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
     env |= {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@example.org",
             "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.org"}
-    return subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True,
+    # a throwaway repository: never sign (the global signing program may not run here)
+    return subprocess.run(["git", "-C", str(repo), "-c", "commit.gpgsign=false", *args],
+                          capture_output=True, text=True,
                           check=True, env=env).stdout.strip()
 
 

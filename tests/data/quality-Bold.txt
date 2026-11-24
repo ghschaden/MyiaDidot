@@ -259,6 +259,7 @@ uni0264.sc smooth 1              # joins the rounding to whole units broke kept 
 uni0266 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 189,1000 3.7 degrees
 uni0266 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 658,1369 18 degrees; 661,1392 16 degrees
 uni0266.sc kink 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 631,891 2.7 degrees
+uni0266.sc width 1               # 2026-11-24: the Bold's Ɦ ɦ.sc kept drawn (old hook) while the Regular's turned left; their Bold batch in TODO.md: 0.88 of the Regular's, usually 1.08
 uni0267 kink 1                   # 2026-10-16 known at the start (quality checks added): 189,996 3.0 degrees
 uni0267 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 3 against 0: 657,1365 17 degrees; 672,-463 17 degrees; 668,-495 5 degrees
 uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 554,177 2.0 degrees
@@ -459,6 +460,7 @@ uni2C73 smooth 1                 # 2026-10-27 hook balls sized from the case's s
 uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 261 (0.77, lighter)
 uniA78C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 194 against 273 (0.71, lighter)
 uniA7AA kink 1                   # 2026-11-08 approved local drawing; fewer existing findings: 287,860 5.4 degrees
+uniA7AA width 1                  # 2026-11-24: the Bold's Ɦ ɦ.sc kept drawn (old hook) while the Regular's turned left; their Bold batch in TODO.md: 0.88 of the Regular's, usually 1.08
 uniA7B2 kink 1                   # 2026-10-16 known at the start (quality checks added): 737,262 3.7 degrees
 uniA7B6 kink 4                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 509,1457 5.3 degrees; 927,1071 6.3 degrees; 1286,1465 4.6 degrees; 1292,-28 1.1 degrees
 uniA7B7.sc kink 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Bold); a few units of extreme moved, neighbours kept: 411,1059 3.6 degrees

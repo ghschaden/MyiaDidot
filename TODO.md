@@ -1077,6 +1077,39 @@ alongside, each when the phase that needs it comes up.
       documents (about 70 in `docs/`) into dated subfolders with an
       index, links updated; `build/` cleared of what no target makes
       any more, the agents' logs under one name.
+- [ ] T11. Forms against the references, systematically (asked by the
+      designer 2026-11-24, after Ɦ's hook was found curled the wrong way,
+      right over the counter onto the right stem, where Charis, Noto Serif,
+      DejaVu, Fira and our own italics curl it left). A tool,
+      `scripts/quality/reference_sides.py`, that lists candidates for a
+      sheet; the designer decides each one (the reference rule: Charis and
+      Libertinus agreeing against Myia = change, with the memory's
+      exceptions).
+      Prototype (2026-11-24, build/pending/refside.py and its output
+      refside.txt; re-made from this note if lost): each derived letter
+      with a one-character base in data_regular.RECIPES (Ɦ from H), in
+      Myia and in Charis, Libertinus and Noto Serif: the ink's growth past
+      the base's ink box on each side (left/right over the base's width,
+      top/bottom over its height; "grown" past 6 %), and the lean of its
+      centre of mass (StatisticsPen meanX) against the base's, over the
+      width. Flagged when all references that have the letter (two at
+      least) grow on a side Myia does not, or the reverse, or all lean
+      the other way. First run, Regular from fonts/otf (old Ɦ): 19
+      candidates: bar/stroke ɉ ᵽ ⱦ Ⱦ (the references' bar or stroke
+      reaches out right, Ⱦ's above), middle tilde ɫ ᵭ ᵮ ᵱ ᵲ ᵵ ᵳ (out to
+      the left; ᵭ ᵱ ours out on the other side), Ɦ Ɠ (hook out right
+      of G) ƈ (leans right), Ʝ (our tail far lower) ɬ ɞ, ₦ ₿ (lean left).
+      Ɦ was caught on the right side for a muddy reason (Charis's Ɦ wider
+      both ways): the box is coarse.
+      To build: all four styles against the matching reference style; the
+      small caps through the references' smcp; for letters without a
+      recipe base (Greek, Cyrillic, symbols, the core set) a raster test,
+      the glyph at 32x32 in its own box against each reference and its
+      mirror image (flag where Myia matches every reference's mirror
+      better than the reference itself), and the same upside down; a
+      PDF sheet per candidate, Myia beside the references, large and
+      filled. Then the candidates sorted with the designer: design
+      (dated verdict, kept), or mended in the recipe.
 
 ### Tools the phases need (made in their phase, listed here to see them together)
 
@@ -1312,8 +1345,44 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       steps of ɝ ₹ Ɑ (design), ɞ's zone and base lines. **ɮ's recipe is
       stale**: run again, it sets ʒ apart from the l (ʒ moved since); the
       kept glyph is right, the recipe to be brought to it before ɮ is
-      ever made again. Next of the Regular's operations: `hook` smooth
-      (Ɓ Ɗ Ƒ Ƥ Ɦ), then `curl` (Ƙ ƴ Ⱳ ⱳ Ƴ ʋ).
+      ever made again.
+      The Regular's `hook` family done 2026-11-24
+      (`scripts/regular_hook.py`, sheets proofs/2026-11/regular-hook-2026-11-24.pdf
+      and H-hook-left-trial-2026-11-24.pdf, approved): two shared causes,
+      mended in the kept glyphs (ɓ ɗ ƙ ɦ ɧ no longer match their recipes:
+      ɓ re-derived would be 1865 wide, not 1110). The join: hook_path takes
+      the hook from f above 954, where f's straight stem ends, a 2.1-3.2
+      degree corner on the stem (ɓ ɗ ƙ ɦ ɧ ɖ); f's 22-unit handles at
+      648,1334 (1.2 degrees by rounding) scaled to 2.4 (Ɓ Ɗ Ƥ Ƒ). Ɦ turned
+      the other way (the designer): its hook curled right onto the right
+      stem and read "HA"; every reference and our italics curl it left; now
+      Ɗ's recipe, the serif's right half kept (advance 1540 -> 1880, ɦ.sc
+      1161 -> 1430). Quality: 8 lines gone, 7 hidden corners mended.
+      Found on the way: **checks.construction skips a node beside a
+      duplicate** (a zero-length line, `if not la or not lb`): 7 corners
+      in the Regular's hook letters were hidden so, 3 more elsewhere
+      (Italic ƙ 611,207 1.5; Bold Italic ж.sc 1185,321 smooth 2.6, ө.sc
+      807,800 smooth 4.8). Collapse duplicates in the check (new lines,
+      dated), or glyph_lint flags duplicates.
+      Left in the Bold, the next batch (not approved 2026-11-24): the
+      Bold's Ɦ ɦ.sc keep their drawn marks of 2026-11-07 (an aperture
+      repair for the old right-curling hook), so they still curl right.
+      Made from the new Regular (marks released, build/pending/bold-H-hook-left.pdf)
+      the designer saw two faults, both of the Bold's hook family, not of
+      Ɦ: (1) the inner curve: the Bold f's neck under its ball has a handle
+      38 units past it (703,1456; the Regular's 646,1464), f's listed wobble
+      663,1365 and extreme 665,1383, carried by rederive into Ɓ Ɗ Ƥ Ɦ ɓ ɗ ƙ
+      ɦ ɧ ƥ.sc (their wobble and extreme lines): mend the Bold f's neck by
+      hand (drawn), sheet of the whole family; (2) the stem not straight:
+      f's stem widening into its top, mirrored, leans the stem's outer edge
+      out from y 1000 (627 -> 572 by 1300; the Regular 634 -> 540, seen and
+      approved there): keep the stem's edge straight up to where the hook
+      turns, as make_italic.straight_stem for ɾ, on Ɓ Ɗ Ƥ Ɦ alike. Then
+      release the two marks and generate. Also open: hook_path itself
+      starting the piece no higher than f's straight top (the Bold's ɓ ɗ ɦ
+      join kinks of 3.7-5.2 degrees, made by rederive; it changes the
+      italics' hooks too: its own trial).
+      Next of the Regular's operations: `curl` (Ƙ ƴ Ⱳ ⱳ Ƴ ʋ).
       The joins batch done 2026-11-22 (italic.md, "The recipe joins"):
       ɭ ʈ Ⱳ Ꞵ ƃ ɳ ɧ ɖ. Left: ɰ (ɥ's descender 2.3 degrees past the slant:
       set it at the slant, then fair), Ɽ Ʈ ɖ's curl balls (derive.curl
