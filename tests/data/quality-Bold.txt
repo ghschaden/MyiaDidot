@@ -175,7 +175,6 @@ uni01E5 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni0237.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Bold); a few units of extreme moved, neighbours kept: top +4 from 1039
 uni023A stem 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: at 731 365 against A's 343
 uni023B smooth 1                 # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 191,373 2.5 degrees
-uni023B wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 1172,1413 4 degrees
 uni023C kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 110,223 4.5 degrees
 uni023C wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 108,226 4 degrees
 uni023C.sc kink 1                # Bold derived letters made of their Bold base (make_bold.py follow_bases): 170,207 4.6 degrees
@@ -187,9 +186,11 @@ uni023E zone 1                   # 2026-10-16 known at the start (quality checks
 uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni0249 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 465,474 11 units aside; 476,412 11 units aside
 uni0249.sc smooth 1              # 2026-10-27 Bold: the rounder way keeps smooth nodes smooth (φ), short edges run on into their curve's weight (ƒ), ψ the rounder way: 286,110 2.7 degrees
+uni0249.sc wobble 1              # contour direction: the wobble check reads each contour in its direction; turned contours shift its findings (Bold: direction only), Bold Italic restroked: 1 against 0: 264,61 17 degrees
 uni0249.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Bold); a few units of extreme moved, neighbours kept: top +4 from 1039
 uni024C zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni024D wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 2 against 0: 669,799 19 degrees; 665,768 23 degrees
+uni0250 wobble 1                 # contour direction: the wobble check reads each contour in its direction; turned contours shift its findings (Bold: direction only), Bold Italic restroked: 1 against 0: 460,707 3 degrees
 uni0251.sc step 2                # 2026-10-27 step check added (checks.py step): a candidate to review: 757,988 52 units aside; 776,2 34 units aside
 uni0253 kink 1                   # rebuilt from the style's own base and hook (make_bold.rederive), at the join: 189,1000 3.7 degrees
 uni0255 kink 1                   # Bold ʑ ɕ, Bold Italic ʑ ɕ: own recipes at the bold weight (make_bold.py BOLD_RECIPES, ITALIC_BOLD_RECIPES), loops open, the base cut at the tail: 566,160 5.3 degrees
@@ -218,8 +219,10 @@ uni0269.sc smooth 1              # 2026-10-16 known at the start (quality checks
 uni0269.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 227 against 273 (0.83, lighter)
 uni026E kink 3                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 924,537 5.9 degrees; 607,-132 4.8 degrees; 571,-221 5.1 degrees
 uni026E smooth 1                 # в bump filled; crumbs (a curve's end split off at a corner) folded in by the cleanup: Bold Italic ₲ beak spur gone: 329,-41 2.1 degrees
+uni026F.sc wobble 1              # contour direction: the wobble check reads each contour in its direction; turned contours shift its findings (Bold: direction only), Bold Italic restroked: 1 against 0: 844,123 5 degrees
 uni026F.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni0272 smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 40,-413 2.5 degrees
+uni0272.sc wobble 1              # contour direction: the wobble check reads each contour in its direction; turned contours shift its findings (Bold: direction only), Bold Italic restroked: 2 against 0: 155,-166 5 degrees; 153,-175 6 d
 uni0273 smooth 1                 # 2026-10-26 rederived hooks: cut above the Bold's foot serif, emboldened letter's side bearings kept: 1163,-205 2.5 degrees
 uni0278 kink 2                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 742,573 2.8 degrees; 742,311 2.8 degrees
 uni0279 wobble 1                 # 2026-11-06 sent-back drafts reworked (ɹ ɺ ɻ r turned, inheriting r's ball; ƈ.sc ɠ.sc curls on c.sc g.sc, ʛ with ɠ.sc; Italic ɉ's bar centred): candidates for the review: 2 against 0: 257,85 1
@@ -241,6 +244,7 @@ uni0284 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni0288 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 559,-206 3.1 degrees
 uni0288.sc kink 2                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 885,-129 5.4 degrees; 487,51 5.3 degrees
 uni0289 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 773,276 4.9 degrees; 554,63 1.1 degrees
+uni0289 wobble 1                 # contour direction: the wobble check reads each contour in its direction; turned contours shift its findings (Bold: direction only), Bold Italic restroked: 1 against 0: 749,215 5 degrees
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni028B kink 1                   # 2026-10-16 known at the start (quality checks added): 1031,63 4.2 degrees
 uni028B zone 1                   # 2026-10-16 known at the start (quality checks added): top +6 from 884
@@ -392,6 +396,7 @@ uni2C65 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni2C65.sc step 2                # 2026-10-27 step check added (checks.py step): a candidate to review: 209,0 45 units aside; 441,52 68 units aside
 uni2C66 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 524,75 2.1 degrees
 uni2C66.sc stem 1                # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: at 261 292 against t.sc's 273
+uni2C66.sc wobble 1              # contour direction: the wobble check reads each contour in its direction; turned contours shift its findings (Bold: direction only), Bold Italic restroked: 1 against 0: 995,877 3 degrees
 uni2C66.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +7 from 1040
 uni2C6D step 1                   # 2026-10-27 step check added (checks.py step): a candidate to review: 1066,1 45 units aside
 uni2C72 smooth 1                 # 2026-10-27 hook balls sized from the case's stem (derive.ball_for), redrafted: 1943,1120 2.8 degrees

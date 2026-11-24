@@ -1094,14 +1094,21 @@ def finalize(font, smooth=True, separate_stacks=False, plain=()):
 def write(font, path, smooth=True, separate_stacks=False, plain=(), kept=None):
     """font finalized and saved to path, the acceptances of the
     style saved there before carried over (accepted.py), and the glyphs
-    kept as drawn (drawn.py: kept, as saved) put back as they were."""
+    kept as drawn (drawn.py: kept, as saved) put back as they were.
+    Every glyph is then wound as the Regular is (winding.orient: pathops
+    and a mirrored letter wind the other way), the drawn ones too: a
+    contour's direction is no part of the drawing."""
     from accepted import acceptances, carry
     from drawn import restore
     from ufo_io import save_font
+    from winding import orient
 
     finalize(font, smooth=smooth, separate_stacks=separate_stacks, plain=plain)
     carry(acceptances(ufoLib2.Font.open(path)) if Path(path).exists() else {}, font)
     restore(kept or {}, font)
+    _, left = orient(font)
+    if left:
+        print("  contour direction undecided (overlapping contours wound both ways):", " ".join(sorted(left)))
     save_font(font, path)
 
 SMALL_SUFFIXES = ("superior", "inferior", ".numr", ".dnom", ".sups", ".subs")

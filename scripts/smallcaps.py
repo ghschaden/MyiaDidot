@@ -771,6 +771,11 @@ def main():
         write_features(font, log)
     carry(accepted, font)
     restore(kept, font)
+    from winding import orient  # wound as the Regular (make_bold.write)
+
+    _, left = orient(font)
+    if left:
+        print("contour direction undecided (overlapping contours wound both ways):", " ".join(sorted(left)))
     font.save()
 
     kinds = {}

@@ -58,7 +58,7 @@ FAMILY = "MyiaDidot"
 SOURCE_OF = {"Italic": "Regular", "Bold": "Regular", "BoldItalic": "Italic"}
 GENERATOR_GLOBS = [
     "make_italic.py", "make_bold.py", "smallcaps.py", "derive.py", "stroke*.py", "fair_arcs.py",
-    "data_*.py", "drawn.py", "ufo_io.py", "fontforge_inputs.py", "smallcaps_draft.py",
+    "data_*.py", "drawn.py", "ufo_io.py", "winding.py", "fontforge_inputs.py", "smallcaps_draft.py",
 ]
 
 

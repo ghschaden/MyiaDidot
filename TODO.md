@@ -1474,7 +1474,7 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       seated on ı's and ɪ's own stem and serif (glottal with enlarge). Sheets: proofs/2026-11/glottal-serif-trial-2026-11-24.pdf,
       proofs/2026-11/glottal-batch-2026-11-24.pdf (approved but ʢ, whose
       stem the bar interrupted: the contour direction, below).
-- [ ] Contour direction: nothing checks it. The Regular winds every glyph
+- [x] Contour direction: nothing checks it. The Regular winds every glyph
       clockwise; Old Standard's CFF outlines wind the other way, and the
       new ? took that direction until ʡ ʢ's bar, merged across ʔ's stem
       (derive.merged: one path, nonzero winding), cancelled against it and
@@ -1487,12 +1487,26 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       (the Bold's and Bold Italic's ʕ wind counter-clockwise; the Bold
       Italic's ʢ, its bar merged across that ʕ, had a hole). For the
       batch, derive.merged turns a piece that winds against its letter
-      (no change where they agree); the generators not yet. To do: a
-      check (the largest contour's sign against the style's, in checks.py
-      or glyph_lint, every style), then the generators' outputs turned
-      where they are made (draw_path follows its source's direction;
-      find which make them the other way), and merged() made safe
-      against a piece of the other direction.
+      (no change where they agree).
+      Done 2026-11-24: `scripts/winding.py` (the check, each contour by
+      its depth; tests/test_winding.py, every style) and its orient(),
+      called last before saving in make_bold.write (the Italic's writer
+      too) and smallcaps. The second cause, the larger: pathops' simplify
+      and op return counter-clockwise outers by default, so every
+      pathops result saved without draw_path's turn wound the other way
+      (Ⱥ Ȼ ∅ ⊗ ฿ ...; Bold ʝ and Bold Italic ɨ ᶤ wound both ways, the
+      body made, the dot kept). One place for all, not each site turned.
+      Side effect: the Bold Italic, stroked from Italic glyphs now wound
+      clockwise, came out a few units otherwise (the old-style figures,
+      s.sc, ϟ.sc, є.sc); ж ж.loclBGR җ worse (the middle stem narrowing
+      into its foot): kept as at 522505e2, turned, and marked drawn.
+- [ ] The Bold Italic's stroker depends on contour direction: the same
+      Italic letter wound the other way strokes a few units otherwise
+      (its passes walk the contour in order: crotches, rigid, one_way,
+      blend). Now that every input winds clockwise this no longer varies
+      between runs, but ж's middle stem (wound clockwise) narrows into its
+      foot. Find the pass that does it; then release ж ж.loclBGR җ
+      (drawn.py --release) in the Bold Italic.
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a

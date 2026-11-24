@@ -4,56 +4,56 @@
 	<outline>
 		<contour>
 			<point x="-58" y="0" type="line"/>
-			<point x="509" y="0" type="line" smooth="yes"/>
-			<point x="663" y="0"/>
-			<point x="873" y="58"/>
-			<point x="988" y="207" type="curve" smooth="yes"/>
-			<point x="1120" y="380"/>
-			<point x="1169" y="433"/>
-			<point x="1169" y="637" type="curve" smooth="yes"/>
-			<point x="1169" y="876"/>
-			<point x="998" y="1040"/>
-			<point x="750" y="1040" type="curve" smooth="yes"/>
-			<point x="220" y="1040" type="line"/>
-			<point x="192" y="963" type="line"/>
-			<point x="280" y="963" type="line" smooth="yes"/>
-			<point x="299" y="963"/>
-			<point x="310" y="948"/>
-			<point x="306" y="929" type="curve"/>
-			<point x="306" y="927"/>
-			<point x="305" y="924"/>
-			<point x="304" y="922" type="curve"/>
-			<point x="207" y="553" type="line"/>
-			<point x="79" y="553" type="line"/>
-			<point x="61" y="485" type="line"/>
-			<point x="189" y="485" type="line"/>
-			<point x="87" y="102" type="line" smooth="yes"/>
-			<point x="83" y="86"/>
-			<point x="66" y="72"/>
-			<point x="50" y="69" type="curve"/>
 			<point x="-31" y="69" type="line"/>
+			<point x="50" y="69" type="line"/>
+			<point x="66" y="72"/>
+			<point x="83" y="86"/>
+			<point x="87" y="102" type="curve" smooth="yes"/>
+			<point x="189" y="485" type="line"/>
+			<point x="61" y="485" type="line"/>
+			<point x="79" y="553" type="line"/>
+			<point x="207" y="553" type="line"/>
+			<point x="304" y="922" type="line"/>
+			<point x="305" y="924"/>
+			<point x="306" y="927"/>
+			<point x="306" y="929" type="curve"/>
+			<point x="310" y="948"/>
+			<point x="299" y="963"/>
+			<point x="280" y="963" type="curve" smooth="yes"/>
+			<point x="192" y="963" type="line"/>
+			<point x="220" y="1040" type="line"/>
+			<point x="750" y="1040" type="line" smooth="yes"/>
+			<point x="998" y="1040"/>
+			<point x="1169" y="876"/>
+			<point x="1169" y="637" type="curve" smooth="yes"/>
+			<point x="1169" y="433"/>
+			<point x="1120" y="380"/>
+			<point x="988" y="207" type="curve" smooth="yes"/>
+			<point x="873" y="58"/>
+			<point x="663" y="0"/>
+			<point x="509" y="0" type="curve" smooth="yes"/>
 		</contour>
 		<contour>
-			<point x="395" y="102" type="curve"/>
-			<point x="498" y="485" type="line"/>
-			<point x="662" y="485" type="line"/>
-			<point x="681" y="553" type="line"/>
-			<point x="514" y="553" type="line"/>
-			<point x="538" y="644" type="line"/>
-			<point x="613" y="927" type="line" smooth="yes"/>
-			<point x="618" y="944"/>
-			<point x="634" y="959"/>
-			<point x="652" y="962" type="curve"/>
-			<point x="732" y="962" type="line" smooth="yes"/>
-			<point x="890" y="962"/>
-			<point x="908" y="767"/>
-			<point x="908" y="622" type="curve" smooth="yes"/>
-			<point x="908" y="412"/>
-			<point x="800" y="69"/>
-			<point x="552" y="69" type="curve" smooth="yes"/>
-			<point x="413" y="69" type="line"/>
-			<point x="398" y="72"/>
+			<point x="395" y="102" type="line"/>
 			<point x="389" y="86"/>
+			<point x="398" y="72"/>
+			<point x="413" y="69" type="curve"/>
+			<point x="552" y="69" type="line" smooth="yes"/>
+			<point x="800" y="69"/>
+			<point x="908" y="412"/>
+			<point x="908" y="622" type="curve" smooth="yes"/>
+			<point x="908" y="767"/>
+			<point x="890" y="962"/>
+			<point x="732" y="962" type="curve" smooth="yes"/>
+			<point x="652" y="962" type="line"/>
+			<point x="634" y="959"/>
+			<point x="618" y="944"/>
+			<point x="613" y="927" type="curve" smooth="yes"/>
+			<point x="538" y="644" type="line"/>
+			<point x="514" y="553" type="line"/>
+			<point x="681" y="553" type="line"/>
+			<point x="662" y="485" type="line"/>
+			<point x="498" y="485" type="line"/>
 		</contour>
 	</outline>
 	<anchor name="Top" x="690" y="1156"/>
@@ -70,7 +70,7 @@
 				<key>date</key>
 				<string>2026-11-10</string>
 				<key>glyph</key>
-				<string>7d93b326c896</string>
+				<string>409f449f635d</string>
 				<key>review</key>
 				<string>docs/redraw-stems-bowls-review-2026-11-10.md</string>
 			</dict>

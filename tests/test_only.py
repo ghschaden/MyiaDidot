@@ -161,9 +161,9 @@ def test_the_equivalence_check_can_fail(tmp_path):
             g = f.newGlyph(name)
             g.width = width
             pen = g.getPen()
-            pen.moveTo((0, 0))
-            pen.lineTo((100, 0))
+            pen.moveTo((0, 0))  # clockwise, as the run winds what it saves
             pen.lineTo((100, 100))
+            pen.lineTo((100, 0))
             pen.closePath()
         return f
 

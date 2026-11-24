@@ -100,4 +100,10 @@ Moved from CLAUDE.md (its ground rules apply).
   pass its SHA-256 to `--accept-report`; the plugin may ask for approval) and
   say in the commit what changed and why.
 - Never commit with `--no-verify` unless explicitly asked to.
+- Contour direction (2026-11-24): tests/test_winding.py holds every style
+  to the Regular's (outsides clockwise, counters counter-clockwise, each
+  contour by its depth; `scripts/winding.py UFO ...` lists what winds
+  against it). The generators turn their output before saving
+  (winding.orient in make_bold.write and smallcaps); a glyph drawn by
+  hand or a script that writes a UFO directly must wind so too.
 

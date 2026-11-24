@@ -51,8 +51,10 @@ WIDTHS = {"uni019C": (2446, 2414), "y": (1070, 1069), "uni028E": (1070, 1069), "
           "uogonek": (1192, 1232),
           # phase 6's step B (2026-11-18): the drawn u 3 right and 5 wider, where
           # the run spaces it on the Italic's wider u (so ú ʉ Q_u built on it
-          # agree); sevenoldstyle a unit wider (n's stem 1.5 thinner, not traced)
-          "u": (1188, 1192), "sevenoldstyle": (900, 899),
+          # agree); sevenoldstyle a unit narrower then (n's stem 1.5 thinner, not
+          # traced), its width again once stroked from the Italic 7 wound
+          # clockwise (2026-11-24, winding.orient)
+          "u": (1188, 1192),
           # step C (2026-11-19): the drawn u a unit narrower where the run spaces
           # it on the Italic (its x, k, т moved the same way); м a unit narrower;
           # и 5 wider and ш 6 wider than before, as the Italic's и ш (made whole
@@ -80,7 +82,12 @@ FINDINGS = {"uni019C": [("kink", 1212, 1355)],
             "uni0446": [("extreme", 995, 63), ("wobble", 843, -44), ("wobble", 346, 704)],
             "uni0449": [("extreme", 1478, 63)],
             # џ: the counter's bottom past its ends as ц's and щ's, since its redraw (2026-11-16)
-            "uni045F": [("extreme", 654, 66)]}
+            "uni045F": [("extreme", 654, 66)],
+            # stroked from the Italic 7 wound clockwise (2026-11-24, winding.orient):
+            # the diagonal's outside bent 5-7 degrees, not seen at 1:1; accepted with
+            # proofs/2026-11/bi-restroked-2026-11-24.pdf (the wobble check reads a
+            # contour in its direction: HEAD's 7 read backwards had two of its own)
+            "sevenoldstyle": [("wobble", 920, 529), ("wobble", 895, 501)]}
 
 
 def p(x, y):

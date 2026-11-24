@@ -50,3 +50,7 @@ def finish(font):
     glyph.clearContours()
     glyph.clearComponents()
     fitted.draw(glyph.getPen())
+    # the union comes from pathops wound counter-clockwise: as the Regular
+    from winding import orient
+
+    orient(font, [NAME])
