@@ -1507,7 +1507,14 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       between runs, but ж's middle stem (wound clockwise) narrows into its
       foot. Find the pass that does it; then release ж ж.loclBGR җ
       (drawn.py --release) in the Bold Italic.
-- [ ] The wobble check depends on contour direction
+- [x] (2026-11-24: each contour read clockwise, by its area, and its
+      lobes grouped round from a break or a change of sign;
+      tests/test_quality.py test_wobbles_read_either_way. All four styles:
+      the same findings with every contour reversed or begun elsewhere.
+      Bold +ɮ ѳ.sc ∅ ⸎, -a ą ɐ ʉ; Bold Italic +‛ u.sc.horn ә.sc Ө ө, -ß ᵃ;
+      ѳ.sc ∅ u.sc.horn Ө were missed either way, their lobe split at the
+      start; the gone ones were 3.1-4.9 degrees, one way only)
+      The wobble check depends on contour direction
       (scripts/quality/checks.py, reversals): it samples a contour at
       fixed steps from its start, in its direction, and groups the turns
       into lobes without wrapping round, so the same outline read
@@ -1517,6 +1524,11 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       Make it the same either way (e.g. sample from a fixed point, wrap
       the lobes round, or take both directions), then accept the lists
       once with that as the reason.
+- [ ] make_italic prints "recipe failed: ɂ (glottal): glottal_stem:
+      uni0294 crosses 967 4 times, not 2" (make generate, 2026-11-24,
+      after 522505e2); the Italic's ɂ stays as saved. Find why the
+      Italic ʔ is crossed four times at 967 (the head's cut height) and
+      make the recipe run again.
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a

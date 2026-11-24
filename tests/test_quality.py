@@ -41,3 +41,38 @@ def test_quality(ufo, ufo_path):
     assert not new, ("quality findings (python scripts/quality/checks.py UFO; if intended: "
                      f"update_test_data.py --quality): {new}")
     assert not stale, f"quality findings fixed, remove from the list: {stale}"
+
+
+# the glyphs whose wobbles changed when the check stopped depending on the
+# contours' direction and start (2026-11-24): a lobe split at the start
+# (Ө ∅ ѳ.sc u.sc.horn), a bend near the threshold one way only (a ß)
+WOBBLE_SAMPLE = ["a", "germandbls", "uni04E8", "uni2205", "uni0473.sc", "u.sc.horn", "o", "S", "uni2E0E"]
+
+
+def test_wobbles_read_either_way(ufo):
+    """checks.reversals finds the same with every contour reversed or begun
+    at another node"""
+    from checks import reversals
+    from fontTools.pens.pointPen import ReverseContourPointPen
+    from ufoLib2.objects import Glyph
+
+    def redrawn(glyph, turn):
+        g = Glyph()
+        pen = g.getPointPen()
+        for c in glyph.contours:
+            if turn:
+                c.drawPoints(ReverseContourPointPen(pen))
+                continue
+            pts = list(c.points)
+            ons = [i for i, p in enumerate(pts) if p.type]
+            k = ons[len(ons) // 2] if ons else 0
+            pen.beginPath()
+            for p in pts[k:] + pts[:k]:
+                pen.addPoint((p.x, p.y), p.type, p.smooth)
+            pen.endPath()
+        return g
+
+    for name in (n for n in WOBBLE_SAMPLE if n in ufo):
+        found = reversals(ufo[name])
+        assert reversals(redrawn(ufo[name], True)) == found, name
+        assert reversals(redrawn(ufo[name], False)) == found, name

@@ -296,4 +296,4 @@ def test_finished_letter_keeps_what_it_was(bold_italic, name):
     new.draw(rec)
     assert len(new.contours) == len(old.contours) == len(pieces(segments(rec.value)))
     added = [f[:3] for f in compared(found(old), found(new))[1]]
-    assert added == FINDINGS.get(name, []), added
+    assert sorted(added) == sorted(FINDINGS.get(name, [])), added

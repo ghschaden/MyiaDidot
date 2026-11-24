@@ -22,7 +22,9 @@ Each finding is (glyph, kind, where, detail). The kinds (criteria 7-11, 14,
            WOBBLE_LEN units, between bends the first way) more often than
            in the glyph it is generated from (the Regular's, the Italic's):
            a bulge and shoulder the emboldening put in (ψ's terminal, г's
-           inner curves, o's inner side)
+           inner curves, o's inner side). Each contour is read clockwise
+           and round from end to start, so its direction and first node
+           change nothing (2026-11-24)
   grid     a point, anchor or component offset off whole units
   zone     a letter's flat top or bottom near an alignment zone (baseline,
            x-height, small-cap and cap height, ascender, descender) but
@@ -353,16 +355,30 @@ def accents(font, shapes):
 WOBBLE_TURN, WOBBLE_LEN, WOBBLE_STEP = 3, 160, 4  # degrees; units; units between samples
 
 
-def _directions(contour):
-    """(x, y, direction, on a curve) every WOBBLE_STEP units along a contour"""
+def _segments(contour):
+    """the contour's segments as point lists (on, off..., on), read
+    clockwise whichever way it winds (by the control polygon's area, of
+    the curves' sign in any letter's outline), so a finding does not
+    depend on the contour's direction"""
     P = list(contour.points)
     n = len(P)
     ons = [i for i, p in enumerate(P) if p.type]
-    out = []
+    segs = []
     for k, i in enumerate(ons):
         j = ons[(k + 1) % len(ons)]
         offs = [(i + m) % n for m in range(1, (j - i) % n or n)]
-        pts = [(P[x].x, P[x].y) for x in (i, *offs, j)]
+        segs.append([(P[x].x, P[x].y) for x in (i, *offs, j)])
+    area =sum(a[0] * b[1] - b[0] * a[1] for s in segs for a, b in zip(s, s[1:]))
+    if area > 0:  # counter-clockwise
+        segs = [s[::-1] for s in segs[::-1]]
+    return segs
+
+
+def _directions(contour):
+    """(x, y, direction, on a curve) every WOBBLE_STEP units along a contour,
+    read clockwise (_segments)"""
+    out = []
+    for pts in _segments(contour):
         if len(pts) == 2:
             m = max(1, int(math.dist(*pts) / WOBBLE_STEP))
             a = _angle(*pts)
@@ -391,26 +407,39 @@ def reversals(glyph):
         n = len(s)
         if n < 6:
             continue
-        lobes = []  # [sign, degrees, first sample, samples]
+        turns = []  # (sign, degrees): 0 a break (a corner, a line)
         for i in range(n):
             t = math.degrees((s[(i + 1) % n][2] - s[i][2] + math.pi) % (2 * math.pi) - math.pi)
             if abs(t) > 30 or not s[i][3]:
-                lobes.append([0, 0, i, 1])
+                turns.append((0, 0))
+            else:
+                turns.append((1 if t > 0.01 else -1 if t < -0.01 else None, t))
+        # round the contour: begin after a break, or where the sign turns,
+        # so no lobe is split at the contour's start
+        signs = [sg for sg, _ in turns]
+        start = next((i + 1 for i in range(n) if signs[i] == 0), None)
+        if start is None:
+            run = [i for i in range(n) if signs[i]]
+            start = next((run[k] for k in range(len(run)) if signs[run[k]] != signs[run[k - 1]]), None)
+        if start is None:  # bends one way only
+            continue
+        lobes = []  # [sign, degrees, first sample, samples]
+        for i in (k % n for k in range(start, start + n)):
+            sign, t = turns[i]
+            if sign is None:
                 continue
-            sign = 1 if t > 0.01 else -1 if t < -0.01 else 0
-            if not sign:
-                continue
-            if lobes and lobes[-1][0] == sign:
+            if sign and lobes and lobes[-1][0] == sign:
                 lobes[-1][1] += t
                 lobes[-1][3] += 1
             else:
                 lobes.append([sign, t, i, 1])
-        for a, b, d in zip(lobes, lobes[1:], lobes[2:]):
+        ring = lobes + lobes[:2] if len(lobes) > 3 and all(lb[0] for lb in lobes) else lobes
+        for a, b, d in zip(ring, ring[1:], ring[2:]):
             if (a[0] and b[0] and a[0] == d[0] != b[0] and b[3] * WOBBLE_STEP <= WOBBLE_LEN
                     and min(abs(a[1]), abs(b[1]), abs(d[1])) > WOBBLE_TURN):
-                x, y = s[b[2] + b[3] // 2][:2]
+                x, y = s[(b[2] + b[3] // 2) % n][:2]
                 out.append((round(x), round(y), abs(b[1])))
-    return out
+    return sorted(out)
 
 
 def wobbles(font, source):
