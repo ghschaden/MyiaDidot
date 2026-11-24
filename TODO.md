@@ -1444,48 +1444,55 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       shared change, `make regress` and `make diffenator` first, or left),
       ɱ's ledge (made by `hook`, which has no taper), ʝ designed (its
       crossbar's square end), ɧ's 271,955 from ɦ.
-- [ ] ! looks much fatter and darker than ?, and ¡ than ¿ (the designer,
-      2026-11-24). Measured at HEAD a00419c1: the wedge of ! at y 1300 is 273
-      wide in the Regular and 375 in the Bold, against about 150 and 250
-      for the thickest stroke of ?. In the uprights ! holds more ink than ?
-      (Regular 248k against 239k, Bold 364k against 337k) in less than
-      half its width (276 against 624). In the italics ? has the more ink,
-      but ! is still a solid wedge, 246 and 359 wide at 1100. ¡ ¿ are
-      the same outlines turned. To do: compare with the references
-      (Charis, Libertinus, Old Standard: the wedge's top against the
-      stem, and ! beside ?), then a lighter wedge in the Regular, with the
-      others following; a sheet first.
-      Compared 2026-11-24 (build/pending/exclam-question-options-2026-11-24.pdf):
-      ink(!)/ink(?) is 0.72-0.88 in every reference and 0.78/0.77 in our
-      italics (their signs redrawn from Old Standard on 2026-11-16); the
-      Regular 1.04, the Bold 1.08. The Regular's ! is in the Didots' range
-      by itself (248k; GFS Didot 233k, Libre Bodoni 259k), its ? light
-      (Theano's: a round head on a hairline stem, 239k against 281-332k).
-      Options on the sheet: A ! from Old Standard (0.89), B ! and ? from
-      Old Standard (0.75), C ? only (0.88). The designer chose B
-      (2026-11-24; sheet build/pending/exclam-question-B-2026-11-24.pdf,
-      approved): ! ? ¡ ¿ from Old Standard Regular's OTF, scaled to the
-      cap height (2.014), its side bearings and its own ¡ ¿, redrawn onto
-      clean nodes (redraw.py, all four candidates, dev 2.5-3.0).
-- [ ] ʔ from the new ? (follow-up of B, the designer 2026-11-24): kept
-      as it is in the B batch. Made again by `nodot` from Old Standard's
-      ? it ends in the ?'s teardrop above the (cut) dot, floating at the
-      baseline, and ʡ ʢ's bar crosses the drop
-      (build/pending/glottal-from-new-question-2026-11-24.pdf). Charis
-      and Libertinus draw ʔ as a letter: the ?'s head on a straight stem
-      to the baseline with a foot serif, at the lowercase's weight. To
-      do: a recipe of its own on that model (the new ?'s head, a stem and
-      foot serif from l or ı), trial sheet first; ʕ ʡ ʢ Ɂ ɂ ˀ ˁ ɂ.sc
-      follow (derive.py --redraft, one call: the recipes' order has ʔ
-      first). The foot serif (the designer asked, 2026-11-24): Charis,
-      Libertinus, Noto Serif, DejaVu Serif, Cambria seat ʔ's full-weight
-      stem on a two-sided serif as their l; EB Garamond alone ends it
-      bare; no Didot reference has ʔ. In the uprights a serif, ı's stem
-      and foot taken whole (every Didot stem on the baseline has one; it
-      tells the letter from ?). The italics: Charis Italic and Libertinus
-      Italic give ʔ a foot serif too; ours (glottal) ends in a plain
-      stem, as our italic l ends in its exit stroke: open, for the
-      designer (sheet build/pending/glottal-references-2026-11-24.pdf).
+- [x] (2026-11-24, scripts/regular_signs.py) ! looked much fatter and
+      darker than ?, ¡ than ¿ (the designer). ink(!)/ink(?) is 0.72-0.88 in
+      every reference and 0.78/0.77 in our italics (their signs from Old
+      Standard, 2026-11-16); the Regular had 1.04, the Bold 1.08: Theano's
+      ? a round head on a hairline stem (239k against the Didots'
+      281-332k). Option B of build/pending/exclam-question-options-2026-11-24.pdf
+      chosen (proofs/2026-11/exclam-question-B-2026-11-24.pdf): ! ? ¡ ¿
+      from Old Standard Regular's OTF, scaled to the cap height (2.014),
+      its side bearings and own ¡ ¿, turned to the Regular's clockwise
+      contours, redrawn onto clean nodes (redraw.py, dev 2.5-3.0); ratio
+      0.75. Their kerning is kern_clear's own (undone and measured again).
+- [x] (2026-11-24, same batch) ʔ made on the new ?: by `nodot` it ended
+      in Old Standard's teardrop. Now derive.glottal_stem: the ?'s head
+      lifted to O's top (every reference's ʔ reaches its H or above; ɂ
+      ɂ.sc then on their zones), cut where the stroke heads down, a neck
+      of two curves continuing its edges into a straight stem; in the
+      Regular ı's stem and foot serif (Charis, Libertinus, Noto Serif,
+      DejaVu, Cambria have one), in the Italic a plain stem at the same
+      weight (164, was 112; the designer: no serif in the italic), the
+      Bold from its own ? and ı (BOLD_REBUILD). Followers made again: Ɂ ʕ
+      ʡ ʢ ɂ ɂ.sc ˀ ˁ; ˀ now from ʔ as ˁ from ʕ (from ɂ it stood at 1149
+      against ˁ's 1469). The foot serifs (the designer asked whether they
+      are of one kind): the Regular's are flat hairline slabs, one size per
+      kind (capitals 592 wide, 192 over, 53 thick; lowercase 448, 142, 49;
+      small caps 398, 117, 48; superiors 273, 79, 37); ʔ ʕ ʡ ʢ have the
+      lowercase's and ˀ the superiors' to the unit; ɂ ɂ.sc, scaled from
+      ʔ, had 85 and 103 over and lighter stems: now ʔ's head scaled and
+      seated on ı's and ɪ's own stem and serif (glottal with enlarge). Sheets: proofs/2026-11/glottal-serif-trial-2026-11-24.pdf,
+      proofs/2026-11/glottal-batch-2026-11-24.pdf (approved but ʢ, whose
+      stem the bar interrupted: the contour direction, below).
+- [ ] Contour direction: nothing checks it. The Regular winds every glyph
+      clockwise; Old Standard's CFF outlines wind the other way, and the
+      new ? took that direction until ʡ ʢ's bar, merged across ʔ's stem
+      (derive.merged: one path, nonzero winding), cancelled against it and
+      left a hole (2026-11-24, mended in regular_signs.py). The generated
+      styles already hold glyphs winding counter-clockwise (2026-11-24,
+      before this batch): Italic 20 (the old-style figures, n.sc s.sc ɴ
+      ...), Bold 73 (ƃ Ɔ Ǝ ƛ Ɯ Ɲ Ʈ Ʊ Ƹ ƹ ǝ ...), Bold Italic 90. One cause
+      found: make_bold's TRANSFORMS (a mirrored letter moved from its
+      Bold base: ʕ Ɔ Ǝ ...) mirror the base without turning its contours
+      (the Bold's and Bold Italic's ʕ wind counter-clockwise; the Bold
+      Italic's ʢ, its bar merged across that ʕ, had a hole). For the
+      batch, derive.merged turns a piece that winds against its letter
+      (no change where they agree); the generators not yet. To do: a
+      check (the largest contour's sign against the style's, in checks.py
+      or glyph_lint, every style), then the generators' outputs turned
+      where they are made (draw_path follows its source's direction;
+      find which make them the other way), and merged() made safe
+      against a piece of the other direction.
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a

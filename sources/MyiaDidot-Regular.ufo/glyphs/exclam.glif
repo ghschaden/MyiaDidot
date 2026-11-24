@@ -1,44 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <glyph name="exclam" format="2">
 	<unicode hex="0021"/>
-	<advance width="528"/>
+	<advance width="564"/>
 	<outline>
 		<contour>
-			<point x="126" y="1343" type="curve" smooth="yes"/>
-			<point x="126" y="1431"/>
-			<point x="168" y="1512"/>
-			<point x="264" y="1512" type="curve" smooth="yes"/>
-			<point x="360" y="1512"/>
-			<point x="402" y="1431"/>
-			<point x="402" y="1343" type="curve" smooth="yes"/>
-			<point x="402" y="1288"/>
-			<point x="392" y="1179"/>
-			<point x="378" y="1096" type="curve" smooth="yes"/>
-			<point x="360" y="992"/>
-			<point x="344" y="880"/>
-			<point x="335" y="795" type="curve" smooth="yes"/>
-			<point x="292" y="390" type="line"/>
-			<point x="236" y="390" type="line"/>
-			<point x="193" y="795" type="line" smooth="yes"/>
-			<point x="184" y="880"/>
-			<point x="168" y="992"/>
-			<point x="150" y="1096" type="curve" smooth="yes"/>
-			<point x="136" y="1179"/>
-			<point x="126" y="1288"/>
+			<point x="157" y="101" type="curve" smooth="yes"/>
+			<point x="157" y="174"/>
+			<point x="210" y="226"/>
+			<point x="282" y="226" type="curve" smooth="yes"/>
+			<point x="354" y="226"/>
+			<point x="407" y="173"/>
+			<point x="407" y="101" type="curve" smooth="yes"/>
+			<point x="407" y="29"/>
+			<point x="355" y="-24"/>
+			<point x="282" y="-24" type="curve" smooth="yes"/>
+			<point x="209" y="-24"/>
+			<point x="157" y="28"/>
 		</contour>
 		<contour>
-			<point x="136" y="104" type="curve" smooth="yes"/>
-			<point x="136" y="176"/>
-			<point x="192" y="232"/>
-			<point x="264" y="232" type="curve" smooth="yes"/>
-			<point x="336" y="232"/>
-			<point x="392" y="176"/>
-			<point x="392" y="104" type="curve" smooth="yes"/>
-			<point x="392" y="32"/>
-			<point x="336" y="-24"/>
-			<point x="264" y="-24" type="curve" smooth="yes"/>
-			<point x="192" y="-24"/>
-			<point x="136" y="32"/>
+			<point x="157" y="1253" type="curve" smooth="yes"/>
+			<point x="157" y="1313"/>
+			<point x="182" y="1398"/>
+			<point x="282" y="1398" type="curve" smooth="yes"/>
+			<point x="376" y="1398"/>
+			<point x="407" y="1326"/>
+			<point x="407" y="1253" type="curve" smooth="yes"/>
+			<point x="407" y="1114"/>
+			<point x="350" y="863"/>
+			<point x="338" y="717" type="curve" smooth="yes"/>
+			<point x="306" y="314" type="line"/>
+			<point x="258" y="314" type="line"/>
+			<point x="226" y="717" type="line" smooth="yes"/>
+			<point x="214" y="867"/>
+			<point x="157" y="1099"/>
 		</contour>
 	</outline>
+	<lib>
+		<dict>
+			<key>org.myiadidot.redrawn</key>
+			<dict>
+				<key>date</key>
+				<string>2026-11-24</string>
+				<key>from</key>
+				<string>c08656aa5c37</string>
+				<key>review</key>
+				<string>proofs/2026-11/exclam-question-B-2026-11-24.pdf</string>
+				<key>source</key>
+				<string>Old Standard</string>
+				<key>tol</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+	</lib>
 </glyph>

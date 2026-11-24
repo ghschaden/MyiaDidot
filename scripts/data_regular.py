@@ -83,7 +83,12 @@ RECIPES = [
     ("ɘ", "mirror", "e", None),
     ("ɜ", "mirror", "epsilon", None),
     # glottal stops and clicks
-    ("ʔ", "nodot", "question", None),
+    # ʔ: the ?'s head on ı's stem and foot serif (derive.glottal_stem;
+    # was the ? without its dot, 2026-11-24, on Old Standard's ?): the
+    # head lifted to O's top (its round top overshooting the cap height as
+    # O's: Old Standard's ? stops 36 under the cap height), cut at 904 (840
+    # on the ?), the stem straight from 560, centred at 500
+    ("ʔ", "glottal", "question", (904, 560, 500, "dotlessi", None, 1462)),
     ("Ɂ", "alias", "ʔ", None),
     ("ʕ", "mirror", "ʔ", None),
     # the clicks stand on the baseline (| itself descends); ǁ's bars closer than two |
@@ -252,7 +257,10 @@ RECIPES = [
                                ("H", (1098, -BIG, BIG, BIG), (1098, 0), (1, 1, 1060, 0))], 1542)),
     ("Ɩ", "enlarge", "ɩ", ("o", "O")),
     ("Ꞷ", "stretch", "ꞷ", ("o", "O")),
-    ("ɂ", "enlarge", "ʔ", ("O", "o")),
+    # ɂ: ʔ scaled to the x-height (as o from O), seated on ı's stem and
+    # serif (derive.glottal_stem: cut on the ?'s stroke above ʔ's own neck,
+    # whose nodes scaled lie at 540; ʔ's stem top and centre scaled)
+    ("ɂ", "glottal", "ʔ", (550, 328, 323, "dotlessi", None, None, ("O", "o"))),
     ("Ʃ", "alias", "Sigma", None),
     # esh, ezh
     ("ʃ", "esh", "f", ("x", "uni0237")),
@@ -289,7 +297,9 @@ RECIPES = [
     ("ᵍ", "superior", "ɡ", None),
     ("ᶻ", "superior", "z", None),
     ("ᶿ", "superior", "theta", None),
-    ("ˀ", "superior", "ɂ", None),
+    # ˀ from ʔ, as ˁ from ʕ (from ɂ until 2026-11-24 it stood at the
+    # x-height superiors' 1149 where ˁ reaches 1469; Charis has them alike)
+    ("ˀ", "superior", "ʔ", None),
     ("ˁ", "superior", "ʕ", None),
     ("ᵋ", "superior", "ɛ", None),
     ("ᵓ", "superior", "ɔ", None),
@@ -619,7 +629,9 @@ RECIPES = [
     ("ɑ.sc", "enlarge", "Ɑ", ("O", "o.sc")),
     ("ɩ.sc", "enlarge", "ɩ", ("o", "o.sc")),
     ("ꞷ.sc", "stretch", "ꞷ", ("o", "o.sc")),
-    ("ɂ.sc", "enlarge", "ʔ", ("O", "o.sc")),
+    # ɂ.sc: ʔ scaled to the small caps, seated on ɪ's stem and serif (cut
+    # above ʔ's neck, at 655 scaled)
+    ("ɂ.sc", "glottal", "ʔ", (665, 406, 371, "uni026A", None, None, ("O", "o.sc"))),
     ("ʃ.sc", "alias", "sigma.sc", None),
     ("ʒ.sc", "enlarge", "Ʒ", ("O", "o.sc")),
     ("ƹ.sc", "mirror", "ʒ.sc", None),

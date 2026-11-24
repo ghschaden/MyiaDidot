@@ -43,6 +43,13 @@ ITALIC_CUT = 16
 # n n gap looser than the Italic's Latin against Greek references
 # (scripts/quality/greek_pairs.py)
 ITALIC_CUT_GREEK = ITALIC_CUT + 11
+# ʔ (make_italic.glottal, derive.glottal_stem), in the upright frame: the ?
+# lifted to O's top (1462, its round top overshooting as O's; its own top
+# 1395), cut at 967 (900 on the ?), the stem's straight edges from 600,
+# centred at 440, no foot serif, 164 wide (the Regular's ı; was 112). The
+# designer, 2026-11-24:
+# the Regular's ʔ on ı's serif, the Italic's plain at that weight
+ITALIC_GLOTTAL = (967, 600, 440, None, 164, 1462)
 
 MADE_WITH = {"weight": [AX, AY, WEIGHT, CAP_WEIGHT], "cut": [ITALIC_CUT, ITALIC_CUT_GREEK]}
 
@@ -290,7 +297,7 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   # the rhotic hook rising from the bowl's right side (at that height)
                   "ɚ": ("rhotic", "ə", 500), "ɝ": ("rhotic", "ɜ", 690),
                   # the italic ? (its stroke curls at the foot) turning down
-                  # into a stem: ʕ ʡ ʢ follow
+                  # into a stem (ITALIC_GLOTTAL): ʕ ʡ ʢ follow
                   "ʔ": ("glottal", "question", None),
                   # ɜ closed on the left by the left half of o
                   "ɞ": ("attach", "ɜ", ("x", [(-BIG, 600, 400, BIG), (-BIG, -BIG, 400, 300)],
@@ -715,6 +722,11 @@ ITALIC_UNKERNED = {("uni0434", "public.kern2.uni0443"), ("public.kern1.uni0443",
 # (scripts/quality/derived_spacing.py Italic, to the references' median;
 # the Regular's are data_regular.SPACING): ɠ ʂ ʐ ʃ Ƭ ɻ ҷ қ Ƈ ң Ƴ ƭ ɮ ʄ Ƙ ɳ Ʋ ɱ ɧ Ҳ ʝ ɾ
 ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
+                       # ǃ: the Regular's ! in it shifted 31 further left
+                       # (2026-11-24) for the Regular's narrower new ! (its
+                       # sides kept at 106); the Italic's own ! did not change:
+                       # its ǃ keeps its sides (90 / -112, advance 522)
+                       "uni01C3": (31, 31),
                        "uni02BC": (-145, 145), "uni02BB": (-130, 130),
                        "uni0260": (0, -380), "uni0282": (-265, 0), "uni0290": (0, -275), "uni0283": (-215, -135),
                        "uni01AC": (5, 0), "uni027B": (0, -170), "uni04B7": (0, -145), "uni049B": (0, -125),

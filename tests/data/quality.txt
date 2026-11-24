@@ -105,11 +105,6 @@ uni01E5 step 4                   # 2026-10-27 step check added (checks.py step):
 uni01E5 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 137 against 164 (0.83, lighter)
 uni0237.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +3 from 1040
 uni023E zone 1                   # 2026-10-16 known at the start (quality checks added): top +8 from 1434
-uni0242 kink 2                   # 2026-10-16 known at the start (quality checks added): 76,775 3.9 degrees; 251,855 3.7 degrees
-uni0242 smooth 2                 # 2026-10-16 known at the start (quality checks added): 294,437 2.9 degrees; 212,771 2.0 degrees
-uni0242 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 86 against 164 (0.52, lighter)
-uni0242.sc smooth 1              # 2026-10-16 known at the start (quality checks added): 234,1012 2.8 degrees
-uni0242.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 87 against 176 (0.50, lighter)
 uni0248 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -18 from 0
 uni0249 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 382,470 30 units aside; 412,414 30 units aside
 uni0249.sc zone 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-Regular); a few units of extreme moved, neighbours kept: top +3 from 1040
@@ -146,16 +141,11 @@ uni028B zone 1                   # 2026-10-16 known at the start (quality checks
 uni028C.sc zone 1                # 2026-10-16 known at the start (quality checks added): bottom -3 from 0
 uni0292 kink 3                   # 2026-10-16 known at the start (quality checks added): 576,540 1.0 degrees; 282,-133 3.9 degrees; 240,-225 4.8 degrees
 uni0292.sc kink 2                # 2026-10-16 known at the start (quality checks added): 381,148 2.9 degrees; 258,-27 4.8 degrees
-uni0294 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)
-uni0295 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)
 uni0298 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 207 against 182 (1.14, darker)
 uni0298 zone 1                   # 2026-10-16 known at the start (quality checks added): bottom -28 from 0
 uni029B step 1                   # 2026-11-08 ʛ at the x-height, made from ɠ.sc as ɢ from g.sc: ɢ's own findings (G's spur, curl slant): 701,304 67 units aside
-uni02A1 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)
-uni02A2 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 72 against 164 (0.44, lighter)
 uni02B7 step 4                   # 2026-10-27 step check added (checks.py step): a candidate to review: 397,1113 69 units aside; 719,1113 67 units aside; 833,1113 60 units aside; 91,1113 69 units aside
 uni02B8 step 2                   # 2026-10-27 step check added (checks.py step): a candidate to review: 91,1113 69 units aside; 438,1113 63 units aside
-uni02C0 kink 1                   # contrast-aware Bold (emboldened by stroke weight), G jaw, horns, modifier letters rebuilt: 53,1084 5.0 degrees
 uni0359 smooth 4                 # 2026-10-16 known at the start (quality checks added): -522,-247 2.9 degrees; -358,-247 2.9 degrees; -358,-417 2.9 degrees; -522,-417 2.9 degrees
 uni037F zone 1                   # accepted case counterpart additions: bottom -18 from 0
 uni03D7.sc kink 1                # 2026-11-24 the Regular's attach family mended (scripts/regular_attach.py): 677,541 1.9 degrees

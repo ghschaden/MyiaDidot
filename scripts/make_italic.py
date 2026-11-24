@@ -66,6 +66,7 @@ from data_italic import (
     ITALIC_CUT,
     ITALIC_CUT_GREEK,
     ITALIC_FIGURE_SIDES,  # noqa: F401  (read by space_figures.py)
+    ITALIC_GLOTTAL,
     ITALIC_HORN,
     ITALIC_JOINS,
     ITALIC_JOINS_SPLIT,
@@ -902,27 +903,12 @@ def rhotic(up, source, y):
 
 
 def glottal(up, source):
-    """ʔ from the italic ?: its stroke cut across where it heads down to the
-    left, before it curls, and turned down into a stem to the baseline."""
-    from fontTools.pens.recordingPen import RecordingPen
-
-    px, py, d = 525, 740, math.radians(213)  # on the stroke, its direction
-    ux, uy, vx, vy = math.cos(d), math.sin(d), -math.sin(d), math.cos(d)
-    far = 5000
-    rec = RecordingPen()  # the half-plane ahead of that point
-    rec.moveTo((px + vx * far, py + vy * far))
-    rec.lineTo((px + (vx + ux) * far, py + (vy + uy) * far))
-    rec.lineTo((px + (ux - vx) * far, py + (uy - vy) * far))
-    rec.lineTo((px - vx * far, py - vy * far))
-    rec.closePath()
-    ahead = derive.path_op(derive.to_path(None, rec=rec), derive.rect_path(-BIG, -BIG, BIG, 820), "INTERSECTION")
-    top = derive.path_op(derive.to_path(up, up[source]), ahead, "DIFFERENCE")
-    top = derive.path_op(top, derive.rect_path(-BIG, 400, BIG, BIG), "INTERSECTION")  # the dot
-    stem = derive.attach(up, "space", [],
-                         [("curl", {"at": ("pt", px, py, 112), "dir": 213, "turn": "ccw", "r": 200,
-                                    "sweep": 57, "ball": 5, "t": (112, 112), "lead": 0}, (0, 0), (1, 1, 0, 0)),
-                          ("line", ((434, 590), (434, 0), 112), (0, 0), (1, 1, 0, 0))])
-    return derive.path_op(top, stem, "UNION")
+    """ʔ from the italic ?: its head on a plain stem as heavy as the
+    Regular's ı (derive.glottal_stem; ITALIC_GLOTTAL: the cut, the stem's
+    top and centre, no foot serif, the stem's width; the designer,
+    2026-11-24, proofs/2026-11/glottal-serif-trial-2026-11-24.pdf). Until
+    then a curl of 112 units from 525,740 and a line to the baseline."""
+    return derive.glottal_stem(up, source, *ITALIC_GLOTTAL)
 
 
 def case_weight(font, g):

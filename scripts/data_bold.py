@@ -57,6 +57,17 @@ BOLD_REBUILD = {
     # back (ɦ.sc 360,1004 13 past) and the stem leaned from 638
     "uni01A5.sc": "ƥ.sc: enlarged from the Bold's Ƥ",
     "uni0266.sc": "ɦ.sc: enlarged from the Bold's Ɦ",
+    # ʔ is the ?'s head on ı's stem and serif (derive.glottal_stem,
+    # 2026-11-24): a combined shape, made of the Bold's ? and ı, not
+    # emboldened whole
+    "uni0294": "ʔ: the Bold's ? on the Bold's ı",
+    # and what is made of it, from the Bold's ʔ (emboldened from the
+    # Regular's they kept 51-55 % of it: checks.base)
+    "uni0295": "ʕ: the Bold's ʔ mirrored",
+    "uni02A1": "ʡ: the Bold's ʔ barred",
+    "uni02A2": "ʢ: the Bold's ʕ barred",
+    "uni0242": "ɂ: the Bold's ʔ made small, on the Bold's ı",
+    "uni0242.sc": "ɂ.sc: the Bold's ʔ made small, on the Bold's ɪ",
     # the middle tildes on the Bold's own base, as the Bold Italic's
     # (ITALIC_BOLD_REBUILD): emboldened whole and joined to the base, the
     # foot serif's left end was cut at a slant, the stem's left edge swelled

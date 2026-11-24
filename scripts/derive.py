@@ -384,11 +384,19 @@ def tapered_ends(rec, share):
 
 
 def merged(font, src, extra):
-    """The source outlines and the extra shape merged into one outline."""
+    """The source outlines and the extra shape merged into one outline. A
+    shape winding against the source is turned first: in one path, by
+    nonzero winding, their overlap cancelled and left a hole (the Bold
+    Italic's ʢ, its bar across a ʕ that make_bold mirrored without
+    turning its contours; 2026-11-24)."""
     path = pathops.Path()
     rec = DecomposingRecordingPen(font)
     src.draw(rec)
     rec.replay(path.getPen())
+    if orientation(extra) != orientation(rec):
+        turned = RecordingPen()
+        extra.replay(ReverseContourPen(turned))
+        extra = turned
     extra.replay(path.getPen())
     out = RecordingPen()
     pathops.union([path], out)
@@ -1966,6 +1974,91 @@ def ball_for(font, source):
     return BALL_OF_STEM * strokes(font, ref)[1]
 
 
+def glottal_stem(font, source, yc, yt, cs, foot=None, w=None, top=None):
+    """ʔ from a ?: the head kept above yc, where its stroke heads down
+    before it curls; a neck of two curves, each leaving one edge of the
+    stroke along its own direction and turning upright at yt, into a
+    straight stem centred at cs; below that the stem and foot serif of
+    the glyph foot (ı: taken whole, its stem moved onto cs), or with foot
+    None a plain stem w wide to the baseline (the italics). The designer,
+    2026-11-24 (proofs/2026-11/glottal-serif-trial-2026-11-24.pdf): Charis,
+    Libertinus, Noto Serif seat ʔ's full stem on a serif as their l; the
+    Regular's is ı's, the Italic's plain at the same weight. top: the
+    head moved up to it, the neck longer (Old Standard's ? stops 36 under
+    the cap height; every reference's ʔ reaches its H or above, and ɂ.sc,
+    enlarged from ʔ, fell 26 short of the small caps' height); yc is then
+    on the moved head."""
+    rec = DecomposingRecordingPen(font)
+    font[source].draw(rec)
+    if top is not None:
+        bp = BoundsPen(font)
+        font[source].draw(bp)
+        lifted = RecordingPen()
+        rec.replay(TransformPen(lifted, (1, 0, 0, 1, 0, top - bp.bounds[3])))
+        rec = lifted
+    segs, cur, start = [], None, None
+    for op, args in rec.value:
+        if op == "moveTo":
+            cur = start = args[0]
+        elif op == "lineTo":
+            segs.append((cur, cur, args[0], args[0]))
+            cur = args[0]
+        elif op == "curveTo":
+            segs.append((cur, *args))
+            cur = args[-1]
+        elif op == "closePath":
+            if cur != start:
+                segs.append((cur, cur, start, start))
+            cur = start
+
+    def at(s, t):
+        m = 1 - t
+        return tuple(m ** 3 * s[0][k] + 3 * m * m * t * s[1][k] + 3 * m * t * t * s[2][k] + t ** 3 * s[3][k]
+                     for k in (0, 1))
+
+    # the stroke's two edges where they cross yc: x and the direction down
+    # (the ? is cut where it has one run there: its head's ball lies higher)
+    found = []
+    for s in segs:
+        prev = at(s, 0)
+        for i in range(1, 2001):
+            p = at(s, i / 2000)
+            if (prev[1] - yc) * (p[1] - yc) <= 0 and prev[1] != p[1]:
+                dx, dy = p[0] - prev[0], p[1] - prev[1]
+                n = math.hypot(dx, dy)
+                sign = -1 if dy > 0 else 1
+                found.append((prev[0] + (yc - prev[1]) / dy * dx, (sign * dx / n, sign * dy / n)))
+            prev = p
+    found.sort()
+    if len(found) != 2:
+        raise ValueError(f"glottal_stem: {source} crosses {yc} {len(found)} times, not 2")
+    (xl, tl), (xr, tr) = found
+    if foot:
+        i0, i1 = stems_at(font, foot, (yt + 100) / 2)[0]
+        w = i1 - i0
+    s0, s1 = cs - w / 2, cs + w / 2
+    dl = math.dist((xl, yc), (s0, yt)) / 2
+    dr = math.dist((xr, yc), (s1, yt)) / 2
+    up = 30  # the neck closed inside the stroke, above the cut
+    neck = RecordingPen()
+    neck.moveTo(((xl + xr) / 2 - (tl[0] + tr[0]) / 2 * up, yc - (tl[1] + tr[1]) / 2 * up))
+    neck.lineTo((xl, yc))
+    neck.curveTo((xl + tl[0] * dl, yc + tl[1] * dl), (s0, yt + dl), (s0, yt))
+    neck.lineTo((s0, yt - 40))
+    neck.lineTo((s1, yt - 40))
+    neck.lineTo((s1, yt))
+    neck.curveTo((s1, yt + dr), (xr + tr[0] * dr, yc + tr[1] * dr), (xr, yc))
+    neck.closePath()
+    head = path_op(to_path(None, rec=rec), rect_path(-BIG, yc, BIG, BIG), "INTERSECTION")
+    out = path_op(head, to_path(None, rec=neck), "UNION")
+    if foot:
+        low = path_op(to_path(font, font[foot]), rect_path(-BIG, -BIG, BIG, yt - 20), "INTERSECTION")
+        low = shifted(low, cs - (i0 + i1) / 2)
+    else:
+        low = rect_path(s0, 0, s1, yt - 20)
+    return path_op(out, low, "UNION")
+
+
 def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, normal=True):
     """The letter minus cuts, with a hook drawn as part of an elliptical
     ring ending in a ball: it leaves the letter's stroke at `at` (('y', y,
@@ -2197,6 +2290,29 @@ def build(font, ch, op, source, band, name=None):
                 if pt.y == foot:
                     pt.y = 0
             c.drawPoints(g.getPointPen())
+    elif op == "glottal":
+        # ʔ: the ?'s head on a straight stem (glottal_stem); band: (cut,
+        # stem top, stem centre, foot glyph, stem width, top, enlarge). With
+        # enlarge (src_ref, dst_ref): the source scaled first as the enlarge
+        # op does (ɂ ɂ.sc from ʔ), then seated on its own kind's stem and
+        # serif (ı, ɪ), not on ʔ's scaled down (2026-11-24: 85 and 103 units
+        # of overhang where the lowercase has 142 and the small caps 117)
+        *args, scaled = band + (None,) * (7 - len(band))
+        if scaled:
+            head = "_glottal_head"
+            out, g.width = enlarge(font, source, *scaled)
+            tmp = font.newGlyph(head)
+            try:
+                draw_path(font, src, tmp, out)
+                draw_path(font, src, g, glottal_stem(font, head, *args))
+            finally:
+                del font[head]
+            ref = font[scaled[1]]
+            for a in ref.anchors:
+                g.appendAnchor({"name": a.name, "x": round(a.x * g.width / ref.width), "y": a.y})
+        else:
+            g.width = w
+            draw_path(font, src, g, glottal_stem(font, source, *args))
     elif op == "twin":
         # ɯ Ɯ from u U: a second copy whose first stem lies on the first's
         # last stem; the first loses what is right of that stem (its foot

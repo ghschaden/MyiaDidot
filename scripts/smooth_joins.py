@@ -55,6 +55,10 @@ JOINS = {
     # there (2026-11-09, its slash drawn at this weight)
     # was (278, 167): the rebuilt ⱦ and ƭ (2026-11-20) have it at (294, 164)
     "uni2C66": [(294, 164)], "uni01AD": [(294, 164)],
+    # ʢ: the bar merged onto ʕ (ITALIC_BOLD_REBUILD, 2026-11-24) rounds ʕ's
+    # 2-unit handle at the head's inner turn anew, its node no longer
+    # smooth: the short curve after it bends back (a wobble, 17 degrees)
+    "uni02A2": [(438, 967)],
     # the entry strokes and feet kept turning one way (stroke_bold.one_way,
     # 2026-11-09): fair_arcs' split or the cleaning leaves a short handle
     # or a crumb at their node, rounded off its course (11-26 degrees;

@@ -82,6 +82,11 @@ ITALIC_BOLD_REBUILD = {
     # ɉ: emboldened whole its dot came out larger than j's (2026-11-09); the
     # bar on the Bold Italic's j, its arms then lengthened by j_bar.py
     "uni0249": "ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_RECIPES)",
+    # ʡ ʢ: the bar on the Bold Italic's ʔ ʕ (2026-11-24: stroked whole, ʢ's
+    # neck, the new ʔ's mirrored, came out with a 5.8-degree kink and five
+    # wobbles where the Bold Italic's ʕ is clean)
+    "uni02A1": "ʡ: the bar on the Bold Italic's ʔ",
+    "uni02A2": "ʢ: the bar on the Bold Italic's ʕ",
     # ʝ ʲ: made on the Bold Italic's own j whatever the Italic's (its dot
     # set as j's, 2026-11-09, the rebuild was no longer taken and the
     # emboldened Italic letter came back, its spacing 19 and 11 wider)
