@@ -111,6 +111,16 @@ def generate(style, ch, recipe=None, frame=None):
     finally:
         up.glyphOrder = order
         up.lib["public.openTypeCategories"] = cats
+    if italic:  # as rederive does, after the build: the Italic's faired joins, runs, corners
+        from make_italic import round_corner, straighten_run
+
+        joins = {**mb.ITALIC_JOINS, **mb.ITALIC_BOLD_JOINS}
+        if ch in joins:
+            derive.fair_joins(new, *joins[ch])
+        if ch in mb.ITALIC_RUNS:
+            straighten_run(new, *mb.ITALIC_RUNS[ch])
+        if ch in mb.ITALIC_CORNERS:
+            round_corner(new, *mb.ITALIC_CORNERS[ch])
     mb.drop_specks(new)
     mb.fix(up, [tmp])
     delta = (mb.SOURCE_SPACING.get(name) if italic else derive.SPACING.get(ch))
