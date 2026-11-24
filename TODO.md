@@ -1507,6 +1507,16 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       between runs, but ж's middle stem (wound clockwise) narrows into its
       foot. Find the pass that does it; then release ж ж.loclBGR җ
       (drawn.py --release) in the Bold Italic.
+- [ ] The wobble check depends on contour direction
+      (scripts/quality/checks.py, reversals): it samples a contour at
+      fixed steps from its start, in its direction, and groups the turns
+      into lobes without wrapping round, so the same outline read
+      backwards finds other wobbles near the thresholds (2026-11-24: the
+      Bold's quality list gained 6 wobbles and lost 1 with only its
+      directions turned; HEAD's Bold Italic 7 read backwards had two).
+      Make it the same either way (e.g. sample from a fixed point, wrap
+      the lobes round, or take both directions), then accept the lists
+      once with that as the reason.
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a
