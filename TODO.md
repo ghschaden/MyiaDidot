@@ -1402,7 +1402,40 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       own smaller neck wobble (562,1398; a reviewed draft). hook_path
       starting no higher than f's straight top (the Bold's ɓ ɗ ɦ joins)
       still open.
-      Next of the Regular's operations: `curl` (Ƙ ƴ Ⱳ ⱳ Ƴ ʋ).
+      The Regular's `curl` family done 2026-11-24 (`scripts/regular_curl.py`,
+      sheet proofs/2026-11/regular-curl-2026-11-24.pdf, approved): one
+      shared cause, mended in the kept glyphs. On a diagonal stroke the
+      ring meets edges not parallel to `dir`: the outer join's first
+      handle 2-5 degrees off the edge line (Ƙ Ƴ ƴ Ⱳ ⱳ, Ƴ's a corner of
+      4.8), the inner join crumbs of 4-13 units turning 10-27 degrees,
+      hidden from checks.construction by their shortness (Ƴ ƴ Ⱳ ⱳ), and
+      on Ƙ a 14-unit notch on the arm's upper edge (the ring starting 10
+      inside it). Handles put in line, crumbs dropped, Ƙ's ring start
+      moved onto the arm's line. ʋ's stem edge bent in 3 units below 60:
+      straight at 926. ƙ.sc ƴ.sc ⱳ.sc made again. Scratch: Regular 7
+      lines gone (with ƴ.sc's 3.6 kink), none new. derive.curl itself
+      unchanged: a recipe made again would bring the joins back (the
+      italics' curls are their recipes', not touched). Like the
+      duplicates above, **checks.construction does not see corners
+      between segments under about 12 units**. ⱳ.sc made again came out
+      with a 3.1-degree corner beside its ball (1725,837, an 11-unit
+      handle: hidden in the Regular, a wobble in the Bold): aligned in
+      the script's small-caps step.
+      The Bold: Ƴ followed (its 5.0 kink gone, with ƴ.sc's 3.5); its ƴ ʋ
+      are drawn, its Ƙ Ⱳ ⱳ made by the Bold's own curl recipes: the same
+      join faults there (Ƙ 1401,1111, Ⱳ 1943,1120, ⱳ 1318,700 and
+      1671,715), for phase 7.
+      Left of the family, older and also hidden (short segments): where
+      the ball meets the ring's outer edge, 3-5 degree corners on Ƙ
+      (1329,1111), ƴ (1164,714), ⱳ (1591,714), ƴ.sc (1163,807): their
+      balls are from before derive.curl put the ball on the edge's normal
+      (2026-11-22). Made again on today's curl (as Ʈ was) they would
+      lose them but bring back the joins mended here: re-derive, then
+      regular_curl.py on the new coordinates, on a sheet. ʋ's own ball
+      (drawn 2026-10-27) has corners of 8-14 degrees at 550,661 and
+      410,727-418,742: a look by the designer first.
+      Next of the Regular's operations: see families.py (`ezh`, `bar`,
+      `superior`, `stretch`).
       The joins batch done 2026-11-22 (italic.md, "The recipe joins"):
       ɭ ʈ Ⱳ Ꞵ ƃ ɳ ɧ ɖ. Left: ɰ (ɥ's descender 2.3 degrees past the slant:
       set it at the slant, then fair), Ɽ Ʈ ɖ's curl balls (derive.curl
@@ -1411,6 +1444,48 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       shared change, `make regress` and `make diffenator` first, or left),
       ɱ's ledge (made by `hook`, which has no taper), ʝ designed (its
       crossbar's square end), ɧ's 271,955 from ɦ.
+- [ ] ! looks much fatter and darker than ?, and ¡ than ¿ (the designer,
+      2026-11-24). Measured at HEAD a00419c1: the wedge of ! at y 1300 is 273
+      wide in the Regular and 375 in the Bold, against about 150 and 250
+      for the thickest stroke of ?. In the uprights ! holds more ink than ?
+      (Regular 248k against 239k, Bold 364k against 337k) in less than
+      half its width (276 against 624). In the italics ? has the more ink,
+      but ! is still a solid wedge, 246 and 359 wide at 1100. ¡ ¿ are
+      the same outlines turned. To do: compare with the references
+      (Charis, Libertinus, Old Standard: the wedge's top against the
+      stem, and ! beside ?), then a lighter wedge in the Regular, with the
+      others following; a sheet first.
+      Compared 2026-11-24 (build/pending/exclam-question-options-2026-11-24.pdf):
+      ink(!)/ink(?) is 0.72-0.88 in every reference and 0.78/0.77 in our
+      italics (their signs redrawn from Old Standard on 2026-11-16); the
+      Regular 1.04, the Bold 1.08. The Regular's ! is in the Didots' range
+      by itself (248k; GFS Didot 233k, Libre Bodoni 259k), its ? light
+      (Theano's: a round head on a hairline stem, 239k against 281-332k).
+      Options on the sheet: A ! from Old Standard (0.89), B ! and ? from
+      Old Standard (0.75), C ? only (0.88). The designer chose B
+      (2026-11-24; sheet build/pending/exclam-question-B-2026-11-24.pdf,
+      approved): ! ? ¡ ¿ from Old Standard Regular's OTF, scaled to the
+      cap height (2.014), its side bearings and its own ¡ ¿, redrawn onto
+      clean nodes (redraw.py, all four candidates, dev 2.5-3.0).
+- [ ] ʔ from the new ? (follow-up of B, the designer 2026-11-24): kept
+      as it is in the B batch. Made again by `nodot` from Old Standard's
+      ? it ends in the ?'s teardrop above the (cut) dot, floating at the
+      baseline, and ʡ ʢ's bar crosses the drop
+      (build/pending/glottal-from-new-question-2026-11-24.pdf). Charis
+      and Libertinus draw ʔ as a letter: the ?'s head on a straight stem
+      to the baseline with a foot serif, at the lowercase's weight. To
+      do: a recipe of its own on that model (the new ?'s head, a stem and
+      foot serif from l or ı), trial sheet first; ʕ ʡ ʢ Ɂ ɂ ˀ ˁ ɂ.sc
+      follow (derive.py --redraft, one call: the recipes' order has ʔ
+      first). The foot serif (the designer asked, 2026-11-24): Charis,
+      Libertinus, Noto Serif, DejaVu Serif, Cambria seat ʔ's full-weight
+      stem on a two-sided serif as their l; EB Garamond alone ends it
+      bare; no Didot reference has ʔ. In the uprights a serif, ı's stem
+      and foot taken whole (every Didot stem on the baseline has one; it
+      tells the letter from ?). The italics: Charis Italic and Libertinus
+      Italic give ʔ a foot serif too; ours (glottal) ends in a plain
+      stem, as our italic l ends in its exit stroke: open, for the
+      designer (sheet build/pending/glottal-references-2026-11-24.pdf).
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a
