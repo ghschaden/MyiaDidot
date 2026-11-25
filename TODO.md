@@ -1576,6 +1576,46 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       those). Likely the sampling along each segment from its start node
       (as the wobble check had). Measure with the scratch trial (stroke a
       glyph and its reverse, XOR area) per stage before changing any.
+      Found 2026-11-25 (not the sampling: the samples are the same points
+      either way; every cause is a node's own sample taken by one side):
+      A one_way walked back started a sample into the curve (`aside`
+      carried the 2-unit step); B a node turning under CORNER offset on
+      the leaving segment's normal (Italic o 231,8, an 8-degree corner no
+      list names); C a crotch's leaving side weighed by the node's sample,
+      crossing() one sample short on it; D a line's mean took its start
+      node's sample; E the crotch's sample smoothed with the leaving run
+      only; F rigid/crotches gated on sample tangents (W's left bracket
+      0.991 | 1.005 of its limit: 22 units); G join_curvature node by node
+      and fit_g2's start order. A-F with E for every corner (sample out of
+      smoothing and cap) and G: n 10.2 -> 0.6 units, W 22 -> 0.25, m 3.7 ->
+      0.8, ж 2.9 -> 0.25, o 1.1 -> 0.26 apart by direction; y 2.5 left, its
+      blend gate flipping (steps() and findings() read by direction).
+      Kept aside (git stash "stroker direction fixes A-F", patch
+      build/pending/stroker-direction-AF.patch; with E for every corner and
+      G: stroker-direction-full.patch): they moved 1495 glyphs,
+      π 92 ı 47 by D's 0.001 change of weight tipping rejoined (below) and
+      fair_arcs' LIMIT. Next, after the rejoin guard: apply A-F, scratch
+      run, list moves (they should be fractions now), sheet; then G.
+- [x] (2026-11-25) rejoined merged the cleaning's pieces into one cubic
+      unchecked: π's left leg 91 units off what was stroked (a straight
+      wedge for the Italic's curved foot), д.sc 39, į 34, and a node's
+      anchor 0.02 units further flipped it. REJOIN_ERR 2: a run is merged
+      only within 2 units of its pieces, else cut at its middle and each
+      half tried. Bold Italic: 439 glyphs moved (40 by 10+ units), sheet
+      build/pending/bolditalic-rejoin-guard-2026-11-25.pdf; the designer
+      chose this (option 1) over a 12-unit guard for the gross ones only.
+      Quality: 20 lines gone (t.sc kink and smooth, ʈ.sc ⱦ.sc ꟈ kinks, π
+      extreme, 12 wobbles), 37 new: the merge had smoothed over small
+      bends in the stroked pieces. The joins blend asks for (its short
+      curves, `asked`) are merged as before (else м's step came back).
+      ө.sc's bar union needed wider nudges (make_bold, ±0.4 x, ±0.6 y).
+      test_stroked_the_same_either_way now measures the largest distance
+      in units (XOR read ж 9866 units² for 0.97 units).
+- [ ] The 25 wobbles (4-6 degrees) and 9 smooth lines the rejoin guard
+      showed in the Bold Italic (α ψ ɐ ʈ.sc Ʊ м ф ч щ ʔ ʕ ɶ џ ɦ @ ...,
+      quality-BoldItalic.txt dated 2026-11-25): bends in the stroked
+      pieces themselves, one family; find the stage that makes them (the
+      pieces before the cleaning, then fair_arcs) and mend it there.
 - [x] (2026-11-24: each contour read clockwise, by its area, and its
       lobes grouped round from a break or a change of sign;
       tests/test_quality.py test_wobbles_read_either_way. All four styles:

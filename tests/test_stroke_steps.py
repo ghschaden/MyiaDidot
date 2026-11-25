@@ -217,13 +217,55 @@ def reversed_glyph(glyph):
     return out
 
 
-def area_apart(a, b):
-    import pathops
+def farthest_apart(a, b, step=2.0):
+    """the largest distance of either outline from the other, in units
+    (each flattened, sampled every step units; an XOR's area read
+    near-coincident edges as apart, ж 9866 units² for one unit, 2026-11-25)"""
+    from fontTools.pens.basePen import BasePen
 
-    pa, pb = pathops.Path(), pathops.Path()
-    a.draw(pa.getPen())
-    b.draw(pb.getPen())
-    return abs(pathops.op(pa, pb, pathops.PathOp.XOR).area)
+    class Flat(BasePen):
+        def __init__(self):
+            super().__init__(None)
+            self.contours = []
+
+        def _moveTo(self, p):
+            self.start = self.last = np.array(p, float)
+            self.pts = []
+            self.contours.append(self.pts)
+
+        def _line(self, q):
+            n = max(1, int(np.linalg.norm(q - self.last) / step))
+            self.pts += list(self.last + np.outer(np.arange(n) / n, q - self.last))
+            self.last = q
+
+        def _lineTo(self, p):
+            self._line(np.array(p, float))
+
+        def _curveToOne(self, p1, p2, p3):
+            p0, p1, p2, p3 = self.last, *(np.array(q, float) for q in (p1, p2, p3))
+            for t in np.linspace(0, 1, 33)[1:]:
+                self._line((1 - t) ** 3 * p0 + 3 * (1 - t) ** 2 * t * p1 + 3 * (1 - t) * t * t * p2 + t ** 3 * p3)
+
+        def _closePath(self):
+            self._line(self.start)
+
+    def flat(g):
+        """the outline's points every step units, and its chords (start, end)"""
+        pen = Flat()
+        g.draw(pen)
+        pts = np.concatenate([np.array(c) for c in pen.contours])
+        ends = np.concatenate([np.roll(np.array(c), -1, axis=0) for c in pen.contours])  # (each contour closed on itself)
+        return pts, pts, ends
+    far = 0.0
+    for (X, _, _), (_, P, Q) in ((flat(a), flat(b)), (flat(b), flat(a))):
+        d = Q - P
+        dd = np.maximum((d * d).sum(-1), 1e-12)
+        for lo in range(0, len(X), 500):
+            x = X[lo:lo + 500, None]
+            t = np.clip(((x - P[None]) * d[None]).sum(-1) / dd[None], 0, 1)
+            near = P[None] + t[..., None] * d[None]
+            far = max(far, float(np.sqrt(((x - near) ** 2).sum(-1)).min(1).max()))
+    return far
 
 
 def test_lines_meeting_straight_are_one_edge():
@@ -245,16 +287,18 @@ def test_lines_meeting_straight_are_one_edge():
 
 # ж's middle stem: its left edge two lines 0.4 degrees apart, a short one at
 # its foot, flared one way and tapered the other by the contour's direction
-# (2026-11-24); W, Z: lines meeting at a turn, a wedge one way. Units² of
-# area differing between the two directions, before edges() | with it
-# (ж 3194 | 959, W 13185 | 1584, Z 1236 | 226): what is left comes from
-# another stage (n h o differ as much, 785-3260); these only shrink
-ONE_WAY = {"uni0436": 1000, "W": 1650, "Z": 250}
+# (2026-11-24); W, Z: lines meeting at a turn, a wedge one way. Measured as
+# the largest distance between the two directions' outlines, in units
+# (2026-11-25; an XOR's area had been used): ж 0.97, Z 0.79; W 20.6, its
+# left bracket moved whole one way and not the other (rigid's gate,
+# TODO.md "stroker still depends on contour direction", fix F); these
+# only shrink
+ONE_WAY = {"uni0436": 1.5, "W": 21.0, "Z": 1.0}
 
 
 @pytest.mark.parametrize("name", sorted(ONE_WAY))
 def test_stroked_the_same_either_way(name):
     italic = ufoLib2.Font.open(SOURCES / "MyiaDidot-Italic.ufo")
     g = italic[name]
-    apart = area_apart(stroked_from_italic(italic, g), stroked_from_italic(italic, reversed_glyph(g)))
-    assert apart <= ONE_WAY[name], f"{name}: {apart:.0f} units² differ by direction"
+    apart = farthest_apart(stroked_from_italic(italic, g), stroked_from_italic(italic, reversed_glyph(g)))
+    assert apart <= ONE_WAY[name], f"{name}: {apart:.2f} units apart by direction"

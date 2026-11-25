@@ -1281,9 +1281,11 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
             # left), which parts the curves (rounded away on saving), else
             # the letter is left as emboldened
             # (ө.sc's bar on o.sc failed all four once o.sc stood a unit
-            # wider, 2026-11-11: then both ways at once, and a little further)
+            # wider, 2026-11-11: then both ways at once, and a little further;
+            # again once o.sc was rejoined within REJOIN_ERR, 2026-11-25)
             for nudge in (0, (0, -0.25), (0, 0.25), (0.25, 0), (-0.25, 0),
-                          (0.25, 0.25), (-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0, -0.4), (0, 0.4)):
+                          (0.25, 0.25), (-0.25, -0.25), (0.25, -0.25), (-0.25, 0.25), (0, -0.4), (0, 0.4),
+                          (0.4, 0), (-0.4, 0), (0, -0.6), (0, 0.6)):
                 b = pathops.simplify(placed)
                 if nudge:
                     b = pathops.Path()

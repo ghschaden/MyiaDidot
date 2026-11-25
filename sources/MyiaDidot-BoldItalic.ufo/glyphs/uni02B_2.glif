@@ -20,10 +20,13 @@
 			<point x="131" y="277"/>
 			<point x="133" y="275"/>
 			<point x="145" y="275" type="curve" smooth="yes"/>
-			<point x="226" y="275"/>
-			<point x="229" y="396"/>
+			<point x="216" y="275"/>
+			<point x="229" y="369"/>
+			<point x="236" y="436" type="curve" smooth="yes"/>
+			<point x="238" y="444"/>
+			<point x="239" y="452"/>
 			<point x="240" y="459" type="curve" smooth="yes"/>
-			<point x="243" y="476"/>
+			<point x="242" y="476"/>
 			<point x="242" y="492"/>
 			<point x="247" y="510" type="curve" smooth="yes"/>
 			<point x="360" y="913" type="line" smooth="yes"/>
@@ -79,11 +82,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-11</string>
+				<string>2026-11-25</string>
 				<key>glyph</key>
-				<string>6f8773e3a97b</string>
+				<string>164f3f933d65</string>
 				<key>review</key>
-				<string>docs/claude/redraw.md</string>
+				<string>proofs/2026-11/bolditalic-rejoin-guard-2026-11-25.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

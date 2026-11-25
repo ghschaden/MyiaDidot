@@ -109,6 +109,11 @@ BEND_NEAR = 40  # (an inflection on a nearly straight stretch slides along it: �
 REGION = 1.0
 OUTSIDE = 1.0
 WIDTH = 3.0
+# units a run of the cleaning's pieces may stray from them as one cubic: more,
+# and the pieces stay as cut (rejoined; merged unchecked, π's left leg 91
+# units off what was stroked, д.sc's 39, į's 34, and a hair's change in a
+# node's place flipped it, 2026-11-25)
+REJOIN_ERR = 2.0
 LEFTOVER = SHORT  # units (fair_arcs's, the same by design): a piece of the cleaned outline shorter is merged into its neighbours
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
 # curvature continuous at the smooth joins of curves (G2), a curve kept as
@@ -1289,21 +1294,19 @@ def rejoined(contour, anchors, short=False, acted=None):
                 and (runs_into_line(k, 1) or runs_into_line(k - 1, -1))):
             if split:
                 acted.append(here)
+            asked.add(k)
             return False
         return split
+    asked = set()  # (nodes joined for blend's short curves: merged whatever it strays)
     keep = [k for k in range(len(segs)) if split_here(k)] or [0]
     rec = RecordingPen()
     rec.moveTo(tuple(segs[keep[0]][0]))
     ts = np.linspace(0, 1, 40)[:-1]
-    for a, b in zip(keep, keep[1:] + [keep[0] + len(segs)]):
+
+    def merged(a, b):
+        """segments a..b-1 as one cubic, or None where it strays from them
+        more than REJOIN_ERR"""
         run = [segs[k % len(segs)] for k in range(a, b)]
-        if len(run) == 1:
-            sg = run[0]
-            if len(sg) == 2:
-                rec.lineTo(tuple(sg[1]))
-            else:
-                rec.curveTo(*(tuple(q) for q in sg[1:]))
-            continue
         pts = np.concatenate([bez(sg, ts) for sg in run] + [run[-1][-1][None]])
         t0, t1 = unit(run[0][1] - run[0][0]), unit(run[-1][-1] - run[-1][-2])
         ctrl, _err = fit_cubic(pts, t0, t1)
@@ -1320,7 +1323,32 @@ def rejoined(contour, anchors, short=False, acted=None):
         got = fit_g2(pts[::3], t0, t1, k0, k1, ls) if k0 is not None or k1 is not None else None
         if got is not None and got[1] <= G2_ERR:
             ctrl = got[0]
-        rec.curveTo(*(tuple(q) for q in ctrl[1:]))
+        if any(k % len(segs) in asked for k in range(a + 1, b)):
+            return ctrl  # (the join blend asked for: m's step, u's knee)
+        return ctrl if apart(pts, np.array(ctrl)) <= REJOIN_ERR else None
+
+    def emit(a, b):
+        """segments a..b-1 drawn: one cubic where it holds, else cut at the
+        piece boundary nearest the run's middle (by length; the same either
+        way round) and each half tried again"""
+        if b - a == 1:
+            sg = segs[a % len(segs)]
+            if len(sg) == 2:
+                rec.lineTo(tuple(sg[1]))
+            else:
+                rec.curveTo(*(tuple(q) for q in sg[1:]))
+            return
+        ctrl = merged(a, b)
+        if ctrl is not None:
+            rec.curveTo(*(tuple(q) for q in ctrl[1:]))
+            return
+        lengths = [float(np.linalg.norm(np.diff(segs[k % len(segs)], axis=0), axis=1).sum()) for k in range(a, b)]
+        at = np.cumsum(lengths)[:-1]
+        m = a + 1 + int(np.argmin(np.abs(at - at[-1] / 2 - lengths[-1] / 2)))
+        emit(a, m)
+        emit(m, b)
+    for a, b in zip(keep, keep[1:] + [keep[0] + len(segs)]):
+        emit(a, b)
     rec.closePath()
     return rec
 

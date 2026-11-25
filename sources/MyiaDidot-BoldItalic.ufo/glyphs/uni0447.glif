@@ -14,8 +14,11 @@
 			<point x="541" y="630"/>
 			<point x="525" y="590"/>
 			<point x="498" y="529" type="curve" smooth="yes"/>
+			<point x="497" y="526"/>
+			<point x="495" y="524"/>
+			<point x="494" y="521" type="curve" smooth="yes"/>
 			<point x="472" y="470"/>
-			<point x="442" y="405"/>
+			<point x="442" y="403"/>
 			<point x="442" y="347" type="curve" smooth="yes"/>
 			<point x="442" y="316"/>
 			<point x="451" y="312"/>
@@ -39,15 +42,21 @@
 			<point x="1015" y="298"/>
 			<point x="1037" y="360" type="curve"/>
 			<point x="1090" y="345" type="line"/>
-			<point x="1042" y="220"/>
-			<point x="955" y="-15"/>
-			<point x="785" y="-15" type="curve" smooth="yes"/>
-			<point x="656" y="-15"/>
-			<point x="615" y="87"/>
-			<point x="615" y="197" type="curve" smooth="yes"/>
-			<point x="615" y="242"/>
-			<point x="648" y="260"/>
-			<point x="656" y="292" type="curve" smooth="yes"/>
+			<point x="1040" y="215"/>
+			<point x="957" y="-15"/>
+			<point x="781" y="-15" type="curve" smooth="yes"/>
+			<point x="654" y="-15"/>
+			<point x="615" y="79"/>
+			<point x="615" y="188" type="curve" smooth="yes"/>
+			<point x="615" y="219"/>
+			<point x="618" y="225"/>
+			<point x="636" y="258" type="curve" smooth="yes"/>
+			<point x="640" y="264"/>
+			<point x="643" y="270"/>
+			<point x="646" y="277" type="curve" smooth="yes"/>
+			<point x="658" y="301"/>
+			<point x="663" y="319"/>
+			<point x="666" y="330" type="curve" smooth="yes"/>
 			<point x="686" y="407" type="line"/>
 			<point x="621" y="323"/>
 			<point x="532" y="256"/>
@@ -57,9 +66,12 @@
 			<point x="247" y="417" type="curve" smooth="yes"/>
 			<point x="247" y="446"/>
 			<point x="253" y="489"/>
-			<point x="283" y="573" type="curve" smooth="yes"/>
-			<point x="310" y="646"/>
-			<point x="342" y="717"/>
+			<point x="284" y="574" type="curve" smooth="yes"/>
+			<point x="288" y="585"/>
+			<point x="291" y="593"/>
+			<point x="295" y="604" type="curve" smooth="yes"/>
+			<point x="316" y="662"/>
+			<point x="342" y="729"/>
 			<point x="342" y="785" type="curve" smooth="yes"/>
 			<point x="342" y="806"/>
 			<point x="338" y="810"/>
@@ -74,11 +86,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-19</string>
+				<string>2026-11-25</string>
 				<key>glyph</key>
-				<string>28d16dff40fe</string>
+				<string>d1c6942a3f36</string>
 				<key>review</key>
-				<string>proofs/2026-11/italic-long-c-bold-italic-2026-11-19.pdf</string>
+				<string>proofs/2026-11/bolditalic-rejoin-guard-2026-11-25.pdf</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>drawn</string>

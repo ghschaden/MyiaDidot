@@ -22,11 +22,17 @@
 			<point x="201" y="37"/>
 			<point x="210" y="35"/>
 			<point x="224" y="35" type="curve" smooth="yes"/>
-			<point x="439" y="35"/>
-			<point x="578" y="551"/>
+			<point x="435" y="35"/>
+			<point x="575" y="542"/>
+			<point x="616" y="688" type="curve" smooth="yes"/>
+			<point x="617" y="693"/>
+			<point x="618" y="697"/>
 			<point x="619" y="701" type="curve" smooth="yes"/>
-			<point x="637" y="763"/>
-			<point x="653" y="824"/>
+			<point x="620" y="703"/>
+			<point x="621" y="706"/>
+			<point x="622" y="709" type="curve" smooth="yes"/>
+			<point x="635" y="758"/>
+			<point x="653" y="820"/>
 			<point x="652" y="885" type="curve" smooth="yes"/>
 			<point x="652" y="928"/>
 			<point x="645" y="962"/>
@@ -99,11 +105,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-23</string>
+				<string>2026-11-25</string>
 				<key>glyph</key>
-				<string>07508b20789a</string>
+				<string>4c4b49cedd15</string>
 				<key>review</key>
-				<string>docs/claude/longtail.md</string>
+				<string>proofs/2026-11/bolditalic-rejoin-guard-2026-11-25.pdf</string>
 			</dict>
 			<key>org.myiadidot.italicSource</key>
 			<string>small cap draft</string>

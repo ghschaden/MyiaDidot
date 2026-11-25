@@ -26,6 +26,18 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-25 Bold Italic: the stroked outline no longer smoothed away
+  After the stroker's outline is cleaned of its overlaps, the pieces the
+  cleaning cut are joined again. A run of pieces was replaced by one
+  curve without checking how far that curve strayed: π's left leg became
+  a straight wedge where the Italic sweeps into a curved foot (91 units
+  off), д's small capital and į lost their curves as well, and a change
+  of a hundredth of a unit elsewhere could tip a letter either way. A run
+  is now joined only where one curve stays within 2 units of it, else it
+  is cut at its middle and each half tried again. 439 Bold Italic glyphs
+  change, most by 1 to 5 units; π, щ, ƭ ʈ ⱦ т and the t small capital,
+  д and n small capitals, į, ɴ, ɶ, ƴ, ɍ, ϗ, ф, м and £ visibly.
+
 2026-11-16 Guarded letters kept clear beside pairs kerned open too
   kern_clear's guard gives a letter whose mark reaches its neighbour
   (ǰ, Ά, the breathing capitals ...) an exception where its group's pair
