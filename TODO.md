@@ -1500,7 +1500,10 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       clockwise, came out a few units otherwise (the old-style figures,
       s.sc, ϟ.sc, є.sc); ж ж.loclBGR җ worse (the middle stem narrowing
       into its foot): kept as at 522505e2, turned, and marked drawn.
-- [ ] The Bold Italic's stroker depends on contour direction: the same
+- [x] (2026-11-25: lines meeting straight one edge, a6395703; ж ж.loclBGR
+      җ released, stroked with an even middle stem, approved on
+      proofs/2026-11/zhe-released-2026-11-25.pdf; the rest below.)
+      The Bold Italic's stroker depends on contour direction: the same
       Italic letter wound the other way strokes a few units otherwise
       (its passes walk the contour in order: crotches, rigid, one_way,
       blend). Now that every input winds clockwise this no longer varies
@@ -1566,6 +1569,13 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       3.7+2.1 -> 1.2 deg, a new smooth 2.5 deg at 485,-136 (tail into
       curl). Sheet build/pending/rhook-taper-2026-11-25.pdf; then
       baselines, commit, release ж ж.loclBGR җ.
+- [ ] The Bold Italic's stroker still depends on contour direction off
+      lines: n h o stroked from the Italic wound the other way differ by
+      3259/1814/785 units² (ж W Z, the lines, by 959/1584/226 now;
+      tests/test_stroke_steps.py test_stroked_the_same_either_way holds
+      those). Likely the sampling along each segment from its start node
+      (as the wobble check had). Measure with the scratch trial (stroke a
+      glyph and its reverse, XOR area) per stage before changing any.
 - [x] (2026-11-24: each contour read clockwise, by its area, and its
       lobes grouped round from a break or a change of sign;
       tests/test_quality.py test_wobbles_read_either_way. All four styles:
