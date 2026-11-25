@@ -22,6 +22,11 @@ takes 15-20, `make test` 3-5, `make reproduce` a few):
   Use `;` between steps unless told to stop at the first failure (`&&`).
 - Then wait: you are notified when the call ends. Do not poll, do not
   `sleep`, do not write `until`/`while` loops, do not start a second copy.
+- Never wait on a process found by name (`pgrep -f 'make generate'`,
+  `tail --pid=$(pgrep ...)`): the search matches the waiting shell's own
+  command line, so it waits on itself forever (three hung waiters left
+  behind on 2026-11-24). The background call's notification is the wait;
+  if you must wait on something else, use the PID it printed when started.
 - Never end your turn while a command you started is still running: your
   report ends you, and ending you kills the command (a half-generated
   style). If you must stop early, say which step was running and its PID.

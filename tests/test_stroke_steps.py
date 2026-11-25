@@ -192,3 +192,69 @@ def test_tidy_ends_on_a_near_zero_line_at_the_start():
     tidy(g)
     assert [(p.x, p.y) for p in g.contours[0].points if p.type] in (
         [(100, 0), (100, 100), (0, TINY / 2)], [(0, 0), (100, 0), (100, 100)])
+
+
+def stroked_from_italic(italic, glyph):
+    """glyph (an Italic glyph) stroked as make_bold strokes it for the Bold
+    Italic, before its cleaning and placing (upright frame)"""
+    import make_bold as mb
+
+    slant = math.tan(math.radians(-italic.info.italicAngle))
+    rec = RecordingPen()
+    mb.contours_only(glyph).replay(TransformPen(TransformPen(rec, (mb.KX, 0, 0, 1, 0, 0)), (1, 0, -slant, 1, 0, 0)))
+    from stroke_bold import embolden_by_strokes
+
+    return embolden_by_strokes(rec, mb.ITALIC_AX, mb.AY, mb.ITALIC_THIN, mb.ITALIC_THICK, mb.ITALIC_HAIR, slant)
+
+
+def reversed_glyph(glyph):
+    from fontTools.pens.pointPen import ReverseContourPointPen
+
+    out = ufoLib2.objects.Glyph(glyph.name)
+    pen = out.getPointPen()
+    for c in glyph.contours:
+        c.drawPoints(ReverseContourPointPen(pen))
+    return out
+
+
+def area_apart(a, b):
+    import pathops
+
+    pa, pb = pathops.Path(), pathops.Path()
+    a.draw(pa.getPen())
+    b.draw(pb.getPen())
+    return abs(pathops.op(pa, pb, pathops.PathOp.XOR).area)
+
+
+def test_lines_meeting_straight_are_one_edge():
+    """edges(): lines turning under EDGE_TURN at a node are one run, which
+    may wrap round the contour's start; a corner or a curve parts them"""
+    from stroke_bold import edges
+
+    def node(turn, corner=False):
+        a = math.radians(turn)
+        return {"tin": np.array([1.0, 0.0]), "tout": np.array([math.cos(a), math.sin(a)]), "corner": corner}
+
+    # segments 0..4: lines but 2; node k begins segment k
+    lines = [True, True, False, True, True]
+    nodes = [node(1), node(0.5), node(0), node(2), node(10)]
+    assert edges(lines, nodes) == [[3], [4, 0, 1]]
+    assert edges([True] * 3, [node(1)] * 3) == [[0, 1, 2]]
+    assert edges([True] * 3, [node(1), node(1, corner=True), node(1)]) == [[1, 2, 0]]
+
+
+# ж's middle stem: its left edge two lines 0.4 degrees apart, a short one at
+# its foot, flared one way and tapered the other by the contour's direction
+# (2026-11-24); W, Z: lines meeting at a turn, a wedge one way. Units² of
+# area differing between the two directions, before edges() | with it
+# (ж 3194 | 959, W 13185 | 1584, Z 1236 | 226): what is left comes from
+# another stage (n h o differ as much, 785-3260); these only shrink
+ONE_WAY = {"uni0436": 1000, "W": 1650, "Z": 250}
+
+
+@pytest.mark.parametrize("name", sorted(ONE_WAY))
+def test_stroked_the_same_either_way(name):
+    italic = ufoLib2.Font.open(SOURCES / "MyiaDidot-Italic.ufo")
+    g = italic[name]
+    apart = area_apart(stroked_from_italic(italic, g), stroked_from_italic(italic, reversed_glyph(g)))
+    assert apart <= ONE_WAY[name], f"{name}: {apart:.0f} units² differ by direction"

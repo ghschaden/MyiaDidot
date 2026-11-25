@@ -1507,6 +1507,65 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       between runs, but ж's middle stem (wound clockwise) narrows into its
       foot. Find the pass that does it; then release ж ж.loclBGR җ
       (drawn.py --release) in the Bold Italic.
+      **In progress (2026-11-24 night, uncommitted in the working copy:
+      scripts/stroke_bold.py; `make generate` run, log build/gen_edges.log).**
+      Found: stage i, the node positions. A node between two lines turning
+      under CORNER (28) was moved by the leaving line's weight, so the
+      arriving line became a wedge, which one by the contour's direction.
+      ж: its middle stem's left edge is two lines 0.4 degrees apart at
+      595,36 (a 36-unit line at the foot): as wound now a flare 221 -> 230
+      at the foot, reversed (the saved ж) a taper 232 -> 220. Fairing,
+      one_way, blend play no part. Change: `edges()` and EDGE_TURN 3:
+      lines under 3 degrees are one edge, one weight (samples' mean);
+      turning more, each line parallel by its own weight, the node where
+      they cross (mitre), unless the crossing takes more than EDGE_KEEP
+      0.5 of either line (it would fold: λ), then the two weights' mean.
+      Scratch trial (scratchpad edge_trial.py, against the old module):
+      ж even 222 -> 220; W's thin diagonal no longer a wedge thickening into
+      its serif (today up to ~25 units at its top); λ's thick diagonal less
+      thinned at its top (mean at the guarded node); Z ʈ small; Y ф ү n h o
+      unchanged. Sheet for the designer:
+      build/pending/bolditalic-line-edges-trial-2026-11-24.pdf (Italic |
+      today | new; W and λ were approved as they are on 2026-11-20: the
+      designer decides). Next: what moved in the generate (git diff
+      --stat sources/, `make diffenator`, the Bold Italic counts before |
+      after as docs/claude/stroking.md "How to test a change"), a sheet of
+      every letter that moved, then the designer; ж ж.loclBGR җ released
+      only after (still marked drawn, so the generate keeps them). Also
+      add a test (tests/test_stroke_steps.py): ж's stem stroked both
+      ways the same, edges() on a toy contour.
+      Generated 2026-11-25 (exit 0; only ɂ's known recipe failure): the
+      Bold Italic alone moved, 35 glyphs and kerning.plist: W Z ʒ ƛ Ɲ ǆ.sc
+      ǳ.sc ɭ ɮ ɲ.sc ɺ ɻ ʃ я җ.sc қ.sc ү ұ ᵘ ᶶ ẑ.sc ẓ.sc ẕ.sc ₡ ₩ ₹ Ɀ ⱳ.sc
+      Ʞ w.sc z.sc ź.sc ž.sc ż.sc ζ (uni1D52D, uni1D58, uni1DB6: see
+      the names). λ and ʈ not among them (drawn or rebuilt in this style).
+      Left after it: n h o ф still differ by direction by 785-3260 units²
+      of area (another stage, likely the sampling along each segment from
+      its start node, as the wobble check had).
+      Checked 2026-11-25: `make reproduce` clean; stroke tests pass, with
+      two new ones in tests/test_stroke_steps.py (edges() on a toy
+      contour; ж W Z stroked from the Italic either way differ at most
+      1000/1650/250 units², was 3194/13185/1236: a ratchet, only shrinks).
+      Counts before | after (Bold Italic): kink 79|80 (gone ɻ 2, Ʝ;
+      new ү ұ ᵘ ᶶ, 1.0-2.5 degrees), wobble 138|139 (new я 623,265 5 deg;
+      ұ's two became one at 178,-375 49 deg), smooth 58|56 (ұ's two gone),
+      extreme, step, corners, lint, strokes unchanged; g2 jumps 1092|1090
+      (ɻ's 32 gone). Largest moves: W Ⱳ 52 (the thin diagonal's top now
+      turns at 1047,1190 into its bracket), ɮ 75 (handles), ₡ 43,
+      z.sc and its composites 25 (the diagonal's foot node). Sheet of all
+      35: build/pending/bolditalic-line-edges-moved-2026-11-25.pdf
+      (Italic | HEAD | new, zoom on the nodes moved). Waiting for the
+      designer; ұ's 49-degree wobble and я's new one to look at first.
+      Not run: make diffenator (git diff of sources/ already lists all
+      that moved: the Bold Italic's 35 glyphs and 2 kerning pairs).
+      Designer 2026-11-25: all approved but ɻ, "a big step in the downward
+      stroke": the Italic's too (ɹ's stem flares into its bowl, 50 wider
+      than the tail at the cut). Mended in data_italic's ɻ recipe: a left
+      "taper" piece. Generated with it (only ɻ moved in the Italic; the
+      Bold Italic the same 35 and „ɻ's kern dropped); ɻ Bold Italic: kinks
+      3.7+2.1 -> 1.2 deg, a new smooth 2.5 deg at 485,-136 (tail into
+      curl). Sheet build/pending/rhook-taper-2026-11-25.pdf; then
+      baselines, commit, release ж ж.loclBGR җ.
 - [x] (2026-11-24: each contour read clockwise, by its area, and its
       lobes grouped round from a break or a change of sign;
       tests/test_quality.py test_wobbles_read_either_way. All four styles:

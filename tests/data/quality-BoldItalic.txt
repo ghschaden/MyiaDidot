@@ -271,7 +271,9 @@ uni0274 stroke 1                 # 2026-11-01 IPA small capitals redrawn at the 
 uni0276 zone 1                   # 2026-11-09 ɶ ᴅ at the x-height from oe.sc d.sc (derive enlarge), accepted with the letters: docs/ipa-oe-d-smallcaps-review-2026-11-09.md: top +20 from 884
 uni0278 base 1                   # approved 2026-10-25: bowl 5% wider with equal inner/outer expansion, smoothed counters; 45% exact/covered overlap with unexpanded o
 uni0278 style 1                  # approved 2026-10-25: o plus lighter through-stem and wider counters; whole silhouette closer to roman phi (0.72) than o (0.46)
-uni027B kink 2                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 595,252 3.6 degrees; 644,400 2.1 degrees
+uni027B base 1                   # ɻ: the stem's left edge tapered into the tail (data_italic), reviewed 2026-11-25: 46% of uni0279 kept (attach)
+uni027B kink 1                   # ɻ: the stem's left edge tapered into the tail (data_italic), reviewed 2026-11-25: 586,252 1.2 degrees
+uni027B smooth 1                 # ɻ: the stem's left edge tapered into the tail (data_italic), reviewed 2026-11-25: 485,-136 2.5 degrees
 uni027D.sc kink 2                # 2026-11-22 phase 6 step D, third batch: the curl ball on the outer edge's normal (derive.curl), ɾ's straight stem, ɬ's belt, ү ʔ splits, ɱ's leg, Bold Italic Ƈ Ɠ hooks at the terminal's edge: 92,160 1
 uni027D.sc smooth 1              # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: 297,-150 2.2 degrees
 uni027D.sc wobble 1              # phase 6, longtail family 3: the Italic's small caps fitted from their drafts (2026-11-23): 4 against 0: 903,153 19 degrees; 1094,183 7 degrees; 1092,167 6 degrees; 699,308 22 degrees
@@ -395,6 +397,7 @@ uni044D.sc wobble 1              # phase 6, longtail family 3: the Italic's smal
 uni044E wobble 1                 # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/2026-11/bold-italic-cyrillic-followers-2026-11-12.pdf: 1 against 0: 530,590 4 degrees
 uni044E.loclBGR wobble 1         # 2026-11-12: Italic Greek and Cyrillic lowercase redrawn onto clean nodes (redraw.md), accepted by the designer on proofs/2026-11/bold-italic-cyrillic-followers-2026-11-12.pdf: 3 against 0: 534,622 3 degrees;
 uni044F stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 239 against 267 (0.89, lighter)
+uni044F wobble 1                 # line edges by one weight (stroke_bold.edges), reviewed 2026-11-25: 1 against 0: 623,265 5 degrees
 uni0452 zone 1                   # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: bottom -3 from -462
 uni0454.sc slant 1               # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.2 degrees, not 15.2
 uni0458.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
@@ -428,9 +431,10 @@ uni049A zone 1                   # 2026-10-16 Bold Italic: first generated (make
 uni049B stroke 1                 # 2026-11-07: explicitly approved lighter 049B leg (235 vs 269), including its straight inner edge; docs/bold-italic-smallcaps-completion-2026-11-07.md: lc 235 against 269 (0.87, lighter)
 uni04A3 stroke 1                 # 2026-10-21 Italic reweighted and tightened: lc 238 against 273 (0.87, lighter)
 uni04A3 wobble 1                 # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: 3 against 1: 412,-255 26 degrees; 337,-237 106 degrees; 313,-174 5 degrees
+uni04AF kink 1                   # line edges by one weight (stroke_bold.edges), reviewed 2026-11-25: 245,-76 1.0 degrees
 uni04AF slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.7 degrees, not 15.2; 21.2 since ү's descender split -130..-30 (2026-11-22)
+uni04B1 kink 1                   # line edges by one weight (stroke_bold.edges), reviewed 2026-11-25: 244,-76 1.1 degrees
 uni04B1 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 23.8 degrees, not 15.2
-uni04B1 smooth 2                 # 2026-11-22 phase 6 step D, third batch: the curl ball on the outer edge's normal (derive.curl), ɾ's straight stem, ɬ's belt, ү ʔ splits, ɱ's leg, Bold Italic Ƈ Ɠ hooks at the terminal's edge: 523,496
 uni04B1 wobble 1                 # 2026-11-22 phase 6 step D, third batch: the curl ball on the outer edge's normal (derive.curl), ɾ's straight stem, ɬ's belt, ү ʔ splits, ɱ's leg, Bold Italic Ƈ Ɠ hooks at the terminal's edge: 1 agains
 uni04B1.sc kink 1                # bracket ends run on along their strokes (derive.keep_brackets); Italic Ҳ tail step filled: 989,871 3.2 degrees
 uni04B3 wobble 1                 # contour direction: the wobble check reads each contour in its direction; turned contours shift its findings (Bold: direction only), Bold Italic restroked: 3 against 0: 397,-282 4 degrees; 375,-273 40
@@ -446,6 +450,7 @@ uni04E9 wobble 1                 # 2026-11-24 wobble check read the same either 
 uni04E9.sc kink 1                # small caps' overshoot 20 over the zone (2026-11-20, sheet smallcap-overshoot-BoldItalic); a few units of extreme moved, neighbours kept: 768,975 3.9 degrees
 uni1D4D wobble 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni1D53 smooth 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
+uni1D58 kink 1                   # line edges by one weight (stroke_bold.edges), reviewed 2026-11-25: 310,880 2.5 degrees
 uni1D58 wobble 1                 # 2026-11-18 phase 6 step B carried to the Bold Italic: Ɠ Ƈ ɖ ɳ ɠ drawn on the old bases (step D); Ǥ's top with the wider G; ay zt a hair outside the references: 1 against 0: 716,636 21 degrees
 uni1D6D wobble 1                 # 2026-11-18 phase 6 step B carried to the Bold Italic: Ɠ Ƈ ɖ ɳ ɠ drawn on the old bases (step D); Ǥ's top with the wider G; ay zt a hair outside the references: 1 against 0: 840,162 7 degrees
 uni1D6E wobble 1                 # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 1 against 0: -19,-102 9 degrees
@@ -461,6 +466,7 @@ uni1D7D smooth 1                 # 2026-11-19, phase 6 step C: the Italic's over
 uni1D7D wobble 1                 # 2026-11-18 phase 6 step B carried to the Bold Italic: Ɠ Ƈ ɖ ɳ ɠ drawn on the old bases (step D); Ǥ's top with the wider G; ay zt a hair outside the references: 2 against 0: 550,-22 3 degrees; 448,130
 uni1DA4 smooth 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni1DA4 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 6 against 0: 393,659 4 degrees; 374,631 36 degrees; 365,604 6 degrees; 365,600 6 degrees; 364,596 14
+uni1DB6 kink 1                   # line edges by one weight (stroke_bold.edges), reviewed 2026-11-25: 328,921 1.9 degrees
 uni1DB6 wobble 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni1E9E stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: uc 369 against 304 (1.21, darker)
 uni2042 smooth 2                 # 2026-11-24 the Regular's attach family mended (scripts/regular_attach.py): 297,861 2.1 degrees; 817,861 2.1 degrees
@@ -494,6 +500,7 @@ uni2C6D stroke 1                 # stroke weights against the kind's (scripts/qu
 uni2C6F stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: uc 255 against 292 (0.87, lighter)
 uni2C72 stroke 1                 # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: uc 263 against 292 (0.90, lighter)
 uni2C73 slant 1                  # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
+uni2C73.sc slant 1               # line edges by one weight (stroke_bold.edges): the thin diagonal 5.1 -> 5.5 degrees, now inside the check's 10-degree window, read as a stem (no stem leans): 5.6 degrees, not 15.2
 uni2C73.sc stroke 1              # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: sc 267 against 300 (0.89, lighter)
 uni2C73.sc wobble 1              # phase 6, longtail family 3: the Italic's small caps fitted from their drafts (2026-11-23): 3 against 0: 1032,928 32 degrees; 1263,820 20 degrees; 1270,831 8 degrees
 uni2C73.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
@@ -503,7 +510,6 @@ uni2E0E step 1                   # 2026-10-28: Bold Italic emboldened by strokes
 uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 201 against 279 (0.72, lighter)
 uniA78C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 226 against 273 (0.83, lighter)
 uniA7AA kink 1                   # g.sc made from G, ɦ.sc from Ɦ (Italic) and its own curl on h.sc (Bold Italic), Bold Italic Ɦ as its Ɓ: 782,1290 1.3 degrees
-uniA7B2 kink 1                   # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uniA7B5.sc step 2                # 2026-10-28: Bold Italic emboldened by strokes (stroke_bold.py); reviewed on OLD|NEW sheets, taken as is: 267,-288 63 units aside; -81,-288 64 units aside
 uniA7B6 stroke 1                 # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: uc 340 against 300 (1.13, darker)
 uniA7B7.sc stroke 1              # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: sc 346 against 304 (1.14, darker)
@@ -518,6 +524,7 @@ v slant 1                        # 2026-10-16 Bold Italic: first generated (make
 v.sc stroke 1                    # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: sc 264 against 300 (0.88, lighter)
 v.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 w slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 19.9 degrees, not 15.2
+w.sc slant 1                     # line edges by one weight (stroke_bold.edges): the thin diagonal 5.1 -> 5.5 degrees, now inside the check's 10-degree window, read as a stem (no stem leans): 5.5 degrees, not 15.2
 w.sc stroke 1                    # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: sc 265 against 300 (0.88, lighter)
 w.sc zone 1                      # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
 x.sc stroke 1                    # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 233 against 273 (0.86, lighter)

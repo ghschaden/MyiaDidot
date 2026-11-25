@@ -39,6 +39,8 @@ BLOCK = 32          # samples whose sections are measured together
 SIGMA = 90.0        # smoothing of the weight along the outline (units; 45 left г a knee)
 PARALLEL = math.cos(math.radians(40))  # a facing side within this of parallel: a section
 CORNER = 28.0       # degrees: a turn this sharp at a node is a corner
+EDGE_TURN = 3.0     # degrees: two lines turning less at a node are one edge, by one weight
+EDGE_KEEP = 0.5     # share of a line the crossing of two lines may take from it at most
 # a concave round between two lines (a serif's bracket) under TIGHT times its
 # largest offset in radius moves whole (moved point by point its radius would
 # shrink by the offset, to a corner and a jog)
@@ -259,6 +261,25 @@ def fit_g2(pts, t0, t1, k0, k1, ls):
         if best is None or err < best[1]:
             best = (ctrl, err)
     return best
+
+
+def edges(lines, nodes):
+    """the contour's lines grouped into edges: runs of lines (segment
+    indices, in contour order) joined at nodes turning under EDGE_TURN
+    (node k begins segment k); a run may wrap round the contour's start"""
+    L = len(lines)
+    joined = [lines[k] and lines[k - 1] and not nodes[k]["corner"]
+              and float(nodes[k]["tin"] @ nodes[k]["tout"]) > math.cos(math.radians(EDGE_TURN)) for k in range(L)]
+    if all(joined):  # (all lines, no corner: one edge)
+        return [list(range(L))]
+    out = []
+    for k in range(L):
+        if lines[k] and not joined[k]:  # an edge's first line
+            run = [k]
+            while joined[(run[-1] + 1) % L]:
+                run.append((run[-1] + 1) % L)
+            out.append(run)
+    return out
 
 
 def smooth(ks, arc, total):
@@ -873,6 +894,19 @@ class Strokes:
             first = np.cumsum([0] + [len(s) for s in segs])
             kline = [float(kc[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(len(segs))]
             vline = [float(kv[first[k]:first[k + 1]].mean()) if lines[k] else None for k in range(len(segs))]
+            # lines meeting nearly straight (under EDGE_TURN) are one edge,
+            # by one weight (their samples' mean): the node between them
+            # was moved by the leaving line's alone, so the edge leaned on
+            # one side or the other by the contour's direction (ж's middle
+            # stem, a short line at its foot: 2026-11-24); turning more,
+            # each line moves by its own and they meet where they cross
+            # (below)
+            for run in edges(lines, nodes):
+                if len(run) > 1:
+                    idx = np.concatenate([np.arange(first[k], first[k + 1]) for k in run])
+                    kr, vr = float(kc[idx].mean()), float(kv[idx].mean())
+                    for k in run:
+                        kline[k], vline[k] = kr, vr
             if self.blending:
                 kc, kv = self.blend(segs, lines, nodes, kc, kv, kline, vline, ci)
             moved, q = [], 0
@@ -936,6 +970,25 @@ class Strokes:
                         if got is not None:
                             m, trims[k] = got[0], got[1:]
                     ends.append((m, m) if m is not None else (a, b))
+                elif kline[k - 1] is not None and kline[k] is not None:
+                    # two lines, each moved parallel by its own weight, meet
+                    # where they cross (the leaving line's weight at the node
+                    # made the arriving one a wedge, or the other way round
+                    # by the contour's direction: W's hairline thickening
+                    # into its serif, λ's diagonal thinning into its hairline);
+                    # no crossing near (nearly parallel): their mean weight
+                    a = self.move(p, nd["tin"], ka, sign, va)
+                    b = self.move(p, nd["tout"], kb, sign, vb)
+                    m = self.mitre(a, nd["tin"], b, nd["tout"])
+                    # (not past either line's far end: the outline would fold)
+                    la = np.linalg.norm(p - segs[k - 1][0][0])
+                    lb = np.linalg.norm(segs[(k + 1) % L][0][0] - p)
+                    if m is not None and ((m - a) @ nd["tin"] < -EDGE_KEEP * la
+                                          or (m - b) @ nd["tout"] > EDGE_KEEP * lb):
+                        m = None
+                    if m is None:
+                        m = self.move(p, unit(nd["tin"] + nd["tout"]), (ka + kb) / 2, sign, (va + vb) / 2)
+                    ends.append((m, m))
                 elif kline[k - 1] is not None or kline[k] is not None:
                     t = unit(nd["tin"] + nd["tout"])
                     q = self.move(p, t, *((kb, sign, vb) if kline[k] is not None else (ka, sign, va)))

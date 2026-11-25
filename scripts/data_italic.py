@@ -461,8 +461,13 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                                               retroflex(309.5, 309.5, 150, 174, (125, 105), 87, 45))),
                   "ʈ.sc": ("attach", "t.sc", ("s", [(-BIG, -BIG, BIG, 110)],
                                               retroflex(521.5, 521.5, 150, 174, (125, 105), 87, 45))),
+                  # ɻ: ɹ's stem flares down into its bowl (the italic r's
+                  # into its shoulder, turned), 50 wider at the cut than the
+                  # tail: its left edge tapered into the tail's (a step on
+                  # the downstroke, both italics, 2026-11-25)
                   "ɻ": ("attach", "uni0279", ("x", [(440, -BIG, BIG, 200), (560, 200, BIG, 400)],
-                                              retroflex(502, 502, 250, 110, (120, 105), 55, 40))),
+                                              retroflex(502, 502, 250, 110, (120, 105), 55, 40)
+                                              + [("taper", (430, 480, ("ink", 100, 502), "left"), (0, 0), (1, 1, 0, 0))])),
                   # the last stem or leg running on below the baseline (the
                   # exit stroke cut away) and curling to the left
                   "ң": ("attach", "uni043D", ("x", [(700, -BIG, BIG, 250), (950, -BIG, BIG, 450)],
