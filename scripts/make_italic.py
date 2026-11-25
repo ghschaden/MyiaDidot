@@ -67,6 +67,7 @@ from data_italic import (
     ITALIC_CUT_GREEK,
     ITALIC_FIGURE_SIDES,  # noqa: F401  (read by space_figures.py)
     ITALIC_GLOTTAL,
+    ITALIC_GLOTTAL_SMALL,  # noqa: F401  (ɂ's band, read through ITALIC_RECIPES)
     ITALIC_HORN,
     ITALIC_JOINS,
     ITALIC_JOINS_SPLIT,
@@ -1321,7 +1322,8 @@ def build_own(up, ch, op, source, band, name, resolve):
     if op == "fishhook":
         fishhook(up, source, band, name)
         return True
-    if op not in ("rhotic", "glottal"):
+    if op not in ("rhotic", "glottal") or (op == "glottal" and band is not None):
+        # (a glottal with a band, ɂ from ʔ: derive.build's, scaled)
         return False
     if op == "rhotic":
         out, width = rhotic(up, source, band)

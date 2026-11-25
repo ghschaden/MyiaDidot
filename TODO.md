@@ -1593,11 +1593,27 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       Make it the same either way (e.g. sample from a fixed point, wrap
       the lobes round, or take both directions), then accept the lists
       once with that as the reason.
-- [ ] make_italic prints "recipe failed: ɂ (glottal): glottal_stem:
+- [x] (2026-11-25: ɂ's own Italic band; the Bold Italic's kept whole as
+      ʔ, approved) make_italic prints "recipe failed: ɂ (glottal): glottal_stem:
       uni0294 crosses 967 4 times, not 2" (make generate, 2026-11-24,
       after 522505e2); the Italic's ɂ stays as saved. Find why the
       Italic ʔ is crossed four times at 967 (the head's cut height) and
       make the recipe run again.
+      Found 2026-11-25: not ʔ's shape. make_italic.build_own took every
+      `glottal` op as the Italic's ʔ (ITALIC_GLOTTAL on its source), so
+      the Regular's new ɂ recipe ran ʔ's cut on ʔ itself. Now build_own
+      leaves a banded glottal to derive.build, and data_italic gives ɂ
+      its own band (ITALIC_GLOTTAL_SMALL: ʔ scaled to o, its head lifted
+      to 884, a plain stem of 164 as ʔ's, no serif). The committed ɂ was
+      still the sloped Regular's, with ı's foot serif. `make only`:
+      checks and lint clean, 22 nodes to 15. Sheet
+      build/pending/italic-glottal-small-2026-11-25.pdf, approved by the
+      designer. Generated: only ɂ moved (Italic 645 -> 644, Bold Italic
+      715 -> 720). The Bold Italic's rebuild from its own ʔ strays (the
+      band's stem is the Italic's 164): kept whole as its ʔ
+      (ITALIC_BOLD_KEEP_WHOLE, one line more in emboldened-whole,
+      accepted by the designer). Open: a Bold Italic band for ɂ (and ʔ)
+      at its own stem weight, to build both from the Bold Italic's ?.
 - [ ] Design entries (W's diagonals, i/j dot gaps, ξ, 7) get a dated
       verdict in the list, so what remains are all real candidates.
 - [ ] Zone and slant entries (123 and 66): sorted into families first; a

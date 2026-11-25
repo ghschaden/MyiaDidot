@@ -561,6 +561,7 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni026E": "ɮ: a notch where l's stem meets ʒ",
     "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",
+    "uni0242": "ɂ: the Italic's ʔ made small, kept whole as ʔ (its band's stem, 164, is the Italic's)",
     "uni0268": "ɨ: Old Standard's own ɨ (its dot set as i's by i_bar_dot.py); the recipe's i with a bar is another letter",
     "uni026D": "ɭ: a step on the stem at the cut",
     "uni027B": "ɻ: a step on the stem's right side at the cut",

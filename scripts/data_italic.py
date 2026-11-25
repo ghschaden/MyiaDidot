@@ -50,6 +50,14 @@ ITALIC_CUT_GREEK = ITALIC_CUT + 11
 # designer, 2026-11-24:
 # the Regular's ʔ on ı's serif, the Italic's plain at that weight
 ITALIC_GLOTTAL = (967, 600, 440, None, 164, 1462)
+# ɂ: the Italic's ʔ scaled to the x-height (as o from O; derive.build's
+# glottal with enlarge), then on a plain stem as heavy as ʔ's (164, no
+# serif, as the Regular seats both on ı): the head lifted to o's top (884;
+# scaled about the baseline it stood at 868, 16 short), cut 584 between
+# its neck nodes (565, 571 scaled, lifted), the stem straight from 348
+# (ʔ's 600 scaled), centred at 340 (ʔ's 440 scaled). Until 2026-11-25 make_italic.build_own read the
+# Regular's ɂ recipe as ʔ's and failed ("uni0294 crosses 967 4 times")
+ITALIC_GLOTTAL_SMALL = (584, 348, 340, None, 164, 884, ("O", "o"))
 
 MADE_WITH = {"weight": [AX, AY, WEIGHT, CAP_WEIGHT], "cut": [ITALIC_CUT, ITALIC_CUT_GREEK]}
 
@@ -299,6 +307,8 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   # the italic ? (its stroke curls at the foot) turning down
                   # into a stem (ITALIC_GLOTTAL): ʕ ʡ ʢ follow
                   "ʔ": ("glottal", "question", None),
+                  # ʔ made small (ITALIC_GLOTTAL_SMALL)
+                  "ɂ": ("glottal", "ʔ", ITALIC_GLOTTAL_SMALL),
                   # ɜ closed on the left by the left half of o
                   "ɞ": ("attach", "ɜ", ("x", [(-BIG, 600, 400, BIG), (-BIG, -BIG, 400, 300)],
                                         [("o", (-BIG, -BIG, 440, BIG), (0, 0), (1, 1, -20, 0))])),
