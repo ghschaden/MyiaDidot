@@ -1138,6 +1138,26 @@ def small_glyphs(regular, italic):
     return names, scale
 
 
+def gained(parts, joined, step=6.0):
+    """the share of joined's ink (row by row, as derived.compare reads it)
+    that none of parts (derived.Outline) covers: 0 for a true union"""
+    lo, hi = joined.bounds[1], joined.bounds[3]
+    total = extra = 0.0
+    y = lo + 3
+    while y < hi:
+        cover = []
+        for a, b in sorted(s for p in parts for s in p.spans(y + 0.37)):
+            if cover and a <= cover[-1][1]:
+                cover[-1][1] = max(cover[-1][1], b)
+            else:
+                cover.append([a, b])
+        for c, d in joined.spans(y + 0.37):
+            total += d - c
+            extra += (d - c) - sum(max(0.0, min(d, b) - max(c, a)) for a, b in cover)
+        y += step
+    return extra / total if total else 0.0
+
+
 def saved_flaws(path):
     """The steps and crumbs (glyph_lint) of path as saved, rounded to whole
     units and cleaned (write: a step a unit high taken out), by kind and
@@ -1297,7 +1317,12 @@ def follow_bases(source, font, italic, kx=None, slant=None, skip=(), whole=None)
                     held = False
                     continue
                 joined = Outline(None, None, deslant, path=out)
-                held = all(compare(Outline(None, None, deslant, path=p), joined)[0]["lost"] <= 0.01 for p in (a, b))
+                parts = [Outline(None, None, deslant, path=p) for p in (a, b)]
+                # and gains none that neither part has: a counter the two share
+                # exactly came out of the union a contour of no area, which the
+                # cleaning then dropped (ᵽ's bowl filled, 2026-11-25)
+                held = (all(compare(p, joined)[0]["lost"] <= 0.01 for p in parts)
+                        and gained(parts, joined) <= 0.01)
                 if held and nudge:
                     # a nudged join that leaves a step or a crumb, once
                     # rounded and cleaned as it is saved, is no better

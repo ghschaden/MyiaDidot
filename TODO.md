@@ -1569,7 +1569,12 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       3.7+2.1 -> 1.2 deg, a new smooth 2.5 deg at 485,-136 (tail into
       curl). Sheet build/pending/rhook-taper-2026-11-25.pdf; then
       baselines, commit, release ж ж.loclBGR җ.
-- [ ] The Bold Italic's stroker still depends on contour direction off
+- [ ] (Shelved 2026-11-25 with the designer: every glyph winds the same
+      way since 2026-11-24, so the direction does not vary between runs;
+      ᵽ's descender, the rejoin guard's wobble family and the phase 6/7
+      letters first. Taken up again only if the tipping points below cost
+      time in other work.)
+      The Bold Italic's stroker still depends on contour direction off
       lines: n h o stroked from the Italic wound the other way differ by
       3259/1814/785 units² (ж W Z, the lines, by 959/1584/226 now;
       tests/test_stroke_steps.py test_stroked_the_same_either_way holds
@@ -1596,6 +1601,18 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       π 92 ı 47 by D's 0.001 change of weight tipping rejoined (below) and
       fair_arcs' LIMIT. Next, after the rejoin guard: apply A-F, scratch
       run, list moves (they should be fractions now), sheet; then G.
+      Tried 2026-11-25 on the guard (stash "stroker direction fixes A-F on
+      the rejoin guard", build/pending/stroker-direction-AF-on-guard.patch;
+      the test's ratchet line there still says PENDING): W 20.6 -> 0.59
+      units, n 10.2 -> 0.88 by direction, but still 1480 glyphs moved, 65
+      by 10+. Tipping points found and mended (committed): ᵽ's union with
+      p (a shared counter came out of no area, the cleaning dropped it:
+      make_bold.gained) and sc_clearance.psi's splice (cut ψ.sc's left
+      arm on an outline stroked a little otherwise: LOST_MAX). Left: ı and
+      its family (the cleaning's node structure, 49 | 52 points, so the
+      fairing fits other nodes: 5442 units² from 35 before fairing), и
+      (the blend gate's `guarded` flips: "swollen 289 -> 568"), and the
+      rest of the 65 (ᵽ 272 was the union, ψ.sc 440 the splice).
 - [x] (2026-11-25) rejoined merged the cleaning's pieces into one cubic
       unchecked: π's left leg 91 units off what was stroked (a straight
       wedge for the Italic's curved foot), д.sc 39, į 34, and a node's
@@ -1611,6 +1628,17 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       ө.sc's bar union needed wider nudges (make_bold, ±0.4 x, ±0.6 y).
       test_stroked_the_same_either_way now measures the largest distance
       in units (XOR read ж 9866 units² for 0.97 units).
+- [ ] Bold Italic ᵽ's descender (designer, 2026-11-25, on
+      proofs/2026-11/bolditalic-p-bar-bowl-2026-11-25.pdf): the foot serif
+      does not look good (its left bracket gone, a flat corner where p has
+      a round one), a knee on the stem's left edge just above the serif,
+      and the bar not centred on the stem (longer to the left). All three
+      in HEAD's too; the Bold Italic's p is clean, so it is ᵽ's making:
+      the bar low (Regular recipe ("ᵽ", "bar", "p", ("x", -290)), as
+      sloped in the Italic) comes so near the foot serif at this weight
+      that the union with p loses the bracket. Look at the Italic's ᵽ as
+      well (its bar also longer left); then the bar's height and centre
+      in the recipe or the italic's band, ᵽ.sc alike; sheet.
 - [ ] The 25 wobbles (4-6 degrees) and 9 smooth lines the rejoin guard
       showed in the Bold Italic (α ψ ɐ ʈ.sc Ʊ м ф ч щ ʔ ʕ ɶ џ ɦ @ ...,
       quality-BoldItalic.txt dated 2026-11-25): bends in the stroked

@@ -22,6 +22,10 @@ glyph marked drawn, or one that has not the structure read here, is left.
 import math
 
 GAP = 45  # units of white, across, in the upright frame
+# units² of ink psi.sc may lose to the cut: its serif's two ends, about 9200;
+# more, and the splice took the wrong piece (the left arm, 204000 units², on
+# an outline stroked a little otherwise, 2026-11-25): the glyph left as it was
+LOST_MAX = 25000
 
 
 def _rows(font, contours, slope, y0, y1, step=8):
@@ -80,11 +84,36 @@ def yeru(font, slope):
 def psi(font, slope):
     """psi.sc's top serif GAP from both arms; returns (left, right) units
     taken off, or None where the outline is not the one read here"""
-    from ufoLib2.objects import Point
-
     glyph = font["psi.sc"] if "psi.sc" in font else None
     if glyph is None or _drawn(glyph) or len(glyph.contours) != 2:
         return None
+    was = [[(p.x, p.y, p.type, p.smooth) for p in c.points] for c in glyph.contours]
+    before = _ink(glyph)
+    got = _psi(font, slope, glyph)
+    if got is not None and before - _ink(glyph) <= LOST_MAX:
+        return got
+    glyph.clearContours()  # (as it was: not cut, or cut wrong)
+    pen = glyph.getPointPen()
+    for c in was:
+        pen.beginPath()
+        for x, y, t, sm in c:
+            pen.addPoint((x, y), segmentType=t, smooth=sm)
+        pen.endPath()
+    return None
+
+
+def _ink(glyph):
+    import pathops
+
+    p = pathops.Path()
+    glyph.draw(p.getPen())
+    return abs(pathops.simplify(p).area)
+
+
+def _psi(font, slope, glyph):
+    """psi()'s cut on glyph, in place; (left, right) or None"""
+    from ufoLib2.objects import Point
+
     outer, counter = sorted(glyph.contours, key=lambda c: -len(c.points))
     pts, n = outer.points, len(outer.points)
     # the serif's top: the longest level line in the upper fifth

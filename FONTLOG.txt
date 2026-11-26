@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-25 Bold Italic ᵽ: its bowl open again
+  A letter made of its Bold base (ᵽ of p, with its bar) is joined to that
+  base; where the two share a counter exactly, the join returned the
+  counter with no area and the cleaning then dropped it, so ᵽ's bowl was
+  filled in. A join is now also refused when it gains ink neither part
+  has, and tried with the base a quarter unit aside, as a join that loses
+  ink already was. ψ's small capital, whose counter between serif and arm
+  is opened by a finishing pass, is now left as stroked where that pass
+  would take more than its serif's ends (on a slightly different outline
+  it had cut the left arm away); the present ψ is unchanged.
+
 2026-11-25 Bold Italic: the stroked outline no longer smoothed away
   After the stroker's outline is cleaned of its overlaps, the pieces the
   cleaning cut are joined again. A run of pieces was replaced by one
