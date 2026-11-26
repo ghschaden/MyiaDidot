@@ -133,7 +133,7 @@ def retroflex(x0, x1, y, w, r, ball, th, turn=0):
             ("curl", {"at": ("pt", x1, -150, w), "dir": 270 + turn, "turn": "ccw", "r": r,
                       "sweep": 170, "ball": ball, "t": (w, th)}, (0, 0), (1, 1, 0, 0))]
 
-def descender(x0, y0, x1, y1, w, d, r, th):
+def descender(x0, y0, x1, y1, w, d, r, th, on=None):
     """attach pieces: a stroke w thick from (x0, y0) to (x1, y1) (running on
     a little into the curl), curling to the left there through 170
     degrees on radii r, the ball as heavy as the stroke."""
@@ -143,7 +143,10 @@ def descender(x0, y0, x1, y1, w, d, r, th):
     # an angle; a stroke already heading as the curl starts needs none: its
     # straight edge, run 12 past the start, crossed the ring's edge where
     # that had begun to bend (ң ҷ: a 7.7-degree kink at y1 - 12)
-    on = 0 if abs(math.degrees(math.atan2(dy, dx)) % 360 - d) < 0.5 else 12
+    # (on: ҳ, 2026-11-26: heading as its curl, its stroke's square end and
+    # the ring's start met a fraction of a unit apart, a crack across it)
+    if on is None:
+        on = 0 if abs(math.degrees(math.atan2(dy, dx)) % 360 - d) < 0.5 else 12
     return [("line", ((x0, y0), (x1 + dx / n * on, y1 + dy / n * on), w), (0, 0), (1, 1, 0, 0)),
             ("curl", {"at": ("pt", x1, y1, w), "dir": d, "turn": "cw", "r": r, "sweep": 170,
                       "ball": max(36, round(w * 0.48)), "t": (w, th), "normal": False}, (0, 0), (1, 1, 0, 0))]
@@ -515,7 +518,7 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   "Җ": ("attach", "uni0416", ("c", [(1480, -BIG, BIG, 200), (1820, -BIG, BIG, 450)],
                                               descender(1596, 250, 1603, -150, 182, 270, (130, 115), 45))),
                   "ҳ": ("attach", "uni0445", ("x", [(560, -BIG, BIG, 150), (900, -BIG, BIG, 350)],
-                                              descender(612, 155, 810, -150, 58, 303, (90, 80), 34))),
+                                              descender(612, 155, 810, -150, 58, 303, (90, 80), 34, on=4))),
                   # ȷ's descender on the last stem, as ɲ has it on the first: it
                   # thins as the italic stems do (cut in where the stem is as
                   # wide as ɲ's, below its swell; the exit stroke cleared)

@@ -196,6 +196,7 @@ ITALIC_BOLD_REBUILD = {
     # closeness test took ʈ whole again
     "uni026D": "ɭ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the ball ran into the stem",
     "uni0288": "ʈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the stem narrowed to the foot",
+    "uni0256": "ɖ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the tail thin where it met the stem",
 }
 
 # the Bold Italic's curls over the top (ITALIC_BOLD_RECIPES): radii, turn and ball
@@ -514,15 +515,21 @@ ITALIC_BOLD_RECIPES = {
                                 # (ɥ 35 to the right, 32 once scaled, since phase 6's step B, its h
                                 # wider, 2026-11-17; m is drawn here and stayed)
                                 [("uni0265", (752, -10000, 10000, 300), (0, 0), (0.92, 1, 522, 0))], 1620)),
-    # ɳ: the Italic's (data_italic.retroflex), on the Bold Italic's leg (its
-    # centre 836, 229 thick at the cut): emboldened whole, the descender took
-    # only part of the weight (its stroke under the thick threshold) and the
-    # leg pinched at the join; the ball half the stroke, as the Italic's and
-    # Ɽ's (80 left a straight step where the curl ran into it)
-    "ɳ": ("attach", "n", ("x", [(700, -10000, 10000, 200), (1000, -10000, 10000, 450)],
-                          [("line", ((836, 210), (836, -150), 229), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 836, -150, 229), "dir": 270, "turn": "ccw", "r": (150, 130),
-                                     "sweep": 170, "ball": 115, "t": (229, 55)}, (0, 0), (1, 1, 0, 0))])),
+    # ɳ ɖ (2026-11-26, the retroflex family as ɭ ʈ): the tail run straight
+    # on from the stem at the cut and curled as ɽ's at that weight (r 195/170
+    # and ball 145 on 290, scaled), the ball as heavy as the tail. ɳ on n's
+    # leg (888, 234 thick at the cut since step B widened n; drawn on the old
+    # leg, 836 and 229, it stood 52 left), the exit's cut at 1070 (at 1000 it
+    # took a slice off the leg at 300-450: the pinch); ɖ on d's stem (827,
+    # 280; emboldened whole its tail was thin where it met the stem)
+    "ɳ": ("attach", "n", ("x", [(700, -10000, 10000, 200), (1070, -10000, 10000, 450)],
+                          [("line", ((888, 210), (888, -150), 234), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 888, -150, 234), "dir": 270, "turn": "ccw", "r": (157, 137),
+                                     "sweep": 170, "ball": 117, "t": (234, 50)}, (0, 0), (1, 1, 0, 0))])),
+    "ɖ": ("attach", "d", ("x", [(700, -10000, 10000, 260), (990, -10000, 10000, 450)],  # (200 kept d's foot curving in: a notch of 8)
+                          [("line", ((827, 270), (827, -150), 280), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 827, -150, 280), "dir": 270, "turn": "ccw", "r": (188, 164),
+                                     "sweep": 170, "ball": 140, "t": (280, 58)}, (0, 0), (1, 1, 0, 0))])),
     # ɻ: the Italic's tail (data_italic: ɹ's stem run on and curled right)
     # on the Bold Italic's ɹ, both its edges straight on from the stem's at
     # the cut (453.5 and 656 here, the upright frame plus 144.5), 202.5
@@ -625,7 +632,6 @@ ITALIC_BOLD_RECIPES = {
 ITALIC_BOLD_KEEP_WHOLE = {
     "uni019D": "Ɲ: crumbs of the foot serif at the cut",
     "uni0191": "Ƒ: the tail far lighter than the stem",
-    "uni0256": "ɖ: the tail thin where it meets the stem",
     "uni027E": "ɾ: the Italic's fishhook (r's stem under f's hook) emboldened whole, as the Italic built it",
     "uni044E.loclBGR": "Bulgarian ю: a spur of ю's entry stroke left under the cut",
     "uni026E": "ɮ: a notch where l's stem meets ʒ",

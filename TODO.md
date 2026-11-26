@@ -1370,31 +1370,58 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       bases: the Italic's ƥ (p's stem 143 against 167, both edges), the
       Bold Italic's ɳ (left stem 202 against n's 276 at y 500) and ⱳ (w's
       right foot edge 10-16 in at y 50-150), both drawn 2026-11-08.
-- [ ] Next batch (found 2026-11-26 on HEAD 58a1f99a, read only): the
-      Italic's ҳ has a white crack right across its descender where the
-      curl starts (607,-165: the outline runs 65 units in along the
-      stroke's square end and back, 2.9 degrees; no check or lint sees
-      it). descender(612, 155, 810, -150, 58, 303, ...) heads at 303, the
-      curl's dir, so it gets no run-on (on = 0, for ң ҷ's kink) and the
-      line's end and the ring's start meet a fraction of a unit apart.
-      Try a run-on for ҳ alone, or the stroke 69 -> its x diagonal's 84
-      (t 58 is lighter than the stroke it replaces). The Bold Italic's ҳ
-      is clean. Also: the Bold Italic's њ has a zero-width needle at
-      686,195-256 on the bowl's left edge. A detector for these (an
-      on-curve point whose two neighbours leave it within 8 degrees, both
-      arms over 15 units) found them; the rest it lists are crotches and
-      tapered ends (m n и ш, ct st, §, ђ.sc), so it needs the arms on the
-      outline, not the handles, before it can go into glyph_lint.
-      Curls against `edges` (ʋ's mend): measured each curl's stroke at
-      its start against t at the style's scale (lowercase 1.19, capitals
-      1.11-1.13): all within 2 units but ɽ (stem 146 -> 135 into the
-      curl, ring 142; no line) and ҳ above; nothing for `edges` yet.
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %
       narrower), x-height overshoots. What reads as another typeface is
       changed in the core set; the italic capitals' contrast stays
       (declined 2026-10-21, 2026-11-02).
+- [ ] The retroflex tails as one family (2026-11-26, the designer: "more of
+      a unified look"; sheet proofs/2026-11/tail-family-2026-11-26.pdf,
+      measured by a scratch script: the stem at 300, the tail's stroke at
+      -60, depth, reach, the ball as the largest circle, the counter).
+      The rule the styles already keep, nowhere written: the ball as
+      heavy as the tail's stroke (0.98-1.10). The Regular and Bold are one
+      family (depth 420, reach 2.2 / 1.46 stems, the tail 4-10 % under
+      the stem); ɻ's small ball is its own, the Regular's Ʈ shallower
+      (312) with a heavier ball (1.37). The Italic: ɖ ɳ ɽ taper to 83-90
+      % of the stem, ɭ ʈ carry the whole 166 (since a4f413cb) with the
+      recipe's ball 141 (0.85); ɽ's tail is 420 deep against the others'
+      275, its outline not its recipe's (lib draft key: trace with `make
+      only` where it comes from). The designer read the sheet and left
+      the Italic as it is.
+      Done 2026-11-26 in the Bold Italic (sheet
+      proofs/2026-11/bolditalic-retroflex-d-n-2026-11-26.pdf, approved):
+      ɖ and ɳ released from drawn (2026-11-08/09, made on the old d and n:
+      ɖ's ball 0.51 of its tail, a kink where its stem met the serif; ɳ's
+      recipe 52 left of n's leg since step B and its exit cut slicing the
+      leg) and made by their recipes as ɭ ʈ: the tail straight on from
+      the stem at the cut, ɽ's curl scaled to it; ɖ 950 -> 1209, ɳ 1119 ->
+      1190 wide. Left: ɳ's 2.0-degree kink at 887,787 (a handle a unit
+      off n's smooth node after fair_joins: ITALIC_BOLD_SMOOTH_CURVES
+      about 770-800); the Bold Italic's depths still 275-420 (ɽ 420, ɻ
+      322, ɭ ʈ 339, ɖ 343, ɳ 312): one depth per style, or radii fixed
+      rather than scaled, is the next question.
+      The way to keep it (proposed to the designer 2026-11-26): recipes
+      that read their base's stem instead of copying numbers (as
+      make_bold.lezh_band); one set of tail and curl constants per style;
+      the family measure as a test; family sheets.
+- [x] (2026-11-26) The Italic's ҳ had a white crack right across its
+      descender where the curl starts (607,-165: the outline ran 65 units
+      in along the stroke's square end and back; no check or lint saw
+      it): heading at 303, its curl's dir, descender() gave it no run-on
+      and the line's end and the ring's start met a fraction of a unit
+      apart. descender's `on` = 4 for ҳ alone (12 gave ң ҷ a kink).
+- [ ] The Bold Italic's њ has a zero-width needle at 686,195-256 on the
+      bowl's left edge. A detector for these (an on-curve point whose two
+      neighbours leave it within 8 degrees, both arms over 15 units) found
+      it and ҳ's crack; the rest it lists are crotches and tapered ends (m
+      n и ш, ct st, §, ђ.sc), so it needs the arms on the outline, not the
+      handles, before it can go into glyph_lint.
+      Curls against `edges` (the mend of ʋ): each curl's stroke at its
+      start against t at the style's scale (lowercase 1.19, capitals
+      1.11-1.13): all within 2 units but ɽ (stem 146 -> 135 into the
+      curl, ring 142; no line) and ҳ; nothing for `edges` yet.
 - [ ] The derived letters, once their bases are final: the kink, smooth
       and extreme entries left in quality-Italic.txt, by family (a
       recipe's fault in the recipe, a letter's in the letter).
