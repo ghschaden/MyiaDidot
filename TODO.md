@@ -1639,6 +1639,23 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       that the union with p loses the bracket. Look at the Italic's ᵽ as
       well (its bar also longer left); then the bar's height and centre
       in the recipe or the italic's band, ᵽ.sc alike; sheet.
+      (2026-11-26: the bracket and the knee mended, not by the bar: the
+      bracket is drawn by stem_joins at finalize, which took a stem's
+      edge only as one line STEM 200 long, and ᵽ's below the bar is 45;
+      a stem cut by a bar now counts (stem_joins._through_bar), ᵽ's
+      foot is p's, Ң mended alike; sheet
+      proofs/2026-11/bolditalic-barred-stem-feet-2026-11-26.pdf.
+      Left for the designer: the centre. Along the bar, from the stem's
+      edges at the same height, the Bold Italic's is 143 left, 154
+      right; the Italic's 168 | 168 (the Regular's 142 | 168, cut at p's
+      ink on the left). Against the foot serif, which stands out further
+      right than left, the bar's centre is 19 units left of the serif's
+      (Italic 17): the likely "longer to the left". Move the bar right
+      to the serif's centre, or keep it on the stem? ᵽ.sc not measured
+      (its bar on the bowl, at 260). ұ (uni04B1) loses ү's left foot
+      bracket the same way but is not mended by this: its stem's edge
+      above the bar stands 5 units out of line with the edge below (a
+      step at the bar itself); see ұ apart.)
 - [ ] The 25 wobbles (4-6 degrees) and 9 smooth lines the rejoin guard
       showed in the Bold Italic (α ψ ɐ ʈ.sc Ʊ м ф ч щ ʔ ʕ ɶ џ ɦ @ ...,
       quality-BoldItalic.txt dated 2026-11-25): bends in the stroked

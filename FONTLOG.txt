@@ -26,6 +26,17 @@ License requires.
 ChangeLog
 ---------
 
+2026-11-26 Bold Italic ᵽ and Ң: their stems into the foot without a step
+  The finishing pass that runs each straight stem into its serif with one
+  bracket (no stem steps in at its serif) took a stem's edge only where it
+  was one long line. ᵽ's bar cuts its stem, and the 45 units left below the
+  bar were too short to count: its foot kept the step the strokes left
+  (20 units in, then a flat corner where p has a bracket). An edge cut by
+  a bar, the two pieces in line, is now one stem: ᵽ's foot is p's again.
+  Ң's right stem, a long line and a short one before its tail, stepped 6
+  units in where it meets the tail's top; it now runs into it with one
+  bracket, as the Italic's does.
+
 2026-11-25 Bold Italic ᵽ: its bowl open again
   A letter made of its Bold base (ᵽ of p, with its bar) is joined to that
   base; where the two share a counter exactly, the join returned the

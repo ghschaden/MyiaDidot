@@ -28,6 +28,12 @@ STEM = 200   # units: a steep line this long is a stem's edge
 MIN = 2.0    # units into the ink before a join counts as a retreat
 RUN = 4      # curves at most in a bracket
 SPAN = 160   # units: a bracket's ends no further apart
+# a shorter steep line is a stem's edge too where another runs on from it in
+# line, the same way, across a bar (ᵽ: 45 units from the bar to the foot, ұ
+# 125; ɨ.sc ƚ.sc ғ.sc): the two together STEM long, the gap at most BAR_GAP,
+# the shorter one's ends within IN_LINE of the longer one's line (ᵽ 1.4) (2026-11-26)
+BAR_GAP = 150
+IN_LINE = 2.0
 
 
 def _area(pts):
@@ -59,6 +65,38 @@ def _segments(contour):
     return segs
 
 
+def _through_bar(pts, steep):
+    """True if a steep line of the glyph runs on from the line pts in line
+    with it, the same way, across a gap of at most BAR_GAP, the two STEM
+    long together: one stem's edge cut by a bar"""
+    (ax, ay), (bx, by) = pts
+    length = math.hypot(bx - ax, by - ay)
+    if length == 0:
+        return False
+    ux, uy = (bx - ax) / length, (by - ay) / length
+    for (cx, cy), (dx, dy) in steep:
+        if (cx, cy) == (ax, ay) and (dx, dy) == (bx, by):
+            continue
+        other = math.hypot(dx - cx, dy - cy)
+        if (dx - cx) * ux + (dy - cy) * uy < other * 0.99:  # not the same way
+            continue
+        # in line, measured against the longer of the two (a short line's
+        # own direction is uncertain by its rounding: ᵽ's 42 units, 0.4°)
+        (px, py), (qx, qy) = ((cx, cy), (dx, dy)) if other >= length else ((ax, ay), (bx, by))
+        lx, ly = (qx - px) / max(other, length), (qy - py) / max(other, length)
+        ends = ((ax, ay), (bx, by)) if other >= length else ((cx, cy), (dx, dy))
+        if max(abs((x - px) * ly - (y - py) * lx) for x, y in ends) > IN_LINE:
+            continue
+        # along the line: this one 0..length, the other s0..s1
+        s0, s1 = ((cx - ax) * ux + (cy - ay) * uy), ((dx - ax) * ux + (dy - ay) * uy)
+        gap = s0 - length if s0 >= length else -s1 if s1 <= 0 else None
+        if gap is None or gap > BAR_GAP:
+            continue
+        if max(s1, length) - min(s0, 0) >= STEM:
+            return True
+    return False
+
+
 def retreats(glyph):
     """[(x, y, units)]: the stem's end at each join of glyph where the
     outline steps into the ink between a stem's edge and its serif's flat,
@@ -68,6 +106,8 @@ def retreats(glyph):
         return []
     outer = max(contours, key=lambda s: abs(_area([seg[1][0] for seg in s])))
     sign = 1 if _area([seg[1][0] for seg in outer]) > 0 else -1  # counter-clockwise outside: the ink on the left
+    steep = [pts for segs in contours for kind, pts in segs if kind == "line"
+             and abs(pts[1][1] - pts[0][1]) >= 2 * abs(pts[1][0] - pts[0][0]) and pts[0] != pts[1]]
     out = []
     for segs in contours:
         n = len(segs)
@@ -76,7 +116,7 @@ def retreats(glyph):
                 continue
             (ax, ay), (bx, by) = pts
             length = math.hypot(bx - ax, by - ay)
-            if length < STEM or abs(by - ay) < 2 * abs(bx - ax):
+            if abs(by - ay) < 2 * abs(bx - ax) or not (length >= STEM or _through_bar(pts, steep)):
                 continue
             nx, ny = -(by - ay) / length * sign, (bx - ax) / length * sign  # towards the ink
             for step, end in ((1, (bx, by)), (-1, (ax, ay))):
@@ -112,7 +152,7 @@ def mend(glyph, reach=0):
         if not found:
             break
         x, y, units = found[0]
-        sc_feet.fillets(glyph, near=(x, y, 6), reach=reach)
+        sc_feet.fillets(glyph, near=(x, y, 6), reach=reach, stroke=0)  # the edge found above, of any length
         done.append((x, y, units))
     left = {(x, y) for x, y, _ in retreats(glyph)}
     return [f for f in done if (f[0], f[1]) not in left]

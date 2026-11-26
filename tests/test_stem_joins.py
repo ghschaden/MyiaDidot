@@ -61,6 +61,41 @@ def test_a_stem_stepping_in_is_found_and_mended():
     assert g.width == 350
 
 
+def barred(edge_from, top_x=100):
+    """the stem of stem(collapsed) cut by a bar from y 160 to 220 that stands
+    out 80 units left: the edge below the bar only 60 units long, above it
+    from 220 up (at top_x: 100 in line, else offset)"""
+    g = Glyph("uni1D7D")
+    pen = g.getPen()
+    pen.moveTo((20, 0))
+    pen.lineTo((330, 0))
+    pen.lineTo((330, 60))
+    pen.lineTo((250, 60))
+    pen.lineTo((250, 700))
+    pen.lineTo((top_x, 700))
+    pen.lineTo((top_x, 220))
+    pen.lineTo((20, 220))
+    pen.lineTo((20, 160))
+    pen.lineTo((100, 160))
+    pen.lineTo((100, edge_from))
+    collapsed(pen)
+    pen.lineTo((20, 60))
+    pen.closePath()
+    g.width = 350
+    return g
+
+
+def test_a_stem_cut_by_a_bar_is_still_a_stem():
+    # ᵽ 2026-11-26: below its bar the edge was too short to count, its
+    # step-in at the foot (20 units) left as stroked
+    g = barred(100)
+    found = stem_joins.retreats(g)
+    assert [(x, y) for x, y, _ in found] == [(100, 100)]
+    assert stem_joins.mend(g) == found and stem_joins.retreats(g) == []
+    # above the bar out of line (ұ's 5 units): two strokes, not one stem
+    assert stem_joins.retreats(barred(100, top_x=105)) == []
+
+
 def test_no_stem_steps_in_at_its_serif(ufo, ufo_path):
     listed = read_list(style_data("stem-retreats.txt", ufo_path).name)
     found = {f"{g.name} {x},{y}": units for g in ufo if g.contours for x, y, units in stem_joins.retreats(g)}

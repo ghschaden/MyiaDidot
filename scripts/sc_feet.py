@@ -51,7 +51,7 @@ def k_sc(font):
         del points[[(p.x, p.y) for p in points].index(key)]
 
 
-def fillets(glyph, near=None, reach=0):
+def fillets(glyph, near=None, reach=0, stroke=None):
     """Each bracket between a serif's flat and a long straight stroke (the
     arm or leg) as one curve, tangent to both: the stroke run on meets the
     serif's line at a corner; the curve leaves the flat and joins the stroke
@@ -63,7 +63,9 @@ def fillets(glyph, near=None, reach=0):
 
     near (x, y, r): only the brackets with a point within r of (x, y), a
     single curve too (smooth_joins: ψ.sc's, я.sc's collapsed brackets);
-    reach: the fillet at least so far from the corner along both."""
+    reach: the fillet at least so far from the corner along both;
+    stroke: the stroke's line at least so long (DIAGONAL by default;
+    stem_joins, which found the stem's edge itself, any: ᵽ's below its bar)."""
     from ufoLib2.objects.point import Point
 
     def close(seq, j, m):
@@ -93,7 +95,8 @@ def fillets(glyph, near=None, reach=0):
                 m += 1
             if ((m - j >= 2 if near is None else close(seq, j, m))
                     and seq[j - 1].type == "line" and seq[m % n].type == "line"):
-                got = _fillet(seq[j - 2], seq[j - 1], seq[m - 1], seq[m % n], reach)
+                got = _fillet(seq[j - 2], seq[j - 1], seq[m - 1], seq[m % n], reach,
+                              DIAGONAL if stroke is None else stroke)
                 if got:
                     t0, h1, h2, t3 = got
                     moved[(j - 1) % n], moved[m - 1] = t0, t3
@@ -126,14 +129,14 @@ def fillets(glyph, near=None, reach=0):
     derive.with_extremes(rec, glyph.getPen(), past=EXTREME_PAST)
 
 
-def _fillet(a, p0, p3, b, reach=0):
+def _fillet(a, p0, p3, b, reach=0, stroke=DIAGONAL):
     """For a bracket from p0 to p3 between the lines a-p0 and p3-b, one a
-    serif's flat and the other a stroke DIAGONAL long or more: (new p0, h1,
+    serif's flat and the other a stroke so long (DIAGONAL) or more: (new p0, h1,
     h2, new p3), rounded, or None"""
     # (a flat a unit off level is one: ы.sc's tops, 964 to 965)
-    if abs(a.y - p0.y) <= 1 and abs(b.y - p3.y) > 1 and math.dist((b.x, b.y), (p3.x, p3.y)) >= DIAGONAL:
+    if abs(a.y - p0.y) <= 1 and abs(b.y - p3.y) > 1 and math.dist((b.x, b.y), (p3.x, p3.y)) >= stroke:
         flat_far, flat_y, stroke_end, stroke_far, flat_first = a, p0.y, p3, b, True
-    elif abs(b.y - p3.y) <= 1 and abs(a.y - p0.y) > 1 and math.dist((a.x, a.y), (p0.x, p0.y)) >= DIAGONAL:
+    elif abs(b.y - p3.y) <= 1 and abs(a.y - p0.y) > 1 and math.dist((a.x, a.y), (p0.x, p0.y)) >= stroke:
         flat_far, flat_y, stroke_end, stroke_far, flat_first = b, p3.y, p0, a, False
     else:
         return None
