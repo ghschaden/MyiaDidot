@@ -156,6 +156,7 @@ about 110, wobbles 352 → about 190.
 | SPLIT_ERR | 3 | units one cubic may stray before `split_fit` cuts it (letters with `split`) | split for every letter: ɱ's hook, щ's stems bent; all round a letter: ξ's, q.sc's bowls faceted |
 | TINY | 4 | a line this short from the overlap removal is dropped | 2's and 7's kinks were 3-unit lines; a contour starting on one hung `tidy` (2026-11-04, tested) |
 | LEFTOVER | 8 | a cleaned piece shorter is merged (must equal fair_arcs.SHORT; a separate literal) | flagged pieces 386 → 234 |
+| REJOIN_ERR, REJOIN_STEP | 2, 1 | units a run of the cleaning's pieces may stray from them as one cubic (else kept as cut); measured by `strays`, every sample to the other's polyline, samples REJOIN_STEP apart | unchecked, π's leg 91 units off (2026-11-25); first measured by `apart` (80 points on the cubic, 39 a piece): on a long curve its gaps read α's sound merge, 0.7 units, as 6.7, kept the cleaning's cuts at inflections and extremes, and fairing bent them into 25 wobbles (2026-11-26) |
 | SLIVER | 800 | area of a crotch's crossing sides, dropped | none |
 | TS, TS_G2 | 200, 80 | sampling of a cubic in the fits | none |
 

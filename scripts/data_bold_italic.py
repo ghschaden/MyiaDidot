@@ -219,6 +219,11 @@ ITALIC_BOLD_RECIPES = {
     # the Italic's, as heavy as emboldened (the Italic's 56 and AY, as ʉ's;
     # at the stroke scale it came to 56); j_bar.py then sets its arms
     "ɉ": ("bar", "j", ("x", None, "all", (92, 92), 56 + AY)),
+    # ʝ: the Italic's crossed tail, its line run on 90 to the right: on the
+    # Bold Italic's wider stem the Italic's end (580,-110) stood out only a
+    # few units past the stem ("it kind of sticks out, but not very
+    # saliently", 2026-11-26); as heavy as emboldened
+    "ʝ": ("attach", "j", ("x", [], [("line", ((-20, -400), (660, -71), 50 + AY), (0, 0), (1, 1, 0, 0))])),
     # ұ: the bar on the Bold Italic's ү (ITALIC_BOLD_REBUILD) where and as
     # heavy and long as emboldened (centre -196, 66, 143 | 144 out): stroked
     # whole its stem below the bar came out 4 units thinner than ү's, a step
@@ -679,7 +684,10 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
                        "uni01A5": (-60, 0), "uni0497": (0, -50), "uni04B6": (0, -45),
                        # ɦ.sc (its own curl on h.sc): the least white before its hook as
                        # h.sc h.sc's (119); on h.sc's advance the hook came within 8
-                       "uni0266.sc": (149, 0)}  # (with the Italic's -38, taken in as it is rebuilt)
+                       "uni0266.sc": (149, 0),  # (with the Italic's -38, taken in as it is rebuilt)
+                       # ʝ: its tail's bar run on 90 to the right (ITALIC_BOLD_RECIPES,
+                       # 2026-11-26) hangs into the side bearing, the advance 630 as before
+                       "uni029D": (0, -81)}
 # Joining the light belts changes the temporary weighted shape's optical
 # fit. Keep their established advances/anchors before rebuilding the belts
 # on this style's final base letters.

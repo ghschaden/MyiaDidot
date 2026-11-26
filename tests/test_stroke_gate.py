@@ -78,14 +78,15 @@ ANCHORS = {"y": {**{a: (-1, 0) for a in _ANCHOR_NAMES}, "DotBelow": (-14, 0)},
 # point (stroke_bold Strokes.crossing, 2026-11-03): the knee repair above it
 # draws the stem's inside a little bowed, a wobble the size of a unit, not
 # seen in text (proofed with γ & ξ q.sc)
-# (ц щ џ: their tails' bends, which rejoined's one cubic had smoothed over,
-# kept since it merges only within REJOIN_ERR, 2026-11-25; ц's extreme and
-# wobble at the stem's foot gone with it; the family in TODO.md)
+# (ц щ џ: their tails merged into one cubic again since rejoined's guard
+# measures densely, 2026-11-26, as before REJOIN_ERR, 2026-11-25: the
+# tails' bends the coarse guard kept are gone, ц's extreme and wobble at
+# the stem's foot back)
 FINDINGS = {"uni019C": [("kink", 1212, 1355)],
-            "uni0446": [("wobble", 346, 704), ("wobble", 982, -116), ("wobble", 985, -136)],
-            "uni0449": [("extreme", 1478, 63), ("wobble", 1463, -117), ("wobble", 1466, -137)],
+            "uni0446": [("extreme", 995, 63), ("wobble", 843, -44), ("wobble", 346, 704)],
+            "uni0449": [("extreme", 1478, 63)],
             # џ: the counter's bottom past its ends as ц's and щ's, since its redraw (2026-11-16)
-            "uni045F": [("extreme", 654, 66), ("smooth", 646, -190), ("smooth", 647, -203)],
+            "uni045F": [("extreme", 654, 66)],
             # stroked from the Italic 7 wound clockwise (2026-11-24, winding.orient):
             # the diagonal's outside bent 5-7 degrees, not seen at 1:1; accepted with
             # proofs/2026-11/bi-restroked-2026-11-24.pdf (the wobble check reads a

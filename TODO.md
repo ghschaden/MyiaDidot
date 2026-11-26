@@ -1666,7 +1666,21 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       with it. Sheet
       proofs/2026-11/bolditalic-p-bar-centred-u-bar-feet-2026-11-26.pdf.
       The upright ᵽ left as it is, its bar 142 | 168.)
-- [ ] The 25 wobbles (4-6 degrees) and 9 smooth lines the rejoin guard
+- [x] (2026-11-26: not in the pieces: the guard itself. apart's fixed
+      sample counts left gaps of 8-13 units on a long curve and read
+      sound merges as strays (α's, 0.7 units off, as 6.7), so the
+      cleaning's cuts at inflections and extremes were kept and fair_arcs
+      bent the curve there. rejoined now measures with strays, about one
+      unit between samples, point to polyline; REJOIN_ERR 2 still refuses
+      π's 91 and д.sc's 38. 35 of the guard's 36 quality lines gone, 178
+      glyphs moved, n.sc ɴ's left foot on the Italic's diagonal again, ɶ
+      ƭ.sc cleaner; new lines in ꟈ ʞ.sc ө.sc җ.sc ſh ﬀb n.sc ʽ я ᵳ; ж
+      stroked 2.93 units apart by direction, as with no guard. ʝ's tail
+      bar run on 90 to the right in the same batch. Sheets
+      proofs/2026-11/bolditalic-rejoin-dense-2026-11-26.pdf,
+      bolditalic-jcrossedtail-2026-11-26.pdf. Left: ʲ's and ч's wobbles,
+      in the stroked pieces.)
+      The 25 wobbles (4-6 degrees) and 9 smooth lines the rejoin guard
       showed in the Bold Italic (α ψ ɐ ʈ.sc Ʊ м ф ч щ ʔ ʕ ɶ џ ɦ @ ...,
       quality-BoldItalic.txt dated 2026-11-25): bends in the stroked
       pieces themselves, one family; find the stage that makes them (the

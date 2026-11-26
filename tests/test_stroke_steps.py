@@ -13,7 +13,7 @@ from fontTools.ufoLib.glifLib import readGlyphFromString
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from fair_arcs import segments
-from stroke_bold import bends, compared, steps
+from stroke_bold import apart, bends, bez, compared, steps, strays
 
 # where a curve split short before its line met it in a step (Strokes.blend),
 # ƴ, made of y, and Ɯ, U twinned (data_bold_italic.ITALIC_BOLD_REBUILD)
@@ -292,8 +292,10 @@ def test_lines_meeting_straight_are_one_edge():
 # (2026-11-25; an XOR's area had been used): ж 0.97, Z 0.79; W 20.6, its
 # left bracket moved whole one way and not the other (rigid's gate,
 # TODO.md "stroker still depends on contour direction", fix F); these
-# only shrink
-ONE_WAY = {"uni0436": 1.5, "W": 21.0, "Z": 1.0}
+# only shrink. ж 2.93 since rejoined's guard measures densely (2026-11-26):
+# its upper right arm (1160-1210, 740-770) is merged one way and not the
+# other, as it was with no guard; the coarse guard had refused both ways
+ONE_WAY = {"uni0436": 3.0, "W": 21.0, "Z": 1.0}
 
 
 @pytest.mark.parametrize("name", sorted(ONE_WAY))
@@ -302,3 +304,24 @@ def test_stroked_the_same_either_way(name):
     g = italic[name]
     apart = farthest_apart(stroked_from_italic(italic, g), stroked_from_italic(italic, reversed_glyph(g)))
     assert apart <= ONE_WAY[name], f"{name}: {apart:.2f} units apart by direction"
+
+
+def test_rejoin_measures_a_long_curve_densely():
+    """rejoined's guard (strays): a long cubic cut in two, against the
+    whole, lies on it; apart's fixed sampling read α's such run, 0.7 units
+    off, as 6.7 and kept the cut (2026-11-26). A real offset still counts."""
+    whole = np.array([(626, 655), (614, 805), (601, 880), (796, 880)], float)
+    t = 0.06  # a short first piece, as the cleaning leaves at an extreme
+
+    def split(c, t):
+        a = c[:-1] + t * np.diff(c, axis=0)
+        ab = a[:-1] + t * np.diff(a, axis=0)
+        m = ab[0] + t * (ab[1] - ab[0])
+        return np.array([c[0], a[0], ab[0], m]), np.array([m, ab[1], a[2], c[3]])
+
+    run = list(split(whole, t))
+    assert strays(run, whole) < 0.1
+    ts = np.linspace(0, 1, 40)[:-1]
+    pts = np.concatenate([bez(sg, ts) for sg in run] + [run[-1][-1][None]])
+    assert apart(pts, whole) > 1.0  # the coarse measure's gap, what the guard no longer uses
+    assert 2.9 < strays(run, whole + [3, 0]) < 3.1

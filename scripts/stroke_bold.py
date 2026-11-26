@@ -112,8 +112,12 @@ WIDTH = 3.0
 # units a run of the cleaning's pieces may stray from them as one cubic: more,
 # and the pieces stay as cut (rejoined; merged unchecked, π's left leg 91
 # units off what was stroked, д.sc's 39, į's 34, and a hair's change in a
-# node's place flipped it, 2026-11-25)
+# node's place flipped it, 2026-11-25); measured densely (strays: apart's
+# coarse sampling read α's sound merge, 0.7 units, as 6.7 and kept the
+# cleaning's cuts at inflections and extremes, which fairing bent into
+# wobbles, 2026-11-26)
 REJOIN_ERR = 2.0
+REJOIN_STEP = 1.0  # units between the samples strays compares
 LEFTOVER = SHORT  # units (fair_arcs's, the same by design): a piece of the cleaned outline shorter is merged into its neighbours
 TS = np.linspace(0, 1, 200)  # the fit's sampling of a cubic
 # curvature continuous at the smooth joins of curves (G2), a curve kept as
@@ -221,6 +225,26 @@ def apart(pts, ctrl):
     can bulge out between points that all lie near it)"""
     d = np.linalg.norm(pts[:, None, :] - bez(ctrl, TS_G2)[None, :, :], axis=2)
     return max(d.min(axis=1).max(), d.min(axis=0).max())
+
+
+def strays(run, ctrl):
+    """how far cubic ctrl and the segments run lie apart, both ways: each
+    sampled about REJOIN_STEP units apart, every sample's distance to the
+    other's polyline (apart's fixed counts of points leave gaps of several
+    units on a long curve)"""
+    def dense(sg):
+        sg = np.asarray(sg, float)
+        k = max(8, int(math.ceil(np.sum(np.linalg.norm(np.diff(sg, axis=0), axis=1)) / REJOIN_STEP)) + 1)
+        return bez(sg, np.linspace(0, 1, k)) if len(sg) == 4 else sg[0] + np.linspace(0, 1, k)[:, None] * (sg[1] - sg[0])
+
+    def to_line(q, line):
+        a, b = line[:-1], line[1:]
+        ab = b - a
+        t = np.clip(np.einsum("nmk,mk->nm", q[:, None, :] - a[None], ab) / np.maximum(np.einsum("mk,mk->m", ab, ab), 1e-12), 0, 1)
+        return np.linalg.norm(q[:, None, :] - (a[None] + t[..., None] * ab[None]), axis=2).min(axis=1).max()
+    pts = np.concatenate([dense(sg) for sg in run])
+    curve = dense(ctrl)
+    return max(to_line(pts, curve), to_line(curve, pts))
 
 
 def fit_g2(pts, t0, t1, k0, k1, ls):
@@ -1325,7 +1349,7 @@ def rejoined(contour, anchors, short=False, acted=None):
             ctrl = got[0]
         if any(k % len(segs) in asked for k in range(a + 1, b)):
             return ctrl  # (the join blend asked for: m's step, u's knee)
-        return ctrl if apart(pts, np.array(ctrl)) <= REJOIN_ERR else None
+        return ctrl if strays(run, np.array(ctrl)) <= REJOIN_ERR else None
 
     def emit(a, b):
         """segments a..b-1 drawn: one cubic where it holds, else cut at the
