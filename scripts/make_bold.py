@@ -105,6 +105,7 @@ from data_bold_italic import (
     ITALIC_BOLD_ROOTS,
     ITALIC_BOLD_ROUNDER,
     ITALIC_BOLD_SMOOTH_COUNTER,
+    ITALIC_BOLD_SMOOTH_CURVES,
     ITALIC_BOLD_SPLIT,
     ITALIC_BOLD_UNJOINED,
     ITALIC_CAPITAL_ROUNDS,
@@ -1738,6 +1739,8 @@ def rederive(source, font, italic, whole):
         # unit or two off: cleaned as the font is after (fix), not counted
         # as faults (the stroked bases, 2026-10-28: Ƴ ʄ ҳ)
         fix(up, [tmp])
+        if italic and name in ITALIC_BOLD_SMOOTH_CURVES:
+            derive.smooth_curves(new, *ITALIC_BOLD_SMOOTH_CURVES[name])
         # the side bearings the source style gave the letter after its recipe
         # (the Regular's data_regular.SPACING, the Italic's ITALIC_SIDEBEARINGS):
         # the recipe's width alone has its hook counted in again

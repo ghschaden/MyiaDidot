@@ -298,9 +298,12 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   # the italic r turned (as Charis's), not the roman's drawn ɹ:
                   # its stem as light as the other italic stems
                   "ɹ": ("turn", "r", "x"),
-                  # ɹ's stem to ascender height, l's top on it
+                  # ɹ's stem to ascender height, l's top on it (253: 15 left
+                  # with ɹ's stem, phase 6 step A, 2026-11-26; at 268 a 3.4-degree
+                  # kink at the cut in both italics; at 253 the Bold Italic's is gone and
+                  # the Italic's at 764, where ɹ's redrawn stem leans 17.7 degrees)
                   "ɺ": ("attach", "uni0279", ("x", [(-BIG, 850, BIG, BIG)],
-                                              [("l", (-BIG, 850, BIG, BIG), (0, 0), (1, 1, 268, 0))])),
+                                              [("l", (-BIG, 850, BIG, BIG), (0, 0), (1, 1, 253, 0))])),
                   # the clicks are letters: a sloped bar (the Italic's | is upright)
                   "ǀ": ("attach", "_clickbar", ("x", [(-BIG, -BIG, BIG, 0)], [])),
                   "ǁ": ("attach", "_clickbar", ("x", [(-BIG, -BIG, BIG, 0)],
@@ -477,13 +480,15 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                                               retroflex(309.5, 309.5, 150, 174, (125, 105), 87, 45))),
                   "ʈ.sc": ("attach", "t.sc", ("s", [(-BIG, -BIG, BIG, 110)],
                                               retroflex(521.5, 521.5, 150, 174, (125, 105), 87, 45))),
-                  # ɻ: ɹ's stem flares down into its bowl (the italic r's
-                  # into its shoulder, turned), 50 wider at the cut than the
-                  # tail: its left edge tapered into the tail's (a step on
-                  # the downstroke, both italics, 2026-11-25)
-                  "ɻ": ("attach", "uni0279", ("x", [(440, -BIG, BIG, 200), (560, 200, BIG, 400)],
-                                              retroflex(502, 502, 250, 110, (120, 105), 55, 40)
-                                              + [("taper", (430, 480, ("ink", 100, 502), "left"), (0, 0), (1, 1, 0, 0))])),
+                  # ɻ: ɹ's stem run on below the baseline at its own width and
+                  # curled right, both edges straight on from the stem's at the
+                  # cut (273-415 upright; this frame is that plus 136.5, a line
+                  # here 1.173 as thick there): 121, the radii and ball with it.
+                  # Was 110 with the left edge tapered into it (2026-11-25, a step
+                  # on the downstroke); the designer, 2026-11-26: the left edge
+                  # straight, the hook rounder, as the Bold Italic's
+                  "ɻ": ("attach", "uni0279", ("x", [(425, -BIG, BIG, 200), (545, 200, BIG, 400)],
+                                              retroflex(480.5, 480.5, 250, 121, (132, 116), 60, 40))),
                   # the last stem or leg running on below the baseline (the
                   # exit stroke cut away) and curling to the left
                   "ң": ("attach", "uni043D", ("x", [(700, -BIG, BIG, 250), (950, -BIG, BIG, 450)],
@@ -750,7 +755,7 @@ ITALIC_SIDEBEARINGS = {"germandbls": (25, 0),
                        "uni01C3": (31, 31),
                        "uni02BC": (-145, 145), "uni02BB": (-130, 130),
                        "uni0260": (0, -380), "uni0282": (-265, 0), "uni0290": (0, -275), "uni0283": (-215, -135),
-                       "uni01AC": (5, 0), "uni027B": (0, -170), "uni04B7": (0, -145), "uni049B": (0, -125),
+                       "uni01AC": (5, 0), "uni027B": (0, -194), "uni04B7": (0, -145), "uni049B": (0, -125),
                        "uni0187": (0, -165), "uni04A3": (0, -145), "uni01B3": (0, -235), "uni01AD": (0, -105),
                        "uni026E": (0, -85), "uni0284": (-130, 0), "uni0198": (0, -180), "uni0273": (0, -130),
                        "uni01B2": (0, -80), "uni0271": (0, -100), "uni0267": (0, -100), "uni04B2": (0, -65),

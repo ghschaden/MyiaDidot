@@ -1262,6 +1262,28 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       proofs/2026-11/italic-harmonise-a-2026-11-17.pdf, for the
       designer; then install, generate, sweep, second sheet. The
       overshoots moved to C (a zone the whole Italic shares).
+      Rebuilt on the Italic after B and C, approved and installed
+      2026-11-26 (proofs/2026-11/italic-step-a-2026-11-26.pdf; r 819 ->
+      804, c 808 -> 800, v w thinner, all four marked drawn). The
+      followers mended (ɻ ɺ moved with ɹ's stem; the Bold Italic's ү on
+      its own v, ұ smoothed: italic.md, "Step A installed"); sheet
+      proofs/2026-11/italic-step-a-followers-2026-11-26.pdf. ɻ's tail
+      straight-sided and its hook rounder in both italics (the
+      designer's round; proofs/2026-11/bolditalic-rhook-round-2026-11-26.pdf).
+      Left: ɺ's Italic kink, 3.4 degrees at 481,764: r's redrawn neck,
+      turned, leans ɹ's stem below the cut 17.7 degrees against l's
+      15.3, and no offset of l's top takes it (italic.md). Mended in r's
+      neck (italic_harmonise.py's blend) or by a taper from ɹ's stem
+      into l's, as ɻ's was; not visible at text sizes.
+- [ ] The Bold Italic's `bar` family (docs/claude/longtail.md family 6:
+      Ǥ ǥ ғ ө ᵽ ɍ ʢ ұ ꟈ, 15 lines; read 2026-11-26 on HEAD 3eb2cc78):
+      not one cause. ɍ's 11-degree wobble at 323,810 sits on a run of
+      short curves (334,787 -> 321,810) as ұ's did, which
+      ITALIC_BOLD_SMOOTH_CURVES (derive.smooth_curves after the rebuild)
+      mended: try ɍ there first. ǥ ꟈ ө have short curves, but not at
+      their listed places (splits at extremes on the x-height and
+      baseline); ᵽ ʢ have none. Render the nine at their places and
+      sort the lines back to their recipes.
 - [ ] B. The bowls of n o d p q (b a g h m u) and O wider (italic.md):
       scripts/italic_bowls.py, proofs/2026-11/italic-bowls-b-2026-11-17.pdf
       and its running-text page; approved and installed 2026-11-17 with

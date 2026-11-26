@@ -82,6 +82,10 @@ ITALIC_BOLD_REBUILD = {
     # ɉ: emboldened whole its dot came out larger than j's (2026-11-09); the
     # bar on the Bold Italic's j, its arms then lengthened by j_bar.py
     "uni0249": "ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_RECIPES)",
+    # ү: stroked from the Italic's ү after v's thin stroke was thinned (phase
+    # 6 step A, 2026-11-26), a 10-degree wobble at the ball's neck that the
+    # Bold Italic's own v does not have; descended from that v
+    "uni04AF": "ү: the Bold Italic's v run down",
     "uni04B1": "ұ: the bar on the Bold Italic's ү (ITALIC_BOLD_RECIPES)",
     "uni1D7D": "ᵽ: the bar on the Bold Italic's p (ITALIC_BOLD_RECIPES)",
     # ʡ ʢ: the bar on the Bold Italic's ʔ ʕ (2026-11-24: stroked whole, ʢ's
@@ -134,6 +138,10 @@ ITALIC_BOLD_REBUILD = {
     "uni025E": "ɞ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the junction swelled and the counters closed",
     "uni04B2": "Ҳ: the tail on the Bold Italic's X; the Italic's tail emboldened, a kink where it meets the serif",
     "uni0273": "ɳ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the descender too light, the leg pinched",
+    # ɻ: kept whole until 2026-11-26 (a step on the stem's right side at the
+    # cut); emboldened whole, the hook's inside closed to a slit (the designer:
+    # "should be rounder in the hook")
+    "uni027B": "ɻ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the hook's inside pinched",
     "uni0271": "ɱ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook too light, the leg notched",
     "uni0267": "ɧ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the leg pinched above the hook",
     "uni0188": "ƈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened, the hook a hairline pinched where it leaves c",
@@ -493,6 +501,18 @@ ITALIC_BOLD_RECIPES = {
                           [("line", ((836, 210), (836, -150), 229), (0, 0), (1, 1, 0, 0)),
                            ("curl", {"at": ("pt", 836, -150, 229), "dir": 270, "turn": "ccw", "r": (150, 130),
                                      "sweep": 170, "ball": 115, "t": (229, 55)}, (0, 0), (1, 1, 0, 0))])),
+    # ɻ: the Italic's tail (data_italic: ɹ's stem run on and curled right)
+    # on the Bold Italic's ɹ, both its edges straight on from the stem's at
+    # the cut (453.5 and 656 here, the upright frame plus 144.5), 202.5
+    # thick; the curl's radii between ɳ's and Ɽ's for that weight, the ball
+    # half the tail. Emboldened whole the hook's inside closed to a slit;
+    # with the Italic's taper the left edge bent into the tail (the
+    # designer, 2026-11-26: the left edge straight, the right as it is)
+    "ɻ": ("attach", "uni0279", ("x", [(450, -10000, 10000, 200), (648, 200, 10000, 400)],
+                                [("line", ((554.75, 250), (554.75, -150), 202.5), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 554.75, -150, 202.5), "dir": 270, "turn": "ccw",
+                                           "r": (165, 145), "sweep": 170, "ball": 101, "t": (202.5, 55)},
+                                  (0, 0), (1, 1, 0, 0))])),
     # Ɽ Ʈ ɽ.sc ʈ.sc: the Italic's (data_italic.retroflex: the foot serif cut
     # away, the stem run on and curled right), on the Bold Italic's stem
     # (its centre and weight, 290 or 299 thick at the cut), the ball half
@@ -582,7 +602,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni0242": "ɂ: the Italic's ʔ made small, kept whole as ʔ (its band's stem, 164, is the Italic's)",
     "uni0268": "ɨ: Old Standard's own ɨ (its dot set as i's by i_bar_dot.py); the recipe's i with a bar is another letter",
     "uni026D": "ɭ: a step on the stem at the cut",
-    "uni027B": "ɻ: a step on the stem's right side at the cut",
     "uni04B7": "ҷ: a notch at the tail, the stem shifted below the cut",
     "uniA7B2": "Ʝ: steps on both sides of the stem at the cut",
 }
@@ -634,6 +653,14 @@ ITALIC_BOLD_KNEES = {"uni0438": ((0, 4),), "uni0446": ((0, 4),), "uni0448": ((0,
 # kept: q.sc's loop, the tail's weight changing fast along it, left with a
 # flat slanted side and a double kink (2026-11-03)
 ITALIC_BOLD_SMOOTH_COUNTER = {"q.sc": 16}
+# letters made again on the Bold Italic's own base whose curves are made
+# smooth between these heights afterwards (derive.smooth_curves: a curve
+# under 16 units merged into the next, shallow kinks smoothed): ұ, the bar
+# on the rebuilt ү, left a 1-unit curve at the left arm's top and a 7-unit
+# one in v's crotch, wobbles of 22 and 11 degrees (2026-11-26; the
+# Italic's ұ has none, so not data_regular.SMOOTH_CURVES, which every
+# style's would take)
+ITALIC_BOLD_SMOOTH_CURVES = {"uni04B1": (480, 720)}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
@@ -687,7 +714,11 @@ ITALIC_SIDEBEARINGS = {"uni025E": (100, 0),  # ɞ: its bowl widened leftward (IT
                        "uni0266.sc": (149, 0),  # (with the Italic's -38, taken in as it is rebuilt)
                        # ʝ: its tail's bar run on 90 to the right (ITALIC_BOLD_RECIPES,
                        # 2026-11-26) hangs into the side bearing, the advance 630 as before
-                       "uni029D": (0, -81)}
+                       "uni029D": (0, -81),
+                       # ɻ on its own recipe (2026-11-26): the hook as far past the
+                       # advance as it was emboldened whole (right side bearing -32; with
+                       # the Italic's -194, which it takes first)
+                       "uni027B": (0, -47)}
 # Joining the light belts changes the temporary weighted shape's optical
 # fit. Keep their established advances/anchors before rebuilding the belts
 # on this style's final base letters.

@@ -364,6 +364,33 @@ candidates on `proofs/2026-11/italic-harmonise-a-2026-11-17.pdf`
   italic_harmonise.py's `overshoot` is kept for it (it moves a glyph
   along the italic angle by height); not run in step A.
 
+**Step A installed, 2026-11-26**: the candidates rebuilt on the Italic
+after steps B and C came out as before (r 819 -> 804, c 808 -> 800, v w
+10 thinner; relations r 1.05, c 0.94, v 1.07, inside), approved on
+`proofs/2026-11/italic-step-a-2026-11-26.pdf` (Regular | today |
+candidate, words) and installed with `--install`; v and w each keep one
+old node off their extremes (the designer's eye, taken).
+What followed: r's shorter ball turned moves ɹ's stem 15 left, and the
+recipes that place a piece on that stem at fixed places met it off: ɻ's
+tail (a 2.2-unit step, wobbles in the Bold Italic) and ɺ's l top (a
+3.4-degree kink at the cut), both moved 15 left in data_italic. ɺ's
+Italic keeps a 3.4-degree kink at 764: r's redrawn neck, turned, leans
+ɹ's stem below the cut 17.7 degrees against l's 15.3, and no offset
+of l's top takes it (265 put it back at the cut and gave the Bold
+Italic one; 253 leaves the Bold Italic clean). The Bold
+Italic's ү, stroked from the Italic's, took a 10-degree wobble at the
+ball's neck (v's leftover node; dropping it only moved the wobble): made
+on the Bold Italic's own v (ITALIC_BOLD_REBUILD), and ұ on it smoothed
+after (ITALIC_BOLD_SMOOTH_CURVES: the bar's union left 1- and 7-unit
+curves). Sheet `proofs/2026-11/italic-step-a-followers-2026-11-26.pdf`.
+On that sheet the designer asked for ɻ's hook rounder, its left edge
+straight and its right as it was: in both italics the tail now runs on
+from ɹ's stem at the stem's width with both edges straight (the
+taper of 2026-11-25 gone), on larger radii; the Bold Italic's ɻ has its
+own recipe on its ɹ (ITALIC_BOLD_RECIPES, no longer kept whole: its
+hook's inside had closed to a slit). Sheet
+`proofs/2026-11/bolditalic-rhook-round-2026-11-26.pdf`.
+
 **Step B, 2026-11-17**: `scripts/italic_bowls.py` (the operation; tests
 in tests/test_italic_bowls.py), candidates on
 `proofs/2026-11/italic-bowls-b-2026-11-17.pdf` (Regular | today |

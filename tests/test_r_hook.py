@@ -29,6 +29,10 @@ def test_r_hook_matches_body_and_preserves_metadata(style):
     restore(glyph, "r-hook-before-Italic.glif" if style == "Italic" else "r-hook-before.glif")
     if style == "BoldItalic":
         respaced(glyph)  # (recorded at the Bold's cut)
+    # the advance is the generator's spacing, not the hook's: r's smaller
+    # ball took 15 (Italic) and 14 (Bold Italic) off ɽ's after the recording
+    # (phase 6 step A, 2026-11-26)
+    glyph.width = expected.width
     before = deepcopy(glyph)
     assert min(p.y for c in glyph.contours for p in c.points) == -275
     finish(font)
