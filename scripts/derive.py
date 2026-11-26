@@ -2205,10 +2205,12 @@ def lower(font, source, depth):
     return path_op(path_op(whole, region, "DIFFERENCE"), moved, "UNION")
 
 
-def descend(font, source, band, model, pick=None):
+def descend(font, source, band, model, pick=None, shorten=0):
     """A v with a stem down to the descender (ү): the stem and foot serif
     of the model's descender (p) under the vertex; with pick (first/last)
-    under that stem instead (ɰ)."""
+    under that stem instead (ɰ). shorten: the serif's right end moved in
+    by that many units, cut halfway between the stem and the end (the Bold
+    Italic's ү: p's serif, long on the right, stood out under the v)."""
     if pick:
         stems = stems_at(font, source, 300)
         vx = sum(stems[0] if pick == "first" else stems[-1]) / 2
@@ -2222,6 +2224,11 @@ def descend(font, source, band, model, pick=None):
     top = 300 if pick else 120
     while not pick and top > 0 and len(stems_at(font, source, top)) > 1:
         top -= 10
+    if shorten:
+        foot = stems_at(font, model, font[model].getBounds(font).yMin + 10)
+        cut = (mb + foot[-1][1]) / 2
+        right = shifted(path_op(piece, rect_path(cut, -BIG, BIG, -60), "INTERSECTION"), -shorten)
+        piece = path_op(path_op(piece, rect_path(-BIG, -BIG, cut, -60), "INTERSECTION"), right, "UNION")
     stem = rect_path(ma, -80, mb, top)
     piece = shifted(path_op(piece, stem, "UNION"), vx - (ma + mb) / 2)
     return path_op(to_path(font, font[source]), piece, "UNION")

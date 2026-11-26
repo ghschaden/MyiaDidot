@@ -1284,6 +1284,21 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       their listed places (splits at extremes on the x-height and
       baseline); ᵽ ʢ have none. Render the nine at their places and
       sort the lines back to their recipes.
+      Done 2026-11-26 (sheets proofs/2026-11/bolditalic-bar-family-,
+      bolditalic-gbar-longer-, bolditalic-ue-descender-2026-11-26.pdf,
+      approved): the one cause was that ɍ Ǥ ǥ ғ ө ꟈ were stroked whole
+      from the Italic's barred letter; now the bar on the Bold Italic's
+      own base (ITALIC_BOLD_REBUILD), ғ's bar join smoothed
+      (ITALIC_BOLD_SMOOTH_CURVES), ǥ's bar 40 longer on the right (its
+      own recipe, the designer). ұ's kink was ү's: ү's descender
+      split-faired (ITALIC_BOLD_JOINS), p's foot serif 40 shorter on the
+      right under ү (derive.descend's `shorten`, the designer). ʢ had no
+      line left; ᵽ's 3-degree wobble is on p's own node, left. Left:
+      ꟈ's 11-degree wobble (the union cuts d's curve into three 20-40
+      unit curves, longer than smooth_curves merges); ү's 2.4-degree
+      smooth at 523,496 (fair_joins redraws the glyph rounded in the
+      upright frame: a handle moved a unit); the Bold Italic's p keeps
+      its long right serif.
 - [ ] B. The bowls of n o d p q (b a g h m u) and O wider (italic.md):
       scripts/italic_bowls.py, proofs/2026-11/italic-bowls-b-2026-11-17.pdf
       and its running-text page; approved and installed 2026-11-17 with

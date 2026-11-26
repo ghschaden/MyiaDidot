@@ -47,7 +47,7 @@ ITALIC_BOLD_UNJOINED = {"uni2C72": "Ⱳ: the curl's join tangled (53 nodes)"}
 # above it met the curl at 1500 at 6.5 degrees; Ɠ's band from 1440 joined
 # the wrong nodes and cut the curl off its stroke (seen, not caught by the
 # checks or the lint)
-ITALIC_BOLD_JOINS = {"ɰ": (290, 305), "Ƈ": (1440, 1520), "Ɠ": (1470, 1520)}
+ITALIC_BOLD_JOINS = {"ɰ": (290, 305), "Ƈ": (1440, 1520), "Ɠ": (1470, 1520), "ү": (-130, -30, 25, 16, 1, True)}
 # Bold Italic letters still emboldened by weight: a repair after matches
 # that outline's points (to redo on the stroked outline)
 ITALIC_BOLD_BY_POINTS = {
@@ -82,10 +82,18 @@ ITALIC_BOLD_REBUILD = {
     # ɉ: emboldened whole its dot came out larger than j's (2026-11-09); the
     # bar on the Bold Italic's j, its arms then lengthened by j_bar.py
     "uni0249": "ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_RECIPES)",
+    # ɍ: stroked whole from the Italic's, an 11-degree wobble on a run of
+    # 3-10-unit curves at the bar's left end (2026-11-26)
+    "uni024D": "ɍ: the bar on the Bold Italic's r",
+    "uni01E4": "Ǥ: the bar on the Bold Italic's G",
+    "uni01E5": "ǥ: the bar on the Bold Italic's g (ITALIC_BOLD_RECIPES)",
+    "uni0493": "ғ: the bar on the Bold Italic's г",
+    "uni04E9": "ө: the bar on the Bold Italic's o",
+    "uniA7C8": "ꟈ: the bar on the Bold Italic's d",
     # ү: stroked from the Italic's ү after v's thin stroke was thinned (phase
     # 6 step A, 2026-11-26), a 10-degree wobble at the ball's neck that the
     # Bold Italic's own v does not have; descended from that v
-    "uni04AF": "ү: the Bold Italic's v run down",
+    "uni04AF": "ү: the Bold Italic's v run down (ITALIC_BOLD_RECIPES)",
     "uni04B1": "ұ: the bar on the Bold Italic's ү (ITALIC_BOLD_RECIPES)",
     "uni1D7D": "ᵽ: the bar on the Bold Italic's p (ITALIC_BOLD_RECIPES)",
     # ʡ ʢ: the bar on the Bold Italic's ʔ ʕ (2026-11-24: stroked whole, ʢ's
@@ -236,6 +244,11 @@ ITALIC_BOLD_RECIPES = {
     # heavy and long as emboldened (centre -196, 66, 143 | 144 out): stroked
     # whole its stem below the bar came out 4 units thinner than ү's, a step
     # at the bar, and lost ү's left foot bracket (2026-11-26, the designer)
+    # ү: the Italic's recipe on the Bold Italic's v and p, p's foot serif
+    # 40 shorter on the right (288 past the stem against 146 on the left,
+    # twice; the Italic's 1.7 times: "much longer than the one on the
+    # left", the designer 2026-11-26); ұ follows
+    "ү": ("descend", "v", ("x", "p", None, 40)),
     "ұ": ("bar", "uni04AF", ("x", -196, "all", (144, 144), 66)),
     # ᵽ: the bar on the Bold Italic's p (ITALIC_BOLD_REBUILD) where and as
     # heavy and long as emboldened from the Italic's (centre -286, 64, 125 |
@@ -243,6 +256,10 @@ ITALIC_BOLD_RECIPES = {
     # it); joined to p, the emboldened bowl crossed p's and the union split
     # its curve at 419,40 with a 2.5-degree kink (2026-11-26)
     "ᵽ": ("bar", "p", ("x", -286, "all", (125, 171), 64)),
+    # ǥ: the Italic's bar on the Bold Italic's g, its right end 40 further
+    # out (110, the Italic's 70: "extend a bit to the right", the designer
+    # 2026-11-26); 56 thick, as the Italic's recipe scaled gave it
+    "ǥ": ("bar", "g", ("x", -130, "all", (200, 110), 56)),
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
     # At y=600 the upright ɟ stem spans about 335..586. The light recipe's
@@ -659,8 +676,9 @@ ITALIC_BOLD_SMOOTH_COUNTER = {"q.sc": 16}
 # on the rebuilt ү, left a 1-unit curve at the left arm's top and a 7-unit
 # one in v's crotch, wobbles of 22 and 11 degrees (2026-11-26; the
 # Italic's ұ has none, so not data_regular.SMOOTH_CURVES, which every
-# style's would take)
-ITALIC_BOLD_SMOOTH_CURVES = {"uni04B1": (480, 720)}
+# style's would take); ғ the same where its bar meets г's stem (a 3-unit
+# curve, 27 degrees, once rebuilt on г)
+ITALIC_BOLD_SMOOTH_CURVES = {"uni04B1": (480, 720), "uni0493": (395, 420)}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
