@@ -210,7 +210,7 @@ ITALIC_RUNS = {"җ": (417, 50)}
 # descender) keep a ball half their stroke, flush with the curl's end;
 # Ⱳ keeps its number (its ball 50, the curl run on straight from W's arm)
 # ɮ: how far right of l's stem its ʒ stands (ITALIC_RECIPES)
-ZH_DX = 150
+ZH_DX = 163  # 150 from the old stem edge 304; l's is 317 since step C (2026-11-26)
 # the roman's own, sloped, not remade on the italic letter: ʌ turned from the
 # italic v rounds its apex and reads as a (2026-11-01)
 # Old Standard has it, but derive.py's recipe matches the IPA small capitals
@@ -361,8 +361,11 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   # l on a straight stem to the baseline, Old Standard's ʒ beside
                   # it (as the Regular's): its entry stroke cut, its top bar
                   # run on to the stem, its diagonal and bowl clear of it
-                  "ɮ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 250), (300, -BIG, BIG, 600)],  # l's exit stroke too
-                                        [("rect", (163, 0, 304, 260), (0, 0), (1, 1, 0, 0)),
+                  # (the stem's box and the cut are l's stem edges, 151 and 317 in
+                  # the upright frame since step C reweighted it, 2026-11-26: at
+                  # the old 163-304 the stem stood 13 in below 600, a kink)
+                  "ɮ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 250), (317, -BIG, BIG, 600)],  # l's exit stroke too
+                                        [("rect", (151, 0, 317, 260), (0, 0), (1, 1, 0, 0)),
                                          ("uni0292", (250, 0, BIG, BIG), (0, 0), (1, 1, ZH_DX, 0)),
                                          ("uni0292", (-BIG, -BIG, BIG, 0), (0, 0), (1, 1, ZH_DX, 0)),
                                          ("rect", (280, 720, 250 + ZH_DX + 20, 880), (0, 0), (1, 1, 0, 0)),
@@ -422,8 +425,10 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                                                    "lead": 10}, (0, 0), (1, 1, 0, 0))])),
                   # b's stem without its flag serif, the bar its top run on to
                   # the right
-                  "ƃ": ("attach", "b", ("x", [(-BIG, 1300, 173, BIG)],
-                                        [("rect", (173, 1439, 720, 1495), (0, 0), (1, 1, 0, 0))])),
+                  # (150: b's stem's left edge since step C, 2026-11-26; at 173
+                  # the cut shaved 23 off the stem, faired down to 750)
+                  "ƃ": ("attach", "b", ("x", [(-BIG, 1300, 150, BIG)],
+                                        [("rect", (150, 1439, 720, 1495), (0, 0), (1, 1, 0, 0))])),
                   # λ whole, a bar drawn across its upper stroke (the Regular's,
                   # transplanted, cut the arch off the long stroke)
                   "ƛ": ("attach", "lambda", ("x", [], [("line", ((130, 1010), (610, 1285), 46), (0, 0), (1, 1, 0, 0))])),
@@ -464,8 +469,11 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   "ɖ": ("attach", "d", ("x", [(700, -BIG, BIG, 200), (760, -BIG, BIG, 650)],
                                         [("taper", (650, 740, (733, 114, 0), "right"), (0, 0), (1, 1, 0, 0))]
                                         + retroflex(733, 733, 210, 114, (110, 100), 57, 40))),
-                  "ɭ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
-                                        retroflex(234, 234, 350, 116, (110, 100), 58, 40))),
+                  # (ɭ ʈ: the stem 140, l's and t's 166 at this style's stroke
+                  # scale, the cut on their right edges 317 and 313: step C's
+                  # weights, 2026-11-26; at 116 the stem stood 25 thinner below 350)
+                  "ɭ": ("attach", "l", ("x", [(-BIG, -BIG, BIG, 300), (317, -BIG, BIG, 600)],
+                                        retroflex(234, 234, 350, 140, (110, 100), 58, 40))),
                   # the tail on the stem (its foot serif cut away), as ɽ's
                   "Ɽ": ("attach", "R", ("c", [(-BIG, -BIG, 800, 120)],
                                         retroflex(393, 393, 160, 166, (150, 125), 82, 50))),
@@ -550,8 +558,8 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   "ʋ": ("curl", "u", ("x", [(700, 700, BIG, BIG)],
                                       {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", "r": (120, 110),
                                        "sweep": 200, "ball": None, "t": (120, 42), "edges": True})),
-                  "ʈ": ("attach", "t", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
-                                        retroflex(232, 232, 350, 116, (110, 100), 58, 40))),
+                  "ʈ": ("attach", "t", ("x", [(-BIG, -BIG, BIG, 300), (313, -BIG, BIG, 600)],
+                                        retroflex(230, 230, 350, 140, (110, 100), 58, 40))),
                   # the left stem curling over to the left, as on Ɓ; W's right arm to the right
                   "Ɦ": ("curl", "H", ("c", [(-BIG, 1300, 700, BIG)],
                                       {"at": ("y", 1300, "first"), "dir": 90, "turn": "ccw", "r": (200, 150),

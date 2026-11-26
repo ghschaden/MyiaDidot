@@ -1312,11 +1312,26 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       band 650-760 thickened the stem to 201, `dir` 85 left a 62-unit
       hairline spur, 88 small curves and a smooth). The other curls (Ɽ Ʈ
       ɦ ƴ ...) might take `edges` where their stems narrow: measure first.
-      Left: ɮ's 3.2-degree kink at 335,600 and 1.2 at 237,260: the
-      recipe's own stem is right (edge 304 -> 301 in the recipe frame,
-      l's 301), but the final glyph's right edge stands 12-16 further in
-      below 600 (288 at the foot, 286 at 250, 292 at 600), so a later
-      pass trims it (the draft fit or the stem-to-serif pass: find which).
+      ɮ's 3.2-degree kink at 335,600 (and 1.2 at 237,260): no later pass
+      trims it. The recipe's numbers were the stem before step C (163-304
+      in the upright frame, 141 wide), and l is 150-317 since; respace's
+      shift of -16 hid it (traced line by line through make_italic.main).
+      The same stale stem in ɭ ʈ (retroflex 116 -> 140) and ƃ (the cut at
+      173 shaved 23 off b's stem), and in the Bold Italic's own ʈ (238 on
+      a 274 stem). Done 2026-11-26 (sheets
+      proofs/2026-11/italic-stepc-stems-, bolditalic-stepc-stems-,
+      bolditalic-retroflex-l-t-2026-11-26.pdf, approved): data_italic's
+      boxes on l's, t's, b's stem edges, ZH_DX 150 -> 163 (ʒ as far from
+      the wider stem as before: at 150 the Bold Italic closed a counter
+      between stem, bar and diagonal; ɮ 13 wider); the Bold Italic's ɭ on
+      its own recipe (no longer emboldened whole: its ball ran into the
+      stem) and ʈ on t's stem, both with ɽ's curl scaled to 274 (a tighter
+      curl, 172/150 ball 135, left a 26-degree corner where ball meets
+      ring), both in ITALIC_BOLD_REBUILD (the closeness test had quietly
+      kept ʈ whole); their advances 617 -> 785, 720 -> 836 (approved).
+      Left: ƥ (drawn) keeps p's old stem, 143 against 167: step D. A
+      sweep for the rest (each recipe on b d h k p q þ l t ſ f ß ƒ, its
+      stem against its base's) found no other.
       ʛ (enlarge, 737,63 3.7 degrees) left: the family looked at
       2026-11-24. ɺ ɾ ʃ Ⱦ ʝ ƹ Ɦ: known, see above.
 - [ ] B. The bowls of n o d p q (b a g h m u) and O wider (italic.md):
@@ -1347,6 +1362,33 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       curl of Ɓ Ɗ Ƥ, the joins of ƃ Ƈ Ɠ mended 2026-11-21
       (italic.md). Left of D: the derived letters'
       entries below.
+      The 2026-11-21 sweep compared glyphs that stayed while their base
+      moved; a recipe regenerated with stale numbers moves too, and slipped
+      past it (ɮ ɭ ʈ ƃ, mended 2026-11-26 above). A stem sweep 2026-11-26
+      (each recipe glyph's stem against its base's, 50-unit steps; Italic
+      and the Bold Italic's own recipes) leaves three drawn glyphs on old
+      bases: the Italic's ƥ (p's stem 143 against 167, both edges), the
+      Bold Italic's ɳ (left stem 202 against n's 276 at y 500) and ⱳ (w's
+      right foot edge 10-16 in at y 50-150), both drawn 2026-11-08.
+- [ ] Next batch (found 2026-11-26 on HEAD 58a1f99a, read only): the
+      Italic's ҳ has a white crack right across its descender where the
+      curl starts (607,-165: the outline runs 65 units in along the
+      stroke's square end and back, 2.9 degrees; no check or lint sees
+      it). descender(612, 155, 810, -150, 58, 303, ...) heads at 303, the
+      curl's dir, so it gets no run-on (on = 0, for ң ҷ's kink) and the
+      line's end and the ring's start meet a fraction of a unit apart.
+      Try a run-on for ҳ alone, or the stroke 69 -> its x diagonal's 84
+      (t 58 is lighter than the stroke it replaces). The Bold Italic's ҳ
+      is clean. Also: the Bold Italic's њ has a zero-width needle at
+      686,195-256 on the bowl's left edge. A detector for these (an
+      on-curve point whose two neighbours leave it within 8 degrees, both
+      arms over 15 units) found them; the rest it lists are crotches and
+      tapered ends (m n и ш, ct st, §, ђ.sc), so it needs the arms on the
+      outline, not the handles, before it can go into glyph_lint.
+      Curls against `edges` (ʋ's mend): measured each curl's stroke at
+      its start against t at the style's scale (lowercase 1.19, capitals
+      1.11-1.13): all within 2 units but ɽ (stem 146 -> 135 into the
+      curl, ring 142; no line) and ҳ above; nothing for `edges` yet.
       One sheet Regular beside Italic, measured and seen: ball terminals
       (c a f r y against the Regular's), serif length and thickness,
       hairlines, colour (about 5 % lighter) and width (about 5 %

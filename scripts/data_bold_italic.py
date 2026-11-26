@@ -191,6 +191,11 @@ ITALIC_BOLD_REBUILD = {
     # bump; ₿'s stubs grew into the stem's bracket and the bars
     "uni20B5": "₵: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the line bent and C's back bumped",
     "uni20BF": "₿: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the stubs ran into the stem and the bars",
+    # ɭ ʈ (2026-11-26): the stem on l's and t's since step C, the curl ɽ's at
+    # that weight; it strays from the Italic's small curl emboldened, so the
+    # closeness test took ʈ whole again
+    "uni026D": "ɭ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the ball ran into the stem",
+    "uni0288": "ʈ: its own recipe (ITALIC_BOLD_RECIPES); emboldened whole, the stem narrowed to the foot",
 }
 
 # the Bold Italic's curls over the top (ITALIC_BOLD_RECIPES): radii, turn and ball
@@ -551,12 +556,21 @@ ITALIC_BOLD_RECIPES = {
                                            "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
                                   (0, 0), (1, 1, 0, 0))])),
     # ʈ: the Italic's (make_italic: t's tail and foot cut away), on the Bold
-    # Italic's stem (121-359 upright, its centre 240): with the Italic's
-    # numbers the cut at 300 took a slice off the stem, a step at 350
-    "ʈ": ("attach", "t", ("x", [(-10000, -10000, 10000, 300), (380, -10000, 10000, 600)],
-                          [("line", ((240, 350), (240, -150), 238), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 240, -150, 238), "dir": 270, "turn": "ccw", "r": (150, 130),
-                                     "sweep": 170, "ball": 119, "t": (238, 55)}, (0, 0), (1, 1, 0, 0))])),
+    # Italic's stem (121-395 upright, its centre 258, since step C; at the
+    # old 121-359 the stem narrowed 28 to the foot): with the Italic's
+    # numbers the cut at 300 took a slice off the stem, a step at 350; the
+    # curl as ɭ's
+    "ʈ": ("attach", "t", ("x", [(-10000, -10000, 10000, 300), (396, -10000, 10000, 600)],
+                          [("line", ((258, 350), (258, -150), 274), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 258, -150, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
+                                     "sweep": 170, "ball": 137, "t": (274, 57)}, (0, 0), (1, 1, 0, 0))])),
+    # ɭ: as ʈ, on the Bold Italic's l (128-402 upright, its centre 265), the
+    # curl ɽ's scaled to the stem (2026-11-26: emboldened whole from the
+    # Italic's, its stem 25 heavier since step C closed the counter by the ball)
+    "ɭ": ("attach", "l", ("x", [(-10000, -10000, 10000, 300), (402, -10000, 10000, 600)],
+                          [("line", ((265, 350), (265, -150), 274), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 265, -150, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
+                                     "sweep": 170, "ball": 137, "t": (274, 57)}, (0, 0), (1, 1, 0, 0))])),
     "ʈ.sc": ("attach", "t.sc", ("s", [(-10000, -10000, 10000, 120)],
                                 [("line", ((538.5, 160), (538.5, -150), 299), (0, 0), (1, 1, 0, 0)),
                                  ("curl", {"at": ("pt", 538.5, -150, 299), "dir": 270, "turn": "ccw",
@@ -618,7 +632,6 @@ ITALIC_BOLD_KEEP_WHOLE = {
     "uni0294": "ʔ: the Italic's cut, placed by number, notches the heavier stroke and leaves a sliver",
     "uni0242": "ɂ: the Italic's ʔ made small, kept whole as ʔ (its band's stem, 164, is the Italic's)",
     "uni0268": "ɨ: Old Standard's own ɨ (its dot set as i's by i_bar_dot.py); the recipe's i with a bar is another letter",
-    "uni026D": "ɭ: a step on the stem at the cut",
     "uni04B7": "ҷ: a notch at the tail, the stem shifted below the cut",
     "uniA7B2": "Ʝ: steps on both sides of the stem at the cut",
 }
