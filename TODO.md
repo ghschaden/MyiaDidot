@@ -1299,6 +1299,26 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       smooth at 523,496 (fair_joins redraws the glyph rounded in the
       upright frame: a handle moved a unit); the Bold Italic's p keeps
       its long right serif.
+- [ ] The Italic's recipe singles, 2026-11-26 (families.py --style Italic
+      --family recipe: 11 lines). Done (sheets
+      proofs/2026-11/italic-J-crossed-tail-2026-11-26.pdf and
+      italic-upsilon-curl-edges-2026-11-26.pdf, approved): Ʝ's stem line
+      ended at -250 where its curl starts, not 12 past it (6.3-degree
+      kink at 597,-262 gone); ʋ by derive.curl's new `edges` (each edge
+      of the ring its own ellipse, tangent to its own edge of the stem:
+      u's stem is 148 wide there and narrows upward, the recipe's
+      120-unit ring started 14 inside each edge, the redraw pulled the
+      stem in 4-6 and left a 4.5-degree kink; tried and refused: a split
+      band 650-760 thickened the stem to 201, `dir` 85 left a 62-unit
+      hairline spur, 88 small curves and a smooth). The other curls (Ɽ Ʈ
+      ɦ ƴ ...) might take `edges` where their stems narrow: measure first.
+      Left: ɮ's 3.2-degree kink at 335,600 and 1.2 at 237,260: the
+      recipe's own stem is right (edge 304 -> 301 in the recipe frame,
+      l's 301), but the final glyph's right edge stands 12-16 further in
+      below 600 (288 at the foot, 286 at 250, 292 at 600), so a later
+      pass trims it (the draft fit or the stem-to-serif pass: find which).
+      ʛ (enlarge, 737,63 3.7 degrees) left: the family looked at
+      2026-11-24. ɺ ɾ ʃ Ⱦ ʝ ƹ Ɦ: known, see above.
 - [ ] B. The bowls of n o d p q (b a g h m u) and O wider (italic.md):
       scripts/italic_bowls.py, proofs/2026-11/italic-bowls-b-2026-11-17.pdf
       and its running-text page; approved and installed 2026-11-17 with

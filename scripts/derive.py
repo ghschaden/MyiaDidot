@@ -2059,7 +2059,7 @@ def glottal_stem(font, source, yc, yt, cs, foot=None, w=None, top=None):
     return path_op(out, low, "UNION")
 
 
-def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, normal=True):
+def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, normal=True, edges=False):
     """The letter minus cuts, with a hook drawn as part of an elliptical
     ring ending in a ball: it leaves the letter's stroke at `at` (('y', y,
     pick): the run at height y; ('x', x) / ('xb', x): the topmost /
@@ -2073,7 +2073,13 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, norm
     "end": a round cap touching both the ring's edges, the outer at the
     end, the ring cut between where it touches (ƴ: a ball a few units
     wider than the end stood into the counter in a dent; one across the
-    end from the centre crossed its edges, wobbling)."""
+    end from the centre crossed its edges, wobbling).
+    edges (with at ('y', ...)): the ring's outer and inner edges each an
+    ellipse of its own, tangent to its own edge of the stroke where the
+    curl leaves it (the edges read 60 units back along the stroke), not
+    one ring tangent to the stroke's middle: a stem narrowing towards the
+    curl (the Italic's ʋ, u's stem: outer edge upright, inner leaning 5
+    degrees) runs on into it without a corner on either side."""
     a, b = (r, r) if not isinstance(r, (tuple, list)) else r
     if ball is None:
         ball = min(ball_for(font, source), BALL_OF_RADIUS * min(a, b))
@@ -2103,6 +2109,23 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, norm
     cx, cy = px - a * math.cos(sa), py - b * math.sin(sa)
     ring = path_op(_ellipse(cx, cy, a + tv / 2, b + th / 2),
                    _ellipse(cx, cy, a - tv / 2, b - th / 2), "DIFFERENCE")
+    ocx, ocy = cx, cy  # the outer edge's centre (the ball's): the ring's unless edges
+    if edges and at[0] == "y":
+        back = -60 if math.sin(d) > 0 else 60  # along the stroke, behind the start
+        la, lb = _run_at(font, source, y + back, pick)
+        rings = []
+        for ex, ex0 in ((ra, la), (rb_, lb)):
+            de = math.atan2(-back, ex - ex0)  # this edge's direction, towards the curl
+            enx, eny = -math.sin(de) * sign, math.cos(de) * sign
+            es = math.atan2(-eny, -enx)
+            outer = (ex - px) * nx < 0  # the edge away from the centre
+            ea, eb = (a + tv / 2, b + th / 2) if outer else (a - tv / 2, b - th / 2)
+            ecx, ecy = ex - ea * math.cos(es), py - eb * math.sin(es)
+            rings.append((outer, _ellipse(ecx, ecy, ea, eb)))
+            if outer:
+                ocx, ocy = ecx, ecy
+        (o1, e1), (o2, e2) = rings
+        ring = path_op(e1, e2, "DIFFERENCE") if o1 else path_op(e2, e1, "DIFFERENCE")
     # the part swept, from just before the start (into the letter's stroke)
     # lead: degrees the ring starts back inside the letter's stroke, so a
     # stroke cut across at an angle to the ring still flows into it (Ϗ)
@@ -2171,8 +2194,8 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, norm
         # on the normal ran into the stroke it curls back to and left a notch
         # there (the Cyrillic descenders, data_italic.descender; the Bold
         # Italic's ʋ)
-        bx = cx + (a + tv / 2 - ball) * math.cos(end)
-        by = cy + (b + th / 2 - ball) * math.sin(end)
+        bx = ocx + (a + tv / 2 - ball) * math.cos(end)
+        by = ocy + (b + th / 2 - ball) * math.sin(end)
     else:
         # inside the end, tangent to the outer edge there: along that edge's
         # normal (on the parametric angle, with unequal radii, the circle
@@ -2180,8 +2203,8 @@ def curl(font, source, cuts, at, dir, turn, r, sweep, ball, t=None, lead=3, norm
         A, B = a + tv / 2, b + th / 2
         nx, ny = math.cos(end) / A, math.sin(end) / B
         nl = math.hypot(nx, ny)
-        bx = cx + A * math.cos(end) - ball * nx / nl
-        by = cy + B * math.sin(end) - ball * ny / nl
+        bx = ocx + A * math.cos(end) - ball * nx / nl
+        by = ocy + B * math.sin(end) - ball * ny / nl
     hook = path_op(hook, _ellipse(bx, by, ball, ball), "UNION")
     out = to_path(font, font[source])
     for box in cuts:

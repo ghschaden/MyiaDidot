@@ -186,7 +186,6 @@ uni0289.sc smooth 1              # Italic saved with smooth rounding (make_itali
 uni0289.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +3 from 1040
 uni028A zone 1                   # 2026-10-16 known at the start (quality checks added): top -21 from 884
 uni028A.sc kink 1                # phase 6, longtail family 3: the Italic's small caps fitted from their drafts (2026-11-23): 213,645 6.5 degrees
-uni028B kink 1                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 929,700 4.5 degrees
 uni028B slant 1                  # 2026-10-16 known at the start (quality checks added): 20.0 degrees, not 15.2
 uni028B.sc zone 1                # 2026-10-16 known at the start (quality checks added): top +4 from 1040
 uni028C zone 1                   # 2026-11-15 zone check: the lowercase stands on the baseline, not on x's lowest point (the italics' exit hooks, -23): top +18 from 884
@@ -311,7 +310,6 @@ uni2C73.sc zone 1                # 2026-10-16 known at the start (quality checks
 uniA78C stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: lc 112 against 183 (0.61, lighter)
 uniA78C.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 136 against 178 (0.77, lighter)
 uniA7AA smooth 1                 # 2026-11-22 phase 6 step D, third batch: the curl ball on the outer edge's normal (derive.curl), ɾ's straight stem, ɬ's belt, ү ʔ splits, ɱ's leg, Bold Italic Ƈ Ɠ hooks at the terminal's edge: 122,1244
-uniA7B2 kink 1                   # 2026-10-21 Italic reweighted and tightened: 588,-262 6.7 degrees
 uniA7B6 stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 245 against 222 (1.10, darker)
 uniA7B7.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 261 against 184 (1.41, darker)
 uogonek slant 1                  # 2026-10-16 known at the start (quality checks added): 19.7 degrees, not 15.2

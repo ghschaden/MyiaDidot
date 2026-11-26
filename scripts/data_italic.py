@@ -532,7 +532,7 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                                          ("rect", (170, -480, 616, -428), (0, 0), (1, 1, 0, 0))])),
                   # J's stem straight down into a tail curling left, crossed
                   "Ʝ": ("attach", "J", ("c", [(-BIG, -BIG, BIG, 400), (-BIG, -BIG, 500, 600)],
-                                        [("line", ((713, 450), (713, -262), 164), (0, 0), (1, 1, 0, 0)),
+                                        [("line", ((713, 450), (713, -250), 164), (0, 0), (1, 1, 0, 0)),
                                          ("curl", {"at": ("pt", 713, -250, 164), "dir": 270, "turn": "cw",
                                                    "r": (150, 130), "sweep": 170, "ball": 78, "t": (164, 50)},
                                           (0, 0), (1, 1, 0, 0)),
@@ -549,7 +549,7 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   # u's last stem curling over to the left at the top
                   "ʋ": ("curl", "u", ("x", [(700, 700, BIG, BIG)],
                                       {"at": ("y", 700, "last"), "dir": 90, "turn": "ccw", "r": (120, 110),
-                                       "sweep": 200, "ball": None, "t": (120, 42)})),
+                                       "sweep": 200, "ball": None, "t": (120, 42), "edges": True})),
                   "ʈ": ("attach", "t", ("x", [(-BIG, -BIG, BIG, 300), (300, -BIG, BIG, 600)],
                                         retroflex(232, 232, 350, 116, (110, 100), 58, 40))),
                   # the left stem curling over to the left, as on Ɓ; W's right arm to the right
