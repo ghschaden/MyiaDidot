@@ -33,7 +33,8 @@ export MYIA_JOBS = $(JOBS)
 VALIDATE_LOCK = $(shell cd "$$(git rev-parse --git-common-dir)" && pwd)/myia-validate.lock
 
 test:
-	flock $(VALIDATE_LOCK) .venv/bin/pytest -n $(JOBS)
+	@$(PY) scripts/progress.py begin test 1; $(PY) scripts/progress.py step test 1 "pytest"
+	rc=0; flock $(VALIDATE_LOCK) .venv/bin/pytest -n $(JOBS) || rc=$$?; $(PY) scripts/progress.py end test; exit $$rc
 
 # After a change to the Regular, before `make generate`: its generated parts
 # made again (scripts/regular_steps.py) and its own tests, a minute or two;
@@ -309,12 +310,16 @@ only:
 
 .PHONY: _only
 _only:
-	$(PY) scripts/$(if $(filter Italic,$(STYLE)),make_italic.py,make_bold.py) $(ONLY_SOURCE) sources/$(FAMILY)-$(STYLE).ufo $(if $(PARTIAL),--only $(GLYPHS)) --out $(ONLY_OUT)
-	$(if $(or $(PARTIAL),$(filter Italic,$(STYLE))),,$(PY) scripts/smallcaps.py $(ONLY_OUT))
-	$(PY) scripts/only_sheet.py $(STYLE) $(GLYPHS) --source $(ONLY_SOURCE) --new $(ONLY_OUT)
+	@$(PY) scripts/progress.py begin only 3; $(PY) scripts/progress.py step only 1 "$(STYLE): $(if $(filter Italic,$(STYLE)),make_italic,make_bold)$(if $(PARTIAL), (partial))"
+	$(PY) scripts/$(if $(filter Italic,$(STYLE)),make_italic.py,make_bold.py) $(ONLY_SOURCE) sources/$(FAMILY)-$(STYLE).ufo $(if $(PARTIAL),--only $(GLYPHS)) --out $(ONLY_OUT) || { $(PY) scripts/progress.py end only; exit 1; }
+	@$(PY) scripts/progress.py step only 2 "$(STYLE): small caps"
+	$(if $(or $(PARTIAL),$(filter Italic,$(STYLE))),,$(PY) scripts/smallcaps.py $(ONLY_OUT) || { $(PY) scripts/progress.py end only; exit 1; })
+	@$(PY) scripts/progress.py step only 3 "$(STYLE): sheet"
+	rc=0; $(PY) scripts/only_sheet.py $(STYLE) $(GLYPHS) --source $(ONLY_SOURCE) --new $(ONLY_OUT) || rc=$$?; $(PY) scripts/progress.py end only; exit $$rc
 
 reproduce:
-	flock $(VALIDATE_LOCK) $(PY) scripts/check_reproducible.py
+	@$(PY) scripts/progress.py begin reproduce 1; $(PY) scripts/progress.py step reproduce 1 "Italic Bold BoldItalic"
+	rc=0; flock $(VALIDATE_LOCK) $(PY) scripts/check_reproducible.py || rc=$$?; $(PY) scripts/progress.py end reproduce; exit $$rc
 
 pairs: $(OTF)
 	@mkdir -p build/quality

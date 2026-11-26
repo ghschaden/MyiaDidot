@@ -50,6 +50,13 @@ pairs outside the references, all styles), `/font-status`,
 `/font-test`, `/font-proof`. Its rules have tests: `claude plugin test
 tools/claude-plugin/myia-didot`.
 
+Progress bars (2026-11-26): `make generate`, `make only`, `make reproduce`,
+`make test` and the commit hook's checks (target `commit`) write
+`build/progress/TARGET.json` through `scripts/progress.py`, which the
+agent-progress mod (`~/src/claude-mods/agent-progress`, outside the repo)
+shows as a bar, estimated from the previous run of the same target. The
+hook runs in a snapshot and passes `MYIA_PROGRESS_DIR` to write here.
+
 ## What is stale before a regeneration (2026-11-20)
 
 `.venv/bin/python -I scripts/stale.py` lists, in two seconds, the source

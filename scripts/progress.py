@@ -10,14 +10,19 @@ The length of every step is kept in build/progress/TARGET.history.json, so
 the next run can say "step 2 of 4, about 60 % done": the estimate is the
 elapsed time over the previous run's total, step by step. Nothing here
 touches sources/; a failed write never stops a build.
+
+MYIA_PROGRESS_DIR: another directory (the commit hook, which runs in a
+snapshot of the staged tree, writes to the working copy's build/progress).
+Targets: generate, only, reproduce, test, commit (2026-11-26).
 """
 
 import json
+import os
 import sys
 import time
 from pathlib import Path
 
-DIR = Path(__file__).resolve().parent.parent / "build" / "progress"
+DIR = Path(os.environ.get("MYIA_PROGRESS_DIR") or Path(__file__).resolve().parent.parent / "build" / "progress")
 
 
 def _load(path):

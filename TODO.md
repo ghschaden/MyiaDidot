@@ -1628,7 +1628,7 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       ө.sc's bar union needed wider nudges (make_bold, ±0.4 x, ±0.6 y).
       test_stroked_the_same_either_way now measures the largest distance
       in units (XOR read ж 9866 units² for 0.97 units).
-- [ ] Bold Italic ᵽ's descender (designer, 2026-11-25, on
+- [x] Bold Italic ᵽ's descender (designer, 2026-11-25, on
       proofs/2026-11/bolditalic-p-bar-bowl-2026-11-25.pdf): the foot serif
       does not look good (its left bracket gone, a flat corner where p has
       a round one), a knee on the stem's left edge just above the serif,
@@ -1656,6 +1656,16 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       bracket the same way but is not mended by this: its stem's edge
       above the bar stands 5 units out of line with the edge below (a
       step at the bar itself); see ұ apart.)
+      (Done 2026-11-26, the designer: move the bar. The Italic's recipe
+      centres it over the serif, (150, 185) out; the Bold Italic's ᵽ and
+      ұ are their bar on the finished p and ү (ITALIC_BOLD_REBUILD), as
+      ʉ ɉ: ᵽ joined to p had its bowl's curve split by the union (a
+      2.5-degree kink), ұ stroked whole its step at the bar. stem_joins
+      reads a barred edge's pieces against their chord (ұ's 90 and 136
+      units, a degree apart by rounding): ұ.sc and the superior 4 mended
+      with it. Sheet
+      proofs/2026-11/bolditalic-p-bar-centred-u-bar-feet-2026-11-26.pdf.
+      The upright ᵽ left as it is, its bar 142 | 168.)
 - [ ] The 25 wobbles (4-6 degrees) and 9 smooth lines the rejoin guard
       showed in the Bold Italic (α ψ ɐ ʈ.sc Ʊ м ф ч щ ʔ ʕ ɶ џ ɦ @ ...,
       quality-BoldItalic.txt dated 2026-11-25): bends in the stroked

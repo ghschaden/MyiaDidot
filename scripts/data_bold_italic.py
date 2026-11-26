@@ -82,6 +82,8 @@ ITALIC_BOLD_REBUILD = {
     # ɉ: emboldened whole its dot came out larger than j's (2026-11-09); the
     # bar on the Bold Italic's j, its arms then lengthened by j_bar.py
     "uni0249": "ɉ: the bar on the Bold Italic's j (ITALIC_BOLD_RECIPES)",
+    "uni04B1": "ұ: the bar on the Bold Italic's ү (ITALIC_BOLD_RECIPES)",
+    "uni1D7D": "ᵽ: the bar on the Bold Italic's p (ITALIC_BOLD_RECIPES)",
     # ʡ ʢ: the bar on the Bold Italic's ʔ ʕ (2026-11-24: stroked whole, ʢ's
     # neck, the new ʔ's mirrored, came out with a 5.8-degree kink and five
     # wobbles where the Bold Italic's ʕ is clean)
@@ -217,6 +219,17 @@ ITALIC_BOLD_RECIPES = {
     # the Italic's, as heavy as emboldened (the Italic's 56 and AY, as ʉ's;
     # at the stroke scale it came to 56); j_bar.py then sets its arms
     "ɉ": ("bar", "j", ("x", None, "all", (92, 92), 56 + AY)),
+    # ұ: the bar on the Bold Italic's ү (ITALIC_BOLD_REBUILD) where and as
+    # heavy and long as emboldened (centre -196, 66, 143 | 144 out): stroked
+    # whole its stem below the bar came out 4 units thinner than ү's, a step
+    # at the bar, and lost ү's left foot bracket (2026-11-26, the designer)
+    "ұ": ("bar", "uni04AF", ("x", -196, "all", (144, 144), 66)),
+    # ᵽ: the bar on the Bold Italic's p (ITALIC_BOLD_REBUILD) where and as
+    # heavy and long as emboldened from the Italic's (centre -286, 64, 125 |
+    # 171 out: over the foot serif's centre, as the Italic's recipe sets
+    # it); joined to p, the emboldened bowl crossed p's and the union split
+    # its curve at 419,40 with a 2.5-degree kink (2026-11-26)
+    "ᵽ": ("bar", "p", ("x", -286, "all", (125, 171), 64)),
     # ʄ: keep ɟ's descender and stem at this weight. Its entry stroke and
     # bar ends are cut away; the new bar is centred on the extended stem.
     # At y=600 the upright ɟ stem spans about 335..586. The light recipe's

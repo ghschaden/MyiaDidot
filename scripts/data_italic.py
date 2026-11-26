@@ -271,6 +271,12 @@ ITALIC_RECIPES = {"₮": ("lines", "T", ("c", 64, [((400, 380), (900, 620)), ((4
                   # (derive's bar stops at the ink, j's stem on the right:
                   # 169 left, 14 right; "not centred", 2026-11-05)
                   "ɉ": ("bar", "j", ("x", None, "all", (92, 92))),
+                  # ᵽ: the bar centred over the foot serif, not the stem
+                  # (the serif stands out further right: centred on the
+                  # stem, 167 | 168, the bar sat 17 units left of the
+                  # serif's centre, "longer to the left", the designer
+                  # 2026-11-26); the Bold Italic follows
+                  "ᵽ": ("bar", "p", ("x", -290, "all", (150, 185))),
                   # ₸'s line across the T's top bar, ₫'s under the bowl and
                   # stem (the Regular's numbers run past the narrower italics)
                   "₸": ("lines", "T", ("c", 64, [(118, 1498, 1205, 1562)])),

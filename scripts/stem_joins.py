@@ -31,7 +31,7 @@ SPAN = 160   # units: a bracket's ends no further apart
 # a shorter steep line is a stem's edge too where another runs on from it in
 # line, the same way, across a bar (ᵽ: 45 units from the bar to the foot, ұ
 # 125; ɨ.sc ƚ.sc ғ.sc): the two together STEM long, the gap at most BAR_GAP,
-# the shorter one's ends within IN_LINE of the longer one's line (ᵽ 1.4) (2026-11-26)
+# all four ends within IN_LINE of the chord between the outermost (2026-11-26)
 BAR_GAP = 150
 IN_LINE = 2.0
 
@@ -80,12 +80,14 @@ def _through_bar(pts, steep):
         other = math.hypot(dx - cx, dy - cy)
         if (dx - cx) * ux + (dy - cy) * uy < other * 0.99:  # not the same way
             continue
-        # in line, measured against the longer of the two (a short line's
-        # own direction is uncertain by its rounding: ᵽ's 42 units, 0.4°)
-        (px, py), (qx, qy) = ((cx, cy), (dx, dy)) if other >= length else ((ax, ay), (bx, by))
-        lx, ly = (qx - px) / max(other, length), (qy - py) / max(other, length)
-        ends = ((ax, ay), (bx, by)) if other >= length else ((cx, cy), (dx, dy))
-        if max(abs((x - px) * ly - (y - py) * lx) for x, y in ends) > IN_LINE:
+        # in line: all four ends near the chord between the two outermost
+        # (a short line's own direction is uncertain by its rounding, about
+        # a degree: ᵽ's 42 units, ұ's 90 and 136)
+        ends = ((ax, ay), (bx, by), (cx, cy), (dx, dy))
+        p, q = min(ends, key=lambda e: e[1]), max(ends, key=lambda e: e[1])
+        chord = math.dist(p, q)
+        lx, ly = (q[0] - p[0]) / chord, (q[1] - p[1]) / chord
+        if max(abs((x - p[0]) * ly - (y - p[1]) * lx) for x, y in ends) > IN_LINE:
             continue
         # along the line: this one 0..length, the other s0..s1
         s0, s1 = ((cx - ax) * ux + (cy - ay) * uy), ((dx - ax) * ux + (dy - ay) * uy)

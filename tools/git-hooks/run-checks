@@ -27,6 +27,13 @@ if [ "${4:-}" != --inside ]; then
     exit 0
 fi
 
+# the progress pane's bar (scripts/progress.py, target commit), written to
+# the working copy's build/progress; never stops the checks
+prog() {
+    [ -n "$root" ] || return 0
+    MYIA_PROGRESS_DIR="$root/build/progress" .venv/bin/python -I scripts/progress.py "$@" >/dev/null 2>&1 || true
+}
+
 checks() {
     # not -x: every failure at once, so one round of baselines takes them all
     # and the next commit can run just those (rerun_plan.py)
@@ -38,6 +45,7 @@ checks() {
         echo "pre-commit: running the test suite..."
         set --
     fi
+    prog step commit 1 "tests"
     if ! .venv/bin/pytest -q -n "${MYIA_JOBS:-4}" -p no:cacheprovider "$@"; then
         echo
         echo "pre-commit: tests failed; commit aborted."
@@ -65,6 +73,7 @@ checks() {
     fi
     if command -v fontforge >/dev/null 2>&1; then
         echo "pre-commit: checking the generated styles (make reproduce: $styles)..."
+        prog step commit 2 "make reproduce: $styles"
         # shellcheck disable=SC2086
         if ! .venv/bin/python -I scripts/check_reproducible.py $styles; then
             echo
@@ -78,4 +87,8 @@ checks() {
     fi
 }
 
-checks
+prog begin commit 2
+rc=0
+checks || rc=$?
+prog end commit
+exit $rc
