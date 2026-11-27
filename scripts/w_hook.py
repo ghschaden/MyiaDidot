@@ -1,4 +1,9 @@
-"""The Italic's ⱳ: its arm one thickness into the hook, nearer the middle stem, a larger ball.
+"""RECORD, not part of the build (TODO.md T7, 2026-11-27): run once, what
+it made was kept in the UFO where accepted (in a generated style marked
+drawn); no generator, Makefile target or test calls it. Kept to show how those glyphs were made; do not run it again
+on sources/ (it would redo what was since reviewed or drawn over).
+
+The Italic's ⱳ: its arm one thickness into the hook, nearer the middle stem, a larger ball.
 
     python scripts/w_hook.py SRC.ufo OUT.ufo                     the candidate, for the sheet
     python scripts/w_hook.py SRC.ufo OUT.ufo --install --date D --review DOC

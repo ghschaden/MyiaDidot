@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Phase 6, step B's loose end: the Italic's slashed rounds (Ø ø) on the
+"""RECORD, not part of the build (TODO.md T7, 2026-11-27): run once, what
+it made was kept in the UFO where accepted (in a generated style marked
+drawn); no generator, Makefile target or test calls it. Kept to show how those glyphs were made; do not run it again
+on sources/ (it would redo what was since reviewed or drawn over).
+
+Phase 6, step B's loose end: the Italic's slashed rounds (Ø ø) on the
 widened O and o (docs/claude/italic.md, "What followed").
 
     python scripts/italic_slashed.py SRC.ufo OLD.ufo OUT.ufo [--install --date D --review DOC]

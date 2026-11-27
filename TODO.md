@@ -1106,6 +1106,63 @@ alongside, each when the phase that needs it comes up.
       and test when no style needs them. A list of them with the glyphs
       and styles each serves comes first (from make_bold's and
       make_italic's call order).
+      The list (2026-11-27, read from the code; FP = the PASSES table
+      of `scripts/finalization.py`, run by `make_bold.finalize` from
+      `write` in every generated style; the Regular runs none of them).
+      Drawn marks then: Italic 267, Bold 25, Bold Italic 56. None can go
+      yet: every target is undrawn in some style it serves.
+
+      | script (entry) | called from | styles | glyphs | test | drawn in |
+      |---|---|---|---|---|---|
+      | r_hook.round_shoulder | make_italic | It | r ɽ | test_r_hook | r It (skipped) |
+      | r_hook.fair_bold_stem | make_bold, FP | B | r ɽ | test_r_hook | - |
+      | bold_dots.finish | make_bold | B BI | dots of i/j kinds | - | - |
+      | y_dot.y_dot_anchor | make_italic, make_bold | It BI | y | test_y_dot | y It (skipped) |
+      | cyrillic_signs.redraw | make_italic, make_bold | It BI | ь ы ъ ь.loclBGR ъ.loclBGR | test_cyrillic_signs | - |
+      | italic_i.install | make_italic | It | I | test_italic_i | - |
+      | cedilla | FP | It B BI | Cedilla | test_cedilla | - |
+      | t_slash | FP | BI | Ⱦ | test_t_slash | - |
+      | sc_feet | FP | B BI | m.sc v.sc w.sc k.sc x.sc | - | - |
+      | j_bar | FP | BI | ɉ | test_j_bar | - |
+      | i_bar_dot | FP | It B BI | ɨ ɉ ʝ ⁱ ʲ ᶤ (BI: ɨ) | - | - |
+      | dollar_bars, dollar_drawing | FP | BI | $ | test_dollar_* | - |
+      | aleph | FP | B BI | ℵ | test_aleph | - |
+      | symbol_joins | FP | B BI | № ™ | test_symbol_joins | - |
+      | glottal_modifier | FP | B | ˀ | test_glottal_modifier | - |
+      | bold_signs | FP | B | ! ¡ | - | - |
+      | phi_drawing | FP | BI | ɸ | test_phi_drawing | - |
+      | r_hook.finish_shoulders | FP | It BI | r ɍ ɹ ɺ ɻ ɾ ᵲ ᵳ | test_r_hook | r It |
+      | r_hook.finish_turned_r_top | FP | BI | ɺ | test_r_hook | - |
+      | r_hook.finish | FP | It BI | ɽ | test_r_hook | - |
+      | l_belt | FP | It | ɬ Ɬ | test_l_belt | - |
+      | turned_v (skips drawn) | FP | It BI | Ʌ | - | - |
+      | sc_clearance (skips drawn) | FP | BI | ы.sc ψ.sc | test_sc_clearance | - |
+      | upright_aleph.install | smallcaps.py | It B BI | ℵ ℵ.sc | - | - |
+
+      `l_belt` stays as a module either way (make_bold imports its
+      `attachment_band`, make_italic its TARGETS). Only turned_v and
+      sc_clearance read `drawn.is_drawn`; the others patch and
+      make_bold's `drawn.restore` puts a drawn glyph back afterwards in
+      the bolds (the Italic's write path not traced). Passes over many
+      glyphs, not fixed points, left out: oldstyle_figures,
+      stem_handles (no test), draft_ligatures, smooth_joins, stem_joins,
+      bowl_counters, italic_ligatures, italic_contours.
+      - [x] Scripts run once whose result is kept in the UFOs, called by
+            nothing (no generator, Makefile target, tool or test):
+            kept as records, decided by the designer 2026-11-27, each
+            marked "RECORD, not part of the build" at the head of its
+            docstring: p_hook_join, italic_smallcap_repairs,
+            italic_yu_smallcap_repair, italic_gamma_glottal_smallcaps,
+            italic_greek_smallcap_repairs, bold_italic_b_q_smallcaps,
+            hook_reference_candidates, regular_hook, regular_curl,
+            f_hook, w_hook, bold_neck, italic_slashed, italic_long,
+            italic_round_sc, tbar_center, draw_oq. (test_p_hook_join and
+            test_italic_smallcap_repairs read the glyphs in the UFO, not
+            the scripts: they stay.) A new one-off script gets the same
+            mark when its result is accepted.
+      - [ ] As a glyph above is drawn and accepted in a style: its
+            repair for that style goes; the script and its test when no
+            style needs it.
 - [ ] T8. Checks in tiers, once T3 has CI green and trusted: the
       pre-commit hook a fast tier (ruff, UFO integrity, reproduction
       and tests of the styles the staged files touch), the full suite

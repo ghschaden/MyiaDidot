@@ -1,4 +1,9 @@
-"""Smooth the Italic ƥ hook-to-stem join locally (2026-11-06).
+"""RECORD, not part of the build (TODO.md T7, 2026-11-27): run once, what
+it made was kept in the UFO where accepted (in a generated style marked
+drawn); no generator, Makefile target or test calls it. Kept to show how those glyphs were made; do not run it again
+on sources/ (it would redo what was since reviewed or drawn over).
+
+Smooth the Italic ƥ hook-to-stem join locally (2026-11-06).
 
 Use --source BEFORE.ufo --out CANDIDATE.ufo to review, or --install to
 write only uni01A5 to the production Italic, marked drawn.

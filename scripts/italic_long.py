@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Phase 6, step C: the Italic's long stems weighted to n's stem, its
+"""RECORD, not part of the build (TODO.md T7, 2026-11-27): run once, what
+it made was kept in the UFO where accepted (in a generated style marked
+drawn); no generator, Makefile target or test calls it. Kept to show how those glyphs were made; do not run it again
+on sources/ (it would redo what was since reviewed or drawn over).
+
+Phase 6, step C: the Italic's long stems weighted to n's stem, its
 ascenders raised, its overshoots set to the Regular's, one construction a
 glyph (docs/claude/italic.md, "The designer's round", 2026-11-17, 4 to 6).
 
