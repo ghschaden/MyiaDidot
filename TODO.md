@@ -1387,9 +1387,14 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       (312) with a heavier ball (1.37). The Italic: ɖ ɳ ɽ taper to 83-90
       % of the stem, ɭ ʈ carry the whole 166 (since a4f413cb) with the
       recipe's ball 141 (0.85); ɽ's tail is 420 deep against the others'
-      275, its outline not its recipe's (lib draft key: trace with `make
-      only` where it comes from). The designer read the sheet and left
-      the Italic as it is.
+      275: r_hook.finish (a finishing pass) puts the roman's tail on it,
+      scaled to r's stem and sloped, "the U turn and rounded upright
+      terminal requested for the italics" (the designer, about
+      2026-10-24, bb3d7802), in both italics. So the italics' tails are
+      two designs: ɽ's roman U turn, and the recipe curl with a ball for
+      ɖ ɭ ɳ ʈ ɻ and the capitals. For the designer: all of them as ɽ's,
+      ɽ back to the curl, or ɽ apart on purpose. The designer read the
+      sheet and left the Italic as it is.
       Done 2026-11-26 in the Bold Italic (sheet
       proofs/2026-11/bolditalic-retroflex-d-n-2026-11-26.pdf, approved):
       ɖ and ɳ released from drawn (2026-11-08/09, made on the old d and n:
@@ -1397,15 +1402,98 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
       recipe 52 left of n's leg since step B and its exit cut slicing the
       leg) and made by their recipes as ɭ ʈ: the tail straight on from
       the stem at the cut, ɽ's curl scaled to it; ɖ 950 -> 1209, ɳ 1119 ->
-      1190 wide. Left: ɳ's 2.0-degree kink at 887,787 (a handle a unit
-      off n's smooth node after fair_joins: ITALIC_BOLD_SMOOTH_CURVES
-      about 770-800); the Bold Italic's depths still 275-420 (ɽ 420, ɻ
-      322, ɭ ʈ 339, ɖ 343, ɳ 312): one depth per style, or radii fixed
-      rather than scaled, is the next question.
+      1190 wide. ɳ's 2.0-degree kink at 887,787 (a handle a unit off n's
+      smooth node after fair_joins) mended 2026-11-26 in the working copy,
+      not yet generated: ITALIC_BOLD_SMOOTH_CURVES ɳ (770, 800), the
+      handle 888 -> 887, the node smooth, lint and checks clean. The
+      Bold Italic's depths (ɽ 420, ɻ 322, ɭ ʈ 339, ɖ 343, ɳ 312, Ɽ Ʈ 350,
+      ɽ.sc ʈ.sc 332) spread because its curls' radii scale with each
+      stroke; the Italic keeps one set (110/100) and one depth (275, ɻ
+      291, Ɽ Ʈ 307, small caps 284), the Bold the Regular's exactly.
+      Two options tried with `make only` (sheet
+      proofs/2026-11/bolditalic-tail-depths-2026-11-26.pdf, for the designer): A, the
+      Italic's depths, each curl started higher by the difference (the
+      line's end and the curl's `at`, -150 + 31..68), the curl as scaled;
+      B, ɖ ɳ to ɭ ʈ's 339 (+4, -27). Both lint-clean; B leaves the checks
+      as they are, A moves the small caps' and capitals' join lines by
+      0.2-0.4 degrees and adds a 2.2-2.8 degree smooth at the curl's
+      start on the small caps' other edge. ɽ (420) stays apart in both.
+      The designer took A (2026-11-26): installed in data_bold_italic.py;
+      ɽ.sc ʈ.sc's curl starts split-faired (ITALIC_BOLD_JOINS, -130..-70,
+      ɽ.sc's up to 130: the shorter tail met r.sc's stem at 120 1.1
+      degrees off its slant; their old 2.1-2.4 degree smooth lines gone
+      too; make_bold's second fairing pass now takes a suffixed key).
+      Quality list: ɳ kink, ɽ.sc ʈ.sc smooth off.
       The way to keep it (proposed to the designer 2026-11-26): recipes
       that read their base's stem instead of copying numbers (as
       make_bold.lezh_band); one set of tail and curl constants per style;
       the family measure as a test; family sheets.
+- [ ] Recipes that read their bases, family by family (the designer
+      2026-11-26: "do the same thing to other families of letters"). About
+      60 recipes in the two italics copy a base's numbers (a stem's centre
+      and width, a curl's start, radii, cut boxes on stem edges) and go
+      stale when the base moves (step C: ɮ ɭ ʈ ƃ, found only by a sweep).
+      The mechanism: a callable band, `band(up, source, name)`, called by
+      make_bold.rederive and only_glyph._recipe (make_italic's recipe loop
+      for the Italic's own), measuring with derive.stems_at in the recipes'
+      upright frame; one set of curl constants per style in its data
+      module, the exceptions named per letter. Each family one commit, a
+      pure refactor: the new bands checked number by number against the
+      copied ones in the frame rederive meets (a MYIA_DUMP_FRAME copy), the
+      fonts unchanged (`make reproduce`); a measured value that differs is
+      a stale number found, on a sheet for the designer before it lands.
+      Then a test per family against its rule (depth, ball as heavy as the
+      stroke). Drafted 2026-11-26 in build/pending/tails/ (git-ignored:
+      tails.py the band, tails_entries.py the nine Bold Italic entries,
+      tails_check.py the number-by-number check against a dumped frame;
+      depth_sheet.py and variant.py made the depth sheet; to be rewritten
+      from this note if lost). Order:
+      1. Retroflex tails (ɖ ɭ ɳ ʈ ɻ Ɽ Ʈ ɽ.sc ʈ.sc): Italic 11
+         (data_italic.retroflex), Bold Italic 9. A `Tail` band
+         (scripts/tails.py): the base's stem measured at a height where it
+         runs straight (not a serif's bracket), the line from `top` down
+         to where the curl must start so the tail reaches its depth (the
+         ring's lowest point is b + t_h / 2 below the start, b the vertical
+         radius, t_h the hairline across), the curl the style's reference
+         scaled to the stem (Bold Italic: Ʈ's, 195/170 at 290, hairline 60,
+         ball half the stroke), cut boxes counted from the stem's centre.
+         Depth: the Bold Italic's read from the Italic's glyph; the
+         Italic's a constant (275, ɻ 291, Ɽ Ʈ 307, small caps 284).
+         Exceptions: ɻ's own curl (165/145), Ɽ on Ʈ's curl unscaled, the
+         small caps' (180/155, hairline 55), ɳ's hairline 50.
+      2. Cyrillic descenders (Қ Җ җ қ ң ҷ ҳ): Italic 8
+         (data_italic.descender), Bold Italic 5. The same `Tail`, curling
+         left (cw), the stroke possibly leaning (x0 != x1), descender's
+         run-on (`on`) and normal=False kept. Measured 2026-11-26: the
+         same fault as the tails. The Italic keeps one depth (270, Қ Җ
+         294: every curl starts at -150 on fixed radii per family), the
+         Bold the Regular's (356, 458); the Bold Italic spreads (ң 316, ҷ
+         308, қ 308, җ 312, Қ 350, Җ 355, ҳ 287), its radii copied per
+         letter. Drafted (tails_entries.py): the Italic's six and the Bold
+         Italic's five as exact refactors (start -150, radii as copied);
+         the Italic's depth for the Bold Italic (rule A) a second, visible
+         step for the designer's sheet. ҳ's diagonal stays numbers.
+      3. Grafts, a piece of another letter scaled onto a stem (ɧ ɱ ɰ, in
+         both italics: "251 / 241", "centred at 714.5"): both stems
+         measured, as make_italic.build_own's ɗ already does. Drafted
+         2026-11-26 (tails.py `Graft`, tails_entries.py: the Bold Italic's
+         ɧ ɱ ɰ, the Italic's ɧ ɰ; the Italic's ɱ is a hook recipe). ɰ's
+         cuts and clip are placeholders until measured in the frame; the
+         Italic ɧ's taper keeps its absolute x (550-720). The module's
+         name at install: scripts/recipe_bands.py (Tail and Graft), not
+         tails.py.
+      4. Curls off a stem's top or arm (Ɓ Ɗ Ƥ Ɦ ɦ.sc Ƙ Ʋ Ƴ ƴ ʋ ɠ.sc;
+         Italic about 10, Bold Italic 11): derive.curl's `at` ("y", ...)
+         already measures the start; only the cut boxes copy stem edges
+         (Ɓ: "290, a unit inside the stem"): boxes counted from the
+         measured run.
+      5. Hooks off a terminal (ƈ Ƈ Ɠ Ƭ ƈ.sc) and the z/c curls (ʐ ʑ ɕ):
+         placed on terminals, harder to measure than a stem. Last; perhaps
+         left as numbers with a test that flags them when the base moves.
+      6. Bars (ʉ ǥ ɉ ұ ᵽ): mostly the designer's choices (height, reach),
+         not copies: left.
+      The Regular's and Bold's recipes copy numbers the same way; finished
+      and on bases that hardly move: after the italics.
 - [x] (2026-11-26) The Italic's ҳ had a white crack right across its
       descender where the curl starts (607,-165: the outline ran 65 units
       in along the stroke's square end and back; no check or lint saw

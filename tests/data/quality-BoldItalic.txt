@@ -255,7 +255,6 @@ uni0272 slant 1                  # 2026-10-16 Bold Italic: first generated (make
 uni0272 zone 1                   # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni0272.sc stroke 1              # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: sc 143 against 282 (0.51, lighter)
 uni0272.sc zone 1                # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): top +4 from 1040
-uni0273 kink 1                   # 2026-11-26 Bold Italic ɖ ɳ on their own recipes, the retroflex tail as ɭ ʈ (drawn marks released; ɳ's 887,787 a handle 1 unit off n's smooth node: ITALIC_BOLD_SMOOTH_CURVES next); Italic ҳ's crack clo
 uni0274 stroke 1                 # 2026-11-01 IPA small capitals redrawn at the x-height from the small caps, closed theta in the italics: inherited serifs and joins, reviewed: lc 144 against 269 (0.53, lighter)
 uni0276 zone 1                   # 2026-11-09 ɶ ᴅ at the x-height from oe.sc d.sc (derive enlarge), accepted with the letters: docs/ipa-oe-d-smallcaps-review-2026-11-09.md: top +20 from 884
 uni0278 base 1                   # approved 2026-10-25: bowl 5% wider with equal inner/outer expansion, smoothed counters; 45% exact/covered overlap with unexpanded o
@@ -263,7 +262,6 @@ uni0278 style 1                  # approved 2026-10-25: o plus lighter through-s
 uni027B base 1                   # ɻ: the stem's left edge tapered into the tail (data_italic), reviewed 2026-11-25: 46% of uni0279 kept (attach)
 uni027B kink 1                   # ɻ: the stem's left edge tapered into the tail (data_italic), reviewed 2026-11-25: 586,252 1.2 degrees
 uni027D.sc kink 2                # 2026-11-22 phase 6 step D, third batch: the curl ball on the outer edge's normal (derive.curl), ɾ's straight stem, ɬ's belt, ү ʔ splits, ɱ's leg, Bold Italic Ƈ Ɠ hooks at the terminal's edge: 92,160 1
-uni027D.sc smooth 1              # 2026-11-05 italic small caps at their capitals' weight (make_italic.as_capitals; Bold Italic rounds' side white, x.sc fillets): reviewed on the sheet: 297,-150 2.2 degrees
 uni027D.sc wobble 1              # phase 6, longtail family 3: the Italic's small caps fitted from their drafts (2026-11-23): 4 against 0: 903,153 19 degrees; 1094,183 7 degrees; 1092,167 6 degrees; 699,308 22 degrees
 uni027E step 1                   # 2026-11-22 phase 6 step D, third batch: the curl ball on the outer edge's normal (derive.curl), ɾ's straight stem, ɬ's belt, ү ʔ splits, ɱ's leg, Bold Italic Ƈ Ɠ hooks at the terminal's edge: 11,57 52
 uni0280 smooth 1                 # phase 6, longtail family 3: the Italic's small caps fitted from their drafts (2026-11-23): 566,790 2.1 degrees
@@ -277,7 +275,6 @@ uni0283 wobble 1                 # 2026-10-27 wobble check added (checks.py wobb
 uni0284 stroke 1                 # 2026-10-28: whole arcs faired in the Bold Italic (fair_arcs); round_smoothly moves both handles: lc 242 against 269 (0.90, lighter)
 uni0284 wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 4 against 1: -366,-346 11 degrees; -166,-384 9 degrees; -152,-352 60 degrees; -367,-290 24 degrees
 uni0288.sc kink 3                # phase 6, longtail family 3: the Italic's small caps fitted from their drafts (2026-11-23): 1010,755 5.7 degrees; 588,120 1.4 degrees; 749,-273 3.9 degrees
-uni0288.sc smooth 1              # Bold Italic: rejoined merges a run only within REJOIN_ERR 2 units (2026-11-25): 208,-150 2.1 degrees
 uni0288.sc wobble 1              # Bold Italic: rejoined merges a run only within REJOIN_ERR 2 units (2026-11-25): 1 against 0: 857,-175 3 degrees
 uni0289 slant 1                  # the Italic's b-z redrawn, f's hook, followers (2026-11-11): 19.0 degrees, not 15.2
 uni0289.sc wobble 1              # phase 6, longtail family 3: the Italic's small caps fitted from their drafts (2026-11-23): 1 against 0: 1038,865 9 degrees

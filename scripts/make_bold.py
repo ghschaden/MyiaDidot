@@ -2186,8 +2186,11 @@ def main():
 
         cmap = {g.unicode: g.name for g in font if g.unicode is not None}
         for ch, band in {**ITALIC_JOINS, **ITALIC_BOLD_JOINS}.items():
-            if ord(ch) in cmap and cmap[ord(ch)] not in kept:
-                fair_joins(font[cmap[ord(ch)]], *band)
+            # (a key with a suffix, "ɽ.sc": its letter's name and the suffix)
+            name = cmap.get(ord(ch[0]))
+            name = name and name + ch[1:]
+            if name in font and name not in kept:
+                fair_joins(font[name], *band)
     font.lib[WHOLE_KEY] = {n: why for n, why in sorted(whole.items()) if n not in followed}
 
     font.kerning = {pair: round(v * KX) for pair, v in font.kerning.items()}

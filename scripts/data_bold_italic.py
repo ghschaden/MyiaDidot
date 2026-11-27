@@ -47,7 +47,12 @@ ITALIC_BOLD_UNJOINED = {"uni2C72": "Ⱳ: the curl's join tangled (53 nodes)"}
 # above it met the curl at 1500 at 6.5 degrees; Ɠ's band from 1440 joined
 # the wrong nodes and cut the curl off its stroke (seen, not caught by the
 # checks or the lint)
-ITALIC_BOLD_JOINS = {"ɰ": (290, 305), "Ƈ": (1440, 1520), "Ɠ": (1470, 1520), "ү": (-130, -30, 25, 16, 1, True)}
+# ɽ.sc ʈ.sc: the curl's start (-102 since their tails took the Italic's
+# depth, 2026-11-26) 2.1-2.8 degrees off the tail's straight edges, split-faired;
+# ɽ.sc's band up through 120, where the shorter tail met r.sc's stem 1.1
+# degrees off its slant (the edge from stem to curl one curve)
+ITALIC_BOLD_JOINS = {"ɰ": (290, 305), "Ƈ": (1440, 1520), "Ɠ": (1470, 1520), "ү": (-130, -30, 25, 16, 1, True),
+                     "ɽ.sc": (-130, 130, 25, 16, 1, True), "ʈ.sc": (-130, -70, 25, 16, 1, True)}
 # Bold Italic letters still emboldened by weight: a repair after matches
 # that outline's points (to redo on the stroked outline)
 ITALIC_BOLD_BY_POINTS = {
@@ -515,6 +520,13 @@ ITALIC_BOLD_RECIPES = {
                                 # (ɥ 35 to the right, 32 once scaled, since phase 6's step B, its h
                                 # wider, 2026-11-17; m is drawn here and stayed)
                                 [("uni0265", (752, -10000, 10000, 300), (0, 0), (0.92, 1, 522, 0))], 1620)),
+    # The retroflex tails' depth is the Italic's (2026-11-26, the designer:
+    # option A on proofs/2026-11/bolditalic-tail-depths-2026-11-26.pdf), as the Bold
+    # keeps the Regular's: lowercase 275, ɻ 291, Ɽ Ʈ 307, ɽ.sc ʈ.sc 284 (ɽ
+    # apart, r_hook.finish). The curls stay scaled to the stroke; each
+    # starts higher instead (the line's end and the curl's `at`, which were
+    # -150 for all, at 312-350 deep): ɳ -113, ɖ -82, ɭ ʈ -86, ɻ -119, Ɽ Ʈ
+    # -107, the small caps -102.
     # ɳ ɖ (2026-11-26, the retroflex family as ɭ ʈ): the tail run straight
     # on from the stem at the cut and curled as ɽ's at that weight (r 195/170
     # and ball 145 on 290, scaled), the ball as heavy as the tail. ɳ on n's
@@ -523,12 +535,12 @@ ITALIC_BOLD_RECIPES = {
     # took a slice off the leg at 300-450: the pinch); ɖ on d's stem (827,
     # 280; emboldened whole its tail was thin where it met the stem)
     "ɳ": ("attach", "n", ("x", [(700, -10000, 10000, 200), (1070, -10000, 10000, 450)],
-                          [("line", ((888, 210), (888, -150), 234), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 888, -150, 234), "dir": 270, "turn": "ccw", "r": (157, 137),
+                          [("line", ((888, 210), (888, -113), 234), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 888, -113, 234), "dir": 270, "turn": "ccw", "r": (157, 137),
                                      "sweep": 170, "ball": 117, "t": (234, 50)}, (0, 0), (1, 1, 0, 0))])),
     "ɖ": ("attach", "d", ("x", [(700, -10000, 10000, 260), (990, -10000, 10000, 450)],  # (200 kept d's foot curving in: a notch of 8)
-                          [("line", ((827, 270), (827, -150), 280), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 827, -150, 280), "dir": 270, "turn": "ccw", "r": (188, 164),
+                          [("line", ((827, 270), (827, -82), 280), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 827, -82, 280), "dir": 270, "turn": "ccw", "r": (188, 164),
                                      "sweep": 170, "ball": 140, "t": (280, 58)}, (0, 0), (1, 1, 0, 0))])),
     # ɻ: the Italic's tail (data_italic: ɹ's stem run on and curled right)
     # on the Bold Italic's ɹ, both its edges straight on from the stem's at
@@ -538,8 +550,8 @@ ITALIC_BOLD_RECIPES = {
     # with the Italic's taper the left edge bent into the tail (the
     # designer, 2026-11-26: the left edge straight, the right as it is)
     "ɻ": ("attach", "uni0279", ("x", [(450, -10000, 10000, 200), (648, 200, 10000, 400)],
-                                [("line", ((554.75, 250), (554.75, -150), 202.5), (0, 0), (1, 1, 0, 0)),
-                                 ("curl", {"at": ("pt", 554.75, -150, 202.5), "dir": 270, "turn": "ccw",
+                                [("line", ((554.75, 250), (554.75, -119), 202.5), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 554.75, -119, 202.5), "dir": 270, "turn": "ccw",
                                            "r": (165, 145), "sweep": 170, "ball": 101, "t": (202.5, 55)},
                                   (0, 0), (1, 1, 0, 0))])),
     # Ɽ Ʈ ɽ.sc ʈ.sc: the Italic's (data_italic.retroflex: the foot serif cut
@@ -550,16 +562,16 @@ ITALIC_BOLD_RECIPES = {
     # (Ɽ's stem is 298 at its cut: the tail at R's 290 stood 9
     # units in from its right edge, a step at 120, 2026-11-03)
     "Ɽ": ("attach", "R", ("c", [(-10000, -10000, 950, 120)],
-                          [("line", ((429, 160), (429, -150), 309), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 429, -150, 309), "dir": 270, "turn": "ccw", "r": (195, 170),
+                          [("line", ((429, 160), (429, -107), 309), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 429, -107, 309), "dir": 270, "turn": "ccw", "r": (195, 170),
                                      "sweep": 170, "ball": 154, "t": (309, 60)}, (0, 0), (1, 1, 0, 0))])),
     "Ʈ": ("attach", "T", ("c", [(-10000, -10000, 10000, 150)],
-                          [("line", ((692, 200), (692, -150), 290), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 692, -150, 290), "dir": 270, "turn": "ccw", "r": (195, 170),
+                          [("line", ((692, 200), (692, -107), 290), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 692, -107, 290), "dir": 270, "turn": "ccw", "r": (195, 170),
                                      "sweep": 170, "ball": 145, "t": (290, 60)}, (0, 0), (1, 1, 0, 0))])),
     "ɽ.sc": ("attach", "r.sc", ("s", [(-10000, -10000, 700, 120)],
-                                [("line", ((332.5, 160), (332.5, -150), 299), (0, 0), (1, 1, 0, 0)),
-                                 ("curl", {"at": ("pt", 332.5, -150, 299), "dir": 270, "turn": "ccw",
+                                [("line", ((332.5, 160), (332.5, -102), 299), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 332.5, -102, 299), "dir": 270, "turn": "ccw",
                                            "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
                                   (0, 0), (1, 1, 0, 0))])),
     # ʈ: the Italic's (make_italic: t's tail and foot cut away), on the Bold
@@ -568,19 +580,19 @@ ITALIC_BOLD_RECIPES = {
     # numbers the cut at 300 took a slice off the stem, a step at 350; the
     # curl as ɭ's
     "ʈ": ("attach", "t", ("x", [(-10000, -10000, 10000, 300), (396, -10000, 10000, 600)],
-                          [("line", ((258, 350), (258, -150), 274), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 258, -150, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
+                          [("line", ((258, 350), (258, -86), 274), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 258, -86, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
                                      "sweep": 170, "ball": 137, "t": (274, 57)}, (0, 0), (1, 1, 0, 0))])),
     # ɭ: as ʈ, on the Bold Italic's l (128-402 upright, its centre 265), the
     # curl ɽ's scaled to the stem (2026-11-26: emboldened whole from the
     # Italic's, its stem 25 heavier since step C closed the counter by the ball)
     "ɭ": ("attach", "l", ("x", [(-10000, -10000, 10000, 300), (402, -10000, 10000, 600)],
-                          [("line", ((265, 350), (265, -150), 274), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 265, -150, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
+                          [("line", ((265, 350), (265, -86), 274), (0, 0), (1, 1, 0, 0)),
+                           ("curl", {"at": ("pt", 265, -86, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
                                      "sweep": 170, "ball": 137, "t": (274, 57)}, (0, 0), (1, 1, 0, 0))])),
     "ʈ.sc": ("attach", "t.sc", ("s", [(-10000, -10000, 10000, 120)],
-                                [("line", ((538.5, 160), (538.5, -150), 299), (0, 0), (1, 1, 0, 0)),
-                                 ("curl", {"at": ("pt", 538.5, -150, 299), "dir": 270, "turn": "ccw",
+                                [("line", ((538.5, 160), (538.5, -102), 299), (0, 0), (1, 1, 0, 0)),
+                                 ("curl", {"at": ("pt", 538.5, -102, 299), "dir": 270, "turn": "ccw",
                                            "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
                                   (0, 0), (1, 1, 0, 0))])),
     # ɧ: the Italic's (ȷ's descender on ɦ's leg where it is still whole: 251
@@ -697,7 +709,8 @@ ITALIC_BOLD_SMOOTH_COUNTER = {"q.sc": 16}
 # Italic's ұ has none, so not data_regular.SMOOTH_CURVES, which every
 # style's would take); ғ the same where its bar meets г's stem (a 3-unit
 # curve, 27 degrees, once rebuilt on г)
-ITALIC_BOLD_SMOOTH_CURVES = {"uni04B1": (480, 720), "uni0493": (395, 420)}
+# ɳ: n's smooth node at 887,787 a unit off after fair_joins (2.0 degrees)
+ITALIC_BOLD_SMOOTH_CURVES = {"uni04B1": (480, 720), "uni0493": (395, 420), "uni0273": (770, 800)}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",
