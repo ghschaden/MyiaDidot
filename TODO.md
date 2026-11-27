@@ -1022,7 +1022,15 @@ alongside, each when the phase that needs it comes up.
          `--fix` for the Regular, then the lint holds them at zero; slivers
          into glyph_lint as a kind with its list (some are drawn serif
          corners). One commit, `make diffenator` over all four styles.
-      2. `scripts/quality/curvature.py` (prototype): curvature jumps at
+      2. [ ] (runs built 2026-11-27: `curvature.py` reads each run turning one way
+         (lines inside, an inflection ends it) as radius per 10 degrees against
+         the source's run, log((r+100)/(r_src*sx+100)) off its straight trend
+         by 0.7 listed; tests/test_curvature.py; `--sheet`. Bold Italic 108
+         finds in 89 glyphs (the T family among the first ten: 738,1352, r 79
+         against 441), Bold 96 in 79; sheets
+         build/quality/curvature-{BoldItalic,Bold}.pdf for the designer, who
+         sorts real from noise before any list or test with exceptions)
+         `scripts/quality/curvature.py` (prototype): curvature jumps at
          smooth joins (none in T: stroke_bold refits G2) and flat spots
          inside a curve (T's long bracket piece 0.43 inside against 2.48 at
          its ends; the Italic's 2.4 at most). Per curve it lists 395 Bold
