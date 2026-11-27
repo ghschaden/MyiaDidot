@@ -284,6 +284,13 @@ not the saved font's (later passes shift it), so one full run with
 `MYIA_DUMP_FRAME=build/only_glyph/frame-BoldItalic.ufo` makes the
 snapshot first. Checked: Ƈ Ɠ equal the saved outlines up to a translation
 in x and 3 units (tests/test_only_glyph.py, skipped without the snapshot).
+Since 2026-11-27 the frame is stamped (`make_bold.frame_stamp`: the source
+UFO's digest, each generator file's hash) and `_frame` warns, naming what
+changed, when it no longer holds; after a build `generate` runs
+`make_bold.finish_recipe`, the same passes as rederive (fair joins, runs,
+corners, specks, pinholes, fix, smooth_curves, side bearings): before
+that it lacked smooth_curves and a trial disagreed with the run.
+A band may be a callable, `band(up, source, name)` (`scripts/recipe_bands.py`).
 Not every letter of the recipes runs through rederive (ƈ is stroked
 elsewhere and differs): test a family before using it.
 

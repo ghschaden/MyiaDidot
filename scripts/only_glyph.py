@@ -43,6 +43,21 @@ from fontTools.pens.svgPathPen import SVGPathPen  # noqa: E402
 SOURCES = {"Bold": ("Regular", "Bold"), "BoldItalic": ("Italic", "BoldItalic")}
 
 
+def frame_changes(up, italic):
+    """what changed since the frame was dumped: its source UFO, the
+    generator files by name; [] while it still holds"""
+    was = up.lib.pop(mb.FRAME_KEY, None)
+    if was is None:
+        return ["not stamped: dumped before 2026-11-27, or by hand; dump it again"]
+    now = mb.frame_stamp(italic)
+    out = ["its source UFO changed"] if was["source"] != now["source"] else []
+    files = sorted(n for n in set(was["generators"]) | set(now["generators"])
+                   if was["generators"].get(n) != now["generators"].get(n))
+    if files:
+        out.append("generator files changed: " + " ".join(files))
+    return out
+
+
 def _frame(style):
     """(source font, the style's font, the style's deslanted copy, italic)"""
     src, dst = SOURCES[style]
@@ -58,6 +73,8 @@ def _frame(style):
     dumped = ROOT / f"build/only_glyph/frame-{style}.ufo"
     if dumped.exists():
         up = ufoLib2.Font.open(dumped)
+        for line in frame_changes(up, italic):
+            print(f"warning: {dumped.name}: {line}", file=sys.stderr)
     else:
         print(f"warning: no {dumped.name}; the saved font's frame may differ from the recipes'", file=sys.stderr)
         up = copy.deepcopy(font)
@@ -74,6 +91,9 @@ def _recipe(ch, italic, up, source):
         op, base, band = own
         if isinstance(band, str):  # placed on the style's own glyphs
             band = {"fishhook_band": mb.fishhook_band, "lezh_band": mb.lezh_band}[band](up)
+        elif callable(band):  # measured on the style's own glyphs (recipe_bands)
+            up.lib[derive.STROKE_KEY] = (1, 1)  # (as own recipes are drawn)
+            band = band(up, source, derive.resolve({u: g.name for g in up for u in g.unicodes}, ch))
         return op, base, band, (1, 1)
     from derived import recipes
 
@@ -111,27 +131,13 @@ def generate(style, ch, recipe=None, frame=None):
     finally:
         up.glyphOrder = order
         up.lib["public.openTypeCategories"] = cats
-    if italic:  # as rederive does, after the build: the Italic's faired joins, runs, corners
-        from make_italic import round_corner, straighten_run
-
-        joins = {**mb.ITALIC_JOINS, **mb.ITALIC_BOLD_JOINS}
-        if ch in joins:
-            derive.fair_joins(new, *joins[ch])
-        if ch in mb.ITALIC_RUNS:
-            straighten_run(new, *mb.ITALIC_RUNS[ch])
-        if ch in mb.ITALIC_CORNERS:
-            round_corner(new, *mb.ITALIC_CORNERS[ch])
-    mb.drop_specks(new)
-    mb.fix(up, [tmp])
-    delta = (mb.SOURCE_SPACING.get(name) if italic else derive.SPACING.get(ch))
-    if delta:
-        mb.sidebearings(up, {tmp: delta})
+    mb.finish_recipe(up, new, ch, name, op, tmp, italic)  # (as rederive does)
     glyph = ufoLib2.objects.Glyph()
     y0 = mb.XH / 2 if italic else 0
     mb.slant_back(new, glyph.getPen(), [(1, 0, mb.SLANT, 1, -mb.SLANT * y0, 0)],
                   italic and name not in mb.POINT_REPAIRS)
     glyph.width = new.width
-    glyph.unicodes = [ord(ch)]
+    glyph.unicodes = [ord(ch)] if len(ch) == 1 else []  # (a small cap: none)
     del up[tmp]
     return glyph, name, font
 

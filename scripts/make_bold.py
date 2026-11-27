@@ -1587,6 +1587,76 @@ def straight_hook_stem(glyph, top):
     return False
 
 
+FRAME_KEY = "org.myiadidot.frameOf"
+
+
+def frame_stamp(italic):
+    """what a dumped frame was made from: the source UFO's digest and each
+    generator file's hash (stale.py)"""
+    import stale
+
+    src = stale.SOURCES / f"{stale.FAMILY}-{'Italic' if italic else 'Regular'}.ufo"
+    return {"source": stale.ufo_digest(src), "generators": stale.generator_hashes()}
+
+
+def finish_recipe(up, new, ch, name, op, tmp, italic):
+    """the passes a recipe glyph gets after derive.build, in the upright
+    frame, before it is judged against the letter it replaces: the
+    Italic's faired joins, runs and corners, the small caps' own passes,
+    specks, pinholes, fix's steps and ledges, the short curves merged,
+    the source's side bearings. One function for make_bold.rederive and
+    scripts/only_glyph.py, so a trial there is the run (2026-11-27: the
+    trial lacked smooth_curves and disagreed with the run)."""
+    if italic:
+
+        joins = {**ITALIC_JOINS, **ITALIC_BOLD_JOINS}
+        if ch in joins:  # as the Italic's, before it is judged
+            derive.fair_joins(new, *joins[ch])
+        from make_italic import round_corner, straighten_run
+
+        if ch in ITALIC_RUNS:  # as the Italic's (җ's descender into its c)
+            straighten_run(new, *ITALIC_RUNS[ch])
+        if ch in ITALIC_CORNERS:
+            round_corner(new, *ITALIC_CORNERS[ch])
+        from make_italic import capital_width, level_gain, uncrossed
+
+        if name in SC_DRAFT_SIDES:
+            # as the Italic makes them: uncrossed, the main stroke brought
+            # to the capital's proportion (small_cap_stems took n.sc's
+            # straight diagonal for a stem)
+            uncrossed(up, tmp)
+            # and its ink to h.sc's as the capital's to H's: the gain
+            # widens the Bold Italic's serif ends too (thick here); twice,
+            # so weight and width both settle
+            for _ in range(2 if name in SC_LEVEL_GAIN else 0):
+                level_gain(up, tmp, *SC_LEVEL_GAIN[name])
+                capital_width(up, tmp, SC_LEVEL_GAIN[name][0])
+        elif op == "enlarge" and name.endswith(".sc"):
+            small_cap_stems(up, new)
+    elif ch in BOLD_STRAIGHT_HOOK:
+        straight_hook_stem(new, BOLD_STRAIGHT_HOOK[ch])
+    drop_specks(new)
+    fill_pinholes(new, up[name], up)
+    if op == "midtilde" and not italic:
+        fill_stem_notches(new)
+    # the steps and ledges where the recipe's piece meets the base, a
+    # unit or two off: cleaned as the font is after (fix), not counted
+    # as faults (the stroked bases, 2026-10-28: Ƴ ʄ ҳ)
+    fix(up, [tmp])
+    if italic and name in ITALIC_BOLD_SMOOTH_CURVES:
+        derive.smooth_curves(new, *ITALIC_BOLD_SMOOTH_CURVES[name])
+    # the side bearings the source style gave the letter after its recipe
+    # (the Regular's data_regular.SPACING, the Italic's ITALIC_SIDEBEARINGS):
+    # the recipe's width alone has its hook counted in again
+    if italic:
+
+        delta = SOURCE_SPACING.get(name)
+    else:
+        delta = derive.SPACING.get(ch)
+    if delta:
+        sidebearings(up, {tmp: delta})
+
+
 def rederive(source, font, italic, whole):
     """Derived letters left emboldened whole because they cut their base (a
     hook replacing a stem's end, Ц's tail its foot) made again by their
@@ -1610,7 +1680,11 @@ def rederive(source, font, italic, whole):
     if os.environ.get("MYIA_DUMP_FRAME"):
         # the style's font as the recipes meet it, for scripts/only_glyph.py
         # (the saved font is later shifted: its frame is not the recipes')
+        # stamped with what it was made from, so only_glyph can say when it
+        # no longer is (2026-11-27: a three-day-old frame went unnoticed)
+        font.lib[FRAME_KEY] = frame_stamp(italic)
         font.save(os.environ["MYIA_DUMP_FRAME"], overwrite=True)
+        del font.lib[FRAME_KEY]
     up = copy.deepcopy(font)
     if italic:
 
@@ -1668,6 +1742,9 @@ def rederive(source, font, italic, whole):
             op, base, band = (ITALIC_BOLD_RECIPES if italic else BOLD_RECIPES)[ch]
             if isinstance(band, str):  # placed on the Bold's own glyphs
                 band = {"fishhook_band": fishhook_band, "lezh_band": lezh_band}[band](up)
+            elif callable(band):  # measured on the style's own glyphs (recipe_bands)
+                up.lib[derive.STROKE_KEY] = (1, 1)  # (as own recipes are drawn, below)
+                band = band(up, source, name)
         up.lib[derive.STROKE_KEY] = (1, 1) if own else scale
         if name in keep:
             whole[name] = f"{op}: emboldened whole, made again from the Bold it misses ({keep[name]})"
@@ -1703,54 +1780,7 @@ def rederive(source, font, italic, whole):
         finally:
             up.glyphOrder = order
             up.lib["public.openTypeCategories"] = cats
-        if italic:
-
-            joins = {**ITALIC_JOINS, **ITALIC_BOLD_JOINS}
-            if ch in joins:  # as the Italic's, before it is judged
-                derive.fair_joins(new, *joins[ch])
-            from make_italic import round_corner, straighten_run
-
-            if ch in ITALIC_RUNS:  # as the Italic's (җ's descender into its c)
-                straighten_run(new, *ITALIC_RUNS[ch])
-            if ch in ITALIC_CORNERS:
-                round_corner(new, *ITALIC_CORNERS[ch])
-            from make_italic import capital_width, level_gain, uncrossed
-
-            if name in SC_DRAFT_SIDES:
-                # as the Italic makes them: uncrossed, the main stroke brought
-                # to the capital's proportion (small_cap_stems took n.sc's
-                # straight diagonal for a stem)
-                uncrossed(up, tmp)
-                # and its ink to h.sc's as the capital's to H's: the gain
-                # widens the Bold Italic's serif ends too (thick here); twice,
-                # so weight and width both settle
-                for _ in range(2 if name in SC_LEVEL_GAIN else 0):
-                    level_gain(up, tmp, *SC_LEVEL_GAIN[name])
-                    capital_width(up, tmp, SC_LEVEL_GAIN[name][0])
-            elif op == "enlarge" and name.endswith(".sc"):
-                small_cap_stems(up, new)
-        elif ch in BOLD_STRAIGHT_HOOK:
-            straight_hook_stem(new, BOLD_STRAIGHT_HOOK[ch])
-        drop_specks(new)
-        fill_pinholes(new, up[name], up)
-        if op == "midtilde" and not italic:
-            fill_stem_notches(new)
-        # the steps and ledges where the recipe's piece meets the base, a
-        # unit or two off: cleaned as the font is after (fix), not counted
-        # as faults (the stroked bases, 2026-10-28: Ƴ ʄ ҳ)
-        fix(up, [tmp])
-        if italic and name in ITALIC_BOLD_SMOOTH_CURVES:
-            derive.smooth_curves(new, *ITALIC_BOLD_SMOOTH_CURVES[name])
-        # the side bearings the source style gave the letter after its recipe
-        # (the Regular's data_regular.SPACING, the Italic's ITALIC_SIDEBEARINGS):
-        # the recipe's width alone has its hook counted in again
-        if italic:
-
-            delta = SOURCE_SPACING.get(name)
-        else:
-            delta = derive.SPACING.get(ch)
-        if delta:
-            sidebearings(up, {tmp: delta})
+        finish_recipe(up, new, ch, name, op, tmp, italic)
         old = up[name]
         made, was = Outline(up, tmp), Outline(up, name)
         faults = len(lint_glyph(up, new)) - len(lint_glyph(up, old))

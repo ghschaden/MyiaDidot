@@ -1,6 +1,7 @@
 """The generators' data modules hold data only (T5, docs/claude/tables.md):
-each imports only other data modules, italic_geometry and the standard
-library, its functions read nothing but their own arguments and math,
+each imports only other data modules, italic_geometry, recipe_bands (the
+bands that read their base, 2026-11-27: at import only the standard library,
+held below) and the standard library, its functions read nothing but their own arguments and math,
 and its generator re-exports every name, so GENERATOR.NAME still reads
 the table.
 """
@@ -34,7 +35,8 @@ def test_imports_only_data(path):
             continue
         for mod in mods:
             top = mod.split(".")[0]
-            assert top.startswith("data_") or top == "italic_geometry" or top in sys.stdlib_module_names, \
+            assert (top.startswith("data_") or top in ("italic_geometry", "recipe_bands")
+                    or top in sys.stdlib_module_names), \
                 f"{path.name}:{node.lineno} imports {mod}"
 
 
@@ -63,3 +65,14 @@ def test_generator_reexports(path):
                 names |= {x.id for x in ast.walk(target) if isinstance(x, ast.Name)}
     missing = sorted(n for n in names if getattr(generator, n, None) is not getattr(data, n))
     assert not missing, f"{GENERATOR[path.stem]} does not re-export {missing}"
+
+
+def test_recipe_bands_imports_only_stdlib_at_top():
+    """recipe_bands reaches derive only inside a band's call, so a data
+    module that imports it still imports no generator"""
+    tree = ast.parse((ROOT / "scripts" / "recipe_bands.py").read_text())
+    for node in tree.body:
+        if isinstance(node, (ast.Import, ast.ImportFrom)):
+            mods = [a.name for a in node.names] if isinstance(node, ast.Import) else [node.module]
+            for mod in mods:
+                assert mod.split(".")[0] in sys.stdlib_module_names, f"recipe_bands.py:{node.lineno} imports {mod}"

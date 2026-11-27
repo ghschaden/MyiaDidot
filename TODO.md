@@ -988,6 +988,38 @@ alongside, each when the phase that needs it comes up.
 
 ### Alongside the phases
 
+- [ ] Checks for what the designer found by eye on 2026-11-27 (asked: "do
+      all of those"). Done with the tails commit: `make_bold.finish_recipe`,
+      the passes after a recipe's build, shared by rederive and only_glyph
+      (the trial had lacked smooth_curves); the dumped frame stamped with
+      its source's digest and the generator files' hashes
+      (`make_bold.frame_stamp`), only_glyph warning by name what changed;
+      `recipe_bands.Tail` refusing a run that is no stem (0.6-1.4 of o's);
+      `tests/test_recipe_bands.py`, the tails' rule (the stem straight from
+      the line's top to -40 within 3 units: HEAD failed Ʈ ɖ ɽ.sc ʈ.sc Ɽ, and
+      it found ɻ's cut box trimming the stem). A generic check of every
+      recipe's stems against its base was tried and dropped (bowls taken
+      for stems, columns running on into curls): each family's test
+      instead, as it moves to bands.
+      Open, in order:
+      1. `scripts/quality/degenerate.py` (built, not wired): zero-length
+         segments, lined-up nodes not marked smooth, curves under 16 units
+         between corners. On HEAD: Regular 48 glyphs, Italic 90, Bold 59,
+         Bold Italic 138 (T's 732,1352 among them). The first two are mended
+         exactly (no visible change): a finishing pass in the generators and
+         `--fix` for the Regular, then the lint holds them at zero; slivers
+         into glyph_lint as a kind with its list (some are drawn serif
+         corners). One commit, `make diffenator` over all four styles.
+      2. `scripts/quality/curvature.py` (prototype): curvature jumps at
+         smooth joins (none in T: stroke_bold refits G2) and flat spots
+         inside a curve (T's long bracket piece 0.43 inside against 2.48 at
+         its ends; the Italic's 2.4 at most). Per curve it lists 395 Bold
+         Italic glyphs and, filtered by turn, loses T (its flat piece hardly
+         turns: the turning crowded into its neighbours). Next: read a
+         whole smooth run (bracket to stem) and compare its curvature
+         profile with the source's run; sheet of the top finds for the
+         designer before any list.
+
 - [ ] One sheet of the 36 italic composites whose parts keep the
       Regular's vertical offsets (`: ;`, `÷ ±`, inferiors, denominators)
       for the designer (`docs/claude/collisions.md`, its last section);
@@ -1461,6 +1493,44 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
          Italic's a constant (275, ɻ 291, Ɽ Ʈ 307, small caps 284).
          Exceptions: ɻ's own curl (165/145), Ɽ on Ʈ's curl unscaled, the
          small caps' (180/155, hairline 55), ɳ's hairline 50.
+         2026-11-27, the Bold Italic's nine, in the working copy (not
+         generated, not committed): scripts/recipe_bands.py (Tail),
+         data_bold_italic's entries as Tail bands, make_bold.rederive and
+         only_glyph call a callable band (STROKE_KEY set to (1, 1) first);
+         only_glyph's small caps no longer crash on ord(). The draft's pick
+         was wrong for n d ɹ (-1 is the exit hairline; the leg is 1). Not a
+         pure refactor: the copied centres were 3-21 units off the stems
+         (Ʈ 692 against 711, ʈ.sc 538.5 / 558, ɽ.sc 332.5 / 353.5, Ɽ 429 /
+         438.5, ɖ 827 / 812, ɻ 554.75 / 558.5, ʈ ɭ 5-6; ɳ right), measured on
+         built glyphs, and the build pulled each stem onto its line: Ʈ Ɽ
+         ʈ.sc leaned 8-10 units below the cut, ɽ.sc's left edge bulged 40-60
+         (since 4008878b's band -130..130). Scratch runs HEAD and new (full
+         Bold Italic, --out, frame dumped to build/only_glyph/): only the
+         nine differ (advances ɖ +1 ɭ +5 ɳ -1 ɻ +8 ʈ +6 ʈ.sc +18), every stem
+         on its base's edges; lint clean; checks kink 67 -> 61, base 4 -> 3
+         (ɻ's 55 % gone), new: ʈ ɭ extreme 5 at y 57 (the ring's handles),
+         ʈ.sc smooth 2.8 at -89; ʈ.sc's curl kink at -221 3.9 -> 4.7 (the
+         curl's own, outside any join band: tried -180..130, none moves it).
+         Sheet for the designer: proofs/2026-11/bolditalic-tails-measured-2026-11-27.pdf.
+         Then: make generate, baselines, commit; the Italic's eleven after.
+         Approved by the designer 2026-11-27. With it: ʈ ɭ's curl sliver
+         merged (ITALIC_BOLD_SMOOTH_CURVES -135..-105), ɻ's arm cut 10
+         units clear of the stem (it trimmed the stem 12 units, a kink at
+         400; found by the new test).
+         The Italic's tails, audited on HEAD: Ʈ Ɽ ʈ ɭ straight within 2
+         units, ɽ.sc ʈ.sc 3-4: their Tail refactor nearly pure.
+- [ ] The Bold Italic's T: the bracket under the left arm is not round (the
+      designer, 2026-11-27, seen on Ʈ). stroke_bold makes it four curves
+      from the Italic's two (redrawn 2026-11-11): 732,1352 a corner with a
+      zero-length line after it, 601,1315 and 512,1242 close together, and
+      512 -> 363,1041 nearly straight (handles on the chord), so the turn
+      crowds under the arm; the right bracket is one curve and round. No
+      check sees it (tangents continuous; nothing measures how evenly a
+      curve turns). Mend locally: the left bracket redrawn as two curves on
+      the Italic's node structure at the Bold Italic's weight, T marked
+      drawn; Ʈ Ţ Ť Ț Ƭ Ⱦ ₮ follow at the next generate. Sheet first.
+      Worth a sweep afterwards: other Bold Italic brackets stroked into
+      short curves with a long flat one (a curvature-evenness measure).
       2. Cyrillic descenders (Қ Җ җ қ ң ҷ ҳ): Italic 8
          (data_italic.descender), Bold Italic 5. The same `Tail`, curling
          left (cw), the stroke possibly leaning (x0 != x1), descender's
@@ -1471,6 +1541,10 @@ Model: Opus for the comparison and family faults, Sonnet for the lists.
          308, қ 308, җ 312, Қ 350, Җ 355, ҳ 287), its radii copied per
          letter. Drafted (tails_entries.py): the Italic's six and the Bold
          Italic's five as exact refactors (start -150, radii as copied);
+         audited 2026-11-27 in the frame: not exact, the Bold Italic's five
+         copied lines stand left of their legs (Қ -11, Җ -17, җ -24, қ -16,
+         ң -8 and 11 too wide), the build pulling the legs 5-10 at the cut;
+         К's and Ж's legs are diagonals: the band must measure the lean too;
          the Italic's depth for the Bold Italic (rule A) a second, visible
          step for the designer's sheet. ҳ's diagonal stays numbers.
       3. Grafts, a piece of another letter scaled onto a stem (ɧ ɱ ɰ, in

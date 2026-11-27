@@ -4,7 +4,47 @@
 	<advance width="1422"/>
 	<outline>
 		<contour>
-			<point x="471" y="200" type="line"/>
+			<point x="769" y="200" type="line"/>
+			<point x="765" y="184" type="line"/>
+			<point x="756" y="150" type="line"/>
+			<point x="686" y="-108" type="line" smooth="yes"/>
+			<point x="677" y="-140"/>
+			<point x="673" y="-170"/>
+			<point x="673" y="-194" type="curve" smooth="yes"/>
+			<point x="673" y="-227"/>
+			<point x="681" y="-248"/>
+			<point x="697" y="-248" type="curve" smooth="yes"/>
+			<point x="724" y="-248"/>
+			<point x="761" y="-188"/>
+			<point x="783" y="-113" type="curve" smooth="yes"/>
+			<point x="784" y="-110"/>
+			<point x="785" y="-106"/>
+			<point x="786" y="-102" type="curve" smooth="yes"/>
+			<point x="808" y="-23"/>
+			<point x="889" y="42"/>
+			<point x="969" y="42" type="curve" smooth="yes"/>
+			<point x="1035" y="42"/>
+			<point x="1079" y="-4"/>
+			<point x="1079" y="-65" type="curve" smooth="yes"/>
+			<point x="1079" y="-77"/>
+			<point x="1078" y="-89"/>
+			<point x="1074" y="-102" type="curve" smooth="yes"/>
+			<point x="1070" y="-115"/>
+			<point x="1065" y="-127"/>
+			<point x="1059" y="-139" type="curve" smooth="yes"/>
+			<point x="1057" y="-143"/>
+			<point x="1055" y="-147"/>
+			<point x="1052" y="-151" type="curve"/>
+			<point x="1040" y="-170"/>
+			<point x="1025" y="-186"/>
+			<point x="1009" y="-200" type="curve" smooth="yes"/>
+			<point x="935" y="-264"/>
+			<point x="811" y="-307"/>
+			<point x="681" y="-307" type="curve" smooth="yes"/>
+			<point x="495" y="-307"/>
+			<point x="367" y="-219"/>
+			<point x="397" y="-109" type="curve" smooth="yes"/>
+			<point x="481" y="200" type="line"/>
 			<point x="773" y="1294" type="line" smooth="yes"/>
 			<point x="783" y="1330"/>
 			<point x="775" y="1352"/>
@@ -36,46 +76,8 @@
 			<point x="1153" y="1352" type="curve" smooth="yes"/>
 			<point x="1134" y="1352" type="line" smooth="yes"/>
 			<point x="1093" y="1352"/>
-			<point x="1073" y="1335"/>
+			<point x="1072" y="1335"/>
 			<point x="1061" y="1294" type="curve" smooth="yes"/>
-			<point x="747" y="150" type="line"/>
-			<point x="668" y="-106" type="line" smooth="yes"/>
-			<point x="659" y="-138"/>
-			<point x="655" y="-168"/>
-			<point x="655" y="-192" type="curve" smooth="yes"/>
-			<point x="655" y="-225"/>
-			<point x="663" y="-247"/>
-			<point x="680" y="-247" type="curve" smooth="yes"/>
-			<point x="707" y="-247"/>
-			<point x="745" y="-187"/>
-			<point x="768" y="-111" type="curve" smooth="yes"/>
-			<point x="769" y="-108"/>
-			<point x="770" y="-104"/>
-			<point x="771" y="-100" type="curve" smooth="yes"/>
-			<point x="792" y="-20"/>
-			<point x="875" y="45"/>
-			<point x="955" y="45" type="curve" smooth="yes"/>
-			<point x="1022" y="45"/>
-			<point x="1066" y="0"/>
-			<point x="1066" y="-62" type="curve" smooth="yes"/>
-			<point x="1066" y="-74"/>
-			<point x="1064" y="-87"/>
-			<point x="1061" y="-100" type="curve" smooth="yes"/>
-			<point x="1058" y="-113"/>
-			<point x="1052" y="-125"/>
-			<point x="1046" y="-137" type="curve" smooth="yes"/>
-			<point x="1044" y="-141"/>
-			<point x="1041" y="-146"/>
-			<point x="1038" y="-150" type="curve"/>
-			<point x="1026" y="-168"/>
-			<point x="1012" y="-185"/>
-			<point x="995" y="-199" type="curve" smooth="yes"/>
-			<point x="920" y="-263"/>
-			<point x="795" y="-307"/>
-			<point x="664" y="-307" type="curve" smooth="yes"/>
-			<point x="476" y="-307"/>
-			<point x="348" y="-217"/>
-			<point x="378" y="-107" type="curve" smooth="yes"/>
 		</contour>
 	</outline>
 	<anchor name="DotBelow" x="568" y="-20"/>
@@ -87,11 +89,11 @@
 			<key>org.myiadidot.accepted</key>
 			<dict>
 				<key>date</key>
-				<string>2026-11-26</string>
+				<string>2026-11-27</string>
 				<key>glyph</key>
-				<string>db66c5aa13fc</string>
+				<string>8bb357c9eb43</string>
 				<key>review</key>
-				<string>proofs/2026-11/bolditalic-tail-depths-2026-11-26.pdf</string>
+				<string>proofs/2026-11/bolditalic-tails-measured-2026-11-27.pdf</string>
 			</dict>
 			<key>org.myiadidot.draft</key>
 			<true/>

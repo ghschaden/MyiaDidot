@@ -100,6 +100,10 @@ Moved from CLAUDE.md (its ground rules apply).
   pass its SHA-256 to `--accept-report`; the plugin may ask for approval) and
   say in the commit what changed and why.
 - Never commit with `--no-verify` unless explicitly asked to.
+- Recipe bands (2026-11-27): tests/test_recipe_bands.py holds each family
+  of `scripts/recipe_bands.py` to its rule; the tails' stems run straight
+  from the line's top to -40 within 3 units (ɳ exempt: n's leg tapers;
+  ɖ read on its right edge only, d's bowl meets the left).
 - Contour direction (2026-11-24): tests/test_winding.py holds every style
   to the Regular's (outsides clockwise, counters counter-clockwise, each
   contour by its depth; `scripts/winding.py UFO ...` lists what winds

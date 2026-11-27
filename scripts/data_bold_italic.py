@@ -6,6 +6,7 @@ italic_geometry and the standard library (tests/test_data_modules.py).
 """
 
 from data_bold import AY, BOLD_CUT, BOLD_CUT_GREEK, OVALS
+from recipe_bands import BIG, Tail
 
 # the Bold Italic's, from the Italic's lighter stems (data_italic.WEIGHT 10):
 # its stems 0.96 of the Bold's, as the Italic's of the Regular's (reference
@@ -534,14 +535,12 @@ ITALIC_BOLD_RECIPES = {
     # leg, 836 and 229, it stood 52 left), the exit's cut at 1070 (at 1000 it
     # took a slice off the leg at 300-450: the pinch); ɖ on d's stem (827,
     # 280; emboldened whole its tail was thin where it met the stem)
-    "ɳ": ("attach", "n", ("x", [(700, -10000, 10000, 200), (1070, -10000, 10000, 450)],
-                          [("line", ((888, 210), (888, -113), 234), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 888, -113, 234), "dir": 270, "turn": "ccw", "r": (157, 137),
-                                     "sweep": 170, "ball": 117, "t": (234, 50)}, (0, 0), (1, 1, 0, 0))])),
-    "ɖ": ("attach", "d", ("x", [(700, -10000, 10000, 260), (990, -10000, 10000, 450)],  # (200 kept d's foot curving in: a notch of 8)
-                          [("line", ((827, 270), (827, -82), 280), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 827, -82, 280), "dir": 270, "turn": "ccw", "r": (188, 164),
-                                     "sweep": 170, "ball": 140, "t": (280, 58)}, (0, 0), (1, 1, 0, 0))])),
+    # (Since 2026-11-27 each is a recipe_bands.Tail that measures its stem
+    # in the frame; the numbers in these notes are the stems it measured
+    # then. The cut boxes count from the stem's centre.)
+    "ɳ": ("attach", "n", Tail("n", 200, 210, ((-188, -BIG, BIG, 200), (182, -BIG, BIG, 450)), pick=1, th=50)),
+    # (260 kept d's foot; at 200 it curved in: a notch of 8)
+    "ɖ": ("attach", "d", Tail("d", 260, 270, ((-127, -BIG, BIG, 260), (163, -BIG, BIG, 450)), pick=1)),
     # ɻ: the Italic's tail (data_italic: ɹ's stem run on and curled right)
     # on the Bold Italic's ɹ, both its edges straight on from the stem's at
     # the cut (453.5 and 656 here, the upright frame plus 144.5), 202.5
@@ -549,11 +548,12 @@ ITALIC_BOLD_RECIPES = {
     # half the tail. Emboldened whole the hook's inside closed to a slit;
     # with the Italic's taper the left edge bent into the tail (the
     # designer, 2026-11-26: the left edge straight, the right as it is)
-    "ɻ": ("attach", "uni0279", ("x", [(450, -10000, 10000, 200), (648, 200, 10000, 400)],
-                                [("line", ((554.75, 250), (554.75, -119), 202.5), (0, 0), (1, 1, 0, 0)),
-                                 ("curl", {"at": ("pt", 554.75, -119, 202.5), "dir": 270, "turn": "ccw",
-                                           "r": (165, 145), "sweep": 170, "ball": 101, "t": (202.5, 55)},
-                                  (0, 0), (1, 1, 0, 0))])),
+    # (the second cut takes ɹ's hanging arm, 10 units clear of the stem's
+    # right edge: at 93.25 from the centre, copied, it trimmed the stem 12
+    # units from 200 to 400, a kink at 400 and the edge 6 off below,
+    # tests/test_recipe_bands.py, 2026-11-27)
+    "ɻ": ("attach", "uni0279", Tail("uni0279", 250, 250, ((-104.75, -BIG, BIG, 200), (115.5, 200, BIG, 400)),
+                                    pick=1, r=(165, 145), th=55)),
     # Ɽ Ʈ ɽ.sc ʈ.sc: the Italic's (data_italic.retroflex: the foot serif cut
     # away, the stem run on and curled right), on the Bold Italic's stem
     # (its centre and weight, 290 or 299 thick at the cut), the ball half
@@ -561,40 +561,22 @@ ITALIC_BOLD_RECIPES = {
     # whole, the tail stood left of the stem and heavier than it
     # (Ɽ's stem is 298 at its cut: the tail at R's 290 stood 9
     # units in from its right edge, a step at 120, 2026-11-03)
-    "Ɽ": ("attach", "R", ("c", [(-10000, -10000, 950, 120)],
-                          [("line", ((429, 160), (429, -107), 309), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 429, -107, 309), "dir": 270, "turn": "ccw", "r": (195, 170),
-                                     "sweep": 170, "ball": 154, "t": (309, 60)}, (0, 0), (1, 1, 0, 0))])),
-    "Ʈ": ("attach", "T", ("c", [(-10000, -10000, 10000, 150)],
-                          [("line", ((692, 200), (692, -107), 290), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 692, -107, 290), "dir": 270, "turn": "ccw", "r": (195, 170),
-                                     "sweep": 170, "ball": 145, "t": (290, 60)}, (0, 0), (1, 1, 0, 0))])),
-    "ɽ.sc": ("attach", "r.sc", ("s", [(-10000, -10000, 700, 120)],
-                                [("line", ((332.5, 160), (332.5, -102), 299), (0, 0), (1, 1, 0, 0)),
-                                 ("curl", {"at": ("pt", 332.5, -102, 299), "dir": 270, "turn": "ccw",
-                                           "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
-                                  (0, 0), (1, 1, 0, 0))])),
+    # (Ɽ on Ʈ's curl unscaled; the cut right of the stem, 521 from its
+    # centre, keeps R's leg)
+    "Ɽ": ("attach", "R", Tail("R", 120, 160, ((-BIG, -BIG, 521, 120),), frame="c", r=(195, 170), th=60)),
+    "Ʈ": ("attach", "T", Tail("T", 150, 200, ((-BIG, -BIG, BIG, 150),), frame="c")),
+    "ɽ.sc": ("attach", "r.sc", Tail("r.sc", 120, 160, ((-BIG, -BIG, 367.5, 120),), frame="s", r=(180, 155), th=55)),
     # ʈ: the Italic's (make_italic: t's tail and foot cut away), on the Bold
     # Italic's stem (121-395 upright, its centre 258, since step C; at the
     # old 121-359 the stem narrowed 28 to the foot): with the Italic's
     # numbers the cut at 300 took a slice off the stem, a step at 350; the
     # curl as ɭ's
-    "ʈ": ("attach", "t", ("x", [(-10000, -10000, 10000, 300), (396, -10000, 10000, 600)],
-                          [("line", ((258, 350), (258, -86), 274), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 258, -86, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
-                                     "sweep": 170, "ball": 137, "t": (274, 57)}, (0, 0), (1, 1, 0, 0))])),
+    "ʈ": ("attach", "t", Tail("t", 350, 350, ((-BIG, -BIG, BIG, 300), (138, -BIG, BIG, 600)))),
     # ɭ: as ʈ, on the Bold Italic's l (128-402 upright, its centre 265), the
     # curl ɽ's scaled to the stem (2026-11-26: emboldened whole from the
     # Italic's, its stem 25 heavier since step C closed the counter by the ball)
-    "ɭ": ("attach", "l", ("x", [(-10000, -10000, 10000, 300), (402, -10000, 10000, 600)],
-                          [("line", ((265, 350), (265, -86), 274), (0, 0), (1, 1, 0, 0)),
-                           ("curl", {"at": ("pt", 265, -86, 274), "dir": 270, "turn": "ccw", "r": (184, 161),
-                                     "sweep": 170, "ball": 137, "t": (274, 57)}, (0, 0), (1, 1, 0, 0))])),
-    "ʈ.sc": ("attach", "t.sc", ("s", [(-10000, -10000, 10000, 120)],
-                                [("line", ((538.5, 160), (538.5, -102), 299), (0, 0), (1, 1, 0, 0)),
-                                 ("curl", {"at": ("pt", 538.5, -102, 299), "dir": 270, "turn": "ccw",
-                                           "r": (180, 155), "sweep": 170, "ball": 150, "t": (299, 55)},
-                                  (0, 0), (1, 1, 0, 0))])),
+    "ɭ": ("attach", "l", Tail("l", 350, 350, ((-BIG, -BIG, BIG, 300), (137, -BIG, BIG, 600)))),
+    "ʈ.sc": ("attach", "t.sc", Tail("t.sc", 120, 160, ((-BIG, -BIG, BIG, 120),), frame="s", r=(180, 155), th=55)),
     # ɧ: the Italic's (ȷ's descender on ɦ's leg where it is still whole: 251
     # at 250, centred at 714.5), the exit stroke cut away beyond 874
     "ɧ": ("attach", "uni0266", ("x", [(480, -10000, 10000, 250), (890, -10000, 10000, 450)],
@@ -710,7 +692,10 @@ ITALIC_BOLD_SMOOTH_COUNTER = {"q.sc": 16}
 # style's would take); ғ the same where its bar meets г's stem (a 3-unit
 # curve, 27 degrees, once rebuilt on г)
 # ɳ: n's smooth node at 887,787 a unit off after fair_joins (2.0 degrees)
-ITALIC_BOLD_SMOOTH_CURVES = {"uni04B1": (480, 720), "uni0493": (395, 420), "uni0273": (770, 800)}
+# (ʈ ɭ, 2026-11-27: on their measured stems the curl's inner edge kept a
+# 13-unit curve between two corner nodes where the ball's ring leaves the line)
+ITALIC_BOLD_SMOOTH_CURVES = {"uni04B1": (480, 720), "uni0493": (395, 420), "uni0273": (770, 800),
+                             "uni0288": (-135, -105), "uni026D": (-135, -105)}
 ITALIC_BOLD_ROUNDER = {
     "uni044B.sc": "ы.sc: by weight its bowl closes up on the stem (5 units apart, the rounder way 18)",
     "uni027D": "ɽ: keep its established spacing reference; its final body and hook are rebuilt from r",

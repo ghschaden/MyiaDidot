@@ -106,7 +106,9 @@ by grep at 32a13088; the session checks again).
    function beside it (the text goes with the table; the function gets
    `# (data_bold.NAME)`). Renaming is not T5's.
 5. **A data module imports only data**: other `data_*` modules,
-   `italic_geometry` (make_italic's `ANCHOR_NUDGE` uses `SLANT`) and
+   `italic_geometry` (make_italic's `ANCHOR_NUDGE` uses `SLANT`),
+   `recipe_bands` (bands that measure their base when called; at import
+   only the standard library, a test holds it; 2026-11-27) and
    the standard library. No numpy (smallcaps.py's note: `arithmetic`
    must load before numpy), no generator, no `derive`. A test holds
    it (step 4).
