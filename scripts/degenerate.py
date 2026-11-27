@@ -14,7 +14,7 @@ T and ʈ ɭ; no check saw them):
 The first two are mended exactly, nothing moving (`mend`): the zero
 segment's end point deleted (a zero curve's handles with it, when they sit
 on the point too), the lined-up point marked smooth. The generators mend
-what they write (derive.py, smallcaps.py, make_bold.finalize, which the
+what they write (derive.py, smallcaps.py, style_write.finalize, which the
 Italic's writer shares); `--fix` mends the glyphs drawn by hand (the
 Regular's, and those kept as drawn in a generated style), then make
 normalize. glyph_lint.py reports all three kinds (KINDS there); zero and

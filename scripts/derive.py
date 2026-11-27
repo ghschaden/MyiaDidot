@@ -1341,7 +1341,7 @@ class CubicPen(BasePen):
 def draw_path(font, src, dst, out, smooth=False):
     """Draw a merged outline (a pathops Path or a recording) into dst,
     rounded and in the source's contour direction. smooth: rounded by
-    make_bold.round_smoothly, not point by point: a letter made small (a
+    style_write.round_smoothly, not point by point: a letter made small (a
     superior) has handles of some 20 units, which plain rounding turns by
     up to 3 degrees, and in the italics that break is sheared before the
     style's own smooth rounding, which then takes it for drawn."""
@@ -1361,7 +1361,7 @@ def draw_path(font, src, dst, out, smooth=False):
         pen = ReverseContourPen(pen)
     rec.replay(pen)
     if smooth:
-        from make_bold import round_smoothly
+        from style_write import round_smoothly
 
         for contour in dst.contours[first:]:
             round_smoothly(contour.points)

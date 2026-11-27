@@ -1079,13 +1079,20 @@ alongside, each when the phase that needs it comes up.
       proven by every line moved, every value equal and `make reproduce`;
       `tests/test_data_modules.py`. derive went before make_italic (its
       BIG); what else differed is at the end of tables.md.
-- [ ] T5b. The cycle of functions between the generators: make_italic's
+- [x] T5b. The cycle of functions between the generators: make_italic's
       top-level import of make_bold's `mark_like`, `redraw`, `write`,
       `WHOLE_KEY`, make_bold's function-local imports of make_italic's
       functions (`round_corner`, `straighten_run`, `build_own`,
       `level_gain`, `capital_width`, `uncrossed`, `recipe_scale`,
       `serbian_bars`, `serbian_gje`). A module of what both use, a
       machinery move with its own proof (docs/claude/tables.md).
+      Done 2026-11-27: make_bold's write path (`WHOLE_KEY`, `mark_like`,
+      `redraw`, `refit_horns`, `round_smoothly`,
+      `separate_breve_grave_stacks`, `finalize`, `write`) moved verbatim
+      into `scripts/style_write.py`; make_italic imports it and no longer
+      make_bold, make_bold imports make_italic's nine functions and
+      `SOURCE_KEY` at the top. One way now, no cycle. Proven as T5 was
+      (docs/claude/tables.md, "T5b").
 - [x] T6. One mark for "drawn and kept": today the Italic's
       `org.myiadidot.italicSource` = "drawn", the bolds'
       `org.myiadidot.drawn`, and a cleared draft flag freezes an Italic

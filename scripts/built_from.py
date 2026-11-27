@@ -12,7 +12,7 @@ it (derive.py --redraft for an unreviewed draft) or, having looked at it,
 --accept: the glyph still fits, its fingerprints are taken anew.
 
 Only the Regular carries the key: the generated styles are checked by
-`make reproduce`, and make_bold.write drops it.
+`make reproduce`, and style_write.write drops it.
 """
 
 import argparse

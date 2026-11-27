@@ -8,7 +8,7 @@ A glyph's lib KEY records the visual acceptance: the date, the
 review it was given in (a doc or proof) and the fingerprint of the glyph
 accepted (built_from.fingerprint: outline, width, anchors). It does not
 freeze anything: unlike marking it drawn (scripts/drawn.py), the
-generators still make the glyph anew, and make_bold.write carries the
+generators still make the glyph anew, and style_write.write carries the
 key over to it. A glyph that has changed since is reported here and by
 tests/test_accepted.py: look at it again, then accept it anew (or remove
 the key with --withdraw).

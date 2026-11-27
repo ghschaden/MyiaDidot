@@ -842,7 +842,7 @@ RELEVEL = {"uni0267", "uni019C", "uni028A", "uni02C1", "uni026C"}
 # 2026-11-22: the ring's extremes, 6-7 units past, split at the shear;
 # l_belt's bridges hold without the exact points)
 POINT_REPAIRS = {"uni2135"}
-# Rounded plainly, not smoothly (make_bold.round_smoothly): the repairs of
+# Rounded plainly, not smoothly (style_write.round_smoothly): the repairs of
 # ℵ (aleph.py) and of ɬ Ɬ's belts (l_belt.py) match their exact points;
 # ȷ's descender is cut and attached for the Bold Italic ɱ and ɧ, where a
 # unit moves the cut; ƹ's smoothed handle takes its top off the x-height

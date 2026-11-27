@@ -14,7 +14,7 @@ the session that carries it out (Opus). Line numbers are those of
 |---|---|---|
 | Italic | `org.myiadidot.italicSource` = `"drawn"` (110 glyphs, 98 of them redrawn by redraw.py, beside its record `org.myiadidot.redrawn`) | `make_italic.reviewed` (132-138), `kept` (2758-2761) |
 | Italic | a draft (italicSource `derived`, `figure draft`, `small cap draft`) whose `org.myiadidot.draft` and `org.myiadidot.smallcapDraft` are both cleared, **as long as `MADE_WITH` is unchanged** (4 glyphs: o.sc q.sc zero.zero zerooldstyle.zero) | the same |
-| Bold, Bold Italic | `org.myiadidot.drawn` = {date, why, source} (Bold 24, Bold Italic 57), written by `scripts/drawn.py` | `drawn.saved` in make_bold.main (2590-2594), make_bold.write (1918-1928), smallcaps.main (722-743) |
+| Bold, Bold Italic | `org.myiadidot.drawn` = {date, why, source} (Bold 24, Bold Italic 57), written by `scripts/drawn.py` | `drawn.saved` in make_bold.main (2590-2594), style_write.write, smallcaps.main (722-743) |
 
 Beside them, marks that keep nothing and are not touched by T6:
 `org.myiadidot.accepted` (a review's stamp, accepted.py: carried over,

@@ -75,7 +75,7 @@ Moved from CLAUDE.md (its ground rules apply).
   make_bold.py clean specks, twists, pinholes, steps and ledges from what they
   make; `glyph_lint.py UFO --fix` does it for drawn glyphs. The zero
   segments and unsmooth corners are mended exactly where every style is
-  written (derive.py, smallcaps.py, make_bold.finalize) and held at none;
+  written (derive.py, smallcaps.py, style_write.finalize) and held at none;
   `degenerate.py UFO --fix` for drawn glyphs.
 - Runs turning unlike their source's (`tests/test_curvature.py`,
   `scripts/quality/curvature.py`): the Bold's and the Bold Italic's runs
@@ -118,6 +118,6 @@ Moved from CLAUDE.md (its ground rules apply).
   to the Regular's (outsides clockwise, counters counter-clockwise, each
   contour by its depth; `scripts/winding.py UFO ...` lists what winds
   against it). The generators turn their output before saving
-  (winding.orient in make_bold.write and smallcaps); a glyph drawn by
+  (winding.orient in style_write.write and smallcaps); a glyph drawn by
   hand or a script that writes a UFO directly must wind so too.
 

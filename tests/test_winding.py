@@ -2,7 +2,7 @@
 counter-clockwise (scripts/winding.py). A glyph wound both ways loses ink
 where one of its pieces is merged across another (ʢ's bar, 2026-11-24);
 the generators turn what they make the other way (winding.orient, in
-make_bold.write and smallcaps)."""
+style_write.write and smallcaps)."""
 
 import ufoLib2
 from ufoLib2.objects import Glyph

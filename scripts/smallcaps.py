@@ -774,7 +774,7 @@ def main():
     mend_font(font)  # zero segments, lined-up corners (degenerate.py)
     carry(accepted, font)
     restore(kept, font)
-    from winding import orient  # wound as the Regular (make_bold.write)
+    from winding import orient  # wound as the Regular (style_write.write)
 
     _, left = orient(font)
     if left:

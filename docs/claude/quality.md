@@ -71,7 +71,7 @@ Moved from CLAUDE.md (its ground rules apply).
   known lists rather than "fixing" them. Record the acceptance of
   a glyph with `scripts/accepted.py UFO GLYPH --date --review DOC` (lib
   `org.myiadidot.accepted`, with the glyph's fingerprint): it freezes
-  nothing, the generators carry it over (make_bold.write, smallcaps.py),
+  nothing, the generators carry it over (style_write.write, smallcaps.py),
   and tests/test_accepted.py fails when the glyph changes after: look
   again, accept anew. In the Italic the draft flags mean "made anew by the
   generator"; clearing one freezes the glyph (make_italic.reviewed), so do

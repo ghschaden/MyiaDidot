@@ -283,3 +283,31 @@ then the imports and pointers. What differed from the page:
   (BOLD_REBUILD's `derive.SPACING`) is a value and stays.
 - `tests/test_data_modules.py` also checks that each generator
   re-exports every name of its data modules as the same object.
+
+## T5b, carried out (2026-11-27)
+
+The cycle above is gone. make_bold's write path, the eight definitions
+make_italic used or that `write` reaches (`WHOLE_KEY`, `mark_like`,
+`redraw`, `refit_horns`, `round_smoothly`, `separate_breve_grave_stacks`,
+`finalize`, `write`), moved verbatim into `scripts/style_write.py`, which
+imports neither generator. make_italic imports `WHOLE_KEY mark_like redraw
+write` from there; make_bold imports them and re-exports `round_smoothly`
+and `separate_breve_grave_stacks` (read as make_bold.NAME by about a dozen
+scripts and a test), and takes make_italic's nine functions and
+`SOURCE_KEY` at the top instead of inside `follow_bases`, `rederive` and
+`main`. derive's local import of `round_smoothly` points at style_write
+(it loaded a second copy of make_bold when make_bold ran as a script).
+The make_italic side was left where it is: make_bold reading make_italic
+is one way, and moving its 23 functions (the nine and what they reach)
+would have split the Italic's constructions for nothing.
+
+Proof: (a) the lines removed from make_bold all reappear in style_write
+but the six local imports, now one at the top; style_write adds only its
+docstring and imports. (b) both generators' namespaces as at 5b9d7328,
+every value equal (callables by qualified name), make_italic's exactly;
+make_bold lost `BUILT_KEY`, `STACK_GAP_LC` (imports now unused),
+`finalize`, `refit_horns` (read through make_bold by nothing) and gained
+the ten make_italic names. `import make_italic` no longer loads
+make_bold. (c) the commit's hook, `make test` and `make reproduce`, the
+generator hashes (stale.py) taking style_write in through the import
+graph.

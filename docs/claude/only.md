@@ -85,7 +85,7 @@ wrote).
 `org.myiadidot.builtFrom` is not enough by itself, and the page T2 names
 it on should not be read so:
 
-- only the Regular carries it (`make_bold.finalize` drops it from every
+- only the Regular carries it (`style_write.finalize` drops it from every
   generated style): 304 of the Regular's 2197 glyphs, none in the Italic;
 - it records what `derive.py`'s recipes read, and `space_figures`' and
   `oldstyle_figures`' slashed zeros; not components (1236 composites),

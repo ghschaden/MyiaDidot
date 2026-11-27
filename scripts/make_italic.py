@@ -114,10 +114,10 @@ from drawn import is_drawn
 from fontforge_inputs import source_font
 from italic_geometry import ANGLE, CAP, EXTREME_PAST, SLANT, XH, shear, upright
 from l_belt import TARGETS as BELTED
-from make_bold import WHOLE_KEY, mark_like, redraw, write
 from respace import CUT_KEY, classifier, respace, sidebearings, undo
 from smallcaps import ink_bounds, ink_slice
 from space_figures import space as space_figures
+from style_write import WHOLE_KEY, mark_like, redraw, write
 
 ROOT = Path(__file__).resolve().parent.parent
 OS_XH, OS_CAP = 456, 712
