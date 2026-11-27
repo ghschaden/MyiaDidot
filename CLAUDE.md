@@ -128,6 +128,7 @@ The cycle (2026-11-22; a full one is about 45 minutes):
   extract (`git archive HEAD sources/... | tar -x -C SCRATCH`): nothing
   that writes `sources/` or runs a generator.
 
-Write long outputs to files and grep them; render only the glyphs in
+Write long outputs to files and grep them (logs, the agents' and the
+commits' with their messages, under `build/logs/`); render only the glyphs in
 question, small. One task per session (`/clear` between tasks): CLAUDE.md
 and git hold the state.

@@ -9,7 +9,7 @@ You run measuring scripts in the Myia Didot repository (/home/gerhard/src/MyiaDi
 
 Rules:
 - Run Python as `.venv/bin/python -I`. Build the fonts first if a script reads fonts/otf/ (`make otf`).
-- Write full outputs to files under build/quality/ and report from them.
+- Write full outputs to files under build/quality/ and report from them; logs of the runs themselves under build/logs/.
 - Never run the import scripts, never commit.
 
 Report:

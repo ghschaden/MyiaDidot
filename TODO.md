@@ -1190,10 +1190,14 @@ alongside, each when the phase that needs it comes up.
 - [ ] T10. The records in order (DEVELOPMENT.md's publication items,
       phase 10): FONT-DESIGN.md back to open tasks only (done 2026-11-15: 529 -> 96
       lines, the history in FONTLOG's appendix); the dated proofs (185) now in `proofs/2026-10/` and `proofs/2026-11/`
-      with `proofs/INDEX.md`, links updated (2026-11-15); still to do: the review
-      documents (about 70 in `docs/`) into dated subfolders with an
-      index, links updated; `build/` cleared of what no target makes
-      any more, the agents' logs under one name.
+      with `proofs/INDEX.md`, links updated (2026-11-15); the review
+      documents (81) in `docs/2026-10/` and `docs/2026-11/` with
+      `docs/INDEX.md`, every link rewritten, the 256 in the UFOs' acceptance
+      and drawn records too (2026-11-27); the agents' and commits' logs
+      under `build/logs/` (2026-11-27). Still to do: `build/` cleared of
+      what no target makes any more; the designer: nothing deleted for
+      the moment (2026-11-27; inventory: 39 entries used, 53 old review
+      work folders, 886 logs and scratch named nowhere).
 - [ ] T11. Forms against the references, systematically (asked by the
       designer 2026-11-24, after Ɦ's hook was found curled the wrong way,
       right over the counter onto the right stem, where Charis, Noto Serif,

@@ -107,7 +107,7 @@ CAP_SC_KERNING = {
 
 # Reviewed local small-cap pairs, applied after copying the capitals' pairs.
 # The italic Florin tails need room at a preceding foot serif or Q/R tail
-# (approved 2026-11-07, docs/hook-reference-reset-review-2026-11-07.md).
+# (approved 2026-11-07, docs/2026-11/hook-reference-reset-review-2026-11-07.md).
 # Final values: first whole-unit separation plus 16 units of clearance.
 SMALLCAP_KERNING = {
     "Italic": {

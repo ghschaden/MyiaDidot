@@ -98,5 +98,5 @@ accepted; a review alone does not authorize commit, push or publication.
 
 For a substantial review, record its reference revision/source state, scope,
 proof paths, findings, checks and actual acceptance status in
-`docs/<topic>-review-<date>.md`. Retain a proof under `proofs/` when requested or
+`docs/<YYYY-MM>/<topic>-review-<date>.md` (docs/INDEX.md). Retain a proof under `proofs/<YYYY-MM>/` when requested or
 when recording an accepted design. A short inspection can be reported directly.

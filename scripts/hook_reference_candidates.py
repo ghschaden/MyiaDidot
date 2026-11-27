@@ -27,7 +27,7 @@ from italic_geometry import SLANT, redraw, shear, upright
 from make_bold import round_smoothly
 
 ROOT = Path(__file__).resolve().parents[1]
-REVIEW = "docs/hook-reference-reset-review-2026-11-07.md"
+REVIEW = "docs/2026-11/hook-reference-reset-review-2026-11-07.md"
 
 
 def align_inherited_handle(glyph, y):

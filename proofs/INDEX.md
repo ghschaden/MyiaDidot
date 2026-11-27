@@ -4,7 +4,7 @@ Review sheets and candidate sheets for the designer, by month of their date
 suffix (`proofs/2026-10/`, `proofs/2026-11/`). The LaTeX sources
 (`proof.tex`, `samples.tex`, `smallcaps.tex`, `specimen.tex`, `textpages.tex`)
 and `cyrillic-before-after.png` stay here. Each sheet's reasoning is in the
-matching `docs/*-review-*.md` or in FONTLOG.txt's appendix.
+matching `docs/2026-MM/*-review-*.md` (docs/INDEX.md) or in FONTLOG.txt's appendix.
 
 ## proofs/2026-10/
 

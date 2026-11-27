@@ -385,14 +385,14 @@ ChangeLog
   The colon's upper dot now reaches 949 in the Bold (906), ⋮'s gaps 92
   (138): accepted as they are. ſ ſſ f kern 5-6 tighter before ë ö ï; the
   Bold Italic y's dot below 3 units left. Bold ṫ, Bold Italic ɨ ɉ ʝ ⁱ ʲ ᶤ
-  accepted again. Review: docs/bold-round-dots-review-2026-11-09.md.
+  accepted again. Review: docs/2026-11/bold-round-dots-review-2026-11-09.md.
 
 2026-11-09 IPA ɶ and ᴅ at the x-height
   As aliases of oe.sc and d.sc they stood at the small caps' height, a
   size above ɢ ɪ ʙ ʀ; now made as those (derive.py enlarge, stems at n's):
   flat edges on 0 and 884, ɶ's round side overshooting as o's (Regular ɶ
   1551 -> 1360, ᴅ 1035). Accepted in all four styles. Review:
-  docs/ipa-oe-d-smallcaps-review-2026-11-09.md.
+  docs/2026-11/ipa-oe-d-smallcaps-review-2026-11-09.md.
 
 2026-11-09 The Bold's ɨ ɉ ʝ ⁱ ʲ ᶤ dots
   Emboldened whole, the Bold's ɨ ɉ ʝ had a dot 347 wide against i's and
@@ -446,7 +446,7 @@ ChangeLog
   marked drawn. Accepted from review sheets: the Regular old-style 3 and
   5 (lightened 2026-10-26) and the Bold's ten old-style figures, so all
   four styles' old-style figures have a recorded acceptance. Review in
-  docs/oldstyle-figures-review-2026-11-09.md.
+  docs/2026-11/oldstyle-figures-review-2026-11-09.md.
 
 2026-11-09 Discretionary ligature Qu
   New in dlig, in all four styles: O and u with a drawn tail, after the
@@ -649,7 +649,7 @@ ChangeLog
   (ball at the top left, make_italic.mirror_zhe), with Bulgarian ж and җ
   following; җ's descender runs straight from the crossbar. No Italic or
   Bold Italic drafts remain unaccepted. Review in
-  docs/bold-italic-final-drafts-review-2026-11-08.md.
+  docs/2026-11/bold-italic-final-drafts-review-2026-11-08.md.
 
 2026-11-08 Bold Italic Cyrillic letters accepted; Serbian italic forms redrawn
   14 Bold Italic Cyrillic drafts accepted (Ғ ғ Җ җ Қ Ң ң ү Ұ ұ Ҷ Һ Ө ө).
@@ -657,13 +657,13 @@ ChangeLog
   (ī, ī with acute, и and ш with bars), as Charis and Libertinus draw them,
   instead of Old Standard's fused bars; approved. Ҳ's tail top made level
   with its serif as Ң's and Ҷ's (pending review). Review in
-  docs/bold-italic-cyrillic-drafts-review-2026-11-08.md.
+  docs/2026-11/bold-italic-cyrillic-drafts-review-2026-11-08.md.
 
 2026-11-08 Bold Italic currency signs accepted
   All 20 currency-sign drafts accepted. ₮ and ₴ get their own Bold Italic
   recipes so their bars show on both sides of the stem and the S (₮
   advance 1496 to 1462, ₴ 1411 to 1467). Proof and review in
-  docs/bold-italic-currency-drafts-review-2026-11-08.md.
+  docs/2026-11/bold-italic-currency-drafts-review-2026-11-08.md.
 
 2026-11-08 Bold Italic Latin and modifier-letter forms accepted
   All 49 forms in the batch accepted (modifier letters, middle-tilde and
@@ -671,7 +671,7 @@ ChangeLog
   descender at the stem's weight with a foot serif at B's (its own Bold
   Italic recipe); ⱳ's arm at one weight into the hook, its inner edge
   faired and its ball fuller (drawn; recipe ball 80 to 95). Proof and
-  review in docs/bold-italic-latin-modifier-drafts-review-2026-11-08.md.
+  review in docs/2026-11/bold-italic-latin-modifier-drafts-review-2026-11-08.md.
 
 2026-11-08 Bold Italic phonetic forms accepted
   All 57 forms in the phonetic draft batch accepted. Ten local repairs:
@@ -680,7 +680,7 @@ ChangeLog
   and corrected small Y/B serif transitions and B upper counter.
   Preserve the approved ʄ independently of the changed barred-j base.
   Retain local drawings and approval fingerprints; proof and review in
-  docs/bold-italic-phonetic-drafts-review-2026-11-08.md.
+  docs/2026-11/bold-italic-phonetic-drafts-review-2026-11-08.md.
 
 2026-11-08 Bold review completed and Bold Italic extended Latin drafts accepted
   The review approved Bold basic Latin, extended Latin, phonetic, Greek and
@@ -707,7 +707,7 @@ ChangeLog
       legs and clearer hooks. қ's accepted inner leg is straight to the foot.
     * Retained the original approved ɦ.sc and barred P.sc. Only ɤ.sc's
       advance changes, preserving its side bearings around the wider form.
-      Evidence: docs/bold-italic-smallcaps-completion-2026-11-07.md.
+      Evidence: docs/2026-11/bold-italic-smallcaps-completion-2026-11-07.md.
 
 2026-11-07 Florin and hooked-P small caps accepted
 
@@ -720,7 +720,7 @@ ChangeLog
     * Thirteen reviewed small-cap kern pairs clear the longer tails;
       their owner is smallcaps.py after capital-pair scaling. All 110
       tested Florin pairs are clear. Evidence:
-      docs/hook-reference-reset-review-2026-11-07.md.
+      docs/2026-11/hook-reference-reset-review-2026-11-07.md.
     * The remaining Bold Italic extended Latin small caps are accepted.
       Gamma small caps in both italic weights now follow Ɣ's descending
       loop and relative stroke weight; glottal small caps have rounder
@@ -736,7 +736,7 @@ ChangeLog
       stem sides and head/foot brackets locally redrawn to remove the
       narrowing before their serifs. Advances, anchors and kerning retained.
       The three drawings are marked drawn and accepted. Evidence:
-      docs/bold-italic-smallcaps-latin-review-2026-11-06.md and
+      docs/2026-11/bold-italic-smallcaps-latin-review-2026-11-06.md and
       proofs/2026-11/bold-italic-b-d-q-smallcap-repairs-2026-11-06.svg.
 
 2026-11-06 Italic Latin/phonetic and Greek small-cap reviews accepted
@@ -747,13 +747,13 @@ ChangeLog
       rounded theta.sc's counter from the approved o.sc, retaining its
       outside and crossbar. The review approved all three repairs.
       Bold Italic regenerated, with its existing advances retained.
-      Evidence: docs/italic-smallcaps-phonetic-review-2026-11-06.md and
-      docs/italic-smallcaps-greek-review-2026-11-06.md; accepted proofs
+      Evidence: docs/2026-11/italic-smallcaps-phonetic-review-2026-11-06.md and
+      docs/2026-11/italic-smallcaps-greek-review-2026-11-06.md; accepted proofs
       retained under proofs/.
     * Accepted 39 Cyrillic small caps unchanged, and Ю.sc after a local
       rebuild from the approved i.sc/o.sc: lighter stem, fuller bowl and
       smooth lower-right join. All remaining Italic small-cap drafts
-      are now approved. Evidence: docs/italic-smallcaps-cyrillic-review-2026-11-06.md
+      are now approved. Evidence: docs/2026-11/italic-smallcaps-cyrillic-review-2026-11-06.md
       and proofs/2026-11/italic-yu-smallcap-repair-2026-11-06.svg.
 
 2026-11-06 Italic and Bold Italic lowercase ƥ joins accepted
@@ -763,7 +763,7 @@ ChangeLog
       are retained. Bold Italic regenerated with local finishing and
       original spacing/anchors retained. Its hook strengthened to match
       the p stem and the transition smoothed, also approved.
-      Evidence: docs/italic-p-hook-join-review-2026-11-06.md and
+      Evidence: docs/2026-11/italic-p-hook-join-review-2026-11-06.md and
       proofs/2026-11/italic-p-hook-join-2026-11-06.pdf.
 
 2026-11-06 Italic extended Latin small-cap review complete
@@ -771,7 +771,7 @@ ChangeLog
     * The review approved the remaining 43 glyphs unchanged from the
       refreshed sheet; acceptance recorded. With the three separately
       repaired forms, all 46 in this batch are accepted. Evidence:
-      docs/italic-smallcaps-extended-latin-review-2026-11-06.md and
+      docs/2026-11/italic-smallcaps-extended-latin-review-2026-11-06.md and
       proofs/2026-11/italic-smallcaps-extended-latin-2026-11-06.pdf.
 
 2026-11-06 Bold Italic hooked b/d small caps accepted
@@ -780,8 +780,8 @@ ChangeLog
       and both lower serif joins were rounded locally. Existing spacing
       retained; kept as drawn. The b's upper counter made rounder from
       the lower counter's curve, also approved. Evidence:
-      docs/bold-italic-hook-stems-review-2026-11-06.md and
-      docs/bold-italic-b-upper-counter-review-2026-11-06.md; retained proofs
+      docs/2026-11/bold-italic-hook-stems-review-2026-11-06.md and
+      docs/2026-11/bold-italic-b-upper-counter-review-2026-11-06.md; retained proofs
       under proofs/2026-11/bold-italic-hook-*.svg and bold-italic-b-upper-counter-*.svg.
 
 2026-11-06 Italic small-cap Ʀ Ɓ Ɗ repaired and accepted
@@ -793,7 +793,7 @@ ChangeLog
       b.sc and d.sc, kept as drawn. The review approved the corrected
       Italic drawings. Bold Italic follows through regeneration, with
       local finishing and the original spacing retained. Evidence:
-      docs/italic-smallcap-repairs-2026-11-06.md.
+      docs/2026-11/italic-smallcap-repairs-2026-11-06.md.
 
 2026-11-06 Italic basic Latin small caps accepted
 
@@ -801,7 +801,7 @@ ChangeLog
       focused capital/small-cap/lowercase sheet and word proofs.
       Acceptance recorded. Extended Latin, Greek and Cyrillic small
       caps remain to review. Evidence:
-      docs/italic-smallcaps-latin-review-2026-11-06.md and
+      docs/2026-11/italic-smallcaps-latin-review-2026-11-06.md and
       proofs/2026-11/italic-smallcaps-latin-2026-11-06.pdf.
 
 2026-11-06 IPA a accepted in all four styles
@@ -809,7 +809,7 @@ ChangeLog
     * The review accepted a.ipa unchanged from the focused four-style
       review: the Roman styles' two-storey a, and the sloped Roman form
       in the italics, distinct from ɑ. Acceptance recorded in each UFO.
-      Evidence: docs/ipa-a-review-2026-11-06.md and proofs/2026-11/ipa-a-*.svg.
+      Evidence: docs/2026-11/ipa-a-review-2026-11-06.md and proofs/2026-11/ipa-a-*.svg.
 
 2026-11-06 Bold Italic G hooks accepted
 
@@ -818,7 +818,7 @@ ChangeLog
       hook like the capital and Italic. Local drawings, kept as drawn.
       The review approved all three from the before/after proofs;
       acceptance recorded. Advances unchanged. Evidence:
-      docs/g-hooks-review-2026-11-06.md and proofs/2026-11/bold-italic-g-hooks-*.svg.
+      docs/2026-11/g-hooks-review-2026-11-06.md and proofs/2026-11/bold-italic-g-hooks-*.svg.
 
 2026-11-06 Bold Italic open rounds' insides from the Italic's; Ƭ again
 
@@ -1765,7 +1765,7 @@ ChangeLog
       All outlines, shared hint programs, advances, layout and metadata match
       before. Decoded WOFF2 matches TTF. All four regenerated TrueType
       hint-zone tests, Ruff and whitespace checks pass. No shaping updates.
-      Review: docs/italic-smallcap-tip-hinting-review-2026-10-26.md;
+      Review: docs/2026-10/italic-smallcap-tip-hinting-review-2026-10-26.md;
       accepted proof: proofs/2026-10/italic-smallcap-tip-hinting-review-2026-10-26.pdf.
 
 2026-10-26 Development: italic small-cap tip trial refreshed
@@ -1778,7 +1778,7 @@ ChangeLog
       shared fpgm/prep programs match. Rasters differ only at 30/32 ppem in
       both interpreters. Remove twelve glyph/size findings in scratch audits,
       representing eight exception entries, with no new findings.
-      Review: docs/italic-smallcap-tip-hinting-review-2026-10-26.md;
+      Review: docs/2026-10/italic-smallcap-tip-hinting-review-2026-10-26.md;
       proof: proofs/2026-10/italic-smallcap-tip-hinting-review-2026-10-26.pdf.
 
 2026-10-26 Development: approved Regular prosgegrammeni hints integrated
@@ -1791,7 +1791,7 @@ ChangeLog
       hint, layout, metric and metadata tables match. All four regenerated
       TrueType hint-zone tests, Ruff and whitespace checks pass. WOFF2 carries
       the same coordinates, hint programs, advances and layout as the TTF.
-      Review: docs/regular-prosgegrammeni-hinting-review-2026-10-26.md;
+      Review: docs/2026-10/regular-prosgegrammeni-hinting-review-2026-10-26.md;
       accepted proof: proofs/2026-10/regular-prosgegrammeni-hinting-trial-2026-10-26.pdf.
 
 2026-10-26 Development: Regular prosgegrammeni hinting trial prepared
@@ -1803,7 +1803,7 @@ ChangeLog
     * Trial adoption approved on 2026-10-26 and subsequently integrated
       (see production entry above). At trial preparation production remained
       unchanged and only the exception comment was clarified.
-      Review: docs/regular-prosgegrammeni-hinting-review-2026-10-26.md;
+      Review: docs/2026-10/regular-prosgegrammeni-hinting-review-2026-10-26.md;
       proof: proofs/2026-10/regular-prosgegrammeni-hinting-trial-2026-10-26.pdf.
 
 2026-10-26 Development: italic ẞ CFF hints reviewed
@@ -1815,7 +1815,7 @@ ChangeLog
     * Complete production CFF audits match current exceptions in both
       weights. Earlier regenerated italic CFF tests cover unchanged inputs;
       not rerun for comment-only changes. Clarify two exception comments.
-      Review: docs/italic-capital-sharp-s-cff-review-2026-10-26.md;
+      Review: docs/2026-10/italic-capital-sharp-s-cff-review-2026-10-26.md;
       proof: proofs/2026-10/italic-capital-sharp-s-cff-review-2026-10-26.pdf.
 
 2026-10-26 Development: Italic ƙ.sc and ъ CFF hints reviewed
@@ -1828,7 +1828,7 @@ ChangeLog
     * Complete production Italic CFF audit matches all four existing
       exception keys/counts. Earlier regenerated italic CFF checks cover
       the unchanged inputs; not rerun for comment-only changes. No font
-      changes. Review: docs/italic-k-hook-hard-sign-cff-review-2026-10-26.md;
+      changes. Review: docs/2026-10/italic-k-hook-hard-sign-cff-review-2026-10-26.md;
       proof: proofs/2026-10/italic-k-hook-hard-sign-cff-review-2026-10-26.pdf.
 
 2026-10-26 Development: Fraktur 𝔖 CFF hints reviewed
@@ -1839,7 +1839,7 @@ ChangeLog
       Retention approved on 2026-10-26.
     * Both regenerated italic CFF hint-zone tests pass with helper-socket
       access. Clarify two exception comments without changing keys/counts.
-      No font changes. Review: docs/fraktur-s-cff-hinting-review-2026-10-26.md;
+      No font changes. Review: docs/2026-10/fraktur-s-cff-hinting-review-2026-10-26.md;
       proof: proofs/2026-10/fraktur-s-cff-hinting-review-2026-10-26.pdf.
 
 2026-10-26 Development: roman Œ CFF alignment reviewed
@@ -1852,7 +1852,7 @@ ChangeLog
       charstrings contain bowl/body hints and masks; the older explanation
       that the bowl lacks hints was incomplete. Both regenerated roman
       CFF hint-zone tests pass with helper-socket access. No font changes.
-      Review: docs/roman-oe-cff-hinting-review-2026-10-26.md;
+      Review: docs/2026-10/roman-oe-cff-hinting-review-2026-10-26.md;
       proof: proofs/2026-10/roman-oe-cff-hinting-review-2026-10-26.pdf.
 
 2026-10-26 Development: horn hinting reviewed
@@ -1866,7 +1866,7 @@ ChangeLog
       four exception comments without changing keys/counts; record separate
       audit-classification follow-up in DEVELOPMENT.md. All four regenerated
       TrueType hint-zone tests pass. No font changes.
-      Review: docs/horn-hinting-review-2026-10-26.md;
+      Review: docs/2026-10/horn-hinting-review-2026-10-26.md;
       proof: proofs/2026-10/horn-hinting-review-2026-10-26.pdf.
 
 2026-10-26 Development: italic Ʋ hook-top hints reviewed
@@ -1879,7 +1879,7 @@ ChangeLog
       exception comments without changing keys/counts. Preserve
       native-size and enlarged proof:
       proofs/2026-10/italic-upsilon-top-hinting-review-2026-10-26.pdf;
-      docs/italic-upsilon-top-hinting-review-2026-10-26.md.
+      docs/2026-10/italic-upsilon-top-hinting-review-2026-10-26.md.
 
 2026-10-26 Development: italic small-cap bottom hinting reviewed
 
@@ -1891,7 +1891,7 @@ ChangeLog
     * Clarify ten exception comments, preserving keys/counts. No font,
       generator, hint program or shaping baseline changes. Both regenerated
       italic TrueType hint-zone tests pass. Review and preserved proof:
-      docs/italic-smallcap-bottoms-hinting-review-2026-10-26.md;
+      docs/2026-10/italic-smallcap-bottoms-hinting-review-2026-10-26.md;
       proofs/2026-10/italic-smallcap-bottoms-hinting-review-2026-10-26.pdf.
 
 2026-10-26 Repository: remove superseded batch2-wip stash
@@ -1957,47 +1957,47 @@ ChangeLog
 
     * Integrate the approved lighter Italic I and Bold Italic inheritance;
       preserve advances/layout and small caps/barred I. The r drawing is
-      retained. Reviews: docs/italic-ri-weight-review-2026-10-25.md and
+      retained. Reviews: docs/2026-10/italic-ri-weight-review-2026-10-25.md and
       proofs/2026-10/italic-i-production-review-2026-10-25.pdf.
     * Accept and integrate old-style figures in all four styles, retaining
       the curled 9 and updating intended narrower advances only. Earlier
       weight-only and open-tail proposals are superseded. Reviews:
-      docs/italic-oldstyle-redesign-2026-10-25.md and
-      docs/roman-oldstyle-redesign-2026-10-25.md.
+      docs/2026-10/italic-oldstyle-redesign-2026-10-25.md and
+      docs/2026-10/roman-oldstyle-redesign-2026-10-25.md.
     * Integrate approved Bold Italic ɸ (lighter through-stem, wider bowl,
       smooth returns) and Ⱳ curl joins, retaining metrics/layout. Reviews:
-      docs/bold-italic-phi-weight-review-2026-10-25.md and
-      docs/w-curl-review-2026-10-25.md.
+      docs/2026-10/bold-italic-phi-weight-review-2026-10-25.md and
+      docs/2026-10/w-curl-review-2026-10-25.md.
     * Raise Regular/Bold ṫ dots by 59 units to match ż clearance, with
       corresponding anchors and reviewed position-only digest updates.
-      Review: docs/roman-t-dot-spacing-review-2026-10-25.md.
+      Review: docs/2026-10/roman-t-dot-spacing-review-2026-10-25.md.
     * Connect Italic/Bold Italic ɬ and Ɬ belts; the connected drawings were
       accepted after Charis/Libertinus comparison. The arch-family verdict
       remains separate. Review:
-      docs/italic-arches-and-l-belt-review-2026-10-25.md.
+      docs/2026-10/italic-arches-and-l-belt-review-2026-10-25.md.
     * Exclude counter holes from alignment audits, resolving Þ/æ.sc/ϐ false
       positives and removing Þ's unwanted 27 ppem counter correction.
-      Review: docs/italic-thorn-hinting-review-2026-10-25.md.
+      Review: docs/2026-10/italic-thorn-hinting-review-2026-10-25.md.
     * Accept current italic ν hints; discard the scratch bottom-point trial
       because it disrupts the curve and passing v35 rasters. Small-cap tip
       and G/Cyrillic round-bottom reviews remain pending in FONT-DESIGN.md.
-      Review: docs/italic-nu-hinting-review-2026-10-25.md.
+      Review: docs/2026-10/italic-nu-hinting-review-2026-10-25.md.
 
 2026-10-24 Development: contour, attachment and anchor repairs
 
     * Repair italic r-family shoulders and lowercase retroflex hooks;
       smooth Bold r/ɽ inner bumps. Retain the small-cap gap pending review.
-      Review: docs/r-hook-review-2026-10-24.md.
+      Review: docs/2026-10/r-hook-review-2026-10-24.md.
     * Straighten Bold Italic dollar bars; extend ɉ's right bar by request;
       fill Ⱦ's residual foot counter; repair ℵ's lower return and upper-right
       terminal join. Preserve advances/layout with no shaping changes.
-      Reviews: docs/bold-italic-dollar-bars-review-2026-10-24.md,
-      docs/j-bar-extension-review-2026-10-24.md,
-      docs/bold-italic-t-slash-review-2026-10-24.md and
-      docs/remaining-bold-italic-lint-review-2026-10-24.md.
+      Reviews: docs/2026-10/bold-italic-dollar-bars-review-2026-10-24.md,
+      docs/2026-10/j-bar-extension-review-2026-10-24.md,
+      docs/2026-10/bold-italic-t-slash-review-2026-10-24.md and
+      docs/2026-10/remaining-bold-italic-lint-review-2026-10-24.md.
     * Repair italic ỵ dot collisions using same-style ink and a 25-unit gap;
       update only intended below-mark positions in the corpus digests.
-      Review: docs/italic-y-dot-review-2026-10-24.md.
+      Review: docs/2026-10/italic-y-dot-review-2026-10-24.md.
     * Reviews recommending retention of dollar/ɸ counters and roman aleph
       serif repairs were superseded by the accepted 2026-10-25 drawings.
       Retention recommendations for remaining open constructions do not
@@ -2072,7 +2072,7 @@ ChangeLog
     * Validation: 161 passed, 3 skipped, including TrueType/CFF hinting.
       All three styles reproduce; proofs pass. Diffenator confirms scope.
     * Comparison: proofs/2026-10/italic-t-dot-before-after-2026-10-24.pdf;
-      docs/italic-t-dot-review-2026-10-24.md.
+      docs/2026-10/italic-t-dot-review-2026-10-24.md.
 
 2026-10-24 Version 0.100 (development): cedilla attachment finishing
 
@@ -2089,7 +2089,7 @@ ChangeLog
       All three styles reproduce; diffenator confirms the intended scope.
     * Comparison for visual review:
       proofs/2026-10/cedilla-attachments-before-after-2026-10-24.pdf;
-      docs/cedilla-attachment-review-2026-10-24.md.
+      docs/2026-10/cedilla-attachment-review-2026-10-24.md.
 
 2026-10-24 Version 0.100 (development): Greek breve/grave stack clearance
 
@@ -2105,7 +2105,7 @@ ChangeLog
       CFF rerun (the sandbox blocks the hinter's helper socket). Proofs pass.
     * Comparison for visual review:
       proofs/2026-10/greek-breve-grave-before-after-2026-10-24.pdf;
-      docs/greek-breve-grave-review-2026-10-24.md.
+      docs/2026-10/greek-breve-grave-review-2026-10-24.md.
 
 2026-10-23 Version 0.100 (development): Bold Italic j-hook recipe
 
@@ -2122,7 +2122,7 @@ ChangeLog
       Proofs and diffenator pass; the only changed word image contains ʄ.
       All three generated styles reproduce.
     * Comparison: proofs/2026-10/bold-italic-j-hook-before-after-2026-10-23.pdf;
-      review: docs/bold-italic-j-hook-review-2026-10-23.md.
+      review: docs/2026-10/bold-italic-j-hook-review-2026-10-23.md.
 
 2026-10-23 Version 0.100 (development): italic К/к base contour cleanup
 
@@ -2138,7 +2138,7 @@ ChangeLog
       make proof succeeds. Pinned Python 3.12 for local builds and CI so
       Unicode classification matches the generated features and baselines.
     * Comparison: proofs/2026-10/italic-ka-before-after-2026-10-23.pdf;
-      review: docs/italic-ka-review-2026-10-23.md.
+      review: docs/2026-10/italic-ka-review-2026-10-23.md.
 
 2026-10-23 Version 0.100 (development): inherited italic contour cleanup
 
@@ -2154,7 +2154,7 @@ ChangeLog
       before/after shaping over 2,119,788 strings per italic weight agrees.
     * Removed forty obsolete quality entries. Comparison and review:
       proofs/2026-10/italic-base-contours-before-after-2026-10-23.pdf and
-      docs/italic-base-contour-review-2026-10-23.md.
+      docs/2026-10/italic-base-contour-review-2026-10-23.md.
 
 2026-10-23 Version 0.100 (development): shaping baseline reconciliation
 
@@ -2164,7 +2164,7 @@ ChangeLog
       glyph selection, kerning and feature rules are unchanged.
     * Updated the three golden snapshots and matching full-corpus digests.
       No font source or quality exception changed. Review and metric deltas:
-      docs/shaping-baseline-review-2026-10-23.md.
+      docs/2026-10/shaping-baseline-review-2026-10-23.md.
 
 2026-10-23 Version 0.100 (development): local italic contour finishing
 
@@ -3479,7 +3479,7 @@ FONT-DESIGN.md.
     accepted (2026-11-06): Ɠ's hook thicker and joined without the ledge,
     ɠ's inner downstroke a continuous curve, ɠ.sc's hook rising as the
     capital's. Marked drawn and accepted. See
-    [G-hook review](docs/g-hooks-review-2026-11-06.md).
+    [G-hook review](docs/2026-11/g-hooks-review-2026-11-06.md).
     ʛ is ɠ.sc's alias, so at the small caps'
     height (1060), where ɢ and the other IPA small capitals stand at the
     x-height (884, 2026-11-01). Decided 2026-11-08: ʛ follows them (ɠ.sc
@@ -3487,75 +3487,75 @@ FONT-DESIGN.md.
     2026-11-08: Bold small caps and all remaining Bold drafts accepted, with
     local drawing repairs and retained proofs (docs/bold-*-review-2026-11-07.md).
     Bold Italic's 39 extended Latin drafts through U+024F are accepted:
-    [extended Latin draft review](docs/bold-italic-extended-latin-drafts-review-2026-11-08.md).
+    [extended Latin draft review](docs/2026-11/bold-italic-extended-latin-drafts-review-2026-11-08.md).
     The next 57 Bold Italic phonetic drafts are accepted (2026-11-08):
-    [phonetic review](docs/bold-italic-phonetic-drafts-review-2026-11-08.md).
+    [phonetic review](docs/2026-11/bold-italic-phonetic-drafts-review-2026-11-08.md).
     The 49 Latin and modifier-letter drafts are accepted (2026-11-08):
-    [Latin and modifier review](docs/bold-italic-latin-modifier-drafts-review-2026-11-08.md).
+    [Latin and modifier review](docs/2026-11/bold-italic-latin-modifier-drafts-review-2026-11-08.md).
     The 20 currency signs are accepted (2026-11-08):
-    [currency review](docs/bold-italic-currency-drafts-review-2026-11-08.md).
+    [currency review](docs/2026-11/bold-italic-currency-drafts-review-2026-11-08.md).
     14 Cyrillic letters and the Serbian italic forms (both italics, the bar
     free above as in Charis and Libertinus) are accepted (2026-11-08):
-    [Cyrillic review](docs/bold-italic-cyrillic-drafts-review-2026-11-08.md).
+    [Cyrillic review](docs/2026-11/bold-italic-cyrillic-drafts-review-2026-11-08.md).
     Ҳ (tail unified with Ң Ҷ) accepted. The last drafts (old-style figures,
     U.horn, u.sc.horn, Bulgarian forms) are accepted, and the italics' ж has
     its left c mirrored (2026-11-08):
-    [final review](docs/bold-italic-final-drafts-review-2026-11-08.md).
+    [final review](docs/2026-11/bold-italic-final-drafts-review-2026-11-08.md).
     No Italic or Bold Italic drafts remain unaccepted. The Bold Italic's remaining
     72 phonetic, Greek and Cyrillic small caps and lowercase қ/ҳ/ҷ repairs are
     accepted (2026-11-07), including the final straight inner қ leg:
-    [completed Bold Italic review](docs/bold-italic-smallcaps-completion-2026-11-07.md).
+    [completed Bold Italic review](docs/2026-11/bold-italic-smallcaps-completion-2026-11-07.md).
     The Italic's 26 basic Latin small caps
     are accepted unchanged (2026-11-06):
-    [Italic Latin small-cap review](docs/italic-smallcaps-latin-review-2026-11-06.md).
+    [Italic Latin small-cap review](docs/2026-11/italic-smallcaps-latin-review-2026-11-06.md).
     The next 46 extended Latin Italic small caps have a two-page proof.
     Sent back after the review: uni0280.sc has a torn bowl and
     detached leg (the lower recipe cuts through the bowl); uni0253.sc and
     uni0257.sc have oversized, low hooks unlike their capitals. Those three
     are now locally reconstructed and accepted (2026-11-06), including
     smoothing the small nodges on both sides of the hook stems:
-    [small-cap repairs](docs/italic-smallcap-repairs-2026-11-06.md).
+    [small-cap repairs](docs/2026-11/italic-smallcap-repairs-2026-11-06.md).
     Bold Italic follow-up: the hooked b/d small caps' lower serif joins and
     upper stem transitions are locally redrawn and both are accepted. The b's
     approved upper counter is rounder like its lower counter:
-    [Bold Italic hook stems](docs/bold-italic-hook-stems-review-2026-11-06.md).
+    [Bold Italic hook stems](docs/2026-11/bold-italic-hook-stems-review-2026-11-06.md).
     The other 43 glyphs in this batch are accepted unchanged (2026-11-06):
-    [extended Latin small-cap review](docs/italic-smallcaps-extended-latin-review-2026-11-06.md).
+    [extended Latin small-cap review](docs/2026-11/italic-smallcaps-extended-latin-review-2026-11-06.md).
     Italic ƥ (uni01A5) reopened by review: swelling at the hook/stem
     join removed locally and accepted (2026-11-06). Bold Italic regenerated
     and finished with its spacing retained; its fuller hook and smooth stem
     transition are also accepted (2026-11-06):
-    [ƥ join review](docs/italic-p-hook-join-review-2026-11-06.md).
+    [ƥ join review](docs/2026-11/italic-p-hook-join-review-2026-11-06.md).
     The next 15 Latin/phonetic Italic small caps are accepted unchanged
     (2026-11-06), including omega.sc shared with Greek:
-    [Latin/phonetic small-cap review](docs/italic-smallcaps-phonetic-review-2026-11-06.md).
+    [Latin/phonetic small-cap review](docs/2026-11/italic-smallcaps-phonetic-review-2026-11-06.md).
     The next 17 Greek forms are accepted: 14 unchanged, delta.sc and
     lambda.sc after matching their capitals' diagonal angles, theta.sc
     after rounding its counter from o.sc. Bold Italic regenerated:
-    [Greek small-cap review](docs/italic-smallcaps-greek-review-2026-11-06.md).
+    [Greek small-cap review](docs/2026-11/italic-smallcaps-greek-review-2026-11-06.md).
     The final 40 Italic small-cap drafts, all Cyrillic, are accepted: 39
     unchanged, Ю.sc (uni044E.sc) after rebuilding from i.sc/o.sc with a
     lighter stem, fuller bowl and smooth lower-right join. This completes
     the Italic small-cap review:
-    [Cyrillic small-cap review](docs/italic-smallcaps-cyrillic-review-2026-11-06.md).
+    [Cyrillic small-cap review](docs/2026-11/italic-smallcaps-cyrillic-review-2026-11-06.md).
     Bold Italic a.sc–z.sc are now accepted (2026-11-06): b.sc/q.sc's upper
     counters rounded, b.sc/d.sc's stems and serif brackets straightened
     locally; the rest unchanged:
-    [Bold Italic Latin small-cap review](docs/bold-italic-smallcaps-latin-review-2026-11-06.md).
+    [Bold Italic Latin small-cap review](docs/2026-11/bold-italic-smallcaps-latin-review-2026-11-06.md).
     The next 42 extended Latin forms are accepted: 38 unchanged, gamma and
     glottal small caps after paired Italic repairs, then Florin and ƥ.sc
     after the same-style reference reconstruction (2026-11-07):
-    [Bold Italic extended Latin review](docs/bold-italic-smallcaps-extended-latin-review-2026-11-06.md).
+    [Bold Italic extended Latin review](docs/2026-11/bold-italic-smallcaps-extended-latin-review-2026-11-06.md).
     Both italic weights' full capital/small-cap Florin hooks and the Bold
     Italic ƥ.sc are approved, with local spacing corrections; Italic ƥ.sc
     retains its earlier approved drawing:
-    [Astra hook review](docs/hook-reference-reset-review-2026-11-07.md).
+    [Astra hook review](docs/2026-11/hook-reference-reset-review-2026-11-07.md).
     a.ipa, formerly on no sheet, now has
-    a focused four-style review and proofs: [IPA a review](docs/ipa-a-review-2026-11-06.md).
+    a focused four-style review and proofs: [IPA a review](docs/2026-11/ipa-a-review-2026-11-06.md).
     Accepted unchanged in all four styles (2026-11-06). The old-style
     figures now all have a recorded acceptance: the Bold Italic's
     2026-11-08, the Regular's 3 5 and the Bold's ten 2026-11-09 (the Bold
-    4s' stems made upright: [old-style figures review](docs/oldstyle-figures-review-2026-11-09.md)).
+    4s' stems made upright: [old-style figures review](docs/2026-11/oldstyle-figures-review-2026-11-09.md)).
 
   ## Review of the open items, 2026-11-09 (sheets in build/glyph-review/open-items/)
 

@@ -5,7 +5,7 @@ model: haiku
 tools: Bash, Read
 ---
 
-You run commands in the Myia Didot repository (/home/gerhard/src/MyiaDidot) and report the outcome in a few lines. Keep logs out of your answer: write long output to a file under build/ and grep it.
+You run commands in the Myia Didot repository (/home/gerhard/src/MyiaDidot) and report the outcome in a few lines. Keep logs out of your answer: write long output to a file under build/logs/ (every agent's and commit's logs there, no prefix) and grep it.
 
 Rules:
 - Run Python as `.venv/bin/python -I`, pytest as `.venv/bin/pytest -q -p no:cacheprovider`.
@@ -18,7 +18,7 @@ takes 15-20, `make test` 3-5, `make reproduce` a few):
 - Run the whole task as ONE Bash call with `run_in_background: true`: the
   steps chained in a subshell, each into its own log, each followed by its
   exit code, e.g.
-  `(make generate > build/X_generate.log 2>&1; echo generate $?; make normalize > build/X_normalize.log 2>&1; echo normalize $?; make test > build/X_test.log 2>&1; echo test $?)`.
+  `(mkdir -p build/logs; make generate > build/logs/generate.log 2>&1; echo generate $?; make normalize > build/logs/normalize.log 2>&1; echo normalize $?; make test > build/logs/test.log 2>&1; echo test $?)`.
   Use `;` between steps unless told to stop at the first failure (`&&`).
 - Then wait: you are notified when the call ends. Do not poll, do not
   `sleep`, do not write `until`/`while` loops, do not start a second copy.
@@ -31,7 +31,7 @@ takes 15-20, `make test` 3-5, `make reproduce` a few):
   report ends you, and ending you kills the command (a half-generated
   style). If you must stop early, say which step was running and its PID.
 - After the notification, read the exit codes it printed and grep the logs
-  (`grep -E "^(FAILED|ERROR)| passed| failed" build/X_test.log`).
+  (`grep -E "^(FAILED|ERROR)| passed| failed" build/logs/test.log`).
 - A run that seems stuck may be waiting for the test lock (another `make
   test` or `make reproduce`, or a commit's hook): say so, do not kill it.
 

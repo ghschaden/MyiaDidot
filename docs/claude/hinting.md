@@ -24,4 +24,4 @@ Moved from CLAUDE.md (its ground rules apply).
   the small caps' overshoot scaled (tips at -25) they sit on h.sc's and
   o.sc's baseline row at 24-32 ppem without it; with it they stopped a
   pixel above the line at 30/32 ppem.
-  Review: `docs/italic-smallcap-tip-hinting-review-2026-10-26.md`.
+  Review: `docs/2026-10/italic-smallcap-tip-hinting-review-2026-10-26.md`.
