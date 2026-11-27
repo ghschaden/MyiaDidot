@@ -1203,7 +1203,7 @@ alongside, each when the phase that needs it comes up.
       what no target makes any more; the designer: nothing deleted for
       the moment (2026-11-27; inventory: 39 entries used, 53 old review
       work folders, 886 logs and scratch named nowhere).
-- [ ] T11. Forms against the references, systematically (asked by the
+- [ ] T12. Forms against the references, systematically (asked by the
       designer 2026-11-24, after Ɦ's hook was found curled the wrong way,
       right over the counter onto the right stem, where Charis, Noto Serif,
       DejaVu, Fira and our own italics curl it left). A tool,
@@ -1211,31 +1211,40 @@ alongside, each when the phase that needs it comes up.
       sheet; the designer decides each one (the reference rule: Charis and
       Libertinus agreeing against Myia = change, with the memory's
       exceptions).
-      Prototype (2026-11-24, build/pending/refside.py and its output
-      refside.txt; re-made from this note if lost): each derived letter
-      with a one-character base in data_regular.RECIPES (Ɦ from H), in
-      Myia and in Charis, Libertinus and Noto Serif: the ink's growth past
-      the base's ink box on each side (left/right over the base's width,
-      top/bottom over its height; "grown" past 6 %), and the lean of its
-      centre of mass (StatisticsPen meanX) against the base's, over the
-      width. Flagged when all references that have the letter (two at
-      least) grow on a side Myia does not, or the reverse, or all lean
-      the other way. First run, Regular from fonts/otf (old Ɦ): 19
-      candidates: bar/stroke ɉ ᵽ ⱦ Ⱦ (the references' bar or stroke
-      reaches out right, Ⱦ's above), middle tilde ɫ ᵭ ᵮ ᵱ ᵲ ᵵ ᵳ (out to
-      the left; ᵭ ᵱ ours out on the other side), Ɦ Ɠ (hook out right
-      of G) ƈ (leans right), Ʝ (our tail far lower) ɬ ɞ, ₦ ₿ (lean left).
-      Ɦ was caught on the right side for a muddy reason (Charis's Ɦ wider
-      both ways): the box is coarse.
-      To build: all four styles against the matching reference style; the
-      small caps through the references' smcp; for letters without a
-      recipe base (Greek, Cyrillic, symbols, the core set) a raster test,
-      the glyph at 32x32 in its own box against each reference and its
-      mirror image (flag where Myia matches every reference's mirror
-      better than the reference itself), and the same upside down; a
-      PDF sheet per candidate, Myia beside the references, large and
-      filled. Then the candidates sorted with the designer: design
-      (dated verdict, kept), or mended in the recipe.
+      Built 2026-11-27 (renumbered from a second T11):
+      `scripts/quality/reference_sides.py`, `tests/test_reference_sides.py`,
+      docs/claude/commands.md. Read from the UFOs, all four styles against
+      the same style of Charis and Libertinus, deslanted, every font at
+      1000 units; the system's Noto Serif (not pinned) stands in only where
+      one of the two lacks the letter, never outvoting their agreement.
+      Two measures: the prototype's (build/pending/refside.py: a recipe
+      letter's growth past its base's box per side, and its lean), and a
+      raster test for every letter, figure and symbol (32 px in its own
+      box against each reference drawn, mirrored, upside down, turned;
+      flagged when nearer every reference's transform by 0.03 and within
+      0.30 of it). Small caps through features.fea and the references'
+      smcp/c2sc: 258 judged by the raster test, none flagged; no recipe
+      small cap has two references (Libertinus and Noto lack them).
+      `--sheet`: a PDF per style, five candidates a page, Myia then the
+      references, the base in grey. About 10 s for all four styles.
+      First run (2026-11-27): Regular 26, Italic 35, Bold 26, Bold Italic
+      24 candidates (`build/quality/reference-sides-STYLE.txt` and .pdf).
+      Families: middle tildes ᵬ-ᵵ ᵳ ɫ Ɫ (the references' tilde out left
+      or right where ours stays inside), bars and strokes ɉ ᵽ ƚ ғ Ⱦ ⱦ,
+      hooks and curls Ɠ Ƴ ƴ ƈ Ɲ Ɓ Ƥ ƭ ʄ, the Italic's retroflex tails ɖ ɭ ɳ
+      (ours inside the base's width, the references' out right), ʂ (our hook out
+      left), Ʝ (tail far lower), ɬ Ɬ ɞ ʘ ɸ, the Italic's turned ʍ ʎ, Ʒ
+      (not below the line in the Italic), currency lines ₦ ₱ ₮ ₸ ₽ ₿ (the
+      lean: weak). Raster: Italic Δ ∆ (thick stroke on the left; the
+      references' on the right), Bold ф (stem far below, little above);
+      noise it is known for: Italic ѵ, Bold Ƭ ǫ, Regular λ ƛ, Bold Italic
+      ꭓ (a point or stem off centre the other way reads as mirrored).
+      The box stays coarse (ǂ against a deslanted |; Ɦ was caught for a
+      muddy reason before its mend).
+      Still to do: the candidates sorted with the designer from the
+      sheets: design (dated verdict, kept), or mended in the recipe; then,
+      if the verdicts make it worth it, the accepted ones as a list that
+      only shrinks, as the curvature runs.
 
 ### Tools the phases need (made in their phase, listed here to see them together)
 

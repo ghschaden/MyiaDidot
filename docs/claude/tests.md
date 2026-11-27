@@ -91,6 +91,12 @@ Moved from CLAUDE.md (its ground rules apply).
   per glyph against `curvature-Bold.txt` and `curvature-BoldItalic.txt`
   (all accepted from the sheets 2026-11-27; regenerate with
   `update_test_data.py --curvature`); about 20 s.
+- Forms against the references (`tests/test_reference_sides.py`,
+  `scripts/quality/reference_sides.py`, T12): on drawn shapes, a hook
+  grown the other side than every reference's is found, the same side
+  not; a form drawn mirrored is found, a reference symmetric in itself
+  never counts; italics measured deslanted, every font at 1000 units;
+  small caps read from features.fea. No reference fonts, no list.
 - Letters and figures meeting the signs beside them
   (`tests/test_collisions.py`, `scripts/quality/collisions.py`): every
   pair with less than kern_clear.CLEAR of white across, kerned or not,
