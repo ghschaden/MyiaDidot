@@ -77,6 +77,12 @@ Moved from CLAUDE.md (its ground rules apply).
   segments and unsmooth corners are mended exactly where every style is
   written (derive.py, smallcaps.py, make_bold.finalize) and held at none;
   `degenerate.py UFO --fix` for drawn glyphs.
+- Runs turning unlike their source's (`tests/test_curvature.py`,
+  `scripts/quality/curvature.py`): the Bold's and the Bold Italic's runs
+  whose radius leaves its trend against the Regular's or the Italic's,
+  per glyph against `curvature-Bold.txt` and `curvature-BoldItalic.txt`
+  (all accepted from the sheets 2026-11-27; regenerate with
+  `update_test_data.py --curvature`); about 20 s.
 - Letters and figures meeting the signs beside them
   (`tests/test_collisions.py`, `scripts/quality/collisions.py`): every
   pair with less than kern_clear.CLEAR of white across, kerned or not,

@@ -32,7 +32,10 @@ For a generated style joins and flats list only what its source has nothing
 like near; for the Regular and the Italic (no source to read) only joins
 and flats are read. Candidates for the designer's eye, not a gate: `--sheet`
 draws the strongest runs finds, source beside style, the run in red and
-the window ringed.
+the window ringed. The runs finds of the Bold and the Bold Italic are
+baselines (tests/test_curvature.py, data/curvature-Bold.txt ...: all
+accepted by the designer from the sheets, 2026-11-27); a new one fails,
+and a mended one's line goes (scripts/update_test_data.py --curvature).
 
     python -I scripts/quality/curvature.py sources/MyiaDidot-BoldItalic.ufo T
     python -I scripts/quality/curvature.py sources/MyiaDidot-BoldItalic.ufo --sheet build/quality/curvature-BoldItalic.pdf
@@ -244,6 +247,27 @@ def run_finds(glyph, source, glyphset=None, source_glyphset=None, limit=LIMIT):
     return out
 
 
+def run_keys(font, source, limit=LIMIT):
+    """{"glyph runs count": where}: the runs finds per glyph, as the
+    baselines tests/data/curvature-Bold.txt and -BoldItalic.txt list them"""
+    keys = {}
+    for g in font:
+        if g.name not in source or not (g.contours or g.components):
+            continue
+        got = sorted(run_finds(g, source[g.name], font, source, limit), key=lambda f: -abs(f["q"]))
+        if got:
+            keys[f"{g.name} runs {len(got)}"] = " ; ".join(
+                f"{f['q']:+.2f} at {f['at'][0]:.0f},{f['at'][1]:.0f} r {f['r']:.0f}/{f['r_source']:.0f}" for f in got)
+    return keys
+
+
+def source_of(path):
+    """the source style's UFO beside a generated style's, or None"""
+    path = Path(path)
+    style = path.stem.split("-")[-1]
+    return path.with_name(path.name.replace(style, SOURCE[style])) if style in SOURCE else None
+
+
 # -- joins and flats ----------------------------------------------------------
 
 
@@ -443,9 +467,7 @@ def main():
     path = Path(a.ufo)
     font = ufoLib2.Font.open(path)
     style = path.stem.split("-")[-1]
-    source = None
-    if style in SOURCE:
-        source = ufoLib2.Font.open(path.with_name(path.name.replace(style, SOURCE[style])))
+    source = ufoLib2.Font.open(source_of(path)) if source_of(path) else None
     found_runs, found_points = [], {}
     for g in font:
         if a.glyphs and g.name not in a.glyphs or not (g.contours or g.components):

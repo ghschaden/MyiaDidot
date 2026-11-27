@@ -1,0 +1,90 @@
+# Known scripts/quality/curvature.py runs findings (glyph kind count); fixing one = deleting its line.
+AE runs 1                        # 2026-11-27: accepted by the designer from the curvature sheets: +0.98 at 334,318 r 2000/476
+AEacute runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.98 at 334,318 r 2000/476
+G runs 1                         # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+Gbreve runs 1                    # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+Gcircumflex runs 1               # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+Gcommaaccent runs 1              # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+Gdotaccent runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+T runs 2                         # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+T_h runs 1                       # 2026-11-27: accepted by the designer from the curvature sheets: -1.01 at 738,1352 r 81/441
+Tau runs 2                       # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+Tbar runs 1                      # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 1148,1351 r 198/557
+Tcaron runs 2                    # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+Tcommaaccent runs 2              # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+Xi runs 1                        # 2026-11-27: accepted by the designer from the curvature sheets: -1.22 at 1088,807 r 32/2000
+ae.sc runs 1                     # 2026-11-27: accepted by the designer from the curvature sheets: +1.89 at 431,492 r 2000/348
+aeacute.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: +1.89 at 431,492 r 2000/348
+eng runs 1                       # 2026-11-27: accepted by the designer from the curvature sheets: -1.99 at 432,-375 r 72/2000
+kappa runs 1                     # 2026-11-27: accepted by the designer from the curvature sheets: -0.75 at 670,297 r 89/396
+kappasymbolgreek runs 1          # 2026-11-27: accepted by the designer from the curvature sheets: -0.75 at 670,297 r 89/396
+nineoldstyle runs 1              # 2026-11-27: accepted by the designer from the curvature sheets: +0.74 at 828,448 r 938/434
+nineoldstyle.tf runs 1           # 2026-11-27: accepted by the designer from the curvature sheets: +0.74 at 925,448 r 938/434
+onehalf runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.96 at 1661,727 r 329/50
+t.sc runs 1                      # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+tau.sc runs 1                    # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+tbar.sc runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -0.90 at 493,960 r 60/321 ; -0.76 at 858,958 r 138/423
+tcaron.sc runs 1                 # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+tcommaaccent.sc runs 1           # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+theta runs 1                     # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 795,1213 r 141/421
+two runs 1                       # 2026-11-27: accepted by the designer from the curvature sheets: -0.70 at 33,68 r 170/403
+two.dnom runs 1                  # 2026-11-27: accepted by the designer from the curvature sheets: +0.97 at 475,727 r 329/50
+two.tf runs 1                    # 2026-11-27: accepted by the designer from the curvature sheets: -0.71 at 89,68 r 170/403
+twoinferior runs 1               # 2026-11-27: accepted by the designer from the curvature sheets: +0.97 at 480,255 r 329/50
+twosuperior runs 1               # 2026-11-27: accepted by the designer from the curvature sheets: +0.97 at 468,1383 r 329/50
+twothirds runs 1                 # 2026-11-27: accepted by the designer from the curvature sheets: +0.96 at 468,1383 r 329/50
+uni0193 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.83 at 1130,1373 r 637/67
+uni0199.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.77 at 1108,583 r 100/284
+uni01AC runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: -0.79 at 1159,1351 r 208/563
+uni01AD.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.96 at 919,973 r 54/415
+uni01AE runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 742,1352 r 78/441 ; -0.76 at 1152,1351 r 208/563
+uni01B4 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: -0.72 at 1380,685 r 181/294
+uni01C6.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.70 at 708,961 r 571/1324
+uni01E2 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.98 at 334,318 r 2000/476
+uni01E3.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: +1.89 at 431,492 r 2000/348
+uni01E6 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+uni01F3.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.70 at 708,961 r 571/1324
+uni01F4 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+uni021A runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+uni021B.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+uni023E runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 78/441
+uni0242 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.74 at 494,684 r 387/162
+uni0257 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: -0.73 at 1197,1363 r 268/789
+uni0264.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -1.10 at 631,676 r 489/936
+uni026E runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.88 at 1002,-33 r 408/94
+uni0271 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.73 at 1515,634 r 496/92
+uni0288.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.81 at 861,958 r 127/416
+uni02E1 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: -0.88 at 317,569 r 8/417
+uni03DB.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -1.82 at 374,371 r 21/1530
+uni03DE runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.71 at 506,1220 r 468/131
+uni03E1.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.81 at 347,151 r 68/400
+uni0409 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.89 at 839,1192 r 703/214
+uni041B runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.89 at 839,1192 r 703/214
+uni0422 runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+uni0442.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+uni0444 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +1.08 at 763,1001 r 461/73
+uni0445 runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.35 at 966,786 r 56/674 ; -1.18 at 201,80 r 43/687
+uni044D.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.83 at 364,288 r 128/585
+uni0452.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.75 at 494,964 r 53/318
+uni0459.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: +0.78 at 210,72 r 170/28
+uni04B3 runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.16 at 203,80 r 43/687 ; -0.96 at 276,126 r 125/496
+uni1DBF runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: -0.85 at 640,1278 r 55/250
+uni1E20 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.82 at 1172,1373 r 633/67
+uni1E6A runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+uni1E6B.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+uni1E6C runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+uni1E6D.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+uni1E6E runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+uni1E6F.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+uni1E70 runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.04 at 738,1352 r 79/441 ; -0.79 at 1148,1351 r 208/563
+uni1E71.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+uni1E8B runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.35 at 966,786 r 56/674 ; -1.18 at 201,80 r 43/687
+uni1E8D runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.35 at 966,786 r 56/674 ; -1.18 at 201,80 r 43/687
+uni1E97.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: -0.78 at 857,958 r 131/417
+uni20AE runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -1.09 at 761,1351 r 72/441 ; -0.79 at 1172,1350 r 200/563
+uni20B4 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.79 at 832,1290 r 1045/458
+uni20B8 runs 2                   # 2026-11-27: accepted by the designer from the curvature sheets: -0.80 at 1189,1351 r 208/563 ; +0.72 at 469,1130 r 1338/668
+uni2135 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.90 at 243,518 r 342/204
+uni2135.sc runs 1                # 2026-11-27: accepted by the designer from the curvature sheets: +0.90 at 249,541 r 342/204
+uni2156 runs 1                   # 2026-11-27: accepted by the designer from the curvature sheets: +0.96 at 468,1383 r 329/50
+x runs 2                         # 2026-11-27: accepted by the designer from the curvature sheets: -1.35 at 966,786 r 56/674 ; -1.18 at 201,80 r 43/687

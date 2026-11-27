@@ -1,11 +1,17 @@
 """scripts/quality/curvature.py's runs measure on drawn shapes: a style that
 only adds to every radius (emboldening) reads clean, one whose arc turns
-tight then flat where its source turns evenly is found there."""
+tight then flat where its source turns evenly is found there. And the
+generated styles' runs finds against their lists, data/curvature-Bold.txt
+and curvature-BoldItalic.txt (accepted from the sheets 2026-11-27): a new
+one fails, a gone one too (delete its line, or
+scripts/update_test_data.py --curvature --ufo UFO)."""
 
 import sys
 
+import pytest
 import ufoLib2
-from conftest import ROOT
+from conftest import ROOT, style_data
+from test_composites import read_list
 
 sys.path.insert(0, str(ROOT / "scripts" / "quality"))
 import curvature  # noqa: E402
@@ -51,3 +57,16 @@ def test_uneven_arc_found_in_its_quarter():
     assert found
     x, y = max(found, key=lambda f: abs(f["q"]))["at"]
     assert x < 600 and y > 600, (x, y)
+
+
+def test_curvature_runs(ufo, ufo_path):
+    source = curvature.source_of(ufo_path)
+    if source is None:
+        pytest.skip("runs are read against a source style")
+    listed = read_list(style_data("curvature.txt", ufo_path).name)
+    found = curvature.run_keys(ufo, ufoLib2.Font.open(source))
+    new = {k: v for k, v in found.items() if k not in listed}
+    stale = sorted(set(listed) - set(found))
+    assert not new, ("curvature runs (python scripts/quality/curvature.py UFO --sheet PDF; if intended: "
+                     f"update_test_data.py --curvature): {new}")
+    assert not stale, f"curvature runs mended, remove from the list: {stale}"

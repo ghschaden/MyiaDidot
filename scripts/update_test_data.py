@@ -4,6 +4,7 @@
     python scripts/update_test_data.py --exceptions   # only adds, with a reason
     python scripts/update_test_data.py --lint --ufo UFO --reason "..."
     python scripts/update_test_data.py --quality --ufo UFO --reason "..."
+    python scripts/update_test_data.py --curvature --ufo UFO --reason "..."
     python scripts/update_test_data.py --emboldened --ufo UFO --reason "..."
     python scripts/update_test_data.py --styles --ufo UFO --reason "..."
     python scripts/update_test_data.py --lookups --ufo UFO
@@ -24,6 +25,8 @@ rewrites the style's list of known glyph_lint.py findings (glyph-lint.txt,
 glyph-lint-Italic.txt ...): those still found keep their reasons, new ones
 get --reason, fixed ones go. --quality does the same for the list of known
 scripts/quality/checks.py findings (quality.txt, quality-Italic.txt ...).
+--curvature: the Bold's and the Bold Italic's runs turning unlike their
+source's (curvature-Bold.txt ..., scripts/quality/curvature.py).
 --emboldened: the derived letters a weighted style leaves emboldened whole
 (emboldened-whole-Bold.txt ..., from the style's lib, make_bold.WHOLE_KEY).
 --styles: where a generated style differs from the Regular
@@ -149,6 +152,7 @@ def main():
     ap.add_argument("--exceptions", action="store_true")
     ap.add_argument("--lint", action="store_true")
     ap.add_argument("--quality", action="store_true")
+    ap.add_argument("--curvature", action="store_true")
     ap.add_argument("--emboldened", action="store_true")
     ap.add_argument("--styles", action="store_true")
     ap.add_argument("--hinting", action="store_true")
@@ -175,6 +179,15 @@ def main():
     if args.quality:
         lists.append(("quality.txt", "scripts/quality/checks.py",
                       lambda: quality_keys(ufoLib2.Font.open(args.ufo), args.ufo)))
+    if args.curvature:
+        sys.path.insert(0, str(ROOT / "scripts" / "quality"))
+        import curvature
+
+        if curvature.source_of(args.ufo) is None:
+            ap.error("--curvature: a generated style (Bold, BoldItalic)")
+        lists.append(("curvature.txt", "scripts/quality/curvature.py runs",
+                      lambda: curvature.run_keys(ufoLib2.Font.open(args.ufo),
+                                                 ufoLib2.Font.open(curvature.source_of(args.ufo)))))
     if args.emboldened:
         from make_bold import WHOLE_KEY
 
