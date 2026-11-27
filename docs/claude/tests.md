@@ -45,6 +45,14 @@ Moved from CLAUDE.md (its ground rules apply).
   it had cost every such commit a Bold Italic reproduce). It does read
   `tests/data/nfd-exceptions.txt`, the one data file the generators
   read.
+- scripts/ enters the proof and the stamp's generator hashes as
+  `stale.scripts_digest` and `code_bytes` read it (T8, 2026-11-27): a
+  Python file as its syntax tree without docstrings, so a commit that
+  changes only comments or docstrings keeps the proof and skips the
+  reproduce; dot-directories and `__pycache__` are left out. Before
+  that the proof never held in the hook: the stamp was taken over the
+  working copy's `scripts/.ruff_cache`, which the snapshot lacks, so
+  every commit touching sources/ or scripts/ made all three styles again.
 - The post-commit hook rebuilds the proofs (`make proof`) in the
   background after commits touching sources, scripts or proofs/: the
   commit built is in `build/proofs/built-from`, the output in

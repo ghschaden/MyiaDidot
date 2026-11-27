@@ -135,3 +135,30 @@ def test_unproven_per_style(stamped, monkeypatch):
     del data["styles"]["Bold"]["proof"]
     stale.STAMP.write_text(json.dumps(data))
     assert stale.unproven(say=quiet) == ["Bold", "BoldItalic"]
+
+
+def test_scripts_digest_blind_to_comments_and_docstrings(tmp_path):
+    """the proof holds over an edit to comments or docstrings alone (T8), not
+    over a change of code or of a plain string; dot-directories (ruff's
+    cache, which only the working copy has) and __pycache__ are not read"""
+    root = tmp_path / "scripts"
+    (root / "sub").mkdir(parents=True)
+    src = '"""Module."""\n\n\ndef f(x):\n    """Doc."""\n    return x + 1  # one\n\n\nS = "kept"\n'
+    (root / "m.py").write_text(src)
+    (root / "sub" / "d.json").write_text("{}")
+    base = stale.scripts_digest(root)
+
+    (root / "m.py").write_text(src.replace("Module.", "Other.").replace("Doc.", "Else.")
+                               .replace("# one", "# two\n    # three"))
+    (root / ".ruff_cache").mkdir()
+    (root / ".ruff_cache" / "x").write_text("cache")
+    (root / "__pycache__").mkdir()
+    (root / "__pycache__" / "m.pyc").write_bytes(b"\0")
+    assert stale.scripts_digest(root) == base
+
+    for changed in (src.replace("x + 1", "x + 2"), src.replace('"kept"', '"other"')):
+        (root / "m.py").write_text(changed)
+        assert stale.scripts_digest(root) != base
+    (root / "m.py").write_text(src)
+    (root / "sub" / "d.json").write_text('{"a": 1}')
+    assert stale.scripts_digest(root) != base

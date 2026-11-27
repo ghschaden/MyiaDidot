@@ -959,7 +959,7 @@ alongside, each when the phase that needs it comes up.
             styles again. Lost: the check that two runs agree (nearly
             always so on one machine); kept by a full reproduce before
             a push or on another machine (T3).
-- [ ] T3. Reproduction across machines (phase 0's CI step, here in
+- [x] T3. (closed with F5, 2026-11-13: the cause is AMD runners with AVX-512, no pin or tolerance covers it; CI's reproduce warns there) Reproduction across machines (phase 0's CI step, here in
       full). Recommended: a one-unit tolerance on point coordinates in
       `scripts/check_reproducible.py` (a unit is 1/2048 em), node
       counts and structure still exact; the segment split of ae.sc
@@ -1170,7 +1170,12 @@ alongside, each when the phase that needs it comes up.
       - [ ] As a glyph above is drawn and accepted in a style: its
             repair for that style goes; the script and its test when no
             style needs it.
-- [ ] T8. Checks in tiers, once T3 has CI green and trusted: the
+- [ ] T8. (narrowed 2026-11-27, the designer: option 1; pushes follow
+      nearly every commit, so a pre-push tier would only move the run.
+      Done: the reproduce proof blind to comments and docstrings, and
+      mended, since it had never held in the hook: stale.scripts_digest,
+      docs/claude/tests.md. The tiers below wait for batched pushes.)
+      Checks in tiers, once T3 has CI green and trusted: the
       pre-commit hook a fast tier (ruff, UFO integrity, reproduction
       and tests of the styles the staged files touch), the full suite
       before push and in CI. Not before: today the hook is the only

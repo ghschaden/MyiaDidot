@@ -35,6 +35,7 @@ been through `make check-regular` as it now stands (`mark-regular`), unless
 SKIP_CHECK is set in the environment.
 """
 
+import ast
 import hashlib
 import json
 import os
@@ -100,7 +101,44 @@ def generator_hashes():
     names = {p.name for pattern in GENERATOR_GLOBS for p in (ROOT / "scripts").glob(pattern)}
     for entry in ENTRIES:
         names |= {f"{m}.py" for m in stroke_cache.modules(entry)}
-    return {n: hashlib.sha1((ROOT / "scripts" / n).read_bytes()).hexdigest()[:12] for n in sorted(names)}
+    return {n: hashlib.sha1(code_bytes(ROOT / "scripts" / n)).hexdigest()[:12] for n in sorted(names)}
+
+
+def code_bytes(path):
+    """what a script file contributes to a run: for Python its syntax tree
+    without docstrings (comments are not in it, line numbers left out), so
+    an edit to comments or docstrings alone keeps the stamp and the proof
+    (T8, 2026-11-27); any other file, or Python that does not parse, as its
+    bytes"""
+    data = path.read_bytes()
+    if path.suffix != ".py":
+        return data
+    try:
+        tree = ast.parse(data)
+    except (SyntaxError, ValueError):
+        return data
+    for node in ast.walk(tree):
+        body = getattr(node, "body", None)
+        if (isinstance(node, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef))
+                and body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant)
+                and isinstance(body[0].value.value, str)):
+            node.body = body[1:]
+    return ast.dump(tree).encode()
+
+
+def scripts_digest(root=None):
+    """scripts/ as a run reads it: every file but those in dot-directories
+    (ruff's .ruff_cache, which only the working copy has: with it the proof
+    stamped there never held in the hook's snapshot, 2026-11-27) and
+    __pycache__, Python by code_bytes"""
+    root = Path(root) if root else ROOT / "scripts"
+    digest = hashlib.sha256()
+    for item in sorted(root.rglob("*")):
+        rel = item.relative_to(root)
+        if not item.is_file() or "__pycache__" in rel.parts or any(p.startswith(".") for p in rel.parts[:-1]):
+            continue
+        digest.update(str(rel).encode() + b"\0" + code_bytes(item) + b"\0")
+    return digest.hexdigest()
 
 
 # what a style's proof is taken over: a run of the generators made these
@@ -116,12 +154,12 @@ def proof_inputs(style):
     ufo_digest reads it: the acceptances accepted.py writes after a run left
     out, or accepting the Italic's glyphs unproved the Bold Italic made from
     them and cost the hook a reproduce, 2026-11-22), every file under
-    scripts/, the build files and the toolchain (strict: any other change
+    scripts/ (scripts_digest: blind to comments and docstrings), the build files and the toolchain (strict: any other change
     there and the proof no longer holds)"""
     from build_support import content_hash, json_digest, toolchain
 
     parts = {"source": ufo_digest(SOURCES / f"{FAMILY}-{SOURCE_OF[style]}.ufo"),
-             "scripts": content_hash(ROOT / "scripts"),
+             "scripts": scripts_digest(),
              "files": {n: content_hash(ROOT / n) for n in PROOF_FILES if (ROOT / n).exists()},
              "toolchain": toolchain()}
     if style == "Italic":
