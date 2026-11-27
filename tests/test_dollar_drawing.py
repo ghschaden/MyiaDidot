@@ -7,7 +7,7 @@ import ufoLib2
 from conftest import DATA, ROOT
 from dollar_drawing import finish
 from fontTools.ufoLib.glifLib import readGlyphFromString
-from glyph_lint import lint
+from glyph_lint import INK_KINDS, lint
 from test_dollar_bars import edge_groups
 
 
@@ -36,7 +36,7 @@ def test_dollar_waist_and_terminals_preserve_bar_geometry_and_spacing():
     assert glyph.anchors == before.anchors
     assert glyph.unicodes == before.unicodes
     assert glyph.lib == before.lib
-    assert not lint(font, ['dollar'])
+    assert not lint(font, ['dollar'], kinds=INK_KINDS)  # (the drawn kinds: the writer's)
     after = deepcopy(glyph)
     finish(font)
     assert glyph == after

@@ -1,2 +1,16 @@
 # Known glyph_lint.py findings (glyph kind count); fixing one = deleting its line.
+Hook stub 1                      # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 413,1828 
+u1D510 stub 2                    # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 1888,1027 ; 1816,1063 
+u1D513 stub 1                    # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 1395,1022 
+uni01A5.sc stub 1                # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 673,589 
 uni0249 ledge 2                  # reviewed 2026-10-24: intentional right bar terminal, preserved by LEDGE_KEEP; 382,414 30 units; 412,470 30 units
+uni0255 stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 589,47 
+uni025A stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 1084,555 
+uni0260 stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 177,-212 
+uni0261 stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 177,-212 
+uni027B stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 888,-323 
+uni0282 stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 467,-373 
+uni0290 stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 1110,-403 
+uni029D.sc stub 1                # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 267,-312 
+uni1D4D stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 109,537 
+uni2113 stub 1                   # 2026-11-27: a curve under 16 units between two corners (degenerate.py stub; found when the zero segments were mended), listed to be sorted: drawn serif corner or crumb: 643,74 

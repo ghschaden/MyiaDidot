@@ -2,8 +2,9 @@
 from copy import deepcopy
 
 import pytest
+from degenerate import mend_font
 from fontTools.pens.recordingPen import RecordingPen
-from glyph_lint import lint_glyph
+from glyph_lint import INK_KINDS, lint_glyph
 from italic_ligatures import F_LIGATURES, LONGS, NAMES, make
 from quality.checks import construction
 
@@ -19,17 +20,19 @@ def test_italic_ligatures_are_reproducible_and_clean(ufo):
         pytest.skip("italic construction")
     trial = deepcopy(ufo)
     assert set(make(trial)) == set(NAMES)
+    mend_font(trial, NAMES)  # as the writer does after the finishing passes
     for name in NAMES:
         glyph = ufo[name]
         assert outline(trial[name]) == outline(glyph), name
         assert trial[name].width == glyph.width > 0, name
         assert trial[name].anchors == glyph.anchors, name
         assert not construction(glyph), (name, construction(glyph))
-        assert not lint_glyph(ufo, glyph), (name, lint_glyph(ufo, glyph))
+        assert not lint_glyph(ufo, glyph, INK_KINDS), (name, lint_glyph(ufo, glyph, INK_KINDS))
         assert len(glyph.anchors) == len(name.split("_")) - 1, name
     for name in set(ufo.keys()) - set(NAMES):
         assert trial[name] == ufo[name], name
     make(trial)
+    mend_font(trial, NAMES)
     for name in NAMES:
         assert trial[name] == ufo[name], name
 
@@ -43,6 +46,7 @@ def test_ligatures_follow_their_final_base(ufo):
             if point.x > 600 and point.y < 800:
                 point.x += 20
     make(trial)
+    mend_font(trial, NAMES)
     for name in ("f_b", "f_f_b", "longs_b", "longs_longs_b"):
         assert outline(trial[name]) != outline(ufo[name]), name
     for name in set(NAMES) - {"f_b", "f_f_b", "longs_b", "longs_longs_b"}:

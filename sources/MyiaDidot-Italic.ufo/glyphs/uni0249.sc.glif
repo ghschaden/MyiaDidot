@@ -12,8 +12,7 @@
 			<point x="197" y="195" type="curve" smooth="yes"/>
 			<point x="186" y="154"/>
 			<point x="146" y="134"/>
-			<point x="99" y="134" type="curve"/>
-			<point x="99" y="134" type="line"/>
+			<point x="99" y="134" type="curve" smooth="yes"/>
 			<point x="91" y="134"/>
 			<point x="81" y="135"/>
 			<point x="76" y="114" type="curve" smooth="yes"/>
@@ -71,7 +70,7 @@
 				<key>date</key>
 				<string>2026-11-23</string>
 				<key>glyph</key>
-				<string>72f58a1ae1ea</string>
+				<string>5799faa07186</string>
 				<key>review</key>
 				<string>docs/claude/longtail.md</string>
 			</dict>

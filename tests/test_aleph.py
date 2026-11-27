@@ -5,6 +5,7 @@ from copy import deepcopy
 import ufoLib2
 from aleph import _lower_return, finish
 from conftest import DATA, ROOT, respaced
+from degenerate import mend
 from fontTools.ufoLib.glifLib import readGlyphFromString
 from glyph_lint import lint
 
@@ -47,6 +48,7 @@ def test_aleph_return_repair_is_local_and_repeatable():
     _lower_return(glyph)
     assert glyph == expected
     finish(font)
+    mend(glyph)  # as the writer does after the finishing passes
     assert glyph == final
 
 
@@ -59,6 +61,7 @@ def test_aleph_upper_join_preserves_accepted_drawing():
                        glyphObject=glyph, pointPen=glyph.getPointPen())
     before = deepcopy(glyph)
     finish(font)
+    mend(glyph)  # as the writer does after the finishing passes
     assert glyph == expected
     assert not lint(font, ['uni2135'])
     assert glyph.width == before.width
@@ -75,7 +78,9 @@ def test_aleph_upper_join_preserves_accepted_drawing():
     rest, was = new[start + 6:], old[end:]
     assert len(rest) == len(was)
     moved = [i for i, (a, b) in enumerate(zip(rest, was, strict=True)) if a != b]
-    assert len(moved) <= 2 and all(rest[i].type is None for i in moved)
+    # (the join's node unmoved, marked smooth once its handles are in line: degenerate.mend)
+    assert len(moved) <= 2 and all(rest[i].type is None or (rest[i].x, rest[i].y, rest[i].type, rest[i].smooth)
+                                   == (was[i].x, was[i].y, was[i].type, True) for i in moved)
     assert [(p.x, p.y, p.type) for p in new[start:start + 7]] == [
         (978, 588, 'curve'), (951, 588, None), (941, 606, None), (929, 606, 'curve'),
         (830, 606, None), (864, 514, None), (850, 478, 'curve'),

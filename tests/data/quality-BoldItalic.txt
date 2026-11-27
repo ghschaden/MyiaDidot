@@ -3,6 +3,7 @@ C slant 1                        # 2026-10-16 Bold Italic: first generated (make
 Cedilla wobble 1                 # 2026-10-27 wobble check added (checks.py wobble, against the source style): a candidate to review: 1 against 0: 421,-169 115 degrees
 Deltagreek stroke 1              # 2026-11-08 italic Λ Δ λ.sc δ.sc sheared to lean as A: diagonal letters' weight, as A V a.sc v.sc: uc 261 against 292 (0.90, lighter)
 Eng stroke 1                     # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 199 against 307 (0.65, lighter)
+Eng wobble 1                     # 2026-11-27: shown once the zero segment that hid it was mended (degenerate.py); for the glyph's own pass: 2 against 0: 843,-374 13 degrees; 852,-340 36 degrees
 Euro step 4                      # 2026-11-03: crotches meet where the strokes cross (stroke_bold Strokes.crossing; & root 0.7; ξ split fit); reviewed in proofs (γ & ξ ү q.sc), new findings proofed: 129,619 38 units aside
 G slant 1                        # 2026-10-16 Bold Italic: first generated (make_bold.py from the Italic): 11.4 degrees, not 15.2
 G smooth 1                       # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
@@ -424,6 +425,7 @@ uni04B7.sc smooth 1              # phase 6, longtail family 3: the Italic's smal
 uni04D9.sc wobble 1              # 2026-11-24 wobble check read the same either way (each contour clockwise, lobes round the contour): a candidate to review: 1 against 0: 667,458 5 degrees
 uni04E8 wobble 1                 # 2026-11-24 wobble check read the same either way (each contour clockwise, lobes round the contour): a candidate to review: 1 against 0: 791,1331 3 degrees
 uni04E9.sc kink 1                # 2026-11-26 Bold Italic rejoin guard measured densely (stroke_bold.strays): the cleaning's cuts no longer kept and bent by fairing; ʝ's tail bar run on 90 to the right: 768,975 3.9 degrees
+uni04E9.sc smooth 1              # 2026-11-27: shown once the zero segment that hid it was mended (degenerate.py); for the glyph's own pass: 807,800 4.8 degrees
 uni1D4D wobble 1                 # 2026-11-02: modifier letters made small from the Bold Italic's own letters (make_bold ITALIC_BOLD_REBUILD_OPS), reviewed on before/after proofs, taken as is; ˠ ᶶ inherit the Bold Italic'
 uni1D53 smooth 1                 # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni1D58 kink 1                   # line edges by one weight (stroke_bold.edges), reviewed 2026-11-25: 310,880 2.5 degrees

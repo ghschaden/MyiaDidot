@@ -5,7 +5,7 @@ from copy import deepcopy
 import pathops
 import ufoLib2
 from conftest import ROOT
-from glyph_lint import ink, lint
+from glyph_lint import INK_KINDS, ink, lint
 from j_bar import finish
 
 
@@ -39,7 +39,7 @@ def test_j_bar_extension():
     after = ink(font, glyph)
     assert pathops.op(before, after, pathops.PathOp.DIFFERENCE).area == 0
     assert pathops.op(after, before, pathops.PathOp.DIFFERENCE).area > 5000
-    assert not lint(font, [glyph.name])
+    assert not lint(font, [glyph.name], kinds=INK_KINDS)  # (the drawn kinds: the writer's)
     finish(font)
     assert glyph == expected
 

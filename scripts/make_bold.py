@@ -1083,6 +1083,9 @@ def finalize(font, smooth=True, separate_stacks=False, plain=()):
     if separate_stacks:
         separate_breve_grave_stacks(font)
     refit_horns(font)
+    from degenerate import mend_font
+
+    mend_font(font)  # zero segments, lined-up corners the rounding left (degenerate.py)
     # aliases as wide as their glyph after the finishing passes set it
     # (the Bold Italic's ff, made again by italic_ligatures and fitted after,
     # left ff.short at the Italic's width)
@@ -1673,7 +1676,7 @@ def rederive(source, font, italic, whole):
 
     from derived import Outline, _best_iou, recipes
     from fontTools.pens.recordingPen import DecomposingRecordingPen
-    from glyph_lint import lint_glyph
+    from glyph_lint import INK_KINDS, lint_glyph
 
     iou, width = 0.85, 0.03
     keep = ITALIC_BOLD_KEEP_WHOLE if italic else BOLD_KEEP_WHOLE
@@ -1783,7 +1786,8 @@ def rederive(source, font, italic, whole):
         finish_recipe(up, new, ch, name, op, tmp, italic)
         old = up[name]
         made, was = Outline(up, tmp), Outline(up, name)
-        faults = len(lint_glyph(up, new)) - len(lint_glyph(up, old))
+        # (the ink's faults: the drawn kinds, degenerate.py's, the writer mends)
+        faults = len(lint_glyph(up, new, INK_KINDS)) - len(lint_glyph(up, old, INK_KINDS))
         # a part more than before: a remnant of what the cut should take (a
         # serif's end); a pinhole more or fewer
         (pn, hn), (po, ho) = parts(up, new), parts(up, old)

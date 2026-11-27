@@ -2570,9 +2570,11 @@ def main():
         made.append(ch)
         built.append(g.name)
     # what a recipe drew without merging (enlarged, turned) cleaned too
+    from degenerate import mend_font
     from glyph_lint import fix
 
     fix(font, built)
+    mend_font(font, built)  # zero segments, lined-up corners (degenerate.py)
     if done:
         respace(font, classifier(font, done["cut"], done["greekLower"]))
         font.lib[CUT_KEY] = done

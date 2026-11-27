@@ -6,7 +6,7 @@ from math import atan, degrees
 import ufoLib2
 from conftest import DATA, ROOT
 from fontTools.ufoLib.glifLib import readGlyphFromString
-from glyph_lint import lint
+from glyph_lint import INK_KINDS, lint
 from symbol_joins import regular, trademark
 
 
@@ -60,7 +60,7 @@ def test_trademark_outer_stems_parallel_and_middle_unchanged():
     assert t[28].x <= t[26].x + 10
     assert glyph.width == before.width
     assert glyph.anchors == before.anchors
-    assert not lint(font, ['trademark'])
+    assert not lint(font, ['trademark'], kinds=INK_KINDS)  # (the drawn kinds: the writer's)
     after = deepcopy(glyph)
     trademark(font)
     assert glyph == after

@@ -17,6 +17,11 @@ Prints one line per finding: "glyph  kind  where  detail". What it looks for
   ledge    a short straight segment between two corners that turn opposite
            ways: where a curl, bar or tail was joined on at another width
            or height than the stroke it joins (or a cusp emboldening made)
+  zero     a segment of no length (the outline as drawn, not merged:
+           degenerate.py, as are the next two)
+  unsmooth a corner whose two sides leave it along one line, not marked
+           smooth (an editor lets the sides drift apart)
+  stub     a curve under 16 units between two corners
 
 --fix cleans the specks, twists, pinholes, steps and ledges in place (the
 outline merged as it renders, the crumbs dropped, each step or ledge shrunk
@@ -63,7 +68,9 @@ LEDGE_TURN = 40  # ... the outline turning this much at each end, opposite ways
 LEDGE_KEEP = {"uni0249", "uni0249.sc", "uni20B2", "uni2135"}
 
 TWIST_AREA = 2  # a piece this small is a self-crossing of the outline, not ink
-KINDS = ("speck", "twist", "pinhole", "sliver", "notch", "step", "ledge")
+KINDS = ("speck", "twist", "pinhole", "sliver", "notch", "step", "ledge", "zero", "unsmooth", "stub")
+DRAWN_KINDS = ("zero", "unsmooth", "stub")  # read on the glyph's own contours (degenerate.py)
+INK_KINDS = tuple(k for k in KINDS if k not in DRAWN_KINDS)  # a repair's result before the writer mends it
 
 
 def ink(font, glyph):
@@ -434,6 +441,10 @@ def lint_glyph(font, glyph, kinds=KINDS):
         out += ledge_findings(path)
     if "notch" in kinds:
         out += notch_findings(font, glyph, path.bounds)
+    if set(DRAWN_KINDS) & set(kinds) and glyph.contours:
+        from degenerate import findings
+
+        out += [(k, f"{round(x)},{round(y)}", "") for k, x, y in findings(glyph) if k in kinds]
     return out
 
 

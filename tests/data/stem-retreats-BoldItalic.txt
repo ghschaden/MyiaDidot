@@ -1,0 +1,2 @@
+# Known stem retreats (glyph x,y), tests/test_stem_joins.py; mending one = deleting its line.
+iogonek.sc 602,927              # 2026-11-27: hidden until its zero segment at 591,948 was mended (degenerate.py; stem_joins.mend runs before, so did not see it either); for the designer: let stem_joins mend it (an accepted glyph, 19 units)

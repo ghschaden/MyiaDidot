@@ -1002,7 +1002,19 @@ alongside, each when the phase that needs it comes up.
       for stems, columns running on into curls): each family's test
       instead, as it moves to bands.
       Open, in order:
-      1. `scripts/quality/degenerate.py` (built, not wired): zero-length
+      1. [x] (done 2026-11-27: `scripts/degenerate.py`, moved from
+         quality/; `mend` in derive.py, smallcaps.py and
+         make_bold.finalize, `--fix` run once on the four UFOs for the
+         drawn glyphs (35 Regular, 53 Italic, 23 Bold, 74 Bold Italic),
+         each mend proven to draw the same segments; glyph_lint's kinds
+         zero, unsmooth (held at none) and stub (the sliver of this note,
+         renamed: glyph_lint has a sliver; listed). Every generated style
+         came out as HEAD plus the mends, nothing else (scratch runs
+         compared glyph by glyph), once make_bold.rederive counts only the
+         ink's kinds (glyph_lint.INK_KINDS): with all kinds its fault count
+         chose other builds for Ƙ ɭ Ⱳ ⱳ ц щ.loclBGR and ƴ. Uncovered:
+         ʈ.sc's zero segment hid a 5-degree kink at 500,48 (quality list,
+         for the retroflex tails' next pass)) `scripts/quality/degenerate.py` (built, not wired): zero-length
          segments, lined-up nodes not marked smooth, curves under 16 units
          between corners. On HEAD: Regular 48 glyphs, Italic 90, Bold 59,
          Bold Italic 138 (T's 732,1352 among them). The first two are mended

@@ -57,7 +57,8 @@ Moved from CLAUDE.md (its ground rules apply).
   feature and language system the fonts have), a digest over more than 2M shaped strings per style,
   fontbakery with an allowlist, and outlines gone wrong
   (`scripts/glyph_lint.py`: specks, twists, pinholes, slivers, notches,
-  steps, ledges) and design quality (`scripts/quality/checks.py`: smooth
+  steps, ledges; on the drawn contours, `scripts/degenerate.py`: zero
+  segments, lined-up corners not smooth, stubs) and design quality (`scripts/quality/checks.py`: smooth
   nodes, kinks, extremes, steps on the outline (a short straight jog
   between edges running on the same way: a tail or hook set beside its
   stroke, which the raster lint misses), wobbles (the Bold and Bold
@@ -72,7 +73,10 @@ Moved from CLAUDE.md (its ground rules apply).
   with `update_test_data.py --quality`) against each style's known findings (`glyph-lint*.txt`; regenerate
   with `update_test_data.py --lint`). derive.py, make_italic.py and
   make_bold.py clean specks, twists, pinholes, steps and ledges from what they
-  make; `glyph_lint.py UFO --fix` does it for drawn glyphs.
+  make; `glyph_lint.py UFO --fix` does it for drawn glyphs. The zero
+  segments and unsmooth corners are mended exactly where every style is
+  written (derive.py, smallcaps.py, make_bold.finalize) and held at none;
+  `degenerate.py UFO --fix` for drawn glyphs.
 - Letters and figures meeting the signs beside them
   (`tests/test_collisions.py`, `scripts/quality/collisions.py`): every
   pair with less than kern_clear.CLEAR of white across, kerned or not,

@@ -111,6 +111,7 @@ uni0194 stroke 1                 # stroke weights against the kind's (scripts/qu
 uni0194 zone 1                   # 2026-10-16 known at the start (quality checks added): top +10 from 1434
 uni0196 zone 1                   # 2026-11-19, phase 6 step C: the Italic's overshoots, ascenders and long stems set to the Regular's; known open: the Bold Italic's drawn letters keep the old -23 bottoms (step D) and the small caps' ov
 uni0197 stem 1                   # 2026-10-25 lighter I approved in text; retain independent barred-I drawing: at 358 180 against I's 165
+uni0199 kink 1                   # 2026-11-27: shown once the zero segment that hid it was mended (degenerate.py); for the glyph's own pass: 611,207 1.5 degrees
 uni019D stroke 1                 # stroke weights against the kind's (scripts/quality/strokes.py) known at the start: uc 163 against 209 (0.78, lighter)
 uni01A5 kink 2                   # Italic weighted as its letters are taken, derived letters built from weighted bases: drafts redrawn, nodes rounded anew: 342,700 7.6 degrees; 837,1076 7.3 degrees
 uni01AC zone 1                   # derived hooks/curls rebuilt at Old Standard's stroke weights; Bold Italic ɳ ɱ ɧ from their recipes: top +2 from 1434

@@ -769,6 +769,9 @@ def main():
     if not args.glyphs_only:
         scale_kerning(font, log)
         write_features(font, log)
+    from degenerate import mend_font
+
+    mend_font(font)  # zero segments, lined-up corners (degenerate.py)
     carry(accepted, font)
     restore(kept, font)
     from winding import orient  # wound as the Regular (make_bold.write)
